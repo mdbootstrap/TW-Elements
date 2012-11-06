@@ -3,6 +3,10 @@
  */
 ((function($) {
     $.fn.perfectScrollbar = function() {
-        // TODO
+        $(this).mousewheel(function(e, delta, deltaX, deltaY) {
+            $(this).scrollTop($(this).scrollTop() - (deltaY * 10));
+            $(this).scrollLeft($(this).scrollLeft() + (deltaX * 10));
+            e.preventDefault();
+        });
     };
 })(jQuery));
