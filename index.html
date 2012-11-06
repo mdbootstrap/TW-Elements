@@ -4,7 +4,7 @@
         <title>perfect-scrollbar</title>
         <link href="bootstrap-combined.min.css" rel="stylesheet">
         <style>
-            .container { padding: 50px 0px; }
+            .body { padding: 50px 0px; }
             .logo { font-size:100px; text-align:center; line-height: 70px; }
             .description { padding-top: 20px; text-align:center; }
             .subtitle { padding-top: 30px; }
@@ -16,7 +16,7 @@
         <a href="https://github.com/noraesae/perfect-scrollbar">
             <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
         </a>
-        <div class='container'>
+        <div class='body'>
             <h1 class='logo'>perfect-scrollbar</h1>
             <p class='lead' style='text-align:center;'>Tiny but perfect jQuery scrollbar plugin.</p>
             <div class='description'>
@@ -24,6 +24,17 @@
                 <div id='Demo'>
                     <div class='content'>
                     </div>
+                </div>
+                <div style='margin-top:15px;'>
+                    <div class='input-prepend'>
+                        <span class='add-on' style='width:100px;'>Width: </span>
+                        <input type='text' id='Width' placeholder='600'>
+                    </div>
+                    <div class='input-prepend'>
+                        <span class='add-on' style='width:100px;'>Height: </span>
+                        <input type='text' id='Height' placeholder='400'>
+                    </div>
+                    <button class='btn btn-primary' onclick='change_size()'>Change Size!</button>
                 </div>
                 <h2 class='subtitle'>Documentation</h2>
                 <p class='lead'>
@@ -37,9 +48,21 @@
         </div>
         <script src="jquery.min.js"></script>
         <script src="jquery.mousewheel.js"></script>
-        <script src="perfect-scrollbar.min.js"></script>
+        <script src="perfect-scrollbar.js"></script>
         <script src="bootstrap.min.js"></script>
         <script>
+            function change_size() {
+                var width = parseInt($("#Width").val());
+                var height = parseInt($("#Height").val());
+
+                if(!width || isNaN(width)) {
+                    width = 600;
+                }
+                if(!height || isNaN(height)) {
+                    height = 400;
+                }
+                $("#Demo").width(width).height(height);
+            }
             $(function() {
                 $('#Demo').perfectScrollbar();
             });
