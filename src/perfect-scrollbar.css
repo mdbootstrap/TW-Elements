@@ -1,31 +1,60 @@
 .ps-container .ps-scrollbar-x {
-    position: absolute;
-    height: 10px;
-    bottom: 5px;
-    background-color: gray;
+    position: absolute; /* please don't change 'position' */
+    bottom: 3px; /* there must be 'bottom' for ps-scrollbar-x */
+    height: 8px;
+    background-color: #aaa;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -webkit-transition: opacity.2s linear;
+    -moz-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+
+.ps-container:hover .ps-scrollbar-x {
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
 }
 
 .ps-container .ps-scrollbar-x:hover {
-    background-color: black;
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
     cursor:default;
 }
 
 .ps-container .ps-scrollbar-x.in-scrolling {
-    background-color: black;
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
 }
 
 .ps-container .ps-scrollbar-y {
-    position: absolute;
-    width: 10px;
-    right: 5px;
-    background-color: gray;
+    position: absolute; /* please don't change 'position' */
+    right: 3px; /* there must be 'right' for ps-scrollbar-y */
+    width: 8px;
+    background-color: #aaa;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    opacity: 0;
+    -webkit-transition: opacity.2s linear;
+    -moz-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+
+.ps-container:hover .ps-scrollbar-y {
+    opacity: 0.6;
+    filter: alpha(opacity = 60);
 }
 
 .ps-container .ps-scrollbar-y:hover {
-    background-color: black;
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
     cursor: default;
 }
 
 .ps-container .ps-scrollbar-y.in-scrolling {
-    background-color: black;
+    opacity: 0.9;
+    filter: alpha(opacity = 90);
 }
