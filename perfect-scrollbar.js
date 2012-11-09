@@ -2,7 +2,21 @@
  * Licensed under the MIT License
  */
 ((function($) {
-    $.fn.perfectScrollbar = function() {
+    $.fn.perfectScrollbar = function(option) {
+        if(option === 'update') {
+            $(this).data('perfect_scrollbar_update')();
+            return;
+        }
+        else if(option === 'destroy') {
+            $(this).data('perfect_scrollbar_destroy')();
+            return;
+        }
+
+        if($(this).data('perfect_scrollbar')) {
+            // if there's already perfect_scrollbar
+            return;
+        }
+
         var $this = $(this).addClass('ps-container'),
             $content = $(this).children(),
             $scrollbar_x = $("<div class='ps-scrollbar-x'></div>").appendTo($this),
@@ -159,11 +173,29 @@
             });
         };
 
+        var destroy = function() {
+            $scrollbar_x.remove();
+            $scrollbar_y.remove();
+            $this.unbind('mousewheel');
+            $(window).unbind('mousemove.perfect-scroll');
+            $(window).unbind('mouseup.perfect-scroll');
+            $this.data('perfect_scrollbar', null);
+            $this.data('perfect_scrollbar_update', null);
+            $this.data('perfect_scrollbar_destroy', null);
+        };
+
+        var initialize = function() {
+            updateBarSizeAndPosition();
+            bindMouseScrollXHandler();
+            bindMouseScrollYHandler();
+            if($this.mousewheel) bindMouseWheelHandler();
+            $this.data('perfect_scrollbar', true);
+            $this.data('perfect_scrollbar_update', updateBarSizeAndPosition);
+            $this.data('perfect_scrollbar_destroy', destroy);
+        };
+
         // initialize
-        updateBarSizeAndPosition();
-        bindMouseScrollXHandler();
-        bindMouseScrollYHandler();
-        if($this.mousewheel) bindMouseWheelHandler();
+        initialize();
 
         return $this;
     };
