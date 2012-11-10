@@ -118,7 +118,7 @@
                 e.preventDefault();
             });
 
-            $(window).bind('mousemove.perfect-scroll', function(e) {
+            $(document).bind('mousemove.perfect-scroll', function(e) {
                 if($scrollbar_x.hasClass('in-scrolling')) {
                     moveBarX(current_left, e.pageX - current_page_x);
                     updateContentScrollLeft();
@@ -127,7 +127,7 @@
                 }
             });
 
-            $(window).bind('mouseup.perfect-scroll', function(e) {
+            $(document).bind('mouseup.perfect-scroll', function(e) {
                 if($scrollbar_x.hasClass('in-scrolling')) {
                     $scrollbar_x.removeClass('in-scrolling');
                 }
@@ -146,7 +146,7 @@
                 e.preventDefault();
             });
 
-            $(window).bind('mousemove.perfect-scroll', function(e) {
+            $(document).bind('mousemove.perfect-scroll', function(e) {
                 if($scrollbar_y.hasClass('in-scrolling')) {
                     moveBarY(current_top, e.pageY - current_page_y);
                     updateContentScrollTop();
@@ -155,7 +155,7 @@
                 }
             });
 
-            $(window).bind('mouseup.perfect-scroll', function(e) {
+            $(document).bind('mouseup.perfect-scroll', function(e) {
                 if($scrollbar_y.hasClass('in-scrolling')) {
                     $scrollbar_y.removeClass('in-scrolling');
                 }
