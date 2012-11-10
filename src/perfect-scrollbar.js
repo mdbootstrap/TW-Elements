@@ -4,17 +4,21 @@
 ((function($) {
     $.fn.perfectScrollbar = function(option) {
         if(option === 'update') {
-            $(this).data('perfect_scrollbar_update')();
-            return;
+            if($(this).data('perfect_scrollbar_update')) {
+                $(this).data('perfect_scrollbar_update')();
+            }
+            return $(this);
         }
         else if(option === 'destroy') {
-            $(this).data('perfect_scrollbar_destroy')();
-            return;
+            if($(this).data('perfect_scrollbar_destroy')) {
+                $(this).data('perfect_scrollbar_destroy')();
+            }
+            return $(this);
         }
 
         if($(this).data('perfect_scrollbar')) {
             // if there's already perfect_scrollbar
-            return;
+            return $(this).data('perfect_scrollbar');
         }
 
         var $this = $(this).addClass('ps-container'),
@@ -189,7 +193,7 @@
             bindMouseScrollXHandler();
             bindMouseScrollYHandler();
             if($this.mousewheel) bindMouseWheelHandler();
-            $this.data('perfect_scrollbar', true);
+            $this.data('perfect_scrollbar', $this);
             $this.data('perfect_scrollbar_update', updateBarSizeAndPosition);
             $this.data('perfect_scrollbar_destroy', destroy);
         };
