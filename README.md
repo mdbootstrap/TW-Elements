@@ -72,6 +72,12 @@ If you want to destory the scrollbar:
 $('#Demo').perfectScrollbar('destroy');
 ```
 
+If you want to scroll to somewhere, just use scroll-top css and update.
+```javascript
+$("#Demo").scrollTop(0);
+$("#Demo").perfectScrollbar('update');
+```
+
 Very helpful friends
 --------------------
 
