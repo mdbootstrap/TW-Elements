@@ -39,7 +39,7 @@ It's cool, isn't it?
 Requirements
 ------------
 
-To make this plugin *perfect*, some requirements was not avoidable. But they're all very trivial and there's nothing to worry.
+To make this plugin *perfect*, some requirements were not avoidable. But they're all very trivial and there's nothing to worry about.
 
 * there must be the *one* content element(like div) for the container.
 * the container must have a 'position' css style.
