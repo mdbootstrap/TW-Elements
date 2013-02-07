@@ -60,6 +60,7 @@
             else {
                 scrollbar_x_width = 0;
                 scrollbar_x_left = 0;
+                $this.scrollLeft(0);
             }
             if(container_height < content_height) {
                 scrollbar_y_height = parseInt(container_height * container_height / content_height);
@@ -68,6 +69,7 @@
             else {
                 scrollbar_y_height = 0;
                 scrollbar_y_left = 0;
+                $this.scrollTop(0);
             }
 
             $scrollbar_x.css({left: scrollbar_x_left + $this.scrollLeft(), bottom: scrollbar_x_bottom - $this.scrollTop(), width: scrollbar_x_width});
