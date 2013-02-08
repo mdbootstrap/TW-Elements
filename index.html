@@ -4,6 +4,7 @@
         <title>perfect-scrollbar</title>
         <link href="bootstrap-combined.min.css" rel="stylesheet">
         <link href="perfect-scrollbar.css" rel="stylesheet">
+        <link href="prettify.css" rel="stylesheet">
         <style>
             .body { padding: 50px 0px; }
             .logo { font-size:100px; text-align:center; line-height: 70px; }
@@ -27,6 +28,11 @@
                 <p class='lead list'>Do not affect the original design layout</p>
                 <p class='lead list'>The scrollbar css is fully customizable</p>
                 <p class='lead list'>The scrollbar size and position can be updated</p>
+                <h2 class='subtitle'>Download</h2>
+                <p>
+                    <a href='https://github.com/noraesae/perfect-scrollbar/archive/0.2.5.tar.gz' class='btn btn-large'>perfect-scrollbar-0.2.5.tar.gz</a>
+                    <a href='https://github.com/noraesae/perfect-scrollbar/archive/0.2.5.zip' class='btn btn-large'>perfect-scrollbar-0.2.5.zip</a>
+                </p>
                 <h2 class='subtitle'>Demo</h2>
                 <div id='Demo'>
                     <div class='content'>
@@ -43,9 +49,27 @@
                     </div>
                     <button class='btn btn-primary' onclick='change_size()'>Change Size!</button>
                 </div>
-                <h2 class='subtitle'>Download</h2>
-                <p><a href='https://github.com/downloads/noraesae/perfect-scrollbar/perfect-scrollbar-0.2.3.zip' class='btn btn-large'>perfect-scrollbar-0.2.3 3KB</a></p>
-                <p><a href='https://github.com/downloads/noraesae/perfect-scrollbar/perfect-scrollbar-0.2.3-with-mousewheel.zip' class='btn btn-large'>perfect-scrollbar-0.2.3 with jquery.mousewheel 4KB</a></p>
+                <h2 class='subtitle'>Source</h2>
+                <pre style='text-align:left;width:500px;margin:0px auto;' class='prettyprint'>&lt;script&gt;
+    function change_size() {
+        var width = parseInt($("#Width").val());
+        var height = parseInt($("#Height").val());
+
+        if(!width || isNaN(width)) {
+            width = 600;
+        }
+        if(!height || isNaN(height)) {
+            height = 400;
+        }
+        $("#Demo").width(width).height(height);
+
+        // update perfect scrollbar
+        $('#Demo').perfectScrollbar('update');
+    }
+    $(function() {
+        $('#Demo').perfectScrollbar();
+    });
+&lt;/script&gt;</pre>
                 <h2 class='subtitle'>Documentation</h2>
                 <p class='lead'>
                     Please refer to the README file in <a href='http://github.com/noraesae/perfect-scrollbar'>GitHub Repo</a>.
@@ -57,9 +81,9 @@
             </div>
         </div>
         <script src="jquery.min.js"></script>
-        <script src="jquery.mousewheel.js"></script>
-        <script src="perfect-scrollbar.js"></script>
+        <script src="perfect-scrollbar.with-mousewheel.min.js"></script>
         <script src="bootstrap.min.js"></script>
+        <script src="prettify.js"></script>
         <script>
             function change_size() {
                 var width = parseInt($("#Width").val());
@@ -78,6 +102,11 @@
             }
             $(function() {
                 $('#Demo').perfectScrollbar();
+            });
+        </script>
+        <script>
+            $(function() {
+                prettyPrint();
             });
         </script>
     </body>
