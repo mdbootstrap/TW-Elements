@@ -51,8 +51,8 @@
         var updateBarSizeAndPosition = function() {
             container_width = $this.width();
             container_height = $this.height();
-            content_width = $content.width();
-            content_height = $content.height();
+            content_width = $content.outerWidth(false);
+            content_height = $content.outerHeight(false);
             if(container_width < content_width) {
                 scrollbar_x_width = parseInt(container_width * container_width / content_width);
                 scrollbar_x_left = parseInt($this.scrollLeft() * container_width / content_width);
