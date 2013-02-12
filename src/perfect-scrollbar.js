@@ -179,10 +179,75 @@
             });
         };
 
+        // bind mobile touch handler
+        var bindMobileTouchHandler = function() {
+            var applyTouchMove = function(difference_x, difference_y) {
+                $this.scrollTop($this.scrollTop() - difference_y);
+                $this.scrollLeft($this.scrollLeft() - difference_x);
+
+                // update bar position
+                updateBarSizeAndPosition();
+            };
+
+            var start_coords = {},
+                start_time = 0,
+                speed = {},
+                breaking_process = null;
+
+            $this.bind("touchstart.perfect-scroll", function(e) {
+                var touch = e.originalEvent.targetTouches[0];
+
+                start_coords.pageX = touch.pageX;
+                start_coords.pageY = touch.pageY;
+
+                start_time = (new Date()).getTime();
+
+                if (breaking_process !== null) {
+                    clearInterval(breaking_process);
+                }
+            });
+            $this.bind("touchmove.perfect-scroll", function(e) {
+                var touch = e.originalEvent.targetTouches[0];
+
+                var current_coords = {};
+                current_coords.pageX = touch.pageX;
+                current_coords.pageY = touch.pageY;
+
+                var difference_x = current_coords.pageX - start_coords.pageX,
+                    difference_y = current_coords.pageY - start_coords.pageY;
+
+                applyTouchMove(difference_x, difference_y);
+                start_coords = current_coords;
+
+                var current_time = (new Date()).getTime();
+                speed.x = difference_x / (current_time - start_time);
+                speed.y = difference_y / (current_time - start_time);
+                start_time = current_time;
+
+                e.preventDefault();
+            });
+            $this.bind("touchend.perfect-scroll", function(e) {
+                breaking_process = setInterval(function() {
+                    if(Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
+                        clearInterval(breaking_process);
+                        return;
+                    }
+
+                    applyTouchMove(speed.x * 30, speed.y * 30);
+
+                    speed.x *= 0.8;
+                    speed.y *= 0.8;
+                }, 10);
+            });
+        };
+
         var destroy = function() {
             $scrollbar_x.remove();
             $scrollbar_y.remove();
             $this.unbind('mousewheel');
+            $this.unbind('touchstart.perfect-scroll');
+            $this.unbind('touchmove.perfect-scroll');
+            $this.unbind('touchend.perfect-scroll');
             $(window).unbind('mousemove.perfect-scroll');
             $(window).unbind('mouseup.perfect-scroll');
             $this.data('perfect_scrollbar', null);
@@ -190,10 +255,13 @@
             $this.data('perfect_scrollbar_destroy', null);
         };
 
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+
         var initialize = function() {
             updateBarSizeAndPosition();
             bindMouseScrollXHandler();
             bindMouseScrollYHandler();
+            if(isMobile) bindMobileTouchHandler();
             if($this.mousewheel) bindMouseWheelHandler();
             $this.data('perfect_scrollbar', $this);
             $this.data('perfect_scrollbar_update', updateBarSizeAndPosition);
