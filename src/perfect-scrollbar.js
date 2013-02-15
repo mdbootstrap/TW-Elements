@@ -90,7 +90,7 @@
                 scrollbar_x_left = new_left;
             }
             $scrollbar_x.css({left: scrollbar_x_left + $this.scrollLeft()});
-        }
+        };
 
         var moveBarY = function(current_top, delta_y) {
             var new_top = current_top + delta_y,
