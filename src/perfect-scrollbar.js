@@ -166,6 +166,25 @@
 
         // bind handlers
         var bindMouseWheelHandler = function() {
+            var shouldPreventDefault = function(deltaX, deltaY) {
+                var scrollTop = $this.scrollTop();
+                if(scrollTop == 0 && deltaY > 0 && deltaX == 0) {
+                    return false;
+                }
+                else if(scrollTop >= content_height - container_height && deltaY < 0 && deltaX == 0) {
+                    return false;
+                }
+
+                var scrollLeft = $this.scrollLeft();
+                if(scrollLeft == 0 && deltaX < 0 && deltaY == 0) {
+                    return false;
+                }
+                else if(scrollLeft >= content_width - container_width && deltaX > 0 && deltaY == 0) {
+                    return false;
+                }
+                return true;
+            };
+
             $this.mousewheel(function(e, delta, deltaX, deltaY) {
                 $this.scrollTop($this.scrollTop() - (deltaY * 10));
                 $this.scrollLeft($this.scrollLeft() + (deltaX * 10));
@@ -173,7 +192,7 @@
                 // update bar position
                 updateBarSizeAndPosition();
 
-                if(content_height > container_height || content_width > container_width) {
+                if(shouldPreventDefault(deltaX, deltaY)) {
                     e.preventDefault();
                 }
             });
