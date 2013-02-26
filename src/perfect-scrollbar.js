@@ -2,7 +2,25 @@
  * Licensed under the MIT License
  */
 ((function($) {
-    $.fn.perfectScrollbar = function(option) {
+
+    // The default settings for the plugin
+    var defaultSettings = {
+        wheelSpeed: 10,
+        wheelPropagation: false
+    };
+
+    $.fn.perfectScrollbar = function(suppliedSettings, option) {
+
+        // Use the default settings
+        var settings = $.extend( true, {}, defaultSettings );
+        if (typeof suppliedSettings === "object") {
+            // But over-ride any supplied
+            $.extend( true, settings, suppliedSettings );
+        } else {
+            // If no settings were supplied, then the first param must be the option
+            option = suppliedSettings;
+        }
+
         if(option === 'update') {
             if($(this).data('perfect_scrollbar_update')) {
                 $(this).data('perfect_scrollbar_update')();
@@ -169,25 +187,25 @@
             var shouldPreventDefault = function(deltaX, deltaY) {
                 var scrollTop = $this.scrollTop();
                 if(scrollTop == 0 && deltaY > 0 && deltaX == 0) {
-                    return false;
+                    return !settings["wheelPropagation"];
                 }
                 else if(scrollTop >= content_height - container_height && deltaY < 0 && deltaX == 0) {
-                    return false;
+                    return !settings["wheelPropagation"];
                 }
 
                 var scrollLeft = $this.scrollLeft();
                 if(scrollLeft == 0 && deltaX < 0 && deltaY == 0) {
-                    return false;
+                    return !settings["wheelPropagation"];
                 }
                 else if(scrollLeft >= content_width - container_width && deltaX > 0 && deltaY == 0) {
-                    return false;
+                    return !settings["wheelPropagation"];
                 }
                 return true;
             };
 
             $this.mousewheel(function(e, delta, deltaX, deltaY) {
-                $this.scrollTop($this.scrollTop() - (deltaY * 10));
-                $this.scrollLeft($this.scrollLeft() + (deltaX * 10));
+                $this.scrollTop($this.scrollTop() - (deltaY * settings["wheelSpeed"]));
+                $this.scrollLeft($this.scrollLeft() + (deltaX * settings["wheelSpeed"]));
 
                 // update bar position
                 updateBarSizeAndPosition();
