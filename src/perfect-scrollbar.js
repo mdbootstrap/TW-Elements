@@ -65,11 +65,26 @@
             if(container_height < content_height) {
                 scrollbar_y_height = parseInt(container_height * container_height / content_height);
                 scrollbar_y_top = parseInt($this.scrollTop() * container_height / content_height);
+
+                diff_y = content_height - container_height;
+                pos_y = $this.scrollTop();
+
+                if (pos_y) {
+                  if (pos_y === diff_y) {
+                    $this.addClass('top-shadow').removeClass('both-shadow bottom-shadow');
+                  } else {
+                    $this.addClass('both-shadow').removeClass('top-shadow bottom-shadow');
+                  }
+                } else {
+                  $this.addClass('bottom-shadow').removeClass('top-shadow both-shadow');
+                }
             }
             else {
                 scrollbar_y_height = 0;
                 scrollbar_y_left = 0;
                 $this.scrollTop(0);
+
+                $this.removeClass('top-shadow both-shadow bottom-shadow');
             }
 
             $scrollbar_x.css({left: scrollbar_x_left + $this.scrollLeft(), bottom: scrollbar_x_bottom - $this.scrollTop(), width: scrollbar_x_width});
