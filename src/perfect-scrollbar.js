@@ -49,19 +49,19 @@
             content_height,
             scrollbar_x_width,
             scrollbar_x_left,
-            scrollbar_x_bottom = parseInt($scrollbar_x.css('bottom')),
+            scrollbar_x_bottom = parseInt($scrollbar_x.css('bottom'), 10),
             scrollbar_y_height,
             scrollbar_y_top,
-            scrollbar_y_right = parseInt($scrollbar_y.css('right'));
+            scrollbar_y_right = parseInt($scrollbar_y.css('right'), 10);
 
         var updateContentScrollTop = function() {
-            var scroll_top = parseInt(scrollbar_y_top * content_height / container_height);
+            var scroll_top = parseInt(scrollbar_y_top * content_height / container_height, 10);
             $this.scrollTop(scroll_top);
             $scrollbar_x.css({bottom: scrollbar_x_bottom - scroll_top});
         };
 
         var updateContentScrollLeft = function() {
-            var scroll_left = parseInt(scrollbar_x_left * content_width / container_width);
+            var scroll_left = parseInt(scrollbar_x_left * content_width / container_width, 10);
             $this.scrollLeft(scroll_left);
             $scrollbar_y.css({right: scrollbar_y_right - scroll_left});
         };
@@ -72,8 +72,8 @@
             content_width = $content.outerWidth(false);
             content_height = $content.outerHeight(false);
             if(container_width < content_width) {
-                scrollbar_x_width = parseInt(container_width * container_width / content_width);
-                scrollbar_x_left = parseInt($this.scrollLeft() * container_width / content_width);
+                scrollbar_x_width = parseInt(container_width * container_width / content_width, 10);
+                scrollbar_x_left = parseInt($this.scrollLeft() * container_width / content_width, 10);
             }
             else {
                 scrollbar_x_width = 0;
@@ -81,8 +81,8 @@
                 $this.scrollLeft(0);
             }
             if(container_height < content_height) {
-                scrollbar_y_height = parseInt(container_height * container_height / content_height);
-                scrollbar_y_top = parseInt($this.scrollTop() * container_height / content_height);
+                scrollbar_y_height = parseInt(container_height * container_height / content_height, 10);
+                scrollbar_y_top = parseInt($this.scrollTop() * container_height / content_height, 10);
             }
             else {
                 scrollbar_y_height = 0;
@@ -186,26 +186,26 @@
         var bindMouseWheelHandler = function() {
             var shouldPreventDefault = function(deltaX, deltaY) {
                 var scrollTop = $this.scrollTop();
-                if(scrollTop == 0 && deltaY > 0 && deltaX == 0) {
-                    return !settings["wheelPropagation"];
+                if(scrollTop === 0 && deltaY > 0 && deltaX === 0) {
+                    return !settings.wheelPropagation;
                 }
-                else if(scrollTop >= content_height - container_height && deltaY < 0 && deltaX == 0) {
-                    return !settings["wheelPropagation"];
+                else if(scrollTop >= content_height - container_height && deltaY < 0 && deltaX === 0) {
+                    return !settings.wheelPropagation;
                 }
 
                 var scrollLeft = $this.scrollLeft();
-                if(scrollLeft == 0 && deltaX < 0 && deltaY == 0) {
-                    return !settings["wheelPropagation"];
+                if(scrollLeft === 0 && deltaX < 0 && deltaY === 0) {
+                    return !settings.wheelPropagation;
                 }
-                else if(scrollLeft >= content_width - container_width && deltaX > 0 && deltaY == 0) {
-                    return !settings["wheelPropagation"];
+                else if(scrollLeft >= content_width - container_width && deltaX > 0 && deltaY === 0) {
+                    return !settings.wheelPropagation;
                 }
                 return true;
             };
 
             $this.mousewheel(function(e, delta, deltaX, deltaY) {
-                $this.scrollTop($this.scrollTop() - (deltaY * settings["wheelSpeed"]));
-                $this.scrollLeft($this.scrollLeft() + (deltaX * settings["wheelSpeed"]));
+                $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
+                $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
 
                 // update bar position
                 updateBarSizeAndPosition();
