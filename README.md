@@ -45,6 +45,20 @@ To make this plugin *perfect*, some requirements were not avoidable. But they're
 * the container must have a 'position' css style.
 * the scrollbar's position must be 'absolute'.
 * the scrollbar-x must have a 'bottom' css style, and the scrollbar-y must have a 'right' css style.
+ 
+Optional parameters
+-------------------
+
+perfect-scrollbar supports optional parameters.
+
+### wheelSpeed
+The scroll speed applied to mousewheel event.  
+Default: 10
+
+### wheelPropagation
+If this option is true, when the scroll reach the end of the side, mousewheel event will be propagated to parent element.  
+Default: false
+
 
 How to Use
 ----------
@@ -63,6 +77,15 @@ When the html document is like above, just use like this:
 ```javascript
 $('#Demo').perfectScrollbar();
 ```
+
+With optional parameters:
+```javascript
+$("#Demo").perfectScrollbar({
+  wheelSpeed: 20,
+  wheelPropagation: true
+})
+```
+
 If the size of your container or content changes:
 ```javascript
 $('#Demo').perfectScrollbar('update');
