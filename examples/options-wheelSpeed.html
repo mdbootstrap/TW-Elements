@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>perfect-scrollbar example - use wheelSpeed to change speed of scrolling</title>
+        <link href="../src/perfect-scrollbar.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script src="../src/jquery.mousewheel.js"></script>
+        <script src="../src/perfect-scrollbar.js"></script>
+        <style>
+          .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
+          .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+          .spacer { text-align:center }
+        </style>
+    <script>
+      jQuery(document).ready(function ($) {
+        "use strict";
+        $('#Default').perfectScrollbar();
+        $('#FastWheelSpeed').perfectScrollbar({wheelSpeed:100});
+        $('#SlowWheelSpeed').perfectScrollbar({wheelSpeed:1});
+      });
+    </script>
+  </head>
+  <body>
+    <h1 style="text-align:center">Default; wheelSpeed:10</h1>
+    <div id="Default" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+    <h1 style="text-align:center">Fast: wheelSpeed:100</h1>
+    <div id="FastWheelSpeed" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+    <h1 style="text-align:center">Slow: wheelSpeed:1</h1>
+    <div id="SlowWheelSpeed" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+  </body>
+</html>
+
