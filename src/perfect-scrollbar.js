@@ -90,6 +90,10 @@
                 $this.scrollTop(0);
             }
 
+            if(scrollbar_y_top >= container_height - scrollbar_y_height) {
+                scrollbar_y_top = container_height - scrollbar_y_height;
+            }
+
             $scrollbar_x.css({left: scrollbar_x_left + $this.scrollLeft(), bottom: scrollbar_x_bottom - $this.scrollTop(), width: scrollbar_x_width});
             $scrollbar_y.css({top: scrollbar_y_top + $this.scrollTop(), right: scrollbar_y_right - $this.scrollLeft(), height: scrollbar_y_height});
         };
