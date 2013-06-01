@@ -211,7 +211,7 @@
           return true;
         };
 
-        $this.mousewheel(function (e, delta, deltaX, deltaY) {
+        $this.bind('mousewheel.perfect-scroll', function (e, delta, deltaX, deltaY) {
           $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
           $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
 
@@ -289,12 +289,8 @@
       var destroy = function () {
         $scrollbarX.remove();
         $scrollbarY.remove();
-        $this.unbind('mousewheel');
-        $this.unbind('touchstart.perfect-scroll');
-        $this.unbind('touchmove.perfect-scroll');
-        $this.unbind('touchend.perfect-scroll');
-        $(window).unbind('mousemove.perfect-scroll');
-        $(window).unbind('mouseup.perfect-scroll');
+        $this.unbind('.perfect-scroll');
+        $(window).unbind('.perfect-scroll');
         $this.data('perfect-scrollbar', null);
         $this.data('perfect-scrollbar-update', null);
         $this.data('perfect-scrollbar-destroy', null);
