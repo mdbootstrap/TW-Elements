@@ -307,9 +307,19 @@
         $this.data('perfect-scrollbar-destroy', null);
       };
 
+      var ieSupport = function (version) {
+        $this.addClass('ie').addClass('ie' + version);
+      };
+
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 
       var initialize = function () {
+        var ieMatch = navigator.userAgent.toLowerCase().match(/(msie) ([\w.]+)/);
+        if (ieMatch && ieMatch[1] === 'msie') {
+          // must be executed at first, because 'ieSupport' may addClass to the container
+          ieSupport(parseInt(ieMatch[2], 10));
+        }
+
         updateBarSizeAndPosition();
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
