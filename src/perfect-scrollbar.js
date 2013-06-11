@@ -2,7 +2,7 @@
  * Licensed under the MIT License
  */
 ((function ($) {
-
+  
   // The default settings for the plugin
   var defaultSettings = {
     wheelSpeed: 10,
@@ -296,12 +296,30 @@
         $this.data('perfect-scrollbar-destroy', null);
       };
 
+      var pseudoClass = function () {
+          var mouseenter = function () { 
+              $(this).addClass('hover');
+          };
+          var mouseleave = function () {
+              $(this).removeClass('hover');
+          };
+          $this.bind('mouseenter.perfect-scroll', mouseenter)
+              .bind('mouseleave.perfect-scroll', mouseleave);
+          $scrollbarX.bind('mouseenter.perfect-scroll', mouseenter)
+              .bind('mouseleave.perfect-scroll', mouseleave);
+          $scrollbarY.bind('mouseenter.perfect-scroll', mouseenter)
+              .bind('mouseleave.perfect-scroll', mouseleave);
+      };
+
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 
       var initialize = function () {
         updateBarSizeAndPosition();
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
+        if ($.browser.msie && $.browser.version == '6.0') {
+            pseudoClass();
+        }
         if (isMobile) {
           bindMobileTouchHandler();
         }
