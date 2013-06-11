@@ -309,6 +309,22 @@
 
       var ieSupport = function (version) {
         $this.addClass('ie').addClass('ie' + version);
+
+        var bindHoverHandlers = function () {
+          var mouseenter = function () {
+            $(this).addClass('hover');
+          };
+          var mouseleave = function () {
+            $(this).removeClass('hover');
+          };
+          $this.bind('mouseenter.perfect-scroll', mouseenter).bind('mouseleave.perfect-scroll', mouseleave);
+          $scrollbarX.bind('mouseenter.perfect-scroll', mouseenter).bind('mouseleave.perfect-scroll', mouseleave);
+          $scrollbarY.bind('mouseenter.perfect-scroll', mouseenter).bind('mouseleave.perfect-scroll', mouseleave);
+        };
+
+        if (version === 6) {
+          bindHoverHandlers();
+        }
       };
 
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
