@@ -148,8 +148,8 @@
 
         $(document).bind('mousemove.perfect-scroll', function (e) {
           if ($scrollbarX.hasClass('in-scrolling')) {
-            moveBarX(currentLeft, e.pageX - currentPageX);
             updateContentScrollLeft();
+            moveBarX(currentLeft, e.pageX - currentPageX);
             e.stopPropagation();
             e.preventDefault();
           }
@@ -176,8 +176,8 @@
 
         $(document).bind('mousemove.perfect-scroll', function (e) {
           if ($scrollbarY.hasClass('in-scrolling')) {
-            moveBarY(currentTop, e.pageY - currentPageY);
             updateContentScrollTop();
+            moveBarY(currentTop, e.pageY - currentPageY);
             e.stopPropagation();
             e.preventDefault();
           }
