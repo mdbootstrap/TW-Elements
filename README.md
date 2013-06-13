@@ -59,6 +59,13 @@ Default: 10
 If this option is true, when the scroll reach the end of the side, mousewheel event will be propagated to parent element.  
 Default: false
 
+### minThumbSize
+When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels
+Default: null
+
+### maxThumbSize
+When set to an integer value, the thumb part of the scrollbar will never be larger than that number of pixels
+Default: null
 
 How to Use
 ----------
@@ -82,7 +89,9 @@ With optional parameters:
 ```javascript
 $("#Demo").perfectScrollbar({
   wheelSpeed: 20,
-  wheelPropagation: true
+  wheelPropagation: true,
+  minThumbSize: 20,
+  maxThumbSize: 100
 })
 ```
 
