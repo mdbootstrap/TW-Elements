@@ -1,8 +1,13 @@
-.ps-container, x:ie {
-    background-image: url('_blank');/*This will introduce an extra connection. */
+@media screen and (min-width:0\0) {  
+    .ps-container {
+        background-image: url('about:blank');/*fixed ie9 ie10 and no extra connection introduced. */
+    }
+}
+.ps-container {
+    background-image: url('about:blank')\9;/*fixed ie6 ie7 ie8 and no extra connection introduced. */
 }
 .ps-container > *, x:ie {
-    zoom: 1;
+    zoom: 1; /* fixed hasLayout problem in ie7 */
 }
 .ps-container .ps-scrollbar-x {
     position: absolute; /* please don't change 'position' */
