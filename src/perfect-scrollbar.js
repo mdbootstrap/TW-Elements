@@ -317,7 +317,8 @@
         updateBarSizeAndPosition();
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
-        if ($.browser.msie && $.browser.version == '6.0') {
+        var ieMatch = navigator.userAgent.toLowerCase().match(/(msie) ([\w.]+)/);
+        if (ieMatch && ieMatch[1] == 'msie' && ieMatch[2] == '6.0') {
             pseudoClass();
         }
         if (isMobile) {
