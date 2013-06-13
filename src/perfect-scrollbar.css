@@ -1,7 +1,15 @@
+.ps-container, x:ie {
+    background-image: url('_blank');/*This will introduce an extra connection. */
+}
+.ps-container > *, x:ie {
+    zoom: 1;
+}
 .ps-container .ps-scrollbar-x {
     position: absolute; /* please don't change 'position' */
     bottom: 3px; /* there must be 'bottom' for ps-scrollbar-x */
+    _bottom: 3px !important; /* fixed ie6 */
     height: 8px;
+    font-size: 0; /* fixed scrollbar height in xp sp3 ie6 */
     background-color: #aaa;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -13,12 +21,14 @@
     transition: opacity .2s linear;
 }
 
-.ps-container:hover .ps-scrollbar-x {
+.ps-container:hover .ps-scrollbar-x,
+.ps-container.hover .ps-scrollbar-x {
     opacity: 0.6;
     filter: alpha(opacity = 60);
 }
 
-.ps-container .ps-scrollbar-x:hover {
+.ps-container .ps-scrollbar-x:hover,
+.ps-container .ps-scrollbar-x.hover {
     opacity: 0.9;
     filter: alpha(opacity = 90);
     cursor:default;
@@ -32,7 +42,9 @@
 .ps-container .ps-scrollbar-y {
     position: absolute; /* please don't change 'position' */
     right: 3px; /* there must be 'right' for ps-scrollbar-y */
+    _right: 3px !important; /* fixed ie6 */
     width: 8px;
+    font-size: 0;/* fixed scrollbar height in xp sp3 ie6 */
     background-color: #aaa;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -44,12 +56,14 @@
     transition: opacity .2s linear;
 }
 
-.ps-container:hover .ps-scrollbar-y {
+.ps-container:hover .ps-scrollbar-y,
+.ps-container.hover .ps-scrollbar-y {
     opacity: 0.6;
     filter: alpha(opacity = 60);
 }
 
-.ps-container .ps-scrollbar-y:hover {
+.ps-container .ps-scrollbar-y:hover ,
+.ps-container .ps-scrollbar-y.hover {
     opacity: 0.9;
     filter: alpha(opacity = 90);
     cursor: default;
