@@ -236,7 +236,15 @@
         var startCoords = {},
             startTime = 0,
             speed = {},
-            breakingProcess = null;
+            breakingProcess = null,
+            inGlobalTouch = false;
+
+        $(window).bind("touchstart.perfect-scroll", function (e) {
+          inGlobalTouch = true;
+        });
+        $(window).bind("touchend.perfect-scroll", function (e) {
+          inGlobalTouch = false;
+        });
 
         $this.bind("touchstart.perfect-scroll", function (e) {
           var touch = e.originalEvent.targetTouches[0];
@@ -249,26 +257,30 @@
           if (breakingProcess !== null) {
             clearInterval(breakingProcess);
           }
+
+          e.stopPropagation();
         });
         $this.bind("touchmove.perfect-scroll", function (e) {
-          var touch = e.originalEvent.targetTouches[0];
+          if (!inGlobalTouch && e.originalEvent.targetTouches.length === 1) {
+            var touch = e.originalEvent.targetTouches[0];
 
-          var currentCoords = {};
-          currentCoords.pageX = touch.pageX;
-          currentCoords.pageY = touch.pageY;
+            var currentCoords = {};
+            currentCoords.pageX = touch.pageX;
+            currentCoords.pageY = touch.pageY;
 
-          var differenceX = currentCoords.pageX - startCoords.pageX,
-            differenceY = currentCoords.pageY - startCoords.pageY;
+            var differenceX = currentCoords.pageX - startCoords.pageX,
+              differenceY = currentCoords.pageY - startCoords.pageY;
 
-          applyTouchMove(differenceX, differenceY);
-          startCoords = currentCoords;
+            applyTouchMove(differenceX, differenceY);
+            startCoords = currentCoords;
 
-          var currentTime = (new Date()).getTime();
-          speed.x = differenceX / (currentTime - startTime);
-          speed.y = differenceY / (currentTime - startTime);
-          startTime = currentTime;
+            var currentTime = (new Date()).getTime();
+            speed.x = differenceX / (currentTime - startTime);
+            speed.y = differenceY / (currentTime - startTime);
+            startTime = currentTime;
 
-          e.preventDefault();
+            e.preventDefault();
+          }
         });
         $this.bind("touchend.perfect-scroll", function (e) {
           breakingProcess = setInterval(function () {
