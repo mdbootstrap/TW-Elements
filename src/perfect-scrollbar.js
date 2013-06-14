@@ -11,7 +11,7 @@
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
 
-    return this.each(function() {
+    return this.each(function () {
       // Use the default settings
       var settings = $.extend(true, {}, defaultSettings);
       if (typeof suppliedSettings === "object") {
