@@ -1,7 +1,14 @@
+.ps-container.ie {
+    background-image: url('about:blank');/*fixed for ie and no extra connection introduced. see http://jsfiddle.net/crocodile/TAkhM/15/*/
+}
+.ps-container.ie6 > *, .ps-container.ie7 > * {
+    zoom: 1; /* fixed hasLayout problem in ie7 */
+}
 .ps-container .ps-scrollbar-x {
     position: absolute; /* please don't change 'position' */
     bottom: 3px; /* there must be 'bottom' for ps-scrollbar-x */
     height: 8px;
+    font-size: 0; /* fixed scrollbar height in xp sp3 ie6 */
     background-color: #aaa;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -13,13 +20,18 @@
     -moz-transition: opacity .2s linear;
     transition: opacity .2s linear;
 }
+.ps-container.ie6 .ps-scrollbar-x {
+    bottom: 3px !important; /* fixed for ie6 */
+}
 
-.ps-container:hover .ps-scrollbar-x {
+.ps-container:hover .ps-scrollbar-x,
+.ps-container.hover .ps-scrollbar-x {
     opacity: 0.6;
     filter: alpha(opacity = 60);
 }
 
-.ps-container .ps-scrollbar-x:hover {
+.ps-container .ps-scrollbar-x:hover,
+.ps-container .ps-scrollbar-x.hover {
     opacity: 0.9;
     filter: alpha(opacity = 90);
     cursor:default;
@@ -34,6 +46,7 @@
     position: absolute; /* please don't change 'position' */
     right: 3px; /* there must be 'right' for ps-scrollbar-y */
     width: 8px;
+    font-size: 0;/* fixed scrollbar height in xp sp3 ie6 */
     background-color: #aaa;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -45,13 +58,18 @@
     -moz-transition: opacity .2s linear;
     transition: opacity .2s linear;
 }
+.ps-container.ie6 .ps-scrollbar-y {
+    right: 3px !important; /* fixed for ie6 */
+}
 
-.ps-container:hover .ps-scrollbar-y {
+.ps-container:hover .ps-scrollbar-y,
+.ps-container.hover .ps-scrollbar-y {
     opacity: 0.6;
     filter: alpha(opacity = 60);
 }
 
-.ps-container .ps-scrollbar-y:hover {
+.ps-container .ps-scrollbar-y:hover ,
+.ps-container .ps-scrollbar-y.hover {
     opacity: 0.9;
     filter: alpha(opacity = 90);
     cursor: default;

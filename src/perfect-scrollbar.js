@@ -307,9 +307,33 @@
         $this.data('perfect-scrollbar-destroy', null);
       };
 
+      var ieSupport = function (version) {
+        $this.addClass('ie').addClass('ie' + version);
+        if (version === 6) {
+          var mouseenter = function () { 
+            $(this).addClass('hover');
+          };
+          var mouseleave = function () {
+            $(this).removeClass('hover');
+          };
+          $this.bind('mouseenter.perfect-scroll', mouseenter)
+            .bind('mouseleave.perfect-scroll', mouseleave);
+          $scrollbarX.bind('mouseenter.perfect-scroll', mouseenter)
+            .bind('mouseleave.perfect-scroll', mouseleave);
+          $scrollbarY.bind('mouseenter.perfect-scroll', mouseenter)
+            .bind('mouseleave.perfect-scroll', mouseleave);
+        }
+      };
+
       var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 
       var initialize = function () {
+        var ieMatch = navigator.userAgent.toLowerCase().match(/(msie) ([\w.]+)/);
+        if (ieMatch && ieMatch[1] === 'msie') {
+          //must be executed at first, because 'ieSupport' may addClass to the container
+          ieSupport(parseInt(ieMatch[2], 10));
+        }
+
         updateBarSizeAndPosition();
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
