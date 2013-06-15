@@ -6,7 +6,9 @@
   // The default settings for the plugin
   var defaultSettings = {
     wheelSpeed: 10,
-    wheelPropagation: false
+    wheelPropagation: false,
+    minThumbSize: null,
+    maxThumbSize: null
   };
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
@@ -66,13 +68,23 @@
         $scrollbarY.css({right: scrollbarYRight - scrollLeft});
       };
 
+      var getSettingsAdjustedThumbSize = function (thumbSize) {
+        if (settings.minThumbSize) {
+          thumbSize = Math.max(thumbSize, settings.minThumbSize);
+        }
+        if (settings.maxThumbSize) {
+          thumbSize = Math.min(thumbSize, settings.maxThumbSize);
+        }
+        return thumbSize;
+      }
+
       var updateBarSizeAndPosition = function () {
         containerWidth = $this.width();
         containerHeight = $this.height();
         contentWidth = $this.prop('scrollWidth');
         contentHeight = $this.prop('scrollHeight');
         if (containerWidth < contentWidth) {
-          scrollbarXWidth = parseInt(containerWidth * containerWidth / contentWidth, 10);
+          scrollbarXWidth = getSettingsAdjustedThumbSize(parseInt(containerWidth * containerWidth / contentWidth, 10));
           scrollbarXLeft = parseInt($this.scrollLeft() * containerWidth / contentWidth, 10);
         }
         else {
@@ -81,7 +93,7 @@
           $this.scrollLeft(0);
         }
         if (containerHeight < contentHeight) {
-          scrollbarYHeight = parseInt(containerHeight * containerHeight / contentHeight, 10);
+          scrollbarYHeight = getSettingsAdjustedThumbSize(parseInt(containerHeight * containerHeight / contentHeight, 10));
           scrollbarYTop = parseInt($this.scrollTop() * containerHeight / contentHeight, 10);
         }
         else {
@@ -175,8 +187,8 @@
 
         $(document).bind('mousemove.perfect-scroll', function (e) {
           if ($scrollbarY.hasClass('in-scrolling')) {
-            updateContentScrollTop();
-            moveBarY(currentTop, e.pageY - currentPageY);
+             updateContentScrollTop();
+             moveBarY(currentTop, e.pageY - currentPageY);
             e.stopPropagation();
             e.preventDefault();
           }
