@@ -110,13 +110,14 @@ If you want to make this plugin's update function more responsive, [jquery-resiz
 Contribution
 ------------
 
+#### Please read [Contributing](https://github.com/noraesae/perfect-scrollbar/wiki/Contributing) in the wiki before making any contibution.
+
+
 I *really* welcome contributions! Please feel free to fork and issue pull requests when...
 
 * You have a very nice idea to improve this plugin!
 * You found a bug!
 * You're good at English and can help my bad English!
-
-Also you can just open issues, and I can look into them.
 
 License
 -------
