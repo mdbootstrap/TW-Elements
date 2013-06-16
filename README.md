@@ -119,6 +119,19 @@ I *really* welcome contributions! Please feel free to fork and issue pull reques
 * You found a bug!
 * You're good at English and can help my bad English!
 
+For IE problems, please refer to [IE Support](https://github.com/noraesae/perfect-scrollbar#ie-support)
+
+IE Support
+----------
+
+This plugin supports old IE browsers in the **minimum** range. The plugin is tested in IEs >= IE6 and works(not well, but works).
+
+**But the project will not accept the patches to fix IE problems in IE 6/7/8.**
+
+From jQuery 2.0, jQuery also will not support IE 6/7/8. I also think that supporting old browsers really breaks the web development conventions.
+
+When old IEs should be supported, please fork the project and make patches personally.
+
 License
 -------
 
