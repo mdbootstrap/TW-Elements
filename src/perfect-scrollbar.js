@@ -326,8 +326,29 @@
           $scrollbarY.bind('mouseenter.perfect-scroll', mouseenter).bind('mouseleave.perfect-scroll', mouseleave);
         };
 
+        var fixIe6ScrollbarPosition = function () {
+          updateScrollbarCss = function () {
+            $scrollbarX.css({left: scrollbarXLeft + $this.scrollLeft(), bottom: scrollbarXBottom, width: scrollbarXWidth});
+            $scrollbarY.css({top: scrollbarYTop + $this.scrollTop(), right: scrollbarYRight, height: scrollbarYHeight});
+            $scrollbarX.hide().show();
+            $scrollbarY.hide().show();
+          };
+          updateContentScrollTop = function () {
+            var scrollTop = parseInt(scrollbarYTop * contentHeight / containerHeight, 10);
+            $this.scrollTop(scrollTop);
+            $scrollbarX.css({bottom: scrollbarXBottom});
+            $scrollbarX.hide().show();
+          };
+          updateContentScrollLeft = function () {
+            var scrollLeft = parseInt(scrollbarXLeft * contentWidth / containerWidth, 10);
+            $this.scrollLeft(scrollLeft);
+            $scrollbarY.hide().show();
+          };
+        };
+
         if (version === 6) {
           bindHoverHandlers();
+          fixIe6ScrollbarPosition();
         }
       };
 
