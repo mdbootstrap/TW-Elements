@@ -66,6 +66,11 @@
         $scrollbarY.css({right: scrollbarYRight - scrollLeft});
       };
 
+      var updateScrollbarCss = function () {
+        $scrollbarX.css({left: scrollbarXLeft + $this.scrollLeft(), bottom: scrollbarXBottom - $this.scrollTop(), width: scrollbarXWidth});
+        $scrollbarY.css({top: scrollbarYTop + $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: scrollbarYHeight});
+      };
+
       var updateBarSizeAndPosition = function () {
         containerWidth = $this.width();
         containerHeight = $this.height();
@@ -97,8 +102,7 @@
           scrollbarXLeft = containerWidth - scrollbarXWidth;
         }
 
-        $scrollbarX.css({left: scrollbarXLeft + $this.scrollLeft(), bottom: scrollbarXBottom - $this.scrollTop(), width: scrollbarXWidth});
-        $scrollbarY.css({top: scrollbarYTop + $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: scrollbarYHeight});
+        updateScrollbarCss();
       };
 
       var moveBarX = function (currentLeft, deltaX) {
