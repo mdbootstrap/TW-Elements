@@ -72,10 +72,11 @@
       };
 
       var updateBarSizeAndPosition = function () {
+        var $children = $this.children().filter(':visible');
         containerWidth = $this.width();
         containerHeight = $this.height();
-        contentWidth = $this.prop('scrollWidth');
-        contentHeight = $this.prop('scrollHeight');
+        contentWidth = $children.prop('scrollWidth');
+        contentHeight = $children.prop('scrollHeight');
         if (containerWidth < contentWidth) {
           scrollbarXWidth = parseInt(containerWidth * containerWidth / contentWidth, 10);
           scrollbarXLeft = parseInt($this.scrollLeft() * containerWidth / contentWidth, 10);
