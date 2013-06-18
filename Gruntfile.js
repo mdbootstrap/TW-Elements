@@ -6,7 +6,8 @@ module.exports = function (grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('perfect-scrollbar.jquery.json'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %>\n' +
+    version: grunt.file.readJSON('package.json').version,
+    banner: '/*! <%= pkg.title || pkg.name %> - v<%= version %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
@@ -20,8 +21,8 @@ module.exports = function (grunt) {
       },
       min: {
         files: {
-          'min/perfect-scrollbar.min.js': ['src/perfect-scrollbar.js'],
-          'min/perfect-scrollbar.with-mousewheel.min.js': [
+          'min/perfect-scrollbar-<%= version %>.min.js': ['src/perfect-scrollbar.js'],
+          'min/perfect-scrollbar-<%= version %>.with-mousewheel.min.js': [
             'src/perfect-scrollbar.js',
             'src/jquery.mousewheel.js'
           ]
@@ -60,7 +61,7 @@ module.exports = function (grunt) {
         cwd: 'src/',
         src: ['perfect-scrollbar.css'],
         dest: 'min/',
-        ext: '.min.css'
+        ext: '-<%= version %>.min.css'
       }
     }
   });
