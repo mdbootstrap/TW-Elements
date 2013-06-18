@@ -44,6 +44,10 @@ To make this plugin *perfect*, some requirements were not avoidable. But they're
 * the container must have a 'position' css style.
 * the scrollbar's position must be 'absolute'.
 * the scrollbar-x must have a 'bottom' css style, and the scrollbar-y must have a 'right' css style.
+
+The requirement below is for perfect-scrollbar &lt;= 0.3.4
+
+* there must be the *one* content element(like div) for the container.
  
 Optional parameters
 -------------------
