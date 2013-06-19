@@ -7,8 +7,7 @@
   var defaultSettings = {
     wheelSpeed: 10,
     wheelPropagation: false,
-    minThumbSize: null,
-    maxThumbSize: null
+    minScrollbarLength: null,
   };
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
@@ -70,14 +69,11 @@
       };
 
       var getSettingsAdjustedThumbSize = function (thumbSize) {
-        if (settings.minThumbSize) {
-          thumbSize = Math.max(thumbSize, settings.minThumbSize);
-        }
-        if (settings.maxThumbSize) {
-          thumbSize = Math.min(thumbSize, settings.maxThumbSize);
+        if (settings.minScrollbarSize) {
+          thumbSize = Math.max(thumbSize, settings.minScrollbarSize);
         }
         return thumbSize;
-      }
+      };
 
       var updateBarSizeAndPosition = function () {
         containerWidth = $this.width();
@@ -188,8 +184,8 @@
 
         $(document).bind('mousemove.perfect-scroll', function (e) {
           if ($scrollbarY.hasClass('in-scrolling')) {
-             updateContentScrollTop();
-             moveBarY(currentTop, e.pageY - currentPageY);
+            updateContentScrollTop();
+            moveBarY(currentTop, e.pageY - currentPageY);
             e.stopPropagation();
             e.preventDefault();
           }
