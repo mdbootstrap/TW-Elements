@@ -69,8 +69,8 @@
       };
 
       var getSettingsAdjustedThumbSize = function (thumbSize) {
-        if (settings.minScrollbarSize) {
-          thumbSize = Math.max(thumbSize, settings.minScrollbarSize);
+        if (settings.minScrollbarLength) {
+          thumbSize = Math.max(thumbSize, settings.minScrollbarLength);
         }
         return thumbSize;
       };
