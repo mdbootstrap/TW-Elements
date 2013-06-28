@@ -352,7 +352,7 @@
         }
       };
 
-      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+      var isMobile = !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
 
       var initialize = function () {
         var ieMatch = navigator.userAgent.toLowerCase().match(/(msie) ([\w.]+)/);
