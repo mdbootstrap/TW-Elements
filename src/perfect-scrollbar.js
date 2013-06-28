@@ -352,7 +352,7 @@
         }
       };
 
-      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+      var supportsTouch = (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch);
 
       var initialize = function () {
         var ieMatch = navigator.userAgent.toLowerCase().match(/(msie) ([\w.]+)/);
@@ -364,7 +364,7 @@
         updateBarSizeAndPosition();
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
-        if (isMobile) {
+        if (supportsTouch) {
           bindMobileTouchHandler();
         }
         if ($this.mousewheel) {
