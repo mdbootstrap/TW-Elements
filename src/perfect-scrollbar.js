@@ -352,7 +352,7 @@
         }
       };
 
-      var isMobile = !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
+      var supportsTouch = !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch);
 
       var initialize = function () {
         var ieMatch = navigator.userAgent.toLowerCase().match(/(msie) ([\w.]+)/);
@@ -364,7 +364,7 @@
         updateBarSizeAndPosition();
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
-        if (isMobile) {
+        if (supportsTouch) {
           bindMobileTouchHandler();
         }
         if ($this.mousewheel) {
