@@ -82,5 +82,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('lint', ['jshint', 'csslint']);
   grunt.registerTask('build', ['clean', 'uglify', 'cssmin']);
+  grunt.registerTask('travis', ['lint']);
 
 };
