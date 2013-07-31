@@ -56,13 +56,13 @@
           scrollbarYRight = parseInt($scrollbarY.css('right'), 10);
 
       var updateContentScrollTop = function () {
-        var scrollTop = parseInt(scrollbarYTop * contentHeight / containerHeight, 10);
+        var scrollTop = parseInt(scrollbarYTop * (contentHeight - containerHeight) / (containerHeight - scrollbarYHeight), 10);
         $this.scrollTop(scrollTop);
         $scrollbarX.css({bottom: scrollbarXBottom - scrollTop});
       };
 
       var updateContentScrollLeft = function () {
-        var scrollLeft = parseInt(scrollbarXLeft * contentWidth / containerWidth, 10);
+        var scrollLeft = parseInt(scrollbarXLeft * (contentWidth - containerWidth) / (containerWidth - scrollbarXWidth), 10);
         $this.scrollLeft(scrollLeft);
         $scrollbarY.css({right: scrollbarYRight - scrollLeft});
       };
@@ -86,7 +86,7 @@
         contentHeight = $this.prop('scrollHeight');
         if (containerWidth < contentWidth) {
           scrollbarXWidth = getSettingsAdjustedThumbSize(parseInt(containerWidth * containerWidth / contentWidth, 10));
-          scrollbarXLeft = parseInt($this.scrollLeft() * containerWidth / contentWidth, 10);
+          scrollbarXLeft = parseInt($this.scrollLeft() * (containerWidth - scrollbarXWidth) / (contentWidth - containerWidth), 10);
         }
         else {
           scrollbarXWidth = 0;
@@ -95,7 +95,7 @@
         }
         if (containerHeight < contentHeight) {
           scrollbarYHeight = getSettingsAdjustedThumbSize(parseInt(containerHeight * containerHeight / contentHeight, 10));
-          scrollbarYTop = parseInt($this.scrollTop() * containerHeight / contentHeight, 10);
+          scrollbarYTop = parseInt($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight), 10);
         }
         else {
           scrollbarYHeight = 0;
