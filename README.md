@@ -63,7 +63,7 @@ If this option is true, when the scroll reach the end of the side, mousewheel ev
 Default: false
 
 ### minScrollbarLength
-When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels
+When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels.  
 Default: null
  
 How to Use
