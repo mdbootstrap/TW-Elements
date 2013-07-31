@@ -233,6 +233,10 @@
             e.preventDefault();
           }
         });
+
+        // fix Firefox scroll problem
+        $this.bind('DOMMouseScroll.perfect-scroll', function (e) { e.preventDefault(); });
+        $this.bind('MozMousePixelScroll.perfect-scroll', function (e) { e.preventDefault(); });
       };
 
       // bind mobile touch handler
