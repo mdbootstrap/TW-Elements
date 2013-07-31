@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>perfect-scrollbar example - use wheelSpeed to change speed of scrolling</title>
+        <link href="../src/perfect-scrollbar.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script src="../src/jquery.mousewheel.js"></script>
+        <script src="../src/perfect-scrollbar.js"></script>
+        <style>
+          .contentHolder { position:relative; margin:0px auto; padding:0px; width: 640px; height: 360px; overflow: hidden; }
+          .contentHolder .content { background-image: url('./azusa.jpg'); width: 12800px; height: 7200px; }
+          .spacer { text-align:center }
+        </style>
+    <script>
+      jQuery(document).ready(function ($) {
+        "use strict";
+        $('#Default').perfectScrollbar();
+        $('#LongThumb').perfectScrollbar({minScrollbarLength:100});
+      });
+    </script>
+  </head>
+  <body>
+    <h1 style="text-align:center">No minimum</h1>
+    <div id="Default" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+    <h1 style="text-align:center">100px minimum</h1>
+    <div id="LongThumb" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+  </body>
+</html>
