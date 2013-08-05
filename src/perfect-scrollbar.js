@@ -183,6 +183,9 @@
             $scrollbarX.removeClass('in-scrolling');
           }
         });
+
+        currentLeft =
+        currentPageX = null;
       };
 
       var bindMouseScrollYHandler = function () {
@@ -211,6 +214,9 @@
             $scrollbarY.removeClass('in-scrolling');
           }
         });
+
+        currentTop =
+        currentPageY = null;
       };
 
       // bind handlers
