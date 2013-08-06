@@ -239,6 +239,7 @@
           return true;
         };
 
+        var shouldPrevent = false;
         $this.bind('mousewheel.perfect-scroll', function (e, delta, deltaX, deltaY) {
           $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
           $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
@@ -246,14 +247,18 @@
           // update bar position
           updateBarSizeAndPosition();
 
-          if (shouldPreventDefault(deltaX, deltaY)) {
+          shouldPrevent = shouldPreventDefault(deltaX, deltaY);
+          if (shouldPrevent) {
             e.preventDefault();
           }
         });
 
         // fix Firefox scroll problem
-        $this.bind('DOMMouseScroll.perfect-scroll', function (e) { e.preventDefault(); });
-        $this.bind('MozMousePixelScroll.perfect-scroll', function (e) { e.preventDefault(); });
+        $this.bind('MozMousePixelScroll.perfect-scroll', function (e) {
+          if (shouldPrevent) {
+            e.preventDefault();
+          }
+        });
       };
 
       // bind mobile touch handler
