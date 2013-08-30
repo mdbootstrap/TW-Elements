@@ -27,7 +27,7 @@ module.exports = function (grunt) {
             'src/jquery.mousewheel.js'
           ]
         }
-      },
+      }
     },
     jshint: {
       gruntfile: {
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
       strict: {
         options: {
           csslintrc: '.csslintrc',
-          import: 2
+          'import': 2
         },
         src: ['src/perfect-scrollbar.css']
       }
