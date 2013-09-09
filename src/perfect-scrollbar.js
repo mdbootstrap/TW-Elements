@@ -340,6 +340,7 @@
       var destroy = function () {
         $this.unbind('.perfect-scroll');
         $(window).unbind('.perfect-scroll');
+        $(document).unbind('.perfect-scroll');
         $this.data('perfect-scrollbar', null);
         $this.data('perfect-scrollbar-update', null);
         $this.data('perfect-scrollbar-destroy', null);
