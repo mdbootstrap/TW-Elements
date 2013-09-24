@@ -2,7 +2,15 @@
  * Licensed under the MIT License
  */
 'use strict';
-((function ($) {
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else {
+    // Browser globals
+    factory(jQuery);
+  }
+}(function ($) {
 
   // The default settings for the plugin
   var defaultSettings = {
@@ -432,4 +440,4 @@
       return $this;
     });
   };
-})(jQuery));
+}));
