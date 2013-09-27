@@ -8,7 +8,8 @@
   var defaultSettings = {
     wheelSpeed: 10,
     wheelPropagation: false,
-    minScrollbarLength: null
+    minScrollbarLength: null,
+    useBothWheelAxes: false
   };
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
@@ -54,6 +55,8 @@
 
       var $scrollbarX = $("<div class='ps-scrollbar-x'></div>").appendTo($this),
           $scrollbarY = $("<div class='ps-scrollbar-y'></div>").appendTo($this),
+          scrollbarXActive,
+          scrollbarYActive,
           containerWidth,
           containerHeight,
           contentWidth,
@@ -96,20 +99,24 @@
         contentHeight = $this.prop('scrollHeight');
 
         if (containerWidth < contentWidth) {
+          scrollbarXActive = true;
           scrollbarXWidth = getSettingsAdjustedThumbSize(parseInt(containerWidth * containerWidth / contentWidth, 10));
           scrollbarXLeft = parseInt($this.scrollLeft() * (containerWidth - scrollbarXWidth) / (contentWidth - containerWidth), 10);
         }
         else {
+          scrollbarXActive = false;
           scrollbarXWidth = 0;
           scrollbarXLeft = 0;
           $this.scrollLeft(0);
         }
 
         if (containerHeight < contentHeight) {
+          scrollbarYActive = true;
           scrollbarYHeight = getSettingsAdjustedThumbSize(parseInt(containerHeight * containerHeight / contentHeight, 10));
           scrollbarYTop = parseInt($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight), 10);
         }
         else {
+          scrollbarYActive = false;
           scrollbarYHeight = 0;
           scrollbarYTop = 0;
           $this.scrollTop(0);
@@ -242,8 +249,28 @@
 
         var shouldPrevent = false;
         $this.bind('mousewheel.perfect-scroll', function (e, delta, deltaX, deltaY) {
-          $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
-          $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
+          if (!settings.useBothWheelAxes) {
+            // deltaX will only be used for horizontal scrolling and deltaY will
+            // only be used for vertical scrolling - this is the default
+            $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
+            $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
+          } else if (scrollbarYActive && !scrollbarXActive) {
+            // only vertical scrollbar is active and useBothWheelAxes option is
+            // active, so let's scroll vertical bar using both mouse wheel axes
+            if (deltaY) {
+              $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
+            } else {
+              $this.scrollTop($this.scrollTop() + (deltaX * settings.wheelSpeed));
+            }
+          } else if (scrollbarXActive && !scrollbarYActive) {
+            // useBothWheelAxes and only horizontal bar is active, so use both
+            // wheel axes for horizontal bar
+            if (deltaX) {
+              $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
+            } else {
+              $this.scrollLeft($this.scrollLeft() - (deltaY * settings.wheelSpeed));
+            }
+          }
 
           // update bar position
           updateBarSizeAndPosition();
