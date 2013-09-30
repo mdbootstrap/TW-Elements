@@ -17,7 +17,8 @@
     wheelSpeed: 10,
     wheelPropagation: false,
     minScrollbarLength: null,
-    useBothWheelAxes: false
+    useBothWheelAxes: false,
+    useKeyboard: true
   };
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
@@ -297,6 +298,73 @@
         });
       };
 
+      var bindKeyboardHandler = function () {
+        var shouldPreventDefault = function (deltaX, deltaY) {
+          var scrollTop = $this.scrollTop();
+          if (scrollTop === 0 && deltaY > 0 && deltaX === 0) {
+            return false;
+          }
+          else if (scrollTop >= contentHeight - containerHeight && deltaY < 0 && deltaX === 0) {
+            return false;
+          }
+
+          var scrollLeft = $this.scrollLeft();
+          if (scrollLeft === 0 && deltaX < 0 && deltaY === 0) {
+            return false;
+          }
+          else if (scrollLeft >= contentWidth - containerWidth && deltaX > 0 && deltaY === 0) {
+            return false;
+          }
+          return true;
+        };
+
+        var hovered = false;
+        $this.bind('mouseenter.perfect-scrollbar', function (e) {
+          hovered = true;
+        });
+        $this.bind('mouseleave.perfect-scrollbar', function (e) {
+          hovered = false;
+        });
+
+        var shouldPrevent = false;
+        $(document).bind('keydown.perfect-scrollbar', function (e) {
+          if (!hovered) {
+            return;
+          }
+
+          var deltaX = 0,
+              deltaY = 0;
+
+          switch (e.which) {
+          case 37: // left
+            deltaX = -3;
+            break;
+          case 38: // up
+            deltaY = 3;
+            break;
+          case 39: // right
+            deltaX = 3;
+            break;
+          case 40: // down
+            deltaY = -3;
+            break;
+          default:
+            return;
+          }
+
+          $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
+          $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
+
+          // update bar position
+          updateBarSizeAndPosition();
+
+          shouldPrevent = shouldPreventDefault(deltaX, deltaY);
+          if (shouldPrevent) {
+            e.preventDefault();
+          }
+        });
+      };
+
       // bind mobile touch handler
       var bindMobileTouchHandler = function () {
         var applyTouchMove = function (differenceX, differenceY) {
@@ -455,6 +523,9 @@
         }
         if ($this.mousewheel) {
           bindMouseWheelHandler();
+        }
+        if (settings.useKeyboard) {
+          bindKeyboardHandler();
         }
         $this.data('perfect-scrollbar', $this);
         $this.data('perfect-scrollbar-update', updateBarSizeAndPosition);
