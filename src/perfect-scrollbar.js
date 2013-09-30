@@ -371,6 +371,48 @@
         });
       };
 
+      var bindRailClickHandler = function () {
+        var stopPropagation = function (e) { e.stopPropagation(); };
+
+        $scrollbarY.bind('click.perfect-scrollbar', stopPropagation);
+        $scrollbarYRail.bind('click.perfect-scrollbar', function (e) {
+          var halfOfScrollbarLength = parseInt(scrollbarYHeight / 2, 10),
+              positionTop = e.pageY - $scrollbarYRail.offset().top - halfOfScrollbarLength,
+              maxPositionTop = containerHeight - scrollbarYHeight,
+              positionRatio = positionTop / maxPositionTop;
+
+          if (positionRatio < 0) {
+            positionRatio = 0;
+          } else if (positionRatio > 1) {
+            positionRatio = 1;
+          }
+
+          $this.scrollTop((contentHeight - containerHeight) * positionRatio);
+
+          // update bar position
+          updateBarSizeAndPosition();
+        });
+
+        $scrollbarX.bind('click.perfect-scrollbar', stopPropagation);
+        $scrollbarXRail.bind('click.perfect-scrollbar', function (e) {
+          var halfOfScrollbarLength = parseInt(scrollbarXWidth / 2, 10),
+              positionLeft = e.pageX - $scrollbarXRail.offset().left - halfOfScrollbarLength,
+              maxPositionLeft = containerWidth - scrollbarXWidth,
+              positionRatio = positionLeft / maxPositionLeft;
+
+          if (positionRatio < 0) {
+            positionRatio = 0;
+          } else if (positionRatio > 1) {
+            positionRatio = 1;
+          }
+
+          $this.scrollLeft((contentWidth - containerWidth) * positionRatio);
+
+          // update bar position
+          updateBarSizeAndPosition();
+        });
+      };
+
       // bind mobile touch handler
       var bindMobileTouchHandler = function () {
         var applyTouchMove = function (differenceX, differenceY) {
@@ -528,6 +570,7 @@
         updateBarSizeAndPosition();
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
+        bindRailClickHandler();
         if (supportsTouch) {
           bindMobileTouchHandler();
         }
