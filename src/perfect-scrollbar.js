@@ -475,6 +475,9 @@
         $this.bind("touchend.perfect-scrollbar", function (e) {
           clearInterval(breakingProcess);
           breakingProcess = setInterval(function () {
+            if (!speed.x) speed.x = 0;
+            if (!speed.y) speed.y = 0;
+            
             if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
               clearInterval(breakingProcess);
               return;
