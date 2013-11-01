@@ -18,7 +18,7 @@
     wheelPropagation: false,
     minScrollbarLength: null,
     useBothWheelAxes: false,
-    useKeyboard: true
+    useKeyboard: false
   };
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
@@ -100,9 +100,9 @@
 
       var updateScrollbarCss = function () {
         $scrollbarXRail.css({left: $this.scrollLeft(), bottom: scrollbarXBottom - $this.scrollTop(), width: containerWidth});
-        $scrollbarYRail.css({top: $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: containerHeight});
+        $scrollbarYRail.css({top: $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: containerHeight, visibility:"visible"});
         $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth});
-        $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight});
+        scrollbarYHeight===0?$scrollbarYRail.css({visibility:"hidden"}):$scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight});
       };
 
       var updateBarSizeAndPosition = function () {
@@ -290,6 +290,7 @@
           // update bar position
           updateBarSizeAndPosition();
 
+          ($this.scrollTop()!==0 && $scrollbarY.position().top + $scrollbarY.height() !== $scrollbarYRail.height())&& e.stopPropagation();
           shouldPrevent = shouldPreventDefault(deltaX, deltaY);
           if (shouldPrevent) {
             e.preventDefault();
@@ -448,7 +449,7 @@
             clearInterval(breakingProcess);
           }
 
-          e.stopPropagation();
+          e.stopPropagation(); 
         });
         $this.bind("touchmove.perfect-scrollbar", function (e) {
           if (!inGlobalTouch && e.originalEvent.targetTouches.length === 1) {
@@ -471,10 +472,18 @@
 
             e.preventDefault();
           }
+          e.stopPropagation();
         });
         $this.bind("touchend.perfect-scrollbar", function (e) {
           clearInterval(breakingProcess);
           breakingProcess = setInterval(function () {
+            if (!speed.x) {
+                speed.x = 0;
+            }
+            if (!speed.y) {
+                speed.y = 0;
+            }
+            
             if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
               clearInterval(breakingProcess);
               return;
