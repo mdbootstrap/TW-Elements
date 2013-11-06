@@ -75,19 +75,19 @@ When set to true, the scroll works with arrow keys on the keyboard. The element 
 **Default: true**
 
 ### suppressScrollX
-When set to true, the scroll bar in X axis will not be available, regardless of the content width
+When set to true, the scroll bar in X axis will not be available, regardless of the content width.  
 **Default: false**
 
 ### suppressScrollY
-When set to true, the scroll bar in Y axis will not be available, regardless of the content height
+When set to true, the scroll bar in Y axis will not be available, regardless of the content height.  
 **Default: false**
 
 ### scrollXMarginOffset
-The number of pixels the content width can surpass the container width without enabling the X axis scroll bar. Allows some "wiggle room" or "offset break", so that X axis scroll bar is not enabled just because of a few pixels.
+The number of pixels the content width can surpass the container width without enabling the X axis scroll bar. Allows some "wiggle room" or "offset break", so that X axis scroll bar is not enabled just because of a few pixels.  
 **Default: 0**
 
 ### scrollYMarginOffset
-The number of pixels the content height can surpass the container height without enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so that Y axis scroll bar is not enabled just because of a few pixels.
+The number of pixels the content height can surpass the container height without enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so that Y axis scroll bar is not enabled just because of a few pixels.  
 **Default: 0**
 
 How to Use
