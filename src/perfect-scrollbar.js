@@ -18,7 +18,11 @@
     wheelPropagation: false,
     minScrollbarLength: null,
     useBothWheelAxes: false,
-    useKeyboard: true
+    useKeyboard: true,
+    suppressScrollX: false,
+    suppressScrollY: false,
+    scrollXMarginOffset: 0,
+    scrollYMarginOffset: 0
   };
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
@@ -99,8 +103,8 @@
       };
 
       var updateScrollbarCss = function () {
-        $scrollbarXRail.css({left: $this.scrollLeft(), bottom: scrollbarXBottom - $this.scrollTop(), width: containerWidth});
-        $scrollbarYRail.css({top: $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: containerHeight});
+        $scrollbarXRail.css({left: $this.scrollLeft(), bottom: scrollbarXBottom - $this.scrollTop(), width: containerWidth, display: settings.suppressScrollX ? "none": "inherit"});
+        $scrollbarYRail.css({top: $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: containerHeight, display: settings.suppressScrollY ? "none": "inherit"});
         $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth});
         $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight});
       };
@@ -111,7 +115,7 @@
         contentWidth = $this.prop('scrollWidth');
         contentHeight = $this.prop('scrollHeight');
 
-        if (containerWidth < contentWidth) {
+        if (!settings.suppressScrollX && containerWidth + settings.scrollXMarginOffset < contentWidth) {
           scrollbarXActive = true;
           scrollbarXWidth = getSettingsAdjustedThumbSize(parseInt(containerWidth * containerWidth / contentWidth, 10));
           scrollbarXLeft = parseInt($this.scrollLeft() * (containerWidth - scrollbarXWidth) / (contentWidth - containerWidth), 10);
@@ -123,7 +127,7 @@
           $this.scrollLeft(0);
         }
 
-        if (containerHeight < contentHeight) {
+        if (!settings.suppressScrollY && containerHeight + settings.scrollYMarginOffset < contentHeight) {
           scrollbarYActive = true;
           scrollbarYHeight = getSettingsAdjustedThumbSize(parseInt(containerHeight * containerHeight / contentHeight, 10));
           scrollbarYTop = parseInt($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight), 10);
