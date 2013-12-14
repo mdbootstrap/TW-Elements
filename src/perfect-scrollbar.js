@@ -245,27 +245,32 @@
         currentPageY = null;
       };
 
+      // check if the default scrolling should be prevented.
+      var shouldPreventDefault = function (deltaX, deltaY) {
+        var scrollTop = $this.scrollTop();
+        if (deltaX === 0) {
+          if (!scrollbarYActive) {
+            return false;
+          }
+          if ((scrollTop === 0 && deltaY > 0) || (scrollTop >= contentHeight - containerHeight && deltaY < 0)) {
+            return !settings.wheelPropagation;
+          }
+        }
+
+        var scrollLeft = $this.scrollLeft();
+        if (deltaY === 0) {
+          if (!scrollbarXActive) {
+            return false;
+          }
+          if ((scrollLeft === 0 && deltaX < 0) || (scrollLeft >= contentWidth - containerWidth && deltaX > 0)) {
+            return !settings.wheelPropagation;
+          }
+        }
+        return true;
+      };
+
       // bind handlers
       var bindMouseWheelHandler = function () {
-        var shouldPreventDefault = function (deltaX, deltaY) {
-          var scrollTop = $this.scrollTop();
-          if (scrollTop === 0 && deltaY > 0 && deltaX === 0) {
-            return !settings.wheelPropagation;
-          }
-          else if (scrollTop >= contentHeight - containerHeight && deltaY < 0 && deltaX === 0) {
-            return !settings.wheelPropagation;
-          }
-
-          var scrollLeft = $this.scrollLeft();
-          if (scrollLeft === 0 && deltaX < 0 && deltaY === 0) {
-            return !settings.wheelPropagation;
-          }
-          else if (scrollLeft >= contentWidth - containerWidth && deltaX > 0 && deltaY === 0) {
-            return !settings.wheelPropagation;
-          }
-          return true;
-        };
-
         var shouldPrevent = false;
         $this.bind('mousewheel.perfect-scrollbar', function (e, delta, deltaX, deltaY) {
           if (!settings.useBothWheelAxes) {
@@ -309,25 +314,6 @@
       };
 
       var bindKeyboardHandler = function () {
-        var shouldPreventDefault = function (deltaX, deltaY) {
-          var scrollTop = $this.scrollTop();
-          if (scrollTop === 0 && deltaY > 0 && deltaX === 0) {
-            return false;
-          }
-          else if (scrollTop >= contentHeight - containerHeight && deltaY < 0 && deltaX === 0) {
-            return false;
-          }
-
-          var scrollLeft = $this.scrollLeft();
-          if (scrollLeft === 0 && deltaX < 0 && deltaY === 0) {
-            return false;
-          }
-          else if (scrollLeft >= contentWidth - containerWidth && deltaX > 0 && deltaY === 0) {
-            return false;
-          }
-          return true;
-        };
-
         var hovered = false;
         $this.bind('mouseenter.perfect-scrollbar', function (e) {
           hovered = true;
