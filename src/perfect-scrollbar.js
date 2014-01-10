@@ -183,6 +183,12 @@
         $scrollbarY.css({top: scrollbarYTop});
       };
 
+      var bindScrollHandler = function () {
+        $this.bind('scroll.perfect-scrollbar', function (e) {
+          updateBarSizeAndPosition();
+        })
+      };
+
       var bindMouseScrollXHandler = function () {
         var currentLeft,
             currentPageX;
@@ -558,6 +564,7 @@
         }
 
         updateBarSizeAndPosition();
+        bindScrollHandler();
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
         bindRailClickHandler();
