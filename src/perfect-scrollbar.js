@@ -334,6 +334,19 @@
           case 40: // down
             deltaY = -3;
             break;
+          case 33: // page up
+            deltaY = 9;
+            break;
+          case 32: // space bar
+          case 34: // page down
+            deltaY = -9;
+            break;
+          case 35: // end
+            deltaY = -containerHeight;
+            break;
+          case 36: // home
+            deltaY = containerHeight;
+            break;
           default:
             return;
           }
