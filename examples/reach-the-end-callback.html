@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>perfect-scrollbar example</title>
+    <link href="../src/perfect-scrollbar.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../src/jquery.mousewheel.js"></script>
+    <script src="../src/perfect-scrollbar.js"></script>
+    <style>
+      #description {
+        border: 1px solid gray;
+        height:150px;
+        width: 400px;
+        overflow: hidden;
+        position: relative;
+      }
+      #status {
+        color: red;
+      }
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function ($) {
+        var $container = $('#description');
+        var $status = $('#status');
+        $container.perfectScrollbar();
+        $container.scroll(function(e) {
+          if($container.scrollTop() === 0) {
+            $status.text('it reaches the top!');
+          }
+          else if ($container.scrollTop() === $container.prop('scrollHeight') - $container.height()) {
+            $status.text('it reaches the end!');
+          } else {
+            $status.text('');
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="description" class="wrapper">
+      <p>Hello, world! 0</p>
+      <p>Hello, world! 1</p>
+      <p>Hello, world! 2</p>
+      <p>Hello, world! 3</p>
+      <p>Hello, world! 4</p>
+      <p>Hello, world! 5</p>
+      <p>Hello, world! 6</p>
+      <p>Hello, world! 7</p>
+      <p>Hello, world! 8</p>
+      <p>Hello, world! 9</p>
+    </div>
+    <div id="status">
+    </div>
+  </body>
+</html>
