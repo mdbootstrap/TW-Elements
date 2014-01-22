@@ -161,6 +161,8 @@
           scrollbarXWidth = 0;
           scrollbarXLeft = 0;
           $this.scrollLeft(0);
+          
+          settings.suppressScrollX = true;
         }
 
         if (!settings.suppressScrollY && containerHeight + settings.scrollYMarginOffset < contentHeight) {
@@ -173,6 +175,8 @@
           scrollbarYHeight = 0;
           scrollbarYTop = 0;
           $this.scrollTop(0);
+          
+          settings.suppressScrollY = true;
         }
 
         if (scrollbarYTop >= containerHeight - scrollbarYHeight) {
