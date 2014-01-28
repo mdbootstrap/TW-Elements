@@ -462,9 +462,13 @@
             startCoords = currentCoords;
 
             var currentTime = (new Date()).getTime();
-            speed.x = differenceX / (currentTime - startTime);
-            speed.y = differenceY / (currentTime - startTime);
-            startTime = currentTime;
+
+            var timeGap = currentTime - startTime;
+            if (timeGap > 0) {
+              speed.x = differenceX / timeGap;
+              speed.y = differenceY / timeGap;
+              startTime = currentTime;
+            }
 
             e.preventDefault();
           }
