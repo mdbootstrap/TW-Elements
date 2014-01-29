@@ -25,7 +25,8 @@
     suppressScrollX: false,
     suppressScrollY: false,
     scrollXMarginOffset: 0,
-    scrollYMarginOffset: 0
+    scrollYMarginOffset: 0,
+    includePadding: false
   };
 
   var getEventClassName = (function () {
@@ -149,8 +150,8 @@
       };
 
       var updateBarSizeAndPosition = function () {
-        containerWidth = $this.width();
-        containerHeight = $this.height();
+        containerWidth = settings.includePadding ? $this.outerWidth() : $this.width();
+        containerHeight = settings.includePadding ? $this.outerHeight() : $this.height();
         contentWidth = $this.prop('scrollWidth');
         contentHeight = $this.prop('scrollHeight');
 
