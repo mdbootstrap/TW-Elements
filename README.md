@@ -42,6 +42,7 @@ Requirements
 To make this plugin *perfect*, some requirements were not avoidable. But they're all very trivial and there's nothing to worry about.
 
 * the container must have a 'position' css style.
+* the container must have an 'overflow:hidden' css style.
 * the scrollbar's position must be 'absolute'.
 * the scrollbar-x must have a 'bottom' css style, and the scrollbar-y must have a 'right' css style.
 
