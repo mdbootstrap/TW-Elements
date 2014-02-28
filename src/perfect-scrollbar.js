@@ -273,8 +273,8 @@
       var bindMouseWheelHandler = function () {
         var shouldPrevent = false;
         $this.bind('mousewheel' + eventClassName, function (e, deprecatedDelta, deprecatedDeltaX, deprecatedDeltaY) {
-          var deltaX = e.deltaX ? e.deltaX / 10 : deprecatedDeltaX,
-              deltaY = e.deltaY ? e.deltaY / 10 : deprecatedDeltaY;
+          var deltaX = e.deltaX || deprecatedDeltaX,
+              deltaY = e.deltaY || deprecatedDeltaY;
 
           if (!settings.useBothWheelAxes) {
             // deltaX will only be used for horizontal scrolling and deltaY will
