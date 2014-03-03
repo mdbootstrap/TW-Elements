@@ -175,6 +175,24 @@
           $this.scrollTop(0);
         }
 
+        // Notify others that y-scroll has reached a limit, if y-scroll is active
+        if (scrollbarYActive) {
+          if (scrollbarYTop >= containerHeight - scrollbarYHeight) {
+            $this.trigger('perfect-scrollbar:bottom');
+          } else if (scrollbarYTop === 0) {
+            $this.trigger('perfect-scrollbar:top');
+          }
+        }
+
+        // Notify others that x-scroll has reached a limit, if x-scroll is active
+        if (scrollbarXActive) {
+          if (scrollbarXLeft >= containerWidth - scrollbarXWidth) {
+            $this.trigger('perfect-scrollbar:right');
+          } else if (scrollbarXLeft === 0) {
+            $this.trigger('perfect-scrollbar:left');
+          }
+        }
+
         if (scrollbarYTop >= containerHeight - scrollbarYHeight) {
           scrollbarYTop = containerHeight - scrollbarYHeight;
         }
