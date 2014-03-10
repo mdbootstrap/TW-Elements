@@ -36,6 +36,24 @@ Yes! the only thing that's not *perfect* is my English.
 
 It's cool, isn't it?
 
+Install
+-------
+
+You can download the latest stable version with download links in [Github Page](http://noraesae.github.io/perfect-scrollbar/). You also can find all releases in [Releases](https://github.com/noraesae/perfect-scrollbar/releases) page.
+
+If you want to use the development version of the plugin, use the source files which are not minified. They're in the `src` directory. The development version may be unstable, but some known bugs can be fixed.
+
+```
+git clone https://github.com/noraesae/perfect-scrollbar.git
+cd perfect-scrollbar/src
+```
+
+You can use [Bower](http://bower.io/) to install the plugin. The plugin is registered as `perfect-scrollbar`.
+
+```
+bower install perfect-scrollbar
+```
+
 Requirements
 ------------
 
