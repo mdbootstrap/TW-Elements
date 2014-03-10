@@ -189,6 +189,11 @@ From jQuery 2.0, jQuery also will not support IE 6/7/8. I also think that suppor
 
 When old IEs should be supported, please fork the project and make patches personally.
 
+Helpdesk
+--------
+
+If you have any idea to improve this project or any problem using this, please feel free to upload an [issue](https://github.com/noraesae/perfect-scrollbar/issues).
+
 License
 -------
 
@@ -201,9 +206,3 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **It means, you can freely fork and modify this project for commercial or non-comercial use!**
-
-Helpdesk
---------
-
-If you have any idea to improve this project or any problems using this, please feel free to contact me.  
-Email: noraesae@yuiazu.net
