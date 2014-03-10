@@ -109,6 +109,10 @@ The number of pixels the content width can surpass the container width without e
 The number of pixels the content height can surpass the container height without enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so that Y axis scroll bar is not enabled just because of a few pixels.  
 **Default: 0**
 
+### includePadding
+When set to true, it uses `outerWidth` and `outerHeight` for the container size instead of `width` and `height`. When your container element has non-zero padding and the scrollbar layout looks weird, this option can be helpful.  
+**Default: false**
+
 How to Use
 ----------
 
