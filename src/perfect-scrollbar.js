@@ -1,8 +1,9 @@
 /* Copyright (c) 2012 HyeonJe Jun (http://github.com/noraesae)
  * Licensed under the MIT License
  */
-'use strict';
 (function (factory) {
+  'use strict';
+
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define(['jquery'], factory);
@@ -14,6 +15,7 @@
     factory(jQuery);
   }
 }(function ($) {
+  'use strict';
 
   // The default settings for the plugin
   var defaultSettings = {
