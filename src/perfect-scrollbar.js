@@ -310,6 +310,7 @@
 
           shouldPrevent = shouldPreventDefault(deltaX, deltaY);
           if (shouldPrevent) {
+            e.stopPropagation();
             e.preventDefault();
           }
         });
