@@ -277,10 +277,16 @@
 
       // bind handlers
       var bindMouseWheelHandler = function () {
+        // FIXME: Backward compatibility.
+        // After e.deltaFactor applied, wheelSpeed should have smaller value.
+        // Currently, there's no way to change the settings after the scrollbar initialized.
+        // But if the way is implemented in the future, wheelSpeed should be reset.
+        settings.wheelSpeed /= 10;
+
         var shouldPrevent = false;
         $this.bind('mousewheel' + eventClassName, function (e, deprecatedDelta, deprecatedDeltaX, deprecatedDeltaY) {
-          var deltaX = e.deltaX || deprecatedDeltaX,
-              deltaY = e.deltaY || deprecatedDeltaY;
+          var deltaX = e.deltaX * e.deltaFactor || deprecatedDeltaX,
+              deltaY = e.deltaY * e.deltaFactor || deprecatedDeltaY;
 
           if (!settings.useBothWheelAxes) {
             // deltaX will only be used for horizontal scrolling and deltaY will
