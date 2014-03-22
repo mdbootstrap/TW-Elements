@@ -343,23 +343,23 @@
 
           switch (e.which) {
           case 37: // left
-            deltaX = -3;
+            deltaX = -30;
             break;
           case 38: // up
-            deltaY = 3;
+            deltaY = 30;
             break;
           case 39: // right
-            deltaX = 3;
+            deltaX = 30;
             break;
           case 40: // down
-            deltaY = -3;
+            deltaY = -30;
             break;
           case 33: // page up
-            deltaY = 9;
+            deltaY = 90;
             break;
           case 32: // space bar
           case 34: // page down
-            deltaY = -9;
+            deltaY = -90;
             break;
           case 35: // end
             deltaY = -containerHeight;
@@ -371,8 +371,8 @@
             return;
           }
 
-          $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
-          $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
+          $this.scrollTop($this.scrollTop() - deltaY);
+          $this.scrollLeft($this.scrollLeft() + deltaX);
 
           shouldPrevent = shouldPreventDefault(deltaX, deltaY);
           if (shouldPrevent) {
