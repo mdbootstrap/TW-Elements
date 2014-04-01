@@ -152,8 +152,8 @@
       };
 
       var updateBarSizeAndPosition = function () {
-        containerWidth = settings.includePadding ? $this.outerWidth() : $this.width();
-        containerHeight = settings.includePadding ? $this.outerHeight() : $this.height();
+        containerWidth = settings.includePadding ? $this.innerWidth() : $this.width();
+        containerHeight = settings.includePadding ? $this.innerHeight() : $this.height();
         contentWidth = $this.prop('scrollWidth');
         contentHeight = $this.prop('scrollHeight');
 
