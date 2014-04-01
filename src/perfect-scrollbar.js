@@ -288,6 +288,7 @@
           var deltaX = e.deltaX * e.deltaFactor || deprecatedDeltaX,
               deltaY = e.deltaY * e.deltaFactor || deprecatedDeltaY;
 
+          shouldPrevent = false;
           if (!settings.useBothWheelAxes) {
             // deltaX will only be used for horizontal scrolling and deltaY will
             // only be used for vertical scrolling - this is the default
@@ -301,6 +302,7 @@
             } else {
               $this.scrollTop($this.scrollTop() + (deltaX * settings.wheelSpeed));
             }
+            shouldPrevent = true;
           } else if (scrollbarXActive && !scrollbarYActive) {
             // useBothWheelAxes and only horizontal bar is active, so use both
             // wheel axes for horizontal bar
@@ -309,12 +311,13 @@
             } else {
               $this.scrollLeft($this.scrollLeft() - (deltaY * settings.wheelSpeed));
             }
+            shouldPrevent = true;
           }
 
           // update bar position
           updateBarSizeAndPosition();
 
-          shouldPrevent = shouldPreventDefault(deltaX, deltaY);
+          shouldPrevent = (shouldPrevent || shouldPreventDefault(deltaX, deltaY));
           if (shouldPrevent) {
             e.stopPropagation();
             e.preventDefault();
