@@ -105,11 +105,11 @@
 	  if(settings.toExcludeFromVisualY){
 		  //TODO also use settings.includePadding ?
 		  updateVisualContainerSize = function(){
-			  visualContainerHeight = scrollableContainerHeight - settings.toExcludeFromVisualY.height();
+			  visualContainerHeight = ContainerHeight - settings.toExcludeFromVisualY.height();
 		  }
 	  }else{
 		  updateVisualContainerSize = function(){
-			  visualContainerHeight = scrollableContainerHeight;
+			  visualContainerHeight = ContainerHeight;
 		  }
 	  }
       
