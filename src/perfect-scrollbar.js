@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 HyeonJe Jun (http://github.com/noraesae)
+/* Copyright (c) 2012, 2014 Hyeonje Alex Jun and other contributors
  * Licensed under the MIT License
  */
 (function (factory) {
