@@ -28,7 +28,9 @@
     suppressScrollY: false,
     scrollXMarginOffset: 0,
     scrollYMarginOffset: 0,
-    includePadding: false
+    includePadding: false,
+    alwaysVisibleX: false,
+    alwaysVisibleY: false
   };
 
   var getEventClassName = (function () {
@@ -571,6 +573,14 @@
       };
 
       var supportsTouch = (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch);
+      
+      var setAlwaysVisibleX = function () {
+        $this.find('.ps-scrollbar-x-rail').css('opacity', 0.6);
+      };
+      var setAlwaysVisibleY = function () {
+        $this.find('.ps-scrollbar-y-rail').css('opacity', 0.6);
+      };
+
 
       var initialize = function () {
         var ieMatch = navigator.userAgent.toLowerCase().match(/(msie) ([\w.]+)/);
@@ -592,6 +602,12 @@
         }
         if (settings.useKeyboard) {
           bindKeyboardHandler();
+        }
+        if (settings.alwaysVisibleX) {
+          setAlwaysVisibleX();
+        }
+        if (settings.alwaysVisibleY) {
+          setAlwaysVisibleY();
         }
         $this.data('perfect-scrollbar', $this);
         $this.data('perfect-scrollbar-update', updateBarSizeAndPosition);

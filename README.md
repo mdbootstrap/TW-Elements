@@ -113,6 +113,14 @@ The number of pixels the content height can surpass the container height without
 When set to true, it uses `innerWidth` and `innerHeight` for the container size instead of `width` and `height`. When your container element has non-zero padding and the scrollbar layout looks weird, this option can be helpful.  
 **Default: false**
 
+### alwaysVisibleX
+When set to true, the scroll bar in X axis will be visible as if mouse is over the block in which the scroll bar is.
+**Default: false**
+
+### alwaysVisibleY
+When set to true, the scroll bar in Y axis will be visible as if mouse is over the block in which the scroll bar is.
+**Default: false**
+
 How to Use
 ----------
 
