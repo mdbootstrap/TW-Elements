@@ -574,12 +574,12 @@
 
       var supportsTouch = (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch);
       
-      var setAlwaysVisibleX = function() {
-    	$this.find('.ps-scrollbar-x-rail').css('opacity',0.6);
-      }
-      var setAlwaysVisibleY = function() {
-    	  $this.find('.ps-scrollbar-y-rail').css('opacity',0.6);
-      }
+      var setAlwaysVisibleX = function () {
+    	$this.find('.ps-scrollbar-x-rail').css('opacity', 0.6);
+      };
+      var setAlwaysVisibleY = function () {
+    	$this.find('.ps-scrollbar-y-rail').css('opacity', 0.6);
+      };
 
 
       var initialize = function () {
@@ -603,11 +603,11 @@
         if (settings.useKeyboard) {
           bindKeyboardHandler();
         }
-        if(settings.alwaysVisibleX) {
-        	setAlwaysVisibleX();
+        if (settings.alwaysVisibleX) {
+          setAlwaysVisibleX();
         }
-        if(settings.alwaysVisibleY) {
-        	setAlwaysVisibleY();
+        if (settings.alwaysVisibleY) {
+          setAlwaysVisibleY();
         }
         $this.data('perfect-scrollbar', $this);
         $this.data('perfect-scrollbar-update', updateBarSizeAndPosition);
