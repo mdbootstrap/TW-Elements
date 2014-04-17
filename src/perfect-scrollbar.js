@@ -101,6 +101,7 @@
           scrollbarYRight = parseInt($scrollbarYRail.css('right'), 10),
           isScrollbarYUsingRight = scrollbarYRight === scrollbarYRight, // !isNaN
           scrollbarYLeft = isScrollbarYUsingRight ? null: parseInt($scrollbarYRail.css('left'), 10),
+          isRtl = $this.css('direction') === "rtl",
           eventClassName = getEventClassName();
 
       var updateContentScrollTop = function (currentTop, deltaY) {
@@ -159,7 +160,12 @@
       };
 
       var updateScrollbarCss = function () {
-        var scrollbarXStyles = {left: $this.scrollLeft(), width: containerWidth, display: scrollbarXActive ? "inherit": "none"};
+        var scrollbarXStyles = {width: containerWidth, display: scrollbarXActive ? "inherit": "none"};
+        if (isRtl) {
+          scrollbarXStyles.left = $this.scrollLeft() + containerWidth - contentWidth;
+        } else {
+          scrollbarXStyles.left = $this.scrollLeft();
+        }
         if (isScrollbarXUsingBottom) {
           scrollbarXStyles.bottom = scrollbarXBottom - $this.scrollTop();
         } else {
@@ -168,12 +174,22 @@
         $scrollbarXRail.css(scrollbarXStyles);
 
         var scrollbarYStyles = {top: $this.scrollTop(), height: containerHeight, display: scrollbarYActive ? "inherit": "none"};
+
         if (isScrollbarYUsingRight) {
-          scrollbarYStyles.right = scrollbarYRight - $this.scrollLeft();
+          if (isRtl) {
+            scrollbarYStyles.right = contentWidth - $this.scrollLeft() - scrollbarYRight - $scrollbarY.outerWidth();
+          } else {
+            scrollbarYStyles.right = scrollbarYRight - $this.scrollLeft();
+          }
         } else {
-          scrollbarYStyles.left = scrollbarYLeft + $this.scrollLeft();
+          if (isRtl) {
+            scrollbarYStyles.left = $this.scrollLeft() + containerWidth * 2 - contentWidth - scrollbarYLeft - $scrollbarY.outerWidth();
+          } else {
+            scrollbarYStyles.left = scrollbarYLeft + $this.scrollLeft();
+          }
         }
         $scrollbarYRail.css(scrollbarYStyles);
+
         $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth});
         $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight});
       };
@@ -563,6 +579,7 @@
         scrollbarYHeight =
         scrollbarYTop =
         scrollbarYRight = null;
+        isRtl = null;
       };
 
       var ieSupport = function (version) {
