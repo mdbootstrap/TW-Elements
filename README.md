@@ -6,14 +6,14 @@ Tiny but perfect jQuery scrollbar plugin
 Why perfect-scrollbar?
 ------------------
 
-I worked on the personal project recently, and I was trying to find the jQuery scrollbar plugin that's *perfect*. But there was no *perfect* scrollbar plugin. That's why I decided to make one.
+I worked on a personal project recently, and I was trying to find the jQuery scrollbar plugin that's *perfect*. But there was no *perfect* scrollbar plugin. That's why I decided to make one.
 
-perfect-scrollbar is very tiny but *perfect*(for me, and maybe for the most of developers) jQuery scrollbar plugin.  
+perfect-scrollbar is very tiny but *perfect* (for me, and maybe for the most of developers) jQuery scrollbar plugin.  
 I hope you love this!
 
 Demo: http://noraesae.github.com/perfect-scrollbar/
 
-What means *perfect*?
+What does *perfect* mean?
 ---------------------
 
 *perfect* means...
