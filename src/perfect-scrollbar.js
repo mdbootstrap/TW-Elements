@@ -28,7 +28,8 @@
     suppressScrollY: false,
     scrollXMarginOffset: 0,
     scrollYMarginOffset: 0,
-    includePadding: false
+    includePadding: false,
+    toExcludeFromVisualY: null
   };
 
   var getEventClassName = (function () {
@@ -89,6 +90,7 @@
           scrollbarYActive,
           containerWidth,
           containerHeight,
+          visualContainerHeight,
           contentWidth,
           contentHeight,
           scrollbarXWidth,
@@ -99,6 +101,19 @@
           scrollbarYRight = parseInt($scrollbarYRail.css('right'), 10),
           eventClassName = getEventClassName();
 
+      var updateVisualContainerSize;
+      //let's do that if once for all
+	  if(settings.toExcludeFromVisualY){
+		  //TODO also use settings.includePadding ?
+		  updateVisualContainerSize = function(){
+			  visualContainerHeight = containerHeight - settings.toExcludeFromVisualY.height();
+		  }
+	  }else{
+		  updateVisualContainerSize = function(){
+			  visualContainerHeight = containerHeight;
+		  }
+	  }
+      
       var updateContentScrollTop = function (currentTop, deltaY) {
         var newTop = currentTop + deltaY,
             maxTop = containerHeight - scrollbarYHeight;
@@ -146,7 +161,7 @@
 
       var updateScrollbarCss = function () {
         $scrollbarXRail.css({left: $this.scrollLeft(), bottom: scrollbarXBottom - $this.scrollTop(), width: containerWidth, display: scrollbarXActive ? "inherit": "none"});
-        $scrollbarYRail.css({top: $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: containerHeight, display: scrollbarYActive ? "inherit": "none"});
+        $scrollbarYRail.css({top: $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: visualContainerHeight, display: scrollbarYActive ? "inherit": "none"});
         $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth});
         $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight});
       };
@@ -157,6 +172,8 @@
         contentWidth = $this.prop('scrollWidth');
         contentHeight = $this.prop('scrollHeight');
 
+        updateVisualContainerSize();
+        
         if (!settings.suppressScrollX && containerWidth + settings.scrollXMarginOffset < contentWidth) {
           scrollbarXActive = true;
           scrollbarXWidth = getSettingsAdjustedThumbSize(parseInt(containerWidth * containerWidth / contentWidth, 10));
@@ -171,8 +188,8 @@
 
         if (!settings.suppressScrollY && containerHeight + settings.scrollYMarginOffset < contentHeight) {
           scrollbarYActive = true;
-          scrollbarYHeight = getSettingsAdjustedThumbSize(parseInt(containerHeight * containerHeight / contentHeight, 10));
-          scrollbarYTop = parseInt($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight), 10);
+          scrollbarYHeight = getSettingsAdjustedThumbSize(parseInt(visualContainerHeight * visualContainerHeight / contentHeight, 10));
+          scrollbarYTop = parseInt($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - visualContainerHeight), 10);
         }
         else {
           scrollbarYActive = false;
@@ -181,8 +198,8 @@
           $this.scrollTop(0);
         }
 
-        if (scrollbarYTop >= containerHeight - scrollbarYHeight) {
-          scrollbarYTop = containerHeight - scrollbarYHeight;
+        if (scrollbarYTop >= visualContainerHeight - scrollbarYHeight) {
+          scrollbarYTop = visualContainerHeight - scrollbarYHeight;
         }
         if (scrollbarXLeft >= containerWidth - scrollbarXWidth) {
           scrollbarXLeft = containerWidth - scrollbarXWidth;
@@ -528,6 +545,7 @@
         $scrollbarY =
         containerWidth =
         containerHeight =
+        visualContainerHeight =
         contentWidth =
         contentHeight =
         scrollbarXWidth =
