@@ -99,6 +99,8 @@
           scrollbarYRight = parseInt($scrollbarYRail.css('right'), 10),
           eventClassName = getEventClassName();
 
+      var isRtl = $this.css('direction') === "rtl";
+
       var updateContentScrollTop = function (currentTop, deltaY) {
         var newTop = currentTop + deltaY,
             maxTop = containerHeight - scrollbarYHeight;
@@ -134,7 +136,11 @@
 
         var scrollLeft = parseInt(scrollbarXLeft * (contentWidth - containerWidth) / (containerWidth - scrollbarXWidth), 10);
         $this.scrollLeft(scrollLeft);
-        $scrollbarYRail.css({right: scrollbarYRight - scrollLeft});
+        if (isRtl) {
+          $scrollbarYRail.css({right: contentWidth - scrollLeft - scrollbarYRight - $scrollbarY.width()});
+        } else {
+          $scrollbarYRail.css({right: scrollbarYRight - scrollLeft});
+        }
       };
 
       var getSettingsAdjustedThumbSize = function (thumbSize) {
@@ -145,8 +151,13 @@
       };
 
       var updateScrollbarCss = function () {
-        $scrollbarXRail.css({left: $this.scrollLeft(), bottom: scrollbarXBottom - $this.scrollTop(), width: containerWidth, display: scrollbarXActive ? "inherit": "none"});
-        $scrollbarYRail.css({top: $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: containerHeight, display: scrollbarYActive ? "inherit": "none"});
+        if (isRtl) {
+          $scrollbarXRail.css({left: $this.scrollLeft() + containerWidth - contentWidth, bottom: scrollbarXBottom - $this.scrollTop(), width: containerWidth, display: scrollbarXActive ? "inherit": "none"});
+          $scrollbarYRail.css({top: $this.scrollTop(), right: contentWidth - $this.scrollLeft() - scrollbarYRight - $scrollbarY.width(), height: containerHeight, display: scrollbarYActive ? "inherit": "none"});
+        } else {
+          $scrollbarXRail.css({left: $this.scrollLeft(), bottom: scrollbarXBottom - $this.scrollTop(), width: containerWidth, display: scrollbarXActive ? "inherit": "none"});
+          $scrollbarYRail.css({top: $this.scrollTop(), right: scrollbarYRight - $this.scrollLeft(), height: containerHeight, display: scrollbarYActive ? "inherit": "none"});
+        }
         $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth});
         $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight});
       };
@@ -187,6 +198,8 @@
         if (scrollbarXLeft >= containerWidth - scrollbarXWidth) {
           scrollbarXLeft = containerWidth - scrollbarXWidth;
         }
+
+        isRtl = $this.css('direction') === "rtl";
 
         updateScrollbarCss();
       };
@@ -536,6 +549,7 @@
         scrollbarYHeight =
         scrollbarYTop =
         scrollbarYRight = null;
+        isRtl = null;
       };
 
       var ieSupport = function (version) {
