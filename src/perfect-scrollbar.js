@@ -99,7 +99,7 @@
           scrollbarYRight = parseInt($scrollbarYRail.css('right'), 10),
           eventClassName = getEventClassName();
 
-      var rtl = $this.css('direction') === "rtl";
+      var isRtl = $this.css('direction') === "rtl";
 
       var updateContentScrollTop = function (currentTop, deltaY) {
         var newTop = currentTop + deltaY,
@@ -136,10 +136,11 @@
 
         var scrollLeft = parseInt(scrollbarXLeft * (contentWidth - containerWidth) / (containerWidth - scrollbarXWidth), 10);
         $this.scrollLeft(scrollLeft);
-        if (rtl)
+        if (isRtl) {
           $scrollbarYRail.css({right: contentWidth - scrollLeft - scrollbarYRight - $scrollbarY.width()});
-        else
+        } else {
           $scrollbarYRail.css({right: scrollbarYRight - scrollLeft});
+        }
       };
 
       var getSettingsAdjustedThumbSize = function (thumbSize) {
@@ -150,7 +151,7 @@
       };
 
       var updateScrollbarCss = function () {
-        if (rtl) {
+        if (isRtl) {
           $scrollbarXRail.css({left: $this.scrollLeft() + containerWidth - contentWidth, bottom: scrollbarXBottom - $this.scrollTop(), width: containerWidth, display: scrollbarXActive ? "inherit": "none"});
           $scrollbarYRail.css({top: $this.scrollTop(), right: contentWidth - $this.scrollLeft() - scrollbarYRight - $scrollbarY.width(), height: containerHeight, display: scrollbarYActive ? "inherit": "none"});
         } else {
@@ -198,7 +199,7 @@
           scrollbarXLeft = containerWidth - scrollbarXWidth;
         }
 
-        rtl = $this.css('direction') === "rtl";
+        isRtl = $this.css('direction') === "rtl";
 
         updateScrollbarCss();
       };
@@ -548,7 +549,7 @@
         scrollbarYHeight =
         scrollbarYTop =
         scrollbarYRight = null;
-        rtl = null;
+        isRtl = null;
       };
 
       var ieSupport = function (version) {
