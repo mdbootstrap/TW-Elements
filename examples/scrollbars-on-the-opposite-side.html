@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>perfect-scrollbar example</title>
+      <link href="../src/perfect-scrollbar.css" rel="stylesheet">
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../src/jquery.mousewheel.js"></script>
+      <script src="../src/perfect-scrollbar.js"></script>
+      <style>
+        .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
+        .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+        .spacer { text-align:center }
+
+        /* Change the alignment of scrollbars */
+        /* Recommended: You can just modify the CSS file directly. */
+        .ps-container .ps-scrollbar-x-rail {
+          top: 3px;
+          bottom: auto; /* If using `top`, there shouldn't be a `bottom`. */
+        }
+        .ps-container .ps-scrollbar-y-rail {
+          left: 3px;
+          right: auto; /* If using `left`, there shouldn't be a `right`. */
+        }
+      </style>
+    <script>
+      jQuery(document).ready(function ($) {
+        "use strict";
+        $('#Default').perfectScrollbar();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="Default" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+  </body>
+</html>
