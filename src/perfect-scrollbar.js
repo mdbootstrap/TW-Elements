@@ -567,8 +567,12 @@
         $scrollbarYRail.remove();
 
         // clean all variables
+        $scrollbarXRail =
+        $scrollbarYRail =
         $scrollbarX =
         $scrollbarY =
+        scrollbarXActive =
+        scrollbarYActive =
         containerWidth =
         containerHeight =
         contentWidth =
@@ -576,10 +580,15 @@
         scrollbarXWidth =
         scrollbarXLeft =
         scrollbarXBottom =
+        isScrollbarXUsingBottom =
+        scrollbarXTop =
         scrollbarYHeight =
         scrollbarYTop =
-        scrollbarYRight = null;
-        isRtl = null;
+        scrollbarYRight =
+        isScrollbarYUsingRight =
+        scrollbarYLeft =
+        isRtl =
+        eventClassName = null;
       };
 
       var ieSupport = function (version) {
