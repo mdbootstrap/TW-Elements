@@ -414,10 +414,16 @@
             deltaY = -90;
             break;
           case 35: // end
-            deltaY = -containerHeight;
+            if (e.ctrlKey) // ctrl + end
+              deltaY = -contentHeight;
+            else
+              deltaY = -containerHeight;
             break;
           case 36: // home
-            deltaY = containerHeight;
+            if (e.ctrlKey) // ctrl + home
+              deltaY = $this.scrollTop();
+            else
+              deltaY = containerHeight;
             break;
           default:
             return;
