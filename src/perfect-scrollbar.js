@@ -330,32 +330,44 @@
         $this.bind('mousewheel' + eventClassName, function (e, deprecatedDelta, deprecatedDeltaX, deprecatedDeltaY) {
           var deltaX = e.deltaX * e.deltaFactor || deprecatedDeltaX,
               deltaY = e.deltaY * e.deltaFactor || deprecatedDeltaY;
+          var maskedScrollId = false;
 
-          shouldPrevent = false;
-          if (!settings.useBothWheelAxes) {
-            // deltaX will only be used for horizontal scrolling and deltaY will
-            // only be used for vertical scrolling - this is the default
-            $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
-            $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
-          } else if (scrollbarYActive && !scrollbarXActive) {
-            // only vertical scrollbar is active and useBothWheelAxes option is
-            // active, so let's scroll vertical bar using both mouse wheel axes
-            if (deltaY) {
+          // destroy scrollbar if mousewheel zoom is being used (ctrl+mousewheel)
+          if (e.ctrlKey) {
+            maskedScrollId = e.currentTarget;
+            $(maskedScrollId).perfectScrollbar('destroy');
+
+          } else {
+            shouldPrevent = false;
+            if (!settings.useBothWheelAxes) {
+              // deltaX will only be used for horizontal scrolling and deltaY will
+              // only be used for vertical scrolling - this is the default
               $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
-            } else {
-              $this.scrollTop($this.scrollTop() + (deltaX * settings.wheelSpeed));
-            }
-            shouldPrevent = true;
-          } else if (scrollbarXActive && !scrollbarYActive) {
-            // useBothWheelAxes and only horizontal bar is active, so use both
-            // wheel axes for horizontal bar
-            if (deltaX) {
               $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
-            } else {
-              $this.scrollLeft($this.scrollLeft() - (deltaY * settings.wheelSpeed));
+            } else if (scrollbarYActive && !scrollbarXActive) {
+              // only vertical scrollbar is active and useBothWheelAxes option is
+              // active, so let's scroll vertical bar using both mouse wheel axes
+              if (deltaY) {
+                $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
+              } else {
+                $this.scrollTop($this.scrollTop() + (deltaX * settings.wheelSpeed));
+              }
+              shouldPrevent = true;
+            } else if (scrollbarXActive && !scrollbarYActive) {
+              // useBothWheelAxes and only horizontal bar is active, so use both
+              // wheel axes for horizontal bar
+              if (deltaX) {
+                $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
+              } else {
+                $this.scrollLeft($this.scrollLeft() - (deltaY * settings.wheelSpeed));
+              }
+              shouldPrevent = true;
             }
-            shouldPrevent = true;
           }
+
+          // replace scrollbar for section that was zoomed
+          if (maskedScrollId)
+            $(maskedScrollId).perfectScrollbar();
 
           // update bar position
           updateBarSizeAndPosition();
