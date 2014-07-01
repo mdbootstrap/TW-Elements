@@ -366,8 +366,9 @@
           }
 
           // replace scrollbar for section that was zoomed
-          if (maskedScrollId)
+          if (maskedScrollId) {
             $(maskedScrollId).perfectScrollbar();
+          }
 
           // update bar position
           updateBarSizeAndPosition();
@@ -426,16 +427,18 @@
             deltaY = -90;
             break;
           case 35: // end
-            if (e.ctrlKey) // ctrl + end
+            if (e.ctrlKey) { // ctrl + end
               deltaY = -contentHeight;
-            else
+            } else {
               deltaY = -containerHeight;
+            }
             break;
           case 36: // home
-            if (e.ctrlKey) // ctrl + home
+            if (e.ctrlKey) { // ctrl + home
               deltaY = $this.scrollTop();
-            else
+            } else {
               deltaY = containerHeight;
+            }
             break;
           default:
             return;
