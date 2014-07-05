@@ -67,7 +67,7 @@ To make this plugin *perfect*, some requirements were not avoidable. But they're
 The requirement below is for perfect-scrollbar &lt;= 0.3.4
 
 * there must be the *one* content element(like div) for the container.
- 
+
 Optional parameters
 -------------------
 
@@ -79,7 +79,9 @@ The scroll speed applied to mousewheel event.
 
 ### wheelPropagation
 If this option is true, when the scroll reach the end of the side, mousewheel event will be propagated to parent element.  
+*Currently not supported for touch events*  
 **Default: false**
+
 
 ### minScrollbarLength
 When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels.  
