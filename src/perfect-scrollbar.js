@@ -192,6 +192,18 @@
 
         $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth});
         $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight});
+
+        if (scrollbarXActive) {
+          $this.addClass('ps-active-x');
+        } else {
+          $this.removeClass('ps-active-x');
+        }
+
+        if (scrollbarYActive) {
+          $this.addClass('ps-active-y');
+        } else {
+          $this.removeClass('ps-active-y');
+        }
       };
 
       var updateBarSizeAndPosition = function () {
