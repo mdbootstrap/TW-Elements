@@ -102,7 +102,9 @@
           isScrollbarYUsingRight = scrollbarYRight === scrollbarYRight, // !isNaN
           scrollbarYLeft = isScrollbarYUsingRight ? null: parseInt($scrollbarYRail.css('left'), 10),
           isRtl = $this.css('direction') === "rtl",
-          eventClassName = getEventClassName();
+          eventClassName = getEventClassName(),
+          railBorderXWidth = parseInt($scrollbarXRail.css('borderLeftWidth'), 10) + parseInt($scrollbarXRail.css('borderRightWidth'), 10),
+          railBorderYWidth = parseInt($scrollbarXRail.css('borderTopWidth'), 10) + parseInt($scrollbarXRail.css('borderBottomWidth'), 10);
 
       var updateContentScrollTop = function (currentTop, deltaY) {
         var newTop = currentTop + deltaY,
@@ -190,8 +192,8 @@
         }
         $scrollbarYRail.css(scrollbarYStyles);
 
-        $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth});
-        $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight});
+        $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth - railBorderXWidth});
+        $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight - railBorderYWidth});
 
         if (scrollbarXActive) {
           $this.addClass('ps-active-x');
