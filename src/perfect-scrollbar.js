@@ -103,8 +103,8 @@
           scrollbarYLeft = isScrollbarYUsingRight ? null: parseInt($scrollbarYRail.css('left'), 10),
           isRtl = $this.css('direction') === "rtl",
           eventClassName = getEventClassName(),
-          railBorderXWidth = parseInt($scrollbarXRail.css('borderLeftWidth'),10) + parseInt($scrollbarXRail.css('borderRightWidth'),10),
-          railBorderYWidth = parseInt($scrollbarXRail.css('borderTopWidth'),10) + parseInt($scrollbarXRail.css('borderBottomWidth'),10);
+          railBorderXWidth = parseInt($scrollbarXRail.css('borderLeftWidth'), 10) + parseInt($scrollbarXRail.css('borderRightWidth'), 10),
+          railBorderYWidth = parseInt($scrollbarXRail.css('borderTopWidth'), 10) + parseInt($scrollbarXRail.css('borderBottomWidth'), 10);
 
       var updateContentScrollTop = function (currentTop, deltaY) {
         var newTop = currentTop + deltaY,
