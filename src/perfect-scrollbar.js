@@ -400,6 +400,10 @@
 
         var shouldPrevent = false;
         $(document).bind('keydown' + eventClassName, function (e) {
+          if (e.isDefaultPrevented && e.isDefaultPrevented()) {
+            return;
+          }
+
           if (!hovered || $(document.activeElement).is(":input,[contenteditable]")) {
             return;
           }
