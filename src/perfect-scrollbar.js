@@ -22,6 +22,7 @@
     wheelSpeed: 10,
     wheelPropagation: false,
     minScrollbarLength: null,
+    maxScrollbarLength: null,
     useBothWheelAxes: false,
     useKeyboard: true,
     suppressScrollX: false,
@@ -157,6 +158,9 @@
       var getSettingsAdjustedThumbSize = function (thumbSize) {
         if (settings.minScrollbarLength) {
           thumbSize = Math.max(thumbSize, settings.minScrollbarLength);
+        }
+        if (settings.maxScrollbarLength) {
+          thumbSize = Math.min(thumbSize, settings.maxScrollbarLength);
         }
         return thumbSize;
       };
