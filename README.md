@@ -87,6 +87,10 @@ If this option is true, when the scroll reach the end of the side, mousewheel ev
 When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels.  
 **Default: null**
 
+### maxScrollbarLength
+When set to an integer value, the thumb part of the scrollbar will not expand over that number of pixels.  
+**Default: null**
+
 ### useBothWheelAxes
 When set to true, and only one (vertical or horizontal) scrollbar is visible then both vertical and horizontal scrolling will affect the scrollbar.  
 **Default: false**
