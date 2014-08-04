@@ -121,6 +121,7 @@ When set to true, it uses `innerWidth` and `innerHeight` for the container size 
 
 ### scrollTopFunctionFactory
 A function factory that provides scroll top functionality. This is handy when you want to override the default scrollTop function.
+
 **Default:**
 
 ```javascript
@@ -134,6 +135,54 @@ scrollTopFunctionFactory: function (targetContainer) {
   };
 }
 ```
+
+### scrollLeftFunctionFactory
+A function factory that provides scroll left functionality. This is handy when you want to override the default scrollLeft function.
+
+**Default:**
+
+```javascript
+scrollLeftFunctionFactory: function (targetContainer) {
+  return function (x) {
+    if (x !== undefined) {
+      targetContainer.scrollLeft(x);
+    } else {
+      return targetContainer.scrollLeft();
+    }
+  };
+}
+```
+
+### contentHeightFunctionFactory
+A function factory that provides scroll height functionality. This is handy when you want to override the value of the scrollHeight property.
+
+**Default:**
+
+```javascript
+contentHeightFunctionFactory: function (targetContainer) {
+  return function () {
+    return targetContainer.prop('scrollHeight');
+  };
+}
+```
+
+### contentWidthFunctionFactory
+A function factory that provides scroll width functionality. This is handy when you want to override the value of the scrollWidth property.
+
+**Default:**
+
+```javascript
+contentWidthFunctionFactory: function (targetContainer) {
+  return function () {
+    return targetContainer.prop('scrollWidth');
+  };
+}
+```
+
+### isContainerScrolled
+Indicates whether the element being scrolled is the container where the scrollbars are added or another element.
+
+**Default: true**
 
 
 How to Use
