@@ -119,6 +119,23 @@ The number of pixels the content height can surpass the container height without
 When set to true, it uses `innerWidth` and `innerHeight` for the container size instead of `width` and `height`. When your container element has non-zero padding and the scrollbar layout looks weird, this option can be helpful.  
 **Default: false**
 
+### scrollTopFunctionFactory
+A function factory that provides scroll top functionality. This is handy when you want to override the default scrollTop function.
+**Default:**
+
+```javascript
+scrollTopFunctionFactory: function (targetContainer) {
+  return function (y) {
+    if (y !== undefined) {
+      targetContainer.scrollTop(y);
+    } else {
+      return targetContainer.scrollTop();
+    }
+  };
+}
+```
+
+
 How to Use
 ----------
 
