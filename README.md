@@ -1,4 +1,4 @@
-perfect-scrollbar
+perfect-scrollbar [![Travis CI](https://travis-ci.org/noraesae/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/noraesae/perfect-scrollbar) [![Gitter chat](https://badges.gitter.im/noraesae/perfect-scrollbar.png)](https://gitter.im/noraesae/perfect-scrollbar)
 =================
 
 Tiny but perfect jQuery scrollbar plugin
@@ -203,6 +203,8 @@ Helpdesk
 --------
 
 If you have any idea to improve this project or any problem using this, please feel free to upload an [issue](https://github.com/noraesae/perfect-scrollbar/issues).
+
+If it's a simple question or issue, you may want to ask in [Gitter chat](https://gitter.im/noraesae/perfect-scrollbar), which may be the simplest way to contact me.
 
 License
 -------
