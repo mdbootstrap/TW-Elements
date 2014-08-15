@@ -29,7 +29,36 @@
     suppressScrollY: false,
     scrollXMarginOffset: 0,
     scrollYMarginOffset: 0,
-    includePadding: false
+    includePadding: false,
+    scrollTopFunctionFactory: function (targetContainer) {
+      return function (y) {
+        if (y !== undefined) {
+          targetContainer.scrollTop(y);
+        } else {
+          return targetContainer.scrollTop();
+        }
+      };
+    },
+    scrollLeftFunctionFactory: function (targetContainer) {
+      return function (x) {
+        if (x !== undefined) {
+          targetContainer.scrollLeft(x);
+        } else {
+          return targetContainer.scrollLeft();
+        }
+      };
+    },
+    contentHeightFunctionFactory: function (targetContainer) {
+      return function () {
+        return targetContainer.prop('scrollHeight');
+      };
+    },
+    contentWidthFunctionFactory: function (targetContainer) {
+      return function () {
+        return targetContainer.prop('scrollWidth');
+      };
+    },
+    isContainerScrolled: true
   };
 
   var getEventClassName = (function () {
@@ -47,7 +76,7 @@
       // Use the default settings
       var settings = $.extend(true, {}, defaultSettings),
           $this = $(this);
-
+      
       if (typeof suppliedSettings === "object") {
         // But over-ride any supplied
         $.extend(true, settings, suppliedSettings);
@@ -55,6 +84,10 @@
         // If no settings were supplied, then the first param must be the option
         option = suppliedSettings;
       }
+      var __scrollTop = settings.scrollTopFunctionFactory($this),
+          __scrollLeft = settings.scrollLeftFunctionFactory($this),
+          __contentHeight = settings.contentHeightFunctionFactory($this),
+          __contentWidth = settings.contentWidthFunctionFactory($this);
 
       // Catch options
 
@@ -110,7 +143,7 @@
       var updateContentScrollTop = function (currentTop, deltaY) {
         var newTop = currentTop + deltaY,
             maxTop = containerHeight - scrollbarYHeight;
-
+        
         if (newTop < 0) {
           scrollbarYTop = 0;
         }
@@ -120,9 +153,9 @@
         else {
           scrollbarYTop = newTop;
         }
-
+        
         var scrollTop = parseInt(scrollbarYTop * (contentHeight - containerHeight) / (containerHeight - scrollbarYHeight), 10);
-        $this.scrollTop(scrollTop);
+        __scrollTop(scrollTop);
       };
 
       var updateContentScrollLeft = function (currentLeft, deltaX) {
@@ -140,7 +173,7 @@
         }
 
         var scrollLeft = parseInt(scrollbarXLeft * (contentWidth - containerWidth) / (containerWidth - scrollbarXWidth), 10);
-        $this.scrollLeft(scrollLeft);
+        __scrollLeft(scrollLeft);
       };
 
       var getSettingsAdjustedThumbSize = function (thumbSize) {
@@ -154,32 +187,35 @@
       };
 
       var updateScrollbarCss = function () {
+        var scrollLeft = settings.isContainerScrolled ? __scrollLeft() : 0,
+            scrollTop = settings.isContainerScrolled ? __scrollTop : 0;
+        
         var scrollbarXStyles = {width: containerWidth, display: scrollbarXActive ? "inherit": "none"};
         if (isRtl) {
-          scrollbarXStyles.left = $this.scrollLeft() + containerWidth - contentWidth;
+          scrollbarXStyles.left = scrollLeft + containerWidth - contentWidth;
         } else {
-          scrollbarXStyles.left = $this.scrollLeft();
+          scrollbarXStyles.left = scrollLeft;
         }
         if (isScrollbarXUsingBottom) {
-          scrollbarXStyles.bottom = scrollbarXBottom - $this.scrollTop();
+          scrollbarXStyles.bottom = scrollbarXBottom - scrollTop;
         } else {
-          scrollbarXStyles.top = scrollbarXTop + $this.scrollTop();
+          scrollbarXStyles.top = scrollbarXTop + scrollTop;
         }
         $scrollbarXRail.css(scrollbarXStyles);
 
-        var scrollbarYStyles = {top: $this.scrollTop(), height: containerHeight, display: scrollbarYActive ? "inherit": "none"};
+        var scrollbarYStyles = {top: scrollTop, height: containerHeight, display: scrollbarYActive ? "inherit": "none"};
 
         if (isScrollbarYUsingRight) {
           if (isRtl) {
-            scrollbarYStyles.right = contentWidth - $this.scrollLeft() - scrollbarYRight - $scrollbarY.outerWidth();
+            scrollbarYStyles.right = contentWidth - scrollLeft - scrollbarYRight - $scrollbarY.outerWidth();
           } else {
-            scrollbarYStyles.right = scrollbarYRight - $this.scrollLeft();
+            scrollbarYStyles.right = scrollbarYRight - scrollLeft;
           }
         } else {
           if (isRtl) {
-            scrollbarYStyles.left = $this.scrollLeft() + containerWidth * 2 - contentWidth - scrollbarYLeft - $scrollbarY.outerWidth();
+            scrollbarYStyles.left = scrollLeft + containerWidth * 2 - contentWidth - scrollbarYLeft - $scrollbarY.outerWidth();
           } else {
-            scrollbarYStyles.left = scrollbarYLeft + $this.scrollLeft();
+            scrollbarYStyles.left = scrollbarYLeft + scrollLeft;
           }
         }
         $scrollbarYRail.css(scrollbarYStyles);
@@ -203,31 +239,31 @@
       var updateBarSizeAndPosition = function () {
         containerWidth = settings.includePadding ? $this.innerWidth() : $this.width();
         containerHeight = settings.includePadding ? $this.innerHeight() : $this.height();
-        contentWidth = $this.prop('scrollWidth');
-        contentHeight = $this.prop('scrollHeight');
+        contentWidth = __contentWidth();
+        contentHeight = __contentHeight();
 
         if (!settings.suppressScrollX && containerWidth + settings.scrollXMarginOffset < contentWidth) {
           scrollbarXActive = true;
           scrollbarXWidth = getSettingsAdjustedThumbSize(parseInt(containerWidth * containerWidth / contentWidth, 10));
-          scrollbarXLeft = parseInt($this.scrollLeft() * (containerWidth - scrollbarXWidth) / (contentWidth - containerWidth), 10);
+          scrollbarXLeft = parseInt(__scrollLeft() * (containerWidth - scrollbarXWidth) / (contentWidth - containerWidth), 10);
         }
         else {
           scrollbarXActive = false;
           scrollbarXWidth = 0;
           scrollbarXLeft = 0;
-          $this.scrollLeft(0);
+          __scrollLeft(0);
         }
 
         if (!settings.suppressScrollY && containerHeight + settings.scrollYMarginOffset < contentHeight) {
           scrollbarYActive = true;
           scrollbarYHeight = getSettingsAdjustedThumbSize(parseInt(containerHeight * containerHeight / contentHeight, 10));
-          scrollbarYTop = parseInt($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight), 10);
+          scrollbarYTop = parseInt(__scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight), 10);
         }
         else {
           scrollbarYActive = false;
           scrollbarYHeight = 0;
           scrollbarYTop = 0;
-          $this.scrollTop(0);
+          __scrollTop(0);
         }
 
         if (scrollbarYTop >= containerHeight - scrollbarYHeight) {
@@ -258,6 +294,10 @@
             updateBarSizeAndPosition();
             e.stopPropagation();
             e.preventDefault();
+            
+            if (!settings.isContainerScrolled) {
+              updateBarSizeAndPosition();
+            }
           }
         });
 
@@ -289,6 +329,10 @@
             updateBarSizeAndPosition();
             e.stopPropagation();
             e.preventDefault();
+            
+            if (!settings.isContainerScrolled) {
+              updateBarSizeAndPosition();
+            }
           }
         });
 
@@ -304,7 +348,7 @@
 
       // check if the default scrolling should be prevented.
       var shouldPreventDefault = function (deltaX, deltaY) {
-        var scrollTop = $this.scrollTop();
+        var scrollTop = __scrollTop();
         if (deltaX === 0) {
           if (!scrollbarYActive) {
             return false;
@@ -314,7 +358,7 @@
           }
         }
 
-        var scrollLeft = $this.scrollLeft();
+        var scrollLeft = __scrollLeft();
         if (deltaY === 0) {
           if (!scrollbarXActive) {
             return false;
@@ -343,24 +387,24 @@
           if (!settings.useBothWheelAxes) {
             // deltaX will only be used for horizontal scrolling and deltaY will
             // only be used for vertical scrolling - this is the default
-            $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
-            $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
+            __scrollTop(__scrollTop() - (deltaY * settings.wheelSpeed));
+            __scrollLeft(__scrollLeft() + (deltaX * settings.wheelSpeed));
           } else if (scrollbarYActive && !scrollbarXActive) {
             // only vertical scrollbar is active and useBothWheelAxes option is
             // active, so let's scroll vertical bar using both mouse wheel axes
             if (deltaY) {
-              $this.scrollTop($this.scrollTop() - (deltaY * settings.wheelSpeed));
+              __scrollTop(__scrollTop() - (deltaY * settings.wheelSpeed));
             } else {
-              $this.scrollTop($this.scrollTop() + (deltaX * settings.wheelSpeed));
+              __scrollTop(__scrollTop() + (deltaX * settings.wheelSpeed));
             }
             shouldPrevent = true;
           } else if (scrollbarXActive && !scrollbarYActive) {
             // useBothWheelAxes and only horizontal bar is active, so use both
             // wheel axes for horizontal bar
             if (deltaX) {
-              $this.scrollLeft($this.scrollLeft() + (deltaX * settings.wheelSpeed));
+              __scrollLeft(__scrollLeft() + (deltaX * settings.wheelSpeed));
             } else {
-              $this.scrollLeft($this.scrollLeft() - (deltaY * settings.wheelSpeed));
+              __scrollLeft(__scrollLeft() - (deltaY * settings.wheelSpeed));
             }
             shouldPrevent = true;
           }
@@ -435,12 +479,16 @@
             return;
           }
 
-          $this.scrollTop($this.scrollTop() - deltaY);
-          $this.scrollLeft($this.scrollLeft() + deltaX);
-
+          __scrollTop(__scrollTop() - deltaY);
+          __scrollLeft(__scrollLeft() + deltaX);
+          
           shouldPrevent = shouldPreventDefault(deltaX, deltaY);
           if (shouldPrevent) {
             e.preventDefault();
+          }
+          
+          if (!settings.isContainerScrolled) {
+            updateBarSizeAndPosition();
           }
         });
       };
@@ -461,7 +509,11 @@
             positionRatio = 1;
           }
 
-          $this.scrollTop((contentHeight - containerHeight) * positionRatio);
+          __scrollTop((contentHeight - containerHeight) * positionRatio);
+          
+          if (!settings.isContainerScrolled) {
+            updateBarSizeAndPosition();
+          }
         });
 
         $scrollbarX.bind('click' + eventClassName, stopPropagation);
@@ -477,15 +529,19 @@
             positionRatio = 1;
           }
 
-          $this.scrollLeft((contentWidth - containerWidth) * positionRatio);
+          __scrollLeft((contentWidth - containerWidth) * positionRatio);
+          
+          if (!settings.isContainerScrolled) {
+            updateBarSizeAndPosition();
+          }
         });
       };
 
       // bind mobile touch handler
       var bindMobileTouchHandler = function () {
         var applyTouchMove = function (differenceX, differenceY) {
-          $this.scrollTop($this.scrollTop() - differenceY);
-          $this.scrollLeft($this.scrollLeft() - differenceX);
+          __scrollTop(__scrollTop() - differenceY);
+          __scrollLeft(__scrollLeft() - differenceX);
 
           // update bar position
           updateBarSizeAndPosition();
@@ -622,7 +678,7 @@
 
         var fixIe6ScrollbarPosition = function () {
           updateScrollbarCss = function () {
-            var scrollbarXStyles = {left: scrollbarXLeft + $this.scrollLeft(), width: scrollbarXWidth};
+            var scrollbarXStyles = {left: scrollbarXLeft + __scrollLeft(), width: scrollbarXWidth};
             if (isScrollbarXUsingBottom) {
               scrollbarXStyles.bottom = scrollbarXBottom;
             } else {
@@ -630,7 +686,8 @@
             }
             $scrollbarX.css(scrollbarXStyles);
 
-            var scrollbarYStyles = {top: scrollbarYTop + $this.scrollTop(), height: scrollbarYHeight};
+            var scrollbarYStyles = {top: scrollbarYTop + __scrollTop(), height: scrollbarYHeight};
+            
             if (isScrollbarYUsingRight) {
               scrollbarYStyles.right = scrollbarYRight;
             } else {
