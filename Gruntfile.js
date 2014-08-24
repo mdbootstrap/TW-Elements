@@ -21,11 +21,7 @@ module.exports = function (grunt) {
       },
       min: {
         files: {
-          'min/perfect-scrollbar.min.js': ['src/perfect-scrollbar.js'],
-          'min/perfect-scrollbar.with-mousewheel.min.js': [
-            'src/perfect-scrollbar.js',
-            'src/jquery.mousewheel.js'
-          ]
+          'min/perfect-scrollbar.min.js': ['src/perfect-scrollbar.js']
         }
       }
     },
