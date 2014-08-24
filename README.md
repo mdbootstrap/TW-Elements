@@ -75,7 +75,7 @@ perfect-scrollbar supports optional parameters.
 
 ### wheelSpeed
 The scroll speed applied to mousewheel event.  
-**Default: 10**
+**Default: 1**
 
 ### wheelPropagation
 If this option is true, when the scroll reach the end of the side, mousewheel event will be propagated to parent element.  
@@ -166,13 +166,6 @@ $("#Demo").perfectScrollbar('update');
 ```
 
 Also you can get the informations about how to use the plugin from example codes in the `examples` directory of the source tree.
-
-Very helpful friends
---------------------
-
-perfect-scrollbar supports [jquery-mousewheel](https://github.com/brandonaaron/jquery-mousewheel). If you want to use mousewheel features, please include jquery-mousewheel before using perfect-scrollbar.
-
-If you want to make this plugin's update function more responsive, [jquery-resize](https://github.com/cowboy/jquery-resize) can be helpful.
 
 Contribution
 ------------

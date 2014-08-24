@@ -19,7 +19,7 @@
 
   // The default settings for the plugin
   var defaultSettings = {
-    wheelSpeed: 10,
+    wheelSpeed: 1,
     wheelPropagation: false,
     minScrollbarLength: null,
     maxScrollbarLength: null,
@@ -328,16 +328,26 @@
 
       // bind handlers
       var bindMouseWheelHandler = function () {
-        // FIXME: Backward compatibility.
-        // After e.deltaFactor applied, wheelSpeed should have smaller value.
-        // Currently, there's no way to change the settings after the scrollbar initialized.
-        // But if the way is implemented in the future, wheelSpeed should be reset.
-        settings.wheelSpeed /= 10;
-
         var shouldPrevent = false;
-        $this.bind('mousewheel' + eventClassName, function (e, deprecatedDelta, deprecatedDeltaX, deprecatedDeltaY) {
-          var deltaX = e.deltaX * e.deltaFactor || deprecatedDeltaX,
-              deltaY = e.deltaY * e.deltaFactor || deprecatedDeltaY;
+
+        var getDeltaFromEvent = function (e) {
+          var deltaX = e.originalEvent.deltaX,
+              deltaY = -1 * e.originalEvent.deltaY;
+
+          if (typeof deltaX === "undefined" || typeof deltaY === "undefined") {
+            // OS X Safari
+            deltaX = -1 * e.originalEvent.wheelDeltaX / 6;
+            deltaY = e.originalEvent.wheelDeltaY / 6;
+          }
+
+          return [deltaX, deltaY];
+        };
+
+        var mousewheelHandler = function (e) {
+          var delta = getDeltaFromEvent(e);
+
+          var deltaX = delta[0],
+              deltaY = delta[1];
 
           shouldPrevent = false;
           if (!settings.useBothWheelAxes) {
@@ -373,7 +383,13 @@
             e.stopPropagation();
             e.preventDefault();
           }
-        });
+        };
+
+        if (typeof window.onwheel !== "undefined") {
+          $this.bind('wheel' + eventClassName, mousewheelHandler);
+        } else if (typeof window.onmousewheel !== "undefined") {
+          $this.bind('mousewheel' + eventClassName, mousewheelHandler);
+        }
 
         // fix Firefox scroll problem
         $this.bind('MozMousePixelScroll' + eventClassName, function (e) {
@@ -663,11 +679,10 @@
         bindMouseScrollXHandler();
         bindMouseScrollYHandler();
         bindRailClickHandler();
+        bindMouseWheelHandler();
+
         if (supportsTouch) {
           bindMobileTouchHandler();
-        }
-        if ($this.mousewheel) {
-          bindMouseWheelHandler();
         }
         if (settings.useKeyboard) {
           bindKeyboardHandler();
