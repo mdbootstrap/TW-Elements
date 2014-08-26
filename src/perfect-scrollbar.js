@@ -182,6 +182,14 @@
             scrollbarYStyles.left = scrollbarYLeft + $this.scrollLeft();
           }
         }
+
+        //  @change: reset railBorderXWidth and railBorderYWidth
+        //  if settings.suppressScrollX is set 'true'
+        //  @info: in IE 8 railBorderXWidth and railBorderYWidth are NaN
+        if(settings.suppressScrollX) {
+          railBorderXWidth = railBorderYWidth = 0;
+        }
+
         $scrollbarYRail.css(scrollbarYStyles);
 
         $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth - railBorderXWidth});
