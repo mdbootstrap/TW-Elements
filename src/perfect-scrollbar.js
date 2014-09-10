@@ -93,6 +93,7 @@
 
       var isRtl = $this.css('direction') === "rtl";
       var eventClassName = getEventClassName();
+      var ownerDocument = this.ownerDocument || document;
 
       var $scrollbarXRail = $("<div class='ps-scrollbar-x-rail'>").appendTo($this);
       var $scrollbarX = $("<div class='ps-scrollbar-x'>").appendTo($scrollbarXRail);
@@ -265,7 +266,7 @@
           e.preventDefault();
         });
 
-        $(document).bind('mousemove' + eventClassName, function (e) {
+        $(ownerDocument).bind('mousemove' + eventClassName, function (e) {
           if ($scrollbarXRail.hasClass('in-scrolling')) {
             updateScrollLeft(currentLeft, e.pageX - currentPageX);
             updateGeometry();
@@ -274,7 +275,7 @@
           }
         });
 
-        $(document).bind('mouseup' + eventClassName, function (e) {
+        $(ownerDocument).bind('mouseup' + eventClassName, function (e) {
           if ($scrollbarXRail.hasClass('in-scrolling')) {
             $scrollbarXRail.removeClass('in-scrolling');
           }
@@ -296,7 +297,7 @@
           e.preventDefault();
         });
 
-        $(document).bind('mousemove' + eventClassName, function (e) {
+        $(ownerDocument).bind('mousemove' + eventClassName, function (e) {
           if ($scrollbarYRail.hasClass('in-scrolling')) {
             updateScrollTop(currentTop, e.pageY - currentPageY);
             updateGeometry();
@@ -305,7 +306,7 @@
           }
         });
 
-        $(document).bind('mouseup' + eventClassName, function (e) {
+        $(ownerDocument).bind('mouseup' + eventClassName, function (e) {
           if ($scrollbarYRail.hasClass('in-scrolling')) {
             $scrollbarYRail.removeClass('in-scrolling');
           }
@@ -425,7 +426,7 @@
         });
 
         var shouldPrevent = false;
-        $(document).bind('keydown' + eventClassName, function (e) {
+        $(ownerDocument).bind('keydown' + eventClassName, function (e) {
           if (e.isDefaultPrevented && e.isDefaultPrevented()) {
             return;
           }
@@ -434,7 +435,7 @@
             return;
           }
 
-          var activeElement = document.activeElement;
+          var activeElement = document.activeElement ? document.activeElement : ownerDocument.activeElement;
           // go deeper if element is a webcomponent
           while (activeElement.shadowRoot) {
             activeElement = activeElement.shadowRoot.activeElement;
@@ -642,7 +643,7 @@
       function destroy() {
         $this.unbind(eventClassName);
         $(window).unbind(eventClassName);
-        $(document).unbind(eventClassName);
+        $(ownerDocument).unbind(eventClassName);
         $this.data('perfect-scrollbar', null);
         $this.data('perfect-scrollbar-update', null);
         $this.data('perfect-scrollbar-destroy', null);
