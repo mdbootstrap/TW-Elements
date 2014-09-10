@@ -86,6 +86,7 @@
           $scrollbarYRail = $("<div class='ps-scrollbar-y-rail'></div>").appendTo($this),
           $scrollbarX = $("<div class='ps-scrollbar-x'></div>").appendTo($scrollbarXRail),
           $scrollbarY = $("<div class='ps-scrollbar-y'></div>").appendTo($scrollbarYRail),
+          ownerDocument = $this.get(0).ownerDocument,
           scrollbarXActive,
           scrollbarYActive,
           containerWidth,
@@ -252,7 +253,7 @@
           e.preventDefault();
         });
 
-        $(document).bind('mousemove' + eventClassName, function (e) {
+        $(ownerDocument).bind('mousemove' + eventClassName, function (e) {
           if ($scrollbarXRail.hasClass('in-scrolling')) {
             updateContentScrollLeft(currentLeft, e.pageX - currentPageX);
             updateBarSizeAndPosition();
@@ -261,7 +262,7 @@
           }
         });
 
-        $(document).bind('mouseup' + eventClassName, function (e) {
+        $(ownerDocument).bind('mouseup' + eventClassName, function (e) {
           if ($scrollbarXRail.hasClass('in-scrolling')) {
             $scrollbarXRail.removeClass('in-scrolling');
           }
@@ -283,7 +284,7 @@
           e.preventDefault();
         });
 
-        $(document).bind('mousemove' + eventClassName, function (e) {
+        $(ownerDocument).bind('mousemove' + eventClassName, function (e) {
           if ($scrollbarYRail.hasClass('in-scrolling')) {
             updateContentScrollTop(currentTop, e.pageY - currentPageY);
             updateBarSizeAndPosition();
@@ -292,7 +293,7 @@
           }
         });
 
-        $(document).bind('mouseup' + eventClassName, function (e) {
+        $(ownerDocument).bind('mouseup' + eventClassName, function (e) {
           if ($scrollbarYRail.hasClass('in-scrolling')) {
             $scrollbarYRail.removeClass('in-scrolling');
           }
@@ -409,7 +410,7 @@
         });
 
         var shouldPrevent = false;
-        $(document).bind('keydown' + eventClassName, function (e) {
+        $(ownerDocument).bind('keydown' + eventClassName, function (e) {
           if (e.isDefaultPrevented && e.isDefaultPrevented()) {
             return;
           }
@@ -585,7 +586,7 @@
       var destroy = function () {
         $this.unbind(eventClassName);
         $(window).unbind(eventClassName);
-        $(document).unbind(eventClassName);
+        $(ownerDocument).unbind(eventClassName);
         $this.data('perfect-scrollbar', null);
         $this.data('perfect-scrollbar-update', null);
         $this.data('perfect-scrollbar-destroy', null);
