@@ -86,7 +86,7 @@
           $scrollbarYRail = $("<div class='ps-scrollbar-y-rail'></div>").appendTo($this),
           $scrollbarX = $("<div class='ps-scrollbar-x'></div>").appendTo($scrollbarXRail),
           $scrollbarY = $("<div class='ps-scrollbar-y'></div>").appendTo($scrollbarYRail),
-          ownerDocument = $this.get(0).ownerDocument,
+          ownerDocument = this.ownerDocument || document,
           scrollbarXActive,
           scrollbarYActive,
           containerWidth,
