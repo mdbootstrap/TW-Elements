@@ -119,6 +119,10 @@ The number of pixels the content height can surpass the container height without
 When set to true, it uses `innerWidth` and `innerHeight` for the container size instead of `width` and `height`. When your container element has non-zero padding and the scrollbar layout looks weird, this option can be helpful.  
 **Default: false**
 
+### disableIfOSBarsOverlay
+When set to true, it detects browser scroll bar width, if width is 0 as in the case of iOS style scrollbars the only action that will be taken is adding the class "perfectScrollDisabled" to the selected element. The added class is used to override scroll area "overflow: hidden" rules with "overflow: auto" this can be overridden as needed. Scroll bar detection is performed using an off screen element that is immediately deleted, this only takes place if disableIfOSBarsOverlay option is enabled.  
+**Default: false**
+
 How to Use
 ----------
 
