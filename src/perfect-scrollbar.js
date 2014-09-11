@@ -29,7 +29,8 @@
     suppressScrollY: false,
     scrollXMarginOffset: 0,
     scrollYMarginOffset: 0,
-    includePadding: false
+    includePadding: false,
+    disableIfOSBarsOverlay: false
   };
 
   var getEventClassName = (function () {
@@ -41,12 +42,43 @@
     };
   }());
 
+  function hasOverlayScrollBars() {
+    // Create the measurement node
+    var scrollDiv = $("<div></div>").css({
+      width: "100px",
+      height: "100px",
+      overflow: "scroll",
+      position: "absolute",
+      top: "-9999px"
+    })[0];
+
+    // Get the scroll bar width
+    document.body.appendChild(scrollDiv);
+    var scrollBarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+
+    // Delete the measurement div
+    document.body.removeChild(scrollDiv);
+    return !scrollBarWidth;
+  }
+
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
 
+    var scrollBarsOverlay;
+
+    if (suppliedSettings && suppliedSettings.disableIfOSBarsOverlay) {
+      scrollBarsOverlay = hasOverlayScrollBars();
+    }
+
     return this.each(function () {
+      var $this = $(this);
+
+      // handle valid disableIfOSBarsOverlay condition
+      if (scrollBarsOverlay) {
+        return $this;
+      }
+
       // Use the default settings
-      var settings = $.extend(true, {}, defaultSettings),
-          $this = $(this);
+      var settings = $.extend(true, {}, defaultSettings);
 
       if (typeof suppliedSettings === "object") {
         // But over-ride any supplied
