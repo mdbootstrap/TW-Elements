@@ -73,8 +73,7 @@
       var $this = $(this);
 
       // handle valid disableIfOSBarsOverlay condition
-      if (suppliedSettings && suppliedSettings.disableIfOSBarsOverlay && scrollBarsOverlay) {
-        $this.addClass("perfectScrollDisabled");
+      if (scrollBarsOverlay) {
         return $this;
       }
 

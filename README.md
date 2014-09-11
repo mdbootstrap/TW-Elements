@@ -60,7 +60,8 @@ Requirements
 To make this plugin *perfect*, some requirements were not avoidable. But they're all very trivial and there's nothing to worry about.
 
 * the container must have a 'position' css style.
-* the container must have an 'overflow:hidden' css style.
+* ~~the container must have an 'overflow:hidden' css style.~~
+* use overflow css rule as you normally would without this plugin.
 * the scrollbar's position must be 'absolute'.
 * the scrollbar-x must have a 'bottom' css style, and the scrollbar-y must have a 'right' css style.
 
@@ -120,7 +121,7 @@ When set to true, it uses `innerWidth` and `innerHeight` for the container size 
 **Default: false**
 
 ### disableIfOSBarsOverlay
-When set to true, it detects browser scroll bar width, if width is 0 as in the case of iOS style scrollbars the only action that will be taken is adding the class "perfectScrollDisabled" to the selected element. Use the added class to override scroll area "overflow: hidden" rules with "overflow: auto". Scroll bar detection is performed using an off screen element that is immediately deleted, this only takes place if disableIfOSBarsOverlay option is enabled.  
+When true browser scroll bar width is measured, if width is 0 as in the case of iOS style scroll bars original OS scroll bars will be left alone and this plugin will not be used. As such all scrollable areas should have overflow, and/or overflow-x, and/or overflow-y set to "auto" or "scroll". Scroll bar detection is performed using an off screen element that is immediately deleted, this only takes place if disableIfOSBarsOverlay option is enabled.  
 **Default: false**
 
 How to Use
