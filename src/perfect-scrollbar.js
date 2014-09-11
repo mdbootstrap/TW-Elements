@@ -42,6 +42,8 @@
     };
   }());
 
+  var scrollBarsOverlay, scrollBarsMeasured;
+
   function hasOverlayScrollBars() {
     // Create the measurement node
     var scrollDiv = $("<div></div>").css({
@@ -58,15 +60,17 @@
 
     // Delete the measurement div
     document.body.removeChild(scrollDiv);
-    return !scrollBarWidth;
+    scrollBarsMeasured = true;
+    scrollBarsOverlay = !scrollBarWidth;
+    return scrollBarsOverlay;
   }
+
+
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
 
-    var scrollBarsOverlay;
-
     if (suppliedSettings && suppliedSettings.disableIfOSBarsOverlay) {
-      scrollBarsOverlay = hasOverlayScrollBars();
+      scrollBarsOverlay = scrollBarsMeasured ? scrollBarsOverlay : hasOverlayScrollBars();
     }
 
     return this.each(function () {
