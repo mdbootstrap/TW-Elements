@@ -348,6 +348,18 @@
             deltaY = e.originalEvent.wheelDeltaY / 6;
           }
 
+          if (e.originalEvent.deltaMode && e.originalEvent.deltaMode === 1) {
+            // Firefox in deltaMode 1: Line scrolling
+            deltaX *= 10;
+            deltaY *= 10;
+          }
+
+          if (deltaX !== deltaX && deltaY !== deltaY/* NaN checks */) {
+            // IE in some mouse drivers
+            deltaX = 0;
+            deltaY = e.originalEvent.wheelDelta;
+          }
+
           return [deltaX, deltaY];
         };
 
