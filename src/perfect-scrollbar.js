@@ -201,6 +201,10 @@
       };
 
       var updateBarSizeAndPosition = function () {
+        // Hide scrollbars not to affect scrollWidth and scrollHeight
+        $scrollbarXRail.hide();
+        $scrollbarYRail.hide();
+
         containerWidth = settings.includePadding ? $this.innerWidth() : $this.width();
         containerHeight = settings.includePadding ? $this.innerHeight() : $this.height();
         contentWidth = $this.prop('scrollWidth');
@@ -238,6 +242,10 @@
         }
 
         updateScrollbarCss();
+
+        // Show scrollbars again after updated
+        $scrollbarXRail.show();
+        $scrollbarYRail.show();
       };
 
       var bindMouseScrollXHandler = function () {
