@@ -398,13 +398,6 @@
         } else if (typeof window.onmousewheel !== "undefined") {
           $this.bind('mousewheel' + eventClassName, mousewheelHandler);
         }
-
-        // fix Firefox scroll problem
-        $this.bind('MozMousePixelScroll' + eventClassName, function (e) {
-          if (shouldPrevent) {
-            e.preventDefault();
-          }
-        });
       };
 
       var bindKeyboardHandler = function () {
