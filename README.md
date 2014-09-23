@@ -54,6 +54,8 @@ You can use [Bower](http://bower.io/) to install the plugin. The plugin is regis
 bower install perfect-scrollbar
 ```
 
+You can also load it from [cdnjs](http://cdnjs.com/). It is registered as [`jquery.perfect-scrollbar`](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar).
+
 Requirements
 ------------
 
