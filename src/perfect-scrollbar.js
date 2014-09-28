@@ -243,9 +243,13 @@
 
         updateScrollbarCss();
 
-        // Show scrollbars again after updated
-        $scrollbarXRail.show();
-        $scrollbarYRail.show();
+        // Show scrollbars if needed after updated
+        if (!settings.suppressScrollX) {
+          $scrollbarXRail.show();
+        }
+        if (!settings.suppressScrollY) {
+          $scrollbarYRail.show();
+        }
       };
 
       var bindMouseScrollXHandler = function () {
