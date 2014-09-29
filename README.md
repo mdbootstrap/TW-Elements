@@ -125,8 +125,8 @@ How to Use
 ```html
 <style>
   #Demo { 
-    position: 'relative';
-    height: 100%; // Or whatever you want (eg. 400px)
+    position: relative;
+    height: 100%; /* Or whatever you want (eg. 400px) */
     overflow: hidden;
   }
 </style>
