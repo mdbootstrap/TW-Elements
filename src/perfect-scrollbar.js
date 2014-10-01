@@ -431,7 +431,16 @@
             return;
           }
 
-          if (!hovered || $(document.activeElement).is(":input,[contenteditable]")) {
+          if (!hovered) {
+            return;
+          }
+
+          var activeElement = document.activeElement;
+          // go deeper if element is a webcomponent
+          while (activeElement.shadowRoot) {
+            activeElement = activeElement.shadowRoot.activeElement;
+          }
+          if ($(activeElement).is(":input,[contenteditable]")) {
             return;
           }
 
