@@ -17,6 +17,15 @@
 }(function ($) {
   'use strict';
 
+  // helper functions
+  function int(x) {
+    if (typeof x === 'string') {
+      return parseInt(x, 10);
+    } else {
+      return ~~x;
+    }
+  }
+
   // The default settings for the plugin
   var defaultSettings = {
     wheelSpeed: 1,
@@ -92,18 +101,18 @@
       var contentHeight;
       var scrollbarXWidth;
       var scrollbarXLeft;
-      var scrollbarXBottom = parseInt($scrollbarXRail.css('bottom'), 10);
+      var scrollbarXBottom = int($scrollbarXRail.css('bottom'));
       var isScrollbarXUsingBottom = scrollbarXBottom === scrollbarXBottom; // !isNaN
-      var scrollbarXTop = isScrollbarXUsingBottom ? null : parseInt($scrollbarXRail.css('top'), 10);
+      var scrollbarXTop = isScrollbarXUsingBottom ? null : int($scrollbarXRail.css('top'));
       var scrollbarYHeight;
       var scrollbarYTop;
-      var scrollbarYRight = parseInt($scrollbarYRail.css('right'), 10);
+      var scrollbarYRight = int($scrollbarYRail.css('right'));
       var isScrollbarYUsingRight = scrollbarYRight === scrollbarYRight; // !isNaN
-      var scrollbarYLeft = isScrollbarYUsingRight ? null : parseInt($scrollbarYRail.css('left'), 10);
+      var scrollbarYLeft = isScrollbarYUsingRight ? null : int($scrollbarYRail.css('left'));
       var isRtl = $this.css('direction') === "rtl";
       var eventClassName = getEventClassName();
-      var railBorderXWidth = parseInt($scrollbarXRail.css('borderLeftWidth'), 10) + parseInt($scrollbarXRail.css('borderRightWidth'), 10);
-      var railBorderYWidth = parseInt($scrollbarXRail.css('borderTopWidth'), 10) + parseInt($scrollbarXRail.css('borderBottomWidth'), 10);
+      var railBorderXWidth = int($scrollbarXRail.css('borderLeftWidth')) + int($scrollbarXRail.css('borderRightWidth'));
+      var railBorderYWidth = int($scrollbarXRail.css('borderTopWidth')) + int($scrollbarXRail.css('borderBottomWidth'));
 
       var updateContentScrollTop = function (currentTop, deltaY) {
         var newTop = currentTop + deltaY;
@@ -119,7 +128,7 @@
           scrollbarYTop = newTop;
         }
 
-        var scrollTop = parseInt(scrollbarYTop * (contentHeight - containerHeight) / (containerHeight - scrollbarYHeight), 10);
+        var scrollTop = int(scrollbarYTop * (contentHeight - containerHeight) / (containerHeight - scrollbarYHeight));
         $this.scrollTop(scrollTop);
       };
 
@@ -137,7 +146,7 @@
           scrollbarXLeft = newLeft;
         }
 
-        var scrollLeft = parseInt(scrollbarXLeft * (contentWidth - containerWidth) / (containerWidth - scrollbarXWidth), 10);
+        var scrollLeft = int(scrollbarXLeft * (contentWidth - containerWidth) / (containerWidth - scrollbarXWidth));
         $this.scrollLeft(scrollLeft);
       };
 
@@ -210,8 +219,8 @@
 
         if (!settings.suppressScrollX && containerWidth + settings.scrollXMarginOffset < contentWidth) {
           scrollbarXActive = true;
-          scrollbarXWidth = getSettingsAdjustedThumbSize(parseInt(containerWidth * containerWidth / contentWidth, 10));
-          scrollbarXLeft = parseInt($this.scrollLeft() * (containerWidth - scrollbarXWidth) / (contentWidth - containerWidth), 10);
+          scrollbarXWidth = getSettingsAdjustedThumbSize(int(containerWidth * containerWidth / contentWidth));
+          scrollbarXLeft = int($this.scrollLeft() * (containerWidth - scrollbarXWidth) / (contentWidth - containerWidth));
         }
         else {
           scrollbarXActive = false;
@@ -222,8 +231,8 @@
 
         if (!settings.suppressScrollY && containerHeight + settings.scrollYMarginOffset < contentHeight) {
           scrollbarYActive = true;
-          scrollbarYHeight = getSettingsAdjustedThumbSize(parseInt(containerHeight * containerHeight / contentHeight, 10));
-          scrollbarYTop = parseInt($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight), 10);
+          scrollbarYHeight = getSettingsAdjustedThumbSize(int(containerHeight * containerHeight / contentHeight));
+          scrollbarYTop = int($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight));
         }
         else {
           scrollbarYActive = false;
@@ -481,7 +490,7 @@
 
         $scrollbarY.bind('click' + eventClassName, stopPropagation);
         $scrollbarYRail.bind('click' + eventClassName, function (e) {
-          var halfOfScrollbarLength = parseInt(scrollbarYHeight / 2, 10);
+          var halfOfScrollbarLength = int(scrollbarYHeight / 2);
           var positionTop = e.pageY - $scrollbarYRail.offset().top - halfOfScrollbarLength;
           var maxPositionTop = containerHeight - scrollbarYHeight;
           var positionRatio = positionTop / maxPositionTop;
@@ -497,7 +506,7 @@
 
         $scrollbarX.bind('click' + eventClassName, stopPropagation);
         $scrollbarXRail.bind('click' + eventClassName, function (e) {
-          var halfOfScrollbarLength = parseInt(scrollbarXWidth / 2, 10);
+          var halfOfScrollbarLength = int(scrollbarXWidth / 2);
           var positionLeft = e.pageX - $scrollbarXRail.offset().left - halfOfScrollbarLength;
           var maxPositionLeft = containerWidth - scrollbarXWidth;
           var positionRatio = positionLeft / maxPositionLeft;
@@ -686,7 +695,7 @@
         var ieMatch = navigator.userAgent.toLowerCase().match(/(msie) ([\w.]+)/);
         if (ieMatch && ieMatch[1] === 'msie') {
           // must be executed at first, because 'ieSupport' may addClass to the container
-          ieSupport(parseInt(ieMatch[2], 10));
+          ieSupport(int(ieMatch[2]));
         }
 
         updateBarSizeAndPosition();
