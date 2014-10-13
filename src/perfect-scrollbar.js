@@ -513,7 +513,7 @@
         });
       }
 
-      function bindMobileTouchHandler() {
+      function bindTouchHandler() {
         function applyTouchMove(differenceX, differenceY) {
           $this.scrollTop($this.scrollTop() - differenceY);
           $this.scrollLeft($this.scrollLeft() - differenceX);
@@ -527,15 +527,23 @@
         var breakingProcess = null;
         var inGlobalTouch = false;
 
-        $(window).bind("touchstart" + eventClassName, function (e) {
+        function globalTouchStart(e) {
           inGlobalTouch = true;
-        });
-        $(window).bind("touchend" + eventClassName, function (e) {
+        }
+        function globalTouchEnd(e) {
           inGlobalTouch = false;
-        });
+        }
 
-        $this.bind("touchstart" + eventClassName, function (e) {
-          var touch = e.originalEvent.targetTouches[0];
+        function getTouch(e) {
+          if (e.originalEvent.targetTouches) {
+            return e.originalEvent.targetTouches[0];
+          } else {
+            // Maybe IE pointer
+            return e.originalEvent;
+          }
+        }
+        function touchStart(e) {
+          var touch = getTouch(e);
 
           startOffset.pageX = touch.pageX;
           startOffset.pageY = touch.pageY;
@@ -547,10 +555,10 @@
           }
 
           e.stopPropagation();
-        });
-        $this.bind("touchmove" + eventClassName, function (e) {
+        }
+        function touchMove(e) {
           if (!inGlobalTouch && e.originalEvent.targetTouches.length === 1) {
-            var touch = e.originalEvent.targetTouches[0];
+            var touch = getTouch(e);
 
             var currentOffset = {pageX: touch.pageX, pageY: touch.pageY};
 
@@ -571,8 +579,8 @@
 
             e.preventDefault();
           }
-        });
-        $this.bind("touchend" + eventClassName, function (e) {
+        }
+        function touchEnd(e) {
           clearInterval(breakingProcess);
           breakingProcess = setInterval(function () {
             if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
@@ -585,7 +593,27 @@
             speed.x *= 0.8;
             speed.y *= 0.8;
           }, 10);
-        });
+        }
+
+        $(window).bind("touchstart" + eventClassName, globalTouchStart);
+        $(window).bind("touchend" + eventClassName, globalTouchEnd);
+        $this.bind("touchstart" + eventClassName, touchStart);
+        $this.bind("touchmove" + eventClassName, touchMove);
+        $this.bind("touchend" + eventClassName, touchEnd);
+
+        if (window.PointerEvent) {
+          $(window).bind("pointerdown" + eventClassName, globalTouchStart);
+          $(window).bind("pointerup" + eventClassName, globalTouchEnd);
+          $this.bind("pointerdown" + eventClassName, touchStart);
+          $this.bind("pointermove" + eventClassName, touchMove);
+          $this.bind("pointerup" + eventClassName, touchEnd);
+        } else if (window.MSPointerEvent) {
+          $(window).bind("MSPointerDown" + eventClassName, globalTouchStart);
+          $(window).bind("MSPointerUp" + eventClassName, globalTouchEnd);
+          $this.bind("MSPointerDown" + eventClassName, touchStart);
+          $this.bind("MSPointerMove" + eventClassName, touchMove);
+          $this.bind("MSPointerUp" + eventClassName, touchEnd);
+        }
       }
 
       function bindScrollHandler() {
@@ -632,6 +660,7 @@
       }
 
       var supportsTouch = (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch);
+      var supportsIePointer = window.navigator.msMaxTouchPoints !== null;
 
       function initialize() {
         updateGeometry();
@@ -641,8 +670,8 @@
         bindRailClickHandler();
         bindMouseWheelHandler();
 
-        if (supportsTouch) {
-          bindMobileTouchHandler();
+        if (supportsTouch || supportsIePointer) {
+          bindTouchHandler();
         }
         if (settings.useKeyboard) {
           bindKeyboardHandler();
