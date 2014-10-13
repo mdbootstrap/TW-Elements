@@ -39,25 +39,24 @@
       incrementingId += 1;
       return '.perfect-scrollbar-' + id;
     };
-  }());
+  })();
 
   $.fn.perfectScrollbar = function (suppliedSettings, option) {
 
     return this.each(function () {
       // Use the default settings
-      var settings = $.extend(true, {}, defaultSettings),
-          $this = $(this);
+      var settings = $.extend(true, {}, defaultSettings);
+      var $this = $(this);
 
       if (typeof suppliedSettings === "object") {
-        // But over-ride any supplied
+        // But override any supplied
         $.extend(true, settings, suppliedSettings);
       } else {
-        // If no settings were supplied, then the first param must be the option
+        // If no setting was supplied, then the first param must be the option
         option = suppliedSettings;
       }
 
       // Catch options
-
       if (option === 'update') {
         if ($this.data('perfect-scrollbar-update')) {
           $this.data('perfect-scrollbar-update')();
@@ -79,37 +78,36 @@
 
       // Or generate new perfectScrollbar
 
-      // Set class to the container
       $this.addClass('ps-container');
 
-      var $scrollbarXRail = $("<div class='ps-scrollbar-x-rail'></div>").appendTo($this),
-          $scrollbarYRail = $("<div class='ps-scrollbar-y-rail'></div>").appendTo($this),
-          $scrollbarX = $("<div class='ps-scrollbar-x'></div>").appendTo($scrollbarXRail),
-          $scrollbarY = $("<div class='ps-scrollbar-y'></div>").appendTo($scrollbarYRail),
-          scrollbarXActive,
-          scrollbarYActive,
-          containerWidth,
-          containerHeight,
-          contentWidth,
-          contentHeight,
-          scrollbarXWidth,
-          scrollbarXLeft,
-          scrollbarXBottom = parseInt($scrollbarXRail.css('bottom'), 10),
-          isScrollbarXUsingBottom = scrollbarXBottom === scrollbarXBottom, // !isNaN
-          scrollbarXTop = isScrollbarXUsingBottom ? null : parseInt($scrollbarXRail.css('top'), 10),
-          scrollbarYHeight,
-          scrollbarYTop,
-          scrollbarYRight = parseInt($scrollbarYRail.css('right'), 10),
-          isScrollbarYUsingRight = scrollbarYRight === scrollbarYRight, // !isNaN
-          scrollbarYLeft = isScrollbarYUsingRight ? null: parseInt($scrollbarYRail.css('left'), 10),
-          isRtl = $this.css('direction') === "rtl",
-          eventClassName = getEventClassName(),
-          railBorderXWidth = parseInt($scrollbarXRail.css('borderLeftWidth'), 10) + parseInt($scrollbarXRail.css('borderRightWidth'), 10),
-          railBorderYWidth = parseInt($scrollbarXRail.css('borderTopWidth'), 10) + parseInt($scrollbarXRail.css('borderBottomWidth'), 10);
+      var $scrollbarXRail = $("<div class='ps-scrollbar-x-rail'>").appendTo($this);
+      var $scrollbarYRail = $("<div class='ps-scrollbar-y-rail'>").appendTo($this);
+      var $scrollbarX = $("<div class='ps-scrollbar-x'>").appendTo($scrollbarXRail);
+      var $scrollbarY = $("<div class='ps-scrollbar-y'>").appendTo($scrollbarYRail);
+      var scrollbarXActive;
+      var scrollbarYActive;
+      var containerWidth;
+      var containerHeight;
+      var contentWidth;
+      var contentHeight;
+      var scrollbarXWidth;
+      var scrollbarXLeft;
+      var scrollbarXBottom = parseInt($scrollbarXRail.css('bottom'), 10);
+      var isScrollbarXUsingBottom = scrollbarXBottom === scrollbarXBottom; // !isNaN
+      var scrollbarXTop = isScrollbarXUsingBottom ? null : parseInt($scrollbarXRail.css('top'), 10);
+      var scrollbarYHeight;
+      var scrollbarYTop;
+      var scrollbarYRight = parseInt($scrollbarYRail.css('right'), 10);
+      var isScrollbarYUsingRight = scrollbarYRight === scrollbarYRight; // !isNaN
+      var scrollbarYLeft = isScrollbarYUsingRight ? null : parseInt($scrollbarYRail.css('left'), 10);
+      var isRtl = $this.css('direction') === "rtl";
+      var eventClassName = getEventClassName();
+      var railBorderXWidth = parseInt($scrollbarXRail.css('borderLeftWidth'), 10) + parseInt($scrollbarXRail.css('borderRightWidth'), 10);
+      var railBorderYWidth = parseInt($scrollbarXRail.css('borderTopWidth'), 10) + parseInt($scrollbarXRail.css('borderBottomWidth'), 10);
 
       var updateContentScrollTop = function (currentTop, deltaY) {
-        var newTop = currentTop + deltaY,
-            maxTop = containerHeight - scrollbarYHeight;
+        var newTop = currentTop + deltaY;
+        var maxTop = containerHeight - scrollbarYHeight;
 
         if (newTop < 0) {
           scrollbarYTop = 0;
@@ -126,8 +124,8 @@
       };
 
       var updateContentScrollLeft = function (currentLeft, deltaX) {
-        var newLeft = currentLeft + deltaX,
-            maxLeft = containerWidth - scrollbarXWidth;
+        var newLeft = currentLeft + deltaX;
+        var maxLeft = containerWidth - scrollbarXWidth;
 
         if (newLeft < 0) {
           scrollbarXLeft = 0;
@@ -154,7 +152,7 @@
       };
 
       var updateScrollbarCss = function () {
-        var scrollbarXStyles = {width: containerWidth, display: scrollbarXActive ? "inherit": "none"};
+        var scrollbarXStyles = { width: containerWidth, display: scrollbarXActive ? "inherit" : "none" };
         if (isRtl) {
           scrollbarXStyles.left = $this.scrollLeft() + containerWidth - contentWidth;
         } else {
@@ -167,7 +165,7 @@
         }
         $scrollbarXRail.css(scrollbarXStyles);
 
-        var scrollbarYStyles = {top: $this.scrollTop(), height: containerHeight, display: scrollbarYActive ? "inherit": "none"};
+        var scrollbarYStyles = { top: $this.scrollTop(), height: containerHeight, display: scrollbarYActive ? "inherit" : "none" };
 
         if (isScrollbarYUsingRight) {
           if (isRtl) {
@@ -184,8 +182,8 @@
         }
         $scrollbarYRail.css(scrollbarYStyles);
 
-        $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth - railBorderXWidth});
-        $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight - railBorderYWidth});
+        $scrollbarX.css({ left: scrollbarXLeft, width: scrollbarXWidth - railBorderXWidth });
+        $scrollbarY.css({ top: scrollbarYTop, height: scrollbarYHeight - railBorderYWidth });
 
         if (scrollbarXActive) {
           $this.addClass('ps-active-x');
@@ -253,8 +251,8 @@
       };
 
       var bindMouseScrollXHandler = function () {
-        var currentLeft,
-            currentPageX;
+        var currentLeft;
+        var currentPageX;
 
         $scrollbarX.bind('mousedown' + eventClassName, function (e) {
           currentPageX = e.pageX;
@@ -284,8 +282,8 @@
       };
 
       var bindMouseScrollYHandler = function () {
-        var currentTop,
-            currentPageY;
+        var currentTop;
+        var currentPageY;
 
         $scrollbarY.bind('mousedown' + eventClassName, function (e) {
           currentPageY = e.pageY;
@@ -343,8 +341,8 @@
         var shouldPrevent = false;
 
         var getDeltaFromEvent = function (e) {
-          var deltaX = e.originalEvent.deltaX,
-              deltaY = -1 * e.originalEvent.deltaY;
+          var deltaX = e.originalEvent.deltaX;
+          var deltaY = -1 * e.originalEvent.deltaY;
 
           if (typeof deltaX === "undefined" || typeof deltaY === "undefined") {
             // OS X Safari
@@ -370,8 +368,8 @@
         var mousewheelHandler = function (e) {
           var delta = getDeltaFromEvent(e);
 
-          var deltaX = delta[0],
-              deltaY = delta[1];
+          var deltaX = delta[0];
+          var deltaY = delta[1];
 
           shouldPrevent = false;
           if (!settings.useBothWheelAxes) {
@@ -435,8 +433,8 @@
             return;
           }
 
-          var deltaX = 0,
-              deltaY = 0;
+          var deltaX = 0;
+          var deltaY = 0;
 
           switch (e.which) {
           case 37: // left
@@ -483,10 +481,10 @@
 
         $scrollbarY.bind('click' + eventClassName, stopPropagation);
         $scrollbarYRail.bind('click' + eventClassName, function (e) {
-          var halfOfScrollbarLength = parseInt(scrollbarYHeight / 2, 10),
-              positionTop = e.pageY - $scrollbarYRail.offset().top - halfOfScrollbarLength,
-              maxPositionTop = containerHeight - scrollbarYHeight,
-              positionRatio = positionTop / maxPositionTop;
+          var halfOfScrollbarLength = parseInt(scrollbarYHeight / 2, 10);
+          var positionTop = e.pageY - $scrollbarYRail.offset().top - halfOfScrollbarLength;
+          var maxPositionTop = containerHeight - scrollbarYHeight;
+          var positionRatio = positionTop / maxPositionTop;
 
           if (positionRatio < 0) {
             positionRatio = 0;
@@ -499,10 +497,10 @@
 
         $scrollbarX.bind('click' + eventClassName, stopPropagation);
         $scrollbarXRail.bind('click' + eventClassName, function (e) {
-          var halfOfScrollbarLength = parseInt(scrollbarXWidth / 2, 10),
-              positionLeft = e.pageX - $scrollbarXRail.offset().left - halfOfScrollbarLength,
-              maxPositionLeft = containerWidth - scrollbarXWidth,
-              positionRatio = positionLeft / maxPositionLeft;
+          var halfOfScrollbarLength = parseInt(scrollbarXWidth / 2, 10);
+          var positionLeft = e.pageX - $scrollbarXRail.offset().left - halfOfScrollbarLength;
+          var maxPositionLeft = containerWidth - scrollbarXWidth;
+          var positionRatio = positionLeft / maxPositionLeft;
 
           if (positionRatio < 0) {
             positionRatio = 0;
@@ -524,11 +522,11 @@
           updateBarSizeAndPosition();
         };
 
-        var startCoords = {},
-            startTime = 0,
-            speed = {},
-            breakingProcess = null,
-            inGlobalTouch = false;
+        var startCoords = {};
+        var startTime = 0;
+        var speed = {};
+        var breakingProcess = null;
+        var inGlobalTouch = false;
 
         $(window).bind("touchstart" + eventClassName, function (e) {
           inGlobalTouch = true;
@@ -559,8 +557,8 @@
             currentCoords.pageX = touch.pageX;
             currentCoords.pageY = touch.pageY;
 
-            var differenceX = currentCoords.pageX - startCoords.pageX,
-              differenceY = currentCoords.pageY - startCoords.pageY;
+            var differenceX = currentCoords.pageX - startCoords.pageX;
+            var differenceY = currentCoords.pageY - startCoords.pageY;
 
             applyTouchMove(differenceX, differenceY);
             startCoords = currentCoords;
@@ -655,7 +653,7 @@
 
         var fixIe6ScrollbarPosition = function () {
           updateScrollbarCss = function () {
-            var scrollbarXStyles = {left: scrollbarXLeft + $this.scrollLeft(), width: scrollbarXWidth};
+            var scrollbarXStyles = { left: scrollbarXLeft + $this.scrollLeft(), width: scrollbarXWidth };
             if (isScrollbarXUsingBottom) {
               scrollbarXStyles.bottom = scrollbarXBottom;
             } else {
@@ -663,7 +661,7 @@
             }
             $scrollbarX.css(scrollbarXStyles);
 
-            var scrollbarYStyles = {top: scrollbarYTop + $this.scrollTop(), height: scrollbarYHeight};
+            var scrollbarYStyles = { top: scrollbarYTop + $this.scrollTop(), height: scrollbarYHeight };
             if (isScrollbarYUsingRight) {
               scrollbarYStyles.right = scrollbarYRight;
             } else {
