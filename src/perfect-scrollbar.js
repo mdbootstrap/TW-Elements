@@ -117,16 +117,16 @@
 
       // Adding "hover" class on mouse over\out
       // Inner perfect-scrollbar fix.
-      $this.mouseover(function(e){
+      $this.mouseover(function (e) {
           e.stopPropagation();
           e.preventDefault();
           $this.addClass('hover');
-      });
-      $this.mouseout(function(e){
+        });
+      $this.mouseout(function (e) {
           e.stopPropagation();
           e.preventDefault();
-          $this.removeClass('hover')
-      })
+          $this.removeClass('hover');
+        });
 
       function updateScrollTop(currentTop, deltaY) {
         var newTop = currentTop + deltaY;
