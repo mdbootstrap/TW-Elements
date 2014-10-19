@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>perfect-scrollbar example</title>
+    <link href="../src/perfect-scrollbar.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../src/perfect-scrollbar.js"></script>
+    <style>
+        .contentHolder1 { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
+        .contentHolder2 { position:relative;  padding:0px; width: 300px; height: 200px; overflow: hidden; }
+        .contentHolder1 .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+        .contentHolder2 .content { background-image: url('./Koala.jpg');  }
+        .spacer { text-align:center }
+    </style>
+    <script>
+        jQuery(document).ready(function ($) {
+            "use strict";
+            $('#Default1').perfectScrollbar();
+            $('#Default2').perfectScrollbar({
+                wheelPropagation:true
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div id="Default1" class="contentHolder1">
+    <div class="content">
+        <div id="Default2" class="contentHolder2">
+            <div class="content">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

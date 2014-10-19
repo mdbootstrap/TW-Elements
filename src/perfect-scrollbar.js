@@ -115,6 +115,19 @@
       var scrollbarYLeft = isScrollbarYUsingRight ? null : int($scrollbarYRail.css('left'));
       var railBorderYWidth = int($scrollbarXRail.css('borderTopWidth')) + int($scrollbarXRail.css('borderBottomWidth'));
 
+      // Adding "hover" class on mouse over\out
+      // Inner perfect-scrollbar fix.
+      $this.mouseover(function(e){
+          e.stopPropagation();
+          e.preventDefault();
+          $this.addClass('hover');
+      });
+      $this.mouseout(function(e){
+          e.stopPropagation();
+          e.preventDefault();
+          $this.removeClass('hover')
+      })
+
       function updateScrollTop(currentTop, deltaY) {
         var newTop = currentTop + deltaY;
         var maxTop = containerHeight - scrollbarYHeight;
