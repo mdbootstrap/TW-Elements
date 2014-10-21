@@ -44,14 +44,20 @@ You can download the latest stable version with download links in [Github Page](
 If you want to use the development version of the plugin, use the source files which are not minified. They're in the `src` directory. The development version may be unstable, but some known bugs can be fixed.
 
 ```
-git clone https://github.com/noraesae/perfect-scrollbar.git
-cd perfect-scrollbar/src
+$ git clone https://github.com/noraesae/perfect-scrollbar.git
+$ cd perfect-scrollbar/src
 ```
 
 You can use [Bower](http://bower.io/) to install the plugin. The plugin is registered as `perfect-scrollbar`.
 
 ```
-bower install perfect-scrollbar
+$ bower install perfect-scrollbar
+```
+
+It's registered on [npm](https://www.npmjs.org/package/perfect-scrollbar) as `perfect-scrollbar`.
+
+```
+$ npm install perfect-scrollbar
 ```
 
 You can also load it from [cdnjs](http://cdnjs.com/). It is registered as [`jquery.perfect-scrollbar`](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar).
