@@ -531,7 +531,7 @@
         });
       }
 
-      function bindTouchHandler() {
+      function bindTouchHandler(supportsTouch, supportsIePointer) {
         function applyTouchMove(differenceX, differenceY) {
           $this.scrollTop($this.scrollTop() - differenceY);
           $this.scrollLeft($this.scrollLeft() - differenceX);
@@ -613,24 +613,28 @@
           }, 10);
         }
 
-        $(window).bind("touchstart" + eventClassName, globalTouchStart);
-        $(window).bind("touchend" + eventClassName, globalTouchEnd);
-        $this.bind("touchstart" + eventClassName, touchStart);
-        $this.bind("touchmove" + eventClassName, touchMove);
-        $this.bind("touchend" + eventClassName, touchEnd);
+        if (supportsTouch) {
+          $(window).bind("touchstart" + eventClassName, globalTouchStart);
+          $(window).bind("touchend" + eventClassName, globalTouchEnd);
+          $this.bind("touchstart" + eventClassName, touchStart);
+          $this.bind("touchmove" + eventClassName, touchMove);
+          $this.bind("touchend" + eventClassName, touchEnd);
+        }
 
-        if (window.PointerEvent) {
-          $(window).bind("pointerdown" + eventClassName, globalTouchStart);
-          $(window).bind("pointerup" + eventClassName, globalTouchEnd);
-          $this.bind("pointerdown" + eventClassName, touchStart);
-          $this.bind("pointermove" + eventClassName, touchMove);
-          $this.bind("pointerup" + eventClassName, touchEnd);
-        } else if (window.MSPointerEvent) {
-          $(window).bind("MSPointerDown" + eventClassName, globalTouchStart);
-          $(window).bind("MSPointerUp" + eventClassName, globalTouchEnd);
-          $this.bind("MSPointerDown" + eventClassName, touchStart);
-          $this.bind("MSPointerMove" + eventClassName, touchMove);
-          $this.bind("MSPointerUp" + eventClassName, touchEnd);
+        if (supportsIePointer) {
+          if (window.PointerEvent) {
+            $(window).bind("pointerdown" + eventClassName, globalTouchStart);
+            $(window).bind("pointerup" + eventClassName, globalTouchEnd);
+            $this.bind("pointerdown" + eventClassName, touchStart);
+            $this.bind("pointermove" + eventClassName, touchMove);
+            $this.bind("pointerup" + eventClassName, touchEnd);
+          } else if (window.MSPointerEvent) {
+            $(window).bind("MSPointerDown" + eventClassName, globalTouchStart);
+            $(window).bind("MSPointerUp" + eventClassName, globalTouchEnd);
+            $this.bind("MSPointerDown" + eventClassName, touchStart);
+            $this.bind("MSPointerMove" + eventClassName, touchMove);
+            $this.bind("MSPointerUp" + eventClassName, touchEnd);
+          }
         }
       }
 
@@ -689,7 +693,7 @@
         bindMouseWheelHandler();
 
         if (supportsTouch || supportsIePointer) {
-          bindTouchHandler();
+          bindTouchHandler(supportsTouch, supportsIePointer);
         }
         if (settings.useKeyboard) {
           bindKeyboardHandler();
