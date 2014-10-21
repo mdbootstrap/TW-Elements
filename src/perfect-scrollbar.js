@@ -573,6 +573,7 @@
           }
 
           e.stopPropagation();
+          e.preventDefault();
         }
         function touchMove(e) {
           if (!inGlobalTouch && e.originalEvent.targetTouches.length === 1) {
@@ -595,6 +596,7 @@
               startTime = currentTime;
             }
 
+            e.stopPropagation();
             e.preventDefault();
           }
         }
