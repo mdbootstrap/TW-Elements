@@ -186,11 +186,9 @@ For IE problems, please refer to [IE Support](https://github.com/noraesae/perfec
 IE Support
 ----------
 
-This plugin supports old IE browsers in the **minimum** range. The plugin is tested in IEs >= IE6 and works(not well, but works).
+The plugin would work in IEs >= IE9(not well, though).
 
-**But the project will not accept the patches to fix IE problems in IE 6/7/8.**
-
-From jQuery 2.0, jQuery also will not support IE 6/7/8. I also think that supporting old browsers really breaks the web development conventions.
+**The patches to fix problems in IE<=8 won't be accepted.**
 
 When old IEs should be supported, please fork the project and make patches personally.
 
