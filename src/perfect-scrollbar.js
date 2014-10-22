@@ -250,33 +250,32 @@
         var currentLeft;
         var currentPageX;
 
-        var inScrolling = false;
+        var mouseMoveHandler = function (e) {
+          updateScrollLeft(currentLeft, e.pageX - currentPageX);
+          updateGeometry();
+          e.stopPropagation();
+          e.preventDefault();
+        };
+
+        var mouseUpHandler = function (e) {
+          $scrollbarXRail.removeClass('in-scrolling');
+          $(ownerDocument).unbind(eventClass('mousemove'), mouseMoveHandler);
+        };
+
         $scrollbarX.bind(eventClass('mousedown'), function (e) {
           currentPageX = e.pageX;
           currentLeft = $scrollbarX.position().left;
           $scrollbarXRail.addClass('in-scrolling');
-          inScrolling = true;
+
+          // handle mousemove and mouseup only after mousedown on scrollbarX
+          $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
+          $(ownerDocument).one(eventClass('mouseup'), mouseUpHandler);
+
           e.stopPropagation();
           e.preventDefault();
         });
 
-        $(ownerDocument).bind(eventClass('mousemove'), function (e) {
-          if (inScrolling) {
-            updateScrollLeft(currentLeft, e.pageX - currentPageX);
-            updateGeometry();
-            e.stopPropagation();
-            e.preventDefault();
-          }
-        });
-
-        $(ownerDocument).bind(eventClass('mouseup'), function (e) {
-          if (inScrolling) {
-            inScrolling = false;
-            $scrollbarXRail.removeClass('in-scrolling');
-          }
-        });
-
-        currentLeft =
+        currentLeft = null;
         currentPageX = null;
       }
 
@@ -284,33 +283,31 @@
         var currentTop;
         var currentPageY;
 
-        var inScrolling = false;
+        var mouseMoveHandler = function (e) {
+          updateScrollTop(currentTop, e.pageY - currentPageY);
+          updateGeometry();
+          e.stopPropagation();
+          e.preventDefault();
+        };
+
+        var mouseUpHandler = function (e) {
+          $scrollbarYRail.removeClass('in-scrolling');
+          $(ownerDocument).unbind(eventClass('mousemove'), mouseMoveHandler);
+        };
+
         $scrollbarY.bind(eventClass('mousedown'), function (e) {
           currentPageY = e.pageY;
           currentTop = $scrollbarY.position().top;
-          inScrolling = true;
           $scrollbarYRail.addClass('in-scrolling');
+
+          $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
+          $(ownerDocument).one(eventClass('mouseup'), mouseUpHandler);
+
           e.stopPropagation();
           e.preventDefault();
         });
 
-        $(ownerDocument).bind(eventClass('mousemove'), function (e) {
-          if (inScrolling) {
-            updateScrollTop(currentTop, e.pageY - currentPageY);
-            updateGeometry();
-            e.stopPropagation();
-            e.preventDefault();
-          }
-        });
-
-        $(ownerDocument).bind(eventClass('mouseup'), function (e) {
-          if (inScrolling) {
-            inScrolling = false;
-            $scrollbarYRail.removeClass('in-scrolling');
-          }
-        });
-
-        currentTop =
+        currentTop = null;
         currentPageY = null;
       }
 
