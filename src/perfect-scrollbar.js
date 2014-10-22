@@ -113,7 +113,7 @@
       var scrollbarYRight = int($scrollbarYRail.css('right'));
       var isScrollbarYUsingRight = scrollbarYRight === scrollbarYRight; // !isNaN
       var scrollbarYLeft = isScrollbarYUsingRight ? null : int($scrollbarYRail.css('left'));
-      var railBorderYWidth = int($scrollbarXRail.css('borderTopWidth')) + int($scrollbarXRail.css('borderBottomWidth'));
+      var railBorderYWidth = int($scrollbarYRail.css('borderTopWidth')) + int($scrollbarYRail.css('borderBottomWidth'));
 
       function updateScrollTop(currentTop, deltaY) {
         var newTop = currentTop + deltaY;
