@@ -544,6 +544,7 @@
         var speed = {};
         var breakingProcess = null;
         var inGlobalTouch = false;
+        var inLocalTouch = false;
 
         function globalTouchStart(e) {
           inGlobalTouch = true;
@@ -560,23 +561,37 @@
             return e.originalEvent;
           }
         }
-        function touchStart(e) {
-          var touch = getTouch(e);
-
-          startOffset.pageX = touch.pageX;
-          startOffset.pageY = touch.pageY;
-
-          startTime = (new Date()).getTime();
-
-          if (breakingProcess !== null) {
-            clearInterval(breakingProcess);
+        function shouldHandle(e) {
+          var event = e.originalEvent;
+          if (event.targetTouches && event.targetTouches.length === 1) {
+            return true;
           }
+          if (event.pointerType && event.pointerType !== 'mouse') {
+            return true;
+          }
+          return false;
+        }
+        function touchStart(e) {
+          if (shouldHandle(e)) {
+            inLocalTouch = true;
 
-          e.stopPropagation();
-          e.preventDefault();
+            var touch = getTouch(e);
+
+            startOffset.pageX = touch.pageX;
+            startOffset.pageY = touch.pageY;
+
+            startTime = (new Date()).getTime();
+
+            if (breakingProcess !== null) {
+              clearInterval(breakingProcess);
+            }
+
+            e.stopPropagation();
+            e.preventDefault();
+          }
         }
         function touchMove(e) {
-          if (!inGlobalTouch && e.originalEvent.targetTouches.length === 1) {
+          if (!inGlobalTouch && inLocalTouch && shouldHandle(e)) {
             var touch = getTouch(e);
 
             var currentOffset = {pageX: touch.pageX, pageY: touch.pageY};
@@ -601,18 +616,22 @@
           }
         }
         function touchEnd(e) {
-          clearInterval(breakingProcess);
-          breakingProcess = setInterval(function () {
-            if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
-              clearInterval(breakingProcess);
-              return;
-            }
+          if (!inGlobalTouch && inLocalTouch) {
+            inLocalTouch = false;
 
-            applyTouchMove(speed.x * 30, speed.y * 30);
+            clearInterval(breakingProcess);
+            breakingProcess = setInterval(function () {
+              if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
+                clearInterval(breakingProcess);
+                return;
+              }
 
-            speed.x *= 0.8;
-            speed.y *= 0.8;
-          }, 10);
+              applyTouchMove(speed.x * 30, speed.y * 30);
+
+              speed.x *= 0.8;
+              speed.y *= 0.8;
+            }, 10);
+          }
         }
 
         if (supportsTouch) {
