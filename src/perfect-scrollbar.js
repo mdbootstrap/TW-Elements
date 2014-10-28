@@ -198,8 +198,8 @@
 
       function updateGeometry() {
         // Hide scrollbars not to affect scrollWidth and scrollHeight
-        $scrollbarXRail.hide();
-        $scrollbarYRail.hide();
+        $this.removeClass('ps-active-x');
+        $this.removeClass('ps-active-y');
 
         containerWidth = settings.includePadding ? $this.innerWidth() : $this.width();
         containerHeight = settings.includePadding ? $this.innerHeight() : $this.height();
@@ -239,22 +239,9 @@
 
         if (scrollbarXActive) {
           $this.addClass('ps-active-x');
-        } else {
-          $this.removeClass('ps-active-x');
         }
-
         if (scrollbarYActive) {
           $this.addClass('ps-active-y');
-        } else {
-          $this.removeClass('ps-active-y');
-        }
-
-        // Show scrollbars if needed after updated
-        if (!settings.suppressScrollX) {
-          $scrollbarXRail.show();
-        }
-        if (!settings.suppressScrollY) {
-          $scrollbarYRail.show();
         }
       }
 
