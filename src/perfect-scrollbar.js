@@ -587,7 +587,6 @@
             }
 
             e.stopPropagation();
-            e.preventDefault();
           }
         }
         function touchMove(e) {
