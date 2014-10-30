@@ -658,7 +658,7 @@
           if (event.targetTouches && event.targetTouches.length === 1) {
             return true;
           }
-          if (event.pointerType && event.pointerType !== 'mouse') {
+          if (event.pointerType && event.pointerType !== 'mouse' && event.pointerType !== event.MSPOINTER_TYPE_MOUSE) {
             return true;
           }
           return false;
