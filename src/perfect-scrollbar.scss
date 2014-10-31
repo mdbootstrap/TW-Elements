@@ -1,0 +1,111 @@
+// Helper mixins
+@mixin opacity($o) {
+  $IEValue: $o * 100;
+  opacity: $o;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+      filter: alpha(opacity=$IEValue);
+}
+
+@mixin border-radius($r) {
+  -webkit-border-radius: $r;
+     -moz-border-radius: $r;
+      -ms-border-radius: $r;
+          border-radius: $r;
+}
+
+@mixin transition($t...) {
+  -webkit-transition: $t;
+     -moz-transition: $t;
+       -o-transition: $t;
+          transition: $t;
+}
+
+// Scrollbar mixins
+@mixin scrollbar-rail-default {
+  display: none;
+  position: absolute; /* please don't change 'position' */
+  @include border-radius(4px);
+  @include opacity(0);
+  @include transition(background-color .2s linear, opacity .2s linear);
+}
+
+@mixin scrollbar-rail-hover {
+  background-color: #eee;
+  @include opacity(0.9);
+}
+
+@mixin scrollbar-default {
+  position: absolute; /* please don't change 'position' */
+  background-color: #aaa;
+  @include border-radius(4px);
+  @include transition(background-color .2s linear);
+}
+
+@mixin scrollbar-hover {
+  background-color: #999;
+}
+
+@mixin in-scrolling {
+  &.in-scrolling {
+    @include scrollbar-rail-hover;
+  }
+}
+
+.ps-container {
+  &.ps-active-x > .ps-scrollbar-x-rail,
+  &.ps-active-y > .ps-scrollbar-y-rail {
+    display: block;
+  }
+
+  >.ps-scrollbar-x-rail {
+    @include scrollbar-rail-default;
+    bottom: 3px; /* there must be 'bottom' for ps-scrollbar-x-rail */
+    height: 8px;
+
+    >.ps-scrollbar-x {
+      @include scrollbar-default;
+      bottom: 0; /* there must be 'bottom' for ps-scrollbar-x */
+      height: 8px;
+    }
+
+    @include in-scrolling;
+  }
+
+  >.ps-scrollbar-y-rail {
+    @include scrollbar-rail-default;
+    right: 3px; /* there must be 'right' for ps-scrollbar-y-rail */
+    width: 8px;
+
+    >.ps-scrollbar-y {
+      @include scrollbar-default;
+      right: 0; /* there must be 'right' for ps-scrollbar-y */
+      width: 8px;
+    }
+
+    @include in-scrolling;
+  }
+
+  &:hover {
+    >.ps-scrollbar-x-rail,
+    >.ps-scrollbar-y-rail {
+      @include opacity(0.6);
+      @include in-scrolling;
+    }
+
+    >.ps-scrollbar-x-rail:hover {
+      @include scrollbar-rail-hover;
+
+      >.ps-scrollbar-x {
+        @include scrollbar-hover;
+      }
+    }
+
+    >.ps-scrollbar-y-rail:hover {
+      @include scrollbar-rail-hover;
+
+      >.ps-scrollbar-y {
+        @include scrollbar-hover;
+      }
+    }
+  }
+}
