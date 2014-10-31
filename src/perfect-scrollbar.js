@@ -640,7 +640,7 @@
         var startOffset = {};
         var startTime = 0;
         var speed = {};
-        var breakingProcess = null;
+        var easingLoop = null;
         var inGlobalTouch = false;
         var inLocalTouch = false;
 
@@ -680,8 +680,8 @@
 
             startTime = (new Date()).getTime();
 
-            if (breakingProcess !== null) {
-              clearInterval(breakingProcess);
+            if (easingLoop !== null) {
+              clearInterval(easingLoop);
             }
 
             e.stopPropagation();
@@ -716,15 +716,15 @@
           if (!inGlobalTouch && inLocalTouch) {
             inLocalTouch = false;
 
-            clearInterval(breakingProcess);
-            breakingProcess = setInterval(function () {
+            clearInterval(easingLoop);
+            easingLoop = setInterval(function () {
               if (!isPluginAlive()) {
-                clearInterval(breakingProcess);
+                clearInterval(easingLoop);
                 return;
               }
 
               if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
-                clearInterval(breakingProcess);
+                clearInterval(easingLoop);
                 return;
               }
 
