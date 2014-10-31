@@ -57,6 +57,7 @@
     return this.each(function () {
       var settings = $.extend(true, {}, defaultSettings);
       var $this = $(this);
+      var isPluginAlive = function () { return !!$this; };
 
       if (typeof suppliedSettings === "object") {
         // Override default settings with any supplied
@@ -544,6 +545,11 @@
         function startScrolling() {
           if (!scrollingLoop) {
             scrollingLoop = setInterval(function () {
+              if (!isPluginAlive()) {
+                clearInterval(scrollingLoop);
+                return;
+              }
+
               $this.scrollTop($this.scrollTop() + scrollDiff.top);
               $this.scrollLeft($this.scrollLeft() + scrollDiff.left);
               updateGeometry();
@@ -712,6 +718,11 @@
 
             clearInterval(breakingProcess);
             breakingProcess = setInterval(function () {
+              if (!isPluginAlive()) {
+                clearInterval(breakingProcess);
+                return;
+              }
+
               if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
                 clearInterval(breakingProcess);
                 return;
@@ -769,6 +780,7 @@
         $scrollbarYRail.remove();
 
         // clean all variables
+        $this =
         $scrollbarXRail =
         $scrollbarYRail =
         $scrollbarX =
