@@ -203,6 +203,8 @@ Helpdesk
 
 If you have any idea to improve this project or any problem using this, please feel free to upload an [issue](https://github.com/noraesae/perfect-scrollbar/issues).
 
+For the problems frequently asked, there's a [FAQ](https://github.com/noraesae/perfect-scrollbar/wiki/FAQ) wiki page. Please check the page before uploading an issue.
+
 License
 -------
 
