@@ -28,6 +28,7 @@
   var defaultSettings = {
     wheelSpeed: 1,
     wheelPropagation: false,
+    swipePropagation: true,
     minScrollbarLength: null,
     maxScrollbarLength: null,
     useBothWheelAxes: false,
@@ -336,6 +337,35 @@
           }
         }
         return true;
+      }
+
+      // check if default swipe should be prevented
+      function shouldPreventDefaultSwipe(deltaX, deltaY) {
+        var
+          scrollTop = $this.scrollTop(),
+          scrollLeft = $this.scrollLeft(),
+          magnitudeX = Math.abs(deltaX),
+          magnitudeY = Math.abs(deltaY);
+
+        if(magnitudeY > magnitudeX) {
+          // user is perhaps trying to swipe up/down the page
+
+          if( ((deltaY < 0) && (scrollTop == contentHeight - containerHeight)) ||
+              ((deltaY > 0) && (scrollTop == 0))
+            ) {
+            return !settings.swipePropagation;
+          }
+        } else if(magnitudeX > magnitudeY) {
+          // user is perhaps trying to swipe left/right across the page
+
+          if( ((deltaX < 0) && (scrollLeft == contentWidth - containerWidth)) ||
+              ((deltaX > 0) && (scrollLeft == 0))
+            ) {
+            return !settings.swipePropagation;
+          }
+        }
+
+      return true;
       }
 
       function bindMouseWheelHandler() {
@@ -708,8 +738,10 @@
               startTime = currentTime;
             }
 
-            e.stopPropagation();
-            e.preventDefault();
+            if( shouldPreventDefaultSwipe(differenceX, differenceY) ) {
+              e.stopPropagation();
+              e.preventDefault();
+            }
           }
         }
         function touchEnd(e) {
