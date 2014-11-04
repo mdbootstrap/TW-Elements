@@ -347,25 +347,23 @@
           magnitudeX = Math.abs(deltaX),
           magnitudeY = Math.abs(deltaY);
 
-        if(magnitudeY > magnitudeX) {
+        if (magnitudeY > magnitudeX) {
           // user is perhaps trying to swipe up/down the page
 
-          if( ((deltaY < 0) && (scrollTop == contentHeight - containerHeight)) ||
-              ((deltaY > 0) && (scrollTop == 0))
-            ) {
+          if (((deltaY < 0) && (scrollTop === contentHeight - containerHeight)) ||
+              ((deltaY > 0) && (scrollTop === 0))) {
             return !settings.swipePropagation;
           }
-        } else if(magnitudeX > magnitudeY) {
+        } else if (magnitudeX > magnitudeY) {
           // user is perhaps trying to swipe left/right across the page
 
-          if( ((deltaX < 0) && (scrollLeft == contentWidth - containerWidth)) ||
-              ((deltaX > 0) && (scrollLeft == 0))
-            ) {
+          if (((deltaX < 0) && (scrollLeft === contentWidth - containerWidth)) ||
+              ((deltaX > 0) && (scrollLeft === 0))) {
             return !settings.swipePropagation;
           }
         }
 
-      return true;
+        return true;
       }
 
       function bindMouseWheelHandler() {
@@ -738,7 +736,7 @@
               startTime = currentTime;
             }
 
-            if( shouldPreventDefaultSwipe(differenceX, differenceY) ) {
+            if (shouldPreventDefaultSwipe(differenceX, differenceY)) {
               e.stopPropagation();
               e.preventDefault();
             }
