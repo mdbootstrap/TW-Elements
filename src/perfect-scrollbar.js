@@ -163,7 +163,7 @@
       }
 
       function updateCss() {
-        var xRailOffset = {width: containerWidth, display: scrollbarXActive ? "inherit" : "none"};
+        var xRailOffset = {width: containerWidth};
         if (isRtl) {
           xRailOffset.left = $this.scrollLeft() + containerWidth - contentWidth;
         } else {
@@ -176,7 +176,7 @@
         }
         $scrollbarXRail.css(xRailOffset);
 
-        var railYOffset = {top: $this.scrollTop(), height: containerHeight, display: scrollbarYActive ? "inherit" : "none"};
+        var railYOffset = {top: $this.scrollTop(), height: containerHeight};
 
         if (isScrollbarYUsingRight) {
           if (isRtl) {
