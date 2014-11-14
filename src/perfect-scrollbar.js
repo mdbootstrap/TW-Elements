@@ -23,7 +23,7 @@
     } else {
       return ~~x;
     }
-  };
+  }
 
   var defaultSettings = {
     wheelSpeed: 1,
