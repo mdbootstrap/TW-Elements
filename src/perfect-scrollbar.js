@@ -111,6 +111,8 @@
       var isScrollbarXUsingBottom = scrollbarXBottom === scrollbarXBottom; // !isNaN
       var scrollbarXTop = isScrollbarXUsingBottom ? null : getInt($scrollbarXRail.css('top'));
       var railBorderXWidth = getInt($scrollbarXRail.css('borderLeftWidth')) + getInt($scrollbarXRail.css('borderRightWidth'));
+      var railXMarginWidth = getInt($scrollbarXRail.css('marginLeft')) + getInt($scrollbarXRail.css('marginRight'));
+      var railXWidth;
 
       var $scrollbarYRail = $("<div class='ps-scrollbar-y-rail'>").appendTo($this);
       var $scrollbarY = $("<div class='ps-scrollbar-y'>").appendTo($scrollbarYRail);
@@ -121,6 +123,8 @@
       var isScrollbarYUsingRight = scrollbarYRight === scrollbarYRight; // !isNaN
       var scrollbarYLeft = isScrollbarYUsingRight ? null : getInt($scrollbarYRail.css('left'));
       var railBorderYWidth = getInt($scrollbarYRail.css('borderTopWidth')) + getInt($scrollbarYRail.css('borderBottomWidth'));
+      var railYMarginHeight = getInt($scrollbarYRail.css('marginTop')) + getInt($scrollbarYRail.css('marginBottom'));
+      var railYHeight;
 
       function updateScrollTop(currentTop, deltaY) {
         var newTop = currentTop + deltaY;
@@ -165,7 +169,7 @@
       }
 
       function updateCss() {
-        var xRailOffset = {width: containerWidth};
+        var xRailOffset = {width: railXWidth};
         if (isRtl) {
           xRailOffset.left = $this.scrollLeft() + containerWidth - contentWidth;
         } else {
@@ -178,7 +182,7 @@
         }
         $scrollbarXRail.css(xRailOffset);
 
-        var railYOffset = {top: $this.scrollTop(), height: containerHeight};
+        var railYOffset = {top: $this.scrollTop(), height: railYHeight};
 
         if (isScrollbarYUsingRight) {
           if (isRtl) {
@@ -211,8 +215,9 @@
 
         if (!settings.suppressScrollX && containerWidth + settings.scrollXMarginOffset < contentWidth) {
           scrollbarXActive = true;
-          scrollbarXWidth = getThumbSize(getInt(containerWidth * containerWidth / contentWidth));
-          scrollbarXLeft = getInt($this.scrollLeft() * (containerWidth - scrollbarXWidth) / (contentWidth - containerWidth));
+          railXWidth = containerWidth - railXMarginWidth;
+          scrollbarXWidth = getThumbSize(getInt(railXWidth * containerWidth / contentWidth));
+          scrollbarXLeft = getInt($this.scrollLeft() * (railXWidth - scrollbarXWidth) / (contentWidth - containerWidth));
         } else {
           scrollbarXActive = false;
           scrollbarXWidth = 0;
@@ -222,8 +227,9 @@
 
         if (!settings.suppressScrollY && containerHeight + settings.scrollYMarginOffset < contentHeight) {
           scrollbarYActive = true;
-          scrollbarYHeight = getThumbSize(getInt(containerHeight * containerHeight / contentHeight));
-          scrollbarYTop = getInt($this.scrollTop() * (containerHeight - scrollbarYHeight) / (contentHeight - containerHeight));
+          railYHeight = containerHeight - railYMarginHeight;
+          scrollbarYHeight = getThumbSize(getInt(railYHeight * containerHeight / contentHeight));
+          scrollbarYTop = getInt($this.scrollTop() * (railYHeight - scrollbarYHeight) / (contentHeight - containerHeight));
         } else {
           scrollbarYActive = false;
           scrollbarYHeight = 0;
@@ -231,11 +237,11 @@
           $this.scrollTop(0);
         }
 
-        if (scrollbarXLeft >= containerWidth - scrollbarXWidth) {
-          scrollbarXLeft = containerWidth - scrollbarXWidth;
+        if (scrollbarXLeft >= railXWidth - scrollbarXWidth) {
+          scrollbarXLeft = railXWidth - scrollbarXWidth;
         }
-        if (scrollbarYTop >= containerHeight - scrollbarYHeight) {
-          scrollbarYTop = containerHeight - scrollbarYHeight;
+        if (scrollbarYTop >= railYHeight - scrollbarYHeight) {
+          scrollbarYTop = railYHeight - scrollbarYHeight;
         }
 
         updateCss();
