@@ -28,6 +28,7 @@
   var defaultSettings = {
     wheelSpeed: 1,
     wheelPropagation: false,
+    disablePropagation: true,
     minScrollbarLength: null,
     maxScrollbarLength: null,
     useBothWheelAxes: false,
@@ -320,7 +321,7 @@
             return false;
           }
           if ((scrollTop === 0 && deltaY > 0) || (scrollTop >= contentHeight - containerHeight && deltaY < 0)) {
-            return !settings.wheelPropagation;
+            return settings.disablePropagation && !settings.wheelPropagation;
           }
         }
 
@@ -330,10 +331,10 @@
             return false;
           }
           if ((scrollLeft === 0 && deltaX < 0) || (scrollLeft >= contentWidth - containerWidth && deltaX > 0)) {
-            return !settings.wheelPropagation;
+            return settings.disablePropagation && !settings.wheelPropagation;
           }
         }
-        return true;
+        return settings.disablePropagation;
       }
 
       function bindMouseWheelHandler() {
