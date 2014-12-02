@@ -86,10 +86,12 @@ The scroll speed applied to mousewheel event.
 **Default: 1**
 
 ### wheelPropagation
-If this option is true, when the scroll reach the end of the side, mousewheel event will be propagated to parent element.  
-*Currently not supported for touch events*  
+If this option is true, when the scroll reaches the end of the side, mousewheel event will be propagated to parent element.  
 **Default: false**
 
+### swipePropagation
+If this option is true, when the scroll reaches the end of the side, touch scrolling will be propagated to parent element.  
+**Default: true**
 
 ### minScrollbarLength
 When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels.  
