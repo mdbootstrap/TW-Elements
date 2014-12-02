@@ -313,8 +313,7 @@
         currentPageY = null;
       }
 
-      // check if the default scrolling should be prevented.
-      function shouldPreventDefault(deltaX, deltaY) {
+      function shouldPreventWheel(deltaX, deltaY) {
         var scrollTop = $this.scrollTop();
         if (deltaX === 0) {
           if (!scrollbarYActive) {
@@ -337,13 +336,11 @@
         return true;
       }
 
-      // check if default swipe should be prevented
-      function shouldPreventDefaultSwipe(deltaX, deltaY) {
-        var
-          scrollTop = $this.scrollTop(),
-          scrollLeft = $this.scrollLeft(),
-          magnitudeX = Math.abs(deltaX),
-          magnitudeY = Math.abs(deltaY);
+      function shouldPreventSwipe(deltaX, deltaY) {
+        var scrollTop = $this.scrollTop();
+        var scrollLeft = $this.scrollLeft();
+        var magnitudeX = Math.abs(deltaX);
+        var magnitudeY = Math.abs(deltaY);
 
         if (magnitudeY > magnitudeX) {
           // user is perhaps trying to swipe up/down the page
@@ -433,7 +430,7 @@
 
           updateGeometry();
 
-          shouldPrevent = (shouldPrevent || shouldPreventDefault(deltaX, deltaY));
+          shouldPrevent = (shouldPrevent || shouldPreventWheel(deltaX, deltaY));
           if (shouldPrevent) {
             e.stopPropagation();
             e.preventDefault();
@@ -519,7 +516,7 @@
           $this.scrollTop($this.scrollTop() - deltaY);
           $this.scrollLeft($this.scrollLeft() + deltaX);
 
-          shouldPrevent = shouldPreventDefault(deltaX, deltaY);
+          shouldPrevent = shouldPreventWheel(deltaX, deltaY);
           if (shouldPrevent) {
             e.preventDefault();
           }
@@ -741,7 +738,7 @@
               startTime = currentTime;
             }
 
-            if (shouldPreventDefaultSwipe(differenceX, differenceY)) {
+            if (shouldPreventSwipe(differenceX, differenceY)) {
               e.stopPropagation();
               e.preventDefault();
             }
