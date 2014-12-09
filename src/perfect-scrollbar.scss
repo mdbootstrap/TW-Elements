@@ -46,8 +46,20 @@
 }
 
 @mixin in-scrolling {
-  &.in-scrolling {
-    @include scrollbar-rail-hover;
+  &.ps-in-scrolling {
+    pointer-events: none;
+    >.ps-scrollbar-x-rail {
+      @include scrollbar-rail-hover;
+      >.ps-scrollbar-x {
+        @include scrollbar-hover;
+      }
+    }
+    >.ps-scrollbar-y-rail {
+      @include scrollbar-rail-hover;
+      >.ps-scrollbar-y {
+        @include scrollbar-hover;
+      }
+    }
   }
 }
 
@@ -56,6 +68,8 @@
   &.ps-active-y > .ps-scrollbar-y-rail {
     display: block;
   }
+
+  @include in-scrolling;
 
   >.ps-scrollbar-x-rail {
     @include scrollbar-rail-default;
@@ -67,8 +81,6 @@
       bottom: 0; /* there must be 'bottom' for ps-scrollbar-x */
       height: 8px;
     }
-
-    @include in-scrolling;
   }
 
   >.ps-scrollbar-y-rail {
@@ -81,15 +93,14 @@
       right: 0; /* there must be 'right' for ps-scrollbar-y */
       width: 8px;
     }
-
-    @include in-scrolling;
   }
 
   &:hover {
+    @include in-scrolling;
+
     >.ps-scrollbar-x-rail,
     >.ps-scrollbar-y-rail {
       @include opacity(0.6);
-      @include in-scrolling;
     }
 
     >.ps-scrollbar-x-rail:hover {
