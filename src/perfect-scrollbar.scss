@@ -1,3 +1,8 @@
+// Colors
+$ps-rail-hover: #eee;
+$ps-bar-default: #aaa;
+$ps-bar-hover: #999;
+
 // Helper mixins
 @mixin opacity($o) {
   $IEValue: $o * 100;
@@ -30,19 +35,19 @@
 }
 
 @mixin scrollbar-rail-hover {
-  background-color: #eee;
+  background-color: $ps-rail-hover;
   @include opacity(0.9);
 }
 
 @mixin scrollbar-default {
   position: absolute; /* please don't change 'position' */
-  background-color: #aaa;
+  background-color: $ps-bar-default;
   @include border-radius(4px);
   @include transition(background-color .2s linear);
 }
 
 @mixin scrollbar-hover {
-  background-color: #999;
+  background-color: $ps-bar-hover;
 }
 
 @mixin in-scrolling {
