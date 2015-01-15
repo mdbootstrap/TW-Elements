@@ -1,19 +1,10 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /* Copyright (c) 2015 Hyunje Alex Jun and other contributors
  * Licensed under the MIT License
  */
 (function (factory) {
   'use strict';
-
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['jquery'], factory);
-  } else if (typeof exports === 'object') {
-    // Node/CommonJS
-    factory(require('jquery'));
-  } else {
-    // Browser globals
-    factory(jQuery);
-  }
+  factory(jQuery);
 })(function ($) {
   'use strict';
 
@@ -470,15 +461,12 @@
           }
 
           var activeElement = document.activeElement ? document.activeElement : ownerDocument.activeElement;
-
-          if (activeElement) {
-            // go deeper if element is a webcomponent
-            while (activeElement.shadowRoot) {
-              activeElement = activeElement.shadowRoot.activeElement;
-            }
-            if ($(activeElement).is(":input,[contenteditable]")) {
-              return;
-            }
+          // go deeper if element is a webcomponent
+          while (activeElement.shadowRoot) {
+            activeElement = activeElement.shadowRoot.activeElement;
+          }
+          if ($(activeElement).is(":input,[contenteditable]")) {
+            return;
           }
 
           var deltaX = 0;
@@ -875,3 +863,5 @@
     });
   };
 });
+
+},{}]},{},[1]);
