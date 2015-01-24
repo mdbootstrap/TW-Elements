@@ -159,8 +159,8 @@ module.exports = function (element, settingOrCommand) {
     cls.remove(element, 'ps-active-x');
     cls.remove(element, 'ps-active-y');
 
-    containerWidth = settings.includePadding ? element.clientWidth : h.toInt(d.css(element, 'width'));
-    containerHeight = settings.includePadding ? element.clientHeight : h.toInt(d.css(element, 'height'));
+    containerWidth = element.clientWidth;
+    containerHeight = element.clientHeight;
     contentWidth = element.scrollWidth;
     contentHeight = element.scrollHeight;
 
