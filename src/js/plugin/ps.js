@@ -349,7 +349,7 @@ module.exports = function (element, settingOrCommand) {
       // FIXME: this is a quick fix for the select problem in FF and IE.
       // If there comes an effective way to deal with the problem,
       // this lines should be removed.
-      if (!h.isWebKit && element.querySelector('select:focus')) {
+      if (!h.env.isWebKit && element.querySelector('select:focus')) {
         return;
       }
 
@@ -769,9 +769,6 @@ module.exports = function (element, settingOrCommand) {
     isPluginAlive = false;
   }
 
-  var supportsTouch = (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch);
-  var supportsIePointer = window.navigator.msMaxTouchPoints !== null;
-
   function initialize() {
     updateGeometry();
     bindScrollHandler();
@@ -781,8 +778,8 @@ module.exports = function (element, settingOrCommand) {
     bindSelectionHandler();
     bindMouseWheelHandler();
 
-    if (supportsTouch || supportsIePointer) {
-      bindTouchHandler(supportsTouch, supportsIePointer);
+    if (h.env.supportsTouch || h.env.supportsIePointer) {
+      bindTouchHandler(h.env.supportsTouch, h.env.supportsIePointer);
     }
     if (settings.useKeyboard) {
       bindKeyboardHandler();
