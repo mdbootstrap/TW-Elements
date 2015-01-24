@@ -766,26 +766,6 @@ module.exports = function (element, settingOrCommand) {
     d.remove(scrollbarXRail);
     d.remove(scrollbarYRail);
 
-    // clean all variables
-    scrollbarXActive =
-    scrollbarYActive =
-    containerWidth =
-    containerHeight =
-    contentWidth =
-    contentHeight =
-    scrollbarXWidth =
-    scrollbarXLeft =
-    scrollbarXBottom =
-    isScrollbarXUsingBottom =
-    scrollbarXTop =
-    scrollbarYHeight =
-    scrollbarYTop =
-    scrollbarYRight =
-    isScrollbarYUsingRight =
-    scrollbarYLeft =
-    isRtl =
-    eventClass = null;
-
     isPluginAlive = false;
   }
 
