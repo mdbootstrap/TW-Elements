@@ -5,20 +5,8 @@
 
 var cls = require('../lib/class')
   , defaultSettings = require('./default-setting')
+  , eventClassFactory = require('../lib/event-class')
   , h = require('../lib/helper');
-
-var incrementingId = 0;
-var eventClassFactory = function () {
-  var id = incrementingId++;
-  return function (eventName) {
-    var className = '.perfect-scrollbar-' + id;
-    if (typeof eventName === 'undefined') {
-      return className;
-    } else {
-      return eventName + className;
-    }
-  };
-};
 
 module.exports = function (element, settingOrCommand) {
   var settings = h.clone(defaultSettings);
