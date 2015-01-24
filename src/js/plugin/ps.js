@@ -4,6 +4,7 @@
 'use strict';
 
 var cls = require('../lib/class')
+  , d = require('../lib/dom')
   , defaultSettings = require('./default-setting')
   , eventClassFactory = require('../lib/event-class')
   , h = require('../lib/helper');
@@ -55,28 +56,28 @@ module.exports = function (element, settingOrCommand) {
   var eventClass = eventClassFactory();
   var ownerDocument = element.ownerDocument || document;
 
-  var $scrollbarXRail = $("<div class='ps-scrollbar-x-rail'>").appendTo($this);
-  var $scrollbarX = $("<div class='ps-scrollbar-x'>").appendTo($scrollbarXRail);
+  var scrollbarXRail = d.appendTo(d.e('div', 'ps-scrollbar-x-rail'), element);
+  var scrollbarX = d.appendTo(d.e('div', 'ps-scrollbar-x'), scrollbarXRail);
   var scrollbarXActive;
   var scrollbarXWidth;
   var scrollbarXLeft;
-  var scrollbarXBottom = h.toInt($scrollbarXRail.css('bottom'));
+  var scrollbarXBottom = h.toInt(d.css(scrollbarXRail, 'bottom'));
   var isScrollbarXUsingBottom = scrollbarXBottom === scrollbarXBottom; // !isNaN
-  var scrollbarXTop = isScrollbarXUsingBottom ? null : h.toInt($scrollbarXRail.css('top'));
-  var railBorderXWidth = h.toInt($scrollbarXRail.css('borderLeftWidth')) + h.toInt($scrollbarXRail.css('borderRightWidth'));
-  var railXMarginWidth = h.toInt($scrollbarXRail.css('marginLeft')) + h.toInt($scrollbarXRail.css('marginRight'));
+  var scrollbarXTop = isScrollbarXUsingBottom ? null : h.toInt(d.css(scrollbarXRail, 'top'));
+  var railBorderXWidth = h.toInt(d.css(scrollbarXRail, 'borderLeftWidth')) + h.toInt(d.css(scrollbarXRail, 'borderRightWidth'));
+  var railXMarginWidth = h.toInt(d.css(scrollbarXRail, 'marginLeft')) + h.toInt(d.css(scrollbarXRail, 'marginRight'));
   var railXWidth;
 
-  var $scrollbarYRail = $("<div class='ps-scrollbar-y-rail'>").appendTo($this);
-  var $scrollbarY = $("<div class='ps-scrollbar-y'>").appendTo($scrollbarYRail);
+  var scrollbarYRail = d.appendTo(d.e('div', 'ps-scrollbar-y-rail'), element);
+  var scrollbarY = d.appendTo(d.e('div', 'ps-scrollbar-y'), scrollbarYRail);
   var scrollbarYActive;
   var scrollbarYHeight;
   var scrollbarYTop;
-  var scrollbarYRight = h.toInt($scrollbarYRail.css('right'));
+  var scrollbarYRight = h.toInt(d.css(scrollbarYRail, 'right'));
   var isScrollbarYUsingRight = scrollbarYRight === scrollbarYRight; // !isNaN
-  var scrollbarYLeft = isScrollbarYUsingRight ? null : h.toInt($scrollbarYRail.css('left'));
-  var railBorderYWidth = h.toInt($scrollbarYRail.css('borderTopWidth')) + h.toInt($scrollbarYRail.css('borderBottomWidth'));
-  var railYMarginHeight = h.toInt($scrollbarYRail.css('marginTop')) + h.toInt($scrollbarYRail.css('marginBottom'));
+  var scrollbarYLeft = isScrollbarYUsingRight ? null : h.toInt(d.css(scrollbarYRail, 'left'));
+  var railBorderYWidth = h.toInt(d.css(scrollbarYRail, 'borderTopWidth')) + h.toInt(d.css(scrollbarYRail, 'borderBottomWidth'));
+  var railYMarginHeight = h.toInt(d.css(scrollbarYRail, 'marginTop')) + h.toInt(d.css(scrollbarYRail, 'marginBottom'));
   var railYHeight;
 
   function updateScrollTop(currentTop, deltaY) {
@@ -133,27 +134,27 @@ module.exports = function (element, settingOrCommand) {
     } else {
       xRailOffset.top = scrollbarXTop + $this.scrollTop();
     }
-    $scrollbarXRail.css(xRailOffset);
+    d.css(scrollbarXRail, xRailOffset);
 
     var railYOffset = {top: $this.scrollTop(), height: railYHeight};
 
     if (isScrollbarYUsingRight) {
       if (isRtl) {
-        railYOffset.right = contentWidth - $this.scrollLeft() - scrollbarYRight - $scrollbarY.outerWidth();
+        railYOffset.right = contentWidth - $this.scrollLeft() - scrollbarYRight - scrollbarY.offsetWidth;
       } else {
         railYOffset.right = scrollbarYRight - $this.scrollLeft();
       }
     } else {
       if (isRtl) {
-        railYOffset.left = $this.scrollLeft() + containerWidth * 2 - contentWidth - scrollbarYLeft - $scrollbarY.outerWidth();
+        railYOffset.left = $this.scrollLeft() + containerWidth * 2 - contentWidth - scrollbarYLeft - scrollbarY.offsetWidth;
       } else {
         railYOffset.left = scrollbarYLeft + $this.scrollLeft();
       }
     }
-    $scrollbarYRail.css(railYOffset);
+    d.css(scrollbarYRail, railYOffset);
 
-    $scrollbarX.css({left: scrollbarXLeft, width: scrollbarXWidth - railBorderXWidth});
-    $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight - railBorderYWidth});
+    d.css(scrollbarX, {left: scrollbarXLeft, width: scrollbarXWidth - railBorderXWidth});
+    d.css(scrollbarY, {top: scrollbarYTop, height: scrollbarYHeight - railBorderYWidth});
   }
 
   function updateGeometry() {
@@ -223,9 +224,9 @@ module.exports = function (element, settingOrCommand) {
       $(ownerDocument).unbind(eventClass('mousemove'), mouseMoveHandler);
     };
 
-    $scrollbarX.bind(eventClass('mousedown'), function (e) {
+    $(scrollbarX).bind(eventClass('mousedown'), function (e) {
       currentPageX = e.pageX;
-      currentLeft = $scrollbarX.position().left;
+      currentLeft = $(scrollbarX).position().left;
       cls.add(element, 'ps-in-scrolling');
 
       $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
@@ -255,9 +256,9 @@ module.exports = function (element, settingOrCommand) {
       $(ownerDocument).unbind(eventClass('mousemove'), mouseMoveHandler);
     };
 
-    $scrollbarY.bind(eventClass('mousedown'), function (e) {
+    $(scrollbarY).bind(eventClass('mousedown'), function (e) {
       currentPageY = e.pageY;
-      currentTop = $scrollbarY.position().top;
+      currentTop = $(scrollbarY).position().top;
       cls.add(element, 'ps-in-scrolling');
 
       $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
@@ -484,10 +485,10 @@ module.exports = function (element, settingOrCommand) {
   function bindRailClickHandler() {
     function stopPropagation(e) { e.stopPropagation(); }
 
-    $scrollbarY.bind(eventClass('click'), stopPropagation);
-    $scrollbarYRail.bind(eventClass('click'), function (e) {
+    $(scrollbarY).bind(eventClass('click'), stopPropagation);
+    $(scrollbarYRail).bind(eventClass('click'), function (e) {
       var halfOfScrollbarLength = h.toInt(scrollbarYHeight / 2);
-      var positionTop = e.pageY - $scrollbarYRail.offset().top - halfOfScrollbarLength;
+      var positionTop = e.pageY - $(scrollbarYRail).offset().top - halfOfScrollbarLength;
       var maxPositionTop = containerHeight - scrollbarYHeight;
       var positionRatio = positionTop / maxPositionTop;
 
@@ -500,10 +501,10 @@ module.exports = function (element, settingOrCommand) {
       $this.scrollTop((contentHeight - containerHeight) * positionRatio);
     });
 
-    $scrollbarX.bind(eventClass('click'), stopPropagation);
-    $scrollbarXRail.bind(eventClass('click'), function (e) {
+    $(scrollbarX).bind(eventClass('click'), stopPropagation);
+    $(scrollbarXRail).bind(eventClass('click'), function (e) {
       var halfOfScrollbarLength = h.toInt(scrollbarXWidth / 2);
-      var positionLeft = e.pageX - $scrollbarXRail.offset().left - halfOfScrollbarLength;
+      var positionLeft = e.pageX - $(scrollbarXRail).offset().left - halfOfScrollbarLength;
       var maxPositionLeft = containerWidth - scrollbarXWidth;
       var positionRatio = positionLeft / maxPositionLeft;
 
@@ -764,17 +765,13 @@ module.exports = function (element, settingOrCommand) {
     $this.data('perfect-scrollbar', null);
     $this.data('perfect-scrollbar-update', null);
     $this.data('perfect-scrollbar-destroy', null);
-    $scrollbarX.remove();
-    $scrollbarY.remove();
-    $scrollbarXRail.remove();
-    $scrollbarYRail.remove();
+    $(scrollbarX).remove();
+    $(scrollbarY).remove();
+    $(scrollbarXRail).remove();
+    $(scrollbarYRail).remove();
 
     // clean all variables
     $this =
-    $scrollbarXRail =
-    $scrollbarYRail =
-    $scrollbarX =
-    $scrollbarY =
     scrollbarXActive =
     scrollbarYActive =
     containerWidth =
