@@ -13,8 +13,6 @@ exports.toInt = function (x) {
   }
 };
 
-exports.isWebKit = 'WebkitAppearance' in document.documentElement.style;
-
 exports.clone = function (obj) {
   if (obj === null) {
     return null;
@@ -42,4 +40,10 @@ exports.isEditable = function (el) {
          d.matches(el, "select,[contenteditable]") ||
          d.matches(el, "textarea,[contenteditable]") ||
          d.matches(el, "button,[contenteditable]");
+};
+
+exports.env = {
+  isWebKit: 'WebkitAppearance' in document.documentElement.style,
+  supportsTouch: (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch),
+  supportsIePointer: window.navigator.msMaxTouchPoints !== null
 };
