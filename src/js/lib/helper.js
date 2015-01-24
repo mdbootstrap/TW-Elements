@@ -3,6 +3,8 @@
  */
 'use strict';
 
+var d = require('./dom');
+
 exports.toInt = function (x) {
   if (typeof x === 'string') {
     return parseInt(x, 10);
@@ -33,4 +35,11 @@ exports.extend = function (original, source) {
     result = this.clone(source[key]);
   }
   return result;
+};
+
+exports.isEditable = function (el) {
+  return d.matches(el, "input,[contenteditable]") ||
+         d.matches(el, "select,[contenteditable]") ||
+         d.matches(el, "textarea,[contenteditable]") ||
+         d.matches(el, "button,[contenteditable]");
 };

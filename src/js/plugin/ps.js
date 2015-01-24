@@ -223,7 +223,7 @@ module.exports = function (element, settingOrCommand) {
 
     $(scrollbarX).bind(eventClass('mousedown'), function (e) {
       currentPageX = e.pageX;
-      currentLeft = $(scrollbarX).position().left;
+      currentLeft = h.toInt(d.css(scrollbarX, 'left'));
       cls.add(element, 'ps-in-scrolling');
 
       $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
@@ -255,7 +255,7 @@ module.exports = function (element, settingOrCommand) {
 
     $(scrollbarY).bind(eventClass('mousedown'), function (e) {
       currentPageY = e.pageY;
-      currentTop = $(scrollbarY).position().top;
+      currentTop = h.toInt(d.css(scrollbarY, 'top'));
       cls.add(element, 'ps-in-scrolling');
 
       $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
@@ -424,7 +424,7 @@ module.exports = function (element, settingOrCommand) {
       while (activeElement.shadowRoot) {
         activeElement = activeElement.shadowRoot.activeElement;
       }
-      if ($(activeElement).is(":input,[contenteditable]")) {
+      if (h.isEditable(activeElement)) {
         return;
       }
 
@@ -485,7 +485,7 @@ module.exports = function (element, settingOrCommand) {
     $(scrollbarY).bind(eventClass('click'), stopPropagation);
     $(scrollbarYRail).bind(eventClass('click'), function (e) {
       var halfOfScrollbarLength = h.toInt(scrollbarYHeight / 2);
-      var positionTop = e.pageY - $(scrollbarYRail).offset().top - halfOfScrollbarLength;
+      var positionTop = e.pageY - scrollbarYRail.offsetTop - halfOfScrollbarLength;
       var maxPositionTop = containerHeight - scrollbarYHeight;
       var positionRatio = positionTop / maxPositionTop;
 
@@ -501,7 +501,7 @@ module.exports = function (element, settingOrCommand) {
     $(scrollbarX).bind(eventClass('click'), stopPropagation);
     $(scrollbarXRail).bind(eventClass('click'), function (e) {
       var halfOfScrollbarLength = h.toInt(scrollbarXWidth / 2);
-      var positionLeft = e.pageX - $(scrollbarXRail).offset().left - halfOfScrollbarLength;
+      var positionLeft = e.pageX - scrollbarXRail.offsetLeft - halfOfScrollbarLength;
       var maxPositionLeft = containerWidth - scrollbarXWidth;
       var positionRatio = positionLeft / maxPositionLeft;
 
@@ -570,12 +570,11 @@ module.exports = function (element, settingOrCommand) {
     $(window).bind(eventClass('mousemove'), function (e) {
       if (isSelected) {
         var mousePosition = {x: e.pageX, y: e.pageY};
-        var containerOffset = $(element).offset();
         var containerGeometry = {
-          left: containerOffset.left,
-          right: containerOffset.left + element.offsetWidth,
-          top: containerOffset.top,
-          bottom: containerOffset.top + element.offsetHeight
+          left: element.offsetLeft,
+          right: element.offsetLeft + element.offsetWidth,
+          top: element.offsetTop,
+          bottom: element.offsetTop + element.offsetHeight
         };
 
         if (mousePosition.x < containerGeometry.left + 3) {
@@ -762,10 +761,10 @@ module.exports = function (element, settingOrCommand) {
     $(element).data('perfect-scrollbar', null);
     $(element).data('perfect-scrollbar-update', null);
     $(element).data('perfect-scrollbar-destroy', null);
-    $(scrollbarX).remove();
-    $(scrollbarY).remove();
-    $(scrollbarXRail).remove();
-    $(scrollbarYRail).remove();
+    d.remove(scrollbarX);
+    d.remove(scrollbarY);
+    d.remove(scrollbarXRail);
+    d.remove(scrollbarYRail);
 
     // clean all variables
     scrollbarXActive =
