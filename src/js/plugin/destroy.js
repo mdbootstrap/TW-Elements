@@ -3,8 +3,7 @@
  */
 'use strict';
 
-var cls = require('../lib/class')
-  , d = require('../lib/dom')
+var d = require('../lib/dom')
   , h = require('../lib/helper')
   , instances = require('./instances');
 

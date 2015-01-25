@@ -4,7 +4,7 @@ var gulp = require('gulp')
   , browserify = require('browserify')
   , bump = require('gulp-bump')
   , connect = require('gulp-connect')
-  , jshint = require('gulp-jshint')
+  , eslint = require('gulp-eslint')
   , rename = require('gulp-rename')
   , rimraf = require('gulp-rimraf')
   , sass = require('gulp-sass')
@@ -13,8 +13,9 @@ var gulp = require('gulp')
 
 gulp.task('lint', function () {
   return gulp.src(['./src/**/*.js', './gulpfile.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
 });
 
 gulp.task('clean:js', function () {

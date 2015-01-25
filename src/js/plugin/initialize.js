@@ -63,7 +63,7 @@ module.exports = function (element, userSettings) {
       e.preventDefault();
     };
 
-    var mouseUpHandler = function (e) {
+    var mouseUpHandler = function () {
       cls.remove(element, 'ps-x');
       cls.remove(element, 'ps-in-scrolling');
       $(i.ownerDocument).unbind(i.eventClass('mousemove'), mouseMoveHandler);
@@ -97,7 +97,7 @@ module.exports = function (element, userSettings) {
       e.preventDefault();
     };
 
-    var mouseUpHandler = function (e) {
+    var mouseUpHandler = function () {
       cls.remove(element, 'ps-y');
       cls.remove(element, 'ps-in-scrolling');
       $(i.ownerDocument).unbind(i.eventClass('mousemove'), mouseMoveHandler);
@@ -253,10 +253,10 @@ module.exports = function (element, userSettings) {
 
   function bindKeyboardHandler() {
     var hovered = false;
-    $(element).bind(i.eventClass('mouseenter'), function (e) {
+    $(element).bind(i.eventClass('mouseenter'), function () {
       hovered = true;
     });
-    $(element).bind(i.eventClass('mouseleave'), function (e) {
+    $(element).bind(i.eventClass('mouseleave'), function () {
       hovered = false;
     });
 
@@ -331,7 +331,7 @@ module.exports = function (element, userSettings) {
   }
 
   function bindRailClickHandler() {
-    function stopPropagation(e) { e.stopPropagation(); }
+    var stopPropagation = window.Event.prototype.stopPropagation.bind;
 
     $(i.scrollbarY).bind(i.eventClass('click'), stopPropagation);
     $(i.scrollbarYRail).bind(i.eventClass('click'), function (e) {
@@ -403,7 +403,7 @@ module.exports = function (element, userSettings) {
     }
 
     var isSelected = false;
-    $(i.ownerDocument).bind(i.eventClass('selectionchange'), function (e) {
+    $(i.ownerDocument).bind(i.eventClass('selectionchange'), function () {
       if ($.contains(element, getRangeNode())) {
         isSelected = true;
       } else {
@@ -411,7 +411,7 @@ module.exports = function (element, userSettings) {
         stopScrolling();
       }
     });
-    $(window).bind(i.eventClass('mouseup'), function (e) {
+    $(window).bind(i.eventClass('mouseup'), function () {
       if (isSelected) {
         isSelected = false;
         stopScrolling();
@@ -480,10 +480,10 @@ module.exports = function (element, userSettings) {
     var inGlobalTouch = false;
     var inLocalTouch = false;
 
-    function globalTouchStart(e) {
+    function globalTouchStart() {
       inGlobalTouch = true;
     }
-    function globalTouchEnd(e) {
+    function globalTouchEnd() {
       inGlobalTouch = false;
     }
 
@@ -550,7 +550,7 @@ module.exports = function (element, userSettings) {
         }
       }
     }
-    function touchEnd(e) {
+    function touchEnd() {
       if (!inGlobalTouch && inLocalTouch) {
         inLocalTouch = false;
 
@@ -600,7 +600,7 @@ module.exports = function (element, userSettings) {
   }
 
   function bindScrollHandler() {
-    $(element).bind(i.eventClass('scroll'), function (e) {
+    $(element).bind(i.eventClass('scroll'), function () {
       updateGeometry(element);
     });
   }
