@@ -218,6 +218,7 @@ module.exports = function (element, settingOrCommand) {
     };
 
     var mouseUpHandler = function (e) {
+      cls.remove(element, 'ps-x');
       cls.remove(element, 'ps-in-scrolling');
       $(ownerDocument).unbind(eventClass('mousemove'), mouseMoveHandler);
     };
@@ -226,6 +227,7 @@ module.exports = function (element, settingOrCommand) {
       currentPageX = e.pageX;
       currentLeft = h.toInt(d.css(scrollbarX, 'left'));
       cls.add(element, 'ps-in-scrolling');
+      cls.add(element, 'ps-x');
 
       $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
       evt.once(ownerDocument, 'mouseup', mouseUpHandler);
@@ -250,6 +252,7 @@ module.exports = function (element, settingOrCommand) {
     };
 
     var mouseUpHandler = function (e) {
+      cls.remove(element, 'ps-y');
       cls.remove(element, 'ps-in-scrolling');
       $(ownerDocument).unbind(eventClass('mousemove'), mouseMoveHandler);
     };
@@ -258,6 +261,7 @@ module.exports = function (element, settingOrCommand) {
       currentPageY = e.pageY;
       currentTop = h.toInt(d.css(scrollbarY, 'top'));
       cls.add(element, 'ps-in-scrolling');
+      cls.add(element, 'ps-y');
 
       $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
       evt.once(ownerDocument, 'mouseup', mouseUpHandler);
