@@ -3,6 +3,7 @@
 var gulp = require('gulp')
   , browserify = require('browserify')
   , bump = require('gulp-bump')
+  , connect = require('gulp-connect')
   , jshint = require('gulp-jshint')
   , rename = require('gulp-rename')
   , rimraf = require('gulp-rimraf')
@@ -37,7 +38,8 @@ gulp.task('js', ['clean:js'], function () {
   return gulp.src('./src/js/main.js')
     .pipe(browserified())
     .pipe(rename('perfect-scrollbar.js'))
-    .pipe(gulp.dest('./out/js'));
+    .pipe(gulp.dest('./out/js'))
+    .pipe(connect.reload());
 });
 
 gulp.task('js:min', ['clean:js:min'], function () {
@@ -62,7 +64,8 @@ gulp.task('sass', ['clean:css'], function () {
   return gulp.src('./src/css/main.scss')
     .pipe(sass())
     .pipe(rename('perfect-scrollbar.css'))
-    .pipe(gulp.dest('./out/css'));
+    .pipe(gulp.dest('./out/css'))
+    .pipe(connect.reload());
 });
 
 gulp.task('sass:min', ['clean:css:min'], function () {
@@ -91,4 +94,19 @@ gulp.task('bump', function () {
 gulp.task('release', ['bump', 'build']);
 
 gulp.task('build', ['js', 'js:min', 'sass', 'sass:min']);
+
+gulp.task('connect', ['build'], function () {
+  connect.server({
+    root: __dirname,
+    livereload: true
+  });
+});
+
+gulp.task('watch', function () {
+  gulp.watch(['src/js/**/*'], ['js']);
+  gulp.watch(['src/css/**/*'], ['css']);
+});
+
+gulp.task('serve', ['connect', 'watch']);
+
 gulp.task('default', ['lint', 'build']);
