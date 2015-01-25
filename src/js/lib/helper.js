@@ -3,7 +3,8 @@
  */
 'use strict';
 
-var d = require('./dom');
+var cls = require('./class')
+  , d = require('./dom');
 
 exports.toInt = function (x) {
   if (typeof x === 'string') {
@@ -40,6 +41,16 @@ exports.isEditable = function (el) {
          d.matches(el, "select,[contenteditable]") ||
          d.matches(el, "textarea,[contenteditable]") ||
          d.matches(el, "button,[contenteditable]");
+};
+
+exports.removePsClass = function (element) {
+  var clsList = cls.list(element);
+  for (var i = 0; i < clsList.length; i++) {
+    var className = clsList[i];
+    if (className.indexOf('ps-') === 0) {
+      cls.remove(className);
+    }
+  }
 };
 
 exports.env = {

@@ -35,3 +35,11 @@ exports.remove = function (element, className) {
     oldRemove(element, className);
   }
 };
+
+exports.list = function (element) {
+  if (element.classList) {
+    return element.classList;
+  } else {
+    return element.className.split(' ');
+  }
+};
