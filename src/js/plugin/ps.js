@@ -6,6 +6,7 @@
 var cls = require('../lib/class')
   , d = require('../lib/dom')
   , defaultSettings = require('./default-setting')
+  , evt = require('../lib/event')
   , eventClassFactory = require('../lib/event-class')
   , h = require('../lib/helper');
 
@@ -227,7 +228,7 @@ module.exports = function (element, settingOrCommand) {
       cls.add(element, 'ps-in-scrolling');
 
       $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
-      $(ownerDocument).one(eventClass('mouseup'), mouseUpHandler);
+      evt.once(ownerDocument, 'mouseup', mouseUpHandler);
 
       e.stopPropagation();
       e.preventDefault();
@@ -259,7 +260,7 @@ module.exports = function (element, settingOrCommand) {
       cls.add(element, 'ps-in-scrolling');
 
       $(ownerDocument).bind(eventClass('mousemove'), mouseMoveHandler);
-      $(ownerDocument).one(eventClass('mouseup'), mouseUpHandler);
+      evt.once(ownerDocument, 'mouseup', mouseUpHandler);
 
       e.stopPropagation();
       e.preventDefault();
