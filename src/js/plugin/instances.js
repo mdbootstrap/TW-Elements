@@ -5,7 +5,7 @@
 
 var d = require('../lib/dom')
   , defaultSettings = require('./default-setting')
-  , eventClassFactory = require('../lib/event-class')
+  , EventManager = require('../lib/event-manager')
   , guid = require('../lib/guid')
   , h = require('../lib/helper');
 
@@ -21,7 +21,7 @@ function Instance(element) {
   i.contentHeight = null;
 
   i.isRtl = d.css(element, 'direction') === "rtl";
-  i.eventClass = eventClassFactory();
+  i.event = new EventManager();
   i.ownerDocument = element.ownerDocument || document;
 
   i.scrollbarXRail = d.appendTo(d.e('div', 'ps-scrollbar-x-rail'), element);
