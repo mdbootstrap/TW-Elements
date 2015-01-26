@@ -5,7 +5,6 @@
 
 var cls = require('../lib/class')
   , d = require('../lib/dom')
-  , evt = require('../lib/event')
   , h = require('../lib/helper')
   , instances = require('./instances')
   , updateGeometry = require('./update');
@@ -66,17 +65,17 @@ module.exports = function (element, userSettings) {
     var mouseUpHandler = function () {
       cls.remove(element, 'ps-x');
       cls.remove(element, 'ps-in-scrolling');
-      $(i.ownerDocument).unbind(i.eventClass('mousemove'), mouseMoveHandler);
+      i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     };
 
-    $(i.scrollbarX).bind(i.eventClass('mousedown'), function (e) {
+    i.event.bind(i.scrollbarX, 'mousedown', function (e) {
       currentPageX = e.pageX;
       currentLeft = h.toInt(d.css(i.scrollbarX, 'left'));
       cls.add(element, 'ps-in-scrolling');
       cls.add(element, 'ps-x');
 
-      $(i.ownerDocument).bind(i.eventClass('mousemove'), mouseMoveHandler);
-      evt.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+      i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+      i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
 
       e.stopPropagation();
       e.preventDefault();
@@ -100,17 +99,17 @@ module.exports = function (element, userSettings) {
     var mouseUpHandler = function () {
       cls.remove(element, 'ps-y');
       cls.remove(element, 'ps-in-scrolling');
-      $(i.ownerDocument).unbind(i.eventClass('mousemove'), mouseMoveHandler);
+      i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     };
 
-    $(i.scrollbarY).bind(i.eventClass('mousedown'), function (e) {
+    i.event.bind(i.scrollbarY, 'mousedown', function (e) {
       currentPageY = e.pageY;
       currentTop = h.toInt(d.css(i.scrollbarY, 'top'));
       cls.add(element, 'ps-in-scrolling');
       cls.add(element, 'ps-y');
 
-      $(i.ownerDocument).bind(i.eventClass('mousemove'), mouseMoveHandler);
-      evt.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+      i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+      i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
 
       e.stopPropagation();
       e.preventDefault();
@@ -172,16 +171,16 @@ module.exports = function (element, userSettings) {
     var shouldPrevent = false;
 
     function getDeltaFromEvent(e) {
-      var deltaX = e.originalEvent.deltaX;
-      var deltaY = -1 * e.originalEvent.deltaY;
+      var deltaX = e.deltaX;
+      var deltaY = -1 * e.deltaY;
 
       if (typeof deltaX === "undefined" || typeof deltaY === "undefined") {
         // OS X Safari
-        deltaX = -1 * e.originalEvent.wheelDeltaX / 6;
-        deltaY = e.originalEvent.wheelDeltaY / 6;
+        deltaX = -1 * e.wheelDeltaX / 6;
+        deltaY = e.wheelDeltaY / 6;
       }
 
-      if (e.originalEvent.deltaMode && e.originalEvent.deltaMode === 1) {
+      if (e.deltaMode && e.deltaMode === 1) {
         // Firefox in deltaMode 1: Line scrolling
         deltaX *= 10;
         deltaY *= 10;
@@ -190,7 +189,7 @@ module.exports = function (element, userSettings) {
       if (deltaX !== deltaX && deltaY !== deltaY/* NaN checks */) {
         // IE in some mouse drivers
         deltaX = 0;
-        deltaY = e.originalEvent.wheelDelta;
+        deltaY = e.wheelDelta;
       }
 
       return [deltaX, deltaY];
@@ -245,23 +244,23 @@ module.exports = function (element, userSettings) {
     }
 
     if (typeof window.onwheel !== "undefined") {
-      $(element).bind(i.eventClass('wheel'), mousewheelHandler);
+      i.event.bind(element, 'wheel', mousewheelHandler);
     } else if (typeof window.onmousewheel !== "undefined") {
-      $(element).bind(i.eventClass('mousewheel'), mousewheelHandler);
+      i.event.bind(element, 'mousewheel', mousewheelHandler);
     }
   }
 
   function bindKeyboardHandler() {
     var hovered = false;
-    $(element).bind(i.eventClass('mouseenter'), function () {
+    i.event.bind(element, 'mouseenter', function () {
       hovered = true;
     });
-    $(element).bind(i.eventClass('mouseleave'), function () {
+    i.event.bind(element, 'mouseleave', function () {
       hovered = false;
     });
 
     var shouldPrevent = false;
-    $(i.ownerDocument).bind(i.eventClass('keydown'), function (e) {
+    i.event.bind(i.ownerDocument, 'keydown', function (e) {
       if (e.isDefaultPrevented && e.isDefaultPrevented()) {
         return;
       }
@@ -333,8 +332,8 @@ module.exports = function (element, userSettings) {
   function bindRailClickHandler() {
     var stopPropagation = window.Event.prototype.stopPropagation.bind;
 
-    $(i.scrollbarY).bind(i.eventClass('click'), stopPropagation);
-    $(i.scrollbarYRail).bind(i.eventClass('click'), function (e) {
+    i.event.bind(i.scrollbarY, 'click', stopPropagation);
+    i.event.bind(i.scrollbarYRail, 'click', function (e) {
       var halfOfScrollbarLength = h.toInt(i.scrollbarYHeight / 2);
       var positionTop = e.pageY - i.scrollbarYRail.offsetTop - halfOfScrollbarLength;
       var maxPositionTop = i.containerHeight - i.scrollbarYHeight;
@@ -349,8 +348,8 @@ module.exports = function (element, userSettings) {
       element.scrollTop = (i.contentHeight - i.containerHeight) * positionRatio;
     });
 
-    $(i.scrollbarX).bind(i.eventClass('click'), stopPropagation);
-    $(i.scrollbarXRail).bind(i.eventClass('click'), function (e) {
+    i.event.bind(i.scrollbarX, 'click', stopPropagation);
+    i.event.bind(i.scrollbarXRail, 'click', function (e) {
       var halfOfScrollbarLength = h.toInt(i.scrollbarXWidth / 2);
       var positionLeft = e.pageX - i.scrollbarXRail.offsetLeft - halfOfScrollbarLength;
       var maxPositionLeft = i.containerWidth - i.scrollbarXWidth;
@@ -403,7 +402,7 @@ module.exports = function (element, userSettings) {
     }
 
     var isSelected = false;
-    $(i.ownerDocument).bind(i.eventClass('selectionchange'), function () {
+    i.event.bind(i.ownerDocument, 'selectionchange', function () {
       if ($.contains(element, getRangeNode())) {
         isSelected = true;
       } else {
@@ -411,14 +410,14 @@ module.exports = function (element, userSettings) {
         stopScrolling();
       }
     });
-    $(window).bind(i.eventClass('mouseup'), function () {
+    i.event.bind(window, 'mouseup', function () {
       if (isSelected) {
         isSelected = false;
         stopScrolling();
       }
     });
 
-    $(window).bind(i.eventClass('mousemove'), function (e) {
+    i.event.bind(window, 'mousemove', function (e) {
       if (isSelected) {
         var mousePosition = {x: e.pageX, y: e.pageY};
         var containerGeometry = {
@@ -488,19 +487,18 @@ module.exports = function (element, userSettings) {
     }
 
     function getTouch(e) {
-      if (e.originalEvent.targetTouches) {
-        return e.originalEvent.targetTouches[0];
+      if (e.targetTouches) {
+        return e.targetTouches[0];
       } else {
         // Maybe IE pointer
-        return e.originalEvent;
+        return e;
       }
     }
     function shouldHandle(e) {
-      var event = e.originalEvent;
-      if (event.targetTouches && event.targetTouches.length === 1) {
+      if (e.targetTouches && e.targetTouches.length === 1) {
         return true;
       }
-      if (event.pointerType && event.pointerType !== 'mouse' && event.pointerType !== event.MSPOINTER_TYPE_MOUSE) {
+      if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== e.MSPOINTER_TYPE_MOUSE) {
         return true;
       }
       return false;
@@ -575,32 +573,32 @@ module.exports = function (element, userSettings) {
     }
 
     if (supportsTouch) {
-      $(window).bind(i.eventClass("touchstart"), globalTouchStart);
-      $(window).bind(i.eventClass("touchend"), globalTouchEnd);
-      $(element).bind(i.eventClass("touchstart"), touchStart);
-      $(element).bind(i.eventClass("touchmove"), touchMove);
-      $(element).bind(i.eventClass("touchend"), touchEnd);
+      i.event.bind(window, 'touchstart', globalTouchStart);
+      i.event.bind(window, 'touchend', globalTouchEnd);
+      i.event.bind(element, 'touchstart', touchStart);
+      i.event.bind(element, 'touchmove', touchMove);
+      i.event.bind(element, 'touchend', touchEnd);
     }
 
     if (supportsIePointer) {
       if (window.PointerEvent) {
-        $(window).bind(i.eventClass("pointerdown"), globalTouchStart);
-        $(window).bind(i.eventClass("pointerup"), globalTouchEnd);
-        $(element).bind(i.eventClass("pointerdown"), touchStart);
-        $(element).bind(i.eventClass("pointermove"), touchMove);
-        $(element).bind(i.eventClass("pointerup"), touchEnd);
+        i.event.bind(window, 'pointerdown', globalTouchStart);
+        i.event.bind(window, 'pointerup', globalTouchEnd);
+        i.event.bind(element, 'pointerdown', touchStart);
+        i.event.bind(element, 'pointermove', touchMove);
+        i.event.bind(element, 'pointerup', touchEnd);
       } else if (window.MSPointerEvent) {
-        $(window).bind(i.eventClass("MSPointerDown"), globalTouchStart);
-        $(window).bind(i.eventClass("MSPointerUp"), globalTouchEnd);
-        $(element).bind(i.eventClass("MSPointerDown"), touchStart);
-        $(element).bind(i.eventClass("MSPointerMove"), touchMove);
-        $(element).bind(i.eventClass("MSPointerUp"), touchEnd);
+        i.event.bind(window, 'MSPointerDown', globalTouchStart);
+        i.event.bind(window, 'MSPointerUp', globalTouchEnd);
+        i.event.bind(element, 'MSPointerDown', touchStart);
+        i.event.bind(element, 'MSPointerMove', touchMove);
+        i.event.bind(element, 'MSPointerUp', touchEnd);
       }
     }
   }
 
   function bindScrollHandler() {
-    $(element).bind(i.eventClass('scroll'), function () {
+    i.event.bind(element, 'scroll', function () {
       updateGeometry(element);
     });
   }
