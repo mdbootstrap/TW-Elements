@@ -43,12 +43,12 @@ exports.isEditable = function (el) {
          d.matches(el, "button,[contenteditable]");
 };
 
-exports.removePsClass = function (element) {
+exports.removePsClasses = function (element) {
   var clsList = cls.list(element);
   for (var i = 0; i < clsList.length; i++) {
     var className = clsList[i];
     if (className.indexOf('ps-') === 0) {
-      cls.remove(className);
+      cls.remove(element, className);
     }
   }
 };
