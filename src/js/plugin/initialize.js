@@ -403,7 +403,7 @@ module.exports = function (element, userSettings) {
 
     var isSelected = false;
     i.event.bind(i.ownerDocument, 'selectionchange', function () {
-      if ($.contains(element, getRangeNode())) {
+      if (element.contains(getRangeNode())) {
         isSelected = true;
       } else {
         isSelected = false;
