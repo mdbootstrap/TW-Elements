@@ -15,7 +15,7 @@ module.exports = function (element) {
   d.remove(i.scrollbarY);
   d.remove(i.scrollbarXRail);
   d.remove(i.scrollbarYRail);
-  h.removePsClass(element);
+  h.removePsClasses(element);
 
   instances.remove(element);
 };
