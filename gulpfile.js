@@ -19,12 +19,12 @@ gulp.task('lint', function () {
 });
 
 gulp.task('clean:js', function () {
-  return gulp.src('./out/js/perfect-scrollbar.js', {read: false})
+  return gulp.src('./out/js/*.js', {read: false})
     .pipe(rimraf());
 });
 
 gulp.task('clean:js:min', function () {
-  return gulp.src('./out/js/perfect-scrollbar.min.js', {read: false})
+  return gulp.src('./out/js/min/*.js', {read: false})
     .pipe(rimraf());
 });
 
@@ -36,19 +36,24 @@ function browserified() {
 }
 
 gulp.task('js', ['clean:js'], function () {
-  return gulp.src('./src/js/main.js')
+  return gulp.src('./src/js/adaptor/*.js')
     .pipe(browserified())
-    .pipe(rename('perfect-scrollbar.js'))
+    .pipe(rename({
+      prefix: 'perfect-scrollbar.'
+    }))
     .pipe(gulp.dest('./out/js'))
     .pipe(connect.reload());
 });
 
 gulp.task('js:min', ['clean:js:min'], function () {
-  return gulp.src('./src/js/main.js')
+  return gulp.src('./src/js/adaptor/*.js')
     .pipe(browserified())
     .pipe(uglify())
-    .pipe(rename('perfect-scrollbar.min.js'))
-    .pipe(gulp.dest('./out/js'));
+    .pipe(rename({
+      prefix: 'perfect-scrollbar.',
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./out/js/min'));
 });
 
 gulp.task('clean:css', function () {
