@@ -1,27 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>perfect-scrollbar example</title>
-      <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-      <script src="../out/js/perfect-scrollbar.js"></script>
-      <style>
-        .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
-        .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
-        .spacer { text-align:center }
-      </style>
-    <script>
-      jQuery(document).ready(function ($) {
-        "use strict";
-        $('#Default').perfectScrollbar();
-      });
-      var updateSize = function () {
-        var width = parseInt($('#width').val(), 10);
-        var height = parseInt($('#height').val(), 10);
-        $('#Default').width(width).height(height).perfectScrollbar('update');
-      };
-    </script>
+    <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../out/js/perfect-scrollbar.global.js"></script>
+    <style>
+      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
+      .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+      .spacer { text-align:center }
+    </style>
   </head>
   <body>
     <div id="Default" class="contentHolder">
@@ -33,6 +21,20 @@
       Height <input type='text' id='height' value='400'>
       <button onclick='updateSize()'>Change!</button>
     </p>
+    <script>
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        Ps.initialize($('#Default'));
+      };
+      var updateSize = function () {
+        var width = parseInt($('#width').value, 10);
+        var height = parseInt($('#height').value, 10);
+        var container = $('#Default');
+        container.style.width = width + 'px';
+        container.style.height = height + 'px';
+        Ps.update(document.querySelector('#Default'));
+      };
+    </script>
   </body>
 </html>
 

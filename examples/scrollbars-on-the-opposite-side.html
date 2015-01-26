@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>perfect-scrollbar example</title>
-      <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-      <script src="../out/js/perfect-scrollbar.js"></script>
-      <style>
-        .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
-        .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
-        .spacer { text-align:center }
+    <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../out/js/perfect-scrollbar.global.js"></script>
+    <style>
+      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
+      .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+      .spacer { text-align:center }
 
-        /* Change the alignment of scrollbars */
-        /* Recommended: You can just modify the CSS file directly. */
-        .ps-container .ps-scrollbar-x-rail {
-          top: 3px;
-          bottom: auto; /* If using `top`, there shouldn't be a `bottom`. */
-        }
-        .ps-container .ps-scrollbar-y-rail {
-          left: 3px;
-          right: auto; /* If using `left`, there shouldn't be a `right`. */
-        }
-      </style>
-    <script>
-      jQuery(document).ready(function ($) {
-        "use strict";
-        $('#Default').perfectScrollbar();
-      });
-    </script>
+      /* Change the alignment of scrollbars */
+      /* Recommended: You can just modify the CSS file directly. */
+      .ps-container .ps-scrollbar-x-rail {
+        top: 3px;
+        bottom: auto; /* If using `top`, there shouldn't be a `bottom`. */
+      }
+      .ps-container .ps-scrollbar-y-rail {
+        left: 3px;
+        right: auto; /* If using `left`, there shouldn't be a `right`. */
+      }
+    </style>
   </head>
   <body>
     <div id="Default" class="contentHolder">
       <div class="content">
       </div>
     </div>
+    <script>
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        Ps.initialize($('#Default'));
+      };
+    </script>
   </body>
 </html>

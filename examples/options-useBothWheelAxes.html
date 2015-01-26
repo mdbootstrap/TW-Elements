@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>perfect-scrollbar example</title>
-        <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="../out/js/perfect-scrollbar.js"></script>
-        <style>
-          .contentHolder { position:relative; margin:0px auto; padding:0px; width: 640px; height: 360px; overflow: hidden; }
-          .contentHolder .content-x { background-image: url('./azusa.jpg'); width: 1920px; height: 360px; }
-          .contentHolder .content-y { background-image: url('./azusa.jpg'); width: 640px; height: 1080px; }
-          .spacer { text-align:center; }
-        </style>
-    <script>
-      jQuery(document).ready(function ($) {
-        "use strict";
-        $('#Default').perfectScrollbar();
-        $('#CanScrollWithYAxis').perfectScrollbar({useBothWheelAxes: true});
-        $('#CanScrollWithXAxis').perfectScrollbar({useBothWheelAxes: true});
-      });
-    </script>
+    <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../out/js/perfect-scrollbar.global.js"></script>
+    <style>
+      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 640px; height: 360px; overflow: hidden; }
+      .contentHolder .content-x { background-image: url('./azusa.jpg'); width: 1920px; height: 360px; }
+      .contentHolder .content-y { background-image: url('./azusa.jpg'); width: 640px; height: 1080px; }
+      .spacer { text-align:center; }
+    </style>
   </head>
   <body>
     <h1 style="text-align:center">Default.</h1>
@@ -37,5 +28,13 @@
       <div class="content-y">
       </div>
     </div>
+    <script>
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        Ps.initialize($('#Default'));
+        Ps.initialize($('#CanScrollWithYAxis'), {useBothWheelAxes: true});
+        Ps.initialize($('#CanScrollWithXAxis'), {useBothWheelAxes: true});
+      };
+    </script>
   </body>
 </html>
