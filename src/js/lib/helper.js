@@ -53,6 +53,14 @@ exports.removePsClasses = function (element) {
   }
 };
 
+exports.outerWidth = function (element) {
+  return this.toInt(d.css(element, 'width')) +
+         this.toInt(d.css(element, 'paddingLeft')) +
+         this.toInt(d.css(element, 'paddingRight')) +
+         this.toInt(d.css(element, 'borderLeftWidth')) +
+         this.toInt(d.css(element, 'borderRightWidth'));
+};
+
 exports.env = {
   isWebKit: 'WebkitAppearance' in document.documentElement.style,
   supportsTouch: (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch),

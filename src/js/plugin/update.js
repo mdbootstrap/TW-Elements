@@ -32,22 +32,21 @@ function updateCss(element, i) {
   }
   d.css(i.scrollbarXRail, xRailOffset);
 
-  var railYOffset = {top: element.scrollTop, height: i.railYHeight};
-
+  var yRailOffset = {top: element.scrollTop, height: i.railYHeight};
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
-      railYOffset.right = i.contentWidth - element.scrollLeft - i.scrollbarYRight - i.scrollbarY.offsetWidth;
+      yRailOffset.right = i.contentWidth - element.scrollLeft - i.scrollbarYRight - i.scrollbarYOuterWidth;
     } else {
-      railYOffset.right = i.scrollbarYRight - element.scrollLeft;
+      yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
     }
   } else {
     if (i.isRtl) {
-      railYOffset.left = element.scrollLeft + i.containerWidth * 2 - i.contentWidth - i.scrollbarYLeft - i.scrollbarY.offsetWidth;
+      yRailOffset.left = element.scrollLeft + i.containerWidth * 2 - i.contentWidth - i.scrollbarYLeft - i.scrollbarYOuterWidth;
     } else {
-      railYOffset.left = i.scrollbarYLeft + element.scrollLeft;
+      yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
   }
-  d.css(i.scrollbarYRail, railYOffset);
+  d.css(i.scrollbarYRail, yRailOffset);
 
   d.css(i.scrollbarX, {left: i.scrollbarXLeft, width: i.scrollbarXWidth - i.railBorderXWidth});
   d.css(i.scrollbarY, {top: i.scrollbarYTop, height: i.scrollbarYHeight - i.railBorderYWidth});
