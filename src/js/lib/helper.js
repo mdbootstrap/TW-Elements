@@ -31,7 +31,7 @@ exports.clone = function (obj) {
 exports.extend = function (original, source) {
   var result = this.clone(original);
   for (var key in source) {
-    result = this.clone(source[key]);
+    result[key] = this.clone(source[key]);
   }
   return result;
 };

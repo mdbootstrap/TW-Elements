@@ -218,18 +218,18 @@ module.exports = function (element, userSettings) {
         // only vertical scrollbar is active and useBothWheelAxes option is
         // active, so let's scroll vertical bar using both mouse wheel axes
         if (deltaY) {
-          element.scrollTop = element.scrollTop() - (deltaY * i.settings.wheelSpeed);
+          element.scrollTop = element.scrollTop - (deltaY * i.settings.wheelSpeed);
         } else {
-          element.scrollTop = element.scrollTop() + (deltaX * i.settings.wheelSpeed);
+          element.scrollTop = element.scrollTop + (deltaX * i.settings.wheelSpeed);
         }
         shouldPrevent = true;
       } else if (i.scrollbarXActive && !i.scrollbarYActive) {
         // useBothWheelAxes and only horizontal bar is active, so use both
         // wheel axes for horizontal bar
         if (deltaX) {
-          element.scrollLeft = element.scrollLeft() + (deltaX * i.settings.wheelSpeed);
+          element.scrollLeft = element.scrollLeft + (deltaX * i.settings.wheelSpeed);
         } else {
-          element.scrollLeft = element.scrollLeft() - (deltaY * i.settings.wheelSpeed);
+          element.scrollLeft = element.scrollLeft - (deltaY * i.settings.wheelSpeed);
         }
         shouldPrevent = true;
       }
