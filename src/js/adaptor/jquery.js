@@ -3,8 +3,8 @@
  */
 'use strict';
 
-var ps = require('./plugin/ps')
-  , psInstances = require('./plugin/instances');
+var ps = require('../plugin/ps')
+  , psInstances = require('../plugin/instances');
 
 $.fn.perfectScrollbar = function (settingOrCommand) {
   return this.each(function () {
