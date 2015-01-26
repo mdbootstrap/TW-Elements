@@ -1,12 +1,10 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
     <title>perfect-scrollbar example</title>
     <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="../out/js/perfect-scrollbar.js"></script>
+    <script src="../out/js/perfect-scrollbar.global.js"></script>
     <style>
       #test {
         border: 1px solid gray;
@@ -22,16 +20,6 @@
         line-height: 44px;
       }
     </style>
-    <script type="text/javascript">
-      $(document).ready(function ($) {
-        var test = $('#test');
-        test.perfectScrollbar();
-        test.find('a').click(function () {
-          $(this).parent().remove();
-          test.perfectScrollbar('update');
-        });
-      });
-    </script>
   </head>
   <body>
     <div id="test" class="wrapper">
@@ -48,5 +36,18 @@
       <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
       <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
     </div>
+    <script type="text/javascript">
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        var test = $('#test');
+        Ps.initialize(test);
+        [].forEach.call(test.querySelectorAll('.element'), function (el) {
+          el.querySelector('a').addEventListener('click', function () {
+            el.parentNode.removeChild(el);
+            Ps.update(test);
+          });
+        });
+      };
+    </script>
   </body>
 </html>

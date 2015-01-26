@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>perfect-scrollbar example</title>
-      <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-      <script src="../out/js/perfect-scrollbar.js"></script>
-      <style>
-        #iframe { width: 100%; min-height: 450px; border: 0; }
-        html { direction: rtl; }
-      </style>
-    <script>
-      jQuery(document).ready(function ($) {
-        "use strict";
-        $('#iframe').load(function() {
-          var contentIframe = $(this).contents();
-          var documentIframe = contentIframe.get(0);
-          $('#Default', documentIframe).perfectScrollbar();
-        });
-      });
-    </script>
+    <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../out/js/perfect-scrollbar.global.js"></script>
+    <style>
+      #iframe { width: 100%; min-height: 450px; border: 0; }
+      html { direction: rtl; }
+    </style>
   </head>
   <body>
     <iframe src="iframe-content.html" id="iframe"></iframe>
+    <script>
+      var iframe = document.querySelector('#iframe');
+      iframe.onload = function () {
+        Ps.initialize(iframe.contentDocument.querySelector('#Default'))
+      };
+    </script>
   </body>
 </html>

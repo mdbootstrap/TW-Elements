@@ -1,12 +1,10 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
     <title>perfect-scrollbar example</title>
     <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="../out/js/perfect-scrollbar.js"></script>
+    <script src="../out/js/perfect-scrollbar.global.js"></script>
     <style>
       #description {
         border: 1px solid gray;
@@ -15,27 +13,8 @@
         overflow: hidden;
         position: relative;
       }
-      #status {
-        color: red;
-      }
+      #status { color: red; }
     </style>
-    <script type="text/javascript">
-      $(document).ready(function ($) {
-        var $container = $('#description');
-        var $status = $('#status');
-        $container.perfectScrollbar();
-        $container.scroll(function(e) {
-          if($container.scrollTop() === 0) {
-            $status.text('it reaches the top!');
-          }
-          else if ($container.scrollTop() === $container.prop('scrollHeight') - $container.height()) {
-            $status.text('it reaches the end!');
-          } else {
-            $status.text('');
-          }
-        });
-      });
-    </script>
   </head>
   <body>
     <div id="description" class="wrapper">
@@ -52,5 +31,23 @@
     </div>
     <div id="status">
     </div>
+    <script type="text/javascript">
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        var container = $('#description');
+        var stat = $('#status');
+        Ps.initialize(container);
+        container.addEventListener('scroll', function (e) {
+          if(container.scrollTop === 0) {
+            stat.innerHTML = 'it reaches the top!';
+          }
+          else if (container.scrollTop === container.scrollHeight - container.clientHeight) {
+            stat.innerHTML = 'it reaches the end!';
+          } else {
+            stat.innerHTML = '';
+          }
+        });
+      };
+    </script>
   </body>
 </html>

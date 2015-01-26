@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>perfect-scrollbar example</title>
-      <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-      <script src="../out/js/perfect-scrollbar.js"></script>
-      <style>
-        h1 { text-align: center; }
-        .container { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
-        .container .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
-      </style>
-      <style>
-        /* to make scrollbars always visible */
-        .always-visible.ps-container > .ps-scrollbar-x-rail,
-        .always-visible.ps-container > .ps-scrollbar-y-rail {
-          opacity: 0.6;
-        }
-      </style>
-    <script>
-      jQuery(document).ready(function ($) {
-        "use strict";
-        $('.container').perfectScrollbar();
-      });
-    </script>
+    <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../out/js/perfect-scrollbar.global.js"></script>
+    <style>
+      h1 { text-align: center; }
+      .container { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
+      .container .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+    </style>
+    <style>
+      /* to make scrollbars always visible */
+      .always-visible.ps-container > .ps-scrollbar-x-rail,
+      .always-visible.ps-container > .ps-scrollbar-y-rail {
+        opacity: 0.6;
+      }
+    </style>
   </head>
   <body>
     <h1>Default</h1>
@@ -37,5 +30,12 @@
       <div class="content">
       </div>
     </div>
+    <script>
+      window.onload = function () {
+        [].forEach.call(document.querySelectorAll('.container'), function (el) {
+          Ps.initialize(el);
+        });
+      };
+    </script>
   </body>
 </html>
