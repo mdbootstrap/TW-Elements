@@ -34,7 +34,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
 
   function applyTouchMove(differenceX, differenceY) {
     element.scrollTop = element.scrollTop - differenceY;
-    element.scrollLeft = element.scrollLeft() - differenceX;
+    element.scrollLeft = element.scrollLeft - differenceX;
 
     updateGeometry(element);
   }
