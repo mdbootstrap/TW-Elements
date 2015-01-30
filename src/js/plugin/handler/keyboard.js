@@ -4,7 +4,8 @@
 'use strict';
 
 var h = require('../../lib/helper')
-  , instances = require('../instances');
+  , instances = require('../instances')
+  , updateGeometry = require('../update');
 
 function bindKeyboardHandler(element, i) {
   var hovered = false;
@@ -100,6 +101,7 @@ function bindKeyboardHandler(element, i) {
 
     element.scrollTop = element.scrollTop - deltaY;
     element.scrollLeft = element.scrollLeft + deltaX;
+    updateGeometry(element);
 
     shouldPrevent = shouldPreventDefault(deltaX, deltaY);
     if (shouldPrevent) {
