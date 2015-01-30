@@ -4,7 +4,8 @@
 'use strict';
 
 var h = require('../../lib/helper')
-  , instances = require('../instances');
+  , instances = require('../instances')
+  , updateGeometry = require('../update');
 
 function bindClickRailHandler(element, i) {
   function pageOffset(el) {
@@ -26,6 +27,7 @@ function bindClickRailHandler(element, i) {
     }
 
     element.scrollTop = (i.contentHeight - i.containerHeight) * positionRatio;
+    updateGeometry(element);
   });
 
   i.event.bind(i.scrollbarX, 'click', stopPropagation);
@@ -43,6 +45,7 @@ function bindClickRailHandler(element, i) {
     }
 
     element.scrollLeft = (i.contentWidth - i.containerWidth) * positionRatio;
+    updateGeometry(element);
   });
 }
 
