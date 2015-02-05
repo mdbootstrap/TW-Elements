@@ -470,12 +470,15 @@
           }
 
           var activeElement = document.activeElement ? document.activeElement : ownerDocument.activeElement;
-          // go deeper if element is a webcomponent
-          while (activeElement.shadowRoot) {
-            activeElement = activeElement.shadowRoot.activeElement;
-          }
-          if ($(activeElement).is(":input,[contenteditable]")) {
-            return;
+
+          if (activeElement) {
+            // go deeper if element is a webcomponent
+            while (activeElement.shadowRoot) {
+              activeElement = activeElement.shadowRoot.activeElement;
+            }
+            if ($(activeElement).is(":input,[contenteditable]")) {
+              return;
+            }
           }
 
           var deltaX = 0;
