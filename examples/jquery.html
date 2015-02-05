@@ -4,7 +4,8 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>perfect-scrollbar example</title>
     <link href="../out/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../out/js/perfect-scrollbar.global.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../out/js/perfect-scrollbar.jquery.js"></script>
     <style>
       .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: hidden; }
       .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
@@ -28,12 +29,11 @@
       </div>
     </div>
     <script>
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        Ps.initialize($('#Default'));
-        Ps.initialize($('#FastWheelSpeed'), {wheelSpeed: 10});
-        Ps.initialize($('#SlowWheelSpeed'), {wheelSpeed: 0.1});
-      };
+      $(document).ready(function ($) {
+        $('#Default').perfectScrollbar();
+        $('#FastWheelSpeed').perfectScrollbar({wheelSpeed: 10});
+        $('#SlowWheelSpeed').perfectScrollbar({wheelSpeed: 0.1});
+      });
     </script>
   </body>
 </html>
