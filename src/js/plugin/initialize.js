@@ -6,7 +6,7 @@
 var cls = require('../lib/class')
   , h = require('../lib/helper')
   , instances = require('./instances')
-  , updateGeometry = require('./update');
+  , updateGeometry = require('./update-geometry');
 
 // Handlers
 var clickRailHandler = require('./handler/click-rail')

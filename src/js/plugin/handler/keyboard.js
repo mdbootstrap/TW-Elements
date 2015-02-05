@@ -5,7 +5,7 @@
 
 var h = require('../../lib/helper')
   , instances = require('../instances')
-  , updateGeometry = require('../update');
+  , updateGeometry = require('../update-geometry');
 
 function bindKeyboardHandler(element, i) {
   var hovered = false;
