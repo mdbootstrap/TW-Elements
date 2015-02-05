@@ -4,7 +4,7 @@
 'use strict';
 
 var instances = require('../instances')
-  , updateGeometry = require('../update');
+  , updateGeometry = require('../update-geometry');
 
 function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   function shouldPreventDefault(deltaX, deltaY) {

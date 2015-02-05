@@ -11,30 +11,47 @@
         height:150px;
         width: 400px;
         overflow: hidden;
-        position: absolute;
+        position: relative;
       }
     </style>
   </head>
   <body>
     <div id="description" class="wrapper">
-      <div>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-      </div>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
+      <p>The command takes options applicable</p>
     </div>
+    <button id='redraw'>Redraw</button>
     <script>
       var $ = document.querySelector.bind(document);
       window.onload = function () {
         Ps.initialize($('#description'));
       };
+      $('#redraw').addEventListener('click', function () {
+        var oldHtml = $('#description').innerHTML;
+        $('#description').innerHTML = '';
+        setTimeout(function () {
+          $('#description').innerHTML = '' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>' +
+            '<p>The command takes options applicable</p>';
+          Ps.update($('#description'));
+        }, 500);
+      });
     </script>
   </body>
 </html>

@@ -6,7 +6,7 @@
 var d = require('../../lib/dom')
   , h = require('../../lib/helper')
   , instances = require('../instances')
-  , updateGeometry = require('../update');
+  , updateGeometry = require('../update-geometry');
 
 function bindMouseScrollXHandler(element, i) {
   var currentLeft = null;
