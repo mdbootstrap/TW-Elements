@@ -50,12 +50,14 @@ function bindKeyboardHandler(element, i) {
     }
 
     var activeElement = document.activeElement ? document.activeElement : i.ownerDocument.activeElement;
-    // go deeper if element is a webcomponent
-    while (activeElement.shadowRoot) {
-      activeElement = activeElement.shadowRoot.activeElement;
-    }
-    if (h.isEditable(activeElement)) {
-      return;
+    if (activeElement) {
+      // go deeper if element is a webcomponent
+      while (activeElement.shadowRoot) {
+        activeElement = activeElement.shadowRoot.activeElement;
+      }
+      if (h.isEditable(activeElement)) {
+        return;
+      }
     }
 
     var deltaX = 0;
