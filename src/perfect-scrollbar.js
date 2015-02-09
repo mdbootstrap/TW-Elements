@@ -205,10 +205,6 @@
       }
 
       function updateGeometry() {
-        // Hide scrollbars not to affect scrollWidth and scrollHeight
-        $this.removeClass('ps-active-x');
-        $this.removeClass('ps-active-y');
-
         containerWidth = settings.includePadding ? $this.innerWidth() : $this.width();
         containerHeight = settings.includePadding ? $this.innerHeight() : $this.height();
         contentWidth = $this.prop('scrollWidth');
@@ -247,12 +243,8 @@
 
         updateCss();
 
-        if (scrollbarXActive) {
-          $this.addClass('ps-active-x');
-        }
-        if (scrollbarYActive) {
-          $this.addClass('ps-active-y');
-        }
+        $this[scrollbarXActive ? 'addClass' : 'removeClass']('ps-active-x');
+        $this[scrollbarYActive ? 'addClass' : 'removeClass']('ps-active-y');
       }
 
       function bindMouseScrollXHandler() {
