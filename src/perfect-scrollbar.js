@@ -73,7 +73,7 @@
       // Catch options
       if (option === 'update') {
         if ($this.data('perfect-scrollbar-update')) {
-          $this.data('perfect-scrollbar-update')();
+          $this.data('perfect-scrollbar-update')(true);
         }
         return $this;
       }
@@ -204,7 +204,12 @@
         $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight - railBorderYWidth});
       }
 
-      function updateGeometry() {
+      function updateGeometry(hideRails) {
+        if (hideRails) {
+          $scrollbarXRail.hide();
+          $scrollbarYRail.hide();
+        }
+
         containerWidth = settings.includePadding ? $this.innerWidth() : $this.width();
         containerHeight = settings.includePadding ? $this.innerHeight() : $this.height();
         contentWidth = $this.prop('scrollWidth');
@@ -242,6 +247,11 @@
         }
 
         updateCss();
+
+        if (hideRails) {
+          $scrollbarXRail.show();
+          $scrollbarYRail.show();
+        }
 
         $this[scrollbarXActive ? 'addClass' : 'removeClass']('ps-active-x');
         $this[scrollbarYActive ? 'addClass' : 'removeClass']('ps-active-y');
