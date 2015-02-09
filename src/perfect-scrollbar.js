@@ -73,7 +73,7 @@
       // Catch options
       if (option === 'update') {
         if ($this.data('perfect-scrollbar-update')) {
-          $this.data('perfect-scrollbar-update')();
+          $this.data('perfect-scrollbar-update')(true);
         }
         return $this;
       }
@@ -204,10 +204,11 @@
         $scrollbarY.css({top: scrollbarYTop, height: scrollbarYHeight - railBorderYWidth});
       }
 
-      function updateGeometry() {
-        // Hide scrollbars not to affect scrollWidth and scrollHeight
-        $this.removeClass('ps-active-x');
-        $this.removeClass('ps-active-y');
+      function updateGeometry(hideRails) {
+        if (hideRails) {
+          $scrollbarXRail.hide();
+          $scrollbarYRail.hide();
+        }
 
         containerWidth = settings.includePadding ? $this.innerWidth() : $this.width();
         containerHeight = settings.includePadding ? $this.innerHeight() : $this.height();
@@ -247,12 +248,13 @@
 
         updateCss();
 
-        if (scrollbarXActive) {
-          $this.addClass('ps-active-x');
+        if (hideRails) {
+          $scrollbarXRail.show();
+          $scrollbarYRail.show();
         }
-        if (scrollbarYActive) {
-          $this.addClass('ps-active-y');
-        }
+
+        $this[scrollbarXActive ? 'addClass' : 'removeClass']('ps-active-x');
+        $this[scrollbarYActive ? 'addClass' : 'removeClass']('ps-active-y');
       }
 
       function bindMouseScrollXHandler() {
