@@ -1,54 +1,76 @@
-perfect-scrollbar [![Travis CI](https://travis-ci.org/noraesae/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/noraesae/perfect-scrollbar)
-=================
+# `perfect-scrollbar`
 
-Tiny but perfect jQuery scrollbar plugin
+Minimalistic but perfect custom scrollbar plugin
 
-Why perfect-scrollbar?
-------------------
+[![Travis CI](https://travis-ci.org/noraesae/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/noraesae/perfect-scrollbar)
 
-I worked on a personal project recently, and I was trying to find the jQuery scrollbar plugin that's *perfect*. But there was no *perfect* scrollbar plugin. That's why I decided to make one.
+**The plugin is currently changing quickly in the master branch.
+Please refer to the related issue [#227](https://github.com/noraesae/perfect-scrollbar/issues/277).**
 
-perfect-scrollbar is very tiny but *perfect* (for me, and maybe for most developers) jQuery scrollbar plugin.  
+If you want information of old versions&lt;0.6.0, please refer to
+[an old documentation](https://github.com/noraesae/perfect-scrollbar/tree/0.5.9).
+
+## Why perfect-scrollbar?
+
+I was once working on a personal project, and trying to find the jQuery
+scrollbar plugin that's *perfect*. But there was no *perfect* one.
+That's why I decided to make one.
+
+perfect-scrollbar is minimalistic but *perfect* (for me, and maybe for most developers)
+scrollbar plugin working with jQuery or vanilla JavaScript as well.
+
 I hope you love it!
 
-Demo: http://noraesae.github.com/perfect-scrollbar/
+## [Demo](http://noraesae.github.com/perfect-scrollbar/)
 
-What does *perfect* mean?
----------------------
+[It's on the GitHub Pages](http://noraesae.github.com/perfect-scrollbar/).
+
+## What does *perfect* mean?
 
 *perfect* means...
 
 * There should be no css change on any original element.
 * The scrollbar should not affect the original design layout.
 * The design of the scrollbar should be (nearly) fully customizable.
-* If the size of the container or the content changes, the scrollbar size and position should be able to change.
+* If the size of the container or the content changes, the scrollbar
+  size and position should be able to change.
+* *New!* It should work with vanilla JavaScript and major tools like
+  NPM or Browserify.
 
-Then perfect-scrollbar is really *perfect*?
--------------------------------------------
+## Then perfect-scrollbar is really *perfect*?
 
-Yes! the only thing that's not *perfect* is my English.
-
-* perfect-scrollbar has some requirements, but doesn't change or add any style on original elements.
-* perfect-scrollbar is designed not to have width or height. It's fixed on the right and bottom side of the container.
-* You can change nearly all css styles of the scrollbar. The scrollbar design has no dependency on scripts.
-* perfect-scrollbar supports an 'update' function. Whenever you need to update the size or position of the scrollbar, just update.
-* Additionally, perfect-scrollbar uses 'scrollTop' and 'scrollLeft', not absolute positioning or something messy.
+* perfect-scrollbar has some requirements, but doesn't change or add
+  any style on original elements.
+* perfect-scrollbar is designed not to have width or height. It's fixed
+  on the right and bottom side of the container.
+* You can change nearly all css styles of the scrollbar. The scrollbar
+  design has no dependency on scripts.
+* perfect-scrollbar supports an 'update' function. Whenever you need
+  to update the size or position of the scrollbar, just update.
+* Additionally, perfect-scrollbar uses 'scrollTop' and 'scrollLeft',
+  not absolute positioning or something messy.
 
 It's cool, isn't it?
 
-Install
--------
+## Install
 
-You can download the latest stable version with download links at [Github Page](http://noraesae.github.io/perfect-scrollbar/). You also can find all releases at [Releases](https://github.com/noraesae/perfect-scrollbar/releases) page.
+You can download the latest stable version with download links [here](http://noraesae.github.io/perfect-scrollbar/).
+You also can find all releases on [Releases](https://github.com/noraesae/perfect-scrollbar/releases).
 
-If you want to use the development version of the plugin, use the source files which are not minified. They're in the `src` directory. The development version may be unstable, but some known bugs can be fixed.
+If you want to use the development version of the plugin, use the
+source files which are not minified. They're in the `src` directory.
+The development version may be unstable, but some known bugs may
+have been fixed.
 
 ```
 $ git clone https://github.com/noraesae/perfect-scrollbar.git
 $ cd perfect-scrollbar/src
+$ npm install
+$ gulp # will lint and build the source code.
 ```
 
-You can use [Bower](http://bower.io/) to install the plugin. The plugin is registered as `perfect-scrollbar`.
+You can use [Bower](http://bower.io/) to install the plugin.
+The plugin is registered as `perfect-scrollbar`.
 
 ```
 $ bower install perfect-scrollbar
@@ -60,24 +82,113 @@ It's registered on [npm](https://www.npmjs.org/package/perfect-scrollbar) as `pe
 $ npm install perfect-scrollbar
 ```
 
-You can also load it from [cdnjs](http://cdnjs.com/). It is registered as [`jquery.perfect-scrollbar`](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar).
+You can also load it from [cdnjs](http://cdnjs.com/).
+It is registered as [`jquery.perfect-scrollbar`](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar).
 
-Requirements
-------------
+## Requirements
 
-To make this plugin *perfect*, some requirements were unavoidable. But, they're all very trivial and there is nothing to worry about.
+To make this plugin *perfect*, some requirements were unavoidable.
+But, they're all very trivial and there is nothing to worry about.
+
+The following requirements should meet.
 
 * the container must have a 'position' css style.
 * the container must have an 'overflow:hidden' css style.
+
+The following requirements are included in the basic CSS, but please
+keep in mind when you'd like to change the CSS files.
+
 * the scrollbar's position must be 'absolute'.
-* the scrollbar-x must have a 'bottom' css style, and the scrollbar-y must have a 'right' css style.
+* the scrollbar-x must have a 'bottom' css style, and the scrollbar-y
+  must have a 'right' css style.
 
-The below requirement is for perfect-scrollbar &lt;= 0.3.4
+## How to use
 
-* there must be the *one* content element (like div) for the container.
+First of all, please check if the container element meets the
+requirements.
 
-Optional parameters
--------------------
+```html
+<link rel='stylesheet' href='out/css/perfect-scrollbar.css' />
+<style>
+  #container {
+    position: relative;
+    height: 100%; /* Or whatever you want (eg. 400px) */
+    overflow: hidden;
+  }
+</style>
+```
+
+I would recommend using the plugin with NPM and CommonJS module system
+like Browserify.
+
+```javascript
+var Ps = require('perfect-scrollbar');
+```
+
+Or you can just load the script file as usual.
+
+```html
+<script src='out/js/perfect-scrollbar.js'></script>
+```
+
+To initialise the plugin, `Ps.initialize` is used.
+
+```javascript
+var container = document.getElementById('container');
+Ps.initialize(container);
+```
+
+It can be initialised with optional parameters.
+
+```javascript
+Ps.initialize(container, {
+  wheelSpeed: 2,
+  wheelPropagation: true,
+  minScrollbarLength: 20
+});
+```
+
+If the size of your container or content changes, call `update`.
+
+```javascript
+Ps.update(container);
+```
+
+If you want to destory the scrollbar, use `destroy`.
+
+```javascript
+Ps.destroy(container);
+```
+
+If you want to scroll to somewhere, just use a `scrollTop`
+property and update.
+
+```javascript
+container.scrollTop = 0;
+Ps.update(container);
+```
+
+You can also get information about how to use the plugin
+from code in the `examples` directory of the source tree.
+
+## jQuery
+
+As you may already know, perfect-scrollbar was a jQuery plugin.
+And it *is* as well. There's a jQuery adaptor and the plugin can
+be used in the same way it used to be used before.
+
+```html
+<script src='out/js/perfect-scrollbar.jquery.js'></script>
+```
+
+```javascript
+$('#container').perfectScrollbar();          // Initialize
+$('#container').perfectScrollbar({ ... });   // with options
+$('#container').perfectScrollbar('update');  // Update
+$('#container').perfectScrollbar('destroy'); // Destroy
+```
+
+## Optional parameters
 
 perfect-scrollbar supports optional parameters.
 
@@ -125,56 +236,7 @@ The number of pixels the content width can surpass the container width without e
 The number of pixels the content height can surpass the container height without enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so that Y axis scroll bar is not enabled just because of a few pixels.  
 **Default: 0**
 
-How to Use
-----------
-
-```html
-<style>
-  #Demo { 
-    position: relative;
-    height: 100%; /* Or whatever you want (eg. 400px) */
-    overflow: hidden;
-  }
-</style>
-<div id='Demo'>
-  <div>
-    ...
-  </div>
-</div>
-```
-When the html document is like above, just use like this:
-```javascript
-$('#Demo').perfectScrollbar();
-```
-
-With optional parameters:
-```javascript
-$("#Demo").perfectScrollbar({
-  wheelSpeed: 20,
-  wheelPropagation: true,
-  minScrollbarLength: 20
-})
-```
-
-If the size of your container or content changes:
-```javascript
-$('#Demo').perfectScrollbar('update');
-```
-If you want to destory the scrollbar:
-```javascript
-$('#Demo').perfectScrollbar('destroy');
-```
-
-If you want to scroll to somewhere, just use scroll-top css and update.
-```javascript
-$("#Demo").scrollTop(0);
-$("#Demo").perfectScrollbar('update');
-```
-
-Also you can get information about how to use the plugin from code in the `examples` directory of the source tree.
-
-Contribution
-------------
+## Contribution
 
 #### Please read [Contributing](https://github.com/noraesae/perfect-scrollbar/wiki/Contributing) in the wiki before making any contribution.
 
@@ -185,26 +247,27 @@ I *really* welcome contributions! Please feel free to fork and issue pull reques
 * You found a bug!
 * You're good at English and can help my bad English!
 
-For IE problems, please refer to [IE Support](https://github.com/noraesae/perfect-scrollbar#ie-support)
+For IE problems, please refer to [IE Support](https://github.com/noraesae/perfect-scrollbar#ie-support).
 
-IE Support
-----------
+## IE Support
 
 The plugin would work in IEs >= IE9 (not well, though).
 
 **The patches to fix problems in IE<=8 won't be accepted.**
 
-When old IEs should be supported, please fork the project and make patches personally.
+When old IEs should be supported, please fork the project and
+make patches personally.
 
-Helpdesk
---------
+## Helpdesk
 
-If you have any idea to improve this project or any problem using this, please feel free to upload an [issue](https://github.com/noraesae/perfect-scrollbar/issues).
+If you have any idea to improve this project or any problem
+using this, please feel free to upload an
+[issue](https://github.com/noraesae/perfect-scrollbar/issues).
 
-For common problems there is a [FAQ](https://github.com/noraesae/perfect-scrollbar/wiki/FAQ) wiki page. Please check the page before uploading an issue.
+For common problems there is a
+[FAQ](https://github.com/noraesae/perfect-scrollbar/wiki/FAQ) wiki page. Please check the page before uploading an issue.
 
-License
--------
+## License
 
 The MIT License (MIT) Copyright (c) 2015 Hyunje Alex Jun and other contributors.
 
