@@ -54,6 +54,13 @@ It's cool, isn't it?
 
 ## Install
 
+The best way to install and use perfect-scrollbar is with NPM.
+It's registered on [npm](https://www.npmjs.org/package/perfect-scrollbar) as `perfect-scrollbar`.
+
+```
+$ npm install perfect-scrollbar
+```
+
 You can download the latest stable version with download links [here](http://noraesae.github.io/perfect-scrollbar/).
 You also can find all releases on [Releases](https://github.com/noraesae/perfect-scrollbar/releases).
 
@@ -69,18 +76,15 @@ $ npm install
 $ gulp # will lint and build the source code.
 ```
 
-You can use [Bower](http://bower.io/) to install the plugin.
-The plugin is registered as `perfect-scrollbar`.
+
+There is a Bower package for perfect-scrollbar as well. It is managed
+under the [perfect-scrollbar-bower](https://github.com/noraesae/perfect-scrollbar-bower)
+repository. The plugin is registered as `perfect-scrollbar`.
 
 ```
 $ bower install perfect-scrollbar
 ```
 
-It's registered on [npm](https://www.npmjs.org/package/perfect-scrollbar) as `perfect-scrollbar`.
-
-```
-$ npm install perfect-scrollbar
-```
 
 You can also load it from [cdnjs](http://cdnjs.com/).
 It is registered as [`jquery.perfect-scrollbar`](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar).
