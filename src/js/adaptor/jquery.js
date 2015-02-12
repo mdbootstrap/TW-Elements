@@ -33,9 +33,14 @@ function mountJQuery(jQuery) {
   };
 }
 
-var jq = window.jQuery ? window.jQuery : window.$;
-if (typeof jq !== 'undefined') {
-  mountJQuery(jq);
+if (typeof define === 'function' && define.amd) {
+  // AMD. Register as an anonymous module.
+  define(['jquery'], mountJQuery);
+} else {
+  var jq = window.jQuery ? window.jQuery : window.$;
+  if (typeof jq !== 'undefined') {
+    mountJQuery(jq);
+  }
 }
 
 module.exports = mountJQuery;
