@@ -9,7 +9,8 @@ var gulp = require('gulp')
   , rimraf = require('gulp-rimraf')
   , sass = require('gulp-sass')
   , transform = require('vinyl-transform')
-  , uglify = require('gulp-uglify');
+  , uglify = require('gulp-uglify')
+  , zip = require('gulp-zip');
 
 gulp.task('lint', function () {
   return gulp.src(['./src/**/*.js', './gulpfile.js'])
@@ -121,5 +122,11 @@ gulp.task('watch', function () {
 });
 
 gulp.task('serve', ['connect', 'watch']);
+
+gulp.task('compress', function () {
+  return gulp.src('./out/**')
+    .pipe(zip('perfect-scrollbar.zip'))
+    .pipe(gulp.dest('./out'));
+});
 
 gulp.task('default', ['lint', 'build']);
