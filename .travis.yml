@@ -1,5 +1,17 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 before_script:
-  - npm install -g gulp
+- npm install -g gulp
+deploy:
+  provider: releases
+  api_key:
+    secure: jMfEk/5oF5NybZlrI2/QA3Gs2fYvE38GQQPyTVBgH5gBZqnaH4ij28fegxercTuzqO4AMGK7BvAmxNd6Wf95CYt72uuiRKFCpRto3/8kBh6TNS1SWQCB6U/heccr4hHGvPViCkkidPCAzAjRLe0TIkrHhJt1nQ5u/d6ZI3++e/0=
+  file: ./out/perfect-scrollbar.zip
+  on:
+    repo: noraesae/perfect-scrollbar
+    branch: master
+    tags: true
+before_deploy:
+- gulp
+- gulp compress
