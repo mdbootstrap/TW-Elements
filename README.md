@@ -177,9 +177,20 @@ As you may already know, perfect-scrollbar was a jQuery plugin.
 And it *is* as well. There's a jQuery adaptor and the plugin can
 be used in the same way it used to be used before.
 
+I also recommend using NPM and CommonJS here, but it's not mandatory.
+
+```javascript
+var $ = require('jquery');
+require('perfect-scrollbar/jquery')($);
+```
+
+For sure, you can just import a built script.
+
 ```html
 <script src='out/js/perfect-scrollbar.jquery.js'></script>
 ```
+
+After importing it, you can use the plugin in the usual way.
 
 ```javascript
 $('#container').perfectScrollbar();          // Initialize

@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var ps = require('../plugin/ps');
+var ps = require('../main');
 
 window.PerfectScrollbar = ps;
 if (typeof window.Ps === 'undefined') {
