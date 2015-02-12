@@ -108,7 +108,7 @@ First of all, please check if the container element meets the
 requirements.
 
 ```html
-<link rel='stylesheet' href='out/css/perfect-scrollbar.css' />
+<link rel='stylesheet' href='dist/css/perfect-scrollbar.css' />
 <style>
   #container {
     position: relative;
@@ -128,7 +128,7 @@ var Ps = require('perfect-scrollbar');
 Or you can just load the script file as usual.
 
 ```html
-<script src='out/js/perfect-scrollbar.js'></script>
+<script src='dist/js/perfect-scrollbar.js'></script>
 ```
 
 To initialise the plugin, `Ps.initialize` is used.
@@ -187,7 +187,7 @@ require('perfect-scrollbar/jquery')($);
 For sure, you can just import a built script.
 
 ```html
-<script src='out/js/perfect-scrollbar.jquery.js'></script>
+<script src='dist/js/perfect-scrollbar.jquery.js'></script>
 ```
 
 After importing it, you can use the plugin in the usual way.

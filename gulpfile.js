@@ -20,12 +20,12 @@ gulp.task('lint', function () {
 });
 
 gulp.task('clean:js', function () {
-  return gulp.src('./out/js/*.js', {read: false})
+  return gulp.src('./dist/js/*.js', {read: false})
     .pipe(rimraf());
 });
 
 gulp.task('clean:js:min', function () {
-  return gulp.src('./out/js/min/*.js', {read: false})
+  return gulp.src('./dist/js/min/*.js', {read: false})
     .pipe(rimraf());
 });
 
@@ -46,7 +46,7 @@ gulp.task('js', ['clean:js'], function () {
         path.basename = 'perfect-scrollbar.' + path.basename;
       }
     }))
-    .pipe(gulp.dest('./out/js'))
+    .pipe(gulp.dest('./dist/js'))
     .pipe(connect.reload());
 });
 
@@ -61,16 +61,16 @@ gulp.task('js:min', ['clean:js:min'], function () {
         path.basename = 'perfect-scrollbar.' + path.basename + '.min';
       }
     }))
-    .pipe(gulp.dest('./out/js/min'));
+    .pipe(gulp.dest('./dist/js/min'));
 });
 
 gulp.task('clean:css', function () {
-  return gulp.src('./out/css/perfect-scrollbar.css', {read: false})
+  return gulp.src('./dist/css/perfect-scrollbar.css', {read: false})
     .pipe(rimraf());
 });
 
 gulp.task('clean:css:min', function () {
-  return gulp.src('./out/css/perfect-scrollbar.min.css', {read: false})
+  return gulp.src('./dist/css/perfect-scrollbar.min.css', {read: false})
     .pipe(rimraf());
 });
 
@@ -78,7 +78,7 @@ gulp.task('sass', ['clean:css'], function () {
   return gulp.src('./src/css/main.scss')
     .pipe(sass())
     .pipe(rename('perfect-scrollbar.css'))
-    .pipe(gulp.dest('./out/css'))
+    .pipe(gulp.dest('./dist/css'))
     .pipe(connect.reload());
 });
 
@@ -86,7 +86,7 @@ gulp.task('sass:min', ['clean:css:min'], function () {
   return gulp.src('./src/css/main.scss')
     .pipe(sass({outputStyle: 'compressed'}))
     .pipe(rename('perfect-scrollbar.min.css'))
-    .pipe(gulp.dest('./out/css'));
+    .pipe(gulp.dest('./dist/css'));
 });
 
 function bumpType() {
@@ -124,9 +124,9 @@ gulp.task('watch', function () {
 gulp.task('serve', ['connect', 'watch']);
 
 gulp.task('compress', function () {
-  return gulp.src('./out/**')
+  return gulp.src('./dist/**')
     .pipe(zip('perfect-scrollbar.zip'))
-    .pipe(gulp.dest('./out'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('default', ['lint', 'build']);
