@@ -38,8 +38,12 @@ function browserified() {
 gulp.task('js', ['clean:js'], function () {
   return gulp.src('./src/js/adaptor/*.js')
     .pipe(browserified())
-    .pipe(rename({
-      prefix: 'perfect-scrollbar.'
+    .pipe(rename(function (path) {
+      if (path.basename === 'global') {
+        path.basename = 'perfect-scrollbar';
+      } else {
+        path.basename = 'perfect-scrollbar.' + path.basename;
+      }
     }))
     .pipe(gulp.dest('./out/js'))
     .pipe(connect.reload());
@@ -49,9 +53,12 @@ gulp.task('js:min', ['clean:js:min'], function () {
   return gulp.src('./src/js/adaptor/*.js')
     .pipe(browserified())
     .pipe(uglify())
-    .pipe(rename({
-      prefix: 'perfect-scrollbar.',
-      suffix: '.min'
+    .pipe(rename(function (path) {
+      if (path.basename === 'global') {
+        path.basename = 'perfect-scrollbar.min';
+      } else {
+        path.basename = 'perfect-scrollbar.' + path.basename + '.min';
+      }
     }))
     .pipe(gulp.dest('./out/js/min'));
 });
