@@ -55,10 +55,6 @@ function updateCss(element, i) {
 module.exports = function (element) {
   var i = instances.get(element);
 
-  // Hide scrollbars not to affect scrollWidth and scrollHeight
-  cls.remove(element, 'ps-active-x');
-  cls.remove(element, 'ps-active-y');
-
   i.containerWidth = element.clientWidth;
   i.containerHeight = element.clientHeight;
   i.contentWidth = element.scrollWidth;
@@ -97,10 +93,6 @@ module.exports = function (element) {
 
   updateCss(element, i);
 
-  if (i.scrollbarXActive) {
-    cls.add(element, 'ps-active-x');
-  }
-  if (i.scrollbarYActive) {
-    cls.add(element, 'ps-active-y');
-  }
+  cls[i.scrollbarXActive ? 'add' : 'remove'](element, 'ps-active-x');
+  cls[i.scrollbarYActive ? 'add' : 'remove'](element, 'ps-active-y');
 };
