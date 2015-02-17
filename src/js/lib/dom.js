@@ -56,11 +56,11 @@ exports.matches = function (element, query) {
   } else {
     if (typeof element.matchesSelector !== 'undefined') {
       return element.matchesSelector(query);
-    } else if (element.webkitMatchesSelector !== 'undefined') {
+    } else if (typeof element.webkitMatchesSelector !== 'undefined') {
       return element.webkitMatchesSelector(query);
-    } else if (element.mozMatchesSelector !== 'undefined') {
+    } else if (typeof element.mozMatchesSelector !== 'undefined') {
       return element.mozMatchesSelector(query);
-    } else if (element.msMatchesSelector !== 'undefined') {
+    } else if (typeof element.msMatchesSelector !== 'undefined') {
       return element.msMatchesSelector(query);
     }
   }
