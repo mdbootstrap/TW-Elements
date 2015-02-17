@@ -50,18 +50,42 @@ function Instance(element) {
   i.railYHeight = null;
 }
 
+function getId(element) {
+  if (typeof element.dataset === 'undefined') {
+    return element.getAttribute('data-ps-id');
+  } else {
+    return element.dataset.psId;
+  }
+}
+
+function setId(element, id) {
+  if (typeof element.dataset === 'undefined') {
+    element.setAttribute('data-ps-id', id);
+  } else {
+    element.dataset.psId = id;
+  }
+}
+
+function removeId(element) {
+  if (typeof element.dataset === 'undefined') {
+    element.removeAttribute('data-ps-id');
+  } else {
+    delete element.dataset.psId;
+  }
+}
+
 exports.add = function (element) {
   var newId = guid();
-  element.dataset.psId = newId;
+  setId(element, newId);
   instances[newId] = new Instance(element);
   return instances[newId];
 };
 
 exports.remove = function (element) {
-  delete instances[element.dataset.psId];
-  delete element.dataset.psId;
+  delete instances[getId(element)];
+  removeId(element);
 };
 
 exports.get = function (element) {
-  return instances[element.dataset.psId];
+  return instances[getId(element)];
 };
