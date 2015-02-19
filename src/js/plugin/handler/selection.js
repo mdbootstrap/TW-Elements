@@ -10,7 +10,7 @@ var h = require('../../lib/helper')
 function bindSelectionHandler(element, i) {
   function getRangeNode() {
     var selection = window.getSelection ? window.getSelection() :
-                    document.getSelection ? document.getSelection() : {rangeCount: 0};
+                    document.getSelection ? document.getSelection() : '';
     if (selection.toString().length === 0) {
       return null;
     } else {
