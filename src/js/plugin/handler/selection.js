@@ -10,8 +10,8 @@ var h = require('../../lib/helper')
 function bindSelectionHandler(element, i) {
   function getRangeNode() {
     var selection = window.getSelection ? window.getSelection() :
-                    document.getSlection ? document.getSlection() : {rangeCount: 0};
-    if (selection.rangeCount === 0) {
+                    document.getSelection ? document.getSelection() : '';
+    if (selection.toString().length === 0) {
       return null;
     } else {
       return selection.getRangeAt(0).commonAncestorContainer;
