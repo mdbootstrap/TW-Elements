@@ -97,11 +97,11 @@ But, they're all very trivial and there is nothing to worry about.
 The following requirements should meet.
 
 * the container must have a 'position' css style.
-* the container must have an 'overflow:hidden' css style.
 
 The following requirements are included in the basic CSS, but please
 keep in mind when you'd like to change the CSS files.
 
+* the container must have an 'overflow:hidden' css style.
 * the scrollbar's position must be 'absolute'.
 * the scrollbar-x must have a 'bottom' css style, and the scrollbar-y
   must have a 'right' css style.
@@ -117,7 +117,6 @@ requirements.
   #container {
     position: relative;
     height: 100%; /* Or whatever you want (eg. 400px) */
-    overflow: hidden;
   }
 </style>
 ```
