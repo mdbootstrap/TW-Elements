@@ -51,12 +51,15 @@ function bindSelectionHandler(element, i) {
       stopScrolling();
     }
   });
-  i.event.bind(window, 'mouseup', function () {
+
+  function notSelected() {
     if (isSelected) {
       isSelected = false;
       stopScrolling();
     }
-  });
+  }
+  i.event.bind(window, 'mouseup', notSelected);
+  i.event.bind(window, 'keyup', notSelected);
 
   i.event.bind(window, 'mousemove', function (e) {
     if (isSelected) {
