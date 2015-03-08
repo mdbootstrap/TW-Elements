@@ -29,7 +29,7 @@ module.exports = function (element, userSettings) {
   clickRailHandler(element);
   dragScrollbarHandler(element);
     // Disables scrollwheel if wheelDisable is true at user settings
-    if (!i.settings.wheelDisable){
+    if (!i.settings.wheelDisable) {
         mouseWheelHandler(element);
     }
   nativeScrollHandler(element);
