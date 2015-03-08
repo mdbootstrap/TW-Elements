@@ -26,10 +26,12 @@ module.exports = function (element, userSettings) {
   var i = instances.add(element);
 
   i.settings = h.extend(i.settings, userSettings);
-
   clickRailHandler(element);
   dragScrollbarHandler(element);
-  mouseWheelHandler(element);
+    // Disables scrollwheel if wheelDisable is true at user settings
+    if (!i.settings.wheelDisable) {
+        mouseWheelHandler(element);
+    }
   nativeScrollHandler(element);
   selectionHandler(element);
 
