@@ -4,13 +4,6 @@ $ps-bar-default: #aaa;
 $ps-bar-hover: #999;
 
 // Helper mixins
-@mixin opacity($o) {
-  $IEValue: $o * 100;
-  opacity: $o;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
-      filter: alpha(opacity=$IEValue);
-}
-
 @mixin border-radius($r) {
   -webkit-border-radius: $r;
      -moz-border-radius: $r;
@@ -30,13 +23,13 @@ $ps-bar-hover: #999;
   display: none;
   position: absolute; /* please don't change 'position' */
   @include border-radius(4px);
-  @include opacity(0);
+  opacity: 0;
   @include transition(background-color .2s linear, opacity .2s linear);
 }
 
 @mixin scrollbar-rail-hover {
   background-color: $ps-rail-hover;
-  @include opacity(0.9);
+  opacity: 0.9;
 }
 
 @mixin scrollbar-default {
@@ -107,7 +100,7 @@ $ps-bar-hover: #999;
 
     >.ps-scrollbar-x-rail,
     >.ps-scrollbar-y-rail {
-      @include opacity(0.6);
+      opacity: 0.6;
     }
 
     >.ps-scrollbar-x-rail:hover {
