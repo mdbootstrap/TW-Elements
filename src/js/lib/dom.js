@@ -70,8 +70,8 @@ exports.remove = function (element) {
   if (typeof element.remove !== 'undefined') {
     element.remove();
   } else {
-      if (element.parentNode) {
-          element.parentNode.removeChild(element);
-      }
+    if (element.parentNode) {
+      element.parentNode.removeChild(element);
+    }
   }
 };
