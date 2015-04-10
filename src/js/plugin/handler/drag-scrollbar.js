@@ -13,8 +13,8 @@ function bindMouseScrollXHandler(element, i) {
   var currentPageX = null;
 
   function updateScrollLeft(deltaX) {
-    var newLeft = currentLeft + deltaX;
-    var maxLeft = i.containerWidth - i.scrollbarXWidth;
+    var newLeft = currentLeft + (deltaX * i.railXRatio);
+    var maxLeft = i.scrollbarXRail.getBoundingClientRect().left + (i.railXRatio * (i.railXWidth - i.scrollbarXWidth));
 
     if (newLeft < 0) {
       i.scrollbarXLeft = 0;
@@ -24,7 +24,7 @@ function bindMouseScrollXHandler(element, i) {
       i.scrollbarXLeft = newLeft;
     }
 
-    var scrollLeft = h.toInt(i.scrollbarXLeft * (i.contentWidth - i.containerWidth) / (i.containerWidth - i.scrollbarXWidth));
+    var scrollLeft = h.toInt(i.scrollbarXLeft * (i.contentWidth - i.containerWidth) / (i.containerWidth - (i.railXRatio * i.scrollbarXWidth)));
     element.scrollLeft = scrollLeft;
   }
 
@@ -42,7 +42,7 @@ function bindMouseScrollXHandler(element, i) {
 
   i.event.bind(i.scrollbarX, 'mousedown', function (e) {
     currentPageX = e.pageX;
-    currentLeft = h.toInt(d.css(i.scrollbarX, 'left'));
+    currentLeft = h.toInt(d.css(i.scrollbarX, 'left')) * i.railXRatio;
     h.startScrolling(element, 'x');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
@@ -58,8 +58,8 @@ function bindMouseScrollYHandler(element, i) {
   var currentPageY = null;
 
   function updateScrollTop(deltaY) {
-    var newTop = currentTop + deltaY;
-    var maxTop = i.containerHeight - i.scrollbarYHeight;
+    var newTop = currentTop + (deltaY * i.railYRatio);
+    var maxTop = i.scrollbarYRail.getBoundingClientRect().top + (i.railYRatio * (i.railYHeight - i.scrollbarYHeight));
 
     if (newTop < 0) {
       i.scrollbarYTop = 0;
@@ -69,7 +69,7 @@ function bindMouseScrollYHandler(element, i) {
       i.scrollbarYTop = newTop;
     }
 
-    var scrollTop = h.toInt(i.scrollbarYTop * (i.contentHeight - i.containerHeight) / (i.containerHeight - i.scrollbarYHeight));
+    var scrollTop = h.toInt(i.scrollbarYTop * (i.contentHeight - i.containerHeight) / (i.containerHeight - (i.railYRatio * i.scrollbarYHeight)));
     element.scrollTop = scrollTop;
   }
 
@@ -87,7 +87,7 @@ function bindMouseScrollYHandler(element, i) {
 
   i.event.bind(i.scrollbarY, 'mousedown', function (e) {
     currentPageY = e.pageY;
-    currentTop = h.toInt(d.css(i.scrollbarY, 'top'));
+    currentTop = h.toInt(d.css(i.scrollbarY, 'top')) * i.railYRatio;
     h.startScrolling(element, 'y');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
