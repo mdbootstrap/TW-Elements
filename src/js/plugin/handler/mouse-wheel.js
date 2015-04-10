@@ -58,6 +58,27 @@ function bindMouseWheelHandler(element, i) {
     return [deltaX, deltaY];
   }
 
+  function shouldBeConsumedByTextarea(deltaX, deltaY) {
+    var hoveredTextarea = element.querySelector('textarea:hover')
+    if (hoveredTextarea) {
+      var maxScrollTop = hoveredTextarea.scrollHeight - hoveredTextarea.clientHeight;
+      if (maxScrollTop > 0) {
+        if (!(hoveredTextarea.scrollTop === 0 && deltaY > 0) &&
+            !(hoveredTextarea.scrollTop === maxScrollTop && deltaY < 0)) {
+          return true;
+        }
+      }
+      var maxScrollLeft = hoveredTextarea.scrollLeft - hoveredTextarea.clientWidth;
+      if (maxScrollLeft > 0) {
+        if (!(hoveredTextarea.scrollLeft === 0 && deltaX < 0) &&
+            !(hoveredTextarea.scrollLeft === maxScrollLeft && deltaX > 0)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   function mousewheelHandler(e) {
     // FIXME: this is a quick fix for the select problem in FF and IE.
     // If there comes an effective way to deal with the problem,
@@ -70,6 +91,10 @@ function bindMouseWheelHandler(element, i) {
 
     var deltaX = delta[0];
     var deltaY = delta[1];
+
+    if (shouldBeConsumedByTextarea(deltaX, deltaY)) {
+      return;
+    }
 
     shouldPrevent = false;
     if (!i.settings.useBothWheelAxes) {
