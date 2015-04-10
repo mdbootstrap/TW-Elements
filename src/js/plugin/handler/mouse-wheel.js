@@ -59,7 +59,7 @@ function bindMouseWheelHandler(element, i) {
   }
 
   function shouldBeConsumedByTextarea(deltaX, deltaY) {
-    var hoveredTextarea = element.querySelector('textarea:hover')
+    var hoveredTextarea = element.querySelector('textarea:hover');
     if (hoveredTextarea) {
       var maxScrollTop = hoveredTextarea.scrollHeight - hoveredTextarea.clientHeight;
       if (maxScrollTop > 0) {
