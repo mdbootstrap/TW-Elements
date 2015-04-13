@@ -125,7 +125,7 @@ gulp.task('connect', ['build'], function () {
 
 gulp.task('watch', function () {
   gulp.watch(['src/js/**/*'], ['js']);
-  gulp.watch(['src/css/**/*'], ['css']);
+  gulp.watch(['src/css/**/*'], ['sass']);
 });
 
 gulp.task('serve', ['connect', 'watch']);
