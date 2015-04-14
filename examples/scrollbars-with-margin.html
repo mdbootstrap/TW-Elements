@@ -6,27 +6,39 @@
     <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
     <script src="../dist/js/perfect-scrollbar.js"></script>
     <style>
-      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: auto; }
-      .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
-      .spacer { text-align:center }
+      h1 { text-align: center; }
+      .container { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: auto; }
+      .container .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
 
-      .ps-scrollbar-x-rail {
-        margin: 0 3px;
+      .large-margin .ps-scrollbar-x-rail {
+        margin: 0 25%;
+        opacity: 0.5;
+        background-color: #eee;
       }
-      .ps-scrollbar-y-rail {
-        margin: 3px 0;
+      .large-margin .ps-scrollbar-y-rail {
+        margin: 100px 0;
+        opacity: 0.5;
+        background-color: #eee;
       }
     </style>
   </head>
   <body>
-    <div id="Default" class="contentHolder">
+    <h1>Default</h1>
+    <div class="container">
+      <div class="content">
+      </div>
+    </div>
+
+    <h1>Margins</h1>
+    <div class="container large-margin">
       <div class="content">
       </div>
     </div>
     <script>
-      var $ = document.querySelector.bind(document);
       window.onload = function () {
-        Ps.initialize($('#Default'));
+        [].forEach.call(document.querySelectorAll('.container'), function (el) {
+          Ps.initialize(el);
+        });
       };
     </script>
   </body>
