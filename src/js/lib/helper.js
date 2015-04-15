@@ -7,11 +7,7 @@ var cls = require('./class')
   , d = require('./dom');
 
 exports.toInt = function (x) {
-  if (typeof x === 'string') {
-    return parseInt(x, 10) || 0;
-  } else {
-    return ~~x;
-  }
+  return parseInt(x, 10) || 0;
 };
 
 exports.clone = function (obj) {
