@@ -28,6 +28,8 @@ function bindClickRailHandler(element, i) {
 
     element.scrollTop = (i.contentHeight - i.containerHeight) * positionRatio;
     updateGeometry(element);
+
+    e.stopPropagation();
   });
 
   i.event.bind(i.scrollbarX, 'click', stopPropagation);
@@ -45,6 +47,8 @@ function bindClickRailHandler(element, i) {
 
     element.scrollLeft = (i.contentWidth - i.containerWidth) * positionRatio;
     updateGeometry(element);
+
+    e.stopPropagation();
   });
 }
 
