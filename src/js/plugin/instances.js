@@ -21,6 +21,15 @@ function Instance(element) {
   i.contentHeight = null;
 
   i.isRtl = d.css(element, 'direction') === "rtl";
+  i.isNegativeScroll = (function () {
+    var originalScrollLeft = element.scrollLeft;
+    var result = null;
+    element.scrollLeft = -1;
+    result = element.scrollLeft < 0;
+    element.scrollLeft = originalScrollLeft;
+    return result;
+  })();
+  i.negativeScrollAdjustment = i.isNegativeScroll ? element.scrollWidth - element.clientWidth : 0;
   i.event = new EventManager();
   i.ownerDocument = element.ownerDocument || document;
 
