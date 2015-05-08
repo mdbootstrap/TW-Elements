@@ -45,7 +45,7 @@ function bindClickRailHandler(element, i) {
       positionRatio = 1;
     }
 
-    element.scrollLeft = (i.contentWidth - i.containerWidth) * positionRatio;
+    element.scrollLeft = ((i.contentWidth - i.containerWidth) * positionRatio) - i.negativeScrollAdjustment;
     updateGeometry(element);
 
     e.stopPropagation();
