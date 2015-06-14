@@ -100,18 +100,6 @@ module.exports = function (element) {
     i.scrollbarYTop = i.railYHeight - i.scrollbarYHeight;
   }
 
-  if (i.settings.sizeScale && !i.settings.sizeScaleDone) {
-     i.settings.sizeScaleDone = 1;
-     var ss = i.settings.sizeScale;
-     var orgW = parseInt( d.css(i.scrollbarYRail, 'width').match(/\d+/), 10);
-     d.css(i.scrollbarYRail, 'width', orgW * ss );
-     d.css(i.scrollbarY, 'width', orgW * ss );
-     var orgH = parseInt(d.css(i.scrollbarXRail, 'height').match(/\d+/), 10);
-     d.css(i.scrollbarXRail, 'height', orgH * ss);
-     d.css(i.scrollbarX, 'height', orgH * ss);
-     console.log(orgH, ss, orgH * ss, i.scrollbarXRail);
-  }
-
   updateCss(element, i);
 
   cls[i.scrollbarXActive ? 'add' : 'remove'](element, 'ps-active-x');
