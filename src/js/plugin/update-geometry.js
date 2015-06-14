@@ -109,7 +109,6 @@ module.exports = function (element) {
      var orgH = parseInt(d.css(i.scrollbarXRail, 'height').match(/\d+/), 10);
      d.css(i.scrollbarXRail, 'height', orgH * ss);
      d.css(i.scrollbarX, 'height', orgH * ss);
-     console.log(orgH, ss, orgH * ss, i.scrollbarXRail);
   }
 
   updateCss(element, i);
