@@ -1,11 +1,9 @@
-// Helper mixins
-@mixin opacity($o) {
-  $IEValue: $o * 100;
-  opacity: $o;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
-      filter: alpha(opacity=$IEValue);
-}
+// Colors
+$ps-rail-hover: #eee;
+$ps-bar-default: #aaa;
+$ps-bar-hover: #999;
 
+// Helper mixins
 @mixin border-radius($r) {
   -webkit-border-radius: $r;
      -moz-border-radius: $r;
@@ -25,37 +23,53 @@
   display: none;
   position: absolute; /* please don't change 'position' */
   @include border-radius(4px);
-  @include opacity(0);
+  opacity: 0;
   @include transition(background-color .2s linear, opacity .2s linear);
 }
 
 @mixin scrollbar-rail-hover {
-  background-color: #eee;
-  @include opacity(0.9);
+  background-color: $ps-rail-hover;
+  opacity: 0.9;
 }
 
 @mixin scrollbar-default {
   position: absolute; /* please don't change 'position' */
-  background-color: #aaa;
+  background-color: $ps-bar-default;
   @include border-radius(4px);
   @include transition(background-color .2s linear);
 }
 
 @mixin scrollbar-hover {
-  background-color: #999;
+  background-color: $ps-bar-hover;
 }
 
 @mixin in-scrolling {
-  &.in-scrolling {
-    @include scrollbar-rail-hover;
+  &.ps-in-scrolling {
+    pointer-events: none;
+    &.ps-x>.ps-scrollbar-x-rail{
+      @include scrollbar-rail-hover;
+      >.ps-scrollbar-x {
+        @include scrollbar-hover;
+      }
+    }
+    &.ps-y>.ps-scrollbar-y-rail {
+      @include scrollbar-rail-hover;
+      >.ps-scrollbar-y {
+        @include scrollbar-hover;
+      }
+    }
   }
 }
 
 .ps-container {
+  overflow: hidden !important;
+
   &.ps-active-x > .ps-scrollbar-x-rail,
   &.ps-active-y > .ps-scrollbar-y-rail {
     display: block;
   }
+
+  @include in-scrolling;
 
   >.ps-scrollbar-x-rail {
     @include scrollbar-rail-default;
@@ -67,8 +81,6 @@
       bottom: 0; /* there must be 'bottom' for ps-scrollbar-x */
       height: 8px;
     }
-
-    @include in-scrolling;
   }
 
   >.ps-scrollbar-y-rail {
@@ -81,15 +93,14 @@
       right: 0; /* there must be 'right' for ps-scrollbar-y */
       width: 8px;
     }
-
-    @include in-scrolling;
   }
 
   &:hover {
+    @include in-scrolling;
+
     >.ps-scrollbar-x-rail,
     >.ps-scrollbar-y-rail {
-      @include opacity(0.6);
-      @include in-scrolling;
+      opacity: 0.6;
     }
 
     >.ps-scrollbar-x-rail:hover {

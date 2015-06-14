@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>perfect-scrollbar example</title>
+    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <style>
+      #table {
+        font-size: 20px;
+      }
+      #table thead, #table tbody, #table tr {
+        display: block;
+        width: 600px;
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+      #table tbody {
+        height: 100px;
+        overflow-y: auto;
+        overflow-x:hidden;
+        position: relative;
+      }
+      #table tbody td, #table thead th {
+        display: block;
+        border: 1px solid black;
+        width: 200px;
+        float: left;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="table" class="wrapper">
+    <table id='table'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Occupation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Alex</td>
+          <td>20</td>
+          <td>Student</td>
+        </tr>
+        <tr>
+          <td>Paul</td>
+          <td>23</td>
+          <td>Engineer</td>
+        </tr>
+        <tr>
+          <td>Chris</td>
+          <td>19</td>
+          <td>Human being</td>
+        </tr>
+        <tr>
+          <td>Alex</td>
+          <td>20</td>
+          <td>Student</td>
+        </tr>
+        <tr>
+          <td>Paul</td>
+          <td>23</td>
+          <td>Engineer</td>
+        </tr>
+        <tr>
+          <td>Chris</td>
+          <td>19</td>
+          <td>Human being</td>
+        </tr>
+      </tbody>
+    </table>
+    <script type="text/javascript">
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        Ps.initialize($('#table tbody'));
+      };
+    </script>
+  </body>
+</html>

@@ -121,6 +121,7 @@ requirements.
 I would recommend using the plugin with NPM and CommonJS module system
 like Browserify.
 
+
 ```javascript
 var Ps = require('perfect-scrollbar');
 ```
@@ -171,6 +172,7 @@ Ps.update(container);
 You can also get information about how to use the plugin
 from code in the `examples` directory of the source tree.
 
+
 ## jQuery
 
 As you may already know, perfect-scrollbar was a jQuery plugin.
@@ -198,60 +200,6 @@ $('#container').perfectScrollbar({ ... });   // with options
 $('#container').perfectScrollbar('update');  // Update
 $('#container').perfectScrollbar('destroy'); // Destroy
 ```
-
-
-## requireJS  usage
-for requireJS loader,  no need to write shim,  simply import two lib:
-require.config({
-    paths: {
-        perfectScrollbarJquery: 'bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery',
-        perfectScrollbar: 'bower_components/perfect-scrollbar/js/perfect-scrollbar',
-    }
-
-
-and load perfectScrollbar in initializer of your app:
-    for vanilla JS:
-    window.PerfectScrollbar = require('perfectScrollbar');
-
-    for jQuery:
-    require('perfectScrollbarJquery');
-
-
-## AngularJS + requireJS usage
-   *with above require.config settings, at initial of your app module definetion, you can have following code:
-
-   define([
-    'angular',
-    'perfectScrollbar',
-    'perfectScrollbarJquery'
-    ], 
-    function(angular) {
-      var myApp = angular.module('myApp', [])
-      . run(function() {
-          window.PerfectScrollbar = require('perfectScrollbar');
-          require('perfectScrollbarJquery');
-      })
-      .return myApp
-  });
-
-  
-
-  * And initial perfectScrollbar in controller 
-
-        by vanilla JS:
-
-        var container = document.getElementById('imgLoader');
-        container.style.width= width +"px";
-        container.style.height= height +"px";
-        PerfectScrollbar.initialize(container);
-        PerfectScrollbar.update(container);
-        
-        or by jQuery:
-
-        var imgLoader = $("#imgLoader")
-        imgLoader.perfectScrollbar();
-        imgLoader.width(width).height(height);
-        imgLoader.perfectScrollbar('update');
 
 
 ## Optional parameters
