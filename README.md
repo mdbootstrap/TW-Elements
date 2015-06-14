@@ -199,6 +199,66 @@ $('#container').perfectScrollbar('update');  // Update
 $('#container').perfectScrollbar('destroy'); // Destroy
 ```
 
+## RequireJS  usage
+
+For RequireJS loader, no need to write shim, simply import two libs:
+
+```javascript
+require.config({
+  paths: {
+    perfectScrollbarJQuery: '.../perfect-scrollbar.jquery',
+    perfectScrollbar: '.../perfect-scrollbar',
+  }
+  ...
+})
+```
+
+
+and load `perfectScrollbar` in the initialiser of your app:
+
+```javascript
+# for vanilla JS:
+window.Ps = require('perfectScrollbar');
+
+# for jQuery:
+require('perfectScrollbarJQuery');
+```
+
+
+## AngularJS + RequireJS usage
+
+With the require.config settings above, at the beginning of your app module
+definition, you can have following code:
+
+```javascript
+define([
+  'angular',
+  'perfectScrollbar',
+  'perfectScrollbarJquery'
+],
+function (angular) {
+  var myApp = angular.module('myApp', [])
+  .run(function() {
+    window.Ps = require('perfectScrollbar');
+    require('perfectScrollbarJQuery');
+  })
+  return myApp;
+});
+```
+
+And initialise perfectScrollbar in a controller:
+
+```javascript
+# by vanilla JS:
+var container = document.getElementById('imgLoader');
+Ps.initialize(container);
+Ps.update(container);
+
+# or by jQuery:
+var imgLoader = $("#imgLoader")
+imgLoader.perfectScrollbar();
+```
+
 ## Optional parameters
 
 perfect-scrollbar supports optional parameters.
