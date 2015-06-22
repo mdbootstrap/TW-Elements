@@ -46,6 +46,7 @@ I hope you love it!
   to update the size or position of the scrollbar, just update.
 * Additionally, perfect-scrollbar uses 'scrollTop' and 'scrollLeft',
   not absolute positioning or something messy.
+* perfect-scrollbar supports RTL perfectly on both WebKit and Gecko based browsers.
 
 It's cool, isn't it?
 

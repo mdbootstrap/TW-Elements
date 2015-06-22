@@ -11,6 +11,9 @@ var d = require('../lib/dom')
 module.exports = function (element) {
   var i = instances.get(element);
 
+  // Recalcuate negative scrollLeft adjustment
+  i.negativeScrollAdjustment = i.isNegativeScroll ? element.scrollWidth - element.clientWidth : 0;
+
   // Recalculate rail margins
   d.css(i.scrollbarXRail, 'display', 'block');
   d.css(i.scrollbarYRail, 'display', 'block');

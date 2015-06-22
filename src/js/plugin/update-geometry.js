@@ -21,7 +21,7 @@ function getThumbSize(i, thumbSize) {
 function updateCss(element, i) {
   var xRailOffset = {width: i.railXWidth};
   if (i.isRtl) {
-    xRailOffset.left = element.scrollLeft + i.containerWidth - i.contentWidth;
+    xRailOffset.left = i.negativeScrollAdjustment + element.scrollLeft + i.containerWidth - i.contentWidth;
   } else {
     xRailOffset.left = element.scrollLeft;
   }
@@ -35,13 +35,13 @@ function updateCss(element, i) {
   var yRailOffset = {top: element.scrollTop, height: i.railYHeight};
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
-      yRailOffset.right = i.contentWidth - element.scrollLeft - i.scrollbarYRight - i.scrollbarYOuterWidth;
+      yRailOffset.right = i.contentWidth - (i.negativeScrollAdjustment + element.scrollLeft) - i.scrollbarYRight - i.scrollbarYOuterWidth;
     } else {
       yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
     }
   } else {
     if (i.isRtl) {
-      yRailOffset.left = element.scrollLeft + i.containerWidth * 2 - i.contentWidth - i.scrollbarYLeft - i.scrollbarYOuterWidth;
+      yRailOffset.left = i.negativeScrollAdjustment + element.scrollLeft + i.containerWidth * 2 - i.contentWidth - i.scrollbarYLeft - i.scrollbarYOuterWidth;
     } else {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
@@ -72,7 +72,7 @@ module.exports = function (element) {
     i.railXWidth = i.containerWidth - i.railXMarginWidth;
     i.railXRatio = i.containerWidth / i.railXWidth;
     i.scrollbarXWidth = getThumbSize(i, h.toInt(i.railXWidth * i.containerWidth / i.contentWidth));
-    i.scrollbarXLeft = h.toInt(element.scrollLeft * (i.railXWidth - i.scrollbarXWidth) / (i.contentWidth - i.containerWidth));
+    i.scrollbarXLeft = h.toInt((i.negativeScrollAdjustment + element.scrollLeft) * (i.railXWidth - i.scrollbarXWidth) / (i.contentWidth - i.containerWidth));
   } else {
     i.scrollbarXActive = false;
     i.scrollbarXWidth = 0;
