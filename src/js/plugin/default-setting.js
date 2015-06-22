@@ -15,5 +15,5 @@ module.exports = {
   suppressScrollY: false,
   scrollXMarginOffset: 0,
   scrollYMarginOffset: 0,
-  sizeScale: 3
+  sizeScale: 1
 };
