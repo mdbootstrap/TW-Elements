@@ -122,7 +122,6 @@ requirements.
 I would recommend using the plugin with NPM and CommonJS module system
 like Browserify.
 
-
 ```javascript
 var Ps = require('perfect-scrollbar');
 ```
@@ -172,7 +171,6 @@ Ps.update(container);
 
 You can also get information about how to use the plugin
 from code in the `examples` directory of the source tree.
-
 
 ## jQuery
 
@@ -261,7 +259,6 @@ Ps.update(container);
 var imgLoader = $("#imgLoader")
 imgLoader.perfectScrollbar();
 ```
->>>>>>> 1f082a2e04a63f47c86d7c08584bc37ce43ccede
 
 ## Optional parameters
 
