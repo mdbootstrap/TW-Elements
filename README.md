@@ -46,6 +46,7 @@ I hope you love it!
   to update the size or position of the scrollbar, just update.
 * Additionally, perfect-scrollbar uses 'scrollTop' and 'scrollLeft',
   not absolute positioning or something messy.
+* perfect-scrollbar supports RTL perfectly on both WebKit and Gecko based browsers.
 
 It's cool, isn't it?
 
@@ -201,60 +202,66 @@ $('#container').perfectScrollbar('update');  // Update
 $('#container').perfectScrollbar('destroy'); // Destroy
 ```
 
+## RequireJS  usage
 
-## requireJS  usage
-for requireJS loader,  no need to write shim,  simply import two lib:
+For RequireJS loader, no need to write shim, simply import two libs:
+
+```javascript
 require.config({
-    paths: {
-        perfectScrollbarJquery: 'bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery',
-        perfectScrollbar: 'bower_components/perfect-scrollbar/js/perfect-scrollbar',
-    }
+  paths: {
+    perfectScrollbarJQuery: '.../perfect-scrollbar.jquery',
+    perfectScrollbar: '.../perfect-scrollbar',
+  }
+  ...
+})
+```
 
 
-and load perfectScrollbar in initializer of your app:
-    for vanilla JS:
-    window.PerfectScrollbar = require('perfectScrollbar');
+and load `perfectScrollbar` in the initialiser of your app:
 
-    for jQuery:
-    require('perfectScrollbarJquery');
+```javascript
+# for vanilla JS:
+window.Ps = require('perfectScrollbar');
+
+# for jQuery:
+require('perfectScrollbarJQuery');
+```
 
 
-## AngularJS + requireJS usage
-   *with above require.config settings, at initial of your app module definetion, you can have following code:
+## AngularJS + RequireJS usage
 
-   define([
-    'angular',
-    'perfectScrollbar',
-    'perfectScrollbarJquery'
-    ], 
-    function(angular) {
-      var myApp = angular.module('myApp', [])
-      . run(function() {
-          window.PerfectScrollbar = require('perfectScrollbar');
-          require('perfectScrollbarJquery');
-      })
-      .return myApp
-  });
+With the require.config settings above, at the beginning of your app module
+definition, you can have following code:
 
-  
+```javascript
+define([
+  'angular',
+  'perfectScrollbar',
+  'perfectScrollbarJquery'
+],
+function (angular) {
+  var myApp = angular.module('myApp', [])
+  .run(function() {
+    window.Ps = require('perfectScrollbar');
+    require('perfectScrollbarJQuery');
+  })
+  return myApp;
+});
+```
 
-  * And initial perfectScrollbar in controller 
+And initialise perfectScrollbar in a controller:
 
-        by vanilla JS:
+```javascript
+# by vanilla JS:
+var container = document.getElementById('imgLoader');
+Ps.initialize(container);
+Ps.update(container);
 
-        var container = document.getElementById('imgLoader');
-        container.style.width= width +"px";
-        container.style.height= height +"px";
-        PerfectScrollbar.initialize(container);
-        PerfectScrollbar.update(container);
-        
-        or by jQuery:
-
-        var imgLoader = $("#imgLoader")
-        imgLoader.perfectScrollbar();
-        imgLoader.width(width).height(height);
-        imgLoader.perfectScrollbar('update');
-
+# or by jQuery:
+var imgLoader = $("#imgLoader")
+imgLoader.perfectScrollbar();
+```
+>>>>>>> 1f082a2e04a63f47c86d7c08584bc37ce43ccede
 
 ## Optional parameters
 
