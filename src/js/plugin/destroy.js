@@ -10,7 +10,7 @@ var d = require('../lib/dom')
 module.exports = function (element) {
   var i = instances.get(element);
 
-  if (i){
+  if (i) {
     i.event.unbindAll();
     d.remove(i.scrollbarX);
     d.remove(i.scrollbarY);
