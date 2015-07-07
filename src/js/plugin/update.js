@@ -11,6 +11,10 @@ var d = require('../lib/dom')
 module.exports = function (element) {
   var i = instances.get(element);
 
+  if (!i) {
+    throw new Error('perfect-scrollbar: instance not found');
+  }
+
   // Recalcuate negative scrollLeft adjustment
   i.negativeScrollAdjustment = i.isNegativeScroll ? element.scrollWidth - element.clientWidth : 0;
 
