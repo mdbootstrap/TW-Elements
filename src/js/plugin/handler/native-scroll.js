@@ -4,12 +4,19 @@
 'use strict';
 
 var instances = require('../instances')
-  , updateGeometry = require('../update-geometry');
+  , updateGeometry = require('../update-geometry')
+  , updateCssBottom = require('../update-css-bottom');
 
 function bindNativeScrollHandler(element, i) {
   i.event.bind(element, 'scroll', function () {
     updateGeometry(element);
   });
+
+  if (i.settings.fixedScrollX) {
+    window.addEventListener("scroll", function() {
+      updateCssBottom(element, i);
+    });
+  }
 }
 
 module.exports = function (element) {

@@ -25,10 +25,12 @@ function updateCss(element, i) {
   } else {
     xRailOffset.left = element.scrollLeft;
   }
-  if (i.isScrollbarXUsingBottom) {
-    xRailOffset.bottom = i.scrollbarXBottom - element.scrollTop;
-  } else {
-    xRailOffset.top = i.scrollbarXTop + element.scrollTop;
+  if (!i.settings.fixedScrollX) { // if fixed scroll
+    if (i.isScrollbarXUsingBottom) {
+      xRailOffset.bottom = i.scrollbarXBottom - element.scrollTop;
+    } else {
+      xRailOffset.top = i.scrollbarXTop + element.scrollTop;
+    }
   }
   d.css(i.scrollbarXRail, xRailOffset);
 
