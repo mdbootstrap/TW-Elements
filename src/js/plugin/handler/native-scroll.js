@@ -13,7 +13,7 @@ function bindNativeScrollHandler(element, i) {
   });
 
   if (i.settings.fixedScrollX) {
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
       updateCssBottom(element, i);
     });
   }

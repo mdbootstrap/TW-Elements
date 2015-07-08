@@ -13,8 +13,9 @@ module.exports = function (element, i) {
   var elementBottom = (element.getBoundingClientRect().top + document.body.scrollTop) + element.offsetHeight;
 
   // if user has not scrolled beyond the element
-  if (scrolled < elementBottom) // position xRail to the bottom of the element
+  if (scrolled < elementBottom) { // position xRail to the bottom of the element
     xRailOffset.bottom = (Math.abs(scrolled - elementBottom));
+  }
 
   d.css(i.scrollbarXRail, xRailOffset);
 };

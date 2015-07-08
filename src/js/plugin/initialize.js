@@ -7,7 +7,7 @@ var cls = require('../lib/class')
   , h = require('../lib/helper')
   , instances = require('./instances')
   , updateGeometry = require('./update-geometry')
-  , updateCssBottom = require('./update-css-bottom');;
+  , updateCssBottom = require('./update-css-bottom');
 
 // Handlers
 var clickRailHandler = require('./handler/click-rail')
@@ -42,6 +42,7 @@ module.exports = function (element, userSettings) {
   }
 
   updateGeometry(element);
-  if (i.settings.fixedScrollX)
+  if (i.settings.fixedScrollX) {
     updateCssBottom(element, i);
+  }
 };
