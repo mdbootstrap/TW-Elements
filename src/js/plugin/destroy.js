@@ -11,7 +11,7 @@ module.exports = function (element) {
   var i = instances.get(element);
 
   if (!i) {
-    throw new Error('perfect-scrollbar: instance not found');
+    return;
   }
 
   i.event.unbindAll();

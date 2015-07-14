@@ -12,7 +12,7 @@ module.exports = function (element) {
   var i = instances.get(element);
 
   if (!i) {
-    throw new Error('perfect-scrollbar: instance not found');
+    return;
   }
 
   // Recalcuate negative scrollLeft adjustment
