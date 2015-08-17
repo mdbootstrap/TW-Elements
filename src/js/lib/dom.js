@@ -78,4 +78,10 @@ DOM.remove = function (element) {
   }
 };
 
+DOM.queryChildren = function (element, selector) {
+  return Array.prototype.filter.call(element.childNodes, function (child) {
+    return DOM.matches(child, selector);
+  });
+};
+
 module.exports = DOM;
