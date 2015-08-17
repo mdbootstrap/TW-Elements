@@ -3,13 +3,15 @@
  */
 'use strict';
 
-exports.e = function (tagName, className) {
+var DOM = {};
+
+DOM.e = function (tagName, className) {
   var element = document.createElement(tagName);
   element.className = className;
   return element;
 };
 
-exports.appendTo = function (child, parent) {
+DOM.appendTo = function (child, parent) {
   parent.appendChild(child);
   return child;
 };
@@ -37,7 +39,7 @@ function cssMultiSet(element, obj) {
   return element;
 }
 
-exports.css = function (element, styleNameOrObject, styleValue) {
+DOM.css = function (element, styleNameOrObject, styleValue) {
   if (typeof styleNameOrObject === 'object') {
     // multiple set with object
     return cssMultiSet(element, styleNameOrObject);
@@ -50,7 +52,7 @@ exports.css = function (element, styleNameOrObject, styleValue) {
   }
 };
 
-exports.matches = function (element, query) {
+DOM.matches = function (element, query) {
   if (typeof element.matches !== 'undefined') {
     return element.matches(query);
   } else {
@@ -66,7 +68,7 @@ exports.matches = function (element, query) {
   }
 };
 
-exports.remove = function (element) {
+DOM.remove = function (element) {
   if (typeof element.remove !== 'undefined') {
     element.remove();
   } else {
@@ -75,3 +77,5 @@ exports.remove = function (element) {
     }
   }
 };
+
+module.exports = DOM;
