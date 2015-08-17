@@ -80,6 +80,12 @@ function bindKeyboardHandler(element, i) {
       deltaY = 90;
       break;
     case 32: // space bar
+      if (e.shiftKey) {
+        deltaY = 90;
+      } else {
+        deltaY = -90;
+      }
+      break;
     case 34: // page down
       deltaY = -90;
       break;
