@@ -60,10 +60,23 @@ module.exports = function (element) {
   i.contentWidth = element.scrollWidth;
   i.contentHeight = element.scrollHeight;
 
+  var existingRails;
   if (!element.contains(i.scrollbarXRail)) {
+    existingRails = d.queryChildren(element, '.ps-scrollbar-x-rail');
+    if (existingRails.length > 0) {
+      existingRails.forEach(function (rail) {
+        d.remove(rail);
+      });
+    }
     d.appendTo(i.scrollbarXRail, element);
   }
   if (!element.contains(i.scrollbarYRail)) {
+    existingRails = d.queryChildren(element, '.ps-scrollbar-y-rail');
+    if (existingRails.length > 0) {
+      existingRails.forEach(function (rail) {
+        d.remove(rail);
+      });
+    }
     d.appendTo(i.scrollbarYRail, element);
   }
 
