@@ -5,7 +5,8 @@
 
 var h = require('../../lib/helper')
   , instances = require('../instances')
-  , updateGeometry = require('../update-geometry');
+  , updateGeometry = require('../update-geometry')
+  , updateScroll = require('../update-scroll');
 
 function bindClickRailHandler(element, i) {
   function pageOffset(el) {
@@ -28,7 +29,7 @@ function bindClickRailHandler(element, i) {
       positionRatio = 1;
     }
 
-    element.scrollTop = (i.contentHeight - i.containerHeight) * positionRatio;
+    updateScroll(element, 'top', (i.contentHeight - i.containerHeight) * positionRatio);
     updateGeometry(element);
 
     e.stopPropagation();
@@ -49,7 +50,7 @@ function bindClickRailHandler(element, i) {
       positionRatio = 1;
     }
 
-    element.scrollLeft = ((i.contentWidth - i.containerWidth) * positionRatio) - i.negativeScrollAdjustment;
+    updateScroll(element, 'left', ((i.contentWidth - i.containerWidth) * positionRatio) - i.negativeScrollAdjustment);
     updateGeometry(element);
 
     e.stopPropagation();

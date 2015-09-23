@@ -6,7 +6,8 @@
 var cls = require('../lib/class')
   , d = require('../lib/dom')
   , h = require('../lib/helper')
-  , instances = require('./instances');
+  , instances = require('./instances')
+  , updateScroll = require('./update-scroll');
 
 function getThumbSize(i, thumbSize) {
   if (i.settings.minScrollbarLength) {
@@ -103,7 +104,7 @@ module.exports = function (element) {
     i.scrollbarYActive = false;
     i.scrollbarYHeight = 0;
     i.scrollbarYTop = 0;
-    element.scrollTop = 0;
+    updateScroll(element, 'top', 0);
   }
 
   if (i.scrollbarXLeft >= i.railXWidth - i.scrollbarXWidth) {

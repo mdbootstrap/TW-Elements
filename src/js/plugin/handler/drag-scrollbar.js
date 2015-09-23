@@ -6,7 +6,8 @@
 var d = require('../../lib/dom')
   , h = require('../../lib/helper')
   , instances = require('../instances')
-  , updateGeometry = require('../update-geometry');
+  , updateGeometry = require('../update-geometry')
+  , updateScroll = require('../update-scroll');
 
 function bindMouseScrollXHandler(element, i) {
   var currentLeft = null;
@@ -25,7 +26,7 @@ function bindMouseScrollXHandler(element, i) {
     }
 
     var scrollLeft = h.toInt(i.scrollbarXLeft * (i.contentWidth - i.containerWidth) / (i.containerWidth - (i.railXRatio * i.scrollbarXWidth))) - i.negativeScrollAdjustment;
-    element.scrollLeft = scrollLeft;
+    updateScroll(element, 'left', scrollLeft);
   }
 
   var mouseMoveHandler = function (e) {
@@ -70,7 +71,7 @@ function bindMouseScrollYHandler(element, i) {
     }
 
     var scrollTop = h.toInt(i.scrollbarYTop * (i.contentHeight - i.containerHeight) / (i.containerHeight - (i.railYRatio * i.scrollbarYHeight)));
-    element.scrollTop = scrollTop;
+    updateScroll(element, 'top', scrollTop);
   }
 
   var mouseMoveHandler = function (e) {

@@ -5,7 +5,8 @@
 
 var h = require('../../lib/helper')
   , instances = require('../instances')
-  , updateGeometry = require('../update-geometry');
+  , updateGeometry = require('../update-geometry')
+  , updateScroll = require('../update-scroll');
 
 function bindSelectionHandler(element, i) {
   function getRangeNode() {
@@ -28,8 +29,8 @@ function bindSelectionHandler(element, i) {
           return;
         }
 
-        element.scrollTop = element.scrollTop + scrollDiff.top;
-        element.scrollLeft = element.scrollLeft + scrollDiff.left;
+        updateScroll(element, 'top', element.scrollTop + scrollDiff.top);
+        updateScroll(element, 'left', element.scrollLeft + scrollDiff.left);
         updateGeometry(element);
       }, 50); // every .1 sec
     }

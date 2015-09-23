@@ -5,7 +5,8 @@
 
 var h = require('../../lib/helper')
   , instances = require('../instances')
-  , updateGeometry = require('../update-geometry');
+  , updateGeometry = require('../update-geometry')
+  , updateScroll = require('../update-scroll');
 
 function bindMouseWheelHandler(element, i) {
   var shouldPrevent = false;
@@ -100,24 +101,24 @@ function bindMouseWheelHandler(element, i) {
     if (!i.settings.useBothWheelAxes) {
       // deltaX will only be used for horizontal scrolling and deltaY will
       // only be used for vertical scrolling - this is the default
-      element.scrollTop = element.scrollTop - (deltaY * i.settings.wheelSpeed);
-      element.scrollLeft = element.scrollLeft + (deltaX * i.settings.wheelSpeed);
+      updateScroll(element, 'top', element.scrollTop - (deltaY * i.settings.wheelSpeed));
+      updateScroll(element, 'left', element.scrollLeft + (deltaX * i.settings.wheelSpeed));
     } else if (i.scrollbarYActive && !i.scrollbarXActive) {
       // only vertical scrollbar is active and useBothWheelAxes option is
       // active, so let's scroll vertical bar using both mouse wheel axes
       if (deltaY) {
-        element.scrollTop = element.scrollTop - (deltaY * i.settings.wheelSpeed);
+        updateScroll(element, 'top', element.scrollTop - (deltaY * i.settings.wheelSpeed));
       } else {
-        element.scrollTop = element.scrollTop + (deltaX * i.settings.wheelSpeed);
+        updateScroll(element, 'top', element.scrollTop + (deltaX * i.settings.wheelSpeed));
       }
       shouldPrevent = true;
     } else if (i.scrollbarXActive && !i.scrollbarYActive) {
       // useBothWheelAxes and only horizontal bar is active, so use both
       // wheel axes for horizontal bar
       if (deltaX) {
-        element.scrollLeft = element.scrollLeft + (deltaX * i.settings.wheelSpeed);
+        updateScroll(element, 'left', element.scrollLeft + (deltaX * i.settings.wheelSpeed));
       } else {
-        element.scrollLeft = element.scrollLeft - (deltaY * i.settings.wheelSpeed);
+        updateScroll(element, 'left', element.scrollLeft - (deltaY * i.settings.wheelSpeed));
       }
       shouldPrevent = true;
     }

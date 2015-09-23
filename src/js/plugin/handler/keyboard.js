@@ -5,7 +5,8 @@
 
 var h = require('../../lib/helper')
   , instances = require('../instances')
-  , updateGeometry = require('../update-geometry');
+  , updateGeometry = require('../update-geometry')
+  , updateScroll = require('../update-scroll');
 
 function bindKeyboardHandler(element, i) {
   var hovered = false;
@@ -107,8 +108,8 @@ function bindKeyboardHandler(element, i) {
       return;
     }
 
-    element.scrollTop = element.scrollTop - deltaY;
-    element.scrollLeft = element.scrollLeft + deltaX;
+    updateScroll(element, 'top', element.scrollTop - deltaY);
+    updateScroll(element, 'left', element.scrollLeft + deltaX);
     updateGeometry(element);
 
     shouldPrevent = shouldPreventDefault(deltaX, deltaY);
