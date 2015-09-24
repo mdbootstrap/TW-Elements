@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>perfect-scrollbar example</title>
+    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <style>
+        p {
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            margin: 0px auto;
+            padding: 0px;
+            width: 600px;
+            height: 400px;
+            overflow: auto;
+        }
+
+        .container .content {
+            background-image: url('./azusa.jpg');
+            width: 1280px;
+            height: 720px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+    </div>
+</div>
+
+<p><strong>Axis</strong> <span id="axis">&hellip;</span></p>
+
+<p><strong>Direction</strong> <span id="direction">&hellip;</span></p>
+<script>
+    var container = document.querySelector('.container')
+            , axis = document.getElementById('axis')
+            , direction = document.getElementById('direction');
+    Ps.initialize(container);
+
+    document.addEventListener('ps-scroll-y', function () {
+        axis.innerHTML = 'Y Axis';
+    });
+
+    document.addEventListener('ps-scroll-x', function () {
+        axis.innerHTML = 'X Axis';
+    });
+
+    document.addEventListener('ps-scroll-up', function () {
+        direction.innerHTML = 'up';
+    });
+
+    document.addEventListener('ps-scroll-down', function () {
+        direction.innerHTML = 'down';
+    });
+
+    document.addEventListener('ps-scroll-left', function () {
+        direction.innerHTML = 'left';
+    });
+
+    document.addEventListener('ps-scroll-right', function () {
+        direction.innerHTML = 'right';
+    });
+
+</script>
+</body>
+</html>

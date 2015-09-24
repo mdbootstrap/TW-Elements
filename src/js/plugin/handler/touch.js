@@ -4,7 +4,8 @@
 'use strict';
 
 var instances = require('../instances')
-  , updateGeometry = require('../update-geometry');
+  , updateGeometry = require('../update-geometry')
+  , updateScroll = require('../update-scroll');
 
 function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   function shouldPreventDefault(deltaX, deltaY) {
@@ -33,8 +34,8 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
 
   function applyTouchMove(differenceX, differenceY) {
-    element.scrollTop = element.scrollTop - differenceY;
-    element.scrollLeft = element.scrollLeft - differenceX;
+    updateScroll(element, 'top', element.scrollTop - differenceY);
+    updateScroll(element, 'left', element.scrollLeft - differenceX);
 
     updateGeometry(element);
   }
