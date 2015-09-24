@@ -338,13 +338,13 @@ You can listen to these events either with vanilla JavaScript
 ```javascript
 document.addEventListener('ps-scroll-x', function () {
   // ...
-}
+})
 ```
 or with jQuery
 ```javascript
 $(document).on('ps-scroll-x', function () {
   // ...
-}
+})
 ```
 
 ## Contribution
