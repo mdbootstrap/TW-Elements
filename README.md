@@ -334,6 +334,18 @@ This event fires when scrolling to the left.
 ### ps-scroll-right
 This event fires when scrolling to the right.
 
+### ps-y-reach-start
+This event fires when scrolling reaches the start of the y-axis.
+
+### ps-y-reach-end
+This event fires when scrolling reaches the end of the y-axis (useful for infinite scroll).
+
+### ps-x-reach-start
+This event fires when scrolling reaches the start of the x-axis.
+
+### ps-x-reach-end
+This event fires when scrolling reaches the end of the x-axis.
+
 You can listen to these events either with vanilla JavaScript
 ```javascript
 document.addEventListener('ps-scroll-x', function () {
