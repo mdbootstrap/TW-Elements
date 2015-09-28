@@ -35,10 +35,13 @@
 <p><strong>Axis</strong> <span id="axis">&hellip;</span></p>
 
 <p><strong>Direction</strong> <span id="direction">&hellip;</span></p>
+
+<p><strong>Start / End</strong> <span id="start-end">(scroll to the start or end of an axis)</span></p>
 <script>
     var container = document.querySelector('.container')
             , axis = document.getElementById('axis')
-            , direction = document.getElementById('direction');
+            , direction = document.getElementById('direction')
+            , startEnd = document.getElementById('start-end');
     Ps.initialize(container);
 
     document.addEventListener('ps-scroll-y', function () {
@@ -63,6 +66,22 @@
 
     document.addEventListener('ps-scroll-right', function () {
         direction.innerHTML = 'right';
+    });
+
+    document.addEventListener('ps-y-reach-start', function () {
+        startEnd.innerHTML = 'Reached start of <em>Y-Axis</em>';
+    });
+
+    document.addEventListener('ps-y-reach-end', function () {
+        startEnd.innerHTML = 'Reached end of <em>Y-Axis</em>';
+    });
+
+    document.addEventListener('ps-x-reach-start', function () {
+        startEnd.innerHTML = 'Reached start of <em>X-Axis</em>';
+    });
+
+    document.addEventListener('ps-x-reach-end', function () {
+        startEnd.innerHTML = 'Reached end of <em>X-Axis</em>'
     });
 
 </script>
