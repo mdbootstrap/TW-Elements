@@ -11,6 +11,10 @@ var upEvent = document.createEvent('Event')
   , rightEvent = document.createEvent('Event')
   , yEvent = document.createEvent('Event')
   , xEvent = document.createEvent('Event')
+  , xStartEvent = document.createEvent('Event')
+  , xEndEvent = document.createEvent('Event')
+  , yStartEvent = document.createEvent('Event')
+  , yEndEvent = document.createEvent('Event')
   , lastTop
   , lastLeft;
 
@@ -20,6 +24,10 @@ leftEvent.initEvent('ps-scroll-left', true, true);
 rightEvent.initEvent('ps-scroll-right', true, true);
 yEvent.initEvent('ps-scroll-y', true, true);
 xEvent.initEvent('ps-scroll-x', true, true);
+xStartEvent.initEvent('ps-x-reach-start', true, true);
+xEndEvent.initEvent('ps-x-reach-end', true, true);
+yStartEvent.initEvent('ps-y-reach-start', true, true);
+yEndEvent.initEvent('ps-y-reach-end', true, true);
 
 module.exports = function (element, axis, value) {
   if (typeof element === 'undefined' ) {
@@ -34,17 +42,25 @@ module.exports = function (element, axis, value) {
     throw 'You must provide a value to the update-scroll function'
   }
 
-  if (value < 0) {
+  if (axis === 'top' && value <= 0) {
+    element.dispatchEvent(yStartEvent);
+    return; // don't allow negative scroll
+  }
+
+  if (axis === 'left' && value <= 0) {
+    element.dispatchEvent(xStartEvent);
     return; // don't allow negative scroll
   }
 
   var i = instances.get(element);
 
   if (axis === 'top' && value > i.contentHeight - i.containerHeight) {
+    element.dispatchEvent(yEndEvent);
     return; // don't allow scroll past container
   }
 
   if (axis === 'left' && value > i.contentWidth - i.containerWidth) {
+    element.dispatchEvent(xEndEvent);
     return; // don't allow scroll past container
   }
 
