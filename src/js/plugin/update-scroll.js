@@ -43,11 +43,13 @@ module.exports = function (element, axis, value) {
   }
 
   if (axis === 'top' && value <= 0) {
+    element.scrollTop = 0;
     element.dispatchEvent(yStartEvent);
     return; // don't allow negative scroll
   }
 
   if (axis === 'left' && value <= 0) {
+    element.scrollLeft = 0;
     element.dispatchEvent(xStartEvent);
     return; // don't allow negative scroll
   }
@@ -55,11 +57,13 @@ module.exports = function (element, axis, value) {
   var i = instances.get(element);
 
   if (axis === 'top' && value > i.contentHeight - i.containerHeight) {
+    element.scrollTop = i.contentHeight - i.containerHeight;
     element.dispatchEvent(yEndEvent);
     return; // don't allow scroll past container
   }
 
   if (axis === 'left' && value > i.contentWidth - i.containerWidth) {
+    element.scrollLeft = i.contentWidth - i.containerWidth;
     element.dispatchEvent(xEndEvent);
     return; // don't allow scroll past container
   }
