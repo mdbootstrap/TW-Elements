@@ -3,7 +3,6 @@
 var gulp = require('gulp')
   , browserify = require('browserify')
   , buffer = require('vinyl-buffer')
-  , bump = require('gulp-bump')
   , connect = require('gulp-connect')
   , del = require('del')
   , eslint = require('gulp-eslint')
@@ -101,24 +100,6 @@ gulp.task('css:min', ['clean:css:min'], function () {
     .pipe(rename('perfect-scrollbar.min.css'))
     .pipe(gulp.dest('./dist/css'));
 });
-
-function bumpType() {
-  if (gulp.env.major) {
-    return 'major';
-  } else if (gulp.env.minor) {
-    return 'minor';
-  } else {
-    return 'patch';
-  }
-}
-
-gulp.task('bump', function () {
-  gulp.src('./*.json')
-    .pipe(bump({type: bumpType()}))
-    .pipe(gulp.dest('./'));
-});
-
-gulp.task('release', ['bump', 'build']);
 
 gulp.task('build', ['js', 'js:min', 'css', 'css:min']);
 
