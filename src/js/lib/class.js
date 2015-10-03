@@ -38,7 +38,7 @@ exports.remove = function (element, className) {
 
 exports.list = function (element) {
   if (element.classList) {
-    return element.classList;
+    return Array.prototype.slice.apply(element.classList);
   } else {
     return element.className.split(' ');
   }
