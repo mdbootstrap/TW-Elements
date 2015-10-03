@@ -65,9 +65,9 @@ gulp.task('js:min', ['clean:js:min'], function () {
       .pipe(insert.prepend(version))
       .pipe(rename(function (path) {
         if (path.basename === 'global') {
-          path.basename = 'perfect-scrollbar';
+          path.basename = 'perfect-scrollbar.min';
         } else {
-          path.basename = 'perfect-scrollbar.' + path.basename;
+          path.basename = 'perfect-scrollbar.' + path.basename + '.min';
         }
       }))
       .pipe(gulp.dest('./dist/js/min'))
