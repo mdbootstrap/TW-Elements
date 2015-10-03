@@ -30,7 +30,7 @@ yStartEvent.initEvent('ps-y-reach-start', true, true);
 yEndEvent.initEvent('ps-y-reach-end', true, true);
 
 module.exports = function (element, axis, value) {
-  if (typeof element === 'undefined' ) {
+  if (typeof element === 'undefined') {
     throw 'You must provide an element to the update-scroll function';
   }
 
@@ -39,7 +39,7 @@ module.exports = function (element, axis, value) {
   }
 
   if (typeof value === 'undefined') {
-    throw 'You must provide a value to the update-scroll function'
+    throw 'You must provide a value to the update-scroll function';
   }
 
   if (axis === 'top' && value <= 0) {
