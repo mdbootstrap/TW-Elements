@@ -312,6 +312,10 @@ The number of pixels the content height can surpass the container height without
 When set to false, when clicking on a rail, the click event will be allowed to propagate.  
 **Default: true**
 
+### useSelectionScroll
+When set to true, you can scroll the container by selecting text and move the cursor.  
+**Default: false**
+
 ## Events
 
 perfect-scrollbar dispatches custom events.

@@ -4,16 +4,17 @@
 'use strict';
 
 module.exports = {
-  wheelSpeed: 1,
-  wheelPropagation: false,
-  swipePropagation: true,
-  minScrollbarLength: null,
   maxScrollbarLength: null,
-  useBothWheelAxes: false,
-  useKeyboard: true,
-  suppressScrollX: false,
-  suppressScrollY: false,
+  minScrollbarLength: null,
   scrollXMarginOffset: 0,
   scrollYMarginOffset: 0,
-  stopPropagationOnClick: true
+  stopPropagationOnClick: true,
+  suppressScrollX: false,
+  suppressScrollY: false,
+  swipePropagation: true,
+  useBothWheelAxes: false,
+  useKeyboard: true,
+  useSelectionScroll: false,
+  wheelPropagation: false,
+  wheelSpeed: 1
 };

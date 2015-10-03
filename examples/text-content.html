@@ -32,7 +32,9 @@
     <script>
       var $ = document.querySelector.bind(document);
       window.onload = function () {
-        Ps.initialize($('#description'));
+        Ps.initialize($('#description'), {
+          useSelectionScroll: true
+        });
       };
       $('#redraw').addEventListener('click', function () {
         var oldHtml = $('#description').innerHTML;
