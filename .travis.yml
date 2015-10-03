@@ -1,8 +1,7 @@
 language: node_js
 node_js:
-- '0.10'
-before_script:
-- npm install -g gulp
+- 0.12
+- 4
 deploy:
   provider: releases
   api_key:
@@ -13,5 +12,4 @@ deploy:
     branch: master
     tags: true
 before_deploy:
-- gulp
-- gulp compress
+- npm run before-deploy

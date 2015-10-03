@@ -24,24 +24,27 @@
     "scrollbar"
   ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.12.0"
   },
   "devDependencies": {
-    "browserify": "^8.1.1",
-    "gulp": "^3.8.10",
-    "gulp-bump": "^0.1.11",
+    "browserify": "^11.2.0",
+    "del": "^2.0.2",
+    "event-stream": "^3.3.1",
+    "gulp": "^3.9.0",
+    "gulp-bump": "^1.0.0",
     "gulp-connect": "^2.2.0",
-    "gulp-eslint": "^0.2.0",
-    "gulp-insert": "^0.4.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-rimraf": "^0.1.1",
-    "gulp-sass": "^1.3.1",
-    "gulp-uglify": "^1.0.2",
-    "gulp-zip": "^2.0.2",
-    "vinyl-transform": "^1.0.0"
+    "gulp-eslint": "^1.0.0",
+    "gulp-insert": "^0.5.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-uglify": "^1.4.1",
+    "gulp-zip": "^3.0.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
-    "test": "gulp"
+    "test": "gulp",
+    "before-deploy": "gulp && gulp compress"
   },
   "license": "MIT"
 }
