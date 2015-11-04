@@ -56,7 +56,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
 
   function isScrollable() {
-    return (i.contentHeight !== i.containerHeight) && (i.contentWidth !== i.containerWidth)
+    return (i.contentHeight !== i.containerHeight) && (i.contentWidth !== i.containerWidth);
   }
 
   function shouldHandle(e) {
