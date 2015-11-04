@@ -44,15 +44,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   var startTime = 0;
   var speed = {};
   var easingLoop = null;
-  var inGlobalTouch = false;
   var inLocalTouch = false;
-
-  function globalTouchStart() {
-    inGlobalTouch = true;
-  }
-  function globalTouchEnd() {
-    inGlobalTouch = false;
-  }
 
   function getTouch(e) {
     if (e.targetTouches) {
@@ -62,6 +54,11 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       return e;
     }
   }
+
+  function isScrollable() {
+    return (i.contentHeight !== i.containerHeight) && (i.contentWidth !== i.containerWidth)
+  }
+
   function shouldHandle(e) {
     if (e.targetTouches && e.targetTouches.length === 1) {
       return true;
@@ -72,7 +69,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     return false;
   }
   function touchStart(e) {
-    if (shouldHandle(e)) {
+    if (isScrollable() && shouldHandle(e)) {
       inLocalTouch = true;
 
       var touch = getTouch(e);
@@ -85,12 +82,10 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       if (easingLoop !== null) {
         clearInterval(easingLoop);
       }
-
-      e.stopPropagation();
     }
   }
   function touchMove(e) {
-    if (!inGlobalTouch && inLocalTouch && shouldHandle(e)) {
+    if (isScrollable() && inLocalTouch && shouldHandle(e)) {
       var touch = getTouch(e);
 
       var currentOffset = {pageX: touch.pageX, pageY: touch.pageY};
@@ -117,7 +112,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     }
   }
   function touchEnd() {
-    if (!inGlobalTouch && inLocalTouch) {
+    if (isScrollable() && inLocalTouch) {
       inLocalTouch = false;
 
       clearInterval(easingLoop);
@@ -141,8 +136,6 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
 
   if (supportsTouch) {
-    i.event.bind(window, 'touchstart', globalTouchStart);
-    i.event.bind(window, 'touchend', globalTouchEnd);
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
     i.event.bind(element, 'touchend', touchEnd);
@@ -150,14 +143,10 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
 
   if (supportsIePointer) {
     if (window.PointerEvent) {
-      i.event.bind(window, 'pointerdown', globalTouchStart);
-      i.event.bind(window, 'pointerup', globalTouchEnd);
       i.event.bind(element, 'pointerdown', touchStart);
       i.event.bind(element, 'pointermove', touchMove);
       i.event.bind(element, 'pointerup', touchEnd);
     } else if (window.MSPointerEvent) {
-      i.event.bind(window, 'MSPointerDown', globalTouchStart);
-      i.event.bind(window, 'MSPointerUp', globalTouchEnd);
       i.event.bind(element, 'MSPointerDown', touchStart);
       i.event.bind(element, 'MSPointerMove', touchMove);
       i.event.bind(element, 'MSPointerUp', touchEnd);
