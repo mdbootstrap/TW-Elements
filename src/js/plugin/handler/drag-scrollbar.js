@@ -60,7 +60,12 @@ function bindMouseScrollYHandler(element, i) {
 
   function updateScrollTop(deltaY) {
     var newTop = currentTop + (deltaY * i.railYRatio);
-    var maxTop = i.scrollbarYRail.getBoundingClientRect().top + (i.railYRatio * (i.railYHeight - i.scrollbarYHeight));
+    var scrollbarYTop = i.scrollbarYRail.getBoundingClientRect().top;
+
+    if(scrollbarYTop < 0) {
+      scrollbarYTop = 0;
+    }
+    var maxTop = scrollbarYTop + (i.railYRatio * (i.railYHeight - i.scrollbarYHeight));
 
     if (newTop < 0) {
       i.scrollbarYTop = 0;
