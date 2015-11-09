@@ -15,7 +15,11 @@ function bindMouseScrollXHandler(element, i) {
 
   function updateScrollLeft(deltaX) {
     var newLeft = currentLeft + (deltaX * i.railXRatio);
-    var maxLeft = i.scrollbarXRail.getBoundingClientRect().left + (i.railXRatio * (i.railXWidth - i.scrollbarXWidth));
+    var scrollbarXLeft = i.scrollbarXRail.getBoundingClientRect().left;
+    if (scrollbarXLeft < 0) {
+      scrollbarXLeft = 0;
+    }
+    var maxLeft = scrollbarXLeft + (i.railXRatio * (i.railXWidth - i.scrollbarXWidth));
 
     if (newLeft < 0) {
       i.scrollbarXLeft = 0;
