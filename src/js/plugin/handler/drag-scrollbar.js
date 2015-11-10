@@ -15,11 +15,7 @@ function bindMouseScrollXHandler(element, i) {
 
   function updateScrollLeft(deltaX) {
     var newLeft = currentLeft + (deltaX * i.railXRatio);
-    var scrollbarXLeft = i.scrollbarXRail.getBoundingClientRect().left;
-    if (scrollbarXLeft < 0) {
-      scrollbarXLeft = 0;
-    }
-    var maxLeft = scrollbarXLeft + (i.railXRatio * (i.railXWidth - i.scrollbarXWidth));
+    var maxLeft = Math.max(0, i.scrollbarXRail.getBoundingClientRect().left) + (i.railXRatio * (i.railXWidth - i.scrollbarXWidth));
 
     if (newLeft < 0) {
       i.scrollbarXLeft = 0;
@@ -64,12 +60,7 @@ function bindMouseScrollYHandler(element, i) {
 
   function updateScrollTop(deltaY) {
     var newTop = currentTop + (deltaY * i.railYRatio);
-    var scrollbarYTop = i.scrollbarYRail.getBoundingClientRect().top;
-
-    if(scrollbarYTop < 0) {
-      scrollbarYTop = 0;
-    }
-    var maxTop = scrollbarYTop + (i.railYRatio * (i.railYHeight - i.scrollbarYHeight));
+    var maxTop = Math.max(0, i.scrollbarYRail.getBoundingClientRect().top) + (i.railYRatio * (i.railYHeight - i.scrollbarYHeight));
 
     if (newTop < 0) {
       i.scrollbarYTop = 0;
