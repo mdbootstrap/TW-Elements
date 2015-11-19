@@ -6,7 +6,8 @@
 var d = require('../lib/dom')
   , h = require('../lib/helper')
   , instances = require('./instances')
-  , updateGeometry = require('./update-geometry');
+  , updateGeometry = require('./update-geometry')
+  , updateScroll = require('./update-scroll');
 
 module.exports = function (element) {
   var i = instances.get(element);
@@ -29,6 +30,10 @@ module.exports = function (element) {
   d.css(i.scrollbarYRail, 'display', 'none');
 
   updateGeometry(element);
+  
+  // Update top/left scroll to trigger events
+  updateScroll(element, 'top', element.scrollTop);
+  updateScroll(element, 'left', element.scrollLeft);
 
   d.css(i.scrollbarXRail, 'display', '');
   d.css(i.scrollbarYRail, 'display', '');
