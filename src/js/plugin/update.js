@@ -30,7 +30,7 @@ module.exports = function (element) {
   d.css(i.scrollbarYRail, 'display', 'none');
 
   updateGeometry(element);
-  
+
   // Update top/left scroll to trigger events
   updateScroll(element, 'top', element.scrollTop);
   updateScroll(element, 'left', element.scrollLeft);
