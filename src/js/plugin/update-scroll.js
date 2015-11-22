@@ -43,29 +43,25 @@ module.exports = function (element, axis, value) {
   }
 
   if (axis === 'top' && value <= 0) {
-    element.scrollTop = 0;
+    element.scrollTop = value = 0; // don't allow negative scroll
     element.dispatchEvent(yStartEvent);
-    return; // don't allow negative scroll
   }
 
   if (axis === 'left' && value <= 0) {
-    element.scrollLeft = 0;
+    element.scrollLeft = value = 0; // don't allow negative scroll
     element.dispatchEvent(xStartEvent);
-    return; // don't allow negative scroll
   }
 
   var i = instances.get(element);
 
   if (axis === 'top' && value >= i.contentHeight - i.containerHeight) {
-    element.scrollTop = i.contentHeight - i.containerHeight;
+    element.scrollTop = value = i.contentHeight - i.containerHeight; // don't allow scroll past container
     element.dispatchEvent(yEndEvent);
-    return; // don't allow scroll past container
   }
 
   if (axis === 'left' && value >= i.contentWidth - i.containerWidth) {
-    element.scrollLeft = i.contentWidth - i.containerWidth;
+    element.scrollLeft = value = i.contentWidth - i.containerWidth; // don't allow scroll past container
     element.dispatchEvent(xEndEvent);
-    return; // don't allow scroll past container
   }
 
   if (!lastTop) {
