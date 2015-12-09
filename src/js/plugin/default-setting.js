@@ -16,5 +16,6 @@ module.exports = {
   useKeyboard: true,
   useSelectionScroll: false,
   wheelPropagation: false,
-  wheelSpeed: 1
+  wheelSpeed: 1,
+  theme: 'default'
 };
