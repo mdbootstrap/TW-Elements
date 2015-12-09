@@ -317,8 +317,28 @@ When set to true, you can scroll the container by selecting text and move the cu
 **Default: false**
 
 ### theme
-A string. It's a class name added to the container element. The class name is prepended with `ps-theme-`. So default theme class name is `ps-theme-default`. In order to create custom themes with scss use `.ps-container($theme)` mixin, where `$theme` is a scss map. Look at `themes.scss` as a reference for how to create custom themes.  
+A string. It's a class name added to the container element. The class name is prepended with `ps-theme-`. So default theme class name is `ps-theme-default`. In order to create custom themes with scss use `ps-container($theme)` mixin, where `$theme` is a scss map. Look at `themes.scss` as a reference for how to create custom themes.  
 **Default: default**
+
+Example:
+
+```javascript
+Ps.initialize(container, {
+  theme: 'my-theme-name',
+});
+```
+
+```css
+.ps-theme-my-theme-name {
+  @include ps-container(map-merge($ps-theme-default, (
+          border-radius: 0,
+          scrollbar-x-rail-height: 20px,
+          scrollbar-x-height: 20px,
+          scrollbar-y-rail-width: 20px,
+          scrollbar-y-width: 20px,)
+  ));
+}
+```
 
 ## Events
 
