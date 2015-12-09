@@ -316,6 +316,10 @@ When set to false, when clicking on a rail, the click event will be allowed to p
 When set to true, you can scroll the container by selecting text and move the cursor.  
 **Default: false**
 
+### theme
+A string. It's a class name added to the container element. The class name is prepended with `ps-theme-`. So default theme class name is `ps-theme-default`. In order to create custom themes with scss use `.ps-container($theme)` mixin, where `$theme` is a scss map. Look at `themes.scss` as a reference for how to create custom themes.  
+**Default: default**
+
 ## Events
 
 perfect-scrollbar dispatches custom events.
