@@ -13,6 +13,7 @@ var gulp = require('gulp')
   , source = require('vinyl-source-stream')
   , stream = require('event-stream')
   , uglify = require('gulp-uglify')
+  , autoprefixer = require('gulp-autoprefixer')
   , zip = require('gulp-zip');
 
 var version = '/* perfect-scrollbar v' + require('./package').version + ' */\n';
@@ -36,6 +37,11 @@ var jsEntries = [
   './src/js/adaptor/global.js',
   './src/js/adaptor/jquery.js'
 ];
+
+var autoPrefixerConfig = {
+  browsers: ['> 0%'], // '> 0%' forces autoprefixer to use all the possible prefixes. See https://github.com/ai/browserslist#queries for more details. IMO 'last 3 versions' would be good enough.
+  cascade: false
+};
 
 gulp.task('js', ['clean:js'], function () {
   var tasks = jsEntries.map(function (src) {
@@ -87,6 +93,7 @@ gulp.task('clean:css:min', function () {
 gulp.task('css', ['clean:css'], function () {
   return gulp.src('./src/css/main.scss')
     .pipe(sass())
+    .pipe(autoprefixer(autoPrefixerConfig))
     .pipe(insert.prepend(version))
     .pipe(rename('perfect-scrollbar.css'))
     .pipe(gulp.dest('./dist/css'))
@@ -96,6 +103,7 @@ gulp.task('css', ['clean:css'], function () {
 gulp.task('css:min', ['clean:css:min'], function () {
   return gulp.src('./src/css/main.scss')
     .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(autoprefixer(autoPrefixerConfig))
     .pipe(insert.prepend(version))
     .pipe(rename('perfect-scrollbar.min.css'))
     .pipe(gulp.dest('./dist/css'));

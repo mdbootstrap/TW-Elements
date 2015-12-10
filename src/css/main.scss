@@ -3,28 +3,13 @@ $ps-rail-hover: #eee;
 $ps-bar-default: #aaa;
 $ps-bar-hover: #999;
 
-// Helper mixins
-@mixin border-radius($r) {
-  -webkit-border-radius: $r;
-     -moz-border-radius: $r;
-      -ms-border-radius: $r;
-          border-radius: $r;
-}
-
-@mixin transition($t...) {
-  -webkit-transition: $t;
-     -moz-transition: $t;
-       -o-transition: $t;
-          transition: $t;
-}
-
 // Scrollbar mixins
 @mixin scrollbar-rail-default {
   display: none;
   position: absolute; /* please don't change 'position' */
-  @include border-radius(4px);
+  border-radius: 4px;
   opacity: 0;
-  @include transition(background-color .2s linear, opacity .2s linear);
+  transition: background-color .2s linear, opacity .2s linear;
 }
 
 @mixin scrollbar-rail-hover {
@@ -35,8 +20,8 @@ $ps-bar-hover: #999;
 @mixin scrollbar-default {
   position: absolute; /* please don't change 'position' */
   background-color: $ps-bar-default;
-  @include border-radius(4px);
-  @include transition(background-color .2s linear);
+  border-radius: 4px;
+  transition: background-color .2s linear;
 }
 
 @mixin scrollbar-hover {
