@@ -3,8 +3,7 @@
  */
 'use strict';
 
-var h = require('../../lib/helper')
-  , instances = require('../instances')
+var instances = require('../instances')
   , updateGeometry = require('../update-geometry')
   , updateScroll = require('../update-scroll');
 
@@ -81,13 +80,6 @@ function bindMouseWheelHandler(element, i) {
   }
 
   function mousewheelHandler(e) {
-    // FIXME: this is a quick fix for the select problem in FF and IE.
-    // If there comes an effective way to deal with the problem,
-    // this lines should be removed.
-    if (!h.env.isWebKit && element.querySelector('select:focus')) {
-      return;
-    }
-
     var delta = getDeltaFromEvent(e);
 
     var deltaX = delta[0];
