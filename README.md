@@ -309,7 +309,7 @@ The number of pixels the content height can surpass the container height without
 **Default: 0**
 
 ### stopPropagationOnClick
-When set to false, when clicking on a rail, the click event will be allowed to pr##opagate.  
+When set to false, when clicking on a rail, the click event will be allowed to propagate.  
 **Default: true**
 
 ### useSelectionScroll
