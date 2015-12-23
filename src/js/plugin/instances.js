@@ -3,7 +3,8 @@
  */
 'use strict';
 
-var d = require('../lib/dom')
+var cls = require('../lib/class')
+  , d = require('../lib/dom')
   , defaultSettings = require('./default-setting')
   , EventManager = require('../lib/event-manager')
   , guid = require('../lib/guid')
@@ -33,9 +34,19 @@ function Instance(element) {
   i.event = new EventManager();
   i.ownerDocument = element.ownerDocument || document;
 
+  function focus() {
+    cls.add(element, 'ps-focus');
+  }
+
+  function blur() {
+    cls.remove(element, 'ps-focus');
+  }
+
   i.scrollbarXRail = d.appendTo(d.e('div', 'ps-scrollbar-x-rail'), element);
   i.scrollbarX = d.appendTo(d.e('div', 'ps-scrollbar-x'), i.scrollbarXRail);
   i.scrollbarX.setAttribute('tabindex', 0);
+  i.event.bind(i.scrollbarX, 'focus', focus);
+  i.event.bind(i.scrollbarX, 'blur', blur);
   i.scrollbarXActive = null;
   i.scrollbarXWidth = null;
   i.scrollbarXLeft = null;
@@ -53,6 +64,8 @@ function Instance(element) {
   i.scrollbarYRail = d.appendTo(d.e('div', 'ps-scrollbar-y-rail'), element);
   i.scrollbarY = d.appendTo(d.e('div', 'ps-scrollbar-y'), i.scrollbarYRail);
   i.scrollbarY.setAttribute('tabindex', 0);
+  i.event.bind(i.scrollbarY, 'focus', focus);
+  i.event.bind(i.scrollbarY, 'blur', blur);
   i.scrollbarYActive = null;
   i.scrollbarYHeight = null;
   i.scrollbarYTop = null;
