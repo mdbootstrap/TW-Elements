@@ -218,10 +218,10 @@ require.config({
 and load `perfectScrollbar` in the initialiser of your app:
 
 ```javascript
-# for vanilla JS:
+// for vanilla JS:
 window.Ps = require('perfectScrollbar');
 
-# for jQuery:
+// for jQuery:
 require('perfectScrollbarJQuery');
 ```
 
@@ -250,12 +250,12 @@ function (angular) {
 And initialise perfectScrollbar in a controller:
 
 ```javascript
-# by vanilla JS:
+// by vanilla JS:
 var container = document.getElementById('imgLoader');
 Ps.initialize(container);
 Ps.update(container);
 
-# or by jQuery:
+// or by jQuery:
 var imgLoader = $("#imgLoader")
 imgLoader.perfectScrollbar();
 ```
