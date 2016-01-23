@@ -23,6 +23,7 @@ module.exports = function (element, userSettings) {
   var i = instances.add(element);
 
   i.settings = h.extend(i.settings, userSettings);
+  cls.add(element, 'ps-theme-' + i.settings.theme);
 
   clickRailHandler(element);
   dragScrollbarHandler(element);
