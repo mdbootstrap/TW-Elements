@@ -1,25 +1,9 @@
-// Helper mixins
-@mixin border-radius($r) {
-  -webkit-border-radius: $r;
-  -moz-border-radius: $r;
-  -ms-border-radius: $r;
-  border-radius: $r;
-}
-
-@mixin transition($t...) {
-  -webkit-transition: $t;
-  -moz-transition: $t;
-  -o-transition: $t;
-  transition: $t;
-}
-
-// Scrollbar mixins
 @mixin scrollbar-rail-default($theme) {
   display: none;
   position: absolute; /* please don't change 'position' */
-  @include border-radius(map_get($theme, border-radius));
+  border-radius: map_get($theme, border-radius);
   opacity: map_get($theme, rail-default-opacity);
-  @include transition(background-color .2s linear, opacity .2s linear);
+  transition: background-color .2s linear, opacity .2s linear;
 }
 
 @mixin scrollbar-rail-hover($theme) {
@@ -30,8 +14,8 @@
 @mixin scrollbar-default($theme) {
   position: absolute; /* please don't change 'position' */
   background-color: map_get($theme, bar-container-hover-bg);
-  @include border-radius(map_get($theme, border-radius));
-  @include transition(background-color .2s linear);
+  border-radius: map_get($theme, border-radius);
+  transition: background-color .2s linear;
 }
 
 @mixin scrollbar-hover($theme) {
