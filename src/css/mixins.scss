@@ -43,7 +43,18 @@
 // Layout and theme mixin
 @mixin ps-container($theme) {
   -ms-touch-action: none;
+  touch-action: none;
   overflow: hidden !important;
+  -ms-overflow-style: none;
+
+  // Edge
+  @supports (-ms-overflow-style: none) {
+    overflow: auto !important;
+  }
+  // IE10+
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    overflow: auto !important;
+  }
 
   &.ps-active-x > .ps-scrollbar-x-rail,
   &.ps-active-y > .ps-scrollbar-y-rail {
