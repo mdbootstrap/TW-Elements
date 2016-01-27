@@ -53,9 +53,13 @@ function bindKeyboardHandler(element, i) {
 
     var activeElement = document.activeElement ? document.activeElement : i.ownerDocument.activeElement;
     if (activeElement) {
-      // go deeper if element is a webcomponent
-      while (activeElement.shadowRoot) {
-        activeElement = activeElement.shadowRoot.activeElement;
+      if (activeElement.tagName === 'IFRAME') {
+        activeElement = activeElement.contentDocument.activeElement;
+      } else {
+        // go deeper if element is a webcomponent
+        while (activeElement.shadowRoot) {
+          activeElement = activeElement.shadowRoot.activeElement;
+        }
       }
       if (h.isEditable(activeElement)) {
         return;
