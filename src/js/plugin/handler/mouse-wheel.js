@@ -120,11 +120,12 @@ function bindMouseWheelHandler(element, i) {
       e.preventDefault();
     }
   }
-
-  if (typeof window.onwheel !== "undefined") {
-    i.event.bind(element, 'wheel', mousewheelHandler);
-  } else if (typeof window.onmousewheel !== "undefined") {
-    i.event.bind(element, 'mousewheel', mousewheelHandler);
+  if (i.settings.useWheelScroll) {
+    if (typeof window.onwheel !== "undefined") {
+      i.event.bind(element, 'wheel', mousewheelHandler);
+    } else if (typeof window.onmousewheel !== "undefined") {
+      i.event.bind(element, 'mousewheel', mousewheelHandler);
+    }
   }
 }
 

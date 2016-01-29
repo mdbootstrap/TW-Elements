@@ -304,6 +304,10 @@ When set to true, and only one (vertical or horizontal) scrollbar is visible the
 When set to true, the scroll works with arrow keys on the keyboard. The element is scrolled only when the mouse cursor hovers the element.  
 **Default: true**
 
+### useWheelScroll
+When set to true, the scroll works with the wheel on the mouse or touch pad.
+**Default: true**
+
 ### suppressScrollX
 When set to true, the scroll bar in X axis will not be available, regardless of the content width.  
 **Default: false**

@@ -12,6 +12,7 @@ module.exports = {
   useBothWheelAxes: false,
   useKeyboard: true,
   useSelectionScroll: false,
+  useWheelScroll: true,
   wheelPropagation: false,
   wheelSpeed: 1,
   theme: 'default'
