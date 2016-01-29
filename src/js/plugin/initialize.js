@@ -9,10 +9,11 @@ var cls = require('../lib/class')
 var clickRailHandler = require('./handler/click-rail')
   , dragScrollbarHandler = require('./handler/drag-scrollbar')
   , keyboardHandler = require('./handler/keyboard')
-  , mouseWheelHandler = require('./handler/mouse-wheel')
-  , nativeScrollHandler = require('./handler/native-scroll')
-  , selectionHandler = require('./handler/selection')
-  , touchHandler = require('./handler/touch');
+  , selectionHandler = require('./handler/selection');
+
+  // , mouseWheelHandler = require('./handler/mouse-wheel')
+  // , nativeScrollHandler = require('./handler/native-scroll')
+  // , touchHandler = require('./handler/touch')
 
 module.exports = function (element, userSettings) {
   userSettings = typeof userSettings === 'object' ? userSettings : {};
@@ -27,16 +28,16 @@ module.exports = function (element, userSettings) {
 
   clickRailHandler(element);
   dragScrollbarHandler(element);
-  mouseWheelHandler(element);
-  nativeScrollHandler(element);
+  // mouseWheelHandler(element);
+  // nativeScrollHandler(element);
 
   if (i.settings.useSelectionScroll) {
     selectionHandler(element);
   }
 
-  if (h.env.supportsTouch || h.env.supportsIePointer) {
-    touchHandler(element, h.env.supportsTouch, h.env.supportsIePointer);
-  }
+  // if (h.env.supportsTouch || h.env.supportsIePointer) {
+  //   touchHandler(element, h.env.supportsTouch, h.env.supportsIePointer);
+  // }
   if (i.settings.useKeyboard) {
     keyboardHandler(element);
   }
