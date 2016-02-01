@@ -87,6 +87,9 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     }
   }
   function touchMove(e) {
+    if (!inLocalTouch && i.settings.swipePropagation) {
+      touchStart(e);
+    }
     if (!inGlobalTouch && inLocalTouch && shouldHandle(e)) {
       var touch = getTouch(e);
 
