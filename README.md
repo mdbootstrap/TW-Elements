@@ -99,6 +99,13 @@ $ bower install perfect-scrollbar
 You can also load it from [cdnjs](http://cdnjs.com/).
 It is registered as [`jquery.perfect-scrollbar`](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar).
 
+#### JSFiddle
+
+You can fork the following JSFiddles for testing and experimenting purposes:
+
+* [Perfect Scrollbar](https://jsfiddle.net/DanielApt/xv0rrxv3/)
+* [Perfect Scrollbar (jQuery)](https://jsfiddle.net/DanielApt/gbfLazpx/)
+
 ## Requirements
 
 To make this plugin *perfect*, some requirements were unavoidable.
