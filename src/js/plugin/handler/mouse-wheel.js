@@ -76,6 +76,26 @@ function bindMouseWheelHandler(element, i) {
     return false;
   }
 
+  // figure out if any of the target element ancestors has a overflow of scroll
+  // and thus should capture mouse wheel events
+  function findScrollParent(elem, e) {
+    var parent = elem.parentNode;
+    if(parent === e.currentTarget) {
+      return parent;
+    }
+    if(
+      (window.getComputedStyle(parent)['overflow'] || '').match(/(scroll|auto)/) &&
+      (parent.clientHeight < parent.scrollHeight || parent.clientWidth < parent.scrollWidth)
+    ) {
+      return parent;
+    }
+    return findScrollParent(parent, e);
+  }
+
+  function shouldBeConsumedByChild(e) {
+    return findScrollParent(e.target, e) !== e.currentTarget;
+  }
+
   function mousewheelHandler(e) {
     var delta = getDeltaFromEvent(e);
 
@@ -83,6 +103,9 @@ function bindMouseWheelHandler(element, i) {
     var deltaY = delta[1];
 
     if (shouldBeConsumedByTextarea(deltaX, deltaY)) {
+      return;
+    }
+    if (shouldBeConsumedByChild(e)) {
       return;
     }
 
