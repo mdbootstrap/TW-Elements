@@ -174,7 +174,7 @@ If the size of your container or content changes, call `update`.
 Ps.update(container);
 ```
 
-If you want to destory the scrollbar, use `destroy`.
+If you want to destroy the scrollbar, use `destroy`.
 
 ```javascript
 Ps.destroy(container);
