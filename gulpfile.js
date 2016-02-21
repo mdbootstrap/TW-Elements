@@ -16,6 +16,10 @@ var gulp = require('gulp')
   , autoprefixer = require('gulp-autoprefixer')
   , zip = require('gulp-zip');
 
+// Support for Node 0.10
+// See https://github.com/webpack/css-loader/issues/144
+require('es6-promise').polyfill();
+
 var version = '/* perfect-scrollbar v' + require('./package').version + ' */\n';
 
 gulp.task('lint', function () {
