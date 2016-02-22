@@ -14,7 +14,7 @@ DOM.appendTo = function (child, parent) {
 };
 
 function cssGet(element, styleName) {
-  return window.getComputedStyle(element)[styleName];
+  return element.style[styleName]; 
 }
 
 function cssSet(element, styleName, styleValue) {
