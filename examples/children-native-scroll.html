@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>perfect-scrollbar example</title>
+    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <style>
+        .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: auto; }
+        .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+        .my-list, textarea {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 130px;
+            height: 200px;
+            overflow: scroll;
+            background-color: rgba(255,255,255,0.6);
+        }
+
+        .my-list {
+            left: 140px;
+        }
+
+        .my-list-two {
+            left: 280px;
+            overflow: auto;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            box-sizing: border-box;
+            padding: 10px 5px;
+            border-width: 0 0 1px 0;
+            list-style-type: none;
+            margin: 0;
+        }
+
+        li:nth-child(even) {
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        textarea {
+            font-size: 120%;
+        }
+    </style>
+</head>
+<div id="Default" class="contentHolder">
+    <div class="content">
+        <textarea cols="20" rows="50">
+          Children inside perfect scrollbar can be natively scrolled by the mousewheel. It automatically works for textarea elements, other elements need the .ps-child class.
+        </textarea>
+        <div class="ps-child my-list">
+            <code>overflow: scroll</code>
+            <ul><li>One</li><li>Two</li><li>Three</li><li>Four</li><li>Five</li><li>Six</li><li>Seven</li><li>Eight</li></ul>
+        </div>
+        <div class="ps-child my-list my-list-two">
+            <code>overflow: auto</code>
+            <ul><li>One</li><li>Two</li><li>Three</li><li>Four</li><li>Five</li><li>Six</li><li>Seven</li><li>Eight</li></ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        Ps.initialize(document.querySelector('#Default'));
+    };
+</script>
+</body>
+</html>

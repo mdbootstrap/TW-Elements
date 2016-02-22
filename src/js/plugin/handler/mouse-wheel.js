@@ -55,20 +55,23 @@ function bindMouseWheelHandler(element, i) {
     return [deltaX, deltaY];
   }
 
-  function shouldBeConsumedByTextarea(deltaX, deltaY) {
-    var hoveredTextarea = element.querySelector('textarea:hover');
-    if (hoveredTextarea) {
-      var maxScrollTop = hoveredTextarea.scrollHeight - hoveredTextarea.clientHeight;
+  function shouldBeConsumedByChild(deltaX, deltaY) {
+    var child = element.querySelector('textarea:hover, .ps-child:hover');
+    if (child) {
+      console.log(child);
+      if (child.tagName !== 'TEXTAREA' && !window.getComputedStyle(child).overflow.match(/(scroll|auto)/)) {
+        return false;
+      }
+
+      var maxScrollTop = child.scrollHeight - child.clientHeight;
       if (maxScrollTop > 0) {
-        if (!(hoveredTextarea.scrollTop === 0 && deltaY > 0) &&
-            !(hoveredTextarea.scrollTop === maxScrollTop && deltaY < 0)) {
+        if (!(child.scrollTop === 0 && deltaY > 0) && !(child.scrollTop === maxScrollTop && deltaY < 0)) {
           return true;
         }
       }
-      var maxScrollLeft = hoveredTextarea.scrollLeft - hoveredTextarea.clientWidth;
+      var maxScrollLeft = child.scrollLeft - child.clientWidth;
       if (maxScrollLeft > 0) {
-        if (!(hoveredTextarea.scrollLeft === 0 && deltaX < 0) &&
-            !(hoveredTextarea.scrollLeft === maxScrollLeft && deltaX > 0)) {
+        if (!(child.scrollLeft === 0 && deltaX < 0) && !(child.scrollLeft === maxScrollLeft && deltaX > 0)) {
           return true;
         }
       }
@@ -82,7 +85,7 @@ function bindMouseWheelHandler(element, i) {
     var deltaX = delta[0];
     var deltaY = delta[1];
 
-    if (shouldBeConsumedByTextarea(deltaX, deltaY)) {
+    if (shouldBeConsumedByChild(deltaX, deltaY)) {
       return;
     }
 
