@@ -1,6 +1,6 @@
 'use strict';
 
-var h = require('../../lib/helper')
+var _ = require('../../lib/helper')
   , instances = require('../instances')
   , updateGeometry = require('../update-geometry')
   , updateScroll = require('../update-scroll');
@@ -15,7 +15,7 @@ function bindClickRailHandler(element, i) {
     i.event.bind(i.scrollbarY, 'click', stopPropagation);
   }
   i.event.bind(i.scrollbarYRail, 'click', function (e) {
-    var halfOfScrollbarLength = h.toInt(i.scrollbarYHeight / 2);
+    var halfOfScrollbarLength = _.toInt(i.scrollbarYHeight / 2);
     var positionTop = i.railYRatio * (e.pageY - window.pageYOffset - pageOffset(i.scrollbarYRail).top - halfOfScrollbarLength);
     var maxPositionTop = i.railYRatio * (i.railYHeight - i.scrollbarYHeight);
     var positionRatio = positionTop / maxPositionTop;
@@ -36,7 +36,7 @@ function bindClickRailHandler(element, i) {
     i.event.bind(i.scrollbarX, 'click', stopPropagation);
   }
   i.event.bind(i.scrollbarXRail, 'click', function (e) {
-    var halfOfScrollbarLength = h.toInt(i.scrollbarXWidth / 2);
+    var halfOfScrollbarLength = _.toInt(i.scrollbarXWidth / 2);
     var positionLeft = i.railXRatio * (e.pageX - window.pageXOffset - pageOffset(i.scrollbarXRail).left - halfOfScrollbarLength);
     var maxPositionLeft = i.railXRatio * (i.railXWidth - i.scrollbarXWidth);
     var positionRatio = positionLeft / maxPositionLeft;

@@ -1,7 +1,7 @@
 'use strict';
 
 var cls = require('../lib/class')
-  , h = require('../lib/helper')
+  , _ = require('../lib/helper')
   , instances = require('./instances')
   , updateGeometry = require('./update-geometry');
 
@@ -24,7 +24,7 @@ module.exports = function (element, userSettings) {
   // Create a plugin instance.
   var i = instances.add(element);
 
-  i.settings = h.extend(i.settings, userSettings);
+  i.settings = _.extend(i.settings, userSettings);
   cls.add(element, 'ps-theme-' + i.settings.theme);
 
   i.settings.handlers.forEach(function (handlerName) {

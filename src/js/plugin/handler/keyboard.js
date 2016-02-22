@@ -1,6 +1,6 @@
 'use strict';
 
-var h = require('../../lib/helper')
+var _ = require('../../lib/helper')
   , d = require('../../lib/dom')
   , instances = require('../instances')
   , updateGeometry = require('../update-geometry')
@@ -57,7 +57,7 @@ function bindKeyboardHandler(element, i) {
       while (activeElement.shadowRoot) {
         activeElement = activeElement.shadowRoot.activeElement;
       }
-      if (h.isEditable(activeElement)) {
+      if (_.isEditable(activeElement)) {
         return;
       }
     }
