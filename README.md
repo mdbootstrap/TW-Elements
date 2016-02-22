@@ -424,9 +424,11 @@ For IE problems, please refer to [IE Support](https://github.com/noraesae/perfec
 
 ## IE Support
 
-The plugin would work in IEs >= IE9 (not well, though).
+The plugin is designed to work in modern browsers, including the very latest
+version of IE and Edge. Specifically, it should work in IEs >= IE10. If there
+is any issue in the browsers, please [file it](https://github.com/noraesae/perfect-scrollbar/issues).
 
-**The patches to fix problems in IE<=8 won't be accepted.**
+**The patches to fix problems in IE<=9 won't be accepted.**
 
 When old IEs should be supported, please fork the project and
 make patches personally.
