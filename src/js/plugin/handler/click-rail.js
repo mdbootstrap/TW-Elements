@@ -9,7 +9,14 @@ function bindClickRailHandler(element, i) {
   function pageOffset(el) {
     return el.getBoundingClientRect();
   }
-  var stopPropagation = window.Event.prototype.stopPropagation.bind;
+  var stopPropagation;
+  if (window.Event.prototype.stopPropagation) {
+    stopPropagation = window.Event.prototype.stopPropagation.bind;
+  } else {
+    stopPropagation = function() {
+      this.cancelBubble = true;
+    }.bind
+  };
 
   if (i.settings.stopPropagationOnClick) {
     i.event.bind(i.scrollbarY, 'click', stopPropagation);
