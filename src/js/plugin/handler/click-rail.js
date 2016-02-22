@@ -13,10 +13,10 @@ function bindClickRailHandler(element, i) {
   if (window.Event.prototype.stopPropagation) {
     stopPropagation = window.Event.prototype.stopPropagation.bind;
   } else {
-    stopPropagation = function() {
+    stopPropagation = function () {
       this.cancelBubble = true;
-    }.bind
-  };
+    }.bind;
+  }
 
   if (i.settings.stopPropagationOnClick) {
     i.event.bind(i.scrollbarY, 'click', stopPropagation);
