@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>perfect-scrollbar example</title>
+    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <style>
+      .contentHolder { position:relative; padding:0px; width: 600px; height: 400px; overflow: auto; }
+      .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+      .spacer { text-align:center }
+    </style>
+  </head>
+  <body>
+    <h1>Default</h1>
+    <pre><code>handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch']</code></pre>
+    <div id="default" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+
+    <h1>No keyboard</h1>
+    <pre><code>handlers: ['click-rail', 'drag-scrollbar', 'wheel', 'touch']</code></pre>
+    <div id="no-keyboard" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+
+    <h1>Click and Drag</h1>
+    <pre><code>handlers: ['click-rail', 'drag-scrollbar']</code></pre>
+    <div id="click-and-drag" class="contentHolder">
+      <div class="content">
+      </div>
+    </div>
+    <script>
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        Ps.initialize($('#default'));
+        Ps.initialize($('#no-keyboard'), {
+          handlers: ['click-rail', 'drag-scrollbar', 'wheel', 'touch']
+        });
+        Ps.initialize($('#click-and-drag'), {
+          handlers: ['click-rail', 'drag-scrollbar']
+        });
+      };
+    </script>
+  </body>
+</html>
+

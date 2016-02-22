@@ -1,6 +1,7 @@
 'use strict';
 
 var instances = require('../instances')
+  , h = require('../../lib/helper')
   , updateGeometry = require('../update-geometry')
   , updateScroll = require('../update-scroll');
 
@@ -165,7 +166,11 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
 }
 
-module.exports = function (element, supportsTouch, supportsIePointer) {
+module.exports = function (element) {
+  if (!h.env.supportsTouch && !h.env.supportsIePointer) {
+    return;
+  }
+
   var i = instances.get(element);
-  bindTouchHandler(element, i, supportsTouch, supportsIePointer);
+  bindTouchHandler(element, i, h.env.supportsTouch, h.env.supportsIePointer);
 };
