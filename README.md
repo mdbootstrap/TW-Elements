@@ -409,19 +409,6 @@ $(document).on('ps-scroll-x', function () {
 })
 ```
 
-## Contribution
-
-#### Please read [Contributing](https://github.com/noraesae/perfect-scrollbar/wiki/Contributing) in the wiki before making any contribution.
-
-
-I *really* welcome contributions! Please feel free to fork and issue pull requests when...
-
-* You have a very nice idea to improve this plugin!
-* You found a bug!
-* You're good at English and can help my bad English!
-
-For IE problems, please refer to [IE Support](https://github.com/noraesae/perfect-scrollbar#ie-support).
-
 ## IE Support
 
 The plugin is designed to work in modern browsers, including the very latest
