@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('../../lib/helper')
-  , d = require('../../lib/dom')
+  , dom = require('../../lib/dom')
   , instances = require('../instances')
   , updateGeometry = require('../update-geometry')
   , updateScroll = require('../update-scroll');
@@ -44,8 +44,8 @@ function bindKeyboardHandler(element, i) {
       return;
     }
 
-    var focused = d.matches(i.scrollbarX, ':focus') ||
-                  d.matches(i.scrollbarY, ':focus');
+    var focused = dom.matches(i.scrollbarX, ':focus') ||
+                  dom.matches(i.scrollbarY, ':focus');
 
     if (!hovered && !focused) {
       return;

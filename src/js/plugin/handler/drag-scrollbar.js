@@ -1,6 +1,6 @@
 'use strict';
 
-var d = require('../../lib/dom')
+var dom = require('../../lib/dom')
   , _ = require('../../lib/helper')
   , instances = require('../instances')
   , updateGeometry = require('../update-geometry')
@@ -40,7 +40,7 @@ function bindMouseScrollXHandler(element, i) {
 
   i.event.bind(i.scrollbarX, 'mousedown', function (e) {
     currentPageX = e.pageX;
-    currentLeft = _.toInt(d.css(i.scrollbarX, 'left')) * i.railXRatio;
+    currentLeft = _.toInt(dom.css(i.scrollbarX, 'left')) * i.railXRatio;
     _.startScrolling(element, 'x');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
@@ -85,7 +85,7 @@ function bindMouseScrollYHandler(element, i) {
 
   i.event.bind(i.scrollbarY, 'mousedown', function (e) {
     currentPageY = e.pageY;
-    currentTop = _.toInt(d.css(i.scrollbarY, 'top')) * i.railYRatio;
+    currentTop = _.toInt(dom.css(i.scrollbarY, 'top')) * i.railYRatio;
     _.startScrolling(element, 'y');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);

@@ -1,7 +1,7 @@
 'use strict';
 
 var cls = require('../lib/class')
-  , d = require('../lib/dom')
+  , dom = require('../lib/dom')
   , _ = require('../lib/helper')
   , instances = require('./instances')
   , updateScroll = require('./update-scroll');
@@ -28,7 +28,7 @@ function updateCss(element, i) {
   } else {
     xRailOffset.top = i.scrollbarXTop + element.scrollTop;
   }
-  d.css(i.scrollbarXRail, xRailOffset);
+  dom.css(i.scrollbarXRail, xRailOffset);
 
   var yRailOffset = {top: element.scrollTop, height: i.railYHeight};
   if (i.isScrollbarYUsingRight) {
@@ -44,10 +44,10 @@ function updateCss(element, i) {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
   }
-  d.css(i.scrollbarYRail, yRailOffset);
+  dom.css(i.scrollbarYRail, yRailOffset);
 
-  d.css(i.scrollbarX, {left: i.scrollbarXLeft, width: i.scrollbarXWidth - i.railBorderXWidth});
-  d.css(i.scrollbarY, {top: i.scrollbarYTop, height: i.scrollbarYHeight - i.railBorderYWidth});
+  dom.css(i.scrollbarX, {left: i.scrollbarXLeft, width: i.scrollbarXWidth - i.railBorderXWidth});
+  dom.css(i.scrollbarY, {top: i.scrollbarYTop, height: i.scrollbarYHeight - i.railBorderYWidth});
 }
 
 module.exports = function (element) {
@@ -60,22 +60,22 @@ module.exports = function (element) {
 
   var existingRails;
   if (!element.contains(i.scrollbarXRail)) {
-    existingRails = d.queryChildren(element, '.ps-scrollbar-x-rail');
+    existingRails = dom.queryChildren(element, '.ps-scrollbar-x-rail');
     if (existingRails.length > 0) {
       existingRails.forEach(function (rail) {
-        d.remove(rail);
+        dom.remove(rail);
       });
     }
-    d.appendTo(i.scrollbarXRail, element);
+    dom.appendTo(i.scrollbarXRail, element);
   }
   if (!element.contains(i.scrollbarYRail)) {
-    existingRails = d.queryChildren(element, '.ps-scrollbar-y-rail');
+    existingRails = dom.queryChildren(element, '.ps-scrollbar-y-rail');
     if (existingRails.length > 0) {
       existingRails.forEach(function (rail) {
-        d.remove(rail);
+        dom.remove(rail);
       });
     }
-    d.appendTo(i.scrollbarYRail, element);
+    dom.appendTo(i.scrollbarYRail, element);
   }
 
   if (!i.settings.suppressScrollX && i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth) {

@@ -1,7 +1,7 @@
 'use strict';
 
 var cls = require('./class')
-  , d = require('./dom');
+  , dom = require('./dom');
 
 var toInt = exports.toInt = function (x) {
   return parseInt(x, 10) || 0;
@@ -32,10 +32,10 @@ exports.extend = function (original, source) {
 };
 
 exports.isEditable = function (el) {
-  return d.matches(el, "input,[contenteditable]") ||
-         d.matches(el, "select,[contenteditable]") ||
-         d.matches(el, "textarea,[contenteditable]") ||
-         d.matches(el, "button,[contenteditable]");
+  return dom.matches(el, "input,[contenteditable]") ||
+         dom.matches(el, "select,[contenteditable]") ||
+         dom.matches(el, "textarea,[contenteditable]") ||
+         dom.matches(el, "button,[contenteditable]");
 };
 
 exports.removePsClasses = function (element) {
@@ -49,11 +49,11 @@ exports.removePsClasses = function (element) {
 };
 
 exports.outerWidth = function (element) {
-  return toInt(d.css(element, 'width')) +
-         toInt(d.css(element, 'paddingLeft')) +
-         toInt(d.css(element, 'paddingRight')) +
-         toInt(d.css(element, 'borderLeftWidth')) +
-         toInt(d.css(element, 'borderRightWidth'));
+  return toInt(dom.css(element, 'width')) +
+         toInt(dom.css(element, 'paddingLeft')) +
+         toInt(dom.css(element, 'paddingRight')) +
+         toInt(dom.css(element, 'borderLeftWidth')) +
+         toInt(dom.css(element, 'borderRightWidth'));
 };
 
 exports.startScrolling = function (element, axis) {

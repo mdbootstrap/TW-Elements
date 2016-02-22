@@ -1,6 +1,6 @@
 'use strict';
 
-var d = require('../lib/dom')
+var dom = require('../lib/dom')
   , _ = require('../lib/helper')
   , instances = require('./instances');
 
@@ -12,10 +12,10 @@ module.exports = function (element) {
   }
 
   i.event.unbindAll();
-  d.remove(i.scrollbarX);
-  d.remove(i.scrollbarY);
-  d.remove(i.scrollbarXRail);
-  d.remove(i.scrollbarYRail);
+  dom.remove(i.scrollbarX);
+  dom.remove(i.scrollbarY);
+  dom.remove(i.scrollbarXRail);
+  dom.remove(i.scrollbarYRail);
   _.removePsClasses(element);
 
   instances.remove(element);
