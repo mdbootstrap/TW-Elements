@@ -3,17 +3,19 @@
 var cls = require('./class')
   , d = require('./dom');
 
-exports.toInt = function (x) {
+var toInt = exports.toInt = function (x) {
   return parseInt(x, 10) || 0;
 };
 
-exports.clone = function (obj) {
+var clone = exports.clone = function (obj) {
   if (obj === null) {
     return null;
+  } else if (obj.constructor === Array) {
+    return obj.map(clone);
   } else if (typeof obj === 'object') {
     var result = {};
     for (var key in obj) {
-      result[key] = this.clone(obj[key]);
+      result[key] = clone(obj[key]);
     }
     return result;
   } else {
@@ -22,9 +24,9 @@ exports.clone = function (obj) {
 };
 
 exports.extend = function (original, source) {
-  var result = this.clone(original);
+  var result = clone(original);
   for (var key in source) {
-    result[key] = this.clone(source[key]);
+    result[key] = clone(source[key]);
   }
   return result;
 };
@@ -47,11 +49,11 @@ exports.removePsClasses = function (element) {
 };
 
 exports.outerWidth = function (element) {
-  return this.toInt(d.css(element, 'width')) +
-         this.toInt(d.css(element, 'paddingLeft')) +
-         this.toInt(d.css(element, 'paddingRight')) +
-         this.toInt(d.css(element, 'borderLeftWidth')) +
-         this.toInt(d.css(element, 'borderRightWidth'));
+  return toInt(d.css(element, 'width')) +
+         toInt(d.css(element, 'paddingLeft')) +
+         toInt(d.css(element, 'paddingRight')) +
+         toInt(d.css(element, 'borderLeftWidth')) +
+         toInt(d.css(element, 'borderRightWidth'));
 };
 
 exports.startScrolling = function (element, axis) {
