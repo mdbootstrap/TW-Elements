@@ -9,7 +9,7 @@ function bindClickRailHandler(element, i) {
   function pageOffset(el) {
     return el.getBoundingClientRect();
   }
-  var stopPropagation = window.Event.prototype.stopPropagation.bind;
+  var stopPropagation = function (e) { e.stopPropagation(); };
 
   if (i.settings.stopPropagationOnClick) {
     i.event.bind(i.scrollbarY, 'click', stopPropagation);
