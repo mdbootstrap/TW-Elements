@@ -1,20 +1,20 @@
 'use strict';
 
-var gulp = require('gulp')
-  , browserify = require('browserify')
-  , buffer = require('vinyl-buffer')
-  , connect = require('gulp-connect')
-  , del = require('del')
-  , eslint = require('gulp-eslint')
-  , insert = require('gulp-insert')
-  , path = require('path')
-  , rename = require('gulp-rename')
-  , sass = require('gulp-sass')
-  , source = require('vinyl-source-stream')
-  , stream = require('event-stream')
-  , uglify = require('gulp-uglify')
-  , autoprefixer = require('gulp-autoprefixer')
-  , zip = require('gulp-zip');
+var autoprefixer = require('gulp-autoprefixer');
+var browserify = require('browserify');
+var buffer = require('vinyl-buffer');
+var connect = require('gulp-connect');
+var del = require('del');
+var eslint = require('gulp-eslint');
+var gulp = require('gulp');
+var insert = require('gulp-insert');
+var path = require('path');
+var rename = require('gulp-rename');
+var sass = require('gulp-sass');
+var source = require('vinyl-source-stream');
+var stream = require('event-stream');
+var uglify = require('gulp-uglify');
+var zip = require('gulp-zip');
 
 var version = '/* perfect-scrollbar v' + require('./package').version + ' */\n';
 

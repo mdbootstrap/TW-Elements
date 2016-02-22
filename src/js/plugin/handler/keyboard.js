@@ -1,10 +1,10 @@
 'use strict';
 
-var _ = require('../../lib/helper')
-  , dom = require('../../lib/dom')
-  , instances = require('../instances')
-  , updateGeometry = require('../update-geometry')
-  , updateScroll = require('../update-scroll');
+var _ = require('../../lib/helper');
+var dom = require('../../lib/dom');
+var instances = require('../instances');
+var updateGeometry = require('../update-geometry');
+var updateScroll = require('../update-scroll');
 
 function bindKeyboardHandler(element, i) {
   var hovered = false;

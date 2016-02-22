@@ -1,8 +1,8 @@
 'use strict';
 
-var instances = require('../instances')
-  , updateGeometry = require('../update-geometry')
-  , updateScroll = require('../update-scroll');
+var instances = require('../instances');
+var updateGeometry = require('../update-geometry');
+var updateScroll = require('../update-scroll');
 
 function bindMouseWheelHandler(element, i) {
   var shouldPrevent = false;

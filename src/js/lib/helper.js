@@ -1,7 +1,7 @@
 'use strict';
 
-var cls = require('./class')
-  , dom = require('./dom');
+var cls = require('./class');
+var dom = require('./dom');
 
 var toInt = exports.toInt = function (x) {
   return parseInt(x, 10) || 0;

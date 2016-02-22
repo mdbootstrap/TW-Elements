@@ -1,8 +1,8 @@
 'use strict';
 
-var destroy = require('./plugin/destroy')
-  , initialize = require('./plugin/initialize')
-  , update = require('./plugin/update');
+var destroy = require('./plugin/destroy');
+var initialize = require('./plugin/initialize');
+var update = require('./plugin/update');
 
 module.exports = {
   initialize: initialize,

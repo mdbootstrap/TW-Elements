@@ -1,10 +1,10 @@
 'use strict';
 
-var cls = require('../lib/class')
-  , dom = require('../lib/dom')
-  , _ = require('../lib/helper')
-  , instances = require('./instances')
-  , updateScroll = require('./update-scroll');
+var _ = require('../lib/helper');
+var cls = require('../lib/class');
+var dom = require('../lib/dom');
+var instances = require('./instances');
+var updateScroll = require('./update-scroll');
 
 function getThumbSize(i, thumbSize) {
   if (i.settings.minScrollbarLength) {

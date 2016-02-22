@@ -1,7 +1,7 @@
 'use strict';
 
-var ps = require('../main')
-  , psInstances = require('../plugin/instances');
+var ps = require('../main');
+var psInstances = require('../plugin/instances');
 
 function mountJQuery(jQuery) {
   jQuery.fn.perfectScrollbar = function (settingOrCommand) {

@@ -1,11 +1,11 @@
 'use strict';
 
-var cls = require('../lib/class')
-  , dom = require('../lib/dom')
-  , defaultSettings = require('./default-setting')
-  , EventManager = require('../lib/event-manager')
-  , guid = require('../lib/guid')
-  , _ = require('../lib/helper');
+var _ = require('../lib/helper');
+var cls = require('../lib/class');
+var defaultSettings = require('./default-setting');
+var dom = require('../lib/dom');
+var EventManager = require('../lib/event-manager');
+var guid = require('../lib/guid');
 
 var instances = {};
 

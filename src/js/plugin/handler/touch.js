@@ -1,9 +1,9 @@
 'use strict';
 
-var instances = require('../instances')
-  , _ = require('../../lib/helper')
-  , updateGeometry = require('../update-geometry')
-  , updateScroll = require('../update-scroll');
+var _ = require('../../lib/helper');
+var instances = require('../instances');
+var updateGeometry = require('../update-geometry');
+var updateScroll = require('../update-scroll');
 
 function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   function shouldPreventDefault(deltaX, deltaY) {

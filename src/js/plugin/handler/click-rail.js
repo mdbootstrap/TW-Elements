@@ -1,9 +1,9 @@
 'use strict';
 
-var _ = require('../../lib/helper')
-  , instances = require('../instances')
-  , updateGeometry = require('../update-geometry')
-  , updateScroll = require('../update-scroll');
+var _ = require('../../lib/helper');
+var instances = require('../instances');
+var updateGeometry = require('../update-geometry');
+var updateScroll = require('../update-scroll');
 
 function bindClickRailHandler(element, i) {
   function pageOffset(el) {

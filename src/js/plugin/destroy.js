@@ -1,8 +1,8 @@
 'use strict';
 
-var dom = require('../lib/dom')
-  , _ = require('../lib/helper')
-  , instances = require('./instances');
+var _ = require('../lib/helper');
+var dom = require('../lib/dom');
+var instances = require('./instances');
 
 module.exports = function (element) {
   var i = instances.get(element);

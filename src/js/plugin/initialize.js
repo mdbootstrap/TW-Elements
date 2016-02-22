@@ -1,9 +1,9 @@
 'use strict';
 
-var cls = require('../lib/class')
-  , _ = require('../lib/helper')
-  , instances = require('./instances')
-  , updateGeometry = require('./update-geometry');
+var _ = require('../lib/helper');
+var cls = require('../lib/class');
+var instances = require('./instances');
+var updateGeometry = require('./update-geometry');
 
 // Handlers
 var handlers = {
