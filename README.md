@@ -94,10 +94,10 @@ repository. The plugin is registered as `perfect-scrollbar`.
 $ bower install perfect-scrollbar
 ```
 
-#### CDN
+#### CDNs
 
-You can also load it from [cdnjs](http://cdnjs.com/).
-It is registered as [`jquery.perfect-scrollbar`](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar).
+* [cdnjs](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar)
+* [JSDelivr](https://www.jsdelivr.com/projects/perfect-scrollbar)
 
 #### JSFiddle
 
