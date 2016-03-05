@@ -79,7 +79,7 @@ function Instance(element) {
 }
 
 function getId(element) {
-  if (typeof element.dataset === 'undefined') {
+  if (Object.keys(element.dataset).length === 0) {
     return element.getAttribute('data-ps-id');
   } else {
     return element.dataset.psId;
@@ -87,7 +87,7 @@ function getId(element) {
 }
 
 function setId(element, id) {
-  if (typeof element.dataset === 'undefined') {
+  if (Object.keys(element.dataset).length === 0) {
     element.setAttribute('data-ps-id', id);
   } else {
     element.dataset.psId = id;
@@ -95,7 +95,7 @@ function setId(element, id) {
 }
 
 function removeId(element) {
-  if (typeof element.dataset === 'undefined') {
+  if (Object.keys(element.dataset).length === 0) {
     element.removeAttribute('data-ps-id');
   } else {
     delete element.dataset.psId;
