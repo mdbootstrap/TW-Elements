@@ -55,7 +55,7 @@ It's cool, isn't it?
 #### NPM
 
 The best way to install and use perfect-scrollbar is with NPM.
-It's registered on [npm](https://www.npmjs.org/package/perfect-scrollbar) as `perfect-scrollbar`.
+It's registered on [npm](https://www.npmjs.com/package/perfect-scrollbar) as `perfect-scrollbar`.
 
 ```
 $ npm install perfect-scrollbar
@@ -129,7 +129,7 @@ First of all, please check if the container element meets the
 requirements.
 
 ```html
-<link rel='stylesheet' href='dist/css/perfect-scrollbar.css' />
+<link rel="stylesheet" href="dist/css/perfect-scrollbar.css" />
 <style>
   #container {
     position: relative;
@@ -148,7 +148,7 @@ var Ps = require('perfect-scrollbar');
 Or you can just load the script file as usual.
 
 ```html
-<script src='dist/js/perfect-scrollbar.js'></script>
+<script src="dist/js/perfect-scrollbar.js"></script>
 ```
 
 To initialise the plugin, `Ps.initialize` is used.
@@ -207,7 +207,7 @@ require('perfect-scrollbar/jquery')($);
 For sure, you can just import a built script.
 
 ```html
-<script src='dist/js/perfect-scrollbar.jquery.js'></script>
+<script src="dist/js/perfect-scrollbar.jquery.js"></script>
 ```
 
 After importing it, you can use the plugin in the usual way.
@@ -257,11 +257,11 @@ define([
   'perfectScrollbarJquery'
 ],
 function (angular) {
-  var myApp = angular.module('myApp', [])
-  .run(function() {
+  var myApp = angular.module('myApp', []);
+  myApp.run(function() {
     window.Ps = require('perfectScrollbar');
     require('perfectScrollbarJQuery');
-  })
+  });
   return myApp;
 });
 ```
@@ -345,15 +345,15 @@ Ps.initialize(container, {
 });
 ```
 Create a class name prefixed with `.ps-theme-`. Include `ps-container()` mixin. It's recommended to use `map-merge()` to extend `$ps-theme-default` map with your custom styles.
-```css#
+```scss
 .ps-theme-my-theme-name {
   @include ps-container(map-merge($ps-theme-default, (
     border-radius: 0,
     scrollbar-x-rail-height: 20px,
     scrollbar-x-height: 20px,
     scrollbar-y-rail-width: 20px,
-    scrollbar-y-width: 20px,)
-  ));
+    scrollbar-y-width: 20px
+  )));
 }
 ```
 
