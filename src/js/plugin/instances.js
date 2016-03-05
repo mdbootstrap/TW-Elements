@@ -79,27 +79,15 @@ function Instance(element) {
 }
 
 function getId(element) {
-  if (typeof element.dataset === 'undefined') {
-    return element.getAttribute('data-ps-id');
-  } else {
-    return element.dataset.psId;
-  }
+  return element.getAttribute('data-ps-id');
 }
 
 function setId(element, id) {
-  if (typeof element.dataset === 'undefined') {
-    element.setAttribute('data-ps-id', id);
-  } else {
-    element.dataset.psId = id;
-  }
+  element.setAttribute('data-ps-id', id);
 }
 
 function removeId(element) {
-  if (typeof element.dataset === 'undefined') {
-    element.removeAttribute('data-ps-id');
-  } else {
-    delete element.dataset.psId;
-  }
+  element.removeAttribute('data-ps-id');
 }
 
 exports.add = function (element) {
