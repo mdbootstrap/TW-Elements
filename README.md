@@ -55,7 +55,7 @@ It's cool, isn't it?
 #### NPM
 
 The best way to install and use perfect-scrollbar is with NPM.
-It's registered on [npm](https://www.npmjs.org/package/perfect-scrollbar) as `perfect-scrollbar`.
+It's registered on [npm](https://www.npmjs.com/package/perfect-scrollbar) as `perfect-scrollbar`.
 
 ```
 $ npm install perfect-scrollbar
@@ -257,12 +257,12 @@ define([
   'perfectScrollbarJquery'
 ],
 function (angular) {
-  var myApp = angular.module('myApp', [])
-  .run(function() {
+  var app = angular.module('myApp', []);
+  app.run(function () {
     window.Ps = require('perfectScrollbar');
     require('perfectScrollbarJQuery');
-  })
-  return myApp;
+  });
+  return app;
 });
 ```
 
@@ -275,7 +275,7 @@ Ps.initialize(container);
 Ps.update(container);
 
 // or by jQuery:
-var imgLoader = $("#imgLoader")
+var imgLoader = $('#imgLoader')
 imgLoader.perfectScrollbar();
 ```
 
@@ -345,15 +345,15 @@ Ps.initialize(container, {
 });
 ```
 Create a class name prefixed with `.ps-theme-`. Include `ps-container()` mixin. It's recommended to use `map-merge()` to extend `$ps-theme-default` map with your custom styles.
-```css#
+```scss
 .ps-theme-my-theme-name {
   @include ps-container(map-merge($ps-theme-default, (
     border-radius: 0,
     scrollbar-x-rail-height: 20px,
     scrollbar-x-height: 20px,
     scrollbar-y-rail-width: 20px,
-    scrollbar-y-width: 20px,)
-  ));
+    scrollbar-y-width: 20px
+  )));
 }
 ```
 

@@ -28,7 +28,7 @@ Basically, I try to follow [Douglas Crockford's JavaScript Code Conventions](htt
 You can check if your code fits in the convention with `gulp lint`.
 
 ## Getting Started
-First, ensure that you have the latest [Node.js](http://nodejs.org/) or [io.js](https://iojs.org) and [npm](http://npmjs.org) installed.
+First, ensure that you have stable [Node.js](https://nodejs.org/) and [npm](https://npmjs.com) installed.
 
 Test if Gulp CLI is installed by running `gulp --version`.  If the command isn't found, run `npm install -g gulp`.  For more information about installing Gulp, see the Gulp's [Getting Started](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
 

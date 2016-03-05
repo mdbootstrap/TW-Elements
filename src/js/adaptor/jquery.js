@@ -24,8 +24,6 @@ function mountJQuery(jQuery) {
           ps.destroy(this);
         }
       }
-
-      return jQuery(this);
     });
   };
 }
