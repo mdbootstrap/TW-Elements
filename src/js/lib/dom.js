@@ -66,12 +66,13 @@ DOM.matches = function (element, query) {
 };
 
 DOM.remove = function (element) {
+  if (!element.parentNode) {
+    return;
+  }
   if (typeof element.remove !== 'undefined') {
     element.remove();
   } else {
-    if (element.parentNode) {
-      element.parentNode.removeChild(element);
-    }
+    element.parentNode.removeChild(element);
   }
 };
 
