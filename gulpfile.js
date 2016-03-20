@@ -30,7 +30,7 @@ gulp.task('clean:js', function () {
 });
 
 gulp.task('clean:js:min', function () {
-  return del(['./dist/js/min/*.js']);
+  return del(['./dist/js/*.min.js']);
 });
 
 var jsEntries = [
@@ -76,7 +76,7 @@ gulp.task('js:min', ['clean:js:min'], function () {
           path.basename = 'perfect-scrollbar.' + path.basename + '.min';
         }
       }))
-      .pipe(gulp.dest('./dist/js/min'))
+      .pipe(gulp.dest('./dist/js'))
       .pipe(connect.reload());
   });
   return stream.merge.apply(null, tasks);
