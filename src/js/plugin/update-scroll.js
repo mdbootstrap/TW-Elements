@@ -52,12 +52,26 @@ module.exports = function (element, axis, value) {
   var i = instances.get(element);
 
   if (axis === 'top' && value >= i.contentHeight - i.containerHeight) {
-    element.scrollTop = value = i.contentHeight - i.containerHeight; // don't allow scroll past container
+    // don't allow scroll past container
+    value = i.contentHeight - i.containerHeight;
+    if (value - element.scrollTop <= 1) {
+      // mitigates rounding errors on non-subpixel scroll values
+      value = element.scrollTop;
+    } else {
+      element.scrollTop = value;
+    }
     element.dispatchEvent(yEndEvent);
   }
 
   if (axis === 'left' && value >= i.contentWidth - i.containerWidth) {
-    element.scrollLeft = value = i.contentWidth - i.containerWidth; // don't allow scroll past container
+    // don't allow scroll past container
+    value = i.contentWidth - i.containerWidth;
+    if (value - element.scrollLeft <= 1) {
+      // mitigates rounding errors on non-subpixel scroll values
+      value = element.scrollLeft;
+    } else {
+      element.scrollLeft = value;
+    }
     element.dispatchEvent(xEndEvent);
   }
 
