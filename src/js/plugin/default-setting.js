@@ -13,5 +13,6 @@ module.exports = {
   useBothWheelAxes: false,
   wheelPropagation: false,
   wheelSpeed: 1,
+  noContainerPosition: false,
   theme: 'default'
 };

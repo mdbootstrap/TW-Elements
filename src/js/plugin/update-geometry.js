@@ -16,6 +16,17 @@ function getThumbSize(i, thumbSize) {
   return thumbSize;
 }
 
+function getPosition(element) {
+  var left = 0;
+  var top = 0;
+  while(element !== null) {
+    left += element.offsetLeft;
+    top += element.offsetTop;
+    element = element.offsetParent;
+  }
+  return {left: left, top: top};
+}
+
 function updateCss(element, i) {
   var xRailOffset = {width: i.railXWidth};
   if (i.isRtl) {
@@ -42,6 +53,40 @@ function updateCss(element, i) {
       yRailOffset.left = i.negativeScrollAdjustment + element.scrollLeft + i.containerWidth * 2 - i.contentWidth - i.scrollbarYLeft - i.scrollbarYOuterWidth;
     } else {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
+    }
+  }
+  dom.css(i.scrollbarYRail, yRailOffset);
+
+  dom.css(i.scrollbarX, {left: i.scrollbarXLeft, width: i.scrollbarXWidth - i.railBorderXWidth});
+  dom.css(i.scrollbarY, {top: i.scrollbarYTop, height: i.scrollbarYHeight - i.railBorderYWidth});
+}
+
+function updateCssNoPosition(element, i) {
+  var doc = i.ownerDocument.documentElement;
+  var scrollTopPos = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+  var windowHeight = window.innerHeight;
+
+  var xRailOffset = {width: i.railXWidth};
+  xRailOffset.left = getPosition(element).left;
+  if (i.isScrollbarXUsingBottom) {
+    xRailOffset.bottom = windowHeight - (getPosition(element).top + i.containerHeight - scrollTopPos) + i.scrollbarXBottom;
+  } else {
+    xRailOffset.top = getPosition(element).top - scrollTopPos + i.scrollbarXTop;
+  }
+  dom.css(i.scrollbarXRail, xRailOffset);
+
+  var yRailOffset = {top: getPosition(element).top - scrollTopPos, height: i.railYHeight};
+  if (i.isScrollbarYUsingRight) {
+    if (i.isRtl) {
+      yRailOffset.right = doc.scrollWidth - getPosition(element).left - i.scrollbarYRight - i.scrollbarYOuterWidth;
+    } else {
+      yRailOffset.right = doc.scrollWidth - (getPosition(element).left + i.containerWidth) + i.scrollbarYRight;
+    }
+  } else {
+    if (i.isRtl) {
+      yRailOffset.left = getPosition(element).left + i.containerWidth - i.scrollbarYLeft - i.scrollbarYOuterWidth;
+    } else {
+      yRailOffset.left = getPosition(element).left + i.scrollbarYLeft;
     }
   }
   dom.css(i.scrollbarYRail, yRailOffset);
@@ -105,7 +150,13 @@ module.exports = function (element) {
     i.scrollbarYTop = i.railYHeight - i.scrollbarYHeight;
   }
 
-  updateCss(element, i);
+  if (i.settings.noContainerPosition) {
+    updateCssNoPosition(element, i);
+    cls.add(element, 'ps-no-position');
+  } else {
+    updateCss(element, i);
+    cls.remove(element, 'ps-no-position');
+  }
 
   if (i.scrollbarXActive) {
     cls.add(element, 'ps-active-x');
