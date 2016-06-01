@@ -3,7 +3,7 @@
   position: absolute; /* please don't change 'position' */
   border-radius: map_get($theme, border-radius);
   opacity: map_get($theme, rail-default-opacity);
-  transition: background-color .2s linear, opacity .2s linear;
+  transition: background-color .2s linear, opacity .2s linear, height .2s linear, width .2s ease-in-out;;
 }
 
 @mixin scrollbar-rail-hover($theme) {
@@ -15,7 +15,7 @@
   position: absolute; /* please don't change 'position' */
   background-color: map_get($theme, bar-container-hover-bg);
   border-radius: map_get($theme, border-radius);
-  transition: background-color .2s linear;
+  transition: background-color .2s linear, height .2s linear, width .2s ease-in-out;
 }
 
 @mixin scrollbar-hover($theme) {
@@ -69,6 +69,14 @@
     bottom: map_get($theme, scrollbar-x-rail-bottom); /* there must be 'bottom' for ps-scrollbar-x-rail */
     height: map_get($theme, scrollbar-x-rail-height);
 
+    &:hover,
+    &:active {
+      height: map_get($theme, scrollbar-rail-scale-hover) * map_get($theme, scrollbar-x-rail-height);
+      > .ps-scrollbar-x {
+        height: map_get($theme, scrollbar-rail-scale-hover) * map_get($theme, scrollbar-x-rail-height);
+      }
+    }
+
     > .ps-scrollbar-x {
       @include scrollbar-default($theme);
       bottom: map_get($theme, scrollbar-x-bottom); /* there must be 'bottom' for ps-scrollbar-x */
@@ -80,6 +88,14 @@
     @include scrollbar-rail-default($theme);
     right: map_get($theme, scrollbar-y-rail-right); /* there must be 'right' for ps-scrollbar-y-rail */
     width: map_get($theme, scrollbar-y-rail-width);
+
+    &:hover,
+    &:active {
+      width: map_get($theme, scrollbar-rail-scale-hover) * map_get($theme, scrollbar-y-rail-width);
+      > .ps-scrollbar-y {
+        width: map_get($theme, scrollbar-rail-scale-hover) * map_get($theme, scrollbar-y-rail-width);
+      }
+    }
 
     > .ps-scrollbar-y {
       @include scrollbar-default($theme);
