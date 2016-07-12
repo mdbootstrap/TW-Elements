@@ -83,7 +83,7 @@ gulp.task('js:min', ['clean:js:min'], function () {
 });
 
 gulp.task('clean:css', function () {
-  return del(['./dist/css/perfect-scrollbar.css', './examples/custom-theme.css']);
+  return del(['./dist/css/perfect-scrollbar.css']);
 });
 
 gulp.task('clean:css:min', function () {
@@ -91,25 +91,13 @@ gulp.task('clean:css:min', function () {
 });
 
 gulp.task('css', ['clean:css'], function () {
-  var main = gulp
-    .src('./src/css/main.scss')
+  return gulp.src('./src/css/main.scss')
     .pipe(sass())
     .pipe(autoprefixer(autoPrefixerConfig))
     .pipe(insert.prepend(version))
     .pipe(rename('perfect-scrollbar.css'))
     .pipe(gulp.dest('./dist/css'))
     .pipe(connect.reload());
-
-  var custom = gulp
-    .src('./examples/custom-theme.scss')
-    .pipe(sass())
-    .pipe(autoprefixer(autoPrefixerConfig))
-    .pipe(insert.prepend(version))
-    .pipe(rename('custom-theme.css'))
-    .pipe(gulp.dest('./examples'))
-    .pipe(connect.reload());
-
-  return stream.concat(main, custom);
 });
 
 gulp.task('css:min', ['clean:css:min'], function () {
