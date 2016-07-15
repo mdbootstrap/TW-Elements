@@ -188,6 +188,17 @@ container.scrollTop = 0;
 Ps.update(container);
 ```
 
+If you want to temporarily disable (but leave visible) the scrollbar, use
+`disable` (and `enable` to re-enable it later).
+
+```javascript
+Ps.disable(container);
+```
+Enabling the scroller again can easily be done by calling:
+```javascript
+Ps.enable(container);
+```
+
 You can also get information about how to use the plugin
 from code in the `examples` directory of the source tree.
 
