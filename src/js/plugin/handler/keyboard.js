@@ -2,6 +2,7 @@
 
 var _ = require('../../lib/helper');
 var dom = require('../../lib/dom');
+var cls = require('../../lib/class');
 var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
@@ -40,6 +41,11 @@ function bindKeyboardHandler(element, i) {
   }
 
   i.event.bind(i.ownerDocument, 'keydown', function (e) {
+    var currentClasses = cls.list(element);
+    if (currentClasses.indexOf("ps-disabled") !== -1) {
+      return;
+    }
+
     if ((e.isDefaultPrevented && e.isDefaultPrevented()) || e.defaultPrevented) {
       return;
     }

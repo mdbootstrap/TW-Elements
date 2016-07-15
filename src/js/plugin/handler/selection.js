@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('../../lib/helper');
+var cls = require('../../lib/class');
 var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
@@ -42,6 +43,12 @@ function bindSelectionHandler(element, i) {
 
   var isSelected = false;
   i.event.bind(i.ownerDocument, 'selectionchange', function () {
+    var currentClasses = cls.list(element);
+    if (currentClasses.indexOf("ps-disabled") !== -1) {
+      return;
+    }
+
+
     if (element.contains(getRangeNode())) {
       isSelected = true;
     } else {
