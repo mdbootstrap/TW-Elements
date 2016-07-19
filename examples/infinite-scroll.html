@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>perfect-scrollbar example</title>
+    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <style>
+      #Default {
+        height: 400px;
+        width: 100%;
+        background-color: #f1f1f1;
+        border: 1px solid blue;
+        overflow: auto;
+        position: relative;
+      }
+      .entryPlaceholder {
+        height: 48px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Default">
+    </div>
+
+    <script>
+      var x = 0;
+      var $ = document.querySelector.bind(document);
+      window.onload = function () {
+        // show some initial data
+        for(var i = 0; i < 10; i++) {
+          $('#Default').innerHTML += '<div class="entryPlaceholder">Entry #' + (x++) + '</div>';
+        }
+        Ps.initialize($('#Default'));
+
+      };
+
+      var isProgramaticallyTriggered = false;
+      var addEntries = function(num) {
+        for(var i = 0; i < num; i++) {
+          $('#Default').innerHTML += '<div class="entryPlaceholder">Entry #' + (x++) + '</div>';
+        }
+
+        isProgramaticallyTriggered = true;
+        Ps.update($('#Default'));
+        isProgramaticallyTriggered = false;
+      };
+
+
+
+
+      // on scroll, add more entries
+      document.addEventListener('ps-scroll-y', function(e) {
+        if (!isProgramaticallyTriggered) {
+          console.debug("user scrolled to pos: ", $('#Default').scrollTop);
+          addEntries(1);
+        }
+      });
+    </script>
+  </body>
+</html>
+
