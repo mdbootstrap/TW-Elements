@@ -128,7 +128,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
           return;
         }
 
-        if(!speed.x && !speed.y) {
+        if (!speed.x && !speed.y) {
           clearInterval(easingLoop);
           return;
         }
