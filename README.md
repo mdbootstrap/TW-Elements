@@ -134,6 +134,7 @@ requirements.
   #container {
     position: relative;
     height: 100%; /* Or whatever you want (eg. 400px) */
+    overflow: hidden;
   }
 </style>
 ```
