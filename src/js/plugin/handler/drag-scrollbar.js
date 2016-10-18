@@ -2,6 +2,7 @@
 
 var _ = require('../../lib/helper');
 var dom = require('../../lib/dom');
+var cls = require('../../lib/class');
 var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
@@ -39,6 +40,11 @@ function bindMouseScrollXHandler(element, i) {
   };
 
   i.event.bind(i.scrollbarX, 'mousedown', function (e) {
+    var currentClasses = cls.list(element);
+    if (currentClasses.indexOf("ps-disabled") !== -1) {
+      return;
+    }
+
     currentPageX = e.pageX;
     currentLeft = _.toInt(dom.css(i.scrollbarX, 'left')) * i.railXRatio;
     _.startScrolling(element, 'x');
@@ -84,6 +90,11 @@ function bindMouseScrollYHandler(element, i) {
   };
 
   i.event.bind(i.scrollbarY, 'mousedown', function (e) {
+    var currentClasses = cls.list(element);
+    if (currentClasses.indexOf("ps-disabled") !== -1) {
+      return;
+    }
+
     currentPageY = e.pageY;
     currentTop = _.toInt(dom.css(i.scrollbarY, 'top')) * i.railYRatio;
     _.startScrolling(element, 'y');

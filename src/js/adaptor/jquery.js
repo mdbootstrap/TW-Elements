@@ -20,6 +20,10 @@ function mountJQuery(jQuery) {
 
         if (command === 'update') {
           ps.update(this);
+        } else if (command === 'enable') {
+          ps.enable(this);
+        } else if (command === 'disable') {
+          ps.disable(this);
         } else if (command === 'destroy') {
           ps.destroy(this);
         }

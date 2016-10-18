@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('../../lib/helper');
+var cls = require('../../lib/class');
 var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
@@ -15,6 +16,12 @@ function bindClickRailHandler(element, i) {
     i.event.bind(i.scrollbarY, 'click', stopPropagation);
   }
   i.event.bind(i.scrollbarYRail, 'click', function (e) {
+    var currentClasses = cls.list(element);
+    if (currentClasses.indexOf("ps-disabled") !== -1) {
+      return;
+    }
+
+
     var halfOfScrollbarLength = _.toInt(i.scrollbarYHeight / 2);
     var positionTop = i.railYRatio * (e.pageY - window.pageYOffset - pageOffset(i.scrollbarYRail).top - halfOfScrollbarLength);
     var maxPositionTop = i.railYRatio * (i.railYHeight - i.scrollbarYHeight);
@@ -36,6 +43,12 @@ function bindClickRailHandler(element, i) {
     i.event.bind(i.scrollbarX, 'click', stopPropagation);
   }
   i.event.bind(i.scrollbarXRail, 'click', function (e) {
+    var currentClasses = cls.list(element);
+    if (currentClasses.indexOf("ps-disabled") !== -1) {
+      return;
+    }
+
+
     var halfOfScrollbarLength = _.toInt(i.scrollbarXWidth / 2);
     var positionLeft = i.railXRatio * (e.pageX - window.pageXOffset - pageOffset(i.scrollbarXRail).left - halfOfScrollbarLength);
     var maxPositionLeft = i.railXRatio * (i.railXWidth - i.scrollbarXWidth);

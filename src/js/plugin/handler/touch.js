@@ -1,7 +1,9 @@
 'use strict';
 
 var _ = require('../../lib/helper');
+var cls = require('../../lib/class');
 var instances = require('../instances');
+
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
 
@@ -46,6 +48,11 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   var inLocalTouch = false;
 
   function globalTouchStart() {
+    var currentClasses = cls.list(element);
+    if (currentClasses.indexOf("ps-disabled") !== -1) {
+      return;
+    }
+
     inGlobalTouch = true;
   }
   function globalTouchEnd() {
@@ -71,6 +78,11 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
   function touchStart(e) {
     if (shouldHandle(e)) {
+      var currentClasses = cls.list(element);
+      if (currentClasses.indexOf("ps-disabled") !== -1) {
+        return;
+      }
+
       inLocalTouch = true;
 
       var touch = getTouch(e);

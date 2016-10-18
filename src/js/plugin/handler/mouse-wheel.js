@@ -1,6 +1,7 @@
 'use strict';
 
 var instances = require('../instances');
+var cls = require('../../lib/class');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
 
@@ -79,6 +80,11 @@ function bindMouseWheelHandler(element, i) {
   }
 
   function mousewheelHandler(e) {
+    var currentClasses = cls.list(element);
+    if (currentClasses.indexOf("ps-disabled") !== -1) {
+      e.preventDefault();
+      return;
+    }
     var delta = getDeltaFromEvent(e);
 
     var deltaX = delta[0];
