@@ -328,10 +328,6 @@ The number of pixels the content width can surpass the container width without e
 The number of pixels the content height can surpass the container height without enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so that Y axis scroll bar is not enabled just because of a few pixels.  
 **Default**: `0`
 
-### stopPropagationOnClick
-When set to false, when clicking on a rail, the click event will be allowed to propagate.  
-**Default**: `true`
-
 ### theme
 A string. It's a class name added to the container element. The class name is prepended with `ps-theme-`. So default theme class name is `ps-theme-default`. In order to create custom themes with scss use `ps-container($theme)` mixin, where `$theme` is a scss map.  
 **Default**: `'default'`

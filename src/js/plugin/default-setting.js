@@ -6,7 +6,6 @@ module.exports = {
   minScrollbarLength: null,
   scrollXMarginOffset: 0,
   scrollYMarginOffset: 0,
-  stopPropagationOnClick: true,
   suppressScrollX: false,
   suppressScrollY: false,
   swipePropagation: true,

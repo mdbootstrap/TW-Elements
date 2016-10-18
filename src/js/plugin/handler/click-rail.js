@@ -11,9 +11,7 @@ function bindClickRailHandler(element, i) {
   }
   var stopPropagation = function (e) { e.stopPropagation(); };
 
-  if (i.settings.stopPropagationOnClick) {
-    i.event.bind(i.scrollbarY, 'click', stopPropagation);
-  }
+  i.event.bind(i.scrollbarY, 'click', stopPropagation);
   i.event.bind(i.scrollbarYRail, 'click', function (e) {
     var halfOfScrollbarLength = _.toInt(i.scrollbarYHeight / 2);
     var positionTop = i.railYRatio * (e.pageY - window.pageYOffset - pageOffset(i.scrollbarYRail).top - halfOfScrollbarLength);
@@ -32,9 +30,7 @@ function bindClickRailHandler(element, i) {
     e.stopPropagation();
   });
 
-  if (i.settings.stopPropagationOnClick) {
-    i.event.bind(i.scrollbarX, 'click', stopPropagation);
-  }
+  i.event.bind(i.scrollbarX, 'click', stopPropagation);
   i.event.bind(i.scrollbarXRail, 'click', function (e) {
     var halfOfScrollbarLength = _.toInt(i.scrollbarXWidth / 2);
     var positionLeft = i.railXRatio * (e.pageX - window.pageXOffset - pageOffset(i.scrollbarXRail).left - halfOfScrollbarLength);
