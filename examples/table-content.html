@@ -28,6 +28,60 @@
         float: left;
         box-sizing: border-box;
       }
+
+      /*salzerdesign.com table*/
+
+      .fixed-table-container {
+        width: 50%;
+        height: 200px;
+        border: 1px solid black;
+        float: left;
+        background-color: white;
+        /* above is decorative or flexible */
+        position: relative; /* could be absolute or relative */
+        padding-top: 30px; /* height of header */
+      }
+
+      .fixed-table-container-inner {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+      }
+
+      .header-background {
+        background-color: #D5ECFF;
+        height: 30px; /* height of header */
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+      }
+
+      .fixed-table-container table {
+        background-color: white;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      .th-inner {
+        position: absolute;
+        top: 0;
+        line-height: 30px; /* height of header */
+        text-align: left;
+        border-left: 1px solid black;
+        padding-left: 5px;
+        margin-left: -5px;
+      }
+      .first .th-inner {
+        border-left: none;
+        padding-left: 6px;
+      }
+
+      .clear {
+        display: block;
+        clear:both;
+      }
     </style>
   </head>
   <body>
@@ -73,10 +127,115 @@
         </tr>
       </tbody>
     </table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>Better fixed header table example by <a href="http://salzerdesign.com/test/fixedTable.html" target="_blank">salzerdesign.com</a>. Supports complicated headers and footers, and works better in older IE</p>
+    <div class="fixed-table-container">
+      <div class="header-background"> </div>
+      <div class="fixed-table-container-inner">
+        <table cellspacing="0">
+          <thead>
+            <tr>
+              <th class="first">
+                <div class="th-inner">First</div>
+              </th>
+              <th class="second">
+                <div class="th-inner">Second</div>
+              </th>
+              <th class="third">
+                <div class="th-inner">Third</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First</td>
+              <td>First</td>
+              <td>First</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>First</td>
+              <td>Second</td>
+              <td>Third</td>
+            </tr>
+            <tr>
+              <td>Last</td>
+              <td>Last</td>
+              <td>Last</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <script type="text/javascript">
       var $ = document.querySelector.bind(document);
       window.onload = function () {
         Ps.initialize($('#table tbody'));
+        Ps.initialize($('.fixed-table-container-inner'), {noContainerPosition: true});
       };
     </script>
   </body>

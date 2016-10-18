@@ -48,7 +48,7 @@ function Instance(element) {
   i.scrollbarXWidth = null;
   i.scrollbarXLeft = null;
   i.scrollbarXBottom = _.toInt(dom.css(i.scrollbarXRail, 'bottom'));
-  i.isScrollbarXUsingBottom = i.scrollbarXBottom === i.scrollbarXBottom; // !isNaN
+  i.isScrollbarXUsingBottom = dom.css(i.scrollbarXRail, 'bottom') !== 'auto';
   i.scrollbarXTop = i.isScrollbarXUsingBottom ? null : _.toInt(dom.css(i.scrollbarXRail, 'top'));
   i.railBorderXWidth = _.toInt(dom.css(i.scrollbarXRail, 'borderLeftWidth')) + _.toInt(dom.css(i.scrollbarXRail, 'borderRightWidth'));
   // Set rail to display:block to calculate margins
@@ -67,7 +67,7 @@ function Instance(element) {
   i.scrollbarYHeight = null;
   i.scrollbarYTop = null;
   i.scrollbarYRight = _.toInt(dom.css(i.scrollbarYRail, 'right'));
-  i.isScrollbarYUsingRight = i.scrollbarYRight === i.scrollbarYRight; // !isNaN
+  i.isScrollbarYUsingRight = dom.css(i.scrollbarYRail, 'right') !== 'auto';
   i.scrollbarYLeft = i.isScrollbarYUsingRight ? null : _.toInt(dom.css(i.scrollbarYRail, 'left'));
   i.scrollbarYOuterWidth = i.isRtl ? _.outerWidth(i.scrollbarY) : null;
   i.railBorderYWidth = _.toInt(dom.css(i.scrollbarYRail, 'borderTopWidth')) + _.toInt(dom.css(i.scrollbarYRail, 'borderBottomWidth'));

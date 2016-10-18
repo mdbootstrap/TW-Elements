@@ -284,56 +284,60 @@ imgLoader.perfectScrollbar();
 perfect-scrollbar supports optional parameters.
 
 ### handlers
-It is a list of handlers to use to scroll the element.  
-**Default**: `['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch']`  
+It is a list of handlers to use to scroll the element.
+**Default**: `['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch']`
 **Disabled by default**: `'selection'`
 
 ### wheelSpeed
-The scroll speed applied to mousewheel event.  
+The scroll speed applied to mousewheel event.
 **Default**: `1`
 
 ### wheelPropagation
-If this option is true, when the scroll reaches the end of the side, mousewheel event will be propagated to parent element.  
+If this option is true, when the scroll reaches the end of the side, mousewheel event will be propagated to parent element.
 **Default**: `false`
 
 ### swipePropagation
-If this option is true, when the scroll reaches the end of the side, touch scrolling will be propagated to parent element.  
+If this option is true, when the scroll reaches the end of the side, touch scrolling will be propagated to parent element.
 **Default**: `true`
 
 ### minScrollbarLength
-When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels.  
+When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels.
 **Default**: `null`
 
 ### maxScrollbarLength
-When set to an integer value, the thumb part of the scrollbar will not expand over that number of pixels.  
+When set to an integer value, the thumb part of the scrollbar will not expand over that number of pixels.
 **Default**: `null`
 
 ### useBothWheelAxes
-When set to true, and only one (vertical or horizontal) scrollbar is visible then both vertical and horizontal scrolling will affect the scrollbar.  
+When set to true, and only one (vertical or horizontal) scrollbar is visible then both vertical and horizontal scrolling will affect the scrollbar.
 **Default**: `false`
 
 ### suppressScrollX
-When set to true, the scroll bar in X axis will not be available, regardless of the content width.  
+When set to true, the scroll bar in X axis will not be available, regardless of the content width.
 **Default**: `false`
 
 ### suppressScrollY
-When set to true, the scroll bar in Y axis will not be available, regardless of the content height.  
+When set to true, the scroll bar in Y axis will not be available, regardless of the content height.
 **Default**: `false`
 
 ### scrollXMarginOffset
-The number of pixels the content width can surpass the container width without enabling the X axis scroll bar. Allows some "wiggle room" or "offset break", so that X axis scroll bar is not enabled just because of a few pixels.  
+The number of pixels the content width can surpass the container width without enabling the X axis scroll bar. Allows some "wiggle room" or "offset break", so that X axis scroll bar is not enabled just because of a few pixels.
 **Default**: `0`
 
 ### scrollYMarginOffset
-The number of pixels the content height can surpass the container height without enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so that Y axis scroll bar is not enabled just because of a few pixels.  
+The number of pixels the content height can surpass the container height without enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so that Y axis scroll bar is not enabled just because of a few pixels.
 **Default**: `0`
 
 ### stopPropagationOnClick
-When set to false, when clicking on a rail, the click event will be allowed to propagate.  
+When set to false, when clicking on a rail, the click event will be allowed to propagate.
 **Default**: `true`
 
+### noContainerPosition
+When set to true `position` attribute on scroll container is not needed. Adds a class `.ps-no-position` which sets X and Y scroll rails to `position:fixed`. This option is provided as a fallback and will not work properly with nested scrolling containers.
+**Default**: `'false'`
+
 ### theme
-A string. It's a class name added to the container element. The class name is prepended with `ps-theme-`. So default theme class name is `ps-theme-default`. In order to create custom themes with scss use `ps-container($theme)` mixin, where `$theme` is a scss map.  
+A string. It's a class name added to the container element. The class name is prepended with `ps-theme-`. So default theme class name is `ps-theme-default`. In order to create custom themes with scss use `ps-container($theme)` mixin, where `$theme` is a scss map.
 **Default**: `'default'`
 
 **Example 1:**
@@ -413,7 +417,7 @@ $(document).on('ps-scroll-x', function () {
 
 ### Scrolling children inside perfect-scrollbar
 
-You can natively scroll children inside `perfect-scrollbar` with the mouse-wheel. Scrolling automatically works if 
+You can natively scroll children inside `perfect-scrollbar` with the mouse-wheel. Scrolling automatically works if
 the child is a `textarea`. All other elements need to have the `ps-child` class. This is demonstrated in [`/examples/children-native-scroll.html`](examples/children-native-scroll.html)
 
 ## IE Support
