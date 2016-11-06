@@ -106,22 +106,26 @@ You can fork the following JSFiddles for testing and experimenting purposes:
 * [Perfect Scrollbar](https://jsfiddle.net/DanielApt/xv0rrxv3/)
 * [Perfect Scrollbar (jQuery)](https://jsfiddle.net/DanielApt/gbfLazpx/)
 
-## Requirements
-
-To make this plugin *perfect*, some requirements were unavoidable.
-But, they're all very trivial and there is nothing to worry about.
+## Before using perfect-scrollbar
 
 The following requirements should meet.
 
 * the container must have a 'position' css style.
+* the container must be a normal container element.
+  * PS may not work well in `body`, `textarea`, `iframe` or flexbox.
 
 The following requirements are included in the basic CSS, but please
 keep in mind when you'd like to change the CSS files.
 
-* the container must have an 'overflow:hidden' css style.
+* the container must have an 'overflow: hidden' css style.
 * the scrollbar's position must be 'absolute'.
 * the scrollbar-x must have a 'bottom' css style, and the scrollbar-y
   must have a 'right' css style.
+  
+Please keep in mind that perfect-scrollbar won't completely emulate native
+scrolls. Scroll hooking is generally considered as bad practice, and
+perfect-scrollbar should be used with care. Unless custom scroll is really needed,
+please consider using native scrolls.
 
 ## How to use
 
