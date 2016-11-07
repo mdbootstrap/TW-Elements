@@ -13,9 +13,9 @@ interface PerfectScrollbarOptions {
 }
 
 interface PerfectScrollbar {
-  initialize(container: HTMLElement, options?: PerfectScrollbarOptions);
-  update(container: HTMLElement);
-  destroy(container: HTMLElement);
+  initialize(container: HTMLElement, options?: PerfectScrollbarOptions): void;
+  update(container: HTMLElement): void;
+  destroy(container: HTMLElement): void;
 }
 
 interface JQuery {
