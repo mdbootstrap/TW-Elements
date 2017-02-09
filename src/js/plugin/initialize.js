@@ -25,7 +25,7 @@ module.exports = function (element, userSettings) {
   var i = instances.add(element);
 
   i.settings = _.extend(i.settings, userSettings);
-  cls.add(element, 'ps--theme-' + i.settings.theme);
+  cls.add(element, 'ps--theme_' + i.settings.theme);
 
   i.settings.handlers.forEach(function (handlerName) {
     handlers[handlerName](element);
