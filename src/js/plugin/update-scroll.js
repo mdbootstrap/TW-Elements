@@ -84,12 +84,12 @@ module.exports = function (element, axis, value) {
     element.dispatchEvent(createDOMEvent('ps-scroll-right'));
   }
 
-  if (axis === 'top') {
+  if (axis === 'top' && value !== lastTop) {
     element.scrollTop = lastTop = value;
     element.dispatchEvent(createDOMEvent('ps-scroll-y'));
   }
 
-  if (axis === 'left') {
+  if (axis === 'left' && value !== lastLeft) {
     element.scrollLeft = lastLeft = value;
     element.dispatchEvent(createDOMEvent('ps-scroll-x'));
   }
