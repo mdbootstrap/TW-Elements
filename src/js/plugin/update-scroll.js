@@ -60,11 +60,11 @@ module.exports = function (element, axis, value) {
     element.dispatchEvent(createDOMEvent('ps-x-reach-end'));
   }
 
-  if (!lastTop) {
+  if (lastTop === undefined) {
     lastTop = element.scrollTop;
   }
 
-  if (!lastLeft) {
+  if (lastLeft === undefined) {
     lastLeft = element.scrollLeft;
   }
 
