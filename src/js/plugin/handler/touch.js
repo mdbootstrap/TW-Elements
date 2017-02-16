@@ -152,9 +152,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
     i.event.bind(element, 'touchend', touchEnd);
-  }
-
-  if (supportsIePointer) {
+  } else if (supportsIePointer) {
     if (window.PointerEvent) {
       i.event.bind(window, 'pointerdown', globalTouchStart);
       i.event.bind(window, 'pointerup', globalTouchEnd);
