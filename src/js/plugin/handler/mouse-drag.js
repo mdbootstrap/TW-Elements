@@ -145,6 +145,18 @@ function bindMouseDragHandler(element) {
   });
 
   /**
+   * Drop Listener.
+   * This is necessary to detect when we should stop scrolling even if the mouse is in
+   * the position where it should scroll in some direction.
+   * Added as dragend is not always trigerred.
+   */
+  element.addEventListener('drop',
+  function () {
+    isDragging = false;
+    stopScrolling();
+  });
+
+  /**
    * Because firefox does not have mouse position in a drag event I needed to use something else.
    * If isDragging is set to true then this method will start scrolling.
    *
