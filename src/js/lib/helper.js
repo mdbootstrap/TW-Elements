@@ -8,9 +8,9 @@ var toInt = exports.toInt = function (x) {
 };
 
 var clone = exports.clone = function (obj) {
-  if (obj === null) {
+  if (!obj) {
     return null;
-  } else if (obj.constructor === Array) {
+  } else if (Array.isArray(obj)) {
     return obj.map(clone);
   } else if (typeof obj === 'object') {
     var result = {};

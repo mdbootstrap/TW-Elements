@@ -11,17 +11,28 @@
   </style>
 </head>
 <body>
-<div id="Default" class="contentHolder">
+<div id="container" class="contentHolder">
   <div class="content">
   </div>
 </div>
+<p style='text-align: center'>
+  <button id='default'>default</button>
+  <button id='custom'>custom</button>
+</p>
 <script>
   var $ = document.querySelector.bind(document);
+  var container = $('#container');
   window.onload = function () {
-    Ps.initialize($('#Default'), {
-      theme: 'square'
-    });
+    Ps.initialize(container, { theme: 'square' });
   };
+  $('#default').addEventListener('click', function () {
+    Ps.destroy(container);
+    Ps.initialize(container);
+  });
+  $('#custom').addEventListener('click', function () {
+    Ps.destroy(container);
+    Ps.initialize(container, { theme: 'square' });
+  });
 </script>
 </body>
 </html>

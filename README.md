@@ -106,22 +106,26 @@ You can fork the following JSFiddles for testing and experimenting purposes:
 * [Perfect Scrollbar](https://jsfiddle.net/DanielApt/xv0rrxv3/)
 * [Perfect Scrollbar (jQuery)](https://jsfiddle.net/DanielApt/gbfLazpx/)
 
-## Requirements
-
-To make this plugin *perfect*, some requirements were unavoidable.
-But, they're all very trivial and there is nothing to worry about.
+## Before using perfect-scrollbar
 
 The following requirements should meet.
 
 * the container must have a 'position' css style.
+* the container must be a normal container element.
+  * PS may not work well in `body`, `textarea`, `iframe` or flexbox.
 
 The following requirements are included in the basic CSS, but please
 keep in mind when you'd like to change the CSS files.
 
-* the container must have an 'overflow:hidden' css style.
+* the container must have an 'overflow: hidden' css style.
 * the scrollbar's position must be 'absolute'.
 * the scrollbar-x must have a 'bottom' css style, and the scrollbar-y
   must have a 'right' css style.
+  
+Please keep in mind that perfect-scrollbar won't completely emulate native
+scrolls. Scroll hooking is generally considered as bad practice, and
+perfect-scrollbar should be used with care. Unless custom scroll is really needed,
+please consider using native scrolls.
 
 ## How to use
 
@@ -328,10 +332,13 @@ The number of pixels the content width can surpass the container width without e
 The number of pixels the content height can surpass the container height without enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so that Y axis scroll bar is not enabled just because of a few pixels.
 **Default**: `0`
 
+<<<<<<< HEAD
 ### stopPropagationOnClick
 When set to false, when clicking on a rail, the click event will be allowed to propagate.
 **Default**: `true`
 
+=======
+>>>>>>> noraesae/master
 ### theme
 A string. It's a class name added to the container element. The class name is prepended with `ps-theme-`. So default theme class name is `ps-theme-default`. In order to create custom themes with scss use `ps-container($theme)` mixin, where `$theme` is a scss map.
 **Default**: `'default'`
