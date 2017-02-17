@@ -6,7 +6,7 @@ var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
 
 function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
-  function shouldPreventDefault(deltaX, deltaY) {
+  function shouldCancelEvent(deltaX, deltaY) {
     var scrollTop = element.scrollTop;
     var scrollLeft = element.scrollLeft;
     var magnitudeX = Math.abs(deltaX);
@@ -16,19 +16,19 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       // user is perhaps trying to swipe up/down the page
 
       if (((deltaY < 0) && (scrollTop === i.contentHeight - i.containerHeight)) ||
-          ((deltaY > 0) && (scrollTop === 0))) {
-        return !i.settings.swipePropagation;
+        ((deltaY > 0) && (scrollTop === 0))) {
+        return {stopPropagation: !i.settings.swipePropagation, preventDefault: false};
       }
     } else if (magnitudeX > magnitudeY) {
       // user is perhaps trying to swipe left/right across the page
 
       if (((deltaX < 0) && (scrollLeft === i.contentWidth - i.containerWidth)) ||
-          ((deltaX > 0) && (scrollLeft === 0))) {
-        return !i.settings.swipePropagation;
+        ((deltaX > 0) && (scrollLeft === 0))) {
+        return {stopPropagation: !i.settings.swipePropagation, preventDefault: true};
       }
     }
 
-    return true;
+    return {stopPropagation: true, preventDefault: true};
   }
 
   function applyTouchMove(differenceX, differenceY) {
@@ -48,6 +48,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   function globalTouchStart() {
     inGlobalTouch = true;
   }
+
   function globalTouchEnd() {
     inGlobalTouch = false;
   }
@@ -60,6 +61,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       return e;
     }
   }
+
   function shouldHandle(e) {
     if (e.targetTouches && e.targetTouches.length === 1) {
       return true;
@@ -69,6 +71,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     }
     return false;
   }
+
   function touchStart(e) {
     if (shouldHandle(e)) {
       inLocalTouch = true;
@@ -87,6 +90,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       e.stopPropagation();
     }
   }
+
   function touchMove(e) {
     if (!inLocalTouch && i.settings.swipePropagation) {
       touchStart(e);
@@ -111,12 +115,12 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
         startTime = currentTime;
       }
 
-      if (shouldPreventDefault(differenceX, differenceY)) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
+      var callEvent = shouldCancelEvent(differenceX, differenceY);
+      callEvent.stopPropagation && e.stopPropagation();
+      callEvent.preventDefault && e.preventDefault();
     }
   }
+
   function touchEnd() {
     if (!inGlobalTouch && inLocalTouch) {
       inLocalTouch = false;
