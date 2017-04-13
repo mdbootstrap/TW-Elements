@@ -62,7 +62,14 @@ function bindMouseWheelHandler(element, i) {
   function shouldBeConsumedByChild(deltaX, deltaY) {
     var child = element.querySelector('textarea:hover, select[multiple]:hover, .ps-child:hover');
     if (child) {
-      if (!window.getComputedStyle(child).overflow.match(/(scroll|auto)/)) {
+      var style = window.getComputedStyle(child);
+      var overflow = [
+        style.overflow,
+        style.overflowX,
+        style.overflowY
+      ].join('');
+
+      if (!overflow.match(/(scroll|auto)/)) {
         // if not scrollable
         return false;
       }
