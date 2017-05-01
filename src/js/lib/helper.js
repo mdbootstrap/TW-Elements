@@ -57,22 +57,22 @@ exports.outerWidth = function (element) {
 };
 
 exports.startScrolling = function (element, axis) {
-  cls.add(element, 'ps-in-scrolling');
+  cls.add(element, 'ps--in-scrolling');
   if (typeof axis !== 'undefined') {
-    cls.add(element, 'ps-' + axis);
+    cls.add(element, 'ps--' + axis);
   } else {
-    cls.add(element, 'ps-x');
-    cls.add(element, 'ps-y');
+    cls.add(element, 'ps--x');
+    cls.add(element, 'ps--y');
   }
 };
 
 exports.stopScrolling = function (element, axis) {
-  cls.remove(element, 'ps-in-scrolling');
+  cls.remove(element, 'ps--in-scrolling');
   if (typeof axis !== 'undefined') {
-    cls.remove(element, 'ps-' + axis);
+    cls.remove(element, 'ps--' + axis);
   } else {
-    cls.remove(element, 'ps-x');
-    cls.remove(element, 'ps-y');
+    cls.remove(element, 'ps--x');
+    cls.remove(element, 'ps--y');
   }
 };
 
