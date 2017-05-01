@@ -57,7 +57,7 @@ exports.outerWidth = function (element) {
 };
 
 function toggleScrolling(handler) {
-  return function(element, axis) {
+  return function (element, axis) {
     handler(element, 'ps--in-scrolling');
     if (typeof axis !== 'undefined') {
       handler(element, 'ps--' + axis);
@@ -65,7 +65,7 @@ function toggleScrolling(handler) {
       handler(element, 'ps--x');
       handler(element, 'ps--y');
     }
-  }
+  };
 }
 
 exports.startScrolling = toggleScrolling(cls.add);
