@@ -9,6 +9,7 @@ module.exports = {
   suppressScrollX: false,
   suppressScrollY: false,
   swipePropagation: true,
+  swipeEasing: true,
   useBothWheelAxes: false,
   wheelPropagation: false,
   wheelSpeed: 1,

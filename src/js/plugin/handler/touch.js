@@ -121,28 +121,30 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     if (!inGlobalTouch && inLocalTouch) {
       inLocalTouch = false;
 
-      clearInterval(easingLoop);
-      easingLoop = setInterval(function () {
-        if (!instances.get(element)) {
-          clearInterval(easingLoop);
-          return;
-        }
+      if (i.settings.swipeEasing) {
+        clearInterval(easingLoop);
+        easingLoop = setInterval(function () {
+          if (!instances.get(element)) {
+            clearInterval(easingLoop);
+            return;
+          }
 
-        if (!speed.x && !speed.y) {
-          clearInterval(easingLoop);
-          return;
-        }
+          if (!speed.x && !speed.y) {
+            clearInterval(easingLoop);
+            return;
+          }
 
-        if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
-          clearInterval(easingLoop);
-          return;
-        }
+          if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
+            clearInterval(easingLoop);
+            return;
+          }
 
-        applyTouchMove(speed.x * 30, speed.y * 30);
+          applyTouchMove(speed.x * 30, speed.y * 30);
 
-        speed.x *= 0.8;
-        speed.y *= 0.8;
-      }, 10);
+          speed.x *= 0.8;
+          speed.y *= 0.8;
+        }, 10);
+      }
     }
   }
 

@@ -304,6 +304,10 @@ If this option is true, when the scroll reaches the end of the side, mousewheel 
 If this option is true, when the scroll reaches the end of the side, touch scrolling will be propagated to parent element.  
 **Default**: `true`
 
+### swipeEasing
+If this option is true, swipe scrolling will be eased.
+**Default**: `true`
+
 ### minScrollbarLength
 When set to an integer value, the thumb part of the scrollbar will not shrink below that number of pixels.  
 **Default**: `null`
