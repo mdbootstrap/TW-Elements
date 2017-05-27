@@ -73,7 +73,7 @@ exports.startScrolling = toggleScrolling(cls.add);
 exports.stopScrolling = toggleScrolling(cls.remove);
 
 exports.env = {
-  isWebKit: 'WebkitAppearance' in document.documentElement.style,
-  supportsTouch: (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch),
-  supportsIePointer: window.navigator.msMaxTouchPoints !== null
+  isWebKit: typeof document !== 'undefined' && 'WebkitAppearance' in document.documentElement.style,
+  supportsTouch: typeof window !== 'undefined' && (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch),
+  supportsIePointer: typeof window !== 'undefined' && window.navigator.msMaxTouchPoints !== null
 };
