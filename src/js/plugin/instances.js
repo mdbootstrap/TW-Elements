@@ -1,7 +1,6 @@
 'use strict';
 
 var _ = require('../lib/helper');
-var cls = require('../lib/class');
 var defaultSettings = require('./default-setting');
 var dom = require('../lib/dom');
 var EventManager = require('../lib/event-manager');
@@ -32,11 +31,11 @@ function Instance(element) {
   i.ownerDocument = element.ownerDocument || document;
 
   function focus() {
-    cls.add(element, 'ps--focus');
+    element.classList.add('ps--focus');
   }
 
   function blur() {
-    cls.remove(element, 'ps--focus');
+    element.classList.remove('ps--focus');
   }
 
   i.scrollbarXRail = dom.appendTo(dom.e('div', 'ps__scrollbar-x-rail'), element);

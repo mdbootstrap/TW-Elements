@@ -1,6 +1,5 @@
 'use strict';
 
-var cls = require('./class');
 var dom = require('./dom');
 
 var toInt = exports.toInt = function (x) {
@@ -39,11 +38,10 @@ exports.isEditable = function (el) {
 };
 
 exports.removePsClasses = function (element) {
-  var clsList = cls.list(element);
-  for (var i = 0; i < clsList.length; i++) {
-    var className = clsList[i];
+  for (var i = 0; i < element.classList.length; i++) {
+    var className = element.classList[i];
     if (className.indexOf('ps-') === 0) {
-      cls.remove(element, className);
+      element.classList.remove(className);
     }
   }
 };
@@ -56,21 +54,30 @@ exports.outerWidth = function (element) {
          toInt(dom.css(element, 'borderRightWidth'));
 };
 
-function toggleScrolling(handler) {
-  return function (element, axis) {
-    handler(element, 'ps--in-scrolling');
-    if (typeof axis !== 'undefined') {
-      handler(element, 'ps--' + axis);
-    } else {
-      handler(element, 'ps--x');
-      handler(element, 'ps--y');
-    }
-  };
+function psClasses(axis) {
+  var classes = ['ps--in-scrolling'];
+  var axisClasses;
+  if (typeof axis === 'undefined') {
+    axisClasses = ['ps--x', 'ps--y'];
+  } else {
+    axisClasses = ['ps--' + axis];
+  }
+  return classes.concat(axisClasses);
 }
 
-exports.startScrolling = toggleScrolling(cls.add);
+exports.startScrolling = function (element, axis) {
+  var classes = psClasses(axis);
+  for (var i = 0; i < classes.length; i++) {
+    element.classList.add(classes[i]);
+  }
+};
 
-exports.stopScrolling = toggleScrolling(cls.remove);
+exports.stopScrolling = function (element, axis) {
+  var classes = psClasses(axis);
+  for (var i = 0; i < classes.length; i++) {
+    element.classList.remove(classes[i]);
+  }
+};
 
 exports.env = {
   isWebKit: typeof document !== 'undefined' && 'WebkitAppearance' in document.documentElement.style,
