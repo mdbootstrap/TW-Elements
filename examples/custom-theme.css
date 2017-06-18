@@ -1,94 +1,94 @@
-.ps-container {
-  -ms-touch-action: none;
-  touch-action: none;
+.ps {
+  -ms-touch-action: auto;
+  touch-action: auto;
   overflow: hidden !important;
   -ms-overflow-style: none; }
   @supports (-ms-overflow-style: none) {
-    .ps-container {
+    .ps {
       overflow: auto !important; } }
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    .ps-container {
+    .ps {
       overflow: auto !important; } }
-  .ps-container.ps-active-x > .ps-scrollbar-x-rail,
-  .ps-container.ps-active-y > .ps-scrollbar-y-rail {
+  .ps.ps--active-x > .ps__scrollbar-x-rail,
+  .ps.ps--active-y > .ps__scrollbar-y-rail {
     display: block;
     background-color: transparent; }
-  .ps-container.ps-in-scrolling {
-    pointer-events: none; }
-    .ps-container.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail {
-      background-color: #eee;
-      opacity: 0.9; }
-      .ps-container.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail > .ps-scrollbar-x {
-        background-color: #999; }
-    .ps-container.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail {
-      background-color: #eee;
-      opacity: 0.9; }
-      .ps-container.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail > .ps-scrollbar-y {
-        background-color: #999; }
-  .ps-container > .ps-scrollbar-x-rail {
+  .ps.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail {
+    background-color: #eee;
+    opacity: 0.9; }
+    .ps.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail > .ps__scrollbar-x {
+      background-color: #999;
+      height: 11px; }
+  .ps.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail {
+    background-color: #eee;
+    opacity: 0.9; }
+    .ps.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+      background-color: #999;
+      width: 11px; }
+  .ps > .ps__scrollbar-x-rail {
     display: none;
     position: absolute;
     /* please don't change 'position' */
     opacity: 0;
     transition: background-color .2s linear, opacity .2s linear;
     bottom: 0px;
-    /* there must be 'bottom' for ps-scrollbar-x-rail */
+    /* there must be 'bottom' for ps__scrollbar-x-rail */
     height: 15px; }
-    .ps-container > .ps-scrollbar-x-rail > .ps-scrollbar-x {
+    .ps > .ps__scrollbar-x-rail > .ps__scrollbar-x {
       position: absolute;
       /* please don't change 'position' */
       background-color: #aaa;
       border-radius: 6px;
       transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
       bottom: 2px;
-      /* there must be 'bottom' for ps-scrollbar-x */
+      /* there must be 'bottom' for ps__scrollbar-x */
       height: 6px; }
-    .ps-container > .ps-scrollbar-x-rail:hover > .ps-scrollbar-x, .ps-container > .ps-scrollbar-x-rail:active > .ps-scrollbar-x {
+    .ps > .ps__scrollbar-x-rail:hover > .ps__scrollbar-x, .ps > .ps__scrollbar-x-rail:active > .ps__scrollbar-x {
       height: 11px; }
-  .ps-container > .ps-scrollbar-y-rail {
+  .ps > .ps__scrollbar-y-rail {
     display: none;
     position: absolute;
     /* please don't change 'position' */
     opacity: 0;
     transition: background-color .2s linear, opacity .2s linear;
     right: 0;
-    /* there must be 'right' for ps-scrollbar-y-rail */
+    /* there must be 'right' for ps__scrollbar-y-rail */
     width: 15px; }
-    .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+    .ps > .ps__scrollbar-y-rail > .ps__scrollbar-y {
       position: absolute;
       /* please don't change 'position' */
       background-color: #aaa;
       border-radius: 6px;
       transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
       right: 2px;
-      /* there must be 'right' for ps-scrollbar-y */
+      /* there must be 'right' for ps__scrollbar-y */
       width: 6px; }
-    .ps-container > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y, .ps-container > .ps-scrollbar-y-rail:active > .ps-scrollbar-y {
+    .ps > .ps__scrollbar-y-rail:hover > .ps__scrollbar-y, .ps > .ps__scrollbar-y-rail:active > .ps__scrollbar-y {
       width: 11px; }
-  .ps-container:hover.ps-in-scrolling {
-    pointer-events: none; }
-    .ps-container:hover.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail {
-      background-color: #eee;
-      opacity: 0.9; }
-      .ps-container:hover.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail > .ps-scrollbar-x {
-        background-color: #999; }
-    .ps-container:hover.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail {
-      background-color: #eee;
-      opacity: 0.9; }
-      .ps-container:hover.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail > .ps-scrollbar-y {
-        background-color: #999; }
-  .ps-container:hover > .ps-scrollbar-x-rail,
-  .ps-container:hover > .ps-scrollbar-y-rail {
+  .ps:hover.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail {
+    background-color: #eee;
+    opacity: 0.9; }
+    .ps:hover.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail > .ps__scrollbar-x {
+      background-color: #999;
+      height: 11px; }
+  .ps:hover.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail {
+    background-color: #eee;
+    opacity: 0.9; }
+    .ps:hover.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+      background-color: #999;
+      width: 11px; }
+  .ps:hover > .ps__scrollbar-x-rail,
+  .ps:hover > .ps__scrollbar-y-rail {
     opacity: 0.6; }
-  .ps-container:hover > .ps-scrollbar-x-rail:hover {
+  .ps:hover > .ps__scrollbar-x-rail:hover {
     background-color: #eee;
     opacity: 0.9; }
-    .ps-container:hover > .ps-scrollbar-x-rail:hover > .ps-scrollbar-x {
+    .ps:hover > .ps__scrollbar-x-rail:hover > .ps__scrollbar-x {
       background-color: #999; }
-  .ps-container:hover > .ps-scrollbar-y-rail:hover {
+  .ps:hover > .ps__scrollbar-y-rail:hover {
     background-color: #eee;
     opacity: 0.9; }
-    .ps-container:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y {
+    .ps:hover > .ps__scrollbar-y-rail:hover > .ps__scrollbar-y {
       background-color: #999; }
 
 /*
@@ -97,8 +97,8 @@
   $ node-sass examples/custom-theme.scss -o examples/
 */
 .ps-theme-square {
-  -ms-touch-action: none;
-  touch-action: none;
+  -ms-touch-action: auto;
+  touch-action: auto;
   overflow: hidden !important;
   -ms-overflow-style: none; }
   @supports (-ms-overflow-style: none) {
@@ -107,84 +107,84 @@
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     .ps-theme-square {
       overflow: auto !important; } }
-  .ps-theme-square.ps-active-x > .ps-scrollbar-x-rail,
-  .ps-theme-square.ps-active-y > .ps-scrollbar-y-rail {
+  .ps-theme-square.ps--active-x > .ps__scrollbar-x-rail,
+  .ps-theme-square.ps--active-y > .ps__scrollbar-y-rail {
     display: block;
     background-color: transparent; }
-  .ps-theme-square.ps-in-scrolling {
-    pointer-events: none; }
-    .ps-theme-square.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail {
-      background-color: #eee;
-      opacity: 0.9; }
-      .ps-theme-square.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail > .ps-scrollbar-x {
-        background-color: #999; }
-    .ps-theme-square.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail {
-      background-color: #eee;
-      opacity: 0.9; }
-      .ps-theme-square.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail > .ps-scrollbar-y {
-        background-color: #999; }
-  .ps-theme-square > .ps-scrollbar-x-rail {
+  .ps-theme-square.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail {
+    background-color: #eee;
+    opacity: 0.9; }
+    .ps-theme-square.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail > .ps__scrollbar-x {
+      background-color: #999;
+      height: 10px; }
+  .ps-theme-square.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail {
+    background-color: #eee;
+    opacity: 0.9; }
+    .ps-theme-square.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+      background-color: #999;
+      width: 10px; }
+  .ps-theme-square > .ps__scrollbar-x-rail {
     display: none;
     position: absolute;
     /* please don't change 'position' */
     opacity: 0;
     transition: background-color .2s linear, opacity .2s linear;
     bottom: 0;
-    /* there must be 'bottom' for ps-scrollbar-x-rail */
+    /* there must be 'bottom' for ps__scrollbar-x-rail */
     height: 10px; }
-    .ps-theme-square > .ps-scrollbar-x-rail > .ps-scrollbar-x {
+    .ps-theme-square > .ps__scrollbar-x-rail > .ps__scrollbar-x {
       position: absolute;
       /* please don't change 'position' */
       background-color: #aaa;
       border-radius: 0;
       transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
       bottom: 0;
-      /* there must be 'bottom' for ps-scrollbar-x */
+      /* there must be 'bottom' for ps__scrollbar-x */
       height: 10px; }
-    .ps-theme-square > .ps-scrollbar-x-rail:hover > .ps-scrollbar-x, .ps-theme-square > .ps-scrollbar-x-rail:active > .ps-scrollbar-x {
+    .ps-theme-square > .ps__scrollbar-x-rail:hover > .ps__scrollbar-x, .ps-theme-square > .ps__scrollbar-x-rail:active > .ps__scrollbar-x {
       height: 10px; }
-  .ps-theme-square > .ps-scrollbar-y-rail {
+  .ps-theme-square > .ps__scrollbar-y-rail {
     display: none;
     position: absolute;
     /* please don't change 'position' */
     opacity: 0;
     transition: background-color .2s linear, opacity .2s linear;
     right: 0;
-    /* there must be 'right' for ps-scrollbar-y-rail */
+    /* there must be 'right' for ps__scrollbar-y-rail */
     width: 10px; }
-    .ps-theme-square > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+    .ps-theme-square > .ps__scrollbar-y-rail > .ps__scrollbar-y {
       position: absolute;
       /* please don't change 'position' */
       background-color: #aaa;
       border-radius: 0;
       transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
       right: 0;
-      /* there must be 'right' for ps-scrollbar-y */
+      /* there must be 'right' for ps__scrollbar-y */
       width: 10px; }
-    .ps-theme-square > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y, .ps-theme-square > .ps-scrollbar-y-rail:active > .ps-scrollbar-y {
+    .ps-theme-square > .ps__scrollbar-y-rail:hover > .ps__scrollbar-y, .ps-theme-square > .ps__scrollbar-y-rail:active > .ps__scrollbar-y {
       width: 10px; }
-  .ps-theme-square:hover.ps-in-scrolling {
-    pointer-events: none; }
-    .ps-theme-square:hover.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail {
-      background-color: #eee;
-      opacity: 0.9; }
-      .ps-theme-square:hover.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail > .ps-scrollbar-x {
-        background-color: #999; }
-    .ps-theme-square:hover.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail {
-      background-color: #eee;
-      opacity: 0.9; }
-      .ps-theme-square:hover.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail > .ps-scrollbar-y {
-        background-color: #999; }
-  .ps-theme-square:hover > .ps-scrollbar-x-rail,
-  .ps-theme-square:hover > .ps-scrollbar-y-rail {
+  .ps-theme-square:hover.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail {
+    background-color: #eee;
+    opacity: 0.9; }
+    .ps-theme-square:hover.ps--in-scrolling.ps--x > .ps__scrollbar-x-rail > .ps__scrollbar-x {
+      background-color: #999;
+      height: 10px; }
+  .ps-theme-square:hover.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail {
+    background-color: #eee;
+    opacity: 0.9; }
+    .ps-theme-square:hover.ps--in-scrolling.ps--y > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+      background-color: #999;
+      width: 10px; }
+  .ps-theme-square:hover > .ps__scrollbar-x-rail,
+  .ps-theme-square:hover > .ps__scrollbar-y-rail {
     opacity: 0.6; }
-  .ps-theme-square:hover > .ps-scrollbar-x-rail:hover {
+  .ps-theme-square:hover > .ps__scrollbar-x-rail:hover {
     background-color: #eee;
     opacity: 0.9; }
-    .ps-theme-square:hover > .ps-scrollbar-x-rail:hover > .ps-scrollbar-x {
+    .ps-theme-square:hover > .ps__scrollbar-x-rail:hover > .ps__scrollbar-x {
       background-color: #999; }
-  .ps-theme-square:hover > .ps-scrollbar-y-rail:hover {
+  .ps-theme-square:hover > .ps__scrollbar-y-rail:hover {
     background-color: #eee;
     opacity: 0.9; }
-    .ps-theme-square:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y {
+    .ps-theme-square:hover > .ps__scrollbar-y-rail:hover > .ps__scrollbar-y {
       background-color: #999; }
