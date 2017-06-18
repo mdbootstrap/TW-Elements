@@ -423,13 +423,13 @@ the child is a `textarea`. All other elements need to have the `ps-child` class.
 ## IE Support
 
 The plugin is designed to work in modern browsers, including the very latest
-version of IE and Edge. Specifically, it should work in IEs >= IE10. If there
+version of IE and Edge. Specifically, it should work in IEs >= IE11. If there
 is any issue in the browsers, please [file it](https://github.com/noraesae/perfect-scrollbar/issues).
 
-**The patches to fix problems in IE<=9 won't be accepted.**
+**The patches to fix problems in IE<=10 won't be accepted.**
 
-When old IEs should be supported, please fork the project and
-make patches personally.
+When old IEs should be supported, please fork the project and make patches
+personally.
 
 ## Helpdesk
 
