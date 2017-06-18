@@ -6,30 +6,6 @@ var toInt = exports.toInt = function (x) {
   return parseInt(x, 10) || 0;
 };
 
-var clone = exports.clone = function (obj) {
-  if (!obj) {
-    return null;
-  } else if (Array.isArray(obj)) {
-    return obj.map(clone);
-  } else if (typeof obj === 'object') {
-    var result = {};
-    for (var key in obj) {
-      result[key] = clone(obj[key]);
-    }
-    return result;
-  } else {
-    return obj;
-  }
-};
-
-exports.extend = function (original, source) {
-  var result = clone(original);
-  for (var key in source) {
-    result[key] = clone(source[key]);
-  }
-  return result;
-};
-
 exports.isEditable = function (el) {
   return dom.matches(el, "input,[contenteditable]") ||
          dom.matches(el, "select,[contenteditable]") ||

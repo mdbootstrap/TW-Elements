@@ -16,14 +16,14 @@ var handlers = {
 var nativeScrollHandler = require('./handler/native-scroll');
 
 module.exports = function (element, userSettings) {
-  userSettings = typeof userSettings === 'object' ? userSettings : {};
-
   element.classList.add('ps');
 
   // Create a plugin instance.
-  var i = instances.add(element);
+  var i = instances.add(
+    element,
+    typeof userSettings === 'object' ? userSettings : {}
+  );
 
-  i.settings = _.extend(i.settings, userSettings);
   element.classList.add('ps--theme_' + i.settings.theme);
 
   i.settings.handlers.forEach(function (handlerName) {

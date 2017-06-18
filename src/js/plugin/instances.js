@@ -8,10 +8,14 @@ var guid = require('../lib/guid');
 
 var instances = {};
 
-function Instance(element) {
+function Instance(element, userSettings) {
   var i = this;
 
-  i.settings = _.clone(defaultSettings);
+  i.settings = defaultSettings();
+  for (var key in userSettings) {
+    i.settings[key] = userSettings[key];
+  }
+
   i.containerWidth = null;
   i.containerHeight = null;
   i.contentWidth = null;
@@ -89,10 +93,10 @@ function removeId(element) {
   element.removeAttribute('data-ps-id');
 }
 
-exports.add = function (element) {
+exports.add = function (element, userSettings) {
   var newId = guid();
   setId(element, newId);
-  instances[newId] = new Instance(element);
+  instances[newId] = new Instance(element, userSettings);
   return instances[newId];
 };
 
