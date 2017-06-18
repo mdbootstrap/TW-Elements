@@ -4,9 +4,6 @@ Minimalistic but perfect custom scrollbar plugin
 
 [![Travis CI](https://travis-ci.org/noraesae/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/noraesae/perfect-scrollbar)
 
-If you want information of old versions&lt;0.6.0, please refer to
-[an old documentation](https://github.com/noraesae/perfect-scrollbar/tree/0.5.9).
-
 ## Why perfect-scrollbar?
 
 I was once working on a personal project, and trying to find the jQuery
@@ -31,8 +28,6 @@ I hope you love it!
 * The design of the scrollbar should be (nearly) fully customizable.
 * If the size of the container or the content changes, the scrollbar
   size and position should be able to change.
-* *New!* It should work with vanilla JavaScript and major tools like
-  NPM or Browserify.
 
 ## Then perfect-scrollbar is really *perfect*?
 
@@ -46,29 +41,22 @@ I hope you love it!
   to update the size or position of the scrollbar, just update.
 * Additionally, perfect-scrollbar uses 'scrollTop' and 'scrollLeft',
   not absolute positioning or something messy.
-* perfect-scrollbar supports RTL perfectly on both WebKit and Gecko based browsers.
-
-It's cool, isn't it?
+* perfect-scrollbar supports RTL on both WebKit and Gecko based browsers.
 
 ## Install
 
-#### NPM
+#### npm
 
-The best way to install and use perfect-scrollbar is with NPM.
-It's registered on [npm](https://www.npmjs.com/package/perfect-scrollbar) as `perfect-scrollbar`.
+The best way to install and use perfect-scrollbar is with npm.
+It's registered as [perfect-scrollbar](https://www.npmjs.com/package/perfect-scrollbar).
 
 ```
 $ npm install perfect-scrollbar
 ```
 
-#### Rails
-
-In the case you would like to have perfect-scrollbar in your Rails application, there is the [perfect-scrollbar-rails gem](https://github.com/YourCursus/perfect-scrollbar-rails).
-
 #### Manually
 
-You can download the latest stable version with download links [here](http://noraesae.github.io/perfect-scrollbar/).
-You also can find all releases on [Releases](https://github.com/noraesae/perfect-scrollbar/releases).
+You can manually download perfect-scrollbar on [Releases](https://github.com/noraesae/perfect-scrollbar/releases).
 
 #### From sources
 
@@ -84,11 +72,6 @@ $ npm install
 $ gulp # will lint and build the source code.
 ```
 
-#### CDNs
-
-* [cdnjs](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar)
-* [JSDelivr](https://www.jsdelivr.com/projects/perfect-scrollbar)
-
 #### JSFiddle
 
 You can fork the following JSFiddles for testing and experimenting purposes:
@@ -96,7 +79,24 @@ You can fork the following JSFiddles for testing and experimenting purposes:
 * [Perfect Scrollbar](https://jsfiddle.net/DanielApt/xv0rrxv3/)
 * [Perfect Scrollbar (jQuery)](https://jsfiddle.net/DanielApt/gbfLazpx/)
 
+#### Unofficial sources
+
+The followings are not maintained officially. If there are issues of the following
+sources, please ask in each repository.
+
+######  CDNs
+
+* [cdnjs](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar)
+* [JSDelivr](https://www.jsdelivr.com/projects/perfect-scrollbar)
+
+###### Other projects
+
+* [perfect-scrollbar-rails gem](https://github.com/YourCursus/perfect-scrollbar-rails)
+
 ## Before using perfect-scrollbar
+
+***Please beware handling scroll event is bad for performance. It should be
+avoided when possible.***
 
 The following requirements should meet.
 
@@ -123,7 +123,7 @@ First of all, please check if the container element meets the
 requirements.
 
 ```html
-<link rel='stylesheet' href='dist/css/perfect-scrollbar.css' />
+<link rel="stylesheet" href="dist/css/perfect-scrollbar.css" />
 <style>
   #container {
     position: relative;
@@ -142,7 +142,7 @@ var Ps = require('perfect-scrollbar');
 Or you can just load the script file as usual.
 
 ```html
-<script src='dist/js/perfect-scrollbar.js'></script>
+<script src="dist/js/perfect-scrollbar.js"></script>
 ```
 
 To initialise the plugin, `Ps.initialize` is used.
@@ -201,7 +201,7 @@ require('perfect-scrollbar/jquery')($);
 For sure, you can just import a built script.
 
 ```html
-<script src='dist/js/perfect-scrollbar.jquery.js'></script>
+<script src="dist/js/perfect-scrollbar.jquery.js"></script>
 ```
 
 After importing it, you can use the plugin in the usual way.
@@ -412,9 +412,8 @@ the child is a `textarea`. All other elements need to have the `ps-child` class.
 
 ## IE Support
 
-The plugin is designed to work in modern browsers, including the very latest
-version of IE and Edge. Specifically, it should work in IEs >= IE11. If there
-is any issue in the browsers, please [file it](https://github.com/noraesae/perfect-scrollbar/issues).
+The plugin is designed to work in modern MS browsers, specifically including IE
+11 and Edge. When there is any issue in the browsers, please [file it](https://github.com/noraesae/perfect-scrollbar/issues).
 
 **The patches to fix problems in IE<=10 won't be accepted.**
 
