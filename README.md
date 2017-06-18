@@ -84,16 +84,6 @@ $ npm install
 $ gulp # will lint and build the source code.
 ```
 
-#### Bower
-
-There is a Bower package for perfect-scrollbar as well. It is managed
-under the [perfect-scrollbar-bower](https://github.com/noraesae/perfect-scrollbar-bower)
-repository. The plugin is registered as `perfect-scrollbar`.
-
-```
-$ bower install perfect-scrollbar
-```
-
 #### CDNs
 
 * [cdnjs](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar)
