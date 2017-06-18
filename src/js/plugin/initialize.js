@@ -1,6 +1,5 @@
 'use strict';
 
-var _ = require('../lib/helper');
 var instances = require('./instances');
 var updateGeometry = require('./update-geometry');
 
