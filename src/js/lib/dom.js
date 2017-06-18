@@ -2,7 +2,7 @@
 
 var DOM = {};
 
-DOM.e = function (tagName, className) {
+DOM.create = function (tagName, className) {
   var element = document.createElement(tagName);
   element.className = className;
   return element;
@@ -53,15 +53,8 @@ DOM.matches = function (element, query) {
   if (typeof element.matches !== 'undefined') {
     return element.matches(query);
   } else {
-    if (typeof element.matchesSelector !== 'undefined') {
-      return element.matchesSelector(query);
-    } else if (typeof element.webkitMatchesSelector !== 'undefined') {
-      return element.webkitMatchesSelector(query);
-    } else if (typeof element.mozMatchesSelector !== 'undefined') {
-      return element.mozMatchesSelector(query);
-    } else if (typeof element.msMatchesSelector !== 'undefined') {
-      return element.msMatchesSelector(query);
-    }
+    // must be IE11 and Edge
+    return element.msMatchesSelector(query);
   }
 };
 
