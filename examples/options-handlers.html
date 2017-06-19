@@ -8,6 +8,7 @@
     <style>
       .contentHolder { position:relative; padding:0px; width: 600px; height: 400px; overflow: auto; }
       .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
+      .contentHolder .drag-rectangle {width: 150px; height: 150px; background-color: green; margin-bottom: 10px;-khtml-user-drag: element;}
       .spacer { text-align:center }
     </style>
   </head>
@@ -32,6 +33,34 @@
       <div class="content">
       </div>
     </div>
+
+    <h1>Drag an element inside</h1>
+    <pre><code>handlers: ['click-rail', 'drag-scrollbar', 'wheel', 'touch', 'mouse-drag']</code></pre>
+    <div id="drag-and-drop-container" class="contentHolder">
+      <div class="drag-and-drop-content">
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+        <div class="drag-rectangle" draggable="true"></div>
+      </div>
+    </div>
+
     <script>
       var $ = document.querySelector.bind(document);
       window.onload = function () {
@@ -42,6 +71,19 @@
         Ps.initialize($('#click-and-drag'), {
           handlers: ['click-rail', 'drag-scrollbar']
         });
+
+        // Container with elements that can be dragged
+        Ps.initialize($('#drag-and-drop-container'), {
+          handlers: ['click-rail', 'drag-scrollbar', 'wheel', 'touch', 'mouse-drag']
+        });
+
+        var dragRectangles = document.querySelectorAll('.drag-rectangle')
+
+        for (var i = 0; i < dragRectangles.length; i ++) {
+          dragRectangles[i].addEventListener('dragstart', function(event) {
+            event.dataTransfer.setData('text/plain', 'anything');
+          });
+        }
       };
     </script>
   </body>

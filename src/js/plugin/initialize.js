@@ -10,7 +10,8 @@ var handlers = {
   'keyboard': require('./handler/keyboard'),
   'wheel': require('./handler/mouse-wheel'),
   'touch': require('./handler/touch'),
-  'selection': require('./handler/selection')
+  'selection': require('./handler/selection'),
+  'mouse-drag': require('./handler/mouse-drag')
 };
 var nativeScrollHandler = require('./handler/native-scroll');
 
