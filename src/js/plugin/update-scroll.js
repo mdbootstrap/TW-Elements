@@ -23,12 +23,10 @@ module.exports = function (element, axis, value) {
 
   if (axis === 'top' && value <= 0) {
     element.scrollTop = value = 0; // don't allow negative scroll
-    element.dispatchEvent(createDOMEvent('ps-y-reach-start'));
   }
 
   if (axis === 'left' && value <= 0) {
     element.scrollLeft = value = 0; // don't allow negative scroll
-    element.dispatchEvent(createDOMEvent('ps-x-reach-start'));
   }
 
   var i = instances.get(element);
@@ -42,7 +40,6 @@ module.exports = function (element, axis, value) {
     } else {
       element.scrollTop = value;
     }
-    element.dispatchEvent(createDOMEvent('ps-y-reach-end'));
   }
 
   if (axis === 'left' && value >= i.contentWidth - i.containerWidth) {
@@ -54,7 +51,6 @@ module.exports = function (element, axis, value) {
     } else {
       element.scrollLeft = value;
     }
-    element.dispatchEvent(createDOMEvent('ps-x-reach-end'));
   }
 
   if (i.lastTop === undefined) {
@@ -63,6 +59,16 @@ module.exports = function (element, axis, value) {
 
   if (i.lastLeft === undefined) {
     i.lastLeft = element.scrollLeft;
+  }
+
+  if (axis === 'top' && value !== i.lastTop) {
+    element.scrollTop = i.lastTop = value;
+    element.dispatchEvent(createDOMEvent('ps-scroll-y'));
+  }
+
+  if (axis === 'left' && value !== i.lastLeft) {
+    element.scrollLeft = i.lastLeft = value;
+    element.dispatchEvent(createDOMEvent('ps-scroll-x'));
   }
 
   if (axis === 'top' && value < i.lastTop) {
@@ -81,14 +87,19 @@ module.exports = function (element, axis, value) {
     element.dispatchEvent(createDOMEvent('ps-scroll-right'));
   }
 
-  if (axis === 'top' && value !== i.lastTop) {
-    element.scrollTop = i.lastTop = value;
-    element.dispatchEvent(createDOMEvent('ps-scroll-y'));
+  if (axis === 'top' && value <= 0) {
+    element.dispatchEvent(createDOMEvent('ps-y-reach-start'));
   }
 
-  if (axis === 'left' && value !== i.lastLeft) {
-    element.scrollLeft = i.lastLeft = value;
-    element.dispatchEvent(createDOMEvent('ps-scroll-x'));
+  if (axis === 'left' && value <= 0) {
+    element.dispatchEvent(createDOMEvent('ps-x-reach-start'));
   }
 
+  if (axis === 'top' && value >= i.contentHeight - i.containerHeight) {
+    element.dispatchEvent(createDOMEvent('ps-y-reach-end'));
+  }
+
+  if (axis === 'left' && value >= i.contentWidth - i.containerWidth) {
+    element.dispatchEvent(createDOMEvent('ps-x-reach-end'));
+  }
 };
