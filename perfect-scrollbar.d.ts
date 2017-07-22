@@ -20,6 +20,7 @@ interface PerfectScrollbar {
 
 interface JQuery {
   perfectScrollbar(options?: PerfectScrollbarOptions): JQuery;
+  perfectScrollbar(options: string): JQuery;
 }
 
 declare var ps: PerfectScrollbar;
