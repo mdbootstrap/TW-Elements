@@ -42,37 +42,25 @@
             <span class='add-on' style='width:100px;'>Height: </span>
             <input type='text' id='Height' placeholder='400'>
           </div>
-          <button class='btn btn-primary' onclick='changeSize()'>Change Size!</button>
+          <button id='Button' class='btn btn-primary'>Change Size!</button>
         </div>
         <h2 class='subtitle'>Source</h2>
         <pre style='text-align:left;width:500px;margin:0px auto;' class='prettyprint'>
-function changeSize() {
-    var width = parseInt($("#Width").val());
-    var height = parseInt($("#Height").val());
+Ps.initialize(demoDiv);
 
-    $("#Demo").width(width).height(height);
+button.addEventListener('click', () => {
+    const width = parseInt(widthInput.value, 10);
+    const height = parseInt(heightInput.value, 10);
 
-    // update scrollbars
-    $('#Demo').perfectScrollbar('update');
+    demoDiv.style.width = `${width}px`;
+    demoDiv.style.height = `${height}px`;
 
-    // or even with vanilla JS!
-    Ps.update(document.getElementById('Demo'));
-}
-
-$(function() {
-    $('#Demo').perfectScrollbar();
-
-    // with vanilla JS!
-    Ps.initialize(document.getElementById('Demo'));
+    Ps.update(demoDiv);
 });
 </pre>
-        <h2 class='subtitle'>Download</h2>
-        <p>
-          <a href='https://github.com/noraesae/perfect-scrollbar/releases' class='btn btn-primary btn-large'>perfect-scrollbar v0.7.1</a>
-        </p>
         <h2 class='subtitle'>Documentation</h2>
         <p class='lead'>
-          Please refer to the README file in <a href='http://github.com/noraesae/perfect-scrollbar'>GitHub Repo</a>.
+          Please refer to README in <a href='http://github.com/noraesae/perfect-scrollbar'>the GitHub repository</a>.
         </p>
         <h2 class='subtitle'>License</h2>
         <p class='lead'>
@@ -82,34 +70,29 @@ $(function() {
         </p>
       </div>
     </div>
-    <script src="jquery.min.js"></script>
     <script src="perfect-scrollbar.min.js"></script>
-    <script src="bootstrap.min.js"></script>
     <script src="prettify.js"></script>
     <script>
-      function changeSize() {
-        var width = parseInt($("#Width").val());
-        var height = parseInt($("#Height").val());
+      var $ = document.getElementById.bind(document);
 
-        if(!width || isNaN(width)) {
-          width = 600;
-        }
-        if(!height || isNaN(height)) {
-          height = 400;
-        }
-        $("#Demo").width(width).height(height);
+      var demoDiv = $('Demo');
+      var widthInput = $('Width');
+      var heightInput = $('Height');
+      var button = $('Button');
 
-        // update perfect scrollbar
-        Ps.update(document.getElementById('Demo'));
-      }
-      $(function() {
-        Ps.initialize(document.getElementById('Demo'));
+      Ps.initialize(demoDiv);
+
+      button.addEventListener('click', function () {
+          var width = parseInt(widthInput.value, 10);
+          var height = parseInt(heightInput.value, 10);
+
+          demoDiv.style.width = width + 'px';
+          demoDiv.style.height = height + 'px';
+
+          Ps.update(demoDiv);
       });
-    </script>
-    <script>
-      $(function() {
-        prettyPrint();
-      });
+
+      prettyPrint();
     </script>
   </body>
 </html>
