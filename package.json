@@ -30,12 +30,15 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "npm run build",
+    "test": "npm run format:lint && npm run build",
     "build": "tsc",
+    "format": "prettier --write --single-quote --trailing-comma all --parser typescript src/**/*.ts",
+    "format:lint": "prettier -l --single-quote --trailing-comma all --parser typescript src/**/*.ts",
     "release": "rm -rf dist && npm run build && npm publish"
   },
   "license": "MIT",
   "devDependencies": {
+    "prettier": "^1.6.1",
     "typescript": "^2.4.2"
   }
 }
