@@ -2,13 +2,13 @@
 
 var DOM = {};
 
-DOM.create = function (tagName, className) {
+DOM.create = function(tagName, className) {
   var element = document.createElement(tagName);
   element.className = className;
   return element;
 };
 
-DOM.appendTo = function (child, parent) {
+DOM.appendTo = function(child, parent) {
   parent.appendChild(child);
   return child;
 };
@@ -36,7 +36,7 @@ function cssMultiSet(element, obj) {
   return element;
 }
 
-DOM.css = function (element, styleNameOrObject, styleValue) {
+DOM.css = function(element, styleNameOrObject, styleValue) {
   if (typeof styleNameOrObject === 'object') {
     // multiple set with object
     return cssMultiSet(element, styleNameOrObject);
@@ -49,7 +49,7 @@ DOM.css = function (element, styleNameOrObject, styleValue) {
   }
 };
 
-DOM.matches = function (element, query) {
+DOM.matches = function(element, query) {
   if (typeof element.matches !== 'undefined') {
     return element.matches(query);
   } else {
@@ -58,7 +58,7 @@ DOM.matches = function (element, query) {
   }
 };
 
-DOM.remove = function (element) {
+DOM.remove = function(element) {
   if (typeof element.remove !== 'undefined') {
     element.remove();
   } else {
@@ -68,8 +68,8 @@ DOM.remove = function (element) {
   }
 };
 
-DOM.queryChildren = function (element, selector) {
-  return Array.prototype.filter.call(element.childNodes, function (child) {
+DOM.queryChildren = function(element, selector) {
+  return Array.prototype.filter.call(element.childNodes, function(child) {
     return DOM.matches(child, selector);
   });
 };

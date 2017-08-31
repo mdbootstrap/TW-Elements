@@ -2,13 +2,13 @@
 
 var instances = require('./instances');
 
-var createDOMEvent = function (name) {
-  var event = document.createEvent("Event");
+var createDOMEvent = function(name) {
+  var event = document.createEvent('Event');
   event.initEvent(name, true, true);
   return event;
 };
 
-module.exports = function (element, axis, value) {
+module.exports = function(element, axis, value) {
   if (typeof element === 'undefined') {
     throw 'You must provide an element to the update-scroll function';
   }
@@ -90,5 +90,4 @@ module.exports = function (element, axis, value) {
     element.scrollLeft = i.lastLeft = value;
     element.dispatchEvent(createDOMEvent('ps-scroll-x'));
   }
-
 };

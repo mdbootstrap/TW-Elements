@@ -4,7 +4,7 @@ var _ = require('../lib/helper');
 var dom = require('../lib/dom');
 var instances = require('./instances');
 
-module.exports = function (element) {
+module.exports = function(element) {
   var i = instances.get(element);
 
   if (!i) {

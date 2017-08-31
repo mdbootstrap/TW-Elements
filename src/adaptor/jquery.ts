@@ -4,10 +4,12 @@ var ps = require('../main');
 var psInstances = require('../plugin/instances');
 
 function mountJQuery(jQuery) {
-  jQuery.fn.perfectScrollbar = function (settingOrCommand) {
-    return this.each(function () {
-      if (typeof settingOrCommand === 'object' ||
-          typeof settingOrCommand === 'undefined') {
+  jQuery.fn.perfectScrollbar = function(settingOrCommand) {
+    return this.each(function() {
+      if (
+        typeof settingOrCommand === 'object' ||
+        typeof settingOrCommand === 'undefined'
+      ) {
         // If it's an object or none, initialize.
         var settings = settingOrCommand;
 

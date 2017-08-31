@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function () {
+module.exports = function() {
   return {
     handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
     maxScrollbarLength: null,
@@ -14,6 +14,6 @@ module.exports = function () {
     useBothWheelAxes: false,
     wheelPropagation: false,
     wheelSpeed: 1,
-    theme: 'default'
+    theme: 'default',
   };
 };
