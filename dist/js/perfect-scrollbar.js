@@ -497,8 +497,8 @@ function bindKeyboardHandler(element, i) {
       return;
     }
 
-    var focused = dom.matches(i.scrollbarX, ':focus') ||
-                  dom.matches(i.scrollbarY, ':focus');
+    var focused = dom.matches(i.scrollbarXRail, ':focus') ||
+                  dom.matches(i.scrollbarYRail, ':focus');
 
     if (!hovered && !focused) {
       return;
@@ -1156,8 +1156,8 @@ function Instance(element, userSettings) {
   }
 
   i.scrollbarXRail = dom.appendTo(dom.create('div', 'ps__scrollbar-x-rail'), element);
+  i.scrollbarXRail.setAttribute('tabindex', 0);
   i.scrollbarX = dom.appendTo(dom.create('div', 'ps__scrollbar-x'), i.scrollbarXRail);
-  i.scrollbarX.setAttribute('tabindex', 0);
   i.event.bind(i.scrollbarX, 'focus', focus);
   i.event.bind(i.scrollbarX, 'blur', blur);
   i.scrollbarXActive = null;
@@ -1175,8 +1175,8 @@ function Instance(element, userSettings) {
   i.railXRatio = null;
 
   i.scrollbarYRail = dom.appendTo(dom.create('div', 'ps__scrollbar-y-rail'), element);
+  i.scrollbarYRail.setAttribute('tabindex', 0);
   i.scrollbarY = dom.appendTo(dom.create('div', 'ps__scrollbar-y'), i.scrollbarYRail);
-  i.scrollbarY.setAttribute('tabindex', 0);
   i.event.bind(i.scrollbarY, 'focus', focus);
   i.event.bind(i.scrollbarY, 'blur', blur);
   i.scrollbarYActive = null;
