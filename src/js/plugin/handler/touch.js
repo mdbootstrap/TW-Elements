@@ -61,6 +61,9 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     }
   }
   function shouldHandle(e) {
+    if (e.pointerType && e.pointerType === 'pen' && e.buttons === 0) {
+      return false;
+    }
     if (e.targetTouches && e.targetTouches.length === 1) {
       return true;
     }
