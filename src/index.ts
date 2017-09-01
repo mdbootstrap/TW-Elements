@@ -1,5 +1,21 @@
-import {defaultOptions, PerfectScrollbarOptions} from './options';
-import {ScrollEmulation} from './emulations/base';
+import { defaultOptions, PerfectScrollbarOptions } from './options';
+import { ScrollEmulation } from './emulations/base';
+
+// FIXME
+class DummyEmulation extends ScrollEmulation {
+  init() {}
+  destroy() {}
+}
+
+// FIXME
+const emulationDict = {
+  'click-rail': DummyEmulation,
+  'drag-scrollbar': DummyEmulation,
+  keyboard: DummyEmulation,
+  wheel: DummyEmulation,
+  touch: DummyEmulation,
+  selection: DummyEmulation,
+};
 
 export class PerfectScrollbar {
   el: HTMLElement;
@@ -9,7 +25,7 @@ export class PerfectScrollbar {
   constructor(
     el: HTMLElement,
     options?: {
-      [K in keyof PerfectScrollbarOptions]?: PerfectScrollbarOptions[K];
+      [K in keyof PerfectScrollbarOptions]?: PerfectScrollbarOptions[K]
     },
   ) {
     // method binds
@@ -20,7 +36,10 @@ export class PerfectScrollbar {
 
     this.el.classList.add('ps');
 
-    this.emulations = []; // FIXME: from options.handlers
+    this.emulations = this.options.handlers.map(handler => {
+      const Emulation = emulationDict[handler];
+      return new Emulation(this);
+    });
 
     this.el.addEventListener('scroll', this.update);
 
@@ -33,7 +52,11 @@ export class PerfectScrollbar {
 
   destroy() {
     this.el.removeEventListener('scroll', this.update);
+
+    // destory emulations
+    this.emulations.forEach(emu => emu.destroy());
+    this.emulations = [];
   }
 }
 
-export {PerfectScrollbarOptions};
+export { PerfectScrollbarOptions };
