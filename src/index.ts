@@ -1,4 +1,3 @@
-import bind from 'bind-decorator';
 import {defaultOptions, PerfectScrollbarOptions} from './options';
 import {ScrollEmulation} from './emulations/base';
 
@@ -13,6 +12,9 @@ export class PerfectScrollbar {
       [K in keyof PerfectScrollbarOptions]?: PerfectScrollbarOptions[K];
     },
   ) {
+    // method binds
+    this.update = this.update.bind(this);
+
     this.el = el;
     this.options = { ...defaultOptions(), ...options };
 
@@ -25,7 +27,6 @@ export class PerfectScrollbar {
     this.update();
   }
 
-  @bind
   update() {
     // FIXME
   }
