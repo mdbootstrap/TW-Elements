@@ -1,5 +1,6 @@
 import { defaultOptions, PerfectScrollbarOptions } from './options';
 import { ScrollEmulation } from './emulations/base';
+import { Scrollbar } from './scrollbar';
 
 // FIXME
 class DummyEmulation extends ScrollEmulation {
@@ -20,6 +21,8 @@ const emulationDict = {
 export class PerfectScrollbar {
   el: HTMLElement;
   options: PerfectScrollbarOptions;
+  scrollbarX: Scrollbar = new Scrollbar('x');
+  scrollbarY: Scrollbar = new Scrollbar('y');
   private emulations: ScrollEmulation[];
 
   constructor(
@@ -46,16 +49,26 @@ export class PerfectScrollbar {
     this.update();
   }
 
+  get scrollbars() {
+    return [this.scrollbarX, this.scrollbarY];
+  }
+
   update() {
-    // FIXME
+    this.scrollbars.forEach(scrollbar => {
+      if (!scrollbar.isInstalledAt(this.el)) {
+        scrollbar.appendTo(this.el);
+      }
+    });
   }
 
   destroy() {
     this.el.removeEventListener('scroll', this.update);
 
+    // destroy scrollbars
+    this.scrollbars.forEach(scrollbar => scrollbar.destroy());
+
     // destory emulations
     this.emulations.forEach(emu => emu.destroy());
-    this.emulations = [];
   }
 }
 
