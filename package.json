@@ -32,7 +32,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "test": "npm run format:lint && npm run build",
-    "build": "tsc && cp .tsc-out/index.d.ts dist/",
+    "build": "tsc",
     "format": "prettier --write --single-quote --trailing-comma all --parser typescript 'src/**/*.ts'",
     "format:lint": "prettier -l --single-quote --trailing-comma all --parser typescript 'src/**/*.ts'",
     "release": "rm -rf dist && npm run build && npm publish"
