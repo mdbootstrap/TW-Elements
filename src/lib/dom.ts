@@ -1,77 +1,37 @@
-'use strict';
-
-var DOM = {};
-
-DOM.create = function(tagName, className) {
-  var element = document.createElement(tagName);
-  element.className = className;
-  return element;
-};
-
-DOM.appendTo = function(child, parent) {
-  parent.appendChild(child);
-  return child;
-};
-
-function cssGet(element, styleName) {
-  return window.getComputedStyle(element)[styleName];
+export function getStyle(element: Element, styleName: string): string {
+  return getComputedStyle(element).getPropertyValue(styleName);
 }
 
-function cssSet(element, styleName, styleValue) {
-  if (typeof styleValue === 'number') {
-    styleValue = styleValue.toString() + 'px';
-  }
-  element.style[styleName] = styleValue;
-  return element;
+export function getNumStyle(element: Element, styleName: string): number {
+  return parseInt(getStyle(element, styleName), 10) || 0;
 }
 
-function cssMultiSet(element, obj) {
-  for (var key in obj) {
-    var val = obj[key];
+export function setStyle(
+  element: HTMLElement,
+  obj: { [key: string]: string | number },
+) {
+  for (const key in obj) {
+    let val = obj[key];
     if (typeof val === 'number') {
-      val = val.toString() + 'px';
+      val = `${val}px`;
     }
-    element.style[key] = val;
+    element.style.setProperty(key, val);
   }
-  return element;
 }
 
-DOM.css = function(element, styleNameOrObject, styleValue) {
-  if (typeof styleNameOrObject === 'object') {
-    // multiple set with object
-    return cssMultiSet(element, styleNameOrObject);
-  } else {
-    if (typeof styleValue === 'undefined') {
-      return cssGet(element, styleNameOrObject);
-    } else {
-      return cssSet(element, styleNameOrObject, styleValue);
-    }
-  }
-};
-
-DOM.matches = function(element, query) {
-  if (typeof element.matches !== 'undefined') {
+export function matches(element: HTMLElement, query: string): boolean {
+  if (typeof element.matches === 'function') {
     return element.matches(query);
   } else {
     // must be IE11 and Edge
     return element.msMatchesSelector(query);
   }
-};
+}
 
-DOM.remove = function(element) {
-  if (typeof element.remove !== 'undefined') {
+export function remove(element: HTMLElement) {
+  if (typeof element.remove === 'function') {
     element.remove();
-  } else {
-    if (element.parentNode) {
-      element.parentNode.removeChild(element);
-    }
+  } else if (element.parentNode) {
+    element.parentNode.removeChild(element);
   }
-};
-
-DOM.queryChildren = function(element, selector) {
-  return Array.prototype.filter.call(element.childNodes, function(child) {
-    return DOM.matches(child, selector);
-  });
-};
-
-module.exports = DOM;
+}
