@@ -7,8 +7,9 @@ var updateScroll = require('../update-scroll');
 
 function bindSelectionHandler(element, i) {
   function getRangeNode() {
-    var selection = window.getSelection ? window.getSelection() :
-                    document.getSelection ? document.getSelection() : '';
+    var selection = window.getSelection
+      ? window.getSelection()
+      : document.getSelection ? document.getSelection() : '';
     if (selection.toString().length === 0) {
       return null;
     } else {
@@ -17,10 +18,10 @@ function bindSelectionHandler(element, i) {
   }
 
   var scrollingLoop = null;
-  var scrollDiff = {top: 0, left: 0};
+  var scrollDiff = { top: 0, left: 0 };
   function startScrolling() {
     if (!scrollingLoop) {
-      scrollingLoop = setInterval(function () {
+      scrollingLoop = setInterval(function() {
         if (!instances.get(element)) {
           clearInterval(scrollingLoop);
           return;
@@ -41,7 +42,7 @@ function bindSelectionHandler(element, i) {
   }
 
   var isSelected = false;
-  i.event.bind(i.ownerDocument, 'selectionchange', function () {
+  i.event.bind(i.ownerDocument, 'selectionchange', function() {
     if (element.contains(getRangeNode())) {
       isSelected = true;
     } else {
@@ -49,27 +50,27 @@ function bindSelectionHandler(element, i) {
       stopScrolling();
     }
   });
-  i.event.bind(window, 'mouseup', function () {
+  i.event.bind(window, 'mouseup', function() {
     if (isSelected) {
       isSelected = false;
       stopScrolling();
     }
   });
-  i.event.bind(window, 'keyup', function () {
+  i.event.bind(window, 'keyup', function() {
     if (isSelected) {
       isSelected = false;
       stopScrolling();
     }
   });
 
-  i.event.bind(window, 'mousemove', function (e) {
+  i.event.bind(window, 'mousemove', function(e) {
     if (isSelected) {
-      var mousePosition = {x: e.pageX, y: e.pageY};
+      var mousePosition = { x: e.pageX, y: e.pageY };
       var containerGeometry = {
         left: element.offsetLeft,
         right: element.offsetLeft + element.offsetWidth,
         top: element.offsetTop,
-        bottom: element.offsetTop + element.offsetHeight
+        bottom: element.offsetTop + element.offsetHeight,
       };
 
       if (mousePosition.x < containerGeometry.left + 3) {
@@ -109,7 +110,7 @@ function bindSelectionHandler(element, i) {
   });
 }
 
-module.exports = function (element) {
+module.exports = function(element) {
   var i = instances.get(element);
   bindSelectionHandler(element, i);
 };
