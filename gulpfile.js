@@ -14,7 +14,6 @@ var sass = require('gulp-sass');
 var source = require('vinyl-source-stream');
 var stream = require('event-stream');
 var uglify = require('gulp-uglify');
-var zip = require('gulp-zip');
 
 var version = '/* perfect-scrollbar v' + require('./package').version + ' */\n';
 
@@ -124,11 +123,5 @@ gulp.task('watch', function () {
 });
 
 gulp.task('serve', ['connect', 'watch']);
-
-gulp.task('compress', function () {
-  return gulp.src('./dist/**')
-    .pipe(zip('perfect-scrollbar.zip'))
-    .pipe(gulp.dest('./dist'));
-});
 
 gulp.task('default', ['lint', 'build']);
