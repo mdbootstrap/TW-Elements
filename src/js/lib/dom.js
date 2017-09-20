@@ -52,7 +52,7 @@ DOM.css = function (element, styleNameOrObject, styleValue) {
 DOM.matches = function (element, query) {
   if (typeof element.matches !== 'undefined') {
     return element.matches(query);
-  } else {
+  } else if (typeof element.msMatchesSelector !== 'undefined') {
     // must be IE11 and Edge
     return element.msMatchesSelector(query);
   }
