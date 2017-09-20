@@ -41,7 +41,10 @@ module.exports = function (element, axis, value) {
       value = element.scrollTop;
     } else {
       element.scrollTop = value;
-    }
+	}
+	if (i.contentHeight === 0 && i.containerHeight === 0) {
+		return
+	}
     element.dispatchEvent(createDOMEvent('ps-y-reach-end'));
   }
 
