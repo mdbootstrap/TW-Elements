@@ -11,6 +11,7 @@ interface PerfectScrollbarOptions {
   scrollXMarginOffset?: number;
   scrollYMarginOffset?: number;
   theme?: string;
+  handlers?: string[];
 }
 
 interface PerfectScrollbar {
