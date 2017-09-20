@@ -53,6 +53,10 @@ export class PerfectScrollbar {
     return [this.scrollbarX, this.scrollbarY];
   }
 
+  get document() {
+    return this.el.ownerDocument || document;
+  }
+
   update() {
     this.scrollbars.forEach(scrollbar => {
       if (!scrollbar.isInstalledAt(this.el)) {
