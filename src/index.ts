@@ -20,10 +20,11 @@ const emulationDict = {
 
 export class PerfectScrollbar {
   el: HTMLElement;
-  options: PerfectScrollbarOptions;
-  scrollbarX: Scrollbar = new Scrollbar('x');
-  scrollbarY: Scrollbar = new Scrollbar('y');
+  scrollbarX: Scrollbar;
+  scrollbarY: Scrollbar;
+
   private emulations: ScrollEmulation[];
+  private options: PerfectScrollbarOptions;
 
   constructor(
     el: HTMLElement,
@@ -36,6 +37,9 @@ export class PerfectScrollbar {
 
     this.el = el;
     this.options = { ...defaultOptions(), ...options };
+
+    this.scrollbarX = new Scrollbar('x', this.options);
+    this.scrollbarY = new Scrollbar('y', this.options);
 
     this.el.classList.add('ps');
 
