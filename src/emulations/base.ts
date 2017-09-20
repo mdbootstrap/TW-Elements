@@ -1,4 +1,4 @@
-import { PerfectScrollbar } from '../index';
+import PerfectScrollbar from '../index';
 
 export abstract class ScrollEmulation {
   constructor(protected ps: PerfectScrollbar) {

@@ -18,7 +18,7 @@ const emulationDict = {
   selection: DummyEmulation,
 };
 
-export class PerfectScrollbar {
+export default class PerfectScrollbar {
   el: HTMLElement;
   scrollbarX: Scrollbar;
   scrollbarY: Scrollbar;
