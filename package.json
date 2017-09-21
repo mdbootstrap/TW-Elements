@@ -34,12 +34,14 @@
     "test": "npm run format:lint && npm run build",
     "build": "npm run clean && tsc && node bundle",
     "clean": "rm -rf {dist,types,.tsc-out}",
+    "watch": "npm run build && SHELL=/bin/bash chokidar 'src/**/*.ts' -c 'npm run format && npm run build'",
     "format": "prettier --write --single-quote --trailing-comma all --parser typescript 'src/**/*.ts'",
     "format:lint": "prettier -l --single-quote --trailing-comma all --parser typescript 'src/**/*.ts'",
     "release": "npm run build && npm publish"
   },
   "license": "MIT",
   "devDependencies": {
+    "chokidar-cli": "^1.2.0",
     "prettier": "^1.6.1",
     "rollup": "^0.50.0",
     "typescript": "^2.4.2",
