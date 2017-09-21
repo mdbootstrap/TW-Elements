@@ -9,8 +9,8 @@ export class Scrollbar {
     public axis: 'x' | 'y',
     private options: PerfectScrollbarOptions,
   ) {
-    this.railEl.className = `ps_scrollbar--${this.axis}-rail`;
-    this.thumbEl.className = `ps_scrollbar--${this.axis}`;
+    this.railEl.className = `ps__rail-${this.axis}`;
+    this.thumbEl.className = `ps__thumb-${this.axis}`;
   }
 
   isInstalledAt(container: HTMLElement): boolean {
