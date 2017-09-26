@@ -3,13 +3,12 @@
   "version": "1.0.0-dev",
   "description": "Minimalistic but perfect custom scrollbar plugin",
   "author": "Hyunje Jun <me@noraesae.net>",
-  "contributors": [
-    {
-      "name": "Hyunje Jun",
-      "email": "me@noraesae.net"
-    }
+  "keywords": [
+    "jquery-plugin",
+    "frontend",
+    "scroll",
+    "scrollbar"
   ],
-  "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/noraesae/perfect-scrollbar"
@@ -17,21 +16,18 @@
   "bugs": {
     "url": "https://github.com/noraesae/perfect-scrollbar/issues"
   },
-  "keywords": [
-    "jquery-plugin",
-    "frontend",
-    "scroll",
-    "scrollbar"
-  ],
-  "engines": {
-    "node": ">= 0.12.0"
+  "jspm": {
+    "main": "dist/perfect-scrollbar.common.js",
+    "registry": "jspm"
   },
+  "main": "dist/perfect-scrollbar.common.js",
+  "module": "dist/perfect-scrollbar.esm.js",
+  "typings": "types/perfect-scrollbar.d.ts",
+  "style": "css/perfect-scrollbar.css",
   "files": [
     "dist",
     "src",
     "types",
-    "index.js",
-    "jquery.js",
   ],
   "devDependencies": {
     "browserify": "^11.2.0",
@@ -48,15 +44,9 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
-  "jspm": {
-    "main": "./index.js",
-    "registry": "jspm"
-  },
-  "typings": "types/perfect-scrollbar.d.ts",
   "scripts": {
     "test": "gulp",
     "release": "rm -rf dist && gulp && npm publish"
   },
-  "style": "./dist/css/perfect-scrollbar.min.css",
   "license": "MIT"
 }
