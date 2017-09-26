@@ -7,5 +7,5 @@ var update = require('./plugin/update');
 module.exports = {
   initialize: initialize,
   update: update,
-  destroy: destroy
+  destroy: destroy,
 };

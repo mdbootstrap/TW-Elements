@@ -16,9 +16,13 @@ function getThumbSize(i, thumbSize) {
 }
 
 function updateCss(element, i) {
-  var xRailOffset = {width: i.railXWidth};
+  var xRailOffset = { width: i.railXWidth };
   if (i.isRtl) {
-    xRailOffset.left = i.negativeScrollAdjustment + element.scrollLeft + i.containerWidth - i.contentWidth;
+    xRailOffset.left =
+      i.negativeScrollAdjustment +
+      element.scrollLeft +
+      i.containerWidth -
+      i.contentWidth;
   } else {
     xRailOffset.left = element.scrollLeft;
   }
@@ -29,27 +33,43 @@ function updateCss(element, i) {
   }
   dom.css(i.scrollbarXRail, xRailOffset);
 
-  var yRailOffset = {top: element.scrollTop, height: i.railYHeight};
+  var yRailOffset = { top: element.scrollTop, height: i.railYHeight };
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
-      yRailOffset.right = i.contentWidth - (i.negativeScrollAdjustment + element.scrollLeft) - i.scrollbarYRight - i.scrollbarYOuterWidth;
+      yRailOffset.right =
+        i.contentWidth -
+        (i.negativeScrollAdjustment + element.scrollLeft) -
+        i.scrollbarYRight -
+        i.scrollbarYOuterWidth;
     } else {
       yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
     }
   } else {
     if (i.isRtl) {
-      yRailOffset.left = i.negativeScrollAdjustment + element.scrollLeft + i.containerWidth * 2 - i.contentWidth - i.scrollbarYLeft - i.scrollbarYOuterWidth;
+      yRailOffset.left =
+        i.negativeScrollAdjustment +
+        element.scrollLeft +
+        i.containerWidth * 2 -
+        i.contentWidth -
+        i.scrollbarYLeft -
+        i.scrollbarYOuterWidth;
     } else {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
   }
   dom.css(i.scrollbarYRail, yRailOffset);
 
-  dom.css(i.scrollbarX, {left: i.scrollbarXLeft, width: i.scrollbarXWidth - i.railBorderXWidth});
-  dom.css(i.scrollbarY, {top: i.scrollbarYTop, height: i.scrollbarYHeight - i.railBorderYWidth});
+  dom.css(i.scrollbarX, {
+    left: i.scrollbarXLeft,
+    width: i.scrollbarXWidth - i.railBorderXWidth,
+  });
+  dom.css(i.scrollbarY, {
+    top: i.scrollbarYTop,
+    height: i.scrollbarYHeight - i.railBorderYWidth,
+  });
 }
 
-module.exports = function (element) {
+module.exports = function(element) {
   var i = instances.get(element);
 
   i.containerWidth = element.clientWidth;
@@ -61,7 +81,7 @@ module.exports = function (element) {
   if (!element.contains(i.scrollbarXRail)) {
     existingRails = dom.queryChildren(element, '.ps__rail-x');
     if (existingRails.length > 0) {
-      existingRails.forEach(function (rail) {
+      existingRails.forEach(function(rail) {
         dom.remove(rail);
       });
     }
@@ -70,29 +90,49 @@ module.exports = function (element) {
   if (!element.contains(i.scrollbarYRail)) {
     existingRails = dom.queryChildren(element, '.ps__rail-y');
     if (existingRails.length > 0) {
-      existingRails.forEach(function (rail) {
+      existingRails.forEach(function(rail) {
         dom.remove(rail);
       });
     }
     dom.appendTo(i.scrollbarYRail, element);
   }
 
-  if (!i.settings.suppressScrollX && i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth) {
+  if (
+    !i.settings.suppressScrollX &&
+    i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth
+  ) {
     i.scrollbarXActive = true;
     i.railXWidth = i.containerWidth - i.railXMarginWidth;
     i.railXRatio = i.containerWidth / i.railXWidth;
-    i.scrollbarXWidth = getThumbSize(i, _.toInt(i.railXWidth * i.containerWidth / i.contentWidth));
-    i.scrollbarXLeft = _.toInt((i.negativeScrollAdjustment + element.scrollLeft) * (i.railXWidth - i.scrollbarXWidth) / (i.contentWidth - i.containerWidth));
+    i.scrollbarXWidth = getThumbSize(
+      i,
+      _.toInt(i.railXWidth * i.containerWidth / i.contentWidth),
+    );
+    i.scrollbarXLeft = _.toInt(
+      (i.negativeScrollAdjustment + element.scrollLeft) *
+        (i.railXWidth - i.scrollbarXWidth) /
+        (i.contentWidth - i.containerWidth),
+    );
   } else {
     i.scrollbarXActive = false;
   }
 
-  if (!i.settings.suppressScrollY && i.containerHeight + i.settings.scrollYMarginOffset < i.contentHeight) {
+  if (
+    !i.settings.suppressScrollY &&
+    i.containerHeight + i.settings.scrollYMarginOffset < i.contentHeight
+  ) {
     i.scrollbarYActive = true;
     i.railYHeight = i.containerHeight - i.railYMarginHeight;
     i.railYRatio = i.containerHeight / i.railYHeight;
-    i.scrollbarYHeight = getThumbSize(i, _.toInt(i.railYHeight * i.containerHeight / i.contentHeight));
-    i.scrollbarYTop = _.toInt(element.scrollTop * (i.railYHeight - i.scrollbarYHeight) / (i.contentHeight - i.containerHeight));
+    i.scrollbarYHeight = getThumbSize(
+      i,
+      _.toInt(i.railYHeight * i.containerHeight / i.contentHeight),
+    );
+    i.scrollbarYTop = _.toInt(
+      element.scrollTop *
+        (i.railYHeight - i.scrollbarYHeight) /
+        (i.contentHeight - i.containerHeight),
+    );
   } else {
     i.scrollbarYActive = false;
   }

@@ -21,8 +21,8 @@ function Instance(element, userSettings) {
   i.contentWidth = null;
   i.contentHeight = null;
 
-  i.isRtl = dom.css(element, 'direction') === "rtl";
-  i.isNegativeScroll = (function () {
+  i.isRtl = dom.css(element, 'direction') === 'rtl';
+  i.isNegativeScroll = (function() {
     var originalScrollLeft = element.scrollLeft;
     var result = null;
     element.scrollLeft = -1;
@@ -30,40 +30,60 @@ function Instance(element, userSettings) {
     element.scrollLeft = originalScrollLeft;
     return result;
   })();
-  i.negativeScrollAdjustment = i.isNegativeScroll ? element.scrollWidth - element.clientWidth : 0;
+  i.negativeScrollAdjustment = i.isNegativeScroll
+    ? element.scrollWidth - element.clientWidth
+    : 0;
   i.event = new EventManager();
   i.ownerDocument = element.ownerDocument || document;
 
   i.scrollbarXRail = dom.appendTo(dom.create('div', 'ps__rail-x'), element);
-  i.scrollbarX = dom.appendTo(dom.create('div', 'ps__thumb-x'), i.scrollbarXRail);
+  i.scrollbarX = dom.appendTo(
+    dom.create('div', 'ps__thumb-x'),
+    i.scrollbarXRail,
+  );
   i.scrollbarX.setAttribute('tabindex', 0);
   i.scrollbarXActive = null;
   i.scrollbarXWidth = null;
   i.scrollbarXLeft = null;
   i.scrollbarXBottom = _.toInt(dom.css(i.scrollbarXRail, 'bottom'));
   i.isScrollbarXUsingBottom = i.scrollbarXBottom === i.scrollbarXBottom; // !isNaN
-  i.scrollbarXTop = i.isScrollbarXUsingBottom ? null : _.toInt(dom.css(i.scrollbarXRail, 'top'));
-  i.railBorderXWidth = _.toInt(dom.css(i.scrollbarXRail, 'borderLeftWidth')) + _.toInt(dom.css(i.scrollbarXRail, 'borderRightWidth'));
+  i.scrollbarXTop = i.isScrollbarXUsingBottom
+    ? null
+    : _.toInt(dom.css(i.scrollbarXRail, 'top'));
+  i.railBorderXWidth =
+    _.toInt(dom.css(i.scrollbarXRail, 'borderLeftWidth')) +
+    _.toInt(dom.css(i.scrollbarXRail, 'borderRightWidth'));
   // Set rail to display:block to calculate margins
   dom.css(i.scrollbarXRail, 'display', 'block');
-  i.railXMarginWidth = _.toInt(dom.css(i.scrollbarXRail, 'marginLeft')) + _.toInt(dom.css(i.scrollbarXRail, 'marginRight'));
+  i.railXMarginWidth =
+    _.toInt(dom.css(i.scrollbarXRail, 'marginLeft')) +
+    _.toInt(dom.css(i.scrollbarXRail, 'marginRight'));
   dom.css(i.scrollbarXRail, 'display', '');
   i.railXWidth = null;
   i.railXRatio = null;
 
   i.scrollbarYRail = dom.appendTo(dom.create('div', 'ps__rail-y'), element);
-  i.scrollbarY = dom.appendTo(dom.create('div', 'ps__thumb-y'), i.scrollbarYRail);
+  i.scrollbarY = dom.appendTo(
+    dom.create('div', 'ps__thumb-y'),
+    i.scrollbarYRail,
+  );
   i.scrollbarY.setAttribute('tabindex', 0);
   i.scrollbarYActive = null;
   i.scrollbarYHeight = null;
   i.scrollbarYTop = null;
   i.scrollbarYRight = _.toInt(dom.css(i.scrollbarYRail, 'right'));
   i.isScrollbarYUsingRight = i.scrollbarYRight === i.scrollbarYRight; // !isNaN
-  i.scrollbarYLeft = i.isScrollbarYUsingRight ? null : _.toInt(dom.css(i.scrollbarYRail, 'left'));
+  i.scrollbarYLeft = i.isScrollbarYUsingRight
+    ? null
+    : _.toInt(dom.css(i.scrollbarYRail, 'left'));
   i.scrollbarYOuterWidth = i.isRtl ? _.outerWidth(i.scrollbarY) : null;
-  i.railBorderYWidth = _.toInt(dom.css(i.scrollbarYRail, 'borderTopWidth')) + _.toInt(dom.css(i.scrollbarYRail, 'borderBottomWidth'));
+  i.railBorderYWidth =
+    _.toInt(dom.css(i.scrollbarYRail, 'borderTopWidth')) +
+    _.toInt(dom.css(i.scrollbarYRail, 'borderBottomWidth'));
   dom.css(i.scrollbarYRail, 'display', 'block');
-  i.railYMarginHeight = _.toInt(dom.css(i.scrollbarYRail, 'marginTop')) + _.toInt(dom.css(i.scrollbarYRail, 'marginBottom'));
+  i.railYMarginHeight =
+    _.toInt(dom.css(i.scrollbarYRail, 'marginTop')) +
+    _.toInt(dom.css(i.scrollbarYRail, 'marginBottom'));
   dom.css(i.scrollbarYRail, 'display', '');
   i.railYHeight = null;
   i.railYRatio = null;
@@ -81,18 +101,18 @@ function removeId(element) {
   element.removeAttribute('data-ps-id');
 }
 
-exports.add = function (element, userSettings) {
+exports.add = function(element, userSettings) {
   var newId = guid();
   setId(element, newId);
   instances[newId] = new Instance(element, userSettings);
   return instances[newId];
 };
 
-exports.remove = function (element) {
+exports.remove = function(element) {
   delete instances[getId(element)];
   removeId(element);
 };
 
-exports.get = function (element) {
+exports.get = function(element) {
   return instances[getId(element)];
 };

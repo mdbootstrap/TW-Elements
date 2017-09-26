@@ -15,15 +15,19 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     if (magnitudeY > magnitudeX) {
       // user is perhaps trying to swipe up/down the page
 
-      if (((deltaY < 0) && (scrollTop === i.contentHeight - i.containerHeight)) ||
-          ((deltaY > 0) && (scrollTop === 0))) {
+      if (
+        (deltaY < 0 && scrollTop === i.contentHeight - i.containerHeight) ||
+        (deltaY > 0 && scrollTop === 0)
+      ) {
         return !i.settings.swipePropagation;
       }
     } else if (magnitudeX > magnitudeY) {
       // user is perhaps trying to swipe left/right across the page
 
-      if (((deltaX < 0) && (scrollLeft === i.contentWidth - i.containerWidth)) ||
-          ((deltaX > 0) && (scrollLeft === 0))) {
+      if (
+        (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth) ||
+        (deltaX > 0 && scrollLeft === 0)
+      ) {
         return !i.settings.swipePropagation;
       }
     }
@@ -67,7 +71,11 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     if (e.targetTouches && e.targetTouches.length === 1) {
       return true;
     }
-    if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== e.MSPOINTER_TYPE_MOUSE) {
+    if (
+      e.pointerType &&
+      e.pointerType !== 'mouse' &&
+      e.pointerType !== e.MSPOINTER_TYPE_MOUSE
+    ) {
       return true;
     }
     return false;
@@ -81,7 +89,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       startOffset.pageX = touch.pageX;
       startOffset.pageY = touch.pageY;
 
-      startTime = (new Date()).getTime();
+      startTime = new Date().getTime();
 
       if (easingLoop !== null) {
         clearInterval(easingLoop);
@@ -97,7 +105,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     if (!inGlobalTouch && inLocalTouch && shouldHandle(e)) {
       var touch = getTouch(e);
 
-      var currentOffset = {pageX: touch.pageX, pageY: touch.pageY};
+      var currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
 
       var differenceX = currentOffset.pageX - startOffset.pageX;
       var differenceY = currentOffset.pageY - startOffset.pageY;
@@ -105,7 +113,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       applyTouchMove(differenceX, differenceY);
       startOffset = currentOffset;
 
-      var currentTime = (new Date()).getTime();
+      var currentTime = new Date().getTime();
 
       var timeGap = currentTime - startTime;
       if (timeGap > 0) {
@@ -126,7 +134,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
 
       if (i.settings.swipeEasing) {
         clearInterval(easingLoop);
-        easingLoop = setInterval(function () {
+        easingLoop = setInterval(function() {
           if (!instances.get(element)) {
             clearInterval(easingLoop);
             return;
@@ -174,7 +182,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
 }
 
-module.exports = function (element) {
+module.exports = function(element) {
   if (!_.env.supportsTouch && !_.env.supportsIePointer) {
     return;
   }

@@ -7,23 +7,23 @@ var updateGeometry = require('./update-geometry');
 var handlers = {
   'click-rail': require('./handler/click-rail'),
   'drag-scrollbar': require('./handler/drag-scrollbar'),
-  'keyboard': require('./handler/keyboard'),
-  'wheel': require('./handler/mouse-wheel'),
-  'touch': require('./handler/touch'),
-  'selection': require('./handler/selection')
+  keyboard: require('./handler/keyboard'),
+  wheel: require('./handler/mouse-wheel'),
+  touch: require('./handler/touch'),
+  selection: require('./handler/selection'),
 };
 var nativeScrollHandler = require('./handler/native-scroll');
 
-module.exports = function (element, userSettings) {
+module.exports = function(element, userSettings) {
   element.classList.add('ps');
 
   // Create a plugin instance.
   var i = instances.add(
     element,
-    typeof userSettings === 'object' ? userSettings : {}
+    typeof userSettings === 'object' ? userSettings : {},
   );
 
-  i.settings.handlers.forEach(function (handlerName) {
+  i.settings.handlers.forEach(function(handlerName) {
     handlers[handlerName](element);
   });
 
