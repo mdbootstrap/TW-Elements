@@ -28,9 +28,13 @@
     "src",
     "types"
   ],
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.7.0"
+  },
   "scripts": {
-    "test": "echo test"
+    "test": "npm run format:lint",
+    "format": "prettier --write --single-quote --trailing-comma all 'src/**/*.js'",
+    "format:lint": "prettier -l --single-quote --trailing-comma all 'src/**/*.js'"
   },
   "license": "MIT"
 }
