@@ -1,4 +1,4 @@
-# `perfect-scrollbar`
+# perfect-scrollbar
 
 Minimalistic but perfect custom scrollbar plugin
 
@@ -17,9 +17,9 @@ developers) scrollbar plugin.
 
 I hope you love it!
 
-## [Demo](http://noraesae.github.com/perfect-scrollbar/)
+## Demo
 
-[It's on the GitHub Pages](http://noraesae.github.com/perfect-scrollbar/).
+It's on the [GitHub Pages](http://noraesae.github.com/perfect-scrollbar/).
 
 ## Table of Contents
 
@@ -36,28 +36,27 @@ I hope you love it!
 
 #### npm
 
-The best way to install and use perfect-scrollbar is with npm.  It's registered
+The best way to install and use perfect-scrollbar is with npm. It's registered
 as [perfect-scrollbar](https://www.npmjs.com/package/perfect-scrollbar).
 
 ```
 $ npm install perfect-scrollbar
 ```
 
-#### Manually
+#### Manual download
 
 You can manually download perfect-scrollbar
-on [Releases](https://github.com/noraesae/perfect-scrollbar/releases).
+from [Releases](https://github.com/noraesae/perfect-scrollbar/releases).
 
 #### From sources
 
-If you want to use the development version of the plugin, build the source files
-manually. They're in the `src` directory.  The development version may be
-unstable, but some known bugs may have been fixed.
+If you want to use the development version of the plugin, build from source
+manually. The development version may be unstable.
 
 ```
 $ git clone https://github.com/noraesae/perfect-scrollbar.git
 $ cd perfect-scrollbar
-$ npm i
+$ npm install
 $ npm run build
 ```
 
@@ -65,14 +64,14 @@ $ npm run build
 
 You can fork the following JSFiddles for testing and experimenting purposes:
 
-* [Perfect Scrollbar](https://jsfiddle.net/DanielApt/xv0rrxv3/)
+* [Perfect Scrollbar](https://jsfiddle.net/DanielApt/xv0rrxv3/) (FIXME: it's old)
 
 #### Unofficial sources
 
 The followings are not maintained officially. If there are issues of the
-following sources, please ask in each repository.
+following sources, please ask and resolve in each repository.
 
-######  CDNs
+###### CDNs
 
 * [cdnjs](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar)
 * [JSDelivr](https://www.jsdelivr.com/projects/perfect-scrollbar)
@@ -83,66 +82,67 @@ following sources, please ask in each repository.
 
 ## Before using perfect-scrollbar
 
-***Please beware handling scroll event is bad for performance. It should be
-avoided when possible.***
+***Please beware that it is a bad practice to handle scroll events via JS. It
+should be avoided when possible.***
 
 The following requirements should meet.
 
-* the container must have a 'position' css style.
+* the container must have a `position` style.
 * the container must be a normal container element.
-  * PS may not work well in `body`, `textarea`, `iframe` or flexbox.
+  * **PS may not work well in `body`, `textarea`, `iframe` or flexbox**.
 
 The following requirements are included in the basic CSS, but please keep in
 mind when you'd like to change the CSS files.
 
-* the container must have an 'overflow: hidden' css style.
-* the scrollbar's position must be 'absolute'.
-* the scrollbar-x must have a 'bottom' css style, and the scrollbar-y must have
-  a 'right' css style.
+* the container must have an `overflow: hidden` css style.
+* the scrollbar's position must be `absolute`.
+* the scrollbar-x must have `bottom` or `top`, and the scrollbar-y must have
+  `right` or `left`.
 
 Please keep in mind that perfect-scrollbar won't completely emulate native
-scrolls. Scroll hooking is generally considered as bad practice, and
-perfect-scrollbar should be used with care. Unless custom scroll is really
-needed, please consider using native scrolls.
+scrolls. Scroll hooking is generally considered as a bad practice, and
+perfect-scrollbar should be used carefully. Unless custom scroll is really
+needed, using native scroll is recommended.
 
 ## How to use
 
-First of all, please check if the container element meets the requirements.
+First of all, please check if the container element meets the requirements and
+the main CSS is imported.
 
 ```html
-<link rel="stylesheet" href="dist/css/perfect-scrollbar.css" />
 <style>
   #container {
     position: relative;
     height: 100%; /* Or whatever you want (e.g. 400px) */
   }
 </style>
+<link rel="stylesheet" href="css/perfect-scrollbar.css">
 ```
 
-I would recommend using CJS or ES modules.
+Using CJS or ES modules:
 
 ```js
-const Ps = require('perfect-scrollbar');
-import * as Ps from 'perfect-scrollbar';
+const ps = require('perfect-scrollbar');
+import ps from 'perfect-scrollbar';
 ```
 
-Or you can just load the script file as usual.
+Or in browser:
 
 ```html
-<script src="dist/js/perfect-scrollbar.js"></script>
+<script src="dist/perfect-scrollbar.js"></script>
 ```
 
-To initialise the plugin, use `Ps.initialize`.
+To initialise the plugin, use `ps.initialize`.
 
 ```js
 const container = document.querySelector('#container');
-Ps.initialize(container);
+ps.initialize(container);
 ```
 
 It can be initialised with optional parameters.
 
 ```js
-Ps.initialize(container, {
+ps.initialize(container, {
   wheelSpeed: 2,
   wheelPropagation: true,
   minScrollbarLength: 20
@@ -152,13 +152,13 @@ Ps.initialize(container, {
 If the size of your container or content changes, call `update`.
 
 ```js
-Ps.update(container);
+ps.update(container);
 ```
 
 If you want to destroy the scrollbar, use `destroy`.
 
 ```js
-Ps.destroy(container);
+ps.destroy(container);
 ```
 
 If you want to scroll to somewhere, just update `scrollTop`.
@@ -189,51 +189,62 @@ The scroll speed applied to mousewheel event.
 **Default**: `1`
 
 ### wheelPropagation
+
 If this option is true, when the scroll reaches the end of the side, mousewheel
 event will be propagated to parent element.
 
 **Default**: `false`
 
 ### swipePropagation
+
 If this option is true, when the scroll reaches the end of the side, touch
 scrolling will be propagated to parent element.
 
 **Default**: `true`
 
 ### swipeEasing
-If this option is true, swipe scrolling will be eased.  **Default**: `true`
+
+If this option is true, swipe scrolling will be eased.
+
+**Default**: `true`
 
 ### minScrollbarLength
+
 When set to an integer value, the thumb part of the scrollbar will not shrink
 below that number of pixels.
 
 **Default**: `null`
 
 ### maxScrollbarLength
+
 When set to an integer value, the thumb part of the scrollbar will not expand
 over that number of pixels.
 
 **Default**: `null`
 
 ### useBothWheelAxes
+
 When set to true, and only one (vertical or horizontal) scrollbar is visible
 then both vertical and horizontal scrolling will affect the scrollbar.
 
 **Default**: `false`
 
 ### suppressScrollX
+
 When set to true, the scroll bar in X axis will not be available, regardless of
 the content width.
 
 **Default**: `false`
 
 ### suppressScrollY
+
 When set to true, the scroll bar in Y axis will not be available, regardless of
 the content height.
 
 **Default**: `false`
 
 ### scrollXMarginOffset
+
 The number of pixels the content width can surpass the container width without
 enabling the X axis scroll bar. Allows some "wiggle room" or "offset break", so
 that X axis scroll bar is not enabled just because of a few pixels.
@@ -241,6 +252,7 @@ that X axis scroll bar is not enabled just because of a few pixels.
 **Default**: `0`
 
 ### scrollYMarginOffset
+
 The number of pixels the content height can surpass the container height without
 enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so
 that Y axis scroll bar is not enabled just because of a few pixels.
@@ -321,21 +333,4 @@ personally.
 
 ## License
 
-The MIT License (MIT) Copyright (c) 2012-2017 Hyunje Jun and other contributors.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[MIT](LICENSE)
