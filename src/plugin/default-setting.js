@@ -13,7 +13,6 @@ module.exports = function () {
     swipeEasing: true,
     useBothWheelAxes: false,
     wheelPropagation: false,
-    wheelSpeed: 1,
-    theme: 'default'
+    wheelSpeed: 1
   };
 };

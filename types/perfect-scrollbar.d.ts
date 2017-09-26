@@ -10,7 +10,6 @@ interface PerfectScrollbarOptions {
   suppressScrollY?: boolean;
   scrollXMarginOffset?: number;
   scrollYMarginOffset?: number;
-  theme?: string;
   handlers?: string[];
 }
 

@@ -31,14 +31,7 @@ exports.outerWidth = function (element) {
 };
 
 function psClasses(axis) {
-  var classes = ['ps--in-scrolling'];
-  var axisClasses;
-  if (typeof axis === 'undefined') {
-    axisClasses = ['ps--x', 'ps--y'];
-  } else {
-    axisClasses = ['ps--' + axis];
-  }
-  return classes.concat(axisClasses);
+  return axis ? ['ps--scrolling-' + axis] : ['ps--scrolling-x', 'ps--scrolling-y'];
 }
 
 exports.startScrolling = function (element, axis) {

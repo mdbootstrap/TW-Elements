@@ -247,50 +247,6 @@ that Y axis scroll bar is not enabled just because of a few pixels.
 
 **Default**: `0`
 
-### theme
-
-A string. It's a class name added to the container element. The class name is
-prepended with `ps-theme-`. So default theme class name is
-`ps-theme-default`. In order to create custom themes with scss use
-`ps-container($theme)` mixin, where `$theme` is a scss map.
-
-**Default**: `'default'`
-
-**Example 1:**
-
-Add `theme` parameter:
-
-```js
-Ps.initialize(container, {
-  theme: 'my-theme-name'
-});
-```
-
-Create a class name prefixed with `.ps-theme-`. Include `ps-container()`
-mixin. It's recommended to use `map-merge()` to extend `$ps-theme-default` map
-with your custom styles.
-
-```scss
-.ps-theme-my-theme-name {
-  @include ps-container(map-merge($ps-theme-default, (
-    border-radius: 0,
-    scrollbar-x-rail-height: 20px,
-    scrollbar-x-height: 20px,
-    scrollbar-y-rail-width: 20px,
-    scrollbar-y-width: 20px
-  )));
-}
-```
-
-**Example 2:**
-
-Alternatively, if you don't want to create your own themes, but only modify the
-default one, you could simply overwrite `$ps-*` variables with your own
-values. In this case `theme` parameter is not required when calling
-`.initialize()` method. Remember do define your own variables before the
-`theme.scss` file is imported.
-
-
 ## Events
 
 perfect-scrollbar dispatches custom events.

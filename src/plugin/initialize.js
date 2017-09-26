@@ -23,8 +23,6 @@ module.exports = function (element, userSettings) {
     typeof userSettings === 'object' ? userSettings : {}
   );
 
-  element.classList.add('ps--theme_' + i.settings.theme);
-
   i.settings.handlers.forEach(function (handlerName) {
     handlers[handlerName](element);
   });

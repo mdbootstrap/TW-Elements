@@ -59,7 +59,7 @@ module.exports = function (element) {
 
   var existingRails;
   if (!element.contains(i.scrollbarXRail)) {
-    existingRails = dom.queryChildren(element, '.ps__scrollbar-x-rail');
+    existingRails = dom.queryChildren(element, '.ps__rail-x');
     if (existingRails.length > 0) {
       existingRails.forEach(function (rail) {
         dom.remove(rail);
@@ -68,7 +68,7 @@ module.exports = function (element) {
     dom.appendTo(i.scrollbarXRail, element);
   }
   if (!element.contains(i.scrollbarYRail)) {
-    existingRails = dom.queryChildren(element, '.ps__scrollbar-y-rail');
+    existingRails = dom.queryChildren(element, '.ps__rail-y');
     if (existingRails.length > 0) {
       existingRails.forEach(function (rail) {
         dom.remove(rail);

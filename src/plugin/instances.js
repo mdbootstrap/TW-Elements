@@ -34,19 +34,9 @@ function Instance(element, userSettings) {
   i.event = new EventManager();
   i.ownerDocument = element.ownerDocument || document;
 
-  function focus() {
-    element.classList.add('ps--focus');
-  }
-
-  function blur() {
-    element.classList.remove('ps--focus');
-  }
-
-  i.scrollbarXRail = dom.appendTo(dom.create('div', 'ps__scrollbar-x-rail'), element);
-  i.scrollbarX = dom.appendTo(dom.create('div', 'ps__scrollbar-x'), i.scrollbarXRail);
+  i.scrollbarXRail = dom.appendTo(dom.create('div', 'ps__rail-x'), element);
+  i.scrollbarX = dom.appendTo(dom.create('div', 'ps__thumb-x'), i.scrollbarXRail);
   i.scrollbarX.setAttribute('tabindex', 0);
-  i.event.bind(i.scrollbarX, 'focus', focus);
-  i.event.bind(i.scrollbarX, 'blur', blur);
   i.scrollbarXActive = null;
   i.scrollbarXWidth = null;
   i.scrollbarXLeft = null;
@@ -61,11 +51,9 @@ function Instance(element, userSettings) {
   i.railXWidth = null;
   i.railXRatio = null;
 
-  i.scrollbarYRail = dom.appendTo(dom.create('div', 'ps__scrollbar-y-rail'), element);
-  i.scrollbarY = dom.appendTo(dom.create('div', 'ps__scrollbar-y'), i.scrollbarYRail);
+  i.scrollbarYRail = dom.appendTo(dom.create('div', 'ps__rail-y'), element);
+  i.scrollbarY = dom.appendTo(dom.create('div', 'ps__thumb-y'), i.scrollbarYRail);
   i.scrollbarY.setAttribute('tabindex', 0);
-  i.event.bind(i.scrollbarY, 'focus', focus);
-  i.event.bind(i.scrollbarY, 'blur', blur);
   i.scrollbarYActive = null;
   i.scrollbarYHeight = null;
   i.scrollbarYTop = null;
