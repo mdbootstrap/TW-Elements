@@ -1,12 +1,10 @@
-'use strict';
+import * as _ from '../lib/helper';
+import * as DOM from '../lib/dom';
+import * as instances from './instances';
+import updateGeometry from './update-geometry';
+import updateScroll from './update-scroll';
 
-var _ = require('../lib/helper');
-var dom = require('../lib/dom');
-var instances = require('./instances');
-var updateGeometry = require('./update-geometry');
-var updateScroll = require('./update-scroll');
-
-module.exports = function(element) {
+export default function(element) {
   var i = instances.get(element);
 
   if (!i) {
@@ -19,18 +17,18 @@ module.exports = function(element) {
     : 0;
 
   // Recalculate rail margins
-  dom.css(i.scrollbarXRail, 'display', 'block');
-  dom.css(i.scrollbarYRail, 'display', 'block');
+  DOM.css(i.scrollbarXRail, 'display', 'block');
+  DOM.css(i.scrollbarYRail, 'display', 'block');
   i.railXMarginWidth =
-    _.toInt(dom.css(i.scrollbarXRail, 'marginLeft')) +
-    _.toInt(dom.css(i.scrollbarXRail, 'marginRight'));
+    _.toInt(DOM.css(i.scrollbarXRail, 'marginLeft')) +
+    _.toInt(DOM.css(i.scrollbarXRail, 'marginRight'));
   i.railYMarginHeight =
-    _.toInt(dom.css(i.scrollbarYRail, 'marginTop')) +
-    _.toInt(dom.css(i.scrollbarYRail, 'marginBottom'));
+    _.toInt(DOM.css(i.scrollbarYRail, 'marginTop')) +
+    _.toInt(DOM.css(i.scrollbarYRail, 'marginBottom'));
 
   // Hide scrollbars not to affect scrollWidth and scrollHeight
-  dom.css(i.scrollbarXRail, 'display', 'none');
-  dom.css(i.scrollbarYRail, 'display', 'none');
+  DOM.css(i.scrollbarXRail, 'display', 'none');
+  DOM.css(i.scrollbarYRail, 'display', 'none');
 
   updateGeometry(element);
 
@@ -38,6 +36,6 @@ module.exports = function(element) {
   updateScroll(element, 'top', element.scrollTop);
   updateScroll(element, 'left', element.scrollLeft);
 
-  dom.css(i.scrollbarXRail, 'display', '');
-  dom.css(i.scrollbarYRail, 'display', '');
-};
+  DOM.css(i.scrollbarXRail, 'display', '');
+  DOM.css(i.scrollbarYRail, 'display', '');
+}

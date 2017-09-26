@@ -1,10 +1,22 @@
-'use strict';
+import * as _ from '../lib/helper';
+import * as DOM from '../lib/dom';
+import EventManager from '../lib/event-manager';
+import guid from '../lib/guid';
 
-var _ = require('../lib/helper');
-var defaultSettings = require('./default-setting');
-var dom = require('../lib/dom');
-var EventManager = require('../lib/event-manager');
-var guid = require('../lib/guid');
+var defaultSettings = () => ({
+  handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
+  maxScrollbarLength: null,
+  minScrollbarLength: null,
+  scrollXMarginOffset: 0,
+  scrollYMarginOffset: 0,
+  suppressScrollX: false,
+  suppressScrollY: false,
+  swipePropagation: true,
+  swipeEasing: true,
+  useBothWheelAxes: false,
+  wheelPropagation: false,
+  wheelSpeed: 1,
+});
 
 var instances = {};
 
@@ -21,7 +33,7 @@ function Instance(element, userSettings) {
   i.contentWidth = null;
   i.contentHeight = null;
 
-  i.isRtl = dom.css(element, 'direction') === 'rtl';
+  i.isRtl = DOM.css(element, 'direction') === 'rtl';
   i.isNegativeScroll = (function() {
     var originalScrollLeft = element.scrollLeft;
     var result = null;
@@ -36,55 +48,55 @@ function Instance(element, userSettings) {
   i.event = new EventManager();
   i.ownerDocument = element.ownerDocument || document;
 
-  i.scrollbarXRail = dom.appendTo(dom.create('div', 'ps__rail-x'), element);
-  i.scrollbarX = dom.appendTo(
-    dom.create('div', 'ps__thumb-x'),
+  i.scrollbarXRail = DOM.appendTo(DOM.create('div', 'ps__rail-x'), element);
+  i.scrollbarX = DOM.appendTo(
+    DOM.create('div', 'ps__thumb-x'),
     i.scrollbarXRail,
   );
   i.scrollbarX.setAttribute('tabindex', 0);
   i.scrollbarXActive = null;
   i.scrollbarXWidth = null;
   i.scrollbarXLeft = null;
-  i.scrollbarXBottom = _.toInt(dom.css(i.scrollbarXRail, 'bottom'));
+  i.scrollbarXBottom = _.toInt(DOM.css(i.scrollbarXRail, 'bottom'));
   i.isScrollbarXUsingBottom = i.scrollbarXBottom === i.scrollbarXBottom; // !isNaN
   i.scrollbarXTop = i.isScrollbarXUsingBottom
     ? null
-    : _.toInt(dom.css(i.scrollbarXRail, 'top'));
+    : _.toInt(DOM.css(i.scrollbarXRail, 'top'));
   i.railBorderXWidth =
-    _.toInt(dom.css(i.scrollbarXRail, 'borderLeftWidth')) +
-    _.toInt(dom.css(i.scrollbarXRail, 'borderRightWidth'));
+    _.toInt(DOM.css(i.scrollbarXRail, 'borderLeftWidth')) +
+    _.toInt(DOM.css(i.scrollbarXRail, 'borderRightWidth'));
   // Set rail to display:block to calculate margins
-  dom.css(i.scrollbarXRail, 'display', 'block');
+  DOM.css(i.scrollbarXRail, 'display', 'block');
   i.railXMarginWidth =
-    _.toInt(dom.css(i.scrollbarXRail, 'marginLeft')) +
-    _.toInt(dom.css(i.scrollbarXRail, 'marginRight'));
-  dom.css(i.scrollbarXRail, 'display', '');
+    _.toInt(DOM.css(i.scrollbarXRail, 'marginLeft')) +
+    _.toInt(DOM.css(i.scrollbarXRail, 'marginRight'));
+  DOM.css(i.scrollbarXRail, 'display', '');
   i.railXWidth = null;
   i.railXRatio = null;
 
-  i.scrollbarYRail = dom.appendTo(dom.create('div', 'ps__rail-y'), element);
-  i.scrollbarY = dom.appendTo(
-    dom.create('div', 'ps__thumb-y'),
+  i.scrollbarYRail = DOM.appendTo(DOM.create('div', 'ps__rail-y'), element);
+  i.scrollbarY = DOM.appendTo(
+    DOM.create('div', 'ps__thumb-y'),
     i.scrollbarYRail,
   );
   i.scrollbarY.setAttribute('tabindex', 0);
   i.scrollbarYActive = null;
   i.scrollbarYHeight = null;
   i.scrollbarYTop = null;
-  i.scrollbarYRight = _.toInt(dom.css(i.scrollbarYRail, 'right'));
+  i.scrollbarYRight = _.toInt(DOM.css(i.scrollbarYRail, 'right'));
   i.isScrollbarYUsingRight = i.scrollbarYRight === i.scrollbarYRight; // !isNaN
   i.scrollbarYLeft = i.isScrollbarYUsingRight
     ? null
-    : _.toInt(dom.css(i.scrollbarYRail, 'left'));
+    : _.toInt(DOM.css(i.scrollbarYRail, 'left'));
   i.scrollbarYOuterWidth = i.isRtl ? _.outerWidth(i.scrollbarY) : null;
   i.railBorderYWidth =
-    _.toInt(dom.css(i.scrollbarYRail, 'borderTopWidth')) +
-    _.toInt(dom.css(i.scrollbarYRail, 'borderBottomWidth'));
-  dom.css(i.scrollbarYRail, 'display', 'block');
+    _.toInt(DOM.css(i.scrollbarYRail, 'borderTopWidth')) +
+    _.toInt(DOM.css(i.scrollbarYRail, 'borderBottomWidth'));
+  DOM.css(i.scrollbarYRail, 'display', 'block');
   i.railYMarginHeight =
-    _.toInt(dom.css(i.scrollbarYRail, 'marginTop')) +
-    _.toInt(dom.css(i.scrollbarYRail, 'marginBottom'));
-  dom.css(i.scrollbarYRail, 'display', '');
+    _.toInt(DOM.css(i.scrollbarYRail, 'marginTop')) +
+    _.toInt(DOM.css(i.scrollbarYRail, 'marginBottom'));
+  DOM.css(i.scrollbarYRail, 'display', '');
   i.railYHeight = null;
   i.railYRatio = null;
 }
@@ -101,18 +113,18 @@ function removeId(element) {
   element.removeAttribute('data-ps-id');
 }
 
-exports.add = function(element, userSettings) {
+export function add(element, userSettings) {
   var newId = guid();
   setId(element, newId);
   instances[newId] = new Instance(element, userSettings);
   return instances[newId];
-};
+}
 
-exports.remove = function(element) {
+export function remove(element) {
   delete instances[getId(element)];
   removeId(element);
-};
+}
 
-exports.get = function(element) {
+export function get(element) {
   return instances[getId(element)];
-};
+}

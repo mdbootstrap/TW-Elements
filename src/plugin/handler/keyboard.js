@@ -1,10 +1,8 @@
-'use strict';
-
-var _ = require('../../lib/helper');
-var dom = require('../../lib/dom');
-var instances = require('../instances');
-var updateGeometry = require('../update-geometry');
-var updateScroll = require('../update-scroll');
+import * as _ from '../../lib/helper';
+import * as DOM from '../../lib/dom';
+import * as instances from '../instances';
+import updateGeometry from '../update-geometry';
+import updateScroll from '../update-scroll';
 
 function bindKeyboardHandler(element, i) {
   var hovered = false;
@@ -54,8 +52,8 @@ function bindKeyboardHandler(element, i) {
     }
 
     var focused =
-      dom.matches(i.scrollbarX, ':focus') ||
-      dom.matches(i.scrollbarY, ':focus');
+      DOM.matches(i.scrollbarX, ':focus') ||
+      DOM.matches(i.scrollbarY, ':focus');
 
     if (!hovered && !focused) {
       return;
@@ -160,7 +158,7 @@ function bindKeyboardHandler(element, i) {
   });
 }
 
-module.exports = function(element) {
+export default function(element) {
   var i = instances.get(element);
   bindKeyboardHandler(element, i);
-};
+}

@@ -1,5 +1,3 @@
-'use strict';
-
 var EventElement = function(element) {
   this.element = element;
   this.events = {};
@@ -68,4 +66,4 @@ EventManager.prototype.once = function(element, eventName, handler) {
   ee.bind(eventName, onceHandler);
 };
 
-module.exports = EventManager;
+export default EventManager;

@@ -1,38 +1,36 @@
-'use strict';
+import * as DOM from './dom';
 
-var dom = require('./dom');
-
-var toInt = (exports.toInt = function(x) {
+export function toInt(x) {
   return parseInt(x, 10) || 0;
-});
+}
 
-exports.isEditable = function(el) {
+export function isEditable(el) {
   return (
-    dom.matches(el, 'input,[contenteditable]') ||
-    dom.matches(el, 'select,[contenteditable]') ||
-    dom.matches(el, 'textarea,[contenteditable]') ||
-    dom.matches(el, 'button,[contenteditable]')
+    DOM.matches(el, 'input,[contenteditable]') ||
+    DOM.matches(el, 'select,[contenteditable]') ||
+    DOM.matches(el, 'textarea,[contenteditable]') ||
+    DOM.matches(el, 'button,[contenteditable]')
   );
-};
+}
 
-exports.removePsClasses = function(element) {
+export function removePsClasses(element) {
   for (var i = 0; i < element.classList.length; i++) {
     var className = element.classList[i];
     if (className.indexOf('ps-') === 0) {
       element.classList.remove(className);
     }
   }
-};
+}
 
-exports.outerWidth = function(element) {
+export function outerWidth(element) {
   return (
-    toInt(dom.css(element, 'width')) +
-    toInt(dom.css(element, 'paddingLeft')) +
-    toInt(dom.css(element, 'paddingRight')) +
-    toInt(dom.css(element, 'borderLeftWidth')) +
-    toInt(dom.css(element, 'borderRightWidth'))
+    toInt(DOM.css(element, 'width')) +
+    toInt(DOM.css(element, 'paddingLeft')) +
+    toInt(DOM.css(element, 'paddingRight')) +
+    toInt(DOM.css(element, 'borderLeftWidth')) +
+    toInt(DOM.css(element, 'borderRightWidth'))
   );
-};
+}
 
 function psClasses(axis) {
   return axis
@@ -40,21 +38,21 @@ function psClasses(axis) {
     : ['ps--scrolling-x', 'ps--scrolling-y'];
 }
 
-exports.startScrolling = function(element, axis) {
+export function startScrolling(element, axis) {
   var classes = psClasses(axis);
   for (var i = 0; i < classes.length; i++) {
     element.classList.add(classes[i]);
   }
-};
+}
 
-exports.stopScrolling = function(element, axis) {
+export function stopScrolling(element, axis) {
   var classes = psClasses(axis);
   for (var i = 0; i < classes.length; i++) {
     element.classList.remove(classes[i]);
   }
-};
+}
 
-exports.env = {
+export const env = {
   isWebKit:
     typeof document !== 'undefined' &&
     'WebkitAppearance' in document.documentElement.style,

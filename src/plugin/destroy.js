@@ -1,10 +1,8 @@
-'use strict';
+import * as _ from '../lib/helper';
+import * as DOM from '../lib/dom';
+import * as instances from './instances';
 
-var _ = require('../lib/helper');
-var dom = require('../lib/dom');
-var instances = require('./instances');
-
-module.exports = function(element) {
+export default function(element) {
   var i = instances.get(element);
 
   if (!i) {
@@ -12,11 +10,11 @@ module.exports = function(element) {
   }
 
   i.event.unbindAll();
-  dom.remove(i.scrollbarX);
-  dom.remove(i.scrollbarY);
-  dom.remove(i.scrollbarXRail);
-  dom.remove(i.scrollbarYRail);
+  DOM.remove(i.scrollbarX);
+  DOM.remove(i.scrollbarY);
+  DOM.remove(i.scrollbarXRail);
+  DOM.remove(i.scrollbarYRail);
   _.removePsClasses(element);
 
   instances.remove(element);
-};
+}

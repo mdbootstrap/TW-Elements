@@ -1,20 +1,25 @@
-'use strict';
+import * as instances from './instances';
+import updateGeometry from './update-geometry';
 
-var instances = require('./instances');
-var updateGeometry = require('./update-geometry');
+import clickRail from './handler/click-rail';
+import dragScrollbar from './handler/drag-scrollbar';
+import keyboard from './handler/keyboard';
+import wheel from './handler/mouse-wheel';
+import touch from './handler/touch';
+import selection from './handler/selection';
+import nativeScrollHandler from './handler/native-scroll';
 
 // Handlers
 var handlers = {
-  'click-rail': require('./handler/click-rail'),
-  'drag-scrollbar': require('./handler/drag-scrollbar'),
-  keyboard: require('./handler/keyboard'),
-  wheel: require('./handler/mouse-wheel'),
-  touch: require('./handler/touch'),
-  selection: require('./handler/selection'),
+  'click-rail': clickRail,
+  'drag-scrollbar': dragScrollbar,
+  keyboard,
+  wheel,
+  touch,
+  selection,
 };
-var nativeScrollHandler = require('./handler/native-scroll');
 
-module.exports = function(element, userSettings) {
+export default function(element, userSettings) {
   element.classList.add('ps');
 
   // Create a plugin instance.
@@ -30,4 +35,4 @@ module.exports = function(element, userSettings) {
   nativeScrollHandler(element);
 
   updateGeometry(element);
-};
+}

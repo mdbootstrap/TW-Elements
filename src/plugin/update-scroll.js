@@ -1,6 +1,4 @@
-'use strict';
-
-var instances = require('./instances');
+import * as instances from './instances';
 
 var createDOMEvent = function(name) {
   var event = document.createEvent('Event');
@@ -8,7 +6,7 @@ var createDOMEvent = function(name) {
   return event;
 };
 
-module.exports = function(element, axis, value) {
+export default function(element, axis, value) {
   if (typeof element === 'undefined') {
     throw 'You must provide an element to the update-scroll function';
   }
@@ -90,4 +88,4 @@ module.exports = function(element, axis, value) {
     element.scrollLeft = i.lastLeft = value;
     element.dispatchEvent(createDOMEvent('ps-scroll-x'));
   }
-};
+}

@@ -1,11 +1,5 @@
-'use strict';
+import destroy from './plugin/destroy';
+import initialize from './plugin/initialize';
+import update from './plugin/update';
 
-var destroy = require('./plugin/destroy');
-var initialize = require('./plugin/initialize');
-var update = require('./plugin/update');
-
-module.exports = {
-  initialize: initialize,
-  update: update,
-  destroy: destroy,
-};
+export default { initialize, update, destroy };

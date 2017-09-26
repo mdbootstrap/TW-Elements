@@ -1,8 +1,6 @@
-'use strict';
-
-var instances = require('../instances');
-var updateGeometry = require('../update-geometry');
-var updateScroll = require('../update-scroll');
+import * as instances from '../instances';
+import updateGeometry from '../update-geometry';
+import updateScroll from '../update-scroll';
 
 function bindClickRailHandler(element, i) {
   function pageOffset(el) {
@@ -45,7 +43,7 @@ function bindClickRailHandler(element, i) {
   });
 }
 
-module.exports = function(element) {
+export default function(element) {
   var i = instances.get(element);
   bindClickRailHandler(element, i);
-};
+}

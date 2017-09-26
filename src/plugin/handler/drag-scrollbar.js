@@ -1,10 +1,8 @@
-'use strict';
-
-var _ = require('../../lib/helper');
-var dom = require('../../lib/dom');
-var instances = require('../instances');
-var updateGeometry = require('../update-geometry');
-var updateScroll = require('../update-scroll');
+import * as _ from '../../lib/helper';
+import * as DOM from '../../lib/dom';
+import * as instances from '../instances';
+import updateGeometry from '../update-geometry';
+import updateScroll from '../update-scroll';
 
 function bindMouseScrollXHandler(element, i) {
   var currentLeft = null;
@@ -47,7 +45,7 @@ function bindMouseScrollXHandler(element, i) {
 
   i.event.bind(i.scrollbarX, 'mousedown', function(e) {
     currentPageX = e.pageX;
-    currentLeft = _.toInt(dom.css(i.scrollbarX, 'left')) * i.railXRatio;
+    currentLeft = _.toInt(DOM.css(i.scrollbarX, 'left')) * i.railXRatio;
     _.startScrolling(element, 'x');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
@@ -98,7 +96,7 @@ function bindMouseScrollYHandler(element, i) {
 
   i.event.bind(i.scrollbarY, 'mousedown', function(e) {
     currentPageY = e.pageY;
-    currentTop = _.toInt(dom.css(i.scrollbarY, 'top')) * i.railYRatio;
+    currentTop = _.toInt(DOM.css(i.scrollbarY, 'top')) * i.railYRatio;
     _.startScrolling(element, 'y');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
@@ -109,8 +107,8 @@ function bindMouseScrollYHandler(element, i) {
   });
 }
 
-module.exports = function(element) {
+export default function(element) {
   var i = instances.get(element);
   bindMouseScrollXHandler(element, i);
   bindMouseScrollYHandler(element, i);
-};
+}

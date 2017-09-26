@@ -1,9 +1,7 @@
-'use strict';
-
-var _ = require('../lib/helper');
-var dom = require('../lib/dom');
-var instances = require('./instances');
-var updateScroll = require('./update-scroll');
+import * as _ from '../lib/helper';
+import * as DOM from '../lib/dom';
+import * as instances from './instances';
+import updateScroll from './update-scroll';
 
 function getThumbSize(i, thumbSize) {
   if (i.settings.minScrollbarLength) {
@@ -31,7 +29,7 @@ function updateCss(element, i) {
   } else {
     xRailOffset.top = i.scrollbarXTop + element.scrollTop;
   }
-  dom.css(i.scrollbarXRail, xRailOffset);
+  DOM.css(i.scrollbarXRail, xRailOffset);
 
   var yRailOffset = { top: element.scrollTop, height: i.railYHeight };
   if (i.isScrollbarYUsingRight) {
@@ -57,19 +55,19 @@ function updateCss(element, i) {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
   }
-  dom.css(i.scrollbarYRail, yRailOffset);
+  DOM.css(i.scrollbarYRail, yRailOffset);
 
-  dom.css(i.scrollbarX, {
+  DOM.css(i.scrollbarX, {
     left: i.scrollbarXLeft,
     width: i.scrollbarXWidth - i.railBorderXWidth,
   });
-  dom.css(i.scrollbarY, {
+  DOM.css(i.scrollbarY, {
     top: i.scrollbarYTop,
     height: i.scrollbarYHeight - i.railBorderYWidth,
   });
 }
 
-module.exports = function(element) {
+export default function(element) {
   var i = instances.get(element);
 
   i.containerWidth = element.clientWidth;
@@ -79,22 +77,22 @@ module.exports = function(element) {
 
   var existingRails;
   if (!element.contains(i.scrollbarXRail)) {
-    existingRails = dom.queryChildren(element, '.ps__rail-x');
+    existingRails = DOM.queryChildren(element, '.ps__rail-x');
     if (existingRails.length > 0) {
       existingRails.forEach(function(rail) {
-        dom.remove(rail);
+        DOM.remove(rail);
       });
     }
-    dom.appendTo(i.scrollbarXRail, element);
+    DOM.appendTo(i.scrollbarXRail, element);
   }
   if (!element.contains(i.scrollbarYRail)) {
-    existingRails = dom.queryChildren(element, '.ps__rail-y');
+    existingRails = DOM.queryChildren(element, '.ps__rail-y');
     if (existingRails.length > 0) {
       existingRails.forEach(function(rail) {
-        dom.remove(rail);
+        DOM.remove(rail);
       });
     }
-    dom.appendTo(i.scrollbarYRail, element);
+    DOM.appendTo(i.scrollbarYRail, element);
   }
 
   if (
@@ -162,4 +160,4 @@ module.exports = function(element) {
     i.scrollbarYTop = 0;
     updateScroll(element, 'top', 0);
   }
-};
+}

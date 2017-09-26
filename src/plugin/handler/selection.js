@@ -1,9 +1,7 @@
-'use strict';
-
-var _ = require('../../lib/helper');
-var instances = require('../instances');
-var updateGeometry = require('../update-geometry');
-var updateScroll = require('../update-scroll');
+import * as _ from '../../lib/helper';
+import * as instances from '../instances';
+import updateGeometry from '../update-geometry';
+import updateScroll from '../update-scroll';
 
 function bindSelectionHandler(element, i) {
   function getRangeNode() {
@@ -110,7 +108,7 @@ function bindSelectionHandler(element, i) {
   });
 }
 
-module.exports = function(element) {
+export default function(element) {
   var i = instances.get(element);
   bindSelectionHandler(element, i);
-};
+}

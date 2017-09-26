@@ -1,17 +1,13 @@
-'use strict';
-
-var DOM = {};
-
-DOM.create = function(tagName, className) {
+export function create(tagName, className) {
   var element = document.createElement(tagName);
   element.className = className;
   return element;
-};
+}
 
-DOM.appendTo = function(child, parent) {
+export function appendTo(child, parent) {
   parent.appendChild(child);
   return child;
-};
+}
 
 function cssGet(element, styleName) {
   return window.getComputedStyle(element)[styleName];
@@ -36,7 +32,7 @@ function cssMultiSet(element, obj) {
   return element;
 }
 
-DOM.css = function(element, styleNameOrObject, styleValue) {
+export function css(element, styleNameOrObject, styleValue) {
   if (typeof styleNameOrObject === 'object') {
     // multiple set with object
     return cssMultiSet(element, styleNameOrObject);
@@ -47,18 +43,18 @@ DOM.css = function(element, styleNameOrObject, styleValue) {
       return cssSet(element, styleNameOrObject, styleValue);
     }
   }
-};
+}
 
-DOM.matches = function(element, query) {
+export function matches(element, query) {
   if (typeof element.matches !== 'undefined') {
     return element.matches(query);
   } else {
     // must be IE11 and Edge
     return element.msMatchesSelector(query);
   }
-};
+}
 
-DOM.remove = function(element) {
+export function remove(element) {
   if (typeof element.remove !== 'undefined') {
     element.remove();
   } else {
@@ -66,12 +62,10 @@ DOM.remove = function(element) {
       element.parentNode.removeChild(element);
     }
   }
-};
+}
 
-DOM.queryChildren = function(element, selector) {
+export function queryChildren(element, selector) {
   return Array.prototype.filter.call(element.childNodes, function(child) {
     return DOM.matches(child, selector);
   });
-};
-
-module.exports = DOM;
+}
