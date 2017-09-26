@@ -53,11 +53,11 @@ export default class PerfectScrollbar {
     this.update();
   }
 
-  get scrollbars() {
+  get scrollbars(): [Scrollbar, Scrollbar] {
     return [this.scrollbarX, this.scrollbarY];
   }
 
-  get document() {
+  get document(): Document {
     return this.el.ownerDocument || document;
   }
 
