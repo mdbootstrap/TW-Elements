@@ -20,11 +20,6 @@ interface PerfectScrollbar {
   destroy(container: HTMLElement): void;
 }
 
-interface JQuery {
-  perfectScrollbar(options?: PerfectScrollbarOptions): JQuery;
-  perfectScrollbar(options: string): JQuery;
-}
-
 declare var ps: PerfectScrollbar;
 
 declare module "perfect-scrollbar" {

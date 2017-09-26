@@ -7,7 +7,7 @@ Minimalistic but perfect custom scrollbar plugin
 ## Why perfect-scrollbar?
 
 perfect-scrollbar is minimalistic but *perfect* (for me, and maybe for most
-developers) scrollbar plugin working with jQuery or vanilla JavaScript as well.
+developers) scrollbar plugin.
 
 * No implicit style change on original DOM elements
 * No change on the original design layout
@@ -26,7 +26,6 @@ I hope you love it!
 * [Install](#install)
 * [Before using perfect-scrollbar](#before-using-perfect-scrollbar)
 * [How to use](#how-to-use)
-* [jQuery](#jquery)
 * [Optional parameters](#optional-parameters)
 * [Events](#events)
 * [Helpdesk](#helpdesk)
@@ -67,7 +66,6 @@ $ gulp # will lint and build the source code.
 You can fork the following JSFiddles for testing and experimenting purposes:
 
 * [Perfect Scrollbar](https://jsfiddle.net/DanielApt/xv0rrxv3/)
-* [Perfect Scrollbar (jQuery)](https://jsfiddle.net/DanielApt/gbfLazpx/)
 
 #### Unofficial sources
 
@@ -171,33 +169,6 @@ container.scrollTop = 0;
 
 You can also get information about how to use the plugin from code in the
 `examples` directory of the source tree.
-
-## jQuery
-
-As you may already know, perfect-scrollbar was a jQuery plugin. And it *is*
-too. There's a jQuery adaptor and the plugin can be used in the same way it used
-to work before.
-
-I also recommend using CJS here, but it's not mandatory.
-
-```js
-require('perfect-scrollbar/jquery')($);
-```
-
-For sure, you can just include a built script.
-
-```html
-<script src="dist/js/perfect-scrollbar.jquery.js"></script>
-```
-
-After importing it, you can use the plugin in the usual way.
-
-```js
-$('#container').perfectScrollbar();          // Initialize
-$('#container').perfectScrollbar({ ... });   // with options
-$('#container').perfectScrollbar('update');  // Update
-$('#container').perfectScrollbar('destroy'); // Destroy
-```
 
 ## Optional parameters
 
@@ -365,11 +336,8 @@ This event fires when scrolling reaches the start of the x-axis.
 
 This event fires when scrolling reaches the end of the x-axis.
 
-You can listen to these events either with vanilla JavaScript or jQuery.
-
 ```js
 container.addEventListener('ps-scroll-x', () => ...);
-$(container).on('ps-scroll-x', () => ...);
 ```
 
 ## Helpdesk
