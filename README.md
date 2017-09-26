@@ -50,15 +50,15 @@ on [Releases](https://github.com/noraesae/perfect-scrollbar/releases).
 
 #### From sources
 
-If you want to use the development version of the plugin, use the source files
-which are not minified. They're in the `src` directory.  The development version
-may be unstable, but some known bugs may have been fixed.
+If you want to use the development version of the plugin, build the source files
+manually. They're in the `src` directory.  The development version may be
+unstable, but some known bugs may have been fixed.
 
 ```
 $ git clone https://github.com/noraesae/perfect-scrollbar.git
-$ cd perfect-scrollbar/src
-$ npm install
-$ gulp # will lint and build the source code.
+$ cd perfect-scrollbar
+$ npm i
+$ npm run build
 ```
 
 #### JSFiddle
