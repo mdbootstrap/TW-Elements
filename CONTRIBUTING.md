@@ -8,7 +8,7 @@ requests when...
 * You're good at English and can help my bad English!
 
 For IE problems, please refer
-to [IE Support](https://github.com/noraesae/perfect-scrollbar#ie-support).
+to [IE Support](https://github.com/utatti/perfect-scrollbar#ie-support).
 
 ## Introduction
 

@@ -2,7 +2,7 @@
 
 Minimalistic but perfect custom scrollbar plugin
 
-[![Travis CI](https://travis-ci.org/noraesae/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/noraesae/perfect-scrollbar)
+[![Travis CI](https://travis-ci.org/utatti/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/utatti/perfect-scrollbar)
 
 ## Why perfect-scrollbar?
 
@@ -19,7 +19,7 @@ I hope you love it!
 
 ## Demo
 
-It's on the [GitHub Pages](http://noraesae.github.com/perfect-scrollbar/).
+It's on the [GitHub Pages](http://utatti.github.com/perfect-scrollbar/).
 
 ## Table of Contents
 
@@ -46,7 +46,7 @@ $ npm install perfect-scrollbar
 #### Manual download
 
 You can manually download perfect-scrollbar
-from [Releases](https://github.com/noraesae/perfect-scrollbar/releases).
+from [Releases](https://github.com/utatti/perfect-scrollbar/releases).
 
 #### From sources
 
@@ -54,7 +54,7 @@ If you want to use the development version of the plugin, build from source
 manually. The development version may be unstable.
 
 ```
-$ git clone https://github.com/noraesae/perfect-scrollbar.git
+$ git clone https://github.com/utatti/perfect-scrollbar.git
 $ cd perfect-scrollbar
 $ npm install
 $ npm run build
@@ -311,9 +311,9 @@ container.addEventListener('ps-scroll-x', () => ...);
 ## Helpdesk
 
 If you have any idea to improve this project or any problem using this, please
-feel free to upload an [issue](https://github.com/noraesae/perfect-scrollbar/issues).
+feel free to upload an [issue](https://github.com/utatti/perfect-scrollbar/issues).
 
-For common problems, there is a [FAQ](https://github.com/noraesae/perfect-scrollbar/wiki/FAQ) wiki
+For common problems, there is a [FAQ](https://github.com/utatti/perfect-scrollbar/wiki/FAQ) wiki
 page. Please check the page before uploading an issue.
 
 Also, the project is not actively maintained. No maintainer is paid, and most of
@@ -324,7 +324,7 @@ way to fix an issue.
 ## IE Support
 
 The plugin is developed to work in modern MS browsers, specifically IE
-11 and Edge. When there is any issue, please [file it](https://github.com/noraesae/perfect-scrollbar/issues).
+11 and Edge. When there is any issue, please [file it](https://github.com/utatti/perfect-scrollbar/issues).
 
 **The patches to fix problems in IE<=10 won't be accepted.**
 
