@@ -3,12 +3,6 @@
   * (c) 2017 Hyunje Jun
   * @license MIT
   */
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.PerfectScrollbar = factory());
-}(this, (function () { 'use strict';
-
 function create(tagName, className) {
   var element = document.createElement(tagName);
   element.className = className;
@@ -1499,6 +1493,4 @@ var update = function(element) {
 
 var index = { initialize: initialize, update: update, destroy: destroy };
 
-return index;
-
-})));
+export default index;
