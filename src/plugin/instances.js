@@ -51,7 +51,7 @@ function Instance(element, userSettings) {
   i.scrollbarXRail = DOM.appendTo(DOM.create('div', 'ps__rail-x'), element);
   i.scrollbarX = DOM.appendTo(
     DOM.create('div', 'ps__thumb-x'),
-    i.scrollbarXRail,
+    i.scrollbarXRail
   );
   i.scrollbarX.setAttribute('tabindex', 0);
   i.scrollbarXActive = null;
@@ -77,7 +77,7 @@ function Instance(element, userSettings) {
   i.scrollbarYRail = DOM.appendTo(DOM.create('div', 'ps__rail-y'), element);
   i.scrollbarY = DOM.appendTo(
     DOM.create('div', 'ps__thumb-y'),
-    i.scrollbarYRail,
+    i.scrollbarYRail
   );
   i.scrollbarY.setAttribute('tabindex', 0);
   i.scrollbarYActive = null;

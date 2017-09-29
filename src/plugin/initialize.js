@@ -25,7 +25,7 @@ export default function(element, userSettings) {
   // Create a plugin instance.
   var i = instances.add(
     element,
-    typeof userSettings === 'object' ? userSettings : {},
+    typeof userSettings === 'object' ? userSettings : {}
   );
 
   i.settings.handlers.forEach(function(handlerName) {

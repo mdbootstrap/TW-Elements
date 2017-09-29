@@ -104,12 +104,12 @@ export default function(element) {
     i.railXRatio = i.containerWidth / i.railXWidth;
     i.scrollbarXWidth = getThumbSize(
       i,
-      _.toInt(i.railXWidth * i.containerWidth / i.contentWidth),
+      _.toInt(i.railXWidth * i.containerWidth / i.contentWidth)
     );
     i.scrollbarXLeft = _.toInt(
       (i.negativeScrollAdjustment + element.scrollLeft) *
         (i.railXWidth - i.scrollbarXWidth) /
-        (i.contentWidth - i.containerWidth),
+        (i.contentWidth - i.containerWidth)
     );
   } else {
     i.scrollbarXActive = false;
@@ -124,12 +124,12 @@ export default function(element) {
     i.railYRatio = i.containerHeight / i.railYHeight;
     i.scrollbarYHeight = getThumbSize(
       i,
-      _.toInt(i.railYHeight * i.containerHeight / i.contentHeight),
+      _.toInt(i.railYHeight * i.containerHeight / i.contentHeight)
     );
     i.scrollbarYTop = _.toInt(
       element.scrollTop *
         (i.railYHeight - i.scrollbarYHeight) /
-        (i.contentHeight - i.containerHeight),
+        (i.contentHeight - i.containerHeight)
     );
   } else {
     i.scrollbarYActive = false;

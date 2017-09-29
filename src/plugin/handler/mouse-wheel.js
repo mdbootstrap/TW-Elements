@@ -65,12 +65,12 @@ function bindMouseWheelHandler(element, i) {
 
   function shouldBeConsumedByChild(deltaX, deltaY) {
     var child = element.querySelector(
-      'textarea:hover, select[multiple]:hover, .ps-child:hover',
+      'textarea:hover, select[multiple]:hover, .ps-child:hover'
     );
     if (child) {
       var style = window.getComputedStyle(child);
       var overflow = [style.overflow, style.overflowX, style.overflowY].join(
-        '',
+        ''
       );
 
       if (!overflow.match(/(scroll|auto)/)) {
@@ -117,12 +117,12 @@ function bindMouseWheelHandler(element, i) {
       updateScroll(
         element,
         'top',
-        element.scrollTop - deltaY * i.settings.wheelSpeed,
+        element.scrollTop - deltaY * i.settings.wheelSpeed
       );
       updateScroll(
         element,
         'left',
-        element.scrollLeft + deltaX * i.settings.wheelSpeed,
+        element.scrollLeft + deltaX * i.settings.wheelSpeed
       );
     } else if (i.scrollbarYActive && !i.scrollbarXActive) {
       // only vertical scrollbar is active and useBothWheelAxes option is
@@ -131,13 +131,13 @@ function bindMouseWheelHandler(element, i) {
         updateScroll(
           element,
           'top',
-          element.scrollTop - deltaY * i.settings.wheelSpeed,
+          element.scrollTop - deltaY * i.settings.wheelSpeed
         );
       } else {
         updateScroll(
           element,
           'top',
-          element.scrollTop + deltaX * i.settings.wheelSpeed,
+          element.scrollTop + deltaX * i.settings.wheelSpeed
         );
       }
       shouldPrevent = true;
@@ -148,13 +148,13 @@ function bindMouseWheelHandler(element, i) {
         updateScroll(
           element,
           'left',
-          element.scrollLeft + deltaX * i.settings.wheelSpeed,
+          element.scrollLeft + deltaX * i.settings.wheelSpeed
         );
       } else {
         updateScroll(
           element,
           'left',
-          element.scrollLeft - deltaY * i.settings.wheelSpeed,
+          element.scrollLeft - deltaY * i.settings.wheelSpeed
         );
       }
       shouldPrevent = true;

@@ -19,7 +19,7 @@ function bindClickRailHandler(element, i) {
     updateScroll(
       element,
       'top',
-      element.scrollTop + direction * i.containerHeight,
+      element.scrollTop + direction * i.containerHeight
     );
     updateGeometry(element);
 
@@ -35,7 +35,7 @@ function bindClickRailHandler(element, i) {
     updateScroll(
       element,
       'left',
-      element.scrollLeft + direction * i.containerWidth,
+      element.scrollLeft + direction * i.containerWidth
     );
     updateGeometry(element);
 
