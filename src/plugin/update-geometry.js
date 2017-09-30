@@ -1,7 +1,8 @@
-import * as _ from '../lib/helper';
+import * as CSS from '../lib/css';
 import * as DOM from '../lib/dom';
 import * as instances from './instances';
 import updateScroll from './update-scroll';
+import { toInt } from '../lib/util';
 
 function getThumbSize(i, thumbSize) {
   if (i.settings.minScrollbarLength) {
@@ -29,7 +30,7 @@ function updateCss(element, i) {
   } else {
     xRailOffset.top = i.scrollbarXTop + element.scrollTop;
   }
-  DOM.css(i.scrollbarXRail, xRailOffset);
+  CSS.set(i.scrollbarXRail, xRailOffset);
 
   var yRailOffset = { top: element.scrollTop, height: i.railYHeight };
   if (i.isScrollbarYUsingRight) {
@@ -55,13 +56,13 @@ function updateCss(element, i) {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
   }
-  DOM.css(i.scrollbarYRail, yRailOffset);
+  CSS.set(i.scrollbarYRail, yRailOffset);
 
-  DOM.css(i.scrollbarX, {
+  CSS.set(i.scrollbarX, {
     left: i.scrollbarXLeft,
     width: i.scrollbarXWidth - i.railBorderXWidth,
   });
-  DOM.css(i.scrollbarY, {
+  CSS.set(i.scrollbarY, {
     top: i.scrollbarYTop,
     height: i.scrollbarYHeight - i.railBorderYWidth,
   });
@@ -83,7 +84,7 @@ export default function(element) {
         DOM.remove(rail);
       });
     }
-    DOM.appendTo(i.scrollbarXRail, element);
+    element.appendChild(i.scrollbarXRail);
   }
   if (!element.contains(i.scrollbarYRail)) {
     existingRails = DOM.queryChildren(element, '.ps__rail-y');
@@ -92,7 +93,7 @@ export default function(element) {
         DOM.remove(rail);
       });
     }
-    DOM.appendTo(i.scrollbarYRail, element);
+    element.appendChild(i.scrollbarYRail);
   }
 
   if (
@@ -104,9 +105,9 @@ export default function(element) {
     i.railXRatio = i.containerWidth / i.railXWidth;
     i.scrollbarXWidth = getThumbSize(
       i,
-      _.toInt(i.railXWidth * i.containerWidth / i.contentWidth)
+      toInt(i.railXWidth * i.containerWidth / i.contentWidth)
     );
-    i.scrollbarXLeft = _.toInt(
+    i.scrollbarXLeft = toInt(
       (i.negativeScrollAdjustment + element.scrollLeft) *
         (i.railXWidth - i.scrollbarXWidth) /
         (i.contentWidth - i.containerWidth)
@@ -124,9 +125,9 @@ export default function(element) {
     i.railYRatio = i.containerHeight / i.railYHeight;
     i.scrollbarYHeight = getThumbSize(
       i,
-      _.toInt(i.railYHeight * i.containerHeight / i.contentHeight)
+      toInt(i.railYHeight * i.containerHeight / i.contentHeight)
     );
-    i.scrollbarYTop = _.toInt(
+    i.scrollbarYTop = toInt(
       element.scrollTop *
         (i.railYHeight - i.scrollbarYHeight) /
         (i.contentHeight - i.containerHeight)

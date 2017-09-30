@@ -1,7 +1,8 @@
-import * as _ from '../lib/helper';
+import * as CSS from '../lib/css';
 import * as DOM from '../lib/dom';
 import EventManager from '../lib/event-manager';
 import guid from '../lib/guid';
+import { toInt } from '../lib/util';
 
 var defaultSettings = () => ({
   handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
@@ -36,7 +37,7 @@ function Instance(element, userSettings) {
   const focus = () => element.classList.add('ps--focus');
   const blur = () => element.classList.remove('ps--focus');
 
-  i.isRtl = DOM.css(element, 'direction') === 'rtl';
+  i.isRtl = CSS.get(element).direction === 'rtl';
   i.isNegativeScroll = (function() {
     var originalScrollLeft = element.scrollLeft;
     var result = null;
@@ -51,59 +52,51 @@ function Instance(element, userSettings) {
   i.event = new EventManager();
   i.ownerDocument = element.ownerDocument || document;
 
-  i.scrollbarXRail = DOM.appendTo(DOM.create('div', 'ps__rail-x'), element);
-  i.scrollbarX = DOM.appendTo(
-    DOM.create('div', 'ps__thumb-x'),
-    i.scrollbarXRail
-  );
+  i.scrollbarXRail = DOM.div('ps__rail-x');
+  element.appendChild(i.scrollbarXRail);
+  i.scrollbarX = DOM.div('ps__thumb-x');
+  i.scrollbarXRail.appendChild(i.scrollbarX);
   i.scrollbarX.setAttribute('tabindex', 0);
   i.event.bind(i.scrollbarX, 'focus', focus);
   i.event.bind(i.scrollbarX, 'blur', blur);
   i.scrollbarXActive = null;
   i.scrollbarXWidth = null;
   i.scrollbarXLeft = null;
-  i.scrollbarXBottom = _.toInt(DOM.css(i.scrollbarXRail, 'bottom'));
+  const railXStyle = CSS.get(i.scrollbarXRail);
+  i.scrollbarXBottom = toInt(railXStyle.bottom);
   i.isScrollbarXUsingBottom = i.scrollbarXBottom === i.scrollbarXBottom; // !isNaN
-  i.scrollbarXTop = i.isScrollbarXUsingBottom
-    ? null
-    : _.toInt(DOM.css(i.scrollbarXRail, 'top'));
+  i.scrollbarXTop = i.isScrollbarXUsingBottom ? null : toInt(railXStyle.top);
   i.railBorderXWidth =
-    _.toInt(DOM.css(i.scrollbarXRail, 'borderLeftWidth')) +
-    _.toInt(DOM.css(i.scrollbarXRail, 'borderRightWidth'));
+    toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth);
   // Set rail to display:block to calculate margins
-  DOM.css(i.scrollbarXRail, 'display', 'block');
+  CSS.set(i.scrollbarXRail, { display: 'block' });
   i.railXMarginWidth =
-    _.toInt(DOM.css(i.scrollbarXRail, 'marginLeft')) +
-    _.toInt(DOM.css(i.scrollbarXRail, 'marginRight'));
-  DOM.css(i.scrollbarXRail, 'display', '');
+    toInt(railXStyle.marginLeft) + toInt(railXStyle.marginRight);
+  CSS.set(i.scrollbarXRail, { display: '' });
   i.railXWidth = null;
   i.railXRatio = null;
 
-  i.scrollbarYRail = DOM.appendTo(DOM.create('div', 'ps__rail-y'), element);
-  i.scrollbarY = DOM.appendTo(
-    DOM.create('div', 'ps__thumb-y'),
-    i.scrollbarYRail
-  );
+  i.scrollbarYRail = DOM.div('ps__rail-y');
+  element.appendChild(i.scrollbarYRail);
+  i.scrollbarY = DOM.div('ps__thumb-y');
+  i.scrollbarYRail.appendChild(i.scrollbarY);
   i.scrollbarY.setAttribute('tabindex', 0);
   i.event.bind(i.scrollbarY, 'focus', focus);
   i.event.bind(i.scrollbarY, 'blur', blur);
   i.scrollbarYActive = null;
   i.scrollbarYHeight = null;
   i.scrollbarYTop = null;
-  i.scrollbarYRight = _.toInt(DOM.css(i.scrollbarYRail, 'right'));
+  const railYStyle = CSS.get(i.scrollbarYRail);
+  i.scrollbarYRight = toInt(railYStyle.right);
   i.isScrollbarYUsingRight = i.scrollbarYRight === i.scrollbarYRight; // !isNaN
-  i.scrollbarYLeft = i.isScrollbarYUsingRight
-    ? null
-    : _.toInt(DOM.css(i.scrollbarYRail, 'left'));
+  i.scrollbarYLeft = i.isScrollbarYUsingRight ? null : toInt(railYStyle.left);
   i.scrollbarYOuterWidth = i.isRtl ? _.outerWidth(i.scrollbarY) : null;
   i.railBorderYWidth =
-    _.toInt(DOM.css(i.scrollbarYRail, 'borderTopWidth')) +
-    _.toInt(DOM.css(i.scrollbarYRail, 'borderBottomWidth'));
-  DOM.css(i.scrollbarYRail, 'display', 'block');
+    toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
+  CSS.set(i.scrollbarYRail, { display: 'block' });
   i.railYMarginHeight =
-    _.toInt(DOM.css(i.scrollbarYRail, 'marginTop')) +
-    _.toInt(DOM.css(i.scrollbarYRail, 'marginBottom'));
-  DOM.css(i.scrollbarYRail, 'display', '');
+    toInt(railYStyle.marginTop) + toInt(railYStyle.marginBottom);
+  CSS.set(i.scrollbarYRail, { display: '' });
   i.railYHeight = null;
   i.railYRatio = null;
 }

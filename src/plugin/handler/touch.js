@@ -1,7 +1,7 @@
-import * as _ from '../../lib/helper';
 import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
+import { env } from '../../lib/util';
 
 function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   function shouldPreventDefault(deltaX, deltaY) {
@@ -181,10 +181,10 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
 }
 
 export default function(element) {
-  if (!_.env.supportsTouch && !_.env.supportsIePointer) {
+  if (!env.supportsTouch && !env.supportsIePointer) {
     return;
   }
 
   var i = instances.get(element);
-  bindTouchHandler(element, i, _.env.supportsTouch, _.env.supportsIePointer);
+  bindTouchHandler(element, i, env.supportsTouch, env.supportsIePointer);
 }

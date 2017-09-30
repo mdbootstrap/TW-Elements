@@ -1,8 +1,29 @@
-import * as _ from '../../lib/helper';
+import * as CSS from '../../lib/css';
 import * as DOM from '../../lib/dom';
 import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
+import { toInt } from '../../lib/util';
+
+function scrollingClasses(axis) {
+  return axis
+    ? ['ps--scrolling-' + axis]
+    : ['ps--scrolling-x', 'ps--scrolling-y'];
+}
+
+function startScrolling(element, axis) {
+  var classes = scrollingClasses(axis);
+  for (var i = 0; i < classes.length; i++) {
+    element.classList.add(classes[i]);
+  }
+}
+
+function stopScrolling(element, axis) {
+  var classes = scrollingClasses(axis);
+  for (var i = 0; i < classes.length; i++) {
+    element.classList.remove(classes[i]);
+  }
+}
 
 function bindMouseScrollXHandler(element, i) {
   var currentLeft = null;
@@ -23,7 +44,7 @@ function bindMouseScrollXHandler(element, i) {
     }
 
     var scrollLeft =
-      _.toInt(
+      toInt(
         i.scrollbarXLeft *
           (i.contentWidth - i.containerWidth) /
           (i.containerWidth - i.railXRatio * i.scrollbarXWidth)
@@ -39,14 +60,14 @@ function bindMouseScrollXHandler(element, i) {
   };
 
   var mouseUpHandler = function() {
-    _.stopScrolling(element, 'x');
+    stopScrolling(element, 'x');
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   };
 
   i.event.bind(i.scrollbarX, 'mousedown', function(e) {
     currentPageX = e.pageX;
-    currentLeft = _.toInt(DOM.css(i.scrollbarX, 'left')) * i.railXRatio;
-    _.startScrolling(element, 'x');
+    currentLeft = toInt(CSS.get(i.scrollbarX).left) * i.railXRatio;
+    startScrolling(element, 'x');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
@@ -74,7 +95,7 @@ function bindMouseScrollYHandler(element, i) {
       i.scrollbarYTop = newTop;
     }
 
-    var scrollTop = _.toInt(
+    var scrollTop = toInt(
       i.scrollbarYTop *
         (i.contentHeight - i.containerHeight) /
         (i.containerHeight - i.railYRatio * i.scrollbarYHeight)
@@ -90,14 +111,14 @@ function bindMouseScrollYHandler(element, i) {
   };
 
   var mouseUpHandler = function() {
-    _.stopScrolling(element, 'y');
+    stopScrolling(element, 'y');
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   };
 
   i.event.bind(i.scrollbarY, 'mousedown', function(e) {
     currentPageY = e.pageY;
-    currentTop = _.toInt(DOM.css(i.scrollbarY, 'top')) * i.railYRatio;
-    _.startScrolling(element, 'y');
+    currentTop = toInt(CSS.get(i.scrollbarY).top) * i.railYRatio;
+    startScrolling(element, 'y');
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);

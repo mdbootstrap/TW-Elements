@@ -1,61 +1,24 @@
-export function create(tagName, className) {
-  var element = document.createElement(tagName);
-  element.className = className;
-  return element;
+export function div(className) {
+  const div = document.createElement('div');
+  div.className = className;
+  return div;
 }
 
-export function appendTo(child, parent) {
-  parent.appendChild(child);
-  return child;
-}
-
-function cssGet(element, styleName) {
-  return window.getComputedStyle(element)[styleName];
-}
-
-function cssSet(element, styleName, styleValue) {
-  if (typeof styleValue === 'number') {
-    styleValue = styleValue.toString() + 'px';
-  }
-  element.style[styleName] = styleValue;
-  return element;
-}
-
-function cssMultiSet(element, obj) {
-  for (var key in obj) {
-    var val = obj[key];
-    if (typeof val === 'number') {
-      val = val.toString() + 'px';
-    }
-    element.style[key] = val;
-  }
-  return element;
-}
-
-export function css(element, styleNameOrObject, styleValue) {
-  if (typeof styleNameOrObject === 'object') {
-    // multiple set with object
-    return cssMultiSet(element, styleNameOrObject);
-  } else {
-    if (typeof styleValue === 'undefined') {
-      return cssGet(element, styleNameOrObject);
-    } else {
-      return cssSet(element, styleNameOrObject, styleValue);
-    }
-  }
-}
+const elMatches =
+  Element.prototype.matches ||
+  Element.prototype.webkitMatchesSelector ||
+  Element.prototype.msMatchesSelector;
 
 export function matches(element, query) {
-  if (typeof element.matches !== 'undefined') {
-    return element.matches(query);
-  } else {
-    // must be IE11 and Edge
-    return element.msMatchesSelector(query);
+  if (!elMatches) {
+    throw new Error('No element matching method supported');
   }
+
+  return elMatches.call(element, query);
 }
 
 export function remove(element) {
-  if (typeof element.remove !== 'undefined') {
+  if (element.remove) {
     element.remove();
   } else {
     if (element.parentNode) {
@@ -65,7 +28,7 @@ export function remove(element) {
 }
 
 export function queryChildren(element, selector) {
-  return Array.prototype.filter.call(element.childNodes, function(child) {
-    return DOM.matches(child, selector);
-  });
+  return Array.prototype.filter.call(element.childNodes, child =>
+    matches(child, selector)
+  );
 }

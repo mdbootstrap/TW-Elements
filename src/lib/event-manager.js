@@ -1,69 +1,66 @@
-var EventElement = function(element) {
-  this.element = element;
-  this.events = {};
-};
-
-EventElement.prototype.bind = function(eventName, handler) {
-  if (typeof this.events[eventName] === 'undefined') {
-    this.events[eventName] = [];
+class EventElement {
+  constructor(element) {
+    this.element = element;
+    this.handlers = {};
   }
-  this.events[eventName].push(handler);
-  this.element.addEventListener(eventName, handler, false);
-};
 
-EventElement.prototype.unbind = function(eventName, handler) {
-  var isHandlerProvided = typeof handler !== 'undefined';
-  this.events[eventName] = this.events[eventName].filter(function(hdlr) {
-    if (isHandlerProvided && hdlr !== handler) {
-      return true;
+  bind(eventName, handler) {
+    if (typeof this.handlers[eventName] === 'undefined') {
+      this.handlers[eventName] = [];
     }
-    this.element.removeEventListener(eventName, hdlr, false);
-    return false;
-  }, this);
-};
-
-EventElement.prototype.unbindAll = function() {
-  for (var name in this.events) {
-    this.unbind(name);
+    this.handlers[eventName].push(handler);
+    this.element.addEventListener(eventName, handler, false);
   }
-};
 
-var EventManager = function() {
-  this.eventElements = [];
-};
-
-EventManager.prototype.eventElement = function(element) {
-  var ee = this.eventElements.filter(function(eventElement) {
-    return eventElement.element === element;
-  })[0];
-  if (typeof ee === 'undefined') {
-    ee = new EventElement(element);
-    this.eventElements.push(ee);
+  unbind(eventName, target) {
+    this.handlers[eventName] = this.handlers[eventName].filter(handler => {
+      if (target && handler !== target) {
+        return true;
+      }
+      this.element.removeEventListener(eventName, handler, false);
+      return false;
+    });
   }
-  return ee;
-};
 
-EventManager.prototype.bind = function(element, eventName, handler) {
-  this.eventElement(element).bind(eventName, handler);
-};
-
-EventManager.prototype.unbind = function(element, eventName, handler) {
-  this.eventElement(element).unbind(eventName, handler);
-};
-
-EventManager.prototype.unbindAll = function() {
-  for (var i = 0; i < this.eventElements.length; i++) {
-    this.eventElements[i].unbindAll();
+  unbindAll() {
+    for (const name in this.handlers) {
+      this.unbind(name);
+    }
   }
-};
+}
 
-EventManager.prototype.once = function(element, eventName, handler) {
-  var ee = this.eventElement(element);
-  var onceHandler = function(e) {
-    ee.unbind(eventName, onceHandler);
-    handler(e);
-  };
-  ee.bind(eventName, onceHandler);
-};
+export default class EventManager {
+  constructor() {
+    this.eventElements = [];
+  }
 
-export default EventManager;
+  eventElement(element) {
+    let e = this.eventElements.filter(ee => ee.element === element)[0];
+    if (!e) {
+      e = new EventElement(element);
+      this.eventElements.push(e);
+    }
+    return e;
+  }
+
+  bind(element, eventName, handler) {
+    this.eventElement(element).bind(eventName, handler);
+  }
+
+  unbind(element, eventName, handler) {
+    this.eventElement(element).unbind(eventName, handler);
+  }
+
+  unbindAll() {
+    this.eventElements.forEach(e => e.unbindAll());
+  }
+
+  once(element, eventName, handler) {
+    const ee = this.eventElement(element);
+    const onceHandler = evt => {
+      ee.unbind(eventName, onceHandler);
+      handler(evt);
+    };
+    ee.bind(eventName, onceHandler);
+  }
+}

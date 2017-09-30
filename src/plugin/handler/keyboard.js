@@ -1,8 +1,8 @@
-import * as _ from '../../lib/helper';
 import * as DOM from '../../lib/dom';
 import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
+import { isEditable } from '../../lib/util';
 
 function bindKeyboardHandler(element, i) {
   var hovered = false;
@@ -71,7 +71,7 @@ function bindKeyboardHandler(element, i) {
           activeElement = activeElement.shadowRoot.activeElement;
         }
       }
-      if (_.isEditable(activeElement)) {
+      if (isEditable(activeElement)) {
         return;
       }
     }

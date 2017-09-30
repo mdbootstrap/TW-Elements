@@ -1,7 +1,26 @@
-import * as _ from '../../lib/helper';
 import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
+
+function scrollingClasses(axis) {
+  return axis
+    ? ['ps--scrolling-' + axis]
+    : ['ps--scrolling-x', 'ps--scrolling-y'];
+}
+
+function startScrolling(element, axis) {
+  var classes = scrollingClasses(axis);
+  for (var i = 0; i < classes.length; i++) {
+    element.classList.add(classes[i]);
+  }
+}
+
+function stopScrolling(element, axis) {
+  var classes = scrollingClasses(axis);
+  for (var i = 0; i < classes.length; i++) {
+    element.classList.remove(classes[i]);
+  }
+}
 
 function bindSelectionHandler(element, i) {
   function getRangeNode() {
@@ -36,7 +55,7 @@ function bindSelectionHandler(element, i) {
       clearInterval(scrollingLoop);
       scrollingLoop = null;
     }
-    _.stopScrolling(element);
+    stopScrolling(element);
   }
 
   var isSelected = false;
@@ -73,10 +92,10 @@ function bindSelectionHandler(element, i) {
 
       if (mousePosition.x < containerGeometry.left + 3) {
         scrollDiff.left = -5;
-        _.startScrolling(element, 'x');
+        startScrolling(element, 'x');
       } else if (mousePosition.x > containerGeometry.right - 3) {
         scrollDiff.left = 5;
-        _.startScrolling(element, 'x');
+        startScrolling(element, 'x');
       } else {
         scrollDiff.left = 0;
       }
@@ -87,14 +106,14 @@ function bindSelectionHandler(element, i) {
         } else {
           scrollDiff.top = -20;
         }
-        _.startScrolling(element, 'y');
+        startScrolling(element, 'y');
       } else if (mousePosition.y > containerGeometry.bottom - 3) {
         if (mousePosition.y - containerGeometry.bottom + 3 < 5) {
           scrollDiff.top = 5;
         } else {
           scrollDiff.top = 20;
         }
-        _.startScrolling(element, 'y');
+        startScrolling(element, 'y');
       } else {
         scrollDiff.top = 0;
       }
