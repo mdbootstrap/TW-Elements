@@ -33,6 +33,9 @@ function Instance(element, userSettings) {
   i.contentWidth = null;
   i.contentHeight = null;
 
+  const focus = () => element.classList.add('ps--focus');
+  const blur = () => element.classList.remove('ps--focus');
+
   i.isRtl = DOM.css(element, 'direction') === 'rtl';
   i.isNegativeScroll = (function() {
     var originalScrollLeft = element.scrollLeft;
@@ -54,6 +57,8 @@ function Instance(element, userSettings) {
     i.scrollbarXRail
   );
   i.scrollbarX.setAttribute('tabindex', 0);
+  i.event.bind(i.scrollbarX, 'focus', focus);
+  i.event.bind(i.scrollbarX, 'blur', blur);
   i.scrollbarXActive = null;
   i.scrollbarXWidth = null;
   i.scrollbarXLeft = null;
@@ -80,6 +85,8 @@ function Instance(element, userSettings) {
     i.scrollbarYRail
   );
   i.scrollbarY.setAttribute('tabindex', 0);
+  i.event.bind(i.scrollbarY, 'focus', focus);
+  i.event.bind(i.scrollbarY, 'blur', blur);
   i.scrollbarYActive = null;
   i.scrollbarYHeight = null;
   i.scrollbarYTop = null;
