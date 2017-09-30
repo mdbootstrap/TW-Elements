@@ -6,7 +6,6 @@ import dragScrollbar from './handler/drag-scrollbar';
 import keyboard from './handler/keyboard';
 import wheel from './handler/mouse-wheel';
 import touch from './handler/touch';
-import selection from './handler/selection';
 import nativeScrollHandler from './handler/native-scroll';
 
 // Handlers
@@ -16,7 +15,6 @@ var handlers = {
   keyboard,
   wheel,
   touch,
-  selection,
 };
 
 export default function(element, userSettings) {
