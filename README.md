@@ -176,11 +176,9 @@ perfect-scrollbar supports optional parameters.
 
 ### handlers
 
-It is a list of handlers to use to scroll the element.
+It is a list of handlers to scroll the element.
 
 **Default**: `['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch']`
-
-**Disabled by default**: `'selection'`
 
 ### wheelSpeed
 
