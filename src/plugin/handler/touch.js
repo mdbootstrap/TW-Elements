@@ -1,9 +1,8 @@
-import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 import { env } from '../../lib/util';
 
-function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
+function bindTouchHandler(element, i) {
   function shouldPreventDefault(deltaX, deltaY) {
     var scrollTop = element.scrollTop;
     var scrollLeft = element.scrollLeft;
@@ -34,10 +33,10 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
 
   function applyTouchMove(differenceX, differenceY) {
-    updateScroll(element, 'top', element.scrollTop - differenceY);
-    updateScroll(element, 'left', element.scrollLeft - differenceX);
+    updateScroll(i, 'top', element.scrollTop - differenceY);
+    updateScroll(i, 'left', element.scrollLeft - differenceX);
 
-    updateGeometry(element);
+    updateGeometry(i);
   }
 
   var startOffset = {};
@@ -133,7 +132,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       if (i.settings.swipeEasing) {
         clearInterval(easingLoop);
         easingLoop = setInterval(function() {
-          if (!instances.get(element)) {
+          if (i.isInitialized) {
             clearInterval(easingLoop);
             return;
           }
@@ -157,13 +156,13 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     }
   }
 
-  if (supportsTouch) {
+  if (env.supportsTouch) {
     i.event.bind(window, 'touchstart', globalTouchStart);
     i.event.bind(window, 'touchend', globalTouchEnd);
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
     i.event.bind(element, 'touchend', touchEnd);
-  } else if (supportsIePointer) {
+  } else if (env.supportsIePointer) {
     if (window.PointerEvent) {
       i.event.bind(window, 'pointerdown', globalTouchStart);
       i.event.bind(window, 'pointerup', globalTouchEnd);
@@ -180,11 +179,8 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   }
 }
 
-export default function(element) {
-  if (!env.supportsTouch && !env.supportsIePointer) {
-    return;
+export default function(i) {
+  if (env.supportsTouch || env.supportsIePointer) {
+    bindTouchHandler(i.element, i);
   }
-
-  var i = instances.get(element);
-  bindTouchHandler(element, i, env.supportsTouch, env.supportsIePointer);
 }

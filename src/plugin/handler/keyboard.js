@@ -1,5 +1,4 @@
 import * as DOM from '../../lib/dom';
-import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 import { isEditable } from '../../lib/util';
@@ -147,9 +146,9 @@ function bindKeyboardHandler(element, i) {
         return;
     }
 
-    updateScroll(element, 'top', element.scrollTop - deltaY);
-    updateScroll(element, 'left', element.scrollLeft + deltaX);
-    updateGeometry(element);
+    updateScroll(i, 'top', element.scrollTop - deltaY);
+    updateScroll(i, 'left', element.scrollLeft + deltaX);
+    updateGeometry(i);
 
     shouldPrevent = shouldPreventDefault(deltaX, deltaY);
     if (shouldPrevent) {
@@ -158,7 +157,6 @@ function bindKeyboardHandler(element, i) {
   });
 }
 
-export default function(element) {
-  var i = instances.get(element);
-  bindKeyboardHandler(element, i);
+export default function(i) {
+  bindKeyboardHandler(i.element, i);
 }

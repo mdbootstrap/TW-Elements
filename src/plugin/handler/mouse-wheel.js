@@ -1,4 +1,3 @@
-import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 
@@ -115,12 +114,12 @@ function bindMouseWheelHandler(element, i) {
       // deltaX will only be used for horizontal scrolling and deltaY will
       // only be used for vertical scrolling - this is the default
       updateScroll(
-        element,
+        i,
         'top',
         element.scrollTop - deltaY * i.settings.wheelSpeed
       );
       updateScroll(
-        element,
+        i,
         'left',
         element.scrollLeft + deltaX * i.settings.wheelSpeed
       );
@@ -129,13 +128,13 @@ function bindMouseWheelHandler(element, i) {
       // active, so let's scroll vertical bar using both mouse wheel axes
       if (deltaY) {
         updateScroll(
-          element,
+          i,
           'top',
           element.scrollTop - deltaY * i.settings.wheelSpeed
         );
       } else {
         updateScroll(
-          element,
+          i,
           'top',
           element.scrollTop + deltaX * i.settings.wheelSpeed
         );
@@ -146,13 +145,13 @@ function bindMouseWheelHandler(element, i) {
       // wheel axes for horizontal bar
       if (deltaX) {
         updateScroll(
-          element,
+          i,
           'left',
           element.scrollLeft + deltaX * i.settings.wheelSpeed
         );
       } else {
         updateScroll(
-          element,
+          i,
           'left',
           element.scrollLeft - deltaY * i.settings.wheelSpeed
         );
@@ -160,7 +159,7 @@ function bindMouseWheelHandler(element, i) {
       shouldPrevent = true;
     }
 
-    updateGeometry(element);
+    updateGeometry(i);
 
     shouldPrevent = shouldPrevent || shouldPreventDefault(deltaX, deltaY);
     if (shouldPrevent) {
@@ -176,7 +175,6 @@ function bindMouseWheelHandler(element, i) {
   }
 }
 
-export default function(element) {
-  var i = instances.get(element);
-  bindMouseWheelHandler(element, i);
+export default function(i) {
+  bindMouseWheelHandler(i.element, i);
 }

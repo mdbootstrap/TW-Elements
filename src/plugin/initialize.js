@@ -1,4 +1,4 @@
-import * as instances from './instances';
+import Instance from './instance';
 import updateGeometry from './update-geometry';
 
 import clickRail from './handler/click-rail';
@@ -17,20 +17,13 @@ var handlers = {
   touch,
 };
 
-export default function(element, userSettings) {
-  element.classList.add('ps');
+export default function(element, userSettings = {}) {
+  const i = new Instance(element, userSettings);
 
-  // Create a plugin instance.
-  var i = instances.add(
-    element,
-    typeof userSettings === 'object' ? userSettings : {}
-  );
+  i.settings.handlers.forEach(handlerName => handlers[handlerName](i));
 
-  i.settings.handlers.forEach(function(handlerName) {
-    handlers[handlerName](element);
-  });
+  nativeScrollHandler(i);
+  updateGeometry(i);
 
-  nativeScrollHandler(element);
-
-  updateGeometry(element);
+  return i;
 }

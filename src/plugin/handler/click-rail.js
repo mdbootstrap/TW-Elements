@@ -1,4 +1,3 @@
-import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 
@@ -16,12 +15,8 @@ function bindClickRailHandler(element, i) {
       e.pageY - window.pageYOffset - pageOffset(i.scrollbarYRail).top;
     var direction = positionTop > i.scrollbarYTop ? 1 : -1;
 
-    updateScroll(
-      element,
-      'top',
-      element.scrollTop + direction * i.containerHeight
-    );
-    updateGeometry(element);
+    updateScroll(i, 'top', element.scrollTop + direction * i.containerHeight);
+    updateGeometry(i);
 
     e.stopPropagation();
   });
@@ -32,18 +27,13 @@ function bindClickRailHandler(element, i) {
       e.pageX - window.pageXOffset - pageOffset(i.scrollbarXRail).left;
     var direction = positionLeft > i.scrollbarXLeft ? 1 : -1;
 
-    updateScroll(
-      element,
-      'left',
-      element.scrollLeft + direction * i.containerWidth
-    );
-    updateGeometry(element);
+    updateScroll(i, 'left', element.scrollLeft + direction * i.containerWidth);
+    updateGeometry(i);
 
     e.stopPropagation();
   });
 }
 
-export default function(element) {
-  var i = instances.get(element);
-  bindClickRailHandler(element, i);
+export default function(i) {
+  bindClickRailHandler(i.element, i);
 }

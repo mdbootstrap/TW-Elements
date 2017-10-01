@@ -1,6 +1,5 @@
 import * as CSS from '../lib/css';
 import * as DOM from '../lib/dom';
-import * as instances from './instances';
 import updateScroll from './update-scroll';
 import { toInt } from '../lib/util';
 
@@ -68,8 +67,8 @@ function updateCss(element, i) {
   });
 }
 
-export default function(element) {
-  var i = instances.get(element);
+export default function(i) {
+  const element = i.element;
 
   i.containerWidth = element.clientWidth;
   i.containerHeight = element.clientHeight;

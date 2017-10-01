@@ -1,12 +1,12 @@
-import * as instances from './instances';
-
 var createDOMEvent = function(name) {
   var event = document.createEvent('Event');
   event.initEvent(name, true, true);
   return event;
 };
 
-export default function(element, axis, value) {
+export default function(i, axis, value) {
+  const element = i.element;
+
   if (typeof element === 'undefined') {
     throw 'You must provide an element to the update-scroll function';
   }
@@ -28,8 +28,6 @@ export default function(element, axis, value) {
     element.scrollLeft = value = 0; // don't allow negative scroll
     element.dispatchEvent(createDOMEvent('ps-x-reach-start'));
   }
-
-  var i = instances.get(element);
 
   if (axis === 'top' && value >= i.contentHeight - i.containerHeight) {
     // don't allow scroll past container

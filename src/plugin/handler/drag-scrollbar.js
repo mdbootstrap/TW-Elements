@@ -1,6 +1,5 @@
 import * as CSS from '../../lib/css';
 import * as DOM from '../../lib/dom';
-import * as instances from '../instances';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 import { toInt } from '../../lib/util';
@@ -49,12 +48,12 @@ function bindMouseScrollXHandler(element, i) {
           (i.contentWidth - i.containerWidth) /
           (i.containerWidth - i.railXRatio * i.scrollbarXWidth)
       ) - i.negativeScrollAdjustment;
-    updateScroll(element, 'left', scrollLeft);
+    updateScroll(i, 'left', scrollLeft);
   }
 
   var mouseMoveHandler = function(e) {
     updateScrollLeft(e.pageX - currentPageX);
-    updateGeometry(element);
+    updateGeometry(i);
     e.stopPropagation();
     e.preventDefault();
   };
@@ -100,12 +99,12 @@ function bindMouseScrollYHandler(element, i) {
         (i.contentHeight - i.containerHeight) /
         (i.containerHeight - i.railYRatio * i.scrollbarYHeight)
     );
-    updateScroll(element, 'top', scrollTop);
+    updateScroll(i, 'top', scrollTop);
   }
 
   var mouseMoveHandler = function(e) {
     updateScrollTop(e.pageY - currentPageY);
-    updateGeometry(element);
+    updateGeometry(i);
     e.stopPropagation();
     e.preventDefault();
   };
@@ -128,8 +127,7 @@ function bindMouseScrollYHandler(element, i) {
   });
 }
 
-export default function(element) {
-  var i = instances.get(element);
-  bindMouseScrollXHandler(element, i);
-  bindMouseScrollYHandler(element, i);
+export default function(i) {
+  bindMouseScrollXHandler(i.element, i);
+  bindMouseScrollYHandler(i.element, i);
 }
