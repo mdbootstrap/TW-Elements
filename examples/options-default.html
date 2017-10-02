@@ -34,16 +34,14 @@
     <script>
     var $ = document.querySelector.bind(document);
 
-    var container = $('#container');
-
-    var ps = new PerfectScrollbar(container);
+    var ps = new PerfectScrollbar('#container');
 
     function updateSize() {
       var width = parseInt($('#width').value, 10);
       var height = parseInt($('#height').value, 10);
 
-      container.style.width = width + 'px';
-      container.style.height = height + 'px';
+      $('#container').style.width = width + 'px';
+      $('#container').style.height = height + 'px';
 
       ps.update();
     }
