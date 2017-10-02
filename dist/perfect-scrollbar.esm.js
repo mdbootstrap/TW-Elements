@@ -395,172 +395,6 @@ var updateGeometry = function(i) {
   }
 };
 
-var defaultSettings = function () { return ({
-  handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
-  maxScrollbarLength: null,
-  minScrollbarLength: null,
-  scrollXMarginOffset: 0,
-  scrollYMarginOffset: 0,
-  suppressScrollX: false,
-  suppressScrollY: false,
-  swipePropagation: true,
-  swipeEasing: true,
-  useBothWheelAxes: false,
-  wheelPropagation: false,
-  wheelSpeed: 1,
-}); };
-
-var psClassName = 'ps';
-
-var Instance = function Instance(element, userSettings) {
-  var this$1 = this;
-
-  this.element = element;
-
-  element.classList.add(psClassName);
-
-  this.settings = defaultSettings();
-  for (var key in userSettings) {
-    this$1.settings[key] = userSettings[key];
-  }
-
-  this.containerWidth = null;
-  this.containerHeight = null;
-  this.contentWidth = null;
-  this.contentHeight = null;
-
-  var focus = function () { return element.classList.add('ps--focus'); };
-  var blur = function () { return element.classList.remove('ps--focus'); };
-
-  this.isRtl = get(element).direction === 'rtl';
-  this.isNegativeScroll = (function () {
-    var originalScrollLeft = element.scrollLeft;
-    var result = null;
-    element.scrollLeft = -1;
-    result = element.scrollLeft < 0;
-    element.scrollLeft = originalScrollLeft;
-    return result;
-  })();
-  this.negativeScrollAdjustment = this.isNegativeScroll
-    ? element.scrollWidth - element.clientWidth
-    : 0;
-  this.event = new EventManager();
-  this.ownerDocument = element.ownerDocument || document;
-
-  this.scrollbarXRail = div('ps__rail-x');
-  element.appendChild(this.scrollbarXRail);
-  this.scrollbarX = div('ps__thumb-x');
-  this.scrollbarXRail.appendChild(this.scrollbarX);
-  this.scrollbarX.setAttribute('tabindex', 0);
-  this.event.bind(this.scrollbarX, 'focus', focus);
-  this.event.bind(this.scrollbarX, 'blur', blur);
-  this.scrollbarXActive = null;
-  this.scrollbarXWidth = null;
-  this.scrollbarXLeft = null;
-  var railXStyle = get(this.scrollbarXRail);
-  this.scrollbarXBottom = toInt(railXStyle.bottom);
-  this.isScrollbarXUsingBottom =
-    this.scrollbarXBottom === this.scrollbarXBottom; // !isNaN
-  this.scrollbarXTop = this.isScrollbarXUsingBottom
-    ? null
-    : toInt(railXStyle.top);
-  this.railBorderXWidth =
-    toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth);
-  // Set rail to display:block to calculate margins
-  set(this.scrollbarXRail, { display: 'block' });
-  this.railXMarginWidth =
-    toInt(railXStyle.marginLeft) + toInt(railXStyle.marginRight);
-  set(this.scrollbarXRail, { display: '' });
-  this.railXWidth = null;
-  this.railXRatio = null;
-
-  this.scrollbarYRail = div('ps__rail-y');
-  element.appendChild(this.scrollbarYRail);
-  this.scrollbarY = div('ps__thumb-y');
-  this.scrollbarYRail.appendChild(this.scrollbarY);
-  this.scrollbarY.setAttribute('tabindex', 0);
-  this.event.bind(this.scrollbarY, 'focus', focus);
-  this.event.bind(this.scrollbarY, 'blur', blur);
-  this.scrollbarYActive = null;
-  this.scrollbarYHeight = null;
-  this.scrollbarYTop = null;
-  var railYStyle = get(this.scrollbarYRail);
-  this.scrollbarYRight = toInt(railYStyle.right);
-  this.isScrollbarYUsingRight = this.scrollbarYRight === this.scrollbarYRight; // !isNaN
-  this.scrollbarYLeft = this.isScrollbarYUsingRight
-    ? null
-    : toInt(railYStyle.left);
-  this.scrollbarYOuterWidth = this.isRtl
-    ? _.outerWidth(this.scrollbarY)
-    : null;
-  this.railBorderYWidth =
-    toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
-  set(this.scrollbarYRail, { display: 'block' });
-  this.railYMarginHeight =
-    toInt(railYStyle.marginTop) + toInt(railYStyle.marginBottom);
-  set(this.scrollbarYRail, { display: '' });
-  this.railYHeight = null;
-  this.railYRatio = null;
-};
-
-var prototypeAccessors = { isInitialized: { configurable: true } };
-
-prototypeAccessors.isInitialized.get = function () {
-  return this.element.classList.contains(psClassName);
-};
-
-Instance.prototype.update = function update () {
-  // Recalcuate negative scrollLeft adjustment
-  this.negativeScrollAdjustment = this.isNegativeScroll
-    ? this.element.scrollWidth - this.element.clientWidth
-    : 0;
-
-  // Recalculate rail margins
-  set(this.scrollbarXRail, { display: 'block' });
-  set(this.scrollbarYRail, { display: 'block' });
-  this.railXMarginWidth =
-    toInt(get(this.scrollbarXRail).marginLeft) +
-    toInt(get(this.scrollbarXRail).marginRight);
-  this.railYMarginHeight =
-    toInt(get(this.scrollbarYRail).marginTop) +
-    toInt(get(this.scrollbarYRail).marginBottom);
-
-  // Hide scrollbars not to affect scrollWidth and scrollHeight
-  set(this.scrollbarXRail, { display: 'none' });
-  set(this.scrollbarYRail, { display: 'none' });
-
-  updateGeometry(this);
-
-  // Update top/left scroll to trigger events
-  updateScroll(this, 'top', this.element.scrollTop);
-  updateScroll(this, 'left', this.element.scrollLeft);
-
-  set(this.scrollbarXRail, { display: '' });
-  set(this.scrollbarYRail, { display: '' });
-};
-
-Instance.prototype.destroy = function destroy () {
-  this.event.unbindAll();
-  remove(this.scrollbarX);
-  remove(this.scrollbarY);
-  remove(this.scrollbarXRail);
-  remove(this.scrollbarYRail);
-  this.removePsClasses();
-};
-
-Instance.prototype.removePsClasses = function removePsClasses () {
-    var this$1 = this;
-
-  for (var i = 0; i < this.element.classList.length; i++) {
-    var className = this$1.element.classList[i];
-    if (className === 'ps' || className.indexOf('ps-') === 0) {
-      this$1.element.classList.remove(className);
-    }
-  }
-};
-
-Object.defineProperties( Instance.prototype, prototypeAccessors );
-
 function bindClickRailHandler(element, i) {
   function pageOffset(el) {
     return el.getBoundingClientRect();
@@ -1253,7 +1087,21 @@ var nativeScrollHandler = function(i) {
   bindNativeScrollHandler(i.element, i);
 };
 
-// Handlers
+var defaultSettings = function () { return ({
+  handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
+  maxScrollbarLength: null,
+  minScrollbarLength: null,
+  scrollXMarginOffset: 0,
+  scrollYMarginOffset: 0,
+  suppressScrollX: false,
+  suppressScrollY: false,
+  swipePropagation: true,
+  swipeEasing: true,
+  useBothWheelAxes: false,
+  wheelPropagation: false,
+  wheelSpeed: 1,
+}); };
+
 var handlers = {
   'click-rail': clickRail,
   'drag-scrollbar': dragScrollbar,
@@ -1262,19 +1110,187 @@ var handlers = {
   touch: touch,
 };
 
-var initialize = function(element, userSettings) {
-  if ( userSettings === void 0 ) userSettings = {};
+var psClassName = 'ps';
 
-  var i = new Instance(element, userSettings);
+var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
+  if (typeof element === 'string') {
+    this.element = document.querySelector(element);
+  } else {
+    this.element = element;
+  }
 
-  i.settings.handlers.forEach(function (handlerName) { return handlers[handlerName](i); });
+  if (!this.element || !this.element.nodeName) {
+    throw new Error('no element is specified to initialize PerfectScrollbar');
+  }
 
-  nativeScrollHandler(i);
-  updateGeometry(i);
-
-  return i;
+  this.initialize(userSettings);
 };
 
-var index = { initialize: initialize };
+var prototypeAccessors = { isInitialized: { configurable: true } };
 
-export default index;
+PerfectScrollbar.prototype.initialize = function initialize (userSettings) {
+    var this$1 = this;
+    if ( userSettings === void 0 ) userSettings = {};
+
+  if (this.isInitialized) {
+    return;
+  }
+
+  var element = this.element;
+
+  element.classList.add(psClassName);
+
+  this.settings = defaultSettings();
+  for (var key in userSettings) {
+    this$1.settings[key] = userSettings[key];
+  }
+
+  this.containerWidth = null;
+  this.containerHeight = null;
+  this.contentWidth = null;
+  this.contentHeight = null;
+
+  var focus = function () { return element.classList.add('ps--focus'); };
+  var blur = function () { return element.classList.remove('ps--focus'); };
+
+  this.isRtl = get(element).direction === 'rtl';
+  this.isNegativeScroll = (function () {
+    var originalScrollLeft = element.scrollLeft;
+    var result = null;
+    element.scrollLeft = -1;
+    result = element.scrollLeft < 0;
+    element.scrollLeft = originalScrollLeft;
+    return result;
+  })();
+  this.negativeScrollAdjustment = this.isNegativeScroll
+    ? element.scrollWidth - element.clientWidth
+    : 0;
+  this.event = new EventManager();
+  this.ownerDocument = element.ownerDocument || document;
+
+  this.scrollbarXRail = div('ps__rail-x');
+  element.appendChild(this.scrollbarXRail);
+  this.scrollbarX = div('ps__thumb-x');
+  this.scrollbarXRail.appendChild(this.scrollbarX);
+  this.scrollbarX.setAttribute('tabindex', 0);
+  this.event.bind(this.scrollbarX, 'focus', focus);
+  this.event.bind(this.scrollbarX, 'blur', blur);
+  this.scrollbarXActive = null;
+  this.scrollbarXWidth = null;
+  this.scrollbarXLeft = null;
+  var railXStyle = get(this.scrollbarXRail);
+  this.scrollbarXBottom = toInt(railXStyle.bottom);
+  this.isScrollbarXUsingBottom =
+    this.scrollbarXBottom === this.scrollbarXBottom; // !isNaN
+  this.scrollbarXTop = this.isScrollbarXUsingBottom
+    ? null
+    : toInt(railXStyle.top);
+  this.railBorderXWidth =
+    toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth);
+  // Set rail to display:block to calculate margins
+  set(this.scrollbarXRail, { display: 'block' });
+  this.railXMarginWidth =
+    toInt(railXStyle.marginLeft) + toInt(railXStyle.marginRight);
+  set(this.scrollbarXRail, { display: '' });
+  this.railXWidth = null;
+  this.railXRatio = null;
+
+  this.scrollbarYRail = div('ps__rail-y');
+  element.appendChild(this.scrollbarYRail);
+  this.scrollbarY = div('ps__thumb-y');
+  this.scrollbarYRail.appendChild(this.scrollbarY);
+  this.scrollbarY.setAttribute('tabindex', 0);
+  this.event.bind(this.scrollbarY, 'focus', focus);
+  this.event.bind(this.scrollbarY, 'blur', blur);
+  this.scrollbarYActive = null;
+  this.scrollbarYHeight = null;
+  this.scrollbarYTop = null;
+  var railYStyle = get(this.scrollbarYRail);
+  this.scrollbarYRight = toInt(railYStyle.right);
+  this.isScrollbarYUsingRight = this.scrollbarYRight === this.scrollbarYRight; // !isNaN
+  this.scrollbarYLeft = this.isScrollbarYUsingRight
+    ? null
+    : toInt(railYStyle.left);
+  this.scrollbarYOuterWidth = this.isRtl
+    ? _.outerWidth(this.scrollbarY)
+    : null;
+  this.railBorderYWidth =
+    toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
+  set(this.scrollbarYRail, { display: 'block' });
+  this.railYMarginHeight =
+    toInt(railYStyle.marginTop) + toInt(railYStyle.marginBottom);
+  set(this.scrollbarYRail, { display: '' });
+  this.railYHeight = null;
+  this.railYRatio = null;
+
+  this.settings.handlers.forEach(function (handlerName) { return handlers[handlerName](this$1); });
+
+  nativeScrollHandler(this);
+  updateGeometry(this);
+};
+
+prototypeAccessors.isInitialized.get = function () {
+  return this.element.classList.contains(psClassName);
+};
+
+PerfectScrollbar.prototype.update = function update () {
+  if (!this.isInitialized) {
+    return;
+  }
+
+  // Recalcuate negative scrollLeft adjustment
+  this.negativeScrollAdjustment = this.isNegativeScroll
+    ? this.element.scrollWidth - this.element.clientWidth
+    : 0;
+
+  // Recalculate rail margins
+  set(this.scrollbarXRail, { display: 'block' });
+  set(this.scrollbarYRail, { display: 'block' });
+  this.railXMarginWidth =
+    toInt(get(this.scrollbarXRail).marginLeft) +
+    toInt(get(this.scrollbarXRail).marginRight);
+  this.railYMarginHeight =
+    toInt(get(this.scrollbarYRail).marginTop) +
+    toInt(get(this.scrollbarYRail).marginBottom);
+
+  // Hide scrollbars not to affect scrollWidth and scrollHeight
+  set(this.scrollbarXRail, { display: 'none' });
+  set(this.scrollbarYRail, { display: 'none' });
+
+  updateGeometry(this);
+
+  // Update top/left scroll to trigger events
+  updateScroll(this, 'top', this.element.scrollTop);
+  updateScroll(this, 'left', this.element.scrollLeft);
+
+  set(this.scrollbarXRail, { display: '' });
+  set(this.scrollbarYRail, { display: '' });
+};
+
+PerfectScrollbar.prototype.destroy = function destroy () {
+  if (!this.isInitialized) {
+    return;
+  }
+
+  this.event.unbindAll();
+  remove(this.scrollbarX);
+  remove(this.scrollbarY);
+  remove(this.scrollbarXRail);
+  remove(this.scrollbarYRail);
+  this.removePsClasses();
+};
+
+PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
+    var this$1 = this;
+
+  for (var i = 0; i < this.element.classList.length; i++) {
+    var className = this$1.element.classList[i];
+    if (className === 'ps' || className.indexOf('ps-') === 0) {
+      this$1.element.classList.remove(className);
+    }
+  }
+};
+
+Object.defineProperties( PerfectScrollbar.prototype, prototypeAccessors );
+
+export default PerfectScrollbar;
