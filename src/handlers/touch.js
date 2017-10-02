@@ -1,6 +1,6 @@
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
-import { env } from '../../lib/util';
+import { env } from '../lib/util';
 
 function bindTouchHandler(element, i) {
   function shouldPreventDefault(deltaX, deltaY) {

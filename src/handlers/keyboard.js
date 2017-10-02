@@ -1,7 +1,7 @@
-import * as DOM from '../../lib/dom';
+import * as DOM from '../lib/dom';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
-import { isEditable } from '../../lib/util';
+import { isEditable } from '../lib/util';
 
 function bindKeyboardHandler(element, i) {
   var hovered = false;

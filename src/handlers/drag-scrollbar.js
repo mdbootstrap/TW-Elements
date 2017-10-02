@@ -1,8 +1,8 @@
-import * as CSS from '../../lib/css';
-import * as DOM from '../../lib/dom';
+import * as CSS from '../lib/css';
+import * as DOM from '../lib/dom';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
-import { toInt } from '../../lib/util';
+import { toInt } from '../lib/util';
 
 function scrollingClasses(axis) {
   return axis

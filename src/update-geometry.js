@@ -1,7 +1,7 @@
-import * as CSS from '../lib/css';
-import * as DOM from '../lib/dom';
+import * as CSS from './lib/css';
+import * as DOM from './lib/dom';
 import updateScroll from './update-scroll';
-import { toInt } from '../lib/util';
+import { toInt } from './lib/util';
 
 function getThumbSize(i, thumbSize) {
   if (i.settings.minScrollbarLength) {
