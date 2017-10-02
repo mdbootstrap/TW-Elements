@@ -4,6 +4,9 @@ Minimalistic but perfect custom scrollbar plugin
 
 [![Travis CI](https://travis-ci.org/utatti/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/utatti/perfect-scrollbar)
 
+***This is documentation for the [`next`](https://github.com/utatti/perfect-scrollbar/tree/next) branch.
+To read documentation for released versions, please visit [`master`](https://github.com/utatti/perfect-scrollbar/tree/master).***
+
 ## Why perfect-scrollbar?
 
 perfect-scrollbar is minimalistic but *perfect* (for me, and maybe for most
@@ -122,8 +125,8 @@ the main CSS is imported.
 Using CJS or ES modules:
 
 ```js
-const ps = require('perfect-scrollbar');
-import ps from 'perfect-scrollbar';
+const PerfectScrollbar = require('perfect-scrollbar');
+import PerfectScrollbar from 'perfect-scrollbar';
 ```
 
 Or in browser:
@@ -132,17 +135,20 @@ Or in browser:
 <script src="dist/perfect-scrollbar.js"></script>
 ```
 
-To initialise the plugin, use `ps.initialize`.
+To initialise:
 
 ```js
 const container = document.querySelector('#container');
-ps.initialize(container);
+const ps = new PerfectScrollbar(container);
+
+// or just with selector string
+const ps = new PerfectScrollbar('#container');
 ```
 
 It can be initialised with optional parameters.
 
 ```js
-ps.initialize(container, {
+const ps = new PerfectScrollbar('#container', {
   wheelSpeed: 2,
   wheelPropagation: true,
   minScrollbarLength: 20
@@ -152,23 +158,23 @@ ps.initialize(container, {
 If the size of your container or content changes, call `update`.
 
 ```js
-ps.update(container);
+ps.update();
 ```
 
 If you want to destroy the scrollbar, use `destroy`.
 
 ```js
-ps.destroy(container);
+ps.destroy();
 ```
 
 If you want to scroll to somewhere, just update `scrollTop`.
 
 ```js
+const container = document.querySelector('#container');
 container.scrollTop = 0;
 ```
 
-You can also get information about how to use the plugin from code in the
-`examples` directory of the source tree.
+You can also get information about how to use the plugin from code in [`examples/`](examples).
 
 ## Optional parameters
 
