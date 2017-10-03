@@ -28,6 +28,7 @@ It's on the [GitHub Pages](http://utatti.github.com/perfect-scrollbar/).
 
 * [Install](#install)
 * [Before using perfect-scrollbar](#before-using-perfect-scrollbar)
+* [Caveats](#caveats)
 * [How to use](#how-to-use)
 * [Optional parameters](#optional-parameters)
 * [Events](#events)
@@ -92,7 +93,6 @@ The following requirements should meet.
 
 * the container must have a `position` style.
 * the container must be a normal container element.
-  * **PS may not work well in `body`, `textarea`, `iframe` or flexbox**.
 
 The following requirements are included in the basic CSS, but please keep in
 mind when you'd like to change the CSS files.
@@ -102,10 +102,17 @@ mind when you'd like to change the CSS files.
 * the scrollbar-x must have `bottom` or `top`, and the scrollbar-y must have
   `right` or `left`.
 
-Please keep in mind that perfect-scrollbar won't completely emulate native
-scrolls. Scroll hooking is generally considered as a bad practice, and
+Finally, scroll hooking is generally considered as a bad practice, and
 perfect-scrollbar should be used carefully. Unless custom scroll is really
-needed, using native scroll is recommended.
+needed, using browser-native scroll is always recommended.
+
+## Caveats
+
+perfect-scrollbar emulates some scrolls, but not all of the kinds. It also *does not* work
+in some situations. You can find these cases in [Caveats](https://github.com/utatti/perfect-scrollbar/wiki/Caveats).
+Basically, items listed in the caveats are hacky to implement and may not be
+implemented in the future. If the features are really needed, please consider
+using browser-native scroll.
 
 ## How to use
 
