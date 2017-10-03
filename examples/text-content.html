@@ -3,8 +3,8 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
       #description {
         border: 1px solid gray;
@@ -16,7 +16,7 @@
     </style>
   </head>
   <body>
-    <div id="description" class="wrapper">
+    <div id="description">
       <p>The command takes options applicable</p>
       <p>The command takes options applicable</p>
       <p>The command takes options applicable</p>
@@ -30,30 +30,18 @@
     </div>
     <button id='redraw'>Redraw</button>
     <script>
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        Ps.initialize($('#description'), {
-          useSelectionScroll: true
-        });
-      };
-      $('#redraw').addEventListener('click', function () {
-        var oldHtml = $('#description').innerHTML;
-        $('#description').innerHTML = '';
-        setTimeout(function () {
-          $('#description').innerHTML = '' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>' +
-            '<p>The command takes options applicable</p>';
-          Ps.update($('#description'));
-        }, 500);
-      });
+    var $ = document.querySelector.bind(document);
+
+    var ps = new PerfectScrollbar('#description');
+
+    $('#redraw').addEventListener('click', function () {
+      var oldHtml = $('#description').innerHTML;
+      $('#description').innerHTML = '';
+      setTimeout(function () {
+        $('#description').innerHTML = oldHtml;
+        ps.update();
+      }, 500);
+    });
     </script>
   </body>
 </html>
