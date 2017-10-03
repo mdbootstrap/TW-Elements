@@ -28,7 +28,7 @@ export function remove(element) {
 }
 
 export function queryChildren(element, selector) {
-  return Array.prototype.filter.call(element.childNodes, child =>
+  return Array.prototype.filter.call(element.children, child =>
     matches(child, selector)
   );
 }
