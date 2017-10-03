@@ -139,6 +139,13 @@ export default function(i) {
         return;
     }
 
+    if (i.settings.suppressScrollX && deltaX !== 0) {
+      return;
+    }
+    if (i.settings.suppressScrollY && deltaY !== 0) {
+      return;
+    }
+
     updateScroll(i, 'top', element.scrollTop - deltaY);
     updateScroll(i, 'left', element.scrollLeft + deltaX);
     updateGeometry(i);
