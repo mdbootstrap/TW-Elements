@@ -39,14 +39,14 @@ const psClassName = 'ps';
 export default class PerfectScrollbar {
   constructor(element, userSettings = {}) {
     if (typeof element === 'string') {
-      this.element = document.querySelector(element);
-    } else {
-      this.element = element;
+      element = document.querySelector(element);
     }
 
-    if (!this.element || !this.element.nodeName) {
+    if (!element || !element.nodeName) {
       throw new Error('no element is specified to initialize PerfectScrollbar');
     }
+
+    this.element = element;
 
     element.classList.add(psClassName);
 
