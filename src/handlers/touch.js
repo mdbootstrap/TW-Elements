@@ -2,12 +2,18 @@ import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 import { env } from '../lib/util';
 
-function bindTouchHandler(element, i) {
+export default function(i) {
+  if (!env.supportsTouch && !env.supportsIePointer) {
+    return;
+  }
+
+  const element = i.element;
+
   function shouldPreventDefault(deltaX, deltaY) {
-    var scrollTop = element.scrollTop;
-    var scrollLeft = element.scrollLeft;
-    var magnitudeX = Math.abs(deltaX);
-    var magnitudeY = Math.abs(deltaY);
+    const scrollTop = element.scrollTop;
+    const scrollLeft = element.scrollLeft;
+    const magnitudeX = Math.abs(deltaX);
+    const magnitudeY = Math.abs(deltaY);
 
     if (magnitudeY > magnitudeX) {
       // user is perhaps trying to swipe up/down the page
@@ -39,12 +45,12 @@ function bindTouchHandler(element, i) {
     updateGeometry(i);
   }
 
-  var startOffset = {};
-  var startTime = 0;
-  var speed = {};
-  var easingLoop = null;
-  var inGlobalTouch = false;
-  var inLocalTouch = false;
+  let startOffset = {};
+  let startTime = 0;
+  let speed = {};
+  let easingLoop = null;
+  let inGlobalTouch = false;
+  let inLocalTouch = false;
 
   function globalTouchStart() {
     inGlobalTouch = true;
@@ -61,6 +67,7 @@ function bindTouchHandler(element, i) {
       return e;
     }
   }
+
   function shouldHandle(e) {
     if (e.pointerType && e.pointerType === 'pen' && e.buttons === 0) {
       return false;
@@ -77,42 +84,46 @@ function bindTouchHandler(element, i) {
     }
     return false;
   }
+
   function touchStart(e) {
-    if (shouldHandle(e)) {
-      inLocalTouch = true;
-
-      var touch = getTouch(e);
-
-      startOffset.pageX = touch.pageX;
-      startOffset.pageY = touch.pageY;
-
-      startTime = new Date().getTime();
-
-      if (easingLoop !== null) {
-        clearInterval(easingLoop);
-      }
-
-      e.stopPropagation();
+    if (!shouldHandle(e)) {
+      return;
     }
+
+    inLocalTouch = true;
+
+    const touch = getTouch(e);
+
+    startOffset.pageX = touch.pageX;
+    startOffset.pageY = touch.pageY;
+
+    startTime = new Date().getTime();
+
+    if (easingLoop !== null) {
+      clearInterval(easingLoop);
+    }
+
+    e.stopPropagation();
   }
+
   function touchMove(e) {
     if (!inLocalTouch && i.settings.swipePropagation) {
       touchStart(e);
     }
     if (!inGlobalTouch && inLocalTouch && shouldHandle(e)) {
-      var touch = getTouch(e);
+      const touch = getTouch(e);
 
-      var currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
+      const currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
 
-      var differenceX = currentOffset.pageX - startOffset.pageX;
-      var differenceY = currentOffset.pageY - startOffset.pageY;
+      const differenceX = currentOffset.pageX - startOffset.pageX;
+      const differenceY = currentOffset.pageY - startOffset.pageY;
 
       applyTouchMove(differenceX, differenceY);
       startOffset = currentOffset;
 
-      var currentTime = new Date().getTime();
+      const currentTime = new Date().getTime();
 
-      var timeGap = currentTime - startTime;
+      const timeGap = currentTime - startTime;
       if (timeGap > 0) {
         speed.x = differenceX / timeGap;
         speed.y = differenceY / timeGap;
@@ -176,11 +187,5 @@ function bindTouchHandler(element, i) {
       i.event.bind(element, 'MSPointerMove', touchMove);
       i.event.bind(element, 'MSPointerUp', touchEnd);
     }
-  }
-}
-
-export default function(i) {
-  if (env.supportsTouch || env.supportsIePointer) {
-    bindTouchHandler(i.element, i);
   }
 }

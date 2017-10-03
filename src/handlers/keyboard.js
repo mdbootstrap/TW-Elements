@@ -3,18 +3,15 @@ import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 import { isEditable } from '../lib/util';
 
-function bindKeyboardHandler(element, i) {
-  var hovered = false;
-  i.event.bind(element, 'mouseenter', function() {
-    hovered = true;
-  });
-  i.event.bind(element, 'mouseleave', function() {
-    hovered = false;
-  });
+export default function(i) {
+  const element = i.element;
 
-  var shouldPrevent = false;
+  const elementHovered = () => DOM.matches(element, ':hover');
+  const scrollbarFocused = () =>
+    DOM.matches(i.scrollbarX, ':focus') || DOM.matches(i.scrollbarY, ':focus');
+
   function shouldPreventDefault(deltaX, deltaY) {
-    var scrollTop = element.scrollTop;
+    const scrollTop = element.scrollTop;
     if (deltaX === 0) {
       if (!i.scrollbarYActive) {
         return false;
@@ -27,7 +24,7 @@ function bindKeyboardHandler(element, i) {
       }
     }
 
-    var scrollLeft = element.scrollLeft;
+    const scrollLeft = element.scrollLeft;
     if (deltaY === 0) {
       if (!i.scrollbarXActive) {
         return false;
@@ -42,7 +39,7 @@ function bindKeyboardHandler(element, i) {
     return true;
   }
 
-  i.event.bind(i.ownerDocument, 'keydown', function(e) {
+  i.event.bind(i.ownerDocument, 'keydown', e => {
     if (
       (e.isDefaultPrevented && e.isDefaultPrevented()) ||
       e.defaultPrevented
@@ -50,15 +47,11 @@ function bindKeyboardHandler(element, i) {
       return;
     }
 
-    var focused =
-      DOM.matches(i.scrollbarX, ':focus') ||
-      DOM.matches(i.scrollbarY, ':focus');
-
-    if (!hovered && !focused) {
+    if (!elementHovered() && !scrollbarFocused()) {
       return;
     }
 
-    var activeElement = document.activeElement
+    let activeElement = document.activeElement
       ? document.activeElement
       : i.ownerDocument.activeElement;
     if (activeElement) {
@@ -75,8 +68,8 @@ function bindKeyboardHandler(element, i) {
       }
     }
 
-    var deltaX = 0;
-    var deltaY = 0;
+    let deltaX = 0;
+    let deltaY = 0;
 
     switch (e.which) {
       case 37: // left
@@ -150,13 +143,8 @@ function bindKeyboardHandler(element, i) {
     updateScroll(i, 'left', element.scrollLeft + deltaX);
     updateGeometry(i);
 
-    shouldPrevent = shouldPreventDefault(deltaX, deltaY);
-    if (shouldPrevent) {
+    if (shouldPreventDefault(deltaX, deltaY)) {
       e.preventDefault();
     }
   });
-}
-
-export default function(i) {
-  bindKeyboardHandler(i.element, i);
 }

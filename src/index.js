@@ -10,7 +10,6 @@ import dragScrollbar from './handlers/drag-scrollbar';
 import keyboard from './handlers/keyboard';
 import wheel from './handlers/mouse-wheel';
 import touch from './handlers/touch';
-import nativeScrollHandler from './handlers/native-scroll';
 
 const defaultSettings = () => ({
   handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
@@ -146,7 +145,7 @@ export default class PerfectScrollbar {
 
     this.settings.handlers.forEach(handlerName => handlers[handlerName](this));
 
-    nativeScrollHandler(this);
+    this.event.bind(this.element, 'scroll', () => updateGeometry(this));
     updateGeometry(this);
   }
 

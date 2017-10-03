@@ -1,11 +1,17 @@
+import * as CSS from '../lib/css';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 
-function bindMouseWheelHandler(element, i) {
-  var shouldPrevent = false;
+const childClass = 'ps__child';
+const childConsumeClass = 'ps__child--consume';
+
+export default function(i) {
+  const element = i.element;
+
+  let shouldPrevent = false;
 
   function shouldPreventDefault(deltaX, deltaY) {
-    var scrollTop = element.scrollTop;
+    const scrollTop = element.scrollTop;
     if (deltaX === 0) {
       if (!i.scrollbarYActive) {
         return false;
@@ -18,7 +24,7 @@ function bindMouseWheelHandler(element, i) {
       }
     }
 
-    var scrollLeft = element.scrollLeft;
+    const scrollLeft = element.scrollLeft;
     if (deltaY === 0) {
       if (!i.scrollbarXActive) {
         return false;
@@ -34,8 +40,8 @@ function bindMouseWheelHandler(element, i) {
   }
 
   function getDeltaFromEvent(e) {
-    var deltaX = e.deltaX;
-    var deltaY = -1 * e.deltaY;
+    let deltaX = e.deltaX;
+    let deltaY = -1 * e.deltaY;
 
     if (typeof deltaX === 'undefined' || typeof deltaY === 'undefined') {
       // OS X Safari
@@ -63,12 +69,17 @@ function bindMouseWheelHandler(element, i) {
   }
 
   function shouldBeConsumedByChild(deltaX, deltaY) {
-    var child = element.querySelector(
-      'textarea:hover, select[multiple]:hover, .ps-child:hover'
+    const child = element.querySelector(
+      `textarea:hover, select[multiple]:hover, .${childClass}:hover`
     );
+
     if (child) {
-      var style = window.getComputedStyle(child);
-      var overflow = [style.overflow, style.overflowX, style.overflowY].join(
+      if (child.classList.contains(childConsumeClass)) {
+        return true;
+      }
+
+      const styles = CSS.get(child);
+      const overflow = [style.overflow, style.overflowX, style.overflowY].join(
         ''
       );
 
@@ -77,7 +88,7 @@ function bindMouseWheelHandler(element, i) {
         return false;
       }
 
-      var maxScrollTop = child.scrollHeight - child.clientHeight;
+      const maxScrollTop = child.scrollHeight - child.clientHeight;
       if (maxScrollTop > 0) {
         if (
           !(child.scrollTop === 0 && deltaY > 0) &&
@@ -86,7 +97,7 @@ function bindMouseWheelHandler(element, i) {
           return true;
         }
       }
-      var maxScrollLeft = child.scrollLeft - child.clientWidth;
+      const maxScrollLeft = child.scrollLeft - child.clientWidth;
       if (maxScrollLeft > 0) {
         if (
           !(child.scrollLeft === 0 && deltaX < 0) &&
@@ -100,16 +111,13 @@ function bindMouseWheelHandler(element, i) {
   }
 
   function mousewheelHandler(e) {
-    var delta = getDeltaFromEvent(e);
-
-    var deltaX = delta[0];
-    var deltaY = delta[1];
+    const [deltaX, deltaY] = getDeltaFromEvent(e);
 
     if (shouldBeConsumedByChild(deltaX, deltaY)) {
       return;
     }
 
-    shouldPrevent = false;
+    let shouldPrevent = false;
     if (!i.settings.useBothWheelAxes) {
       // deltaX will only be used for horizontal scrolling and deltaY will
       // only be used for vertical scrolling - this is the default
@@ -173,8 +181,4 @@ function bindMouseWheelHandler(element, i) {
   } else if (typeof window.onmousewheel !== 'undefined') {
     i.event.bind(element, 'mousewheel', mousewheelHandler);
   }
-}
-
-export default function(i) {
-  bindMouseWheelHandler(i.element, i);
 }

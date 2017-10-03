@@ -4,33 +4,26 @@ import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 import { toInt } from '../lib/util';
 
+export default function(i) {
+  bindMouseScrollXHandler(i);
+  bindMouseScrollYHandler(i);
+}
+
 function scrollingClasses(axis) {
   return axis
     ? ['ps--scrolling-' + axis]
     : ['ps--scrolling-x', 'ps--scrolling-y'];
 }
 
-function startScrolling(element, axis) {
-  var classes = scrollingClasses(axis);
-  for (var i = 0; i < classes.length; i++) {
-    element.classList.add(classes[i]);
-  }
-}
+function bindMouseScrollXHandler(i) {
+  const element = i.element;
 
-function stopScrolling(element, axis) {
-  var classes = scrollingClasses(axis);
-  for (var i = 0; i < classes.length; i++) {
-    element.classList.remove(classes[i]);
-  }
-}
-
-function bindMouseScrollXHandler(element, i) {
-  var currentLeft = null;
-  var currentPageX = null;
+  let currentLeft = null;
+  let currentPageX = null;
 
   function updateScrollLeft(deltaX) {
-    var newLeft = currentLeft + deltaX * i.railXRatio;
-    var maxLeft =
+    const newLeft = currentLeft + deltaX * i.railXRatio;
+    const maxLeft =
       Math.max(0, i.scrollbarXRail.getBoundingClientRect().left) +
       i.railXRatio * (i.railXWidth - i.scrollbarXWidth);
 
@@ -42,7 +35,7 @@ function bindMouseScrollXHandler(element, i) {
       i.scrollbarXLeft = newLeft;
     }
 
-    var scrollLeft =
+    const scrollLeft =
       toInt(
         i.scrollbarXLeft *
           (i.contentWidth - i.containerWidth) /
@@ -51,22 +44,22 @@ function bindMouseScrollXHandler(element, i) {
     updateScroll(i, 'left', scrollLeft);
   }
 
-  var mouseMoveHandler = function(e) {
+  function mouseMoveHandler(e) {
     updateScrollLeft(e.pageX - currentPageX);
     updateGeometry(i);
     e.stopPropagation();
     e.preventDefault();
-  };
+  }
 
-  var mouseUpHandler = function() {
-    stopScrolling(element, 'x');
+  function mouseUpHandler() {
+    scrollingClasses('x').forEach(c => element.classList.remove(c));
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
-  };
+  }
 
-  i.event.bind(i.scrollbarX, 'mousedown', function(e) {
+  i.event.bind(i.scrollbarX, 'mousedown', e => {
     currentPageX = e.pageX;
     currentLeft = toInt(CSS.get(i.scrollbarX).left) * i.railXRatio;
-    startScrolling(element, 'x');
+    scrollingClasses('x').forEach(c => element.classList.add(c));
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
@@ -76,13 +69,15 @@ function bindMouseScrollXHandler(element, i) {
   });
 }
 
-function bindMouseScrollYHandler(element, i) {
-  var currentTop = null;
-  var currentPageY = null;
+function bindMouseScrollYHandler(i) {
+  const element = i.element;
+
+  let currentTop = null;
+  let currentPageY = null;
 
   function updateScrollTop(deltaY) {
-    var newTop = currentTop + deltaY * i.railYRatio;
-    var maxTop =
+    const newTop = currentTop + deltaY * i.railYRatio;
+    const maxTop =
       Math.max(0, i.scrollbarYRail.getBoundingClientRect().top) +
       i.railYRatio * (i.railYHeight - i.scrollbarYHeight);
 
@@ -94,7 +89,7 @@ function bindMouseScrollYHandler(element, i) {
       i.scrollbarYTop = newTop;
     }
 
-    var scrollTop = toInt(
+    const scrollTop = toInt(
       i.scrollbarYTop *
         (i.contentHeight - i.containerHeight) /
         (i.containerHeight - i.railYRatio * i.scrollbarYHeight)
@@ -102,22 +97,22 @@ function bindMouseScrollYHandler(element, i) {
     updateScroll(i, 'top', scrollTop);
   }
 
-  var mouseMoveHandler = function(e) {
+  function mouseMoveHandler(e) {
     updateScrollTop(e.pageY - currentPageY);
     updateGeometry(i);
     e.stopPropagation();
     e.preventDefault();
-  };
+  }
 
-  var mouseUpHandler = function() {
-    stopScrolling(element, 'y');
+  function mouseUpHandler() {
+    scrollingClasses('y').forEach(c => element.classList.remove(c));
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
-  };
+  }
 
-  i.event.bind(i.scrollbarY, 'mousedown', function(e) {
+  i.event.bind(i.scrollbarY, 'mousedown', e => {
     currentPageY = e.pageY;
     currentTop = toInt(CSS.get(i.scrollbarY).top) * i.railYRatio;
-    startScrolling(element, 'y');
+    scrollingClasses('y').forEach(c => element.classList.add(c));
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
@@ -125,9 +120,4 @@ function bindMouseScrollYHandler(element, i) {
     e.stopPropagation();
     e.preventDefault();
   });
-}
-
-export default function(i) {
-  bindMouseScrollXHandler(i.element, i);
-  bindMouseScrollYHandler(i.element, i);
 }
