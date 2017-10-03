@@ -150,7 +150,7 @@ export default function(i) {
     element.classList.remove('ps--active-x');
     i.scrollbarXWidth = 0;
     i.scrollbarXLeft = 0;
-    updateScroll(element, 'left', 0);
+    updateScroll(i, 'left', 0);
   }
   if (i.scrollbarYActive) {
     element.classList.add('ps--active-y');
@@ -158,6 +158,6 @@ export default function(i) {
     element.classList.remove('ps--active-y');
     i.scrollbarYHeight = 0;
     i.scrollbarYTop = 0;
-    updateScroll(element, 'top', 0);
+    updateScroll(i, 'top', 0);
   }
 }
