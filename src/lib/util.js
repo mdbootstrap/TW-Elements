@@ -26,13 +26,10 @@ export function outerWidth(element) {
 }
 
 export const env = {
-  isWebKit:
-    typeof document !== 'undefined' &&
-    'WebkitAppearance' in document.documentElement.style,
+  isWebKit: document && 'WebkitAppearance' in document.documentElement.style,
   supportsTouch:
-    typeof window !== 'undefined' &&
+    window &&
     ('ontouchstart' in window ||
       (window.DocumentTouch && document instanceof window.DocumentTouch)),
-  supportsIePointer:
-    typeof window !== 'undefined' && window.navigator.msMaxTouchPoints !== null,
+  supportsIePointer: navigator && navigator.msMaxTouchPoints,
 };
