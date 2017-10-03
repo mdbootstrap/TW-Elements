@@ -140,12 +140,6 @@ EventManager.prototype.once = function once (element, eventName, handler) {
   ee.bind(eventName, onceHandler);
 };
 
-var createDOMEvent = function(name) {
-  var event = document.createEvent('Event');
-  event.initEvent(name, true, true);
-  return event;
-};
-
 var updateScroll = function(i, axis, value) {
   var element = i.element;
 
@@ -163,12 +157,12 @@ var updateScroll = function(i, axis, value) {
 
   if (axis === 'top' && value <= 0) {
     element.scrollTop = value = 0; // don't allow negative scroll
-    element.dispatchEvent(createDOMEvent('ps-y-reach-start'));
+    element.dispatchEvent(new Event('ps-y-reach-start'));
   }
 
   if (axis === 'left' && value <= 0) {
     element.scrollLeft = value = 0; // don't allow negative scroll
-    element.dispatchEvent(createDOMEvent('ps-x-reach-start'));
+    element.dispatchEvent(new Event('ps-x-reach-start'));
   }
 
   if (axis === 'top' && value >= i.contentHeight - i.containerHeight) {
@@ -180,7 +174,7 @@ var updateScroll = function(i, axis, value) {
     } else {
       element.scrollTop = value;
     }
-    element.dispatchEvent(createDOMEvent('ps-y-reach-end'));
+    element.dispatchEvent(new Event('ps-y-reach-end'));
   }
 
   if (axis === 'left' && value >= i.contentWidth - i.containerWidth) {
@@ -192,7 +186,7 @@ var updateScroll = function(i, axis, value) {
     } else {
       element.scrollLeft = value;
     }
-    element.dispatchEvent(createDOMEvent('ps-x-reach-end'));
+    element.dispatchEvent(new Event('ps-x-reach-end'));
   }
 
   if (i.lastTop === undefined) {
@@ -204,29 +198,29 @@ var updateScroll = function(i, axis, value) {
   }
 
   if (axis === 'top' && value < i.lastTop) {
-    element.dispatchEvent(createDOMEvent('ps-scroll-up'));
+    element.dispatchEvent(new Event('ps-scroll-up'));
   }
 
   if (axis === 'top' && value > i.lastTop) {
-    element.dispatchEvent(createDOMEvent('ps-scroll-down'));
+    element.dispatchEvent(new Event('ps-scroll-down'));
   }
 
   if (axis === 'left' && value < i.lastLeft) {
-    element.dispatchEvent(createDOMEvent('ps-scroll-left'));
+    element.dispatchEvent(new Event('ps-scroll-left'));
   }
 
   if (axis === 'left' && value > i.lastLeft) {
-    element.dispatchEvent(createDOMEvent('ps-scroll-right'));
+    element.dispatchEvent(new Event('ps-scroll-right'));
   }
 
   if (axis === 'top' && value !== i.lastTop) {
     element.scrollTop = i.lastTop = value;
-    element.dispatchEvent(createDOMEvent('ps-scroll-y'));
+    element.dispatchEvent(new Event('ps-scroll-y'));
   }
 
   if (axis === 'left' && value !== i.lastLeft) {
     element.scrollLeft = i.lastLeft = value;
-    element.dispatchEvent(createDOMEvent('ps-scroll-x'));
+    element.dispatchEvent(new Event('ps-scroll-x'));
   }
 };
 
@@ -246,15 +240,12 @@ function isEditable(el) {
 
 
 var env = {
-  isWebKit:
-    typeof document !== 'undefined' &&
-    'WebkitAppearance' in document.documentElement.style,
+  isWebKit: document && 'WebkitAppearance' in document.documentElement.style,
   supportsTouch:
-    typeof window !== 'undefined' &&
+    window &&
     ('ontouchstart' in window ||
       (window.DocumentTouch && document instanceof window.DocumentTouch)),
-  supportsIePointer:
-    typeof window !== 'undefined' && window.navigator.msMaxTouchPoints !== null,
+  supportsIePointer: navigator && navigator.msMaxTouchPoints,
 };
 
 function getThumbSize(i, thumbSize) {
