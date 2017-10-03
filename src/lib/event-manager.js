@@ -27,6 +27,12 @@ class EventElement {
       this.unbind(name);
     }
   }
+
+  get isEmpty() {
+    return Object.keys(this.handlers).every(
+      key => this.handlers[key].length === 0
+    );
+  }
 }
 
 export default class EventManager {
@@ -35,12 +41,12 @@ export default class EventManager {
   }
 
   eventElement(element) {
-    let e = this.eventElements.filter(ee => ee.element === element)[0];
-    if (!e) {
-      e = new EventElement(element);
-      this.eventElements.push(e);
+    let ee = this.eventElements.filter(ee => ee.element === element)[0];
+    if (!ee) {
+      ee = new EventElement(element);
+      this.eventElements.push(ee);
     }
-    return e;
+    return ee;
   }
 
   bind(element, eventName, handler) {
@@ -48,11 +54,18 @@ export default class EventManager {
   }
 
   unbind(element, eventName, handler) {
-    this.eventElement(element).unbind(eventName, handler);
+    const ee = this.eventElement(element);
+    ee.unbind(eventName, handler);
+
+    if (ee.isEmpty) {
+      // remove
+      this.eventElements.splice(this.eventElements.indexOf(ee), 1);
+    }
   }
 
   unbindAll() {
     this.eventElements.forEach(e => e.unbindAll());
+    this.eventElements = [];
   }
 
   once(element, eventName, handler) {

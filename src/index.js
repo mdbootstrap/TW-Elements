@@ -37,7 +37,7 @@ const handlers = {
 const psClassName = 'ps';
 
 export default class PerfectScrollbar {
-  constructor(element, userSettings) {
+  constructor(element, userSettings = {}) {
     if (typeof element === 'string') {
       this.element = document.querySelector(element);
     } else {
@@ -47,16 +47,6 @@ export default class PerfectScrollbar {
     if (!this.element || !this.element.nodeName) {
       throw new Error('no element is specified to initialize PerfectScrollbar');
     }
-
-    this.initialize(userSettings);
-  }
-
-  initialize(userSettings = {}) {
-    if (this.isInitialized) {
-      return;
-    }
-
-    const element = this.element;
 
     element.classList.add(psClassName);
 
@@ -198,6 +188,13 @@ export default class PerfectScrollbar {
     DOM.remove(this.scrollbarXRail);
     DOM.remove(this.scrollbarYRail);
     this.removePsClasses();
+
+    // unset elements
+    this.element = null;
+    this.scrollbarX = null;
+    this.scrollbarY = null;
+    this.scrollbarXRail = null;
+    this.scrollbarYRail = null;
   }
 
   removePsClasses() {
