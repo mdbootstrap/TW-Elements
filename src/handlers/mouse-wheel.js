@@ -1,6 +1,7 @@
 import * as CSS from '../lib/css';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
+import { env } from '../lib/util';
 
 const childClass = 'ps__child';
 const childConsumeClass = 'ps__child--consume';
@@ -69,6 +70,11 @@ export default function(i) {
   }
 
   function shouldBeConsumedByChild(deltaX, deltaY) {
+    // FIXME: this is a workaround for <select> issue in FF and IE #571
+    if (!env.isWebKit && element.querySelector('select:focus')) {
+      return true;
+    }
+
     const child = element.querySelector(
       `textarea:hover, select[multiple]:hover, .${childClass}:hover`
     );
