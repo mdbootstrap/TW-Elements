@@ -141,88 +141,84 @@ EventManager.prototype.once = function once (element, eventName, handler) {
 };
 
 var updateScroll = function(i, axis, value) {
+  var fields;
+  if (axis === 'top') {
+    fields = [
+      'contentHeight',
+      'containerHeight',
+      'scrollTop',
+      'y',
+      'up',
+      'down' ];
+  } else if (axis === 'left') {
+    fields = [
+      'contentWidth',
+      'containerWidth',
+      'scrollLeft',
+      'x',
+      'left',
+      'right' ];
+  } else {
+    throw new Error('A proper axis should be provided');
+  }
+
+  updateScroll$1(i, value, fields);
+};
+
+function updateScroll$1(
+  i,
+  value,
+  ref
+) {
+  var contentHeight = ref[0];
+  var containerHeight = ref[1];
+  var scrollTop = ref[2];
+  var y = ref[3];
+  var up = ref[4];
+  var down = ref[5];
+
   var element = i.element;
 
-  if (typeof element === 'undefined') {
-    throw 'You must provide an element to the update-scroll function';
+  var reach = 0; // -1 for start, +1 for end, 0 for none
+
+  // don't allow negative scroll offset
+  if (value <= 0) {
+    value = 0;
+    reach = -1;
   }
 
-  if (typeof axis === 'undefined') {
-    throw 'You must provide an axis to the update-scroll function';
-  }
+  // don't allow scroll past container
+  if (value >= i[contentHeight] - i[containerHeight]) {
+    value = i[contentHeight] - i[containerHeight];
 
-  if (typeof value === 'undefined') {
-    throw 'You must provide a value to the update-scroll function';
-  }
-
-  if (axis === 'top' && value <= 0) {
-    element.scrollTop = value = 0; // don't allow negative scroll
-    element.dispatchEvent(new Event('ps-y-reach-start'));
-  }
-
-  if (axis === 'left' && value <= 0) {
-    element.scrollLeft = value = 0; // don't allow negative scroll
-    element.dispatchEvent(new Event('ps-x-reach-start'));
-  }
-
-  if (axis === 'top' && value >= i.contentHeight - i.containerHeight) {
-    // don't allow scroll past container
-    value = i.contentHeight - i.containerHeight;
-    if (value - element.scrollTop <= 2) {
-      // mitigates rounding errors on non-subpixel scroll values
-      value = element.scrollTop;
-    } else {
-      element.scrollTop = value;
+    // mitigates rounding errors on non-subpixel scroll values
+    if (value - element[scrollTop] <= 2) {
+      value = element[scrollTop];
     }
-    element.dispatchEvent(new Event('ps-y-reach-end'));
+
+    reach = 1;
   }
 
-  if (axis === 'left' && value >= i.contentWidth - i.containerWidth) {
-    // don't allow scroll past container
-    value = i.contentWidth - i.containerWidth;
-    if (value - element.scrollLeft <= 2) {
-      // mitigates rounding errors on non-subpixel scroll values
-      value = element.scrollLeft;
+  var diff = element[scrollTop] - value;
+
+  if (diff) {
+    element.dispatchEvent(new Event(("ps-scroll-" + y)));
+
+    if (diff > 0) {
+      element.dispatchEvent(new Event(("ps-scroll-" + up)));
     } else {
-      element.scrollLeft = value;
+      element.dispatchEvent(new Event(("ps-scroll-" + down)));
     }
-    element.dispatchEvent(new Event('ps-x-reach-end'));
-  }
 
-  if (i.lastTop === undefined) {
-    i.lastTop = element.scrollTop;
-  }
+    element[scrollTop] = value;
 
-  if (i.lastLeft === undefined) {
-    i.lastLeft = element.scrollLeft;
+    if (reach) {
+      element.dispatchEvent(
+        new Event(("ps-" + y + "-reach-" + (reach > 0 ? 'end' : 'start')))
+      );
+    }
   }
-
-  if (axis === 'top' && value < i.lastTop) {
-    element.dispatchEvent(new Event('ps-scroll-up'));
-  }
-
-  if (axis === 'top' && value > i.lastTop) {
-    element.dispatchEvent(new Event('ps-scroll-down'));
-  }
-
-  if (axis === 'left' && value < i.lastLeft) {
-    element.dispatchEvent(new Event('ps-scroll-left'));
-  }
-
-  if (axis === 'left' && value > i.lastLeft) {
-    element.dispatchEvent(new Event('ps-scroll-right'));
-  }
-
-  if (axis === 'top' && value !== i.lastTop) {
-    element.scrollTop = i.lastTop = value;
-    element.dispatchEvent(new Event('ps-scroll-y'));
-  }
-
-  if (axis === 'left' && value !== i.lastLeft) {
-    element.scrollLeft = i.lastLeft = value;
-    element.dispatchEvent(new Event('ps-scroll-x'));
-  }
-};
+}
 
 function toInt(x) {
   return parseInt(x, 10) || 0;
@@ -248,70 +244,6 @@ var env = {
   supportsIePointer: navigator && navigator.msMaxTouchPoints,
 };
 
-function getThumbSize(i, thumbSize) {
-  if (i.settings.minScrollbarLength) {
-    thumbSize = Math.max(thumbSize, i.settings.minScrollbarLength);
-  }
-  if (i.settings.maxScrollbarLength) {
-    thumbSize = Math.min(thumbSize, i.settings.maxScrollbarLength);
-  }
-  return thumbSize;
-}
-
-function updateCss(element, i) {
-  var xRailOffset = { width: i.railXWidth };
-  if (i.isRtl) {
-    xRailOffset.left =
-      i.negativeScrollAdjustment +
-      element.scrollLeft +
-      i.containerWidth -
-      i.contentWidth;
-  } else {
-    xRailOffset.left = element.scrollLeft;
-  }
-  if (i.isScrollbarXUsingBottom) {
-    xRailOffset.bottom = i.scrollbarXBottom - element.scrollTop;
-  } else {
-    xRailOffset.top = i.scrollbarXTop + element.scrollTop;
-  }
-  set(i.scrollbarXRail, xRailOffset);
-
-  var yRailOffset = { top: element.scrollTop, height: i.railYHeight };
-  if (i.isScrollbarYUsingRight) {
-    if (i.isRtl) {
-      yRailOffset.right =
-        i.contentWidth -
-        (i.negativeScrollAdjustment + element.scrollLeft) -
-        i.scrollbarYRight -
-        i.scrollbarYOuterWidth;
-    } else {
-      yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
-    }
-  } else {
-    if (i.isRtl) {
-      yRailOffset.left =
-        i.negativeScrollAdjustment +
-        element.scrollLeft +
-        i.containerWidth * 2 -
-        i.contentWidth -
-        i.scrollbarYLeft -
-        i.scrollbarYOuterWidth;
-    } else {
-      yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
-    }
-  }
-  set(i.scrollbarYRail, yRailOffset);
-
-  set(i.scrollbarX, {
-    left: i.scrollbarXLeft,
-    width: i.scrollbarXWidth - i.railBorderXWidth,
-  });
-  set(i.scrollbarY, {
-    top: i.scrollbarYTop,
-    height: i.scrollbarYHeight - i.railBorderYWidth,
-  });
-}
-
 var updateGeometry = function(i) {
   var element = i.element;
 
@@ -320,23 +252,14 @@ var updateGeometry = function(i) {
   i.contentWidth = element.scrollWidth;
   i.contentHeight = element.scrollHeight;
 
-  var existingRails;
   if (!element.contains(i.scrollbarXRail)) {
-    existingRails = queryChildren(element, '.ps__rail-x');
-    if (existingRails.length > 0) {
-      existingRails.forEach(function(rail) {
-        remove(rail);
-      });
-    }
+    // clean up and append
+    queryChildren(element, '.ps__rail-x').forEach(function (el) { return remove(el); });
     element.appendChild(i.scrollbarXRail);
   }
   if (!element.contains(i.scrollbarYRail)) {
-    existingRails = queryChildren(element, '.ps__rail-y');
-    if (existingRails.length > 0) {
-      existingRails.forEach(function(rail) {
-        remove(rail);
-      });
-    }
+    // clean up and append
+    queryChildren(element, '.ps__rail-y').forEach(function (el) { return remove(el); });
     element.appendChild(i.scrollbarYRail);
   }
 
@@ -406,6 +329,70 @@ var updateGeometry = function(i) {
     updateScroll(i, 'top', 0);
   }
 };
+
+function getThumbSize(i, thumbSize) {
+  if (i.settings.minScrollbarLength) {
+    thumbSize = Math.max(thumbSize, i.settings.minScrollbarLength);
+  }
+  if (i.settings.maxScrollbarLength) {
+    thumbSize = Math.min(thumbSize, i.settings.maxScrollbarLength);
+  }
+  return thumbSize;
+}
+
+function updateCss(element, i) {
+  var xRailOffset = { width: i.railXWidth };
+  if (i.isRtl) {
+    xRailOffset.left =
+      i.negativeScrollAdjustment +
+      element.scrollLeft +
+      i.containerWidth -
+      i.contentWidth;
+  } else {
+    xRailOffset.left = element.scrollLeft;
+  }
+  if (i.isScrollbarXUsingBottom) {
+    xRailOffset.bottom = i.scrollbarXBottom - element.scrollTop;
+  } else {
+    xRailOffset.top = i.scrollbarXTop + element.scrollTop;
+  }
+  set(i.scrollbarXRail, xRailOffset);
+
+  var yRailOffset = { top: element.scrollTop, height: i.railYHeight };
+  if (i.isScrollbarYUsingRight) {
+    if (i.isRtl) {
+      yRailOffset.right =
+        i.contentWidth -
+        (i.negativeScrollAdjustment + element.scrollLeft) -
+        i.scrollbarYRight -
+        i.scrollbarYOuterWidth;
+    } else {
+      yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
+    }
+  } else {
+    if (i.isRtl) {
+      yRailOffset.left =
+        i.negativeScrollAdjustment +
+        element.scrollLeft +
+        i.containerWidth * 2 -
+        i.contentWidth -
+        i.scrollbarYLeft -
+        i.scrollbarYOuterWidth;
+    } else {
+      yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
+    }
+  }
+  set(i.scrollbarYRail, yRailOffset);
+
+  set(i.scrollbarX, {
+    left: i.scrollbarXLeft,
+    width: i.scrollbarXWidth - i.railBorderXWidth,
+  });
+  set(i.scrollbarY, {
+    top: i.scrollbarYTop,
+    height: i.scrollbarYHeight - i.railBorderYWidth,
+  });
+}
 
 var clickRail = function(i) {
   var element = i.element;
@@ -774,6 +761,11 @@ var wheel = function(i) {
   }
 
   function shouldBeConsumedByChild(deltaX, deltaY) {
+    // FIXME: this is a workaround for <select> issue in FF and IE #571
+    if (!env.isWebKit && element.querySelector('select:focus')) {
+      return true;
+    }
+
     var child = element.querySelector(
       ("textarea:hover, select[multiple]:hover, ." + childClass + ":hover")
     );
@@ -897,7 +889,7 @@ var touch = function(i) {
 
   var element = i.element;
 
-  function shouldPreventDefault(deltaX, deltaY) {
+  function shouldStopOrPrevent(deltaX, deltaY) {
     var scrollTop = element.scrollTop;
     var scrollLeft = element.scrollLeft;
     var magnitudeX = Math.abs(deltaX);
@@ -910,7 +902,11 @@ var touch = function(i) {
         (deltaY < 0 && scrollTop === i.contentHeight - i.containerHeight) ||
         (deltaY > 0 && scrollTop === 0)
       ) {
-        return !i.settings.swipePropagation;
+        // set prevent for mobile Chrome refresh
+        return {
+          stop: !i.settings.swipePropagation,
+          prevent: window.scrollY === 0,
+        };
       }
     } else if (magnitudeX > magnitudeY) {
       // user is perhaps trying to swipe left/right across the page
@@ -919,11 +915,11 @@ var touch = function(i) {
         (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth) ||
         (deltaX > 0 && scrollLeft === 0)
       ) {
-        return !i.settings.swipePropagation;
+        return { stop: !i.settings.swipePropagation, prevent: true };
       }
     }
 
-    return true;
+    return { stop: true, prevent: true };
   }
 
   function applyTouchMove(differenceX, differenceY) {
@@ -1018,10 +1014,11 @@ var touch = function(i) {
         startTime = currentTime;
       }
 
-      if (shouldPreventDefault(differenceX, differenceY)) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
+      var ref = shouldStopOrPrevent(differenceX, differenceY);
+      var stop = ref.stop;
+      var prevent = ref.prevent;
+      if (stop) { e.stopPropagation(); }
+      if (prevent) { e.preventDefault(); }
     }
   }
   function touchEnd() {
