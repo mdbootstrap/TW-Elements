@@ -9,7 +9,7 @@ export default function(i) {
 
   const element = i.element;
 
-  function shouldPreventDefault(deltaX, deltaY) {
+  function shouldStopOrPrevent(deltaX, deltaY) {
     const scrollTop = element.scrollTop;
     const scrollLeft = element.scrollLeft;
     const magnitudeX = Math.abs(deltaX);
@@ -22,7 +22,11 @@ export default function(i) {
         (deltaY < 0 && scrollTop === i.contentHeight - i.containerHeight) ||
         (deltaY > 0 && scrollTop === 0)
       ) {
-        return !i.settings.swipePropagation;
+        // set prevent for mobile Chrome refresh
+        return {
+          stop: !i.settings.swipePropagation,
+          prevent: window.scrollY === 0,
+        };
       }
     } else if (magnitudeX > magnitudeY) {
       // user is perhaps trying to swipe left/right across the page
@@ -31,11 +35,11 @@ export default function(i) {
         (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth) ||
         (deltaX > 0 && scrollLeft === 0)
       ) {
-        return !i.settings.swipePropagation;
+        return { stop: !i.settings.swipePropagation, prevent: true };
       }
     }
 
-    return true;
+    return { stop: true, prevent: true };
   }
 
   function applyTouchMove(differenceX, differenceY) {
@@ -130,10 +134,9 @@ export default function(i) {
         startTime = currentTime;
       }
 
-      if (shouldPreventDefault(differenceX, differenceY)) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
+      const { stop, prevent } = shouldStopOrPrevent(differenceX, differenceY);
+      if (stop) e.stopPropagation();
+      if (prevent) e.preventDefault();
     }
   }
   function touchEnd() {
