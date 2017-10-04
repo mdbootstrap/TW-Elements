@@ -334,13 +334,14 @@ way to fix an issue.
 
 ## IE Support
 
-The plugin is developed to work in modern MS browsers, specifically IE
-11 and Edge. When there is any issue, please [file it](https://github.com/utatti/perfect-scrollbar/issues).
+The plugin is developed to work in modern MS browsers including Edge and IE11,
+but may have some issues in IE11 mainly because of IE rendering bug concerning
+sync update on scroll properties. The problem is mentioned in
+[Caveats](https://github.com/utatti/perfect-scrollbar/wiki/Caveats) too.
 
-**The patches to fix problems in IE<=10 won't be accepted.**
-
-When old IEs should be supported, please fork the project and make patches
-personally.
+IE<11 is not supported, and patches to fix problems in IE<=10 will not be
+accepted. When old IEs should be supported, please fork the project and make
+modification locally.
 
 ## License
 
