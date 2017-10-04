@@ -12,7 +12,7 @@
 /*
  * Scrollbar rail styles
  */
-.ps > .ps__rail-x {
+.ps__rail-x {
   display: none;
   opacity: 0;
   transition: background-color .2s linear, opacity .2s linear;
@@ -24,7 +24,7 @@
   position: absolute;
 }
 
-.ps > .ps__rail-y {
+.ps__rail-y {
   display: none;
   opacity: 0;
   transition: background-color .2s linear, opacity .2s linear;
@@ -36,25 +36,25 @@
   position: absolute;
 }
 
-.ps.ps--active-x > .ps__rail-x,
-.ps.ps--active-y > .ps__rail-y {
+.ps--active-x > .ps__rail-x,
+.ps--active-y > .ps__rail-y {
   display: block;
   background-color: transparent;
 }
 
 .ps:hover > .ps__rail-x,
 .ps:hover > .ps__rail-y,
-.ps.ps--focus > .ps__rail-x,
-.ps.ps--focus > .ps__rail-y {
+.ps--focus > .ps__rail-x,
+.ps--focus > .ps__rail-y {
   opacity: 0.6;
 }
 
-.ps.ps--scrolling-x > .ps__rail-x,
-.ps.ps--scrolling-y > .ps__rail-y,
-.ps > .ps__rail-x:hover,
-.ps > .ps__rail-y:hover,
-.ps > .ps__rail-x:focus,
-.ps > .ps__rail-y:focus {
+.ps--scrolling-x > .ps__rail-x,
+.ps--scrolling-y > .ps__rail-y,
+.ps__rail-x:hover,
+.ps__rail-y:hover,
+.ps__rail-x:focus,
+.ps__rail-y:focus {
   background-color: #eee;
   opacity: 0.9;
 }
@@ -62,7 +62,7 @@
 /*
  * Scrollbar thumb styles
  */
-.ps > .ps__rail-x > .ps__thumb-x {
+.ps__thumb-x {
   background-color: #aaa;
   border-radius: 6px;
   transition: background-color .2s linear, height .2s ease-in-out;
@@ -74,7 +74,7 @@
   position: absolute;
 }
 
-.ps > .ps__rail-y > .ps__thumb-y {
+.ps__thumb-y {
   background-color: #aaa;
   border-radius: 6px;
   transition: background-color .2s linear, width .2s ease-in-out;
@@ -86,16 +86,16 @@
   position: absolute;
 }
 
-.ps > .ps__rail-x:hover > .ps__thumb-x,
-.ps > .ps__rail-x:focus > .ps__thumb-x,
-.ps.ps--scrolling-x > .ps__rail-x > .ps__thumb-x {
+.ps__rail-x:hover > .ps__thumb-x,
+.ps__rail-x:focus > .ps__thumb-x,
+.ps--scrolling-x > .ps__rail-x > .ps__thumb-x {
   background-color: #999;
   height: 11px;
 }
 
-.ps > .ps__rail-y:hover > .ps__thumb-y,
-.ps > .ps__rail-y:focus > .ps__thumb-y,
-.ps.ps--scrolling-y > .ps__rail-y > .ps__thumb-y {
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps--scrolling-y > .ps__rail-y > .ps__thumb-y {
   background-color: #999;
   width: 11px;
 }
