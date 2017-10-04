@@ -1,83 +1,74 @@
 export default function(i, axis, value) {
+  let fields;
+  if (axis === 'top') {
+    fields = [
+      'contentHeight',
+      'containerHeight',
+      'scrollTop',
+      'y',
+      'up',
+      'down',
+    ];
+  } else if (axis === 'left') {
+    fields = [
+      'contentWidth',
+      'containerWidth',
+      'scrollLeft',
+      'x',
+      'left',
+      'right',
+    ];
+  } else {
+    throw new Error('A proper axis should be provided');
+  }
+
+  updateScroll(i, value, fields);
+}
+
+function updateScroll(
+  i,
+  value,
+  [contentHeight, containerHeight, scrollTop, y, up, down]
+) {
   const element = i.element;
 
-  if (typeof element === 'undefined') {
-    throw 'You must provide an element to the update-scroll function';
+  let reach = 0; // -1 for start, +1 for end, 0 for none
+
+  // don't allow negative scroll offset
+  if (value <= 0) {
+    value = 0;
+    reach = -1;
   }
 
-  if (typeof axis === 'undefined') {
-    throw 'You must provide an axis to the update-scroll function';
-  }
+  // don't allow scroll past container
+  if (value >= i[contentHeight] - i[containerHeight]) {
+    value = i[contentHeight] - i[containerHeight];
 
-  if (typeof value === 'undefined') {
-    throw 'You must provide a value to the update-scroll function';
-  }
-
-  if (axis === 'top' && value <= 0) {
-    element.scrollTop = value = 0; // don't allow negative scroll
-    element.dispatchEvent(new Event('ps-y-reach-start'));
-  }
-
-  if (axis === 'left' && value <= 0) {
-    element.scrollLeft = value = 0; // don't allow negative scroll
-    element.dispatchEvent(new Event('ps-x-reach-start'));
-  }
-
-  if (axis === 'top' && value >= i.contentHeight - i.containerHeight) {
-    // don't allow scroll past container
-    value = i.contentHeight - i.containerHeight;
-    if (value - element.scrollTop <= 2) {
-      // mitigates rounding errors on non-subpixel scroll values
-      value = element.scrollTop;
-    } else {
-      element.scrollTop = value;
+    // mitigates rounding errors on non-subpixel scroll values
+    if (value - element[scrollTop] <= 2) {
+      value = element[scrollTop];
     }
-    element.dispatchEvent(new Event('ps-y-reach-end'));
+
+    reach = 1;
   }
 
-  if (axis === 'left' && value >= i.contentWidth - i.containerWidth) {
-    // don't allow scroll past container
-    value = i.contentWidth - i.containerWidth;
-    if (value - element.scrollLeft <= 2) {
-      // mitigates rounding errors on non-subpixel scroll values
-      value = element.scrollLeft;
+  let diff = element[scrollTop] - value;
+
+  if (diff) {
+    element.dispatchEvent(new Event(`ps-scroll-${y}`));
+
+    if (diff > 0) {
+      element.dispatchEvent(new Event(`ps-scroll-${up}`));
     } else {
-      element.scrollLeft = value;
+      element.dispatchEvent(new Event(`ps-scroll-${down}`));
     }
-    element.dispatchEvent(new Event('ps-x-reach-end'));
-  }
 
-  if (i.lastTop === undefined) {
-    i.lastTop = element.scrollTop;
-  }
+    element[scrollTop] = value;
 
-  if (i.lastLeft === undefined) {
-    i.lastLeft = element.scrollLeft;
-  }
-
-  if (axis === 'top' && value < i.lastTop) {
-    element.dispatchEvent(new Event('ps-scroll-up'));
-  }
-
-  if (axis === 'top' && value > i.lastTop) {
-    element.dispatchEvent(new Event('ps-scroll-down'));
-  }
-
-  if (axis === 'left' && value < i.lastLeft) {
-    element.dispatchEvent(new Event('ps-scroll-left'));
-  }
-
-  if (axis === 'left' && value > i.lastLeft) {
-    element.dispatchEvent(new Event('ps-scroll-right'));
-  }
-
-  if (axis === 'top' && value !== i.lastTop) {
-    element.scrollTop = i.lastTop = value;
-    element.dispatchEvent(new Event('ps-scroll-y'));
-  }
-
-  if (axis === 'left' && value !== i.lastLeft) {
-    element.scrollLeft = i.lastLeft = value;
-    element.dispatchEvent(new Event('ps-scroll-x'));
+    if (reach) {
+      element.dispatchEvent(
+        new Event(`ps-${y}-reach-${reach > 0 ? 'end' : 'start'}`)
+      );
+    }
   }
 }
