@@ -30,7 +30,7 @@ It's on the [GitHub Pages](http://utatti.github.com/perfect-scrollbar/).
 * [Before using perfect-scrollbar](#before-using-perfect-scrollbar)
 * [Caveats](#caveats)
 * [How to use](#how-to-use)
-* [Optional parameters](#optional-parameters)
+* [Options](#options)
 * [Events](#events)
 * [Helpdesk](#helpdesk)
 * [IE Support](#ie-support)
@@ -72,22 +72,10 @@ You can fork the following JSFiddles for testing and experimenting purposes:
 
 #### Unofficial sources
 
-The followings are not maintained officially. If there are issues of the
-following sources, please ask and resolve in each repository.
-
-###### CDNs
-
-* [cdnjs](http://www.cdnjs.com/libraries/jquery.perfect-scrollbar)
-* [JSDelivr](https://www.jsdelivr.com/projects/perfect-scrollbar)
-
-###### Other projects
-
-* [perfect-scrollbar-rails gem](https://github.com/YourCursus/perfect-scrollbar-rails)
+Sources not mentioned above are not maintained officially. If there are issues
+of the following sources, please ask and resolve in each repository.
 
 ## Before using perfect-scrollbar
-
-***Please beware that it is a bad practice to handle scroll events via JS. It
-should be avoided when possible.***
 
 The following requirements should meet.
 
@@ -123,7 +111,8 @@ the main CSS is imported.
 <style>
   #container {
     position: relative;
-    height: 100%; /* Or whatever you want (e.g. 400px) */
+    width: 600px;
+    height: 400px;
   }
 </style>
 <link rel="stylesheet" href="css/perfect-scrollbar.css">
@@ -152,7 +141,7 @@ const ps = new PerfectScrollbar(container);
 const ps = new PerfectScrollbar('#container');
 ```
 
-It can be initialised with optional parameters.
+It can be initialised with [options](#options).
 
 ```js
 const ps = new PerfectScrollbar('#container', {
@@ -183,78 +172,76 @@ container.scrollTop = 0;
 
 You can also get information about how to use the plugin from code in [`examples/`](examples).
 
-## Optional parameters
+## Options
 
-perfect-scrollbar supports optional parameters.
-
-### handlers
+### `handlers {String[]}`
 
 It is a list of handlers to scroll the element.
 
 **Default**: `['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch']`
 
-### wheelSpeed
+### `wheelSpeed {Number}`
 
 The scroll speed applied to mousewheel event.
 
 **Default**: `1`
 
-### wheelPropagation
+### `wheelPropagation {Boolean}`
 
 If this option is true, when the scroll reaches the end of the side, mousewheel
 event will be propagated to parent element.
 
 **Default**: `false`
 
-### swipePropagation
+### `swipePropagation {Boolean}`
 
 If this option is true, when the scroll reaches the end of the side, touch
 scrolling will be propagated to parent element.
 
 **Default**: `true`
 
-### swipeEasing
+### `swipeEasing {Boolean}`
 
 If this option is true, swipe scrolling will be eased.
 
 **Default**: `true`
 
-### minScrollbarLength
+### `minScrollbarLength {Number?}`
 
 When set to an integer value, the thumb part of the scrollbar will not shrink
 below that number of pixels.
 
 **Default**: `null`
 
-### maxScrollbarLength
+### `maxScrollbarLength {Number?}`
 
 When set to an integer value, the thumb part of the scrollbar will not expand
 over that number of pixels.
 
 **Default**: `null`
 
-### useBothWheelAxes
+### `useBothWheelAxes {Boolean}`
 
 When set to true, and only one (vertical or horizontal) scrollbar is visible
 then both vertical and horizontal scrolling will affect the scrollbar.
 
 **Default**: `false`
 
-### suppressScrollX
+### `suppressScrollX {Boolean}`
 
 When set to true, the scroll bar in X axis will not be available, regardless of
 the content width.
 
 **Default**: `false`
 
-### suppressScrollY
+### `suppressScrollY {Boolean}`
 
 When set to true, the scroll bar in Y axis will not be available, regardless of
 the content height.
 
 **Default**: `false`
 
-### scrollXMarginOffset
+### `scrollXMarginOffset {Number}`
 
 The number of pixels the content width can surpass the container width without
 enabling the X axis scroll bar. Allows some "wiggle room" or "offset break", so
@@ -262,7 +249,7 @@ that X axis scroll bar is not enabled just because of a few pixels.
 
 **Default**: `0`
 
-### scrollYMarginOffset
+### `scrollYMarginOffset {Number}`
 
 The number of pixels the content height can surpass the container height without
 enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so
@@ -274,44 +261,44 @@ that Y axis scroll bar is not enabled just because of a few pixels.
 
 perfect-scrollbar dispatches custom events.
 
-### ps-scroll-y
+### `ps-scroll-y`
 
 This event fires when the y-axis is scrolled in either direction.
 
-### ps-scroll-x
+### `ps-scroll-x`
 
 This event fires when the x-axis is scrolled in either direction.
 
-### ps-scroll-up
+### `ps-scroll-up`
 
 This event fires when scrolling upwards.
 
-### ps-scroll-down
+### `ps-scroll-down`
 
 This event fires when scrolling downwards.
 
-### ps-scroll-left
+### `ps-scroll-left`
 
 This event fires when scrolling to the left.
 
-### ps-scroll-right
+### `ps-scroll-right`
 
 This event fires when scrolling to the right.
 
-### ps-y-reach-start
+### `ps-y-reach-start`
 
 This event fires when scrolling reaches the start of the y-axis.
 
-### ps-y-reach-end
+### `ps-y-reach-end`
 
 This event fires when scrolling reaches the end of the y-axis (useful for
 infinite scroll).
 
-### ps-x-reach-start
+### `ps-x-reach-start`
 
 This event fires when scrolling reaches the start of the x-axis.
 
-### ps-x-reach-end
+### `ps-x-reach-end`
 
 This event fires when scrolling reaches the end of the x-axis.
 
