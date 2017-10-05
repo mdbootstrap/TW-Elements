@@ -12,11 +12,11 @@ To read documentation for released versions, please visit [`master`](https://git
 perfect-scrollbar is minimalistic but *perfect* (for me, and maybe for most
 developers) scrollbar plugin.
 
-* No implicit style change on original DOM elements
-* No change on the original design layout
+* No change on design layout
+* No manipulation on DOM tree
 * Use plain `scrollTop` and `scrollLeft`
-* Scrollbar style is (nearly) fully customizable
-* Efficient update on container layout change
+* Scrollbar style is fully customizable
+* Efficient update on layout change
 
 I hope you love it!
 
