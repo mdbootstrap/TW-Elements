@@ -9,12 +9,6 @@ export default function(i) {
   bindMouseScrollYHandler(i);
 }
 
-function scrollingClasses(axis) {
-  return axis
-    ? ['ps--scrolling-' + axis]
-    : ['ps--scrolling-x', 'ps--scrolling-y'];
-}
-
 function bindMouseScrollXHandler(i) {
   const element = i.element;
 
@@ -52,14 +46,12 @@ function bindMouseScrollXHandler(i) {
   }
 
   function mouseUpHandler() {
-    scrollingClasses('x').forEach(c => element.classList.remove(c));
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
 
   i.event.bind(i.scrollbarX, 'mousedown', e => {
     currentPageX = e.pageX;
     currentLeft = toInt(CSS.get(i.scrollbarX).left) * i.railXRatio;
-    scrollingClasses('x').forEach(c => element.classList.add(c));
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
@@ -105,14 +97,12 @@ function bindMouseScrollYHandler(i) {
   }
 
   function mouseUpHandler() {
-    scrollingClasses('y').forEach(c => element.classList.remove(c));
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
 
   i.event.bind(i.scrollbarY, 'mousedown', e => {
     currentPageY = e.pageY;
     currentTop = toInt(CSS.get(i.scrollbarY).top) * i.railYRatio;
-    scrollingClasses('y').forEach(c => element.classList.add(c));
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);

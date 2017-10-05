@@ -1,3 +1,20 @@
+let scrollingClassTimeout = { x: null, y: null };
+function setScrollingClass(element, y) {
+  const cls = `ps--scrolling-${y}`;
+
+  if (element.classList.contains(cls)) {
+    clearTimeout(scrollingClassTimeout[y]);
+  } else {
+    element.classList.add(cls);
+  }
+
+  // 1s for threshold
+  scrollingClassTimeout[y] = setTimeout(
+    () => element.classList.remove(cls),
+    1000
+  );
+}
+
 export default function(i, axis, value) {
   let fields;
   if (axis === 'top') {
@@ -70,5 +87,7 @@ function updateScroll(
         new Event(`ps-${y}-reach-${reach > 0 ? 'end' : 'start'}`)
       );
     }
+
+    setScrollingClass(element, y);
   }
 }
