@@ -108,32 +108,24 @@ export default function(i) {
           deltaY = -30;
         }
         break;
-      case 33: // page up
-        deltaY = 90;
-        break;
       case 32: // space bar
         if (e.shiftKey) {
-          deltaY = 90;
-        } else {
-          deltaY = -90;
-        }
-        break;
-      case 34: // page down
-        deltaY = -90;
-        break;
-      case 35: // end
-        if (e.ctrlKey) {
-          deltaY = -i.contentHeight;
+          deltaY = i.containerHeight;
         } else {
           deltaY = -i.containerHeight;
         }
         break;
+      case 33: // page up
+        deltaY = i.containerHeight;
+        break;
+      case 34: // page down
+        deltaY = -i.containerHeight;
+        break;
       case 36: // home
-        if (e.ctrlKey) {
-          deltaY = element.scrollTop;
-        } else {
-          deltaY = i.containerHeight;
-        }
+        deltaY = i.contentHeight;
+        break;
+      case 35: // end
+        deltaY = -i.contentHeight;
         break;
       default:
         return;
