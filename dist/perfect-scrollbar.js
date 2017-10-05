@@ -144,6 +144,23 @@ EventManager.prototype.once = function once (element, eventName, handler) {
   ee.bind(eventName, onceHandler);
 };
 
+var scrollingClassTimeout = { x: null, y: null };
+function setScrollingClass(element, y) {
+  var cls = "ps--scrolling-" + y;
+
+  if (element.classList.contains(cls)) {
+    clearTimeout(scrollingClassTimeout[y]);
+  } else {
+    element.classList.add(cls);
+  }
+
+  // 1s for threshold
+  scrollingClassTimeout[y] = setTimeout(
+    function () { return element.classList.remove(cls); },
+    1000
+  );
+}
+
 var updateScroll = function(i, axis, value) {
   var fields;
   if (axis === 'top') {
@@ -221,6 +238,8 @@ function updateScroll$1(
         new Event(("ps-" + y + "-reach-" + (reach > 0 ? 'end' : 'start')))
       );
     }
+
+    setScrollingClass(element, y);
   }
 }
 
@@ -430,20 +449,12 @@ var clickRail = function(i) {
   });
 };
 
-var dragScrollbar = function(i) {
+var dragThumb = function(i) {
   bindMouseScrollXHandler(i);
   bindMouseScrollYHandler(i);
 };
 
-function scrollingClasses(axis) {
-  return axis
-    ? ['ps--scrolling-' + axis]
-    : ['ps--scrolling-x', 'ps--scrolling-y'];
-}
-
 function bindMouseScrollXHandler(i) {
-  var element = i.element;
-
   var currentLeft = null;
   var currentPageX = null;
 
@@ -478,14 +489,12 @@ function bindMouseScrollXHandler(i) {
   }
 
   function mouseUpHandler() {
-    scrollingClasses('x').forEach(function (c) { return element.classList.remove(c); });
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
 
   i.event.bind(i.scrollbarX, 'mousedown', function (e) {
     currentPageX = e.pageX;
     currentLeft = toInt(get(i.scrollbarX).left) * i.railXRatio;
-    scrollingClasses('x').forEach(function (c) { return element.classList.add(c); });
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
@@ -496,8 +505,6 @@ function bindMouseScrollXHandler(i) {
 }
 
 function bindMouseScrollYHandler(i) {
-  var element = i.element;
-
   var currentTop = null;
   var currentPageY = null;
 
@@ -531,14 +538,12 @@ function bindMouseScrollYHandler(i) {
   }
 
   function mouseUpHandler() {
-    scrollingClasses('y').forEach(function (c) { return element.classList.remove(c); });
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
 
   i.event.bind(i.scrollbarY, 'mousedown', function (e) {
     currentPageY = e.pageY;
     currentTop = toInt(get(i.scrollbarY).top) * i.railYRatio;
-    scrollingClasses('y').forEach(function (c) { return element.classList.add(c); });
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
@@ -1072,7 +1077,7 @@ var touch = function(i) {
 };
 
 var defaultSettings = function () { return ({
-  handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
+  handlers: ['click-rail', 'drag-thumb', 'keyboard', 'wheel', 'touch'],
   maxScrollbarLength: null,
   minScrollbarLength: null,
   scrollXMarginOffset: 0,
@@ -1088,7 +1093,7 @@ var defaultSettings = function () { return ({
 
 var handlers = {
   'click-rail': clickRail,
-  'drag-scrollbar': dragScrollbar,
+  'drag-thumb': dragThumb,
   keyboard: keyboard,
   wheel: wheel,
   touch: touch,
