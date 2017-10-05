@@ -6,13 +6,13 @@ import updateScroll from './update-scroll';
 import { toInt } from './lib/util';
 
 import clickRail from './handlers/click-rail';
-import dragScrollbar from './handlers/drag-scrollbar';
+import dragThumb from './handlers/drag-thumb';
 import keyboard from './handlers/keyboard';
 import wheel from './handlers/mouse-wheel';
 import touch from './handlers/touch';
 
 const defaultSettings = () => ({
-  handlers: ['click-rail', 'drag-scrollbar', 'keyboard', 'wheel', 'touch'],
+  handlers: ['click-rail', 'drag-thumb', 'keyboard', 'wheel', 'touch'],
   maxScrollbarLength: null,
   minScrollbarLength: null,
   scrollXMarginOffset: 0,
@@ -28,7 +28,7 @@ const defaultSettings = () => ({
 
 const handlers = {
   'click-rail': clickRail,
-  'drag-scrollbar': dragScrollbar,
+  'drag-thumb': dragThumb,
   keyboard,
   wheel,
   touch,
