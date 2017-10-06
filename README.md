@@ -184,7 +184,7 @@ You can also get information about how to use the plugin from code in [`examples
 
 It is a list of handlers to scroll the element.
 
-**Default**: `['click-rail', 'drag-thumb, 'keyboard', 'wheel', 'touch']`
+**Default**: `['click-rail', 'drag-thumb', 'keyboard', 'wheel', 'touch']`
 
 ### `wheelSpeed {Number}`
 
