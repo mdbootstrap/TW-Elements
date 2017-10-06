@@ -3,7 +3,7 @@ import * as DOM from './lib/dom';
 import EventManager from './lib/event-manager';
 import updateGeometry from './update-geometry';
 import updateScroll from './update-scroll';
-import { toInt } from './lib/util';
+import { toInt, outerWidth } from './lib/util';
 
 import clickRail from './handlers/click-rail';
 import dragThumb from './handlers/drag-thumb';
@@ -124,9 +124,7 @@ export default class PerfectScrollbar {
     } else {
       this.isScrollbarYUsingRight = true;
     }
-    this.scrollbarYOuterWidth = this.isRtl
-      ? _.outerWidth(this.scrollbarY)
-      : null;
+    this.scrollbarYOuterWidth = this.isRtl ? outerWidth(this.scrollbarY) : null;
     this.railBorderYWidth =
       toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
     CSS.set(this.scrollbarYRail, { display: 'block' });
