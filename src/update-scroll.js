@@ -50,6 +50,7 @@ function updateScroll(
   const element = i.element;
 
   let reach = 0; // -1 for start, +1 for end, 0 for none
+  let mitigated = false;
 
   // don't allow negative scroll offset
   if (value <= 0) {
@@ -63,7 +64,7 @@ function updateScroll(
 
     // mitigates rounding errors on non-subpixel scroll values
     if (value - element[scrollTop] <= 2) {
-      value = element[scrollTop];
+      mitigated = true;
     }
 
     reach = 1;
@@ -80,7 +81,9 @@ function updateScroll(
       element.dispatchEvent(new Event(`ps-scroll-${down}`));
     }
 
-    element[scrollTop] = value;
+    if (!mitigated) {
+      element[scrollTop] = value;
+    }
 
     if (reach) {
       element.dispatchEvent(
