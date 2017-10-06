@@ -4,8 +4,8 @@ import updateScroll from '../update-scroll';
 export default function(i) {
   const element = i.element;
 
-  i.event.bind(i.scrollbarY, 'click', e => e.stopPropagation());
-  i.event.bind(i.scrollbarYRail, 'click', function(e) {
+  i.event.bind(i.scrollbarY, 'mousedown', e => e.stopPropagation());
+  i.event.bind(i.scrollbarYRail, 'mousedown', e => {
     const positionTop =
       e.pageY -
       window.pageYOffset -
@@ -18,8 +18,8 @@ export default function(i) {
     e.stopPropagation();
   });
 
-  i.event.bind(i.scrollbarX, 'click', e => e.stopPropagation());
-  i.event.bind(i.scrollbarXRail, 'click', function(e) {
+  i.event.bind(i.scrollbarX, 'mousedown', e => e.stopPropagation());
+  i.event.bind(i.scrollbarXRail, 'mousedown', e => {
     const positionLeft =
       e.pageX -
       window.pageXOffset -
