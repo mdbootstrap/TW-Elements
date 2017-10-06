@@ -3,7 +3,6 @@ import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 import { env } from '../lib/util';
 
-const childClass = 'ps__child';
 const childConsumeClass = 'ps__child--consume';
 
 export default function(i) {
@@ -69,57 +68,60 @@ export default function(i) {
     return [deltaX, deltaY];
   }
 
-  function shouldBeConsumedByChild(deltaX, deltaY) {
+  function shouldBeConsumedByChild(target, deltaX, deltaY) {
     // FIXME: this is a workaround for <select> issue in FF and IE #571
     if (!env.isWebKit && element.querySelector('select:focus')) {
       return true;
     }
 
-    const child = element.querySelector(
-      `textarea:hover, select[multiple]:hover, .${childClass}:hover`
-    );
+    if (!element.contains(target)) {
+      return false;
+    }
 
-    if (child) {
-      if (child.classList.contains(childConsumeClass)) {
+    let cursor = target;
+
+    while (cursor && cursor !== element) {
+      if (cursor.classList.contains(childConsumeClass)) {
         return true;
       }
 
-      const styles = CSS.get(child);
+      const style = CSS.get(cursor);
       const overflow = [style.overflow, style.overflowX, style.overflowY].join(
         ''
       );
 
-      if (!overflow.match(/(scroll|auto)/)) {
-        // if not scrollable
-        return false;
+      // if scrollable
+      if (overflow.match(/(scroll|auto)/)) {
+        const maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
+        if (maxScrollTop > 0) {
+          if (
+            !(cursor.scrollTop === 0 && deltaY > 0) &&
+            !(cursor.scrollTop === maxScrollTop && deltaY < 0)
+          ) {
+            return true;
+          }
+        }
+        const maxScrollLeft = cursor.scrollLeft - cursor.clientWidth;
+        if (maxScrollLeft > 0) {
+          if (
+            !(cursor.scrollLeft === 0 && deltaX < 0) &&
+            !(cursor.scrollLeft === maxScrollLeft && deltaX > 0)
+          ) {
+            return true;
+          }
+        }
       }
 
-      const maxScrollTop = child.scrollHeight - child.clientHeight;
-      if (maxScrollTop > 0) {
-        if (
-          !(child.scrollTop === 0 && deltaY > 0) &&
-          !(child.scrollTop === maxScrollTop && deltaY < 0)
-        ) {
-          return true;
-        }
-      }
-      const maxScrollLeft = child.scrollLeft - child.clientWidth;
-      if (maxScrollLeft > 0) {
-        if (
-          !(child.scrollLeft === 0 && deltaX < 0) &&
-          !(child.scrollLeft === maxScrollLeft && deltaX > 0)
-        ) {
-          return true;
-        }
-      }
+      cursor = cursor.parentNode;
     }
+
     return false;
   }
 
   function mousewheelHandler(e) {
     const [deltaX, deltaY] = getDeltaFromEvent(e);
 
-    if (shouldBeConsumedByChild(deltaX, deltaY)) {
+    if (shouldBeConsumedByChild(e.target, deltaX, deltaY)) {
       return;
     }
 
