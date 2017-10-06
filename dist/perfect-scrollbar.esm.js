@@ -414,8 +414,8 @@ function updateCss(element, i) {
 var clickRail = function(i) {
   var element = i.element;
 
-  i.event.bind(i.scrollbarY, 'click', function (e) { return e.stopPropagation(); });
-  i.event.bind(i.scrollbarYRail, 'click', function(e) {
+  i.event.bind(i.scrollbarY, 'mousedown', function (e) { return e.stopPropagation(); });
+  i.event.bind(i.scrollbarYRail, 'mousedown', function (e) {
     var positionTop =
       e.pageY -
       window.pageYOffset -
@@ -428,8 +428,8 @@ var clickRail = function(i) {
     e.stopPropagation();
   });
 
-  i.event.bind(i.scrollbarX, 'click', function (e) { return e.stopPropagation(); });
-  i.event.bind(i.scrollbarXRail, 'click', function(e) {
+  i.event.bind(i.scrollbarX, 'mousedown', function (e) { return e.stopPropagation(); });
+  i.event.bind(i.scrollbarXRail, 'mousedown', function (e) {
     var positionLeft =
       e.pageX -
       window.pageXOffset -
@@ -691,7 +691,6 @@ var keyboard = function(i) {
   });
 };
 
-var childClass = 'ps__child';
 var childConsumeClass = 'ps__child--consume';
 
 var wheel = function(i) {
@@ -755,50 +754,53 @@ var wheel = function(i) {
     return [deltaX, deltaY];
   }
 
-  function shouldBeConsumedByChild(deltaX, deltaY) {
+  function shouldBeConsumedByChild(target, deltaX, deltaY) {
     // FIXME: this is a workaround for <select> issue in FF and IE #571
     if (!env.isWebKit && element.querySelector('select:focus')) {
       return true;
     }
 
-    var child = element.querySelector(
-      ("textarea:hover, select[multiple]:hover, ." + childClass + ":hover")
-    );
+    if (!element.contains(target)) {
+      return false;
+    }
 
-    if (child) {
-      if (child.classList.contains(childConsumeClass)) {
+    var cursor = target;
+
+    while (cursor && cursor !== element) {
+      if (cursor.classList.contains(childConsumeClass)) {
         return true;
       }
 
-      var styles = get(child);
+      var style = get(cursor);
       var overflow = [style.overflow, style.overflowX, style.overflowY].join(
         ''
       );
 
-      if (!overflow.match(/(scroll|auto)/)) {
-        // if not scrollable
-        return false;
+      // if scrollable
+      if (overflow.match(/(scroll|auto)/)) {
+        var maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
+        if (maxScrollTop > 0) {
+          if (
+            !(cursor.scrollTop === 0 && deltaY > 0) &&
+            !(cursor.scrollTop === maxScrollTop && deltaY < 0)
+          ) {
+            return true;
+          }
+        }
+        var maxScrollLeft = cursor.scrollLeft - cursor.clientWidth;
+        if (maxScrollLeft > 0) {
+          if (
+            !(cursor.scrollLeft === 0 && deltaX < 0) &&
+            !(cursor.scrollLeft === maxScrollLeft && deltaX > 0)
+          ) {
+            return true;
+          }
+        }
       }
 
-      var maxScrollTop = child.scrollHeight - child.clientHeight;
-      if (maxScrollTop > 0) {
-        if (
-          !(child.scrollTop === 0 && deltaY > 0) &&
-          !(child.scrollTop === maxScrollTop && deltaY < 0)
-        ) {
-          return true;
-        }
-      }
-      var maxScrollLeft = child.scrollLeft - child.clientWidth;
-      if (maxScrollLeft > 0) {
-        if (
-          !(child.scrollLeft === 0 && deltaX < 0) &&
-          !(child.scrollLeft === maxScrollLeft && deltaX > 0)
-        ) {
-          return true;
-        }
-      }
+      cursor = cursor.parentNode;
     }
+
     return false;
   }
 
@@ -807,7 +809,7 @@ var wheel = function(i) {
     var deltaX = ref[0];
     var deltaY = ref[1];
 
-    if (shouldBeConsumedByChild(deltaX, deltaY)) {
+    if (shouldBeConsumedByChild(e.target, deltaX, deltaY)) {
       return;
     }
 
