@@ -118,10 +118,16 @@ the main CSS is imported.
 <link rel="stylesheet" href="css/perfect-scrollbar.css">
 ```
 
-Using CJS or ES modules:
+Using CommonJS:
 
 ```js
 const PerfectScrollbar = require('perfect-scrollbar');
+
+```
+
+Using ES Modules or TypeScript:
+
+```js
 import PerfectScrollbar from 'perfect-scrollbar';
 ```
 

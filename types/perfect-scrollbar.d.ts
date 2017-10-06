@@ -1,26 +1,25 @@
-interface PerfectScrollbarOptions {
-  wheelSpeed?: number;
-  wheelPropagation?: boolean;
-  swipePropagation?: boolean;
-  minScrollbarLength?: number;
-  maxScrollbarLength?: number;
-  useBothWheelAxes?: boolean;
-  useKeyboard?: boolean;
-  suppressScrollX?: boolean;
-  suppressScrollY?: boolean;
-  scrollXMarginOffset?: number;
-  scrollYMarginOffset?: number;
-  handlers?: string[];
+declare namespace PerfectScrollbar {
+  export interface Options {
+    handlers?: string[];
+    wheelSpeed?: number;
+    wheelPropagation?: boolean;
+    swipePropagation?: boolean;
+    swipeEasing?: boolean;
+    minScrollbarLength?: number;
+    maxScrollbarLength?: number;
+    useBothWheelAxes?: boolean;
+    suppressScrollX?: boolean;
+    suppressScrollY?: boolean;
+    scrollXMarginOffset?: number;
+    scrollYMarginOffset?: number;
+  }
 }
 
-interface PerfectScrollbar {
-  initialize(container: HTMLElement, options?: PerfectScrollbarOptions): void;
-  update(container: HTMLElement): void;
-  destroy(container: HTMLElement): void;
+declare class PerfectScrollbar {
+  constructor(element: string | HTMLElement, options?: PerfectScrollbar.Options);
+
+  update(): void;
+  destroy(): void;
 }
 
-declare var ps: PerfectScrollbar;
-
-declare module "perfect-scrollbar" {
-  export = ps;
-}
+export default PerfectScrollbar;
