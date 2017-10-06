@@ -89,12 +89,13 @@ export default class PerfectScrollbar {
     this.scrollbarXWidth = null;
     this.scrollbarXLeft = null;
     const railXStyle = CSS.get(this.scrollbarXRail);
-    this.scrollbarXBottom = toInt(railXStyle.bottom);
-    this.isScrollbarXUsingBottom =
-      this.scrollbarXBottom === this.scrollbarXBottom; // !isNaN
-    this.scrollbarXTop = this.isScrollbarXUsingBottom
-      ? null
-      : toInt(railXStyle.top);
+    this.scrollbarXBottom = parseInt(railXStyle.bottom, 10);
+    if (isNaN(this.scrollbarXBottom)) {
+      this.isScrollbarXUsingBottom = false;
+      this.scrollbarXTop = toInt(railXStyle.top);
+    } else {
+      this.isScrollbarXUsingBottom = true;
+    }
     this.railBorderXWidth =
       toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth);
     // Set rail to display:block to calculate margins
@@ -116,11 +117,13 @@ export default class PerfectScrollbar {
     this.scrollbarYHeight = null;
     this.scrollbarYTop = null;
     const railYStyle = CSS.get(this.scrollbarYRail);
-    this.scrollbarYRight = toInt(railYStyle.right);
-    this.isScrollbarYUsingRight = this.scrollbarYRight === this.scrollbarYRight; // !isNaN
-    this.scrollbarYLeft = this.isScrollbarYUsingRight
-      ? null
-      : toInt(railYStyle.left);
+    this.scrollbarYRight = parseInt(railYStyle.right, 10);
+    if (isNaN(this.scrollbarYRight)) {
+      this.isScrollbarYUsingRight = false;
+      this.scrollbarYLeft = toInt(railYStyle.left);
+    } else {
+      this.isScrollbarYUsingRight = true;
+    }
     this.scrollbarYOuterWidth = this.isRtl
       ? _.outerWidth(this.scrollbarY)
       : null;
