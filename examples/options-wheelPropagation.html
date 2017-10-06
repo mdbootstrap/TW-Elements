@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
-      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: auto; }
-      .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
-      .spacer { text-align:center }
+    .container {
+      position: relative;
+      margin: 30px auto;
+      padding: 0px;
+      width: 600px;
+      height: 400px;
+      overflow: auto;
+    }
+    .container .content {
+      background-image: url('./assets/azusa.jpg');
+      width: 1280px;
+      height: 720px;
+      color: blue;
+      font-size: 20px;
+    }
+    .space {
+      padding: 150px 0;
+      text-align: center;
+    }
     </style>
   </head>
   <body>
-    <h1 style="text-align:center">Default; wheelPropagation:false</h1>
-    <div id="Default" class="contentHolder">
+    <div class="space">FOR SPACE</div>
+    <div class="container">
       <div class="content">
+        default
       </div>
     </div>
-    <h1 style="text-align:center">wheelPropagation:true</h1>
-    <div id="WheelPropagation" class="contentHolder">
+    <div class="space">FOR SPACE</div>
+    <div class="container">
       <div class="content">
+        wheelPropagation: true
       </div>
     </div>
-    <div class="spacer">
-      Note<br>that<br>there<br>is<br>plenty<br>of<br>text<br>after<br>the<br>image<br>to<br>ensure<br>that<br>it<br>is<br>possible<br>to<br>down<br>
-      after<br>the<br>bottom<br>of<br>the<br>image<br>has<br>been<br>reached<br>to<br>enable<br>the<br>wheel<br>propagation<br>to<br>be<br>tested<br>
-    </div>
+    <div class="space">FOR SPACE</div>
+
     <script>
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        Ps.initialize($('#Default'));
-        Ps.initialize($('#WheelPropagation'), {wheelPropagation: true});
-      };
+    var containers = document.querySelectorAll('.container');
+
+    new PerfectScrollbar(containers[0]);
+
+    new PerfectScrollbar(containers[1], {
+      wheelPropagation: true
+    });
     </script>
   </body>
 </html>
-

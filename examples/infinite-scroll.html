@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
-      #Default {
-        height: 400px;
-        width: 100%;
-        background-color: #f1f1f1;
-        border: 1px solid blue;
-        overflow: auto;
-        position: relative;
-      }
-      .entryPlaceholder {
-        height: 48px;
-        width: 100%;
-      }
+    #container {
+      height: 400px;
+      width: 100%;
+      background-color: #f1f1f1;
+      border: 1px solid blue;
+      overflow: auto;
+      position: relative;
+    }
+    .entryPlaceholder {
+      height: 48px;
+      width: 100%;
+    }
     </style>
   </head>
   <body>
-    <div id="Default">
+    <div id="container">
     </div>
 
     <script>
-      var x = 0;
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        // show some initial data
-        for(var i = 0; i < 10; i++) {
-          $('#Default').innerHTML += '<div class="entryPlaceholder">Entry #' + (x++) + '</div>';
-        }
-        Ps.initialize($('#Default'));
+    var $ = document.querySelector.bind(document);
 
-      };
+    var x = 0;
+    function addEntries() {
+      for (var i = 0; i < 10; i++) {
+        $('#container').innerHTML += '<div class="entryPlaceholder">Entry #' + (x++) + '</div>';
+      }
+    }
 
-      var isProgramaticallyTriggered = false;
-      var addEntries = function(num) {
-        for(var i = 0; i < num; i++) {
-          $('#Default').innerHTML += '<div class="entryPlaceholder">Entry #' + (x++) + '</div>';
-        }
+    addEntries();
+    var ps = new PerfectScrollbar('#container');
 
-        isProgramaticallyTriggered = true;
-        Ps.update($('#Default'));
-        isProgramaticallyTriggered = false;
-      };
-
-
-
-
-      // on scroll, add more entries
-      document.addEventListener('ps-scroll-y', function(e) {
-        if (!isProgramaticallyTriggered) {
-          console.debug("user scrolled to pos: ", $('#Default').scrollTop);
-          addEntries(1);
-        }
-      });
+    $('#container').addEventListener('ps-y-reach-end', function () {
+      addEntries();
+      ps.update();
+    });
     </script>
   </body>
 </html>

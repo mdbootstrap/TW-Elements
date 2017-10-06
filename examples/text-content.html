@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
     <link href="../css/perfect-scrollbar.css" rel="stylesheet">
     <script src="../dist/perfect-scrollbar.js"></script>
     <style>
-      #description {
+      #container {
         border: 1px solid gray;
-        height:150px;
+        height: 150px;
         width: 400px;
+        padding: 15px;
         overflow: auto;
         position: relative;
       }
     </style>
   </head>
   <body>
-    <div id="description">
+    <div id="container">
       <p>The command takes options applicable</p>
       <p>The command takes options applicable</p>
       <p>The command takes options applicable</p>
@@ -37,33 +36,6 @@
       <p>The command takes options applicable</p>
       <p>The command takes options applicable</p>
       <p>The command takes options applicable</p>
-      <div style="margin: 10px;height: 300px;overflow: auto">
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-        <p>The command takes options applicable</p>
-      </div>
       <p>The command takes options applicable</p>
       <p>The command takes options applicable</p>
       <p>The command takes options applicable</p>
@@ -71,16 +43,18 @@
       <p>The command takes options applicable</p>
     </div>
     <button id='redraw'>Redraw</button>
+
     <script>
     var $ = document.querySelector.bind(document);
 
-    var ps = new PerfectScrollbar('#description');
+    var ps = new PerfectScrollbar('#container');
 
     $('#redraw').addEventListener('click', function () {
-      var oldHtml = $('#description').innerHTML;
-      $('#description').innerHTML = '';
+      var oldHtml = $('#container').innerHTML;
+      $('#container').innerHTML = '';
+
       setTimeout(function () {
-        $('#description').innerHTML = oldHtml;
+        $('#container').innerHTML = oldHtml;
         ps.update();
       }, 500);
     });

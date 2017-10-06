@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
       #table {
         font-size: 20px;
@@ -20,6 +18,7 @@
         overflow-y: auto;
         overflow-x:hidden;
         position: relative;
+        border-bottom: 1px solid black;
       }
       #table tbody td, #table thead th {
         display: block;
@@ -32,52 +31,37 @@
   </head>
   <body>
     <div id="table" class="wrapper">
-    <table id='table'>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Occupation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Alex</td>
-          <td>20</td>
-          <td>Student</td>
-        </tr>
-        <tr>
-          <td>Paul</td>
-          <td>23</td>
-          <td>Engineer</td>
-        </tr>
-        <tr>
-          <td>Chris</td>
-          <td>19</td>
-          <td>Human being</td>
-        </tr>
-        <tr>
-          <td>Alex</td>
-          <td>20</td>
-          <td>Student</td>
-        </tr>
-        <tr>
-          <td>Paul</td>
-          <td>23</td>
-          <td>Engineer</td>
-        </tr>
-        <tr>
-          <td>Chris</td>
-          <td>19</td>
-          <td>Human being</td>
-        </tr>
-      </tbody>
-    </table>
-    <script type="text/javascript">
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        Ps.initialize($('#table tbody'));
-      };
+      <table id='table'>
+        <thead>
+          <tr>
+            <th>Name</th><th>Age</th><th>Occupation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alex</td><td>20</td><td>Student</td>
+          </tr>
+          <tr>
+            <td>Paul</td><td>23</td><td>Engineer</td>
+          </tr>
+          <tr>
+            <td>Chris</td><td>19</td><td>Human being</td>
+          </tr>
+          <tr>
+            <td>Satoshi</td><td>30</td><td>Pokemon trainer</td>
+          </tr>
+          <tr>
+            <td>Jun</td><td>27</td><td>Hero</td>
+          </tr>
+          <tr>
+            <td>Yong</td><td>27</td><td>Money maker</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+    new PerfectScrollbar('#table tbody');
     </script>
   </body>
 </html>

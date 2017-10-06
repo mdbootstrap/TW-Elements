@@ -17,6 +17,25 @@
       width: 1280px;
       height: 720px;
     }
+
+    /* Change the alignment of scrollbars */
+    /* Recommendation: modify CSS directly */
+    .ps__rail-x {
+      top: 0px;
+      bottom: auto; /* If using `top`, there shouldn't be a `bottom`. */
+    }
+    .ps__rail-y {
+      left: 0px;
+      right: auto; /* If using `left`, there shouldn't be a `right`. */
+    }
+    .ps__thumb-x {
+      top: 2px;
+      bottom: auto; /* If using `top`, there shouldn't be a `bottom`. */
+    }
+    .ps__thumb-y {
+      left: 2px;
+      right: auto; /* If using `left`, there shouldn't be a `right`. */
+    }
     </style>
   </head>
   <body>
@@ -26,11 +45,7 @@
     </div>
 
     <script>
-    var $ = document.querySelector.bind(document);
-
     new PerfectScrollbar('#container');
-    setTimeout(() => $('#container').classList.add('ps--focus'), 0);
-    setTimeout(() => $('#container').classList.remove('ps--focus'), 750);
     </script>
   </body>
 </html>

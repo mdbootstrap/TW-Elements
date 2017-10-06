@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
-      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: auto; }
-      .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
-      .spacer { text-align:center }
+    .container {
+      position: relative;
+      margin: 30px auto;
+      padding: 0px;
+      width: 600px;
+      height: 400px;
+      overflow: auto;
+    }
+    .container .content {
+      background-image: url('./assets/azusa.jpg');
+      width: 1280px;
+      height: 720px;
+      color: blue;
+      font-size: 20px;
+    }
     </style>
   </head>
   <body>
-    <h1 style="text-align:center">Default; wheelSpeed:1</h1>
-    <div id="Default" class="contentHolder">
+    <div class="container">
       <div class="content">
+        wheelSpeed: 0.1
       </div>
     </div>
-    <h1 style="text-align:center">Fast: wheelSpeed:10</h1>
-    <div id="FastWheelSpeed" class="contentHolder">
+    <div class="container">
       <div class="content">
+        wheelSpeed: 10
       </div>
     </div>
-    <h1 style="text-align:center">Slow: wheelSpeed:0.1</h1>
-    <div id="SlowWheelSpeed" class="contentHolder">
-      <div class="content">
-      </div>
-    </div>
+
     <script>
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        Ps.initialize($('#Default'));
-        Ps.initialize($('#FastWheelSpeed'), {wheelSpeed: 10});
-        Ps.initialize($('#SlowWheelSpeed'), {wheelSpeed: 0.1});
-      };
+    var containers = document.querySelectorAll('.container');
+
+    new PerfectScrollbar(containers[0], {
+      wheelSpeed: 0.1
+    });
+
+    new PerfectScrollbar(containers[1], {
+      wheelSpeed: 10
+    });
     </script>
   </body>
 </html>
-

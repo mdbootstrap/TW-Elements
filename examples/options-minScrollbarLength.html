@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
-      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 640px; height: 360px; overflow: auto; }
-      .contentHolder .content { background-image: url('./azusa.jpg'); width: 12800px; height: 7200px; }
-      .spacer { text-align:center }
+    .container {
+      position: relative;
+      margin: 30px auto;
+      padding: 0px;
+      width: 600px;
+      height: 400px;
+      overflow: auto;
+    }
+    .container .content {
+      background-image: url('./assets/azusa.jpg');
+      width: 12800px;
+      height: 7200px;
+      color: blue;
+      font-size: 20px;
+    }
     </style>
   </head>
   <body>
-    <h1 style="text-align:center">No minimum</h1>
-    <div id="Default" class="contentHolder">
+    <div class="container">
       <div class="content">
+        default
       </div>
     </div>
-    <h1 style="text-align:center">100px minimum</h1>
-    <div id="LongThumb" class="contentHolder">
+    <div class="container">
       <div class="content">
+        minScrollbarLength: 200px
       </div>
     </div>
+
     <script>
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        Ps.initialize($('#Default'));
-        Ps.initialize($('#LongThumb'), {minScrollbarLength: 100});
-      };
+    var containers = document.querySelectorAll('.container');
+
+    new PerfectScrollbar(containers[0]);
+
+    new PerfectScrollbar(containers[1], {
+      minScrollbarLength: 200
+    });
     </script>
   </body>
 </html>

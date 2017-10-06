@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
-      #test {
-        border: 1px solid gray;
-        max-height: 300px;
-        width: 400px;
-        overflow: auto;
-        position: relative;
-      }
-      #test .element {
-        margin: 1px;
-        background-color: #cec;
-        height: 44px;
-        line-height: 44px;
-      }
+    #container {
+      border: 1px solid gray;
+      max-height: 300px;
+      width: 400px;
+      overflow: auto;
+      position: relative;
+    }
+    #container .element {
+      margin: 1px;
+      background-color: #cec;
+      height: 44px;
+      line-height: 44px;
+    }
     </style>
   </head>
   <body>
-    <div id="test" class="wrapper">
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
-      <div class='element'>Hello! Click <a href='#'>here</a> to remove this!</div>
+    <div id="container">
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
+      <div class="element">Hello! Click <a href="#">here</a> to remove this!</div>
     </div>
-    <script type="text/javascript">
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        var test = $('#test');
-        Ps.initialize(test);
-        [].forEach.call(test.querySelectorAll('.element'), function (el) {
-          el.querySelector('a').addEventListener('click', function () {
-            el.parentNode.removeChild(el);
-            Ps.update(test);
-          });
-        });
-      };
+
+    <script>
+    var $ = document.querySelector.bind(document);
+
+    var ps = new PerfectScrollbar('#container');
+
+    var container = $('#container');
+
+    [].forEach.call(container.querySelectorAll('.element'), function (el) {
+      el.querySelector('a').addEventListener('click', function () {
+        el.parentNode.removeChild(el);
+        ps.update();
+      });
+    });
     </script>
   </body>
 </html>

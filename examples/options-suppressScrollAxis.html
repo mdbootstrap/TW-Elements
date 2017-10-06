@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
-      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 600px; height: 400px; overflow: auto; }
-      .contentHolder .content { background-image: url('./azusa.jpg'); width: 1280px; height: 720px; }
-      .spacer { text-align:center }
-      h2 { text-align: center; }
+    .container {
+      position: relative;
+      margin: 30px auto;
+      padding: 0px;
+      width: 600px;
+      height: 400px;
+      overflow: auto;
+    }
+    .container .content {
+      background-image: url('./assets/azusa.jpg');
+      width: 1280px;
+      height: 720px;
+      color: blue;
+      font-size: 20px;
+    }
     </style>
   </head>
   <body>
-    <h2>Default</h2>
-    <div id="Default" class="contentHolder">
+    <div class="container">
       <div class="content">
+        default
       </div>
     </div>
-    <h2>suppressScrollX: true</h2>
-    <div id="SuppressScrollX" class="contentHolder">
+    <div class="container">
       <div class="content">
+        suppressScrollX
       </div>
     </div>
-    <h2>suppressScrollY: true</h2>
-    <div id="SuppressScrollY" class="contentHolder">
+    <div class="container">
       <div class="content">
+        suppressScrollY
       </div>
     </div>
+
     <script>
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        Ps.initialize($('#Default'));
-        Ps.initialize($('#SuppressScrollX'), {suppressScrollX: true});
-        Ps.initialize($('#SuppressScrollY'), {suppressScrollY: true});
-      };
+    var containers = document.querySelectorAll('.container');
+
+    new PerfectScrollbar(containers[0]);
+
+    new PerfectScrollbar(containers[1], {
+      suppressScrollX: true
+    });
+
+    new PerfectScrollbar(containers[2], {
+      suppressScrollY: true
+    });
     </script>
   </body>
 </html>

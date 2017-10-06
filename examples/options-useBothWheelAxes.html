@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>perfect-scrollbar example</title>
-    <link href="../dist/css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/js/perfect-scrollbar.js"></script>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
     <style>
-      .contentHolder { position:relative; margin:0px auto; padding:0px; width: 640px; height: 360px; overflow: auto; }
-      .contentHolder .content-x { background-image: url('./azusa.jpg'); width: 1920px; height: 360px; }
-      .contentHolder .content-y { background-image: url('./azusa.jpg'); width: 640px; height: 1080px; }
-      .spacer { text-align:center; }
+    .container {
+      position: relative;
+      margin: 30px auto;
+      padding: 0px;
+      width: 600px;
+      height: 400px;
+      overflow: auto;
+    }
+    .container .content-x {
+      background-image: url('./assets/azusa.jpg');
+      width: 1280px;
+      height: 400px;
+      color: blue;
+      font-size: 20px;
+    }
+    .container .content-y {
+      background-image: url('./assets/azusa.jpg');
+      width: 600px;
+      height: 720px;
+      color: blue;
+      font-size: 20px;
+    }
     </style>
   </head>
   <body>
-    <h1 style="text-align:center">Default.</h1>
-    <div id="Default" class="contentHolder">
+    <div class="container">
       <div class="content-x">
+        useBothWheelAxes: x
       </div>
     </div>
-    <h1 style="text-align:center">Can scroll X axis with Y axis wheel.</h1>
-    <div id="CanScrollWithYAxis" class="contentHolder">
-      <div class="content-x">
-      </div>
-    </div>
-    <h1 style="text-align:center">Can scroll Y axis with X axis wheel.</h1>
-    <div id="CanScrollWithXAxis" class="contentHolder">
+    <div class="container">
       <div class="content-y">
+        useBothWheelAxes: y
       </div>
     </div>
+
     <script>
-      var $ = document.querySelector.bind(document);
-      window.onload = function () {
-        Ps.initialize($('#Default'));
-        Ps.initialize($('#CanScrollWithYAxis'), {useBothWheelAxes: true});
-        Ps.initialize($('#CanScrollWithXAxis'), {useBothWheelAxes: true});
-      };
+    var containers = document.querySelectorAll('.container');
+
+    new PerfectScrollbar(containers[0], {
+      useBothWheelAxes: true
+    });
+
+    new PerfectScrollbar(containers[1], {
+      useBothWheelAxes: true
+    });
     </script>
   </body>
 </html>
