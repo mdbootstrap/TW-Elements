@@ -6,11 +6,11 @@ const buble = require('rollup-plugin-buble');
 
 const version = require('./package.json').version;
 const banner =
-`/**
-  * perfect-scrollbar v${version}
-  * (c) ${new Date().getFullYear()} Hyunje Jun
-  * @license MIT
-  */`;
+`/*!
+ * perfect-scrollbar v${version}
+ * (c) ${new Date().getFullYear()} Hyunje Jun
+ * @license MIT
+ */`;
 
 if (!fs.existsSync('dist')) {
   fs.mkdirSync('dist')

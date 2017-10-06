@@ -1,8 +1,8 @@
-/**
-  * perfect-scrollbar v1.0.0-dev
-  * (c) 2017 Hyunje Jun
-  * @license MIT
-  */
+/*!
+ * perfect-scrollbar v1.0.0-dev
+ * (c) 2017 Hyunje Jun
+ * @license MIT
+ */
 function get(element) {
   return getComputedStyle(element);
 }
