@@ -201,6 +201,7 @@ function updateScroll$1(
   var element = i.element;
 
   var reach = 0; // -1 for start, +1 for end, 0 for none
+  var mitigated = false;
 
   // don't allow negative scroll offset
   if (value <= 0) {
@@ -214,7 +215,7 @@ function updateScroll$1(
 
     // mitigates rounding errors on non-subpixel scroll values
     if (value - element[scrollTop] <= 2) {
-      value = element[scrollTop];
+      mitigated = true;
     }
 
     reach = 1;
@@ -231,7 +232,9 @@ function updateScroll$1(
       element.dispatchEvent(new Event(("ps-scroll-" + down)));
     }
 
-    element[scrollTop] = value;
+    if (!mitigated) {
+      element[scrollTop] = value;
+    }
 
     if (reach) {
       element.dispatchEvent(
@@ -256,7 +259,16 @@ function isEditable(el) {
   );
 }
 
-
+function outerWidth(element) {
+  var styles = get(element);
+  return (
+    toInt(styles.width) +
+    toInt(styles.paddingLeft) +
+    toInt(styles.paddingRight) +
+    toInt(styles.borderLeftWidth) +
+    toInt(styles.borderRightWidth)
+  );
+}
 
 var env = {
   isWebKit: document && 'WebkitAppearance' in document.documentElement.style,
@@ -1158,12 +1170,13 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   this.scrollbarXWidth = null;
   this.scrollbarXLeft = null;
   var railXStyle = get(this.scrollbarXRail);
-  this.scrollbarXBottom = toInt(railXStyle.bottom);
-  this.isScrollbarXUsingBottom =
-    this.scrollbarXBottom === this.scrollbarXBottom; // !isNaN
-  this.scrollbarXTop = this.isScrollbarXUsingBottom
-    ? null
-    : toInt(railXStyle.top);
+  this.scrollbarXBottom = parseInt(railXStyle.bottom, 10);
+  if (isNaN(this.scrollbarXBottom)) {
+    this.isScrollbarXUsingBottom = false;
+    this.scrollbarXTop = toInt(railXStyle.top);
+  } else {
+    this.isScrollbarXUsingBottom = true;
+  }
   this.railBorderXWidth =
     toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth);
   // Set rail to display:block to calculate margins
@@ -1185,14 +1198,14 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   this.scrollbarYHeight = null;
   this.scrollbarYTop = null;
   var railYStyle = get(this.scrollbarYRail);
-  this.scrollbarYRight = toInt(railYStyle.right);
-  this.isScrollbarYUsingRight = this.scrollbarYRight === this.scrollbarYRight; // !isNaN
-  this.scrollbarYLeft = this.isScrollbarYUsingRight
-    ? null
-    : toInt(railYStyle.left);
-  this.scrollbarYOuterWidth = this.isRtl
-    ? _.outerWidth(this.scrollbarY)
-    : null;
+  this.scrollbarYRight = parseInt(railYStyle.right, 10);
+  if (isNaN(this.scrollbarYRight)) {
+    this.isScrollbarYUsingRight = false;
+    this.scrollbarYLeft = toInt(railYStyle.left);
+  } else {
+    this.isScrollbarYUsingRight = true;
+  }
+  this.scrollbarYOuterWidth = this.isRtl ? outerWidth(this.scrollbarY) : null;
   this.railBorderYWidth =
     toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
   set(this.scrollbarYRail, { display: 'block' });
