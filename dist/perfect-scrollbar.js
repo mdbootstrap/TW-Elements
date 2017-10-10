@@ -1,5 +1,5 @@
 /*!
- * perfect-scrollbar v1.0.0-dev
+ * perfect-scrollbar v1.0.0
  * (c) 2017 Hyunje Jun
  * @license MIT
  */
@@ -462,89 +462,53 @@ var clickRail = function(i) {
 };
 
 var dragThumb = function(i) {
-  bindMouseScrollXHandler(i);
-  bindMouseScrollYHandler(i);
+  bindMouseScrollHandler(i, [
+    'containerWidth',
+    'contentWidth',
+    'pageX',
+    'railXWidth',
+    'scrollbarX',
+    'scrollbarXWidth',
+    'scrollLeft',
+    'left' ]);
+  bindMouseScrollHandler(i, [
+    'containerHeight',
+    'contentHeight',
+    'pageY',
+    'railYHeight',
+    'scrollbarY',
+    'scrollbarYHeight',
+    'scrollTop',
+    'top' ]);
 };
 
-function bindMouseScrollXHandler(i) {
-  var currentLeft = null;
-  var currentPageX = null;
+function bindMouseScrollHandler(
+  i,
+  ref
+) {
+  var containerHeight = ref[0];
+  var contentHeight = ref[1];
+  var pageY = ref[2];
+  var railYHeight = ref[3];
+  var scrollbarY = ref[4];
+  var scrollbarYHeight = ref[5];
+  var scrollTop = ref[6];
+  var top = ref[7];
 
-  function updateScrollLeft(deltaX) {
-    var newLeft = currentLeft + deltaX * i.railXRatio;
-    var maxLeft =
-      Math.max(0, i.scrollbarXRail.getBoundingClientRect().left) +
-      i.railXRatio * (i.railXWidth - i.scrollbarXWidth);
+  var element = i.element;
 
-    if (newLeft < 0) {
-      i.scrollbarXLeft = 0;
-    } else if (newLeft > maxLeft) {
-      i.scrollbarXLeft = maxLeft;
-    } else {
-      i.scrollbarXLeft = newLeft;
-    }
-
-    var scrollLeft =
-      toInt(
-        i.scrollbarXLeft *
-          (i.contentWidth - i.containerWidth) /
-          (i.containerWidth - i.railXRatio * i.scrollbarXWidth)
-      ) - i.negativeScrollAdjustment;
-    updateScroll(i, 'left', scrollLeft);
-  }
+  var startingScrollTop = null;
+  var startingMousePageY = null;
+  var scrollBy = null;
 
   function mouseMoveHandler(e) {
-    updateScrollLeft(e.pageX - currentPageX);
-    updateGeometry(i);
-    e.stopPropagation();
-    e.preventDefault();
-  }
-
-  function mouseUpHandler() {
-    i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
-  }
-
-  i.event.bind(i.scrollbarX, 'mousedown', function (e) {
-    currentPageX = e.pageX;
-    currentLeft = toInt(get(i.scrollbarX).left) * i.railXRatio;
-
-    i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
-    i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
-
-    e.stopPropagation();
-    e.preventDefault();
-  });
-}
-
-function bindMouseScrollYHandler(i) {
-  var currentTop = null;
-  var currentPageY = null;
-
-  function updateScrollTop(deltaY) {
-    var newTop = currentTop + deltaY * i.railYRatio;
-    var maxTop =
-      Math.max(0, i.scrollbarYRail.getBoundingClientRect().top) +
-      i.railYRatio * (i.railYHeight - i.scrollbarYHeight);
-
-    if (newTop < 0) {
-      i.scrollbarYTop = 0;
-    } else if (newTop > maxTop) {
-      i.scrollbarYTop = maxTop;
-    } else {
-      i.scrollbarYTop = newTop;
-    }
-
-    var scrollTop = toInt(
-      i.scrollbarYTop *
-        (i.contentHeight - i.containerHeight) /
-        (i.containerHeight - i.railYRatio * i.scrollbarYHeight)
+    updateScroll(
+      i,
+      top,
+      startingScrollTop + scrollBy * (e[pageY] - startingMousePageY)
     );
-    updateScroll(i, 'top', scrollTop);
-  }
-
-  function mouseMoveHandler(e) {
-    updateScrollTop(e.pageY - currentPageY);
     updateGeometry(i);
+
     e.stopPropagation();
     e.preventDefault();
   }
@@ -553,9 +517,12 @@ function bindMouseScrollYHandler(i) {
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
 
-  i.event.bind(i.scrollbarY, 'mousedown', function (e) {
-    currentPageY = e.pageY;
-    currentTop = toInt(get(i.scrollbarY).top) * i.railYRatio;
+  i.event.bind(i[scrollbarY], 'mousedown', function (e) {
+    startingScrollTop = element[scrollTop];
+    startingMousePageY = e[pageY];
+    scrollBy =
+      (i[contentHeight] - i[containerHeight]) /
+      (i[railYHeight] - i[scrollbarYHeight]);
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
