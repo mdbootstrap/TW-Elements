@@ -1,5 +1,5 @@
 /*!
- * perfect-scrollbar v1.0.0
+ * perfect-scrollbar v1.0.2
  * (c) 2017 Hyunje Jun
  * @license MIT
  */
