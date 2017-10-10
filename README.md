@@ -122,7 +122,6 @@ Using CommonJS:
 
 ```js
 const PerfectScrollbar = require('perfect-scrollbar');
-
 ```
 
 Using ES Modules or TypeScript:
