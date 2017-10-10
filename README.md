@@ -5,8 +5,7 @@ Minimalistic but perfect custom scrollbar plugin
 [![npm](https://img.shields.io/npm/v/perfect-scrollbar.svg)](https://www.npmjs.com/package/perfect-scrollbar)
 [![Travis CI](https://travis-ci.org/utatti/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/utatti/perfect-scrollbar)
 
-***This is documentation for the [`next`](https://github.com/utatti/perfect-scrollbar/tree/next) branch.
-To read documentation for released versions, please visit [`master`](https://github.com/utatti/perfect-scrollbar/tree/master).***
+***To read documentation for versions < 1.0, please visit [`v0.8.1`](https://github.com/utatti/perfect-scrollbar/tree/0.8.1).***
 
 ## Why perfect-scrollbar?
 
