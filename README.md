@@ -68,7 +68,7 @@ $ npm run build
 
 You can fork the following JSFiddles for testing and experimenting purposes:
 
-* [Perfect Scrollbar](https://jsfiddle.net/DanielApt/xv0rrxv3/) (FIXME: it's old)
+* [perfect-scrollbar JSFiddle](https://jsfiddle.net/utatti/dyvL31r6/)
 
 #### Unofficial sources
 
