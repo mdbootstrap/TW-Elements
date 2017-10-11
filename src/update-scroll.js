@@ -15,6 +15,16 @@ function setScrollingClass(element, y) {
   );
 }
 
+function createEvent(name) {
+  if (typeof window.CustomEvent === 'function') {
+    return new CustomEvent(name);
+  } else {
+    const evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(name, false, false, undefined);
+    return evt;
+  }
+}
+
 export default function(i, axis, value) {
   let fields;
   if (axis === 'top') {
@@ -73,12 +83,12 @@ function updateScroll(
   let diff = element[scrollTop] - value;
 
   if (diff) {
-    element.dispatchEvent(new Event(`ps-scroll-${y}`));
+    element.dispatchEvent(createEvent(`ps-scroll-${y}`));
 
     if (diff > 0) {
-      element.dispatchEvent(new Event(`ps-scroll-${up}`));
+      element.dispatchEvent(createEvent(`ps-scroll-${up}`));
     } else {
-      element.dispatchEvent(new Event(`ps-scroll-${down}`));
+      element.dispatchEvent(createEvent(`ps-scroll-${down}`));
     }
 
     if (!mitigated) {
@@ -87,7 +97,7 @@ function updateScroll(
 
     if (reach) {
       element.dispatchEvent(
-        new Event(`ps-${y}-reach-${reach > 0 ? 'end' : 'start'}`)
+        createEvent(`ps-${y}-reach-${reach > 0 ? 'end' : 'start'}`)
       );
     }
 
