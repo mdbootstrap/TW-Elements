@@ -170,10 +170,6 @@ export default class PerfectScrollbar {
 
     updateGeometry(this);
 
-    // Update top/left scroll to trigger events
-    updateScroll(this, 'top', this.element.scrollTop);
-    updateScroll(this, 'left', this.element.scrollLeft);
-
     CSS.set(this.scrollbarXRail, { display: '' });
     CSS.set(this.scrollbarYRail, { display: '' });
   }
