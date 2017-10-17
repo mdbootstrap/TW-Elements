@@ -17,8 +17,15 @@
       width: 1280px;
       height: 720px;
     }
-    p {
-      text-align: center;
+    table {
+      width: 600px;
+      margin: 30px auto;
+    }
+    table td:first-child {
+      width: 200px;
+      padding-right: 10px;
+      text-align: right;
+      font-weight: bold;
     }
     </style>
   </head>
@@ -28,9 +35,24 @@
       </div>
     </div>
 
-    <p><b>Axis:</b> <span id="axis">&hellip;</span></p>
-    <p><b>Direction:</b> <span id="direction">&hellip;</span></p>
-    <p><b>Reached:</b> <span id="reached">(scroll to the start or end of an axis)</span></p>
+    <table>
+      <tr>
+        <td>Axis:</td>
+        <td id="axis"></td>
+      </tr>
+      <tr>
+        <td>Direction:</td>
+        <td id="direction"></td>
+      </tr>
+      <tr>
+        <td>Reach event:</td>
+        <td id="reach-event"></td>
+      </tr>
+      <tr>
+        <td>Reach state (<code>ps.reach</code>):</td>
+        <td id="reach-state"></td>
+      </tr>
+    </table>
 
     <script>
     var $ = document.querySelector.bind(document);
@@ -38,50 +60,58 @@
     var container = $('#container');
     var axis = $('#axis');
     var direction = $('#direction');
-    var reached = $('#reached');
+    var reachEvent = $('#reach-event');
+    var reachState = $('#reach-state');
 
-    new PerfectScrollbar(container);
+    var ps = new PerfectScrollbar(container);
+
+    function showReachState() {
+      reachState.textContent = JSON.stringify(ps.reach);
+    }
+
+    showReachState();
+    container.addEventListener('scroll', showReachState);
 
     container.addEventListener('ps-scroll-y', function () {
-      axis.textContent = 'y';
-      reached.textContent = 'none';
+      axis.textContent = 'ps-scroll-y';
+      reachEvent.textContent = '';
     });
 
     container.addEventListener('ps-scroll-x', function () {
-      axis.textContent = 'x';
-      reached.textContent = 'none';
+      axis.textContent = 'ps-scroll-x';
+      reachEvent.textContent = '';
     });
 
     container.addEventListener('ps-scroll-up', function () {
-      direction.textContent = 'up';
+      direction.textContent = 'ps-scroll-up';
     });
 
     container.addEventListener('ps-scroll-down', function () {
-      direction.textContent = 'down';
+      direction.textContent = 'ps-scroll-down';
     });
 
     container.addEventListener('ps-scroll-left', function () {
-      direction.textContent = 'left';
+      direction.textContent = 'ps-scroll-left';
     });
 
     container.addEventListener('ps-scroll-right', function () {
-      direction.textContent = 'right';
+      direction.textContent = 'ps-scroll-right';
     });
 
     container.addEventListener('ps-y-reach-start', function () {
-      reached.textContent = 'y start';
+      reachEvent.textContent = 'ps-y-reach-start';
     });
 
     container.addEventListener('ps-y-reach-end', function () {
-      reached.textContent = 'y end';
+      reachEvent.textContent = 'ps-y-reach-end';
     });
 
     container.addEventListener('ps-x-reach-start', function () {
-      reached.textContent = 'x start';
+      reachEvent.textContent = 'ps-x-reach-start';
     });
 
     container.addEventListener('ps-x-reach-end', function () {
-      reached.textContent = 'x end';
+      reachEvent.textContent = 'ps-x-reach-end';
     });
     </script>
   </body>

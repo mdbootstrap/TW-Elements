@@ -266,6 +266,10 @@ that Y axis scroll bar is not enabled just because of a few pixels.
 
 perfect-scrollbar dispatches custom events.
 
+```js
+container.addEventListener('ps-scroll-x', () => ...);
+```
+
 ### `ps-scroll-y`
 
 This event fires when the y-axis is scrolled in either direction.
@@ -307,8 +311,13 @@ This event fires when scrolling reaches the start of the x-axis.
 
 This event fires when scrolling reaches the end of the x-axis.
 
+You can also watch the reach state via the `reach` property.
+
 ```js
-container.addEventListener('ps-scroll-x', () => ...);
+const ps = new PerfectScrollbar(...);
+
+console.log(ps.reach.x); // => 'start' or 'end' or null
+console.log(ps.reach.y); // => 'start' or 'end' or null
 ```
 
 ## Helpdesk

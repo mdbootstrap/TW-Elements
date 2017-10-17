@@ -134,6 +134,21 @@ export default class PerfectScrollbar {
     this.railYHeight = null;
     this.railYRatio = null;
 
+    this.reach = {
+      x:
+        element.scrollLeft <= 0
+          ? 'start'
+          : element.scrollLeft >= this.contentWidth - this.containerWidth
+            ? 'end'
+            : null,
+      y:
+        element.scrollTop <= 0
+          ? 'start'
+          : element.scrollTop >= this.contentHeight - this.containerHeight
+            ? 'end'
+            : null,
+    };
+
     this.settings.handlers.forEach(handlerName => handlers[handlerName](this));
 
     this.event.bind(this.element, 'scroll', () => updateGeometry(this));

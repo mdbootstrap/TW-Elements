@@ -59,13 +59,15 @@ function updateScroll(
 ) {
   const element = i.element;
 
-  let reach = 0; // -1 for start, +1 for end, 0 for none
   let mitigated = false;
+
+  // reset reach
+  i.reach[y] = null;
 
   // don't allow negative scroll offset
   if (value <= 0) {
     value = 0;
-    reach = -1;
+    i.reach[y] = 'start';
   }
 
   // don't allow scroll past container
@@ -77,7 +79,7 @@ function updateScroll(
       mitigated = true;
     }
 
-    reach = 1;
+    i.reach[y] = 'end';
   }
 
   let diff = element[scrollTop] - value;
@@ -95,10 +97,8 @@ function updateScroll(
       element[scrollTop] = value;
     }
 
-    if (reach) {
-      element.dispatchEvent(
-        createEvent(`ps-${y}-reach-${reach > 0 ? 'end' : 'start'}`)
-      );
+    if (i.reach[y]) {
+      element.dispatchEvent(createEvent(`ps-${y}-reach-${i.reach[y]}`));
     }
 
     setScrollingClass(element, y);
