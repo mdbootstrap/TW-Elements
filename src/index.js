@@ -3,7 +3,6 @@ import * as DOM from './lib/dom';
 import cls from './lib/class-names';
 import EventManager from './lib/event-manager';
 import updateGeometry from './update-geometry';
-import updateScroll from './update-scroll';
 import { toInt, outerWidth } from './lib/util';
 
 import clickRail from './handlers/click-rail';
