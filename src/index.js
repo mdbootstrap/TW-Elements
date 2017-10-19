@@ -15,6 +15,7 @@ const defaultSettings = () => ({
   handlers: ['click-rail', 'drag-thumb', 'keyboard', 'wheel', 'touch'],
   maxScrollbarLength: null,
   minScrollbarLength: null,
+  scrollingThreshold: 1000,
   scrollXMarginOffset: 0,
   scrollYMarginOffset: 0,
   suppressScrollX: false,

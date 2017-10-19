@@ -1,5 +1,5 @@
 let scrollingClassTimeout = { x: null, y: null };
-function setScrollingClass(element, y) {
+function setScrollingClass(i, element, y) {
   const cls = `ps--scrolling-${y}`;
 
   if (element.classList.contains(cls)) {
@@ -11,7 +11,7 @@ function setScrollingClass(element, y) {
   // 1s for threshold
   scrollingClassTimeout[y] = setTimeout(
     () => element.classList.remove(cls),
-    1000
+    i.settings.scrollingThreshold
   );
 }
 
@@ -101,6 +101,6 @@ function updateScroll(
       element.dispatchEvent(createEvent(`ps-${y}-reach-${i.reach[y]}`));
     }
 
-    setScrollingClass(element, y);
+    setScrollingClass(i, element, y);
   }
 }

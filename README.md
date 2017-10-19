@@ -225,6 +225,14 @@ over that number of pixels.
 
 **Default**: `null`
 
+### `scrollingThreshold {Number}`
+
+This sets threashold for `ps--scrolling-x` and `ps--scrolling-y` classes to
+remain. In the default CSS, they make scrollbars shown regardless of hover
+state. The unit is millisecond.
+
+**Default**: `1000`
+
 ### `useBothWheelAxes {Boolean}`
 
 When set to true, and only one (vertical or horizontal) scrollbar is visible

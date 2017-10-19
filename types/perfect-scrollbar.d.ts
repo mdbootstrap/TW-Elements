@@ -1,17 +1,18 @@
 declare namespace PerfectScrollbar {
   export interface Options {
     handlers?: string[];
-    wheelSpeed?: number;
-    wheelPropagation?: boolean;
-    swipePropagation?: boolean;
-    swipeEasing?: boolean;
-    minScrollbarLength?: number;
     maxScrollbarLength?: number;
-    useBothWheelAxes?: boolean;
-    suppressScrollX?: boolean;
-    suppressScrollY?: boolean;
+    minScrollbarLength?: number;
+    scrollingThreshold?: number;
     scrollXMarginOffset?: number;
     scrollYMarginOffset?: number;
+    suppressScrollX?: boolean;
+    suppressScrollY?: boolean;
+    swipeEasing?: boolean;
+    swipePropagation?: boolean;
+    useBothWheelAxes?: boolean;
+    wheelPropagation?: boolean;
+    wheelSpeed?: number;
   }
 }
 
