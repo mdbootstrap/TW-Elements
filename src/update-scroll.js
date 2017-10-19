@@ -1,4 +1,4 @@
-import { setScrollingClass } from './lib/class-names';
+import { setScrollingClassInstantly } from './lib/class-names';
 
 function createEvent(name) {
   if (typeof window.CustomEvent === 'function') {
@@ -10,7 +10,7 @@ function createEvent(name) {
   }
 }
 
-export default function(i, axis, value) {
+export default function(i, axis, value, useScrollingClass = true) {
   let fields;
   if (axis === 'top') {
     fields = [
@@ -34,13 +34,14 @@ export default function(i, axis, value) {
     throw new Error('A proper axis should be provided');
   }
 
-  updateScroll(i, value, fields);
+  updateScroll(i, value, fields, useScrollingClass);
 }
 
 function updateScroll(
   i,
   value,
-  [contentHeight, containerHeight, scrollTop, y, up, down]
+  [contentHeight, containerHeight, scrollTop, y, up, down],
+  useScrollingClass
 ) {
   const element = i.element;
 
@@ -86,6 +87,8 @@ function updateScroll(
       element.dispatchEvent(createEvent(`ps-${y}-reach-${i.reach[y]}`));
     }
 
-    setScrollingClass(i, y);
+    if (useScrollingClass) {
+      setScrollingClassInstantly(i, y);
+    }
   }
 }

@@ -18,7 +18,8 @@ export default cls;
  * Helper methods
  */
 const scrollingClassTimeout = { x: null, y: null };
-export function setScrollingClass(i, x) {
+
+export function addScrollingClass(i, x) {
   const classList = i.element.classList;
   const className = cls.state.scrolling(x);
 
@@ -27,10 +28,16 @@ export function setScrollingClass(i, x) {
   } else {
     classList.add(className);
   }
+}
 
-  // 1s for threshold
+export function removeScrollingClass(i, x) {
   scrollingClassTimeout[x] = setTimeout(
-    () => classList.remove(className),
+    () => i.element.classList.remove(cls.state.scrolling(x)),
     i.settings.scrollingThreshold
   );
+}
+
+export function setScrollingClassInstantly(i, x) {
+  addScrollingClass(i, x);
+  removeScrollingClass(i, x);
 }
