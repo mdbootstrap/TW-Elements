@@ -210,11 +210,9 @@ export default class PerfectScrollbar {
   }
 
   removePsClasses() {
-    for (let i = 0; i < this.element.classList.length; i++) {
-      const className = this.element.classList[i];
-      if (className === 'ps' || className.indexOf('ps-') === 0) {
-        this.element.classList.remove(className);
-      }
-    }
+    this.element.className = this.element.className
+      .split(' ')
+      .filter(name => !name.match(/^ps([-_].+|)$/))
+      .join(' ');
   }
 }
