@@ -1,5 +1,6 @@
 import * as CSS from './lib/css';
 import * as DOM from './lib/dom';
+import cls from './lib/class-names';
 import updateScroll from './update-scroll';
 import { toInt } from './lib/util';
 
@@ -13,12 +14,16 @@ export default function(i) {
 
   if (!element.contains(i.scrollbarXRail)) {
     // clean up and append
-    DOM.queryChildren(element, '.ps__rail-x').forEach(el => DOM.remove(el));
+    DOM.queryChildren(element, cls.element.rail('x')).forEach(el =>
+      DOM.remove(el)
+    );
     element.appendChild(i.scrollbarXRail);
   }
   if (!element.contains(i.scrollbarYRail)) {
     // clean up and append
-    DOM.queryChildren(element, '.ps__rail-y').forEach(el => DOM.remove(el));
+    DOM.queryChildren(element, cls.element.rail('y')).forEach(el =>
+      DOM.remove(el)
+    );
     element.appendChild(i.scrollbarYRail);
   }
 
@@ -72,17 +77,17 @@ export default function(i) {
   updateCss(element, i);
 
   if (i.scrollbarXActive) {
-    element.classList.add('ps--active-x');
+    element.classList.add(cls.state.active('x'));
   } else {
-    element.classList.remove('ps--active-x');
+    element.classList.remove(cls.state.active('x'));
     i.scrollbarXWidth = 0;
     i.scrollbarXLeft = 0;
     updateScroll(i, 'left', 0);
   }
   if (i.scrollbarYActive) {
-    element.classList.add('ps--active-y');
+    element.classList.add(cls.state.active('y'));
   } else {
-    element.classList.remove('ps--active-y');
+    element.classList.remove(cls.state.active('y'));
     i.scrollbarYHeight = 0;
     i.scrollbarYTop = 0;
     updateScroll(i, 'top', 0);

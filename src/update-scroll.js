@@ -1,19 +1,4 @@
-let scrollingClassTimeout = { x: null, y: null };
-function setScrollingClass(i, element, y) {
-  const cls = `ps--scrolling-${y}`;
-
-  if (element.classList.contains(cls)) {
-    clearTimeout(scrollingClassTimeout[y]);
-  } else {
-    element.classList.add(cls);
-  }
-
-  // 1s for threshold
-  scrollingClassTimeout[y] = setTimeout(
-    () => element.classList.remove(cls),
-    i.settings.scrollingThreshold
-  );
-}
+import { setScrollingClass } from './lib/class-names';
 
 function createEvent(name) {
   if (typeof window.CustomEvent === 'function') {
@@ -101,6 +86,6 @@ function updateScroll(
       element.dispatchEvent(createEvent(`ps-${y}-reach-${i.reach[y]}`));
     }
 
-    setScrollingClass(i, element, y);
+    setScrollingClass(i, y);
   }
 }

@@ -1,9 +1,8 @@
 import * as CSS from '../lib/css';
+import cls from '../lib/class-names';
 import updateGeometry from '../update-geometry';
 import updateScroll from '../update-scroll';
 import { env } from '../lib/util';
-
-const childConsumeClass = 'ps__child--consume';
 
 export default function(i) {
   const element = i.element;
@@ -81,7 +80,7 @@ export default function(i) {
     let cursor = target;
 
     while (cursor && cursor !== element) {
-      if (cursor.classList.contains(childConsumeClass)) {
+      if (cursor.classList.contains(cls.element.consuming)) {
         return true;
       }
 
