@@ -118,13 +118,8 @@ the main CSS is imported.
 <link rel="stylesheet" href="css/perfect-scrollbar.css">
 ```
 
-Using CommonJS:
 
-```js
-const PerfectScrollbar = require('perfect-scrollbar');
-```
-
-Using ES Modules or TypeScript:
+Import via ES modules:
 
 ```js
 import PerfectScrollbar from 'perfect-scrollbar';
@@ -166,6 +161,7 @@ If you want to destroy the scrollbar, use `destroy`.
 
 ```js
 ps.destroy();
+ps = null; // to make sure garbages are collected
 ```
 
 If you want to scroll to somewhere, just update `scrollTop`.
