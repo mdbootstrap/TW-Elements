@@ -159,7 +159,7 @@ export default class PerfectScrollbar {
     return this.element.classList.contains(cls.main);
   }
 
-  update(updateReach = false, emitEvents = false) {
+  update() {
     if (!this.isInitialized) {
       return;
     }
@@ -185,10 +185,8 @@ export default class PerfectScrollbar {
 
     updateGeometry(this);
 
-    if (updateReach) {
-      updateScroll(this, 'top', this.element.scrollTop, false, emitEvents);
-      updateScroll(this, 'left', this.element.scrollLeft, false, emitEvents);
-    }
+    updateScroll(this, 'top', this.element.scrollTop, false, true);
+    updateScroll(this, 'left', this.element.scrollLeft, false, true);
 
     CSS.set(this.scrollbarXRail, { display: '' });
     CSS.set(this.scrollbarYRail, { display: '' });

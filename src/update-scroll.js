@@ -15,7 +15,7 @@ export default function(
   axis,
   value,
   useScrollingClass = true,
-  forceEventsSending = false
+  forceFireReachEvent = false
 ) {
   let fields;
   if (axis === 'top') {
@@ -40,7 +40,7 @@ export default function(
     throw new Error('A proper axis should be provided');
   }
 
-  updateScroll(i, value, fields, useScrollingClass, forceEventsSending);
+  updateScroll(i, value, fields, useScrollingClass, forceFireReachEvent);
 }
 
 function updateScroll(
@@ -48,7 +48,7 @@ function updateScroll(
   value,
   [contentHeight, containerHeight, scrollTop, y, up, down],
   useScrollingClass = true,
-  forceEventsSending = false
+  forceFireReachEvent = false
 ) {
   const element = i.element;
 
@@ -77,7 +77,7 @@ function updateScroll(
 
   let diff = element[scrollTop] - value;
 
-  if (diff || forceEventsSending) {
+  if (diff) {
     element.dispatchEvent(createEvent(`ps-scroll-${y}`));
 
     if (diff > 0) {
@@ -90,12 +90,12 @@ function updateScroll(
       element[scrollTop] = value;
     }
 
-    if (i.reach[y]) {
-      element.dispatchEvent(createEvent(`ps-${y}-reach-${i.reach[y]}`));
-    }
-
     if (useScrollingClass) {
       setScrollingClassInstantly(i, y);
     }
+  }
+
+  if (i.reach[y] && (diff || forceFireReachEvent)) {
+    element.dispatchEvent(createEvent(`ps-${y}-reach-${i.reach[y]}`));
   }
 }
