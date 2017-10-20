@@ -2,6 +2,7 @@ import * as CSS from './lib/css';
 import * as DOM from './lib/dom';
 import cls from './lib/class-names';
 import EventManager from './lib/event-manager';
+import updateScroll from './update-scroll';
 import updateGeometry from './update-geometry';
 import { toInt, outerWidth } from './lib/util';
 
@@ -158,7 +159,7 @@ export default class PerfectScrollbar {
     return this.element.classList.contains(cls.main);
   }
 
-  update() {
+  update(updateReach = false, emitEvents = false) {
     if (!this.isInitialized) {
       return;
     }
@@ -183,6 +184,11 @@ export default class PerfectScrollbar {
     CSS.set(this.scrollbarYRail, { display: 'none' });
 
     updateGeometry(this);
+
+    if (updateReach) {
+      updateScroll(this, 'top', this.element.scrollTop, false, emitEvents);
+      updateScroll(this, 'left', this.element.scrollLeft, false, emitEvents);
+    }
 
     CSS.set(this.scrollbarXRail, { display: '' });
     CSS.set(this.scrollbarYRail, { display: '' });
