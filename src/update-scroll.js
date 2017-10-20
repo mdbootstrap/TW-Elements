@@ -10,7 +10,13 @@ function createEvent(name) {
   }
 }
 
-export default function(i, axis, value, useScrollingClass = true, forceEventsSending = false) {
+export default function(
+  i,
+  axis,
+  value,
+  useScrollingClass = true,
+  forceEventsSending = false
+) {
   let fields;
   if (axis === 'top') {
     fields = [
@@ -41,8 +47,8 @@ function updateScroll(
   i,
   value,
   [contentHeight, containerHeight, scrollTop, y, up, down],
-  useScrollingClass,
-  forceEventsSending
+  useScrollingClass = true,
+  forceEventsSending = false
 ) {
   const element = i.element;
 
