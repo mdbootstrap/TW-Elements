@@ -196,15 +196,8 @@ function createEvent(name) {
   }
 }
 
-var updateScroll = function(
-  i,
-  axis,
-  value,
-  useScrollingClass,
-  forceEventsSending
-) {
+var updateScroll = function(i, axis, value, useScrollingClass) {
   if ( useScrollingClass === void 0 ) useScrollingClass = true;
-  if ( forceEventsSending === void 0 ) forceEventsSending = false;
 
   var fields;
   if (axis === 'top') {
@@ -227,15 +220,14 @@ var updateScroll = function(
     throw new Error('A proper axis should be provided');
   }
 
-  updateScroll$1(i, value, fields, useScrollingClass, forceEventsSending);
+  updateScroll$1(i, value, fields, useScrollingClass);
 };
 
 function updateScroll$1(
   i,
   value,
   ref,
-  useScrollingClass,
-  forceEventsSending
+  useScrollingClass
 ) {
   var contentHeight = ref[0];
   var containerHeight = ref[1];
@@ -243,8 +235,6 @@ function updateScroll$1(
   var y = ref[3];
   var up = ref[4];
   var down = ref[5];
-  if ( useScrollingClass === void 0 ) useScrollingClass = true;
-  if ( forceEventsSending === void 0 ) forceEventsSending = false;
 
   var element = i.element;
 
@@ -273,12 +263,12 @@ function updateScroll$1(
 
   var diff = element[scrollTop] - value;
 
-  if (diff || forceEventsSending) {
+  if (diff) {
     element.dispatchEvent(createEvent(("ps-scroll-" + y)));
 
     if (diff > 0) {
       element.dispatchEvent(createEvent(("ps-scroll-" + up)));
-    } else if (diff < 0) {
+    } else {
       element.dispatchEvent(createEvent(("ps-scroll-" + down)));
     }
 
@@ -1264,10 +1254,7 @@ prototypeAccessors.isInitialized.get = function () {
   return this.element.classList.contains(cls.main);
 };
 
-PerfectScrollbar.prototype.update = function update (updateReach, emitEvents) {
-    if ( updateReach === void 0 ) updateReach = false;
-    if ( emitEvents === void 0 ) emitEvents = false;
-
+PerfectScrollbar.prototype.update = function update () {
   if (!this.isInitialized) {
     return;
   }
@@ -1292,11 +1279,6 @@ PerfectScrollbar.prototype.update = function update (updateReach, emitEvents) {
   set(this.scrollbarYRail, { display: 'none' });
 
   updateGeometry(this);
-
-  if (updateReach) {
-    updateScroll(this, 'top', this.element.scrollTop, false, emitEvents);
-    updateScroll(this, 'left', this.element.scrollLeft, false, emitEvents);
-  }
 
   set(this.scrollbarXRail, { display: '' });
   set(this.scrollbarYRail, { display: '' });
