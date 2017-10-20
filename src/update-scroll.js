@@ -10,7 +10,7 @@ function createEvent(name) {
   }
 }
 
-export default function(i, axis, value, useScrollingClass = true) {
+export default function(i, axis, value, useScrollingClass = true, forceEventsSending = false) {
   let fields;
   if (axis === 'top') {
     fields = [
@@ -34,14 +34,15 @@ export default function(i, axis, value, useScrollingClass = true) {
     throw new Error('A proper axis should be provided');
   }
 
-  updateScroll(i, value, fields, useScrollingClass);
+  updateScroll(i, value, fields, useScrollingClass, forceEventsSending);
 }
 
 function updateScroll(
   i,
   value,
   [contentHeight, containerHeight, scrollTop, y, up, down],
-  useScrollingClass
+  useScrollingClass,
+  forceEventsSending
 ) {
   const element = i.element;
 
@@ -70,12 +71,12 @@ function updateScroll(
 
   let diff = element[scrollTop] - value;
 
-  if (diff) {
+  if (diff || forceEventsSending) {
     element.dispatchEvent(createEvent(`ps-scroll-${y}`));
 
     if (diff > 0) {
       element.dispatchEvent(createEvent(`ps-scroll-${up}`));
-    } else {
+    } else if (diff < 0) {
       element.dispatchEvent(createEvent(`ps-scroll-${down}`));
     }
 
