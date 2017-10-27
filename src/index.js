@@ -149,18 +149,16 @@ export default class PerfectScrollbar {
             : null,
     };
 
+    this.isAlive = true;
+
     this.settings.handlers.forEach(handlerName => handlers[handlerName](this));
 
     this.event.bind(this.element, 'scroll', () => updateGeometry(this));
     updateGeometry(this);
   }
 
-  get isInitialized() {
-    return this.element.classList.contains(cls.main);
-  }
-
   update() {
-    if (!this.isInitialized) {
+    if (!this.isAlive) {
       return;
     }
 
@@ -193,7 +191,7 @@ export default class PerfectScrollbar {
   }
 
   destroy() {
-    if (!this.isInitialized) {
+    if (!this.isAlive) {
       return;
     }
 
@@ -210,6 +208,8 @@ export default class PerfectScrollbar {
     this.scrollbarY = null;
     this.scrollbarXRail = null;
     this.scrollbarYRail = null;
+
+    this.isAlive = false;
   }
 
   removePsClasses() {
