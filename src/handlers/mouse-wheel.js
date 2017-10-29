@@ -177,7 +177,7 @@ export default function(i) {
     updateGeometry(i);
 
     shouldPrevent = shouldPrevent || shouldPreventDefault(deltaX, deltaY);
-    if (shouldPrevent) {
+    if (shouldPrevent && !e.ctrlKey) {
       e.stopPropagation();
       e.preventDefault();
     }
