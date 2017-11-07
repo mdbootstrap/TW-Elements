@@ -2,7 +2,7 @@ import * as CSS from './lib/css';
 import * as DOM from './lib/dom';
 import cls from './lib/class-names';
 import EventManager from './lib/event-manager';
-import updateScroll from './update-scroll';
+import processScrollDiff from './process-scroll-diff';
 import updateGeometry from './update-geometry';
 import { toInt, outerWidth } from './lib/util';
 
@@ -153,7 +153,9 @@ export default class PerfectScrollbar {
 
     this.settings.handlers.forEach(handlerName => handlers[handlerName](this));
 
-    this.event.bind(this.element, 'scroll', () => updateGeometry(this));
+    this.lastScrollTop = element.scrollTop; // for onScroll only
+    this.lastScrollLeft = element.scrollLeft; // for onScroll only
+    this.event.bind(this.element, 'scroll', e => this.onScroll(e));
     updateGeometry(this);
   }
 
@@ -183,11 +185,28 @@ export default class PerfectScrollbar {
 
     updateGeometry(this);
 
-    updateScroll(this, 'top', this.element.scrollTop, false, true);
-    updateScroll(this, 'left', this.element.scrollLeft, false, true);
+    processScrollDiff(this, 'top', 0, false, true);
+    processScrollDiff(this, 'left', 0, false, true);
 
     CSS.set(this.scrollbarXRail, { display: '' });
     CSS.set(this.scrollbarYRail, { display: '' });
+  }
+
+  onScroll(e) {
+    if (!this.isAlive) {
+      return;
+    }
+
+    updateGeometry(this);
+    processScrollDiff(this, 'top', this.element.scrollTop - this.lastScrollTop);
+    processScrollDiff(
+      this,
+      'left',
+      this.element.scrollLeft - this.lastScrollLeft
+    );
+
+    this.lastScrollTop = this.element.scrollTop;
+    this.lastScrollLeft = this.element.scrollLeft;
   }
 
   destroy() {

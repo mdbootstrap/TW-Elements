@@ -1,7 +1,6 @@
 import * as CSS from './lib/css';
 import * as DOM from './lib/dom';
 import cls from './lib/class-names';
-import updateScroll from './update-scroll';
 import { toInt } from './lib/util';
 
 export default function(i) {
@@ -82,7 +81,7 @@ export default function(i) {
     element.classList.remove(cls.state.active('x'));
     i.scrollbarXWidth = 0;
     i.scrollbarXLeft = 0;
-    updateScroll(i, 'left', 0);
+    element.scrollLeft = 0;
   }
   if (i.scrollbarYActive) {
     element.classList.add(cls.state.active('y'));
@@ -90,7 +89,7 @@ export default function(i) {
     element.classList.remove(cls.state.active('y'));
     i.scrollbarYHeight = 0;
     i.scrollbarYTop = 0;
-    updateScroll(i, 'top', 0);
+    element.scrollTop = 0;
   }
 }
 

@@ -2,7 +2,6 @@ import * as CSS from '../lib/css';
 import * as DOM from '../lib/dom';
 import { addScrollingClass, removeScrollingClass } from '../lib/class-names';
 import updateGeometry from '../update-geometry';
-import updateScroll from '../update-scroll';
 import { toInt } from '../lib/util';
 
 export default function(i) {
@@ -14,7 +13,6 @@ export default function(i) {
     'scrollbarX',
     'scrollbarXWidth',
     'scrollLeft',
-    'left',
     'x',
   ]);
   bindMouseScrollHandler(i, [
@@ -25,7 +23,6 @@ export default function(i) {
     'scrollbarY',
     'scrollbarYHeight',
     'scrollTop',
-    'top',
     'y',
   ]);
 }
@@ -40,7 +37,6 @@ function bindMouseScrollHandler(
     scrollbarY,
     scrollbarYHeight,
     scrollTop,
-    top,
     y,
   ]
 ) {
@@ -51,12 +47,8 @@ function bindMouseScrollHandler(
   let scrollBy = null;
 
   function mouseMoveHandler(e) {
-    updateScroll(
-      i,
-      top,
-      startingScrollTop + scrollBy * (e[pageY] - startingMousePageY),
-      false
-    );
+    element[scrollTop] =
+      startingScrollTop + scrollBy * (e[pageY] - startingMousePageY);
     addScrollingClass(i, y);
     updateGeometry(i);
 

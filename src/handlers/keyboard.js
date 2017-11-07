@@ -1,6 +1,5 @@
 import * as DOM from '../lib/dom';
 import updateGeometry from '../update-geometry';
-import updateScroll from '../update-scroll';
 import { isEditable } from '../lib/util';
 
 export default function(i) {
@@ -138,8 +137,8 @@ export default function(i) {
       return;
     }
 
-    updateScroll(i, 'top', element.scrollTop - deltaY);
-    updateScroll(i, 'left', element.scrollLeft + deltaX);
+    element.scrollTop -= deltaY;
+    element.scrollLeft += deltaX;
     updateGeometry(i);
 
     if (shouldPreventDefault(deltaX, deltaY)) {

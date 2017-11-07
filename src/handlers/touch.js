@@ -1,5 +1,4 @@
 import updateGeometry from '../update-geometry';
-import updateScroll from '../update-scroll';
 import { env } from '../lib/util';
 
 export default function(i) {
@@ -43,8 +42,8 @@ export default function(i) {
   }
 
   function applyTouchMove(differenceX, differenceY) {
-    updateScroll(i, 'top', element.scrollTop - differenceY);
-    updateScroll(i, 'left', element.scrollLeft - differenceX);
+    element.scrollTop -= differenceY;
+    element.scrollLeft -= differenceX;
 
     updateGeometry(i);
   }

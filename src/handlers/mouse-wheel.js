@@ -1,7 +1,6 @@
 import * as CSS from '../lib/css';
 import cls from '../lib/class-names';
 import updateGeometry from '../update-geometry';
-import updateScroll from '../update-scroll';
 import { env } from '../lib/util';
 
 export default function(i) {
@@ -128,48 +127,24 @@ export default function(i) {
     if (!i.settings.useBothWheelAxes) {
       // deltaX will only be used for horizontal scrolling and deltaY will
       // only be used for vertical scrolling - this is the default
-      updateScroll(
-        i,
-        'top',
-        element.scrollTop - deltaY * i.settings.wheelSpeed
-      );
-      updateScroll(
-        i,
-        'left',
-        element.scrollLeft + deltaX * i.settings.wheelSpeed
-      );
+      element.scrollTop -= deltaY * i.settings.wheelSpeed;
+      element.scrollLeft += deltaX * i.settings.wheelSpeed;
     } else if (i.scrollbarYActive && !i.scrollbarXActive) {
       // only vertical scrollbar is active and useBothWheelAxes option is
       // active, so let's scroll vertical bar using both mouse wheel axes
       if (deltaY) {
-        updateScroll(
-          i,
-          'top',
-          element.scrollTop - deltaY * i.settings.wheelSpeed
-        );
+        element.scrollTop -= deltaY * i.settings.wheelSpeed;
       } else {
-        updateScroll(
-          i,
-          'top',
-          element.scrollTop + deltaX * i.settings.wheelSpeed
-        );
+        element.scrollTop += deltaX * i.settings.wheelSpeed;
       }
       shouldPrevent = true;
     } else if (i.scrollbarXActive && !i.scrollbarYActive) {
       // useBothWheelAxes and only horizontal bar is active, so use both
       // wheel axes for horizontal bar
       if (deltaX) {
-        updateScroll(
-          i,
-          'left',
-          element.scrollLeft + deltaX * i.settings.wheelSpeed
-        );
+        element.scrollLeft += deltaX * i.settings.wheelSpeed;
       } else {
-        updateScroll(
-          i,
-          'left',
-          element.scrollLeft - deltaY * i.settings.wheelSpeed
-        );
+        element.scrollLeft -= deltaY * i.settings.wheelSpeed;
       }
       shouldPrevent = true;
     }

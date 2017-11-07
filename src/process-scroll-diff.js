@@ -13,7 +13,7 @@ function createEvent(name) {
 export default function(
   i,
   axis,
-  value,
+  diff,
   useScrollingClass = true,
   forceFireReachEvent = false
 ) {
@@ -40,54 +40,38 @@ export default function(
     throw new Error('A proper axis should be provided');
   }
 
-  updateScroll(i, value, fields, useScrollingClass, forceFireReachEvent);
+  processScrollDiff(i, diff, fields, useScrollingClass, forceFireReachEvent);
 }
 
-function updateScroll(
+function processScrollDiff(
   i,
-  value,
+  diff,
   [contentHeight, containerHeight, scrollTop, y, up, down],
   useScrollingClass = true,
   forceFireReachEvent = false
 ) {
   const element = i.element;
 
-  let mitigated = false;
-
   // reset reach
   i.reach[y] = null;
 
-  // don't allow negative scroll offset
-  if (value <= 0) {
-    value = 0;
+  // 1 for subpixel rounding
+  if (element[scrollTop] < 1) {
     i.reach[y] = 'start';
   }
 
-  // don't allow scroll past container
-  if (value >= i[contentHeight] - i[containerHeight]) {
-    value = i[contentHeight] - i[containerHeight];
-
-    // mitigates rounding errors on non-subpixel scroll values
-    if (value - element[scrollTop] <= 2) {
-      mitigated = true;
-    }
-
+  // 1 for subpixel rounding
+  if (element[scrollTop] > i[contentHeight] - i[containerHeight] - 1) {
     i.reach[y] = 'end';
   }
-
-  let diff = element[scrollTop] - value;
 
   if (diff) {
     element.dispatchEvent(createEvent(`ps-scroll-${y}`));
 
-    if (diff > 0) {
+    if (diff < 0) {
       element.dispatchEvent(createEvent(`ps-scroll-${up}`));
-    } else if (diff < 0) {
+    } else if (diff > 0) {
       element.dispatchEvent(createEvent(`ps-scroll-${down}`));
-    }
-
-    if (!mitigated) {
-      element[scrollTop] = value;
     }
 
     if (useScrollingClass) {
