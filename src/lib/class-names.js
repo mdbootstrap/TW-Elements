@@ -32,7 +32,7 @@ export function addScrollingClass(i, x) {
 
 export function removeScrollingClass(i, x) {
   scrollingClassTimeout[x] = setTimeout(
-    () => i.isActive && i.element.classList.remove(cls.state.scrolling(x)),
+    () => i.isAlive && i.element.classList.remove(cls.state.scrolling(x)),
     i.settings.scrollingThreshold
   );
 }
