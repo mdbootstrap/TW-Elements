@@ -124,23 +124,13 @@ function updateCss(element, i) {
   const yRailOffset = { top: element.scrollTop, height: i.railYHeight };
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
-      yRailOffset.right =
-        i.contentWidth -
-        (i.negativeScrollAdjustment + element.scrollLeft) -
-        i.scrollbarYRight -
-        i.scrollbarYOuterWidth;
+      yRailOffset.right = ( i.containerWidth - i.element.scrollLeft ) + i.containerWidth - i.scrollbarY.parentNode.getBoundingClientRect().width;
     } else {
       yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
     }
   } else {
     if (i.isRtl) {
-      yRailOffset.left =
-        i.negativeScrollAdjustment +
-        element.scrollLeft +
-        i.containerWidth * 2 -
-        i.contentWidth -
-        i.scrollbarYLeft -
-        i.scrollbarYOuterWidth;
+      yRailOffset.right = ( i.containerWidth - i.element.scrollLeft );
     } else {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
