@@ -125,22 +125,12 @@ function updateCss(element, i) {
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
       yRailOffset.right =
-        i.contentWidth -
-        (i.negativeScrollAdjustment + element.scrollLeft) -
-        i.scrollbarYRight -
-        i.scrollbarYOuterWidth;
-    } else {
-      yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
+        i.element.scrollWidth - i.element.scrollLeft - i.containerWidth;
     }
   } else {
     if (i.isRtl) {
       yRailOffset.left =
-        i.negativeScrollAdjustment +
-        element.scrollLeft +
-        i.containerWidth * 2 -
-        i.contentWidth -
-        i.scrollbarYLeft -
-        i.scrollbarYOuterWidth;
+        i.containerWidth - (i.element.scrollWidth - i.element.scrollLeft);
     } else {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
