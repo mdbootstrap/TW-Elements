@@ -10,9 +10,11 @@ export default function(i) {
 
   function shouldPreventDefault(deltaX, deltaY) {
     const isTop = element.scrollTop === 0;
-    const isBottom = element.scrollTop + element.offsetHeight === element.scrollHeight;
+    const isBottom =
+      element.scrollTop + element.offsetHeight === element.scrollHeight;
     const isLeft = element.scrollLeft === 0;
-    const isRight = element.scrollLeft + element.offsetWidth === element.offsetWidth;
+    const isRight =
+      element.scrollLeft + element.offsetWidth === element.offsetWidth;
 
     let hitsBound;
 
@@ -23,7 +25,7 @@ export default function(i) {
       hitsBound = isLeft || isRight;
     }
 
-    return hitsBound ? !i.settings.wheelPropagation :  true;
+    return hitsBound ? !i.settings.wheelPropagation : true;
   }
 
   function getDeltaFromEvent(e) {
