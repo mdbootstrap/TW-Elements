@@ -8,7 +8,7 @@ export default function(i) {
 
   const element = i.element;
 
-  function shouldStopOrPrevent(deltaX, deltaY) {
+  function shouldPrevent(deltaX, deltaY) {
     const scrollTop = element.scrollTop;
     const scrollLeft = element.scrollLeft;
     const magnitudeX = Math.abs(deltaX);
@@ -22,10 +22,7 @@ export default function(i) {
         (deltaY > 0 && scrollTop === 0)
       ) {
         // set prevent for mobile Chrome refresh
-        return {
-          stop: !i.settings.swipePropagation,
-          prevent: window.scrollY === 0,
-        };
+        return window.scrollY === 0;
       }
     } else if (magnitudeX > magnitudeY) {
       // user is perhaps trying to swipe left/right across the page
@@ -34,11 +31,11 @@ export default function(i) {
         (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth) ||
         (deltaX > 0 && scrollLeft === 0)
       ) {
-        return { stop: !i.settings.swipePropagation, prevent: true };
+        return true;
       }
     }
 
-    return { stop: true, prevent: true };
+    return true;
   }
 
   function applyTouchMove(differenceX, differenceY) {
@@ -52,15 +49,6 @@ export default function(i) {
   let startTime = 0;
   let speed = {};
   let easingLoop = null;
-  let inGlobalTouch = false;
-  let inLocalTouch = false;
-
-  function globalTouchStart() {
-    inGlobalTouch = true;
-  }
-  function globalTouchEnd() {
-    inGlobalTouch = false;
-  }
 
   function getTouch(e) {
     if (e.targetTouches) {
@@ -93,8 +81,6 @@ export default function(i) {
       return;
     }
 
-    inLocalTouch = true;
-
     const touch = getTouch(e);
 
     startOffset.pageX = touch.pageX;
@@ -105,15 +91,10 @@ export default function(i) {
     if (easingLoop !== null) {
       clearInterval(easingLoop);
     }
-
-    e.stopPropagation();
   }
 
   function touchMove(e) {
-    if (!inLocalTouch && i.settings.swipePropagation) {
-      touchStart(e);
-    }
-    if (!inGlobalTouch && inLocalTouch && shouldHandle(e)) {
+    if (shouldHandle(e)) {
       const touch = getTouch(e);
 
       const currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
@@ -133,58 +114,48 @@ export default function(i) {
         startTime = currentTime;
       }
 
-      const { stop, prevent } = shouldStopOrPrevent(differenceX, differenceY);
-      if (stop) e.stopPropagation();
-      if (prevent) e.preventDefault();
+      if (shouldPrevent(differenceX, differenceY)) {
+        e.preventDefault();
+      }
     }
   }
   function touchEnd() {
-    if (!inGlobalTouch && inLocalTouch) {
-      inLocalTouch = false;
+    if (i.settings.swipeEasing) {
+      clearInterval(easingLoop);
+      easingLoop = setInterval(function() {
+        if (i.isInitialized) {
+          clearInterval(easingLoop);
+          return;
+        }
 
-      if (i.settings.swipeEasing) {
-        clearInterval(easingLoop);
-        easingLoop = setInterval(function() {
-          if (i.isInitialized) {
-            clearInterval(easingLoop);
-            return;
-          }
+        if (!speed.x && !speed.y) {
+          clearInterval(easingLoop);
+          return;
+        }
 
-          if (!speed.x && !speed.y) {
-            clearInterval(easingLoop);
-            return;
-          }
+        if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
+          clearInterval(easingLoop);
+          return;
+        }
 
-          if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
-            clearInterval(easingLoop);
-            return;
-          }
+        applyTouchMove(speed.x * 30, speed.y * 30);
 
-          applyTouchMove(speed.x * 30, speed.y * 30);
-
-          speed.x *= 0.8;
-          speed.y *= 0.8;
-        }, 10);
-      }
+        speed.x *= 0.8;
+        speed.y *= 0.8;
+      }, 10);
     }
   }
 
   if (env.supportsTouch) {
-    i.event.bind(window, 'touchstart', globalTouchStart);
-    i.event.bind(window, 'touchend', globalTouchEnd);
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
     i.event.bind(element, 'touchend', touchEnd);
   } else if (env.supportsIePointer) {
     if (window.PointerEvent) {
-      i.event.bind(window, 'pointerdown', globalTouchStart);
-      i.event.bind(window, 'pointerup', globalTouchEnd);
       i.event.bind(element, 'pointerdown', touchStart);
       i.event.bind(element, 'pointermove', touchMove);
       i.event.bind(element, 'pointerup', touchEnd);
     } else if (window.MSPointerEvent) {
-      i.event.bind(window, 'MSPointerDown', globalTouchStart);
-      i.event.bind(window, 'MSPointerUp', globalTouchEnd);
       i.event.bind(element, 'MSPointerDown', touchStart);
       i.event.bind(element, 'MSPointerMove', touchMove);
       i.event.bind(element, 'MSPointerUp', touchEnd);

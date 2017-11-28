@@ -194,13 +194,6 @@ event will be propagated to parent element.
 
 **Default**: `false`
 
-### `swipePropagation {Boolean}`
-
-If this option is true, when the scroll reaches the end of the side, touch
-scrolling will be propagated to parent element.
-
-**Default**: `true`
-
 ### `swipeEasing {Boolean}`
 
 If this option is true, swipe scrolling will be eased.
