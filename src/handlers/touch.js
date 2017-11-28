@@ -1,4 +1,6 @@
 import updateGeometry from '../update-geometry';
+import cls from '../lib/class-names';
+import * as CSS from '../lib/css';
 import { env } from '../lib/util';
 
 export default function(i) {
@@ -93,6 +95,51 @@ export default function(i) {
     }
   }
 
+  function shouldBeConsumedByChild(target, deltaX, deltaY) {
+    if (!element.contains(target)) {
+      return false;
+    }
+
+    let cursor = target;
+
+    while (cursor && cursor !== element) {
+      if (cursor.classList.contains(cls.element.consuming)) {
+        return true;
+      }
+
+      const style = CSS.get(cursor);
+      const overflow = [style.overflow, style.overflowX, style.overflowY].join(
+        ''
+      );
+
+      // if scrollable
+      if (overflow.match(/(scroll|auto)/)) {
+        const maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
+        if (maxScrollTop > 0) {
+          if (
+            !(cursor.scrollTop === 0 && deltaY > 0) &&
+            !(cursor.scrollTop === maxScrollTop && deltaY < 0)
+          ) {
+            return true;
+          }
+        }
+        const maxScrollLeft = cursor.scrollLeft - cursor.clientWidth;
+        if (maxScrollLeft > 0) {
+          if (
+            !(cursor.scrollLeft === 0 && deltaX < 0) &&
+            !(cursor.scrollLeft === maxScrollLeft && deltaX > 0)
+          ) {
+            return true;
+          }
+        }
+      }
+
+      cursor = cursor.parentNode;
+    }
+
+    return false;
+  }
+
   function touchMove(e) {
     if (shouldHandle(e)) {
       const touch = getTouch(e);
@@ -101,6 +148,10 @@ export default function(i) {
 
       const differenceX = currentOffset.pageX - startOffset.pageX;
       const differenceY = currentOffset.pageY - startOffset.pageY;
+
+      if (shouldBeConsumedByChild(e.target, differenceX, differenceY)) {
+        return;
+      }
 
       applyTouchMove(differenceX, differenceY);
       startOffset = currentOffset;
