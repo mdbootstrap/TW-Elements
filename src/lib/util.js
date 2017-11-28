@@ -32,4 +32,5 @@ export const env = {
     ('ontouchstart' in window ||
       (window.DocumentTouch && document instanceof window.DocumentTouch)),
   supportsIePointer: navigator && navigator.msMaxTouchPoints,
+  isChrome: /Chrome/i.test(navigator && navigator.userAgent),
 };

@@ -22,7 +22,7 @@ export default function(i) {
         (deltaY > 0 && scrollTop === 0)
       ) {
         // set prevent for mobile Chrome refresh
-        return window.scrollY === 0;
+        return window.scrollY === 0 && deltaY > 0 && env.isChrome;
       }
     } else if (magnitudeX > magnitudeY) {
       // user is perhaps trying to swipe left/right across the page
