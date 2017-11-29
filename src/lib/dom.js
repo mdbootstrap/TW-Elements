@@ -4,12 +4,12 @@ export function div(className) {
   return div;
 }
 
-const elMatches =
-  Element.prototype.matches ||
-  Element.prototype.webkitMatchesSelector ||
-  Element.prototype.msMatchesSelector;
-
 export function matches(element, query) {
+  const elMatches =
+    Element.prototype.matches ||
+    Element.prototype.webkitMatchesSelector ||
+    Element.prototype.msMatchesSelector;
+
   if (!elMatches) {
     throw new Error('No element matching method supported');
   }
