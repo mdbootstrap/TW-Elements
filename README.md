@@ -17,7 +17,6 @@ developers) scrollbar plugin.
 * Use plain `scrollTop` and `scrollLeft`
 * Scrollbar style is fully customizable
 * Efficient update on layout change
-* SSR friendly, e.g. through [ngx-perfect-scrollbar](https://github.com/zefoy/ngx-perfect-scrollbar)
 
 I hope you love it!
 
