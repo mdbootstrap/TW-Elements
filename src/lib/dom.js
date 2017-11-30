@@ -7,8 +7,8 @@ export function div(className) {
 const elMatches =
   typeof Element !== 'undefined' &&
   (Element.prototype.matches ||
-  Element.prototype.webkitMatchesSelector ||
-  Element.prototype.msMatchesSelector);
+    Element.prototype.webkitMatchesSelector ||
+    Element.prototype.msMatchesSelector);
 
 export function matches(element, query) {
   if (!elMatches) {
