@@ -1,5 +1,5 @@
 /*!
- * perfect-scrollbar v1.2.0
+ * perfect-scrollbar v1.3.0
  * (c) 2017 Hyunje Jun
  * @license MIT
  */
@@ -25,9 +25,10 @@ function div(className) {
 }
 
 var elMatches =
-  Element.prototype.matches ||
-  Element.prototype.webkitMatchesSelector ||
-  Element.prototype.msMatchesSelector;
+  typeof Element !== 'undefined' &&
+  (Element.prototype.matches ||
+    Element.prototype.webkitMatchesSelector ||
+    Element.prototype.msMatchesSelector);
 
 function matches(element, query) {
   if (!elMatches) {
@@ -299,12 +300,18 @@ function outerWidth(element) {
 }
 
 var env = {
-  isWebKit: document && 'WebkitAppearance' in document.documentElement.style,
+  isWebKit:
+    typeof document !== 'undefined' &&
+    'WebkitAppearance' in document.documentElement.style,
   supportsTouch:
-    window &&
+    typeof window !== 'undefined' &&
     ('ontouchstart' in window ||
       (window.DocumentTouch && document instanceof window.DocumentTouch)),
-  supportsIePointer: navigator && navigator.msMaxTouchPoints,
+  supportsIePointer:
+    typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
+  isChrome:
+    typeof navigator !== 'undefined' &&
+    /Chrome/i.test(navigator && navigator.userAgent),
 };
 
 var updateGeometry = function(i) {
@@ -707,32 +714,23 @@ var wheel = function(i) {
   var element = i.element;
 
   function shouldPreventDefault(deltaX, deltaY) {
-    var scrollTop = element.scrollTop;
-    if (deltaX === 0) {
-      if (!i.scrollbarYActive) {
-        return false;
-      }
-      if (
-        (scrollTop === 0 && deltaY > 0) ||
-        (scrollTop >= i.contentHeight - i.containerHeight && deltaY < 0)
-      ) {
-        return !i.settings.wheelPropagation;
-      }
+    var isTop = element.scrollTop === 0;
+    var isBottom =
+      element.scrollTop + element.offsetHeight === element.scrollHeight;
+    var isLeft = element.scrollLeft === 0;
+    var isRight =
+      element.scrollLeft + element.offsetWidth === element.offsetWidth;
+
+    var hitsBound;
+
+    // pick axis with primary direction
+    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      hitsBound = isTop || isBottom;
+    } else {
+      hitsBound = isLeft || isRight;
     }
 
-    var scrollLeft = element.scrollLeft;
-    if (deltaY === 0) {
-      if (!i.scrollbarXActive) {
-        return false;
-      }
-      if (
-        (scrollLeft === 0 && deltaX < 0) ||
-        (scrollLeft >= i.contentWidth - i.containerWidth && deltaX > 0)
-      ) {
-        return !i.settings.wheelPropagation;
-      }
-    }
-    return true;
+    return hitsBound ? !i.settings.wheelPropagation : true;
   }
 
   function getDeltaFromEvent(e) {
@@ -872,7 +870,7 @@ var touch = function(i) {
 
   var element = i.element;
 
-  function shouldStopOrPrevent(deltaX, deltaY) {
+  function shouldPrevent(deltaX, deltaY) {
     var scrollTop = element.scrollTop;
     var scrollLeft = element.scrollLeft;
     var magnitudeX = Math.abs(deltaX);
@@ -886,10 +884,7 @@ var touch = function(i) {
         (deltaY > 0 && scrollTop === 0)
       ) {
         // set prevent for mobile Chrome refresh
-        return {
-          stop: !i.settings.swipePropagation,
-          prevent: window.scrollY === 0,
-        };
+        return window.scrollY === 0 && deltaY > 0 && env.isChrome;
       }
     } else if (magnitudeX > magnitudeY) {
       // user is perhaps trying to swipe left/right across the page
@@ -898,11 +893,11 @@ var touch = function(i) {
         (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth) ||
         (deltaX > 0 && scrollLeft === 0)
       ) {
-        return { stop: !i.settings.swipePropagation, prevent: true };
+        return true;
       }
     }
 
-    return { stop: true, prevent: true };
+    return true;
   }
 
   function applyTouchMove(differenceX, differenceY) {
@@ -916,15 +911,6 @@ var touch = function(i) {
   var startTime = 0;
   var speed = {};
   var easingLoop = null;
-  var inGlobalTouch = false;
-  var inLocalTouch = false;
-
-  function globalTouchStart() {
-    inGlobalTouch = true;
-  }
-  function globalTouchEnd() {
-    inGlobalTouch = false;
-  }
 
   function getTouch(e) {
     if (e.targetTouches) {
@@ -957,8 +943,6 @@ var touch = function(i) {
       return;
     }
 
-    inLocalTouch = true;
-
     var touch = getTouch(e);
 
     startOffset.pageX = touch.pageX;
@@ -969,21 +953,65 @@ var touch = function(i) {
     if (easingLoop !== null) {
       clearInterval(easingLoop);
     }
+  }
 
-    e.stopPropagation();
+  function shouldBeConsumedByChild(target, deltaX, deltaY) {
+    if (!element.contains(target)) {
+      return false;
+    }
+
+    var cursor = target;
+
+    while (cursor && cursor !== element) {
+      if (cursor.classList.contains(cls.element.consuming)) {
+        return true;
+      }
+
+      var style = get(cursor);
+      var overflow = [style.overflow, style.overflowX, style.overflowY].join(
+        ''
+      );
+
+      // if scrollable
+      if (overflow.match(/(scroll|auto)/)) {
+        var maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
+        if (maxScrollTop > 0) {
+          if (
+            !(cursor.scrollTop === 0 && deltaY > 0) &&
+            !(cursor.scrollTop === maxScrollTop && deltaY < 0)
+          ) {
+            return true;
+          }
+        }
+        var maxScrollLeft = cursor.scrollLeft - cursor.clientWidth;
+        if (maxScrollLeft > 0) {
+          if (
+            !(cursor.scrollLeft === 0 && deltaX < 0) &&
+            !(cursor.scrollLeft === maxScrollLeft && deltaX > 0)
+          ) {
+            return true;
+          }
+        }
+      }
+
+      cursor = cursor.parentNode;
+    }
+
+    return false;
   }
 
   function touchMove(e) {
-    if (!inLocalTouch && i.settings.swipePropagation) {
-      touchStart(e);
-    }
-    if (!inGlobalTouch && inLocalTouch && shouldHandle(e)) {
+    if (shouldHandle(e)) {
       var touch = getTouch(e);
 
       var currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
 
       var differenceX = currentOffset.pageX - startOffset.pageX;
       var differenceY = currentOffset.pageY - startOffset.pageY;
+
+      if (shouldBeConsumedByChild(e.target, differenceX, differenceY)) {
+        return;
+      }
 
       applyTouchMove(differenceX, differenceY);
       startOffset = currentOffset;
@@ -997,60 +1025,48 @@ var touch = function(i) {
         startTime = currentTime;
       }
 
-      var ref = shouldStopOrPrevent(differenceX, differenceY);
-      var stop = ref.stop;
-      var prevent = ref.prevent;
-      if (stop) { e.stopPropagation(); }
-      if (prevent) { e.preventDefault(); }
+      if (shouldPrevent(differenceX, differenceY)) {
+        e.preventDefault();
+      }
     }
   }
   function touchEnd() {
-    if (!inGlobalTouch && inLocalTouch) {
-      inLocalTouch = false;
+    if (i.settings.swipeEasing) {
+      clearInterval(easingLoop);
+      easingLoop = setInterval(function() {
+        if (i.isInitialized) {
+          clearInterval(easingLoop);
+          return;
+        }
 
-      if (i.settings.swipeEasing) {
-        clearInterval(easingLoop);
-        easingLoop = setInterval(function() {
-          if (i.isInitialized) {
-            clearInterval(easingLoop);
-            return;
-          }
+        if (!speed.x && !speed.y) {
+          clearInterval(easingLoop);
+          return;
+        }
 
-          if (!speed.x && !speed.y) {
-            clearInterval(easingLoop);
-            return;
-          }
+        if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
+          clearInterval(easingLoop);
+          return;
+        }
 
-          if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
-            clearInterval(easingLoop);
-            return;
-          }
+        applyTouchMove(speed.x * 30, speed.y * 30);
 
-          applyTouchMove(speed.x * 30, speed.y * 30);
-
-          speed.x *= 0.8;
-          speed.y *= 0.8;
-        }, 10);
-      }
+        speed.x *= 0.8;
+        speed.y *= 0.8;
+      }, 10);
     }
   }
 
   if (env.supportsTouch) {
-    i.event.bind(window, 'touchstart', globalTouchStart);
-    i.event.bind(window, 'touchend', globalTouchEnd);
     i.event.bind(element, 'touchstart', touchStart);
     i.event.bind(element, 'touchmove', touchMove);
     i.event.bind(element, 'touchend', touchEnd);
   } else if (env.supportsIePointer) {
     if (window.PointerEvent) {
-      i.event.bind(window, 'pointerdown', globalTouchStart);
-      i.event.bind(window, 'pointerup', globalTouchEnd);
       i.event.bind(element, 'pointerdown', touchStart);
       i.event.bind(element, 'pointermove', touchMove);
       i.event.bind(element, 'pointerup', touchEnd);
     } else if (window.MSPointerEvent) {
-      i.event.bind(window, 'MSPointerDown', globalTouchStart);
-      i.event.bind(window, 'MSPointerUp', globalTouchEnd);
       i.event.bind(element, 'MSPointerDown', touchStart);
       i.event.bind(element, 'MSPointerMove', touchMove);
       i.event.bind(element, 'MSPointerUp', touchEnd);
@@ -1067,7 +1083,6 @@ var defaultSettings = function () { return ({
   scrollYMarginOffset: 0,
   suppressScrollX: false,
   suppressScrollY: false,
-  swipePropagation: true,
   swipeEasing: true,
   useBothWheelAxes: false,
   wheelPropagation: false,
