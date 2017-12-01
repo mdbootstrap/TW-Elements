@@ -5,9 +5,10 @@ export function div(className) {
 }
 
 const elMatches =
-  Element.prototype.matches ||
-  Element.prototype.webkitMatchesSelector ||
-  Element.prototype.msMatchesSelector;
+  typeof Element !== 'undefined' &&
+  (Element.prototype.matches ||
+    Element.prototype.webkitMatchesSelector ||
+    Element.prototype.msMatchesSelector);
 
 export function matches(element, query) {
   if (!elMatches) {
