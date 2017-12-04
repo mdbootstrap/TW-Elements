@@ -14,7 +14,7 @@ export default function(i) {
       element.scrollTop + element.offsetHeight === element.scrollHeight;
     const isLeft = element.scrollLeft === 0;
     const isRight =
-      element.scrollLeft + element.offsetWidth === element.offsetWidth;
+      element.scrollLeft + element.offsetWidth === element.scrollWidth;
 
     let hitsBound;
 
