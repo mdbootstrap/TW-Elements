@@ -113,7 +113,9 @@ button.addEventListener('click', () => {
     var heightInput = $('height');
     var button = $('button');
 
-    var ps = new PerfectScrollbar(demoDiv);
+    var ps = new PerfectScrollbar(demoDiv, {
+      wheelPropagation: true
+    });
 
     button.addEventListener('click', function () {
       demoDiv.style.width = (widthInput.value || 600) + 'px';
