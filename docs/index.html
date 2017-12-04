@@ -82,7 +82,9 @@
 
         <h2 class="subtitle">Code</h2>
         <pre class="prettyprint">
-const ps = new PerfectScrollbar(demoDiv);
+const ps = new PerfectScrollbar(demoDiv, {
+  wheelPropagation: true
+});
 
 button.addEventListener('click', () => {
   demoDiv.style.width = `${widthInput.value}px`;
