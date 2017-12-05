@@ -82,7 +82,9 @@
 
         <h2 class="subtitle">Code</h2>
         <pre class="prettyprint">
-const ps = new PerfectScrollbar(demoDiv);
+const ps = new PerfectScrollbar(demoDiv, {
+  wheelPropagation: true
+});
 
 button.addEventListener('click', () => {
   demoDiv.style.width = `${widthInput.value}px`;
@@ -113,7 +115,9 @@ button.addEventListener('click', () => {
     var heightInput = $('height');
     var button = $('button');
 
-    var ps = new PerfectScrollbar(demoDiv);
+    var ps = new PerfectScrollbar(demoDiv, {
+      wheelPropagation: true
+    });
 
     button.addEventListener('click', function () {
       demoDiv.style.width = (widthInput.value || 600) + 'px';
