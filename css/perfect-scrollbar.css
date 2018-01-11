@@ -80,10 +80,16 @@
   transition: background-color .2s linear, width .2s ease-in-out;
   -webkit-transition: background-color .2s linear, width .2s ease-in-out;
   width: 6px;
-  /* there must be 'right' for ps__thumb-y */
-  right: 2px;
   /* please don't change 'position' */
   position: absolute;
+}
+
+.ps:not(.ps__rtl) .ps__thumb-y {
+  right: 2px;
+}
+
+.ps.ps__rtl .ps__thumb-y {
+  left: 2px;
 }
 
 .ps__rail-x:hover > .ps__thumb-x,
