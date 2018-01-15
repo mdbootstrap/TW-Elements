@@ -1,5 +1,6 @@
 const cls = {
   main: 'ps',
+  rtl: 'ps__rtl',
   element: {
     thumb: x => `ps__thumb-${x}`,
     rail: x => `ps__rail-${x}`,
