@@ -3,7 +3,16 @@ import * as DOM from './lib/dom';
 import cls from './lib/class-names';
 import { toInt } from './lib/util';
 
+let requestAnimationFrame = window.requestAnimationFrame || (cb => cb());
+
+let lastI = null;
 export default function(i) {
+  lastI = i;
+  requestAnimationFrame(updateGeometry);
+}
+
+function updateGeometry() {
+  let i = lastI;
   const element = i.element;
 
   i.containerWidth = element.clientWidth;
