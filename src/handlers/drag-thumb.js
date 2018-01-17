@@ -1,6 +1,11 @@
 import * as CSS from '../lib/css';
 import * as DOM from '../lib/dom';
-import { addScrollingClass, removeScrollingClass } from '../lib/class-names';
+import {
+  addScrollingClass,
+  removeScrollingClass,
+  addClickingClass,
+  removeClickingClass,
+} from '../lib/class-names';
 import updateGeometry from '../update-geometry';
 import { toInt } from '../lib/util';
 
@@ -58,6 +63,7 @@ function bindMouseScrollHandler(
 
   function mouseUpHandler() {
     removeScrollingClass(i, y);
+    removeClickingClass(i, y);
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
 
@@ -70,6 +76,8 @@ function bindMouseScrollHandler(
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+
+    addClickingClass(i, y);
 
     e.stopPropagation();
     e.preventDefault();
