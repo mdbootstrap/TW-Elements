@@ -7,9 +7,9 @@ const cls = {
   },
   state: {
     focus: 'ps--focus',
+    clicking: 'ps--clicking',
     active: x => `ps--active-${x}`,
     scrolling: x => `ps--scrolling-${x}`,
-    clicking: x => `ps--clicking-${x}`,
   },
 };
 
@@ -36,14 +36,6 @@ export function removeScrollingClass(i, x) {
     () => i.isAlive && i.element.classList.remove(cls.state.scrolling(x)),
     i.settings.scrollingThreshold
   );
-}
-
-export function addClickingClass(i, x) {
-  i.element.classList.add(cls.state.clicking(x));
-}
-
-export function removeClickingClass(i, x) {
-  i.element.classList.remove(cls.state.clicking(x));
 }
 
 export function setScrollingClassInstantly(i, x) {
