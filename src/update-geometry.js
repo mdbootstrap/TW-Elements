@@ -6,8 +6,13 @@ import { toInt } from './lib/util';
 let requestAnimationFrame = window.requestAnimationFrame || (cb => cb());
 
 let lastI = null;
-export default function(i) {
+export default function(i, force) {
   lastI = i;
+  // Manual calls to `update` require this to execute immediately.
+  if (force) {
+    updateGeometry();
+    return;
+  }
   requestAnimationFrame(updateGeometry);
 }
 

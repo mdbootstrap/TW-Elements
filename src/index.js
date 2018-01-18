@@ -182,7 +182,7 @@ export default class PerfectScrollbar {
     CSS.set(this.scrollbarXRail, { display: 'none' });
     CSS.set(this.scrollbarYRail, { display: 'none' });
 
-    updateGeometry(this);
+    updateGeometry(this, true);
 
     processScrollDiff(this, 'top', 0, false, true);
     processScrollDiff(this, 'left', 0, false, true);
