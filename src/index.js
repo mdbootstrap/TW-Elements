@@ -121,7 +121,6 @@ export default class PerfectScrollbar {
     this.scrollbarYTop = null;
     const railYStyle = CSS.get(this.scrollbarYRail);
     this.scrollbarYRight = parseInt(railYStyle.right, 10);
-
     if (isNaN(this.scrollbarYRight)) {
       this.isScrollbarYUsingRight = false;
       this.scrollbarYLeft = toInt(railYStyle.left);
