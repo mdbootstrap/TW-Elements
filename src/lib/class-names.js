@@ -9,6 +9,7 @@ const cls = {
     focus: 'ps--focus',
     clicking: 'ps--clicking',
     active: x => `ps--active-${x}`,
+    rtl: 'ps--rtl',
     scrolling: x => `ps--scrolling-${x}`,
   },
 };

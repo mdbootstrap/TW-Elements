@@ -63,6 +63,10 @@ export default class PerfectScrollbar {
     const blur = () => element.classList.remove(cls.state.focus);
 
     this.isRtl = CSS.get(element).direction === 'rtl';
+    if (this.isRtl) {
+      element.classList.add(cls.state.rtl);
+    }
+
     this.isNegativeScroll = (() => {
       const originalScrollLeft = element.scrollLeft;
       let result = null;
@@ -117,6 +121,7 @@ export default class PerfectScrollbar {
     this.scrollbarYTop = null;
     const railYStyle = CSS.get(this.scrollbarYRail);
     this.scrollbarYRight = parseInt(railYStyle.right, 10);
+
     if (isNaN(this.scrollbarYRight)) {
       this.isScrollbarYUsingRight = false;
       this.scrollbarYLeft = toInt(railYStyle.left);
@@ -161,6 +166,14 @@ export default class PerfectScrollbar {
   update() {
     if (!this.isAlive) {
       return;
+    }
+
+    // Reevaluate RTL status
+    this.isRtl = CSS.get(this.element).direction === 'rtl';
+    if (this.isRtl) {
+      this.element.classList.add(cls.state.rtl);
+    } else {
+      this.element.classList.remove(cls.state.rtl);
     }
 
     // Recalcuate negative scrollLeft adjustment
