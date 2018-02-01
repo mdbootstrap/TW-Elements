@@ -5,19 +5,7 @@ import { toInt } from './lib/util';
 
 let requestAnimationFrame = window.requestAnimationFrame || (cb => cb());
 
-let lastI = null;
-export default function(i, force) {
-  lastI = i;
-  // Manual calls to `update` require this to execute immediately.
-  if (force) {
-    updateGeometry();
-    return;
-  }
-  requestAnimationFrame(updateGeometry);
-}
-
-function updateGeometry() {
-  let i = lastI;
+export default function (i) {
   const element = i.element;
 
   i.containerWidth = element.clientWidth;
