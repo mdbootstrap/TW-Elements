@@ -158,15 +158,16 @@ export default class PerfectScrollbar {
     this.updateOwnGeometry();
   }
 
-  updateOwnGeometry () {
+  updateOwnGeometry() {
     if (this.currentAFReqId) this.currentAFReqId = null;
     updateGeometry(this);
   }
 
   updateOwnGeometryOnAnimFrame() {
     if (this.currentAFReqId) cancelAnimationFrame(this.currentAFReqId);
-    this.currentAFReqId =
-      requestAnimationFrame(this.updateOwnGeometry.bind(this));
+    this.currentAFReqId = requestAnimationFrame(
+      this.updateOwnGeometry.bind(this)
+    );
   }
 
   update() {
@@ -207,7 +208,7 @@ export default class PerfectScrollbar {
       return;
     }
 
-    this.updateOwnGeometryOnAnimFrame()
+    this.updateOwnGeometryOnAnimFrame();
     processScrollDiff(this, 'top', this.element.scrollTop - this.lastScrollTop);
     processScrollDiff(
       this,

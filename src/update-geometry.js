@@ -5,7 +5,7 @@ import { toInt } from './lib/util';
 
 let requestAnimationFrame = window.requestAnimationFrame || (cb => cb());
 
-export default function (i) {
+export default function(i) {
   const element = i.element;
 
   i.containerWidth = element.clientWidth;
