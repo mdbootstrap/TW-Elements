@@ -58,7 +58,7 @@ export default function(i) {
       toInt(i.railYHeight * i.containerHeight / i.contentHeight)
     );
     i.scrollbarYTop = toInt(
-      element.scrollTop *
+        Math.floor(element.scrollTop) *
         (i.railYHeight - i.scrollbarYHeight) /
         (i.contentHeight - i.containerHeight)
     );
@@ -115,13 +115,13 @@ function updateCss(element, i) {
     xRailOffset.left = element.scrollLeft;
   }
   if (i.isScrollbarXUsingBottom) {
-    xRailOffset.bottom = i.scrollbarXBottom - element.scrollTop;
+    xRailOffset.bottom = i.scrollbarXBottom - Math.floor(element.scrollTop);
   } else {
-    xRailOffset.top = i.scrollbarXTop + element.scrollTop;
+    xRailOffset.top = i.scrollbarXTop + Math.floor(element.scrollTop);
   }
   CSS.set(i.scrollbarXRail, xRailOffset);
 
-  const yRailOffset = { top: element.scrollTop, height: i.railYHeight };
+  const yRailOffset = { top: Math.floor(element.scrollTop), height: i.railYHeight };
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
       yRailOffset.right =
