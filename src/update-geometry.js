@@ -44,6 +44,8 @@ export default function(i) {
     );
   } else {
     i.scrollbarXActive = false;
+    i.scrollbarXWidth = 0;
+    i.scrollbarXLeft = 0;
   }
 
   if (
@@ -64,6 +66,8 @@ export default function(i) {
     );
   } else {
     i.scrollbarYActive = false;
+    i.scrollbarYHeight = 0;
+    i.scrollbarYTop = 0;
   }
 
   if (i.scrollbarXLeft >= i.railXWidth - i.scrollbarXWidth) {
@@ -79,16 +83,12 @@ export default function(i) {
     element.classList.add(cls.state.active('x'));
   } else {
     element.classList.remove(cls.state.active('x'));
-    i.scrollbarXWidth = 0;
-    i.scrollbarXLeft = 0;
     element.scrollLeft = 0;
   }
   if (i.scrollbarYActive) {
     element.classList.add(cls.state.active('y'));
   } else {
     element.classList.remove(cls.state.active('y'));
-    i.scrollbarYHeight = 0;
-    i.scrollbarYTop = 0;
     element.scrollTop = 0;
   }
 }
