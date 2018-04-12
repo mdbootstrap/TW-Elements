@@ -1,6 +1,6 @@
 /*!
  * perfect-scrollbar v1.3.0
- * (c) 2017 Hyunje Jun
+ * (c) 2018 Hyunje Jun
  * @license MIT
  */
 function get(element) {
@@ -62,6 +62,7 @@ var cls = {
   },
   state: {
     focus: 'ps--focus',
+    clicking: 'ps--clicking',
     active: function (x) { return ("ps--active-" + x); },
     scrolling: function (x) { return ("ps--scrolling-" + x); },
   },
@@ -505,7 +506,8 @@ var dragThumb = function(i) {
     'scrollbarX',
     'scrollbarXWidth',
     'scrollLeft',
-    'x' ]);
+    'x',
+    'scrollbarXRail' ]);
   bindMouseScrollHandler(i, [
     'containerHeight',
     'contentHeight',
@@ -514,7 +516,8 @@ var dragThumb = function(i) {
     'scrollbarY',
     'scrollbarYHeight',
     'scrollTop',
-    'y' ]);
+    'y',
+    'scrollbarYRail' ]);
 };
 
 function bindMouseScrollHandler(
@@ -529,6 +532,7 @@ function bindMouseScrollHandler(
   var scrollbarYHeight = ref[5];
   var scrollTop = ref[6];
   var y = ref[7];
+  var scrollbarYRail = ref[8];
 
   var element = i.element;
 
@@ -548,6 +552,7 @@ function bindMouseScrollHandler(
 
   function mouseUpHandler() {
     removeScrollingClass(i, y);
+    i[scrollbarYRail].classList.remove(cls.state.clicking);
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
 
@@ -560,6 +565,8 @@ function bindMouseScrollHandler(
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+
+    i[scrollbarYRail].classList.add(cls.state.clicking);
 
     e.stopPropagation();
     e.preventDefault();
@@ -719,7 +726,7 @@ var wheel = function(i) {
       element.scrollTop + element.offsetHeight === element.scrollHeight;
     var isLeft = element.scrollLeft === 0;
     var isRight =
-      element.scrollLeft + element.offsetWidth === element.offsetWidth;
+      element.scrollLeft + element.offsetWidth === element.scrollWidth;
 
     var hitsBound;
 
@@ -745,8 +752,8 @@ var wheel = function(i) {
 
     if (e.deltaMode && e.deltaMode === 1) {
       // Firefox in deltaMode 1: Line scrolling
-      deltaX *= 10;
-      deltaY *= 10;
+      deltaX *= 38;
+      deltaY *= 38;
     }
 
     if (deltaX !== deltaX && deltaY !== deltaY /* NaN checks */) {
@@ -1085,7 +1092,7 @@ var defaultSettings = function () { return ({
   suppressScrollY: false,
   swipeEasing: true,
   useBothWheelAxes: false,
-  wheelPropagation: false,
+  wheelPropagation: true,
   wheelSpeed: 1,
 }); };
 
