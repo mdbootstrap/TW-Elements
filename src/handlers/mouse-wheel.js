@@ -90,7 +90,7 @@ export default function(i) {
             return true;
           }
         }
-        const maxScrollLeft = cursor.scrollLeft - cursor.clientWidth;
+        const maxScrollLeft = cursor.scrollWidth - cursor.clientWidth;
         if (maxScrollLeft > 0) {
           if (
             !(cursor.scrollLeft === 0 && deltaX < 0) &&
