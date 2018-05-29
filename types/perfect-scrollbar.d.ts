@@ -9,7 +9,7 @@ declare namespace PerfectScrollbar {
     suppressScrollX?: boolean;
     suppressScrollY?: boolean;
     swipeEasing?: boolean;
-    swipeEasingResistance: number;
+    swipeEasingResistance?: number;
     useBothWheelAxes?: boolean;
     wheelPropagation?: boolean;
     wheelSpeed?: number;
