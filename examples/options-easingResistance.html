@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+    <script src="../dist/perfect-scrollbar.js"></script>
+    <style>
+    .container {
+      position: relative;
+      margin: 30px auto;
+      padding: 0px;
+      width: 600px;
+      height: 400px;
+      overflow: auto;
+    }
+    .container .content {
+      background-image: url('./assets/azusa.jpg');
+      width: 1280px;
+      height: 720px;
+      color: blue;
+      font-size: 20px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        Easing Resistance: 0.8
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        Easing Resistance: 0.95
+      </div>
+    </div>
+
+    <script>
+    var containers = document.querySelectorAll('.container');
+
+    new PerfectScrollbar(containers[0], {
+      swipeEasingResistance: 0.8
+    });
+
+    new PerfectScrollbar(containers[1], {
+      wheelSpeed: 0.95
+    });
+    </script>
+  </body>
+</html>
