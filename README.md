@@ -200,6 +200,12 @@ If this option is true, swipe scrolling will be eased.
 
 **Default**: `true`
 
+### `swipeEasingResistance {Number}`
+
+Defines the amount of resistance the swipe-easing encounters.
+
+**Default**: `0.8`
+
 ### `minScrollbarLength {Number?}`
 
 When set to an integer value, the thumb part of the scrollbar will not shrink
