@@ -351,11 +351,11 @@ var updateGeometry = function(i) {
     i.railXRatio = i.containerWidth / i.railXWidth;
     i.scrollbarXWidth = getThumbSize(
       i,
-      toInt(i.railXWidth * i.containerWidth / i.contentWidth)
+      toInt((i.railXWidth * i.containerWidth) / i.contentWidth)
     );
     i.scrollbarXLeft = toInt(
-      (i.negativeScrollAdjustment + element.scrollLeft) *
-        (i.railXWidth - i.scrollbarXWidth) /
+      ((i.negativeScrollAdjustment + element.scrollLeft) *
+        (i.railXWidth - i.scrollbarXWidth)) /
         (i.contentWidth - i.containerWidth)
     );
   } else {
@@ -371,11 +371,10 @@ var updateGeometry = function(i) {
     i.railYRatio = i.containerHeight / i.railYHeight;
     i.scrollbarYHeight = getThumbSize(
       i,
-      toInt(i.railYHeight * i.containerHeight / i.contentHeight)
+      toInt((i.railYHeight * i.containerHeight) / i.contentHeight)
     );
     i.scrollbarYTop = toInt(
-      element.scrollTop *
-        (i.railYHeight - i.scrollbarYHeight) /
+      (element.scrollTop * (i.railYHeight - i.scrollbarYHeight)) /
         (i.contentHeight - i.containerHeight)
     );
   } else {
@@ -752,7 +751,7 @@ var wheel = function(i) {
 
     if (typeof deltaX === 'undefined' || typeof deltaY === 'undefined') {
       // OS X Safari
-      deltaX = -1 * e.wheelDeltaX / 6;
+      deltaX = (-1 * e.wheelDeltaX) / 6;
       deltaY = e.wheelDeltaY / 6;
     }
 
@@ -924,13 +923,13 @@ var touch = function(i) {
 
   function calcContentScale(element) {
     var originSize = element.getBoundingClientRect(),
-        x = originSize.width / element.offsetWidth,
-        y = originSize.height / element.offsetHeight;
+      x = originSize.width / element.offsetWidth || 1,
+      y = originSize.height / element.offsetHeight || 1;
 
     return {
-        x: x || 1,
-        y: y || 1
-    }
+      x: x,
+      y: y,
+    };
   }
 
   var startOffset = {};
