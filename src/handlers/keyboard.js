@@ -10,7 +10,7 @@ export default function(i) {
     DOM.matches(i.scrollbarX, ':focus') || DOM.matches(i.scrollbarY, ':focus');
 
   function shouldPreventDefault(deltaX, deltaY) {
-    const scrollTop = element.scrollTop;
+    const scrollTop = Math.floor(element.scrollTop);
     if (deltaX === 0) {
       if (!i.scrollbarYActive) {
         return false;
