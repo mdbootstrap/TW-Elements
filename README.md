@@ -22,7 +22,7 @@ I hope you love it!
 
 ## Demo
 
-It's on the [GitHub Pages](http://utatti.github.com/perfect-scrollbar/).
+It's on the [GitHub Pages](http://utatti.github.io/perfect-scrollbar/).
 
 ## Table of Contents
 
