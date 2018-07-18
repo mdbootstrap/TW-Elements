@@ -50,10 +50,14 @@ export default function(i) {
       deltaX = 0;
       deltaY = e.wheelDelta;
     }
-
-    if (e.shiftKey) {
-      // reverse axis with shift key
-      return [-deltaY, -deltaX];
+    
+    // Reverse axis with shift key should be executed only on windows
+    var ua = window.navigator.userAgent;
+    if (ua.indexOf('Windows') > 0) {
+      if (e.shiftKey) {
+        // reverse axis with shift key
+        return [-deltaY, -deltaX];
+      }
     }
     return [deltaX, deltaY];
   }
