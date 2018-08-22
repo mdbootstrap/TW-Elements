@@ -70,7 +70,7 @@ function bindMouseScrollHandler(
     i[scrollbarYRail].classList.remove(cls.state.clicking);
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
-  
+ 
   function bindMoves(e, touchMode) {
     startingScrollTop = element[scrollTop];
     if (touchMode && e.touches) {
@@ -92,6 +92,7 @@ function bindMouseScrollHandler(
 
     e.stopPropagation();
   }
+
   i.event.bind(i[scrollbarY], 'mousedown', e => {
     bindMoves(e);
   });
