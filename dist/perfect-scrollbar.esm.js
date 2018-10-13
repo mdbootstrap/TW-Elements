@@ -1,5 +1,5 @@
 /*!
- * perfect-scrollbar v1.4.0
+ * perfect-scrollbar v1.5.0
  * (c) 2018 Hyunje Jun
  * @license MIT
  */
@@ -435,7 +435,10 @@ function updateCss(element, i) {
   }
   set(i.scrollbarXRail, xRailOffset);
 
-  var yRailOffset = { top: roundedScrollTop, height: i.railYHeight };
+  var yRailOffset = {
+    top: roundedScrollTop + i.settings.yOffsetTop,
+    height: i.railYHeight - i.settings.yOffsetHeight,
+  };
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
       yRailOffset.right =
@@ -467,7 +470,7 @@ function updateCss(element, i) {
   });
   set(i.scrollbarY, {
     top: i.scrollbarYTop,
-    height: i.scrollbarYHeight - i.railBorderYWidth,
+    height: i.scrollbarYHeight - i.railBorderYWidth - i.settings.yOffsetHeight,
   });
 }
 
@@ -1098,6 +1101,8 @@ var defaultSettings = function () { return ({
   swipeEasing: true,
   useBothWheelAxes: false,
   wheelPropagation: true,
+  yOffsetHeight: 0,
+  yOffsetTop: 0,
   wheelSpeed: 1,
 }); };
 
