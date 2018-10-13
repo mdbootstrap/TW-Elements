@@ -124,7 +124,10 @@ function updateCss(element, i) {
   }
   CSS.set(i.scrollbarXRail, xRailOffset);
 
-  const yRailOffset = { top: roundedScrollTop, height: i.railYHeight };
+  const yRailOffset = {
+    top: roundedScrollTop + i.settings.yOffsetTop,
+    height: i.railYHeight - i.settings.yOffsetHeight,
+  };
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
       yRailOffset.right =
@@ -156,6 +159,6 @@ function updateCss(element, i) {
   });
   CSS.set(i.scrollbarY, {
     top: i.scrollbarYTop,
-    height: i.scrollbarYHeight - i.railBorderYWidth,
+    height: i.scrollbarYHeight - i.railBorderYWidth - i.settings.yOffsetHeight,
   });
 }
