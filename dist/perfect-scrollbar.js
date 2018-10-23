@@ -313,7 +313,8 @@ var env = {
     'WebkitAppearance' in document.documentElement.style,
   supportsTouch:
     typeof window !== 'undefined' &&
-    (('maxTouchPoints' in window.navigator && window.navigator.maxTouchPoints > 0) ||
+    (('maxTouchPoints' in window.navigator &&
+      window.navigator.maxTouchPoints > 0) ||
       (window.DocumentTouch && document instanceof window.DocumentTouch)),
   supportsIePointer:
     typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
@@ -353,11 +354,11 @@ var updateGeometry = function(i) {
     i.railXRatio = i.containerWidth / i.railXWidth;
     i.scrollbarXWidth = getThumbSize(
       i,
-      toInt(i.railXWidth * i.containerWidth / i.contentWidth)
+      toInt((i.railXWidth * i.containerWidth) / i.contentWidth)
     );
     i.scrollbarXLeft = toInt(
-      (i.negativeScrollAdjustment + element.scrollLeft) *
-        (i.railXWidth - i.scrollbarXWidth) /
+      ((i.negativeScrollAdjustment + element.scrollLeft) *
+        (i.railXWidth - i.scrollbarXWidth)) /
         (i.contentWidth - i.containerWidth)
     );
   } else {
@@ -373,11 +374,10 @@ var updateGeometry = function(i) {
     i.railYRatio = i.containerHeight / i.railYHeight;
     i.scrollbarYHeight = getThumbSize(
       i,
-      toInt(i.railYHeight * i.containerHeight / i.contentHeight)
+      toInt((i.railYHeight * i.containerHeight) / i.contentHeight)
     );
     i.scrollbarYTop = toInt(
-      roundedScrollTop *
-        (i.railYHeight - i.scrollbarYHeight) /
+      (roundedScrollTop * (i.railYHeight - i.scrollbarYHeight)) /
         (i.contentHeight - i.containerHeight)
     );
   } else {
@@ -757,7 +757,7 @@ var wheel = function(i) {
 
     if (typeof deltaX === 'undefined' || typeof deltaY === 'undefined') {
       // OS X Safari
-      deltaX = -1 * e.wheelDeltaX / 6;
+      deltaX = (-1 * e.wheelDeltaX) / 6;
       deltaY = e.wheelDeltaY / 6;
     }
 
