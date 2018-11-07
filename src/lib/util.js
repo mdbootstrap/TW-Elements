@@ -31,7 +31,8 @@ export const env = {
     'WebkitAppearance' in document.documentElement.style,
   supportsTouch:
     typeof window !== 'undefined' &&
-    ('ontouchstart' in window || navigator.maxTouchPoints > 0 ||
+    ('ontouchstart' in window || 
+      navigator.maxTouchPoints > 0 ||
       (window.DocumentTouch && document instanceof window.DocumentTouch)),
   supportsIePointer:
     typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
