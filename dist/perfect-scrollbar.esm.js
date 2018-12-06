@@ -319,9 +319,10 @@ var env = {
 var updateGeometry = function(i) {
   var element = i.element;
   var roundedScrollTop = Math.floor(element.scrollTop);
+  var rect = element.getBoundingClientRect();
 
-  i.containerWidth = element.clientWidth;
-  i.containerHeight = element.clientHeight;
+  i.containerWidth = Math.ceil(rect.width);
+  i.containerHeight = Math.ceil(rect.height);
   i.contentWidth = element.scrollWidth;
   i.contentHeight = element.scrollHeight;
 
