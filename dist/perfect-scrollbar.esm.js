@@ -1,6 +1,6 @@
 /*!
  * perfect-scrollbar v1.4.0
- * (c) 2018 Hyunje Jun
+ * (c) 2019 Hyunje Jun
  * @license MIT
  */
 function get(element) {
@@ -787,7 +787,7 @@ var wheel = function(i) {
     var cursor = target;
 
     while (cursor && cursor !== element) {
-      if (cursor.classList.contains(cls.element.consuming)) {
+      if (cursor.classList && cursor.classList.contains(cls.element.consuming)) {
         return true;
       }
 
@@ -975,7 +975,7 @@ var touch = function(i) {
     var cursor = target;
 
     while (cursor && cursor !== element) {
-      if (cursor.classList.contains(cls.element.consuming)) {
+      if (cursor.classList && cursor.classList.contains(cls.element.consuming)) {
         return true;
       }
 
