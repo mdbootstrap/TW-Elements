@@ -103,7 +103,7 @@ export default function(i) {
     let cursor = target;
 
     while (cursor && cursor !== element) {
-      if (cursor.classList.contains(cls.element.consuming)) {
+      if (cursor.classList && cursor.classList.contains(cls.element.consuming)) {
         return true;
       }
 
