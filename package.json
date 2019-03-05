@@ -32,6 +32,7 @@
   "devDependencies": {
     "chokidar-cli": "^1.2.0",
     "prettier": "^1.7.1",
+    "rimraf": "^2.6.3",
     "rollup": "^0.50.0",
     "rollup-plugin-buble": "^0.16.0",
     "uglify-js": "^3.1.2"
@@ -39,10 +40,11 @@
   "scripts": {
     "test": "npm run format:lint && npm run build",
     "build": "npm run clean && node build",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "watch": "npm run build && SHELL=/bin/bash chokidar 'src/**/*.js' -c 'npm run format && npm run build'",
-    "format": "prettier --write --single-quote --trailing-comma es5 'src/**/*.js'",
-    "format:lint": "prettier -l --single-quote --trailing-comma es5 'src/**/*.js'",
+    "watch:windows": "npm run build && chokidar \"src/**/*.js\" -c \"npm run format && npm run build\"",
+    "format": "prettier --write --single-quote --trailing-comma es5 \"src/**/*.js\"",
+    "format:lint": "prettier -l --single-quote --trailing-comma es5 \"src/**/*.js\"",
     "release": "./release"
   },
   "license": "MIT"
