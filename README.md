@@ -22,7 +22,7 @@ I hope you love it!
 
 ## Demo
 
-Check out the <a href="https://mdbootstrap.com/snippets/jquery/bartek-malanowski/721068" target="_blank">Live Preview</a> snippet.
+Check out the <a href="https://mdbootstrap.com/snippets/jquery/bartek-malanowski/721068" target="_blank">Live Preview</a> snippet. You can fork it right away for testing and experimenting purposes.
 
 _________
 
@@ -65,12 +65,6 @@ $ cd perfect-scrollbar
 $ npm install
 $ npm run build
 ```
-
-#### JSFiddle
-
-You can fork the following JSFiddles for testing and experimenting purposes:
-
-* [perfect-scrollbar JSFiddle](https://jsfiddle.net/utatti/dyvL31r6/)
 
 #### Unofficial sources
 
