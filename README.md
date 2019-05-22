@@ -7,12 +7,6 @@ Minimalistic but perfect custom scrollbar plugin
 
 ***To read documentation for versions < 1.0, please visit [`v0.8.1`](https://github.com/mdbootstrap/perfect-scrollbar/tree/0.8.1).***
 
-## Project status
-
-This project is not (and will not in a while) maintained actively. I personally do not afford maintaining this project because of personal/professional reasons.
-
-I am looking for a next maintainer. Please feel free to comment in [this issue](https://github.com/mdbootstrap/perfect-scrollbar/issues/869) if interested.
-
 ## Why perfect-scrollbar?
 
 perfect-scrollbar is minimalistic but *perfect* (for me, and maybe for most
@@ -28,7 +22,9 @@ I hope you love it!
 
 ## Demo
 
-It's on the [GitHub Pages](http://mdbootstrap.github.io/perfect-scrollbar/).
+Check out the <a href="https://mdbootstrap.com/snippets/jquery/bartek-malanowski/721068" target="_blank">Live Preview</a> snippet.
+
+_________
 
 ## Table of Contents
 
