@@ -317,9 +317,9 @@ console.log(ps.reach.y); // => 'start' or 'end' or null
 ## Helpdesk
 
 If you have any idea to improve this project or any problem using this, please
-feel free to upload an [issue](https://github.com/utatti/perfect-scrollbar/issues).
+feel free to upload an [issue](https://github.com/mdbootstrap/perfect-scrollbar/issues).
 
-For common problems, there is a [FAQ](https://github.com/utatti/perfect-scrollbar/wiki/FAQ) wiki
+For common problems, there is a [FAQ](https://github.com/mdbootstrap/perfect-scrollbar/wiki/FAQ) wiki
 page. Please check the page before uploading an issue.
 
 Also, the project is not actively maintained. No maintainer is paid, and most of
@@ -332,7 +332,7 @@ way to fix an issue.
 The plugin is developed to work in modern MS browsers including Edge and IE11,
 but may have some issues in IE11 mainly because of IE rendering bug concerning
 sync update on scroll properties. The problem is mentioned in
-[Caveats](https://github.com/utatti/perfect-scrollbar/wiki/Caveats) too.
+[Caveats](https://github.com/mdbootstrap/perfect-scrollbar/wiki/Caveats) too.
 
 IE<11 is not supported, and patches to fix problems in IE<=10 will not be
 accepted. When old IEs should be supported, please fork the project and make
