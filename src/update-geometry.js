@@ -5,6 +5,7 @@ import { toInt } from './lib/util';
 
 export default function(i) {
   const element = i.element;
+  const roundedScrollTop = Math.floor(element.scrollTop);
 
   i.containerWidth = element.clientWidth;
   i.containerHeight = element.clientHeight;
@@ -58,7 +59,7 @@ export default function(i) {
       toInt(i.railYHeight * i.containerHeight / i.contentHeight)
     );
     i.scrollbarYTop = toInt(
-      element.scrollTop *
+      roundedScrollTop *
         (i.railYHeight - i.scrollbarYHeight) /
         (i.contentHeight - i.containerHeight)
     );
@@ -105,6 +106,8 @@ function getThumbSize(i, thumbSize) {
 
 function updateCss(element, i) {
   const xRailOffset = { width: i.railXWidth };
+  const roundedScrollTop = Math.floor(element.scrollTop);
+
   if (i.isRtl) {
     xRailOffset.left =
       i.negativeScrollAdjustment +
@@ -115,13 +118,13 @@ function updateCss(element, i) {
     xRailOffset.left = element.scrollLeft;
   }
   if (i.isScrollbarXUsingBottom) {
-    xRailOffset.bottom = i.scrollbarXBottom - element.scrollTop;
+    xRailOffset.bottom = i.scrollbarXBottom - roundedScrollTop;
   } else {
-    xRailOffset.top = i.scrollbarXTop + element.scrollTop;
+    xRailOffset.top = i.scrollbarXTop + roundedScrollTop;
   }
   CSS.set(i.scrollbarXRail, xRailOffset);
 
-  const yRailOffset = { top: element.scrollTop, height: i.railYHeight };
+  const yRailOffset = { top: roundedScrollTop, height: i.railYHeight };
   if (i.isScrollbarYUsingRight) {
     if (i.isRtl) {
       yRailOffset.right =

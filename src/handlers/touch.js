@@ -11,7 +11,7 @@ export default function(i) {
   const element = i.element;
 
   function shouldPrevent(deltaX, deltaY) {
-    const scrollTop = element.scrollTop;
+    const scrollTop = Math.floor(element.scrollTop);
     const scrollLeft = element.scrollLeft;
     const magnitudeX = Math.abs(deltaX);
     const magnitudeY = Math.abs(deltaY);

@@ -4,9 +4,9 @@ Minimalistic but perfect custom scrollbar plugin
 
 [![npm](https://img.shields.io/npm/v/perfect-scrollbar.svg)](https://www.npmjs.com/package/perfect-scrollbar)
 [![CDNJS](https://img.shields.io/cdnjs/v/jquery.perfect-scrollbar.svg)](https://cdnjs.com/libraries/jquery.perfect-scrollbar)
-[![Travis CI](https://travis-ci.org/utatti/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/utatti/perfect-scrollbar)
+[![Travis CI](https://travis-ci.org/mdbootstrap/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/mdbootstrap/perfect-scrollbar)
 
-***To read documentation for versions < 1.0, please visit [`v0.8.1`](https://github.com/utatti/perfect-scrollbar/tree/0.8.1).***
+***To read documentation for versions < 1.0, please visit [`v0.8.1`](https://github.com/mdbootstrap/perfect-scrollbar/tree/0.8.1).***
 
 ## Why perfect-scrollbar?
 
@@ -23,7 +23,9 @@ I hope you love it!
 
 ## Demo
 
-It's on the [GitHub Pages](http://utatti.github.com/perfect-scrollbar/).
+Check out the <a href="https://mdbootstrap.com/snippets/jquery/bartek-malanowski/721068" target="_blank">Live Preview</a> snippet. You can fork it right away for testing and experimenting purposes.
+
+_________
 
 ## Table of Contents
 
@@ -51,7 +53,7 @@ $ npm install perfect-scrollbar
 #### Manual download
 
 You can manually download perfect-scrollbar
-from [Releases](https://github.com/utatti/perfect-scrollbar/releases).
+from [Releases](https://github.com/mdbootstrap/perfect-scrollbar/releases).
 
 #### From sources
 
@@ -59,17 +61,11 @@ If you want to use the development version of the plugin, build from source
 manually. The development version may be unstable.
 
 ```
-$ git clone https://github.com/utatti/perfect-scrollbar.git
+$ git clone https://github.com/mdbootstrap/perfect-scrollbar.git
 $ cd perfect-scrollbar
 $ npm install
 $ npm run build
 ```
-
-#### JSFiddle
-
-You can fork the following JSFiddles for testing and experimenting purposes:
-
-* [perfect-scrollbar JSFiddle](https://jsfiddle.net/utatti/dyvL31r6/)
 
 #### Unofficial sources
 
@@ -98,7 +94,7 @@ needed, using browser-native scroll is always recommended.
 ## Caveats
 
 perfect-scrollbar emulates some scrolls, but not all of the kinds. It also *does not* work
-in some situations. You can find these cases in [Caveats](https://github.com/utatti/perfect-scrollbar/wiki/Caveats).
+in some situations. You can find these cases in [Caveats](https://github.com/mdbootstrap/perfect-scrollbar/wiki/Caveats).
 Basically, items listed in the caveats are hacky to implement and may not be
 implemented in the future. If the features are really needed, please consider
 using browser-native scroll.

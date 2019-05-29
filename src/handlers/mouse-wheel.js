@@ -9,9 +9,10 @@ export default function(i) {
   let shouldPrevent = false;
 
   function shouldPreventDefault(deltaX, deltaY) {
+    const roundedScrollTop = Math.floor(element.scrollTop);
     const isTop = element.scrollTop === 0;
     const isBottom =
-      element.scrollTop + element.offsetHeight === element.scrollHeight;
+      roundedScrollTop + element.offsetHeight === element.scrollHeight;
     const isLeft = element.scrollLeft === 0;
     const isRight =
       element.scrollLeft + element.offsetWidth === element.scrollWidth;
@@ -90,7 +91,7 @@ export default function(i) {
             return true;
           }
         }
-        const maxScrollLeft = cursor.scrollLeft - cursor.clientWidth;
+        const maxScrollLeft = cursor.scrollWidth - cursor.clientWidth;
         if (maxScrollLeft > 0) {
           if (
             !(cursor.scrollLeft === 0 && deltaX < 0) &&
