@@ -3,6 +3,7 @@
 Minimalistic but perfect custom scrollbar plugin
 
 [![npm](https://img.shields.io/npm/v/perfect-scrollbar.svg)](https://www.npmjs.com/package/perfect-scrollbar)
+[![CDNJS](https://img.shields.io/cdnjs/v/jquery.perfect-scrollbar.svg)](https://cdnjs.com/libraries/jquery.perfect-scrollbar)
 [![Travis CI](https://travis-ci.org/mdbootstrap/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/mdbootstrap/perfect-scrollbar)
 
 ***To read documentation for versions < 1.0, please visit [`v0.8.1`](https://github.com/mdbootstrap/perfect-scrollbar/tree/0.8.1).***
