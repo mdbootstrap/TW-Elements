@@ -23,7 +23,7 @@ I hope you love it!
 
 ## Demo
 
-Check out the <a href="https://mdbootstrap.com/snippets/jquery/bartek-malanowski/721068" target="_blank">Live Preview</a> snippet. You can fork it right away for testing and experimenting purposes.
+Check out the <a href="https://mdbootstrap.com/snippets/jquery/filipkapusta/765760" target="_blank">Live Preview</a> snippet. You can fork it right away for testing and experimenting purposes.
 
 _________
 
