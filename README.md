@@ -1,10 +1,20 @@
-# perfect-scrollbar
+<p align="center">
+  <a href="https://mdbootstrap.com/docs/jquery/getting-started/download/?utm_source=GitHub&utm_medium=PerfectScrollbar">
+    <img src="https://mdbootstrap.com/img/Marketing/general/logo/medium/mdb-r.png">
+  </a>
+</p>
 
-Minimalistic but perfect custom scrollbar plugin
+<h1 align="center">perfect-scrollbar</h1>
 
-[![npm](https://img.shields.io/npm/v/perfect-scrollbar.svg)](https://www.npmjs.com/package/perfect-scrollbar)
-[![CDNJS](https://img.shields.io/cdnjs/v/jquery.perfect-scrollbar.svg)](https://cdnjs.com/libraries/jquery.perfect-scrollbar)
-[![Travis CI](https://travis-ci.org/mdbootstrap/perfect-scrollbar.svg?branch=master)](https://travis-ci.org/mdbootstrap/perfect-scrollbar)
+<p align="center">Minimalistic but perfect custom scrollbar plugin<p>
+
+
+<p align="center">	
+  <a href="https://npmcharts.com/compare/perfect-scrollbar?minimal=true"><img src="https://img.shields.io/npm/dm/perfect-scrollbar.svg" alt="Downloads"></a>
+  <a href="https://github.com/mdbootstrap/bootstrap-material-design/blob/master/License.pdf"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>	
+  <a href="https://badge.fury.io/js/perfect-scrollbar"><img src="https://badge.fury.io/js/perfect-scrollbar.svg" alt="npm"></a>	
+  <a href="https://twitter.com/intent/tweet/?text=Thanks+@mdbootstrap+for+maintaining+amazing+and+free+Perfect+Scrollbar+Plugin%20https://mdbootstrap.com/freebies/perfect-scrollbar/&hashtags=javascript,code,webdesign,github"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>	
+</p>
 
 ## [Official documentation](https://mdbootstrap.com/freebies/perfect-scrollbar/?utm_source=GitHub&utm_medium=PerfectScrollbar)
 ***The official documentation can be found [here](https://mdbootstrap.com/freebies/perfect-scrollbar/?utm_source=GitHub&utm_medium=PerfectScrollbar).***
