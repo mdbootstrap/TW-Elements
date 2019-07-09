@@ -1,44 +1,156 @@
+<!--DROP THIS FILE INTO YOUR BROWSER TO PREVIEW THE EFFECT-->
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="../css/perfect-scrollbar.css" rel="stylesheet">
-    <script src="../dist/perfect-scrollbar.js"></script>
-    <style>
+
+<head>
+  <!--ADDITTONAL LINKS TO MAKE THE EXAMPLES LOOK PRETTY-->
+  <!-- Bootstrap core CSS for better functionality-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Some cool icons -->
+  <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+  <!-- Awesome Material Design for Bootstrap Styles -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+  <!-- CORE FILES FOR PERFECT SCROLLBAR FUNCTIONALITY -->
+  <!-- The Perfect Scrollbar CSS files -->
+  <link href="../css/perfect-scrollbar.css" rel="stylesheet">
+  <!-- The Perfect Scrollbar JS files -->
+  <script src="../dist/perfect-scrollbar.js"></script>
+
+  <!--DEFINE CONTAINER-->
+  <style>
+    body {
+      background-color: rgba(3, 169, 244, 0.1);
+    }
+
     #container {
+      background-color: rgb(255, 255, 255);
       height: 400px;
       width: 100%;
-      border: 1px solid blue;
       overflow: auto;
+      margin: 100px auto;
       position: relative;
     }
+
     .entryPlaceholder {
       height: 48px;
       width: 100%;
     }
-    </style>
-  </head>
-  <body>
-    <div id="container">
+
+  </style>
+
+</head>
+
+<body>
+  <!--EXAMPLE CONTENT-->
+  <section class="text-center">
+    <br>
+    <h1>Infinite scroll</h1>
+    <p class="lead">You can preview the effect offline below or <strong>fork ready to use template</strong> of this
+      example.</p>
+
+
+    <a class="btn btn-lg btn-outline-grey" href="https://mdbootstrap.com/freebies/perfect-scrollbar/"><i
+        class="fas fa-book mr-2"></i>DOCUMENTATION</a>
+    <a class="btn btn-lg btn-outline-black" href="https://github.com/mdbootstrap/perfect-scrollbar"><i
+        class="fab fa-github mr-2"></i>GITHUB</a>
+    <a class="btn btn-lg btn-outline-primary"
+      href="https://mdbootstrap.com/snippets/jquery/filipkapusta/811288?utm_campaign=PS&utm_source=Package"><i
+        class="fas fa-code mr-2"></i>TEMPLATE</a>
+    <hr>
+
+    <br>
+    <div id="container" class="w-50">
     </div>
 
-    <script>
-    var $ = document.querySelector.bind(document);
+  </section>
+  <!--EXAMPLE CONTENT-->
 
-    var x = 0;
-    function addEntries() {
-      for (var i = 0; i < 10; i++) {
-        $('#container').innerHTML += '<div class="entryPlaceholder">Entry #' + (x++) + '</div>';
-      }
-    }
+  <!--ADDITTONAL SCRIPTS TO MAKE THE EXAMPLE CONTENT LOOK PRETTY-->
+  <section>
+    <!--jQuery-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    addEntries();
-    var ps = new PerfectScrollbar('#container');
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    $('#container').addEventListener('ps-y-reach-end', function () {
-      addEntries();
-      ps.update();
-    });
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js">
     </script>
-  </body>
-</html>
 
+    <!--ADD PERFECT SCROLLBAR & INFINITE SCROLL TO CONTAINER-->
+    <script>
+      var $ = document.querySelector.bind(document);
+
+      var x = 0;
+
+      function addEntries() {
+        for (var i = 0; i < 10; i++) {
+          $('#container').innerHTML +=
+            '<div class="entryPlaceholder">I love <a href="https://mdbootstrap.com?utm_campaign=PS&utm_source=Package">Material Design</a> #' +
+            (x++) + '</div>';
+        }
+      }
+
+      addEntries();
+      var ps = new PerfectScrollbar('#container');
+
+      $('#container').addEventListener('ps-y-reach-end', function () {
+        addEntries();
+        ps.update();
+      });
+
+    </script>
+
+  </section>
+  <!-- Footer -->
+  <footer class="page-footer white-color font-small z-depth-5 d-block">
+
+    <!-- Copyright -->
+    <div class="row pt-3 px-3 w-100">
+      <div class="col-md-4 d-md-block d-none">
+        <p class="text-primary ml-3">Project maintained by
+          <a href="https://mdbootstrap.com/?utm_campaign=PS&utm_source=Package"><img class="align-self-top"
+              style="height:20px;" src="https://mdbootstrap.com/img/Marketing/general/logo/small/mdb.png"></a></p>
+      </div>
+      <div class="text-center text-primary col-md-8 col-lg-4">
+        <p>Docs & Examples made pretty with
+          <a href="https://mdbootstrap.com/jquery/docs/?utm_campaign=PS&utm_source=Package"
+            class="text-primary font-weight-bold">Free MDB UI Kit</a></p>
+      </div>
+      <div class="col-md-4 d-lg-block d-none">
+
+        <div class="flex-right float-right">
+
+          <!--Github-->
+          <a href="https://https://github.com/mdbootstrap/bootstrap-material-design" class="pin-ic">
+            <i class="fab fa-github fa-lg text-primary mr-4"> </i>
+          </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/mdbootstrap" class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg text-primary mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i href="https://twitter.com/mdbootstrap?lang=en" class="fab fa-twitter fa-lg text-primary mr-4"> </i>
+          </a>
+          <!--Linkedin -->
+          <a href="https://www.linkedin.com/company/material-design-for-bootstrap/" class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg text-primary mr-4"> </i>
+          </a>
+          <!--Newsletter-->
+          <a href="https://mdbootstrap.com/docs/jquery/newsletter/" class="pin-ic">
+            <i class="fas fa-envelope fa-lg text-primary"> </i>
+          </a>
+
+        </div>
+      </div>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+</body>
+
+</html>
