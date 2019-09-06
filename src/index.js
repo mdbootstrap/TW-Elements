@@ -25,6 +25,7 @@ const defaultSettings = () => ({
   useBothWheelAxes: false,
   wheelPropagation: true,
   wheelSpeed: 1,
+  wrapperClass: cls.main,
 });
 
 const handlers = {
@@ -47,12 +48,12 @@ export default class PerfectScrollbar {
 
     this.element = element;
 
-    element.classList.add(cls.main);
-
     this.settings = defaultSettings();
     for (const key in userSettings) {
       this.settings[key] = userSettings[key];
     }
+
+    element.classList.add(this.settings.wrapperClass);
 
     this.containerWidth = null;
     this.containerHeight = null;
