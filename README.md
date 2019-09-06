@@ -277,6 +277,19 @@ that Y axis scroll bar is not enabled just because of a few pixels.
 
 **Default**: `0`
 
+### `wrapperClass {String?}`
+
+The class that will be applied to the container element to enable styling of the
+`PerfectScrollbar` scrollbar elements. This is useful when pre-existing class definitions
+in your application conflict with the default `PerfectScrollbar` class and alter the
+plugin's look and feel.
+
+⚠️ **Warning**: Overwriting this setting will cancel most of the effects of the CSS
+provided with the library. You will have to write your own CSS to match the
+`PerfectScrollbar` element classes, [using this file as a template](https://github.com/mdbootstrap/perfect-scrollbar/blob/master/css/perfect-scrollbar.css).
+
+**Default**: `'ps'`
+
 ## Events
 
 perfect-scrollbar dispatches custom events.
