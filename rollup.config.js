@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-import minify from 'rollup-plugin-babel-minify';
+const minify = require('rollup-plugin-babel-minify');
 const buble = require('rollup-plugin-buble');
 
 const version = require('./package.json').version;
