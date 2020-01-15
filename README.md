@@ -234,7 +234,7 @@ over that number of pixels.
 
 ### `scrollingThreshold {Number}`
 
-This sets threashold for `ps--scrolling-x` and `ps--scrolling-y` classes to
+This sets threshold for `ps--scrolling-x` and `ps--scrolling-y` classes to
 remain. In the default CSS, they make scrollbars shown regardless of hover
 state. The unit is millisecond.
 
@@ -249,14 +249,14 @@ then both vertical and horizontal scrolling will affect the scrollbar.
 
 ### `suppressScrollX {Boolean}`
 
-When set to true, the scroll bar in X axis will not be available, regardless of
+When set to true, the scrollbar in X-axis will not be available, regardless of
 the content width.
 
 **Default**: `false`
 
 ### `suppressScrollY {Boolean}`
 
-When set to true, the scroll bar in Y axis will not be available, regardless of
+When set to true, the scroll bar in Y-axis will not be available, regardless of
 the content height.
 
 **Default**: `false`
@@ -264,16 +264,16 @@ the content height.
 ### `scrollXMarginOffset {Number}`
 
 The number of pixels the content width can surpass the container width without
-enabling the X axis scroll bar. Allows some "wiggle room" or "offset break", so
-that X axis scroll bar is not enabled just because of a few pixels.
+enabling the X-axis scroll bar. Allows some "wiggle room" or "offset break", so
+that X-axis scroll bar is not enabled just because of a few pixels.
 
 **Default**: `0`
 
 ### `scrollYMarginOffset {Number}`
 
 The number of pixels the content height can surpass the container height without
-enabling the Y axis scroll bar. Allows some "wiggle room" or "offset break", so
-that Y axis scroll bar is not enabled just because of a few pixels.
+enabling the Y-axis scroll bar. Allows some "wiggle room" or "offset break", so
+that Y-axis scroll bar is not enabled just because of a few pixels.
 
 **Default**: `0`
 
