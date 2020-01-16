@@ -141,14 +141,14 @@ export default class PerfectScrollbar {
         element.scrollLeft <= 0
           ? 'start'
           : element.scrollLeft >= this.contentWidth - this.containerWidth
-            ? 'end'
-            : null,
+          ? 'end'
+          : null,
       y:
         element.scrollTop <= 0
           ? 'start'
           : element.scrollTop >= this.contentHeight - this.containerHeight
-            ? 'end'
-            : null,
+          ? 'end'
+          : null,
     };
 
     this.isAlive = true;
