@@ -210,7 +210,7 @@ The scroll speed applied to mousewheel event.
 If this option is true, when the scroll reaches the end of the side, mousewheel
 event will be propagated to parent element.
 
-**Default**: `false`
+**Default**: `true`
 
 ### `swipeEasing {Boolean}`
 
