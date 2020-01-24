@@ -1058,7 +1058,7 @@ function touch(i) {
         startTime = currentTime;
       }
 
-      if (shouldPrevent(differenceX, differenceY)) {
+      if (e.cancelable && shouldPrevent(differenceX, differenceY)) {
         e.preventDefault();
       }
     }
