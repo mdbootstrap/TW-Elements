@@ -165,7 +165,7 @@ export default function(i) {
         startTime = currentTime;
       }
 
-      if (shouldPrevent(differenceX, differenceY)) {
+      if (shouldPrevent(differenceX, differenceY) && e.cancelable) {
         e.preventDefault();
       }
     }
