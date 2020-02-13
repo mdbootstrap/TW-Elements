@@ -9,7 +9,7 @@ class EventElement {
       this.handlers[eventName] = [];
     }
     this.handlers[eventName].push(handler);
-    this.element.addEventListener(eventName, handler, false);
+    this.element.addEventListener(eventName, handler, { passive: false });
   }
 
   unbind(eventName, target) {
@@ -17,7 +17,7 @@ class EventElement {
       if (target && handler !== target) {
         return true;
       }
-      this.element.removeEventListener(eventName, handler, false);
+      this.element.removeEventListener(eventName, handler, { passive: false });
       return false;
     });
   }
