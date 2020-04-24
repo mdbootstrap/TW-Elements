@@ -65,7 +65,7 @@ export default function(i) {
     if (e.pointerType && e.pointerType === 'pen' && e.buttons === 0) {
       return false;
     }
-    if (e.targetTouches && e.targetTouches.length === 1) {
+    if (e.touches && e.touches.length === 1) {
       return true;
     }
     if (
