@@ -9,11 +9,11 @@
 <p align="center">Minimalistic but perfect custom scrollbar plugin<p>
 
 
-<p align="center">	
+<p align="center">
   <a href="https://npmcharts.com/compare/perfect-scrollbar?minimal=true"><img src="https://img.shields.io/npm/dm/perfect-scrollbar.svg" alt="Downloads"></a>
-  <a href="https://github.com/mdbootstrap/bootstrap-material-design/blob/master/License.pdf"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>	
-  <a href="https://badge.fury.io/js/perfect-scrollbar"><img src="https://badge.fury.io/js/perfect-scrollbar.svg" alt="npm"></a>	
-  <a href="https://twitter.com/intent/tweet/?text=Thanks+@mdbootstrap+for+maintaining+amazing+and+free+Perfect+Scrollbar+Plugin%20https://mdbootstrap.com/freebies/perfect-scrollbar/&hashtags=javascript,code,webdesign,github"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>	
+  <a href="https://github.com/mdbootstrap/bootstrap-material-design/blob/master/License.pdf"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+  <a href="https://badge.fury.io/js/perfect-scrollbar"><img src="https://badge.fury.io/js/perfect-scrollbar.svg" alt="npm"></a>
+  <a href="https://twitter.com/intent/tweet/?text=Thanks+@mdbootstrap+for+maintaining+amazing+and+free+Perfect+Scrollbar+Plugin%20https://mdbootstrap.com/freebies/perfect-scrollbar/&hashtags=javascript,code,webdesign,github"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
 </p>
 
 ## [Official documentation](https://mdbootstrap.com/freebies/perfect-scrollbar/?utm_source=GitHub&utm_medium=PerfectScrollbar)
@@ -277,6 +277,18 @@ that Y-axis scroll bar is not enabled just because of a few pixels.
 
 **Default**: `0`
 
+### `railXPosition {'bottom' | 'top'}`
+
+String specifying where X rail should be positioned: bottom or top
+
+**Default**: `bottom`
+
+### `railYPosition {'right' | 'left'}`
+
+String specifying where Y rail should be positioned: right or left
+
+**Default**: `right`
+
 ## Events
 
 perfect-scrollbar dispatches custom events.
@@ -377,14 +389,14 @@ modification locally.
 
  - [Twitter](https://twitter.com/MDBootstrap)
 
- - [Facebook](https://www.facebook.com/mdbootstrap) 
+ - [Facebook](https://www.facebook.com/mdbootstrap)
 
  - [Pinterest](https://pl.pinterest.com/mdbootstrap)
 
  - [Dribbble](https://dribbble.com/mdbootstrap)
 
  - [LinkedIn](https://www.linkedin.com/company/material-design-for-bootstrap)
- 
+
  - [YouTube](https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA)
 
 ## MDB PRO

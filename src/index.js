@@ -25,6 +25,8 @@ const defaultSettings = () => ({
   useBothWheelAxes: false,
   wheelPropagation: true,
   wheelSpeed: 1,
+  railXPosition: 'bottom',
+  railYPosition: 'right',
 });
 
 const handlers = {
@@ -91,11 +93,11 @@ export default class PerfectScrollbar {
     this.scrollbarXWidth = null;
     this.scrollbarXLeft = null;
     const railXStyle = CSS.get(this.scrollbarXRail);
-    this.scrollbarXBottom = parseInt(railXStyle.bottom, 10);
-    if (isNaN(this.scrollbarXBottom)) {
+    if (this.settings.railXPosition === 'top') {
+      this.scrollbarXTop = parseInt(railXStyle.top, 10) || 0;
       this.isScrollbarXUsingBottom = false;
-      this.scrollbarXTop = toInt(railXStyle.top);
     } else {
+      this.scrollbarXBottom = parseInt(railXStyle.bottom, 10) || 0;
       this.isScrollbarXUsingBottom = true;
     }
     this.railBorderXWidth =
@@ -119,11 +121,11 @@ export default class PerfectScrollbar {
     this.scrollbarYHeight = null;
     this.scrollbarYTop = null;
     const railYStyle = CSS.get(this.scrollbarYRail);
-    this.scrollbarYRight = parseInt(railYStyle.right, 10);
-    if (isNaN(this.scrollbarYRight)) {
+    if (this.settings.railYPosition === 'left') {
+      this.scrollbarYLeft = parseInt(railXStyle.left, 10) || 0;
       this.isScrollbarYUsingRight = false;
-      this.scrollbarYLeft = toInt(railYStyle.left);
     } else {
+      this.scrollbarYRight = parseInt(railXStyle.right, 10) || 0;
       this.isScrollbarYUsingRight = true;
     }
     this.scrollbarYOuterWidth = this.isRtl ? outerWidth(this.scrollbarY) : null;

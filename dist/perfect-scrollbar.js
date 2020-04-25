@@ -329,8 +329,9 @@
     var roundedScrollTop = Math.floor(element.scrollTop);
     var rect = element.getBoundingClientRect();
 
-    i.containerWidth = Math.ceil(rect.width);
-    i.containerHeight = Math.ceil(rect.height);
+    i.containerWidth = Math.round(rect.width);
+    i.containerHeight = Math.round(rect.height);
+
     i.contentWidth = element.scrollWidth;
     i.contentHeight = element.scrollHeight;
 
@@ -1126,6 +1127,8 @@
     useBothWheelAxes: false,
     wheelPropagation: true,
     wheelSpeed: 1,
+    railXPosition: 'bottom',
+    railYPosition: 'right',
   }); };
 
   var handlers = {
@@ -1194,11 +1197,11 @@
     this.scrollbarXWidth = null;
     this.scrollbarXLeft = null;
     var railXStyle = get(this.scrollbarXRail);
-    this.scrollbarXBottom = parseInt(railXStyle.bottom, 10);
-    if (isNaN(this.scrollbarXBottom)) {
+    if (this.settings.railXPosition === 'top') {
+      this.scrollbarXTop = parseInt(railXStyle.top, 10) || 0;
       this.isScrollbarXUsingBottom = false;
-      this.scrollbarXTop = toInt(railXStyle.top);
     } else {
+      this.scrollbarXBottom = parseInt(railXStyle.bottom, 10) || 0;
       this.isScrollbarXUsingBottom = true;
     }
     this.railBorderXWidth =
@@ -1222,11 +1225,11 @@
     this.scrollbarYHeight = null;
     this.scrollbarYTop = null;
     var railYStyle = get(this.scrollbarYRail);
-    this.scrollbarYRight = parseInt(railYStyle.right, 10);
-    if (isNaN(this.scrollbarYRight)) {
+    if (this.settings.railYPosition === 'left') {
+      this.scrollbarYLeft = parseInt(railXStyle.left, 10) || 0;
       this.isScrollbarYUsingRight = false;
-      this.scrollbarYLeft = toInt(railYStyle.left);
     } else {
+      this.scrollbarYRight = parseInt(railXStyle.right, 10) || 0;
       this.isScrollbarYUsingRight = true;
     }
     this.scrollbarYOuterWidth = this.isRtl ? outerWidth(this.scrollbarY) : null;

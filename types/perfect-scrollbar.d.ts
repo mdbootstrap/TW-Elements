@@ -12,6 +12,8 @@ declare namespace PerfectScrollbar {
     useBothWheelAxes?: boolean;
     wheelPropagation?: boolean;
     wheelSpeed?: number;
+    railXPosition: 'bottom' | 'top';
+    railYPosition: 'right' | 'left';
   }
 }
 
