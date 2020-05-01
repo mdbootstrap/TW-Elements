@@ -138,7 +138,7 @@
       if (target && handler !== target) {
         return true;
       }
-      this$1.element.removeEventListener(eventName, handler, false);
+      this$1.element.removeEventListener(eventName, handler, supportsPassive ? { passive: false } : false);
       return false;
     });
   };

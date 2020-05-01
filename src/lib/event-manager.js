@@ -28,7 +28,7 @@ class EventElement {
       if (target && handler !== target) {
         return true;
       }
-      this.element.removeEventListener(eventName, handler, false);
+      this.element.removeEventListener(eventName, handler, supportsPassive ? { passive: false } : false);
       return false;
     });
   }
