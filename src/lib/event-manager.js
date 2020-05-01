@@ -1,3 +1,14 @@
+let supportsPassive = false;
+try {
+  const opts = Object.defineProperty({}, 'passive', {
+    get: function() {
+      supportsPassive = true;
+    }
+  });
+  window.addEventListener("testPassive", null, opts);
+  window.removeEventListener("testPassive", null, opts);
+} catch (e) {}
+
 class EventElement {
   constructor(element) {
     this.element = element;
@@ -9,7 +20,7 @@ class EventElement {
       this.handlers[eventName] = [];
     }
     this.handlers[eventName].push(handler);
-    this.element.addEventListener(eventName, handler, false);
+    this.element.addEventListener(eventName, handler, supportsPassive ? { passive: false } : false);
   }
 
   unbind(eventName, target) {
