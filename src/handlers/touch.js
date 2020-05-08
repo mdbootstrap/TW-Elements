@@ -12,28 +12,41 @@ export default function(i) {
 
   function shouldPrevent(deltaX, deltaY) {
     const scrollTop = Math.floor(element.scrollTop);
-    const scrollLeft = element.scrollLeft;
+    const scrollLeft = Math.ceil(element.scrollLeft);
     const magnitudeX = Math.abs(deltaX);
     const magnitudeY = Math.abs(deltaY);
+
+    if (!i.settings.wheelPropagation) {
+      return true;
+    }
 
     if (magnitudeY > magnitudeX) {
       // user is perhaps trying to swipe up/down the page
 
-      if (
-        (deltaY < 0 && scrollTop === i.contentHeight - i.containerHeight) ||
-        (deltaY > 0 && scrollTop === 0)
-      ) {
-        // set prevent for mobile Chrome refresh
-        return window.scrollY === 0 && deltaY > 0 && env.isChrome;
+      if (i.settings.suppressScrollY) {
+        return false;
+      }
+
+      if (deltaY > 0) {
+        return scrollTop !== 0;
+      }
+
+      if (deltaY < 0) {
+        return scrollTop < i.contentHeight - i.containerHeight;
       }
     } else if (magnitudeX > magnitudeY) {
       // user is perhaps trying to swipe left/right across the page
 
-      if (
-        (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth) ||
-        (deltaX > 0 && scrollLeft === 0)
-      ) {
-        return true;
+      if (i.settings.suppressScrollX) {
+        return false;
+      }
+
+      if (deltaX > 0) {
+        return scrollLeft !== 0;
+      }
+
+      if (deltaY < 0) {
+        return scrollLeft < i.contentWidth - i.containerWidth;
       }
     }
 
@@ -165,7 +178,7 @@ export default function(i) {
         startTime = currentTime;
       }
 
-      if (shouldPrevent(differenceX, differenceY)) {
+      if (e.cancelable && shouldPrevent(differenceX, differenceY)) {
         e.preventDefault();
       }
     }
