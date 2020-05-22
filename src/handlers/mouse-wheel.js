@@ -116,7 +116,7 @@ export default function(i) {
     }
 
     let shouldPrevent = false;
-    if (!i.settings.useBothWheelAxes) {
+    if (!i.settings.useBothWheelAxes || (i.scrollbarYActive && i.scrollbarXActive)) {
       // deltaX will only be used for horizontal scrolling and deltaY will
       // only be used for vertical scrolling - this is the default
       element.scrollTop -= deltaY * i.settings.wheelSpeed;
