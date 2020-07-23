@@ -40,43 +40,13 @@
 
   </style>
 
-  <!--CHANGE SCROLLBARS ALIGNMENT-->
-  <style>
-    /* Change the alignment of scrollbars */
-    /* Recommendation: modify CSS directly */
-    .ps__rail-x {
-      top: 0px;
-      bottom: auto;
-      /* If using `top`, there shouldn't be a `bottom`. */
-    }
-
-    .ps__rail-y {
-      left: 0px;
-      right: auto;
-      /* If using `left`, there shouldn't be a `right`. */
-    }
-
-    .ps__thumb-x {
-      top: 2px;
-      bottom: auto;
-      /* If using `top`, there shouldn't be a `bottom`. */
-    }
-
-    .ps__thumb-y {
-      left: 2px;
-      right: auto;
-      /* If using `left`, there shouldn't be a `right`. */
-    }
-
-  </style>
-
 </head>
 
 <body>
   <!--EXAMPLE CONTENT-->
   <section class="text-center">
     <br>
-    <h1>Top and left scrollbars</h1>
+    <h1>Option handlers</h1>
     <p class="lead">You can preview the effect offline below or <strong>fork ready to use template</strong> of this
       example.</p>
 
@@ -86,7 +56,7 @@
     <a class="btn btn-lg btn-outline-black" href="https://github.com/mdbootstrap/perfect-scrollbar"><i
         class="fab fa-github mr-2"></i>GITHUB</a>
     <a class="btn btn-lg btn-outline-primary"
-      href="https://mdbootstrap.com/snippets/jquery/filipkapusta/810825?utm_campaign=PS&utm_source=Package"><i
+      href="https://mdbootstrap.com/snippets/jquery/filipkapusta/810670?utm_campaign=PS&utm_source=Package"><i
         class="fas fa-code mr-2"></i>TEMPLATE</a>
     <hr>
 
@@ -95,6 +65,12 @@
 
       <!--EXAMPLE CONTENT-->
       <div class="content p-5">
+        <div class="alert alert-primary sticky-top col-3 font-weight-bold" role="alert" style="z-index: 10;">
+          No rail/thumb interaction!
+        </div>
+
+
+
         <h2 class="font-weight-bold text-center ">Hello I'm a piece of example content!</h2>
         <p class="lead mb-3 text-center ">You can just scroll trough me and marvel at the perfection of this scrollbar,
           but
@@ -586,36 +562,16 @@
 
 
     </div>
-
-    <ul class="list-unstyled text-center mx-auto" style="max-width: 20em;">
-      <li>
-        <div class="md-form md-outline">
-          <input type="number" id="width" value="800" class="form-control">
-          <label for="width">Width</label>
-        </div>
-      </li>
-      <li>
-        <div class="md-form md-outline">
-          <input type="number" id="height" value="400" class="form-control">
-          <label for="height">Height</label>
-        </div>
-      </li>
-      <li>
-        <button id="resize" class="btn btn-primary btn-rounded mb-5">Change size<i
-            class="fas fa-expand ml-2"></i></button>
-      </li>
-      <li>
-        <a href="https://mdbootstrap.com/freebies/perfect-scrollbar/?utm_campaign=PS&utm_source=Package"
-          class="btn btn-sm btn-outline-primary btn-rounded"><i class="fas fa-caret-square-left mr-2"></i>Back to
-          docs</a>
-      </li>
-    </ul>
   </section>
   <!--EXAMPLE CONTENT-->
 
-  <!--ADD PERFECT SCROLLBAR TO CONTAINER-->
+  <!--ADD PERFECT SCROLLBAR WITH NO INTERACTIONS-->
   <script>
-    new PerfectScrollbar('#container');
+    var $ = document.querySelector.bind(document);
+
+    new PerfectScrollbar('#container', {
+      handlers: ['keyboard', 'wheel', 'touch']
+    });
 
   </script>
 
@@ -632,7 +588,6 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js">
     </script>
-
   </section>
   <!-- Footer -->
   <footer class="page-footer white-color font-small z-depth-5 d-block">

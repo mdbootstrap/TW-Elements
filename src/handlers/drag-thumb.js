@@ -1,6 +1,9 @@
 import * as CSS from '../lib/css';
 import * as DOM from '../lib/dom';
-import { addScrollingClass, removeScrollingClass } from '../lib/class-names';
+import cls, {
+  addScrollingClass,
+  removeScrollingClass,
+} from '../lib/class-names';
 import updateGeometry from '../update-geometry';
 import { toInt } from '../lib/util';
 
@@ -14,6 +17,7 @@ export default function(i) {
     'scrollbarXWidth',
     'scrollLeft',
     'x',
+    'scrollbarXRail',
   ]);
   bindMouseScrollHandler(i, [
     'containerHeight',
@@ -24,6 +28,7 @@ export default function(i) {
     'scrollbarYHeight',
     'scrollTop',
     'y',
+    'scrollbarYRail',
   ]);
 }
 
@@ -38,6 +43,7 @@ function bindMouseScrollHandler(
     scrollbarYHeight,
     scrollTop,
     y,
+    scrollbarYRail,
   ]
 ) {
   const element = i.element;
@@ -47,6 +53,9 @@ function bindMouseScrollHandler(
   let scrollBy = null;
 
   function mouseMoveHandler(e) {
+    if (e.touches && e.touches[0]) {
+      e[pageY] = e.touches[0].pageY;
+    }
     element[scrollTop] =
       startingScrollTop + scrollBy * (e[pageY] - startingMousePageY);
     addScrollingClass(i, y);
@@ -58,20 +67,36 @@ function bindMouseScrollHandler(
 
   function mouseUpHandler() {
     removeScrollingClass(i, y);
+    i[scrollbarYRail].classList.remove(cls.state.clicking);
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   }
 
-  i.event.bind(i[scrollbarY], 'mousedown', e => {
+  function bindMoves(e, touchMode) {
     startingScrollTop = element[scrollTop];
+    if (touchMode && e.touches) {
+      e[pageY] = e.touches[0].pageY;
+    }
     startingMousePageY = e[pageY];
     scrollBy =
       (i[contentHeight] - i[containerHeight]) /
       (i[railYHeight] - i[scrollbarYHeight]);
+    if (!touchMode) {
+      i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+      i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+      e.preventDefault();
+    } else {
+      i.event.bind(i.ownerDocument, 'touchmove', mouseMoveHandler);
+    }
 
-    i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
-    i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+    i[scrollbarYRail].classList.add(cls.state.clicking);
 
     e.stopPropagation();
-    e.preventDefault();
+  }
+
+  i.event.bind(i[scrollbarY], 'mousedown', e => {
+    bindMoves(e);
+  });
+  i.event.bind(i[scrollbarY], 'touchstart', e => {
+    bindMoves(e, true);
   });
 }

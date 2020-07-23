@@ -1,5 +1,6 @@
 const cls = {
   main: 'ps',
+  rtl: 'ps__rtl',
   element: {
     thumb: x => `ps__thumb-${x}`,
     rail: x => `ps__rail-${x}`,
@@ -7,6 +8,7 @@ const cls = {
   },
   state: {
     focus: 'ps--focus',
+    clicking: 'ps--clicking',
     active: x => `ps--active-${x}`,
     scrolling: x => `ps--scrolling-${x}`,
   },

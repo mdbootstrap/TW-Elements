@@ -23,7 +23,7 @@ const defaultSettings = () => ({
   suppressScrollY: false,
   swipeEasing: true,
   useBothWheelAxes: false,
-  wheelPropagation: false,
+  wheelPropagation: true,
   wheelSpeed: 1,
 });
 
@@ -63,6 +63,9 @@ export default class PerfectScrollbar {
     const blur = () => element.classList.remove(cls.state.focus);
 
     this.isRtl = CSS.get(element).direction === 'rtl';
+    if (this.isRtl === true) {
+      element.classList.add(cls.rtl);
+    }
     this.isNegativeScroll = (() => {
       const originalScrollLeft = element.scrollLeft;
       let result = null;
@@ -138,21 +141,21 @@ export default class PerfectScrollbar {
         element.scrollLeft <= 0
           ? 'start'
           : element.scrollLeft >= this.contentWidth - this.containerWidth
-            ? 'end'
-            : null,
+          ? 'end'
+          : null,
       y:
         element.scrollTop <= 0
           ? 'start'
           : element.scrollTop >= this.contentHeight - this.containerHeight
-            ? 'end'
-            : null,
+          ? 'end'
+          : null,
     };
 
     this.isAlive = true;
 
     this.settings.handlers.forEach(handlerName => handlers[handlerName](this));
 
-    this.lastScrollTop = element.scrollTop; // for onScroll only
+    this.lastScrollTop = Math.floor(element.scrollTop); // for onScroll only
     this.lastScrollLeft = element.scrollLeft; // for onScroll only
     this.event.bind(this.element, 'scroll', e => this.onScroll(e));
     this.updateOwnGeometry();
@@ -216,7 +219,7 @@ export default class PerfectScrollbar {
       this.element.scrollLeft - this.lastScrollLeft
     );
 
-    this.lastScrollTop = this.element.scrollTop;
+    this.lastScrollTop = Math.floor(this.element.scrollTop);
     this.lastScrollLeft = this.element.scrollLeft;
   }
 
