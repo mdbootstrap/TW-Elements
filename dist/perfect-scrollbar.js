@@ -329,8 +329,9 @@
     var roundedScrollTop = Math.floor(element.scrollTop);
     var rect = element.getBoundingClientRect();
 
-    i.containerWidth = Math.ceil(rect.width);
-    i.containerHeight = Math.ceil(rect.height);
+    i.containerWidth = Math.round(rect.width);
+    i.containerHeight = Math.round(rect.height);
+
     i.contentWidth = element.scrollWidth;
     i.contentHeight = element.scrollHeight;
 
@@ -1261,7 +1262,19 @@
     this.lastScrollTop = Math.floor(element.scrollTop); // for onScroll only
     this.lastScrollLeft = element.scrollLeft; // for onScroll only
     this.event.bind(this.element, 'scroll', function (e) { return this$1.onScroll(e); });
+    this.updateOwnGeometry();
+  };
+
+  PerfectScrollbar.prototype.updateOwnGeometry = function updateOwnGeometry () {
+    if (this.currentAFReqId) { this.currentAFReqId = null; }
     updateGeometry(this);
+  };
+
+  PerfectScrollbar.prototype.updateOwnGeometryOnAnimFrame = function updateOwnGeometryOnAnimFrame () {
+    if (this.currentAFReqId) { cancelAnimationFrame(this.currentAFReqId); }
+    this.currentAFReqId = requestAnimationFrame(
+      this.updateOwnGeometry.bind(this)
+    );
   };
 
   PerfectScrollbar.prototype.update = function update () {
@@ -1288,7 +1301,7 @@
     set(this.scrollbarXRail, { display: 'none' });
     set(this.scrollbarYRail, { display: 'none' });
 
-    updateGeometry(this);
+    this.updateOwnGeometry();
 
     processScrollDiff(this, 'top', 0, false, true);
     processScrollDiff(this, 'left', 0, false, true);
@@ -1302,7 +1315,7 @@
       return;
     }
 
-    updateGeometry(this);
+    this.updateOwnGeometryOnAnimFrame();
     processScrollDiff(this, 'top', this.element.scrollTop - this.lastScrollTop);
     processScrollDiff(
       this,
