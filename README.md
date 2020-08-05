@@ -149,7 +149,7 @@ Or in browser:
 <script src="dist/perfect-scrollbar.js"></script>
 ```
 
-To initialise:
+To initialize:
 
 ```js
 const container = document.querySelector('#container');
@@ -159,7 +159,7 @@ const ps = new PerfectScrollbar(container);
 const ps = new PerfectScrollbar('#container');
 ```
 
-It can be initialised with [options](#options).
+It can be initialized with [options](#options).
 
 ```js
 const ps = new PerfectScrollbar('#container', {
