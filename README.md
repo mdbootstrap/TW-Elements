@@ -149,7 +149,7 @@ Or in browser:
 <script src="dist/perfect-scrollbar.js"></script>
 ```
 
-To initialise:
+To initialize:
 
 ```js
 const container = document.querySelector('#container');
@@ -159,7 +159,7 @@ const ps = new PerfectScrollbar(container);
 const ps = new PerfectScrollbar('#container');
 ```
 
-It can be initialised with [options](#options).
+It can be initialized with [options](#options).
 
 ```js
 const ps = new PerfectScrollbar('#container', {
@@ -337,14 +337,14 @@ console.log(ps.reach.y); // => 'start' or 'end' or null
 
 ## Helpdesk
 
-If you have any idea to improve this project or any problem using this, please
+If you have a suggestion or encounter a problem using this, please
 feel free to upload an [issue](https://github.com/mdbootstrap/perfect-scrollbar/issues).
 
 For common problems, there is a [FAQ](https://github.com/mdbootstrap/perfect-scrollbar/wiki/FAQ) wiki
 page. Please check the page before uploading an issue.
 
-Also, the project is not actively maintained. No maintainer is paid, and most of
-us are busy on our professional or personal works. Please understand that it may
+The project is not actively maintained. Most of
+us are busy on our professional or personal works, so please understand that it may
 take a while for an issue to be resolved. Uploading a PR would be the fastest
 way to fix an issue.
 
