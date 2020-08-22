@@ -3,7 +3,7 @@ try {
   const opts = Object.defineProperty({}, 'passive', {
     get: function() {
       supportsPassive = true;
-    }
+    },
   });
   window.addEventListener('testPassive', null, opts);
   window.removeEventListener('testPassive', null, opts);
@@ -23,7 +23,7 @@ class EventElement {
     this.element.addEventListener(
       eventName,
       handler,
-      supportsPassive ? { passive: false } : false,
+      supportsPassive ? { passive: false } : false
     );
   }
 
@@ -35,7 +35,7 @@ class EventElement {
       this.element.removeEventListener(
         eventName,
         handler,
-        supportsPassive ? { passive: false } : false,
+        supportsPassive ? { passive: false } : false
       );
       return false;
     });
