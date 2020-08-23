@@ -5,7 +5,7 @@ import cls, {
   removeScrollingClass,
 } from '../lib/class-names';
 import updateGeometry from '../update-geometry';
-import { toInt } from '../lib/util';
+import { createEvent } from '../lib/util';
 
 export default function(i) {
   bindMouseScrollHandler(i, [
@@ -47,6 +47,7 @@ function bindMouseScrollHandler(
   ]
 ) {
   const element = i.element;
+  const tag = y;
 
   let startingScrollTop = null;
   let startingMousePageY = null;
@@ -63,12 +64,14 @@ function bindMouseScrollHandler(
 
     e.stopPropagation();
     e.preventDefault();
+    element.dispatchEvent(createEvent(`ps-${tag}-drag-move`));
   }
 
   function mouseUpHandler() {
     removeScrollingClass(i, y);
     i[scrollbarYRail].classList.remove(cls.state.clicking);
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+    element.dispatchEvent(createEvent(`ps-${tag}-drag-end`));
   }
 
   function bindMoves(e, touchMode) {
@@ -86,6 +89,7 @@ function bindMouseScrollHandler(
       e.preventDefault();
     } else {
       i.event.bind(i.ownerDocument, 'touchmove', mouseMoveHandler);
+      i.event.once(i.ownerDocument, 'touchend', mouseUpHandler);
     }
 
     i[scrollbarYRail].classList.add(cls.state.clicking);
@@ -95,8 +99,10 @@ function bindMouseScrollHandler(
 
   i.event.bind(i[scrollbarY], 'mousedown', e => {
     bindMoves(e);
+    element.dispatchEvent(createEvent(`ps-${tag}-drag-start`));
   });
   i.event.bind(i[scrollbarY], 'touchstart', e => {
     bindMoves(e, true);
+    element.dispatchEvent(createEvent(`ps-${tag}-drag-start`));
   });
 }

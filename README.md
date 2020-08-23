@@ -335,6 +335,24 @@ console.log(ps.reach.x); // => 'start' or 'end' or null
 console.log(ps.reach.y); // => 'start' or 'end' or null
 ```
 
+### `ps-x-drag-start`
+This event fires when the x-axis is start drag.
+
+### `ps-x-drag-move`
+This event fires when the x-axis is draging.
+
+### `ps-x-drag-end`
+This event fires when the x-axis is end of drag.
+
+### `ps-y-drag-start`
+This event fires when the y-axis is start drag.
+
+### `ps-y-drag-move`
+This event fires when the y-axis is draging.
+
+### `ps-y-drag-end`
+This event fires when the y-axis is end of drag.
+
 ## Helpdesk
 
 If you have any idea to improve this project or any problem using this, please

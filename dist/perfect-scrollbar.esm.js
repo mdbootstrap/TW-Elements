@@ -183,6 +183,30 @@ EventManager.prototype.once = function once (element, eventName, handler) {
   ee.bind(eventName, onceHandler);
 };
 
+function toInt(x) {
+  return parseInt(x, 10) || 0;
+}
+
+function isEditable(el) {
+  return (
+    matches(el, 'input,[contenteditable]') ||
+    matches(el, 'select,[contenteditable]') ||
+    matches(el, 'textarea,[contenteditable]') ||
+    matches(el, 'button,[contenteditable]')
+  );
+}
+
+function outerWidth(element) {
+  var styles = get(element);
+  return (
+    toInt(styles.width) +
+    toInt(styles.paddingLeft) +
+    toInt(styles.paddingRight) +
+    toInt(styles.borderLeftWidth) +
+    toInt(styles.borderRightWidth)
+  );
+}
+
 function createEvent(name) {
   if (typeof window.CustomEvent === 'function') {
     return new CustomEvent(name);
@@ -192,6 +216,23 @@ function createEvent(name) {
     return evt;
   }
 }
+
+var env = {
+  isWebKit:
+    typeof document !== 'undefined' &&
+    'WebkitAppearance' in document.documentElement.style,
+  supportsTouch:
+    typeof window !== 'undefined' &&
+    ('ontouchstart' in window ||
+      ('maxTouchPoints' in window.navigator &&
+        window.navigator.maxTouchPoints > 0) ||
+      (window.DocumentTouch && document instanceof window.DocumentTouch)),
+  supportsIePointer:
+    typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
+  isChrome:
+    typeof navigator !== 'undefined' &&
+    /Chrome/i.test(navigator && navigator.userAgent),
+};
 
 function processScrollDiff(
   i,
@@ -277,54 +318,14 @@ function processScrollDiff$1(
   }
 }
 
-function toInt(x) {
-  return parseInt(x, 10) || 0;
-}
-
-function isEditable(el) {
-  return (
-    matches(el, 'input,[contenteditable]') ||
-    matches(el, 'select,[contenteditable]') ||
-    matches(el, 'textarea,[contenteditable]') ||
-    matches(el, 'button,[contenteditable]')
-  );
-}
-
-function outerWidth(element) {
-  var styles = get(element);
-  return (
-    toInt(styles.width) +
-    toInt(styles.paddingLeft) +
-    toInt(styles.paddingRight) +
-    toInt(styles.borderLeftWidth) +
-    toInt(styles.borderRightWidth)
-  );
-}
-
-var env = {
-  isWebKit:
-    typeof document !== 'undefined' &&
-    'WebkitAppearance' in document.documentElement.style,
-  supportsTouch:
-    typeof window !== 'undefined' &&
-    ('ontouchstart' in window ||
-      ('maxTouchPoints' in window.navigator &&
-        window.navigator.maxTouchPoints > 0) ||
-      (window.DocumentTouch && document instanceof window.DocumentTouch)),
-  supportsIePointer:
-    typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
-  isChrome:
-    typeof navigator !== 'undefined' &&
-    /Chrome/i.test(navigator && navigator.userAgent),
-};
-
 function updateGeometry(i) {
   var element = i.element;
   var roundedScrollTop = Math.floor(element.scrollTop);
   var rect = element.getBoundingClientRect();
 
-  i.containerWidth = Math.ceil(rect.width);
-  i.containerHeight = Math.ceil(rect.height);
+  i.containerWidth = Math.round(rect.width);
+  i.containerHeight = Math.round(rect.height);
+
   i.contentWidth = element.scrollWidth;
   i.contentHeight = element.scrollHeight;
 
@@ -544,6 +545,7 @@ function bindMouseScrollHandler(
   var scrollbarYRail = ref[8];
 
   var element = i.element;
+  var tag = y;
 
   var startingScrollTop = null;
   var startingMousePageY = null;
@@ -560,12 +562,14 @@ function bindMouseScrollHandler(
 
     e.stopPropagation();
     e.preventDefault();
+    element.dispatchEvent(createEvent(("ps-" + tag + "-drag-move")));
   }
 
   function mouseUpHandler() {
     removeScrollingClass(i, y);
     i[scrollbarYRail].classList.remove(cls.state.clicking);
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+    element.dispatchEvent(createEvent(("ps-" + tag + "-drag-end")));
   }
 
   function bindMoves(e, touchMode) {
@@ -583,6 +587,7 @@ function bindMouseScrollHandler(
       e.preventDefault();
     } else {
       i.event.bind(i.ownerDocument, 'touchmove', mouseMoveHandler);
+      i.event.once(i.ownerDocument, 'touchend', mouseUpHandler);
     }
 
     i[scrollbarYRail].classList.add(cls.state.clicking);
@@ -592,9 +597,11 @@ function bindMouseScrollHandler(
 
   i.event.bind(i[scrollbarY], 'mousedown', function (e) {
     bindMoves(e);
+    element.dispatchEvent(createEvent(("ps-" + tag + "-drag-start")));
   });
   i.event.bind(i[scrollbarY], 'touchstart', function (e) {
     bindMoves(e, true);
+    element.dispatchEvent(createEvent(("ps-" + tag + "-drag-start")));
   });
 }
 

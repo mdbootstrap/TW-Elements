@@ -25,6 +25,16 @@ export function outerWidth(element) {
   );
 }
 
+export function createEvent(name) {
+  if (typeof window.CustomEvent === 'function') {
+    return new CustomEvent(name);
+  } else {
+    const evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(name, false, false, undefined);
+    return evt;
+  }
+}
+
 export const env = {
   isWebKit:
     typeof document !== 'undefined' &&
