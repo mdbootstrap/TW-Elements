@@ -54,7 +54,7 @@ export default function(i) {
       ? document.activeElement
       : i.ownerDocument.activeElement;
     if (activeElement) {
-      if (activeElement.tagName === 'IFRAME') {
+      if (activeElement.tagName === 'IFRAME' && activeElement.contentDocument) {
         activeElement = activeElement.contentDocument.activeElement;
       } else {
         // go deeper if element is a webcomponent
