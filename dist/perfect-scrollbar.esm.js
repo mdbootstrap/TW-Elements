@@ -1,6 +1,6 @@
 /*!
  * perfect-scrollbar v1.5.0
- * Copyright 2020 Hyunje Jun, MDBootstrap and Contributors
+ * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT
  */
 
@@ -301,20 +301,24 @@ function outerWidth(element) {
   );
 }
 
+var window$1 = window$1 || undefined;
+var navigator = navigator || undefined;
+
+
 var env = {
   isWebKit:
     typeof document !== 'undefined' &&
     'WebkitAppearance' in document.documentElement.style,
   supportsTouch:
-    typeof window !== 'undefined' &&
-    ('ontouchstart' in window ||
-      ('maxTouchPoints' in window.navigator &&
-        window.navigator.maxTouchPoints > 0) ||
-      (window.DocumentTouch && document instanceof window.DocumentTouch)),
+    !!window$1 && typeof window$1 !== 'undefined' &&
+    ('ontouchstart' in window$1 ||
+      ('maxTouchPoints' in window$1.navigator &&
+        window$1.navigator.maxTouchPoints > 0) ||
+      (window$1.DocumentTouch && document instanceof window$1.DocumentTouch)),
   supportsIePointer:
-    typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
+    !!window$1 && !!navigator && typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
   isChrome:
-    typeof navigator !== 'undefined' &&
+    !!window$1 && !!navigator && typeof navigator !== 'undefined' &&
     /Chrome/i.test(navigator && navigator.userAgent),
 };
 
@@ -323,8 +327,9 @@ function updateGeometry(i) {
   var roundedScrollTop = Math.floor(element.scrollTop);
   var rect = element.getBoundingClientRect();
 
-  i.containerWidth = Math.ceil(rect.width);
-  i.containerHeight = Math.ceil(rect.height);
+  i.containerWidth = Math.round(rect.width);
+  i.containerHeight = Math.round(rect.height);
+
   i.contentWidth = element.scrollWidth;
   i.contentHeight = element.scrollHeight;
 

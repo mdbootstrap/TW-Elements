@@ -25,19 +25,23 @@ export function outerWidth(element) {
   );
 }
 
+var window = window || undefined
+var navigator = navigator || undefined
+
+
 export const env = {
   isWebKit:
     typeof document !== 'undefined' &&
     'WebkitAppearance' in document.documentElement.style,
   supportsTouch:
-    typeof window !== 'undefined' &&
+    !!window && typeof window !== 'undefined' &&
     ('ontouchstart' in window ||
       ('maxTouchPoints' in window.navigator &&
         window.navigator.maxTouchPoints > 0) ||
       (window.DocumentTouch && document instanceof window.DocumentTouch)),
   supportsIePointer:
-    typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
+    !!window && !!navigator && typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
   isChrome:
-    typeof navigator !== 'undefined' &&
+    !!window && !!navigator && typeof navigator !== 'undefined' &&
     /Chrome/i.test(navigator && navigator.userAgent),
 };
