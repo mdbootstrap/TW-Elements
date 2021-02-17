@@ -189,6 +189,11 @@ export default function(i) {
           return;
         }
 
+        if (!i.element) {
+          clearInterval(easingLoop);
+          return;
+        }
+
         applyTouchMove(speed.x * 30, speed.y * 30);
 
         speed.x *= 0.8;
