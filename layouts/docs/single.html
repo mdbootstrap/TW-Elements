@@ -1,0 +1,34 @@
+<!-- Single for all single page under /docs/* -->
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+  <head>
+    {{ partial "head/head.html" . }}
+  </head>
+  <body>
+    {{ partial "header/header.html" . }}
+
+    <div class="container mx-auto mt-4 pt-12">
+      <div class="flex flex-wrap">
+        <div class="w-full sm:w-3/12 lg:w-2/12 pr-4 tex-left">
+          {{ partial "sidenav/standard.html" . }}
+        </div>
+        <div class="w-full sm:w-9/12 lg:w-8/12 px-4 sm:pr-10 lg:pr-4">
+          <div class="mb-8">
+            
+            <h1 class="text-5xl font-bold leading-normal mt-0">{{ .Params.main_title }}</h1>
+            <p class="text-gray-500">{{ .Params.description }}</p>
+
+            <hr class="my-12">
+
+
+            
+            {{ .Content }}</div>
+
+        </div>
+        <div class="w-full lg:w-2/12 px-4 hidden lg:block"></div>
+      </div>
+    </div>
+
+    {{ partial "footer/footer.html" . }}
+  </body>
+</html>

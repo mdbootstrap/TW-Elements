@@ -1,0 +1,3071 @@
+---
+title: "About Tailwind Elements"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "About Tailwind Elements"
+subheading: ""
+seo_title: "Tailwind Elements - Bootstrap components recreated with Tailwind"
+description: "Collection of free, popular components like modal, dropdown, carousel, popover, cards, charts and many more."
+image: "img/aaaa.png"
+video: ""
+url: "/"
+menu:
+  start:
+    name: "About"
+    weight: 1
+---
+
+
+<!-- Section: Cards -->
+<section class="grid grid-cols-3 gap-8 mb-12 pb-12">
+  <div>
+    <!-- Card -->
+    <div class="shadow-md rounded-md overflow-hidden">
+      <img
+        src="https://mdbootstrap.com/img/new/standard/city/031.jpg"
+        class=""
+        alt=""
+      />
+
+      <div class="p-4">
+        <h5 class="text-xl font-semibold mb-2">Card title</h5>
+
+        <p class="mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure sequi
+          tenetur, voluptatibus harum consequuntur alias quaerat excepturi
+          temporibus nisi commodi, ex, ratione quae soluta! Saepe alias dolores
+          dolorem assumenda totam?
+        </p>
+
+        <button
+          class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+        >
+          Button
+        </button>
+      </div>
+    </div>
+    <!-- Card -->
+  </div>
+  <div>
+    <!-- Card -->
+    <div class="shadow-md rounded-md mb-8">
+      <div class="p-5">
+        <h5 class="text-xl font-semibold mb-2">Card title</h5>
+
+        <p class="mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure sequi
+          tenetur, voluptatibus harum consequuntur alias quaerat excepturi
+          temporibus nisi commodi, ex, ratione quae soluta! Saepe alias dolores
+          dolorem assumenda totam?
+        </p>
+
+        <button
+          class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+        >
+          Button
+        </button>
+      </div>
+    </div>
+    <!-- Card -->
+
+    <!-- Card -->
+    <div class="">
+      <img
+        src="https://mdbootstrap.com/img/new/standard/city/031.jpg"
+        class="rounded-lg shadow-xl mb-4"
+        alt=""
+      />
+
+      <div class="text-center">
+        <h5 class="text-xl font-semibold mb-2">Card title</h5>
+
+        <p class="mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure sequi
+          tenetur, voluptatibus harum consequuntur alias quaerat excepturi
+          temporibus nisi commodi, ex, ratione quae soluta! Saepe alias dolores
+          dolorem assumenda totam?
+        </p>
+
+        <button
+          class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+        >
+          Button
+        </button>
+      </div>
+    </div>
+    <!-- Card -->
+  </div>
+  <div>
+    <!-- Card -->
+    <div class="shadow-md rounded-md overflow-hidden text-center">
+      <div class="py-3 px-5 bg-gray-50">Card header</div>
+
+      <div class="p-5">
+        <h5 class="text-xl font-semibold mb-2">Card title</h5>
+
+        <p class="mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure sequi
+          tenetur, voluptatibus harum consequuntur alias quaerat excepturi
+          temporibus nisi commodi, ex, ratione quae soluta! Saepe alias dolores
+          dolorem assumenda totam?
+        </p>
+
+        <button
+          class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+        >
+          Button
+        </button>
+      </div>
+
+      <div class="py-3 px-5 bg-gray-50">Card footer</div>
+    </div>
+    <!-- Card -->
+  </div>
+</section>
+<!-- Section: Cards -->
+
+<!-- Section: Carousel -->
+<section class="mb-12 pb-12">
+  <style>
+    .carousel-open:checked + .carousel-item {
+      position: static;
+      opacity: 100;
+    }
+
+    .carousel-item {
+      -webkit-transition: opacity 0.6s ease-out;
+      transition: opacity 0.6s ease-out;
+    }
+
+    #carousel-1:checked ~ .control-1,
+    #carousel-2:checked ~ .control-2,
+    #carousel-3:checked ~ .control-3 {
+      display: block;
+    }
+
+    .carousel-indicators {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      bottom: 2%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 10;
+    }
+
+    #carousel-1:checked
+      ~ .control-1
+      ~ .carousel-indicators
+      li:nth-child(1)
+      .carousel-bullet,
+    #carousel-2:checked
+      ~ .control-2
+      ~ .carousel-indicators
+      li:nth-child(2)
+      .carousel-bullet,
+    #carousel-3:checked
+      ~ .control-3
+      ~ .carousel-indicators
+      li:nth-child(3)
+      .carousel-bullet {
+      color: #2b6cb0;
+      /*Set to match the Tailwind colour you want the active one to be */
+    }
+  </style>
+
+  <div class="carousel relative rounded relative overflow-hidden shadow-xl">
+    <div class="carousel-inner relative overflow-hidden w-full">
+      <!--Slide 1-->
+      <input
+        class="carousel-open"
+        type="radio"
+        id="carousel-1"
+        name="carousel"
+        aria-hidden="true"
+        hidden=""
+        checked="checked"
+      />
+      <div
+        class="carousel-item absolute opacity-0 bg-center"
+        style="
+          height: 500px;
+          background-image: url(https://mdbootstrap.com/img/new/slides/052.jpg);
+        "
+      ></div>
+      <label
+        for="carousel-3"
+        class="control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto flex justify-center content-center"
+        ><i class="fas fa-angle-left mt-3"></i
+      ></label>
+      <label
+        for="carousel-2"
+        class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
+        ><i class="fas fa-angle-right mt-3"></i
+      ></label>
+
+      <!--Slide 2-->
+      <input
+        class="carousel-open"
+        type="radio"
+        id="carousel-2"
+        name="carousel"
+        aria-hidden="true"
+        hidden=""
+      />
+      <div
+        class="carousel-item absolute opacity-0 bg-center"
+        style="
+          height: 500px;
+          background-image: url(https://mdbootstrap.com/img/new/slides/043.jpg);
+        "
+      ></div>
+      <label
+        for="carousel-1"
+        class="control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"
+        ><i class="fas fa-angle-left mt-3"></i
+      ></label>
+      <label
+        for="carousel-3"
+        class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
+        ><i class="fas fa-angle-right mt-3"></i
+      ></label>
+
+      <!--Slide 3-->
+      <input
+        class="carousel-open"
+        type="radio"
+        id="carousel-3"
+        name="carousel"
+        aria-hidden="true"
+        hidden=""
+      />
+      <div
+        class="carousel-item absolute opacity-0"
+        style="
+          height: 500px;
+          background-image: url(https://mdbootstrap.com/img/new/slides/054.jpg);
+        "
+      ></div>
+      <label
+        for="carousel-2"
+        class="control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"
+        ><i class="fas fa-angle-left mt-3"></i
+      ></label>
+      <label
+        for="carousel-1"
+        class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
+        ><i class="fas fa-angle-right mt-3"></i
+      ></label>
+
+      <!-- Add additional indicators for each slide-->
+      <ol class="carousel-indicators">
+        <li class="inline-block mr-3">
+          <label
+            for="carousel-1"
+            class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700"
+            >•</label
+          >
+        </li>
+        <li class="inline-block mr-3">
+          <label
+            for="carousel-2"
+            class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700"
+            >•</label
+          >
+        </li>
+        <li class="inline-block mr-3">
+          <label
+            for="carousel-3"
+            class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700"
+            >•</label
+          >
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- Section: Content -->
+
+<!-- Section: Buttons -->
+<section class="mb-12 pb-12">
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Small
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Medium
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 rounded shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Large
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Small
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Regular
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 rounded shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Large
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 rounded shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Small
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Regular
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Large
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Small</button
+  ><button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Regular
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Large
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <br />
+  <br />
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Small
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Regular
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Large
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Small
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Regular
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Large
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase px-8 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Small
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Regular
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    Large
+  </button>
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Small
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Regular
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i> Large
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+
+  <button
+    class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+  >
+    <i class="fas fa-gem"></i>
+  </button>
+</section>
+<!-- Section: Content -->
+
+<!-- Section: Alerts -->
+<section class="mb-12 pb-12">
+  <div
+    class="block text-sm text-left text-gray-600 bg-gray-500 bg-opacity-10 border border-gray-400 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    This is a default alert—check it out!
+  </div>
+
+  <div
+    class="my-3 block text-sm text-left text-purple-600 bg-purple-500 bg-opacity-10 border border-purple-400 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    This is a primary alert—check it out!
+  </div>
+
+  <div
+    class="block text-sm text-left text-indigo-600 bg-indigo-500 bg-opacity-10 border border-indigo-400 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    This is a success alert—check it out!
+  </div>
+
+  <div
+    class="my-3 block text-sm text-left text-blue-600 bg-blue-500 bg-opacity-10 border border-blue-400 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    This is a info alert—check it out!
+  </div>
+
+  <div
+    class="block text-sm text-left text-yellow-600 bg-yellow-500 bg-opacity-10 border border-yellow-400 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    This is a warning alert—check it out!
+  </div>
+
+  <div
+    class="my-3 block text-sm text-left text-red-600 bg-red-500 bg-opacity-10 border border-red-400 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    This is a danger alert—check it out!
+  </div>
+
+  <br />
+  <br />
+
+  <div
+    class="block text-sm text-left text-white bg-gray-500 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      class="w-6 h-6 mx-2 stroke-current"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
+      ></path>
+    </svg>
+    This is a default alert—check it out!
+  </div>
+  <div
+    class="my-3 block text-sm text-left text-white bg-green-500 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      class="w-6 h-6 mx-2 stroke-current"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      ></path>
+    </svg>
+    This is a default alert—check it out!
+  </div>
+  <div
+    class="block text-sm text-left text-white bg-purple-500 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      class="w-6 h-6 mx-2 stroke-current"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+      ></path>
+    </svg>
+    This is a primary alert—check it out!
+  </div>
+
+  <div
+    class="my-3 block text-sm text-left text-white bg-indigo-500 h-12 flex items-center p-4 rounded-md relative"
+    role="alert"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      class="flex-shrink-0 w-6 h-6 mx-2 stroke-current"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+      ></path>
+    </svg>
+    This is a success alert—check it out!
+    <button
+      class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-2 mr-6 outline-none focus:outline-none"
+    >
+      <span>×</span>
+    </button>
+  </div>
+
+  <div
+    class="my-3 block text-sm text-left text-white bg-blue-500 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      class="flex-shrink-0 w-6 h-6 mx-2 stroke-current"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+      ></path>
+    </svg>
+    This is a info alert—check it out!
+  </div>
+
+  <div
+    class="my-3 block text-sm text-left text-white bg-yellow-500 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      class="w-6 h-6 mx-2 stroke-current"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+      ></path>
+    </svg>
+    This is a warning alert—check it out!
+  </div>
+
+  <div
+    class="block text-sm text-left text-white bg-red-500 h-12 flex items-center p-4 rounded-md"
+    role="alert"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      class="w-6 h-6 mx-2 stroke-current"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+      ></path>
+    </svg>
+    This is a danger alert—check it out!
+  </div>
+
+  <br />
+  <br />
+
+  <div
+    class="bg-yellow-500 bg-opacity-10 border-0 rounded-md px-4 py-3 text-yellow-800"
+  >
+    <div class="flex">
+      <div class="text-yellow-500">
+        <i class="fas fa-exclamation-triangle mr-4"></i>
+      </div>
+      <div>
+        <p class="font-medium text-left">Attention needed</p>
+        <p class="text-sm my-2">
+          Make sure you know how these changes affect you.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div
+    class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800"
+  >
+    <div class="flex items-center justify-center w-12 bg-green-500">
+      <svg
+        class="w-6 h-6 text-white fill-current"
+        viewBox="0 0 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"
+        />
+      </svg>
+    </div>
+
+    <div class="px-4 py-2 -mx-3">
+      <div class="mx-3">
+        <span class="font-semibold text-green-500 dark:text-green-400"
+          >Success</span
+        >
+        <p class="text-sm text-gray-600 dark:text-gray-200">
+          Your account was registered!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="my-5 flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800"
+  >
+    <div class="flex items-center justify-center w-12 bg-blue-500">
+      <svg
+        class="w-6 h-6 text-white fill-current"
+        viewBox="0 0 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z"
+        />
+      </svg>
+    </div>
+
+    <div class="px-4 py-2 -mx-3">
+      <div class="mx-3">
+        <span class="font-semibold text-blue-500 dark:text-blue-400">Info</span>
+        <p class="text-sm text-gray-600 dark:text-gray-200">
+          This channel archived by the owner!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="my-5 flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800"
+  >
+    <div class="flex items-center justify-center w-12 bg-yellow-400">
+      <svg
+        class="w-6 h-6 text-white fill-current"
+        viewBox="0 0 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z"
+        />
+      </svg>
+    </div>
+
+    <div class="px-4 py-2 -mx-3">
+      <div class="mx-3">
+        <span class="font-semibold text-yellow-400 dark:text-yellow-300"
+          >Warning</span
+        >
+        <p class="text-sm text-gray-600 dark:text-gray-200">
+          Your image size is too large!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800"
+  >
+    <div class="flex items-center justify-center w-12 bg-red-500">
+      <svg
+        class="w-6 h-6 text-white fill-current"
+        viewBox="0 0 40 40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"
+        />
+      </svg>
+    </div>
+
+    <div class="px-4 py-2 -mx-3">
+      <div class="mx-3">
+        <span class="font-semibold text-red-500 dark:text-red-400">Error</span>
+        <p class="text-sm text-gray-600 dark:text-gray-200">
+          Your email is already used!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Alerts -->
+
+<!-- Section: Buttons group -->
+<section class="mb-12 pb-12">
+  <!-- Small -->
+  <div class="flex items-center justify-center mb-4">
+    <button
+      class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Left
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Center
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border-t border-b border-r border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Right
+    </button>
+  </div>
+
+  <!-- Medium -->
+  <div class="flex items-center justify-center mb-4">
+    <button
+      class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Left
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Center
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border-t border-b border-r border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Right
+    </button>
+  </div>
+
+  <!-- Large -->
+  <div class="flex items-center justify-center mb-4">
+    <button
+      class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Left
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Center
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border-t border-b border-r border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-base px-8 py-3 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Right
+    </button>
+  </div>
+
+  <br />
+  <br />
+
+  <!-- Small -->
+  <div class="flex items-center justify-center mb-4">
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-4 py-2 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-user"></i>
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-heart"></i>
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-4 py-2 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-wrench"></i>
+    </button>
+  </div>
+
+  <!-- Medium -->
+  <div class="flex items-center justify-center mb-4">
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-sm px-6 py-3 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-user"></i>
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-sm px-6 py-3 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-heart"></i>
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-sm px-6 py-3 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-wrench"></i>
+    </button>
+  </div>
+
+  <!-- Large -->
+  <div class="flex items-center justify-center mb-4">
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-base px-8 py-3 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-user"></i>
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-base px-8 py-3 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-heart"></i>
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-base px-8 py-3 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-wrench"></i>
+    </button>
+  </div>
+</section>
+<!-- Section: Buttons group -->
+
+<!-- Section: Charts -->
+<section class="mb-12 pb-12">
+  <div class="shadow-lg rounded-lg overflow-hidden">
+    <div class="py-3 px-5 bg-gray-50">Line chart</div>
+    <canvas class="p-10" id="chartLine"></canvas>
+  </div>
+
+  <!-- Required chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart line -->
+  <script>
+    const labels = ["January", "February", "March", "April", "May", "June"];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: "hsl(252, 82.9%, 67.8%)",
+          borderColor: "hsl(252, 82.9%, 67.8%)",
+          data: [0, 10, 5, 2, 20, 30, 45],
+        },
+      ],
+    };
+
+    const configLineChart = {
+      type: "line",
+      data,
+      options: {},
+    };
+
+    var chartLine = new Chart(
+      document.getElementById("chartLine"),
+      configLineChart
+    );
+  </script>
+
+  <div class="shadow-lg rounded-lg overflow-hidden">
+    <div class="py-3 px-5 bg-gray-50">Bar chart</div>
+    <canvas class="p-10" id="chartBar"></canvas>
+  </div>
+
+  <!-- Chart bar -->
+  <script>
+    const labelsBarChart = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+    ];
+    const dataBarChart = {
+      labels: labelsBarChart,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: "hsl(252, 82.9%, 67.8%)",
+          borderColor: "hsl(252, 82.9%, 67.8%)",
+          data: [0, 10, 5, 2, 20, 30, 45],
+        },
+      ],
+    };
+
+    const configBarChart = {
+      type: "bar",
+      data: dataBarChart,
+      options: {},
+    };
+
+    var chartBar = new Chart(
+      document.getElementById("chartBar"),
+      configBarChart
+    );
+  </script>
+</section>
+<!-- Section: Charts -->
+
+<!-- Section: Chips -->
+<section class="mb-12 pb-12">
+  <div class="flex flex-wrap justify-center">
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-gray-700 bg-gray-100 border border-gray-300"
+    >
+      <span class="text-xs font-normal leading-none max-w-full flex-initial"
+        >Hello!</span
+      >
+    </span>
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300"
+    >
+      <span class="text-xs font-normal leading-none max-w-full flex-initial"
+        >Hello!</span
+      >
+    </span>
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-pink-700 bg-pink-100 border border-pink-300"
+    >
+      <span class="text-xs font-normal leading-none max-w-full flex-initial"
+        >Hello!</span
+      >
+    </span>
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-purple-700 bg-purple-100 border border-purple-300"
+    >
+      <span slot="avatar">
+        <span
+          class="flex relative w-4 h-4 bg-orange-500 justify-center items-center m-1 mr-2 ml-0 my-0 text-xs rounded-full"
+          ><img
+            class="rounded-full"
+            alt="A"
+            src="https://randomuser.me/api/portraits/women/68.jpg"
+          />
+        </span>
+      </span>
+      <span class="text-xs font-normal leading-none max-w-full flex-initial">
+        Hello!</span
+      >
+    </span>
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-red-100 bg-red-700 border border-red-700"
+    >
+      <span class="text-xs font-normal leading-none max-w-full flex-initial"
+        >Hello!</span
+      >
+    </span>
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-orange-100 bg-orange-700 border border-orange-700"
+    >
+      <span class="text-xs font-normal leading-none max-w-full flex-initial"
+        >Hello!</span
+      >
+    </span>
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-green-700 bg-green-100 border border-green-300"
+    >
+      <span class="text-xs font-normal leading-none max-w-full flex-initial"
+        >Hello!</span
+      >
+    </span>
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-indigo-100 bg-indigo-700 border border-indigo-700"
+    >
+      <span class="text-xs font-normal leading-none max-w-full flex-initial"
+        >Hello!</span
+      >
+      <span class="flex flex-auto flex-row-reverse">
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100%"
+            height="100%"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-x cursor-pointer hover:text-indigo-400 rounded-full w-4 h-4 ml-2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </span>
+      </span>
+    </span>
+    <span
+      class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-yellow-100 bg-yellow-700 border border-yellow-700"
+    >
+      <span slot="avatar">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          height="100%"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-heart w-3 mr-1"
+        >
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+          ></path>
+        </svg>
+      </span>
+      <span class="text-xs font-normal leading-none max-w-full flex-initial">
+        Hello!</span
+      >
+      <span class="flex flex-auto flex-row-reverse">
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100%"
+            height="100%"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-x cursor-pointer hover:text-yellow-400 rounded-full w-4 h-4 ml-2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </span>
+      </span>
+    </span>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="p-4">
+    <span class="px-4 py-2 text-base rounded-full text-white bg-purple-500">
+      Hello
+    </span>
+
+    <span
+      class="mx-4 px-4 py-2 text-base rounded-full text-white bg-purple-500"
+    >
+      Hello
+      <button class="bg-transparent hover">
+        <i class="fas fa-times ml-3"></i>
+      </button>
+    </span>
+    <span class="px-4 py-2 text-base rounded-full text-white bg-purple-500">
+      <i class="fab fa-facebook-f mr-3"></i>
+
+      Hello
+      <button class="bg-transparent hover">
+        <i class="fas fa-times ml-3"></i>
+      </button>
+    </span>
+    <span
+      class="mx-4 py-2 pr-2 text-base rounded-full text-white bg-purple-500"
+    >
+      <img
+        class="rounded-full inline-block w-10 h-10 pb-1"
+        alt="A"
+        src="https://randomuser.me/api/portraits/women/68.jpg"
+      />
+
+      Hello
+      <button class="bg-transparent hover">
+        <i class="fas fa-times ml-3"></i>
+      </button>
+    </span>
+
+    <span
+      class="mx-4 px-4 py-2 text-base rounded-full text-purple-500 border border-purple-500 undefined"
+    >
+      Hello
+    </span>
+
+    <span
+      class="px-4 py-2 text-base rounded-full text-purple-500 border border-purple-500 undefined"
+    >
+      Hello
+      <button class="bg-transparent hover">
+        <i class="fas fa-times ml-3"></i>
+      </button>
+    </span>
+  </div>
+</section>
+<!-- Section: Chips -->
+
+<!-- Section: Dropdown -->
+<section class="mb-12 pb-12">
+  <div class="flex flex-wrap">
+    <div class="w-full sm:w-6/12 md:w-4/12 px-4">
+      <div class="relative inline-flex align-middle w-full">
+        <button
+          class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          onclick="openDropdown(event,'dropdown-example-1')"
+        >
+          Dropdown<i class="fas fa-angle-down ml-2"></i>
+        </button>
+        <div
+          class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+          style="min-width: 12rem"
+          id="dropdown-example-1"
+        >
+          <a
+            href="#"
+            class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+          >
+            Action
+          </a>
+          <a
+            href="#"
+            class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+          >
+            Another action
+          </a>
+          <a
+            href="#"
+            class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+          >
+            Something else here
+          </a>
+          <div
+            class="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25"
+          ></div>
+          <a
+            href="#"
+            class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+          >
+            Seprated link
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Required popper.js -->
+  <script
+    src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    charset="utf-8"
+  ></script>
+  <script>
+    function openDropdown(event, dropdownID) {
+      let element = event.target;
+      while (element.nodeName !== "BUTTON") {
+        element = element.parentNode;
+      }
+      var popper = Popper.createPopper(
+        element,
+        document.getElementById(dropdownID),
+        {
+          placement: "bottom-start",
+        }
+      );
+      document.getElementById(dropdownID).classList.toggle("hidden");
+      document.getElementById(dropdownID).classList.toggle("block");
+    }
+  </script>
+</section>
+<!-- Section: Dropdown -->
+
+<!-- Section: List -->
+<section class="mb-12 pb-12 text-center">
+  <div class="flex items-center justify-center h-auto p-5 bg-gray-200">
+    <div class="container">
+      <div class="flex justify-center">
+        <div class="bg-white shadow-xl rounded-lg w-1/2">
+          <ul class="divide-y divide-gray-300">
+            <li class="p-4 hover:bg-gray-50 cursor-pointer">
+              Peli list ni item
+            </li>
+            <li class="p-4 hover:bg-gray-50 cursor-pointer">
+              Biji list ni item
+            </li>
+            <li class="p-4 hover:bg-gray-50 cursor-pointer">
+              Triji list ni item
+            </li>
+            <li class="p-4 hover:bg-gray-50 cursor-pointer">
+              Chothi list ni item
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: List -->
+
+<!-- Section: Modal -->
+<section class="mb-12 pb-12 text-center">
+  <!-- Button trigger modal -->
+  <button
+    class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+    type="button"
+    onclick="toggleModal('modal-example-regular')"
+  >
+    Open regular modal
+  </button>
+  <!-- Modal -->
+  <div
+    class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+    id="modal-example-regular"
+  >
+    <div class="relative w-auto my-6 mx-auto max-w-3xl">
+      <!--content-->
+      <div
+        class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+      >
+        <!--header-->
+        <div
+          class="flex items-start justify-between p-5 border-b border-solid border-gray-200 rounded-t"
+        >
+          <h3 class="text-3xl font-semibold">Modal Title</h3>
+          <button
+            class="p-1 ml-auto bg-transparent border-0 text-gray-300 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+            onclick="toggleModal('modal-example-regular')"
+          >
+            <span
+              class="bg-transparent h-6 w-6 text-2xl block outline-none focus:outline-none"
+            >
+              <i class="fas fa-times"></i>
+            </span>
+          </button>
+        </div>
+        <!--body-->
+        <div class="relative p-6 flex-auto">
+          <p class="my-4 text-gray-500 text-lg leading-relaxed">
+            I always felt like I could do anything. That’s the main thing people
+            are controlled by! Thoughts- their perception of themselves! They're
+            slowed down by their perception of themselves. If you're taught you
+            can’t do anything, you won’t do anything. I was taught I could do
+            everything.
+          </p>
+        </div>
+        <!--footer-->
+        <div
+          class="flex items-center justify-end p-6 border-t border-solid border-gray-200 rounded-b"
+        >
+          <button
+            class="text-purple-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+            onclick="toggleModal('modal-example-regular')"
+          >
+            Close
+          </button>
+          <button
+            class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+            onclick="toggleModal('modal-example-regular')"
+          >
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="hidden opacity-25 fixed inset-0 z-40 bg-black"
+    id="modal-example-regular-backdrop"
+  ></div>
+  <script type="text/javascript">
+    function toggleModal(modalID) {
+      document.getElementById(modalID).classList.toggle("hidden");
+      document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+      document.getElementById(modalID).classList.toggle("flex");
+      document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+    }
+  </script>
+</section>
+<!-- Section: Modal -->
+
+<!-- Section: Popover -->
+<section class="mb-12 pb-12">
+  <div class="flex flex-wrap">
+    <div class="w-full text-center">
+      <button
+        class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        type="button"
+        onclick="openPopover(event,'popover-example-left')"
+      >
+        Click to launch popover
+      </button>
+      <div
+        class="hidden bg-white border mr-3 block z-50 font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+        id="popover-example-left"
+      >
+        <div>
+          <div
+            class="text-gray-700 opacity-75 font-semibold p-3 mb-0 border-b border-solid border-gray-100 uppercase rounded-t-lg"
+          >
+            Popover title
+          </div>
+          <div class="text-gray-700 p-3">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe,
+            non.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openPopover(event, popoverID) {
+      let element = event.target;
+      while (element.nodeName !== "BUTTON") {
+        element = element.parentNode;
+      }
+      var popper = Popper.createPopper(
+        element,
+        document.getElementById(popoverID),
+        {
+          placement: "left",
+        }
+      );
+      document.getElementById(popoverID).classList.toggle("hidden");
+    }
+  </script>
+</section>
+<!-- Section: Popover -->
+
+<!-- Section: Progress -->
+<section class="mb-12 pb-12">
+  <div class="relative pt-1">
+    <div class="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
+      <div
+        style="width: 30%"
+        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
+      ></div>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="relative pt-1">
+    <div class="flex mb-2 items-center justify-between">
+      <div>
+        <span
+          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-600 bg-purple-200"
+        >
+          Task in progress
+        </span>
+      </div>
+      <div class="text-right">
+        <span class="text-xs font-semibold inline-block text-purple-600">
+          0%
+        </span>
+      </div>
+    </div>
+    <div
+      class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-purple-200"
+    ></div>
+  </div>
+
+  <br />
+
+  <div class="relative pt-1">
+    <div class="flex mb-2 items-center justify-between">
+      <div>
+        <span
+          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-purple-600 bg-purple-200"
+        >
+          Task in progress
+        </span>
+      </div>
+      <div class="text-right">
+        <span class="text-xs font-semibold inline-block text-purple-600">
+          50%
+        </span>
+      </div>
+    </div>
+    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-purple-200">
+      <div
+        style="width: 10%"
+        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-900"
+      ></div>
+      <div
+        style="width: 15%"
+        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-600"
+      ></div>
+      <div
+        style="width: 25%"
+        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-200"
+      ></div>
+    </div>
+  </div>
+</section>
+<!-- Section: Progress -->
+
+<!-- Section: Spinners -->
+<section class="mb-12 pb-12 flex justify-center">
+  <div class="flex justify-center items-center mr-6">
+    <div
+      class="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900"
+    ></div>
+  </div>
+
+  <div class="flex justify-center items-center">
+    <div
+      class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"
+    ></div>
+  </div>
+</section>
+<!-- Section: Spinners -->
+
+<!-- Section: Stepper -->
+<section class="mb-12 pb-12">
+  <div class="grid grid-cols-3 gap-4 w-3/4 m-auto">
+    <div class="border-t-4 border-purple-500 pt-4">
+      <p class="uppercase text-purple-500 font-bold">Step 1</p>
+
+      <p class="font-semibold">Job details</p>
+    </div>
+    <div class="border-t-4 border-purple-500 pt-4">
+      <p class="uppercase text-purple-500 font-bold">Step 2</p>
+
+      <p class="font-semibold">Application form</p>
+    </div>
+    <div class="border-t-4 border-gray-200 pt-4">
+      <p class="uppercase text-gray-400 font-bold">Step 3</p>
+
+      <p class="font-semibold">Preview</p>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="p-5">
+    <div class="mx-4 p-4">
+      <div class="flex items-center">
+        <div class="flex items-center text-purple-500 relative">
+          <div
+            class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-purple-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-bookmark"
+            >
+              <path
+                d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+              ></path>
+            </svg>
+          </div>
+          <div
+            class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-purple-500"
+          >
+            Personal
+          </div>
+        </div>
+        <div
+          class="flex-auto border-t-2 transition duration-500 ease-in-out border-purple-500"
+        ></div>
+        <div class="flex items-center text-white relative">
+          <div
+            class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 bg-purple-500 border-purple-500"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-user-plus"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <line x1="20" y1="8" x2="20" y2="14"></line>
+              <line x1="23" y1="11" x2="17" y2="11"></line>
+            </svg>
+          </div>
+          <div
+            class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-purple-500"
+          >
+            Account
+          </div>
+        </div>
+        <div
+          class="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"
+        ></div>
+        <div class="flex items-center text-gray-500 relative">
+          <div
+            class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-mail"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div
+            class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500"
+          >
+            Message
+          </div>
+        </div>
+        <div
+          class="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"
+        ></div>
+        <div class="flex items-center text-gray-500 relative">
+          <div
+            class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-database"
+            >
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+          </div>
+          <div
+            class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500"
+          >
+            Confirm
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 p-4">
+      <div class="flex p-2 mt-4">
+        <button
+          class="bg-gray-200 text-gray-800 active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+        >
+          Previous
+        </button>
+        <div class="flex-auto flex flex-row-reverse">
+          <button
+            class="mx-3 bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+          >
+            Next
+          </button>
+          <button
+            class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+          >
+            Skip
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Stepper -->
+
+<!-- Section: Tables -->
+<section class="mb-12 pb-12">
+  <div class="flex flex-col text-left">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div
+          class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+        >
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Name
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Title
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Status
+                </th>
+                <th
+                  scope="col"
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Role
+                </th>
+                <th scope="col" class="relative px-6 py-3">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1619914775389-748e5e136c26?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIwMTk4MjAw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
+                        alt=""
+                      />
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        Flora Wu
+                      </div>
+                      <div class="text-sm text-gray-500">
+                        flora.wu@example.com
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">Software engineer</div>
+                  <div class="text-sm text-gray-500">IT</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                  >
+                    Active
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  Admin
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                >
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                    >Edit</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1620037624682-f9c156d0286f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIwMTk4Mzc2&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
+                        alt=""
+                      />
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        Nida Povey
+                      </div>
+                      <div class="text-sm text-gray-500">
+                        nida.povey@example.com
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">CMO</div>
+                  <div class="text-sm text-gray-500">Marketing</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                  >
+                    Active
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  Member
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                >
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                    >Edit</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img
+                        class="h-10 w-10 rounded-full"
+                        src="https://images.unsplash.com/photo-1619961602105-16fa2a5465c2?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIwMTk4NDAw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
+                        alt=""
+                      />
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        Warren Nixon
+                      </div>
+                      <div class="text-sm text-gray-500">
+                        warren.nixon@example.com
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">Designer</div>
+                  <div class="text-sm text-gray-500">UI/UX</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span
+                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                  >
+                    Active
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  Owner
+                </td>
+                <td
+                  class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                >
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                    >Edit</a
+                  >
+                </td>
+              </tr>
+
+              <!-- More people... -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Tables -->
+
+<!-- Section: Footer -->
+<section class="mb-12 pb-12">
+  <footer class="text-gray-600 body-font">
+    <div
+      class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col"
+    >
+      <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+        <a
+          href=""
+          class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+        >
+          <i class="fas fa-cubes fa-lg text-purple-500"></i>
+          <span class="ml-3 text-xl">Tailwind elements</span>
+        </a>
+        <p class="mt-2 text-sm text-gray-500">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, quam?
+        </p>
+      </div>
+      <div
+        class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center"
+      >
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2
+            class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+          >
+            CATEGORIES
+          </h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >First Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Second Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Third Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Fourth Link</a
+              >
+            </li>
+          </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2
+            class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+          >
+            CATEGORIES
+          </h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >First Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Second Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Third Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Fourth Link</a
+              >
+            </li>
+          </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2
+            class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+          >
+            CATEGORIES
+          </h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >First Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Second Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Third Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Fourth Link</a
+              >
+            </li>
+          </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2
+            class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+          >
+            CATEGORIES
+          </h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >First Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Second Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Third Link</a
+              >
+            </li>
+            <li>
+              <a href="" class="text-gray-600 hover:text-gray-800"
+                >Fourth Link</a
+              >
+            </li>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-100">
+      <div
+        class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row"
+      >
+        <p class="text-gray-500 text-sm text-center sm:text-left">
+          © 2021 Copyright:
+          <a
+            href="https://www.tailwind-elements.com/"
+            class="text-gray-600 ml-1"
+            target="_blank"
+            >Tailwind Elements</a
+          >
+        </p>
+        <span
+          class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"
+        >
+          <a href="" class="text-gray-500">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="ml-3 text-gray-500">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="ml-3 text-gray-500">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="" class="ml-3 text-gray-500">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="" class="ml-3 text-gray-500">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+</section>
+<!-- Section: Footer -->
+
+<!-- Section: Navbar -->
+<section class="mb-12 pb-12">
+  <nav class="bg-white shadow dark:bg-gray-800">
+    <div
+      class="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center"
+    >
+      <div class="flex items-center justify-between">
+        <div>
+          <a
+            class="text-xl font-bold text-gray-800 dark:text-white md:text-2xl hover:text-gray-700 dark:hover:text-gray-300"
+            href="#"
+            >Brand</a
+          >
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="flex md:hidden">
+          <button
+            type="button"
+            class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+            aria-label="toggle menu"
+          >
+            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+              <path
+                fill-rule="evenodd"
+                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+      <div class="items-center md:flex">
+        <div class="flex flex-col md:flex-row md:mx-6">
+          <a
+            class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
+            href="#"
+            >Home</a
+          >
+          <a
+            class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
+            href="#"
+            >Shop</a
+          >
+          <a
+            class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
+            href="#"
+            >Contact</a
+          >
+          <a
+            class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
+            href="#"
+            >About</a
+          >
+        </div>
+
+        <div class="flex justify-center md:block">
+          <a
+            class="relative text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300"
+            href="#"
+          >
+            <i class="fas fa-shopping-cart"></i>
+
+            <span
+              class="absolute top-0 left-0 p-1 text-xs text-white bg-indigo-500 rounded-full"
+            ></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div
+    class="container w-full p-20 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed h-96 rounded-xl"
+  >
+    <p class="mt-20 italic text-gray-500 text-md">-- Content of your page --</p>
+  </div>
+</section>
+<!-- Section: Navbar -->
+
+<!-- Section: Pagination -->
+<section class="mb-12 pb-12">
+  <!-- Outline -->
+  <div class="flex items-center justify-center mb-4">
+    <button
+      class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-angle-left"></i>
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      1
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border-l border-t border-b border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      2
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      3
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border-t border-b border-r border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-angle-right"></i>
+    </button>
+  </div>
+
+  <!-- Filled -->
+  <div class="flex items-center justify-center mb-4">
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-4 py-2 rounded-l outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-angle-left"></i>
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      1
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      2
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-4 py-2 outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      3
+    </button>
+    <button
+      class="bg-purple-500 text-white hover:bg-purple-700 hover:text-white active:bg-purple-700 font-bold uppercase text-xs px-4 py-2 rounded-r outline-none focus:outline-none mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      <i class="fas fa-angle-right"></i>
+    </button>
+  </div>
+</section>
+<!-- Section: Pagination -->
+
+<!-- Section: Pills -->
+<section class="mb-12 pb-12">
+  <div class="p-5 w-3/4 m-auto">
+    <button
+      class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Pill 1
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Pill 2
+    </button>
+    <button
+      class="text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      type="button"
+    >
+      Pill 3
+    </button>
+    <div
+      class="container w-full p-20 mx-auto text-center bg-white border-2 border-gray-300 border-dashed h-96 rounded-xl"
+    >
+      <p class="mt-20 italic text-gray-500 text-md">
+        -- Content of your page --
+      </p>
+    </div>
+  </div>
+</section>
+<!-- Section: Pills -->
+
+<!-- Section: Sidenav -->
+<section class="mb-12 pb-12">
+  <div
+    class="flex flex-col w-64 px-4 py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600"
+  >
+    <h2 class="text-3xl font-semibold text-gray-800 dark:text-white">Brand</h2>
+
+    <div class="relative mt-6">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </span>
+
+      <input
+        type="text"
+        class="w-full py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+        placeholder="Search"
+      />
+    </div>
+
+    <div class="flex flex-col justify-between flex-1 mt-6">
+      <nav>
+        <a
+          class="flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200"
+          href="#"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span class="mx-4 font-medium">Dashboard</span>
+        </a>
+
+        <a
+          class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+          href="#"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span class="mx-4 font-medium">Accounts</span>
+        </a>
+
+        <a
+          class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+          href="#"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 5V7M15 11V13M15 17V19M5 5C3.89543 5 3 5.89543 3 7V10C4.10457 10 5 10.8954 5 12C5 13.1046 4.10457 14 3 14V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V14C19.8954 14 19 13.1046 19 12C19 10.8954 19.8954 10 21 10V7C21 5.89543 20.1046 5 19 5H5Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span class="mx-4 font-medium">Tickets</span>
+        </a>
+
+        <a
+          class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+          href="#"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.3246 4.31731C10.751 2.5609 13.249 2.5609 13.6754 4.31731C13.9508 5.45193 15.2507 5.99038 16.2478 5.38285C17.7913 4.44239 19.5576 6.2087 18.6172 7.75218C18.0096 8.74925 18.5481 10.0492 19.6827 10.3246C21.4391 10.751 21.4391 13.249 19.6827 13.6754C18.5481 13.9508 18.0096 15.2507 18.6172 16.2478C19.5576 17.7913 17.7913 19.5576 16.2478 18.6172C15.2507 18.0096 13.9508 18.5481 13.6754 19.6827C13.249 21.4391 10.751 21.4391 10.3246 19.6827C10.0492 18.5481 8.74926 18.0096 7.75219 18.6172C6.2087 19.5576 4.44239 17.7913 5.38285 16.2478C5.99038 15.2507 5.45193 13.9508 4.31731 13.6754C2.5609 13.249 2.5609 10.751 4.31731 10.3246C5.45193 10.0492 5.99037 8.74926 5.38285 7.75218C4.44239 6.2087 6.2087 4.44239 7.75219 5.38285C8.74926 5.99037 10.0492 5.45193 10.3246 4.31731Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span class="mx-4 font-medium">Settings</span>
+        </a>
+
+        <hr class="my-6 dark:border-gray-600" />
+
+        <a
+          class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+          href="#"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 5V7M15 11V13M15 17V19M5 5C3.89543 5 3 5.89543 3 7V10C4.10457 10 5 10.8954 5 12C5 13.1046 4.10457 14 3 14V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V14C19.8954 14 19 13.1046 19 12C19 10.8954 19.8954 10 21 10V7C21 5.89543 20.1046 5 19 5H5Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span class="mx-4 font-medium">Tickets</span>
+        </a>
+
+        <a
+          class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+          href="#"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.3246 4.31731C10.751 2.5609 13.249 2.5609 13.6754 4.31731C13.9508 5.45193 15.2507 5.99038 16.2478 5.38285C17.7913 4.44239 19.5576 6.2087 18.6172 7.75218C18.0096 8.74925 18.5481 10.0492 19.6827 10.3246C21.4391 10.751 21.4391 13.249 19.6827 13.6754C18.5481 13.9508 18.0096 15.2507 18.6172 16.2478C19.5576 17.7913 17.7913 19.5576 16.2478 18.6172C15.2507 18.0096 13.9508 18.5481 13.6754 19.6827C13.249 21.4391 10.751 21.4391 10.3246 19.6827C10.0492 18.5481 8.74926 18.0096 7.75219 18.6172C6.2087 19.5576 4.44239 17.7913 5.38285 16.2478C5.99038 15.2507 5.45193 13.9508 4.31731 13.6754C2.5609 13.249 2.5609 10.751 4.31731 10.3246C5.45193 10.0492 5.99037 8.74926 5.38285 7.75218C4.44239 6.2087 6.2087 4.44239 7.75219 5.38285C8.74926 5.99037 10.0492 5.45193 10.3246 4.31731Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span class="mx-4 font-medium">Settings</span>
+        </a>
+      </nav>
+
+      <div class="flex items-center px-4 -mx-2">
+        <img
+          class="object-cover mx-2 rounded-full h-9 w-9"
+          src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          alt="avatar"
+        />
+        <h4
+          class="mx-2 font-medium text-gray-800 dark:text-gray-200 hover:underline"
+        >
+          John Doe
+        </h4>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Sidenav -->
+
+<!-- Section: Content -->
+<section class="mb-12 pb-12 flex">
+  <!-- Required form plugin -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/dist/custom-forms.css"
+    rel="stylesheet"
+  />
+
+  <div class="block mr-7">
+    <span class="text-gray-700">Checkboxes</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox" checked />
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox" />
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="form-checkbox" />
+          <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="block mr-6">
+    <span class="text-gray-700">Radio Buttons</span>
+    <div class="mt-2">
+      <div>
+        <label class="inline-flex items-center">
+          <input
+            type="radio"
+            class="form-radio"
+            name="radio"
+            value="1"
+            checked
+          />
+          <span class="ml-2">Option 1</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="form-radio" name="radio" value="2" />
+          <span class="ml-2">Option 2</span>
+        </label>
+      </div>
+      <div>
+        <label class="inline-flex items-center">
+          <input type="radio" class="form-radio" name="radio" value="3" />
+          <span class="ml-2">Option 3</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <div class="flex justify-center items-center">
+      <span class="">
+        <i class="far fa-sun text-gray-400"></i>
+      </span>
+      <!-- Switch Container -->
+      <div
+        :class="{ 'bg-cyan-700': toggleActive}"
+        class="w-14 h-7 flex items-center bg-gray-300 rounded-full mx-3 px-1"
+        @click="handleToggleActive"
+      >
+        <!-- Switch -->
+        <div
+          class="bg-white w-5 h-5 rounded-full shadow-md transform"
+          :class="{ 'translate-x-7': toggleActive}"
+        ></div>
+      </div>
+      <span class="">
+        <i class="far fa-moon text-gray-400"></i>
+      </span>
+    </div>
+    <!-- Toggled switch -->
+    <div class="flex justify-center items-center mt-4">
+      <span class="">
+        <!-- <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg> -->
+        <i class="far fa-sun"></i>
+      </span>
+      <!-- Switch Container -->
+      <div
+        class="w-14 h-7 flex items-center bg-gray-300 rounded-full mx-3 px-1 bg-blue-700"
+        @click="handleToggleActive"
+      >
+        <!-- Switch -->
+        <div
+          class="bg-white w-5 h-5 rounded-full shadow-md transform translate-x-7"
+        ></div>
+      </div>
+      <span class="">
+        <i class="far fa-moon"></i>
+      </span>
+    </div>
+  </div>
+</section>
+<!-- Section: Content -->
+
+<!-- Section: Select -->
+<section class="mb-12 pb-12">
+  <label class="block text-left" style="width: 400px">
+    <span class="text-gray-700">Select</span>
+    <select class="form-select block w-full mt-1">
+      <option>Option 1</option>
+      <option>Option 2</option>
+    </select>
+  </label>
+</section>
+<!-- Section: Select -->
+
+<!-- Section: Datepicker -->
+<section class="mb-12 pb-12">
+  <div class="flex items-center justify-center bg-gray-200 h-full">
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+      defer
+    ></script>
+
+    <style>
+      [x-cloak] {
+        display: none;
+      }
+    </style>
+
+    <div class="antialiased sans-serif">
+      <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
+        <div class="container mx-auto px-4 py-2 md:py-10">
+          <div class="mb-5 w-64">
+            <label for="datepicker" class="font-bold mb-1 text-gray-700 block"
+              >Select Date</label
+            >
+            <div class="relative">
+              <input type="hidden" name="date" x-ref="date" />
+              <input
+                type="text"
+                readonly
+                x-model="datepickerValue"
+                @click="showDatepicker = !showDatepicker"
+                @keydown.escape="showDatepicker = false"
+                class="w-full pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                placeholder="Select date"
+              />
+
+              <div class="absolute top-0 right-0 px-3 py-2">
+                <svg
+                  class="h-6 w-6 text-gray-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+
+              <!-- <div x-text="no_of_days.length"></div>
+                              <div x-text="32 - new Date(year, month, 32).getDate()"></div>
+                              <div x-text="new Date(year, month).getDay()"></div> -->
+
+              <div
+                class="bg-white mt-12 rounded-lg shadow p-4 absolute top-0 left-0"
+                style="width: 17rem"
+                x-show.transition="showDatepicker"
+                @click.away="showDatepicker = false"
+              >
+                <div class="flex justify-between items-center mb-2">
+                  <div>
+                    <span
+                      x-text="MONTH_NAMES[month]"
+                      class="text-lg font-bold text-gray-800"
+                    ></span>
+                    <span
+                      x-text="year"
+                      class="ml-1 text-lg text-gray-600 font-normal"
+                    ></span>
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                      :class="{'cursor-not-allowed opacity-25': month == 0 }"
+                      :disabled="month == 0 ? true : false"
+                      @click="month--; getNoOfDays()"
+                    >
+                      <svg
+                        class="h-6 w-6 text-gray-500 inline-flex"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      class="transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 rounded-full"
+                      :class="{'cursor-not-allowed opacity-25': month == 11 }"
+                      :disabled="month == 11 ? true : false"
+                      @click="month++; getNoOfDays()"
+                    >
+                      <svg
+                        class="h-6 w-6 text-gray-500 inline-flex"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap mb-3 -mx-1">
+                  <template x-for="(day, index) in DAYS" :key="index">
+                    <div style="width: 14.26%" class="px-1">
+                      <div
+                        x-text="day"
+                        class="text-gray-800 font-medium text-center text-xs"
+                      ></div>
+                    </div>
+                  </template>
+                </div>
+
+                <div class="flex flex-wrap -mx-1">
+                  <template x-for="blankday in blankdays">
+                    <div
+                      style="width: 14.28%"
+                      class="text-center border p-1 border-transparent text-sm"
+                    ></div>
+                  </template>
+                  <template
+                    x-for="(date, dateIndex) in no_of_days"
+                    :key="dateIndex"
+                  >
+                    <div style="width: 14.28%" class="px-1 mb-1">
+                      <div
+                        @click="getDateValue(date)"
+                        x-text="date"
+                        class="cursor-pointer text-center text-sm leading-none rounded-full leading-loose transition ease-in-out duration-100"
+                        :class="{'bg-blue-500 text-white': isToday(date) == true, 'text-gray-700 hover:bg-blue-200': isToday(date) == false }"
+                      ></div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const MONTH_NAMES = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        function app() {
+          return {
+            showDatepicker: false,
+            datepickerValue: "",
+
+            month: "",
+            year: "",
+            no_of_days: [],
+            blankdays: [],
+            days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+
+            initDate() {
+              let today = new Date();
+              this.month = today.getMonth();
+              this.year = today.getFullYear();
+              this.datepickerValue = new Date(
+                this.year,
+                this.month,
+                today.getDate()
+              ).toDateString();
+            },
+
+            isToday(date) {
+              const today = new Date();
+              const d = new Date(this.year, this.month, date);
+
+              return today.toDateString() === d.toDateString() ? true : false;
+            },
+
+            getDateValue(date) {
+              let selectedDate = new Date(this.year, this.month, date);
+              this.datepickerValue = selectedDate.toDateString();
+
+              this.$refs.date.value =
+                selectedDate.getFullYear() +
+                "-" +
+                ("0" + selectedDate.getMonth()).slice(-2) +
+                "-" +
+                ("0" + selectedDate.getDate()).slice(-2);
+
+              console.log(this.$refs.date.value);
+
+              this.showDatepicker = false;
+            },
+
+            getNoOfDays() {
+              let daysInMonth = new Date(
+                this.year,
+                this.month + 1,
+                0
+              ).getDate();
+
+              // find where to start calendar day of week
+              let dayOfWeek = new Date(this.year, this.month).getDay();
+              let blankdaysArray = [];
+              for (var i = 1; i <= dayOfWeek; i++) {
+                blankdaysArray.push(i);
+              }
+
+              let daysArray = [];
+              for (var i = 1; i <= daysInMonth; i++) {
+                daysArray.push(i);
+              }
+
+              this.blankdays = blankdaysArray;
+              this.no_of_days = daysArray;
+            },
+          };
+        }
+      </script>
+    </div>
+  </div>
+</section>
+<!-- Section: Datepicker -->
+
+<!-- Section: File -->
+<section class="mb-12 pb-12">
+  <label
+    class="w-64 flex flex-col items-center px-4 py-6 bg-white rounded-md shadow-md tracking-wide uppercase border border-blue cursor-pointer hover:bg-purple-600 hover:text-white text-purple-600 ease-linear transition-all duration-150"
+  >
+    <i class="fas fa-cloud-upload-alt fa-3x"></i>
+    <span class="mt-2 text-base leading-normal">Select a file</span>
+    <input type="file" class="hidden" />
+  </label>
+</section>
+<!-- Section: File -->
+
+<!-- Section: Form -->
+<section class="mb-12 pb-12">
+  <div class="p-4 shadow-md rounded-md text-left" style="max-width: 400px">
+    <label class="block">
+      <span class="text-gray-700">Name</span>
+      <input class="form-input mt-1 block w-full" placeholder="Jane Doe" />
+    </label>
+
+    <div class="mt-4">
+      <span class="text-gray-700">Account Type</span>
+      <div class="mt-2">
+        <label class="inline-flex items-center">
+          <input
+            type="radio"
+            class="form-radio"
+            name="accountType"
+            value="personal"
+          />
+          <span class="ml-2">Personal</span>
+        </label>
+        <label class="inline-flex items-center ml-6">
+          <input
+            type="radio"
+            class="form-radio"
+            name="accountType"
+            value="busines"
+          />
+          <span class="ml-2">Business</span>
+        </label>
+      </div>
+    </div>
+
+    <label class="block mt-4">
+      <span class="text-gray-700">Requested Limit</span>
+      <select class="form-select mt-1 block w-full">
+        <option>$1,000</option>
+        <option>$5,000</option>
+        <option>$10,000</option>
+        <option>$25,000</option>
+      </select>
+    </label>
+
+    <div class="flex mt-6">
+      <label class="flex items-center">
+        <input type="checkbox" class="form-checkbox" />
+        <span class="ml-2"
+          >I agree to the <span class="underline">privacy policy</span></span
+        >
+      </label>
+    </div>
+  </div>
+</section>
+<!-- Section: Form -->
+
+<!-- Section: Inputs -->
+<section class="mb-12 pb-12">
+  <div class="mb-3 pt-0">
+    <input
+      type="text"
+      placeholder="Placeholder"
+      class="px-2 py-1 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border border-gray-400 outline-none focus:outline-none focus:ring w-full"
+    />
+  </div>
+
+  <div class="mb-3 pt-0">
+    <input
+      type="text"
+      placeholder="Placeholder"
+      class="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border border-gray-400 outline-none focus:outline-none focus:ring w-full"
+    />
+  </div>
+
+  <div class="pt-0">
+    <input
+      type="text"
+      placeholder="Placeholder"
+      class="px-3 py-4 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-base border border-gray-400 outline-none focus:outline-none focus:ring w-full"
+    />
+  </div>
+
+  <br />
+  <br />
+
+  <div class="relative flex w-full flex-wrap items-stretch mb-3">
+    <span
+      class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-2 py-1"
+    >
+      <i class="fas fa-lock"></i>
+    </span>
+    <input
+      type="text"
+      placeholder="Placeholder"
+      class="px-2 py-1 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border border-gray-400 outline-none focus:outline-none focus:ring w-full pl-10"
+    />
+  </div>
+
+  <div class="relative flex w-full flex-wrap items-stretch mb-3">
+    <span
+      class="z-10 h-full leading-snug font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3"
+    >
+      <i class="fas fa-lock"></i>
+    </span>
+    <input
+      type="text"
+      placeholder="Placeholder"
+      class="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border border-gray-400 outline-none focus:outline-none focus:ring w-full pl-10"
+    />
+  </div>
+
+  <div class="relative flex w-full flex-wrap items-stretch">
+    <span
+      class="z-10 h-full leading-normal font-normal absolute text-center text-gray-400 absolute bg-transparent rounded text-lg items-center justify-center w-8 pl-3 py-4"
+    >
+      <i class="fas fa-lock"></i>
+    </span>
+    <input
+      type="text"
+      placeholder="Placeholder"
+      class="px-3 py-4 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-base border border-gray-400 outline-none focus:outline-none focus:ring w-full pl-10"
+    />
+  </div>
+</section>
+<!-- Section: Inputs -->
+
+<!-- Section: Range -->
+<section class="mb-12 pb-12">
+  <div class="px-6 w-full">
+    <div class="bg-gray-300 h-2 w-full rounded-full relative">
+      <span
+        class="bg-white h-4 w-4 absolute top-0 -ml-2 -mt-1 z-10 shadow rounded-full cursor-pointer"
+        style="left: 50%"
+      ></span>
+      <span
+        class="bg-green-500 h-2 absolute left-0 top-0 rounded-full"
+        style="width: 50%"
+      ></span>
+    </div>
+    <div class="flex justify-between mt-2 text-xs text-gray-600"></div>
+  </div>
+</section>
+<!-- Section: Range -->
+
+<!-- Section: Time -->
+<section class="mb-12 pb-12">
+  <div class="flex justify-center">
+    <div class="mt-2 p-5 w-40 bg-white rounded-lg shadow-xl">
+      <div class="flex">
+        <select
+          name="hours"
+          class="bg-transparent text-xl appearance-none outline-none"
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">10</option>
+          <option value="12">12</option>
+        </select>
+        <span class="text-xl mr-3">:</span>
+        <select
+          name="minutes"
+          class="bg-transparent text-xl appearance-none outline-none mr-4"
+        >
+          <option value="0">00</option>
+          <option value="30">30</option>
+        </select>
+        <select
+          name="ampm"
+          class="bg-transparent text-xl appearance-none outline-none"
+        >
+          <option value="am">AM</option>
+          <option value="pm">PM</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Time -->
+

@@ -1,0 +1,311 @@
+---
+title: "Navbar"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind navbar"
+subheading: ""
+seo_title: "Tailwind navbar component - examples & templates"
+description: Navbar for the latest Tailwind. A navigation bar is a menu fixed to the top of the page. Use it with dropdowns, text links, or buttons. Learn how to add a logo and make your navbar responsive.
+image: ""
+video: ""
+url: "/docs/standard/navigation/navbar/"
+menu:
+  navigation:
+    name: "Navbar"
+---
+{{< example lang="html" title="Basic navbar">}}
+ <nav class="bg-white shadow dark:bg-gray-800">
+    <div
+      class="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center"
+    >
+      <div class="flex items-center justify-between">
+        <div>
+          <a
+            class="text-xl font-bold text-gray-800 dark:text-white md:text-2xl hover:text-gray-700 dark:hover:text-gray-300"
+            href="#"
+            >Brand</a
+          >
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="flex md:hidden">
+          <button
+            type="button"
+            class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+            aria-label="toggle menu"
+          >
+            <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+              <path
+                fill-rule="evenodd"
+                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+      <div class="items-center md:flex">
+        <div class="flex flex-col md:flex-row md:mx-6">
+          <a
+            class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
+            href="#"
+            >Home</a
+          >
+          <a
+            class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
+            href="#"
+            >Shop</a
+          >
+          <a
+            class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
+            href="#"
+            >Contact</a
+          >
+          <a
+            class="my-1 text-gray-700 dark:text-gray-200 hover:text-indigo-500 dark:hover:text-indigo-400 md:mx-4 md:my-0"
+            href="#"
+            >About</a
+          >
+        </div>
+
+        <div class="flex justify-center md:block">
+          <a
+            class="relative text-gray-700 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300"
+            href="#"
+          >
+            <i class="fas fa-shopping-cart"></i>
+
+            <span
+              class="absolute top-0 left-0 p-1 text-xs text-white bg-indigo-500 rounded-full"
+            ></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div
+      class="container w-full p-20 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed h-96 rounded-xl"
+    >
+      <p class="mt-20 italic text-gray-500 text-md">
+        -- Content of your page --
+      </p>
+    </div>
+  {{< /example>}}
+
+{{< example lang="html" title="Placement - right">}}
+<header class="text-gray-600 body-font">
+  <div
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+  >
+    <a
+      class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+    >
+      <img src="../assets/img/logo.png" alt="" class="w-8" />
+      <span class="ml-3 text-xl">Tailwind-Elements</span>
+    </a>
+    <nav
+      class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+    >
+      <a class="mr-5 hover:text-gray-900">First Link</a>
+      <a class="mr-5 hover:text-gray-900">Second Link</a>
+      <a class="mr-5 hover:text-gray-900">Third Link</a>
+      <a class="mr-5 hover:text-gray-900">Fourth Link</a>
+    </nav>
+  </div>
+</header>
+<div
+  class="container w-full p-20 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed h-96 rounded-xl"
+>
+  <p class="mt-20 italic text-gray-500 text-md">
+    -- Content of your page --
+  </p>
+</div>
+{{< /example>}}
+
+
+
+
+
+{{< example lang="html" title="Placement - center">}}
+<header class="text-gray-600 body-font">
+  <div
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+  >
+    <a
+      class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+    >
+      <img src="../assets/img/logo.png" alt="" class="w-8" />
+      <span class="ml-3 text-xl">Tailwind-Elements</span>
+    </a>
+    <nav
+      class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center"
+    >
+      <a class="mr-5 hover:text-gray-900">First Link</a>
+      <a class="mr-5 hover:text-gray-900">Second Link</a>
+      <a class="mr-5 hover:text-gray-900">Third Link</a>
+      <a class="mr-5 hover:text-gray-900">Fourth Link</a>
+    </nav>
+  </div>
+</header>
+
+<div
+  class="container w-full p-20 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed h-96 rounded-xl"
+>
+  <p class="mt-20 italic text-gray-500 text-md">
+    -- Content of your page --
+  </p>
+</div>
+{{< /example>}}
+
+{{< example lang="html" title="Placement - left">}}
+<header class="text-gray-600 body-font">
+  <div
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+  >
+    <a
+      class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+    >
+      <img src="../assets/img/logo.png" alt="" class="w-8" />
+      <span class="ml-3 text-xl">Tailwind-Elements</span>
+    </a>
+    <nav
+      class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center"
+    >
+      <a class="mr-5 hover:text-gray-900">First Link</a>
+      <a class="mr-5 hover:text-gray-900">Second Link</a>
+      <a class="mr-5 hover:text-gray-900">Third Link</a>
+      <a class="mr-5 hover:text-gray-900">Fourth Link</a>
+    </nav>
+  </div>
+</header>
+<div
+  class="container w-full p-20 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed h-96 rounded-xl"
+>
+  <p class="mt-20 italic text-gray-500 text-md">
+    -- Content of your page --
+  </p>
+</div>
+{{< /example>}}
+
+{{< example lang="html" title="With icons">}}
+  <!-- Required font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+  <header class="text-gray-600 body-font">
+    <div
+      class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+    >
+      <a
+        class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+      >
+        <img src="../assets/img/logo.png" alt="" class="w-8" />
+        <span class="ml-3 text-xl">Tailwind-Elements</span>
+      </a>
+      <nav
+        class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+      >
+        <ul class="flex flex-col lg:flex-row list-none ml-auto">
+          <li class="nav-item">
+            <a
+              class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <i class="fab fa-facebook-square text-lg leading-lg opacity-75">
+              </i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <i class="fab fa-twitter text-lg leading-lg opacity-75"> </i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <i class="fab fa-instagram text-lg leading-lg opacity-75"> </i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <i class="fab fa-github text-lg leading-lg opacity-75"> </i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div
+    class="container w-full p-20 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed h-96 rounded-xl"
+  >
+    <p class="mt-20 italic text-gray-500 text-md">
+      -- Content of your page --
+    </p>
+  </div>
+
+{{< /example>}}
+{{< example lang="html" title="Icons with text">}}
+  <!-- Required font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+  <header class="text-gray-600 body-font">
+    <div
+      class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+    >
+      <a
+        class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+      >
+        <img src="../assets/img/logo.png" alt="" class="w-8" />
+        <span class="ml-3 text-xl">Tailwind-Elements</span>
+      </a>
+      <nav
+        class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+      >
+        <ul class="flex flex-col lg:flex-row list-none ml-auto">
+          <li class="nav-item">
+            <a
+              class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <i class="fab fa-facebook-square text-lg leading-lg opacity-75">
+              </i>
+              <span class="ml-2">Share</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <i class="fab fa-twitter text-lg leading-lg opacity-75"> </i>
+              <span class="ml-2">Tweet</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+              href="#"
+            >
+              <i class="fab fa-github text-lg leading-lg opacity-75"> </i>
+              <span class="ml-2">Pin</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div
+    class="container w-full p-20 m-4 mx-auto my-16 text-center bg-white border-2 border-gray-300 border-dashed h-96 rounded-xl"
+  >
+    <p class="mt-20 italic text-gray-500 text-md">
+      -- Content of your page --
+    </p>
+  </div>
+{{< /example>}}

@@ -1,0 +1,81 @@
+---
+title: "Dropdown"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind dropdown"
+subheading: ""
+seo_title: "Tailwind dropdown component - examples & templates"
+description: "Responsive dropdowns built with Tailwind. Dropdowns are responsible for toggleable (collapsible) display a list of links."
+image: ""
+video: ""
+url: "/docs/standard/components/dropdown/"
+menu:
+  components:
+    name: "Dropdown"
+---
+
+
+
+<style>
+  #demo {
+    padding-bottom: 200px;
+  }
+</style>
+
+{{< example lang="html" title="Basic example">}}
+
+<div class="flex flex-wrap">
+  <div class="w-full sm:w-6/12 md:w-4/12 px-4">
+    <div class="relative inline-flex align-middle w-full">
+      <button
+        class="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        type="button" onclick="openDropdown(event,'dropdown-example-1')">
+        Dropdown<i class="fas fa-angle-down ml-2"></i>
+      </button>
+      <div class="hidden bg-white  text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+        style="min-width:12rem" id="dropdown-example-1">
+        <a href="#"
+          class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100">
+          Action
+        </a>
+        <a href="#"
+          class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100">
+          Another action
+        </a>
+        <a href="#"
+          class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100">
+          Something else here
+        </a>
+        <div class="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25"></div>
+        <a href="#"
+          class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100">
+          Seprated link
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Required popper.js -->
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script>
+  function openDropdown(event, dropdownID) {
+    let element = event.target;
+    while (element.nodeName !== "BUTTON") {
+      element = element.parentNode;
+    }
+    var popper = Popper.createPopper(element, document.getElementById(dropdownID), {
+      placement: 'bottom-start'
+    });
+    document.getElementById(dropdownID).classList.toggle("hidden");
+    document.getElementById(dropdownID).classList.toggle("block");
+  }
+</script>
+
+{{< /example>}}
+
+
+
+
+
+  
+

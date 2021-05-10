@@ -1,0 +1,101 @@
+<div class="block overflow-y-auto pt-5 pb-4">
+  
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Getting started</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.start}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "start" . }} text-purple-600 border-l-2 border-solid border-purple-600 pl-1  {{else}}  hover:text-indigo-700	 {{end}}   text-sm block mb-2 mx-4 no-underline">
+          {{.Name}} 
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Deployment & hosting</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.go}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "go" . }} text-purple-600 border-l-2 border-solid border-purple-600 pl-1  {{else}}  hover:text-indigo-700	 {{end}}   text-sm block mb-2 mx-4 no-underline">
+          {{.Name}} 
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      
+      >Components</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.components}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "components" . }} text-purple-600 border-l-2 border-solid border-purple-600 pl-1  {{else}}  hover:text-indigo-700	 {{end}}   text-sm block mb-2 mx-4 no-underline">
+          {{.Name}} 
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Navigation</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.navigation}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "navigation" . }} text-purple-600 border-l-2 border-solid border-purple-600 pl-1  {{else}}  hover:text-indigo-700	 {{end}}   text-sm block mb-2 mx-4 no-underline">
+          {{.Name}} 
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      href="/learning-lab/tailwind-starter-kit/documentation/css/alerts"
+      >Forms</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.forms}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "forms" . }} text-purple-600 border-l-2 border-solid border-purple-600 pl-1  {{else}}  hover:text-indigo-700	 {{end}}   text-sm block mb-2 mx-4 no-underline">
+          {{.Name}} 
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+
+</div>
