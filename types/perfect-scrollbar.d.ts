@@ -12,6 +12,7 @@ declare namespace PerfectScrollbar {
     useBothWheelAxes?: boolean;
     wheelPropagation?: boolean;
     wheelSpeed?: number;
+    tabIndex?: number;
   }
 }
 

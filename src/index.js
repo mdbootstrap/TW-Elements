@@ -25,6 +25,7 @@ const defaultSettings = () => ({
   useBothWheelAxes: false,
   wheelPropagation: true,
   wheelSpeed: 1,
+  tabIndex: -1,
 });
 
 const handlers = {
@@ -84,7 +85,7 @@ export default class PerfectScrollbar {
     element.appendChild(this.scrollbarXRail);
     this.scrollbarX = DOM.div(cls.element.thumb('x'));
     this.scrollbarXRail.appendChild(this.scrollbarX);
-    this.scrollbarX.setAttribute('tabindex', 0);
+    this.scrollbarX.setAttribute('tabindex', this.settings.tabIndex);
     this.event.bind(this.scrollbarX, 'focus', focus);
     this.event.bind(this.scrollbarX, 'blur', blur);
     this.scrollbarXActive = null;
@@ -112,7 +113,7 @@ export default class PerfectScrollbar {
     element.appendChild(this.scrollbarYRail);
     this.scrollbarY = DOM.div(cls.element.thumb('y'));
     this.scrollbarYRail.appendChild(this.scrollbarY);
-    this.scrollbarY.setAttribute('tabindex', 0);
+    this.scrollbarY.setAttribute('tabindex', this.settings.tabIndex);
     this.event.bind(this.scrollbarY, 'focus', focus);
     this.event.bind(this.scrollbarY, 'blur', blur);
     this.scrollbarYActive = null;
