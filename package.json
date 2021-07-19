@@ -1,6 +1,6 @@
 {
   "name": "perfect-scrollbar",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Minimalistic but perfect custom scrollbar plugin",
   "author": "Hyunje Jun <me@noraesae.net>",
   "keywords": [
@@ -41,7 +41,7 @@
     "test": "npm run format:lint && npm run build",
     "rollup": "rollup --config rollup.config.js --sourcemap",
     "build": "npm run clean && npm run rollup",
-    "clean": "rm -rf dist",
+    "clean": "rmdir /s /q dist",
     "watch": "npm run build && SHELL=/bin/bash chokidar 'src/**/*.js' -c 'npm run format && npm run build'",
     "format": "prettier --write --single-quote --trailing-comma es5 'src/**/*.js'",
     "format:lint": "prettier -l --single-quote --trailing-comma es5 'src/**/*.js'",
