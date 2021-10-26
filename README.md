@@ -1,3 +1,9 @@
+ <a href="https://mdbootstrap.com/bf/waiting-list/" alt="BF Waiting List" rel="dofollow">
+          		<img src="https://mdbootstrap.com/img/Marketing/campaigns/bf2021/waiting-listBF.gif">
+          </a>
+          
+---
+
 <p align="center">
   <a href="https://mdbootstrap.com/docs/jquery/getting-started/download/?utm_source=GitHub&utm_medium=PerfectScrollbar">
     <img src="https://mdbootstrap.com/img/Marketing/general/logo/medium/mdb-r.png">
@@ -16,17 +22,9 @@
   <a href="https://twitter.com/intent/tweet/?text=Thanks+@mdbootstrap+for+maintaining+amazing+and+free+Perfect+Scrollbar+Plugin%20https://mdbootstrap.com/freebies/perfect-scrollbar/&hashtags=javascript,code,webdesign,github"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>	
 </p>
 
-## [Official documentation](https://mdbootstrap.com/freebies/perfect-scrollbar/?utm_source=GitHub&utm_medium=PerfectScrollbar)
-***The official documentation can be found [here](https://mdbootstrap.com/freebies/perfect-scrollbar/?utm_source=GitHub&utm_medium=PerfectScrollbar).***
-***To read documentation for versions < 1.0, please visit [`v0.8.1`](https://github.com/mdbootstrap/perfect-scrollbar/tree/0.8.1).***
-
 ________
 
- <a href="https://mdbootstrap.com/bf/waiting-list/" alt="BF Waiting List" rel="dofollow">
-          		<img src="https://mdbootstrap.com/img/Marketing/campaigns/bf2021/waiting-listBF.gif">
-          </a>
-          
----
+
 
 ## Why perfect-scrollbar?
 
