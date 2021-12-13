@@ -4,7 +4,7 @@
 
     @each $value in $shadow {
       @if $value != null {
-        $result: append($result, $value, "comma");
+        $result: append($result, $value, 'comma');
       }
       @if $value == none and length($shadow) > 1 {
         @warn "The keyword 'none' must be used as a single argument.";

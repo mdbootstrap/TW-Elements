@@ -5,12 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import Data from './dom/data'
-import {
-  executeAfterTransition,
-  getElement
-} from './util/index'
-import EventHandler from './dom/event-handler'
+import Data from './dom/data';
+import { executeAfterTransition, getElement } from './util/index';
+import EventHandler from './dom/event-handler';
 
 /**
  * ------------------------------------------------------------------------
@@ -18,58 +15,60 @@ import EventHandler from './dom/event-handler'
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.1.3'
+const VERSION = '5.1.3';
 
 class BaseComponent {
   constructor(element) {
-    element = getElement(element)
+    element = getElement(element);
 
     if (!element) {
-      return
+      return;
     }
 
-    this._element = element
-    Data.set(this._element, this.constructor.DATA_KEY, this)
+    this._element = element;
+    Data.set(this._element, this.constructor.DATA_KEY, this);
   }
 
   dispose() {
-    Data.remove(this._element, this.constructor.DATA_KEY)
-    EventHandler.off(this._element, this.constructor.EVENT_KEY)
+    Data.remove(this._element, this.constructor.DATA_KEY);
+    EventHandler.off(this._element, this.constructor.EVENT_KEY);
 
-    Object.getOwnPropertyNames(this).forEach(propertyName => {
-      this[propertyName] = null
-    })
+    Object.getOwnPropertyNames(this).forEach((propertyName) => {
+      this[propertyName] = null;
+    });
   }
 
   _queueCallback(callback, element, isAnimated = true) {
-    executeAfterTransition(callback, element, isAnimated)
+    executeAfterTransition(callback, element, isAnimated);
   }
 
   /** Static */
 
   static getInstance(element) {
-    return Data.get(getElement(element), this.DATA_KEY)
+    return Data.get(getElement(element), this.DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {
-    return this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
+    return (
+      this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
+    );
   }
 
   static get VERSION() {
-    return VERSION
+    return VERSION;
   }
 
   static get NAME() {
-    throw new Error('You have to implement the static method "NAME", for each component!')
+    throw new Error('You have to implement the static method "NAME", for each component!');
   }
 
   static get DATA_KEY() {
-    return `bs.${this.NAME}`
+    return `bs.${this.NAME}`;
   }
 
   static get EVENT_KEY() {
-    return `.${this.DATA_KEY}`
+    return `.${this.DATA_KEY}`;
   }
 }
 
-export default BaseComponent
+export default BaseComponent;

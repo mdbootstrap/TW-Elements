@@ -11,66 +11,65 @@
  * ------------------------------------------------------------------------
  */
 
-import { isDisabled, isVisible } from '../util/index'
+import { isDisabled, isVisible } from '../util/index';
 
-const NODE_TEXT = 3
+const NODE_TEXT = 3;
 
 const SelectorEngine = {
   find(selector, element = document.documentElement) {
-    return [].concat(...Element.prototype.querySelectorAll.call(element, selector))
+    return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
   },
 
   findOne(selector, element = document.documentElement) {
-    return Element.prototype.querySelector.call(element, selector)
+    return Element.prototype.querySelector.call(element, selector);
   },
 
   children(element, selector) {
-    return [].concat(...element.children)
-      .filter(child => child.matches(selector))
+    return [].concat(...element.children).filter((child) => child.matches(selector));
   },
 
   parents(element, selector) {
-    const parents = []
+    const parents = [];
 
-    let ancestor = element.parentNode
+    let ancestor = element.parentNode;
 
     while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
       if (ancestor.matches(selector)) {
-        parents.push(ancestor)
+        parents.push(ancestor);
       }
 
-      ancestor = ancestor.parentNode
+      ancestor = ancestor.parentNode;
     }
 
-    return parents
+    return parents;
   },
 
   prev(element, selector) {
-    let previous = element.previousElementSibling
+    let previous = element.previousElementSibling;
 
     while (previous) {
       if (previous.matches(selector)) {
-        return [previous]
+        return [previous];
       }
 
-      previous = previous.previousElementSibling
+      previous = previous.previousElementSibling;
     }
 
-    return []
+    return [];
   },
 
   next(element, selector) {
-    let next = element.nextElementSibling
+    let next = element.nextElementSibling;
 
     while (next) {
       if (next.matches(selector)) {
-        return [next]
+        return [next];
       }
 
-      next = next.nextElementSibling
+      next = next.nextElementSibling;
     }
 
-    return []
+    return [];
   },
 
   focusableChildren(element) {
@@ -82,11 +81,13 @@ const SelectorEngine = {
       'select',
       'details',
       '[tabindex]',
-      '[contenteditable="true"]'
-    ].map(selector => `${selector}:not([tabindex^="-"])`).join(', ')
+      '[contenteditable="true"]',
+    ]
+      .map((selector) => `${selector}:not([tabindex^="-"])`)
+      .join(', ');
 
-    return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el))
-  }
-}
+    return this.find(focusables, element).filter((el) => !isDisabled(el) && isVisible(el));
+  },
+};
 
-export default SelectorEngine
+export default SelectorEngine;
