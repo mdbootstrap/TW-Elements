@@ -1,11 +1,5 @@
- <a href="https://mdbootstrap.com/bf/sale/" alt="BF Waiting List" rel="dofollow">
-          		<img src="https://mdbcdn.b-cdn.net/img/Marketing/campaigns/bf2021/black-friday-sale.gif">
-          </a>
-          
----
-
 <p align="center">
-  <a href="https://mdbootstrap.com/docs/jquery/getting-started/download/?utm_source=GitHub&utm_medium=PerfectScrollbar">
+  <a href="https://mdbootstrap.com/docs/standard/getting-started/installation/?utm_source=GitHub&utm_medium=PerfectScrollbar">
     <img src="https://mdbootstrap.com/img/Marketing/general/logo/medium/mdb-r.png">
   </a>
 </p>
@@ -41,15 +35,15 @@ We hope you will love it!
 
 ## Live preview
 
-Check out the [Live Preview](https://mdbootstrap.com/snippets/jquery/filipkapusta/765760/?utm_source=GitHub&utm_medium=PerfectScrollbar) snippet. You can fork it right away for testing and experimenting purposes.
+Check out the [Live Preview](https://mdbootstrap.com/snippets/standard/marveluck/3498209?utm_source=GitHub&utm_medium=PerfectScrollbar) snippet. You can fork it right away for testing and experimenting purposes.
 
 ## More useful plugins
 
-***You'll find some example plugins below, you can explore all of them [here](https://mdbootstrap.com/plugins/jquery/?utm_source=GitHub&utm_medium=PerfectScrollbar)***
+***You'll find some example plugins below, you can explore all of them [here](https://mdbootstrap.com/docs/standard/plugins/?utm_source=GitHub&utm_medium=PerfectScrollbar)***
 
-[Datatable Plugin](https://mdbootstrap.com/docs/jquery/tables/datatables/?utm_source=GitHub&utm_medium=PerfectScrollbar)| [Treeview Plugin](https://mdbootstrap.com/plugins/jquery/treeview/?utm_source=GitHub&utm_medium=PerfectScrollbar)| [Filter Plugin](https://mdbootstrap.com/plugins/jquery/filter/?utm_source=GitHub&utm_medium=PerfectScrollbar)
+[Datatable Plugin](https://mdbootstrap.com/docs/standard/data/datatables/?utm_source=GitHub&utm_medium=PerfectScrollbar)| [Treeview Plugin](https://mdbootstrap.com/docs/standard/plugins/tree-view/?utm_source=GitHub&utm_medium=PerfectScrollbar)| [Filter Plugin](https://mdbootstrap.com/docs/standard/plugins/filters/?utm_source=GitHub&utm_medium=PerfectScrollbar)
 ------------ | ------------- | -------------
-<a href="https://mdbootstrap.com/docs/jquery/tables/datatables/?utm_source=GitHub&utm_medium=PerfectScrollbar"><img  src="https://mdbootstrap.com/img/Marketing/products/jquery/plugins/datatable.jpg" alt="Filter Plugin"></a> | <a href="https://mdbootstrap.com/plugins/jquery/treeview/?utm_source=GitHub&utm_medium=PerfectScrollbar"><img   src="https://mdbootstrap.com/img/Marketing/products/jquery/plugins/treeview.jpg" alt="Filter Plugin"></a> | <a href="https://mdbootstrap.com/plugins/jquery/filter/?utm_source=GitHub&utm_medium=PerfectScrollbar"><img  src="https://mdbootstrap.com/img/Marketing/products/jquery/plugins/filter.jpg" alt="Filter Plugin"></a>
+<a href="https://mdbootstrap.com/docs/standard/data/datatables/?utm_source=GitHub&utm_medium=PerfectScrollbar"><img  src="https://mdbootstrap.com/img/Marketing/products/jquery/plugins/datatable.jpg" alt="Filter Plugin"></a> | <a href="https://mdbootstrap.com/docs/standard/plugins/tree-view/?utm_source=GitHub&utm_medium=PerfectScrollbar"><img   src="https://mdbootstrap.com/img/Marketing/products/jquery/plugins/treeview.jpg" alt="Filter Plugin"></a> | <a href="https://mdbootstrap.com/docs/standard/plugins/filters/?utm_source=GitHub&utm_medium=PerfectScrollbar"><img  src="https://mdbootstrap.com/img/Marketing/products/jquery/plugins/filter.jpg" alt="Filter Plugin"></a>
 _________
 
 ## Table of Contents
@@ -70,7 +64,7 @@ _________
 
 #### Download now
 
-You can manually download perfect-scrollbar [here](https://mdbootstrap.com/freebies/perfect-scrollbar/?utm_source=GitHub&utm_medium=PerfectScrollbar).
+You can manually download perfect-scrollbar [here](https://mdbootstrap.com/perfect-scrollbar/?utm_source=GitHub&utm_medium=PerfectScrollbar).
 
 #### npm
 
