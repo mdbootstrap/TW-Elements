@@ -1,0 +1,205 @@
+---
+title: "Breadcrumbs"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind breadcrumbs"
+subheading: ""
+seo_title: "Tailwind breadcrumbs component - examples & templates"
+description: "Responsive Breadcrumbs built with the latest Tailwind. Examples including different colors, animations, breadcrumbs with no background, and more."
+image: "img/test.jpg"
+video: ""
+url: "/docs/standard/navigation/breadcrumbs/"
+menu:
+  navigation:
+    name: "Breadcrumbs"
+---
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example1" title_id="basic" title="Basic example">}}
+<nav class="rounded-md w-full">
+  <ol class="list-reset flex">
+    <li class="text-gray-500">Home</li>
+  </ol>
+</nav>
+
+<br />
+
+<nav class="rounded-md w-full">
+  <ol class="list-reset flex">
+    <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+    <li><span class="text-gray-500 mx-2">/</span></li>
+    <li class="text-gray-500">Library</li>
+  </ol>
+</nav>
+
+<br />
+
+<nav class="rounded-md w-full">
+  <ol class="list-reset flex">
+    <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+    <li><span class="text-gray-500 mx-2">/</span></li>
+    <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+    <li><span class="text-gray-500 mx-2">/</span></li>
+    <li class="text-gray-500">Data</li>
+  </ol>
+</nav>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example1">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <nav class="rounded-md w-full">
+      <ol class="list-reset flex">
+        <li class="text-gray-500">Home</li>
+      </ol>
+    </nav>
+
+    <br />
+
+    <nav class="rounded-md w-full">
+      <ol class="list-reset flex">
+        <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+        <li><span class="text-gray-500 mx-2">/</span></li>
+        <li class="text-gray-500">Library</li>
+      </ol>
+    </nav>
+
+    <br />
+
+    <nav class="rounded-md w-full">
+      <ol class="list-reset flex">
+        <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+        <li><span class="text-gray-500 mx-2">/</span></li>
+        <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+        <li><span class="text-gray-500 mx-2">/</span></li>
+        <li class="text-gray-500">Data</li>
+      </ol>
+    </nav>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example2" title_id="navbar" title="Breadcrumb in navbar">}}
+<nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+    <nav class="bg-grey-light rounded-md w-full" aria-label="breadcrumb">
+      <ol class="list-reset flex">
+        <li><a href="#" class="text-gray-500 hover:text-gray-600">Home</a></li>
+        <li><span class="text-gray-500 mx-2">/</span></li>
+        <li><a href="#" class="text-gray-500 hover:text-gray-600">Library</a></li>
+        <li><span class="text-gray-500 mx-2">/</span></li>
+        <li><a href="#" class="text-gray-500 hover:text-gray-600">Data</a></li>
+      </ol>
+    </nav>
+  </div>
+</nav>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example2">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+        <nav class="bg-grey-light rounded-md w-full" aria-label="breadcrumb">
+          <ol class="list-reset flex">
+            <li><a href="#" class="text-gray-500 hover:text-gray-600">Home</a></li>
+            <li><span class="text-gray-500 mx-2">/</span></li>
+            <li><a href="#" class="text-gray-500 hover:text-gray-600">Library</a></li>
+            <li><span class="text-gray-500 mx-2">/</span></li>
+            <li><a href="#" class="text-gray-500 hover:text-gray-600">Data</a></li>
+          </ol>
+        </nav>
+      </div>
+    </nav>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example3" title_id="arrow" title="Changing the separator">}}
+<nav class="bg-grey-light rounded-md w-full">
+  <ol class="list-reset flex">
+    <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+    <li><span class="text-gray-500 mx-2">></span></li>
+    <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+    <li><span class="text-gray-500 mx-2">></span></li>
+    <li class="text-gray-500">Data</li>
+  </ol>
+</nav>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example3">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <nav class="bg-grey-light rounded-md w-full">
+      <ol class="list-reset flex">
+        <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+        <li><span class="text-gray-500 mx-2">></span></li>
+        <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+        <li><span class="text-gray-500 mx-2">></span></li>
+        <li class="text-gray-500">Data</li>
+      </ol>
+    </nav>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example4" title_id="without" title="Without separators">}}
+<nav class="bg-grey-light rounded-md w-full">
+  <ol class="list-reset flex">
+    <li><a href="#" class="text-blue-600 hover:text-blue-700 mr-2">Home</a></li>
+    <li><a href="#" class="text-blue-600 hover:text-blue-700 mr-2">Library</a></li>
+    <li class="text-gray-500">Data</li>
+  </ol>
+</nav>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example4">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <nav class="bg-grey-light rounded-md w-full">
+      <ol class="list-reset flex">
+        <li><a href="#" class="text-blue-600 hover:text-blue-700 mr-2">Home</a></li>
+        <li><a href="#" class="text-blue-600 hover:text-blue-700 mr-2">Library</a></li>
+        <li class="text-gray-500">Data</li>
+      </ol>
+    </nav>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example5" title_id="bg" title="With background">}}
+<nav class="bg-gray-100 px-5 py-3 rounded-md w-full">
+  <ol class="list-reset flex">
+    <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+    <li><span class="text-gray-500 mx-2">/</span></li>
+    <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+    <li><span class="text-gray-500 mx-2">/</span></li>
+    <li class="text-gray-500">Data</li>
+  </ol>
+</nav>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example5">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <nav class="bg-gray-100 px-5 py-3 rounded-md w-full">
+      <ol class="list-reset flex">
+        <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+        <li><span class="text-gray-500 mx-2">/</span></li>
+        <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+        <li><span class="text-gray-500 mx-2">/</span></li>
+        <li class="text-gray-500">Data</li>
+      </ol>
+    </nav>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>

@@ -1,0 +1,331 @@
+---
+title: "Popover"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind popover"
+subheading: ""
+seo_title: "Tailwind popover component - examples & templates"
+description: "Responsive popovers built with Tailwind. Popover is like a tooltip, but it can persist after hovering off.
+It allows displaying more content including header & footer."
+image: ""
+video: ""
+url: "/docs/standard/components/popover/"
+menu:
+  components:
+    name: "Popover"
+---
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example1" title_id="basic" title="Basic example">}}
+<div class="flex justify-center flex-wrap">
+  <button type="button" class="
+          px-7
+          py-3
+          bg-red-600
+          text-white
+          font-medium
+          text-sm
+          leading-snug
+          uppercase
+          rounded
+          shadow-md
+          hover:bg-red-700 hover:shadow-lg
+          focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-red-800 active:shadow-lg
+          transition
+          duration-150
+          ease-in-out
+        " data-bs-toggle="popover" data-bs-title="Popover title"
+    data-bs-content="And here's some amazing content. It's very engaging. Right?">
+    Click to toggle popover
+  </button>
+</div>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example1">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <div class="flex justify-center flex-wrap">
+      <button type="button" class="
+              px-7
+              py-3
+              bg-red-600
+              text-white
+              font-medium
+              text-sm
+              leading-snug
+              uppercase
+              rounded
+              shadow-md
+              hover:bg-red-700 hover:shadow-lg
+              focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0
+              active:bg-red-800 active:shadow-lg
+              transition
+              duration-150
+              ease-in-out
+            " data-bs-toggle="popover" data-bs-title="Popover title"
+        data-bs-content="And here's some amazing content. It's very engaging. Right?">
+        Click to toggle popover
+      </button>
+    </div>
+    <!-- Required popper.js -->
+    <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new Popover(popoverTriggerEl);
+      });
+    </script>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example2" title_id="directions" title="Four directions">}}
+<div class="flex space-x-2 justify-center flex-wrap">
+  <button type="button" class="
+    px-6
+    py-2.5
+    bg-blue-600
+    text-white
+    font-medium
+    text-xs
+    leading-tight
+    uppercase
+    rounded
+    shadow-md
+    hover:bg-blue-700 hover:shadow-lg
+    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+    active:bg-blue-800 active:shadow-lg
+    transition
+    duration-150
+    ease-in-out
+  " data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+    Popover on top
+  </button>
+  <button type="button" class="
+    px-6
+    py-2.5
+    bg-blue-600
+    text-white
+    font-medium
+    text-xs
+    leading-tight
+    uppercase
+    rounded
+    shadow-md
+    hover:bg-blue-700 hover:shadow-lg
+    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+    active:bg-blue-800 active:shadow-lg
+    transition
+    duration-150
+    ease-in-out
+  " data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+    Popover on right
+  </button>
+  <button type="button" class="
+    px-6
+    py-2.5
+    bg-blue-600
+    text-white
+    font-medium
+    text-xs
+    leading-tight
+    uppercase
+    rounded
+    shadow-md
+    hover:bg-blue-700 hover:shadow-lg
+    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+    active:bg-blue-800 active:shadow-lg
+    transition
+    duration-150
+    ease-in-out
+  " data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+    Popover on bottom
+  </button>
+  <button type="button" class="
+    px-6
+    py-2.5
+    bg-blue-600
+    text-white
+    font-medium
+    text-xs
+    leading-tight
+    uppercase
+    rounded
+    shadow-md
+    hover:bg-blue-700 hover:shadow-lg
+    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+    active:bg-blue-800 active:shadow-lg
+    transition
+    duration-150
+    ease-in-out
+  " data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
+    Popover on left
+  </button>
+</div>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example2">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <div class="flex space-x-2 justify-center flex-wrap">
+      <button type="button" class="
+        px-6
+        py-2.5
+        bg-blue-600
+        text-white
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        rounded
+        shadow-md
+        hover:bg-blue-700 hover:shadow-lg
+        focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+        active:bg-blue-800 active:shadow-lg
+        transition
+        duration-150
+        ease-in-out
+      " data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+        Popover on top
+      </button>
+      <button type="button" class="
+        px-6
+        py-2.5
+        bg-blue-600
+        text-white
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        rounded
+        shadow-md
+        hover:bg-blue-700 hover:shadow-lg
+        focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+        active:bg-blue-800 active:shadow-lg
+        transition
+        duration-150
+        ease-in-out
+      " data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">
+        Popover on right
+      </button>
+      <button type="button" class="
+        px-6
+        py-2.5
+        bg-blue-600
+        text-white
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        rounded
+        shadow-md
+        hover:bg-blue-700 hover:shadow-lg
+        focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+        active:bg-blue-800 active:shadow-lg
+        transition
+        duration-150
+        ease-in-out
+      " data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+        Popover on bottom
+      </button>
+      <button type="button" class="
+        px-6
+        py-2.5
+        bg-blue-600
+        text-white
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        rounded
+        shadow-md
+        hover:bg-blue-700 hover:shadow-lg
+        focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+        active:bg-blue-800 active:shadow-lg
+        transition
+        duration-150
+        ease-in-out
+      " data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover">
+        Popover on left
+      </button>
+    </div>
+    <!-- Required popper.js -->
+    <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new Popover(popoverTriggerEl);
+      });
+    </script>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example3" title_id="dismiss" title="Dismiss on next click">}}
+<div class="flex justify-center flex-wrap">
+  <a tabindex="0" class="px-7 py-3 bg-red-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out" role="button" data-bs-toggle="popover" data-bs-trigger="focus"
+  title="Dismissible popover"
+  data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+</div>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example3">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <div class="flex justify-center flex-wrap">
+      <a tabindex="0" class="px-7 py-3 bg-red-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out" role="button" data-bs-toggle="popover" data-bs-trigger="focus"
+      title="Dismissible popover"
+      data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+    </div>
+    <!-- Required popper.js -->
+    <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+    <script>
+      var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+        trigger: 'focus'
+      })
+    </script>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example4" title_id="disabled" title="Disabled">}}
+<div class="flex justify-center flex-wrap">
+  <span class="inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+    <button class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md focus:outline-none focus:ring-0 transition duration-150 ease-in-out pointer-events-none opacity-60" type="button" disabled>Disabled button</button>
+  </span>
+</div>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example4">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+    >}}
+    <div class="flex justify-center flex-wrap">
+      <span class="inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+        <button class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md focus:outline-none focus:ring-0 transition duration-150 ease-in-out pointer-events-none opacity-60" type="button" disabled>Disabled button</button>
+      </span>
+    </div>
+    <!-- Required popper.js -->
+    <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new Popover(popoverTriggerEl);
+      });
+    </script>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  </div>
+</section>
