@@ -18,6 +18,7 @@ if (process.env.mode === 'demo') {
     { from: Path.resolve(__dirname, '../demo/sites'), to: 'sites' },
     { from: Path.resolve(__dirname, '../demo/dev'), to: 'dev' },
     { from: Path.resolve(__dirname, '../src/img'), to: 'img' },
+    { from: Path.resolve(__dirname, '../src/demo-files') },
   ];
 } else {
   filesToCopy = [
