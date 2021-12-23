@@ -11,6 +11,7 @@ import ScrollSpy from './bs/src/scrollspy';
 import Tab from './bs/src/tab';
 import Tooltip from './bs/src/tooltip';
 import Toast from './bs/src/toast';
+import Ripple from './mdb/ripple';
 
 window.Alert = Alert;
 window.Button = Button;
@@ -24,3 +25,4 @@ window.ScrollSpy = ScrollSpy;
 window.Tab = Tab;
 window.Toast = Toast;
 window.Tooltip = Tooltip;
+window.Ripple = Ripple;
