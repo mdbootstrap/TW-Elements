@@ -129,7 +129,6 @@
     }
 
     renderResults(markup) {
-      console.log(markup);
       this.list.innerHTML = markup;
 
       this.count.innerHTML = this.results.length;
@@ -211,7 +210,6 @@
     }
 
     setupKeyboardNavigation() {
-      console.log(this.options);
       Array.from(this.options).forEach((option, i) => {
         option.addEventListener("keydown", (e) => this.focusNextOption(e, i));
       });
@@ -258,7 +256,6 @@
 
     var scripts = document.getElementsByTagName("script"),
       src = scripts[scripts.length - 1].src;
-    console.log(src);
 
     const search = new Search(
       searchInput,
@@ -273,6 +270,7 @@
     search.init();
   })();
 
+  if (document.getElementById("close_icon")) {
   // grab everything we need
   const btn = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
@@ -286,6 +284,7 @@
   close.addEventListener("click", () => {
     sidebar.classList.add("-translate-x-full");
   });
+  }
 
   //Scrollspy
 
@@ -346,6 +345,8 @@
   });
 </script>
 <script>
+  if (document.getElementById("flexCheckIndeterminate")){
   const checkbox = document.getElementById("flexCheckIndeterminate");
   checkbox.indeterminate = true;
+  }
 </script>
