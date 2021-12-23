@@ -27,6 +27,7 @@ if (process.env.mode === 'demo') {
     { from: Path.resolve(__dirname, '../src/js'), to: 'src/js' },
     { from: Path.resolve(__dirname, '../src/scss'), to: 'src/scss' },
     { from: Path.resolve(__dirname, '../src/files/README.md') },
+    { from: Path.resolve(__dirname, '../plugin.js') },
     {
       from: Path.resolve(__dirname, '../src/files/package.json'),
       transform(content) {
@@ -40,6 +41,7 @@ module.exports = {
   entry: {
     'js/index': Path.resolve(__dirname, '../src/js/index.js'),
     'css/index': Path.resolve(__dirname, '../src/scss/index.scss'),
+    'css/tailwind': Path.resolve(__dirname, '../src/scss/tailwind.scss'),
   },
   output: {
     path: Path.join(__dirname, `../${distName}`),
