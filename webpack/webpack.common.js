@@ -40,7 +40,6 @@ if (process.env.mode === 'demo') {
 module.exports = {
   entry: {
     'js/index': Path.resolve(__dirname, '../src/js/index.js'),
-    'css/index': Path.resolve(__dirname, '../src/scss/index.scss'),
     'css/tailwind': Path.resolve(__dirname, '../src/scss/tailwind.scss'),
   },
   output: {
