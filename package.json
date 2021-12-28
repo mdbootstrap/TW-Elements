@@ -7,7 +7,10 @@
   "sass": "src/scss/index.scss",
   "main": "dist/js/index.min.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open",
+    "start": "concurrently 'npm:start-webpack' 'npm:start-sass' 'npm:start-plugin'",
+    "start-webpack": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open",
+    "start-sass": "sass ./src/scss/index.scss ./src/css/index.css --watch",
+    "start-plugin": "node helpers/cssToTwPlugin",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors && npm run create-zip && npm run copy-files",
     "build-demo": "cross-env NODE_ENV=production --env.mode=demo webpack --config webpack/webpack.config.prod.js --colors",
     "copy-files": "node helpers/copyFiles",
@@ -56,9 +59,11 @@
     "babel-loader": "^8.1.0",
     "bestzip": "^2.2.0",
     "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^6.5.1",
     "copy-webpack-plugin": "^5.1.2",
     "core-js": "^3.8.3",
     "cross-env": "^7.0.2",
+    "css": "^3.0.0",
     "css-loader": "^3.5.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
@@ -78,6 +83,7 @@
     "postcss-loader": "^4.0.3",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "remove-files-webpack-plugin": "^1.5.0",
     "sass": "^1.30.0",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
@@ -89,7 +95,7 @@
     "stylelint-order": "^4.1.0",
     "stylelint-prettier": "^1.1.2",
     "stylelint-scss": "^3.17.2",
-    "tailwindcss": "^3.0.7",
+    "stylis": "^2.0.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
@@ -107,6 +113,6 @@
     "mdb-ui-kit": "^3.2.0",
     "perfect-scrollbar": "^1.5.0",
     "popper.js": "^1.16.1",
-    "remove-files-webpack-plugin": "^1.4.5"
+    "tailwindcss": "^3.0.7"
   }
 }

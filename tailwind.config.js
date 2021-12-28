@@ -3,5 +3,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require('./plugin')],
+  plugins: [require('./src/js/plugin')],
 };
