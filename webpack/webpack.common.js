@@ -28,7 +28,7 @@ if (process.env.mode === 'demo') {
     { from: Path.resolve(__dirname, '../src/scss'), to: 'src/scss' },
     { from: Path.resolve(__dirname, '../src/files/README.md') },
     { from: Path.resolve(__dirname, '../src/js/plugin.js') },
-    { from: Path.resolve(__dirname, '../src/js/bsStyles.js') },
+    { from: Path.resolve(__dirname, '../src/js/bs-styles.js') },
     {
       from: Path.resolve(__dirname, '../src/files/package.json'),
       transform(content) {

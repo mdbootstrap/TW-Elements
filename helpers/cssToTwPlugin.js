@@ -1,7 +1,6 @@
-const { EOL } = require('os');
+const fs = require('fs-extra');
 const fs = require('fs-extra');
 const cssToJs = require('./cssToJs');
-
 const cssFile = './src/css/index.css';
 
 fs.watchFile(cssFile, () => {
@@ -12,7 +11,7 @@ fs.watchFile(cssFile, () => {
     },
     (_, data) => {
       const cssText = data.toString();
-      jsStyle = JSON.stringify(cssToJs(cssText), {});
+      jsStyle = JSON.stringify(cssToJs(cssText));
 
       const newLines = [];
       newLines.push('const bsStyles = ');
@@ -20,8 +19,8 @@ fs.watchFile(cssFile, () => {
       newLines.push('');
       newLines.push('module.exports = bsStyles;');
 
-      fs.writeFileSync('./src/js/bsStyles.js', newLines.join(EOL), { encoding: 'utf-8' });
-      console.log('\x1b[32m%s\x1b[0m', 'Compiled index.css to plugin.js');
+      fs.writeFileSync('./src/js/bs-styles.js', newLines.join(EOL), { encoding: 'utf-8' });
+      console.log('\x1b[32m%s\x1b[0m', 'Compiled index.css to bs-styles.js');
     }
   );
 });

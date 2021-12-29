@@ -3,15 +3,16 @@ const stylis = require('stylis');
 
 const SEL = '_';
 const SELRE = new RegExp('^' + SEL);
+const media = {};
+const keyframes = {};
+const keys = [];
 
 const toObj = (css, opts) => {
   const wrapped = stylis(SEL, css);
   const ast = parse(wrapped);
   const obj = transform(opts)(ast.stylesheet.rules);
-  return obj;
+  return { ...obj, ...media, ...keyframes };
 };
-
-const keys = [];
 
 const transform =
   (opts) =>
@@ -21,9 +22,9 @@ const transform =
         const key = '@media ' + rule.media;
         const decs = transform(opts)(rule.rules);
         if (keys.includes(key)) {
-          result[key] = { ...result[key], ...decs };
+          media[key] = { ...media[key], ...decs };
         } else {
-          result[key] = decs;
+          media[key] = decs;
           keys.push(key);
         }
         return;
@@ -32,7 +33,7 @@ const transform =
       if (rule.type === 'keyframes') {
         const key = '@keyframes ' + rule.name;
         const decs = transform(opts)(rule.keyframes);
-        result[key] = decs;
+        keyframes[key] = decs;
         return;
       }
 
@@ -43,6 +44,7 @@ const transform =
         result[key] = { ...result[key], ...getDeclarations(rule.declarations, opts) };
       });
     });
+
     return result;
   };
 
