@@ -1,3 +1,4 @@
+const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
@@ -7,6 +8,10 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
+  entry: {
+    'js/index': Path.resolve(__dirname, '../src/js/index.js'),
+    'css/index': Path.resolve(__dirname, '../src/scss/cdn.scss'),
+  },
   devtool: 'source-map',
   stats: 'errors-only',
   bail: true,
