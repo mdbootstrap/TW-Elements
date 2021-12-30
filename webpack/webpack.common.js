@@ -22,7 +22,7 @@ if (process.env.mode === 'demo') {
   ];
 } else {
   filesToCopy = [
-    { from: Path.resolve(__dirname, '../src/index.html') },
+    { from: Path.resolve(__dirname, '../src/files/index.html') },
     { from: Path.resolve(__dirname, '../src/img'), to: 'img' },
     { from: Path.resolve(__dirname, '../src/js'), to: 'src/js' },
     { from: Path.resolve(__dirname, '../src/scss'), to: 'src/scss' },

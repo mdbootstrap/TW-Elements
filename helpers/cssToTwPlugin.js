@@ -1,5 +1,4 @@
 const fs = require('fs-extra');
-const fs = require('fs-extra');
 const cssToJs = require('./cssToJs');
 const cssFile = './src/css/index.css';
 
