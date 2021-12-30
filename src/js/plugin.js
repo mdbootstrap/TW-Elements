@@ -1,6 +1,19 @@
 const plugin = require('tailwindcss/plugin');
-const bsStyles = require('./bs-styles');
+const bsComponents = require('./bs-styles');
 
-module.exports = plugin(({ addBase }) => {
-  addBase(bsStyles);
-}, {});
+module.exports = plugin(
+  ({ addComponents }) => {
+    addComponents(bsComponents);
+  },
+  {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['ui-monospace', 'monospace'],
+        },
+      },
+    },
+  }
+);
