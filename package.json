@@ -11,7 +11,7 @@
     "start-webpack": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open",
     "start-sass": "sass ./src/scss/index.scss ./src/css/index.css --watch",
     "start-plugin": "node helpers/cssToTwPlugin",
-    "build": "npm run build-sass && npm run build-plugin && npm run build-webpack && npm run create-zip && npm run copy-files",
+    "build": "npm run build-sass && npm run build-plugin && npm run build-webpack && npm run create-zip && npm run copy-files && cd ./site && npm run build-tailwind",
     "build-webpack": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "build-demo": "cross-env NODE_ENV=production --env.mode=demo webpack --config webpack/webpack.config.prod.js --colors",
     "build-sass": "sass ./src/scss/index.scss ./src/css/index.css",
