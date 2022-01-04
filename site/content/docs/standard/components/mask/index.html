@@ -5,7 +5,7 @@ draft: "false"
 main_title: "Tailwind Mask"
 subheading: ""
 seo_title: "Tailwind mask component - examples & templates"
-description: "Responsive Mask built with Tailwind. Mask is a vertically collapsing element to show and hide content via class changes."
+description: "Responsive mask built with Tailwind. Masks alter the visibility of an element by either partially or fully hiding it."
 image: ""
 video: ""
 url: "/docs/standard/components/mask/"
@@ -16,18 +16,9 @@ menu:
 
 <!-- prettier-ignore -->
 {{< twsnippet/demo id="example1" title_id="basic" title="Basic example">}}
-<p class="md:space-x-1 space-y-1 md:space-y-0 mb-4">
-  <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
-  </a>
-  <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-bs-target
-  </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="block p-6 rounded-lg shadow-lg bg-white">
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-  </div>
+<div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs" style="background-position: 50%;">
+  <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+  <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-50"></div>
 </div>
 {{< /twsnippet/demo >}}
 
@@ -35,34 +26,53 @@ menu:
   <div class="pt-4">
     {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
     >}}
-    <p class="md:space-x-1 space-y-1 md:space-y-0 mb-4">
-      <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Link with href
-      </a>
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Button with data-bs-target
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <div class="block p-6 rounded-lg shadow-lg bg-white">
-        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-      </div>
+    <div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-50"></div>
     </div>
     {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
 </section>
 
 <!-- prettier-ignore -->
-{{< twsnippet/demo id="example2" title_id="horizontal" title="Horizontal" >}}
-<p class="mb-4">
-  <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-    Toggle width collapse
-  </button>
-</p>
-<div style="min-height: 120px;">
-  <div class="collapse collapse-horizontal" id="collapseWidthExample">
-    <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm" style="width: 300px;">
-      This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+{{< twsnippet/demo id="example2" title_id="color" title="Color" >}}
+<div class="grid grid-cols-3 gap-4">
+  <div class="mb-4">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-indigo-700 opacity-50"></div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-purple-700 opacity-50"></div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-green-700 opacity-50"></div>
+    </div>
+  </div>
+</div>
+<div class="grid grid-cols-3 gap-4">
+  <div class="mb-4 md:mb-0">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-red-700 opacity-50"></div>
+    </div>
+  </div>
+  <div class="mb-4 md:mb-0">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-white opacity-50"></div>
+    </div>
+  </div>
+  <div class="mb-4 md:mb-0">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-blue-300 opacity-50"></div>
     </div>
   </div>
 </div>
@@ -72,15 +82,43 @@ menu:
   <div class="pt-4">
     {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
     >}}
-    <p class="mb-4">
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-        Toggle width collapse
-      </button>
-    </p>
-    <div style="min-height: 120px;">
-      <div class="collapse collapse-horizontal" id="collapseWidthExample">
-        <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm" style="width: 300px;">
-          This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+    <div class="grid grid-cols-3 gap-4">
+      <div class="mb-4">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-indigo-700 opacity-50"></div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-purple-700 opacity-50"></div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-green-700 opacity-50"></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="mb-4 md:mb-0">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-red-700 opacity-50"></div>
+        </div>
+      </div>
+      <div class="mb-4 md:mb-0">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-white opacity-50"></div>
+        </div>
+      </div>
+      <div class="mb-4 md:mb-0">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-blue-300 opacity-50"></div>
         </div>
       </div>
     </div>
@@ -89,52 +127,111 @@ menu:
 </section>
 
 <!-- prettier-ignore -->
-{{< twsnippet/demo id="example3" title_id="multiple_targets" title="Multiple targets">}}
-<p class="md:space-x-1 space-y-1 md:space-y-0 mb-4">
-  <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-  <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-  <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-</p>
-<div class="grid md:grid-cols-2 gap-4">
-  <div>
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
-      <div class="block p-6 rounded-lg shadow-lg bg-white">
-        Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="collapse multi-collapse" id="multiCollapseExample2">
-      <div class="block p-6 rounded-lg shadow-lg bg-white">
-        Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-      </div>
-    </div>
-  </div>
+{{< twsnippet/demo id="example3" title_id="gradient" title="Gradient">}}
+<div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs" style="background-position: 50%;">
+  <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+  <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-70"></div>
 </div>
+
 {{< /twsnippet/demo >}}
 
 <section class="collapse" id="example3">
   <div class="pt-4">
     {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="html"
     >}}
-    <p class="md:space-x-1 space-y-1 md:space-y-0 mb-4">
-      <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-    </p>
-    <div class="grid md:grid-cols-2 gap-4">
-      <div>
-        <div class="collapse multi-collapse" id="multiCollapseExample1">
-          <div class="block p-6 rounded-lg shadow-lg bg-white">
-            Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-          </div>
+    <div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-70"></div>
+    </div>
+    {{< /twsnippet/code >}} {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example4" title_id="opacity" title="Opacity">}}
+<div class="grid grid-cols-3 gap-4">
+  <div class="mb-4">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-10"></div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-30"></div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-50"></div>
+    </div>
+  </div>
+</div>
+<div class="grid grid-cols-3 gap-4">
+  <div class="mb-4 md:mb-0">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-70"></div>
+    </div>
+  </div>
+  <div class="mb-4 md:mb-0">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-80"></div>
+    </div>
+  </div>
+  <div class="mb-4 md:mb-0">
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-90"></div>
+    </div>
+  </div>
+</div>
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example4">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="html"
+    >}}
+    <div class="grid grid-cols-3 gap-4">
+      <div class="mb-4">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-10"></div>
         </div>
       </div>
-      <div>
-        <div class="collapse multi-collapse" id="multiCollapseExample2">
-          <div class="block p-6 rounded-lg shadow-lg bg-white">
-            Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-          </div>
+      <div class="mb-4">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-30"></div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-50"></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="mb-4 md:mb-0">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-70"></div>
+        </div>
+      </div>
+      <div class="mb-4 md:mb-0">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-80"></div>
+        </div>
+      </div>
+      <div class="mb-4 md:mb-0">
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" style="background-position: 50%;">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black opacity-90"></div>
         </div>
       </div>
     </div>
@@ -143,40 +240,120 @@ menu:
 </section>
 
 <!-- prettier-ignore -->
-{{< twsnippet/demo id="example4" title_id="with_scroll" title="With scroll">}}
-<a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="collapse" href="#collapseWithScrollbar" role="button" aria-expanded="false" aria-controls="collapseWithScrollbar">
-  Longer content
-</a>
-<div class="collapse mt-4 max-h-24 overflow-y-auto" id="collapseWithScrollbar"  style="max-width: 500px">
-  <p>
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-    squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-    ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-    accusamus labore sustainable VHS. 3 wolf moon officia aute, non cupidatat skateboard dolor
-    brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-    put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-  </p>
+{{< twsnippet/demo id="example5" title_id="content" title="Content">}}
+<div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs" style="background-position: 50%;">
+  <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+  <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0,0,0,0.6);">
+    <div class="flex justify-center items-center h-full">
+      <p class="text-white opacity-100">Can you see me?</p>
+    </div>
+  </div>
 </div>
+
 {{< /twsnippet/demo >}}
 
-<section class="collapse" id="example4">
+<section class="collapse" id="example5">
   <div class="pt-4">
     {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="html"
     >}}
-    <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="collapse" href="#collapseWithScrollbar" role="button" aria-expanded="false" aria-controls="collapseWithScrollbar">
-      Longer content
-    </a>
-    <div class="collapse mt-4 max-h-24 overflow-y-auto" id="collapseWithScrollbar"  style="max-width: 500px">
-      <p>
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-        squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-        ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
-        accusamus labore sustainable VHS. 3 wolf moon officia aute, non cupidatat skateboard dolor
-        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-        put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-      </p>
+    <div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs" style="background-position: 50%;">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0,0,0,0.6);">
+        <div class="flex justify-center items-center h-full">
+          <p class="text-white opacity-100">Can you see me?</p>
+        </div>
+      </div>
+    </div>
+    {{< /twsnippet/code >}} {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example6" title_id="ripple" title="Ripple">}}
+<div class="grid grid-cols-2 gap-4">
+  <div>
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" data-mdb-ripple="true" data-mdb-ripple-color="light">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(251,251,251,0.6);"></div>
+    </div>
+  </div>
+  <div>
+    <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" data-mdb-ripple="true">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+      <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0,0,0,0.6);"></div>
+    </div>
+  </div>
+</div>
+
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example6">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="html"
+    >}}
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" data-mdb-ripple="true" data-mdb-ripple-color="light">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(251,251,251,0.6);"></div>
+        </div>
+      </div>
+      <div>
+        <div class="relative overflow-hidden bg-no-repeat bg-cover w-full" data-mdb-ripple="true">
+          <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="w-full" />
+          <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0,0,0,0.6);"></div>
+        </div>
+      </div>
+    </div>
+    {{< /twsnippet/code >}} {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example7" title_id="link_regular" title="Link regular">}}
+<div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
+  <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+  <a href="#!">
+    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-gray-900 opacity-60"></div>
+  </a>
+</div>
+
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example7">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="html"
+    >}}
+    <div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+      <a href="#!">
+        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-gray-900 opacity-60"></div>
+      </a>
+    </div>
+    {{< /twsnippet/code >}} {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+
+<!-- prettier-ignore -->
+{{< twsnippet/demo id="example8" title_id="link_with_ripple" title="Link with ripple">}}
+<div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs" data-mdb-ripple="true" data-mdb-ripple-color="light">
+  <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+  <a href="#!">
+    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-gray-200 opacity-60"></div>
+  </a>
+</div>
+
+{{< /twsnippet/demo >}}
+
+<section class="collapse" id="example8">
+  <div class="pt-4">
+    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="html"
+    >}}
+    <div class="relative overflow-hidden bg-no-repeat bg-cover max-w-xs" data-mdb-ripple="true" data-mdb-ripple-color="light">
+      <img src="https://mdbootstrap.com/img/Photos/Others/mewa.jpg" class="max-w-xs" />
+      <a href="#!">
+        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-gray-200 opacity-60"></div>
+      </a>
     </div>
     {{< /twsnippet/code >}} {{< /twsnippet/wrapper >}}
   </div>
