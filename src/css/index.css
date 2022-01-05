@@ -1954,6 +1954,398 @@
   opacity: 0.25;
 }
 
+.animation {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  padding: auto;
+}
+
+@media (prefers-reduced-motion) {
+  .animation {
+    transition: none !important;
+    animation: unset !important;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation-name: fade-in;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.fade-out {
+  animation-name: fade-out;
+}
+
+.animation.infinite {
+  animation-iteration-count: infinite;
+}
+.animation.delay-1s {
+  animation-delay: 1s;
+}
+.animation.delay-2s {
+  animation-delay: 2s;
+}
+.animation.delay-3s {
+  animation-delay: 3s;
+}
+.animation.delay-4s {
+  animation-delay: 4s;
+}
+.animation.delay-5s {
+  animation-delay: 5s;
+}
+.animation.fast {
+  animation-duration: 800ms;
+}
+.animation.faster {
+  animation-duration: 500ms;
+}
+.animation.slow {
+  animation-duration: 2s;
+}
+.animation.slower {
+  animation-duration: 3s;
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-in-down {
+  animation-name: fade-in-down;
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-in-left {
+  animation-name: fade-in-left;
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-in-right {
+  animation-name: fade-in-right;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fade-in-up {
+  animation-name: fade-in-up;
+}
+
+@keyframes fade-out-down {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+.fade-out-down {
+  animation-name: fade-out-down;
+}
+
+@keyframes fade-out-left {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.fade-out-left {
+  animation-name: fade-out-left;
+}
+
+@keyframes fade-out-right {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+.fade-out-right {
+  animation-name: fade-out-right;
+}
+
+@keyframes fade-out-up {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+.fade-out-up {
+  animation-name: fade-out-up;
+}
+
+@keyframes slide-in-down {
+  from {
+    visibility: visible;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slide-in-down {
+  animation-name: slide-in-down;
+}
+
+@keyframes slide-in-left {
+  from {
+    visibility: visible;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slide-in-left {
+  animation-name: slide-in-left;
+}
+
+@keyframes slide-in-right {
+  from {
+    visibility: visible;
+    transform: translate3d(100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slide-in-right {
+  animation-name: slide-in-right;
+}
+
+@keyframes slide-in-up {
+  from {
+    visibility: visible;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slide-in-up {
+  animation-name: slide-in-up;
+}
+
+@keyframes slide-out-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+.slide-out-down {
+  animation-name: slide-out-down;
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.slide-out-left {
+  animation-name: slide-out-left;
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+.slide-out-right {
+  animation-name: slide-out-right;
+}
+
+@keyframes slide-out-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+.slide-out-up {
+  animation-name: slide-out-up;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+.slide-down {
+  animation-name: slide-down;
+}
+
+@keyframes slide-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.slide-left {
+  animation-name: slide-left;
+}
+
+@keyframes slide-right {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+.slide-right {
+  animation-name: slide-right;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+.slide-up {
+  animation-name: slide-up;
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.zoom-in {
+  animation-name: zoom-in;
+}
+
+@keyframes zoom-out {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 0;
+  }
+}
+.zoom-out {
+  animation-name: zoom-out;
+}
+
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  10%, 20% {
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+  30%, 50%, 70%, 90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+  40%, 60%, 80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+.tada {
+  animation-name: tada;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+.pulse {
+  animation-name: pulse;
+}
+
 .ripple-surface {
   position: relative;
   overflow: hidden;
@@ -2025,6 +2417,393 @@
 
 .ripple-surface-black .ripple-wave {
   background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.5) 60%, transparent 70%);
+}
+
+.datepicker-toggle-button {
+  position: absolute;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  right: 10px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.datepicker-toggle-button:focus {
+  color: #2979ff;
+}
+.datepicker-toggle-button:hover {
+  color: #2979ff;
+}
+
+.datepicker-backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1065;
+}
+
+.datepicker-dropdown-container {
+  width: 328px;
+  height: 380px;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1066;
+}
+
+.datepicker-modal-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 328px;
+  height: 512px;
+  background-color: #fff;
+  border-radius: 0.6rem 0.6rem 0.5rem 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1066;
+}
+@media screen and (min-width: 320px) and (max-width: 820px) and (orientation: landscape) {
+  .datepicker-modal-container .datepicker-header {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 820px) and (orientation: landscape) {
+  .datepicker-modal-container .datepicker-date {
+    margin-top: 100px;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 820px) and (orientation: landscape) {
+  .datepicker-modal-container .datepicker-day-cell {
+    width: 32x;
+    height: 32x;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 820px) and (orientation: landscape) {
+  .datepicker-modal-container {
+    flex-direction: row;
+    width: 475px;
+    height: 360px;
+  }
+  .datepicker-modal-container.datepicker-day-cell {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.datepicker-header {
+  height: 120px;
+  padding-right: 24px;
+  padding-left: 24px;
+  background-color: #2979ff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.datepicker-title {
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.datepicker-title-text {
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+  color: #fff;
+}
+
+.datepicker-date {
+  height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.datepicker-date-text {
+  font-size: 34px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.datepicker-main {
+  position: relative;
+  height: 100%;
+}
+
+.datepicker-date-controls {
+  padding: 10px 12px 0 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.datepicker-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top-width: 5px;
+  border-top-style: solid;
+  margin: 0 0 0 5px;
+  vertical-align: middle;
+}
+
+.datepicker-arrow-up {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top-width: 5px;
+  border-top-style: solid;
+  margin: 0 0 0 5px;
+  vertical-align: middle;
+  transform: rotate(180deg);
+}
+
+.datepicker-date-controls {
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.datepicker-view-change-button {
+  padding: 10px;
+  color: #666;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  box-shadow: none;
+  background-color: transparent;
+  margin: 0;
+  border: none;
+}
+.datepicker-view-change-button:hover, .datepicker-view-change-button:focus {
+  background-color: #eee;
+}
+.datepicker-view-change-button:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top-width: 5px;
+  border-top-style: solid;
+  margin: 0 0 0 5px;
+  vertical-align: middle;
+}
+
+.datepicker-arrow-controls {
+  margin-top: 10px;
+}
+
+/*!rtl:begin:options:
+{
+  "autoRename": true,
+  "stringMap":[
+      {
+      "name"    : "prev-next",
+      "search"  : ["datepicker-previous-button", "datepicker-next-button"],
+      "replace" : ["datepicker-next-button", "datepicker-previous-button"],
+      "options" : {"ignoreCase":false}
+      }
+  ]
+}
+*/
+.datepicker-previous-button {
+  position: relative;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  outline: none;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.64);
+  background-color: transparent;
+  margin-right: 24px;
+}
+.datepicker-previous-button:hover, .datepicker-previous-button:focus {
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.datepicker-previous-button::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  content: "";
+  margin: 15.5px;
+  border: 0 solid currentColor;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  transform: translateX(2px) rotate(-45deg);
+}
+
+.datepicker-next-button {
+  position: relative;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  outline: none;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.64);
+  background-color: transparent;
+}
+.datepicker-next-button:hover, .datepicker-next-button:focus {
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.datepicker-next-button::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  content: "";
+  margin: 15.5px;
+  border: 0 solid currentColor;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  transform: translateX(-2px) rotate(45deg);
+}
+
+/*!rtl:end:options*/
+.datepicker-view {
+  padding-left: 12px;
+  padding-right: 12px;
+  outline: none;
+}
+
+.datepicker-table {
+  margin-right: auto;
+  margin-left: auto;
+  width: 304px;
+}
+
+.datepicker-day-heading {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.datepicker-cell {
+  text-align: center;
+}
+.datepicker-cell.disabled {
+  color: #ccc;
+  cursor: default;
+  pointer-events: none;
+}
+.datepicker-cell.disabled:hover {
+  cursor: default;
+}
+.datepicker-cell:hover {
+  cursor: pointer;
+}
+
+.datepicker-cell:not(.disabled):not(.selected):hover .datepicker-cell-content {
+  background-color: #d3d3d3;
+}
+
+.datepicker-cell.selected .datepicker-cell-content {
+  background-color: #2979ff;
+  color: #fff;
+}
+
+.datepicker-cell:not(.selected).focused .datepicker-cell-content {
+  background-color: #eee;
+}
+
+.datepicker-cell.focused .datepicker-cell-content.selected {
+  background-color: #2979ff;
+}
+
+.datepicker-cell.current .datepicker-cell-content {
+  border: 1px solid #000;
+}
+
+.datepicker-small-cell {
+  width: 40px;
+  height: 40px;
+}
+
+.datepicker-small-cell-content {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 50%;
+  font-size: 13px;
+}
+
+.datepicker-large-cell {
+  width: 76px;
+  height: 42px;
+}
+
+.datepicker-large-cell-content {
+  width: 72px;
+  height: 40px;
+  line-height: 40px;
+  padding: 1px 2px;
+  border-radius: 999px;
+}
+
+.datepicker-yearview-content {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.datepicker-footer {
+  height: 56px;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.datepicker-footer-btn {
+  background-color: #fff;
+  color: #2979ff;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
+  letter-spacing: 0.1rem;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.datepicker-footer-btn:hover, .datepicker-footer-btn:focus {
+  background-color: #eee;
+}
+
+.datepicker-clear-btn {
+  margin-right: auto;
 }
 
 /*# sourceMappingURL=index.css.map */
