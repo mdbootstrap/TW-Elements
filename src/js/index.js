@@ -11,7 +11,10 @@ import ScrollSpy from './bs/src/scrollspy';
 import Tab from './bs/src/tab';
 import Tooltip from './bs/src/tooltip';
 import Toast from './bs/src/toast';
+
+// MDB COMPONENTS
 import Ripple from './mdb/ripple';
+import Datepicker from './mdb/datepicker';
 
 window.Alert = Alert;
 window.Button = Button;
@@ -26,3 +29,4 @@ window.Tab = Tab;
 window.Toast = Toast;
 window.Tooltip = Tooltip;
 window.Ripple = Ripple;
+window.Datepicker = Datepicker;
