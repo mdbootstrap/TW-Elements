@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.10 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.8 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -2569,6 +2569,156 @@ textarea.form-control.is-invalid {
   opacity: 0.25;
 }
 
+.animation {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  padding: auto;
+}
+
+.fade-in {
+  animation-name: _fade-in;
+}
+
+.fade-out {
+  animation-name: _fade-out;
+}
+
+.animation.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animation.delay-1s {
+  animation-delay: 1s;
+}
+
+.animation.delay-2s {
+  animation-delay: 2s;
+}
+
+.animation.delay-3s {
+  animation-delay: 3s;
+}
+
+.animation.delay-4s {
+  animation-delay: 4s;
+}
+
+.animation.delay-5s {
+  animation-delay: 5s;
+}
+
+.animation.fast {
+  animation-duration: 800ms;
+}
+
+.animation.faster {
+  animation-duration: 500ms;
+}
+
+.animation.slow {
+  animation-duration: 2s;
+}
+
+.animation.slower {
+  animation-duration: 3s;
+}
+
+.fade-in-down {
+  animation-name: _fade-in-down;
+}
+
+.fade-in-left {
+  animation-name: _fade-in-left;
+}
+
+.fade-in-right {
+  animation-name: _fade-in-right;
+}
+
+.fade-in-up {
+  animation-name: _fade-in-up;
+}
+
+.fade-out-down {
+  animation-name: _fade-out-down;
+}
+
+.fade-out-left {
+  animation-name: _fade-out-left;
+}
+
+.fade-out-right {
+  animation-name: _fade-out-right;
+}
+
+.fade-out-up {
+  animation-name: _fade-out-up;
+}
+
+.slide-in-down {
+  animation-name: _slide-in-down;
+}
+
+.slide-in-left {
+  animation-name: _slide-in-left;
+}
+
+.slide-in-right {
+  animation-name: _slide-in-right;
+}
+
+.slide-in-up {
+  animation-name: _slide-in-up;
+}
+
+.slide-out-down {
+  animation-name: _slide-out-down;
+}
+
+.slide-out-left {
+  animation-name: _slide-out-left;
+}
+
+.slide-out-right {
+  animation-name: _slide-out-right;
+}
+
+.slide-out-up {
+  animation-name: _slide-out-up;
+}
+
+.slide-down {
+  animation-name: _slide-down;
+}
+
+.slide-left {
+  animation-name: _slide-left;
+}
+
+.slide-right {
+  animation-name: _slide-right;
+}
+
+.slide-up {
+  animation-name: _slide-up;
+}
+
+.zoom-in {
+  animation-name: _zoom-in;
+}
+
+.zoom-out {
+  animation-name: _zoom-out;
+}
+
+.tada {
+  animation-name: _tada;
+}
+
+.pulse {
+  animation-name: _pulse;
+}
+
 .ripple-surface {
   position: relative;
   overflow: hidden;
@@ -2640,6 +2790,381 @@ textarea.form-control.is-invalid {
 
 .ripple-surface-black .ripple-wave {
   background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.5) 60%, transparent 70%);
+}
+
+.datepicker-toggle-button {
+  position: absolute;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  right: 10px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.datepicker-toggle-button:focus {
+  color: #2979ff;
+}
+
+.datepicker-toggle-button:hover {
+  color: #2979ff;
+}
+
+.datepicker-backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1065;
+}
+
+.datepicker-dropdown-container {
+  width: 328px;
+  height: 380px;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1066;
+}
+
+.datepicker-modal-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 328px;
+  height: 512px;
+  background-color: #fff;
+  border-radius: 0.6rem 0.6rem 0.5rem 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1066;
+}
+
+.datepicker-header {
+  height: 120px;
+  padding-right: 24px;
+  padding-left: 24px;
+  background-color: #2979ff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.datepicker-title {
+  height: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.datepicker-title-text {
+  font-size: 10px;
+  font-weight: 400;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+  color: #fff;
+}
+
+.datepicker-date {
+  height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.datepicker-date-text {
+  font-size: 34px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.datepicker-main {
+  position: relative;
+  height: 100%;
+}
+
+.datepicker-date-controls {
+  padding: 10px 12px 0 12px;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.datepicker-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top-width: 5px;
+  border-top-style: solid;
+  margin: 0 0 0 5px;
+  vertical-align: middle;
+}
+
+.datepicker-arrow-up {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top-width: 5px;
+  border-top-style: solid;
+  margin: 0 0 0 5px;
+  vertical-align: middle;
+  transform: rotate(180deg);
+}
+
+.datepicker-view-change-button {
+  padding: 10px;
+  color: #666;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  box-shadow: none;
+  background-color: transparent;
+  margin: 0;
+  border: none;
+}
+
+.datepicker-view-change-button:hover {
+  background-color: #eee;
+}
+
+.datepicker-view-change-button:focus {
+  background-color: #eee;
+}
+
+.datepicker-view-change-button:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top-width: 5px;
+  border-top-style: solid;
+  margin: 0 0 0 5px;
+  vertical-align: middle;
+}
+
+.datepicker-arrow-controls {
+  margin-top: 10px;
+}
+
+.datepicker-previous-button {
+  position: relative;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  outline: none;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.64);
+  background-color: transparent;
+  margin-right: 24px;
+}
+
+.datepicker-previous-button:hover {
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.datepicker-previous-button:focus {
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.datepicker-previous-button::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  content: "";
+  margin: 15.5px;
+  border: 0 solid currentColor;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  transform: translateX(2px) rotate(-45deg);
+}
+
+.datepicker-next-button {
+  position: relative;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border: none;
+  outline: none;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.64);
+  background-color: transparent;
+}
+
+.datepicker-next-button:hover {
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.datepicker-next-button:focus {
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.datepicker-next-button::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  content: "";
+  margin: 15.5px;
+  border: 0 solid currentColor;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  transform: translateX(-2px) rotate(45deg);
+}
+
+.datepicker-view {
+  padding-left: 12px;
+  padding-right: 12px;
+  outline: none;
+}
+
+.datepicker-table {
+  margin-right: auto;
+  margin-left: auto;
+  width: 304px;
+}
+
+.datepicker-day-heading {
+  width: 40px;
+  height: 40px;
+  -webkit-text-align: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.datepicker-cell {
+  -webkit-text-align: center;
+  text-align: center;
+}
+
+.datepicker-cell.disabled {
+  color: #ccc;
+  cursor: default;
+  pointer-events: none;
+}
+
+.datepicker-cell.disabled:hover {
+  cursor: default;
+}
+
+.datepicker-cell:hover {
+  cursor: pointer;
+}
+
+.datepicker-cell:not(.disabled):not(.selected):hover .datepicker-cell-content {
+  background-color: #d3d3d3;
+}
+
+.datepicker-cell.selected .datepicker-cell-content {
+  background-color: #2979ff;
+  color: #fff;
+}
+
+.datepicker-cell:not(.selected).focused .datepicker-cell-content {
+  background-color: #eee;
+}
+
+.datepicker-cell.focused .datepicker-cell-content.selected {
+  background-color: #2979ff;
+}
+
+.datepicker-cell.current .datepicker-cell-content {
+  border: 1px solid #000;
+}
+
+.datepicker-small-cell {
+  width: 40px;
+  height: 40px;
+}
+
+.datepicker-small-cell-content {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 50%;
+  font-size: 13px;
+}
+
+.datepicker-large-cell {
+  width: 76px;
+  height: 42px;
+}
+
+.datepicker-large-cell-content {
+  width: 72px;
+  height: 40px;
+  line-height: 40px;
+  padding: 1px 2px;
+  border-radius: 999px;
+}
+
+.datepicker-yearview-content {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.datepicker-footer {
+  height: 56px;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.datepicker-footer-btn {
+  background-color: #fff;
+  color: #2979ff;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  -webkit-text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
+  letter-spacing: 0.1rem;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.datepicker-footer-btn:hover {
+  background-color: #eee;
+}
+
+.datepicker-footer-btn:focus {
+  background-color: #eee;
+}
+
+.datepicker-clear-btn {
+  margin-right: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3277,6 +3802,39 @@ textarea.form-control.is-invalid {
   }
 }
 
+@media (prefers-reduced-motion) {
+  .animation {
+    transition: none !important;
+    animation: unset !important;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 820px) and (orientation: landscape) {
+  .datepicker-modal-container .datepicker-header {
+    height: 100%;
+  }
+
+  .datepicker-modal-container .datepicker-date {
+    margin-top: 100px;
+  }
+
+  .datepicker-modal-container .datepicker-day-cell {
+    width: 32x;
+    height: 32x;
+  }
+
+  .datepicker-modal-container {
+    flex-direction: row;
+    width: 475px;
+    height: 360px;
+  }
+
+  .datepicker-modal-container.datepicker-day-cell {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 @keyframes _spinner-grow {
   0% {
     transform: scale(0);
@@ -3285,6 +3843,332 @@ textarea.form-control.is-invalid {
   50% {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes _fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes _fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes _fade-in-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _fade-in-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _fade-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _fade-out-down {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes _fade-out-left {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes _fade-out-right {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes _fade-out-up {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes _slide-in-down {
+  from {
+    visibility: visible;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _slide-in-left {
+  from {
+    visibility: visible;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _slide-in-right {
+  from {
+    visibility: visible;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _slide-in-up {
+  from {
+    visibility: visible;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes _slide-out-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes _slide-out-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes _slide-out-right {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes _slide-out-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes _slide-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes _slide-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes _slide-right {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes _slide-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes _zoom-in {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes _zoom-out {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes _tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10% {
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  20% {
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  50% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  70% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  60% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes _pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
   }
 }
 
@@ -3584,6 +4468,10 @@ textarea.form-control.is-invalid {
   margin-right: 1rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -3596,12 +4484,12 @@ textarea.form-control.is-invalid {
   margin-bottom: 1.25rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .mr-2 {
   margin-right: 0.5rem;
+}
+
+.mt-16 {
+  margin-top: 4rem;
 }
 
 .mr-12 {
@@ -3666,10 +4554,6 @@ textarea.form-control.is-invalid {
 
 .-ml-10 {
   margin-left: -2.5rem;
-}
-
-.mt-16 {
-  margin-top: 4rem;
 }
 
 .mt-8 {
@@ -3796,10 +4680,6 @@ textarea.form-control.is-invalid {
   display: none;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .h-16 {
   height: 4rem;
 }
@@ -3826,6 +4706,10 @@ textarea.form-control.is-invalid {
 
 .h-10 {
   height: 2.5rem;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .h-2 {
@@ -4992,16 +5876,16 @@ textarea.form-control.is-invalid {
   object-position: center;
 }
 
+.p-6 {
+  padding: 1.5rem;
+}
+
 .p-4 {
   padding: 1rem;
 }
 
 .p-10 {
   padding: 2.5rem;
-}
-
-.p-6 {
-  padding: 1.5rem;
 }
 
 .p-0 {
@@ -5292,6 +6176,11 @@ textarea.form-control.is-invalid {
   line-height: 1.25rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -5305,11 +6194,6 @@ textarea.form-control.is-invalid {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 
 .text-2xl {
@@ -5351,12 +6235,12 @@ textarea.form-control.is-invalid {
   font-weight: 500;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .font-bold {
   font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .font-normal {
@@ -5732,9 +6616,9 @@ textarea.form-control.is-invalid {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.shadow-xl {
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -5744,9 +6628,9 @@ textarea.form-control.is-invalid {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.shadow-lg {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+.shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -6806,6 +7690,10 @@ h1 {
 
   .lg\:block {
     display: block;
+  }
+
+  .lg\:flex {
+    display: flex;
   }
 
   .lg\:w-8\/12 {
