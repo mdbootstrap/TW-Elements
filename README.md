@@ -64,7 +64,7 @@ _________
 
 #### Download now
 
-You can manually download perfect-scrollbar [here](https://mdbootstrap.com/perfect-scrollbar/?utm_source=GitHub&utm_medium=PerfectScrollbar).
+You can manually download perfect-scrollbar [here](https://perfectscrollbar.com/?utm_source=GitHub&utm_medium=PerfectScrollbar).
 
 #### npm
 
