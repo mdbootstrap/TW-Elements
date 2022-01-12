@@ -76,9 +76,8 @@ Check out the [Live Preview](https://mdbootstrap.com/snippets/standard/marveluck
           </a>
       </td>
       <td>
-        <ul>
-        <li>Material Design 2.0 + latest Bootstrap 5 based on plain JavaScript. 700+ material UI components, super simple, 1 minute installation, free templates & much more</li>
-          <li>[Free download](https://mdbootstrap.com/docs/standard/)</li>        
+        <ul style="list-style-type:none;">
+        <li>Material Design 2.0 + latest Bootstrap 5 based on plain JavaScript. 700+ material UI components, super simple, 1 minute installation, free templates & much more</li>      
 </ul>
       </td>
     </tr>
