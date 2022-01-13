@@ -34,8 +34,8 @@ module.exports = {
 4.  Include the main JavaScript file to make interactive elements work:
     `<script src="../path/to/tw-elements/dist/js/index.min.js"></script>`
 
-        If you use Webpack or other bundlers you can also import it like this:
-        `import 'tw-elements';`
+If you use Webpack or other bundlers you can also import it like this:
+`import 'tw-elements';`
 
 ##### MDB GO / CLI
 
