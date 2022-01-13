@@ -6,11 +6,9 @@
 
 ---
 
-[![Tailwind Elements](https://tailwind-elements.com/img/tailwind-elements.jpg)](https://tailwind-elements.com/)
+[![Tailwind Elements](https://tailwind-elements.com/img/logo.png)](https://tailwind-elements.com/)
 
-Tailwind Elements **does not change or add any CSS** to the already one from TailwindCSS.
-
-You can **copy our components directly** into your Tailwind design and **they will work straight away**.
+Tailwind Elements **is a a plugin** that extends the functionality of the library with many interactive components.
 
 In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript. However, they do not require any additional installation, all the necessary code is always included in the example and copied to any Tailwind project - it will work.
 
@@ -18,24 +16,55 @@ In some dynamic components (like dropdowns or modals) we add Font Awesome icons 
 
 ## Quick Start tutorial
 
-[![Quick Start tutorial](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/video.jpg)](https://www.youtube.com/watch?v=RAhugF8NOBs)
+##### NPM
 
-![Carousel](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/carousel.gif)
-![enter image description here](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/1.jpg)
-![Buttons](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/buttons.gif)
+1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ 'Node.js (LTS)') and [TailwindCSS](https://tailwindcss.com/ 'TailwindCSS').
 
-![Alerts](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/2.jpg)
-![Chart](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/chart.gif)
-![Alerts](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/3.jpg)
-![Datepicker](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/datepicker.gif)
-![Chart Linear](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/4.jpg)
-![Loaders](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/loaders.gif)
-![Badges](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/5.jpg)
-![Dropdown](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/dropdown.gif)
-![Progress](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/6.jpg)
+2. Install Tailwind Elements using NPM by running the following command:\
+   `npm install tw-elements`
 
-![enter image description here](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/7.jpg)
+3. Require Tailwind Elements as a plugin inside the **tailwind.config.js** file:\
 
-![enter image description here](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/9.jpg)
+```javascript
+module.exports = {
+  plugins: [require('tw-elements/dist/plugin')],
+};
+```
 
-![enter image description here](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/8.jpg)
+4.  Include the main JavaScript file to make interactive elements work:\
+    `<script src="../path/to/tw-elements/dist/js/index.min.js"></script>`
+
+If you use Webpack or other bundlers you can also import it like this:\
+`import 'tw-elements';`
+
+##### MDB GO / CLI
+
+Create, deploy and host anything with a single command.
+
+1. To start using MDB GO / CLI install it with one command:\
+   `npm install -g mdb-cli`
+
+2. Log into the CLI using your MDB account:\
+   `mdb login`
+
+3. Initialize a project and choose **Tailwind Elements** from the list:\
+   `mdb init`
+
+4. Install the dependencies (inside the project directory):\
+   `npm install`
+
+5. Run the app:\
+   `npm start`
+
+6. Publish when you're ready:\
+   `mdb publish`
+
+##### CDN
+
+You can easily test Tailwind Elements by adding CDN scripts to your classic HTML template without the need for installing any packages.
+
+Require the following minified stylesheet inside the _head_ tag:\
+`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />`
+
+And include the following javascript file before the end of the body element:\
+`<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>`
