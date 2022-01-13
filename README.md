@@ -20,10 +20,10 @@ In some dynamic components (like dropdowns or modals) we add Font Awesome icons 
 
 1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ 'Node.js (LTS)') and [TailwindCSS](https://tailwindcss.com/ 'TailwindCSS').
 
-2. Install Tailwind Elements using NPM by running the following command:
+2. Install Tailwind Elements using NPM by running the following command:\
    `npm install tw-elements`
 
-3. Require Tailwind Elements as a plugin inside the **tailwind.config.js** file:
+3. Require Tailwind Elements as a plugin inside the **tailwind.config.js** file:\
 
 ```javascript
 module.exports = {
@@ -31,40 +31,40 @@ module.exports = {
 };
 ```
 
-4.  Include the main JavaScript file to make interactive elements work:
+4.  Include the main JavaScript file to make interactive elements work:\
     `<script src="../path/to/tw-elements/dist/js/index.min.js"></script>`
 
-If you use Webpack or other bundlers you can also import it like this:
+If you use Webpack or other bundlers you can also import it like this:\
 `import 'tw-elements';`
 
 ##### MDB GO / CLI
 
 Create, deploy and host anything with a single command.
 
-1. To start using MDB GO / CLI install it with one command:
+1. To start using MDB GO / CLI install it with one command:\
    `npm install -g mdb-cli`
 
-2. Log into the CLI using your MDB account:
+2. Log into the CLI using your MDB account:\
    `mdb login`
 
-3. Initialize a project and choose **Tailwind Elements** from the list:
+3. Initialize a project and choose **Tailwind Elements** from the list:\
    `mdb init`
 
-4. Install the dependencies (inside the project directory):
+4. Install the dependencies (inside the project directory):\
    `npm install`
 
-5. Run the app:
+5. Run the app:\
    `npm start`
 
-6. Publish when you're ready:
+6. Publish when you're ready:\
    `mdb publish`
 
 ##### CDN
 
 You can easily test Tailwind Elements by adding CDN scripts to your classic HTML template without the need for installing any packages.
 
-Require the following minified stylesheet inside the _head_ tag:
+Require the following minified stylesheet inside the _head_ tag:\
 `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />`
 
-And include the following javascript file before the end of the body element:
+And include the following javascript file before the end of the body element:\
 `<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>`
