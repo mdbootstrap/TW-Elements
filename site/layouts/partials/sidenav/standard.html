@@ -137,5 +137,24 @@
 
     </ul>
   </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Design Blocks</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.designblocks}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "designblocks" . }} text-blue-600 border-l-2 border-solid border-blue-600 pl-1  {{else}}  hover:text-blue-700	 {{end}}   text-sm block mb-2 mx-4 no-underline">
+          {{.Name}} 
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
 
 </div>
