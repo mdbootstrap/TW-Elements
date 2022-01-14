@@ -26,7 +26,7 @@ In some dynamic components (like dropdowns or modals) we add Font Awesome icons 
 npm install tw-elements
 ```
 
-3. Require Tailwind Elements as a plugin inside the **tailwind.config.js** file:
+3. Require Tailwind Elements as a plugin inside the **tailwind.config.js** file. Additionally to your own content data you should add tw-elements to apply the classes from the interactive components:
 
 ```javascript
 module.exports = {
@@ -41,7 +41,7 @@ module.exports = {
 <script src="../path/to/tw-elements/dist/js/index.min.js"></script>
 ```
 
-    If you use Webpack or other bundlers you can also import it like this:
+If you use Webpack or other bundlers you can also import it like this:
 
 ```
 import 'tw-elements';
