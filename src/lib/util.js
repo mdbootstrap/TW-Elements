@@ -10,7 +10,7 @@ export function isEditable(el) {
     DOM.matches(el, 'input,[contenteditable]') ||
     DOM.matches(el, 'select,[contenteditable]') ||
     DOM.matches(el, 'textarea,[contenteditable]') ||
-    DOM.matches(el, 'button,[contenteditable]')
+    DOM.matches(el, 'button[contenteditable]')
   );
 }
 

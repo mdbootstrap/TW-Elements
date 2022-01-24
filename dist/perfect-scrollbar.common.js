@@ -1,6 +1,6 @@
 /*!
- * perfect-scrollbar v1.5.3
- * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
+ * perfect-scrollbar v1.5.5
+ * Copyright 2022 Hyunje Jun, MDBootstrap and Contributors
  * Licensed under MIT
  */
 
@@ -288,7 +288,7 @@ function isEditable(el) {
     matches(el, 'input,[contenteditable]') ||
     matches(el, 'select,[contenteditable]') ||
     matches(el, 'textarea,[contenteditable]') ||
-    matches(el, 'button,[contenteditable]')
+    matches(el, 'button[contenteditable]')
   );
 }
 
