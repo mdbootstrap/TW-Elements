@@ -15,7 +15,7 @@ menu:
     weight: 2
 ---
 
-<p class="mb-2">Tailwind Elements is a a plugin that extends the functionality of the library with many interactive components. </p>
+<p class="mb-2">Tailwind Elements is a plugin that extends the functionality of the library with many interactive components. </p>
 
 <p class="mb-2">In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript.
   However, they do not require any additional installation, all the necessary code is always included in the example and
@@ -28,14 +28,14 @@ menu:
     class="text-blue-700">Node.js (LTS)</a> and <a href="https://tailwindcss.com/" target="_blank"
     class="text-blue-700">TailwindCSS</a>.</p>
 
-<p class="mb-2">2. Install Tailwind Elements using NPM by running the following command:</p>
+<p class="mb-2">2. Run the following command to install the package via NPM:</p>
 <div class="pt-2">
   {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
     npm install tw-elements
   {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
 </div>
 
-<p class="mt-6 mb-2">3. Require Tailwind Elements as a plugin inside the <code>tailwind.config.js</code> file. Additionally to your own <code>content</code> data you should add tw-elements to apply the classes from the interactive components:</p>
+<p class="mt-6 mb-2">3. Tailwind Elements is a plugin and should be included inside the <code>tailwind.config.js</code> file. It is also recommended to extend the <code>content</code> array with a js file that loads dynamic component classes:</p>
 <div class="pt-2">
   {{< twsnippet/wrapper "tailwind.config.js">}}{{< twsnippet/code active=true lang="JavaScript">}}
     module.exports = {
@@ -47,14 +47,14 @@ menu:
   {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
 </div>
 
-<p class="mt-6 mb-2">4. Include the main JavaScript file to make interactive elements work:</p>
+<p class="mt-6 mb-2">4. Dynamic components will work after adding the js file:</p>
 <div class="pt-2">
   {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
-    <script src="../path/to/tw-elements/dist/js/index.min.js"></script>
+    <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
   {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
 </div>
 
-<p class="mt-6 mb-2">If you use Webpack or other bundlers you can also import it like this:</p>
+<p class="mt-6 mb-2">Alternatively, you can import it in the following way (bundler version):</p>
 <div class="pt-2">
   {{< twsnippet/wrapper "index.js">}}{{< twsnippet/code active=true lang="JavaScript">}}
     import 'tw-elements';
@@ -114,15 +114,16 @@ menu:
 <p class="mb-2">You can easily test Tailwind Elements by adding CDN scripts to your classic HTML template without the need for
 installing any packages.</p>
 
-<p class="mt-4 mb-2">Require the following minified stylesheets inside the <code>head</code> tag:</p>
+<p class="mt-4 mb-2">Add the stylesheet files below in the <code>head</code> section:</p>
 <div class="pt-2">
   {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
   {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
 </div>
 
-<p class="mt-4 mb-2">And include the following javascript file before the end of the <code>body</code> element:</p>
+<p class="mt-4 mb-2">Require the js bundled file right before the <code>body</code> closing tag:</p>
 <div class="pt-2">
   {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
