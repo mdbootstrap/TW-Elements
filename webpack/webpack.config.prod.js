@@ -6,12 +6,24 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-module.exports = merge(common, {
-  mode: 'production',
-  entry: {
+let entry;
+
+if (process.env.mode === 'demo') {
+  entry = {
+    'js/index': Path.resolve(__dirname, '../src/js/index.js'),
+    'css/index': Path.resolve(__dirname, '../src/css/index.css'),
+    'css/tailwind': Path.resolve(__dirname, '../src/scss/tailwind.scss'),
+  };
+} else {
+  entry = {
     'js/index': Path.resolve(__dirname, '../src/js/index.js'),
     'css/index': Path.resolve(__dirname, '../src/scss/cdn.scss'),
-  },
+  };
+}
+
+module.exports = merge(common, {
+  mode: 'production',
+  entry,
   devtool: 'source-map',
   stats: 'errors-only',
   bail: true,
