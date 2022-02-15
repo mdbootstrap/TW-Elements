@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+
+  <body class="bg-gray-900">
+    <!-- Start your project here-->
+    <div>
+      <!-- Container for demo purpose -->
+      <div class="container my-12 py-12 mx-auto px-4 md:px-6 lg:px-12">
+        <!--Section: Design Block-->
+        <section class="mb-20 text-gray-800">
+          <div class="grid lg:grid-cols-2 gap-4 text-center">
+            <div class="mb-4">
+              <div class="block rounded-t-xl rounded-b-lg shadow-lg bg-white">
+                <div class="border-b text-center px-4 md:px-6 py-4 bg-gray-50 rounded-t-lg">
+                  <h5 class="text-xl font-semibold">Visibility</h5>
+                </div>
+                <div class="p-4 md:p-6">
+                  <div class="flex justify-around mb-6">
+                    <div>
+                      <p class="mb-2">Impr. Top</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        90%
+                        <small class="text-green-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+                            ></path>
+                          </svg>
+                          <span> 3.0%</span>
+                        </small>
+                      </h5>
+                    </div>
+                    <div>
+                      <p class="mb-2">Impr. Abs Top</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        86.3%
+                        <small class="text-green-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+                            ></path>
+                          </svg>
+                          <span> 4.5%</span>
+                        </small>
+                      </h5>
+                    </div>
+                  </div>
+                  <canvas class="p-0" id="chartLine"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-8 md:mb-8 lg:mb-4">
+              <div class="block rounded-t-xl rounded-b-lg shadow-lg bg-white">
+                <div class="border-b text-center px-4 md:px-6 py-4 bg-gray-50 rounded-t-lg">
+                  <h5 class="text-xl font-semibold">Acquisition</h5>
+                </div>
+                <div class="p-4 md:p-6">
+                  <div class="flex justify-around mb-6">
+                    <div>
+                      <p class="mb-2">Clicks</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        4.9K
+                        <small class="text-red-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"
+                            ></path>
+                          </svg>
+                          <span> -71.9%</span>
+                        </small>
+                      </h5>
+                    </div>
+                    <div>
+                      <p class="mb-2">CTR</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        31.13%
+                        <small class="text-red-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"
+                            ></path>
+                          </svg>
+                          <span> -2.6%</span>
+                        </small>
+                      </h5>
+                    </div>
+                  </div>
+                  <canvas class="p-0" id="chartLineSec"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-4 text-center">
+            <div class="mb-4">
+              <div class="block rounded-t-xl rounded-b-lg shadow-lg bg-white">
+                <div class="border-b text-center px-4 md:px-6 py-4 bg-gray-50 rounded-t-lg">
+                  <h5 class="text-xl font-semibold">Conversion</h5>
+                </div>
+                <div class="p-4 md:p-6">
+                  <div class="flex justify-around flex-wrap mb-6">
+                    <div>
+                      <p class="mb-2">Conversions</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        859.5
+                        <small class="text-green-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+                            ></path>
+                          </svg>
+                          <span> 72.0%</span>
+                        </small>
+                      </h5>
+                    </div>
+                    <div>
+                      <p class="mb-2">Conversion rate</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        17.7%
+                        <small class="text-green-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+                            ></path>
+                          </svg>
+                          <span> 3.0%</span>
+                        </small>
+                      </h5>
+                    </div>
+                    <div>
+                      <p class="mb-2">Cost / conv.</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        $1.86
+                        <small class="text-green-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+                            ></path>
+                          </svg>
+                          <span> 4.5%</span>
+                        </small>
+                      </h5>
+                    </div>
+                  </div>
+                  <canvas class="p-0" id="chartBar"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="block rounded-t-xl rounded-b-lg shadow-lg bg-white">
+                <div class="border-b text-center px-4 md:px-6 py-4 bg-gray-50 rounded-t-lg">
+                  <h5 class="text-xl font-semibold">Cost</h5>
+                </div>
+                <div class="p-4 md:p-6">
+                  <div class="flex justify-around flex-wrap mb-6">
+                    <div>
+                      <p class="mb-2">Cost</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        $1.60K
+                        <small class="text-red-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"
+                            ></path>
+                          </svg>
+                          <span> -31.0%</span>
+                        </small>
+                      </h5>
+                    </div>
+                    <div>
+                      <p class="mb-2">Avg. CPC</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        $0.3
+                        <small class="text-red-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"
+                            ></path>
+                          </svg>
+                          <span> 11.1%</span>
+                        </small>
+                      </h5>
+                    </div>
+                    <div>
+                      <p class="mb-2">Avg. CPM</p>
+                      <h5 class="text-xl font-medium flex items-center">
+                        $102.55
+                        <small class="text-red-600 text-xs font-semibold flex items-center ml-2">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-2 mr-1"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"
+                            ></path>
+                          </svg>
+                          <span> -13.4.5%</span>
+                        </small>
+                      </h5>
+                    </div>
+                  </div>
+                  <canvas class="p-0" id="chartBarSec"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--Section: Design Block-->
+      </div>
+      <!-- Container for demo purpose -->
+    </div>
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+    <!-- Required chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chart line -->
+    <script>
+      const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+      const data = {
+        labels: labels,
+        datasets: [
+          {
+            label: 'My First dataset',
+            backgroundColor: 'rgb(37, 99, 235)',
+            borderColor: 'rgb(37, 99, 235)',
+            data: [52, 42, 69, 60, 76, 38, 89],
+          },
+        ],
+      };
+
+      const configLineChart = {
+        type: 'line',
+        data,
+        options: {},
+      };
+
+      var chartLine = new Chart(document.getElementById('chartLine'), configLineChart);
+    </script>
+
+    <!-- Chart line 1 -->
+    <script>
+      const labelsSec = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+      const dataSec = {
+        labels: labelsSec,
+        datasets: [
+          {
+            label: 'My Second dataset',
+            backgroundColor: 'rgb(37, 99, 235)',
+            borderColor: 'rgb(37, 99, 235)',
+            data: [87, 43, 98, 27, 56, 49, 74],
+          },
+        ],
+      };
+
+      const configLineChartSec = {
+        type: 'line',
+        data: dataSec,
+        options: {},
+      };
+
+      var chartLineSec = new Chart(document.getElementById('chartLineSec'), configLineChartSec);
+    </script>
+
+    <!-- Chart bar -->
+    <script>
+      const labelsBarChart = [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ];
+      const dataBarChart = {
+        labels: labelsBarChart,
+        datasets: [
+          {
+            label: 'My First dataset',
+            backgroundColor: 'rgb(37, 99, 235)',
+            borderColor: 'rgb(37, 99, 235)',
+            data: [211, 234, 254, 342, 236, 198, 98],
+          },
+        ],
+      };
+
+      const configBarChart = {
+        type: 'bar',
+        data: dataBarChart,
+        options: {},
+      };
+
+      var chartBar = new Chart(document.getElementById('chartBar'), configBarChart);
+    </script>
+
+    <!-- Chart bar 1 -->
+    <script>
+      const labelsBarChartSec = [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ];
+      const dataBarChartSec = {
+        labels: labelsBarChartSec,
+        datasets: [
+          {
+            label: 'My First dataset',
+            backgroundColor: 'rgb(37, 99, 235)',
+            borderColor: 'rgb(37, 99, 235)',
+            data: [154, 112, 275, 256, 385, 176, 103],
+          },
+        ],
+      };
+
+      const configBarChartSec = {
+        type: 'bar',
+        data: dataBarChartSec,
+        options: {},
+      };
+
+      var chartBar = new Chart(document.getElementById('chartBarSec'), configBarChartSec);
+    </script>
+  </body>
+</html>
