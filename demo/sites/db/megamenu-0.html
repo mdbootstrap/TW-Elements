@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+
+  <body class="bg-gray-100">
+    <nav
+      class="navbar navbar-expand-lg shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+    >
+      <div class="px-6">
+        <button
+          class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContentX"
+          aria-controls="navbarSupportedContentX"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            class="w-5"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            ></path>
+          </svg>
+        </button>
+        <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentX">
+          <ul class="navbar-nav mr-auto flex flex-row">
+            <li class="nav-item">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                href="#!"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                >Regular link</a
+              >
+            </li>
+            <li class="nav-item dropdown static">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out dropdown-toggle flex items-center whitespace-nowrap"
+                href="#"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                type="button"
+                id="dropdownMenuButtonX"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Mega menu
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="caret-down"
+                  class="w-2 ml-2"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 320 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  ></path>
+                </svg>
+              </a>
+              <div
+                class="dropdown-menu w-full mt-0 hidden shadow-lg bg-white absolute left-0 top-full"
+                aria-labelledby="dropdownMenuButtonX"
+              >
+                <div class="px-6 lg:px-8 py-5">
+                  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white text-gray-600">
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Lorem ipsum</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Dolor sit</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Amet consectetur</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cras justo odio</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Adipisicing elit</a
+                      >
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Explicabo voluptas</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Perspiciatis quo</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cras justo odio</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Laudantium maiores</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Provident dolor</a
+                      >
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Iste quaerato</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cras justo odio</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Est iure</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Praesentium</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Laboriosam</a
+                      >
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cras justo odio</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Saepe</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Vel alias</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Sunt doloribus</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cum dolores</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br />
+    <br />
+    <br />
+
+    <nav
+      class="navbar navbar-expand-lg shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+    >
+      <div class="px-6">
+        <button
+          class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContentY"
+          aria-controls="navbarSupportedContentY"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            class="w-5"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            ></path>
+          </svg>
+        </button>
+        <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentY">
+          <ul class="navbar-nav mr-auto flex flex-row">
+            <li class="nav-item">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                href="#!"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                >Regular link</a
+              >
+            </li>
+            <li class="nav-item dropdown static">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out dropdown-toggle flex items-center whitespace-nowrap"
+                href="#"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                type="button"
+                id="dropdownMenuButtonY"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Mega menu
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="caret-down"
+                  class="w-2 ml-2"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 320 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  ></path>
+                </svg>
+              </a>
+              <div
+                class="dropdown-menu w-full mt-0 hidden shadow-lg bg-white absolute left-0 top-full"
+                aria-labelledby="dropdownMenuButtonY"
+              >
+                <div class="px-6 lg:px-8 py-5">
+                  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Lorem ipsum
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Dolor sit</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Amet consectetur</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cras justo odio</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Adipisicing elit</a
+                      >
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Explicabo voluptas
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Perspiciatis quo</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cras justo odio</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Laudantium maiores</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Provident dolor</a
+                      >
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Iste quaerato
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cras justo odio</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Est iure</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Praesentium</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Laboriosam</a
+                      >
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Cras justo odio
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Saepe</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Vel alias</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Sunt doloribus</a
+                      >
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out"
+                        >Cum dolores</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br />
+    <br />
+    <br />
+
+    <nav
+      class="navbar navbar-expand-lg shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+    >
+      <div class="px-6">
+        <button
+          class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContentZ"
+          aria-controls="navbarSupportedContentZ"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            class="w-5"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            ></path>
+          </svg>
+        </button>
+        <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentZ">
+          <ul class="navbar-nav mr-auto flex flex-row">
+            <li class="nav-item">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                href="#!"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                >Regular link</a
+              >
+            </li>
+            <li class="nav-item dropdown static">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out dropdown-toggle flex items-center whitespace-nowrap"
+                href="#"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                type="button"
+                id="dropdownMenuButtonZ"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Mega menu
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="caret-down"
+                  class="w-2 ml-2"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 320 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  ></path>
+                </svg>
+              </a>
+              <div
+                class="dropdown-menu w-full mt-0 hidden shadow-lg bg-white absolute left-0 top-full"
+                aria-labelledby="dropdownMenuButtonZ"
+              >
+                <div class="px-6 lg:px-8 py-5">
+                  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Lorem ipsum
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Dolor sit
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Amet consectetur
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Cras justo odio
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Adipisicing elit
+                      </a>
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Explicabo voluptas
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Perspiciatis quo
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Cras justo odio
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Laudantium maiores
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Provident dolor
+                      </a>
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Iste quaerato
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Cras justo odio
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Est iure
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Praesentium
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Laboriosam
+                      </a>
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Cras justo odio
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Saepe
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Vel alias
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Sunt doloribus
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-2 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-1.5 mr-1.5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 192 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z"
+                          ></path>
+                        </svg>
+                        Cum dolores
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br />
+    <br />
+    <br />
+
+    <nav
+      class="navbar navbar-expand-lg shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+    >
+      <div class="px-6">
+        <button
+          class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContentQ"
+          aria-controls="navbarSupportedContentQ"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            class="w-5"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            ></path>
+          </svg>
+        </button>
+        <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentQ">
+          <ul class="navbar-nav mr-auto flex flex-row">
+            <li class="nav-item">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                href="#!"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                >Regular link</a
+              >
+            </li>
+            <li class="nav-item dropdown static">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out dropdown-toggle flex items-center whitespace-nowrap"
+                href="#"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                type="button"
+                id="dropdownMenuButtonQ"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Mega menu
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="caret-down"
+                  class="w-2 ml-2"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 320 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  ></path>
+                </svg>
+              </a>
+              <div
+                class="dropdown-menu w-full mt-0 hidden shadow-lg bg-white absolute left-0 top-full"
+                aria-labelledby="dropdownMenuButtonQ"
+              >
+                <div class="px-6 lg:px-8 py-5">
+                  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Lorem ipsum
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Explicabo voluptas
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Iste quaerato
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="bg-white text-gray-600">
+                      <p
+                        class="block px-6 py-2 border-b border-gray-200 w-full uppercase font-semibold text-gray-700"
+                      >
+                        Cras justo odio
+                      </p>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 border-b border-gray-200 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                      <a
+                        href="#!"
+                        aria-current="true"
+                        class="block px-6 py-3 w-full hover:bg-gray-50 hover:text-gray-700 transition duration-150 ease-in-out flex items-center"
+                      >
+                        <div class="shrink-0">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+                            class="w-20 shadow-lg rounded"
+                            alt="Hollywood Sign on The Hill"
+                          />
+                        </div>
+                        <div class="grow ml-4">
+                          <p class="mb-1 font-semibold">Sed ut perspiciatis unde omnis</p>
+                          <p><u>15.07.2021</u></p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br />
+    <br />
+    <br />
+
+    <nav
+      class="navbar navbar-expand-lg shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+    >
+      <div class="px-6">
+        <button
+          class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContentU"
+          aria-controls="navbarSupportedContentU"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            class="w-5"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <path
+              fill="currentColor"
+              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+            ></path>
+          </svg>
+        </button>
+        <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentU">
+          <ul class="navbar-nav mr-auto flex flex-row">
+            <li class="nav-item">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                href="#!"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                >Regular link</a
+              >
+            </li>
+            <li class="nav-item dropdown static">
+              <a
+                class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out dropdown-toggle flex items-center whitespace-nowrap"
+                href="#"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                type="button"
+                id="dropdownMenuButtonU"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Mega menu
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="caret-down"
+                  class="w-2 ml-2"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 320 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  ></path>
+                </svg>
+              </a>
+              <div
+                class="dropdown-menu w-full mt-0 hidden shadow-lg bg-white absolute left-0 top-full"
+                aria-labelledby="dropdownMenuButtonU"
+              >
+                <div class="px-6 lg:px-8 py-5">
+                  <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white">
+                      <p class="block pt-2 w-full uppercase font-semibold text-gray-700">
+                        Lorem ipsum
+                      </p>
+                      <div
+                        class="relative overflow-hidden bg-no-repeat bg-cover py-4"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                      >
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp"
+                          class="w-full rounded-md shadow-lg"
+                          alt="Louvre"
+                        />
+                        <a href="#!">
+                          <div
+                            class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                            style="background-color: rgba(251, 251, 251, 0.2)"
+                          ></div>
+                        </a>
+                      </div>
+                      <div class="flex items-center justify-between mt-1 mb-3">
+                        <p class="flex items-center text-blue-400">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-4 mr-2"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 576 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"
+                            ></path>
+                          </svg>
+                          Travels
+                        </p>
+                        <p class="text-gray-700"><u>15.07.2021</u></p>
+                      </div>
+                      <a href="#!">
+                        <h5 class="text-xl mb-2 text-gray-700 font-semibold">
+                          This is title of the news
+                        </h5>
+                        <p class="text-gray-700">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, iste
+                          aliquid. Sed id nihil magni, sint vero provident esse numquam perferendis
+                          ducimus dicta adipisci iusto nam temporibus modi animi laboriosam.
+                        </p>
+                      </a>
+                    </div>
+                    <div class="bg-white">
+                      <p class="block pt-2 w-full uppercase font-semibold text-gray-700">
+                        Explicabo voluptas
+                      </p>
+                      <div
+                        class="relative overflow-hidden bg-no-repeat bg-cover py-4"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                      >
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/new/fluid/city/011.webp"
+                          class="w-full rounded-md shadow-lg"
+                          alt="Louvre"
+                        />
+                        <a href="#!">
+                          <div
+                            class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                            style="background-color: rgba(251, 251, 251, 0.2)"
+                          ></div>
+                        </a>
+                      </div>
+                      <div class="flex items-center justify-between mt-1 mb-3">
+                        <p class="flex items-center text-red-500">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-4 mr-2"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 544 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M527.79 288H290.5l158.03 158.03c6.04 6.04 15.98 6.53 22.19.68 38.7-36.46 65.32-85.61 73.13-140.86 1.34-9.46-6.51-17.85-16.06-17.85zm-15.83-64.8C503.72 103.74 408.26 8.28 288.8.04 279.68-.59 272 7.1 272 16.24V240h223.77c9.14 0 16.82-7.68 16.19-16.8zM224 288V50.71c0-9.55-8.39-17.4-17.84-16.06C86.99 51.49-4.1 155.6.14 280.37 4.5 408.51 114.83 513.59 243.03 511.98c50.4-.63 96.97-16.87 135.26-44.03 7.9-5.6 8.42-17.23 1.57-24.08L224 288z"
+                            ></path>
+                          </svg>
+                          Business
+                        </p>
+                        <p class="text-gray-700"><u>15.07.2021</u></p>
+                      </div>
+                      <a href="#!">
+                        <h5 class="text-xl mb-2 text-gray-700 font-semibold">
+                          This is title of the news
+                        </h5>
+                        <p class="text-gray-700">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, iste
+                          aliquid. Sed id nihil magni, sint vero provident esse numquam perferendis
+                          ducimus dicta adipisci iusto nam temporibus modi animi laboriosam.
+                        </p>
+                      </a>
+                    </div>
+                    <div class="bg-white">
+                      <p class="block pt-2 w-full uppercase font-semibold text-gray-700">
+                        Cras justo odio
+                      </p>
+                      <div
+                        class="relative overflow-hidden bg-no-repeat bg-cover py-4"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                      >
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/new/fluid/city/018.webp"
+                          class="w-full rounded-md shadow-lg"
+                          alt="Louvre"
+                        />
+                        <a href="#!">
+                          <div
+                            class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
+                            style="background-color: rgba(251, 251, 251, 0.2)"
+                          ></div>
+                        </a>
+                      </div>
+                      <div class="flex items-center justify-between mt-1 mb-3">
+                        <p class="flex items-center text-yellow-500">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            class="w-4 mr-2"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"
+                            ></path>
+                          </svg>
+                          Technology
+                        </p>
+                        <p class="text-gray-700"><u>15.07.2021</u></p>
+                      </div>
+                      <a href="#!">
+                        <h5 class="text-xl mb-2 text-gray-700 font-semibold">
+                          This is title of the news
+                        </h5>
+                        <p class="text-gray-700">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, iste
+                          aliquid. Sed id nihil magni, sint vero provident esse numquam perferendis
+                          ducimus dicta adipisci iusto nam temporibus modi animi laboriosam.
+                        </p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Container for demo purpose -->
+    <div>
+      <!-- Section: Design Block -->
+      <section class="mt-96">
+        <nav
+          class="relative w-full flex flex-wrap items-center justify-between py-4 text-gray-500 hover:text-gray-700 focus:text-gray-700 transition duration-300 ease-in-out shadow-lg navbar navbar-expand-lg navbar-light bg-white"
+        >
+          <!-- Container wrapper -->
+          <div class="px-4">
+            <!-- Toggle button -->
+            <button
+              class="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="bars"
+                class="w-6"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Collapsible wrapper -->
+            <div
+              class="collapse navbar-collapse flex-grow items-center"
+              id="navbarSupportedContent"
+            >
+              <!-- Left links -->
+              <ul class="navbar-nav ml-auto lg:pl-0 pl-1">
+                <!-- Navbar dropdown -->
+                <li class="nav-item dropdown static">
+                  <a
+                    class="nav-link dropdown-toggle flex items-center"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Solutions
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="caret-down"
+                      class="w-2 ml-2"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <!-- Dropdown menu -->
+                  <div
+                    class="dropdown-menu w-full mt-0 relative hidden bg-white text-base z-50 float-left lg:pt-2 list-none text-left mt-1 hidden m-0 bg-clip-padding border-none rounded-b-lg lg:-ml-4 lg:shadow-lg"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    <div class="text-gray-700">
+                      <div class="grid md:grid-cols-3 lg:gap-12 gap-4">
+                        <div class="ml-6">
+                          <h6 class="font-semibold uppercase pt-12 mt-2 mb-6">Company</h6>
+                          <ul class="md:pb-12">
+                            <li class="flex items-center mb-6">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="info-circle"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">About</span>
+                            </li>
+                            <li class="flex items-center mb-6">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="building"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M436 480h-20V24c0-13.255-10.745-24-24-24H56C42.745 0 32 10.745 32 24v456H12c-6.627 0-12 5.373-12 12v20h448v-20c0-6.627-5.373-12-12-12zM128 76c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12V76zm0 96c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40zm52 148h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12zm76 160h-64v-84c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v84zm64-172c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40zm0-96c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40zm0-96c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12V76c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">Customers</span>
+                            </li>
+                            <li class="flex items-center mb-6">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="newspaper"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M552 64H88c-13.255 0-24 10.745-24 24v8H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h472c26.51 0 48-21.49 48-48V88c0-13.255-10.745-24-24-24zM56 400a8 8 0 0 1-8-8V144h16v248a8 8 0 0 1-8 8zm236-16H140c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm208 0H348c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm-208-96H140c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm208 0H348c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm0-96H140c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h360c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">Press</span>
+                            </li>
+                            <li class="flex items-center mb-6">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="briefcase"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">Careers</span>
+                            </li>
+                            <li class="flex align-items-center">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="shield-alt"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M466.5 83.7l-192-80a48.15 48.15 0 0 0-36.9 0l-192 80C27.7 91.1 16 108.6 16 128c0 198.5 114.5 335.7 221.5 380.3 11.8 4.9 25.1 4.9 36.9 0C360.1 472.6 496 349.3 496 128c0-19.4-11.7-36.9-29.5-44.3zM256.1 446.3l-.1-381 175.9 73.3c-3.3 151.4-82.1 261.1-175.8 307.7z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">Privacy</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="ml-6">
+                          <h6 class="font-semibold uppercase pt-12 mt-2 mb-6">Resources</h6>
+                          <ul class="pb-12">
+                            <li class="flex items-center mb-6">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="users"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 640 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">Community</span>
+                            </li>
+                            <li class="flex items-center mb-6">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="globe"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 496 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">Partners</span>
+                            </li>
+                            <li class="flex items-center mb-6">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="bookmark"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 384 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">Guides</span>
+                            </li>
+                            <li class="flex items-center mb-6">
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="desktop"
+                                class="mr-2 text-center w-4 text-gray-400"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 576 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M528 0H48C21.5 0 0 21.5 0 48v320c0 26.5 21.5 48 48 48h192l-16 48h-72c-13.3 0-24 10.7-24 24s10.7 24 24 24h272c13.3 0 24-10.7 24-24s-10.7-24-24-24h-72l-16-48h192c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zm-16 352H64V64h448v288z"
+                                ></path>
+                              </svg>
+                              <span class="pl-1 font-medium">Webinars</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="pt-12 px-6 bg-gray-100 lg:rounded-br-lg">
+                          <h6 class="font-semibold uppercase mb-6">From the blog</h6>
+                          <div class="xl:flex xl:items-center mb-6">
+                            <div class="shrink-0 mb-4 xl:mb-0">
+                              <img
+                                src="https://i.ibb.co/hX6pfms/img32.jpg"
+                                class="rounded-lg mr-2 pr-1 w-32"
+                                alt="Generic placeholder image"
+                              />
+                            </div>
+                            <div class="grow xl:ml-4">
+                              <p class="mb-1 font-medium text-xs">Boost your conversion rate</p>
+                              <p class="text-gray-500 mb-0 text-xs">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit consectetur
+                                dolorum placeat corporis quasi debitis hic reprehenderit ullam.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="xl:flex xl:items-center mb-6">
+                            <div class="shrink-0 mb-4 xl:mb-0">
+                              <img
+                                src="https://i.ibb.co/TcHPmw0/img33.jpg"
+                                class="rounded-lg mr-2 pr-1 w-32"
+                                alt="Generic placeholder image"
+                              />
+                            </div>
+                            <div class="grow xl:ml-4">
+                              <p class="mb-1 font-medium text-xs">
+                                How to use search engine optimization
+                              </p>
+                              <p class="text-gray-500 mb-0 text-xs">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit consectetur
+                                dolorum placeat corporis quasi debitis hic reprehenderit ullam.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="pb-12">
+                            <a
+                              class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center text-xs"
+                              href="#!"
+                              >View all posts
+                              <svg
+                                aria-hidden="true"
+                                focusable="false"
+                                data-prefix="fas"
+                                data-icon="arrow-right"
+                                class="w-2 ml-2"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                                ></path>
+                              </svg>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+          </div>
+          <!-- Container wrapper -->
+        </nav>
+      </section>
+      <!-- Section: Design Block -->
+    </div>
+    <!-- Container for demo purpose -->
+
+    <!-- Container for demo purpose -->
+    <div>
+      <!-- Section: Design Block -->
+      <section class="mb-20">
+        <nav
+          class="relative w-full flex flex-wrap items-center justify-between py-4 text-gray-500 hover:text-gray-700 focus:text-gray-700 transition duration-300 ease-in-out shadow-lg navbar navbar-expand-lg navbar-light bg-white"
+        >
+          <!-- Container wrapper -->
+          <div class="px-4">
+            <!-- Toggle button -->
+            <button
+              class="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="bars"
+                class="w-6"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Collapsible wrapper -->
+            <div
+              class="collapse navbar-collapse flex-grow items-center"
+              id="navbarSupportedContent"
+            >
+              <!-- Left links -->
+              <ul class="navbar-nav ml-auto lg:pl-0 pl-1">
+                <!-- Navbar dropdown -->
+                <li class="nav-item dropdown static">
+                  <a
+                    class="nav-link dropdown-toggle flex items-center"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Solutions
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="caret-down"
+                      class="w-2 ml-2"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <!-- Dropdown menu -->
+                  <div
+                    class="dropdown-menu w-full mt-0 relative hidden bg-white text-base z-50 float-left lg:pt-2 list-none text-left mt-1 hidden m-0 bg-clip-padding border-none rounded-b-lg lg:-ml-4 lg:shadow-lg"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    <div class="text-gray-700">
+                      <div class="grid lg:grid-cols-4 md:grid-cols-2 mb-12 p-6 gap-12">
+                        <div class="mt-12">
+                          <div
+                            class="bg-blue-600 rounded-lg shadow-md w-12 h-12 flex justify-center items-center"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="headset"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M192 208c0-17.67-14.33-32-32-32h-16c-35.35 0-64 28.65-64 64v48c0 35.35 28.65 64 64 64h16c17.67 0 32-14.33 32-32V208zm176 144c35.35 0 64-28.65 64-64v-48c0-35.35-28.65-64-64-64h-16c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h16zM256 0C113.18 0 4.58 118.83 0 256v16c0 8.84 7.16 16 16 16h16c8.84 0 16-7.16 16-16v-16c0-114.69 93.31-208 208-208s208 93.31 208 208h-.12c.08 2.43.12 165.72.12 165.72 0 23.35-18.93 42.28-42.28 42.28H320c0-26.51-21.49-48-48-48h-32c-26.51 0-48 21.49-48 48s21.49 48 48 48h181.72c49.86 0 90.28-40.42 90.28-90.28V256C507.42 118.83 398.82 0 256 0z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <p class="font-semibold mt-4 mb-3">Analytics</p>
+                          <p class="text-gray-500 mb-4">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit nihil quisquam.
+                          </p>
+                          <a
+                            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center"
+                            href="#!"
+                            >Learn more
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="arrow-right"
+                              class="w-3 ml-2"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="mt-12">
+                          <div
+                            class="bg-blue-600 rounded-lg shadow-md w-12 h-12 flex justify-center items-center"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="shield-alt"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M466.5 83.7l-192-80a48.15 48.15 0 0 0-36.9 0l-192 80C27.7 91.1 16 108.6 16 128c0 198.5 114.5 335.7 221.5 380.3 11.8 4.9 25.1 4.9 36.9 0C360.1 472.6 496 349.3 496 128c0-19.4-11.7-36.9-29.5-44.3zM256.1 446.3l-.1-381 175.9 73.3c-3.3 151.4-82.1 261.1-175.8 307.7z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <p class="font-semibold mt-4 mb-3">Engagement</p>
+                          <p class="text-gray-500 mb-4">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit nihil quisquam.
+                          </p>
+                          <a
+                            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center"
+                            href="#!"
+                            >Learn more
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="arrow-right"
+                              class="w-3 ml-2"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="mt-12">
+                          <div
+                            class="bg-blue-600 rounded-lg shadow-md w-12 h-12 flex justify-center items-center"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="shipping-fast"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 640 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M624 352h-16V243.9c0-12.7-5.1-24.9-14.1-33.9L494 110.1c-9-9-21.2-14.1-33.9-14.1H416V48c0-26.5-21.5-48-48-48H112C85.5 0 64 21.5 64 48v48H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h272c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H40c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H64v128c0 53 43 96 96 96s96-43 96-96h128c0 53 43 96 96 96s96-43 96-96h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM160 464c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm320 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm80-208H416V144h44.1l99.9 99.9V256z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <p class="font-semibold mt-4 mb-3">Security</p>
+                          <p class="text-gray-500 mb-4">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit nihil quisquam.
+                          </p>
+                          <a
+                            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center"
+                            href="#!"
+                            >Learn more
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="arrow-right"
+                              class="w-3 ml-2"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="mt-12">
+                          <div
+                            class="bg-blue-600 rounded-lg shadow-md w-12 h-12 flex justify-center items-center"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="hand-holding-usd"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 576 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M271.06,144.3l54.27,14.3a8.59,8.59,0,0,1,6.63,8.1c0,4.6-4.09,8.4-9.12,8.4h-35.6a30,30,0,0,1-11.19-2.2c-5.24-2.2-11.28-1.7-15.3,2l-19,17.5a11.68,11.68,0,0,0-2.25,2.66,11.42,11.42,0,0,0,3.88,15.74,83.77,83.77,0,0,0,34.51,11.5V240c0,8.8,7.83,16,17.37,16h17.37c9.55,0,17.38-7.2,17.38-16V222.4c32.93-3.6,57.84-31,53.5-63-3.15-23-22.46-41.3-46.56-47.7L282.68,97.4a8.59,8.59,0,0,1-6.63-8.1c0-4.6,4.09-8.4,9.12-8.4h35.6A30,30,0,0,1,332,83.1c5.23,2.2,11.28,1.7,15.3-2l19-17.5A11.31,11.31,0,0,0,368.47,61a11.43,11.43,0,0,0-3.84-15.78,83.82,83.82,0,0,0-34.52-11.5V16c0-8.8-7.82-16-17.37-16H295.37C285.82,0,278,7.2,278,16V33.6c-32.89,3.6-57.85,31-53.51,63C227.63,119.6,247,137.9,271.06,144.3ZM565.27,328.1c-11.8-10.7-30.2-10-42.6,0L430.27,402a63.64,63.64,0,0,1-40,14H272a16,16,0,0,1,0-32h78.29c15.9,0,30.71-10.9,33.25-26.6a31.2,31.2,0,0,0,.46-5.46A32,32,0,0,0,352,320H192a117.66,117.66,0,0,0-74.1,26.29L71.4,384H16A16,16,0,0,0,0,400v96a16,16,0,0,0,16,16H372.77a64,64,0,0,0,40-14L564,377a32,32,0,0,0,1.28-48.9Z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <p class="font-semibold mt-4 mb-3">Integrations</p>
+                          <p class="text-gray-500 mb-4">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit nihil quisquam.
+                          </p>
+                          <a
+                            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center"
+                            href="#!"
+                            >Learn more
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="arrow-right"
+                              class="w-3 ml-2"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="flex flex-row flex-wrap py-6 px-4 bg-gray-100 lg:rounded-b-lg">
+                        <p class="flex items-center mb-4 md:mb-0 mr-12">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="far"
+                            data-icon="play-circle"
+                            class="w-6 mr-2 pr-1 text-gray-500"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"
+                            ></path>
+                          </svg>
+                          Watch Demo
+                        </p>
+                        <p class="flex items-center mb-4 md:mb-0 mr-12">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="far"
+                            data-icon="check-circle"
+                            class="w-6 mr-2 pr-1 text-gray-500"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                            ></path>
+                          </svg>
+                          View All Products
+                        </p>
+                        <p class="flex items-center">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            data-icon="phone-alt"
+                            class="w-6 mr-2 pr-1 text-gray-500"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"
+                            ></path>
+                          </svg>
+                          Contact Sales
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+          </div>
+          <!-- Container wrapper -->
+        </nav>
+      </section>
+      <!-- Section: Design Block -->
+    </div>
+    <!-- Container for demo purpose -->
+
+    <!-- Container for demo purpose -->
+    <div>
+      <!-- Section: Design Block -->
+      <section class="mb-20">
+        <nav
+          class="relative w-full flex flex-wrap items-center justify-between py-4 text-gray-500 hover:text-gray-700 focus:text-gray-700 transition duration-300 ease-in-out shadow-lg navbar navbar-expand-lg navbar-light bg-white"
+        >
+          <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+            <div class="flex items-center relative">
+              <div class="dropdown relative">
+                <a
+                  class="dropdown-toggle flex items-center"
+                  href="#"
+                  id="dropdownMenuButton2"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  >Solutions
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="caret-down"
+                    class="w-2 ml-2"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    ></path>
+                  </svg>
+                </a>
+                <ul
+                  class="dropdown-menu w-80 absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-0"
+                  aria-labelledby="dropdownMenuButton2"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item text-wrap text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100"
+                      href="#!"
+                    >
+                      <p class="font-bold mb-1">Blog</p>
+                      <p class="text-gray-500 mb-0 text-wrap">
+                        Learn about tips, product updates and company culture.
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item text-wrap text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100"
+                      href="#!"
+                    >
+                      <p class="font-bold mb-1">Help Center</p>
+                      <p class="text-gray-500 mb-0">
+                        Get all of your questions answered in our forums of contact support.
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item text-wrap text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100"
+                      href="#!"
+                    >
+                      <p class="font-bold mb-1">Guides</p>
+                      <p class="text-gray-500 mb-0">
+                        Learn how to maximize our platform to get the most out of it.
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item text-wrap text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100"
+                      href="#!"
+                    >
+                      <p class="font-bold mb-1">Events</p>
+                      <p class="text-gray-500 mb-0">
+                        Check out webinars with experts and learn about our annual conference.
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item text-wrap text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100"
+                      href="#!"
+                    >
+                      <p class="font-bold mb-1">Security</p>
+                      <p class="text-gray-500 mb-0">
+                        Understand how we take your privacy seriously.
+                      </p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </section>
+      <!-- Section: Design Block -->
+    </div>
+    <!-- Container for demo purpose -->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+  </body>
+</html>
