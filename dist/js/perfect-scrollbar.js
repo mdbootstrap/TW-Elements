@@ -252,14 +252,18 @@ exports.env = {
 var destroy = require('./plugin/destroy');
 var initialize = require('./plugin/initialize');
 var update = require('./plugin/update');
+var enable = require('./plugin/enable');
+var disable = require('./plugin/disable');
 
 module.exports = {
   initialize: initialize,
   update: update,
-  destroy: destroy
+  destroy: destroy,
+  enable: enable,
+  disable: disable
 };
 
-},{"./plugin/destroy":8,"./plugin/initialize":16,"./plugin/update":20}],7:[function(require,module,exports){
+},{"./plugin/destroy":8,"./plugin/disable":21,"./plugin/enable":22,"./plugin/initialize":16,"./plugin/update":20}],7:[function(require,module,exports){
 'use strict';
 
 module.exports = function () {
@@ -318,7 +322,10 @@ function bindClickRailHandler(element, i) {
   var stopPropagation = function (e) { e.stopPropagation(); };
 
   i.event.bind(i.scrollbarY, 'click', stopPropagation);
-  i.event.bind(i.scrollbarYRail, 'click', function (e) {
+    i.event.bind(i.scrollbarYRail, 'click', function(e) {
+        if (element.classList.contains("ps-disabled") ) {
+            return;
+        }
     var positionTop = e.pageY - window.pageYOffset - pageOffset(i.scrollbarYRail).top;
     var direction = positionTop > i.scrollbarYTop ? 1 : -1;
 
@@ -329,7 +336,10 @@ function bindClickRailHandler(element, i) {
   });
 
   i.event.bind(i.scrollbarX, 'click', stopPropagation);
-  i.event.bind(i.scrollbarXRail, 'click', function (e) {
+    i.event.bind(i.scrollbarXRail, 'click', function(e) {
+        if (element.classList.contains("ps-disabled") ) {
+            return;
+        }
     var positionLeft = e.pageX - window.pageXOffset - pageOffset(i.scrollbarXRail).left;
     var direction = positionLeft > i.scrollbarXLeft ? 1 : -1;
 
@@ -386,7 +396,10 @@ function bindMouseScrollXHandler(element, i) {
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   };
 
-  i.event.bind(i.scrollbarX, 'mousedown', function (e) {
+    i.event.bind(i.scrollbarX, 'mousedown', function(e) {
+        if (element.classList.contains("ps-disabled") ) {
+            return;
+        }
     currentPageX = e.pageX;
     currentLeft = _.toInt(dom.css(i.scrollbarX, 'left')) * i.railXRatio;
     _.startScrolling(element, 'x');
@@ -431,7 +444,10 @@ function bindMouseScrollYHandler(element, i) {
     i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
   };
 
-  i.event.bind(i.scrollbarY, 'mousedown', function (e) {
+    i.event.bind(i.scrollbarY, 'mousedown', function(e) {
+        if (element.classList.contains("ps-disabled")) {
+            return;
+        }
     currentPageY = e.pageY;
     currentTop = _.toInt(dom.css(i.scrollbarY, 'top')) * i.railYRatio;
     _.startScrolling(element, 'y');
@@ -492,7 +508,10 @@ function bindKeyboardHandler(element, i) {
     return true;
   }
 
-  i.event.bind(i.ownerDocument, 'keydown', function (e) {
+    i.event.bind(i.ownerDocument, 'keydown', function(e) {
+        if (element.classList.contains("ps-disabled") ) {
+            return;
+        }
     if ((e.isDefaultPrevented && e.isDefaultPrevented()) || e.defaultPrevented) {
       return;
     }
@@ -699,7 +718,11 @@ function bindMouseWheelHandler(element, i) {
     return false;
   }
 
-  function mousewheelHandler(e) {
+    function mousewheelHandler(e) {
+        if (element.classList.contains("ps-disabled") ) {
+            e.preventDefault();
+            return;
+        }
     var delta = getDeltaFromEvent(e);
 
     var deltaX = delta[0];
@@ -763,7 +786,11 @@ var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 
 function bindNativeScrollHandler(element, i) {
-  i.event.bind(element, 'scroll', function () {
+    i.event.bind(element, 'scroll', function() {
+        if (element.classList.contains("ps-disabled") ) {
+            e.preventDefault();
+            return;
+        }
     updateGeometry(element);
   });
 }
@@ -817,7 +844,10 @@ function bindSelectionHandler(element, i) {
   }
 
   var isSelected = false;
-  i.event.bind(i.ownerDocument, 'selectionchange', function () {
+    i.event.bind(i.ownerDocument, 'selectionchange', function() {
+        if (element.classList.contains("ps-disabled") ) {
+            return;
+        }
     if (element.contains(getRangeNode())) {
       isSelected = true;
     } else {
@@ -938,7 +968,10 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
   var inGlobalTouch = false;
   var inLocalTouch = false;
 
-  function globalTouchStart() {
+    function globalTouchStart() {
+        if (element.classList.contains("ps-disabled")) {
+            return;
+        }
     inGlobalTouch = true;
   }
   function globalTouchEnd() {
@@ -966,7 +999,10 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
     return false;
   }
   function touchStart(e) {
-    if (shouldHandle(e)) {
+      if (shouldHandle(e)) {
+          if (element.classList.contains("ps-disabled") ) {
+              return;
+          }
       inLocalTouch = true;
 
       var touch = getTouch(e);
@@ -1487,4 +1523,13 @@ module.exports = function (element) {
   dom.css(i.scrollbarYRail, 'display', '');
 };
 
-},{"../lib/dom":2,"../lib/helper":5,"./instances":17,"./update-geometry":18,"./update-scroll":19}]},{},[1]);
+    }, { "../lib/dom": 2, "../lib/helper": 5, "./instances": 17, "./update-geometry": 18, "./update-scroll": 19 }], 21: [function(require, module, exports) {
+        module.exports = function(element) {
+            element.classList.add('ps-disabled');
+        };
+    }, {}], 22: [function(require, module, exports) {
+        module.exports = function(element) {
+            element.classList.remove('ps-disabled');
+        };
+}, {}    ]
+}, {}, [1]);
