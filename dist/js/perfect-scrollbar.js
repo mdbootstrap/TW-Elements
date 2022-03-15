@@ -815,7 +815,7 @@ function bindSelectionHandler(element, i) {
     if (selection.toString().length === 0) {
       return null;
     } else {
-      return selection.getRangeAt(0).commonAncestorContainer;
+      return selection.anchorNode;
     }
   }
 
