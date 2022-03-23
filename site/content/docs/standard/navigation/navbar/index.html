@@ -1,0 +1,1202 @@
+---
+title: "Navbar"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Navbar component"
+subheading: ""
+seo_title: "Tailwind CSS navbar component - examples & tutorial"
+description: "Responsive Navbar build with Tailwind CSS. A navigation bar is a menu fixed to the top of the page. Use it with dropdowns, text links, or buttons."
+image: ""
+video: ""
+url: "/docs/standard/navigation/navbar/"
+menu:
+  navigation:
+    name: "Navbar"
+---
+
+<!-- Section: Basic -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic</h2>
+  <!--Description-->
+  <p class="mb-3">Use this example to create a navigation bar with a user profile or button to toggle a dropdown menu.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <nav class="
+    relative
+    w-full
+    flex flex-wrap
+    items-center
+    justify-between
+    py-4
+    bg-gray-100
+    text-gray-500
+    hover:text-gray-700
+    focus:text-gray-700
+    shadow-lg
+    navbar navbar-expand-lg navbar-light
+    ">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+    <button class="
+        navbar-toggler
+        text-gray-500
+        border-0
+        hover:shadow-none hover:no-underline
+        py-2
+        px-2.5
+        bg-transparent
+        focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
+      " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
+      class="w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor"
+        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+      </path>
+    </svg>
+    </button>
+    <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
+    <a class="
+          flex
+          items-center
+          text-gray-900
+          hover:text-gray-900
+          focus:text-gray-900
+          mt-2
+          lg:mt-0
+          mr-2
+        " href="#">
+      <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" style="height: 15px" alt=""
+        loading="lazy" />
+    </a>
+    <!-- Left links -->
+    <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+      <li class="nav-item pr-2">
+        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Dashboard</a>
+      </li>
+      <li class="nav-item pr-2">
+        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Team</a>
+      </li>
+      <li class="nav-item pr-2">
+        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Projects</a>
+      </li>
+    </ul>
+    <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="flex items-center relative">
+    <!-- Icon -->
+    <a class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4" href="#">
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
+        class="w-4" role="img" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 576 512">
+        <path fill="currentColor"
+          d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
+        </path>
+      </svg>
+    </a>
+    <div class="dropdown relative">
+      <a class="
+            text-gray-500
+            hover:text-gray-700
+            focus:text-gray-700
+            mr-4
+            dropdown-toggle
+            hidden-arrow
+            flex items-center
+          " href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell"
+          class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor"
+            d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z">
+          </path>
+        </svg>
+        <span class="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">1</span>
+      </a>
+      <ul class="
+        dropdown-menu
+        min-w-max
+        absolute
+        hidden
+        bg-white
+        text-base
+        z-50
+        float-left
+        py-2
+        list-none
+        text-left
+        rounded-lg
+        shadow-lg
+        mt-1
+        hidden
+        m-0
+        bg-clip-padding
+        border-none
+        left-auto
+        right-0
+      " aria-labelledby="dropdownMenuButton1">
+        <li>
+          <a class="
+            dropdown-item
+            text-sm
+            py-2
+            px-4
+            font-normal
+            block
+            w-full
+            whitespace-nowrap
+            bg-transparent
+            text-gray-700
+            hover:bg-gray-100
+          " href="#">Action</a>
+        </li>
+        <li>
+          <a class="
+            dropdown-item
+            text-sm
+            py-2
+            px-4
+            font-normal
+            block
+            w-full
+            whitespace-nowrap
+            bg-transparent
+            text-gray-700
+            hover:bg-gray-100
+          " href="#">Another action</a>
+        </li>
+        <li>
+          <a class="
+            dropdown-item
+            text-sm
+            py-2
+            px-4
+            font-normal
+            block
+            w-full
+            whitespace-nowrap
+            bg-transparent
+            text-gray-700
+            hover:bg-gray-100
+          " href="#">Something else here</a>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown relative">
+      <a class="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"
+          style="height: 25px; width: 25px" alt="" loading="lazy" />
+      </a>
+      <ul class="
+      dropdown-menu
+      min-w-max
+      absolute
+      hidden
+      bg-white
+      text-base
+      z-50
+      float-left
+      py-2
+      list-none
+      text-left
+      rounded-lg
+      shadow-lg
+      mt-1
+      hidden
+      m-0
+      bg-clip-padding
+      border-none
+      left-auto
+      right-0
+    " aria-labelledby="dropdownMenuButton2">
+        <li>
+          <a class="
+          dropdown-item
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-gray-700
+          hover:bg-gray-100
+        " href="#">Action</a>
+        </li>
+        <li>
+          <a class="
+          dropdown-item
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-gray-700
+          hover:bg-gray-100
+        " href="#">Another action</a>
+        </li>
+        <li>
+          <a class="
+          dropdown-item
+          text-sm
+          py-2
+          px-4
+          font-normal
+          block
+          w-full
+          whitespace-nowrap
+          bg-transparent
+          text-gray-700
+          hover:bg-gray-100
+        " href="#">Something else here</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <!-- Right elements -->
+    </div>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}} 
+      <nav class="
+        relative
+        w-full
+        flex flex-wrap
+        items-center
+        justify-between
+        py-4
+        bg-gray-100
+        text-gray-500
+        hover:text-gray-700
+        focus:text-gray-700
+        shadow-lg
+        navbar navbar-expand-lg navbar-light
+        ">
+        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+        <button class="
+            navbar-toggler
+            text-gray-500
+            border-0
+            hover:shadow-none hover:no-underline
+            py-2
+            px-2.5
+            bg-transparent
+            focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
+          " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
+          class="w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor"
+            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+          </path>
+        </svg>
+        </button>
+        <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
+        <a class="
+              flex
+              items-center
+              text-gray-900
+              hover:text-gray-900
+              focus:text-gray-900
+              mt-2
+              lg:mt-0
+              mr-1
+            " href="#">
+          <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" style="height: 15px" alt=""
+            loading="lazy" />
+        </a>
+        <!-- Left links -->
+        <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+          <li class="nav-item p-2">
+            <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Team</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Projects</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+        <div class="flex items-center relative">
+        <!-- Icon -->
+        <a class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4" href="#">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
+            class="w-4" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512">
+            <path fill="currentColor"
+              d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
+            </path>
+          </svg>
+        </a>
+        <div class="dropdown relative">
+          <a class="
+                text-gray-500
+                hover:text-gray-700
+                focus:text-gray-700
+                mr-4
+                dropdown-toggle
+                hidden-arrow
+                flex items-center
+              " href="#" id="dropdownMenuButton1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell"
+              class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor"
+                d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z">
+              </path>
+            </svg>
+            <span class="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">1</span>
+          </a>
+          <ul class="
+            dropdown-menu
+            min-w-max
+            absolute
+            hidden
+            bg-white
+            text-base
+            z-50
+            float-left
+            py-2
+            list-none
+            text-left
+            rounded-lg
+            shadow-lg
+            mt-1
+            hidden
+            m-0
+            bg-clip-padding
+            border-none
+            left-auto
+            right-0
+          " aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="#">Action</a>
+            </li>
+            <li>
+              <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="#">Another action</a>
+            </li>
+            <li>
+              <a class="
+                dropdown-item
+                text-sm
+                py-2
+                px-4
+                font-normal
+                block
+                w-full
+                whitespace-nowrap
+                bg-transparent
+                text-gray-700
+                hover:bg-gray-100
+              " href="#">Something else here</a>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown relative">
+          <a class="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-full"
+              style="height: 25px; width: 25px" alt="" loading="lazy" />
+          </a>
+          <ul class="
+          dropdown-menu
+          min-w-max
+          absolute
+          hidden
+          bg-white
+          text-base
+          z-50
+          float-left
+          py-2
+          list-none
+          text-left
+          rounded-lg
+          shadow-lg
+          mt-1
+          hidden
+          m-0
+          bg-clip-padding
+          border-none
+          left-auto
+          right-0
+        " aria-labelledby="dropdownMenuButton2">
+            <li>
+              <a class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            " href="#">Action</a>
+            </li>
+            <li>
+              <a class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            " href="#">Another action</a>
+            </li>
+            <li>
+              <a class="
+              dropdown-item
+              text-sm
+              py-2
+              px-4
+              font-normal
+              block
+              w-full
+              whitespace-nowrap
+              bg-transparent
+              text-gray-700
+              hover:bg-gray-100
+            " href="#">Something else here</a>
+            </li>
+          </ul>
+        </div>
+        </div>
+        <!-- Right elements -->
+        </div>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic -->
+
+<!-- Section: Brand -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="brand">Brand</h2>
+  <!--Description-->
+  <p class="mb-3">Navbar is a page element where you can place your branding, which will be seen by the user first and will indicate what page the user is on.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+      <div class="container-fluid">
+        <a class="text-xl text-black" href="#">Navbar</a>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+      <div class="container-fluid">
+        <a class="text-xl text-black font-semibold" href="#">Navbar</a>
+      </div>
+    </div>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}} 
+      <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <div class="container-fluid">
+            <a class="text-xl text-black" href="#">Navbar</a>
+          </div>
+        </div>
+      </nav>
+      <br>
+      <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <div class="container-fluid">
+            <a class="text-xl text-black font-semibold" href="#">Navbar</a>
+          </div>
+        </div>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Brand -->
+
+<!-- Section: Brand with image -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="brand_image">Brand with image</h2>
+  <!--Description-->
+  <p class="mb-3">You can use logo images instead of plain text in the navigation bar. However, the height of the logo must be adjusted manually so that it fits the navigation bar correctly.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <nav class="relative w-full flex flex-wrap items-center justify-between py-4 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+      <div class="container-fluid">
+        <a class="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1" href="#">
+          <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" style="height: 20px" alt="" loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <nav class="relative w-full flex flex-wrap items-center justify-between py-4 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+      <div class="container-fluid">
+        <a class="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1" href="#">
+          <img class="mr-2" src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" style="height: 20px" alt="" loading="lazy" />
+          <span class="font-medium">MDBootstrap</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}} 
+      <nav class="relative w-full flex flex-wrap items-center justify-between py-4 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <div class="container-fluid">
+            <a class="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1" href="#">
+              <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" style="height: 20px" alt="" loading="lazy" />
+            </a>
+          </div>
+        </div>
+      </nav>
+      <br>
+      <nav class="relative w-full flex flex-wrap items-center justify-between py-4 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <div class="container-fluid">
+            <a class="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1" href="#">
+              <img class="mr-2" src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" style="height: 20px" alt="" loading="lazy" />
+              <span class="font-medium">MDBootstrap</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Brand with image -->
+
+<!-- Section: Nav -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="nav">Nav</h2>
+  <!--Description-->
+  <p class="mb-3"></p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <nav class="
+    relative
+    w-full
+    flex flex-wrap
+    items-center
+    justify-between
+    py-4
+    bg-gray-100
+    text-gray-500
+    hover:text-gray-700
+    focus:text-gray-700
+    shadow-lg
+    navbar navbar-expand-lg navbar-light
+    ">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+    <button class="
+        navbar-toggler
+        text-gray-500
+        border-0
+        hover:shadow-none hover:no-underline
+        py-2
+        px-2.5
+        bg-transparent
+        focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
+      " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
+      class="w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor"
+        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+      </path>
+    </svg>
+    </button>
+    <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
+    <a class="text-xl text-black" href="#">Navbar</a>
+    <!-- Left links -->
+    <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+      <li class="nav-item px-2">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item pr-2">
+        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Features</a>
+      </li>
+      <li class="nav-item pr-2">
+        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Pricing</a>
+      </li>
+      <li class="nav-item pr-2">
+        <a class="nav-link disabled text-gray-300 p-0"
+          >Disabled</a
+        >
+      </li>
+    </ul>
+    <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+    </div>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}} 
+      <nav class="
+    relative
+    w-full
+    flex flex-wrap
+    items-center
+    justify-between
+    py-4
+    bg-gray-100
+    text-gray-500
+    hover:text-gray-700
+    focus:text-gray-700
+    shadow-lg
+    navbar navbar-expand-lg navbar-light
+    ">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+    <button class="
+        navbar-toggler
+        text-gray-500
+        border-0
+        hover:shadow-none hover:no-underline
+        py-2
+        px-2.5
+        bg-transparent
+        focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
+      " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars"
+      class="w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor"
+        d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+      </path>
+    </svg>
+    </button>
+    <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
+    <a class="text-xl text-black" href="#">Navbar</a>
+    <!-- Left links -->
+    <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+      <li class="nav-item px-2">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item pr-2">
+        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Features</a>
+      </li>
+      <li class="nav-item pr-2">
+        <a class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Pricing</a>
+      </li>
+      <li class="nav-item pr-2">
+        <a class="nav-link disabled text-gray-300 p-0"
+          >Disabled</a
+        >
+      </li>
+    </ul>
+    <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+    </div>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Nav -->
+
+<!-- Section: Navbar dark -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="navbar_dark">Navbar dark</h2>
+  <!--Description-->
+  <p class="mb-3">You can change the color of the navbar to dark by using the <code>.bg-gray-900</code> class.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <nav
+    class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
+  >
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+      <button
+        class="navbar-toggler text-gray-200 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent1"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="bars"
+          class="w-6"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="currentColor"
+            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+          ></path>
+        </svg>
+      </button>
+      <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent1">
+        <a class="text-xl text-white pr-2 font-semibold" href="#">Navbar</a>
+        <!-- Left links -->
+        <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+          <li class="nav-item p-2">
+            <a class="nav-link text-white" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item p-2">
+            <a
+              class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+              href="#"
+              >Team</a
+            >
+          </li>
+          <li class="nav-item p-2">
+            <a
+              class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+              href="#"
+              >Projects</a
+            >
+          </li>
+        </ul>
+        <!-- Left links -->
+      </div>
+      <!-- Collapsible wrapper -->
+
+      <!-- Right elements -->
+      <div class="flex items-center relative">
+        <!-- Icon -->
+        <a class="text-white opacity-60 hover:opacity-80 focus:opacity-80 mr-4" href="#">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="shopping-cart"
+            class="w-4"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512"
+          >
+            <path
+              fill="currentColor"
+              d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"
+            ></path>
+          </svg>
+        </a>
+        <div class="dropdown relative">
+          <a
+            class="text-white opacity-60 hover:opacity-80 focus:opacity-80 mr-4 dropdown-toggle hidden-arrow flex items-center"
+            href="#"
+            id="dropdownMenuButton1"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="bell"
+              class="w-4"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"
+              ></path>
+            </svg>
+            <span
+              class="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5"
+              >1</span
+            >
+          </a>
+          <ul
+            class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            <li>
+              <a
+                class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                href="#"
+                >Action</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                href="#"
+                >Another action</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                href="#"
+                >Something else here</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown relative">
+          <a
+            class="dropdown-toggle flex items-center hidden-arrow"
+            href="#"
+            id="dropdownMenuButton2"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+              class="rounded-full"
+              style="height: 25px; width: 25px"
+              alt=""
+              loading="lazy"
+            />
+          </a>
+          <ul
+            class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+            aria-labelledby="dropdownMenuButton2"
+          >
+            <li>
+              <a
+                class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                href="#"
+                >Action</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                href="#"
+                >Another action</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                href="#"
+                >Something else here</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Right elements -->
+    </div>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}} 
+      <nav
+        class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
+      >
+        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <button
+            class="navbar-toggler text-gray-200 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent1"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="bars"
+              class="w-6"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </button>
+          <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent1">
+            <a class="text-xl text-white pr-2 font-semibold" href="#">Navbar</a>
+            <!-- Left links -->
+            <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+              <li class="nav-item p-2">
+                <a class="nav-link text-white" href="#">Dashboard</a>
+              </li>
+              <li class="nav-item p-2">
+                <a
+                  class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+                  href="#"
+                  >Team</a
+                >
+              </li>
+              <li class="nav-item p-2">
+                <a
+                  class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0"
+                  href="#"
+                  >Projects</a
+                >
+              </li>
+            </ul>
+            <!-- Left links -->
+          </div>
+          <!-- Collapsible wrapper -->
+
+          <!-- Right elements -->
+          <div class="flex items-center relative">
+            <!-- Icon -->
+            <a class="text-white opacity-60 hover:opacity-80 focus:opacity-80 mr-4" href="#">
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="shopping-cart"
+                class="w-4"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"
+                ></path>
+              </svg>
+            </a>
+            <div class="dropdown relative">
+              <a
+                class="text-white opacity-60 hover:opacity-80 focus:opacity-80 mr-4 dropdown-toggle hidden-arrow flex items-center"
+                href="#"
+                id="dropdownMenuButton1"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="bell"
+                  class="w-4"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"
+                  ></path>
+                </svg>
+                <span
+                  class="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5"
+                  >1</span
+                >
+              </a>
+              <ul
+                class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <a
+                    class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                    href="#"
+                    >Action</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                    href="#"
+                    >Another action</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                    href="#"
+                    >Something else here</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown relative">
+              <a
+                class="dropdown-toggle flex items-center hidden-arrow"
+                href="#"
+                id="dropdownMenuButton2"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+                  class="rounded-full"
+                  style="height: 25px; width: 25px"
+                  alt=""
+                  loading="lazy"
+                />
+              </a>
+              <ul
+                class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                aria-labelledby="dropdownMenuButton2"
+              >
+                <li>
+                  <a
+                    class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                    href="#"
+                    >Action</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                    href="#"
+                    >Another action</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                    href="#"
+                    >Something else here</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Right elements -->
+        </div>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Navbar dark -->
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+      <!--Extended docs-->
+      <a href="https://mdbootstrap.com/docs/standard/extended/side-navbar/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Side Navbar</a>
+      <a href="https://mdbootstrap.com/docs/standard/extended/jumbotron/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Jumbotron</a>
+      <a href="https://mdbootstrap.com/docs/standard/extended/hamburger-menu/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Hamburger Menu</a>
+      <a href="https://mdbootstrap.com/docs/standard/extended/dropdown-multilevel/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Nested Dropdown</a>
+
+
+      <!--How to?-->
+      <a href="https://mdbootstrap.com/how-to/bootstrap/navbar-transparent/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">How to make Bootstrap Navbar transparent</a>
+      <a href="https://mdbootstrap.com/how-to/bootstrap/navbar-center/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">How to center Bootstrap Navbar</a>
+      <a href="https://mdbootstrap.com/how-to/bootstrap/change-navbar-color/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">How to change Bootstrap Navbar color</a>
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/navigation/breadcrumbs/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Breadcrumbs</a>
+
+      
+      <!--Other-->   
+      <a href="https://youtu.be/G3tZUO2fAEU&ab_channel=Keepcoding" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Bootstrap Navbar Tutorial</a>
+    </div>
+  </section>
+
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/navigation/navbar/">Bootstrap Footer</a> from MDBootstrap.</p>

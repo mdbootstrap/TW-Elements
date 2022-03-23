@@ -1,0 +1,200 @@
+---
+title: "Quick Start"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Quick Start"
+subheading: ""
+seo_title: "Tailwind Elements Quick Start"
+description: "Super simple and super-fast start with Tailwind Elements"
+image: ""
+video: ""
+url: "/quick-start/"
+menu:
+  start:
+    name: "Quick start"
+    weight: 2
+---
+
+<div class="flex flex-row">
+  <div class="basis-7/12">
+    <p class="mb-2">Tailwind Elements is a plugin that extends the functionality of the library with many interactive components. </p>
+
+    <p class="mb-2">In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript.
+      However, they do not require any additional installation, all the necessary code is always included in the example and
+      copied to any Tailwind project - it will work.</p>
+  </div>
+  <div class="basis-5/12 w-full p-2">
+    {{< youtube -GmnyjgI4Jc >}}
+  </div>
+</div>
+
+<hr class="my-10">
+
+<div class="flex flex-row">
+  <div class="basis-7/12 w-full">
+    <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="npm">NPM</h2>
+    <p class="my-3">NPM is a recommended way to work with <b>Tailwind Elements</b> and others libraries. </p>
+    <p class="my-3">Make sure that you have <code>Node.js</code> installed. In order to verify that, open a <code>command line</code> and type <code>node -v</code>. If node is installed you should see it's version in a console. </p>
+  </div>
+  <div class="basis-5/12 w-full p-2">
+    {{< youtube LvWh9o5sJmI >}}
+  </div>
+</div>
+
+<p class="mb-2">1. Before starting the project make sure to install <a href="https://nodejs.org/en/" target="_blank"
+    class="text-blue-700">Node.js (LTS)</a> and <a href="https://tailwindcss.com/" target="_blank"
+    class="text-blue-700">TailwindCSS</a>.</p>
+
+<p class="mb-2">2. Run the following command to install the package via NPM:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
+    npm install tw-elements
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-6 mb-2">3. Tailwind Elements is a plugin and should be included inside the <code>tailwind.config.js</code> file. It is also recommended to extend the <code>content</code> array with a js file that loads dynamic component classes:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "tailwind.config.js">}}{{< twsnippet/code active=true lang="JavaScript">}}
+    module.exports = {
+      content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
+      plugins: [
+        require('tw-elements/dist/plugin')
+      ]
+    }
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-6 mb-2">4. Dynamic components will work after adding the js file:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
+    <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-6 mb-2">Alternatively, you can import it in the following way (bundler version):</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.js">}}{{< twsnippet/code active=true lang="JavaScript">}}
+    import 'tw-elements';
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<hr class="my-10">
+
+<div class="flex flex-row">
+  <div class="basis-7/12 w-full">
+    <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="go">MDB GO / CLI</h2>
+    <p class="mb-2">Create, deploy and host anything <u>with a single command.</u></p>
+  </div>
+  <div class="basis-5/12 w-full">
+    {{< youtube Ou80DOZCzOg >}}
+  </div>
+</div>
+
+<p class="mt-4 mb-2">1. To start using MDB GO / CLI install it with one command:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
+    npm install -g mdb-cli
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-4 mb-2">2. Log into the CLI using your MDB account:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
+    mdb login
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-4 mb-2">3. Initialize a project and choose <strong>Tailwind Elements</strong> from the list:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
+    mdb init
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-4 mb-2">4. Install the dependencies (inside the project directory):</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
+    npm install
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-4 mb-2">5. Run the app:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
+    npm start
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-4 mb-2">6. Publish when you're ready:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
+    mdb publish
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<hr class="my-10">
+
+<div class="flex flex-row">
+  <div class="basis-7/12">
+
+    <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="cdn">CDN</h2>
+
+    <p class="mb-2">You can easily test Tailwind Elements by adding CDN scripts to your classic HTML template without the need for
+    installing any packages.</p>
+
+    <p class="mt-4 mb-2">Add the stylesheet files below in the <code>head</code> section:</p>
+
+  </div>
+  <div class="basis-5/12 w-full">
+    {{< youtube cFIdkbIkW_8 >}}
+  </div>
+</div>
+
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-4 mb-2">Require the js bundled file right before the <code>body</code> closing tag:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<hr class="my-10">
+
+<div class="flex flex-row">
+  <div class="basis-7/12 w-full">
+    <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="starter">Starter</h2>
+    <p class="mb-2">In order to quickly test Tailwind Elements simply download our starter. Keep in mind that this is not
+      an optimized for production version, but only a demo for testing.</p>
+    <div class="mb-10">
+      <a href="https://tailwind-elements.com/tw-starter.zip">
+        <button
+          class=" mt-3 mb-3 text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button">
+          Download ZIP starter
+        </button>
+      </a>
+    </div>
+  </div>
+  <div class="basis-5/12 w-full">
+    {{< youtube vKsdxHcQozA >}}
+  </div>
+</div>

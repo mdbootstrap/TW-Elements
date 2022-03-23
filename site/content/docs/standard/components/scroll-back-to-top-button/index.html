@@ -1,0 +1,100 @@
+---
+title: "Scroll back to top button"
+date: 2021-04-29T16:00:58+02:00
+draft: "false"
+main_title: "Tailwind Scroll back to top button component"
+subheading: ""
+seo_title: "Tailwind CSS Scroll back to top button component - examples & tutorial"
+description: "Responsive Scroll back to top button built with Tailwind CSS. Learn how to create a button that appears when you start scrolling and, when clicked, takes you to the top of the page."
+image: ""
+video: ""
+url: "/docs/standard/components/scroll-back-to-top-button/"
+menu:
+  components:
+    name: "Scroll back to top button"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">Button to return to the top of the page allows the user to quickly return to the top of the page without making too much effort. This can be very useful when the page has a lot of content.</p>
+
+  <p class="mb-3">Use the code below to create button that scrolls back to the beginning of the page.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="flex space-x-2 justify-center">
+    <a href="https://tailwind-elements.com/snippets/tailwind/tailwindelements/3681385?view=side#js-tab-view" target="_blank" type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">live demo</a>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <!-- Back to top button -->
+      <button
+        type="button"
+        data-mdb-ripple="true"
+        data-mdb-ripple-color="light"
+        class="inline-block p-3 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out hidden bottom-5 right-5 fixed"
+        id="btn-back-to-top"
+      >
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          class="w-4 h-4"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="currentColor"
+            d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+          ></path>
+        </svg>
+      </button>
+
+      <!-- Explanation -->
+      <div class="container mt-4 text-center text-gray-800" style="height: 2000px">
+        <p class="mb-4">
+          Start scrolling the page and a strong <strong>"Back to top" button </strong> will appear
+          in the <strong>bottom right corner</strong> of the screen.
+        </p>
+        <p>Click this button and you will be taken to the top of the page.</p>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+
+      {{< twsnippet/wrapper "JavaScript" >}} {{< twsnippet/code active=true lang="JavaScript"
+      >}}
+      // Get the button
+      let mybutton = document.getElementById('btn-back-to-top');
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = 'block';
+        } else {
+          mybutton.style.display = 'none';
+        }
+      }
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener('click', backToTop);
+
+      function backToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+

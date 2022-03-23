@@ -1,0 +1,889 @@
+---
+title: "Tabs"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Tabs component"
+subheading: ""
+seo_title: "Tailwind CSS tabs component - examples & tutorial"
+description: "Responsive Tabs built with Tailwind CSS. Learn how to use tabs to create content that can be hidden and activated onclick, plenty examples like switch, vertical orientation and more."
+image: ""
+video: ""
+url: "/docs/standard/navigation/tabs/"
+menu:
+  navigation:
+    name: "Tabs"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">With the basic example od tabs component you can navigate between groups of content that are related and at the same level of hierarchy.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab"
+    role="tablist">
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-home" class="
+                nav-link
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+                active
+              " id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home"
+        aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-profile" class="
+                nav-link
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+              " id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab"
+        aria-controls="tabs-profile" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-messages" class="
+                nav-link
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+              " id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab"
+        aria-controls="tabs-messages" aria-selected="false">Messages</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-contact" class="
+                nav-link
+                disabled
+                pointer-events-none
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+              " id="tabs-contact-tab" data-bs-toggle="pill" data-bs-target="#tabs-contact" role="tab"
+        aria-controls="tabs-contact" aria-selected="false">Contact</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="tabs-tabContent">
+    <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
+      Tab 1 content
+    </div>
+    <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+      Tab 2 content
+    </div>
+    <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
+      Tab 3 content
+    </div>
+    <div class="tab-pane fade" id="tabs-contact" role="tabpanel" aria-labelledby="tabs-contact-tab">
+      Tab 4 content
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab"
+        role="tablist">
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-home" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+            active
+          " id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home"
+            aria-selected="true">Home</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-profile" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab"
+            aria-controls="tabs-profile" aria-selected="false">Profile</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-messages" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab"
+            aria-controls="tabs-messages" aria-selected="false">Messages</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-contact" class="
+            nav-link
+            disabled
+            pointer-events-none
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-contact-tab" data-bs-toggle="pill" data-bs-target="#tabs-contact" role="tab"
+            aria-controls="tabs-contact" aria-selected="false">Contact</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="tabs-tabContent">
+        <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
+          Tab 1 content
+        </div>
+        <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+          Tab 2 content
+        </div>
+        <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
+          Tab 3 content
+        </div>
+        <div class="tab-pane fade" id="tabs-contact" role="tabpanel" aria-labelledby="tabs-contact-tab">
+          Tab 4 content
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+<!-- Section: Fill -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="fill">Fill</h2>
+  <!--Description-->
+  <p class="mb-3">Stretch the tab list to fit the container.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tabFill"
+    role="tablist">
+    <li class="nav-item flex-auto text-center" role="presentation">
+      <a href="#tabs-homeFill" class="
+                nav-link
+                w-full
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+                active
+              " id="tabs-home-tabFill" data-bs-toggle="pill" data-bs-target="#tabs-homeFill" role="tab"
+        aria-controls="tabs-homeFill" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item flex-auto text-center" role="presentation">
+      <a href="#tabs-profileFill" class="
+                nav-link
+                w-full
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+              " id="tabs-profile-tabFill" data-bs-toggle="pill" data-bs-target="#tabs-profileFill" role="tab"
+        aria-controls="tabs-profileFill" aria-selected="false">Very very very very long link</a>
+    </li>
+    <li class="nav-item flex-auto text-center" role="presentation">
+      <a href="#tabs-messagesFill" class="
+                nav-link
+                w-full
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+              " id="tabs-messages-tabFill" data-bs-toggle="pill" data-bs-target="#tabs-messagesFill" role="tab"
+        aria-controls="tabs-messagesFill" aria-selected="false">Messages</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="tabs-tabContentFill">
+    <div class="tab-pane fade show active" id="tabs-homeFill" role="tabpanel" aria-labelledby="tabs-home-tabFill">
+      Tab 1 content fill
+    </div>
+    <div class="tab-pane fade" id="tabs-profileFill" role="tabpanel" aria-labelledby="tabs-profile-tabFill">
+      Tab 2 content fill
+    </div>
+    <div class="tab-pane fade" id="tabs-messagesFill" role="tabpanel" aria-labelledby="tabs-profile-tabFill">
+      Tab 3 content fill
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tabFill"
+        role="tablist">
+        <li class="nav-item flex-auto text-center" role="presentation">
+          <a href="#tabs-homeFill" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+            active
+          " id="tabs-home-tabFill" data-bs-toggle="pill" data-bs-target="#tabs-homeFill" role="tab"
+            aria-controls="tabs-homeFill" aria-selected="true">Home</a>
+        </li>
+        <li class="nav-item flex-auto text-center" role="presentation">
+          <a href="#tabs-profileFill" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-profile-tabFill" data-bs-toggle="pill" data-bs-target="#tabs-profileFill" role="tab"
+            aria-controls="tabs-profileFill" aria-selected="false">Very very very very long link</a>
+        </li>
+        <li class="nav-item flex-auto text-center" role="presentation">
+          <a href="#tabs-messagesFill" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-messages-tabFill" data-bs-toggle="pill" data-bs-target="#tabs-messagesFill" role="tab"
+            aria-controls="tabs-messagesFill" aria-selected="false">Messages</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="tabs-tabContentFill">
+        <div class="tab-pane fade show active" id="tabs-homeFill" role="tabpanel" aria-labelledby="tabs-home-tabFill">
+          Tab 1 content fill
+        </div>
+        <div class="tab-pane fade" id="tabs-profileFill" role="tabpanel" aria-labelledby="tabs-profile-tabFill">
+          Tab 2 content fill
+        </div>
+        <div class="tab-pane fade" id="tabs-messagesFill" role="tabpanel" aria-labelledby="tabs-profile-tabFill">
+          Tab 3 content fill
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Fill -->
+
+<!-- Section: Justify -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="justify">Justify</h2>
+  <!--Description-->
+  <p class="mb-3">Arrange the tabs in a grid to stretch the entire width of the parent element.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <ul class="
+    nav nav-tabs nav-justified
+    flex flex-col
+    md:flex-row
+    flex-wrap
+    list-none
+    border-b-0
+    pl-0
+    mb-4
+  " id="tabs-tabJustify" role="tablist">
+    <li class="nav-item flex-grow text-center" role="presentation">
+      <a href="#tabs-homeJustify" class="
+        nav-link
+        w-full
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+        active
+      " id="tabs-home-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-homeJustify" role="tab"
+        aria-controls="tabs-homeJustify" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item flex-grow text-center" role="presentation">
+      <a href="#tabs-profileJustify" class="
+        nav-link
+        w-full
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+      " id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-profileJustify" role="tab"
+        aria-controls="tabs-profileJustify" aria-selected="false">Very very very very long link</a>
+    </li>
+    <li class="nav-item flex-grow text-center" role="presentation">
+      <a href="#tabs-messagesJustify" class="
+        nav-link
+        w-full
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+      " id="tabs-messages-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-messagesJustify" role="tab"
+        aria-controls="tabs-messagesJustify" aria-selected="false">Messages</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="tabs-tabContentJustify">
+    <div class="tab-pane fade show active" id="tabs-homeJustify" role="tabpanel" aria-labelledby="tabs-home-tabJustify">
+      Tab 1 content justify
+    </div>
+    <div class="tab-pane fade" id="tabs-profileJustify" role="tabpanel" aria-labelledby="tabs-profile-tabJustify">
+      Tab 2 content justify
+    </div>
+    <div class="tab-pane fade" id="tabs-messagesJustify" role="tabpanel" aria-labelledby="tabs-profile-tabJustify">
+      Tab 3 content justify
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <ul class="
+        nav nav-tabs nav-justified
+        flex flex-col
+        md:flex-row
+        flex-wrap
+        list-none
+        border-b-0
+        pl-0
+        mb-4
+      " id="tabs-tabJustify" role="tablist">
+        <li class="nav-item flex-grow text-center" role="presentation">
+          <a href="#tabs-homeJustify" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+            active
+          " id="tabs-home-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-homeJustify" role="tab"
+            aria-controls="tabs-homeJustify" aria-selected="true">Home</a>
+        </li>
+        <li class="nav-item flex-grow text-center" role="presentation">
+          <a href="#tabs-profileJustify" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-profileJustify" role="tab"
+            aria-controls="tabs-profileJustify" aria-selected="false">Very very very very long link</a>
+        </li>
+        <li class="nav-item flex-grow text-center" role="presentation">
+          <a href="#tabs-messagesJustify" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-messages-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-messagesJustify" role="tab"
+            aria-controls="tabs-messagesJustify" aria-selected="false">Messages</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="tabs-tabContentJustify">
+        <div class="tab-pane fade show active" id="tabs-homeJustify" role="tabpanel"
+          aria-labelledby="tabs-home-tabJustify">
+          Tab 1 content justify
+        </div>
+        <div class="tab-pane fade" id="tabs-profileJustify" role="tabpanel" aria-labelledby="tabs-profile-tabJustify">
+          Tab 2 content justify
+        </div>
+        <div class="tab-pane fade" id="tabs-messagesJustify" role="tabpanel" aria-labelledby="tabs-profile-tabJustify">
+          Tab 3 content justify
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Justify -->
+
+<!-- Section: Vertical -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="vertical">Vertical</h2>
+  <!--Description-->
+  <p class="mb-3">Make vertical tabs instead of default horizontal ones.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="flex items-start">
+    <ul class="nav nav-tabs flex flex-col flex-wrap list-none border-b-0 pl-0 mr-4" id="tabs-tabVertical" role="tablist">
+      <li class="nav-item flex-grow text-center" role="presentation">
+        <a href="#tabs-homeVertical" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+            active
+          " id="tabs-home-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-homeVertical" role="tab"
+          aria-controls="tabs-homeVertical" aria-selected="true">Home</a>
+      </li>
+      <li class="nav-item flex-grow text-center" role="presentation">
+        <a href="#tabs-profileVertical" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-profile-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-profileVertical" role="tab"
+          aria-controls="tabs-profileVertical" aria-selected="false">Profile</a>
+      </li>
+      <li class="nav-item flex-grow text-center" role="presentation">
+        <a href="#tabs-messagesVertical" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-messages-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-messagesVertical" role="tab"
+          aria-controls="tabs-messagesVertical" aria-selected="false">Messages</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="tabs-tabContentVertical">
+      <div class="tab-pane fade show active" id="tabs-homeVertical" role="tabpanel"
+        aria-labelledby="tabs-home-tabVertical">
+        Tab 1 content vertical
+      </div>
+      <div class="tab-pane fade" id="tabs-profileVertical" role="tabpanel" aria-labelledby="tabs-profile-tabVertical">
+        Tab 2 content vertical
+      </div>
+      <div class="tab-pane fade" id="tabs-messagesVertical" role="tabpanel" aria-labelledby="tabs-profile-tabVertical">
+        Tab 3 content vertical
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-start">
+        <ul class="nav nav-tabs flex flex-col flex-wrap list-none border-b-0 pl-0 mr-4" id="tabs-tabVertical"
+          role="tablist">
+          <li class="nav-item flex-grow text-center" role="presentation">
+            <a href="#tabs-homeVertical" class="
+                nav-link
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+                active
+              " id="tabs-home-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-homeVertical" role="tab"
+              aria-controls="tabs-homeVertical" aria-selected="true">Home</a>
+          </li>
+          <li class="nav-item flex-grow text-center" role="presentation">
+            <a href="#tabs-profileVertical" class="
+                nav-link
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+              " id="tabs-profile-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-profileVertical" role="tab"
+              aria-controls="tabs-profileVertical" aria-selected="false">Profile</a>
+          </li>
+          <li class="nav-item flex-grow text-center" role="presentation">
+            <a href="#tabs-messagesVertical" class="
+                nav-link
+                block
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                border-x-0 border-t-0 border-b-2 border-transparent
+                px-6
+                py-3
+                my-2
+                hover:border-transparent hover:bg-gray-100
+                focus:border-transparent
+              " id="tabs-messages-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-messagesVertical" role="tab"
+              aria-controls="tabs-messagesVertical" aria-selected="false">Messages</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="tabs-tabContentVertical">
+          <div class="tab-pane fade show active" id="tabs-homeVertical" role="tabpanel"
+            aria-labelledby="tabs-home-tabVertical">
+            Tab 1 content vertical
+          </div>
+          <div class="tab-pane fade" id="tabs-profileVertical" role="tabpanel" aria-labelledby="tabs-profile-tabVertical">
+            Tab 2 content vertical
+          </div>
+          <div class="tab-pane fade" id="tabs-messagesVertical" role="tabpanel"
+            aria-labelledby="tabs-profile-tabVertical">
+            Tab 3 content vertical
+          </div>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Vertical -->
+
+<!-- Section: Pills with buttons -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="buttons">Pills with buttons</h2>
+  <!--Description-->
+  <p class="mb-3">You can also use <a href="https://tailwind-elements.com/docs/standard/components/buttons/" class="text-blue-700">buttons</a> instead of tabs to change the visible content.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab3"
+    role="tablist">
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-home3" class="
+        nav-link
+        w-full
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+        active
+      " id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab" aria-controls="tabs-home3"
+        aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-profile3" class="
+        nav-link
+        w-full
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+      " id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3" role="tab"
+        aria-controls="tabs-profile3" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-messages3" class="
+        nav-link
+        w-full
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+      " id="tabs-messages-tab3" data-bs-toggle="pill" data-bs-target="#tabs-messages3" role="tab"
+        aria-controls="tabs-messages3" aria-selected="false">Messages</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="tabs-tabContent3">
+    <div class="tab-pane fade show active" id="tabs-home3" role="tabpanel" aria-labelledby="tabs-home-tab3">
+      Tab 1 content button version
+    </div>
+    <div class="tab-pane fade" id="tabs-profile3" role="tabpanel" aria-labelledby="tabs-profile-tab3">
+      Tab 2 content button version
+    </div>
+    <div class="tab-pane fade" id="tabs-messages3" role="tabpanel" aria-labelledby="tabs-profile-tab3">
+      Tab 3 content button version
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab3"
+        role="tablist">
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-home3" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+            active
+          " id="tabs-home-tab3" data-bs-toggle="pill" data-bs-target="#tabs-home3" role="tab" aria-controls="tabs-home3"
+            aria-selected="true">Home</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-profile3" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-profile-tab3" data-bs-toggle="pill" data-bs-target="#tabs-profile3" role="tab"
+            aria-controls="tabs-profile3" aria-selected="false">Profile</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-messages3" class="
+            nav-link
+            w-full
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-messages-tab3" data-bs-toggle="pill" data-bs-target="#tabs-messages3" role="tab"
+            aria-controls="tabs-messages3" aria-selected="false">Messages</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="tabs-tabContent3">
+        <div class="tab-pane fade show active" id="tabs-home3" role="tabpanel" aria-labelledby="tabs-home-tab3">
+          Tab 1 content button version
+        </div>
+        <div class="tab-pane fade" id="tabs-profile3" role="tabpanel" aria-labelledby="tabs-profile-tab3">
+          Tab 2 content button version
+        </div>
+        <div class="tab-pane fade" id="tabs-messages3" role="tabpanel" aria-labelledby="tabs-profile-tab3">
+          Tab 3 content button version
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Pills with buttons -->
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/components/button-group/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Button Group</a>
+      <a href="https://tailwind-elements.com/docs/standard/components/buttons/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Button</a>
+
+    </div>
+  </section>
+
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/navigation/tabs/">Bootstrap Tabs</a> from MDBootstrap.</p>

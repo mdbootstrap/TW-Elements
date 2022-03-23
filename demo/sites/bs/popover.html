@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+
+  <body style="background-color: hsl(0, 0%, 96%)">
+    <div class="xl:mx-96">
+      <br />
+      <br />
+      <br />
+
+      <!-- Start your project here-->
+      <button
+        type="button"
+        class="px-7 py-3 bg-red-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+        data-bs-toggle="popover"
+        data-bs-title="Popover title"
+        data-bs-content="And here's some amazing content. It's very engaging. Right?"
+      >
+        Click to toggle popover
+      </button>
+
+      <br />
+      <br />
+      <br />
+
+      <button
+        type="button"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+        data-bs-toggle="popover"
+        data-bs-placement="top"
+        data-bs-content="Top popover"
+      >
+        Popover on top
+      </button>
+      <button
+        type="button"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+        data-bs-toggle="popover"
+        data-bs-placement="right"
+        data-bs-content="Right popover"
+      >
+        Popover on right
+      </button>
+      <button
+        type="button"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+        data-bs-toggle="popover"
+        data-bs-placement="bottom"
+        data-bs-content="Bottom popover"
+      >
+        Popover on bottom
+      </button>
+      <button
+        type="button"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+        data-bs-toggle="popover"
+        data-bs-placement="left"
+        data-bs-content="Left popover"
+      >
+        Popover on left
+      </button>
+
+      <br />
+      <br />
+      <br />
+
+      <a
+        tabindex="0"
+        class="px-7 py-3 bg-red-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+        role="button"
+        data-bs-toggle="popover"
+        data-bs-trigger="focus"
+        title="Dismissible popover"
+        data-bs-content="And here's some amazing content. It's very engaging. Right?"
+        >Dismissible popover</a
+      >
+
+      <br />
+      <br />
+      <br />
+
+      <span
+        class="inline-block"
+        tabindex="0"
+        data-bs-toggle="popover"
+        data-bs-trigger="hover focus"
+        data-bs-content="Disabled popover"
+      >
+        <button
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md focus:outline-none focus:ring-0 transition duration-150 ease-in-out pointer-events-none opacity-60"
+          type="button"
+          disabled
+        >
+          Disabled button
+        </button>
+      </span>
+
+      <br />
+      <br />
+      <br />
+    </div>
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script>
+      var popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]')
+      );
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new Popover(popoverTriggerEl);
+      });
+    </script>
+  </body>
+</html>

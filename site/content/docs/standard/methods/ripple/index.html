@@ -1,0 +1,657 @@
+---
+title: "Ripple"
+date: 2021-12-31T12:00:00+02:00
+draft: false
+main_title: "Tailwind Ripple method"
+subheading: ""
+seo_title: "Tailwind CSS ripple - examples & tutorial"
+description: "The ripple method provides a radial action in the form of a visual ripple expanding outward from the user's touch.
+Ripple is a visual form of feedback for touch events providing users a clear signal that an element is being touched."
+image: ""
+video: ""
+url: "/docs/standard/methods/ripple/"
+menu:
+  methods:
+    name: "Ripple"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic-example">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">The ripple effect is a way to let the user know that there has been a click interaction. You can easily add a ripple effect to the <a href="https://tailwind-elements.com/docs/standard/methods/ripple/" class="text-blue-700">buttons</a> component.</p>
+
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="flex space-x-2 justify-center">
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Button</button>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex space-x-2 justify-center">
+          <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >Button</button>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+<!-- Section: Image -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="image">Image</h2>
+  <!--Description-->
+  <p class="mb-3">Wsing <code>data-mdb-ripple="true"</code> attribute you can also easily add the ripple effect to images.</p>
+
+  {{< twsnippet/demo id="example2">}}
+  <div class="flex flex-wrap justify-center">
+    <a href="#!" data-mdb-ripple="true">
+      <img src="https://mdbootstrap.com/img/new/standard/city/043.jpg" class="max-w-sm h-auto" alt="" />
+    </a>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex flex-wrap justify-center">
+          <a href="#!" data-mdb-ripple="true">
+            <img src="https://mdbootstrap.com/img/new/standard/city/043.jpg" class="max-w-sm h-auto" alt="" />
+          </a>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Image -->
+
+<!-- Section: Colors -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="colors">Colors</h2>
+  <!--Description-->
+  <p class="mb-3">You can easily manipulate the color of the ripple effect to suit your needs. By using <code>data-mdb-ripple-color</code> attribute you can change its color.</p>
+
+  {{< twsnippet/demo id="example3">}}
+  <div class="flex flex-col justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-2">
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="primary"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Primary
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="secondary"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Secondary
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="success"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Success
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="danger"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Danger
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="info"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Info
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      class="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Light
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="dark"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Dark
+    </button>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+      <div class="flex flex-col justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-2">
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="primary"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Primary
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="secondary"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Secondary
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="success"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Success
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="danger"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Danger
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="info"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Info
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light"
+          class="inline-block px-6 py-2.5 bg-gray-800 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-900 hover:shadow-lg focus:bg-gray-900 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">
+          Light
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="dark"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Dark
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Colors -->
+
+<!-- Section: Colors 2 -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="colors2"></h2>
+  <!--Description-->
+  <p class="mb-3"></p>
+
+  {{< twsnippet/demo id="example4">}}
+  <div class="flex flex-col justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-2">
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="red"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Red
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="green"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Green
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="blue"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Blue
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="yellow"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Yellow
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="orange"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Orange
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="purple"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Purple
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="aqua"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      Aqua
+    </button>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+      <div class="flex flex-col justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-2">
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="red"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Red
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="green"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Green
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="blue"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Blue
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="yellow"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Yellow
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="orange"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Orange
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="purple"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Purple
+        </button>
+        <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="aqua"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out">
+          Aqua
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Colors 2 -->
+
+<!-- Section: Colors 3 -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="colors3"></h2>
+  <!--Description-->
+  <p class="mb-3"></p>
+
+  {{< twsnippet/demo id="example5">}}
+  <div class="flex flex-col justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-2">
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="#c953d6"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      #c953d6
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="#44c6e3"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      #44c6e3
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="#fcc834"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      #fcc834
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="#386f06"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      #386f06
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="#c1303a"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      #c1303a
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="#a57c3e"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      #a57c3e
+    </button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="#192ced"
+      class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+    >
+      #192ced
+    </button>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+      <div class="flex flex-col justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-2">
+        <button
+          type="button"
+          data-mdb-ripple="true"
+          data-mdb-ripple-color="#c953d6"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+        >
+          #c953d6
+        </button>
+        <button
+          type="button"
+          data-mdb-ripple="true"
+          data-mdb-ripple-color="#44c6e3"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+        >
+          #44c6e3
+        </button>
+        <button
+          type="button"
+          data-mdb-ripple="true"
+          data-mdb-ripple-color="#fcc834"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+        >
+          #fcc834
+        </button>
+        <button
+          type="button"
+          data-mdb-ripple="true"
+          data-mdb-ripple-color="#386f06"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+        >
+          #386f06
+        </button>
+        <button
+          type="button"
+          data-mdb-ripple="true"
+          data-mdb-ripple-color="#c1303a"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+        >
+          #c1303a
+        </button>
+        <button
+          type="button"
+          data-mdb-ripple="true"
+          data-mdb-ripple-color="#a57c3e"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+        >
+          #a57c3e
+        </button>
+        <button
+          type="button"
+          data-mdb-ripple="true"
+          data-mdb-ripple-color="#192ced"
+          class="inline-block px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out"
+        >
+          #192ced
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Colors 3 -->
+
+<!-- Section: Duration -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="duration">Duration</h2>
+  <!--Description-->
+  <p class="mb-3">If you don't want the ripple effect to move on the button too quickly, use <code>data-mdb-ripple-duration</code> attribute and modify the duration of the ripple.</p>
+
+  {{< twsnippet/demo id="example6">}}
+  <div class="flex flex-col justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-2">
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Default (500ms)</button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      data-mdb-ripple-duration="1000ms"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Duration 1s</button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      data-mdb-ripple-duration="3s"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Duration 3s</button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      data-mdb-ripple-duration="5s"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Duration 5s</button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      data-mdb-ripple-duration="10s"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Duration 10s</button>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex flex-col justify-center space-y-2 xl:flex-row xl:space-y-0 xl:space-x-2">
+          <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Default
+            (500ms)</button>
+          <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" data-mdb-ripple-duration="1000ms"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Duration
+            1s</button>
+          <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" data-mdb-ripple-duration="3s"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Duration
+            3s</button>
+          <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" data-mdb-ripple-duration="5s"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Duration
+            5s</button>
+          <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light" data-mdb-ripple-duration="10s"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Duration
+            10s</button>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Duration -->
+
+<!-- Section: Centered -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="centered">Centered</h2>
+  <!--Description-->
+  <p class="mb-3">If you add the attribute <code>data-mdb-ripple-centered="true"</code>, the ripple will always start at the center of the element, not at the affected location.</p>
+
+  {{< twsnippet/demo id="example7">}}
+  <div class="flex space-x-2 justify-center">
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      data-mdb-ripple-centered="true"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Button</button>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example7">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex space-x-2 justify-center">
+          <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            data-mdb-ripple-centered="true"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >Button</button>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Centered -->
+
+<!-- Section: Unbound -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="unbound">Unbound</h2>
+  <!--Description-->
+  <p class="mb-3">If you use the <code>data-mdb-ripple-unbound="true"</code> attribute, the ripple will not be bound to the element and will extend beyond its boundaries.</p>
+
+  {{< twsnippet/demo id="example8">}}
+  <div class="flex space-x-2 justify-center">
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-unbound="true"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Button</button>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example8">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex space-x-2 justify-center">
+          <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-unbound="true"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >Button</button>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Unbound -->
+
+<!-- Section: Radius -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="radius">Radius</h2>
+  <!--Description-->
+  <p class="mb-3">The <code>data-mdb-ripple-radius</code> attribute can be used to modify the ripple radius. The numeric value is expressed in pixels, for example: <code>data-mdb-ripple-radius="10"</code></p>
+
+  {{< twsnippet/demo id="example9">}}
+  <div class="flex flex-col justify-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >Default</button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      data-mdb-ripple-radius="10"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >10</button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      data-mdb-ripple-radius="25"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >25</button>
+    <button
+      type="button"
+      data-mdb-ripple="true"
+      data-mdb-ripple-color="light"
+      data-mdb-ripple-radius="50"
+      class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+    >50</button>
+  </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example9">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex flex-col justify-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+          <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >Default</button>
+          <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            data-mdb-ripple-radius="10"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >10</button>
+          <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            data-mdb-ripple-radius="25"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >25</button>
+          <button
+            type="button"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="light"
+            data-mdb-ripple-radius="50"
+            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >50</button>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: Radius -->
+
+<hr class="my-12">
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/methods/ripple/">Bootstrap Ripple</a> from MDBootstrap.</p>

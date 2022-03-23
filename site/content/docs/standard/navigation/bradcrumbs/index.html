@@ -1,0 +1,302 @@
+---
+title: "Breadcrumbs"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Breadcrumbs component"
+subheading: ""
+seo_title: "Tailwind CSS breadcrumbs component - examples & tutorial"
+description: "Responsive Breadcrumbs built with the latest Tailwind. Examples including different colors, animations, breadcrumbs with no background, and more."
+image: "img/test.jpg"
+video: ""
+url: "/docs/standard/navigation/breadcrumbs/"
+menu:
+  navigation:
+    name: "Breadcrumbs"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="section-v-1">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">Breadcrumb components are an important component in any website or application that can be used to indicate the current position of a page in a hierarchical page structure.</p>
+
+  <p class="mb-3">Use the following breadcrumb example to show the hierarchical structure of pages.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <nav class="rounded-md w-full">
+    <ol class="list-reset flex">
+      <li class="text-gray-500">Home</li>
+    </ol>
+  </nav>
+
+  <br />
+
+  <nav class="rounded-md w-full">
+    <ol class="list-reset flex">
+      <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+      <li><span class="text-gray-500 mx-2">/</span></li>
+      <li class="text-gray-500">Library</li>
+    </ol>
+  </nav>
+
+  <br />
+
+  <nav class="rounded-md w-full">
+    <ol class="list-reset flex">
+      <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+      <li><span class="text-gray-500 mx-2">/</span></li>
+      <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+      <li><span class="text-gray-500 mx-2">/</span></li>
+      <li class="text-gray-500">Data</li>
+    </ol>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <nav class="rounded-md w-full">
+        <ol class="list-reset flex">
+          <li class="text-gray-500">Home</li>
+        </ol>
+      </nav>
+
+      <br />
+
+      <nav class="rounded-md w-full">
+        <ol class="list-reset flex">
+          <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+          <li><span class="text-gray-500 mx-2">/</span></li>
+          <li class="text-gray-500">Library</li>
+        </ol>
+      </nav>
+
+      <br />
+
+      <nav class="rounded-md w-full">
+        <ol class="list-reset flex">
+          <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+          <li><span class="text-gray-500 mx-2">/</span></li>
+          <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+          <li><span class="text-gray-500 mx-2">/</span></li>
+          <li class="text-gray-500">Data</li>
+        </ol>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: Basic example -->
+
+<!-- Section: Breadcrumb in navbar -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="navbar">Breadcrumb in navbar</h2>
+  <!--Description-->
+  <p class="mb-3">You can use breadcrumb together with <a href="https://tailwind-elements.com/docs/standard/navigation/navbar/" class="text-blue-700">navbar</a>.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+      <nav class="bg-grey-light rounded-md w-full" aria-label="breadcrumb">
+        <ol class="list-reset flex">
+          <li><a href="#" class="text-gray-500 hover:text-gray-600">Home</a></li>
+          <li><span class="text-gray-500 mx-2">/</span></li>
+          <li><a href="#" class="text-gray-500 hover:text-gray-600">Library</a></li>
+          <li><span class="text-gray-500 mx-2">/</span></li>
+          <li><a href="#" class="text-gray-500 hover:text-gray-600">Data</a></li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <nav class="bg-grey-light rounded-md w-full" aria-label="breadcrumb">
+            <ol class="list-reset flex">
+              <li><a href="#" class="text-gray-500 hover:text-gray-600">Home</a></li>
+              <li><span class="text-gray-500 mx-2">/</span></li>
+              <li><a href="#" class="text-gray-500 hover:text-gray-600">Library</a></li>
+              <li><span class="text-gray-500 mx-2">/</span></li>
+              <li><a href="#" class="text-gray-500 hover:text-gray-600">Data</a></li>
+            </ol>
+          </nav>
+        </div>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Breadcrumb in navbar -->
+
+<!-- Section: Changing the separator -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="arrow">Changing the separator</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to change the separator dividing each breadcrumb.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <nav class="bg-grey-light rounded-md w-full">
+    <ol class="list-reset flex">
+      <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+      <li><span class="text-gray-500 mx-2">></span></li>
+      <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+      <li><span class="text-gray-500 mx-2">></span></li>
+      <li class="text-gray-500">Data</li>
+    </ol>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <nav class="bg-grey-light rounded-md w-full">
+        <ol class="list-reset flex">
+          <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+          <li><span class="text-gray-500 mx-2"></span></li>
+          <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+          <li><span class="text-gray-500 mx-2"></span></li>
+          <li class="text-gray-500">Data</li>
+        </ol>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Changing the separator -->
+
+<!-- Section: Without separators -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="without">Without separators</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to remove breadcrumbs separators.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <nav class="bg-grey-light rounded-md w-full">
+    <ol class="list-reset flex">
+      <li><a href="#" class="text-blue-600 hover:text-blue-700 mr-2">Home</a></li>
+      <li><a href="#" class="text-blue-600 hover:text-blue-700 mr-2">Library</a></li>
+      <li class="text-gray-500">Data</li>
+    </ol>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <nav class="bg-grey-light rounded-md w-full">
+        <ol class="list-reset flex">
+          <li><a href="#" class="text-blue-600 hover:text-blue-700 mr-2">Home</a></li>
+          <li><a href="#" class="text-blue-600 hover:text-blue-700 mr-2">Library</a></li>
+          <li class="text-gray-500">Data</li>
+        </ol>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Without separators -->
+
+<!-- Section: With background -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="bg">With background</h2>
+  <!--Description-->
+  <p class="mb-3">Use of a solid background can make the breadcrumbs section stand out, making it easy for the user to navigate the page.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <nav class="bg-gray-100 px-5 py-3 rounded-md w-full">
+    <ol class="list-reset flex">
+      <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+      <li><span class="text-gray-500 mx-2">/</span></li>
+      <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+      <li><span class="text-gray-500 mx-2">/</span></li>
+      <li class="text-gray-500">Data</li>
+    </ol>
+  </nav>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <nav class="bg-gray-100 px-5 py-3 rounded-md w-full">
+        <ol class="list-reset flex">
+          <li><a href="#" class="text-blue-600 hover:text-blue-700">Home</a></li>
+          <li><span class="text-gray-500 mx-2">/</span></li>
+          <li><a href="#" class="text-blue-600 hover:text-blue-700">Library</a></li>
+          <li><span class="text-gray-500 mx-2">/</span></li>
+          <li class="text-gray-500">Data</li>
+        </ol>
+      </nav>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: With background -->
+
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+      <!--Extended docs-->
+      <a href="https://mdbootstrap.com/docs/standard/extended/side-navbar/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Bootstrap Side Navbar</a>
+
+      <!--How to?-->
+      <a href="https://mdbootstrap.com/how-to/bootstrap/navbar-transparent/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">How To Center A Bootstrap Button?</a>
+      <a href="https://mdbootstrap.com/how-to/bootstrap/navbar-center/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">How to center Bootstrap Navbar</a>
+      <a href="https://mdbootstrap.com/how-to/bootstrap/change-navbar-color/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">How to change Bootstrap Navbar color</a>
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/components/link/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Link</a>
+      <a href="https://tailwind-elements.com/docs/standard/navigation/navbar/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Navbar</a>
+
+      <!--Other-->   
+      <a href="https://www.youtube.com/watch?v=RkViQUAQ15I&ab_channel=Keepcoding" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Bootstrap Button Tutorial</a>
+    </div>
+  </section>
+
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/navigation/breadcrumb/">Bootstrap Breadcrumbs</a> from MDBootstrap.</p>

@@ -1,0 +1,398 @@
+---
+title: "Tooltip"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Tooltip component"
+subheading: ""
+seo_title: "Tailwind CSS tooltip component - examples & tutorial"
+description: "Responsive tooltips built with Tailwind. Tooltip displays information when users hover, focus, or tap
+an element."
+image: ""
+video: ""
+url: "/docs/standard/components/tooltip/"
+menu:
+  components:
+    name: "Tooltip"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">To get started with using tooltips all you need to do is add the data-bs-target="tooltip" data attribute to an element where elementId is the id of the tooltip component. 
+    In the following example you can see the button that will trigger the tooltip element to be shown when hovered or focused.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="text-center">
+    <p>
+      Hover the link to see the
+      <a href="#" class="text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out" data-bs-toggle="tooltip"
+        title="Hi! I'm tooltip">tooltip</a>
+    </p>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="text-center">
+        <p>
+          Hover the link to see the
+          <a href="#" class="text-blue-600 hover:text-blue-700 transition duration-150 ease-in-out"
+            data-bs-toggle="tooltip" title="Hi! I'm tooltip">tooltip</a>
+        </p>
+      </div>
+      <!-- Required popper.js -->
+      <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+      <script type="text/javascript">
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new Tooltip(tooltipTriggerEl);
+        });
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+<!-- Section: Four directions -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="directions">Four directions</h2>
+  <!--Description-->
+  <p class="mb-3"></p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div class="flex space-x-2 justify-center flex-wrap">
+    <button type="button" class="
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out
+    " data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+      Tooltip on top
+    </button>
+    <button type="button" class="
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out
+    " data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">
+      Tooltip on right
+    </button>
+    <button type="button" class="
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out
+    " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+      Tooltip on bottom
+    </button>
+    <button type="button" class="
+      px-6
+      py-2.5
+      bg-blue-600
+      text-white
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      rounded
+      shadow-md
+      hover:bg-blue-700 hover:shadow-lg
+      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+      active:bg-blue-800 active:shadow-lg
+      transition
+      duration-150
+      ease-in-out
+    " data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
+      Tooltip on left
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex space-x-2 justify-center flex-wrap">
+        <button type="button" class="
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          rounded
+          shadow-md
+          hover:bg-blue-700 hover:shadow-lg
+          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-blue-800 active:shadow-lg
+          transition
+          duration-150
+          ease-in-out
+        " data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+          Tooltip on top
+        </button>
+        <button type="button" class="
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          rounded
+          shadow-md
+          hover:bg-blue-700 hover:shadow-lg
+          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-blue-800 active:shadow-lg
+          transition
+          duration-150
+          ease-in-out
+        " data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">
+          Tooltip on right
+        </button>
+        <button type="button" class="
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          rounded
+          shadow-md
+          hover:bg-blue-700 hover:shadow-lg
+          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-blue-800 active:shadow-lg
+          transition
+          duration-150
+          ease-in-out
+        " data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+          Tooltip on bottom
+        </button>
+        <button type="button" class="
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          rounded
+          shadow-md
+          hover:bg-blue-700 hover:shadow-lg
+          focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+          active:bg-blue-800 active:shadow-lg
+          transition
+          duration-150
+          ease-in-out
+        " data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
+          Tooltip on left
+        </button>
+      </div>
+      <!-- Required popper.js -->
+      <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+      <script type="text/javascript">
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new Tooltip(tooltipTriggerEl);
+        });
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Four directions -->
+
+<!-- Section: With custom HTML -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="custom_html">With custom HTML</h2>
+  <!--Description-->
+  <p class="mb-3"></p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div class="flex justify-center flex-wrap">
+    <button type="button" class="
+            px-6
+            py-2.5
+            bg-blue-600
+            text-white
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            rounded
+            shadow-md
+            hover:bg-blue-700 hover:shadow-lg
+            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+            active:bg-blue-800 active:shadow-lg
+            transition
+            duration-150
+            ease-in-out
+          " data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+      Tooltip with html
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center flex-wrap">
+        <button type="button" class="
+                px-6
+                py-2.5
+                bg-blue-600
+                text-white
+                font-medium
+                text-xs
+                leading-tight
+                uppercase
+                rounded
+                shadow-md
+                hover:bg-blue-700 hover:shadow-lg
+                focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                active:bg-blue-800 active:shadow-lg
+                transition
+                duration-150
+                ease-in-out
+              " data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+          Tooltip with html
+        </button>
+      </div>
+      <!-- Required popper.js -->
+      <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+      <script type="text/javascript">
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new Tooltip(tooltipTriggerEl);
+        });
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: With custom HTML -->
+
+<!-- Section: Disabled -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="disabled">Disabled</h2>
+  <!--Description-->
+  <p class="mb-3">Initialize the tooltip with the disabled option specified.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="flex justify-center flex-wrap">
+    <span class="inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled tooltip">
+      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md focus:outline-none focus:ring-0 transition duration-150 ease-in-out pointer-events-none opacity-60" type="button" disabled>Disabled button</button>
+    </span>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center flex-wrap">
+        <span class="inline-block" tabindex="0" data-bs-toggle="tooltip" title="Disabled tooltip">
+          <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md focus:outline-none focus:ring-0 transition duration-150 ease-in-out pointer-events-none opacity-60" type="button" disabled>Disabled button</button>
+        </span>
+      </div>
+      <!-- Required popper.js -->
+      <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+      <script type="text/javascript">
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new Tooltip(tooltipTriggerEl);
+        });
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Disabled -->
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/components/popover/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Tailwind Popover</a>
+      <a href="https://tailwind-elements.com/docs/standard/components/notifications/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Tailwind Notification</a>
+      
+    </div>
+  </section>
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/components/tooltips/">Bootstrap Tooltips</a> from MDBootstrap.</p>
+
+

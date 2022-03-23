@@ -1,0 +1,92 @@
+{{ $page_resources := .Resources }} {{ $overview_scrollspy_file_exists :=
+fileExists (printf "/content/%s/ss.html" .File.Dir) }}
+
+<!-- Single for all single page under /docs/* -->
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+  <head>
+    {{ partial "head/head.html" . }}
+  </head>
+  <body>
+    {{ partial "header/header.html" . }}
+
+    <div class="container mx-auto mt-4 pt-12">
+      <div class="flex flex-wrap">
+        <div
+          id="sidebar"
+          class="
+            w-full
+            sm:w-3/12
+            lg:w-2/12
+            pr-4
+            tex-left
+            absolute
+            inset-y-0
+            left-0
+            transform
+            -translate-x-full
+            md:relative md:translate-x-0
+            transition
+            duration-200
+            ease-in-out
+            bg-white
+            z-40
+          "
+        >
+          {{ partial "sidenav/standard.html" . }}
+        </div>
+        <!-- Right column -->
+        <div class="w-full sm:w-9/12 lg:w-8/12 px-4 sm:pr-10 lg:pr-4">
+          <div class="mb-8">
+            <h1 class="text-5xl font-bold leading-normal mt-0">
+              {{ .Params.main_title }}
+            </h1>
+            <p class="text-gray-500">{{ .Params.description }}</p>
+
+            <hr class="my-12" />
+            <main>{{ .Content }}</main>
+          </div>
+        </div>
+        {{ if $overview_scrollspy_file_exists }}
+        <!-- Sidebar  -->
+
+        <div class="w-full lg:w-2/12 px-4 hidden lg:block">
+          <menu class="sticky top-10">
+            <!-- Alert -->
+            <a
+              target="_blank"
+              href="https://mdbgo.com/"
+              class="
+                hidden
+                xl:block
+                p-4
+                mb-5
+                rounded-lg
+                border-2 border-blue-500
+                hover:bg-blue-100
+                ease-linear
+                transition-all
+                duration-150
+              "
+            >
+              <p class="text-blue-700 font-semibold mb-2">
+                <i class="fas fa-database mr-2"></i>Free hosting for Tailwind
+                projects
+              </p>
+
+              <p>Create, deploy and host anything with a single command</p>
+            </a>
+            <!-- Alert -->
+
+            <ul>
+              {{ with .Resources.GetMatch "ss.html" }} {{.Content }} {{end}}
+            </ul>
+          </menu>
+        </div>
+        {{end}}
+      </div>
+    </div>
+
+    {{ partial "footer/footer-docs.html" . }}
+  </body>
+</html>

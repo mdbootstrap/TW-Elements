@@ -1,0 +1,161 @@
+---
+title: "Datepicker"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Datepicker component"
+subheading: ""
+seo_title: "Tailwind CSS datepicker component - examples & tutorial"
+description: "Responsive Datepicker built with Tailwind CSS. A plugin that adds date picker functionality without
+custom JS code."
+image: ""
+video: ""
+url: "/docs/standard/forms/datepicker/"
+menu:
+  forms:
+    name: "Datepicker"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">The datepicker allows users to enter a date either through text input, or by choosing a date from the calendar. Date pickers can be embedded into dialogs on mobile and text field dropdowns on desktop.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+    <div class="flex items-center justify-center">
+      <div class="datepicker relative form-floating mb-3 xl:w-96">
+        <input type="text"
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a date</label>
+      </div>
+    </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex items-center justify-center">
+          <div class="datepicker relative form-floating mb-3 xl:w-96">
+            <input type="text"
+              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              placeholder="Select a date" />
+            <label for="floatingInput" class="text-gray-700">Select a date</label>
+          </div>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+<!-- Section: Input toggle -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="input-toggle">Input toggle</h2>
+  <!--Description-->
+  <p class="mb-3">Use <code>data-mdb-toggle="datepicker"</code> to the input element to enable toggling on input click.</p>
+
+  {{< twsnippet/demo id="example2">}}
+    <div class="flex items-center justify-center">
+      <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
+        <input type="text"
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          placeholder="Select a date" data-mdb-toggle="datepicker" />
+        <label for="floatingInput" class="text-gray-700">Select a date</label>
+      </div>
+    </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex items-center justify-center">
+          <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
+            <input type="text"
+              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              placeholder="Select a date" data-mdb-toggle="datepicker" />
+            <label for="floatingInput" class="text-gray-700">Select a date</label>
+          </div>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Input toggle -->
+
+<!-- Section: Custom toggle icon -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="custom-toggle">Custom toggle icon</h2>
+  <!--Description-->
+  <p class="mb-3">Customize the toggle icon by adding a toggle button template to the component.</p>
+
+  {{< twsnippet/demo id="example3">}}
+    <div class="flex items-center justify-center">
+      <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
+        <input type="text"
+          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a date</label>
+        <button class="datepicker-toggle-button" data-mdb-toggle="datepicker">
+          <i class="fas fa-calendar datepicker-toggle-icon"></i>
+        </button>
+      </div>
+    </div>
+  {{< /twsnippet/demo>}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML">}} {{< twsnippet/code active=true lang="HTML">}}
+        <div class="flex items-center justify-center">
+          <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
+            <input type="text"
+              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              placeholder="Select a date" />
+            <label for="floatingInput" class="text-gray-700">Select a date</label>
+            <button class="datepicker-toggle-button" data-mdb-toggle="datepicker">
+              <i class="fas fa-calendar datepicker-toggle-icon"></i>
+            </button>
+          </div>
+        </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Custom toggle icon -->
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+      <!--Extended docs-->
+      <a href="https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Survey form</a>
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/forms/inputs/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Inputs</a>
+      <a href="https://tailwind-elements.com/docs/standard/components/icons/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Icons</a>
+      <a href="https://tailwind-elements.com/docs/standard/forms/timepicker/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Timepicker</a>
+
+    </div>
+  </section>
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/forms/datepicker/">Bootstrap Datepicker</a> from MDBootstrap.</p>
+

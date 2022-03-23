@@ -1,0 +1,917 @@
+---
+title: "Carousel"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Carousel component"
+subheading: ""
+seo_title: "Tailwind CSS carousel component - examples & tutorial"
+description: "Responsive carousel built with Tailwind CSS. Carousel is a slideshow cycling through different elements such as photos, videos, or text. "
+image: ""
+video: ""
+url: "/docs/standard/components/carousel/"
+menu:
+  components:
+    name: "Carousel"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">Carousel Component is useful to navigate through a collection of images in a sequential fashion, moving to the previous/next one through the arrows on the sides.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div id="carouselExampleCaptions" class="carousel slide relative" data-bs-ride="carousel">
+    <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner relative w-full overflow-hidden">
+      <div class="carousel-item active relative float-left w-full">
+        <img
+          src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+          class="block w-full"
+          alt="..."
+        />
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item relative float-left w-full">
+        <img
+          src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+          class="block w-full"
+          alt="..."
+        />
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item relative float-left w-full">
+        <img
+          src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+          class="block w-full"
+          alt="..."
+        />
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div id="carouselExampleCaptions" class="carousel slide relative" data-bs-ride="carousel">
+        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner relative w-full overflow-hidden">
+          <div class="carousel-item active relative float-left w-full">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+              class="block w-full"
+              alt="..."
+            />
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+              class="block w-full"
+              alt="..."
+            />
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+              class="block w-full"
+              alt="..."
+            />
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: Slides only -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="slides_only">Slides only</h2>
+  <!--Description-->
+  <p class="mb-3">Carousel slides only allows you to automatically and smoothly switch between gallery images without controls. It is a useful component for dynamic design where user involvement is important.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div id="carouselExampleSlidesOnly" class="carousel slide relative" data-bs-ride="carousel">
+    <div class="carousel-inner relative w-full overflow-hidden">
+      <div class="carousel-item active relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+          class="block w-full"
+          alt="Wild Landscape"
+        />
+      </div>
+      <div class="carousel-item relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+          class="block w-full"
+          alt="Camera"
+        />
+      </div>
+      <div class="carousel-item relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+          class="block w-full"
+          alt="Exotic Fruits"
+        />
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div id="carouselExampleSlidesOnly" class="carousel slide relative" data-bs-ride="carousel">
+        <div class="carousel-inner relative w-full overflow-hidden">
+          <div class="carousel-item active relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+              class="block w-full"
+              alt="Wild Landscape"
+            />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+              class="block w-full"
+              alt="Camera"
+            />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+              class="block w-full"
+              alt="Exotic Fruits"
+            />
+          </div>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+
+<!-- Section: With controls -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="with_controls">With controls</h2>
+  <!--Description-->
+  <p class="mb-3">Previous and next controls allow you to control automatically moving gallery items.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div id="carouselExampleControls" class="carousel slide relative" data-bs-ride="carousel">
+    <div class="carousel-inner relative w-full overflow-hidden">
+      <div class="carousel-item active relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+          class="block w-full"
+          alt="Wild Landscape"
+        />
+      </div>
+      <div class="carousel-item relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+          class="block w-full"
+          alt="Camera"
+        />
+      </div>
+      <div class="carousel-item relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+          class="block w-full"
+          alt="Exotic Fruits"
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div id="carouselExampleControls" class="carousel slide relative" data-bs-ride="carousel">
+        <div class="carousel-inner relative w-full overflow-hidden">
+          <div class="carousel-item active relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+              class="block w-full"
+              alt="Wild Landscape"
+            />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+              class="block w-full"
+              alt="Camera"
+            />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+              class="block w-full"
+              alt="Exotic Fruits"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: With indicators -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="with_indicators">With indicators</h2>
+  <!--Description-->
+  <p class="mb-3">Adding indicators to the carousel, alongside the controls, can make it easier to navigate between the available images.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div id="carouselExampleIndicators" class="carousel slide relative" data-bs-ride="carousel">
+    <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner relative w-full overflow-hidden">
+      <div class="carousel-item active float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+          class="block w-full"
+          alt="Wild Landscape"
+        />
+      </div>
+      <div class="carousel-item float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+          class="block w-full"
+          alt="Camera"
+        />
+      </div>
+      <div class="carousel-item float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+          class="block w-full"
+          alt="Exotic Fruits"
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div id="carouselExampleIndicators" class="carousel slide relative" data-bs-ride="carousel">
+        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner relative w-full overflow-hidden">
+          <div class="carousel-item active float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+              class="block w-full"
+              alt="Wild Landscape"
+            />
+          </div>
+          <div class="carousel-item float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+              class="block w-full"
+              alt="Camera"
+            />
+          </div>
+          <div class="carousel-item float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+              class="block w-full"
+              alt="Exotic Fruits"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: Crossfade -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="crossfade">Crossfade</h2>
+  <!--Description-->
+  <p class="mb-3">Use fade transition on your slides easily by adding the <code>.carousel-fade</code> class to any <code>.carousel</code>.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div
+    id="carouselExampleCrossfade"
+    class="carousel slide carousel-fade relative"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCrossfade"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCrossfade"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCrossfade"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner relative w-full overflow-hidden">
+      <div class="carousel-item active float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+          class="block w-full"
+          alt="Wild Landscape"
+        />
+      </div>
+      <div class="carousel-item float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+          class="block w-full"
+          alt="Camera"
+        />
+      </div>
+      <div class="carousel-item float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+          class="block w-full"
+          alt="Exotic Fruits"
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+      type="button"
+      data-bs-target="#carouselExampleCrossfade"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+      type="button"
+      data-bs-target="#carouselExampleCrossfade"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div
+        id="carouselExampleCrossfade"
+        class="carousel slide carousel-fade relative"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCrossfade"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCrossfade"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCrossfade"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner relative w-full overflow-hidden">
+          <div class="carousel-item active float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+              class="block w-full"
+              alt="Wild Landscape"
+            />
+          </div>
+          <div class="carousel-item float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+              class="block w-full"
+              alt="Camera"
+            />
+          </div>
+          <div class="carousel-item float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+              class="block w-full"
+              alt="Exotic Fruits"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselExampleCrossfade"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleCrossfade"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: Dark variant -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="dark_variant">Dark variant</h2>
+  <!--Description-->
+  <p class="mb-3">If your carousel photo gallery only contains bright images, to make controls, indicators, and captions have more contrast, add <code>.carousel-dark</code> class.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example6">}}
+  <div
+    id="carouselDarkVariant"
+    class="carousel slide carousel-fade carousel-dark relative"
+    data-bs-ride="carousel"
+  >
+    <!-- Indicators -->
+    <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+      <button
+        data-bs-target="#carouselDarkVariant"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        data-bs-target="#carouselDarkVariant"
+        data-bs-slide-to="1"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        data-bs-target="#carouselDarkVariant"
+        data-bs-slide-to="2"
+        aria-label="Slide 1"
+      ></button>
+    </div>
+
+    <!-- Inner -->
+    <div class="carousel-inner relative w-full overflow-hidden">
+      <!-- Single item -->
+      <div class="carousel-item active relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(19).webp"
+          class="block w-full"
+          alt="Motorbike Smoke"
+        />
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+
+      <!-- Single item -->
+      <div class="carousel-item relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(35).webp"
+          class="block w-full"
+          alt="Mountaintop"
+        />
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+
+      <!-- Single item -->
+      <div class="carousel-item relative float-left w-full">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp"
+          class="block w-full"
+          alt="Woman Reading a Book"
+        />
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Inner -->
+
+    <!-- Controls -->
+    <button
+      class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+      type="button"
+      data-bs-target="#carouselDarkVariant"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+      type="button"
+      data-bs-target="#carouselDarkVariant"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div
+        id="carouselDarkVariant"
+        class="carousel slide carousel-fade carousel-dark relative"
+        data-bs-ride="carousel"
+      >
+        <!-- Indicators -->
+        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+          <button
+            data-bs-target="#carouselDarkVariant"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            data-bs-target="#carouselDarkVariant"
+            data-bs-slide-to="1"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            data-bs-target="#carouselDarkVariant"
+            data-bs-slide-to="2"
+            aria-label="Slide 1"
+          ></button>
+        </div>
+
+        <!-- Inner -->
+        <div class="carousel-inner relative w-full overflow-hidden">
+          <!-- Single item -->
+          <div class="carousel-item active relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(19).webp"
+              class="block w-full"
+              alt="Motorbike Smoke"
+            />
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+
+          <!-- Single item -->
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(35).webp"
+              class="block w-full"
+              alt="Mountaintop"
+            />
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+
+          <!-- Single item -->
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(40).webp"
+              class="block w-full"
+              alt="Woman Reading a Book"
+            />
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Inner -->
+
+        <!-- Controls -->
+        <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselDarkVariant"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselDarkVariant"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+      <!--Extended docs-->
+      <a href="https://mdbootstrap.com/docs/standard/extended/carousel-with-thumbnails/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Carousel Slider With Thumbnails</a>
+      <a href="https://mdbootstrap.com/docs/standard/extended/video-carousel/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Video Carousel / Gallery</a>
+
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/components/images/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Images</a>
+      <a href="https://tailwind-elements.com/docs/standard/methods/ripple/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Ripple Effect</a>
+      <a href="https://tailwind-elements.com/docs/standard/components/mask/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Mask</a>
+
+      
+      <!--Other-->   
+      <a href="https://www.youtube.com/watch?v=Esv4AqWC72E&ab_channel=Keepcoding" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Bootstrap Carousel Tutorial</a>
+    </div>
+  </section>
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/components/carousel/">Bootstrap Carousel</a> from MDBootstrap.</p>
+
+

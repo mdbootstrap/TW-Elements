@@ -1,0 +1,95 @@
+// Base class
+
+//
+// Tabs
+//
+
+.nav-tabs {
+  .nav-link {
+    color: rgba(75, 85, 99, 1);
+
+    &:hover,
+    &:focus {
+      isolation: isolate;
+    }
+
+    &.disabled {
+      color: rgba(156, 163, 175, 1);
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: rgba(37, 99, 235, 1);
+    border-color: rgba(37, 99, 235, 1);
+  }
+
+  .dropdown-menu {
+    // Make dropdown border overlap tab border
+    margin-top: -$nav-tabs-border-width;
+    // Remove the top rounded corners here since there is a hard edge above the menu
+    @include border-top-radius(0);
+  }
+}
+
+//
+// Pills
+//
+
+.nav-pills {
+  .nav-link {
+    background: rgba(243, 244, 246, 1);
+    color: rgba(75, 85, 99, 1);
+    box-shadow: none;
+  }
+
+  .nav-link.active,
+  .show > .nav-link {
+    background: rgba(37, 99, 235, 1);
+    color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .disabled {
+    color: rgba(156, 163, 175, 1);
+    background-color: rgba(243, 244, 246, 0.5);
+  }
+
+  &.menu-sidebar .nav-link {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0 5px;
+    border-radius: 0;
+    &.active {
+      color: #1266f1;
+      font-weight: 600;
+      border-left: 0.125rem solid #1266f1;
+    }
+  }
+}
+
+//
+// Justified variants
+//
+
+.nav-justified {
+  > .nav-link,
+  .nav-item {
+    flex-basis: 0;
+  }
+}
+
+// Tabbable tabs
+//
+// Hide tabbable panes to start, show them when `.active`
+
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}

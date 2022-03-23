@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+
+  <body>
+    <section class="mb-32">
+      <nav
+        class="navbar navbar-expand-lg shadow-lg py-2 bg-white relative flex items-center w-full justify-between"
+      >
+        <div class="px-6">
+          <button
+            class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-300 ease-in-out"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContentX"
+            aria-controls="navbarSupportedContentX"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              class="w-5"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </button>
+          <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentX">
+            <ul class="navbar-nav mr-auto flex flex-row">
+              <li class="nav-item dropdown static">
+                <a
+                  class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-300 ease-in-out dropdown-toggle flex items-center whitespace-nowrap"
+                  href="#"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                  type="button"
+                  id="dropdownMenuButtonX"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  >Click me
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="caret-down"
+                    class="w-2 ml-2"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 320 512"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    ></path>
+                  </svg>
+                </a>
+                <ul
+                  class="dropdown-menu w-[300px] absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out whitespace-normal"
+                      href="#"
+                    >
+                      <div class="flex items-start">
+                        <div class="shrink-0">
+                          <div class="pr-3">
+                            <svg
+                              class="w-5 h-5 mr-2 text-blue-600"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M488.6 250.2L392 214V105.5c0-15-9.3-28.4-23.4-33.7l-100-37.5c-8.1-3.1-17.1-3.1-25.3 0l-100 37.5c-14.1 5.3-23.4 18.7-23.4 33.7V214l-96.6 36.2C9.3 255.5 0 268.9 0 283.9V394c0 13.6 7.7 26.1 19.9 32.2l100 50c10.1 5.1 22.1 5.1 32.2 0l103.9-52 103.9 52c10.1 5.1 22.1 5.1 32.2 0l100-50c12.2-6.1 19.9-18.6 19.9-32.2V283.9c0-15-9.3-28.4-23.4-33.7zM358 214.8l-85 31.9v-68.2l85-37v73.3zM154 104.1l102-38.2 102 38.2v.6l-102 41.4-102-41.4v-.6zm84 291.1l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6zm240 112l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6z"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="grow">
+                          <p class="text-gray-800 font-bold mb-1">Projects</p>
+                          <p class="text-gray-500">
+                            Ut vulputate est non quam dignissim elementum.
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out whitespace-normal"
+                      href="#"
+                    >
+                      <div class="flex items-start">
+                        <div class="shrink-0">
+                          <div class="pr-3">
+                            <svg
+                              class="w-5 h-5 mr-2 text-blue-600"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 544 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M527.79 288H290.5l158.03 158.03c6.04 6.04 15.98 6.53 22.19.68 38.7-36.46 65.32-85.61 73.13-140.86 1.34-9.46-6.51-17.85-16.06-17.85zm-15.83-64.8C503.72 103.74 408.26 8.28 288.8.04 279.68-.59 272 7.1 272 16.24V240h223.77c9.14 0 16.82-7.68 16.19-16.8zM224 288V50.71c0-9.55-8.39-17.4-17.84-16.06C86.99 51.49-4.1 155.6.14 280.37 4.5 408.51 114.83 513.59 243.03 511.98c50.4-.63 96.97-16.87 135.26-44.03 7.9-5.6 8.42-17.23 1.57-24.08L224 288z"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="grow">
+                          <p class="text-gray-800 font-bold mb-1">Analytics</p>
+                          <p class="text-gray-500 mb-0">
+                            Nulla sit amet condimentum quam vulputate est.
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out whitespace-normal"
+                      href="#"
+                    >
+                      <div class="flex items-start">
+                        <div class="shrink-0">
+                          <div class="pr-3">
+                            <svg
+                              class="w-5 h-5 mr-2 text-blue-600"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M192 208c0-17.67-14.33-32-32-32h-16c-35.35 0-64 28.65-64 64v48c0 35.35 28.65 64 64 64h16c17.67 0 32-14.33 32-32V208zm176 144c35.35 0 64-28.65 64-64v-48c0-35.35-28.65-64-64-64h-16c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h16zM256 0C113.18 0 4.58 118.83 0 256v16c0 8.84 7.16 16 16 16h16c8.84 0 16-7.16 16-16v-16c0-114.69 93.31-208 208-208s208 93.31 208 208h-.12c.08 2.43.12 165.72.12 165.72 0 23.35-18.93 42.28-42.28 42.28H320c0-26.51-21.49-48-48-48h-32c-26.51 0-48 21.49-48 48s21.49 48 48 48h181.72c49.86 0 90.28-40.42 90.28-90.28V256C507.42 118.83 398.82 0 256 0z"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="grow">
+                          <p class="text-gray-800 font-bold mb-1">Support</p>
+                          <p class="text-gray-500 mb-0">
+                            Morbi arcu ante, pellentesque id leo eget.
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out whitespace-normal"
+                      href="#"
+                    >
+                      <div class="flex items-start">
+                        <div class="shrink-0">
+                          <div class="pr-3">
+                            <svg
+                              class="w-5 h-5 mr-2 text-blue-600"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 384 512"
+                            >
+                              <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                              <path
+                                fill="currentColor"
+                                d="M320,32a32,32,0,0,0-64,0v96h64Zm48,128H16A16,16,0,0,0,0,176v32a16,16,0,0,0,16,16H32v32A160.07,160.07,0,0,0,160,412.8V512h64V412.8A160.07,160.07,0,0,0,352,256V224h16a16,16,0,0,0,16-16V176A16,16,0,0,0,368,160ZM128,32a32,32,0,0,0-64,0v96h64Z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="grow">
+                          <p class="text-gray-800 font-bold mb-1">Plugins</p>
+                          <p class="text-gray-500 mb-0">
+                            Proin malesuada est non volutpat euismod arcu ante
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full bg-transparent text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out whitespace-normal"
+                      href="#"
+                    >
+                      <div class="flex items-start">
+                        <div class="shrink-0">
+                          <div class="pr-3">
+                            <svg
+                              class="w-5 h-5 mr-2 text-blue-600"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                              <path
+                                fill="currentColor"
+                                d="M501.1 395.7L384 278.6c-23.1-23.1-57.6-27.6-85.4-13.9L192 158.1V96L64 0 0 64l96 128h62.1l106.6 106.6c-13.6 27.8-9.2 62.3 13.9 85.4l117.1 117.1c14.6 14.6 38.2 14.6 52.7 0l52.7-52.7c14.5-14.6 14.5-38.2 0-52.7zM331.7 225c28.3 0 54.9 11 74.9 31l19.4 19.4c15.8-6.9 30.8-16.5 43.8-29.5 37.1-37.1 49.7-89.3 37.9-136.7-2.2-9-13.5-12.1-20.1-5.5l-74.4 74.4-67.9-11.3L334 98.9l74.4-74.4c6.6-6.6 3.4-17.9-5.7-20.2-47.4-11.7-99.6.9-136.6 37.9-28.5 28.5-41.9 66.1-41.2 103.6l82.1 82.1c8.1-1.9 16.5-2.9 24.7-2.9zm-103.9 82l-56.7-56.7L18.7 402.8c-25 25-25 65.5 0 90.5s65.5 25 90.5 0l123.6-123.6c-7.6-19.9-9.9-41.6-5-62.7zM64 472c-13.2 0-24-10.8-24-24 0-13.3 10.7-24 24-24s24 10.7 24 24c0 13.2-10.7 24-24 24z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="grow">
+                          <p class="text-gray-800 font-bold mb-1">Tools</p>
+                          <p class="text-gray-500 mb-0">
+                            Curabitur tristique, mi a mollis sagittis, metus felis mattis arcu.
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+  </body>
+</html>

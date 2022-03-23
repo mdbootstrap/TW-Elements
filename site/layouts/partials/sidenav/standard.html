@@ -1,0 +1,163 @@
+<div class="block overflow-y-auto pt-5 pb-4 h-screen sticky top-0  scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 ">
+  
+  <div class="mb-6">
+
+<div class="flex justify-between ">
+     <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Getting started</p
+    >
+    <a href="#"><div id="close_icon" class="visible md:invisible"><svg viewPort="0 0 12 12" version="1.1" width="40" height="15"
+     xmlns="http://www.w3.org/2000/svg">
+    <line x1="1" y1="11" 
+          x2="11" y2="1" 
+          stroke="black" 
+          stroke-width="2"/>
+    <line x1="1" y1="1" 
+          x2="11" y2="11" 
+          stroke="black" 
+          stroke-width="2"/>
+</svg></div></a>
+</div>
+
+
+
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.start}}
+      <li class="mb-0 mt-0">
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "start" . }} text-blue-600 font-bold   {{else}}  hover:text-blue-700  {{end}}   text-sm block leading-relaxed mx-4 no-underline">
+          {{.Name}}
+ </a>
+      </li>
+      {{end}}
+      <li class="mb-0 mt-0">
+        <a target="_blank" href="/snippets/" class="hover:text-blue-700	 hover:text-blue-700 transition  hover:text-blue-700 text-sm block leading-relaxed mx-4 no-underline">Playground</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://mdbgo.com/" class="hover:text-blue-700	 hover:text-blue-700 transition  hover:text-blue-700 text-sm block leading-relaxed mx-4 no-underline">Hosting & deployment</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://mdbootstrap.com/services/" class="hover:text-blue-700 text-sm block mb-2 mx-4 no-underline">Services</a>
+      </li>
+
+    </ul>
+  </div>
+  <!-- <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Deployment & hosting</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.go}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "go" . }} text-blue-600  font-bold  {{else}}  hover:text-blue-700	 {{end}}   text-sm block mb-2 mx-4 no-underline">
+          {{.Name}} 
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div> -->
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      
+      >Components</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.components}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "components" . }} text-blue-600  font-bold  {{else}}   hover:text-blue-700	 {{end}}   text-sm block leading-relaxed mx-4 no-underline">
+          {{.Name}}
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Navigation</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.navigation}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "navigation" . }} text-blue-600  font-bold  {{else}}   hover:text-blue-700	 {{end}}   text-sm block leading-relaxed mx-4 no-underline">
+          {{.Name}}
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Forms</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.forms}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "forms" . }} text-blue-600  font-bold  {{else}}   hover:text-blue-700 {{end}}   text-sm block leading-relaxed mx-4 no-underline">
+          {{.Name}}
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Methods</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.methods}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "methods" . }} text-blue-600  font-bold  {{else}}   hover:text-blue-700	 {{end}}   text-sm block leading-relaxed mx-4 no-underline">
+          {{.Name}}
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      >Design Blocks</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.designblocks}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "designblocks" . }} text-blue-600  font-bold  {{else}}   hover:text-blue-700	 {{end}}   text-sm block mb-2 mx-4 no-underline">
+          {{.Name}}
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+
+</div>

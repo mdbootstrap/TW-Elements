@@ -1,0 +1,348 @@
+---
+title: "Scrollspy"
+date: 2022-01-20T12:00:58+02:00
+draft: false
+main_title: "Tailwind Scrollspy component"
+subheading: ""
+seo_title: "Tailwind CSS scrollspy component - examples & tutorial"
+description: "Responsive Scrollspy built with Tailwind CSS. Highlight where the user is on a page by updating links in navigation based on scroll postion. Works perfectly with smooth scroll."
+image: ""
+video: ""
+url: "/docs/standard/navigation/scrollspy/"
+menu:
+  navigation:
+    name: "Scrollspy"
+---
+
+<style>
+  .scrollspy-example {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+  }
+
+  .scrollspy-example-collapsible {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+  }
+</style>
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">Scrollspy is a popular type of intra-page navigation that tracks specific page elements and shows which element the user's screen is currently on. This is useful when you have a lot of content on your site and you want to organize it or send the user directly to the content they are interested in.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+
+  <div class="grid grid-cols-3">
+    <div class="col-span-2">
+      <div data-bs-spy="scroll" data-bs-target="#scrollspy1" data-bs-offset="200" class="scrollspy-example">
+        <section id="example-1">
+          <h3 class="text-xl font-semibold pt-5 pb-3">Section 1</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+            minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+            quisquam obcaecati et reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+            minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+            quisquam obcaecati et reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+        <section id="example-2">
+          <h3 class="text-xl font-semibold pt-5 pb-3">Section 2</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+            minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+            quisquam obcaecati et reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+            minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+            quisquam obcaecati et reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+        <section id="example-3">
+          <h3 class="text-xl font-semibold pt-5 pb-3">Section 3</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+            minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+            quisquam obcaecati et reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+            minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+            quisquam obcaecati et reiciendis quaerat accusamus numquam.
+          </p>
+          <section id="example-sub-A">
+            <h3 class="text-xl font-semibold pt-5 pb-3">Subsection A</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+              minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+              quisquam obcaecati et reiciendis quaerat accusamus numquam.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+              minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+              quisquam obcaecati et reiciendis quaerat accusamus numquam.
+            </p>
+          </section>
+          <section id="example-sub-B">
+            <h3 class="text-xl font-semibold pt-5 pb-3">Subsection B</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+              minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+              quisquam obcaecati et reiciendis quaerat accusamus numquam.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+              minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+              quisquam obcaecati et reiciendis quaerat accusamus numquam.
+            </p>
+          </section>
+        </section>
+        <section id="example-4">
+          <h3 class="text-xl font-semibold pt-5 pb-3">Section 4</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+            minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+            quisquam obcaecati et reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+            minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+            quisquam obcaecati et reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <div>
+      <!-- Scrollspy -->
+      <div id="scrollspy1" class="sticky-top pl-3 text-sm">
+        <ul class="nav nav-pills menu-sidebar">
+          <li class="py-1">
+            <a class="nav-link" href="#example-1">Section 1</a>
+          </li>
+          <li class="py-1">
+            <a class="nav-link" href="#example-2">Section 2</a>
+          </li>
+          <li class="py-1">
+            <a class="nav-link" href="#example-3">Section 3</a>
+            <ul class="nav flex-column pl-3">
+              <li class="py-1">
+                <a class="nav-link" href="#example-sub-A">Subsection A</a>
+              </li>
+              <li>
+                <a class="nav-link" href="#example-sub-B">Subsection B</a>
+              </li>
+            </ul>
+          </li>
+          <li class="py-1">
+            <a class="nav-link" href="#example-4">Section 4</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Scrollspy -->
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <style>
+        /* Styles required only for the example above */
+        .scrollspy-example {
+          position: relative;
+          height: 200px;
+          overflow: auto;
+        }
+      </style>
+
+      <div class="grid grid-cols-3">
+        <div class="col-span-2">
+          <div data-bs-spy="scroll" data-bs-target="#scrollspy1" data-bs-offset="200" class="scrollspy-example">
+            <section id="example-1">
+              <h3 class="text-xl font-semibold pt-5 pb-3">Section 1</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                quisquam obcaecati et reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                quisquam obcaecati et reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+            <section id="example-2">
+              <h3 class="text-xl font-semibold pt-5 pb-3">Section 2</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                quisquam obcaecati et reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                quisquam obcaecati et reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+            <section id="example-3">
+              <h3 class="text-xl font-semibold pt-5 pb-3">Section 3</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                quisquam obcaecati et reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                quisquam obcaecati et reiciendis quaerat accusamus numquam.
+              </p>
+              <section id="example-sub-A">
+                <h3 class="text-xl font-semibold pt-5 pb-3">Subsection A</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                  minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                  quisquam obcaecati et reiciendis quaerat accusamus numquam.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                  minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                  quisquam obcaecati et reiciendis quaerat accusamus numquam.
+                </p>
+              </section>
+              <section id="example-sub-B">
+                <h3 class="text-xl font-semibold pt-5 pb-3">Subsection B</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                  minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                  quisquam obcaecati et reiciendis quaerat accusamus numquam.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                  minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                  quisquam obcaecati et reiciendis quaerat accusamus numquam.
+                </p>
+              </section>
+            </section>
+            <section id="example-4">
+              <h3 class="text-xl font-semibold pt-5 pb-3">Section 4</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                quisquam obcaecati et reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore earum natus vel
+                minima quod error maxime, molestias ut. Fuga dignissimos nisi nemo necessitatibus
+                quisquam obcaecati et reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+          </div>
+        </div>
+
+        <div>
+          <!-- Scrollspy -->
+          <div id="scrollspy1" class="sticky-top pl-3 text-sm">
+            <ul class="nav nav-pills menu-sidebar">
+              <li class="py-1">
+                <a class="nav-link" href="#example-1">Section 1</a>
+              </li>
+              <li class="py-1">
+                <a class="nav-link" href="#example-2">Section 2</a>
+              </li>
+              <li class="py-1">
+                <a class="nav-link" href="#example-3">Section 3</a>
+                <ul class="nav flex-column pl-3">
+                  <li class="py-1">
+                    <a class="nav-link" href="#example-sub-A">Subsection A</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="#example-sub-B">Subsection B</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="py-1">
+                <a class="nav-link" href="#example-4">Section 4</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Scrollspy -->
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+<hr class="my-5">
+
+<section id="how-it-works">
+  <!--Section title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800">How it works</h2>
+
+  <!-- Section description -->
+  <p>Scrollspy has a few requirements to function properly:</p>
+
+  <ul class="list-disc py-4 pl-4">
+    <li>
+      It must be used on a Bootstrap <strong>nav</strong> component or
+      <strong>list group</strong>.
+    </li>
+    <li>
+      Scrollspy requires <code>position: relative;</code> on the element you’re spying on, usually
+      the <code>&lt;body&gt;</code>.
+    </li>
+    <li>
+      When spying on elements other than the <code>&lt;body&gt;</code>, be sure to have a
+      <code>height</code> set and <code>overflow-y: scroll;</code> applied.
+    </li>
+    <li>
+      Anchors (<code>&lt;a&gt;</code>) are required and must point to an element with that
+      <code>id</code>.
+    </li>
+  </ul>
+
+  <p>
+    When successfully implemented, your nav or list group will update accordingly, moving the
+    <code>.active</code> class from one item to the next based on their associated targets.
+  </p>
+</section>
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+      <!--Extended docs-->
+      <a href="https://mdbootstrap.com/docs/standard/extended/back-to-top/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Scroll Back To Top</a>
+      <a href="https://mdbootstrap.com/docs/standard/extended/page-transitions/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Page Transition</a>
+      
+      <!--Other-->   
+      <a href="https://perfectscrollbar.com/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Perfect Scrollbar</a>
+    </div>
+  </section>
+
+  <p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/navigation/scrollspy/">Bootstrap Scrollspy</a> from MDBootstrap.</p>

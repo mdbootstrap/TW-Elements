@@ -1,0 +1,10 @@
+{{ partial "head/meta.html" . }} {{ $styles := resources.Get "css/style.css" |
+postCSS }} {{ if .Site.IsServer }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
+{{ else }} {{ $styles := $styles | minify | fingerprint | resources.PostProcess
+}}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" />
+{{ end }}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{{.Site.BaseURL}}css/custom.css" />

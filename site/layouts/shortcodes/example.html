@@ -1,0 +1,12 @@
+<figcaption>
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800">{{ .Get "title" }}</h2>
+</figcaption>
+
+<div id="demo" class="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 text-center p-10">
+  {{.Inner}}
+</div>
+<div class="mb-10">
+
+  {{ highlight (trim .Inner "\n\r") (.Get "lang") "linenos=true" }}
+
+</div>

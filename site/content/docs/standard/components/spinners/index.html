@@ -1,0 +1,506 @@
+---
+title: "Spinners"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Spinner / Loader component"
+subheading: ""
+seo_title: "Tailwind CSS spinner / loader component - examples & tutorial"
+description: "Responsive spinner/ loader build with Tailwind CSS. Spinners are used while loading content or
+performing another process that the user needs to wait on."
+image: ""
+video: ""
+url: "/docs/standard/components/spinners/"
+menu:
+  components:
+    name: "Spinners"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">The spinner component is mostly used as a loading indicator which comes in multiple colors, sizes, and styles separately or inside elements such as buttons to improve the user experience whenever data is being fetched from your server.</p>
+
+  <p class="mb-3">Use the following element with the animate-spin animation class to show a loading animation:</p>
+
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="flex justify-center items-center">
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center items-center">
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: Colors -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="colors">Colors</h2>
+  <!--Description-->
+  <p class="mb-3">Change the colors of the spinner element using the fill and color utility classes.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div class="flex justify-center items-center space-x-2">
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-600" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="
+      spinner-border
+      animate-spin
+      inline-block
+      w-8
+      h-8
+      border-4
+      rounded-full
+      text-purple-500
+    " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="
+      spinner-border
+      animate-spin
+      inline-block
+      w-8
+      h-8
+      border-4
+      rounded-full
+      text-green-500
+    " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-red-500" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="
+      spinner-border
+      animate-spin
+      inline-block
+      w-8
+      h-8
+      border-4
+      rounded-full
+      text-yellow-500
+    " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-300" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-gray-300" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center items-center space-x-2">
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-600" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="
+          spinner-border
+          animate-spin
+          inline-block
+          w-8
+          h-8
+          border-4
+          rounded-full
+          text-purple-500
+        " role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="
+          spinner-border
+          animate-spin
+          inline-block
+          w-8
+          h-8
+          border-4
+          rounded-full
+          text-green-500
+        " role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-red-500" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="
+          spinner-border
+          animate-spin
+          inline-block
+          w-8
+          h-8
+          border-4
+          rounded-full
+          text-yellow-500
+        " role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-300" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-gray-300" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Colors -->
+
+<!-- Section: Growing spinner -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="growing">Growing spinner</h2>
+  <!--Description-->
+  <p class="mb-3">Use the <code>.spinner-grow</code> class if you want the spinner/loader to grow instead of spin.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div class="flex justify-center items-center">
+    <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center items-center">
+        <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Growing spinner -->
+
+<!-- Section: Colors of growing spinner -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="colors_growing">Colors of growing spinner</h2>
+  <!--Description-->
+  <p class="mb-3">Use any text color utilities to add a color to growing spinner.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="flex justify-center items-center space-x-2">
+    <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-600" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="
+        spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+          text-purple-500
+        " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="
+        spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+          text-green-500
+        " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-red-500" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="
+        spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+          text-yellow-500
+        " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-300" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-gray-300" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center items-center space-x-2">
+        <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-600" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="
+            spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+              text-purple-500
+            " role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="
+            spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+              text-green-500
+            " role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-red-500" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="
+            spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0
+              text-yellow-500
+            " role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-300" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-gray-300" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Colors of growing spinner -->
+
+<!-- Section: Margin -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="margin">Margin</h2>
+  <!--Description-->
+  <p class="mb-3">Use margin utilities like <code>.m-12</code> for easy spacing.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div class="flex items-center">
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full m-12" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center">
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full m-12" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Margin -->
+
+<!-- Section: Flex -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="flex">Flex</h2>
+  <!--Description-->
+  <p class="mb-3">Use flexbox utilities to place spinners exactly where you need them in any situation.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example6">}}
+  <div class="flex items-center justify-center">
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center">
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Flex -->
+
+<!-- Section: Floats -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="floats">Floats</h2>
+  <!--Description-->
+  <p class="mb-3">Use the flexbox, text alignment, or float utility classes to easily align the spinners to left, right or center.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example10">}}
+  <div class="flow-root">
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full float-right" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+  <section class="collapse" id="example10">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flow-root">
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full float-right" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Floats -->
+
+<!-- Section: Text -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="text">Text</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following code to add spinner a text.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example7">}}
+  <div class="flex items-center">
+    <strong>Loading...</strong>
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full ml-auto" role="status" aria-hidden="true"></div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example7">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center">
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Text -->
+
+<!-- Section: Size small -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="small">Size small</h2>
+  <!--Description-->
+  <p class="mb-3">Use <code>h-{*}</code> and <code>w-{*}</code> utility classes to create a smaller spinner.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example8">}}
+  <div class="flex items-center justify-center space-x-2">
+    <div class="spinner-border animate-spin inline-block w-4 h-4 border-1 rounded-full" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow inline-block w-4 h-4 bg-current rounded-full opacity-0" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example8">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center space-x-2">
+        <div class="spinner-border animate-spin inline-block w-4 h-4 border-1 rounded-full" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow inline-block w-4 h-4 bg-current rounded-full opacity-0" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Size small -->
+
+<!-- Section: Size large -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="large">Size large</h2>
+  <!--Description-->
+  <p class="mb-3">Use <code>h-{*}</code> and <code>w-{*}</code> utility classes to create a bigger spinner.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example9">}}
+  <div class="flex items-center justify-center space-x-2">
+    <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow inline-block w-12 h-12 bg-current rounded-full opacity-0" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
+  <section class="collapse" id="example9">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center space-x-2">
+        <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 rounded-full" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow inline-block w-12 h-12 bg-current rounded-full opacity-0" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Size large -->
+
+<hr class="my-12">
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/components/spinners/">Bootstrap Spinners</a> from MDBootstrap.</p>
+
+
+
+

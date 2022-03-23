@@ -1,0 +1,629 @@
+---
+title: "List group"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind List groups component"
+subheading: ""
+seo_title: "Tailwind List group component - examples & tutorial"
+description: "Responsive list groups built with Tailwind CSS. List groups are used to displaying a series of content and they are a beautiful alternative to unordered lists"
+image: ""
+video: ""
+url: "/docs/standard/components/listgroup/"
+menu:
+  components:
+    name: "List group"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">The list groups are very useful and flexible component for displaying lists of elements in a beautiful manner.</p>
+
+  <p class="mb-3">The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="flex justify-center">
+    <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+      <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">An item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A second item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A third item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A fourth item</li>
+      <li class="px-6 py-2 w-full rounded-b-lg">And a fifth one</li>
+    </ul>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+          <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">An item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A second item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A third item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A fourth item</li>
+          <li class="px-6 py-2 w-full rounded-b-lg">And a fifth one</li>
+        </ul>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+<!-- Section: Active items -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="active">Active items</h2>
+  <!--Description-->
+  <p class="mb-3">Use code below to indicate the current active selection.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div class="flex justify-center">
+    <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+      <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-600 text-white">
+        An active item
+      </li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A second item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A third item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A fourth item</li>
+      <li class="px-6 py-2 w-full rounded-b-lg">And a fifth one</li>
+    </ul>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+          <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-600 text-white">
+            An active item
+          </li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A second item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A third item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A fourth item</li>
+          <li class="px-6 py-2 w-full rounded-b-lg">And a fifth one</li>
+        </ul>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Active items -->
+
+<!-- Section: Disabled items -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="disabled">Disabled items</h2>
+  <!--Description-->
+  <p class="mb-3">The class <code>.text-gray-*</code> and <code>.cursor-default</code> is used to disable a specific item in the list group.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div class="flex justify-center">
+    <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+      <li
+        class="
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          rounded-t-lg
+          text-gray-400
+          cursor-default
+        "
+      >
+        A disabled item
+      </li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A second item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A third item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A fourth item</li>
+      <li class="px-6 py-2 w-full rounded-b-lg">And a fifth one</li>
+    </ul>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <ul class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+          <li
+            class="
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              rounded-t-lg
+              text-gray-400
+              cursor-default
+            "
+          >
+            A disabled item
+          </li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A second item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A third item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A fourth item</li>
+          <li class="px-6 py-2 w-full rounded-b-lg">And a fifth one</li>
+        </ul>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Disabled items -->
+
+
+<!-- Section: Links -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="links">Links</h2>
+  <!--Description-->
+  <p class="mb-3">Use <code><a></code> or to create actionable list group items with hover, disabled, and active states.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="flex justify-center">
+    <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+      <a
+        href="#!"
+        aria-current="true"
+        class="
+          block
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          rounded-t-lg
+          bg-blue-600
+          text-white
+          cursor-pointer
+        "
+      >
+        The current link item
+      </a>
+      <a
+        href="#!"
+        class="
+          block
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          hover:bg-gray-100 hover:text-gray-500
+          focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+          transition
+          duration-500
+          cursor-pointer
+        "
+      >
+        A second link item
+      </a>
+      <a
+        href="#!"
+        class="
+          block
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          hover:bg-gray-100 hover:text-gray-500
+          focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+          transition
+          duration-500
+          cursor-pointer
+        "
+      >
+        A third link item
+      </a>
+      <a
+        href="#!"
+        class="
+          block
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          hover:bg-gray-100 hover:text-gray-500
+          focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+          transition
+          duration-500
+          cursor-pointer
+        "
+      >
+        A fourth link item
+      </a>
+      <a
+        href="#!"
+        class="
+          block
+          px-6
+          py-2
+          border-gray-200
+          w-full
+          rounded-b-lg
+          focus:outline-none focus:ring-0
+          text-gray-400
+          cursor-default
+        "
+      >
+        A disabled link item
+      </a>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+          <a
+            href="#!"
+            aria-current="true"
+            class="
+              block
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              rounded-t-lg
+              bg-blue-600
+              text-white
+              cursor-pointer
+            "
+          >
+            The current link item
+          </a>
+          <a
+            href="#!"
+            class="
+              block
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              hover:bg-gray-100 hover:text-gray-500
+              focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+              transition
+              duration-500
+              cursor-pointer
+            "
+          >
+            A second link item
+          </a>
+          <a
+            href="#!"
+            class="
+              block
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              hover:bg-gray-100 hover:text-gray-500
+              focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+              transition
+              duration-500
+              cursor-pointer
+            "
+          >
+            A third link item
+          </a>
+          <a
+            href="#!"
+            class="
+              block
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              hover:bg-gray-100 hover:text-gray-500
+              focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+              transition
+              duration-500
+              cursor-pointer
+            "
+          >
+            A fourth link item
+          </a>
+          <a
+            href="#!"
+            class="
+              block
+              px-6
+              py-2
+              border-gray-200
+              w-full
+              rounded-b-lg
+              focus:outline-none focus:ring-0
+              text-gray-400
+              cursor-default
+            "
+          >
+            A disabled link item
+          </a>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Links -->
+
+<!-- Section: Buttons -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="buttons">Buttons</h2>
+  <!--Description-->
+  <p class="mb-3">Use <code><a></code> or to create actionable list group items with hover, disabled, and active states.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div class="flex justify-center">
+    <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+      <button
+        aria-current="true"
+        type="button"
+        class="
+          text-left
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          rounded-t-lg
+          bg-blue-600
+          text-white
+          cursor-pointer
+        "
+      >
+        The current link item
+      </button>
+      <button
+        type="button"
+        class="
+          text-left
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          hover:bg-gray-100 hover:text-gray-500
+          focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+          transition
+          duration-500
+          cursor-pointer
+        "
+      >
+        A second link item
+      </button>
+      <button
+        type="button"
+        class="
+          text-left
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          hover:bg-gray-100 hover:text-gray-500
+          focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+          transition
+          duration-500
+          cursor-pointer
+        "
+      >
+        A third link item
+      </button>
+      <button
+        type="button"
+        class="
+          text-left
+          px-6
+          py-2
+          border-b border-gray-200
+          w-full
+          hover:bg-gray-100 hover:text-gray-500
+          focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+          transition
+          duration-500
+          cursor-pointer
+        "
+      >
+        A fourth link item
+      </button>
+      <button
+        disabled=""
+        type="button"
+        class="
+          text-left
+          px-6
+          py-2
+          border-gray-200
+          w-full
+          rounded-b-lg
+          focus:outline-none focus:ring-0
+          text-gray-400
+          cursor-default
+        "
+      >
+        A disabled link item
+      </button>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
+          <button
+            aria-current="true"
+            type="button"
+            class="
+              text-left
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              rounded-t-lg
+              bg-blue-600
+              text-white
+              cursor-pointer
+            "
+          >
+            The current link item
+          </button>
+          <button
+            type="button"
+            class="
+              text-left
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              hover:bg-gray-100 hover:text-gray-500
+              focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+              transition
+              duration-500
+              cursor-pointer
+            "
+          >
+            A second link item
+          </button>
+          <button
+            type="button"
+            class="
+              text-left
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              hover:bg-gray-100 hover:text-gray-500
+              focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+              transition
+              duration-500
+              cursor-pointer
+            "
+          >
+            A third link item
+          </button>
+          <button
+            type="button"
+            class="
+              text-left
+              px-6
+              py-2
+              border-b border-gray-200
+              w-full
+              hover:bg-gray-100 hover:text-gray-500
+              focus:outline-none focus:ring-0 focus:bg-gray-200 focus:text-gray-600
+              transition
+              duration-500
+              cursor-pointer
+            "
+          >
+            A fourth link item
+          </button>
+          <button
+            disabled=""
+            type="button"
+            class="
+              text-left
+              px-6
+              py-2
+              border-gray-200
+              w-full
+              rounded-b-lg
+              focus:outline-none focus:ring-0
+              text-gray-400
+              cursor-default
+            "
+          >
+            A disabled link item
+          </button>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Buttons -->
+
+<!-- Section: Flush -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="flush">Flush</h2>
+  <!--Description-->
+  <p class="mb-3">Listgroup flush class enables you to display the flush without the default background color,
+    borders and rounded corners.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example6">}}
+  <div class="flex justify-center">
+    <ul class="bg-white rounded-lg w-96 text-gray-900">
+      <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">An item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A second item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A third item</li>
+      <li class="px-6 py-2 border-b border-gray-200 w-full">A fourth item</li>
+      <li class="px-6 py-2 w-full rounded-b-lg">And a fifth one</li>
+    </ul>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <ul class="bg-white rounded-lg w-96 text-gray-900">
+          <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">An item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A second item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A third item</li>
+          <li class="px-6 py-2 border-b border-gray-200 w-full">A fourth item</li>
+          <li class="px-6 py-2 w-full rounded-b-lg">And a fifth one</li>
+        </ul>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Flush -->
+
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+      <!--Extended docs-->
+      <a href="https://mdbootstrap.com/docs/standard/extended/multiselect/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Multiselect</a>
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/components/buttons/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Buttons</a>
+      <a href="https://tailwind-elements.com/docs/standard/components/hover-effects/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Hover effect</a>                     
+                                  
+    </div>
+  </section>
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/components/list-group/">Bootstrap Images</a> from MDBootstrap.</p>
+
+

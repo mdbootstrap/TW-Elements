@@ -1,0 +1,353 @@
+---
+title: "File input"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind File input component"
+subheading: ""
+seo_title: "Tailwind CSS file input - examples & tutotial"
+description: "File upload input built with Tailwind CSS. Helps upload a single or many items. Supports images, files, and documents. Add items directly from your local storage."
+image: ""
+video: ""
+url: "/docs/standard/forms/file-input/"
+menu:
+  forms:
+    name: "File input"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">File input is a field which user can use to upload one or more files (photos, documents or any other file type) from the local storage.</p>
+
+  <p class="mb-3">Most common use examples of file upload component is CSV upload CRM system, avatar picture upload, simple GIF upload.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="flex justify-center">
+    <div class="mb-3 w-96">
+      <label for="formFile" class="form-label inline-block mb-2 text-gray-700">Default file input example</label>
+      <input class="form-control
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFile">
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <div class="mb-3 w-96">
+          <label for="formFile" class="form-label inline-block mb-2 text-gray-700">Default file input example</label>
+          <input class="form-control
+          block
+          w-full
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFile">
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+<!-- Section: Multiple files input -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="multiple">Multiple files input</h2>
+  <!--Description-->
+  <p class="mb-3">Use the <code>multiple</code> attribute to the input to add multiple files with one input.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div class="flex justify-center">
+    <div class="mb-3 w-96">
+      <label for="formFileMultiple" class="form-label inline-block mb-2 text-gray-700">Multiple files input example</label>
+      <input class="form-control
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFileMultiple" multiple>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <div class="mb-3 w-96">
+          <label for="formFileMultiple" class="form-label inline-block mb-2 text-gray-700">Multiple files input example</label>
+          <input class="form-control
+          block
+          w-full
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFileMultiple" multiple>
+        </div>
+      </div>
+
+      <!-- Custom scripts -->
+      <script type="text/javascript">
+        const checkbox = document.getElementById("flexCheckIndeterminate");
+        checkbox.indeterminate = true;
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Multiple files input -->
+
+<!-- Section: Disabled file input -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="disabled">Disabled file input</h2>
+  <!--Description-->
+  <p class="mb-3">Use the <code>disabled</code> attribute to make file input unusable and un-clickable.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div class="flex justify-center">
+    <div class="mb-3 w-96">
+      <label for="formFileDisabled" class="form-label inline-block mb-2 text-gray-700">Disabled file input example</label>
+      <input class="form-control
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-gray-100 bg-clip-padding
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFileDisabled" disabled>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <div class="mb-3 w-96">
+          <label for="formFileDisabled" class="form-label inline-block mb-2 text-gray-700">Disabled file input example</label>
+          <input class="form-control
+          block
+          w-full
+          px-3
+          py-1.5
+          text-base
+          font-normal
+          text-gray-700
+          bg-gray-100 bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFileDisabled" disabled>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Disabled file input -->
+
+<!-- Section: Small file input -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="small">Small file input</h2>
+  <!--Description-->
+  <p class="mb-3">File input size can be made small.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="flex justify-center">
+    <div class="mb-3 w-96">
+      <label for="formFileSm" class="form-label inline-block mb-2 text-gray-700">Small file input example</label>
+      <input class="form-control
+      block
+      w-full
+      px-2
+      py-1
+      text-sm
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileSm" type="file">
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <div class="mb-3 w-96">
+          <label for="formFileSm" class="form-label inline-block mb-2 text-gray-700">Small file input example</label>
+          <input class="form-control
+          block
+          w-full
+          px-2
+          py-1
+          text-sm
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileSm" type="file">
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Small file input -->
+
+<!-- Section: Large file input -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="large">Large file input</h2>
+  <!--Description-->
+  <p class="mb-3">File input size can be made large.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div class="flex justify-center">
+    <div class="mb-3 w-96">
+      <label for="formFileLg" class="form-label inline-block mb-2 text-gray-700">Large file input example</label>
+      <input class="form-control
+      block
+      w-full
+      px-2
+      py-1.5
+      text-xl
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileLg" type="file">
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex justify-center">
+        <div class="mb-3 w-96">
+          <label for="formFileLg" class="form-label inline-block mb-2 text-gray-700">Large file input example</label>
+          <input class="form-control
+          block
+          w-full
+          px-2
+          py-1.5
+          text-xl
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="formFileLg" type="file">
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Large file input -->
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+      <!--Extended docs-->
+      <a href="https://mdbootstrap.com/docs/standard/extended/bootstrap-survey-form/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Survey form</a>
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/forms/inputs/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Inputs</a>
+
+    </div>
+  </section>
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/forms/file/">Bootstrap File Input</a> from MDBootstrap.</p>
+

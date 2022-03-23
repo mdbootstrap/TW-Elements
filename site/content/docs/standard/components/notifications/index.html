@@ -1,0 +1,727 @@
+---
+title: "Notifications"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Notifications component"
+subheading: ""
+seo_title: "Tailwind CSS notification component - examples & tutorial"
+description: "Responsive notifications built with Tailwind CSS. Notifications provide quick, timely information about the application when it is not in use, such as the number of emails, a new photo notification and much more."
+image: ""
+video: ""
+url: "/docs/standard/components/notifications/"
+menu:
+  components:
+    name: "Notifications"
+---
+
+<!-- Section: Simple notification -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="simple">Simple notification</h2>
+  <!--Description-->
+  <p class="mb-3">Notification badges can evoke joy or distress, depending on why you're receiving them. We often see badges in the form of standard red dots on mobile app icons. Social media notification badges usually indicate participation, which is a good thing, indicating engagement.</p>
+
+  <p class="mb-3">Notification in their simplest form display to the upper right of the content that it wraps and requires the badge slot.</p>
+
+
+  {{< twsnippet/demo id="example1">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-red-600 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-blue-500 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>      
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-red-600 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-blue-500 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>     
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Simple notification -->
+
+<!-- Section: Classic badge notification -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="classic">Classic badge notification</h2>
+  <!--Description-->
+  <p class="mb-3">Notification allows you to use custom text inside to explain what the badge means.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-indigo-700 text-white rounded-full z-10">New</div> 
+    <div class="px-8 py-6 bg-pink-500 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+          </svg>
+      </div>
+    </div>
+  </div>   
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-indigo-700 text-white rounded-full z-10">New</div> 
+        <div class="px-8 py-6 bg-pink-500 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+              </svg>
+          </div>
+        </div>
+      </div>     
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Classic badge notification -->
+
+<!-- Section: Notification within tabs -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="tabs_notification">Notification within tabs</h2>
+  <!--Description-->
+  <p class="mb-3">Notifications can be used with an <a href="https://tailwind-elements.com/docs/standard/navigation/tabs/" class="text-blue-700">tabs.</a></p>
+
+  {{< twsnippet/demo id="example3">}}
+  <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab"
+    role="tablist">
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-home" class="
+        nav-link
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+        active
+      " id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home"
+        aria-selected="true">News</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-profile" class="
+        nav-link
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+        relative w-fit
+      " id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab"
+        aria-controls="tabs-profile" aria-selected="false">Notifications
+        <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-700 text-white rounded-full z-10">7</div>
+      </a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a href="#tabs-messages" class="
+        nav-link
+        block
+        font-medium
+        text-xs
+        leading-tight
+        uppercase
+        border-x-0 border-t-0 border-b-2 border-transparent
+        px-6
+        py-3
+        my-2
+        hover:border-transparent hover:bg-gray-100
+        focus:border-transparent
+      " id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab"
+        aria-controls="tabs-messages" aria-selected="false">Messages</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="tabs-tabContent">
+    <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
+      Tab 1 content
+    </div>
+    <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+      Tab 2 content
+    </div>
+    <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
+      Tab 3 content
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab"
+      role="tablist">
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-home" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+            active
+          " id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home"
+            aria-selected="true">News</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-profile" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+            relative w-fit
+          " id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab"
+            aria-controls="tabs-profile" aria-selected="false">Notifications
+            <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-700 text-white rounded-full z-10">7</div>
+          </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a href="#tabs-messages" class="
+            nav-link
+            block
+            font-medium
+            text-xs
+            leading-tight
+            uppercase
+            border-x-0 border-t-0 border-b-2 border-transparent
+            px-6
+            py-3
+            my-2
+            hover:border-transparent hover:bg-gray-100
+            focus:border-transparent
+          " id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab"
+            aria-controls="tabs-messages" aria-selected="false">Messages</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="tabs-tabContent">
+        <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
+          Tab 1 content
+        </div>
+        <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+          Tab 2 content
+        </div>
+        <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
+          Tab 3 content
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification within tabs -->
+
+<!-- Section: Notification within button -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="button_notification">Notification within button</h2>
+  <!--Description-->
+  <p class="mb-3">Notifications can be used with an <a href="https://tailwind-elements.com/docs/standard/components/buttons/" class="text-blue-700">buttons.</a></p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="inline-flex relative w-fit">
+    <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-indigo-700 text-white rounded-full z-10">99+</div> 
+      <button type="button" class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">E-mails</button>
+  </div>   
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="inline-flex relative w-fit">
+        <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-indigo-700 text-white rounded-full z-10">99+</div> 
+          <button type="button" class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">E-mails</button>
+      </div>   
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification within button -->
+
+<!-- Section: Notification within avatar -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="avatar_notification">Notification within avatar</h2>
+  <!--Description-->
+  <p class="mb-3">Notifications can be used with an <a href="https://tailwind-elements.com/docs/standard/components/collapse/" class="text-blue-700">avatar.</a></p>
+
+  <p class="mb-3">This is useful when you want to display the user from whom you received a message, for example.</a></p>
+
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example6">}}
+  <div class="my-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-blue-500 text-white rounded-full z-10">writing…</div> 
+    <div class="w-24 h-24">
+      <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="h-full w-full max-w-full object-cover rounded-lg">
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="my-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-2.5 text-xs leading-none text-center whitespace-nowrap align-baseline font-bold bg-blue-500 text-white rounded-full z-10">writing…</div> 
+        <div class="w-24 h-24">
+          <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" class="h-full w-full max-w-full object-cover rounded-lg">
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification within avatar -->
+
+<!-- Section: Notification start -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_start">Notification start</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display on the top on the left.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example9">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-0 right-auto bottom-auto left-0 -translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>    
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example9">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-0 right-auto bottom-auto left-0 -translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>    
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification start -->
+
+<!-- Section: Notification center -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_center">Notification center</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display on the top center.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example10">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-0 right-2/4 bottom-auto left-2/4 -translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>   
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example10">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-0 right-2/4 bottom-auto left-2/4 -translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>   
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification center -->
+
+<!-- Section: Notification end (default) -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_end">Notification end (default)</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display on the top on the right.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example11">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>  
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example11">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>  
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+<!-- Section: Notification end (default) -->
+
+<!-- Section: Notification middle start -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_middle_start">Notification middle start</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display in the middle on the left.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example12">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-2/4 right-auto bottom-2/4 left-0 -translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>    
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example12">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-2/4 right-auto bottom-2/4 left-0 -translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>     
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification middle start -->
+
+<!-- Section: Notification middle center -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_middle_center">Notification middle center</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display in the middle center.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example13">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-2/4 right-auto bottom-2/4 left-2/4 -translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>    
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example13">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-2/4 right-auto bottom-2/4 left-2/4 -translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>     
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification middle center -->
+
+<!-- Section: Notification middle end -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_middle_end">Notification middle end</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display in the middle on the right.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example14">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-2/4 right-0 bottom-2/4 left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>   
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example14">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-2/4 right-0 bottom-2/4 left-auto translate-x-2/4 -translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>   
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: Notification bottom start -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_middle_end">Notification bottom start</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display in the bottom left.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example15">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-auto right-auto bottom-0 left-0 -translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example15">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-auto right-auto bottom-0 left-0 -translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>  
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification bottom start -->
+
+<!-- Section: Notification bottom center -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_middle_center">Notification bottom center</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display in the bottom middle.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example16">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-auto right-2/4 bottom-0 left-2/4 -translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example16">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-auto right-2/4 bottom-0 left-2/4 -translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>      
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Notification bottom center -->
+
+<!-- Section: Notification bottom end -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="notification_middle_end">Notification bottom end</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following example to make the notification tag display in the bottom right.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example17">}}
+  <div class="m-6 inline-flex relative w-fit">
+    <div class="absolute inline-block top-auto right-0 bottom-0 left-auto translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+    <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+      <div>
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>  
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example17">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="m-6 inline-flex relative w-fit">
+        <div class="absolute inline-block top-auto right-0 bottom-0 left-auto translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 p-2.5 text-xs bg-pink-700 rounded-full z-10"></div> 
+        <div class="px-8 py-6 bg-indigo-400 flex items-center justify-center text-center rounded-lg shadow-lg">
+          <div>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="mx-auto text-white w-10" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"></path>
+            </svg>
+          </div>
+        </div>
+      </div> 
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+
+      <!--Main docs-->
+      <a href="https://tailwind-elements.com/docs/standard/components/badges/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Tailwind Badges</a>
+      <a href="https://tailwind-elements.com/docs/standard/navigation/tabs/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Tailwind Tabs</a>
+      <a href="https://tailwind-elements.com/docs/standard/components/buttons/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Tailwind Buttons</a>
+      <a href="https://tailwind-elements.com/docs/standard/components/avatar/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Tailwind Avatar</a>
+
+      
+      <!--Other-->   
+      <a href="https://www.youtube.com/watch?v=PJZvDj-GP1g&ab_channel=Keepcoding" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Bootstrap Modal Tutorial</a>
+    </div>
+  </section>
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/components/alerts/">Bootstrap Alerts</a> from MDBootstrap.</p>
+
+

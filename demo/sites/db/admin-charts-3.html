@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+    <style>
+      body {
+        background-color: hsl(0, 0%, 98%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Start your project here-->
+    <div>
+      <!-- Container for demo purpose -->
+      <div class="container my-12 py-12 mx-auto px-4 md:px-6 lg:px-12">
+        <!--Section: Design Block-->
+        <section class="mb-20 text-gray-800">
+          <div class="block rounded-lg shadow-lg bg-white p-6">
+            <div class="grid grid-cols-1 gap-4">
+              <div class="md:flex items-start">
+                <ul
+                  class="nav nav-pills flex flex-col flex-wrap list-none pl-0 mr-6 mb-6 md:mb-0"
+                  id="pills-tabVertical"
+                  role="tablist"
+                >
+                  <li class="nav-item flex-grow text-center mb-2" role="presentation">
+                    <a
+                      href="#pills-homeVertical"
+                      class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0 active"
+                      id="pills-home-tabVertical"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-homeVertical"
+                      role="tab"
+                      aria-controls="pills-homeVertical"
+                      aria-selected="true"
+                      >Sales</a
+                    >
+                  </li>
+                  <li class="nav-item flex-grow text-center my-2" role="presentation">
+                    <a
+                      href="#pills-profileVertical"
+                      class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
+                      id="pills-profile-tabVertical"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-profileVertical"
+                      role="tab"
+                      aria-controls="pills-profileVertical"
+                      aria-selected="false"
+                      >Orders</a
+                    >
+                  </li>
+                  <li class="nav-item flex-grow text-center mt-2" role="presentation">
+                    <a
+                      href="#pills-contactVertical"
+                      class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
+                      id="pills-contact-tabVertical"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-contactVertical"
+                      role="tab"
+                      aria-controls="pills-contactVertical"
+                      aria-selected="false"
+                      >Value</a
+                    >
+                  </li>
+                </ul>
+                <div class="tab-content w-full" id="pills-tabContentVertical">
+                  <div
+                    class="tab-pane fade show active text-center"
+                    id="pills-homeVertical"
+                    role="tabpanel"
+                    aria-labelledby="pills-home-tabVertical"
+                  >
+                    <p class="uppercase font-semibold text-gray-700 mb-2">Total sales</p>
+                    <p class="flex justify-center mb-6">
+                      <span class="text-2xl font-semibold mr-3">$ 4567</span>
+                      <span class="text-green-500 flex items-center">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-2 mr-1"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 448 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+                          ></path>
+                        </svg>
+                        <span class="text-xs font-semibold"> 13,48%</span>
+                      </span>
+                    </p>
+                    <hr />
+                    <div class="max-w-lg mx-auto px-6 pt-6 pb-2">
+                      <canvas id="chartDoughnut"></canvas>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade w-full text-center"
+                    id="pills-profileVertical"
+                    role="tabpanel"
+                    aria-labelledby="pills-profile-tabVertical"
+                  >
+                    <p class="uppercase font-semibold text-gray-700 mb-2">ORDERS</p>
+                    <p class="flex justify-center mb-6">
+                      <span class="text-2xl font-semibold mr-3">534</span>
+                      <span class="text-green-500 flex items-center">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-2 mr-1"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 448 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+                          ></path>
+                        </svg>
+                        <span class="text-xs font-semibold"> 23,58%</span>
+                      </span>
+                    </p>
+                    <hr />
+                    <div class="max-w-lg mx-auto px-6 pt-6 pb-2">
+                      <canvas id="chartRadar"></canvas>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade w-full text-center"
+                    id="pills-contactVertical"
+                    role="tabpanel"
+                    aria-labelledby="pills-contact-tabVertical"
+                  >
+                    <p class="uppercase font-semibold text-gray-700 mb-2">AVERAGE ORDER VALUE</p>
+                    <p class="flex justify-center mb-6">
+                      <span class="text-2xl font-semibold mr-3">$ 123</span>
+                      <span class="text-green-500 flex items-center">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          class="w-2 mr-1"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 448 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"
+                          ></path>
+                        </svg>
+                        <span class="text-xs font-semibold"> 18,49%</span>
+                      </span>
+                    </p>
+                    <hr />
+                    <div class="max-w-lg mx-auto px-6 pt-6 pb-2">
+                      <canvas id="chartPie"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--Section: Design Block-->
+      </div>
+      <!-- Container for demo purpose -->
+    </div>
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chart doughnut -->
+    <script>
+      const dataDoughnut = {
+        labels: ['JavaScript', 'Python', 'Ruby'],
+        datasets: [
+          {
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: ['rgb(133, 105, 241)', 'rgb(164, 101, 241)', 'rgb(101, 143, 241)'],
+            hoverOffset: 4,
+          },
+        ],
+      };
+
+      const configDoughnut = {
+        type: 'doughnut',
+        data: dataDoughnut,
+        options: {},
+      };
+
+      var chartBar = new Chart(document.getElementById('chartDoughnut'), configDoughnut);
+    </script>
+
+    <!-- Chart radar -->
+    <script>
+      const dataRadar = {
+        labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+        datasets: [
+          {
+            label: 'My First Dataset',
+            data: [65, 59, 90, 81, 56, 55, 40],
+            fill: true,
+            backgroundColor: 'rgba(133, 105, 241, 0.2)',
+            borderColor: 'rgb(133, 105, 241)',
+            pointBackgroundColor: 'rgb(133, 105, 241)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(133, 105, 241)',
+          },
+          {
+            label: 'My Second Dataset',
+            data: [28, 48, 40, 19, 96, 27, 100],
+            fill: true,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgb(54, 162, 235)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)',
+          },
+        ],
+      };
+
+      const configRadarChart = {
+        type: 'radar',
+        data: dataRadar,
+        options: {},
+      };
+
+      var chartBar = new Chart(document.getElementById('chartRadar'), configRadarChart);
+    </script>
+
+    <!-- Chart pie -->
+    <script>
+      const dataPie = {
+        labels: ['JavaScript', 'Python', 'Ruby'],
+        datasets: [
+          {
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: ['rgb(133, 105, 241)', 'rgb(164, 101, 241)', 'rgb(101, 143, 241)'],
+            hoverOffset: 4,
+          },
+        ],
+      };
+
+      const configPie = {
+        type: 'pie',
+        data: dataPie,
+        options: {},
+      };
+
+      var chartBar = new Chart(document.getElementById('chartPie'), configPie);
+    </script>
+  </body>
+</html>

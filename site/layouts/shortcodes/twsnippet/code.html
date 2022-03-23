@@ -1,0 +1,12 @@
+{{/* Shortcodes are evaluated inside-out so we generate a hash in the `code` shortcode and set it in the .Parent.Scratch and in the parent we extract them in the same order they get rendered */}}
+{{ $hashes := (default slice (.Parent.Scratch.Get "hashes")) }}
+{{ $hash := (hmac "sha1" (delimit (seq 9 | shuffle) "") (.Get "lang")) }}
+{{ .Parent.Scratch.Set "hashes" ($hashes | append $hash)}}
+
+<div class="tab-pane fade {{ if eq (.Get `active`) true }} active show {{end}}" id="mdb_{{ $hash }}" role="tabpanel">
+    <pre class="grey lighten-3 mb-0 line-numbers language-{{.Get `lang`}}">
+        <code>
+            {{ .Inner | htmlEscape | htmlUnescape }}
+        </code>
+    </pre>
+</div>

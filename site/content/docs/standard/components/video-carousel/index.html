@@ -1,0 +1,406 @@
+---
+title: "Video carousel"
+date: 2021-04-29T16:00:58+02:00
+draft: "false"
+main_title: "Tailwind video carousel / gallery component"
+subheading: ""
+seo_title: "Tailwind CSS video carousel / gallery component - examples & tutorial"
+description: "Responsive video carousel built with Tailwind CSS. An example of responsive carousel with videos instead of images."
+image: ""
+video: ""
+url: "/docs/standard/components/video-carousel/"
+menu:
+  components:
+    name: "Video carousel"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">The video carousel uses the <a href="https://tailwind-elements.com/docs/standard/components/carousel/" class="text-blue-700">carousel</a>
+    functionality to make it cycle through different elements.</p>
+
+  <p class="mb-3">Video carousel is useful when you have several videos to show and you have limited space on the page.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade relative" data-bs-ride="carousel">
+    <div
+      class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4"
+    >
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner relative w-full overflow-hidden">
+      <div class="carousel-item active relative float-left w-full">
+        <video class="w-full" autoplay loop muted>
+          <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
+        </video>
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item relative float-left w-full">
+        <video class="w-full" autoplay loop muted>
+          <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
+        </video>
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item relative float-left w-full">
+        <video class="w-full" autoplay loop muted>
+          <source src="https://mdbcdn.b-cdn.net/img/video/Agua-natural.mp4" type="video/mp4" />
+        </video>
+        <div class="carousel-caption hidden md:block absolute text-center">
+          <h5 class="text-xl">Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev"
+    >
+      <span
+        class="carousel-control-prev-icon inline-block bg-no-repeat"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next"
+    >
+      <span
+        class="carousel-control-next-icon inline-block bg-no-repeat"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div id="carouselExampleCaptions" class="carousel slide carousel-fade relative" data-bs-ride="carousel">
+        <div
+          class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4"
+        >
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner relative w-full overflow-hidden">
+          <div class="carousel-item active relative float-left w-full">
+            <video class="w-full" autoplay loop muted>
+              <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
+            </video>
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <video class="w-full" autoplay loop muted>
+              <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
+            </video>
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <video class="w-full" autoplay loop muted>
+              <source src="https://mdbcdn.b-cdn.net/img/video/Agua-natural.mp4" type="video/mp4" />
+            </video>
+            <div class="carousel-caption hidden md:block absolute text-center">
+              <h5 class="text-xl">Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span
+            class="carousel-control-prev-icon inline-block bg-no-repeat"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span
+            class="carousel-control-next-icon inline-block bg-no-repeat"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+
+<!-- Section: Full page carousel -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="full-page">Full page carousel</h2>
+  <!--Description-->
+  <p class="mb-3">Use videos full-page sliders that relate directly to the content to help create a positive first impression, and add CTA elements to navigate the user.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <p class="mb-4">See live example of the full page carousel here in the <a href="https://tailwind-elements.com/snippets/tailwind/tailwindelements/3668945?action=fullscreen" class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out" target="_blank">snippet</a>.</p>
+
+  <div id="carouselExampleCaptionsFull" class="carousel slide carousel-fade relative" data-bs-ride="carousel">
+    <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptionsFull"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptionsFull"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleCaptionsFull"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner relative w-full overflow-hidden">
+      <div class="carousel-item active relative float-left w-full bg-no-repeat bg-cover bg-center">
+        <video class="" playsinline autoplay muted loop>
+          <source class="" src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0, 0, 0, 0.6);">
+          <div class="flex justify-center items-center h-full">
+            <div class="text-white text-center px-14 px-md-0">
+              <h2 class="text-3xl font-semibold mb-4">Learn Tailwind Elements</h2>
+              <h5 class="text-lg font-semibold mb-6">Best & free guide of responsive web design</h5>
+              <div class="md:space-x-2">
+                <a type="button" class="inline-block px-6 py-2 mb-2 md:mb-0 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="#!" role="button"     data-mdb-ripple="true" data-mdb-ripple-color="light">Start tutorial</a>
+                <a type="button" class="inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="#!" role="button"     data-mdb-ripple="true" data-mdb-ripple-color="light">Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item relative float-left w-full bg-no-repeat bg-cover bg-center">
+        <video class="" playsinline autoplay muted loop>
+          <source class="" src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="flex justify-center items-center h-full">
+            <div class="text-white text-center px-14 px-md-0">
+              <h2 class="text-3xl font-semibold mb-4">You can place here any content</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item relative float-left w-full bg-no-repeat bg-cover bg-center">
+        <video class="" playsinline autoplay muted loop>
+          <source class="" src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background: linear-gradient(45deg, rgba(29, 236, 197, 0.7), rgba(91, 14, 214, 0.7) 100%);">
+          <div class="flex justify-center items-center h-full">
+            <div class="text-white text-center px-14 px-md-0">
+              <h2 class="text-3xl font-semibold mb-4">And cover it with any mask</h2>
+              <a type="button" class="inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="#!" role="button"     data-mdb-ripple="true" data-mdb-ripple-color="light">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+      type="button"
+      data-bs-target="#carouselExampleCaptionsFull"
+      data-bs-slide="prev"
+    >
+      <span
+        class="carousel-control-prev-icon inline-block bg-no-repeat"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+      type="button"
+      data-bs-target="#carouselExampleCaptionsFull"
+      data-bs-slide="next"
+    >
+      <span
+        class="carousel-control-next-icon inline-block bg-no-repeat"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div id="carouselExampleCaptionsFull" class="carousel slide carousel-fade relative h-screen" data-bs-ride="carousel">
+        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptionsFull"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptionsFull"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptionsFull"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner relative w-full overflow-hidden h-screen">
+          <div class="carousel-item active relative float-left w-full h-screen bg-no-repeat bg-cover bg-center">
+            <video class="min-w-full min-h-full max-w-fit xl:min-w-0 xl:min-h-0" playsinline autoplay muted loop>
+              <source class="" src="https://mdbootstrap.com/img/video/Lines.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0, 0, 0, 0.6);">
+              <div class="flex justify-center items-center h-full">
+                <div class="text-white text-center px-14 px-md-0">
+                  <h2 class="text-3xl font-semibold mb-4">Learn Tailwind Elements</h2>
+                  <h5 class="text-lg font-semibold mb-6">Best & free guide of responsive web design</h5>
+                  <div class="md:space-x-2">
+                    <a type="button" class="inline-block px-6 py-2 mb-2 md:mb-0 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="#!" role="button"     data-mdb-ripple="true" data-mdb-ripple-color="light">Start tutorial</a>
+                    <a type="button" class="inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="#!" role="button"     data-mdb-ripple="true" data-mdb-ripple-color="light">Read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item relative float-left w-full h-screen bg-no-repeat bg-cover bg-center">
+            <video class="min-w-full min-h-full max-w-fit xl:min-w-0 xl:min-h-0" playsinline autoplay muted loop>
+              <source class="" src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background-color: rgba(0, 0, 0, 0.3)">
+              <div class="flex justify-center items-center h-full">
+                <div class="text-white text-center px-14 px-md-0">
+                  <h2 class="text-3xl font-semibold mb-4">You can place here any content</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item relative float-left w-full h-screen bg-no-repeat bg-cover bg-center">
+            <video class="min-w-full min-h-full max-w-fit xl:min-w-0 xl:min-h-0" playsinline autoplay muted loop>
+              <source class="" src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed" style="background: linear-gradient(45deg, rgba(29, 236, 197, 0.7), rgba(91, 14, 214, 0.7) 100%);">
+              <div class="flex justify-center items-center h-full">
+                <div class="text-white text-center px-14 px-md-0">
+                  <h2 class="text-3xl font-semibold mb-4">And cover it with any mask</h2>
+                  <a type="button" class="inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" href="#!" role="button"     data-mdb-ripple="true" data-mdb-ripple-color="light">Learn more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselExampleCaptionsFull"
+          data-bs-slide="prev"
+        >
+          <span
+            class="carousel-control-prev-icon inline-block bg-no-repeat"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleCaptionsFull"
+          data-bs-slide="next"
+        >
+          <span
+            class="carousel-control-next-icon inline-block bg-no-repeat"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+
+<!-- Section: Full page carousel -->

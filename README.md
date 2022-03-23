@@ -1,92 +1,118 @@
-<p align="center">
-  <a href="https://perfectscrollbar.com/?utm_source=GitHub&utm_medium=PerfectScrollbar">
-    <img src="https://perfectscrollbar.com/logo2.png" width="300" height="200">
-  </a>
-</p>
+# Tailwind Elements
 
-<h1 align="center">perfect-scrollbar</h1>
+### Collection of free, popular components like modal, dropdown, carousel, popover, cards, charts and many more.
 
-<p align="center">Minimalistic but perfect custom scrollbar plugin<p>
+<a href="https://twitter.com/intent/tweet/?text=Thanks+@TailwindElement+for+creating+an+amazing+collection+of+open+source+components+for+@tailwindcss%20https://tailwind-elements.com/&hashtags=tailwindCSS,bootstrap,webdesign,javascript,100DaysOfCode,DevCommunity"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
 
+---
 
-<p align="center">	
-  <a href="https://npmcharts.com/compare/perfect-scrollbar?minimal=true"><img src="https://img.shields.io/npm/dm/perfect-scrollbar.svg" alt="Downloads"></a>
-  <a href="https://github.com/mdbootstrap/bootstrap-material-design/blob/master/License.pdf"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>	
-  <a href="https://badge.fury.io/js/perfect-scrollbar"><img src="https://badge.fury.io/js/perfect-scrollbar.svg" alt="npm"></a>	
-<a href="https://twitter.com/intent/tweet/?text=Thanks+@mdbootstrap+for+maintaining+amazing+and+free+Perfect+Scrollbar+Plugin%20https://perfectscrollbar.com/&hashtags=javascript,code,webdesign,bootstrap"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
-<a href="https://www.youtube.com/watch?v=c9B4TPnak1A"><img alt="YouTube Video Views" src="https://img.shields.io/youtube/views/c9B4TPnak1A?label=Bootstrap%205%20Tutorial%20Views&style=social"></a>
-</p>
+[![Tailwind Elements](https://tailwind-elements.com/img/logo.png)](https://tailwind-elements.com/)
 
-________
+Tailwind Elements **is a plugin** that extends the functionality of the library with many interactive components.
 
+In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript. However, they do not require any additional installation, all the necessary code is always included in the example and copied to any Tailwind project - it will work.
 
+---
 
-## Why perfect-scrollbar?
+## Quick Start tutorial
 
-perfect-scrollbar is minimalistic but *perfect* (for us, and maybe for most
-developers) scrollbar plugin.
+##### NPM
 
-* No change on design layout
-* No manipulation on DOM tree
-* Use plain `scrollTop` and `scrollLeft`
-* Scrollbar style is fully customizable
-* Efficient update on layout change
+1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ 'Node.js (LTS)') and [TailwindCSS](https://tailwindcss.com/ 'TailwindCSS').
 
-We hope you will love it!
+2. Run the following command to install the package via NPM:
 
-## Live preview
+```
+npm install tw-elements
+```
 
-Check out the [Live Preview](https://mdbootstrap.com/snippets/standard/marveluck/3498209?utm_source=GitHub&utm_medium=PerfectScrollbar) snippet. You can fork it right away for testing and experimenting purposes.
+3. Tailwind Elements is a plugin and should be included inside the **tailwind.config.js** file. It is also recommended to extend the content array with a js file that loads dynamic component classes:
 
+```javascript
+module.exports = {
+  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
+  plugins: [require('tw-elements/dist/plugin')],
+};
+```
 
+4.  Dynamic components will work after adding the js file:
 
-## Related resources
+```
+<script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+```
 
+Alternatively, you can import it in the following way (bundler version):
 
-- [Scroll Back To Top](https://mdbootstrap.com/docs/standard/extended/back-to-top/?utm_source=GitHub&utm_medium=PerfectScrollbar)
+```
+import 'tw-elements';
+```
 
-- [Scrollspy](https://mdbootstrap.com/docs/standard/navigation/scrollspy/?utm_source=GitHub&utm_medium=PerfectScrollbar)
+##### MDB GO / CLI
 
-- [Scrollbar](https://mdbootstrap.com/docs/standard/methods/scrollbar/)
+Create, deploy and host anything with a single command.
 
-- [Scroll Status](https://mdbootstrap.com/docs/standard/plugins/scroll-status/?utm_source=GitHub&utm_medium=PerfectScrollbar)
+1. To start using MDB GO / CLI install it with one command:
 
-## Social Media
+```
+npm install -g mdb-cli
+```
 
- - [Twitter](https://twitter.com/MDBootstrap)
+2. Log into the CLI using your MDB account:
 
- - [Facebook](https://www.facebook.com/mdbootstrap) 
+```
+mdb login
+```
 
- - [Pinterest](https://pl.pinterest.com/mdbootstrap)
+3. Initialize a project and choose **Tailwind Elements** from the list:
 
- - [Dribbble](https://dribbble.com/mdbootstrap)
+```
+mdb init
+```
 
- - [LinkedIn](https://www.linkedin.com/company/material-design-for-bootstrap)
- 
- - [YouTube](https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA)
+4. Install the dependencies (inside the project directory):
 
-## Get Free Material Design for Bootstrap 5
+```
+npm install
+```
 
-<table>
-  <tbody>
-    <tr>
-      <td>
-          <a href="https://mdbootstrap.com/docs/standard/" alt="Bootstrap 5" rel="dofollow">
-          		<img src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/pro/_main/assets/mdb5-about-v2.jpg">
-          </a>
-      </td>
-      <td>
-        <ul style="list-style-type:none;">
-        <li>Material Design 2.0 + latest Bootstrap 5 based on plain JavaScript. 700+ material UI components, super simple, 1 minute installation, free templates & much more</li>      
-</ul>
-      </td>
-    </tr>
-   </tbody>
-</table>
+5. Run the app:
 
-## Free Tutorials
+```
+npm start
+```
 
-Huge collection of free and high-quality tutorials. Learn Bootstrap, Angular, React, Vue, WordPress and many more. Create your own websites and apps.
+6. Publish when you're ready:
 
+```
+mdb publish
+```
 
-[Check it out](https://www.youtube.com/c/Mdbootstrap)
+##### CDN
+
+You can easily test Tailwind Elements by adding CDN scripts to your classic HTML template without the need for installing any packages.
+
+Add the stylesheet files below in the _head_ section:
+
+```
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+```
+
+Require the js bundled file right before the _body_ closing tag:
+
+```
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+```
