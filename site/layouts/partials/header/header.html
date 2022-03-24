@@ -1,12 +1,13 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
+
 <nav class="shadow">
-  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+
+  <div class="px-5 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex-1 flex items-center sm:items-stretch sm:justify-start">
         <div class="flex-shrink-0 flex items-center">
           <style></style>
           {{ if ne .IsHome true }}
-          <div id="hamburger" class="ml-2 visible md:invisible text-gray-400">
+          <div id="hamburger" class="mr-2 flex md:hidden text-gray-400">
             <a href="#" class="text-gray-400">
               <svg fill="hsl(224, 7.2%, 40%)" viewBox="0 0 100 80" width="25" height="25">
                 <rect width="80" height="14"></rect>
@@ -17,7 +18,7 @@
           </div>
           {{ end }}
           <a href="/" class="
-              px-3
+              pr-3
               py-2
               rounded-md
               font-medium
@@ -47,6 +48,7 @@
                 rounded-md
                 text-sm
                 font-medium
+                hidden xl:block
               ">Playground</a>
 
             <a target="_blank" href="https://mdbgo.com/" class="
@@ -57,6 +59,14 @@
                 text-sm
                 font-medium
               ">Free hosting</a>
+              <a target="_blank" href="https://mdbootstrap.com/services/" class="
+                  hover:text-blue-600
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                ">Services</a>
           </div>
         </div>
       </div>
@@ -124,7 +134,7 @@
         <a href="https://github.com/dawidadach/Tailwind-Elements/" target="_blank" class="
             text-gray-400
             hover:text-blue-600
-            px-3
+            pl-3
             py-2
             rounded-md
             text-sm

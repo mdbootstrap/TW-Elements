@@ -1,0 +1,337 @@
+<script>
+  class Search {
+    constructor(input, icon, list, form, dropdown, count, jsonFile) {
+      this.input = input;
+
+      this.list = list;
+
+      this.icon = icon;
+
+      this.form = form;
+
+      this.dropdown = dropdown;
+
+      this.count = count;
+
+      this.data = [];
+
+      this.jsonFile = jsonFile;
+
+      this.searchValue = '';
+
+      this.keycodes = Object.freeze({
+        ARROW_UP: 38,
+        ARROW_DOWN: 40,
+        ENTER: 13,
+        SLASH: 191,
+        ESCAPE: 27,
+      });
+    }
+
+    get visibleDropdown() {
+      return this.dropdown.style.display === 'block';
+    }
+
+    get options() {
+      return this.list.getElementsByTagName('a');
+    }
+
+    get results() {
+      const result = this.data.filter((entry) => this.compare(entry));
+      return this.sort(result);
+    }
+
+    init() {
+      fetch('/' + this.jsonFile)
+        .then((response) => response.json())
+        .then((response) => {
+          this.data = [...response];
+
+          //new mdb.PerfectScrollbar(this.list);
+
+          this.bindEvents();
+        });
+    }
+
+    bindEvents() {
+      this.input.addEventListener('input', (e) => this.search(e));
+
+      this.input.addEventListener('focus', (e) => {
+        this.icon.classList.add('font-bold');
+
+        if (e.target.value.length > 0) {
+          this.search(e);
+        }
+      });
+
+      this.input.addEventListener('blur', () => {
+        this.icon.classList.remove('font-bold');
+      });
+
+      this.input.addEventListener('keydown', (e) => {
+        if (e.keyCode === this.keycodes.ARROW_DOWN && this.options.length > 0) {
+          e.preventDefault();
+
+          this.options[0].focus();
+        }
+      });
+
+      window.addEventListener('click', (e) => {
+        if (this.visibleDropdown && this.isOutside(e.target)) {
+          this.toggleDropdown(false);
+        }
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.keyCode === this.keycodes.SLASH && e.ctrlKey && e.target !== this.input) {
+          e.preventDefault();
+          this.input.focus();
+        } else if (e.keyCode === this.keycodes.ESCAPE && this.visibleDropdown) {
+          this.toggleDropdown(false);
+        }
+      });
+    }
+
+    search(e) {
+      this.searchValue = this.normalizeString(this.getSearchValue(e.target.value));
+
+      this.toggleDropdown(this.searchValue.length > 0);
+
+      this.renderResults(this.getResultsMarkup());
+
+      this.setupKeyboardNavigation();
+    }
+
+    normalizeString(string) {
+      return string.trim().toLowerCase();
+    }
+
+    getSearchValue(string) {
+      if (string.length > 1 && string[0] === '/') return string.slice(1);
+
+      return string;
+    }
+
+    toggleDropdown(value) {
+      const display = value ? 'block' : 'none';
+
+      this.dropdown.style.display = display;
+    }
+
+    renderResults(markup) {
+      this.list.innerHTML = markup;
+
+      this.count.innerHTML = this.results.length;
+    }
+
+    getResultsMarkup() {
+      return this.results
+        .map((result, i) => {
+          const keywords = result.keywords.filter(
+            (keyword) => this.searchValue.length > 0 && keyword.match(this.searchValue)
+          );
+
+          return `
+      <li class="p-0 pt-2">
+        <a class="py-1" href="${result.href}">
+          <p class="uppercase text-gray-600 mb-0">${this.highlightSearch(
+            result.name,
+            this.searchValue
+          )}</p>
+          <p class="text-sm mb-0 pb-2 text-gray-400 font-semibold">Category: ${this.highlightSearch(
+            result.category,
+            this.searchValue
+          )}</p>
+          ${
+            keywords.length > 0
+              ? `<p class="text-sm text-gray-400 mb-0 pb-2 " style="max-width: 100%;    white-space: nowrap;     text-overflow: ellipsis;
+    overflow: hidden;">${this.formatKeywords(keywords)}</p>`
+              : ''
+          }
+        </a>
+        ${i !== this.results.length - 1 ? '<hr class="m-0 p-0 w-50">' : ''}
+      </li>
+    `;
+        })
+        .join('\n');
+    }
+
+    compare({ name, keywords, category }) {
+      return (
+        this.searchValue === '/' ||
+        this.normalizeString(name).match(this.searchValue) ||
+        this.normalizeString(category).match(this.searchValue) ||
+        keywords.find((keyword) => keyword.match(this.searchValue))
+      );
+    }
+
+    sort(entries) {
+      return [
+        ...entries
+          .filter((e) => e.priority && e.priority[this.searchValue])
+          .sort((a, b) => (a.priority[this.searchValue] > b.priority[this.searchValue] ? 1 : -1)),
+        ...entries.filter((e) => !e.priority || !e.priority[this.searchValue]),
+      ];
+    }
+
+    highlightSearch(string) {
+      const searchIndex = this.normalizeString(string).indexOf(this.searchValue);
+
+      if (searchIndex === -1) return string;
+
+      return `${string.slice(0, searchIndex)}<u class="font-medium	text-blue-600 ">${string.slice(
+        searchIndex,
+        searchIndex + this.searchValue.length
+      )}</u>${string.slice(searchIndex + this.searchValue.length)}`;
+    }
+
+    formatKeywords(keywords) {
+      return keywords.map((keyword) => this.highlightSearch(keyword)).join(', ');
+    }
+
+    setupKeyboardNavigation() {
+      Array.from(this.options).forEach((option, i) => {
+        option.addEventListener('keydown', (e) => this.focusNextOption(e, i));
+      });
+    }
+
+    focusNextOption(e, index) {
+      let direction;
+
+      if (e.keyCode === this.keycodes.ARROW_DOWN) direction = 1;
+      else if (e.keyCode === this.keycodes.ARROW_UP) direction = -1;
+      else return;
+
+      e.preventDefault();
+
+      const next =
+        index + direction > this.options.length - 1
+          ? 0
+          : index + direction < 0
+          ? this.options.length - 1
+          : index + direction;
+
+      this.options[next].focus();
+    }
+
+    isOutside(element) {
+      if (element === this.form) return false;
+
+      if (element === document.body) return true;
+
+      return this.isOutside(element.parentNode);
+    }
+  }
+
+  (function () {
+    const searchInput = document.getElementById('mdb-5-search-input');
+    const searchIcon = document.getElementById('mdb-5-search-icon');
+    const searchList = document.getElementById('mdb-5-search-list');
+    const searchForm = document.getElementById('mdb-5-search-container');
+    const searchDropdown = document.getElementById('mdb-5-search-dropdown');
+    const searchCount = document.getElementById('mdb-5-search-count');
+
+    let searchJsonFile;
+    searchJsonFile = 'search.json';
+
+    var scripts = document.getElementsByTagName('script'),
+      src = scripts[scripts.length - 1].src;
+
+    const search = new Search(
+      searchInput,
+      searchIcon,
+      searchList,
+      searchForm,
+      searchDropdown,
+      searchCount,
+      searchJsonFile
+    );
+
+    search.init();
+  })();
+
+  if (document.getElementById('close_icon')) {
+    // grab everything we need
+    const btn = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const close = document.getElementById('close_icon');
+
+    // add our event listener for the click
+    btn.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+    });
+
+    close.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+    });
+  }
+
+  //Scrollspy
+
+  (function () {
+    let menuSection = document.querySelectorAll('menu li');
+
+    if (menuSection.length == 0) return;
+
+    // for clickable event
+    menuSection.forEach((v) => {
+      v.onclick = () => {
+        setTimeout(() => {
+          menuSection.forEach((j) => j.classList.remove('active'));
+          v.classList.add('active');
+        }, 300);
+      };
+    });
+
+    // for window scrolldown event
+
+    window.onscroll = () => {
+      let mainSection = document.querySelectorAll('main h2');
+
+      mainSection.forEach((v, i) => {
+        let rect = v.getBoundingClientRect().y;
+
+        if (rect < window.innerHeight + -1100) {
+          menuSection.forEach((v) => v.classList.remove('active'));
+          menuSection[i].classList.add('active');
+        }
+      });
+    };
+  })();
+
+  const clip = document.querySelectorAll('.clip');
+  for (let i = 0; i < clip.length; i++) {
+    clip[i].addEventListener('mouseenter', function (e) {
+      clip[i].play();
+    });
+    clip[i].addEventListener('mouseout', function (e) {
+      clip[i].pause();
+    });
+  }
+</script>
+<script type="text/javascript" src="/js/index.min.js"></script>
+
+<!-- PRISM -->
+<script type="text/javascript" src="/js/new-prism.js"></script>
+<!-- MDB SNIPPET -->
+<!-- <script type="text/javascript" src="/js/twsnippet.js"></script> -->
+<link rel="stylesheet" href="/css/new-prism.css" />
+
+<script>
+  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new Popover(popoverTriggerEl);
+  });
+
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new Tooltip(tooltipTriggerEl);
+  });
+</script>
+<script>
+  if (document.getElementById('flexCheckIndeterminate')) {
+    const checkbox = document.getElementById('flexCheckIndeterminate');
+    checkbox.indeterminate = true;
+  }
+</script>
