@@ -35,10 +35,11 @@ menu:
   {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
 </div>
 
-<p class="mt-6 mb-2">3. Require Tailwind Elements as a plugin inside the <code>tailwind.config.js</code> file:</p>
+<p class="mt-6 mb-2">3. Require Tailwind Elements as a plugin inside the <code>tailwind.config.js</code> file. Additionally to your own <code>content</code> data you should add tw-elements to apply the classes from the interactive components:</p>
 <div class="pt-2">
   {{< twsnippet/wrapper "tailwind.config.js">}}{{< twsnippet/code active=true lang="JavaScript">}}
     module.exports = {
+      content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
       plugins: [
         require('tw-elements/dist/plugin')
       ]
