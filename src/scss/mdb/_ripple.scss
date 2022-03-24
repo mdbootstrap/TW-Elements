@@ -1,0 +1,142 @@
+.ripple-surface {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.ripple-surface-unbound {
+  overflow: visible;
+}
+.ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.2) 0,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.5) 60%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  opacity: 0.5;
+  pointer-events: none;
+  position: absolute;
+  touch-action: none;
+  transform: scale(0);
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0, 0, 0.15, 1), cubic-bezier(0, 0, 0.15, 1);
+  z-index: 999;
+}
+.ripple-wave.active {
+  transform: scale(1);
+  opacity: 0;
+}
+.btn .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    hsla(0, 0%, 100%, 0.2) 0,
+    hsla(0, 0%, 100%, 0.3) 40%,
+    hsla(0, 0%, 100%, 0.4) 50%,
+    hsla(0, 0%, 100%, 0.5) 60%,
+    hsla(0, 0%, 100%, 0) 70%
+  );
+}
+.ripple-surface-primary .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(18, 102, 241, 0.2) 0,
+    rgba(18, 102, 241, 0.3) 40%,
+    rgba(18, 102, 241, 0.4) 50%,
+    rgba(18, 102, 241, 0.5) 60%,
+    rgba(18, 102, 241, 0) 70%
+  );
+}
+.ripple-surface-secondary .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(178, 60, 253, 0.2) 0,
+    rgba(178, 60, 253, 0.3) 40%,
+    rgba(178, 60, 253, 0.4) 50%,
+    rgba(178, 60, 253, 0.5) 60%,
+    rgba(178, 60, 253, 0) 70%
+  );
+}
+.ripple-surface-success .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 183, 74, 0.2) 0,
+    rgba(0, 183, 74, 0.3) 40%,
+    rgba(0, 183, 74, 0.4) 50%,
+    rgba(0, 183, 74, 0.5) 60%,
+    rgba(0, 183, 74, 0) 70%
+  );
+}
+.ripple-surface-info .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(57, 192, 237, 0.2) 0,
+    rgba(57, 192, 237, 0.3) 40%,
+    rgba(57, 192, 237, 0.4) 50%,
+    rgba(57, 192, 237, 0.5) 60%,
+    rgba(57, 192, 237, 0) 70%
+  );
+}
+.ripple-surface-warning .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 169, 0, 0.2) 0,
+    rgba(255, 169, 0, 0.3) 40%,
+    rgba(255, 169, 0, 0.4) 50%,
+    rgba(255, 169, 0, 0.5) 60%,
+    rgba(255, 169, 0, 0) 70%
+  );
+}
+.ripple-surface-danger .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(249, 49, 84, 0.2) 0,
+    rgba(249, 49, 84, 0.3) 40%,
+    rgba(249, 49, 84, 0.4) 50%,
+    rgba(249, 49, 84, 0.5) 60%,
+    rgba(249, 49, 84, 0) 70%
+  );
+}
+.ripple-surface-light .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    hsla(0, 0%, 98.4%, 0.2) 0,
+    hsla(0, 0%, 98.4%, 0.3) 40%,
+    hsla(0, 0%, 98.4%, 0.4) 50%,
+    hsla(0, 0%, 98.4%, 0.5) 60%,
+    hsla(0, 0%, 98.4%, 0) 70%
+  );
+}
+.ripple-surface-dark .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(38, 38, 38, 0.2) 0,
+    rgba(38, 38, 38, 0.3) 40%,
+    rgba(38, 38, 38, 0.4) 50%,
+    rgba(38, 38, 38, 0.5) 60%,
+    rgba(38, 38, 38, 0) 70%
+  );
+}
+.ripple-surface-white .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    hsla(0, 0%, 100%, 0.2) 0,
+    hsla(0, 0%, 100%, 0.3) 40%,
+    hsla(0, 0%, 100%, 0.4) 50%,
+    hsla(0, 0%, 100%, 0.5) 60%,
+    hsla(0, 0%, 100%, 0) 70%
+  );
+}
+.ripple-surface-black .ripple-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.2) 0,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.5) 60%,
+    transparent 70%
+  );
+}

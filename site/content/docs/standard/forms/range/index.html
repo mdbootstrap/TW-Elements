@@ -15,9 +15,22 @@ menu:
 ---
 
 <!-- prettier-ignore -->
-{{< twsnippet/demo id="example1" title_id="empty" title="Empty">}}
+{{< twsnippet/demo id="example1" title_id="basic" title="Basic example">}}
 <div class="relative pt-1">
-  <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200"></div>
+  <label for="customRange1" class="form-label">Example range</label>
+  <input
+    type="range"
+    class="
+      form-range
+      appearance-none
+      w-full
+      h-6
+      p-0
+      bg-transparent
+      focus:outline-none focus:ring-0 focus:shadow-none
+    "
+    id="customRange1"
+  />
 </div>
 {{< /twsnippet/demo >}}
 
@@ -26,31 +39,43 @@ menu:
     {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
     >}}
     <div class="relative pt-1">
-      <div
-        class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200"
-      ></div>
+      <label for="customRange1" class="form-label">Example range</label>
+      <input
+        type="range"
+        class="
+          form-range
+          appearance-none
+          w-full
+          h-6
+          p-0
+          bg-transparent
+          focus:outline-none focus:ring-0 focus:shadow-none
+        "
+        id="customRange1"
+      />
     </div>
     {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
 </section>
 
 <!-- prettier-ignore -->
-{{< twsnippet/demo id="example2" title_id="filled" title="Filled">}}
+{{< twsnippet/demo id="example2" title_id="disabled" title="Disabled">}}
 <div class="relative pt-1">
-  <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
-    <div
-      style="width: 30%"
-      class="
-        shadow-none
-        flex flex-col
-        text-center
-        whitespace-nowrap
-        text-white
-        justify-center
-        bg-pink-500
-      "
-    ></div>
-  </div>
+  <label for="disabledRange" class="form-label">Disabled range</label>
+  <input
+    type="range"
+    class="
+      form-range form-range
+      appearance-none
+      w-full
+      h-6
+      p-0
+      bg-transparent
+      focus:outline-none focus:ring-0 focus:shadow-none
+    "
+    id="disabledRange"
+    disabled
+  />
 </div>
 {{< /twsnippet/demo >}}
 
@@ -59,51 +84,45 @@ menu:
     {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
     >}}
     <div class="relative pt-1">
-      <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
-        <div
-          style="width: 30%"
-          class="
-            shadow-none
-            flex flex-col
-            text-center
-            whitespace-nowrap
-            text-white
-            justify-center
-            bg-pink-500
-          "
-        ></div>
-      </div>
+      <label for="disabledRange" class="form-label">Disabled range</label>
+      <input
+        type="range"
+        class="
+          form-range form-range
+          appearance-none
+          w-full
+          h-6
+          p-0
+          bg-transparent
+          focus:outline-none focus:ring-0 focus:shadow-none
+        "
+        id="disabledRange"
+        disabled
+      />
     </div>
     {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
 </section>
 
 <!-- prettier-ignore -->
-{{< twsnippet/demo id="example3" title_id="with_marker" title="With marker">}}
-<div class="px-6 w-full">
-  <div class="bg-gray-300 h-2 w-full rounded-full relative">
-    <span
-      class="
-        bg-white
-        h-4
-        w-4
-        absolute
-        top-0
-        -ml-2
-        -mt-1
-        z-10
-        shadow
-        rounded-full
-        cursor-pointer
-      "
-      style="left: 50%"
-    ></span>
-    <span
-      class="bg-green-500 h-2 absolute left-0 top-0 rounded-full"
-      style="width: 50%"
-    ></span>
-  </div>
-  <div class="flex justify-between mt-2 text-xs text-gray-600"></div>
+{{< twsnippet/demo id="example3" title_id="min_and_max" title="Min and max">}}
+<div class="relative pt-1">
+  <label for="customRange2" class="form-label">Example range</label>
+  <input
+    type="range"
+    class="
+      form-range
+      appearance-none
+      w-full
+      h-6
+      p-0
+      bg-transparent
+      focus:outline-none focus:ring-0 focus:shadow-none
+    "
+    min="0"
+    max="5"
+    id="customRange2"
+  />
 </div>
 
 {{< /twsnippet/demo >}}
@@ -112,105 +131,23 @@ menu:
   <div class="pt-4">
     {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
     >}}
-    <div class="px-6 w-full">
-      <div class="bg-gray-300 h-2 w-full rounded-full relative">
-        <span
-          class="
-            bg-white
-            h-4
-            w-4
-            absolute
-            top-0
-            -ml-2
-            -mt-1
-            z-10
-            shadow
-            rounded-full
-            cursor-pointer
-          "
-          style="left: 50%"
-        ></span>
-        <span
-          class="bg-green-500 h-2 absolute left-0 top-0 rounded-full"
-          style="width: 50%"
-        ></span>
-      </div>
-      <div class="flex justify-between mt-2 text-xs text-gray-600"></div>
-    </div>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
-  </div>
-</section>
-
-<!-- prettier-ignore -->
-{{< twsnippet/demo id="example3" title_id="percentage" title="Percentage">}}
-<div class="px-6 w-full">
-  <div class="bg-gray-300 h-2 w-full rounded-full relative">
-    <span
-      class="
-        bg-white
-        h-4
-        w-4
-        absolute
-        top-0
-        -ml-2
-        -mt-1
-        z-10
-        shadow
-        rounded-full
-        cursor-pointer
-      "
-      style="left: 50%"
-    ></span>
-    <span
-      class="bg-purple-500 h-2 absolute left-0 top-0 rounded-full"
-      style="width: 50%"
-    ></span>
-  </div>
-  <div class="flex justify-between mt-2 text-xs text-gray-600">
-    <span class="w-8 text-left">0%</span>
-    <span class="w-8 text-center">25%</span>
-    <span class="w-8 text-center">50%</span>
-    <span class="w-8 text-center">75%</span>
-    <span class="w-8 text-right">100%</span>
-  </div>
-</div>
-
-{{< /twsnippet/demo >}}
-
-<section class="collapse" id="example3">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="px-6 w-full">
-      <div class="bg-gray-300 h-2 w-full rounded-full relative">
-        <span
-          class="
-            bg-white
-            h-4
-            w-4
-            absolute
-            top-0
-            -ml-2
-            -mt-1
-            z-10
-            shadow
-            rounded-full
-            cursor-pointer
-          "
-          style="left: 50%"
-        ></span>
-        <span
-          class="bg-purple-500 h-2 absolute left-0 top-0 rounded-full"
-          style="width: 50%"
-        ></span>
-      </div>
-      <div class="flex justify-between mt-2 text-xs text-gray-600">
-        <span class="w-8 text-left">0%</span>
-        <span class="w-8 text-center">25%</span>
-        <span class="w-8 text-center">50%</span>
-        <span class="w-8 text-center">75%</span>
-        <span class="w-8 text-right">100%</span>
-      </div>
+    <div class="relative pt-1">
+      <label for="customRange2" class="form-label">Example range</label>
+      <input
+        type="range"
+        class="
+          form-range
+          appearance-none
+          w-full
+          h-6
+          p-0
+          bg-transparent
+          focus:outline-none focus:ring-0 focus:shadow-none
+        "
+        min="0"
+        max="5"
+        id="customRange2"
+      />
     </div>
     {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
@@ -218,94 +155,51 @@ menu:
 
 <!-- prettier-ignore -->
 {{< twsnippet/demo id="example4" title_id="steps" title="Steps">}}
-<div class="w-full px-4 sm:px-8">
-  <div class="h-2px w-full bg-gray-300 relative">
-    <div
-      class="
-        absolute
-        top-1/2
-        left-0
-        h-1
-        transform
-        -translate-y-1/2
-        bg-blue-400
-        transition-width
-        ease-in-out
-        duration-500
-      "
-      style="width: 66.6667%"
-    >
-      <div
-        class="
-          w-3
-          h-3
-          bg-blue-800
-          rounded-full
-          absolute
-          right-0
-          top-1/2
-          transform
-          translate-x-1/2
-          -translate-y-1/2
-        "
-      ></div>
-    </div>
-  </div>
-  <div class="mt-3 relative hidden sm:block">
-    <div class="absolute" style="left: 0">
-      <span
-        class="
-          inline-block
-          transform
-          -translate-x-1/2
-          text-sm
-          font-medium
-          text-blue-400
-          cursor-pointer
-        "
-        >Amount</span
-      >
-    </div>
-    <div class="absolute" style="left: 33.3333%">
-      <span
-        class="
-          inline-block
-          transform
-          -translate-x-1/2
-          text-sm
-          font-medium
-          text-blue-400
-          cursor-pointer
-        "
-        >Time</span
-      >
-    </div>
-    <div class="absolute" style="left: 66.6667%">
-      <span
-        class="
-          inline-block
-          transform
-          -translate-x-1/2
-          text-sm
-          font-medium
-          cursor-pointer
-        "
-        >Day</span
-      >
-    </div>
-    <div class="absolute" style="left: 100%">
-      <span
-        class="inline-block transform -translate-x-1/2 text-sm cursor-pointer"
-        >Year</span
-      >
-    </div>
-  </div>
+<div class="relative pt-1">
+  <label for="customRange3" class="form-label">Example range</label>
+  <input
+    type="range"
+    class="
+      form-range
+      appearance-none
+      w-full
+      h-6
+      p-0
+      bg-transparent
+      focus:outline-none focus:ring-0 focus:shadow-none
+    "
+    min="0"
+    max="5"
+    step="0.5"
+    id="customRange3"
+  />
 </div>
+
 {{< /twsnippet/demo >}}
 
 <section class="collapse" id="example4">
   <div class="pt-4">
     {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}} aaaaaaaaaaaaa {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    >}}
+    <div class="relative pt-1">
+      <label for="customRange3" class="form-label">Example range</label>
+      <input
+        type="range"
+        class="
+          form-range
+          appearance-none
+          w-full
+          h-6
+          p-0
+          bg-transparent
+          focus:outline-none focus:ring-0 focus:shadow-none
+        "
+        min="0"
+        max="5"
+        step="0.5"
+        id="customRange3"
+      />
+    </div>
+    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
 </section>

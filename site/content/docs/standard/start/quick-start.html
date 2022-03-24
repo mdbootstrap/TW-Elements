@@ -10,31 +10,89 @@ image: ""
 video: ""
 url: "/quick-start/"
 menu:
-  start:
-    name: "Quick start"
-    weight: 2
+start:
+name: "Quick start"
+weight: 2
 ---
-
-
-<p class="mb-2">In order to start using Tailwind simply download our starter.  </p>  <a href="http://tailwind-elements.com/tw-starter.zip">
-  
-      <button
-                            class=" mt-3 mb-3 text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="button">
-                            Download ZIP starter
-                          </button>
- </a>
-
 
 <p class="mb-2">Tailwind Elements does not change or add any CSS to the already one from TailwindCSS. </p>
 
 <p class="mb-2">You can directly copy our components into your Tailwind design and they will work straight away.</p>
 
-<p class=" mb-2">In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript. However, they do not require any additional installation, all the necessary code is always included in the example and copied to any Tailwind project - it will work.</p>
+<p class="mb-2">In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript.
+  However, they do not require any additional installation, all the necessary code is always included in the example and
+  copied to any Tailwind project - it will work.</p>
 
+<hr class="my-10">
 
-{{< youtube RAhugF8NOBs >}}
+<h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">NPM</h2>
+<p class="mb-2">1. Before starting the project make sure to install <a href="https://nodejs.org/en/" target="_blank"
+    class="text-blue-700">Node.js (LTS)</a> and <a href="https://tailwindcss.com/" target="_blank"
+    class="text-blue-700">TailwindCSS</a>.</p>
 
+<p class="mb-2">2. Install Tailwind Elements using NPM by running the following command:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "terminal">}}{{< twsnippet/code active=true lang="Plaintext">}}
+    npm install tw-elements
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
 
-  
+<p class="mt-6 mb-2">3. Require Tailwind Elements as a plugin inside the <code>tailwind.config.js</code> file:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "tailwind.config.js">}}{{< twsnippet/code active=true lang="JavaScript">}}
+    module.exports = {
+      plugins: [
+        require('tw-elements/plugin')
+      ]
+    }
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
 
+<p class="mt-6 mb-2">4. Include the main JavaScript file to make interactive elements work:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
+    <script src="../path/to/tw-elements/dist/js/index.min.js"></script>
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-6 mb-2">If you use Webpack or other bundlers you can also import it like this:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.js">}}{{< twsnippet/code active=true lang="JavaScript">}}
+    import 'tw-elements';
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<hr class="my-10">
+
+<h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">CDN</h2>
+<p class="mb-2">You can easily test Tailwind Elements by adding CDN scripts to your classic HTML template without the need for
+installing any packages.</p>
+
+<p class="mt-4 mb-2">Require the following minified stylesheet inside the <code>head</code> tag:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<p class="mt-4 mb-2">And include the following javascript file before the end of the body element:</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.html">}}{{< twsnippet/code active=true lang="HTML">}}
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  {{< /twsnippet/code>}}{{< /twsnippet/wrapper>}}
+</div>
+
+<hr class="my-10">
+
+<h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Starter</h2>
+<p class="mb-2">In order to quickly test Tailwind Elements simply download our starter. Keep in mind that this is not
+  an optimized for production version, but only a demo for testing.</p>
+<div class="mb-10">
+  <a href="https://tailwind-elements.com/tw-starter.zip">
+    <button
+      class=" mt-3 mb-3 text-purple-500 bg-transparent border border-solid border-purple-500 hover:bg-purple-500 hover:text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      type="button">
+      Download ZIP starter
+    </button>
+  </a>
+</div>
