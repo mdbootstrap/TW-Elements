@@ -6,9 +6,11 @@
 
 ---
 
-[![Tailwind Elements](https://tailwind-elements.com/img/logo.png)](https://tailwind-elements.com/)
+[![Tailwind Elements](https://tailwind-elements.com/img/tailwind-elements.jpg)](https://tailwind-elements.com/)
 
-Tailwind Elements **is a plugin** that extends the functionality of the library with many interactive components.
+Tailwind Elements **does not change or add any CSS** to the already one from TailwindCSS.
+
+You can **copy our components directly** into your Tailwind design and **they will work straight away**.
 
 In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript. However, they do not require any additional installation, all the necessary code is always included in the example and copied to any Tailwind project - it will work.
 
@@ -16,103 +18,24 @@ In some dynamic components (like dropdowns or modals) we add Font Awesome icons 
 
 ## Quick Start tutorial
 
-##### NPM
+[![Quick Start tutorial](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/video.jpg)](https://www.youtube.com/watch?v=RAhugF8NOBs)
 
-1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ 'Node.js (LTS)') and [TailwindCSS](https://tailwindcss.com/ 'TailwindCSS').
+![Carousel](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/carousel.gif)
+![enter image description here](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/1.jpg)
+![Buttons](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/buttons.gif)
 
-2. Run the following command to install the package via NPM:
+![Alerts](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/2.jpg)
+![Chart](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/chart.gif)
+![Alerts](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/3.jpg)
+![Datepicker](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/datepicker.gif)
+![Chart Linear](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/4.jpg)
+![Loaders](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/loaders.gif)
+![Badges](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/5.jpg)
+![Dropdown](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/dropdown.gif)
+![Progress](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/6.jpg)
 
-```
-npm install tw-elements
-```
+![enter image description here](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/7.jpg)
 
-3. Tailwind Elements is a plugin and should be included inside the **tailwind.config.js** file. It is also recommended to extend the content array with a js file that loads dynamic component classes:
+![enter image description here](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/9.jpg)
 
-```javascript
-module.exports = {
-  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
-  plugins: [require('tw-elements/dist/plugin')],
-};
-```
-
-4.  Dynamic components will work after adding the js file:
-
-```
-<script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
-```
-
-Alternatively, you can import it in the following way (bundler version):
-
-```
-import 'tw-elements';
-```
-
-##### MDB GO / CLI
-
-Create, deploy and host anything with a single command.
-
-1. To start using MDB GO / CLI install it with one command:
-
-```
-npm install -g mdb-cli
-```
-
-2. Log into the CLI using your MDB account:
-
-```
-mdb login
-```
-
-3. Initialize a project and choose **Tailwind Elements** from the list:
-
-```
-mdb init
-```
-
-4. Install the dependencies (inside the project directory):
-
-```
-npm install
-```
-
-5. Run the app:
-
-```
-npm start
-```
-
-6. Publish when you're ready:
-
-```
-mdb publish
-```
-
-##### CDN
-
-You can easily test Tailwind Elements by adding CDN scripts to your classic HTML template without the need for installing any packages.
-
-Add the stylesheet files below in the _head_ section:
-
-```
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-        },
-      }
-    }
-  }
-</script>
-```
-
-Require the js bundled file right before the _body_ closing tag:
-
-```
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-```
+![enter image description here](https://mdbootstrap.com/img/Marketing/campaigns/tailwind/8.jpg)

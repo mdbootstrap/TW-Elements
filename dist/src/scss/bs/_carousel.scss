@@ -1,0 +1,185 @@
+.carousel.pointer-event {
+  touch-action: pan-y;
+}
+
+.carousel-inner {
+  @include clearfix();
+}
+
+.carousel-item {
+  display: none;
+  margin-right: -100%;
+  backface-visibility: hidden;
+  @include transition($carousel-transition);
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+/* rtl:begin:ignore */
+.carousel-item-next:not(.carousel-item-start),
+.active.carousel-item-end {
+  transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start {
+  transform: translateX(-100%);
+}
+/* rtl:end:ignore */
+
+//
+// Alternate transitions
+//
+
+.carousel-fade {
+  .carousel-item {
+    opacity: 0;
+    transition-property: opacity;
+    transform: none;
+  }
+
+  .carousel-item.active,
+  .carousel-item-next.carousel-item-start,
+  .carousel-item-prev.carousel-item-end {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .active.carousel-item-start,
+  .active.carousel-item-end {
+    z-index: 0;
+    opacity: 0;
+    @include transition(opacity 0s $carousel-transition-duration);
+  }
+}
+
+//
+// Left/right controls for nav
+//
+
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 1;
+  width: $carousel-control-width;
+  color: $carousel-control-color;
+  background: none;
+  opacity: $carousel-control-opacity;
+  @include transition($carousel-control-transition);
+
+  // Hover/focus state
+  &:hover,
+  &:focus {
+    color: $carousel-control-color;
+    opacity: $carousel-control-hover-opacity;
+  }
+}
+.carousel-control-prev {
+  // left: 0;
+  background-image: if(
+    $enable-gradients,
+    linear-gradient(90deg, rgba($black, 0.25), rgba($black, 0.001)),
+    null
+  );
+}
+.carousel-control-next {
+  // right: 0;
+  background-image: if(
+    $enable-gradients,
+    linear-gradient(270deg, rgba($black, 0.25), rgba($black, 0.001)),
+    null
+  );
+}
+
+// Icons for within
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: $carousel-control-icon-width;
+  height: $carousel-control-icon-width;
+  background-position: 50%;
+  background-size: 100% 100%;
+}
+
+/* rtl:options: {
+  "autoRename": true,
+  "stringMap":[ {
+    "name"    : "prev-next",
+    "search"  : "prev",
+    "replace" : "next"
+  } ]
+} */
+.carousel-control-prev-icon {
+  background-image: escape-svg($carousel-control-prev-icon-bg);
+}
+.carousel-control-next-icon {
+  background-image: escape-svg($carousel-control-next-icon-bg);
+}
+
+// Optional indicator pips/controls
+//
+// Add a container (such as a list) with the following class and add an item (ideally a focusable control,
+// like a button) with data-bs-target for each slide your carousel holds.
+
+.carousel-indicators {
+  z-index: 2;
+  margin-right: $carousel-control-width;
+  margin-left: $carousel-control-width;
+  list-style: none;
+
+  [data-bs-target] {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: $carousel-indicator-width;
+    height: $carousel-indicator-height;
+    padding: 0;
+    margin-right: $carousel-indicator-spacer;
+    margin-left: $carousel-indicator-spacer;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: $carousel-indicator-active-bg;
+    background-clip: padding-box;
+    border: 0;
+    // Use transparent borders to increase the hit area by 10px on top and bottom.
+    border-top: $carousel-indicator-hit-area-height solid transparent;
+    border-bottom: $carousel-indicator-hit-area-height solid transparent;
+    opacity: $carousel-indicator-opacity;
+    @include transition($carousel-indicator-transition);
+  }
+
+  .active {
+    opacity: $carousel-indicator-active-opacity;
+  }
+}
+
+// Optional captions
+//
+//
+
+.carousel-caption {
+  right: (100% - $carousel-caption-width) * 0.5;
+  bottom: $carousel-caption-spacer;
+  left: (100% - $carousel-caption-width) * 0.5;
+  padding-top: $carousel-caption-padding-y;
+  padding-bottom: $carousel-caption-padding-y;
+  color: $carousel-caption-color;
+}
+
+// Dark mode carousel
+
+.carousel-dark {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: $carousel-dark-control-icon-filter;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    background-color: $carousel-dark-indicator-active-bg;
+  }
+
+  .carousel-caption {
+    color: $carousel-dark-caption-color;
+  }
+}

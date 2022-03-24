@@ -37,11 +37,6 @@ paths.forEach((path) => {
 
 module.exports = merge(common, {
   mode: 'development',
-  entry: {
-    'js/index': Path.resolve(__dirname, '../src/js/index.js'),
-    'css/index': Path.resolve(__dirname, '../src/css/index.css'),
-    'css/tailwind': Path.resolve(__dirname, '../src/scss/tailwind.scss'),
-  },
   devtool: 'cheap-eval-source-map',
   devServer: {
     inline: true,

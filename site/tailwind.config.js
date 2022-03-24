@@ -1,7 +1,13 @@
 module.exports = {
-  content: ['./layouts/**/*.html', './content/**/*.html', './static/**/*.js'],
+  purge: ["layouts/**/*.html"],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
-  plugins: [require('tailwind-scrollbar'), require('./static/js/plugin')],
+  variants: {
+    extend: {},
+  },
+  plugins: [
+        require('tailwind-scrollbar'),
+  ],
 };
