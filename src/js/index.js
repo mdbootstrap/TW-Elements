@@ -16,6 +16,7 @@ import Toast from './bs/src/toast';
 import Ripple from './mdb/ripple';
 import Datepicker from './mdb/datepicker';
 import Timepicker from './mdb/timepicker';
+import Stepper from './mdb/stepper';
 
 window.Alert = Alert;
 window.Button = Button;
@@ -32,3 +33,4 @@ window.Tooltip = Tooltip;
 window.Ripple = Ripple;
 window.Datepicker = Datepicker;
 window.Timepicker = Timepicker;
+window.Stepper = Stepper;
