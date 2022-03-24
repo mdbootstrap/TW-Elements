@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Inter font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+
+  <body class="bg-gray-200">
+    <!-- Container for demo purpose -->
+    <div>
+      <!-- Section: Design Block -->
+      <section class="mb-20">
+        <nav
+          class="relative w-full flex flex-wrap items-center justify-between py-4 text-gray-500 hover:text-gray-700 focus:text-gray-700 transition duration-300 ease-in-out shadow-lg navbar navbar-expand-lg navbar-light bg-white"
+        >
+          <!-- Container wrapper -->
+          <div class="px-4">
+            <!-- Toggle button -->
+            <button
+              class="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="bars"
+                class="w-6"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                ></path>
+              </svg>
+            </button>
+            <!-- Collapsible wrapper -->
+            <div
+              class="collapse navbar-collapse flex-grow items-center"
+              id="navbarSupportedContent"
+            >
+              <!-- Left links -->
+              <ul class="navbar-nav ml-auto lg:pl-0 pl-1">
+                <!-- Navbar dropdown -->
+                <li class="nav-item dropdown static">
+                  <a
+                    class="nav-link dropdown-toggle flex items-center"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Solutions
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="caret-down"
+                      class="w-2 ml-2"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <!-- Dropdown menu -->
+                  <div
+                    class="dropdown-menu w-full mt-0 relative hidden bg-white text-base z-50 float-left lg:pt-2 list-none text-left mt-1 hidden m-0 bg-clip-padding border-none rounded-b-lg lg:-ml-4 lg:shadow-lg"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    <div class="text-gray-700">
+                      <div class="grid lg:grid-cols-4 md:grid-cols-2 mb-12 p-6 gap-12">
+                        <div class="mt-12">
+                          <div
+                            class="bg-blue-600 rounded-lg shadow-md w-12 h-12 flex justify-center items-center"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="headset"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M192 208c0-17.67-14.33-32-32-32h-16c-35.35 0-64 28.65-64 64v48c0 35.35 28.65 64 64 64h16c17.67 0 32-14.33 32-32V208zm176 144c35.35 0 64-28.65 64-64v-48c0-35.35-28.65-64-64-64h-16c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h16zM256 0C113.18 0 4.58 118.83 0 256v16c0 8.84 7.16 16 16 16h16c8.84 0 16-7.16 16-16v-16c0-114.69 93.31-208 208-208s208 93.31 208 208h-.12c.08 2.43.12 165.72.12 165.72 0 23.35-18.93 42.28-42.28 42.28H320c0-26.51-21.49-48-48-48h-32c-26.51 0-48 21.49-48 48s21.49 48 48 48h181.72c49.86 0 90.28-40.42 90.28-90.28V256C507.42 118.83 398.82 0 256 0z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <p class="font-semibold mt-4 mb-3">Analytics</p>
+                          <p class="text-gray-500 mb-4">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit nihil quisquam.
+                          </p>
+                          <a
+                            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center"
+                            href="#!"
+                            >Learn more
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="arrow-right"
+                              class="w-3 ml-2"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="mt-12">
+                          <div
+                            class="bg-blue-600 rounded-lg shadow-md w-12 h-12 flex justify-center items-center"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="shield-alt"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M466.5 83.7l-192-80a48.15 48.15 0 0 0-36.9 0l-192 80C27.7 91.1 16 108.6 16 128c0 198.5 114.5 335.7 221.5 380.3 11.8 4.9 25.1 4.9 36.9 0C360.1 472.6 496 349.3 496 128c0-19.4-11.7-36.9-29.5-44.3zM256.1 446.3l-.1-381 175.9 73.3c-3.3 151.4-82.1 261.1-175.8 307.7z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <p class="font-semibold mt-4 mb-3">Engagement</p>
+                          <p class="text-gray-500 mb-4">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit nihil quisquam.
+                          </p>
+                          <a
+                            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center"
+                            href="#!"
+                            >Learn more
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="arrow-right"
+                              class="w-3 ml-2"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="mt-12">
+                          <div
+                            class="bg-blue-600 rounded-lg shadow-md w-12 h-12 flex justify-center items-center"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="shipping-fast"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 640 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M624 352h-16V243.9c0-12.7-5.1-24.9-14.1-33.9L494 110.1c-9-9-21.2-14.1-33.9-14.1H416V48c0-26.5-21.5-48-48-48H112C85.5 0 64 21.5 64 48v48H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h272c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H40c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H8c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8h208c4.4 0 8 3.6 8 8v16c0 4.4-3.6 8-8 8H64v128c0 53 43 96 96 96s96-43 96-96h128c0 53 43 96 96 96s96-43 96-96h48c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zM160 464c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm320 0c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm80-208H416V144h44.1l99.9 99.9V256z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <p class="font-semibold mt-4 mb-3">Security</p>
+                          <p class="text-gray-500 mb-4">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit nihil quisquam.
+                          </p>
+                          <a
+                            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center"
+                            href="#!"
+                            >Learn more
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="arrow-right"
+                              class="w-3 ml-2"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                        <div class="mt-12">
+                          <div
+                            class="bg-blue-600 rounded-lg shadow-md w-12 h-12 flex justify-center items-center"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="hand-holding-usd"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 576 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M271.06,144.3l54.27,14.3a8.59,8.59,0,0,1,6.63,8.1c0,4.6-4.09,8.4-9.12,8.4h-35.6a30,30,0,0,1-11.19-2.2c-5.24-2.2-11.28-1.7-15.3,2l-19,17.5a11.68,11.68,0,0,0-2.25,2.66,11.42,11.42,0,0,0,3.88,15.74,83.77,83.77,0,0,0,34.51,11.5V240c0,8.8,7.83,16,17.37,16h17.37c9.55,0,17.38-7.2,17.38-16V222.4c32.93-3.6,57.84-31,53.5-63-3.15-23-22.46-41.3-46.56-47.7L282.68,97.4a8.59,8.59,0,0,1-6.63-8.1c0-4.6,4.09-8.4,9.12-8.4h35.6A30,30,0,0,1,332,83.1c5.23,2.2,11.28,1.7,15.3-2l19-17.5A11.31,11.31,0,0,0,368.47,61a11.43,11.43,0,0,0-3.84-15.78,83.82,83.82,0,0,0-34.52-11.5V16c0-8.8-7.82-16-17.37-16H295.37C285.82,0,278,7.2,278,16V33.6c-32.89,3.6-57.85,31-53.51,63C227.63,119.6,247,137.9,271.06,144.3ZM565.27,328.1c-11.8-10.7-30.2-10-42.6,0L430.27,402a63.64,63.64,0,0,1-40,14H272a16,16,0,0,1,0-32h78.29c15.9,0,30.71-10.9,33.25-26.6a31.2,31.2,0,0,0,.46-5.46A32,32,0,0,0,352,320H192a117.66,117.66,0,0,0-74.1,26.29L71.4,384H16A16,16,0,0,0,0,400v96a16,16,0,0,0,16,16H372.77a64,64,0,0,0,40-14L564,377a32,32,0,0,0,1.28-48.9Z"
+                              ></path>
+                            </svg>
+                          </div>
+                          <p class="font-semibold mt-4 mb-3">Integrations</p>
+                          <p class="text-gray-500 mb-4">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit nihil quisquam.
+                          </p>
+                          <a
+                            class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out flex items-center"
+                            href="#!"
+                            >Learn more
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="arrow-right"
+                              class="w-3 ml-2"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 448 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="flex flex-row flex-wrap py-6 px-4 bg-gray-100 lg:rounded-b-lg">
+                        <p class="flex items-center mb-4 md:mb-0 mr-12">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="far"
+                            data-icon="play-circle"
+                            class="w-6 mr-2 pr-1 text-gray-500"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z"
+                            ></path>
+                          </svg>
+                          Watch Demo
+                        </p>
+                        <p class="flex items-center mb-4 md:mb-0 mr-12">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="far"
+                            data-icon="check-circle"
+                            class="w-6 mr-2 pr-1 text-gray-500"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 48c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m140.204 130.267l-22.536-22.718c-4.667-4.705-12.265-4.736-16.97-.068L215.346 303.697l-59.792-60.277c-4.667-4.705-12.265-4.736-16.97-.069l-22.719 22.536c-4.705 4.667-4.736 12.265-.068 16.971l90.781 91.516c4.667 4.705 12.265 4.736 16.97.068l172.589-171.204c4.704-4.668 4.734-12.266.067-16.971z"
+                            ></path>
+                          </svg>
+                          View All Products
+                        </p>
+                        <p class="flex items-center">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fas"
+                            data-icon="phone-alt"
+                            class="w-6 mr-2 pr-1 text-gray-500"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"
+                            ></path>
+                          </svg>
+                          Contact Sales
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+          </div>
+          <!-- Container wrapper -->
+        </nav>
+      </section>
+      <!-- Section: Design Block -->
+    </div>
+    <!-- Container for demo purpose -->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+  </body>
+</html>
