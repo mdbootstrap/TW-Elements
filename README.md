@@ -8,7 +8,7 @@
 
 [![Tailwind Elements](https://tailwind-elements.com/img/logo.png)](https://tailwind-elements.com/)
 
-Tailwind Elements **is a a plugin** that extends the functionality of the library with many interactive components.
+Tailwind Elements **is a plugin** that extends the functionality of the library with many interactive components.
 
 In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript. However, they do not require any additional installation, all the necessary code is always included in the example and copied to any Tailwind project - it will work.
 
@@ -20,13 +20,13 @@ In some dynamic components (like dropdowns or modals) we add Font Awesome icons 
 
 1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ 'Node.js (LTS)') and [TailwindCSS](https://tailwindcss.com/ 'TailwindCSS').
 
-2. Install Tailwind Elements using NPM by running the following command:
+2. Run the following command to install the package via NPM:
 
 ```
 npm install tw-elements
 ```
 
-3. Require Tailwind Elements as a plugin inside the **tailwind.config.js** file. Additionally to your own content data you should add tw-elements to apply the classes from the interactive components:
+3. Tailwind Elements is a plugin and should be included inside the **tailwind.config.js** file. It is also recommended to extend the content array with a js file that loads dynamic component classes:
 
 ```javascript
 module.exports = {
@@ -35,13 +35,13 @@ module.exports = {
 };
 ```
 
-4.  Include the main JavaScript file to make interactive elements work:
+4.  Dynamic components will work after adding the js file:
 
 ```
-<script src="../path/to/tw-elements/dist/js/index.min.js"></script>
+<script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
 ```
 
-If you use Webpack or other bundlers you can also import it like this:
+Alternatively, you can import it in the following way (bundler version):
 
 ```
 import 'tw-elements';
@@ -91,14 +91,15 @@ mdb publish
 
 You can easily test Tailwind Elements by adding CDN scripts to your classic HTML template without the need for installing any packages.
 
-Require the following minified stylesheets inside the _head_ tag:
+Add the stylesheet files below in the _head_ section:
 
 ```
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 ```
 
-And include the following javascript file before the end of the _body_ element:
+Require the js bundled file right before the _body_ closing tag:
 
 ```
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
