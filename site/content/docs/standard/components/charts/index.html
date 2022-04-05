@@ -14,471 +14,518 @@ menu:
     name: "Charts"
 ---
 
-<!-- prettier-ignore -->
-{{< twsnippet/demo id="example1" title_id="line" title="Line chart">}}
-<div class="shadow-lg rounded-lg overflow-hidden">
-  <div class="py-3 px-5 bg-gray-50">Line chart</div>
-  <canvas class="p-10" id="chartLine"></canvas>
-</div>
+<!-- Section: Line chart -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="line">Line chart</h2>
+  <!--Description-->
+  <p class="mb-3">Line graphs show how a continuous variable changes over time, for example, get trends in sales or profit margins each month, quarter, or year.</p>
 
-<!-- Required chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <p class="mb-3">The variable that measures time is plotted on the x-axis. The continuous variable is plotted on the y-axis.</p>
 
-<!-- Chart line -->
-<script>
-  const labels = ["January", "February", "March", "April", "May", "June"];
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: "My First dataset",
-        backgroundColor: "hsl(252, 82.9%, 67.8%)",
-        borderColor: "hsl(252, 82.9%, 67.8%)",
-        data: [0, 10, 5, 2, 20, 30, 45],
-      },
-    ],
-  };
-
-  const configLineChart = {
-    type: "line",
-    data,
-    options: {},
-  };
-
-  var chartLine = new Chart(
-    document.getElementById("chartLine"),
-    configLineChart
-  );
-</script>
-{{< /twsnippet/demo >}}
-
-<section class="collapse" id="example1">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="shadow-lg rounded-lg overflow-hidden">
-      <div class="py-3 px-5 bg-gray-50">Line chart</div>
-      <canvas class="p-10" id="chartLine"></canvas>
-    </div>
-
-    <!-- Required chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Chart line -->
-    <script>
-      const labels = ["January", "February", "March", "April", "May", "June"];
-      const data = {
-        labels: labels,
-        datasets: [
-          {
-            label: "My First dataset",
-            backgroundColor: "hsl(252, 82.9%, 67.8%)",
-            borderColor: "hsl(252, 82.9%, 67.8%)",
-            data: [0, 10, 5, 2, 20, 30, 45],
-          },
-        ],
-      };
-
-      const configLineChart = {
-        type: "line",
-        data,
-        options: {},
-      };
-
-      var chartLine = new Chart(
-        document.getElementById("chartLine"),
-        configLineChart
-      );
-    </script>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="shadow-lg rounded-lg overflow-hidden">
+    <div class="py-3 px-5 bg-gray-50">Line chart</div>
+    <canvas class="p-10" id="chartLine"></canvas>
   </div>
+
+  <!-- Required chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart line -->
+  <script>
+    const labels = ["January", "February", "March", "April", "May", "June"];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: "hsl(252, 82.9%, 67.8%)",
+          borderColor: "hsl(252, 82.9%, 67.8%)",
+          data: [0, 10, 5, 2, 20, 30, 45],
+        },
+      ],
+    };
+
+    const configLineChart = {
+      type: "line",
+      data,
+      options: {},
+    };
+
+    var chartLine = new Chart(
+      document.getElementById("chartLine"),
+      configLineChart
+    );
+  </script>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="shadow-lg rounded-lg overflow-hidden">
+        <div class="py-3 px-5 bg-gray-50">Line chart</div>
+        <canvas class="p-10" id="chartLine"></canvas>
+      </div>
+
+      <!-- Required chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <!-- Chart line -->
+      <script>
+        const labels = ["January", "February", "March", "April", "May", "June"];
+        const data = {
+          labels: labels,
+          datasets: [
+            {
+              label: "My First dataset",
+              backgroundColor: "hsl(252, 82.9%, 67.8%)",
+              borderColor: "hsl(252, 82.9%, 67.8%)",
+              data: [0, 10, 5, 2, 20, 30, 45],
+            },
+          ],
+        };
+
+        const configLineChart = {
+          type: "line",
+          data,
+          options: {},
+        };
+
+        var chartLine = new Chart(
+          document.getElementById("chartLine"),
+          configLineChart
+        );
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
 </section>
 
-<!-- prettier-ignore -->
-{{< twsnippet/demo id="example2" title_id="bar" title="Bar chart">}}
 
-<div class="shadow-lg rounded-lg overflow-hidden">
-  <div class="py-3 px-5 bg-gray-50">Bar chart</div>
-  <canvas class="p-10" id="chartBar"></canvas>
-</div>
+<!-- Section: Bar chart -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="bar">Bar chart</h2>
+  <!--Description-->
+  <p class="mb-3">A bar chart shows the counts of values for levels of a categorical or nominal variable. A bar graph displays data in a number of bars, each representing a particular category. 
+    The height of each bar is proportional to the specified aggregation.
+  </p>
 
-<!-- Required chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
 
-<!-- Chart bar -->
-<script>
-  const labelsBarChart = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-  ];
-  const dataBarChart = {
-    labels: labelsBarChart,
-    datasets: [
-      {
-        label: "My First dataset",
-        backgroundColor: "hsl(252, 82.9%, 67.8%)",
-        borderColor: "hsl(252, 82.9%, 67.8%)",
-        data: [0, 10, 5, 2, 20, 30, 45],
-      },
-    ],
-  };
-
-  const configBarChart = {
-    type: "bar",
-    data: dataBarChart,
-    options: {},
-  };
-
-  var chartBar = new Chart(document.getElementById("chartBar"), configBarChart);
-</script>
-{{< /twsnippet/demo >}}
-
-<section class="collapse" id="example2">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-
-    <div class="shadow-lg rounded-lg overflow-hidden">
-      <div class="py-3 px-5 bg-gray-50">Bar chart</div>
-      <canvas class="p-10" id="chartBar"></canvas>
-    </div>
-
-    <!-- Required chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Chart bar -->
-    <script>
-      const labelsBarChart = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-      ];
-      const dataBarChart = {
-        labels: labelsBarChart,
-        datasets: [
-          {
-            label: "My First dataset",
-            backgroundColor: "hsl(252, 82.9%, 67.8%)",
-            borderColor: "hsl(252, 82.9%, 67.8%)",
-            data: [0, 10, 5, 2, 20, 30, 45],
-          },
-        ],
-      };
-
-      const configBarChart = {
-        type: "bar",
-        data: dataBarChart,
-        options: {},
-      };
-
-      var chartBar = new Chart(
-        document.getElementById("chartBar"),
-        configBarChart
-      );
-    </script>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  <div class="shadow-lg rounded-lg overflow-hidden">
+    <div class="py-3 px-5 bg-gray-50">Bar chart</div>
+    <canvas class="p-10" id="chartBar"></canvas>
   </div>
+
+  <!-- Required chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart bar -->
+  <script>
+    const labelsBarChart = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+    ];
+    const dataBarChart = {
+      labels: labelsBarChart,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: "hsl(252, 82.9%, 67.8%)",
+          borderColor: "hsl(252, 82.9%, 67.8%)",
+          data: [0, 10, 5, 2, 20, 30, 45],
+        },
+      ],
+    };
+
+    const configBarChart = {
+      type: "bar",
+      data: dataBarChart,
+      options: {},
+    };
+
+    var chartBar = new Chart(document.getElementById("chartBar"), configBarChart);
+  </script>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+
+      <div class="shadow-lg rounded-lg overflow-hidden">
+        <div class="py-3 px-5 bg-gray-50">Bar chart</div>
+        <canvas class="p-10" id="chartBar"></canvas>
+      </div>
+
+      <!-- Required chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <!-- Chart bar -->
+      <script>
+        const labelsBarChart = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+        ];
+        const dataBarChart = {
+          labels: labelsBarChart,
+          datasets: [
+            {
+              label: "My First dataset",
+              backgroundColor: "hsl(252, 82.9%, 67.8%)",
+              borderColor: "hsl(252, 82.9%, 67.8%)",
+              data: [0, 10, 5, 2, 20, 30, 45],
+            },
+          ],
+        };
+
+        const configBarChart = {
+          type: "bar",
+          data: dataBarChart,
+          options: {},
+        };
+
+        var chartBar = new Chart(
+          document.getElementById("chartBar"),
+          configBarChart
+        );
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
 </section>
 
-<!-- prettier-ignore -->
-{{< twsnippet/demo id="example3" title_id="radar" title="Radar chart">}}
-<div class="shadow-lg rounded-lg overflow-hidden">
-  <div class="py-3 px-5 bg-gray-50">Radar chart</div>
-  <canvas class="p-10" id="chartRadar"></canvas>
-</div>
 
-<!-- Required chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Section: Radar chart -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="radar">Radar chart</h2>
+  <!--Description-->
+  <p class="mb-3">Radar charts are a way to show multiple data points and the variation between them. This is useful for comparing points from two or more different data sets.</p>
 
-<!-- Chart radar -->
-<script>
-  const dataRadar = {
-    labels: [
-      "Eating",
-      "Drinking",
-      "Sleeping",
-      "Designing",
-      "Coding",
-      "Cycling",
-      "Running",
-    ],
-    datasets: [
-      {
-        label: "My First Dataset",
-        data: [65, 59, 90, 81, 56, 55, 40],
-        fill: true,
-        backgroundColor: "rgba(133, 105, 241, 0.2)",
-        borderColor: "rgb(133, 105, 241)",
-        pointBackgroundColor: "rgb(133, 105, 241)",
-        pointBorderColor: "#fff",
-        pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "rgb(133, 105, 241)",
-      },
-      {
-        label: "My Second Dataset",
-        data: [28, 48, 40, 19, 96, 27, 100],
-        fill: true,
-        backgroundColor: "rgba(54, 162, 235, 0.2)",
-        borderColor: "rgb(54, 162, 235)",
-        pointBackgroundColor: "rgb(54, 162, 235)",
-        pointBorderColor: "#fff",
-        pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "rgb(54, 162, 235)",
-      },
-    ],
-  };
-
-  const configRadarChart = {
-    type: "radar",
-    data: dataRadar,
-    options: {},
-  };
-
-  var chartBar = new Chart(
-    document.getElementById("chartRadar"),
-    configRadarChart
-  );
-</script>
-{{< /twsnippet/demo >}}
-
-<section class="collapse" id="example3">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="shadow-lg rounded-lg overflow-hidden">
-      <div class="py-3 px-5 bg-gray-50">Radar chart</div>
-      <canvas class="p-10" id="chartRadar"></canvas>
-    </div>
-
-    <!-- Required chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Chart radar -->
-    <script>
-      const dataRadar = {
-        labels: [
-          "Eating",
-          "Drinking",
-          "Sleeping",
-          "Designing",
-          "Coding",
-          "Cycling",
-          "Running",
-        ],
-        datasets: [
-          {
-            label: "My First Dataset",
-            data: [65, 59, 90, 81, 56, 55, 40],
-            fill: true,
-            backgroundColor: "rgba(133, 105, 241, 0.2)",
-            borderColor: "rgb(133, 105, 241)",
-            pointBackgroundColor: "rgb(133, 105, 241)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(133, 105, 241)",
-          },
-          {
-            label: "My Second Dataset",
-            data: [28, 48, 40, 19, 96, 27, 100],
-            fill: true,
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgb(54, 162, 235)",
-            pointBackgroundColor: "rgb(54, 162, 235)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(54, 162, 235)",
-          },
-        ],
-      };
-
-      const configRadarChart = {
-        type: "radar",
-        data: dataRadar,
-        options: {},
-      };
-
-      var chartBar = new Chart(
-        document.getElementById("chartRadar"),
-        configRadarChart
-      );
-    </script>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div class="shadow-lg rounded-lg overflow-hidden">
+    <div class="py-3 px-5 bg-gray-50">Radar chart</div>
+    <canvas class="p-10" id="chartRadar"></canvas>
   </div>
+
+  <!-- Required chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart radar -->
+  <script>
+    const dataRadar = {
+      labels: [
+        "Eating",
+        "Drinking",
+        "Sleeping",
+        "Designing",
+        "Coding",
+        "Cycling",
+        "Running",
+      ],
+      datasets: [
+        {
+          label: "My First Dataset",
+          data: [65, 59, 90, 81, 56, 55, 40],
+          fill: true,
+          backgroundColor: "rgba(133, 105, 241, 0.2)",
+          borderColor: "rgb(133, 105, 241)",
+          pointBackgroundColor: "rgb(133, 105, 241)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(133, 105, 241)",
+        },
+        {
+          label: "My Second Dataset",
+          data: [28, 48, 40, 19, 96, 27, 100],
+          fill: true,
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          borderColor: "rgb(54, 162, 235)",
+          pointBackgroundColor: "rgb(54, 162, 235)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgb(54, 162, 235)",
+        },
+      ],
+    };
+
+    const configRadarChart = {
+      type: "radar",
+      data: dataRadar,
+      options: {},
+    };
+
+    var chartBar = new Chart(
+      document.getElementById("chartRadar"),
+      configRadarChart
+    );
+  </script>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="shadow-lg rounded-lg overflow-hidden">
+        <div class="py-3 px-5 bg-gray-50">Radar chart</div>
+        <canvas class="p-10" id="chartRadar"></canvas>
+      </div>
+
+      <!-- Required chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <!-- Chart radar -->
+      <script>
+        const dataRadar = {
+          labels: [
+            "Eating",
+            "Drinking",
+            "Sleeping",
+            "Designing",
+            "Coding",
+            "Cycling",
+            "Running",
+          ],
+          datasets: [
+            {
+              label: "My First Dataset",
+              data: [65, 59, 90, 81, 56, 55, 40],
+              fill: true,
+              backgroundColor: "rgba(133, 105, 241, 0.2)",
+              borderColor: "rgb(133, 105, 241)",
+              pointBackgroundColor: "rgb(133, 105, 241)",
+              pointBorderColor: "#fff",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: "rgb(133, 105, 241)",
+            },
+            {
+              label: "My Second Dataset",
+              data: [28, 48, 40, 19, 96, 27, 100],
+              fill: true,
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+              borderColor: "rgb(54, 162, 235)",
+              pointBackgroundColor: "rgb(54, 162, 235)",
+              pointBorderColor: "#fff",
+              pointHoverBackgroundColor: "#fff",
+              pointHoverBorderColor: "rgb(54, 162, 235)",
+            },
+          ],
+        };
+
+        const configRadarChart = {
+          type: "radar",
+          data: dataRadar,
+          options: {},
+        };
+
+        var chartBar = new Chart(
+          document.getElementById("chartRadar"),
+          configRadarChart
+        );
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
 </section>
 
-<!-- prettier-ignore -->
-{{< twsnippet/demo id="example4" title_id="pie" title="Pie chart">}}
-<div class="shadow-lg rounded-lg overflow-hidden">
-  <div class="py-3 px-5 bg-gray-50">Pie chart</div>
-  <canvas class="p-10" id="chartPie"></canvas>
-</div>
 
-<!-- Required chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Section: Pie chart -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="pie">Pie chart</h2>
+  <!--Description-->
+  <p class="mb-3">A pie chart shows the relationships of parts to the whole for a variable. Pie charts help you understand the parts-to-a-whole relationship.</p>
 
-<!-- Chart pie -->
-<script>
-  const dataPie = {
-    labels: ["JavaScript", "Python", "Ruby"],
-    datasets: [
-      {
-        label: "My First Dataset",
-        data: [300, 50, 100],
-        backgroundColor: [
-          "rgb(133, 105, 241)",
-          "rgb(164, 101, 241)",
-          "rgb(101, 143, 241)",
-        ],
-        hoverOffset: 4,
-      },
-    ],
-  };
-
-  const configPie = {
-    type: "pie",
-    data: dataPie,
-    options: {},
-  };
-
-  var chartBar = new Chart(document.getElementById("chartPie"), configPie);
-</script>
-
-{{< /twsnippet/demo >}}
-
-<section class="collapse" id="example4">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="shadow-lg rounded-lg overflow-hidden">
-      <div class="py-3 px-5 bg-gray-50">Pie chart</div>
-      <canvas class="p-10" id="chartPie"></canvas>
-    </div>
-
-    <!-- Required chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Chart pie -->
-    <script>
-      const dataPie = {
-        labels: ["JavaScript", "Python", "Ruby"],
-        datasets: [
-          {
-            label: "My First Dataset",
-            data: [300, 50, 100],
-            backgroundColor: [
-              "rgb(133, 105, 241)",
-              "rgb(164, 101, 241)",
-              "rgb(101, 143, 241)",
-            ],
-            hoverOffset: 4,
-          },
-        ],
-      };
-
-      const configPie = {
-        type: "pie",
-        data: dataPie,
-        options: {},
-      };
-
-      var chartBar = new Chart(document.getElementById("chartPie"), configPie);
-    </script>
-
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="shadow-lg rounded-lg overflow-hidden">
+    <div class="py-3 px-5 bg-gray-50">Pie chart</div>
+    <canvas class="p-10" id="chartPie"></canvas>
   </div>
+
+  <!-- Required chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart pie -->
+  <script>
+    const dataPie = {
+      labels: ["JavaScript", "Python", "Ruby"],
+      datasets: [
+        {
+          label: "My First Dataset",
+          data: [300, 50, 100],
+          backgroundColor: [
+            "rgb(133, 105, 241)",
+            "rgb(164, 101, 241)",
+            "rgb(101, 143, 241)",
+          ],
+          hoverOffset: 4,
+        },
+      ],
+    };
+
+    const configPie = {
+      type: "pie",
+      data: dataPie,
+      options: {},
+    };
+
+    var chartBar = new Chart(document.getElementById("chartPie"), configPie);
+  </script>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="shadow-lg rounded-lg overflow-hidden">
+        <div class="py-3 px-5 bg-gray-50">Pie chart</div>
+        <canvas class="p-10" id="chartPie"></canvas>
+      </div>
+
+      <!-- Required chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <!-- Chart pie -->
+      <script>
+        const dataPie = {
+          labels: ["JavaScript", "Python", "Ruby"],
+          datasets: [
+            {
+              label: "My First Dataset",
+              data: [300, 50, 100],
+              backgroundColor: [
+                "rgb(133, 105, 241)",
+                "rgb(164, 101, 241)",
+                "rgb(101, 143, 241)",
+              ],
+              hoverOffset: 4,
+            },
+          ],
+        };
+
+        const configPie = {
+          type: "pie",
+          data: dataPie,
+          options: {},
+        };
+
+        var chartBar = new Chart(document.getElementById("chartPie"), configPie);
+      </script>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
 </section>
 
-<!-- prettier-ignore -->
-{{< twsnippet/demo id="example5" title_id="doughnut" title="Doughnut chart">}}
-<div class="shadow-lg rounded-lg overflow-hidden">
-  <div class="py-3 px-5 bg-gray-50">Doughnut chart</div>
-  <canvas class="p-10" id="chartDoughnut"></canvas>
-</div>
+<!-- Section: Doughnut chart -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="doughnut">Doughnut chart</h2>
+  <!--Description-->
+  <p class="mb-3">Doughnut chart is a circular graphic which is used to show the proportions of categorical data, with the size of each piece representing the proportion of each category.</p>
 
-<!-- Required chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- Chart doughnut -->
-<script>
-  const dataDoughnut = {
-    labels: ["JavaScript", "Python", "Ruby"],
-    datasets: [
-      {
-        label: "My First Dataset",
-        data: [300, 50, 100],
-        backgroundColor: [
-          "rgb(133, 105, 241)",
-          "rgb(164, 101, 241)",
-          "rgb(101, 143, 241)",
-        ],
-        hoverOffset: 4,
-      },
-    ],
-  };
-
-  const configDoughnut = {
-    type: "doughnut",
-    data: dataDoughnut,
-    options: {},
-  };
-
-  var chartBar = new Chart(
-    document.getElementById("chartDoughnut"),
-    configDoughnut
-  );
-</script>
-{{< /twsnippet/demo >}}
-
-<section class="collapse" id="example5">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="shadow-lg rounded-lg overflow-hidden">
-      <div class="py-3 px-5 bg-gray-50">Doughnut chart</div>
-      <canvas class="p-10" id="chartDoughnut"></canvas>
-    </div>
-
-    <!-- Required chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Chart doughnut -->
-    <script>
-      const dataDoughnut = {
-        labels: ["JavaScript", "Python", "Ruby"],
-        datasets: [
-          {
-            label: "My First Dataset",
-            data: [300, 50, 100],
-            backgroundColor: [
-              "rgb(133, 105, 241)",
-              "rgb(164, 101, 241)",
-              "rgb(101, 143, 241)",
-            ],
-            hoverOffset: 4,
-          },
-        ],
-      };
-
-      const configDoughnut = {
-        type: "doughnut",
-        data: dataDoughnut,
-        options: {},
-      };
-
-      var chartBar = new Chart(
-        document.getElementById("chartDoughnut"),
-        configDoughnut
-      );
-    </script>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div class="shadow-lg rounded-lg overflow-hidden">
+    <div class="py-3 px-5 bg-gray-50">Doughnut chart</div>
+    <canvas class="p-10" id="chartDoughnut"></canvas>
   </div>
+
+  <!-- Required chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Chart doughnut -->
+  <script>
+    const dataDoughnut = {
+      labels: ["JavaScript", "Python", "Ruby"],
+      datasets: [
+        {
+          label: "My First Dataset",
+          data: [300, 50, 100],
+          backgroundColor: [
+            "rgb(133, 105, 241)",
+            "rgb(164, 101, 241)",
+            "rgb(101, 143, 241)",
+          ],
+          hoverOffset: 4,
+        },
+      ],
+    };
+
+    const configDoughnut = {
+      type: "doughnut",
+      data: dataDoughnut,
+      options: {},
+    };
+
+    var chartBar = new Chart(
+      document.getElementById("chartDoughnut"),
+      configDoughnut
+    );
+  </script>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="shadow-lg rounded-lg overflow-hidden">
+        <div class="py-3 px-5 bg-gray-50">Doughnut chart</div>
+        <canvas class="p-10" id="chartDoughnut"></canvas>
+      </div>
+
+      <!-- Required chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <!-- Chart doughnut -->
+      <script>
+        const dataDoughnut = {
+          labels: ["JavaScript", "Python", "Ruby"],
+          datasets: [
+            {
+              label: "My First Dataset",
+              data: [300, 50, 100],
+              backgroundColor: [
+                "rgb(133, 105, 241)",
+                "rgb(164, 101, 241)",
+                "rgb(101, 143, 241)",
+              ],
+              hoverOffset: 4,
+            },
+          ],
+        };
+
+        const configDoughnut = {
+          type: "doughnut",
+          data: dataDoughnut,
+          options: {},
+        };
+
+        var chartBar = new Chart(
+          document.getElementById("chartDoughnut"),
+          configDoughnut
+        );
+      </script>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
 </section>
 
 <hr class="my-12">

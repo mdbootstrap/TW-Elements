@@ -14,500 +14,552 @@ menu:
     name: "Button group"
 ---
 
- <!-- prettier-ignore -->
-{{< twsnippet/demo id="example1" title_id="basic" title="Basic example">}}
-<div class="flex items-center justify-center">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
- {{< /twsnippet/demo >}}
+<!-- Section: Basic Example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic">Basic examples</h2>
+  <!--Description-->
+  <p class="mb-3">Radio buttons are a popular way to allow users to make a single selection & should be used instead of checkboxes if only one item can be selected from a list of options.</p>
 
+  <p class="mb-3">Group a series of buttons together on a single line using the following code.</p>
 
-<section class="collapse" id="example1">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="flex items-center justify-center">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
-      </div>
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="flex items-center justify-center">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
     </div>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+<!-- Section: Basic Example -->
+
+
+<!-- Section: Active state -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="active">Active state</h2>
+  <!--Description-->
+  <p class="mb-3">Use <code>.active</code> class to check a radio button by default.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div class="flex items-center justify-center">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <a
+        href="#"
+        aria-current="page"
+        class="
+          rounded-l
+          px-6
+          py-2.5
+          bg-blue-800
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          hover:bg-blue-700
+          focus:bg-blue-700 focus:outline-none focus:ring-0
+          active:bg-blue-800
+          transition
+          duration-150
+          ease-in-out
+        "
+      >
+        Active link
+      </a>
+      <a
+        href="#"
+        class="
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          hover:bg-blue-700
+          focus:bg-blue-700 focus:outline-none focus:ring-0
+          active:bg-blue-800
+          transition
+          duration-150
+          ease-in-out
+        "
+      >
+        Link
+      </a>
+      <a
+        href="#"
+        class="
+          rounded-r
+          px-6
+          py-2.5
+          bg-blue-600
+          text-white
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          hover:bg-blue-700
+          focus:bg-blue-700 focus:outline-none focus:ring-0
+          active:bg-blue-800
+          transition
+          duration-150
+          ease-in-out
+        "
+      >
+        Link
+      </a>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <a
+            href="#"
+            aria-current="page"
+            class="
+              rounded-l
+              px-6
+              py-2.5
+              bg-blue-800
+              text-white
+              font-medium
+              text-xs
+              leading-tight
+              uppercase
+              hover:bg-blue-700
+              focus:bg-blue-700 focus:outline-none focus:ring-0
+              active:bg-blue-800
+              transition
+              duration-150
+              ease-in-out
+            "
+          >
+            Active link
+          </a>
+          <a
+            href="#"
+            class="
+              px-6
+              py-2.5
+              bg-blue-600
+              text-white
+              font-medium
+              text-xs
+              leading-tight
+              uppercase
+              hover:bg-blue-700
+              focus:bg-blue-700 focus:outline-none focus:ring-0
+              active:bg-blue-800
+              transition
+              duration-150
+              ease-in-out
+            "
+          >
+            Link
+          </a>
+          <a
+            href="#"
+            class="
+              rounded-r
+              px-6
+              py-2.5
+              bg-blue-600
+              text-white
+              font-medium
+              text-xs
+              leading-tight
+              uppercase
+              hover:bg-blue-700
+              focus:bg-blue-700 focus:outline-none focus:ring-0
+              active:bg-blue-800
+              transition
+              duration-150
+              ease-in-out
+            "
+          >
+            Link
+          </a>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+  <!-- Section: Active state -->
+
+<!-- Section: Outline styles -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="outline">Outline styles</h2>
+  <!--Description-->
+  <p class="mb-3">Use the following button group styles to show the colors only for the border of the elements.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div class="flex items-center justify-center">
+    <div class="inline-flex" role="group">
+      <button
+        type="button"
+        class="
+          rounded-l
+          px-6
+          py-2
+          border-2 border-blue-600
+          text-blue-600
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          hover:bg-black hover:bg-opacity-5
+          focus:outline-none focus:ring-0
+          transition
+          duration-150
+          ease-in-out
+        "
+      >
+        Left
+      </button>
+      <button
+        type="button"
+        class="
+          px-6
+          py-2
+          border-t-2 border-b-2 border-blue-600
+          text-blue-600
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          hover:bg-black hover:bg-opacity-5
+          focus:outline-none focus:ring-0
+          transition
+          duration-150
+          ease-in-out
+        "
+      >
+        Middle
+      </button>
+      <button
+        type="button"
+        class="
+          rounded-r
+          px-6
+          py-2
+          border-2 border-blue-600
+          text-blue-600
+          font-medium
+          text-xs
+          leading-tight
+          uppercase
+          hover:bg-black hover:bg-opacity-5
+          focus:outline-none focus:ring-0
+          transition
+          duration-150
+          ease-in-out
+        "
+      >
+        Right
+      </button>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center">
+        <div class="inline-flex" role="group">
+          <button
+            type="button"
+            class="
+              rounded-l
+              px-6
+              py-2
+              border-2 border-blue-600
+              text-blue-600
+              font-medium
+              text-xs
+              leading-tight
+              uppercase
+              hover:bg-black hover:bg-opacity-5
+              focus:outline-none focus:ring-0
+              transition
+              duration-150
+              ease-in-out
+            "
+          >
+            Left
+          </button>
+          <button
+            type="button"
+            class="
+              px-6
+              py-2
+              border-t-2 border-b-2 border-blue-600
+              text-blue-600
+              font-medium
+              text-xs
+              leading-tight
+              uppercase
+              hover:bg-black hover:bg-opacity-5
+              focus:outline-none focus:ring-0
+              transition
+              duration-150
+              ease-in-out
+            "
+          >
+            Middle
+          </button>
+          <button
+            type="button"
+            class="
+              rounded-r
+              px-6
+              py-2
+              border-2 border-blue-600
+              text-blue-600
+              font-medium
+              text-xs
+              leading-tight
+              uppercase
+              hover:bg-black hover:bg-opacity-5
+              focus:outline-none focus:ring-0
+              transition
+              duration-150
+              ease-in-out
+            "
+          >
+            Right
+          </button>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Outline styles -->
+
+<!-- Section: Outline styles -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="toolbar">Toolbar</h2>
+  <!--Description-->
+  <p class="mb-3">For more complex components, combine a set of button groups into a toolbar. Use utility classes to organize groups, buttons, and other elements.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="flex items-center justify-center">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="toolbar">
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">1</button>
+      <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">2</button>
+      <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">3</button>
+      <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">4</button>
+      <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">5</button>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="toolbar">
+          <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">1</button>
+          <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">2</button>
+          <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">3</button>
+          <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">4</button>
+          <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">5</button>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
 </section>
 
- <!-- prettier-ignore -->
-{{< twsnippet/demo id="example2" title_id="active" title="Active state">}}
-<div class="flex items-center justify-center">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <a
-      href="#"
-      aria-current="page"
-      class="
-        rounded-l
-        px-6
-        py-2.5
-        bg-blue-800
-        text-white
-        font-medium
-        text-xs
-        leading-tight
-        uppercase
-        hover:bg-blue-700
-        focus:bg-blue-700 focus:outline-none focus:ring-0
-        active:bg-blue-800
-        transition
-        duration-150
-        ease-in-out
-      "
-    >
-      Active link
-    </a>
-    <a
-      href="#"
-      class="
-        px-6
-        py-2.5
-        bg-blue-600
-        text-white
-        font-medium
-        text-xs
-        leading-tight
-        uppercase
-        hover:bg-blue-700
-        focus:bg-blue-700 focus:outline-none focus:ring-0
-        active:bg-blue-800
-        transition
-        duration-150
-        ease-in-out
-      "
-    >
-      Link
-    </a>
-    <a
-      href="#"
-      class="
-        rounded-r
-        px-6
-        py-2.5
-        bg-blue-600
-        text-white
-        font-medium
-        text-xs
-        leading-tight
-        uppercase
-        hover:bg-blue-700
-        focus:bg-blue-700 focus:outline-none focus:ring-0
-        active:bg-blue-800
-        transition
-        duration-150
-        ease-in-out
-      "
-    >
-      Link
-    </a>
-  </div>
-</div>
- {{< /twsnippet/demo >}}
+<!-- Section: Sizing -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="sizing">Sizing</h2>
+  <!--Description-->
+  <p class="mb-3">Use these examples if you want to use smaller or larger buttons groups.</p>
 
-
-<section class="collapse" id="example2">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="flex items-center justify-center">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <a
-          href="#"
-          aria-current="page"
-          class="
-            rounded-l
-            px-6
-            py-2.5
-            bg-blue-800
-            text-white
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            hover:bg-blue-700
-            focus:bg-blue-700 focus:outline-none focus:ring-0
-            active:bg-blue-800
-            transition
-            duration-150
-            ease-in-out
-          "
-        >
-          Active link
-        </a>
-        <a
-          href="#"
-          class="
-            px-6
-            py-2.5
-            bg-blue-600
-            text-white
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            hover:bg-blue-700
-            focus:bg-blue-700 focus:outline-none focus:ring-0
-            active:bg-blue-800
-            transition
-            duration-150
-            ease-in-out
-          "
-        >
-          Link
-        </a>
-        <a
-          href="#"
-          class="
-            rounded-r
-            px-6
-            py-2.5
-            bg-blue-600
-            text-white
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            hover:bg-blue-700
-            focus:bg-blue-700 focus:outline-none focus:ring-0
-            active:bg-blue-800
-            transition
-            duration-150
-            ease-in-out
-          "
-        >
-          Link
-        </a>
-      </div>
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div class="flex items-center justify-center mb-3">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class="rounded-r inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
     </div>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
+  <div class="flex items-center justify-center mb-3">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class="inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class="rounded-r inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center mb-3">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class="rounded-r inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+        </div>
+      </div>
+      <div class="flex items-center justify-center mb-3">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+        </div>
+      </div>
+      <div class="flex items-center justify-center">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class="inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class="rounded-r inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
 </section>
+<!-- Section: Sizing -->
 
- <!-- prettier-ignore -->
-{{< twsnippet/demo id="example3" title_id="outline" title="Outline styles">}}
-<div class="flex items-center justify-center">
-  <div class="inline-flex" role="group">
-    <button
-      type="button"
-      class="
-        rounded-l
-        px-6
-        py-2
-        border-2 border-blue-600
-        text-blue-600
-        font-medium
-        text-xs
-        leading-tight
-        uppercase
-        hover:bg-black hover:bg-opacity-5
-        focus:outline-none focus:ring-0
-        transition
-        duration-150
-        ease-in-out
-      "
-    >
-      Left
-    </button>
-    <button
-      type="button"
-      class="
-        px-6
-        py-2
-        border-t-2 border-b-2 border-blue-600
-        text-blue-600
-        font-medium
-        text-xs
-        leading-tight
-        uppercase
-        hover:bg-black hover:bg-opacity-5
-        focus:outline-none focus:ring-0
-        transition
-        duration-150
-        ease-in-out
-      "
-    >
-      Middle
-    </button>
-    <button
-      type="button"
-      class="
-        rounded-r
-        px-6
-        py-2
-        border-2 border-blue-600
-        text-blue-600
-        font-medium
-        text-xs
-        leading-tight
-        uppercase
-        hover:bg-black hover:bg-opacity-5
-        focus:outline-none focus:ring-0
-        transition
-        duration-150
-        ease-in-out
-      "
-    >
-      Right
-    </button>
-  </div>
-</div>
- {{< /twsnippet/demo >}}
+<!-- Section: Colors -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="colors">Colors</h2>
+  <!--Description-->
+  <p class="mb-3">Choose from several predefined button group styles, each serving its own semantic purpose, with a few extras thrown in for more control.</p>
 
-
-<section class="collapse" id="example3">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="flex items-center justify-center">
-      <div class="inline-flex" role="group">
-        <button
-          type="button"
-          class="
-            rounded-l
-            px-6
-            py-2
-            border-2 border-blue-600
-            text-blue-600
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            hover:bg-black hover:bg-opacity-5
-            focus:outline-none focus:ring-0
-            transition
-            duration-150
-            ease-in-out
-          "
-        >
-          Left
-        </button>
-        <button
-          type="button"
-          class="
-            px-6
-            py-2
-            border-t-2 border-b-2 border-blue-600
-            text-blue-600
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            hover:bg-black hover:bg-opacity-5
-            focus:outline-none focus:ring-0
-            transition
-            duration-150
-            ease-in-out
-          "
-        >
-          Middle
-        </button>
-        <button
-          type="button"
-          class="
-            rounded-r
-            px-6
-            py-2
-            border-2 border-blue-600
-            text-blue-600
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            hover:bg-black hover:bg-opacity-5
-            focus:outline-none focus:ring-0
-            transition
-            duration-150
-            ease-in-out
-          "
-        >
-          Right
-        </button>
-      </div>
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example6">}}
+  <div class="flex items-center justify-center mb-3">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
     </div>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
-</section>
-
- <!-- prettier-ignore -->
-{{< twsnippet/demo id="example4" title_id="toolbar" title="Toolbar">}}
-<div class="flex items-center justify-center">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="toolbar">
-    <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">1</button>
-    <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">2</button>
-    <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">3</button>
-    <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">4</button>
-    <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">5</button>
-  </div>
-</div>
- {{< /twsnippet/demo >}}
-
-
-<section class="collapse" id="example4">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="flex items-center justify-center">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="toolbar">
-        <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">1</button>
-        <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">2</button>
-        <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">3</button>
-        <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">4</button>
-        <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">5</button>
-      </div>
+  <div class="flex items-center justify-center mb-3">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Right</button>
     </div>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
   </div>
-</section>
+  <div class="flex items-center justify-center mb-3">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Right</button>
+    </div>
+  </div>
+  <div class="flex items-center justify-center mb-3">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Right</button>
+    </div>
+  </div>
+  <div class="flex items-center justify-center mb-3">
+    <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+      <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Left</button>
+      <button type="button" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Middle</button>
+      <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Right</button>
+    </div>
+  </div>
+
+  {{< /twsnippet/demo >}}
 
 
- <!-- prettier-ignore -->
-{{< twsnippet/demo id="example5" title_id="sizing" title="Sizing">}}
-<div class="flex items-center justify-center mb-3">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class="rounded-r inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
-<div class="flex items-center justify-center mb-3">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
-<div class="flex items-center justify-center">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class="inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class="rounded-r inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
- {{< /twsnippet/demo >}}
-
-
-<section class="collapse" id="example5">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="flex items-center justify-center mb-3">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class="rounded-r inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+  <section class="collapse" id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex items-center justify-center mb-3">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+        </div>
       </div>
-    </div>
-    <div class="flex items-center justify-center mb-3">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class=" rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+      <div class="flex items-center justify-center mb-3">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Right</button>
+        </div>
       </div>
-    </div>
-    <div class="flex items-center justify-center">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class="inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class="rounded-r inline-block px-4 py-1.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+      <div class="flex items-center justify-center mb-3">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Right</button>
+        </div>
       </div>
-    </div>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
-  </div>
-</section>
-
- <!-- prettier-ignore -->
-{{< twsnippet/demo id="example6" title_id="colors" title="Colors">}}
-<div class="flex items-center justify-center mb-3">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
-<div class="flex items-center justify-center mb-3">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
-<div class="flex items-center justify-center mb-3">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
-<div class="flex items-center justify-center mb-3">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
-<div class="flex items-center justify-center mb-3">
-  <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-    <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Left</button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Middle</button>
-    <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Right</button>
-  </div>
-</div>
-
- {{< /twsnippet/demo >}}
-
-
-<section class="collapse" id="example6">
-  <div class="pt-4">
-    {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
-    >}}
-    <div class="flex items-center justify-center mb-3">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase hover:bg-blue-700 focus:bg-blue-700 focus:outline-none focus:ring-0 active:bg-blue-800 transition duration-150 ease-in-out">Right</button>
+      <div class="flex items-center justify-center mb-3">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Right</button>
+        </div>
       </div>
-    </div>
-    <div class="flex items-center justify-center mb-3">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase hover:bg-purple-700 focus:bg-purple-700 focus:outline-none focus:ring-0 active:bg-purple-800 transition duration-150 ease-in-out">Right</button>
+      <div class="flex items-center justify-center mb-3">
+        <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
+          <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Left</button>
+          <button type="button" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Middle</button>
+          <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Right</button>
+        </div>
       </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
-    <div class="flex items-center justify-center mb-3">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700 transition duration-150 ease-in-out">Right</button>
-      </div>
-    </div>
-    <div class="flex items-center justify-center mb-3">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase hover:bg-red-700 focus:bg-red-700 focus:outline-none focus:ring-0 active:bg-red-800 transition duration-150 ease-in-out">Right</button>
-      </div>
-    </div>
-    <div class="flex items-center justify-center mb-3">
-      <div class="inline-flex shadow-md hover:shadow-lg focus:shadow-lg" role="group">
-        <button type="button" class="rounded-l inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Left</button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Middle</button>
-        <button type="button" class="rounded-r inline-block px-6 py-2.5 bg-yellow-500 text-white font-medium text-xs leading-tight uppercase hover:bg-yellow-600 focus:bg-yellow-600 focus:outline-none focus:ring-0 active:bg-yellow-700 transition duration-150 ease-in-out">Right</button>
-      </div>
-    </div>
-    {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
-  </div>
+  </section>
 </section>
 
 <hr class="my-12">
