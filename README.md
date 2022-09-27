@@ -312,6 +312,45 @@ Alternatively, you can import it in the following way (bundler version):
 
 ```
 import 'tw-elements';
+
+##### NPM/EXPRESS & Middleware for EJS
+
+1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ 'Node.js (LTS)') and [TailwindCSS](https://tailwindcss.com/ 'TailwindCSS').
+
+2. Run the following command to install the package via NPM:
+
+```
+npm install tw-elements
+```
+
+3. Tailwind Elements is a plugin and should be included inside the **tailwind.config.js** file. It is also recommended to extend the content array with a js file that loads dynamic component classes:
+
+```javascript
+module.exports = {
+  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
+  plugins: [require('tw-elements/dist/plugin')],
+};
+```
+
+4. When using Tailwind Element to render EJS, we need to set up the plugin middleware. Some components will require Node to read the packaged Javascript file to function. In order to make sure express gives Node access to the file, you will need to add the folder to your main server file:
+
+```
+app.use(express.static('ROOT-PATH/tw-elements/dist/js'));
+```
+
+5.  Dynamic components will work after adding the js file to the bottom of your EJS body:
+
+```
+<script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+```
+
+Alternatively, you can import it in the following way (bundler version):
+
+```
+import 'tw-elements';
+```
+
+
 ```
 
 ##### MDB GO / CLI
