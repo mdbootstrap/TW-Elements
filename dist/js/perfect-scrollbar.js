@@ -788,8 +788,7 @@ var updateGeometry = require('../update-geometry');
 function bindNativeScrollHandler(element, i) {
     i.event.bind(element, 'scroll', function() {
         if (element.classList.contains("ps-disabled") ) {
-            e.preventDefault();
-            return;
+            return false;
         }
     updateGeometry(element);
   });
@@ -1500,6 +1499,9 @@ module.exports = function (element) {
     return;
   }
 
+  const _getXnY = () => element.classList.contains('ps--active-x') && element.classList.contains('ps--active-y');
+  const prevXnY = _getXnY();
+
   // Recalcuate negative scrollLeft adjustment
   i.negativeScrollAdjustment = i.isNegativeScroll ? element.scrollWidth - element.clientWidth : 0;
 
@@ -1521,6 +1523,10 @@ module.exports = function (element) {
 
   dom.css(i.scrollbarXRail, 'display', '');
   dom.css(i.scrollbarYRail, 'display', '');
+
+  if (_getXnY() !== prevXnY) {
+      this.update(element);
+  }
 };
 
     }, { "../lib/dom": 2, "../lib/helper": 5, "./instances": 17, "./update-geometry": 18, "./update-scroll": 19 }], 21: [function(require, module, exports) {
