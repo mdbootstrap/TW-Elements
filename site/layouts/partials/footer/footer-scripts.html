@@ -293,6 +293,9 @@
 
         if (rect < window.innerHeight + -1100) {
           menuSection.forEach((v) => v.classList.remove('active'));
+          if (!menuSection[i]) {
+            return;
+          }
           menuSection[i].classList.add('active');
         }
       });
