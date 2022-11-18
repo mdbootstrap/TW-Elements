@@ -52,9 +52,54 @@ fileExists (printf "/content/%s/ss.html" .File.Dir) }}
 
         <div class="w-full lg:w-2/12 px-4 hidden lg:block">
           <menu class="sticky top-10">
+            <style>
+              .dc-content-animation {
+                  height: 20px;
+                  width: 50%;
+                  display: inline-block;
+                  animation: placeholderPulse 1s infinite ease-in-out;
+                  -webkit-animation:  placeholderPulse 1s infinite ease-in-out;
+                
+                  
+              }
+              @keyframes placeholderPulse {
+                  0%{
+                      background-color: rgba(133, 214, 251, .1);
+                      color: rgba(133, 214, 251, .1);
+                  }
+                  50%{
+                      background-color: rgba(133, 214, 251, .3);
+                      color: rgba(133, 214, 251, .3);
+                  }
+                  100%{
+                      background-color: rgba(133, 214, 251, .1);
+                      color: rgba(133, 214, 251, .1);
+                  }}
+              .ps.nav {
+                  flex-wrap: nowrap;
+                  position: relative; 
+              }
+          </style>
+
+            <div class="relative hidden xl:block animation fade-in" id="dpl-gtm-scroll" style="min-height: 200px; animation-delay: 0ms; animation-duration: 500ms;">
+              <div class="absolute w-100 justify-content-center w-full">
+                  <div class="border border-info shadow-3 rounded overflow-hidden opacity-10" style="border-color: rgba(133, 214, 251, .3) !important;">
+                      <span class="dc-content-animation mx-2 mb-2 mt-3" style="width: 40%;"></span>
+                      <span class="dc-content-animation mx-2 mb-1" style="width: 70%;"></span>
+                      <span class="dc-content-animation mx-2 mb-1"></span>
+                      <span class="dc-content-animation mx-2 mb-1" style="width: 80%;"></span>
+                      <span class="dc-content-animation mx-2 mb-1" style="width: 70%;"></span>
+                      <span class="dc-content-animation mx-2 mb-1" style="width: 80%;"></span>
+                      
+
+                  </div>
+              </div>
             <!-- Alert -->
-            <div id="gtmDC-scroll-all" style="min-height:1px;min-width:1px;"></div>
+            <div id="gtmDC-scroll-all" class="relative" style="min-height:1px;min-width:1px;"></div>
             <!-- Alert -->
+
+             
+          </div>
 
             <ul>
               {{ with .Resources.GetMatch "ss.html" }} {{.Content }} {{end}}
