@@ -58,11 +58,11 @@ const CLASS_NAME_DROPEND = 'dropend';
 const CLASS_NAME_DROPSTART = 'dropstart';
 const CLASS_NAME_NAVBAR = 'navbar';
 
-const SELECTOR_DATA_TOGGLE = '[data-te-toggle="dropdown"]';
-const SELECTOR_MENU = '[data-te-menu="dropdown"]';
-const SELECTOR_NAVBAR_NAV = '.navbar-nav';
+const SELECTOR_DATA_TOGGLE = '[data-te-dropdown-toggle-ref]';
+const SELECTOR_MENU = '[data-te-dropdown-menu-ref]';
+const SELECTOR_NAVBAR_NAV = '[data-te-navbar-nav-ref]';
 const SELECTOR_VISIBLE_ITEMS =
-  '[data-te-menu="dropdown"] [data-te-item="dropdown"]:not(.disabled):not(:disabled)';
+  '[data-te-dropdown-menu-ref] [data-te-dropdown-item-ref]:not(.disabled):not(:disabled)';
 
 const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start';
 const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end';
@@ -161,8 +161,8 @@ class Dropdown extends BaseComponent {
     this._element.focus();
     this._element.setAttribute('aria-expanded', true);
 
-    this._menu.setAttribute('data-te-dropdown-state', CLASS_NAME_SHOW);
-    this._element.setAttribute('data-te-dropdown-state', CLASS_NAME_SHOW);
+    this._menu.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, '');
+    this._element.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, '');
 
     EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
   }
@@ -214,8 +214,8 @@ class Dropdown extends BaseComponent {
       this._popper.destroy();
     }
 
-    this._menu.removeAttribute('data-te-dropdown-state');
-    this._element.removeAttribute('data-te-dropdown-state');
+    this._menu.removeAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`);
+    this._element.removeAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`);
 
     this._element.setAttribute('aria-expanded', 'false');
     Manipulator.removeDataAttribute(this._menu, 'popper');
@@ -273,7 +273,11 @@ class Dropdown extends BaseComponent {
   }
 
   _isShown(element = this._element) {
-    return element.dataset.teDropdownState === CLASS_NAME_SHOW;
+    return (
+      element.dataset[
+        `teDropdown${CLASS_NAME_SHOW.charAt(0).toUpperCase() + CLASS_NAME_SHOW.slice(1)}`
+      ] === ''
+    );
   }
 
   _getMenuElement() {
@@ -462,7 +466,10 @@ class Dropdown extends BaseComponent {
       return;
     }
 
-    const isActive = this.dataset.teDropdownState === CLASS_NAME_SHOW;
+    const isActive =
+      this.dataset[
+        `teDropdown${CLASS_NAME_SHOW.charAt(0).toUpperCase() + CLASS_NAME_SHOW.slice(1)}`
+      ] === '';
 
     if (!isActive && event.key === ESCAPE_KEY) {
       return;
