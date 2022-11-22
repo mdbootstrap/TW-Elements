@@ -49,6 +49,7 @@ class Backdrop {
     }
 
     this._getElement().classList.add(CLASS_NAME_SHOW);
+    this._element.setAttribute(`data-te-${CLASS_NAME_SHOW}`, '');
 
     this._emulateAnimation(() => {
       execute(callback);
@@ -62,6 +63,7 @@ class Backdrop {
     }
 
     this._getElement().classList.remove(CLASS_NAME_SHOW);
+    this._element.removeAttribute(`data-te-${CLASS_NAME_SHOW}`);
 
     this._emulateAnimation(() => {
       this.dispose();

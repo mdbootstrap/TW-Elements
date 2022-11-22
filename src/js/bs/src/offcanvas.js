@@ -28,7 +28,7 @@ import { enableDismissTrigger } from './util/component-functions';
  */
 
 const NAME = 'offcanvas';
-const DATA_KEY = 'bs.offcanvas';
+const DATA_KEY = 'te.offcanvas';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
@@ -47,8 +47,9 @@ const DefaultType = {
 };
 
 const CLASS_NAME_SHOW = 'show';
-const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
-const OPEN_SELECTOR = '.offcanvas.show';
+const CLASS_NAME_BACKDROP =
+  'fixed top-0 left-0 z-[1040] w-screen h-screen bg-black [&[data-te-show]]:opacity-50';
+const OPEN_SELECTOR = '[data-te-component="offcanvas"][data-te-show]';
 
 const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
@@ -57,7 +58,7 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
 
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]';
+const SELECTOR_DATA_TOGGLE = '[data-te-toggle="offcanvas"]';
 
 /**
  * ------------------------------------------------------------------------
@@ -115,7 +116,7 @@ class Offcanvas extends BaseComponent {
     this._element.removeAttribute('aria-hidden');
     this._element.setAttribute('aria-modal', true);
     this._element.setAttribute('role', 'dialog');
-    this._element.classList.add(CLASS_NAME_SHOW);
+    this._element.setAttribute(`data-te-${CLASS_NAME_SHOW}`, '');
 
     const completeCallBack = () => {
       if (!this._config.scroll) {
@@ -142,7 +143,7 @@ class Offcanvas extends BaseComponent {
     this._focustrap.deactivate();
     this._element.blur();
     this._isShown = false;
-    this._element.classList.remove(CLASS_NAME_SHOW);
+    this._element.removeAttribute(`data-te-${CLASS_NAME_SHOW}`);
     this._backdrop.hide();
 
     const completeCallback = () => {
