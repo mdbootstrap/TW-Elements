@@ -35,12 +35,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Dark dropdowns</h3>
 
-      <div class="dropdown relative">
+      <div class="relative">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
           type="button"
           id="dropdownMenuButton2"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           Dropdown button
@@ -61,8 +61,9 @@
           </svg>
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none bg-gray-800"
+          class="min-w-max absolute text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none bg-gray-800 [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton2"
+          data-te-menu="dropdown"
         >
           <h6
             class="text-gray-400 font-semibold text-sm py-2 px-4 block w-full whitespace-nowrap bg-transparent"
@@ -75,30 +76,34 @@
           >
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 active:bg-blue-600 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline"
               href="#"
+              data-te-item="dropdown"
               >Something else here</a
             >
           </li>
           <li><hr class="h-0 my-2 border border-solid border-t-0 border-gray-300 opacity-25" /></li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white focus:text-white focus:bg-gray-700 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline"
               href="#"
+              data-te-item="dropdown"
               >Separated link</a
             >
           </li>
@@ -111,12 +116,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Basic example</h3>
 
-      <div class="dropdown relative">
+      <div class="relative">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
           type="button"
           id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           Dropdown button
@@ -137,27 +142,31 @@
           </svg>
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+          class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton1"
+          data-te-menu="dropdown"
         >
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Something else here</a
             >
           </li>
@@ -170,12 +179,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Dropup</h3>
 
-      <div class="dropup relative">
+      <div class="relative" data-te-dropdown-position="dropup">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap mt-1"
           type="button"
           id="dropdownMenuButton1u"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           Dropup
@@ -196,27 +205,31 @@
           </svg>
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+          class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton1u"
+          data-te-menu="dropdown"
         >
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Something else here</a
             >
           </li>
@@ -229,12 +242,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Dropright</h3>
 
-      <div class="dropend relative">
+      <div class="relative" data-te-dropdown-position="dropend">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
           type="button"
           id="dropdownMenuButton1e"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           Dropend
@@ -255,27 +268,31 @@
           </svg>
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+          class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton1e"
+          data-te-menu="dropdown"
         >
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Something else here</a
             >
           </li>
@@ -288,12 +305,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Dropleft</h3>
 
-      <div class="dropstart relative">
+      <div class="relative" data-te-dropdown-position="dropstart">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
           type="button"
           id="dropdownMenuButton1s"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           <svg
@@ -314,27 +331,31 @@
           Dropstart
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+          class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton1s"
+          data-te-menu="dropdown"
         >
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Something else here</a
             >
           </li>
@@ -347,12 +368,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Dropdown divider</h3>
 
-      <div class="dropdown relative">
+      <div class="relative">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
           type="button"
           id="dropdownMenuButton1d"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           Dropdown divider
@@ -373,35 +394,40 @@
           </svg>
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+          class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton1d"
+          data-te-menu="dropdown"
         >
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Something else here</a
             >
           </li>
           <hr class="h-0 my-2 border border-solid border-t-0 border-gray-700 opacity-25" />
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Separated link</a
             >
           </li>
@@ -414,12 +440,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Dropdown disabled</h3>
 
-      <div class="dropdown relative">
+      <div class="relative">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
           type="button"
           id="dropdownMenuButton1ds"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           Dropdown item disabled
@@ -440,27 +466,31 @@
           </svg>
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+          class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton1ds"
+          data-te-menu="dropdown"
         >
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-400 pointer-events-none"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-400 pointer-events-none disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Something else here</a
             >
           </li>
@@ -473,12 +503,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Dropdown header</h3>
 
-      <div class="dropdown relative">
+      <div class="relative">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
           type="button"
           id="dropdownMenuButton1h"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           Dropdown header
@@ -499,8 +529,9 @@
           </svg>
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+          class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton1h"
+          data-te-menu="dropdown"
         >
           <h6
             class="text-gray-500 font-semibold text-sm py-2 px-4 block w-full whitespace-nowrap bg-transparent"
@@ -509,15 +540,17 @@
           </h6>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>
@@ -530,12 +563,12 @@
 
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Dropdown item text</h3>
 
-      <div class="dropdown relative">
+      <div class="relative">
         <button
-          class="dropdown-toggle px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap"
           type="button"
           id="dropdownMenuButton1tx"
-          data-bs-toggle="dropdown"
+          data-te-toggle="dropdown"
           aria-expanded="false"
         >
           Dropdown item text
@@ -556,8 +589,9 @@
           </svg>
         </button>
         <ul
-          class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none"
+          class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-state='show']]:block"
           aria-labelledby="dropdownMenuButton1tx"
+          data-te-menu="dropdown"
         >
           <span
             class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700"
@@ -565,15 +599,17 @@
           >
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Action</a
             >
           </li>
           <li>
             <a
-              class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+              class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
               href="#"
+              data-te-item="dropdown"
               >Another action</a
             >
           </li>

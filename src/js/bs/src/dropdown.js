@@ -31,7 +31,7 @@ import BaseComponent from './base-component';
  */
 
 const NAME = 'dropdown';
-const DATA_KEY = 'bs.dropdown';
+const DATA_KEY = 'te.dropdown';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 
@@ -58,10 +58,11 @@ const CLASS_NAME_DROPEND = 'dropend';
 const CLASS_NAME_DROPSTART = 'dropstart';
 const CLASS_NAME_NAVBAR = 'navbar';
 
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]';
-const SELECTOR_MENU = '.dropdown-menu';
+const SELECTOR_DATA_TOGGLE = '[data-te-toggle="dropdown"]';
+const SELECTOR_MENU = '[data-te-menu="dropdown"]';
 const SELECTOR_NAVBAR_NAV = '.navbar-nav';
-const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+const SELECTOR_VISIBLE_ITEMS =
+  '[data-te-menu="dropdown"] [data-te-item="dropdown"]:not(.disabled):not(:disabled)';
 
 const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start';
 const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end';
@@ -160,8 +161,9 @@ class Dropdown extends BaseComponent {
     this._element.focus();
     this._element.setAttribute('aria-expanded', true);
 
-    this._menu.classList.add(CLASS_NAME_SHOW);
-    this._element.classList.add(CLASS_NAME_SHOW);
+    this._menu.setAttribute('data-te-dropdown-state', CLASS_NAME_SHOW);
+    this._element.setAttribute('data-te-dropdown-state', CLASS_NAME_SHOW);
+
     EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
   }
 
@@ -212,8 +214,9 @@ class Dropdown extends BaseComponent {
       this._popper.destroy();
     }
 
-    this._menu.classList.remove(CLASS_NAME_SHOW);
-    this._element.classList.remove(CLASS_NAME_SHOW);
+    this._menu.removeAttribute('data-te-dropdown-state');
+    this._element.removeAttribute('data-te-dropdown-state');
+
     this._element.setAttribute('aria-expanded', 'false');
     Manipulator.removeDataAttribute(this._menu, 'popper');
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
@@ -270,7 +273,7 @@ class Dropdown extends BaseComponent {
   }
 
   _isShown(element = this._element) {
-    return element.classList.contains(CLASS_NAME_SHOW);
+    return element.dataset.teDropdownState === CLASS_NAME_SHOW;
   }
 
   _getMenuElement() {
@@ -280,18 +283,18 @@ class Dropdown extends BaseComponent {
   _getPlacement() {
     const parentDropdown = this._element.parentNode;
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
+    if (parentDropdown.dataset.teDropdownPosition === CLASS_NAME_DROPEND) {
       return PLACEMENT_RIGHT;
     }
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
+    if (parentDropdown.dataset.teDropdownPosition === CLASS_NAME_DROPSTART) {
       return PLACEMENT_LEFT;
     }
 
     // We need to trim the value because custom properties can also include spaces
-    const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
+    const isEnd = getComputedStyle(this._menu).getPropertyValue('--te-position').trim() === 'end';
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
+    if (parentDropdown.dataset.teDropdownPosition === CLASS_NAME_DROPUP) {
       return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
     }
 
@@ -459,7 +462,7 @@ class Dropdown extends BaseComponent {
       return;
     }
 
-    const isActive = this.classList.contains(CLASS_NAME_SHOW);
+    const isActive = this.dataset.teDropdownState === CLASS_NAME_SHOW;
 
     if (!isActive && event.key === ESCAPE_KEY) {
       return;

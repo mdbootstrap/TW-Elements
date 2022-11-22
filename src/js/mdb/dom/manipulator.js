@@ -31,11 +31,11 @@ function normalizeDataKey(key) {
 
 const Manipulator = {
   setDataAttribute(element, key, value) {
-    element.setAttribute(`data-mdb-${normalizeDataKey(key)}`, value);
+    element.setAttribute(`data-te-${normalizeDataKey(key)}`, value);
   },
 
   removeDataAttribute(element, key) {
-    element.removeAttribute(`data-mdb-${normalizeDataKey(key)}`);
+    element.removeAttribute(`data-te-${normalizeDataKey(key)}`);
   },
 
   getDataAttributes(element) {
@@ -48,9 +48,9 @@ const Manipulator = {
     };
 
     Object.keys(attributes)
-      .filter((key) => key.startsWith('mdb'))
+      .filter((key) => key.startsWith('te'))
       .forEach((key) => {
-        let pureKey = key.replace(/^mdb/, '');
+        let pureKey = key.replace(/^te/, '');
         pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
         attributes[pureKey] = normalizeData(attributes[key]);
       });
@@ -59,7 +59,7 @@ const Manipulator = {
   },
 
   getDataAttribute(element, key) {
-    return normalizeData(element.getAttribute(`data-mdb-${normalizeDataKey(key)}`));
+    return normalizeData(element.getAttribute(`data-te-${normalizeDataKey(key)}`));
   },
 
   offset(element) {
