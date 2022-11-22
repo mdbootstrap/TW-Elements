@@ -11,24 +11,25 @@ import SelectorEngine from './dom/selector-engine';
  */
 
 const NAME = 'ripple';
-const DATA_KEY = 'mdb.ripple';
-const CLASSNAME_RIPPLE = 'ripple-surface';
-const CLASSNAME_RIPPLE_WAVE = 'ripple-wave';
-const SELECTOR_COMPONENT = ['[data-mdb-ripple]'];
+const DATA_KEY = 'te.ripple';
+const CLASSNAME_RIPPLE = 'relative overflow-hidden inline-block align-bottom';
+const CLASSNAME_RIPPLE_WAVE =
+  'rounded-[50%] opacity-50 pointer-events-none absolute touch-none scale-0 transition-[transform,_opacity] ease-[cubic-bezier(0,0,0.15,1),_cubic-bezier(0,0,0.15,1)] z-[999] bg-[radial-gradient(circle,_rgba(0,0,0,0.2)_0%,_rgba(0,0,0,0.3)_40%,_rgba(0,0,0,0.4)_50%,_rgba(0,0,0,0.5)_60%,_transparent_70%)]';
+const SELECTOR_COMPONENT = ['[data-te-ripple]'];
 
-const CLASSNAME_UNBOUND = 'ripple-surface-unbound';
+const CLASSNAME_UNBOUND = 'overflow-visible';
 const GRADIENT =
   'rgba({{color}}, 0.2) 0, rgba({{color}}, 0.3) 40%, rgba({{color}}, 0.4) 50%, rgba({{color}}, 0.5) 60%, rgba({{color}}, 0) 70%';
 const DEFAULT_RIPPLE_COLOR = [0, 0, 0];
 const BOOTSTRAP_COLORS = [
-  'primary',
-  'secondary',
-  'success',
-  'danger',
-  'warning',
-  'info',
-  'light',
-  'dark',
+  { name: 'primary', gradientColor: '#1268f1' },
+  { name: 'secondary', gradientColor: '#b33cfd' },
+  { name: 'success', gradientColor: '#00b749' },
+  { name: 'danger', gradientColor: '#f93152' },
+  { name: 'warning', gradientColor: '#ffaa00' },
+  { name: 'info', gradientColor: '#39c0ed' },
+  { name: 'light', gradientColor: '#fbfbfb' },
+  { name: 'dark', gradientColor: '#262626' },
 ];
 
 // Sets value when run opacity transition
@@ -64,7 +65,7 @@ class Ripple {
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
-      Manipulator.addClass(this._element, CLASSNAME_RIPPLE);
+      this._addMultiClass(this._element, CLASSNAME_RIPPLE);
     }
 
     this._clickHandler = this._createRipple.bind(this);
@@ -108,9 +109,18 @@ class Ripple {
       this._isMinWidthSet = true;
     }
 
-    Manipulator.addClass(this._element, CLASSNAME_RIPPLE);
+    this._addMultiClass(this._element, CLASSNAME_RIPPLE);
+
     this._options = this._getConfig();
     this._createRipple(event);
+  }
+
+  _addMultiClass(target, classes) {
+    target.className += ` ${classes}`;
+  }
+
+  _removeMultiClass(target, classes) {
+    classes.split(' ').forEach((item) => target.classList.remove(item));
   }
 
   _addClickEvent(target) {
@@ -118,8 +128,8 @@ class Ripple {
   }
 
   _createRipple(event) {
-    if (!Manipulator.hasClass(this._element, CLASSNAME_RIPPLE)) {
-      Manipulator.addClass(this._element, CLASSNAME_RIPPLE);
+    if (this._element.className.indexOf(CLASSNAME_RIPPLE) < 0) {
+      this._addMultiClass(this._element, CLASSNAME_RIPPLE);
     }
 
     const { layerX, layerY } = event;
@@ -163,9 +173,9 @@ class Ripple {
 
   _createHTMLRipple({ wrapper, ripple, styles }) {
     Object.keys(styles).forEach((property) => (ripple.style[property] = styles[property]));
-    ripple.classList.add(CLASSNAME_RIPPLE_WAVE);
+    this._addMultiClass(ripple, CLASSNAME_RIPPLE_WAVE);
+    ripple.setAttribute('data-te-ripple-ref', '');
     if (this._options.rippleColor !== '') {
-      this._removeOldColorClasses(wrapper);
       this._addColor(ripple, wrapper);
     }
 
@@ -182,14 +192,14 @@ class Ripple {
       if (ripple) {
         ripple.remove();
         if (this._element) {
-          SelectorEngine.find(`.${CLASSNAME_RIPPLE_WAVE}`, this._element).forEach((rippleEl) => {
+          SelectorEngine.find('[data-te-ripple-ref]', this._element).forEach((rippleEl) => {
             rippleEl.remove();
           });
           if (this._isMinWidthSet) {
             Manipulator.style(this._element, { 'min-width': '' });
             this._isMinWidthSet = false;
           }
-          Manipulator.removeClass(this._element, CLASSNAME_RIPPLE);
+          this._removeMultiClass(this._element, CLASSNAME_RIPPLE);
         }
       }
     }, duration);
@@ -251,7 +261,7 @@ class Ripple {
     const FIX_ADD_RIPPLE_EFFECT = 50; // delay for active animations
     parent.appendChild(target);
     setTimeout(() => {
-      Manipulator.addClass(target, 'active');
+      this._addMultiClass(target, 'opacity-0 scale-100');
     }, FIX_ADD_RIPPLE_EFFECT);
   }
 
@@ -263,29 +273,17 @@ class Ripple {
     }
   }
 
-  _addColor(target, parent) {
+  _addColor(target) {
     const IS_BOOTSTRAP_COLOR = BOOTSTRAP_COLORS.find(
-      (color) => color === this._options.rippleColor.toLowerCase()
+      (color) => color.name === this._options.rippleColor.toLowerCase()
     );
 
-    if (IS_BOOTSTRAP_COLOR) {
-      Manipulator.addClass(
-        parent,
-        `${CLASSNAME_RIPPLE}-${this._options.rippleColor.toLowerCase()}`
-      );
-    } else {
-      const rgbValue = this._colorToRGB(this._options.rippleColor).join(',');
-      const gradientImage = GRADIENT.split('{{color}}').join(`${rgbValue}`);
-      target.style.backgroundImage = `radial-gradient(circle, ${gradientImage})`;
-    }
-  }
+    const rgbValue = IS_BOOTSTRAP_COLOR
+      ? this._colorToRGB(IS_BOOTSTRAP_COLOR.gradientColor).join(',')
+      : this._colorToRGB(this._options.rippleColor).join(',');
 
-  _removeOldColorClasses(target) {
-    const REGEXP_CLASS_COLOR = new RegExp(`${CLASSNAME_RIPPLE}-[a-z]+`, 'gi');
-    const PARENT_CLASSS_COLOR = target.classList.value.match(REGEXP_CLASS_COLOR) || [];
-    PARENT_CLASSS_COLOR.forEach((className) => {
-      target.classList.remove(className);
-    });
+    const gradientImage = GRADIENT.split('{{color}}').join(`${rgbValue}`);
+    target.style.backgroundImage = `radial-gradient(circle, ${gradientImage})`;
   }
 
   _colorToRGB(color) {
