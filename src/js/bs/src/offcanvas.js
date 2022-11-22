@@ -48,8 +48,8 @@ const DefaultType = {
 
 const CLASS_NAME_SHOW = 'show';
 const CLASS_NAME_BACKDROP =
-  'fixed top-0 left-0 z-[1040] w-screen h-screen bg-black [&[data-te-show]]:opacity-50';
-const OPEN_SELECTOR = '[data-te-component="offcanvas"][data-te-show]';
+  'fixed top-0 left-0 z-[1040] w-screen h-screen bg-black [&[data-te-backdrop-show]]:opacity-50';
+const OPEN_SELECTOR = '[data-te-offcanvas-init][data-te-offcanvas-show]';
 
 const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
@@ -58,7 +58,7 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
 
-const SELECTOR_DATA_TOGGLE = '[data-te-toggle="offcanvas"]';
+const SELECTOR_DATA_TOGGLE = '[data-te-offcanvas-toggle]';
 
 /**
  * ------------------------------------------------------------------------
@@ -116,7 +116,7 @@ class Offcanvas extends BaseComponent {
     this._element.removeAttribute('aria-hidden');
     this._element.setAttribute('aria-modal', true);
     this._element.setAttribute('role', 'dialog');
-    this._element.setAttribute(`data-te-${CLASS_NAME_SHOW}`, '');
+    this._element.setAttribute(`data-te-offcanvas-${CLASS_NAME_SHOW}`, '');
 
     const completeCallBack = () => {
       if (!this._config.scroll) {
@@ -143,7 +143,7 @@ class Offcanvas extends BaseComponent {
     this._focustrap.deactivate();
     this._element.blur();
     this._isShown = false;
-    this._element.removeAttribute(`data-te-${CLASS_NAME_SHOW}`);
+    this._element.removeAttribute(`data-te-offcanvas-${CLASS_NAME_SHOW}`);
     this._backdrop.hide();
 
     const completeCallback = () => {
