@@ -9,8 +9,8 @@ module.exports = plugin(
     theme: {
       extend: {
         fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-          body: ['Inter', 'sans-serif'],
+          sans: ['Roboto', 'sans-serif'],
+          body: ['Roboto', 'sans-serif'],
           mono: ['ui-monospace', 'monospace'],
         },
       },
