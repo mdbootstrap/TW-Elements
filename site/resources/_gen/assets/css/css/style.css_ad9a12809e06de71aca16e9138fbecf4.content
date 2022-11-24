@@ -5160,6 +5160,10 @@ textarea.form-control.is-invalid {
   visibility: visible;
 }
 
+.\!visible {
+  visibility: visible !important;
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -6037,6 +6041,11 @@ textarea.form-control.is-invalid {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.rotate-\[-180deg\] {
+  --tw-rotate: -180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .skew-x-0 {
   --tw-skew-x: 0deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -6333,6 +6342,21 @@ textarea.form-control.is-invalid {
 .rounded-l-full {
   border-top-left-radius: 9999px;
   border-bottom-left-radius: 9999px;
+}
+
+.rounded-t-\[0\.25rem\] {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.rounded-t-\[15px\] {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.rounded-b-\[0\.25rem\] {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .border {
@@ -6769,6 +6793,10 @@ textarea.form-control.is-invalid {
 
 .fill-current {
   fill: currentColor;
+}
+
+.fill-\[\#336dec\] {
+  fill: #336dec;
 }
 
 .object-cover {
@@ -7568,6 +7596,12 @@ textarea.form-control.is-invalid {
   transition-duration: 150ms;
 }
 
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .duration-150 {
   transition-duration: 150ms;
 }
@@ -7676,6 +7710,10 @@ textarea.form-control.is-invalid {
   --scrollbar-thumb: #9ca3af !important;
 }
 
+.\[overflow-anchor\:none\] {
+  overflow-anchor: none;
+}
+
 h1 {
   margin-top: 3rem;
   margin-bottom: 0.5rem;
@@ -7744,6 +7782,10 @@ h1 {
 .checked\:bg-blue-600:checked {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.hover\:z-\[2\]:hover {
+  z-index: 2;
 }
 
 .hover\:scale-110:hover {
@@ -8003,6 +8045,10 @@ h1 {
   outline-offset: 2px;
 }
 
+.focus\:z-\[3\]:focus {
+  z-index: 3;
+}
+
 .focus\:border-blue-600:focus {
   --tw-border-opacity: 1;
   border-color: rgb(37 99 235 / var(--tw-border-opacity));
@@ -8244,6 +8290,21 @@ h1 {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.group.collapsed .group-\[\.collapsed\]\:rotate-0 {
+  --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group.collapsed .group-\[\.collapsed\]\:fill-\[\#212529\] {
+  fill: #212529;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reduce\:transition-none {
+    transition-property: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -8767,4 +8828,37 @@ h1 {
 
 .\[\&\[data-te-backdrop-show\]\]\:opacity-50[data-te-backdrop-show] {
   opacity: 0.5;
+}
+
+.\[\&\.flex\]\:bg-red-700.flex {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
+.\[\&\:not\(\.xd\)\]\:bg-red-700:not(.xd) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
+.\[\&\:not\(\.collapsed\)\]\:bg-white:not(.collapsed) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.\[\&\:not\(\.collapsed\)\]\:text-blue-600:not(.collapsed) {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
+.\[\&\:not\(\.collapsed\)\]\:\[box-shadow\:inset_0_-1px_0_rgba\(229\2c 231\2c 235\)\]:not(.collapsed) {
+  box-shadow: inset 0 -1px 0 rgba(229,231,235);
+}
+
+.\[\&\.collapsed\]\:rounded-b-\[15px\].collapsed {
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.\[\&\.collapsed\]\:transition-none.collapsed {
+  transition-property: none;
 }
