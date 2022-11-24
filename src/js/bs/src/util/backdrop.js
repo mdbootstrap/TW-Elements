@@ -26,14 +26,25 @@ const DefaultType = {
 const NAME = 'backdrop';
 const CLASS_NAME_FADE = 'fade';
 const CLASS_NAME_SHOW = 'show';
+const ANIMATION_FADE_IN = [{ opacity: '0' }, { opacity: '50%' }];
+const ANIMATION_FADE_OUT = [{ opacity: '50%' }, { opacity: '0' }];
 
-const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`;
+const ANIMATION_TIMING = {
+  duration: 300,
+  iterations: 1,
+  easing: 'ease',
+  fill: 'both',
+};
+
+const EVENT_MOUSEDOWN = `mousedown.te.${NAME}`;
 
 class Backdrop {
   constructor(config) {
     this._config = this._getConfig(config);
     this._isAppended = false;
     this._element = null;
+    this._animationEnterInterval = 0;
+    this._animationLeaveInterval = 0;
   }
 
   show(callback) {
@@ -50,6 +61,7 @@ class Backdrop {
 
     this._getElement().classList.add(CLASS_NAME_SHOW);
     this._element.setAttribute(`data-te-backdrop-${CLASS_NAME_SHOW}`, '');
+    this._config.isAnimated && this._element.animate(ANIMATION_FADE_IN, ANIMATION_TIMING);
 
     this._emulateAnimation(() => {
       execute(callback);
@@ -61,14 +73,20 @@ class Backdrop {
       execute(callback);
       return;
     }
+    this._config.isAnimated && this._element.animate(ANIMATION_FADE_OUT, ANIMATION_TIMING);
 
-    this._getElement().classList.remove(CLASS_NAME_SHOW);
-    this._element.removeAttribute(`data-te-backdrop-${CLASS_NAME_SHOW}`);
+    setTimeout(
+      () => {
+        this._getElement().classList.remove(CLASS_NAME_SHOW);
+        this._element.removeAttribute(`data-te-backdrop-${CLASS_NAME_SHOW}`);
 
-    this._emulateAnimation(() => {
-      this.dispose();
-      execute(callback);
-    });
+        this._emulateAnimation(() => {
+          this.dispose();
+          execute(callback);
+        });
+      },
+      this._config.isAnimated ? ANIMATION_TIMING.duration : 0
+    );
   }
 
   // Private
