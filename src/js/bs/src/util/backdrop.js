@@ -43,8 +43,6 @@ class Backdrop {
     this._config = this._getConfig(config);
     this._isAppended = false;
     this._element = null;
-    this._animationEnterInterval = 0;
-    this._animationLeaveInterval = 0;
   }
 
   show(callback) {
