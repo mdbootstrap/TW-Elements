@@ -15,7 +15,7 @@ const DATA_KEY = 'te.ripple';
 const CLASSNAME_RIPPLE = 'relative overflow-hidden inline-block align-bottom';
 const CLASSNAME_RIPPLE_WAVE =
   'rounded-[50%] opacity-50 pointer-events-none absolute touch-none scale-0 transition-[transform,_opacity] ease-[cubic-bezier(0,0,0.15,1),_cubic-bezier(0,0,0.15,1)] z-[999] bg-[radial-gradient(circle,_rgba(0,0,0,0.2)_0%,_rgba(0,0,0,0.3)_40%,_rgba(0,0,0,0.4)_50%,_rgba(0,0,0,0.5)_60%,_transparent_70%)]';
-const SELECTOR_COMPONENT = ['[data-te-ripple]'];
+const SELECTOR_COMPONENT = ['[data-te-ripple-init]'];
 
 const CLASSNAME_UNBOUND = 'overflow-visible';
 const GRADIENT =
