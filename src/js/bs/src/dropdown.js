@@ -71,6 +71,15 @@ const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end';
 const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start';
 const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start';
 
+const ANIMATION_FADE_IN = [{ opacity: '0' }, { opacity: '1' }];
+const ANIMATION_FADE_OUT = [{ opacity: '1' }, { opacity: '0' }];
+
+const ANIMATION_TIMING = {
+  duration: 550,
+  iterations: 1,
+  easing: 'ease',
+};
+
 const Default = {
   offset: [0, 2],
   boundary: 'clippingParents',
@@ -78,6 +87,7 @@ const Default = {
   display: 'dynamic',
   popperConfig: null,
   autoClose: true,
+  dropdownAnimation: 'on',
 };
 
 const DefaultType = {
@@ -87,6 +97,7 @@ const DefaultType = {
   display: 'string',
   popperConfig: '(null|object|function)',
   autoClose: '(boolean|string)',
+  dropdownAnimation: 'string',
 };
 
 /**
@@ -103,6 +114,10 @@ class Dropdown extends BaseComponent {
     this._config = this._getConfig(config);
     this._menu = this._getMenuElement();
     this._inNavbar = this._detectNavbar();
+
+    //* prevents dropdown close issue when system animation is turned off
+    const isPrefersReducedMotionSet = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._animationCanPlay = this._config.dropdownAnimation === 'on' && !isPrefersReducedMotionSet;
   }
 
   // Getters
@@ -162,9 +177,15 @@ class Dropdown extends BaseComponent {
     this._element.setAttribute('aria-expanded', true);
 
     this._menu.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, '');
+    this._animationCanPlay && this._menu.animate(ANIMATION_FADE_IN, ANIMATION_TIMING);
     this._element.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, '');
 
-    EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
+    setTimeout(
+      () => {
+        EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
+      },
+      this._animationCanPlay ? ANIMATION_TIMING.duration : 0
+    );
   }
 
   hide() {
@@ -210,16 +231,23 @@ class Dropdown extends BaseComponent {
         .forEach((elem) => EventHandler.off(elem, 'mouseover', noop));
     }
 
-    if (this._popper) {
-      this._popper.destroy();
-    }
+    this._animationCanPlay && this._menu.animate(ANIMATION_FADE_OUT, ANIMATION_TIMING);
 
-    this._menu.removeAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`);
-    this._element.removeAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`);
+    setTimeout(
+      () => {
+        if (this._popper) {
+          this._popper.destroy();
+        }
 
-    this._element.setAttribute('aria-expanded', 'false');
-    Manipulator.removeDataAttribute(this._menu, 'popper');
-    EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
+        this._menu.removeAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`);
+        this._element.removeAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`);
+
+        this._element.setAttribute('aria-expanded', 'false');
+        Manipulator.removeDataAttribute(this._menu, 'popper');
+        EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
+      },
+      this._animationCanPlay ? ANIMATION_TIMING.duration : 0
+    );
   }
 
   _getConfig(config) {
