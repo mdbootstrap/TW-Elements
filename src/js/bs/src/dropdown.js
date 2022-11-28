@@ -115,7 +115,7 @@ class Dropdown extends BaseComponent {
     this._config = this._getConfig(config);
     this._menu = this._getMenuElement();
     this._inNavbar = this._detectNavbar();
-    this._FADE_OUT_ANIMATE = null;
+    this._fadeOutAnimate = null;
 
     //* prevents dropdown close issue when system animation is turned off
     const isPrefersReducedMotionSet = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -220,7 +220,7 @@ class Dropdown extends BaseComponent {
   // Private
 
   _completeHide(relatedTarget) {
-    if (this._FADE_OUT_ANIMATE && this._FADE_OUT_ANIMATE.playState === 'running') {
+    if (this._fadeOutAnimate && this._fadeOutAnimate.playState === 'running') {
       return;
     }
 
@@ -238,7 +238,7 @@ class Dropdown extends BaseComponent {
     }
 
     if (this._animationCanPlay) {
-      this._FADE_OUT_ANIMATE = this._menu.animate(ANIMATION_FADE_OUT, ANIMATION_TIMING);
+      this._fadeOutAnimate = this._menu.animate(ANIMATION_FADE_OUT, ANIMATION_TIMING);
     }
 
     setTimeout(
