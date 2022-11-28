@@ -78,6 +78,7 @@ const ANIMATION_TIMING = {
   duration: 550,
   iterations: 1,
   easing: 'ease',
+  fill: 'both',
 };
 
 const Default = {
@@ -114,6 +115,7 @@ class Dropdown extends BaseComponent {
     this._config = this._getConfig(config);
     this._menu = this._getMenuElement();
     this._inNavbar = this._detectNavbar();
+    this._fadeOutAnimate = null;
 
     //* prevents dropdown close issue when system animation is turned off
     const isPrefersReducedMotionSet = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -218,6 +220,10 @@ class Dropdown extends BaseComponent {
   // Private
 
   _completeHide(relatedTarget) {
+    if (this._fadeOutAnimate && this._fadeOutAnimate.playState === 'running') {
+      return;
+    }
+
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget);
     if (hideEvent.defaultPrevented) {
       return;
@@ -231,7 +237,9 @@ class Dropdown extends BaseComponent {
         .forEach((elem) => EventHandler.off(elem, 'mouseover', noop));
     }
 
-    this._animationCanPlay && this._menu.animate(ANIMATION_FADE_OUT, ANIMATION_TIMING);
+    if (this._animationCanPlay) {
+      this._fadeOutAnimate = this._menu.animate(ANIMATION_FADE_OUT, ANIMATION_TIMING);
+    }
 
     setTimeout(
       () => {
