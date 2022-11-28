@@ -9,7 +9,6 @@ import EventHandler from '../dom/event-handler';
 import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index';
 
 const Default = {
-  className: 'modal-backdrop',
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
   isAnimated: false,
   rootElement: 'body', // give the choice to place backdrop under different elements
@@ -17,17 +16,14 @@ const Default = {
 };
 
 const DefaultType = {
-  className: 'string',
   isVisible: 'boolean',
   isAnimated: 'boolean',
   rootElement: '(element|string)',
   clickCallback: '(function|null)',
 };
 const NAME = 'backdrop';
-const CLASS_NAME_FADE = 'fade';
-const CLASS_NAME_SHOW = 'show';
 
-const EVENT_MOUSEDOWN = `mousedown.bs.${NAME}`;
+const EVENT_MOUSEDOWN = `mousedown.te.${NAME}`;
 
 class Backdrop {
   constructor(config) {
@@ -47,8 +43,19 @@ class Backdrop {
     if (this._config.isAnimated) {
       reflow(this._getElement());
     }
+    this._getElement().classList.add('opacity-50');
+    this._getElement().classList.add('transition-all');
+    this._getElement().classList.add('duration-300');
+    this._getElement().classList.add('ease-in-out');
+    this._getElement().classList.add('fixed');
+    this._getElement().classList.add('top-0');
+    this._getElement().classList.add('left-0');
+    this._getElement().classList.add('z-[1050]');
+    this._getElement().classList.add('bg-[#000]');
+    this._getElement().classList.add('w-[100vw]');
+    this._getElement().classList.add('h-[100vh]');
 
-    this._getElement().classList.add(CLASS_NAME_SHOW);
+    this._getElement().classList.remove('opacity-0');
 
     this._emulateAnimation(() => {
       execute(callback);
@@ -61,7 +68,8 @@ class Backdrop {
       return;
     }
 
-    this._getElement().classList.remove(CLASS_NAME_SHOW);
+    this._getElement().classList.add('opacity-0');
+    this._getElement().classList.remove('opacity-50');
 
     this._emulateAnimation(() => {
       this.dispose();
@@ -76,7 +84,8 @@ class Backdrop {
       const backdrop = document.createElement('div');
       backdrop.className = this._config.className;
       if (this._config.isAnimated) {
-        backdrop.classList.add(CLASS_NAME_FADE);
+        // backdrop.classList.add(CLASS_NAME_FADE);
+        backdrop.classList.add('opacity-50');
       }
 
       this._element = backdrop;
