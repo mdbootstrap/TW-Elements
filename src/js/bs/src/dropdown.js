@@ -31,7 +31,7 @@ import BaseComponent from './base-component';
  */
 
 const NAME = 'dropdown';
-const DATA_KEY = 'bs.dropdown';
+const DATA_KEY = 'te.dropdown';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 
@@ -58,10 +58,11 @@ const CLASS_NAME_DROPEND = 'dropend';
 const CLASS_NAME_DROPSTART = 'dropstart';
 const CLASS_NAME_NAVBAR = 'navbar';
 
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]';
-const SELECTOR_MENU = '.dropdown-menu';
-const SELECTOR_NAVBAR_NAV = '.navbar-nav';
-const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+const SELECTOR_DATA_TOGGLE = '[data-te-dropdown-toggle-ref]';
+const SELECTOR_MENU = '[data-te-dropdown-menu-ref]';
+const SELECTOR_NAVBAR_NAV = '[data-te-navbar-nav-ref]';
+const SELECTOR_VISIBLE_ITEMS =
+  '[data-te-dropdown-menu-ref] [data-te-dropdown-item-ref]:not(.disabled):not(:disabled)';
 
 const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start';
 const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end';
@@ -70,6 +71,16 @@ const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end';
 const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start';
 const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start';
 
+const ANIMATION_FADE_IN = [{ opacity: '0' }, { opacity: '1' }];
+const ANIMATION_FADE_OUT = [{ opacity: '1' }, { opacity: '0' }];
+
+const ANIMATION_TIMING = {
+  duration: 550,
+  iterations: 1,
+  easing: 'ease',
+  fill: 'both',
+};
+
 const Default = {
   offset: [0, 2],
   boundary: 'clippingParents',
@@ -77,6 +88,7 @@ const Default = {
   display: 'dynamic',
   popperConfig: null,
   autoClose: true,
+  dropdownAnimation: 'on',
 };
 
 const DefaultType = {
@@ -86,6 +98,7 @@ const DefaultType = {
   display: 'string',
   popperConfig: '(null|object|function)',
   autoClose: '(boolean|string)',
+  dropdownAnimation: 'string',
 };
 
 /**
@@ -102,6 +115,11 @@ class Dropdown extends BaseComponent {
     this._config = this._getConfig(config);
     this._menu = this._getMenuElement();
     this._inNavbar = this._detectNavbar();
+    this._fadeOutAnimate = null;
+
+    //* prevents dropdown close issue when system animation is turned off
+    const isPrefersReducedMotionSet = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._animationCanPlay = this._config.dropdownAnimation === 'on' && !isPrefersReducedMotionSet;
   }
 
   // Getters
@@ -160,9 +178,16 @@ class Dropdown extends BaseComponent {
     this._element.focus();
     this._element.setAttribute('aria-expanded', true);
 
-    this._menu.classList.add(CLASS_NAME_SHOW);
-    this._element.classList.add(CLASS_NAME_SHOW);
-    EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
+    this._menu.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, '');
+    this._animationCanPlay && this._menu.animate(ANIMATION_FADE_IN, ANIMATION_TIMING);
+    this._element.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, '');
+
+    setTimeout(
+      () => {
+        EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
+      },
+      this._animationCanPlay ? ANIMATION_TIMING.duration : 0
+    );
   }
 
   hide() {
@@ -195,6 +220,10 @@ class Dropdown extends BaseComponent {
   // Private
 
   _completeHide(relatedTarget) {
+    if (this._fadeOutAnimate && this._fadeOutAnimate.playState === 'running') {
+      return;
+    }
+
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget);
     if (hideEvent.defaultPrevented) {
       return;
@@ -208,15 +237,25 @@ class Dropdown extends BaseComponent {
         .forEach((elem) => EventHandler.off(elem, 'mouseover', noop));
     }
 
-    if (this._popper) {
-      this._popper.destroy();
+    if (this._animationCanPlay) {
+      this._fadeOutAnimate = this._menu.animate(ANIMATION_FADE_OUT, ANIMATION_TIMING);
     }
 
-    this._menu.classList.remove(CLASS_NAME_SHOW);
-    this._element.classList.remove(CLASS_NAME_SHOW);
-    this._element.setAttribute('aria-expanded', 'false');
-    Manipulator.removeDataAttribute(this._menu, 'popper');
-    EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
+    setTimeout(
+      () => {
+        if (this._popper) {
+          this._popper.destroy();
+        }
+
+        this._menu.removeAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`);
+        this._element.removeAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`);
+
+        this._element.setAttribute('aria-expanded', 'false');
+        Manipulator.removeDataAttribute(this._menu, 'popper');
+        EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
+      },
+      this._animationCanPlay ? ANIMATION_TIMING.duration : 0
+    );
   }
 
   _getConfig(config) {
@@ -270,7 +309,11 @@ class Dropdown extends BaseComponent {
   }
 
   _isShown(element = this._element) {
-    return element.classList.contains(CLASS_NAME_SHOW);
+    return (
+      element.dataset[
+        `teDropdown${CLASS_NAME_SHOW.charAt(0).toUpperCase() + CLASS_NAME_SHOW.slice(1)}`
+      ] === ''
+    );
   }
 
   _getMenuElement() {
@@ -280,18 +323,18 @@ class Dropdown extends BaseComponent {
   _getPlacement() {
     const parentDropdown = this._element.parentNode;
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
+    if (parentDropdown.dataset.teDropdownPosition === CLASS_NAME_DROPEND) {
       return PLACEMENT_RIGHT;
     }
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
+    if (parentDropdown.dataset.teDropdownPosition === CLASS_NAME_DROPSTART) {
       return PLACEMENT_LEFT;
     }
 
     // We need to trim the value because custom properties can also include spaces
-    const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
+    const isEnd = getComputedStyle(this._menu).getPropertyValue('--te-position').trim() === 'end';
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
+    if (parentDropdown.dataset.teDropdownPosition === CLASS_NAME_DROPUP) {
       return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
     }
 
@@ -459,7 +502,10 @@ class Dropdown extends BaseComponent {
       return;
     }
 
-    const isActive = this.classList.contains(CLASS_NAME_SHOW);
+    const isActive =
+      this.dataset[
+        `teDropdown${CLASS_NAME_SHOW.charAt(0).toUpperCase() + CLASS_NAME_SHOW.slice(1)}`
+      ] === '';
 
     if (!isActive && event.key === ESCAPE_KEY) {
       return;
