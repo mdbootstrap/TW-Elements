@@ -140,14 +140,6 @@ class Modal extends BaseComponent {
     });
 
     this._showBackdrop(() => this._showElement(relatedTarget));
-
-    const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
-    modalDialog.classList.add('translate-y-[-50px]');
-    modalDialog.classList.add('opacity-100');
-    modalDialog.classList.add('transition-all');
-    modalDialog.classList.add('duration-300');
-    modalDialog.classList.add('ease-in-out');
-    modalDialog.classList.remove('opacity-0');
   }
 
   hide() {
@@ -229,11 +221,17 @@ class Modal extends BaseComponent {
     }
 
     this._element.style.display = 'block';
+    this._element.classList.remove('hidden');
     this._element.removeAttribute('aria-hidden');
     this._element.setAttribute('aria-modal', true);
     this._element.setAttribute('role', 'dialog');
     this._element.setAttribute(`${OPEN_SELECTOR}`, 'true');
     this._element.scrollTop = 0;
+
+    const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
+    modalDialog.classList.add(CLASS_NAME_SHOW);
+    modalDialog.classList.remove('opacity-0');
+    modalDialog.classList.add('opacity-100');
 
     if (modalBody) {
       modalBody.scrollTop = 0;
@@ -255,10 +253,6 @@ class Modal extends BaseComponent {
     };
 
     this._queueCallback(transitionComplete, this._dialog, isAnimated);
-
-    const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
-    modalDialog.classList.add(CLASS_NAME_SHOW);
-    modalDialog.classList.add('opacity-50');
   }
 
   _setEscapeEvent() {
@@ -285,7 +279,15 @@ class Modal extends BaseComponent {
   }
 
   _hideModal() {
-    this._element.style.display = 'none';
+    const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
+    modalDialog.classList.remove(CLASS_NAME_SHOW);
+    modalDialog.classList.remove('opacity-100');
+    modalDialog.classList.add('opacity-0');
+
+    setTimeout(() => {
+      this._element.style.display = 'none';
+    }, '300');
+
     this._element.setAttribute('aria-hidden', true);
     this._element.removeAttribute('aria-modal');
     this._element.removeAttribute('role');
@@ -296,9 +298,6 @@ class Modal extends BaseComponent {
       this._scrollBar.reset();
       EventHandler.trigger(this._element, EVENT_HIDDEN);
     });
-
-    const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
-    modalDialog.classList.remove(CLASS_NAME_SHOW);
   }
 
   _showBackdrop(callback) {
@@ -323,7 +322,7 @@ class Modal extends BaseComponent {
   }
 
   _isAnimated() {
-    const animate = SelectorEngine.findOne('[data-te-fade]', this._element);
+    const animate = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
     return !!animate;
   }
 
@@ -354,6 +353,13 @@ class Modal extends BaseComponent {
     classList.add('ease-in-out');
     this._queueCallback(() => {
       classList.remove(CLASS_NAME_STATIC);
+
+      setTimeout(() => {
+        classList.remove('transition-scale');
+        classList.remove('duration-300');
+        classList.remove('ease-in-out');
+      }, '300');
+
       if (!isModalOverflowing) {
         this._queueCallback(() => {
           style.overflowY = '';

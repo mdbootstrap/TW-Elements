@@ -32,27 +32,23 @@
         type="button"
         class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
         data-te-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-te-target="#exampleModal"
       >
         Launch demo modal
       </button>
 
       <!-- Modal -->
       <div
-        data-te-modal-ref="true"
-        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <!-- animate-fadeIn -->
-        <!-- data-[et-te-modal-open=true]:animate-fadeIn -->
-        <!-- translate-y-[-50px] transition-all duration-300 ease-in-out   -->
         <div
           data-te-modal-dialog-ref
-          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto"
-          data-te-fade
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
@@ -66,7 +62,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -85,7 +81,7 @@
               <button
                 type="button"
                 class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
               >
                 Close
               </button>
@@ -109,25 +105,25 @@
         type="button"
         class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
         data-te-toggle="modal"
-        data-bs-target="#staticBackdrop"
+        data-te-target="#staticBackdrop"
       >
         Launch static backdrop modal
       </button>
 
       <!-- Modal -->
       <div
+        data-te-modal-init
         class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
+        data-te-backdrop="static"
+        data-te-keyboard="false"
         tabindex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
         <div
           data-te-modal-dialog-ref
-          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto"
-          data-te-fade
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
@@ -141,7 +137,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -158,7 +154,7 @@
               <button
                 type="button"
                 class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
               >
                 Close
               </button>
@@ -182,14 +178,15 @@
         type="button"
         class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
         data-te-toggle="modal"
-        data-bs-target="#exampleModalLong"
+        data-te-target="#exampleModalLong"
       >
         Launch demo modal long
       </button>
 
       <!-- Modal -->
       <div
-        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalLong"
         tabindex="-1"
         aria-labelledby="exampleModalLongLabel"
@@ -197,8 +194,7 @@
       >
         <div
           data-te-modal-dialog-ref
-          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto"
-          data-te-fade
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
@@ -215,7 +211,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -238,7 +234,7 @@
               <button
                 type="button"
                 class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
               >
                 Close
               </button>
@@ -262,14 +258,15 @@
         type="button"
         class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
         data-te-toggle="modal"
-        data-bs-target="#exampleModalScrollable"
+        data-te-target="#exampleModalScrollable"
       >
         Launch demo modal dialog scrollable
       </button>
 
       <!-- Modal -->
       <div
-        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalScrollable"
         tabindex="-1"
         aria-labelledby="exampleModalScrollableLabel"
@@ -277,8 +274,7 @@
       >
         <div
           data-te-modal-dialog-ref
-          class="h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:h-[calc(100%-3.5rem)]"
-          data-te-fade
+          class="h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="max-h-[100%] overflow-hidden border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
@@ -295,7 +291,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -316,12 +312,12 @@
               <p>This content should appear at the bottom after you scroll.</p>
             </div>
             <div
-              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
             >
               <button
                 type="button"
                 class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
               >
                 Close
               </button>
@@ -340,12 +336,12 @@
       <br />
       <br />
 
-      <div class="">
+      <div>
         <button
           type="button"
           class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           data-te-toggle="modal"
-          data-bs-target="#exampleModalCenter"
+          data-te-target="#exampleModalCenter"
         >
           Vertically centered modal
         </button>
@@ -353,14 +349,15 @@
           type="button"
           class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           data-te-toggle="modal"
-          data-bs-target="#exampleModalCenteredScrollable"
+          data-te-target="#exampleModalCenteredScrollable"
         >
           Vertically centered scrollable modal
         </button>
       </div>
 
       <div
-        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalCenter"
         tabindex="-1"
         aria-labelledby="exampleModalCenterTitle"
@@ -369,8 +366,7 @@
       >
         <div
           data-te-modal-dialog-ref
-          class="flex items-center min-h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:min-h-[calc(100%-3.5rem)]"
-          data-te-fade
+          class="flex items-center min-h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:min-h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
@@ -387,7 +383,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -406,7 +402,7 @@
               <button
                 type="button"
                 class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
               >
                 Close
               </button>
@@ -422,7 +418,8 @@
       </div>
 
       <div
-        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalCenteredScrollable"
         tabindex="-1"
         aria-labelledby="exampleModalCenteredScrollable"
@@ -431,8 +428,7 @@
       >
         <div
           data-te-modal-dialog-ref
-          class="flex items-center min-h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:min-h-[calc(100%-3.5rem)]"
-          data-te-fade
+          class="flex items-center min-h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:min-h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
@@ -449,7 +445,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -477,7 +473,7 @@
               <button
                 type="button"
                 class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
               >
                 Close
               </button>
@@ -496,12 +492,12 @@
       <br />
       <br />
 
-      <div class="">
+      <div>
         <button
           type="button"
           class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           data-te-toggle="modal"
-          data-bs-target="#exampleModalXl"
+          data-te-target="#exampleModalXl"
         >
           Extra large modal
         </button>
@@ -509,7 +505,7 @@
           type="button"
           class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           data-te-toggle="modal"
-          data-bs-target="#exampleModalLg"
+          data-te-target="#exampleModalLg"
         >
           Large modal
         </button>
@@ -517,14 +513,15 @@
           type="button"
           class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           data-te-toggle="modal"
-          data-bs-target="#exampleModalSm"
+          data-te-target="#exampleModalSm"
         >
           Small modal
         </button>
       </div>
 
       <div
-        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalXl"
         tabindex="-1"
         aria-labelledby="exampleModalXlLabel"
@@ -533,8 +530,7 @@
       >
         <div
           data-te-modal-dialog-ref
-          class="min-[1200px]:max-w-[1140px] min-[992px]:max-w-[800px] relative w-auto pointer-events-none translate-y-[-50px] transition-all duration-300 ease-in-out min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto"
-          data-te-fade
+          class="min-[1200px]:max-w-[1140px] min-[992px]:max-w-[800px] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
@@ -548,7 +544,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -564,7 +560,8 @@
       </div>
 
       <div
-        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalLg"
         tabindex="-1"
         aria-labelledby="exampleModalLgLabel"
@@ -573,8 +570,7 @@
       >
         <div
           data-te-modal-dialog-ref
-          class="min-[992px]:max-w-[800px] relative w-auto pointer-events-none translate-y-[-50px] transition-all duration-300 ease-in-out min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto"
-          data-te-fade
+          class="min-[992px]:max-w-[800px] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
@@ -588,7 +584,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -604,7 +600,8 @@
       </div>
 
       <div
-        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalSm"
         tabindex="-1"
         aria-labelledby="exampleModalSmLabel"
@@ -613,8 +610,7 @@
       >
         <div
           data-te-modal-dialog-ref
-          class="relative w-auto pointer-events-none translate-y-[-50px] transition-all duration-300 ease-in-out min-[576px]:max-w-[300px] min-[576px]:my-7 min-[576px]:mx-auto"
-          data-te-fade
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[300px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
@@ -628,7 +624,7 @@
               <button
                 type="button"
                 class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
@@ -652,13 +648,14 @@
         type="button"
         class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
         data-te-toggle="modal"
-        data-bs-target="#exampleModalFullscreen"
+        data-te-target="#exampleModalFullscreen"
       >
         Launch demo modal full screen
       </button>
 
       <!-- Modal -->
       <div
+        data-te-modal-init
         class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalFullscreen"
         tabindex="-1"
@@ -667,8 +664,7 @@
       >
         <div
           data-te-modal-dialog-ref
-          class="min-[0px]:h-full min-[0px]:max-w-none min-[0px]:m-0 relative w-auto pointer-events-none"
-          data-te-fade
+          class="min-[0px]:h-full min-[0px]:max-w-none min-[0px]:m-0 relative w-auto pointer-events-none opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
         >
           <div
             class="min-[0px]:h-full min-[0px]:border-0 min-[0px]:rounded-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
@@ -685,7 +681,7 @@
               <button
                 type="button"
                 class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
                 aria-label="Close"
               ></button>
             </div>
@@ -696,7 +692,7 @@
               <button
                 type="button"
                 class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal"
+                data-te-modal-dismiss
               >
                 Close
               </button>
