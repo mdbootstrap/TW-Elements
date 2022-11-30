@@ -257,12 +257,12 @@ class Tooltip extends BaseComponent {
     tip.setAttribute('id', tipId);
     this._element.setAttribute('aria-describedby', tipId);
 
-    setTimeout(() => {
-      this.tip.classList.add('opacity-100');
-      this.tip.classList.remove('opacity-0');
-    }, 100);
-    // if (this._config.animation) {
-    // }
+    if (this._config.animation) {
+      setTimeout(() => {
+        this.tip.classList.add('opacity-100');
+        this.tip.classList.remove('opacity-0');
+      }, 100);
+    }
 
     const placement =
       typeof this._config.placement === 'function'
