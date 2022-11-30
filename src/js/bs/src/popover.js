@@ -15,9 +15,9 @@ import Tooltip from './tooltip';
  */
 
 const NAME = 'popover';
-const DATA_KEY = 'bs.popover';
+const DATA_KEY = 'te.popover';
 const EVENT_KEY = `.${DATA_KEY}`;
-const CLASS_PREFIX = 'bs-popover';
+const CLASS_PREFIX = 'te-popover';
 
 const Default = {
   ...Tooltip.Default,
@@ -26,10 +26,9 @@ const Default = {
   trigger: 'click',
   content: '',
   template:
-    '<div class="popover" role="tooltip">' +
-    '<div class="popover-arrow"></div>' +
-    '<h3 class="popover-header"></h3>' +
-    '<div class="popover-body"></div>' +
+    '<div class="opacity-0 transition-opacity duration-300 ease-in-out absolute top-0 left-0 z-[1070] block max-w-[267px] break-words bg-white bg-clip-padding border-0 rounded-lg shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] text-sm not-italic font-normal text-left no-underline underline-offset-auto normal-case leading-6 tracking-normal break-normal whitespace-normal" role="tooltip">' +
+    '<h3 class="popover-header py-2 px-4 mb-0 bg-white border border-solid rounded-t-lg font-medium empty:hidden"></h3>' +
+    '<div class="popover-body p-4 text-[#212529]"></div>' +
     '</div>',
 };
 
