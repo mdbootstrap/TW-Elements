@@ -6,6 +6,7 @@
  */
 
 import EventHandler from '../dom/event-handler';
+import Manipulator from '../../../mdb/dom/manipulator';
 import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index';
 
 const Default = {
@@ -22,7 +23,6 @@ const DefaultType = {
   clickCallback: '(function|null)',
 };
 const NAME = 'backdrop';
-
 const EVENT_MOUSEDOWN = `mousedown.te.${NAME}`;
 
 class Backdrop {
@@ -43,19 +43,22 @@ class Backdrop {
     if (this._config.isAnimated) {
       reflow(this._getElement());
     }
-    this._getElement().classList.add('opacity-50');
-    this._getElement().classList.add('transition-all');
-    this._getElement().classList.add('duration-300');
-    this._getElement().classList.add('ease-in-out');
-    this._getElement().classList.add('fixed');
-    this._getElement().classList.add('top-0');
-    this._getElement().classList.add('left-0');
-    this._getElement().classList.add('z-[1050]');
-    this._getElement().classList.add('bg-[#000]');
-    this._getElement().classList.add('w-[100vw]');
-    this._getElement().classList.add('h-[100vh]');
 
-    this._getElement().classList.remove('opacity-0');
+    Manipulator.removeClass(this._getElement(), 'opacity-0');
+    Manipulator.addManyClasses(this._getElement(), [
+      'opacity-50',
+      'transition-all',
+      'duration-300',
+      'ease-in-out',
+      'fixed',
+      'top-0',
+      'left-0',
+      'z-[1040]',
+      'bg-[#000]',
+      'w-[100vw]',
+      'h-[100vh]',
+    ]);
+    this._element.setAttribute('data-te-backdrop-show', '');
 
     this._emulateAnimation(() => {
       execute(callback);
@@ -68,6 +71,7 @@ class Backdrop {
       return;
     }
 
+    this._element.removeAttribute('data-te-backdrop-show');
     this._getElement().classList.add('opacity-0');
     this._getElement().classList.remove('opacity-50');
 
@@ -84,7 +88,6 @@ class Backdrop {
       const backdrop = document.createElement('div');
       backdrop.className = this._config.className;
       if (this._config.isAnimated) {
-        // backdrop.classList.add(CLASS_NAME_FADE);
         backdrop.classList.add('opacity-50');
       }
 
