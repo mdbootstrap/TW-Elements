@@ -286,20 +286,23 @@ class Tooltip extends BaseComponent {
       this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment));
     }
 
-    switch (placement) {
-      case 'bottom':
-        tip.classList.add('py-[0.4rem]');
-        break;
-      case 'left':
-        tip.classList.add('px-[0.4rem]');
-        break;
-      case 'right':
-        tip.classList.add('px-[0.4rem]');
-        break;
+    const notPopover = tip.getAttribute('id').includes('tooltip');
+    if (notPopover) {
+      switch (placement) {
+        case 'bottom':
+          tip.classList.add('py-[0.4rem]');
+          break;
+        case 'left':
+          tip.classList.add('px-[0.4rem]');
+          break;
+        case 'right':
+          tip.classList.add('px-[0.4rem]');
+          break;
 
-      default:
-        tip.classList.add('py-[0.4rem]');
-        break;
+        default:
+          tip.classList.add('py-[0.4rem]');
+          break;
+      }
     }
 
     const customClass = this._resolvePossibleFunction(this._config.customClass);
