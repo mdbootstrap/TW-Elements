@@ -13,6 +13,17 @@ module.exports = plugin(
           body: ['Inter', 'sans-serif'],
           mono: ['ui-monospace', 'monospace'],
         },
+        keyframes: {
+          'spinner-grow': {
+            '0%': {
+              transform: 'scale(0)',
+            },
+            '50%': {
+              transform: 'none',
+              opacity: '1',
+            },
+          },
+        },
       },
     },
   }
