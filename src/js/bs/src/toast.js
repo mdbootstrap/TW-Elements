@@ -109,7 +109,7 @@ class Toast extends BaseComponent {
   }
 
   hide() {
-    if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
+    if (!this._element || !this._element.classList.contains(CLASS_NAME_SHOW)) {
       return;
     }
 

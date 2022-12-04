@@ -5807,6 +5807,10 @@ textarea.form-control.is-invalid {
   width: 24rem;
 }
 
+.w-\[1em\] {
+  width: 1em;
+}
+
 .w-11 {
   width: 2.75rem;
 }
@@ -5894,10 +5898,6 @@ textarea.form-control.is-invalid {
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
-}
-
-.w-\[1em\] {
-  width: 1em;
 }
 
 .w-36 {
@@ -7588,6 +7588,11 @@ textarea.form-control.is-invalid {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.brightness-200 {
+  --tw-brightness: brightness(2);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .grayscale {
   --tw-grayscale: grayscale(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -8912,10 +8917,6 @@ h1 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .xl\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .xl\:flex-row {
     flex-direction: row;
   }
@@ -8942,6 +8943,18 @@ h1 {
     padding-left: 0px;
     padding-right: 0px;
   }
+}
+
+.\[\&\.disabled\]\:pointer-events-none.disabled {
+  pointer-events: none;
+}
+
+.\[\&\.disabled\]\:select-none.disabled {
+  user-select: none;
+}
+
+.\[\&\.disabled\]\:opacity-25.disabled {
+  opacity: 0.25;
 }
 
 .\[\&\:not\(\.collapsed\)\]\:bg-white:not(.collapsed) {
@@ -8987,18 +9000,6 @@ h1 {
 
 .\[\&\[data-te-offcanvas-show\]\]\:transform-none[data-te-offcanvas-show] {
   transform: none;
-}
-
-.\[\&\.disabled\]\:pointer-events-none.disabled {
-  pointer-events: none;
-}
-
-.\[\&\.disabled\]\:select-none.disabled {
-  user-select: none;
-}
-
-.\[\&\.disabled\]\:opacity-25.disabled {
-  opacity: 0.25;
 }
 
 .\[\&\[data-te-backdrop-show\]\]\:opacity-50[data-te-backdrop-show] {
