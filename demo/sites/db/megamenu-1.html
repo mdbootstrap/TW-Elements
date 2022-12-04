@@ -23,14 +23,15 @@
   <body>
     <section class="mb-32">
       <nav
-        class="navbar navbar-expand-lg shadow-lg py-2 bg-white relative flex items-center w-full justify-between"
+        class="shadow-lg py-2 bg-white relative flex items-center w-full justify-between lg:flex-wrap lg:justify-start"
+        data-te-navbar-ref
       >
         <div class="px-6">
           <button
-            class="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-300 ease-in-out"
+            class="border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-300 ease-in-out"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContentX"
+            data-te-target="#navbarSupportedContentX"
             aria-controls="navbarSupportedContentX"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -50,18 +51,22 @@
               ></path>
             </svg>
           </button>
-          <div class="navbar-collapse collapse grow items-center" id="navbarSupportedContentX">
-            <ul class="navbar-nav mr-auto flex flex-row">
-              <li class="nav-item dropdown static">
+          <div
+            class="collapse !visible flex-grow items-center basis-[100%] lg:!flex lg:basis-auto"
+            id="navbarSupportedContentX"
+          >
+            <ul class="mr-auto flex flex-row" data-te-navbar-nav-ref>
+              <li class="static" data-te-nav-item-ref data-te-dropdown-ref>
                 <a
-                  class="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-300 ease-in-out dropdown-toggle flex items-center whitespace-nowrap"
+                  class="pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-300 ease-in-out flex items-center whitespace-nowrap"
                   href="#"
-                  data-mdb-ripple="true"
-                  data-mdb-ripple-color="light"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
                   type="button"
                   id="dropdownMenuButtonX"
-                  data-bs-toggle="dropdown"
+                  data-te-dropdown-toggle-ref
                   aria-expanded="false"
+                  data-te-nav-link-ref
                   >Click me
                   <svg
                     aria-hidden="true"
@@ -80,8 +85,9 @@
                   </svg>
                 </a>
                 <div
-                  class="dropdown-menu w-full mt-0 hidden shadow-lg bg-white absolute left-0 top-full"
+                  class="w-full mt-0 hidden shadow-lg bg-white absolute left-0 top-full z-[1000] bg-clip-padding border-none [&[data-te-dropdown-show]]:block right-0"
                   aria-labelledby="dropdownMenuButtonX"
+                  data-te-dropdown-menu-ref
                 >
                   <div class="px-6 lg:px-8 py-5">
                     <div class="grid lg:grid-cols-3 gap-6">

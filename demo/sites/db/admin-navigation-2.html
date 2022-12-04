@@ -26,14 +26,15 @@
       <!-- Container for demo purpose -->
       <div class="">
         <nav
-          class="relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-900 text-gray-100 hover:text-gray-300 focus:text-gray-300 shadow-lg navbar navbar-expand-md navbar-dark"
+          class="relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-900 text-gray-100 hover:text-gray-300 focus:text-gray-300 shadow-lg md:flex-wrap md:justify-start"
+          data-te-navbar-ref
         >
-          <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <div class="w-full flex flex-wrap items-center justify-between px-6">
             <button
-              class="navbar-toggler text-gray-100 border-0 hover:shadow-none hover:no-underline py-2 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+              class="text-gray-100 border-0 hover:shadow-none hover:no-underline py-2 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline block md:hidden"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
+              data-te-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation"
@@ -55,7 +56,7 @@
               </svg>
             </button>
             <div
-              class="collapse navbar-collapse flex-grow items-center"
+              class="collapse !visible flex-grow items-center basis-[100%] md:!flex md:basis-auto"
               id="navbarSupportedContent"
             >
               <a
@@ -79,25 +80,31 @@
                 </svg>
               </a>
               <!-- Left links -->
-              <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-                <li class="nav-item py-2 pr-2 md:pl-2">
+              <ul
+                class="flex flex-col pl-0 list-style-none mr-auto md:flex-row"
+                data-te-navbar-nav-ref
+              >
+                <li class="py-2 pr-2 md:pl-2" data-te-nav-item-ref>
                   <a
-                    class="nav-link text-gray-100 hover:text-gray-300 focus:text-gray-300 p-0"
+                    class="text-gray-100 hver:text-gray-300 focus:text-gray-300 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
+                    data-te-nav-link-ref
                     >Dashboard</a
                   >
                 </li>
-                <li class="nav-item py-2 pr-2 md:pl-2">
+                <li class="py-2 pr-2 md:pl-2" data-te-nav-item-ref>
                   <a
-                    class="nav-link text-gray-100 hover:text-gray-300 focus:text-gray-300 p-0"
+                    class="text-gray-100 hver:text-gray-300 focus:text-gray-300 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
+                    data-te-nav-link-ref
                     >Team</a
                   >
                 </li>
-                <li class="nav-item py-2 pr-2 md:pl-2 mb-2 md:mb-0">
+                <li class="py-2 pr-2 md:pl-2 mb-2 md:mb-0" data-te-nav-item-ref>
                   <a
-                    class="nav-link text-gray-100 hover:text-gray-300 focus:text-gray-300 p-0"
+                    class="text-gray-100 hver:text-gray-300 focus:text-gray-300 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
+                    data-te-nav-link-ref
                     >Projects</a
                   >
                 </li>
@@ -108,13 +115,13 @@
 
             <!-- Right elements -->
             <div class="flex items-center relative">
-              <div class="dropdown relative">
+              <div class="relative" data-te-dropdown-ref>
                 <a
-                  class="text-gray-100 hover:text-gray-300 focus:text-gray-300 mr-4 dropdown-toggle hidden-arrow flex items-center"
+                  class="text-gray-100 hover:text-gray-300 focus:text-gray-300 mr-4 hidden-arrow flex items-center"
                   href="#"
                   id="dropdownMenuButton1"
                   role="button"
-                  data-bs-toggle="dropdown"
+                  data-te-dropdown-toggle-ref
                   aria-expanded="false"
                 >
                   <svg
@@ -138,39 +145,43 @@
                   >
                 </a>
                 <ul
-                  class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                  class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block left-auto right-0 mt-1"
                   aria-labelledby="dropdownMenuButton1"
+                  data-te-dropdown-menu-ref
                 >
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Action</a
                     >
                   </li>
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Another action</a
                     >
                   </li>
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Something else here</a
                     >
                   </li>
                 </ul>
               </div>
-              <div class="dropdown relative">
+              <div class="relative" data-te-dropdown-ref>
                 <a
-                  class="dropdown-toggle flex items-center hidden-arrow"
+                  class="flex items-center hidden-arrow transition duration-150 ease-in-out whitespace-nowrap motion-reduce:transition-none"
                   href="#"
                   id="dropdownMenuButton2"
                   role="button"
-                  data-bs-toggle="dropdown"
+                  data-te-dropdown-toggle-ref
                   aria-expanded="false"
                 >
                   <img
@@ -182,27 +193,31 @@
                   />
                 </a>
                 <ul
-                  class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                  class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block left-auto right-0 mt-1"
                   aria-labelledby="dropdownMenuButton2"
+                  data-te-dropdown-menu-ref
                 >
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Action</a
                     >
                   </li>
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Another action</a
                     >
                   </li>
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Something else here</a
                     >
                   </li>
