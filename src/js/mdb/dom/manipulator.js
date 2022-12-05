@@ -99,7 +99,7 @@ const Manipulator = {
     element.classList.add(className);
   },
 
-  addManyClasses(element, arrayClasses) {
+  addMultipleClasses(element, arrayClasses) {
     arrayClasses.forEach((singleClass) => {
       element.classList.add(singleClass);
     })
