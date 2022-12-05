@@ -4569,46 +4569,6 @@ textarea.form-control.is-invalid {
   visibility: visible !important;
 }
 
-.placeholder {
-  display: inline-block;
-  min-height: 1em;
-  vertical-align: middle;
-  cursor: wait;
-  background-color: currentcolor;
-  opacity: 0.5;
-}
-
-.placeholder.btn::before {
-  display: inline-block;
-  content: "";
-}
-
-.placeholder-xs {
-  min-height: 0.6em;
-}
-
-.placeholder-sm {
-  min-height: 0.8em;
-}
-
-.placeholder-lg {
-  min-height: 1.2em;
-}
-
-.placeholder-glow .placeholder {
-  -webkit-animation: _placeholder-glow 2s ease-in-out infinite;
-  animation: _placeholder-glow 2s ease-in-out infinite;
-}
-
-.placeholder-wave {
-  -webkit-mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
-          mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
-  -webkit-mask-size: 200% 100%;
-          mask-size: 200% 100%;
-  -webkit-animation: _placeholder-wave 2s linear infinite;
-  animation: _placeholder-wave 2s linear infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .form-control::-webkit-file-upload-button {
     -webkit-transition: none;
@@ -6250,32 +6210,6 @@ textarea.form-control.is-invalid {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
-  }
-}
-
-@-webkit-keyframes _placeholder-glow {
-  50% {
-    opacity: 0.2;
-  }
-}
-
-@keyframes _placeholder-glow {
-  50% {
-    opacity: 0.2;
-  }
-}
-
-@-webkit-keyframes _placeholder-wave {
-  100% {
-    -webkit-mask-position: -200% 0%;
-            mask-position: -200% 0%;
-  }
-}
-
-@keyframes _placeholder-wave {
-  100% {
-    -webkit-mask-position: -200% 0%;
-            mask-position: -200% 0%;
   }
 }
 
@@ -8712,18 +8646,15 @@ textarea.form-control.is-invalid {
 }
 
 .underline {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
 }
 
 .no-underline {
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
+  text-decoration-line: none;
 }
 
 .decoration-transparent {
-  -webkit-text-decoration-color: transparent;
-          text-decoration-color: transparent;
+  text-decoration-color: transparent;
 }
 
 .placeholder-gray-400::-webkit-input-placeholder {
@@ -8871,10 +8802,10 @@ textarea.form-control.is-invalid {
 }
 
 .transition {
-  -webkit-transition-property: color, background-color, border-color, fill, stroke, opacity, -webkit-text-decoration-color, -webkit-box-shadow, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, fill, stroke, opacity, -webkit-text-decoration-color, -webkit-box-shadow, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+  -webkit-transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, -webkit-box-shadow, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, -webkit-box-shadow, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-box-shadow, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-box-shadow, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
   -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-transition-duration: 150ms;
@@ -9032,11 +8963,11 @@ textarea.form-control.is-invalid {
   height: 8px;
 }
 
-.scrollbar-track-gray-\31 00 {
+.scrollbar-track-gray-100 {
   --scrollbar-track: #f3f4f6 !important;
 }
 
-.scrollbar-thumb-gray-\34 00 {
+.scrollbar-thumb-gray-400 {
   --scrollbar-thumb: #9ca3af !important;
 }
 
@@ -9308,13 +9239,11 @@ h1 {
 }
 
 .hover\:no-underline:hover {
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
+  text-decoration-line: none;
 }
 
 .hover\:decoration-inherit:hover {
-  -webkit-text-decoration-color: inherit;
-          text-decoration-color: inherit;
+  text-decoration-color: inherit;
 }
 
 .hover\:opacity-75:hover {
@@ -9505,8 +9434,7 @@ h1 {
 }
 
 .focus\:no-underline:focus {
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
+  text-decoration-line: none;
 }
 
 .focus\:opacity-100:focus {
@@ -9633,8 +9561,7 @@ h1 {
 }
 
 .active\:no-underline:active {
-  -webkit-text-decoration-line: none;
-          text-decoration-line: none;
+  text-decoration-line: none;
 }
 
 .active\:shadow-lg:active {

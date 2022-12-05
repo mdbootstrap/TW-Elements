@@ -13,6 +13,11 @@ module.exports = plugin(
           body: ['Roboto', 'sans-serif'],
           mono: ['ui-monospace', 'monospace'],
         },
+        keyframes: {
+          PlaceholderWave: {
+            '100%': { maskPosition: '-200% 0%' },
+          },
+        },
       },
     },
   }
