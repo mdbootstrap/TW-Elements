@@ -78,7 +78,7 @@ const EVENT_DRAG_START = `dragstart${EVENT_KEY}`;
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
-const ATTR_CAROUSEL = 'data-te-carousel';
+const ATTR_CAROUSEL = 'data-te-carousel-init';
 const ATTR_ACTIVE = 'data-te-carousel-active';
 const ATTR_SLIDE = 'data-te-carousel-slide';
 const ATTR_END = 'data-te-carousel-item-end';
