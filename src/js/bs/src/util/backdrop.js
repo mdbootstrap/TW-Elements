@@ -6,10 +6,10 @@
  */
 
 import EventHandler from '../dom/event-handler';
+import Manipulator from '../../../mdb/dom/manipulator';
 import { execute, executeAfterTransition, getElement, reflow, typeCheckConfig } from './index';
 
 const Default = {
-  className: 'modal-backdrop',
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom
   isAnimated: false,
   rootElement: 'body', // give the choice to place backdrop under different elements
@@ -17,25 +17,12 @@ const Default = {
 };
 
 const DefaultType = {
-  className: 'string',
   isVisible: 'boolean',
   isAnimated: 'boolean',
   rootElement: '(element|string)',
   clickCallback: '(function|null)',
 };
 const NAME = 'backdrop';
-const CLASS_NAME_FADE = 'fade';
-const CLASS_NAME_SHOW = 'show';
-const ANIMATION_FADE_IN = [{ opacity: '0' }, { opacity: '50%' }];
-const ANIMATION_FADE_OUT = [{ opacity: '50%' }, { opacity: '0' }];
-
-const ANIMATION_TIMING = {
-  duration: 300,
-  iterations: 1,
-  easing: 'ease',
-  fill: 'both',
-};
-
 const EVENT_MOUSEDOWN = `mousedown.te.${NAME}`;
 
 class Backdrop {
@@ -57,9 +44,21 @@ class Backdrop {
       reflow(this._getElement());
     }
 
-    this._getElement().classList.add(CLASS_NAME_SHOW);
-    this._element.setAttribute(`data-te-backdrop-${CLASS_NAME_SHOW}`, '');
-    this._config.isAnimated && this._element.animate(ANIMATION_FADE_IN, ANIMATION_TIMING);
+    Manipulator.removeClass(this._getElement(), 'opacity-0');
+    Manipulator.addMultipleClasses(this._getElement(), [
+      'opacity-50',
+      'transition-all',
+      'duration-300',
+      'ease-in-out',
+      'fixed',
+      'top-0',
+      'left-0',
+      'z-[1040]',
+      'bg-[#000]',
+      'w-[100vw]',
+      'h-[100vh]',
+    ]);
+    this._element.setAttribute('data-te-backdrop-show', '');
 
     this._emulateAnimation(() => {
       execute(callback);
@@ -71,20 +70,15 @@ class Backdrop {
       execute(callback);
       return;
     }
-    this._config.isAnimated && this._element.animate(ANIMATION_FADE_OUT, ANIMATION_TIMING);
 
-    setTimeout(
-      () => {
-        this._getElement().classList.remove(CLASS_NAME_SHOW);
-        this._element.removeAttribute(`data-te-backdrop-${CLASS_NAME_SHOW}`);
+    this._element.removeAttribute('data-te-backdrop-show');
+    this._getElement().classList.add('opacity-0');
+    this._getElement().classList.remove('opacity-50');
 
-        this._emulateAnimation(() => {
-          this.dispose();
-          execute(callback);
-        });
-      },
-      this._config.isAnimated ? ANIMATION_TIMING.duration : 0
-    );
+    this._emulateAnimation(() => {
+      this.dispose();
+      execute(callback);
+    });
   }
 
   // Private
@@ -94,7 +88,7 @@ class Backdrop {
       const backdrop = document.createElement('div');
       backdrop.className = this._config.className;
       if (this._config.isAnimated) {
-        backdrop.classList.add(CLASS_NAME_FADE);
+        backdrop.classList.add('opacity-50');
       }
 
       this._element = backdrop;

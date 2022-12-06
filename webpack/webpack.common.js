@@ -40,6 +40,10 @@ if (process.env.mode === 'demo') {
 
 module.exports = {
   output: {
+    library: 'te',
+    libraryTarget: 'umd',
+    globalObject: 'this',
+    umdNamedDefine: true,
     path: Path.join(__dirname, `../${distName}`),
     filename: '[name].min.js',
   },
