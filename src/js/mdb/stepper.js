@@ -22,9 +22,10 @@ import {
  */
 
 const NAME = 'stepper';
-const DATA_KEY = 'mdb.stepper';
-const SELECTOR_EXPAND = '[data-mdb-stepper="stepper"]';
+const DATA_KEY = 'te.stepper';
 const EVENT_KEY = `.${DATA_KEY}`;
+const REF = `data-te-${NAME}`;
+const SELECTOR_EXPAND = `[${REF}-init]`;
 
 const STEPPER_HORIZONTAL = 'horizontal';
 const STEPPER_VERTICAL = 'vertical';
@@ -61,23 +62,18 @@ const EVENT_KEYUP = `keyup${EVENT_KEY}`;
 const EVENT_RESIZE = `resize${EVENT_KEY}`;
 const EVENT_ANIMATIONEND = 'animationend';
 
-const STEP_CLASS = `${NAME}-step`;
-const HEAD_CLASS = `${NAME}-head`;
-const CONTENT_CLASS = `${NAME}-content`;
-const ACTIVE_CLASS = `${NAME}-active`;
-const COMPLETED_CLASS = `${NAME}-completed`;
-const INVALID_CLASS = `${NAME}-invalid`;
-const DISABLED_CLASS = `${NAME}-disabled`;
-const VERTICAL_CLASS = `${NAME}-${STEPPER_VERTICAL}`;
-const CONTENT_HIDE_CLASS = `${NAME}-content-hide`;
-const HORIZONTAL_CLASS = `${NAME}-${STEPPER_HORIZONTAL}`;
+const STEP_REF = `[${REF}-step-ref]`;
+const HEAD_REF = `[${REF}-head-ref]`;
+const HEAD_TEXT_REF = `[${REF}-head-text-ref]`;
+const HEAD_ICON_REF = `[${REF}-head-icon-ref]`;
+const CONTENT_REF = `[${REF}-content-ref]`;
 
 class Stepper {
   constructor(element, options) {
     this._element = element;
     this._options = this._getConfig(options);
     this._elementHeight = 0;
-    this._steps = SelectorEngine.find(`.${STEP_CLASS}`, this._element);
+    this._steps = SelectorEngine.find(`${STEP_REF}`, this._element);
     this._currentView = '';
     this._activeStepIndex = 0;
     this._verticalStepperStyles = [];
@@ -129,13 +125,22 @@ class Stepper {
 
   // Private
   _init() {
-    const activeStep = SelectorEngine.findOne(`.${ACTIVE_CLASS}`, this._element);
+    const activeStep = SelectorEngine.find(`${STEP_REF}`, this._element)[this._activeStepIndex].setAttribute('data-et', 'active-step');
+    const stepperContent = SelectorEngine.find(`${CONTENT_REF}`, this._element);
+    const stepperHeadText = SelectorEngine.find(`${HEAD_TEXT_REF}`, this._element);
+    const stepperHeadIcon = SelectorEngine.find(`${HEAD_ICON_REF}`, this._element);
 
     if (activeStep) {
       this._activeStepIndex = this._steps.indexOf(activeStep);
       this._toggleStepClass(this._activeStepIndex, 'add', this._options.stepperActive);
+
+      stepperContent[this._activeStepIndex].classList.add('block');
+      stepperHeadText[this._activeStepIndex].classList.add('font-medium')
+      stepperHeadIcon[this._activeStepIndex].classList.add('bg-[#0d6efd]')
     } else {
-      this._toggleStepClass(this._activeStepIndex, 'add', ACTIVE_CLASS);
+      stepperContent[this._activeStepIndex].classList.add('block');
+      stepperHeadText[this._activeStepIndex].classList.add('font-medium')
+      stepperHeadIcon[this._activeStepIndex].classList.add('bg-[#0d6efd]')
       this._toggleStepClass(this._activeStepIndex, 'add', this._options.stepperActive);
     }
 
@@ -174,10 +179,10 @@ class Stepper {
 
   _bindMouseDown() {
     this._steps.forEach((el) => {
-      const stepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, el);
+      const stepHead = SelectorEngine.findOne(`${HEAD_REF}`, el);
 
       EventHandler.on(stepHead, EVENT_MOUSEDOWN, (e) => {
-        const step = SelectorEngine.parents(e.target, `.${STEP_CLASS}`)[0];
+        const step = SelectorEngine.parents(e.target, `${STEP_REF}`)[0];
         const stepIndex = this._steps.indexOf(step);
 
         e.preventDefault();
@@ -213,7 +218,7 @@ class Stepper {
 
     if (shouldBeVertical && !shouldBeMobile && this._currentView !== STEPPER_VERTICAL) {
       this._steps.forEach((el) => {
-        const stepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, el);
+        const stepContent = SelectorEngine.findOne(`${CONTENT_REF}`, el);
 
         this._resetStepperHeight();
         this._showElement(stepContent);
@@ -232,7 +237,7 @@ class Stepper {
       this._toggleDisabled();
     }
 
-    this._showElement(SelectorEngine.findOne(`.${CONTENT_CLASS}`, this._steps[index]));
+    this._showElement(SelectorEngine.findOne(`${CONTENT_REF}`, this._steps[index]));
     this._toggleActive(index);
 
     if (index > this._activeStepIndex) {
@@ -247,11 +252,18 @@ class Stepper {
     }
 
     this._toggleStepTabIndex(
-      SelectorEngine.findOne(`.${HEAD_CLASS}`, this.activeStep),
-      SelectorEngine.findOne(`.${HEAD_CLASS}`, this._steps[index])
+      SelectorEngine.findOne(`${HEAD_REF}`, this.activeStep),
+      SelectorEngine.findOne(`${HEAD_REF}`, this._steps[index])
     );
 
     this._activeStepIndex = index;
+
+    this._steps[this._activeStepIndex].setAttribute('data-et', 'active-step');
+    this._steps.forEach((step, index) => {
+      if (step[this._activeStepIndex] !== index) {
+        step.removeAttribute('data-et')
+      }
+    })
   }
 
   _resetStepperHeight() {
@@ -260,7 +272,7 @@ class Stepper {
 
   _setStepsHeight() {
     this._steps.forEach((el) => {
-      const stepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, el);
+      const stepContent = SelectorEngine.findOne(`${CONTENT_REF}`, el);
       const stepComputed = window.getComputedStyle(stepContent);
       this._verticalStepperStyles.push({
         paddingTop: parseFloat(stepComputed.paddingTop),
@@ -272,7 +284,7 @@ class Stepper {
   }
 
   _setSingleStepHeight(step) {
-    const stepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, step);
+    const stepContent = SelectorEngine.findOne(`${CONTENT_REF}`, step);
     const isActiveStep = this.activeStep === step;
     const stepIndex = this._steps.indexOf(step);
     let stepContentHeight;
@@ -293,7 +305,6 @@ class Stepper {
   _toggleVertical() {
     this._currentView = STEPPER_VERTICAL;
 
-    this._toggleStepperClass(VERTICAL_CLASS);
     this._setStepsHeight();
     this._hideInactiveSteps();
   }
@@ -301,18 +312,18 @@ class Stepper {
   _toggleHorizontal() {
     this._currentView = STEPPER_HORIZONTAL;
 
-    this._toggleStepperClass(HORIZONTAL_CLASS);
     this._setHeight(this.activeStep);
     this._hideInactiveSteps();
   }
 
-  _toggleStepperClass(className) {
-    this._element.classList.remove(HORIZONTAL_CLASS, VERTICAL_CLASS);
-    this._element.classList.add(className);
+  _toggleStepperClass() {
+    const vertical = SelectorEngine.findOne('[data-mdb-stepper-type]', this._element);
 
-    if (className !== VERTICAL_CLASS) {
+    if (vertical !== null) {
       this._steps.forEach((el) => {
-        SelectorEngine.findOne(`.${CONTENT_CLASS}`, el).classList.remove(CONTENT_HIDE_CLASS);
+        SelectorEngine.findOne(`${CONTENT_REF}`, el).classList.remove('!my-0');
+        SelectorEngine.findOne(`${CONTENT_REF}`, el).classList.remove('!py-0');
+        SelectorEngine.findOne(`${CONTENT_REF}`, el).classList.remove('!h-0');
       });
     }
   }
@@ -325,26 +336,26 @@ class Stepper {
   }
 
   _bindKeysNavigation() {
-    this._toggleStepTabIndex(false, SelectorEngine.findOne(`.${HEAD_CLASS}`, this.activeStep));
+    this._toggleStepTabIndex(false, SelectorEngine.findOne(`${HEAD_REF}`, this.activeStep));
 
     this._steps.forEach((el) => {
-      const stepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, el);
+      const stepHead = SelectorEngine.findOne(`${HEAD_REF}`, el);
 
       EventHandler.on(stepHead, EVENT_KEYDOWN, (e) => {
-        const focusedStep = SelectorEngine.parents(e.currentTarget, `.${STEP_CLASS}`)[0];
-        const nextStep = SelectorEngine.next(focusedStep, `.${STEP_CLASS}`)[0];
-        const prevStep = SelectorEngine.prev(focusedStep, `.${STEP_CLASS}`)[0];
-        const focusedStepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, focusedStep);
-        const activeStepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, this.activeStep);
+        const focusedStep = SelectorEngine.parents(e.currentTarget, `${STEP_REF}`)[0];
+        const nextStep = SelectorEngine.next(focusedStep, `${STEP_REF}`)[0];
+        const prevStep = SelectorEngine.prev(focusedStep, `${STEP_REF}`)[0];
+        const focusedStepHead = SelectorEngine.findOne(`${HEAD_REF}`, focusedStep);
+        const activeStepHead = SelectorEngine.findOne(`${HEAD_REF}`, this.activeStep);
         let nextStepHead = null;
         let prevStepHead = null;
 
         if (nextStep) {
-          nextStepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, nextStep);
+          nextStepHead = SelectorEngine.findOne(`${HEAD_REF}`, nextStep);
         }
 
         if (prevStep) {
-          prevStepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, prevStep);
+          prevStepHead = SelectorEngine.findOne(`${HEAD_REF}`, prevStep);
         }
 
         if (e.keyCode === LEFT_ARROW && this._currentView !== STEPPER_VERTICAL) {
@@ -398,7 +409,7 @@ class Stepper {
         }
 
         if (e.keyCode === HOME) {
-          const firstStepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, this._steps[0]);
+          const firstStepHead = SelectorEngine.findOne(`${HEAD_REF}`, this._steps[0]);
 
           this._toggleStepTabIndex(focusedStepHead, firstStepHead);
           this._toggleOutlineStyles(focusedStepHead, firstStepHead);
@@ -408,7 +419,7 @@ class Stepper {
 
         if (e.keyCode === END) {
           const lastStep = this._steps[this._steps.length - 1];
-          const lastStepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, lastStep);
+          const lastStepHead = SelectorEngine.findOne(`${HEAD_REF}`, lastStep);
           this._toggleStepTabIndex(focusedStepHead, lastStepHead);
           this._toggleOutlineStyles(focusedStepHead, lastStepHead);
 
@@ -430,9 +441,9 @@ class Stepper {
       });
 
       EventHandler.on(stepHead, EVENT_KEYUP, (e) => {
-        const focusedStep = SelectorEngine.parents(e.currentTarget, `.${STEP_CLASS}`)[0];
-        const focusedStepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, focusedStep);
-        const activeStepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, this.activeStep);
+        const focusedStep = SelectorEngine.parents(e.currentTarget, `${STEP_REF}`)[0];
+        const focusedStepHead = SelectorEngine.findOne(`${HEAD_REF}`, focusedStep);
+        const activeStepHead = SelectorEngine.findOne(`${HEAD_REF}`, this.activeStep);
 
         if (e.keyCode === TAB) {
           this._toggleStepTabIndex(focusedStepHead, activeStepHead);
@@ -465,36 +476,54 @@ class Stepper {
   }
 
   _toggleDisabled() {
-    this._toggleStepClass(this._activeStepIndex, 'add', DISABLED_CLASS);
+    const stepperHead = SelectorEngine.find(`${HEAD_REF}`, this._element);
+    const stepperHeadIcon = SelectorEngine.find(`${HEAD_ICON_REF}`, this._element);
+
+    stepperHead[this._activeStepIndex].classList.add('color-[#858585]');
+    stepperHead[this._activeStepIndex].classList.add('cursor-default');
+    stepperHeadIcon[this._activeStepIndex].classList.add('bg-[#858585]');
     this._toggleStepClass(this._activeStepIndex, 'add', this._options.stepperDisabled);
   }
 
   _toggleActive(index) {
-    this._toggleStepClass(index, 'add', ACTIVE_CLASS);
-    this._toggleStepClass(this._activeStepIndex, 'remove', ACTIVE_CLASS);
+    const stepperContent = SelectorEngine.find(`${CONTENT_REF}`, this._element);
+    const stepperHeadText = SelectorEngine.find(`${HEAD_TEXT_REF}`, this._element);
+    const stepperHeadIcon = SelectorEngine.find(`${HEAD_ICON_REF}`, this._element);
+
+    stepperContent[index].classList.add('block');
+    stepperHeadText[index].classList.add('font-medium');
+    stepperHeadIcon[index].classList.add('bg-[#0d6efd]');
+    stepperHeadIcon[index].classList.remove('bg-[#198754]');
+
+    stepperContent[this._activeStepIndex].classList.remove('block');
+    stepperHeadText[this._activeStepIndex].classList.remove('font-medium');
+    stepperHeadIcon[this._activeStepIndex].classList.remove('bg-[#0d6efd]');
+
     this._toggleStepClass(index, 'add', this._options.stepperActive);
     this._toggleStepClass(this._activeStepIndex, 'remove', this._options.stepperActive);
   }
 
   _toggleCompleted(index) {
-    this._toggleStepClass(index, 'add', COMPLETED_CLASS);
-    this._toggleStepClass(index, 'remove', INVALID_CLASS);
+    const stepperHeadIcon = SelectorEngine.find(`${HEAD_ICON_REF}`, this._element);
+    stepperHeadIcon[index].classList.add('bg-[#198754]');
+    stepperHeadIcon[index].classList.remove('bg-[#dc3545]');
+
     this._toggleStepClass(index, 'add', this._options.stepperCompleted);
     this._toggleStepClass(index, 'remove', this._options.stepperInvalid);
   }
 
   _hideInactiveSteps() {
     this._steps.forEach((el) => {
-      if (!el.classList.contains(ACTIVE_CLASS)) {
-        this._hideElement(SelectorEngine.findOne(`.${CONTENT_CLASS}`, el));
+      if (!el.getAttribute('data-et')) {
+        this._hideElement(SelectorEngine.findOne(`${CONTENT_REF}`, el));
       }
     });
   }
 
   _setHeight(stepElement) {
-    const stepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, stepElement);
+    const stepContent = SelectorEngine.findOne(`${CONTENT_REF}`, stepElement);
     const contentStyle = getComputedStyle(stepContent);
-    const stepHead = SelectorEngine.findOne(`.${HEAD_CLASS}`, stepElement);
+    const stepHead = SelectorEngine.findOne(`${HEAD_REF}`, stepElement);
 
     const headStyle = getComputedStyle(stepHead);
     const stepContentHeight =
@@ -509,21 +538,23 @@ class Stepper {
   }
 
   _hideElement(stepContent) {
-    const isActive = SelectorEngine.parents(stepContent, `.${STEP_CLASS}`)[0].classList.contains(
-      ACTIVE_CLASS
-    );
+    const isActive = SelectorEngine.parents(stepContent, `${STEP_REF}`)[0].getAttribute('data-et');
 
     // prevent hiding during a quick step change
     if (!isActive && this._currentView !== STEPPER_VERTICAL) {
       stepContent.style.display = 'none';
     } else {
-      stepContent.classList.add(CONTENT_HIDE_CLASS);
+      stepContent.classList.add('!my-0');
+      stepContent.classList.add('!py-0');
+      stepContent.classList.add('!h-0');
     }
   }
 
   _showElement(stepContent) {
     if (this._currentView === STEPPER_VERTICAL) {
-      stepContent.classList.remove(CONTENT_HIDE_CLASS);
+      stepContent.classList.remove('!my-0');
+      stepContent.classList.remove('!py-0');
+      stepContent.classList.remove('!h-0');
     } else {
       stepContent.style.display = 'block';
     }
@@ -531,14 +562,14 @@ class Stepper {
 
   _animateHorizontalStep(index) {
     const isForward = index > this._activeStepIndex;
-    const nextStepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, this._steps[index]);
-    const activeStepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, this.activeStep);
+    const nextStepContent = SelectorEngine.findOne(`${CONTENT_REF}`, this._steps[index]);
+    const activeStepContent = SelectorEngine.findOne(`${CONTENT_REF}`, this.activeStep);
 
     let nextStepAnimation;
     let activeStepAnimation;
 
     this._steps.forEach((el, i) => {
-      const stepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, el);
+      const stepContent = SelectorEngine.findOne(`${CONTENT_REF}`, el);
 
       this._clearStepAnimation(stepContent);
 
@@ -571,8 +602,8 @@ class Stepper {
   }
 
   _animateVerticalStep(index) {
-    const nextStepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, this._steps[index]);
-    const activeStepContent = SelectorEngine.findOne(`.${CONTENT_CLASS}`, this.activeStep);
+    const nextStepContent = SelectorEngine.findOne(`${CONTENT_REF}`, this._steps[index]);
+    const activeStepContent = SelectorEngine.findOne(`${CONTENT_REF}`, this.activeStep);
 
     this._hideElement(activeStepContent);
     this._showElement(nextStepContent);
