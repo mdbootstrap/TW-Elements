@@ -14,11 +14,11 @@ module.exports = plugin(
           mono: ['ui-monospace', 'monospace'],
         },
         keyframes: {
-          fadeIn: {
+          'fade-in': {
             '0%': { opacity: 0 },
             '100%': { opacity: 1 },
           },
-          fadeInDown: {
+          'fade-in-down': {
             '0%': {
               opacity: 0,
               transform: 'translate3d(0, -100%, 0)',
@@ -28,7 +28,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 0, 0)',
             },
           },
-          fadeInLeft: {
+          'fade-in-left': {
             '0%': {
               opacity: 0,
               transform: 'translate3d(-100%, 0, 0)',
@@ -38,7 +38,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 0, 0)',
             },
           },
-          fadeInRight: {
+          'fade-in-right': {
             '0%': {
               opacity: 0,
               transform: 'translate3d(100%, 0, 0)',
@@ -48,7 +48,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 0, 0)',
             },
           },
-          fadeInUp: {
+          'fade-in-up': {
             '0%': {
               opacity: 0,
               transform: 'translate3d(0, 100%, 0)',
@@ -58,7 +58,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 0, 0)',
             },
           },
-          fadeOutDown: {
+          'fade-out-down': {
             '0%': {
               opacity: 1,
             },
@@ -67,7 +67,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 100%, 0)',
             },
           },
-          fadeOutLeft: {
+          'fade-out-left': {
             '0%': {
               opacity: 1,
             },
@@ -76,7 +76,7 @@ module.exports = plugin(
               transform: 'translate3d(-100%, 0, 0)',
             },
           },
-          fadeOutRight: {
+          'fade-out-right': {
             '0%': {
               opacity: 1,
             },
@@ -85,7 +85,7 @@ module.exports = plugin(
               transform: 'translate3d(100%, 0, 0)',
             },
           },
-          fadeOutUp: {
+          'fade-out-up': {
             '0%': {
               opacity: 1,
             },
@@ -94,7 +94,7 @@ module.exports = plugin(
               transform: 'translate3d(0, -100%, 0)',
             },
           },
-          slideInDown: {
+          'slide-in-down': {
             '0%': {
               visibility: 'visible',
               transform: 'translate3d(0, -100%, 0)',
@@ -103,7 +103,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 0, 0)',
             },
           },
-          slideInLeft: {
+          'slide-in-left': {
             '0%': {
               visibility: 'visible',
               transform: 'translate3d(-100%, 0, 0)',
@@ -112,7 +112,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 0, 0)',
             },
           },
-          slideInRight: {
+          'slide-in-right': {
             '0%': {
               visibility: 'visible',
               transform: 'translate3d(100%, 0, 0)',
@@ -121,7 +121,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 0, 0)',
             },
           },
-          slideInUp: {
+          'slide-in-up': {
             '0%': {
               visibility: 'visible',
               transform: 'translate3d(0, 100%, 0)',
@@ -130,7 +130,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 0, 0)',
             },
           },
-          slideOutDown: {
+          'slide-out-down': {
             '0%': {
               transform: 'translate3d(0, 0, 0)',
             },
@@ -139,7 +139,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 100%, 0)',
             },
           },
-          slideOutLeft: {
+          'slide-out-left': {
             '0%': {
               transform: 'translate3d(0, 0, 0)',
             },
@@ -148,7 +148,7 @@ module.exports = plugin(
               transform: 'translate3d(-100%, 0, 0)',
             },
           },
-          slideOutRight: {
+          'slide-out-right': {
             '0%': {
               transform: 'translate3d(0, 0, 0)',
             },
@@ -157,7 +157,7 @@ module.exports = plugin(
               transform: 'translate3d(100%, 0, 0)',
             },
           },
-          slideOutUp: {
+          'slide-out-up': {
             '0%': {
               transform: 'translate3d(0, 0, 0)',
             },
@@ -166,7 +166,7 @@ module.exports = plugin(
               transform: 'translate3d(0, -100%, 0)',
             },
           },
-          slideDown: {
+          'slide-down': {
             '0%': {
               transform: 'translate3d(0, 0, 0)',
             },
@@ -174,7 +174,7 @@ module.exports = plugin(
               transform: 'translate3d(0, 100%, 0)',
             },
           },
-          slideLeft: {
+          'slide-left': {
             '0%': {
               transform: 'translate3d(0, 0, 0)',
             },
@@ -182,7 +182,7 @@ module.exports = plugin(
               transform: 'translate3d(-100%, 0, 0)',
             },
           },
-          slideRight: {
+          'slide-right': {
             '0%': {
               transform: 'translate3d(0, 0, 0)',
             },
@@ -190,7 +190,7 @@ module.exports = plugin(
               transform: 'translate3d(100%, 0, 0)',
             },
           },
-          slideUp: {
+          'slide-up': {
             '0%': {
               transform: 'translate3d(0, 0, 0)',
             },
@@ -198,7 +198,7 @@ module.exports = plugin(
               transform: 'translate3d(0, -100%, 0)',
             },
           },
-          zoomIn: {
+          'zoom-in': {
             '0%': {
               opacity: 0,
               transform: 'scale3d(0.3, 0.3, 0.3)',
@@ -207,7 +207,7 @@ module.exports = plugin(
               opacity: 1,
             },
           },
-          zoomOut: {
+          'zoom-out': {
             '0%': {
               opacity: 1,
             },
