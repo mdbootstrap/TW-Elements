@@ -45,7 +45,7 @@ class Backdrop {
     }
 
     Manipulator.removeClass(this._getElement(), 'opacity-0');
-    Manipulator.addManyClasses(this._getElement(), [
+    Manipulator.addMultipleClasses(this._getElement(), [
       'opacity-50',
       'transition-all',
       'duration-300',
