@@ -17,6 +17,10 @@ module.exports = plugin(
           PlaceholderWave: {
             '100%': { maskPosition: '-200% 0%' },
           },
+          SpinnerGrow: {
+            '0%': { transform: 'scale(0)' },
+            '50%': { opacity: '1', transform: 'none' },
+          },
         },
       },
     },
