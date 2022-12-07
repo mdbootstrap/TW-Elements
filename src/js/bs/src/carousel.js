@@ -100,6 +100,7 @@ const CLASS_NAME_INVISIBLE = [
 const CLASS_NAME_SLIDE_RIGHT = 'translate-x-full';
 const CLASS_NAME_SLIDE_LEFT = '-translate-x-full';
 
+const SELECTOR_DATA_CAROUSEL_INIT = '[data-te-carousel-init]';
 const SELECTOR_DATA_ACTIVE = '[data-te-carousel-active]';
 const SELECTOR_DATA_ITEM = '[data-te-carousel-item]';
 const SELECTOR_DATA_ACTIVE_ITEM = `${SELECTOR_DATA_ACTIVE}${SELECTOR_DATA_ITEM}`;
@@ -108,7 +109,6 @@ const SELECTOR_DATA_NEXT_PREV = '[data-te-carousel-item-next], [data-te-carousel
 const SELECTOR_DATA_INDICATORS = '[data-te-carousel-indicators]';
 const SELECTOR_INDICATOR = '[data-te-target]';
 const SELECTOR_DATA_SLIDE = '[data-te-slide], [data-te-slide-to]';
-const SELECTOR_DATA_RIDE = '[data-te-ride="carousel"]';
 
 const POINTER_TYPE_TOUCH = 'touch';
 const POINTER_TYPE_PEN = 'pen';
@@ -579,7 +579,7 @@ class Carousel extends BaseComponent {
       }
 
       data[action]();
-    } else if (_config.interval && _config.ride) {
+    } else if (_config.interval && _config.carouselInit === null) {
       data.pause();
       data.cycle();
     }
@@ -627,7 +627,7 @@ class Carousel extends BaseComponent {
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler);
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE);
+  const carousels = SelectorEngine.find(SELECTOR_DATA_CAROUSEL_INIT);
 
   for (let i = 0, len = carousels.length; i < len; i++) {
     Carousel.carouselInterface(carousels[i], Carousel.getInstance(carousels[i]));
