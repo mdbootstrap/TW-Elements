@@ -44,65 +44,69 @@ menu:
             active:bg-blue-800 active:shadow-lg
             transition
             duration-150
-            ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            ease-in-out"
+            data-te-toggle="modal" data-te-target="#exampleModal">
     Launch demo modal
   </button>
 
-  <!-- Modal -->
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-    id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog relative w-auto pointer-events-none">
+      <!-- Modal -->
       <div
-        class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
         <div
-          class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">Modal title</h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4">
-          Modal body text goes here.
-        </div>
-        <div
-          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-          <button type="button" class="px-6
-                py-2.5
-                bg-purple-600
-                text-white
-                font-medium
-                text-xs
-                leading-tight
-                uppercase
-                rounded
-                shadow-md
-                hover:bg-purple-700 hover:shadow-lg
-                focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0
-                active:bg-purple-800 active:shadow-lg
-                transition
-                duration-150
-                ease-in-out" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="px-6
-            py-2.5
-            bg-blue-600
-            text-white
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            rounded
-            shadow-md
-            hover:bg-blue-700 hover:shadow-lg
-            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-            active:bg-blue-800 active:shadow-lg
-            transition
-            duration-150
-            ease-in-out
-            ml-1">Save changes</button>
+          data-te-modal-dialog-ref
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+          >
+            <div
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="flex-auto relative p-4" data-te-modal-body-ref>
+              Modal body text goes here.
+            </div>
+            <div
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
   {{< /twsnippet/demo >}}
 
@@ -126,66 +130,68 @@ menu:
             active:bg-blue-800 active:shadow-lg
             transition
             duration-150
-            ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            ease-in-out" data-te-toggle="modal" data-te-target="#exampleModal">
         Launch demo modal
       </button>
 
       <!-- Modal -->
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-        id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog relative w-auto pointer-events-none">
+      <div
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div
+          data-te-modal-dialog-ref
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
           <div
-            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+          >
             <div
-              class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">Modal title</h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="modal-body relative p-4">
+            <div class="flex-auto relative p-4" data-te-modal-body-ref>
               Modal body text goes here.
             </div>
             <div
-              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-              <button type="button" class="px-6
-                py-2.5
-                bg-purple-600
-                text-white
-                font-medium
-                text-xs
-                leading-tight
-                uppercase
-                rounded
-                shadow-md
-                hover:bg-purple-700 hover:shadow-lg
-                focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0
-                active:bg-purple-800 active:shadow-lg
-                transition
-                duration-150
-                ease-in-out" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="px-6
-            py-2.5
-            bg-blue-600
-            text-white
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            rounded
-            shadow-md
-            hover:bg-blue-700 hover:shadow-lg
-            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-            active:bg-blue-800 active:shadow-lg
-            transition
-            duration-150
-            ease-in-out
-            ml-1">Save changes</button>
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+              >
+                Save changes
+              </button>
             </div>
           </div>
         </div>
       </div>
-
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
   </section>
@@ -224,41 +230,68 @@ menu:
   <!-- Button trigger modal -->
   <button type="button"
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    data-te-toggle="modal" data-te-target="#staticBackdrop">
     Launch static backdrop modal
   </button>
 
-  <!-- Modal -->
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-    id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog relative w-auto pointer-events-none">
+      <!-- Modal -->
       <div
-        class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+        data-te-modal-init
+        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="staticBackdrop"
+        data-te-backdrop="static"
+        data-te-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
         <div
-          class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
-            Modal title
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4">
-          ...
-        </div>
-        <div
-          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-bs-dismiss="modal">Close</button>
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Understood</button>
+          data-te-modal-dialog-ref
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+          >
+            <div
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div data-te-modal-body-ref class="relative p-4">...</div>
+            <div
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+              >
+                Understood
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
   {{< /twsnippet/demo >}}
 
   <section class="collapse" id="example2">
@@ -273,36 +306,63 @@ menu:
       </button>
 
       <!-- Modal -->
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-        id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog relative w-auto pointer-events-none">
+      <div
+        data-te-modal-init
+        class="modal z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="staticBackdrop"
+        data-te-backdrop="static"
+        data-te-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div
+          data-te-modal-dialog-ref
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
           <div
-            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+          >
             <div
-              class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
               <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
                 Modal title
               </h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="modal-body relative p-4">
-              ...
-            </div>
+            <div data-te-modal-body-ref class="relative p-4">...</div>
             <div
-              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal">Close</button>
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">Understood</button>
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+              >
+                Understood
+              </button>
             </div>
           </div>
         </div>
       </div>
-
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
   </section>
@@ -322,42 +382,75 @@ menu:
   <!-- Button trigger modal -->
   <button type="button"
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-    data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+    data-te-toggle="modal" data-te-target="#exampleModalLong">
     Launch demo modal long
   </button>
 
-  <!-- Modal -->
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-    id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
-    <div class="modal-dialog relative w-auto pointer-events-none">
+      <!-- Modal -->
       <div
-        class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalLong"
+        tabindex="-1"
+        aria-labelledby="exampleModalLongLabel"
+        aria-hidden="true"
+      >
         <div
-          class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLongLabel">
-            Modal title
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4" style="min-height: 1500px">This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text the modal, we use an inline style set a minimum height, thereby extending the length of the overall modal and demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling will move the modal as needed.</div>
-        <div
-          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-bs-dismiss="modal">
-            Close
-          </button>
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
-            Save changes
-          </button>
+          data-te-modal-dialog-ref
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+          >
+            <div
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5
+                class="text-xl font-medium leading-normal text-gray-800"
+                id="exampleModalLongLabel"
+              >
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="relative p-4" style="min-height: 1500px">
+              This is some placeholder content to show the scrolling behavior for modals. Instead of
+              repeating the text the modal, we use an inline style set a minimum height, thereby
+              extending the length of the overall modal and demonstrating the overflow scrolling.
+              When content becomes longer than the height of the viewport, scrolling will move the
+              modal as needed.
+            </div>
+            <div
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
   {{< /twsnippet/demo >}}
 
   <section class="collapse" id="example3">
@@ -372,37 +465,70 @@ menu:
       </button>
 
       <!-- Modal -->
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-        id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongLabel" aria-hidden="true">
-        <div class="modal-dialog relative w-auto pointer-events-none">
+      <div
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalLong"
+        tabindex="-1"
+        aria-labelledby="exampleModalLongLabel"
+        aria-hidden="true"
+      >
+        <div
+          data-te-modal-dialog-ref
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
           <div
-            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+          >
             <div
-              class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLongLabel">
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5
+                class="text-xl font-medium leading-normal text-gray-800"
+                id="exampleModalLongLabel"
+              >
                 Modal title
               </h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="modal-body relative p-4" style="min-height: 1500px">This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text the modal, we use an inline style set a minimum height, thereby extending the length of the overall modal and demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling will move the modal as needed.</div>
+            <div class="relative p-4" style="min-height: 1500px">
+              This is some placeholder content to show the scrolling behavior for modals. Instead of
+              repeating the text the modal, we use an inline style set a minimum height, thereby
+              extending the length of the overall modal and demonstrating the overflow scrolling.
+              When content becomes longer than the height of the viewport, scrolling will move the
+              modal as needed.
+            </div>
             <div
-              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal">
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
                 Close
               </button>
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+              >
                 Save changes
               </button>
             </div>
           </div>
         </div>
       </div>
-
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
   </section>
@@ -422,46 +548,78 @@ menu:
   <!-- Button trigger modal -->
   <button type="button"
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-    data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">
+    data-te-toggle="modal" data-te-target="#exampleModalScrollable">
     Launch demo modal dialog scrollable
   </button>
 
-  <!-- Modal -->
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-    id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable relative w-auto pointer-events-none">
+      <!-- Modal -->
       <div
-        class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalScrollable"
+        tabindex="-1"
+        aria-labelledby="exampleModalScrollableLabel"
+        aria-hidden="true"
+      >
         <div
-          class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-            Modal title
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4">
-          <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <p>This content should appear at the bottom after you scroll.</p>
-        </div>
-        <div
-          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-bs-dismiss="modal">
-            Close
-          </button>
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
-            Save changes
-          </button>
+          data-te-modal-dialog-ref
+          class="h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="max-h-[100%] overflow-hidden border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+          >
+            <div
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5
+                class="text-xl font-medium leading-normal text-gray-800"
+                id="exampleModalScrollableLabel"
+              >
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="overflow-y-auto relative p-4">
+              <p>
+                This is some placeholder content to show the scrolling behavior for modals. We use
+                repeated line breaks to demonstrate how content can exceed minimum inner height,
+                thereby showing inner scrolling. When content becomes longer than the predefined
+                max-height of modal, content will be cropped and scrollable within the modal.
+              </p>
+              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+              <p>This content should appear at the bottom after you scroll.</p>
+            </div>
+            <div
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
   {{< /twsnippet/demo >}}
 
   <section class="collapse" id="example4">
@@ -476,41 +634,73 @@ menu:
       </button>
 
       <!-- Modal -->
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-        id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable relative w-auto pointer-events-none">
+      <div
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalScrollable"
+        tabindex="-1"
+        aria-labelledby="exampleModalScrollableLabel"
+        aria-hidden="true"
+      >
+        <div
+          data-te-modal-dialog-ref
+          class="h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
           <div
-            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+            class="max-h-[100%] overflow-hidden border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+          >
             <div
-              class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5
+                class="text-xl font-medium leading-normal text-gray-800"
+                id="exampleModalScrollableLabel"
+              >
                 Modal title
               </h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="modal-body relative p-4">
-              <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
-              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="overflow-y-auto relative p-4">
+              <p>
+                This is some placeholder content to show the scrolling behavior for modals. We use
+                repeated line breaks to demonstrate how content can exceed minimum inner height,
+                thereby showing inner scrolling. When content becomes longer than the predefined
+                max-height of modal, content will be cropped and scrollable within the modal.
+              </p>
+              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
               <p>This content should appear at the bottom after you scroll.</p>
             </div>
             <div
-              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal">
+              class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
                 Close
               </button>
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+              >
                 Save changes
               </button>
             </div>
           </div>
         </div>
       </div>
-
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
   </section>
@@ -527,153 +717,293 @@ menu:
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example5">}}
   <div class="">
-    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalCenter">
       Vertically centered modal
     </button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalCenteredScrollable">
       Vertically centered scrollable modal
     </button>
   </div>
 
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-        <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-            Modal title
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4">
-          <p>This is a vertically centered modal.</p>
-        </div>
-        <div
-          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-bs-dismiss="modal">
-            Close
-          </button>
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
-            Save changes
-          </button>
-        </div>
+  <div
+  data-te-modal-init
+  class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="exampleModalCenter"
+  tabindex="-1"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-modal="true"
+  role="dialog"
+>
+  <div
+    data-te-modal-dialog-ref
+    class="flex items-center min-h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:min-h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+    >
+      <div
+        class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5
+          class="text-xl font-medium leading-normal text-gray-800"
+          id="exampleModalScrollableLabel"
+        >
+          Modal title
+        </h5>
+        <button
+          type="button"
+          class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+          data-te-modal-dismiss
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="relative p-4">
+        <p>This is a vertically centered modal.</p>
+      </div>
+      <div
+        class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+      >
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+          data-te-modal-dismiss
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable relative w-auto pointer-events-none">
-      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-        <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalCenteredScrollableLabel">
-            Modal title
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4">
-          <p>This is some placeholder content to show a vertically centered modal. We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
-      <br><br><br><br><br><br><br><br><br><br>
-      <p>Just like that.</p>
-        </div>
-        <div
-          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-bs-dismiss="modal">
-            Close
-          </button>
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
-            Save changes
-          </button>
-        </div>
+<div
+  data-te-modal-init
+  class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="exampleModalCenteredScrollable"
+  tabindex="-1"
+  aria-labelledby="exampleModalCenteredScrollable"
+  aria-modal="true"
+  role="dialog"
+  >
+  <div
+    data-te-modal-dialog-ref
+    class="flex items-center min-h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:min-h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+    >
+      <div
+        class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5
+          class="text-xl font-medium leading-normal text-gray-800"
+          id="exampleModalCenteredScrollableLabel"
+        >
+          Modal title
+        </h5>
+        <button
+          type="button"
+          class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+          data-te-modal-dismiss
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="relative p-4">
+        <p>
+          This is some placeholder content to show a vertically centered modal. We've added
+          some extra copy here to show how vertically centering the modal works when combined
+          with scrollable modals. We also use some repeated line breaks to quickly extend the
+          height of the content, thereby triggering the scrolling. When content becomes longer
+          than the predefined max-height of modal, content will be cropped and scrollable
+          within the modal.
+        </p>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <p>Just like that.</p>
+      </div>
+      <div
+        class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+      >
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+          data-te-modal-dismiss
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+        >
+          Save changes
+        </button>
       </div>
     </div>
   </div>
-
+</div>
   {{< /twsnippet/demo >}}
 
   <section class="collapse" id="example5">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
       >}}
-      <div class="">
-        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+      <div>
+        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalCenter">
           Vertically centered modal
         </button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalCenteredScrollable">
           Vertically centered scrollable modal
         </button>
       </div>
 
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
-        <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-          <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-                Modal title
-              </h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body relative p-4">
-              <p>This is a vertically centered modal.</p>
-            </div>
-            <div
-              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal">
-                Close
-              </button>
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
-                Save changes
-              </button>
-            </div>
+      <div
+      data-te-modal-init
+      class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+      id="exampleModalCenter"
+      tabindex="-1"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-modal="true"
+      role="dialog"
+    >
+      <div
+        data-te-modal-dialog-ref
+        class="flex items-center min-h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:min-h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+      >
+        <div
+          class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+        >
+          <div
+            class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+          >
+            <h5
+              class="text-xl font-medium leading-normal text-gray-800"
+              id="exampleModalScrollableLabel"
+            >
+              Modal title
+            </h5>
+            <button
+              type="button"
+              class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+              data-te-modal-dismiss
+              aria-label="Close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                <path
+                  d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="relative p-4">
+            <p>This is a vertically centered modal.</p>
+          </div>
+          <div
+            class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+          >
+            <button
+              type="button"
+              class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+              data-te-modal-dismiss
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+            >
+              Save changes
+            </button>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollable" aria-modal="true" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable relative w-auto pointer-events-none">
-          <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalCenteredScrollableLabel">
-                Modal title
-              </h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body relative p-4">
-              <p>This is some placeholder content to show a vertically centered modal. We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
-          <br><br><br><br><br><br><br><br><br><br>
+    <div
+      data-te-modal-init
+      class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+      id="exampleModalCenteredScrollable"
+      tabindex="-1"
+      aria-labelledby="exampleModalCenteredScrollable"
+      aria-modal="true"
+      role="dialog"
+    >
+    <div
+      data-te-modal-dialog-ref
+      class="flex items-center min-h-[calc(100%-1rem)] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto min-[576px]:min-h-[calc(100%-3.5rem)] opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+    >
+      <div
+        class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+      >
+        <div
+          class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+        >
+          <h5
+            class="text-xl font-medium leading-normal text-gray-800"
+            id="exampleModalCenteredScrollableLabel"
+          >
+            Modal title
+          </h5>
+          <button
+            type="button"
+            class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+            data-te-modal-dismiss
+            aria-label="Close"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+              <path
+                d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="relative p-4">
+          <p>
+            This is some placeholder content to show a vertically centered modal. We've added
+            some extra copy here to show how vertically centering the modal works when combined
+            with scrollable modals. We also use some repeated line breaks to quickly extend the
+            height of the content, thereby triggering the scrolling. When content becomes longer
+            than the predefined max-height of modal, content will be cropped and scrollable
+            within the modal.
+          </p>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
           <p>Just like that.</p>
-            </div>
-            <div
-              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal">
-                Close
-              </button>
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
-                Save changes
-              </button>
-            </div>
-          </div>
+        </div>
+        <div
+          class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+        >
+          <button
+            type="button"
+            class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+            data-te-modal-dismiss
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+          >
+            Save changes
+          </button>
         </div>
       </div>
-
+    </div>
+  </div>
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
   </section>
@@ -683,71 +1013,137 @@ menu:
 <!-- Section: Sizes -->
 <section>
   <!--Title-->
-  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="Sizes">Sizes</h2>
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="sizes">Sizes</h2>
   <!--Description-->
   <p class="mb-3">Use four different modal sizing options starting from small to extra large. Width of these modals will remain responsive when browsing on smaller devices.</p>
 
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example6">}}
-  <div class="">
-    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">Extra large modal</button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalLg">Large modal</button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalSm">Small modal</button>
+  <div>
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalXl">Extra large modal</button>
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalLg">Large modal</button>
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalSm">Small modal</button>
   </div>
 
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
-      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-        <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalXlLabel">
-            Extra large modal
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4">
-          ...
-        </div>
+  <div
+  data-te-modal-init
+  class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="exampleModalXl"
+  tabindex="-1"
+  aria-labelledby="exampleModalXlLabel"
+  aria-modal="true"
+  role="dialog"
+>
+  <div
+    data-te-modal-dialog-ref
+    class="min-[1200px]:max-w-[1140px] min-[992px]:max-w-[800px] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+    >
+      <div
+        class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalXlLabel">
+          Extra large modal
+        </h5>
+        <button
+          type="button"
+          class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+          data-te-modal-dismiss
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
       </div>
+      <div class="relative p-4">...</div>
     </div>
   </div>
+</div>
 
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalLg" tabindex="-1" aria-labelledby="exampleModalLgLabel" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-lg relative w-auto pointer-events-none">
-      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-        <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLgLabel">
-            Large modal
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4">
-          ...
-        </div>
+<div
+  data-te-modal-init
+  class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="exampleModalLg"
+  tabindex="-1"
+  aria-labelledby="exampleModalLgLabel"
+  aria-modal="true"
+  role="dialog"
+>
+  <div
+    data-te-modal-dialog-ref
+    class="min-[992px]:max-w-[800px] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+    >
+      <div
+        class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLgLabel">
+          Large modal
+        </h5>
+        <button
+          type="button"
+          class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+          data-te-modal-dismiss
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
       </div>
+      <div class="relative p-4">...</div>
     </div>
   </div>
+</div>
 
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalSm" tabindex="-1" aria-labelledby="exampleModalSmLabel" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-sm relative w-auto pointer-events-none">
-      <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-        <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalSmLabel">
-            Small modal
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body relative p-4">
-          ...
-        </div>
+<div
+  data-te-modal-init
+  class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="exampleModalSm"
+  tabindex="-1"
+  aria-labelledby="exampleModalSmLabel"
+  aria-modal="true"
+  role="dialog"
+>
+  <div
+    data-te-modal-dialog-ref
+    class="relative w-auto pointer-events-none min-[576px]:max-w-[300px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+    >
+      <div
+        class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalSmLabel">
+          Small modal
+        </h5>
+        <button
+          type="button"
+          class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+          data-te-modal-dismiss
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
       </div>
+      <div class="relative p-4">...</div>
     </div>
   </div>
+</div>
 
   {{< /twsnippet/demo >}}
 
@@ -755,65 +1151,629 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
       >}}
-      <div class="">
-        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">Extra large modal</button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalLg">Large modal</button>
-        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalSm">Small modal</button>
+      <div>
+        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalXl">Extra large modal</button>
+        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalLg">Large modal</button>
+        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalSm">Small modal</button>
       </div>
 
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
-        <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
-          <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+      <div
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalXl"
+        tabindex="-1"
+        aria-labelledby="exampleModalXlLabel"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div
+          data-te-modal-dialog-ref
+          class="min-[1200px]:max-w-[1140px] min-[992px]:max-w-[800px] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+          >
+            <div
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
               <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalXlLabel">
                 Extra large modal
               </h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="modal-body relative p-4">
-              ...
-            </div>
+            <div class="relative p-4">...</div>
           </div>
         </div>
       </div>
 
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalLg" tabindex="-1" aria-labelledby="exampleModalLgLabel" aria-modal="true" role="dialog">
-        <div class="modal-dialog modal-lg relative w-auto pointer-events-none">
-          <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+      <div
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalLg"
+        tabindex="-1"
+        aria-labelledby="exampleModalLgLabel"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div
+          data-te-modal-dialog-ref
+          class="min-[992px]:max-w-[800px] relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+          >
+            <div
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
               <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLgLabel">
                 Large modal
               </h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="modal-body relative p-4">
-              ...
-            </div>
+            <div class="relative p-4">...</div>
           </div>
         </div>
       </div>
 
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalSm" tabindex="-1" aria-labelledby="exampleModalSmLabel" aria-modal="true" role="dialog">
-        <div class="modal-dialog modal-sm relative w-auto pointer-events-none">
-          <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+      <div
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalSm"
+        tabindex="-1"
+        aria-labelledby="exampleModalSmLabel"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div
+          data-te-modal-dialog-ref
+          class="relative w-auto pointer-events-none min-[576px]:max-w-[300px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+          >
+            <div
+              class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
               <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalSmLabel">
                 Small modal
               </h5>
-              <button type="button"
-                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+                data-te-modal-dismiss
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
             </div>
-            <div class="modal-body relative p-4">
-              ...
-            </div>
+            <div class="relative p-4">...</div>
           </div>
         </div>
       </div>
+
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Sizes -->
+
+<!-- Section: Positions -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="positions">Positions</h2>
+  <!--Description-->
+  <p class="mb-3">Use four different modal positions. These are presets - if you want to, you are able to modify classes on your own to create more custom directions.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example8">}}
+  <div>
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#rightTopModal">Top right</button>
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#leftTopModal">Top left</button>
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#rightBottomModal">Bottom right</button>
+    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#leftBottomModal">Bottom left</button>
+  </div>
+
+  <div
+    data-te-modal-init
+    class="z-[1055] fixed top-0 right-[-25%] hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+    id="rightTopModal"
+    tabindex="-1"
+    aria-labelledby="rightTopModalLabel"
+    aria-hidden="true"
+  >
+    <div
+      data-te-modal-dialog-ref
+      class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-x-[100%] transition-all duration-300 ease-in-out"
+    >
+      <div
+        class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+      >
+        <div
+          class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+        >
+          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+            Modal title
+          </h5>
+          <button
+            type="button"
+            class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+            data-te-modal-dismiss
+            aria-label="Close"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+              <path
+                d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="flex-auto relative p-4" data-te-modal-body-ref>
+          Modal body text goes here.
+        </div>
+        <div
+          class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+        >
+          <button
+            type="button"
+            class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+            data-te-modal-dismiss
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+  data-te-modal-init
+  class="z-[1055] fixed top-0 right-[25%] hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="leftTopModal"
+  tabindex="-1"
+  aria-labelledby="leftTopModalLabel"
+  aria-hidden="true"
+>
+  <div
+    data-te-modal-dialog-ref
+    class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+    >
+      <div
+        class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+          Modal title
+        </h5>
+        <button
+          type="button"
+          class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+          data-te-modal-dismiss
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-auto relative p-4" data-te-modal-body-ref>
+        Modal body text goes here.
+      </div>
+      <div
+        class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+      >
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+          data-te-modal-dismiss
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+data-te-modal-init
+class="z-[1055] fixed top-[65%] right-[-25%] hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+id="rightBottomModal"
+tabindex="-1"
+aria-labelledby="rightBottomModalLabel"
+aria-hidden="true"
+>
+<div
+  data-te-modal-dialog-ref
+  class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-x-[100%] transition-all duration-300 ease-in-out"
+>
+  <div
+    class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+  >
+    <div
+      class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+    >
+      <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+        Modal title
+      </h5>
+      <button
+        type="button"
+        class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+        data-te-modal-dismiss
+        aria-label="Close"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+          <path
+            d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="flex-auto relative p-4" data-te-modal-body-ref>
+      Modal body text goes here.
+    </div>
+    <div
+      class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+    >
+      <button
+        type="button"
+        class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+        data-te-modal-dismiss
+      >
+        Close
+      </button>
+      <button
+        type="button"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+      >
+        Save changes
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+<div
+data-te-modal-init
+class="z-[1055] fixed top-[65%] right-[25%] hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+id="leftBottomModal"
+tabindex="-1"
+aria-labelledby="leftBottomModalLabel"
+aria-hidden="true"
+>
+<div
+  data-te-modal-dialog-ref
+  class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
+>
+  <div
+    class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+  >
+    <div
+      class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+    >
+      <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+        Modal title
+      </h5>
+      <button
+        type="button"
+        class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+        data-te-modal-dismiss
+        aria-label="Close"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+          <path
+            d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="flex-auto relative p-4" data-te-modal-body-ref>
+      Modal body text goes here.
+    </div>
+    <div
+      class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+    >
+      <button
+        type="button"
+        class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+        data-te-modal-dismiss
+      >
+        Close
+      </button>
+      <button
+        type="button"
+        class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+      >
+        Save changes
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example8">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="">
+        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalXl">Extra large modal</button>
+        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalLg">Large modal</button>
+        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="modal" data-te-target="#exampleModalSm">Small modal</button>
+      </div>
+
+      <div
+      data-te-modal-init
+      class="z-[1055] fixed top-0 right-[-25%] hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+      id="rightTopModal"
+      tabindex="-1"
+      aria-labelledby="rightTopModalLabel"
+      aria-hidden="true"
+    >
+      <div
+        data-te-modal-dialog-ref
+        class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-x-[100%] transition-all duration-300 ease-in-out"
+      >
+        <div
+          class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+        >
+          <div
+            class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+          >
+            <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+              Modal title
+            </h5>
+            <button
+              type="button"
+              class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+              data-te-modal-dismiss
+              aria-label="Close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+                <path
+                  d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="flex-auto relative p-4" data-te-modal-body-ref>
+            Modal body text goes here.
+          </div>
+          <div
+            class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+          >
+            <button
+              type="button"
+              class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+              data-te-modal-dismiss
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+            >
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div
+    data-te-modal-init
+    class="z-[1055] fixed top-0 right-[25%] hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+    id="leftTopModal"
+    tabindex="-1"
+    aria-labelledby="leftTopModalLabel"
+    aria-hidden="true"
+  >
+    <div
+      data-te-modal-dialog-ref
+      class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
+    >
+      <div
+        class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+      >
+        <div
+          class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+        >
+          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+            Modal title
+          </h5>
+          <button
+            type="button"
+            class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+            data-te-modal-dismiss
+            aria-label="Close"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+              <path
+                d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="flex-auto relative p-4" data-te-modal-body-ref>
+          Modal body text goes here.
+        </div>
+        <div
+          class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+        >
+          <button
+            type="button"
+            class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+            data-te-modal-dismiss
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div
+  data-te-modal-init
+  class="z-[1055] fixed top-[65%] right-[-25%] hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="rightBottomModal"
+  tabindex="-1"
+  aria-labelledby="rightBottomModalLabel"
+  aria-hidden="true"
+  >
+  <div
+    data-te-modal-dialog-ref
+    class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-x-[100%] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+    >
+      <div
+        class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+          Modal title
+        </h5>
+        <button
+          type="button"
+          class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+          data-te-modal-dismiss
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-auto relative p-4" data-te-modal-body-ref>
+        Modal body text goes here.
+      </div>
+      <div
+        class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+      >
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+          data-te-modal-dismiss
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+  <div
+  data-te-modal-init
+  class="z-[1055] fixed top-[65%] right-[25%] hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="leftBottomModal"
+  tabindex="-1"
+  aria-labelledby="leftBottomModalLabel"
+  aria-hidden="true"
+  >
+  <div
+    data-te-modal-dialog-ref
+    class="relative w-auto pointer-events-none min-[576px]:max-w-[500px] min-[576px]:my-7 min-[576px]:mx-auto opacity-0 translate-x-[-100%] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)]"
+    >
+      <div
+        class="flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">
+          Modal title
+        </h5>
+        <button
+          type="button"
+          class="box-content w-4 h-4 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline p-2 -my-2 -mr-2 ml-auto"
+          data-te-modal-dismiss
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000">
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-auto relative p-4" data-te-modal-body-ref>
+        Modal body text goes here.
+      </div>
+      <div
+        class="flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+      >
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+          data-te-modal-dismiss
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
 
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
@@ -833,37 +1793,102 @@ menu:
   <!-- Button trigger modal -->
   <button type="button"
     class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-    data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
+    data-te-toggle="modal" data-te-target="#exampleModalFullscreen">
     Launch demo modal full screen
   </button>
-
-  <!-- Modal -->
-  <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-    id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen relative w-auto pointer-events-none">
       <div
-        class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalFullscreen"
+        tabindex="-1"
+        aria-labelledby="exampleModalFullscreenLabel"
+        aria-hidden="true"
+      >
         <div
-          class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-          <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalFullscreenLabel">
-            Modal title
-          </h5>
-          <button type="button"
-            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-            data-bs-dismiss="modal" aria-label="Close"></button>
+          data-te-modal-dialog-ref
+          class="min-[0px]:h-full min-[0px]:max-w-none min-[0px]:m-0 relative w-auto pointer-events-none opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
+          <div
+            class="min-[0px]:h-full min-[0px]:border-0 min-[0px]:rounded-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+          >
+            <div
+              class="min-[0px]:rounded-none flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5
+                class="text-xl font-medium leading-normal text-gray-800"
+                id="exampleModalFullscreenLabel"
+              >
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                data-te-modal-dismiss
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="min-[0px]:overflow-y-auto relative p-4">...</div>
+            <div
+              class="min-[0px]:rounded-none flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="modal-body relative p-4">...</div>
-        <div
-          class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-          <button type="button"
-            class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-bs-dismiss="modal">
-            Close
-          </button>
-        </div>
+      </div>
+  <!-- Modal -->
+  <div
+  data-te-modal-init
+  class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+  id="exampleModalFullscreen"
+  tabindex="-1"
+  aria-labelledby="exampleModalFullscreenLabel"
+  aria-hidden="true"
+>
+  <div
+    data-te-modal-dialog-ref
+    class="min-[0px]:h-full min-[0px]:max-w-none min-[0px]:m-0 relative w-auto pointer-events-none opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+  >
+    <div
+      class="min-[0px]:h-full min-[0px]:border-0 min-[0px]:rounded-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+    >
+      <div
+        class="min-[0px]:rounded-none flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+      >
+        <h5
+          class="text-xl font-medium leading-normal text-gray-800"
+          id="exampleModalFullscreenLabel"
+        >
+          Modal title
+        </h5>
+        <button
+          type="button"
+          class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+          data-te-modal-dismiss
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="min-[0px]:overflow-y-auto relative p-4">...</div>
+      <div
+        class="min-[0px]:rounded-none flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+      >
+        <button
+          type="button"
+          class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+          data-te-modal-dismiss
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
+</div>
 
   {{< /twsnippet/demo >}}
 
@@ -874,31 +1899,51 @@ menu:
       <!-- Button trigger modal -->
       <button type="button"
         class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-        data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
+        data-te-toggle="modal" data-te-target="#exampleModalFullscreen">
         Launch demo modal full screen
       </button>
 
       <!-- Modal -->
-      <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-        id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen relative w-auto pointer-events-none">
+      <div
+        data-te-modal-init
+        class="z-[1055] fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+        id="exampleModalFullscreen"
+        tabindex="-1"
+        aria-labelledby="exampleModalFullscreenLabel"
+        aria-hidden="true"
+      >
+        <div
+          data-te-modal-dialog-ref
+          class="min-[0px]:h-full min-[0px]:max-w-none min-[0px]:m-0 relative w-auto pointer-events-none opacity-0 translate-y-[-50px] transition-all duration-300 ease-in-out"
+        >
           <div
-            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+            class="min-[0px]:h-full min-[0px]:border-0 min-[0px]:rounded-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+          >
             <div
-              class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-              <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalFullscreenLabel">
+              class="min-[0px]:rounded-none flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+            >
+              <h5
+                class="text-xl font-medium leading-normal text-gray-800"
+                id="exampleModalFullscreenLabel"
+              >
                 Modal title
               </h5>
-              <button type="button"
+              <button
+                type="button"
                 class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                data-bs-dismiss="modal" aria-label="Close"></button>
+                data-te-modal-dismiss
+                aria-label="Close"
+              ></button>
             </div>
-            <div class="modal-body relative p-4">...</div>
+            <div class="min-[0px]:overflow-y-auto relative p-4">...</div>
             <div
-              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-              <button type="button"
-                class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                data-bs-dismiss="modal">
+              class="min-[0px]:rounded-none flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
+            >
+              <button
+                type="button"
+                class="px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                data-te-modal-dismiss
+              >
                 Close
               </button>
             </div>
@@ -951,4 +1996,3 @@ menu:
   </section>
 
 <p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/components/modal/">Bootstrap Modal</a> from MDBootstrap.</p>
-
