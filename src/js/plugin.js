@@ -14,13 +14,6 @@ module.exports = plugin(
           mono: ['ui-monospace', 'monospace'],
         },
         keyframes: {
-          PlaceholderWave: {
-            '100%': { maskPosition: '-200% 0%' },
-          },
-          SpinnerGrow: {
-            '0%': { transform: 'scale(0)' },
-            '50%': { opacity: '1', transform: 'none' },
-          },
           'fade-in': {
             '0%': { opacity: 0 },
             '100%': { opacity: 1 },
@@ -242,6 +235,18 @@ module.exports = plugin(
             '100%': {
               transform: 'scale3d(1, 1, 1)',
             },
+          },
+          'spinner-grow': {
+            '0%': {
+              transform: 'scale(0)',
+            },
+            '50%': {
+              transform: 'none',
+              opacity: '1',
+            },
+          },
+          'placeholder-wave': {
+            '100%': { maskPosition: '-200% 0%' },
           },
         },
       },
