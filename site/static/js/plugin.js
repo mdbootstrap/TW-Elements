@@ -236,16 +236,17 @@ module.exports = plugin(
               transform: 'scale3d(1, 1, 1)',
             },
           },
-          pulse: {
+          'spinner-grow': {
             '0%': {
-              transform: 'scale3d(1, 1, 1)',
+              transform: 'scale(0)',
             },
             '50%': {
-              transform: 'scale3d(1.05, 1.05, 1.05)',
+              transform: 'none',
+              opacity: '1',
             },
-            '100%': {
-              transform: 'scale3d(1, 1, 1)',
-            },
+          },
+          'placeholder-wave': {
+            '100%': { maskPosition: '-200% 0%' },
           },
         },
       },
