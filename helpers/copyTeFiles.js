@@ -15,13 +15,6 @@ try {
 }
 
 try {
-  fs.copySync('dist/bs-styles.js', 'site/static/js/bs-styles.js');
-  console.log('Successfully copied bs-styles.js');
-} catch (err) {
-  console.log('Failed to copy bs-styles.js');
-}
-
-try {
   fs.copySync('dist/plugin.js', 'site/static/js/plugin.js');
   console.log('Successfully copied plugin.js');
 } catch (err) {
