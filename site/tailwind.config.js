@@ -1,7 +1,35 @@
 module.exports = {
   content: ['./layouts/**/*.html', './content/**/*.html', './static/**/*.js'],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        fadeIn: 'fade-in 1s ease-in-out',
+        fadeInDown: 'fade-in-down 1s ease-in-out',
+        fadeInLeft: 'fade-in-left 1s ease-in-out',
+        fadeInRight: 'fade-in-right 1s ease-in-out',
+        fadeInUp: 'fade-in-up 1s ease-in-out',
+        fadeOut: 'fade-out 1s ease-in-out',
+        fadeOutDown: 'fade-out-down 1s ease-in-out',
+        fadeOutLeft: 'fade-out-left 1s ease-in-out',
+        fadeOutRight: 'fade-out-right 1s ease-in-out',
+        fadeOutUp: 'fade-out-up 1s ease-in-out',
+        slideInDown: 'slide-in-down 1s ease-in-out',
+        slideInLeft: 'slide-in-left 1s ease-in-out',
+        slideInRight: 'slide-in-right 1s ease-in-out',
+        slideInUp: 'slide-in-up 1s ease-in-out',
+        slideOutDown: 'slide-out-down 1s ease-in-out',
+        slideOutLeft: 'slide-out-left 1s ease-in-out',
+        slideOutRight: 'slide-out-right 1s ease-in-out',
+        slideOutUp: 'slide-out-up 1s ease-in-out',
+        slideDown: 'slide-down 1s ease-in-out',
+        slideLeft: 'slide-left 1s ease-in-out',
+        slideRight: 'slide-right 1s ease-in-out',
+        slideUp: 'slide-up 1s ease-in-out',
+        zoomIn: 'zoom-in 1s ease-in-out',
+        zoomOut: 'zoom-out 1s ease-in-out',
+        tada: 'tada 1s ease-in-out',
+      }
+    },
   },
   plugins: [require('tailwind-scrollbar'), require('./static/js/plugin')],
 };
