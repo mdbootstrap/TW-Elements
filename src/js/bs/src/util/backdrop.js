@@ -53,10 +53,10 @@ class Backdrop {
       'fixed',
       'top-0',
       'left-0',
-      'z-[1040]',
-      'bg-[#000]',
-      'w-[100vw]',
-      'h-[100vh]',
+      'z-50',
+      'bg-black',
+      'w-screen',
+      'h-screen',
     ]);
     this._element.setAttribute('data-te-backdrop-show', '');
 
