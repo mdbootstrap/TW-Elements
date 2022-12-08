@@ -245,6 +245,9 @@ module.exports = plugin(
               opacity: '1',
             },
           },
+          'placeholder-wave': {
+            '100%': { maskPosition: '-200% 0%' },
+          },
         },
       },
     },

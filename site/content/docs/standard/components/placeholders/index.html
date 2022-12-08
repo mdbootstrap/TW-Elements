@@ -1,0 +1,350 @@
+---
+title: "Placeholders"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Placeholders component"
+subheading: ""
+seo_title: "Tailwind CSS Placeholder - Free Examples & Tutorial"
+description: "Responsive placeholders built with Tailwind CSS."
+image: "img/components-big.jpg"
+video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
+url: "docs/standard/components/placeholders/"
+menu:
+  components:
+    name: "Placeholders"
+---
+
+<!-- Section: Basic Example -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="basic_example">Basic example</h2>
+  <!--Description-->
+  <p class="mb-3">In the example below, we take a typical card component and recreate it with placeholders applied to create a "loading card". Size and proportions are the same between the two.</p>
+
+  {{< twsnippet/demo id="example1">}}
+  <div class="flex space-x-2 justify-between flex-wrap">
+    <div class="rounded-lg shadow-lg bg-white dark:bg-zinc-700 max-w-xs">
+      <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="rounded-t-lg" alt="...">
+      <div class="p-6">
+        <h5 class="text-gray-900 dark:text-white text-xl font-medium mb-2">Card title</h5>
+        <p class="text-gray-700 dark:text-white text-base mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Go somewhere</a>
+      </div>
+    </div>
+    <div class="rounded-lg shadow-lg bg-white dark:bg-zinc-700 max-w-xs" aria-hidden="true">
+      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" class="rounded-t-lg" alt="...">
+      <div class="p-6">
+        <h5 class="text-gray-900 dark:text-white text-xl font-medium mb-2 animate-pulse">
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-6/12"></span>
+        </h5>
+        <p class="text-gray-700 dark:text-white text-base mb-4 animate-pulse">
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-7/12"></span>
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-4/12"></span>
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-4/12"></span>
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-6/12"></span>
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-8/12"></span>
+        </p>
+        <a href="#" tabindex="-1" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out inline-block min-h-[1em] align-middle cursor-wait opacity-50 before:inline-block before:content-[''] flex-auto w-6/12"></a>
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div class="flex space-x-2 justify-between flex-wrap">
+        <div class="rounded-lg shadow-lg bg-white dark:bg-zinc-700 max-w-xs">
+          <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="rounded-t-lg" alt="...">
+          <div class="p-6">
+            <h5 class="text-gray-900 dark:text-white text-xl font-medium mb-2">Card title</h5>
+            <p class="text-gray-700 dark:text-white text-base mb-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Go somewhere</a>
+          </div>
+        </div>
+        <div class="rounded-lg shadow-lg bg-white dark:bg-zinc-700 max-w-xs" aria-hidden="true">
+          <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" class="rounded-t-lg" alt="...">
+          <div class="p-6">
+            <h5 class="text-gray-900 dark:text-white text-xl font-medium mb-2 animate-pulse">
+              <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-6/12"></span>
+            </h5>
+            <p class="text-gray-700 dark:text-white text-base mb-4 animate-pulse">
+              <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-7/12"></span>
+              <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-4/12"></span>
+              <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-4/12"></span>
+              <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-6/12"></span>
+              <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-8/12"></span>
+            </p>
+            <a href="#" tabindex="-1" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out inline-block min-h-[1em] align-middle cursor-wait opacity-50 before:inline-block before:content-[''] flex-auto w-6/12"></a>
+          </div>
+        </div>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic Example -->
+
+<!--Section: Sharing request-->
+<section class="pt-7">
+  <div class="bg-blue-100 rounded-lg py-5 px-6 text-base text-blue-700 mb-12" role="alert">
+    <p><strong>Important!</strong> Tailwind Elements is 100% free and relies fully on community support for getting reach & new users. 
+      If you like what we do, consider sharing our work with your community. 
+      <strong>Link this component on your blog</strong> and share Tailwind Elements via social media: 
+    </p>
+    <p class="text-center">
+      <!--Share on DEV-->
+      <a href="https://dev.to/new?prefill=---%0Atitle%3A%20Tailwind%20Elements%20-%20a%20free%20components%20library%20you%20should%20definitely%20check%20out%0Apublished%3A%20true%0Atags%3Atailwindcss%0A---%0A%0ACheck%20out%20[Tailwind Buttons Component!](https://tailwind-elements.com/docs/standard/components/buttons/)" target="_blank"><i class="fab fa-dev fa-2x mr-3"></i></a>
+      <a href="https://twitter.com/intent/tweet?text=Check%20out%20Tailwind%20Buttons%20component%20a%20part%20of%20a%20huge%20library%20of%20components%20for%20Tailwind%20CSS.%20All%20elements%20are%20%F0%9F%94%A5%20free%20for%20commercial%20use,%20and%20they%20don%27t%20require%20any%20kind%20of%20email%20address%20or%20registration%3A%20https%3A//tailwind-elements.com/docs/standard/components/buttons/" target="_blank"><i class="fab fa-twitter fa-2x mr-3"></i></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//tailwind-elements.com/docs/standard/components/buttons/" target="_blank"><i class="fab fa-facebook fa-2x mr-3"></i></a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//tailwind-elements.com/docs/standard/components/buttons/&title=Tailwind%20Elements%20-%20500%2B%20free%20components&summary=Check%20out%20Tailwind%20Elements%20a%20huge%20library%20of%20components%20for%20Tailwind%20CSS.%20All%20elements%20are%20%F0%9F%94%A5%20free%20for%20commercial%20use,%20and%20they%20don't%20require%20any%20kind%20of%20email%20address%20or%20registration.&source=https%3A//tailwind-elements.com/" target="_blank"><i class="fab fa-linkedin fa-2x mr-3"></i></a>
+      <a href="https://pinterest.com/pin/create/button/?url=https%3A//tailwind-elements.com/docs/standard/components/buttons/&media=https%3A//tailwind-elements.com/img/components-big.jpg&description=Check%20out%20Tailwind%20Buttons%20component%20a%20part%20of%20a%20huge%20library%20of%20components%20for%20Tailwind%20CSS.%20All%20elements%20are%20%F0%9F%94%A5%20free%20for%20commercial%20use,%20and%20they%20don't%20require%20any%20kind%20of%20email%20address%20or%20registration." target="_blank"><i class="fab fa-pinterest fa-2x mr-3"></i></a>
+
+    </p>
+  </div>
+</section>
+<!--Section: Sharing request-->
+
+<!-- Section: How it works -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="how_it_works">How it works</h2>
+  <!--Description-->
+  <p class="mb-3"></p>
+
+  {{< twsnippet/demo id="example-ripple">}}
+  <div>
+    <p aria-hidden="true" class="text-gray-700 dark:text-white text-base mb-4">
+      <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-6/12"></span>
+    </p>
+    <a href="#" tabindex="-1" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out inline-block min-h-[1em] align-middle cursor-wait opacity-50 before:inline-block before:content-[''] flex-auto w-4/12" aria-hidden="true"></a>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example-ripple">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div>
+        <p aria-hidden="true" class="text-gray-700 dark:text-white text-base mb-4">
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-6/12"></span>
+        </p>
+        <a href="#" tabindex="-1" class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out inline-block min-h-[1em] align-middle cursor-wait opacity-50 before:inline-block before:content-[''] flex-auto w-4/12" aria-hidden="true"></a>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: How it works -->
+
+<!-- Section: Width -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="width">Width</h2>
+  <!--Description-->
+  <p class="mb-3">
+    You can change the <code>width</code> through grid column classes, width utilities, or
+    inline styles.
+  </p>
+  
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+    <div>
+      <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 text-gray-700 dark:text-white text-base flex-auto w-6/12"></span>
+      <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 text-gray-700 dark:text-white text-base w-9/12"></span>
+      <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 text-gray-700 dark:text-white text-base" style="width: 25%;"></span>
+    </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 text-gray-700 dark:text-white text-base flex-auto w-6/12"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 text-gray-700 dark:text-white text-base w-9/12"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 text-gray-700 dark:text-white text-base" style="width: 25%;"></span>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Width -->
+
+<!-- Section: Colors -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="colors">Colors</h2>
+  <!--Description-->
+  <p class="mb-3">
+    By default, the <code>placeholder</code> uses <code>currentColor</code>. This can be
+    overridden with a custom color or utility class.
+  </p>
+
+  {{< twsnippet/demo id="example3">}}
+  <div>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-blue-600"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-purple-600"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-green-500"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-red-600"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-yellow-500"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-blue-400"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-gray-200"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-gray-800"></span>
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-blue-600"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-purple-600"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-green-500"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-red-600"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-yellow-500"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-blue-400"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-gray-200"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait opacity-50 flex-auto w-full bg-gray-800"></span>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Colors -->
+
+<!-- Section: Sizing -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="sizing">Sizing</h2>
+  <!--Description-->
+  <p class="mb-3"></p>
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div>
+    <span class="inline-block min-h-[1.2em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+    <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+    <span class="inline-block min-h-[0.8em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+    <span class="inline-block min-h-[0.6em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div>
+        <span class="inline-block min-h-[1.2em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+        <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+        <span class="inline-block min-h-[0.8em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+        <span class="inline-block min-h-[0.6em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Sizing -->
+
+<!-- Section: Animation -->
+<section>
+  <!--Title-->
+  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="animation">Animation</h2>
+  <!--Description-->
+  <p class="mb-3"></p>
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div>
+    <p class="animate-pulse mb-4">
+      <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+    </p>
+
+    <p class="animate-[placeholder-wave_2s_linear_infinite] [mask-size:200%_100%] mb-4"
+      style="-webkit-mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%); mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);">
+      <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+    </p>  
+  </div>
+  {{< /twsnippet/demo >}}
+
+  <section class="collapse" id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
+      >}}
+      <div>
+        <p class="animate-pulse mb-4">
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+        </p>
+    
+        <p class="animate-[placeholder-wave_2s_linear_infinite] [mask-size:200%_100%] mb-4"
+          style="-webkit-mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%); mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);">
+          <span class="inline-block min-h-[1em] align-middle cursor-wait bg-current opacity-50 flex-auto w-full text-gray-700 dark:text-white text-base"></span>
+        </p>  
+      </div>
+      {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
+    </div>
+  </section>
+</section>
+<!-- Section: Animation -->
+
+<hr class="my-12">
+
+  <section id="section-related-resources">
+
+    <h2>Related resources</h2>
+
+    <div class="my-5 justify-content-start text-start w-100">
+      <!--Extended docs-->
+      <a href="https://mdbootstrap.com/how-to/bootstrap/padding-add/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">
+                                  How to add padding in Bootstrap?</a>
+      <a href="https://mdbootstrap.com/docs/standard/layout/flexbox/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">
+                                  How to use flexbox in Bootstrap?</a>
+      <a href="https://mdbootstrap.com/docs/standard/components/cards/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Cards</a>
+      <a href="https://mdbootstrap.com/docs/standard/content-styles/colors/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Colors</a>
+      <a href="https://mdbootstrap.com/docs/standard/content-styles/animations/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">animations</a>
+
+      <a href="https://mdbootstrap.com/docs/standard/layout/gutters/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Gutters</a>
+
+      <a href="https://mdbootstrap.com/docs/standard/components/spinners/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Spinners</a>
+      <a href="https://mdbootstrap.com/docs/standard/methods/loading-management/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Loading Management</a>
+      <a href="https://mdbootstrap.com/docs/standard/methods/lazy-loading/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Lazy Loading</a>
+      <a href="https://mdbootstrap.com/docs/standard/components/progress/" type="button" class="inline-block my-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs 
+                                  leading-tight uppercase rounded-full shadow-md hover:bg-gray-300 hover:shadow-lg 
+                                  focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 
+                                  active:shadow-lg transition duration-150 ease-in-out">Progress</a>
+
+    </div>
+  </section>
+
+<p>If you are looking for more advanced options, try <a class="text-blue-500" href="https://mdbootstrap.com/docs/standard/components/placeholders/">Bootstrap Placeholders</a> from MDBootstrap.</p>
+
