@@ -27,33 +27,87 @@ menu:
   {{< twsnippet/demo id="example1">}}
   <div class="flex space-x-2">
     <div>
-      <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+      <a class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" 
+      data-te-offcanvas-toggle 
+      href="#offcanvasExample" 
+      role="button" 
+      aria-controls="offcanvasExample">
         Link with href
       </a>
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-        Button with data-bs-target
+      <button class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
+      type="button" 
+      data-te-offcanvas-toggle 
+      data-te-target="#offcanvasExample"
+      aria-controls="offcanvasExample">
+        Button with data-te-target
       </button>
       
-      <div class="offcanvas offcanvas-start fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-96" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header flex items-center justify-between p-4">
-          <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasExampleLabel">Offcanvas</h5>
-          <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <div class="fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-96 z-[1045] [&[data-te-offcanvas-show]]:transform-none -translate-x-full" 
+      tabindex="-1" 
+      id="offcanvasExample" 
+      aria-labelledby="offcanvasExampleLabel"
+      data-te-offcanvas-init
+      >
+        <div class="flex items-center justify-between p-4">
+          <h5 class="mb-0 leading-normal font-semibold" id="offcanvasExampleLabel">Offcanvas</h5>
+          <button type="button" class="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"  
+          data-te-offcanvas-dismiss
+          >
+            <svg
+            class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="#000"
+          >
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
         </div>
-        <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
+        <div class="flex-grow p-4 overflow-y-auto">
           <div>
             Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
           </div>
-          <div class="dropdown relative mt-4">
-            <button class="dropdown-toggle inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+          <div class="relative mt-4">
+            <button class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap" 
+            type="button" 
+            id="dropdownMenuButton" 
+            data-te-dropdown-toggle-ref
+            >
               Dropdown button
               <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" class="w-2 ml-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                 <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path>
               </svg>
             </button>
-            <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100" href="#">Action</a></li>
-              <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100" href="#">Another action</a></li>
-              <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100" href="#">Something else here</a></li>
+            <ul class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block" 
+            aria-labelledby="dropdownMenuButton"
+            data-te-dropdown-menu-ref
+            >
+              <li>
+                <a 
+                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
+                href="#"
+                data-te-dropdown-item-ref
+                >Action
+                </a>
+              </li>
+              <li>
+                <a 
+                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
+                href="#"
+                data-te-dropdown-item-ref
+                >Another action
+                </a>
+              </li>
+              <li>
+                <a 
+                class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
+                href="#"
+                data-te-dropdown-item-ref
+                >Something else here
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -69,33 +123,87 @@ menu:
       >}}
       <div class="flex space-x-2">
         <div>
-          <a class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          <a class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" 
+          data-te-offcanvas-toggle 
+          href="#offcanvasExample" 
+          role="button" 
+          aria-controls="offcanvasExample">
             Link with href
           </a>
-          <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-            Button with data-bs-target
+          <button class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" 
+          type="button" 
+          data-te-offcanvas-toggle 
+          data-te-target="#offcanvasExample"
+          aria-controls="offcanvasExample">
+            Button with data-te-target
           </button>
           
-          <div class="offcanvas offcanvas-start fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-96" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header flex items-center justify-between p-4">
-              <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasExampleLabel">Offcanvas</h5>
-              <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <div class="fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 border-none w-96 z-[1045] [&[data-te-offcanvas-show]]:transform-none -translate-x-full" 
+          tabindex="-1" 
+          id="offcanvasExample" 
+          aria-labelledby="offcanvasExampleLabel"
+          data-te-offcanvas-init
+          >
+            <div class="flex items-center justify-between p-4">
+              <h5 class="mb-0 leading-normal font-semibold" id="offcanvasExampleLabel">Offcanvas</h5>
+              <button type="button" class="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"  
+              data-te-offcanvas-dismiss
+              >
+                <svg
+                class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="#000"
+              >
+                <path
+                  d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                />
+              </svg>
+            </button>
             </div>
-            <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
+            <div class="flex-grow p-4 overflow-y-auto">
               <div>
                 Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
               </div>
-              <div class="dropdown relative mt-4">
-                <button class="dropdown-toggle inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+              <div class="relative mt-4">
+                <button class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap" 
+                type="button" 
+                id="dropdownMenuButton" 
+                data-te-dropdown-toggle-ref
+                >
                   Dropdown button
                   <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down" class="w-2 ml-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path>
                   </svg>
                 </button>
-                <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none" aria-labelledby="dropdownMenuButton">
-                  <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100" href="#">Action</a></li>
-                  <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100" href="#">Another action</a></li>
-                  <li><a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100" href="#">Something else here</a></li>
+                <ul class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block" 
+                aria-labelledby="dropdownMenuButton"
+                data-te-dropdown-menu-ref
+                >
+                  <li>
+                    <a 
+                    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
+                    href="#"
+                    data-te-dropdown-item-ref
+                    >Action
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
+                    href="#"
+                    data-te-dropdown-item-ref
+                    >Another action
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                    class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
+                    href="#"
+                    data-te-dropdown-item-ref
+                    >Something else here
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -110,8 +218,8 @@ menu:
 <!-- Section: Basic example -->
 
 <!--Section: Sharing request-->
-<section>
-  <div class="bg-blue-100 rounded-lg py-5 px-6 text-base text-blue-700 mb-12 mt-12" role="alert">
+<section class="pt-7">
+  <div class="bg-blue-100 rounded-lg py-5 px-6 text-base text-blue-700 mb-12" role="alert">
     <p><strong>Important!</strong> Tailwind Elements is 100% free and relies fully on community support for getting reach & new users. 
       If you like what we do, consider sharing our work with your community. 
       <strong>Link this component on your blog</strong> and share Tailwind Elements via social media: 
@@ -133,18 +241,47 @@ menu:
   <!--Title-->
   <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="top">Placement - top</h2>
   <!--Description-->
-  <p class="mb-3">Use <code>.offcanvas-top</code> to place offcanvas on the top of the viewport.</p>
+  <p class="mb-3">Use <code>top-0</code>, <code>left-0</code> and <code>right-0</code> classes to place offcanvas on the top of the viewport.</p>
 
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example2">}}
-  <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
+  <button 
+    class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" 
+    type="button" 
+    data-te-offcanvas-toggle 
+    data-te-target="#offcanvasTop" 
+    aria-controls="offcanvasTop"
+    >
+    Toggle top offcanvas
+  </button>
 
-  <div class="offcanvas offcanvas-top fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 right-0 border-none h-1/3 max-h-full" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-    <div class="offcanvas-header flex items-center justify-between p-4">
-      <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasTopLabel">Offcanvas top</h5>
-      <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
+  <div 
+    class="fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 right-0 border-none h-1/3 max-h-full z-[1045] [&[data-te-offcanvas-show]]:transform-none -translate-y-full" 
+    tabindex="-1" 
+    id="offcanvasTop" 
+    aria-labelledby="offcanvasTopLabel"
+    data-te-offcanvas-init
+    >
+      <div class="flex items-center justify-between p-4">
+        <h5 class="mb-0 leading-normal font-semibold" id="offcanvasTopLabel">Offcanvas top</h5>
+        <button 
+          type="button" 
+          class="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" 
+          data-te-offcanvas-dismiss 
+          aria-label="Close">
+            <svg
+              class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="#000"
+            >
+              <path
+                d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+              />
+          </svg>
+        </button>
+      </div>
+    <div class="flex-grow p-4 overflow-y-auto">
       ...
     </div>
   </div>
@@ -155,17 +292,46 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
       >}}
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
-
-      <div class="offcanvas offcanvas-top fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 right-0 border-none h-1/3 max-h-full" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-        <div class="offcanvas-header flex items-center justify-between p-4">
-          <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasTopLabel">Offcanvas top</h5>
-          <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button 
+      class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" 
+      type="button" 
+      data-te-offcanvas-toggle 
+      data-te-target="#offcanvasTop" 
+      aria-controls="offcanvasTop"
+      >
+      Toggle top offcanvas
+    </button>
+  
+    <div 
+      class="fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 left-0 right-0 border-none h-1/3 max-h-full z-[1045] [&[data-te-offcanvas-show]]:transform-none -translate-y-full" 
+      tabindex="-1" 
+      id="offcanvasTop" 
+      aria-labelledby="offcanvasTopLabel"
+      data-te-offcanvas-init
+      >
+        <div class="flex items-center justify-between p-4">
+          <h5 class="mb-0 leading-normal font-semibold" id="offcanvasTopLabel">Offcanvas top</h5>
+          <button 
+            type="button" 
+            class="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" 
+            data-te-offcanvas-dismiss 
+            aria-label="Close">
+              <svg
+                class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="#000"
+              >
+                <path
+                  d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                />
+            </svg>
+          </button>
         </div>
-        <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
-          ...
-        </div>
+      <div class="flex-grow p-4 overflow-y-auto">
+        ...
       </div>
+    </div>
 
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
@@ -178,17 +344,45 @@ menu:
   <!--Title-->
   <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="right">Placement - right</h2>
   <!--Description-->
-  <p class="mb-3">Use <code>.offcanvas-end</code> to place offcanvas on the right of the viewport.</p>
+  <p class="mb-3">Use <code>top-0</code>, <code>right-0</code>, <code>w-96</code> classes to place offcanvas on the right of the viewport.</p>
 
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example3">}}
-  <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
+  <button 
+    class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" 
+    type="button" 
+    data-te-offcanvas-toggle 
+    data-te-target="#offcanvasRight" 
+    aria-controls="offcanvasRight">
+      Toggle right offcanvas
+  </button>
 
-  <div class="offcanvas offcanvas-end fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 right-0 border-none w-96" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header flex items-center justify-between p-4">
-      <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasRightLabel">Offcanvas right</h5>
-      <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
+  <div 
+    class="fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 right-0 border-none w-96 z-[1045] [&[data-te-offcanvas-show]]:transform-none translate-x-full" 
+    tabindex="-1" 
+    id="offcanvasRight" 
+    aria-labelledby="offcanvasRightLabel"
+    data-te-offcanvas-init
+    >
+      <div class="flex items-center justify-between p-4">
+        <h5 class="mb-0 leading-normal font-semibold" id="offcanvasRightLabel">Offcanvas right</h5>
+        <button 
+          type="button" 
+          class="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" 
+          data-te-offcanvas-dismiss 
+          aria-label="Close">
+            <svg
+            class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="#000"
+          >
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
+      </div>
     <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
       ...
     </div>
@@ -200,17 +394,45 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
       >}}
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
-
-      <div class="offcanvas offcanvas-end fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 right-0 border-none w-96" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header flex items-center justify-between p-4">
-          <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasRightLabel">Offcanvas right</h5>
-          <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button 
+          class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" 
+          type="button" 
+          data-te-offcanvas-toggle 
+          data-te-target="#offcanvasRight" 
+          aria-controls="offcanvasRight">
+          Toggle right offcanvas
+        </button>
+    
+        <div 
+          class="fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 top-0 right-0 border-none w-96 z-[1045] [&[data-te-offcanvas-show]]:transform-none translate-x-full" 
+          tabindex="-1" 
+          id="offcanvasRight" 
+          aria-labelledby="offcanvasRightLabel"
+          data-te-offcanvas-init
+          >
+            <div class="flex items-center justify-between p-4">
+              <h5 class="mb-0 leading-normal font-semibold" id="offcanvasRightLabel">Offcanvas right</h5>
+              <button 
+                type="button" 
+                class="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" 
+                data-te-offcanvas-dismiss 
+                aria-label="Close">
+                  <svg
+                  class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="#000"
+                >
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </button>
+            </div>
+          <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
+            ...
+          </div>
         </div>
-        <div class="offcanvas-body flex-grow p-4 overflow-y-auto">
-          ...
-        </div>
-      </div>
 
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
@@ -223,19 +445,47 @@ menu:
   <!--Title-->
   <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="bottom">Placement - bottom</h2>
   <!--Description-->
-  <p class="mb-3">Use <code>.offcanvas-bottom</code> to place offcanvas on the bottom of the viewport.</p>
+  <p class="mb-3">Use <code>bottom-0</code>, <code>left-0</code>, <code>right-0</code> classes to place offcanvas on the bottom of the viewport.</p>
 
 
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example4">}}
-  <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+  <button 
+    class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" 
+    type="button" 
+    data-te-offcanvas-toggle 
+    data-te-target="#offcanvasBottom" 
+    aria-controls="offcanvasBottom">
+      Toggle bottom offcanvas
+  </button>
 
-  <div class="offcanvas offcanvas-bottom fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 left-0 right-0 border-none h-1/3 max-h-full" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-    <div class="offcanvas-header flex items-center justify-between p-4">
-      <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-      <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body flex-grow p-4 overflow-y-auto small">
+  <div 
+    class="fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 left-0 right-0 border-none h-1/3 max-h-full z-[1045] [&[data-te-offcanvas-show]]:transform-none translate-y-full" 
+    tabindex="-1" 
+    id="offcanvasBottom" 
+    aria-labelledby="offcanvasBottomLabel"
+    data-te-offcanvas-init
+    >
+      <div class="flex items-center justify-between p-4">
+        <h5 class="mb-0 leading-normal font-semibold" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+        <button 
+          type="button" 
+          class="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" 
+          data-te-offcanvas-dismiss 
+          aria-label="Close">
+            <svg
+            class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="#000"
+          >
+            <path
+              d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+            />
+          </svg>
+        </button>
+      </div>
+    <div class="flex-grow p-4 overflow-y-auto small">
       ...
     </div>
   </div>
@@ -246,17 +496,45 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
       >}}
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg  focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
-
-      <div class="offcanvas offcanvas-bottom fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 left-0 right-0 border-none h-1/3 max-h-full" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-        <div class="offcanvas-header flex items-center justify-between p-4">
-          <h5 class="offcanvas-title mb-0 leading-normal font-semibold" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-          <button type="button" class="btn-close box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button 
+      class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-1.5" 
+      type="button" 
+      data-te-offcanvas-toggle
+      data-te-target="#offcanvasBottom" 
+      aria-controls="offcanvasBottom">
+        Toggle bottom offcanvas
+    </button>
+  
+    <div 
+      class="fixed bottom-0 flex flex-col max-w-full bg-white invisible bg-clip-padding shadow-sm outline-none transition duration-300 ease-in-out text-gray-700 left-0 right-0 border-none h-1/3 max-h-full z-[1045] [&[data-te-offcanvas-show]]:transform-none translate-y-full" 
+      tabindex="-1" 
+      id="offcanvasBottom" 
+      aria-labelledby="offcanvasBottomLabel"
+      data-te-offcanvas-init
+      >
+        <div class="flex items-center justify-between p-4">
+          <h5 class="mb-0 leading-normal font-semibold" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+          <button 
+            type="button" 
+            class="box-content w-4 h-4 p-2 -my-5 -mr-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" 
+            data-te-offcanvas-dismiss 
+            aria-label="Close">
+              <svg
+              class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="#000"
+            >
+              <path
+                d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+              />
+            </svg>
+          </button>
         </div>
-        <div class="offcanvas-body flex-grow p-4 overflow-y-auto small">
-          ...
-        </div>
+      <div class="flex-grow p-4 overflow-y-auto small">
+        ...
       </div>
+    </div>
 
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>

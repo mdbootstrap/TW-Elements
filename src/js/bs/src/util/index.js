@@ -36,7 +36,7 @@ const getUID = (prefix) => {
 };
 
 const getSelector = (element) => {
-  let selector = element.getAttribute('data-bs-target');
+  let selector = element.getAttribute('data-bs-target') || element.getAttribute('data-te-target');
 
   if (!selector || selector === '#') {
     let hrefAttr = element.getAttribute('href');

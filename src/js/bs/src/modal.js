@@ -29,7 +29,7 @@ import { enableDismissTrigger } from './util/component-functions';
  */
 
 const NAME = 'modal';
-const DATA_KEY = 'bs.modal';
+const DATA_KEY = 'te.modal';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 const ESCAPE_KEY = 'Escape';
@@ -58,15 +58,14 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`;
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
-const CLASS_NAME_OPEN = 'modal-open';
-const CLASS_NAME_FADE = 'fade';
-const CLASS_NAME_SHOW = 'show';
-const CLASS_NAME_STATIC = 'modal-static';
+const OPEN_SELECTOR_BODY = 'data-te-modal-open';
+const CLASS_NAME_SHOW = 'transform-none';
+const CLASS_NAME_STATIC = 'scale-[1.02]';
 
-const OPEN_SELECTOR = '.modal.show';
-const SELECTOR_DIALOG = '.modal-dialog';
-const SELECTOR_MODAL_BODY = '.modal-body';
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]';
+const OPEN_SELECTOR = 'data-te-open';
+const SELECTOR_DIALOG = '[data-te-modal-dialog-ref]';
+const SELECTOR_MODAL_BODY = '[data-te-modal-body-ref]';
+const SELECTOR_DATA_TOGGLE = '[data-te-toggle="modal"]';
 
 /**
  * ------------------------------------------------------------------------
@@ -125,7 +124,7 @@ class Modal extends BaseComponent {
 
     this._scrollBar.hide();
 
-    document.body.classList.add(CLASS_NAME_OPEN);
+    document.body.setAttribute(OPEN_SELECTOR_BODY, 'true');
 
     this._adjustDialog();
 
@@ -147,7 +146,6 @@ class Modal extends BaseComponent {
     if (!this._isShown || this._isTransitioning) {
       return;
     }
-
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE);
 
     if (hideEvent.defaultPrevented) {
@@ -166,12 +164,14 @@ class Modal extends BaseComponent {
 
     this._focustrap.deactivate();
 
-    this._element.classList.remove(CLASS_NAME_SHOW);
+    const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
+    modalDialog.classList.remove(CLASS_NAME_SHOW);
 
     EventHandler.off(this._element, EVENT_CLICK_DISMISS);
     EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS);
 
     this._queueCallback(() => this._hideModal(), this._element, isAnimated);
+    this._element.removeAttribute(OPEN_SELECTOR);
   }
 
   dispose() {
@@ -221,10 +221,17 @@ class Modal extends BaseComponent {
     }
 
     this._element.style.display = 'block';
+    this._element.classList.remove('hidden');
     this._element.removeAttribute('aria-hidden');
     this._element.setAttribute('aria-modal', true);
     this._element.setAttribute('role', 'dialog');
+    this._element.setAttribute(`${OPEN_SELECTOR}`, 'true');
     this._element.scrollTop = 0;
+
+    const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
+    modalDialog.classList.add(CLASS_NAME_SHOW);
+    modalDialog.classList.remove('opacity-0');
+    modalDialog.classList.add('opacity-100');
 
     if (modalBody) {
       modalBody.scrollTop = 0;
@@ -233,8 +240,6 @@ class Modal extends BaseComponent {
     if (isAnimated) {
       reflow(this._element);
     }
-
-    this._element.classList.add(CLASS_NAME_SHOW);
 
     const transitionComplete = () => {
       if (this._config.focus) {
@@ -274,13 +279,21 @@ class Modal extends BaseComponent {
   }
 
   _hideModal() {
-    this._element.style.display = 'none';
+    const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
+    modalDialog.classList.remove(CLASS_NAME_SHOW);
+    modalDialog.classList.remove('opacity-100');
+    modalDialog.classList.add('opacity-0');
+
+    setTimeout(() => {
+      this._element.style.display = 'none';
+    }, '300');
+
     this._element.setAttribute('aria-hidden', true);
     this._element.removeAttribute('aria-modal');
     this._element.removeAttribute('role');
     this._isTransitioning = false;
     this._backdrop.hide(() => {
-      document.body.classList.remove(CLASS_NAME_OPEN);
+      document.body.removeAttribute(OPEN_SELECTOR_BODY);
       this._resetAdjustments();
       this._scrollBar.reset();
       EventHandler.trigger(this._element, EVENT_HIDDEN);
@@ -309,7 +322,8 @@ class Modal extends BaseComponent {
   }
 
   _isAnimated() {
-    return this._element.classList.contains(CLASS_NAME_FADE);
+    const animate = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
+    return !!animate;
   }
 
   _triggerBackdropTransition() {
@@ -334,8 +348,18 @@ class Modal extends BaseComponent {
     }
 
     classList.add(CLASS_NAME_STATIC);
+    classList.add('transition-scale');
+    classList.add('duration-300');
+    classList.add('ease-in-out');
     this._queueCallback(() => {
       classList.remove(CLASS_NAME_STATIC);
+
+      setTimeout(() => {
+        classList.remove('transition-scale');
+        classList.remove('duration-300');
+        classList.remove('ease-in-out');
+      }, '300');
+
       if (!isModalOverflowing) {
         this._queueCallback(() => {
           style.overflowY = '';
@@ -421,7 +445,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   });
 
   // avoid conflict when clicking moddal toggler while another one is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR);
+  const allReadyOpen = SelectorEngine.findOne(`[${OPEN_SELECTOR}="true"]`);
   if (allReadyOpen) {
     Modal.getInstance(allReadyOpen).hide();
   }

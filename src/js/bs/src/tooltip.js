@@ -31,9 +31,9 @@ import BaseComponent from './base-component';
  */
 
 const NAME = 'tooltip';
-const DATA_KEY = 'bs.tooltip';
+const DATA_KEY = 'te.tooltip';
 const EVENT_KEY = `.${DATA_KEY}`;
-const CLASS_PREFIX = 'bs-tooltip';
+const CLASS_PREFIX = 'te-tooltip';
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn']);
 
 const DefaultType = {
@@ -67,9 +67,8 @@ const AttachmentMap = {
 const Default = {
   animation: true,
   template:
-    '<div class="tooltip" role="tooltip">' +
-    '<div class="tooltip-arrow"></div>' +
-    '<div class="tooltip-inner"></div>' +
+    '<div class="opacity-0 transition-opacity duration-300 ease-in-out absolute z-[1080] block m-0 text-sm not-italic font-normal text-left no-underline underline-offset-auto normal-case leading-6 tracking-normal break-normal whitespace-normal" role="tooltip">' +
+    '<div data-et-tooltip-inner-ref class="tooltip-inner max-w-[200px] text-sm py-1.5 px-4 text-white text-center bg-[#6d6d6d] rounded"></div>' +
     '</div>',
   trigger: 'hover focus',
   title: '',
@@ -111,7 +110,7 @@ const HOVER_STATE_OUT = 'out';
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner';
 const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
 
-const EVENT_MODAL_HIDE = 'hide.bs.modal';
+const EVENT_MODAL_HIDE = 'hide.te.modal';
 
 const TRIGGER_HOVER = 'hover';
 const TRIGGER_FOCUS = 'focus';
@@ -240,7 +239,7 @@ class Tooltip extends BaseComponent {
       return;
     }
 
-    // A trick to recreate a tooltip in case a new title is given by using the NOT documented `data-bs-original-title`
+    // A trick to recreate a tooltip in case a new title is given by using the NOT documented `data-te-original-title`
     // This will be removed later in favor of a `setContent` method
     if (
       this.constructor.NAME === 'tooltip' &&
@@ -259,7 +258,10 @@ class Tooltip extends BaseComponent {
     this._element.setAttribute('aria-describedby', tipId);
 
     if (this._config.animation) {
-      tip.classList.add(CLASS_NAME_FADE);
+      setTimeout(() => {
+        this.tip.classList.add('opacity-100');
+        this.tip.classList.remove('opacity-0');
+      }, 100);
     }
 
     const placement =
@@ -284,7 +286,24 @@ class Tooltip extends BaseComponent {
       this._popper = Popper.createPopper(this._element, tip, this._getPopperConfig(attachment));
     }
 
-    tip.classList.add(CLASS_NAME_SHOW);
+    const notPopover = tip.getAttribute('id').includes('tooltip');
+    if (notPopover) {
+      switch (placement) {
+        case 'bottom':
+          tip.classList.add('py-[0.4rem]');
+          break;
+        case 'left':
+          tip.classList.add('px-[0.4rem]');
+          break;
+        case 'right':
+          tip.classList.add('px-[0.4rem]');
+          break;
+
+        default:
+          tip.classList.add('py-[0.4rem]');
+          break;
+      }
+    }
 
     const customClass = this._resolvePossibleFunction(this._config.customClass);
     if (customClass) {
@@ -312,7 +331,7 @@ class Tooltip extends BaseComponent {
       }
     };
 
-    const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE);
+    const isAnimated = this.tip.classList.contains('transition-opacity');
     this._queueCallback(complete, this.tip, isAnimated);
   }
 
@@ -343,7 +362,8 @@ class Tooltip extends BaseComponent {
       return;
     }
 
-    tip.classList.remove(CLASS_NAME_SHOW);
+    tip.classList.add('opacity-0');
+    tip.classList.remove('opacity-100');
 
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
@@ -357,7 +377,7 @@ class Tooltip extends BaseComponent {
     this._activeTrigger[TRIGGER_FOCUS] = false;
     this._activeTrigger[TRIGGER_HOVER] = false;
 
-    const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE);
+    const isAnimated = this.tip.classList.contains('opacity-0');
     this._queueCallback(complete, this.tip, isAnimated);
     this._hoverState = '';
   }
@@ -439,7 +459,7 @@ class Tooltip extends BaseComponent {
   }
 
   getTitle() {
-    const title = this._element.getAttribute('data-bs-original-title') || this._config.title;
+    const title = this._element.getAttribute('data-te-original-title') || this._config.title;
 
     return this._resolvePossibleFunction(title);
   }
@@ -598,10 +618,10 @@ class Tooltip extends BaseComponent {
 
   _fixTitle() {
     const title = this._element.getAttribute('title');
-    const originalTitleType = typeof this._element.getAttribute('data-bs-original-title');
+    const originalTitleType = typeof this._element.getAttribute('data-te-original-title');
 
     if (title || originalTitleType !== 'string') {
-      this._element.setAttribute('data-bs-original-title', title || '');
+      this._element.setAttribute('data-te-original-title', title || '');
       if (title && !this._element.getAttribute('aria-label') && !this._element.textContent) {
         this._element.setAttribute('aria-label', title);
       }
