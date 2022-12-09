@@ -397,8 +397,7 @@ class Datepicker {
     document.body.appendChild(backdrop);
     document.body.appendChild(template);
     const hasVerticalScroll = window.innerWidth > document.documentElement.clientWidth;
-    const scrollHeight = '15px';
-
+    const scrollHeight = `${Math.abs(window.innerWidth - document.documentElement.clientWidth)}px`;
     if (hasVerticalScroll) {
       document.body.style.overflow = 'hidden';
       document.body.style.paddingRight = scrollHeight;

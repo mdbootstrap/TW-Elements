@@ -53,7 +53,7 @@ const DATEPICKER_CELL_CONTENT_CLASSES =
 const DATEPICKER_CELL_CONTENT_SMALL_CLASSES = 'w-9 h-9 leading-9 rounded-[50%] text-[13px]'
 const DATEPICKER_CELL_CONTENT_LARGE_CLASSES = 'w-[72px] h-10 leading-10 py-[1px] px-0.5 rounded-[999px]'
 const DATEPICKER_TABLE_CLASSES = 'mx-auto w-[304px]'
-const DATEPICKER_TOGGLE_BUTTON_CLASSES = 'absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:text-blue-500 focus:text-blue-500'
+const DATEPICKER_TOGGLE_BUTTON_CLASSES = 'w-3.5 h-3.5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:text-blue-500 focus:text-blue-500'
 
 export function getDatepickerTemplate(
   date,
@@ -455,7 +455,7 @@ function getYearsArray(date, yearsInView, yearsInRow) {
 export function getToggleButtonTemplate(id) {
   return `
     <button id="${id}" type="button" class="${DATEPICKER_TOGGLE_BUTTON_CLASSES}" data-te-datepicker-toggle-button-ref data-te-datepicker-toggle-ref>
-      <i class="far fa-calendar"></i>
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z"/></svg>
     </button>
   `;
 }
