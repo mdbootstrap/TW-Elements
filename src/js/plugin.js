@@ -3,6 +3,9 @@ const plugin = require('tailwindcss/plugin');
 module.exports = plugin(() => {}, {
   theme: {
     extend: {
+      screens: {
+        xs: '320px',
+      },
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
         body: ['Roboto', 'sans-serif'],
@@ -246,19 +249,6 @@ module.exports = plugin(() => {}, {
         },
         'placeholder-wave': {
           '100%': { maskPosition: '-200% 0%' },
-        },
-        screens: {
-          xs: '320px',
-        },
-        keyframes: {
-          'fade-in-frame': {
-            '0%': { opacity: 0 },
-            '100%': { opacity: 1 },
-          },
-          'fade-out-frame': {
-            '0%': { opacity: 1 },
-            '100%': { opacity: 0 },
-          },
         },
       },
     },
