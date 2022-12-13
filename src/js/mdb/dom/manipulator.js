@@ -99,6 +99,12 @@ const Manipulator = {
     element.classList.add(className);
   },
 
+  addMultipleClasses(element, arrayClasses) {
+    arrayClasses.forEach((singleClass) => {
+      element.classList.add(singleClass);
+    })
+  },
+
   addStyle(element, style) {
     Object.keys(style).forEach((property) => {
       element.style[property] = style[property];

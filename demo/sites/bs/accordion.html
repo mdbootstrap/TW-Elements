@@ -32,9 +32,9 @@
         <div class="bg-white border border-gray-200 rounded-t-[0.25rem]">
           <h2 class="mb-0" id="headingOne">
             <button
-              class="rounded-t-[15px] relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not(.collapsed)]:text-blue-600 [&:not(.collapsed)]:bg-white [&:not(.collapsed)]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
+              class="rounded-t-[15px] relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not([data-te-collapse-collapsed])]:text-blue-600 [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
               type="button"
-              data-bs-toggle="collapse"
+              data-te-collapse-init
               data-te-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
@@ -54,7 +54,9 @@
           </h2>
           <div
             id="collapseOne"
-            class="collapse !visible show"
+            class="!visible"
+            data-te-collapse-item
+            data-te-collapse-show
             aria-labelledby="headingOne"
             data-te-parent="#accordionExample"
           >
@@ -71,9 +73,10 @@
         <div class="bg-white border border-gray-200 border-t-0">
           <h2 class="mb-0" id="headingTwo">
             <button
-              class="collapsed relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not(.collapsed)]:text-blue-600 [&:not(.collapsed)]:bg-white [&:not(.collapsed)]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
+              class="relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not([data-te-collapse-collapsed])]:text-blue-600 [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
               type="button"
-              data-bs-toggle="collapse"
+              data-te-collapse-init
+              data-te-collapse-collapsed
               data-te-target="#collapseTwo"
               aria-expanded="false"
               aria-controls="collapseTwo"
@@ -93,7 +96,8 @@
           </h2>
           <div
             id="collapseTwo"
-            class="collapse !visible"
+            class="!visible hidden"
+            data-te-collapse-item
             aria-labelledby="headingTwo"
             data-te-parent="#accordionExample"
           >
@@ -110,9 +114,10 @@
         <div class="bg-white border border-gray-200 border-t-0 rounded-b-[0.25rem]">
           <h2 class="mb-0" id="headingThree">
             <button
-              class="collapsed relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not(.collapsed)]:text-blue-600 [&:not(.collapsed)]:bg-white [&:not(.collapsed)]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] [&.collapsed]:rounded-b-[15px] [&.collapsed]:transition-none group"
+              class="relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not([data-te-collapse-collapsed])]:text-blue-600 [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] [&[data-te-collapse-collapsed]]:rounded-b-[15px] [&[data-te-collapse-collapsed]]:transition-none group"
               type="button"
-              data-bs-toggle="collapse"
+              data-te-collapse-init
+              data-te-collapse-collapsed
               data-te-target="#collapseThree"
               aria-expanded="false"
               aria-controls="collapseThree"
@@ -132,7 +137,8 @@
           </h2>
           <div
             id="collapseThree"
-            class="collapse !visible"
+            class="!visible hidden"
+            data-te-collapse-item
             aria-labelledby="headingThree"
             data-te-parent="#accordionExample"
           >
@@ -155,9 +161,9 @@
         <div class="border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
           <h2 class="mb-0" id="flush-headingOne">
             <button
-              class="relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not(.collapsed)]:text-blue-600 [&:not(.collapsed)]:bg-white [&:not(.collapsed)]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
+              class="relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not([data-te-collapse-collapsed])]:text-blue-600 [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
               type="button"
-              data-bs-toggle="collapse"
+              data-te-collapse-init
               data-te-target="#flush-collapseOne"
               aria-expanded="false"
               aria-controls="flush-collapseOne"
@@ -177,7 +183,9 @@
           </h2>
           <div
             id="flush-collapseOne"
-            class="border-0 collapse !visible show"
+            class="border-0 !visible"
+            data-te-collapse-item
+            data-te-collapse-show
             aria-labelledby="flush-headingOne"
             data-te-parent="#accordionFlushExample"
           >
@@ -190,9 +198,10 @@
         <div class="border-l-0 border-r-0 rounded-none bg-white border border-gray-200 border-t-0">
           <h2 class="mb-0" id="flush-headingTwo">
             <button
-              class="collapsed relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not(.collapsed)]:text-blue-600 [&:not(.collapsed)]:bg-white [&:not(.collapsed)]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
+              class="relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not([data-te-collapse-collapsed])]:text-blue-600 [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
               type="button"
-              data-bs-toggle="collapse"
+              data-te-collapse-init
+              data-te-collapse-collapsed
               data-te-target="#flush-collapseTwo"
               aria-expanded="false"
               aria-controls="flush-collapseTwo"
@@ -212,7 +221,8 @@
           </h2>
           <div
             id="flush-collapseTwo"
-            class="border-0 collapse !visible"
+            class="border-0 !visible hidden"
+            data-te-collapse-item
             aria-labelledby="flush-headingTwo"
             data-te-parent="#accordionFlushExample"
           >
@@ -228,9 +238,10 @@
         >
           <h2 class="mb-0" id="flush-headingThree">
             <button
-              class="collapsed relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not(.collapsed)]:text-blue-600 [&:not(.collapsed)]:bg-white [&:not(.collapsed)]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
+              class="relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none [overflow-anchor:none] hover:z-[2] focus:z-[3] [&:not([data-te-collapse-collapsed])]:text-blue-600 [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] group"
               type="button"
-              data-bs-toggle="collapse"
+              data-te-collapse-init
+              data-te-collapse-collapsed
               data-te-target="#flush-collapseThree"
               aria-expanded="false"
               aria-controls="flush-collapseThree"
@@ -250,7 +261,8 @@
           </h2>
           <div
             id="flush-collapseThree"
-            class="collapse !visible"
+            class="!visible hidden"
+            data-te-collapse-item
             aria-labelledby="flush-headingThree"
             data-te-parent="#accordionFlushExample"
           >

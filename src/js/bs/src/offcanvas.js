@@ -47,8 +47,6 @@ const DefaultType = {
 };
 
 const CLASS_NAME_SHOW = 'show';
-const CLASS_NAME_BACKDROP =
-  'fixed top-0 left-0 z-[1040] w-screen h-screen bg-black [&[data-te-backdrop-show]]:opacity-50';
 const OPEN_SELECTOR = '[data-te-offcanvas-init][data-te-offcanvas-show]';
 
 const EVENT_SHOW = `show${EVENT_KEY}`;
@@ -182,7 +180,6 @@ class Offcanvas extends BaseComponent {
 
   _initializeBackDrop() {
     return new Backdrop({
-      className: CLASS_NAME_BACKDROP,
       isVisible: this._config.backdrop,
       isAnimated: true,
       rootElement: this._element.parentNode,

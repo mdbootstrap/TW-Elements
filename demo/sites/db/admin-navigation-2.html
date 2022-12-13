@@ -26,14 +26,14 @@
       <!-- Container for demo purpose -->
       <div class="">
         <nav
-          class="relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-900 text-gray-100 hover:text-gray-300 focus:text-gray-300 shadow-lg md:flex-wrap md:justify-start"
+          class="relative w-full flex flex-nowrap items-center justify-between py-2 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg md:flex-wrap md:justify-start"
           data-te-navbar-ref
         >
           <div class="w-full flex flex-wrap items-center justify-between px-6">
             <button
-              class="text-gray-100 border-0 hover:shadow-none hover:no-underline py-2 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline block md:hidden"
+              class="text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline block md:hidden"
               type="button"
-              data-bs-toggle="collapse"
+              data-te-collapse-init
               data-te-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
@@ -61,25 +61,15 @@
               id="navbarSupportedContent"
             >
               <a
-                class="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 md:mt-0 mr-3 mb-2 md:mb-0"
+                class="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 md:mt-0 mr-1 mb-2 md:mb-0"
                 href="#"
               >
-                <span class="[&>svg]:h-8 text-gray-100">
-                  <svg
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fab"
-                    data-icon="mdb"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 576 512"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M17.37 160.41L7 352h43.91l5.59-79.83L84.43 352h44.71l25.54-77.43 4.79 77.43H205l-12.79-191.59H146.7L106 277.74 63.67 160.41zm281 0h-47.9V352h47.9s95 .8 94.2-95.79c-.78-94.21-94.18-95.78-94.18-95.78zm-1.2 146.46V204.78s46 4.27 46.8 50.57-46.78 51.54-46.78 51.54zm238.29-74.24a56.16 56.16 0 0 0 8-38.31c-5.34-35.76-55.08-34.32-55.08-34.32h-51.9v191.58H482s87 4.79 87-63.85c0-43.14-33.52-55.08-33.52-55.08zm-51.9-31.94s13.57-1.59 16 9.59c1.43 6.66-4 12-4 12h-12v-21.57zm-.1 109.46l.1-24.92V267h.08s41.58-4.73 41.19 22.43c-.33 25.65-41.35 20.74-41.35 20.74z"
-                    ></path>
-                  </svg>
-                </span>
+                <img
+                  src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png"
+                  style="height: 15px"
+                  alt=""
+                  loading="lazy"
+                />
               </a>
               <!-- Left links -->
               <ul
@@ -88,7 +78,7 @@
               >
                 <li class="py-2 pr-2 md:pl-2" data-te-nav-item-ref>
                   <a
-                    class="text-gray-100 hver:text-gray-300 focus:text-gray-300 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
+                    class="text-gray-500 hover:text-gray-700 focus:text-gray-700 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
                     data-te-nav-link-ref
                     >Dashboard</a
@@ -96,15 +86,15 @@
                 </li>
                 <li class="py-2 pr-2 md:pl-2" data-te-nav-item-ref>
                   <a
-                    class="text-gray-100 hver:text-gray-300 focus:text-gray-300 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
+                    class="text-gray-500 hover:text-gray-700 focus:text-gray-700 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
                     data-te-nav-link-ref
                     >Team</a
                   >
                 </li>
-                <li class="py-2 pr-2 md:pl-2 mb-2 md:mb-0" data-te-nav-item-ref>
+                <li class="py-2 pr-2 md:pl-2" data-te-nav-item-ref>
                   <a
-                    class="text-gray-100 hver:text-gray-300 focus:text-gray-300 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
+                    class="text-gray-500 hover:text-gray-700 focus:text-gray-700 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
                     data-te-nav-link-ref
                     >Projects</a
@@ -117,9 +107,17 @@
 
             <!-- Right elements -->
             <div class="flex items-center relative">
+              <div>
+                <button
+                  type="button"
+                  class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-4"
+                >
+                  + new job
+                </button>
+              </div>
               <div class="relative" data-te-dropdown-ref>
                 <a
-                  class="text-gray-100 hover:text-gray-300 focus:text-gray-300 mr-4 hidden-arrow flex items-center"
+                  class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4 hidden-arrow flex items-center"
                   href="#"
                   id="dropdownMenuButton1"
                   role="button"
@@ -185,6 +183,7 @@
                   id="dropdownMenuButton2"
                   role="button"
                   data-te-dropdown-toggle-ref
+                  data-te-offset="0,20"
                   aria-expanded="false"
                 >
                   <img

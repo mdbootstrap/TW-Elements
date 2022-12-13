@@ -18,19 +18,21 @@ import Datepicker from './mdb/datepicker';
 import Timepicker from './mdb/timepicker';
 import Stepper from './mdb/stepper';
 
-window.Alert = Alert;
-window.Button = Button;
-window.Dropdown = Dropdown;
-window.Carousel = Carousel;
-window.Collapse = Collapse;
-window.Offcanvas = Offcanvas;
-window.Modal = Modal;
-window.Popover = Popover;
-window.ScrollSpy = ScrollSpy;
-window.Tab = Tab;
-window.Toast = Toast;
-window.Tooltip = Tooltip;
-window.Ripple = Ripple;
-window.Datepicker = Datepicker;
-window.Timepicker = Timepicker;
-window.Stepper = Stepper;
+export {
+  Alert,
+  Button,
+  Dropdown,
+  Carousel,
+  Collapse,
+  Offcanvas,
+  Modal,
+  Popover,
+  ScrollSpy,
+  Tab,
+  Toast,
+  Tooltip,
+  Ripple,
+  Datepicker,
+  Timepicker,
+  Stepper,
+};
