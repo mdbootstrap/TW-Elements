@@ -4,5 +4,4 @@ module.exports = {
     extend: {},
   },
   plugins: [require('./src/js/plugin')],
-  // darkMode: 'class',
 };
