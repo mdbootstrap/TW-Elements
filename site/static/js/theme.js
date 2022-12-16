@@ -1,17 +1,13 @@
-import { switcherTemplate } from './templates/themeSwitcher';
-
 class ThemeSwitcher {
-  constructor() {
+  constructor(element) {
+    this.element = element;
+    this.themeSwitcherButton = this.element.querySelector('button');
+    this.themeSwitcherItems = this.element.querySelectorAll('a');
+
     this.init();
   }
 
   init() {
-    document.body.insertAdjacentHTML('beforeend', switcherTemplate);
-
-    this.element = document.querySelector('#theme-switcher');
-    this.themeSwitcherButton = this.element.querySelector('button');
-    this.themeSwitcherItems = this.element.querySelectorAll('a');
-
     if (!('theme' in localStorage)) {
       this.setLightTheme();
       // this.setSystemTheme();
@@ -88,4 +84,8 @@ class ThemeSwitcher {
   }
 }
 
-new ThemeSwitcher(); // eslint-disable-line no-new
+const themeSwitcher = document.querySelector('#theme-switcher');
+
+if (themeSwitcher) {
+  new ThemeSwitcher(themeSwitcher); // eslint-disable-line no-new
+}
