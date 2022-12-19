@@ -39,6 +39,7 @@ module.exports = merge(common, {
   mode: 'development',
   entry: {
     'js/index': Path.resolve(__dirname, '../src/js/index.js'),
+    'js/theme': Path.resolve(__dirname, '../src/js/theme.js'),
     'css/tailwind': Path.resolve(__dirname, '../src/scss/tailwind.scss'),
   },
   devtool: 'cheap-eval-source-map',
