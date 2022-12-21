@@ -36,57 +36,58 @@
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Basic example</h3>
 
       <ul
-        class="nav nav-pills flex flex-col md:flex-row flex-wrap list-none pl-0 mb-4"
+        class="flex flex-col md:flex-row flex-wrap list-none pl-0 mb-4"
         id="pills-tab"
         role="tablist"
+        data-te-nav-ref
       >
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#pills-home"
-            class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 active"
+            class="bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-home-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-home"
+            data-te-toggle="pill"
+            data-te-target="#pills-home"
+            data-te-nav-active
             role="tab"
             aria-controls="pills-home"
             aria-selected="true"
             >Home</a
           >
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#pills-profile"
-            class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mx-2 focus:outline-none focus:ring-0"
+            class="bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-profile-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-profile"
+            data-te-toggle="pill"
+            data-te-target="#pills-profile"
             role="tab"
             aria-controls="pills-profile"
             aria-selected="false"
             >Profile</a
           >
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#pills-contact"
-            class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mx-2 focus:outline-none focus:ring-0"
+            class="bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-contact-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-contact"
+            data-te-toggle="pill"
+            data-te-target="#pills-contact"
             role="tab"
             aria-controls="pills-contact"
             aria-selected="false"
             >Contact</a
           >
         </li>
-
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#pills-disabled"
-            class="nav-link disabled pointer-events-none block font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:ml-2 focus:outline-none focus:ring-0"
+            class="text-[#9ca3af] bg-[#f3f4f680] pointer-events-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
             id="pills-disabled-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-disabled"
+            data-te-toggle="pill"
+            data-te-target="#pills-disabled"
             role="tab"
             aria-controls="pills-disabled"
             aria-selected="false"
@@ -94,17 +95,18 @@
           >
         </li>
       </ul>
-      <div class="tab-content" id="pills-tabContent">
+      <div>
         <div
-          class="tab-pane fade show active"
+          class="transition-opacity opacity-0 opacity-100 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-home"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
+          data-te-tab-active
         >
           Tab 1 content
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-profile"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
@@ -112,7 +114,7 @@
           Tab 2 content
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-contact"
           role="tabpanel"
           aria-labelledby="pills-contact-tab"
@@ -120,7 +122,7 @@
           Tab 3 content
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-disabled"
           role="tabpanel"
           aria-labelledby="pills-disabled-tab"
@@ -136,43 +138,45 @@
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Fill</h3>
 
       <ul
-        class="nav nav-pills flex flex-col md:flex-row list-none pl-0 mb-4"
+        class="flex flex-col md:flex-row list-none pl-0 mb-4"
         id="pills-tabFill"
         role="tablist"
+        data-te-nav-ref
       >
-        <li class="nav-item flex-auto text-center my-2 md:mr-2" role="presentation">
+        <li class="flex-auto text-center my-2 md:mr-2" role="presentation">
           <a
             href="#pills-homeFill"
-            class="nav-link w-full block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0 active"
+            class="block w-full bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-home-tabFill"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-homeFill"
+            data-te-toggle="pill"
+            data-te-target="#pills-homeFill"
+            data-te-nav-active
             role="tab"
             aria-controls="pills-homeFill"
             aria-selected="true"
             >Home</a
           >
         </li>
-        <li class="nav-item flex-auto text-center my-2 md:mx-2" role="presentation">
+        <li class="flex-auto text-center my-2 md:mx-2" role="presentation">
           <a
             href="#pills-profileFill"
-            class="nav-link w-full block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
+            class="block w-full bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-profile-tabFill"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-profileFill"
+            data-te-toggle="pill"
+            data-te-target="#pills-profileFill"
             role="tab"
             aria-controls="pills-profileFill"
             aria-selected="false"
             >Much longer nav link</a
           >
         </li>
-        <li class="nav-item flex-auto text-center my-2 md:ml-2" role="presentation">
+        <li class="flex-auto text-center my-2 md:ml-2" role="presentation">
           <a
             href="#pills-contactFill"
-            class="nav-link w-full block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
+            class="block w-full bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-contact-tabFill"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-contactFill"
+            data-te-toggle="pill"
+            data-te-target="#pills-contactFill"
             role="tab"
             aria-controls="pills-contactFill"
             aria-selected="false"
@@ -180,17 +184,18 @@
           >
         </li>
       </ul>
-      <div class="tab-content" id="pills-tabContentFill">
+      <div>
         <div
-          class="tab-pane fade show active"
+          class="transition-opacity opacity-0 opacity-100 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-homeFill"
           role="tabpanel"
           aria-labelledby="pills-home-tabFill"
+          data-te-tab-active=""
         >
           Tab 1 content fill
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-profileFill"
           role="tabpanel"
           aria-labelledby="pills-profile-tabFill"
@@ -198,7 +203,7 @@
           Tab 2 content fill
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-contactFill"
           role="tabpanel"
           aria-labelledby="pills-contact-tabFill"
@@ -214,43 +219,45 @@
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Justify</h3>
 
       <ul
-        class="nav nav-pills nav-justified flex flex-col md:flex-row flex-wrap list-none pl-0 mb-4"
+        class="flex flex-col md:flex-row flex-wrap list-none pl-0 mb-4"
         id="pills-tabJustify"
         role="tablist"
+        data-te-nav-ref
       >
-        <li class="nav-item flex-grow text-center my-2 md:mr-2" role="presentation">
+        <li class="basis-0 flex-grow text-center my-2 md:mr-2" role="presentation">
           <a
             href="#pills-homeJustify"
-            class="nav-link w-full block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0 active"
+            class="block w-full bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-home-tabJustify"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-homeJustify"
+            data-te-toggle="pill"
+            data-te-target="#pills-homeJustify"
+            data-te-nav-active
             role="tab"
             aria-controls="pills-homeJustify"
             aria-selected="true"
             >Home</a
           >
         </li>
-        <li class="nav-item flex-grow text-center my-2 md:mx-2" role="presentation">
+        <li class="basis-0 flex-grow text-center my-2 md:mx-2" role="presentation">
           <a
             href="#pills-profileJustify"
-            class="nav-link w-full block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
+            class="block w-full bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-profile-tabJustify"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-profileJustify"
+            data-te-toggle="pill"
+            data-te-target="#pills-profileJustify"
             role="tab"
             aria-controls="pills-profileJustify"
             aria-selected="false"
             >Much longer nav link</a
           >
         </li>
-        <li class="nav-item flex-grow text-center my-2 md:ml-2" role="presentation">
+        <li class="basis-0 flex-grow text-center my-2 md:ml-2" role="presentation">
           <a
             href="#pills-contactJustify"
-            class="nav-link w-full block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
+            class="block w-full bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-contact-tabJustify"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-contactJustify"
+            data-te-toggle="pill"
+            data-te-target="#pills-contactJustify"
             role="tab"
             aria-controls="pills-contactJustify"
             aria-selected="false"
@@ -258,17 +265,18 @@
           >
         </li>
       </ul>
-      <div class="tab-content" id="pills-tabContentJustify">
+      <div>
         <div
-          class="tab-pane fade show active"
+          class="transition-opacity opacity-0 opacity-100 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-homeJustify"
           role="tabpanel"
           aria-labelledby="pills-home-tabJustify"
+          data-te-tab-active
         >
           Tab 1 content justify
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-profileJustify"
           role="tabpanel"
           aria-labelledby="pills-profile-tabJustify"
@@ -276,7 +284,7 @@
           Tab 2 content justify
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-contactJustify"
           role="tabpanel"
           aria-labelledby="pills-contact-tabJustify"
@@ -293,43 +301,45 @@
 
       <div class="flex items-start">
         <ul
-          class="nav nav-pills flex flex-col flex-wrap list-none pl-0 mr-4"
+          class="flex flex-col flex-wrap list-none pl-0 mr-4"
           id="pills-tabVertical"
           role="tablist"
+          data-te-nav-ref
         >
-          <li class="nav-item flex-grow text-center mb-2" role="presentation">
+          <li class="flex-grow text-center mb-2" role="presentation">
             <a
               href="#pills-homeVertical"
-              class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0 active"
+              class="block bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
               id="pills-home-tabVertical"
-              data-bs-toggle="pill"
-              data-bs-target="#pills-homeVertical"
+              data-te-toggle="pill"
+              data-te-target="#pills-homeVertical"
+              data-te-nav-active
               role="tab"
               aria-controls="pills-homeVertical"
               aria-selected="true"
               >Home</a
             >
           </li>
-          <li class="nav-item flex-grow text-center my-2" role="presentation">
+          <li class="flex-grow text-center my-2" role="presentation">
             <a
               href="#pills-profileVertical"
-              class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
+              class="block bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
               id="pills-profile-tabVertical"
-              data-bs-toggle="pill"
-              data-bs-target="#pills-profileVertical"
+              data-te-toggle="pill"
+              data-te-target="#pills-profileVertical"
               role="tab"
               aria-controls="pills-profileVertical"
               aria-selected="false"
               >Profile</a
             >
           </li>
-          <li class="nav-item flex-grow text-center my-2" role="presentation">
+          <li class="flex-grow text-center my-2" role="presentation">
             <a
               href="#pills-contactVertical"
-              class="nav-link block font-medium text-xs leading-tight uppercase rounded px-6 py-3 focus:outline-none focus:ring-0"
+              class="block bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
               id="pills-contact-tabVertical"
-              data-bs-toggle="pill"
-              data-bs-target="#pills-contactVertical"
+              data-te-toggle="pill"
+              data-te-target="#pills-contactVertical"
               role="tab"
               aria-controls="pills-contactVertical"
               aria-selected="false"
@@ -337,17 +347,18 @@
             >
           </li>
         </ul>
-        <div class="tab-content" id="pills-tabContentVertical">
+        <div>
           <div
-            class="tab-pane fade show active"
+            class="transition-opacity opacity-0 opacity-100 duration-150 ease-linear hidden data-[te-tab-active]:block"
             id="pills-homeVertical"
             role="tabpanel"
             aria-labelledby="pills-home-tabVertical"
+            data-te-tab-active
           >
             Tab 1 content vertical
           </div>
           <div
-            class="tab-pane fade"
+            class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
             id="pills-profileVertical"
             role="tabpanel"
             aria-labelledby="pills-profile-tabVertical"
@@ -355,7 +366,7 @@
             Tab 2 content vertical
           </div>
           <div
-            class="tab-pane fade"
+            class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
             id="pills-contactVertical"
             role="tabpanel"
             aria-labelledby="pills-contact-tabVertical"
@@ -372,17 +383,19 @@
       <h3 class="text-3xl font-medium leading-tight mb-4 text-red-600">Pills with buttons</h3>
 
       <ul
-        class="nav nav-pills flex flex-col md:flex-row flex-wrap list-none pl-0 mb-4"
+        class="flex flex-col md:flex-row flex-wrap list-none pl-0 mb-4"
         id="pills-tab3"
         role="tablist"
+        data-te-nav-ref
       >
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <button
             type="button"
-            class="nav-link block font-medium text-xs leading-tight uppercase rounded w-full md:w-auto px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 active"
+            class="bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-home-tab3"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-home3"
+            data-te-toggle="pill"
+            data-te-target="#pills-home3"
+            data-te-nav-active
             role="tab"
             aria-controls="pills-home3"
             aria-selected="true"
@@ -390,13 +403,13 @@
             Home
           </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <button
             type="button"
-            class="nav-link block font-medium text-xs leading-tight uppercase rounded w-full md:w-auto px-6 py-3 my-2 md:mx-2 focus:outline-none focus:ring-0"
+            class="bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-profile-tab3"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-profile3"
+            data-te-toggle="pill"
+            data-te-target="#pills-profile3"
             role="tab"
             aria-controls="pills-profile3"
             aria-selected="false"
@@ -404,13 +417,13 @@
             Profile
           </button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <button
             type="button"
-            class="nav-link block font-medium text-xs leading-tight uppercase rounded w-full md:w-auto px-6 py-3 my-2 md:ml-2 focus:outline-none focus:ring-0"
+            class="bg-[#f3f4f6] text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:bg-[#2563eb] data-[te-nav-active]:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
             id="pills-contact-tab3"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-contact3"
+            data-te-toggle="pill"
+            data-te-target="#pills-contact3"
             role="tab"
             aria-controls="pills-contact3"
             aria-selected="false"
@@ -419,17 +432,18 @@
           </button>
         </li>
       </ul>
-      <div class="tab-content" id="pills-tabContent3">
+      <div>
         <div
-          class="tab-pane fade show active"
+          class="transition-opacity opacity-0 opacity-100 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-home3"
           role="tabpanel"
           aria-labelledby="pills-home-tab3"
+          data-te-tab-active
         >
           Tab 1 content button version
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-profile3"
           role="tabpanel"
           aria-labelledby="pills-profile-tab3"
@@ -437,7 +451,7 @@
           Tab 2 content button version
         </div>
         <div
-          class="tab-pane fade"
+          class="transition-opacity opacity-0 duration-150 ease-linear hidden data-[te-tab-active]:block"
           id="pills-contact3"
           role="tabpanel"
           aria-labelledby="pills-contact-tab3"
