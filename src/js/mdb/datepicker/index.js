@@ -77,10 +77,10 @@ const TOGGLE_BUTTON_SELECTOR = '[data-te-datepicker-toggle-button-ref]'
 const DATE_TEXT_SELECTOR = '[data-te-datepicker-date-text-ref]'
 const BACKDROP_SELECTOR = '[data-te-dropdown-backdrop-ref]'
 
-const FADE_IN_CLASSES = 'animate-[fade-in-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
-const FADE_OUT_CLASSES = 'animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
-const FADE_IN_SHORT_CLASSES = 'animate-[fade-in-frame_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
-const FADE_OUT_SHORT_CLASSES = 'animate-[fade-out-frame_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
+const FADE_IN_CLASSES = 'animate-[fade-in_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
+const FADE_OUT_CLASSES = 'animate-[fade-out_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
+const FADE_IN_SHORT_CLASSES = 'animate-[fade-in_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
+const FADE_OUT_SHORT_CLASSES = 'animate-[fade-out_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
 
 const Default = {
   title: 'Select date',
