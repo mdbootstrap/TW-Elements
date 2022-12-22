@@ -509,7 +509,7 @@ function bindKeyboardHandler(element, i) {
   }
 
     i.event.bind(i.ownerDocument, 'keydown', function(e) {
-        if (element.classList.contains("ps-disabled") ) {
+        if (element.classList.contains('ps-disabled') || element.classList.contains('ps-ignore-keys')) {
             return;
         }
     if ((e.isDefaultPrevented && e.isDefaultPrevented()) || e.defaultPrevented) {
