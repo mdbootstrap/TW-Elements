@@ -1,25 +1,42 @@
 <section class="my-5">
-  <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="{{.Get "title_id"}}">{{ .Get "title" }}</h2>
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800"
+    id="{{ .Get "title_id" }}">
+    {{ .Get "title" }}
+  </h2>
 
-    <div class="bg-white dark:bg-zinc-800 border-t border-l border-r rounded-5 dark:border-gray-600">
-        <div class="p-4">
-    {{.Inner}}
-        </div>
+  <div
+    class="rounded-5 border-t border-l border-r bg-white dark:border-gray-600 dark:bg-zinc-800">
+    <div class="p-4">
+      {{ .Inner }}
+    </div>
     <!-- Header -->
-    <div class="p-4 text-center border-t border-b mt-4 dark:border-gray-600">
-        <button class="text-blue-500 bg-transparent border border-solid border-blue-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 active show " data-te-collapse-init data-te-ripple-init data-te-ripple-color="light" href="#" role="button"
-            aria-expanded="false" data-te-target="#{{.Get `id`}}" aria-controls="{{.Get `id`}}" data-ripple-color="hsl(0, 0%, 67%)">
-            <span
-                class="mr-1 md:mr-2 inline-block align-middle pb-1"><svg class="w-5" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 640 512">
-                <path
-                    fill="currentColor"
-                    d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z" />
-                </svg></span>Show code</button>
-                <!-- Commented until we deploy snippets -->
-        <!-- <button class="text-blue-500 bg-transparent border border-solid border-blue-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 active show " data-ripple-color="hsl(0, 0%, 67%)"><i class="fas fa-file-code me-md-2 pe-none"></i><span
+    <div class="mt-4 border-t border-b p-4 text-center dark:border-gray-600">
+      <button
+        class="active show mr-1 mb-1 rounded border border-solid border-blue-500 bg-transparent px-6 py-3 text-sm font-bold uppercase text-blue-500 outline-none transition-all duration-150 ease-linear hover:bg-blue-500 hover:text-white focus:outline-none active:bg-blue-600 "
+        data-te-collapse-init
+        data-te-ripple-init
+        data-te-ripple-color="light"
+        href="#"
+        role="button"
+        aria-expanded="false"
+        data-te-target="#{{ .Get `id` }}"
+        aria-controls="{{ .Get `id` }}"
+        data-ripple-color="hsl(0, 0%, 67%)">
+        <span class="mr-1 inline-block pb-1 align-middle md:mr-2"
+          ><svg
+            class="w-5"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 512">
+            <path
+              fill="currentColor"
+              d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z" /></svg></span
+        >Show code
+      </button>
+      <!-- Commented until we deploy snippets -->
+      <!-- <button class="text-blue-500 bg-transparent border border-solid border-blue-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 active show " data-ripple-color="hsl(0, 0%, 67%)"><i class="fas fa-file-code me-md-2 pe-none"></i><span
                 class="d-none d-md-inline-block export-to-snippet pointer-events-none"> Edit in sandbox</span></button> -->
     </div>
     <!-- Header -->
-    </div>
+  </div>
 </section>

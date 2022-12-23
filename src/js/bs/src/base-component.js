@@ -5,9 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import Data from './dom/data';
-import { executeAfterTransition, getElement } from './util/index';
-import EventHandler from './dom/event-handler';
+import Data from "./dom/data";
+import { executeAfterTransition, getElement } from "./util/index";
+import EventHandler from "./dom/event-handler";
 
 /**
  * ------------------------------------------------------------------------
@@ -15,7 +15,7 @@ import EventHandler from './dom/event-handler';
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.1.3';
+const VERSION = "5.1.3";
 
 class BaseComponent {
   constructor(element) {
@@ -50,7 +50,8 @@ class BaseComponent {
 
   static getOrCreateInstance(element, config = {}) {
     return (
-      this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
+      this.getInstance(element) ||
+      new this(element, typeof config === "object" ? config : null)
     );
   }
 
@@ -59,7 +60,9 @@ class BaseComponent {
   }
 
   static get NAME() {
-    throw new Error('You have to implement the static method "NAME", for each component!');
+    throw new Error(
+      'You have to implement the static method "NAME", for each component!'
+    );
   }
 
   static get DATA_KEY() {

@@ -1,8 +1,8 @@
 module.exports = {
-  content: ['./demo/**/*.{html,js}', './src/**/*.{html,js}'],
+  content: ["./demo/**/*.{html,js}", "./src/**/*.{html,js}"],
   theme: {
     extend: {},
   },
-  plugins: [require('./src/js/plugin')],
-  darkMode: 'class',
+  plugins: [require("./src/js/plugin")],
+  darkMode: "class",
 };

@@ -1,8 +1,8 @@
-import { getjQuery, typeCheckConfig, onDOMContentLoaded } from './util/index';
-import Data from './dom/data';
-import Manipulator from './dom/manipulator';
-import SelectorEngine from './dom/selector-engine';
-import EventHandler from './dom/event-handler';
+import { getjQuery, typeCheckConfig, onDOMContentLoaded } from "./util/index";
+import Data from "./dom/data";
+import Manipulator from "./dom/manipulator";
+import SelectorEngine from "./dom/selector-engine";
+import EventHandler from "./dom/event-handler";
 
 /**
  * ------------------------------------------------------------------------
@@ -10,37 +10,37 @@ import EventHandler from './dom/event-handler';
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'animation';
-const DATA_KEY = 'te.animation';
-const SELECTOR_EXPAND = '[data-te-animation-init]';
+const NAME = "animation";
+const DATA_KEY = "te.animation";
+const SELECTOR_EXPAND = "[data-te-animation-init]";
 
 const DefaultType = {
-  animation: 'string',
-  animationStart: 'string',
-  animationShowOnLoad: 'boolean',
-  onStart: '(null|function)',
-  onEnd: '(null|function)',
-  onHide: '(null|function)',
-  onShow: '(null|function)',
-  animationOnScroll: '(string)',
-  animationWindowHeight: 'number',
-  animationOffset: '(number|string)',
-  animationDelay: '(number|string)',
-  animationReverse: 'boolean',
-  animationInterval: '(number|string)',
-  animationRepeat: '(number|boolean)',
-  animationReset: 'boolean',
+  animation: "string",
+  animationStart: "string",
+  animationShowOnLoad: "boolean",
+  onStart: "(null|function)",
+  onEnd: "(null|function)",
+  onHide: "(null|function)",
+  onShow: "(null|function)",
+  animationOnScroll: "(string)",
+  animationWindowHeight: "number",
+  animationOffset: "(number|string)",
+  animationDelay: "(number|string)",
+  animationReverse: "boolean",
+  animationInterval: "(number|string)",
+  animationRepeat: "(number|boolean)",
+  animationReset: "boolean",
 };
 
 const Default = {
-  animation: 'fade',
-  animationStart: 'onClick',
+  animation: "fade",
+  animationStart: "onClick",
   animationShowOnLoad: true,
   onStart: null,
   onEnd: null,
   onHide: null,
   onShow: null,
-  animationOnScroll: 'once',
+  animationOnScroll: "once",
   animationWindowHeight: 0,
   animationOffset: 0,
   animationDelay: 0,
@@ -92,10 +92,10 @@ class Animate {
   }
 
   dispose() {
-    EventHandler.off(this._element, 'mousedown');
-    EventHandler.off(this._animateElement, 'animationend');
-    EventHandler.off(window, 'scroll');
-    EventHandler.off(this._element, 'mouseover');
+    EventHandler.off(this._element, "mousedown");
+    EventHandler.off(this._animateElement, "animationend");
+    EventHandler.off(window, "scroll");
+    EventHandler.off(this._element, "mouseover");
 
     Data.removeData(this._element, DATA_KEY);
     this._element = null;
@@ -108,16 +108,16 @@ class Animate {
   // Private
   _init() {
     switch (this._options.animationStart) {
-      case 'onHover':
+      case "onHover":
         this._bindHoverEvents();
         break;
-      case 'onLoad':
+      case "onLoad":
         this._startAnimation();
         break;
-      case 'onScroll':
+      case "onScroll":
         this._bindScrollEvents();
         break;
-      case 'onClick':
+      case "onClick":
         this._bindClickEvents();
         break;
       default:
@@ -131,7 +131,10 @@ class Animate {
   }
 
   _getAnimateElement() {
-    const targetId = Manipulator.getDataAttribute(this._element, 'animation-target');
+    const targetId = Manipulator.getDataAttribute(
+      this._element,
+      "animation-target"
+    );
     return targetId ? SelectorEngine.find(targetId)[0] : this._element;
   }
 
@@ -156,7 +159,8 @@ class Animate {
     const shouldBeVisible =
       elementOffsetTop + this._options.animationOffset <= windowHeight &&
       elementOffsetTop + this._options.animationOffset + elementHeight >= 0;
-    const isElementVisible = this._animateElement.style.visibility === 'visible';
+    const isElementVisible =
+      this._animateElement.style.visibility === "visible";
 
     switch (true) {
       case shouldBeVisible && this._isFirstScroll:
@@ -168,7 +172,7 @@ class Animate {
         this._hideAnimateElement();
         break;
       case shouldBeVisible && !isElementVisible && this._repeatAnimateOnScroll:
-        if (this._options.animationOnScroll !== 'repeat') {
+        if (this._options.animationOnScroll !== "repeat") {
           this._repeatAnimateOnScroll = false;
         }
         this._callback(this._options.onShow);
@@ -186,7 +190,10 @@ class Animate {
   }
 
   _addAnimatedClass() {
-    Manipulator.addClass(this._animateElement, `animate-${this._options.animation}`);
+    Manipulator.addClass(
+      this._animateElement,
+      `animate-${this._options.animation}`
+    );
   }
 
   _clearAnimationClass() {
@@ -221,8 +228,9 @@ class Animate {
 
   _setAnimationReverse() {
     Manipulator.style(this._animateElement, {
-      animationIterationCount: this._options.animationRepeat === true ? 'infinite' : '2',
-      animationDirection: 'alternate',
+      animationIterationCount:
+        this._options.animationRepeat === true ? "infinite" : "2",
+      animationDirection: "alternate",
     });
   }
 
@@ -241,12 +249,14 @@ class Animate {
   _setAnimationRepeat() {
     Manipulator.style(this._animateElement, {
       animationIterationCount:
-        this._options.animationRepeat === true ? 'infinite' : this._options.animationRepeat,
+        this._options.animationRepeat === true
+          ? "infinite"
+          : this._options.animationRepeat,
     });
   }
 
   _setAnimationInterval() {
-    EventHandler.on(this._animateElement, 'click', () => {
+    EventHandler.on(this._animateElement, "click", () => {
       this._clearAnimationClass();
       setTimeout(() => {
         this._addAnimatedClass();
@@ -255,21 +265,21 @@ class Animate {
   }
 
   _hideAnimateElement() {
-    Manipulator.style(this._animateElement, { visibility: 'hidden' });
+    Manipulator.style(this._animateElement, { visibility: "hidden" });
   }
 
   _showAnimateElement() {
-    Manipulator.style(this._animateElement, { visibility: 'visible' });
+    Manipulator.style(this._animateElement, { visibility: "visible" });
   }
 
   _bindResetAnimationAfterFinish() {
-    EventHandler.on(this._animateElement, 'animationend', () => {
+    EventHandler.on(this._animateElement, "animationend", () => {
       this._clearAnimationClass();
     });
   }
 
   _bindTriggerOnEndCallback() {
-    EventHandler.on(this._animateElement, 'animationend', () => {
+    EventHandler.on(this._animateElement, "animationend", () => {
       this._callback(this._options.onEnd);
     });
   }
@@ -279,22 +289,22 @@ class Animate {
       this._animateOnScroll();
     }
 
-    EventHandler.on(window, 'scroll', () => {
+    EventHandler.on(window, "scroll", () => {
       this._animateOnScroll();
     });
   }
 
   _bindClickEvents() {
-    EventHandler.on(this._element, 'mousedown', () => {
+    EventHandler.on(this._element, "mousedown", () => {
       this._startAnimation();
     });
   }
 
   _bindHoverEvents() {
-    EventHandler.one(this._element, 'mouseover', () => {
+    EventHandler.one(this._element, "mouseover", () => {
       this._startAnimation();
     });
-    EventHandler.one(this._animateElement, 'animationend', () => {
+    EventHandler.one(this._animateElement, "animationend", () => {
       // wait after bind hoverEvents to prevent animation looping
       setTimeout(() => {
         this._bindHoverEvents();
@@ -324,7 +334,8 @@ class Animate {
 
   static getOrCreateInstance(element, config = {}) {
     return (
-      this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
+      this.getInstance(element) ||
+      new this(element, typeof config === "object" ? config : null)
     );
   }
 }

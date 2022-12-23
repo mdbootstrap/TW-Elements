@@ -1,10 +1,10 @@
-import { createPopper } from '@popperjs/core';
-import Data from '../dom/data';
-import EventHandler from '../dom/event-handler';
-import Manipulator from '../dom/manipulator';
-import SelectorEngine from '../dom/selector-engine';
-import { typeCheckConfig, getUID } from '../util/index';
-import FocusTrap from '../util/focusTrap';
+import { createPopper } from "@popperjs/core";
+import Data from "../dom/data";
+import EventHandler from "../dom/event-handler";
+import Manipulator from "../dom/manipulator";
+import SelectorEngine from "../dom/selector-engine";
+import { typeCheckConfig, getUID } from "../util/index";
+import FocusTrap from "../util/focusTrap";
 import {
   getDate,
   getDayNumber,
@@ -20,7 +20,7 @@ import {
   areDatesInSameView,
   getYearsOffset,
   isValidDate,
-} from './date-utils';
+} from "./date-utils";
 import {
   getBackdropTemplate,
   getDatepickerTemplate,
@@ -28,7 +28,7 @@ import {
   createMonthViewTemplate,
   createYearViewTemplate,
   getToggleButtonTemplate,
-} from './templates';
+} from "./templates";
 import {
   ENTER,
   SPACE,
@@ -41,7 +41,7 @@ import {
   END,
   PAGE_UP,
   PAGE_DOWN,
-} from '../util/keycodes';
+} from "../util/keycodes";
 
 /**
  * ------------------------------------------------------------------------
@@ -49,80 +49,106 @@ import {
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'datepicker';
-const DATA_KEY = 'te.datepicker';
+const NAME = "datepicker";
+const DATA_KEY = "te.datepicker";
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = '.data-api';
+const DATA_API_KEY = ".data-api";
 
 const EVENT_CLOSE = `close${EVENT_KEY}`;
 const EVENT_OPEN = `open${EVENT_KEY}`;
 const EVENT_DATE_CHANGE = `dateChange${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
-const MODAL_CONTAINER_NAME = 'data-te-datepicker-modal-container-ref'
-const DROPDOWN_CONTAINER_NAME = 'data-te-datepicker-dropdown-container-ref'
+const MODAL_CONTAINER_NAME = "data-te-datepicker-modal-container-ref";
+const DROPDOWN_CONTAINER_NAME = "data-te-datepicker-dropdown-container-ref";
 
-const DATEPICKER_INIT_SELECTOR = '[data-te-datepicker-init]'
-const DATEPICKER_TOGGLE_SELECTOR = '[data-te-datepicker-toggle-ref]'
-const MODAL_CONTAINER_SELECTOR = `[${MODAL_CONTAINER_NAME}]`
-const DROPDOWN_CONTAINER_SELECTOR = `[${DROPDOWN_CONTAINER_NAME}]`
-const VIEW_CHANGE_BUTTON_SELECTOR = '[data-te-datepicker-view-change-button-ref]'
-const PREVIOUS_BUTTON_SELECTOR = '[data-te-datepicker-previous-button-ref]'
-const NEXT_BUTTON_SELECTOR = '[data-te-datepicker-next-button-ref]'
-const OK_BUTTON_SELECTOR = '[data-te-datepicker-ok-button-ref]'
-const CANCEL_BUTTON_SELECTOR = '[data-te-datepicker-cancel-button-ref]'
-const CLEAR_BUTTON_SELECTOR = '[data-te-datepicker-clear-button-ref]'
-const VIEW_SELECTOR = '[data-te-datepicker-view-ref]'
-const TOGGLE_BUTTON_SELECTOR = '[data-te-datepicker-toggle-button-ref]'
-const DATE_TEXT_SELECTOR = '[data-te-datepicker-date-text-ref]'
-const BACKDROP_SELECTOR = '[data-te-dropdown-backdrop-ref]'
+const DATEPICKER_INIT_SELECTOR = "[data-te-datepicker-init]";
+const DATEPICKER_TOGGLE_SELECTOR = "[data-te-datepicker-toggle-ref]";
+const MODAL_CONTAINER_SELECTOR = `[${MODAL_CONTAINER_NAME}]`;
+const DROPDOWN_CONTAINER_SELECTOR = `[${DROPDOWN_CONTAINER_NAME}]`;
+const VIEW_CHANGE_BUTTON_SELECTOR =
+  "[data-te-datepicker-view-change-button-ref]";
+const PREVIOUS_BUTTON_SELECTOR = "[data-te-datepicker-previous-button-ref]";
+const NEXT_BUTTON_SELECTOR = "[data-te-datepicker-next-button-ref]";
+const OK_BUTTON_SELECTOR = "[data-te-datepicker-ok-button-ref]";
+const CANCEL_BUTTON_SELECTOR = "[data-te-datepicker-cancel-button-ref]";
+const CLEAR_BUTTON_SELECTOR = "[data-te-datepicker-clear-button-ref]";
+const VIEW_SELECTOR = "[data-te-datepicker-view-ref]";
+const TOGGLE_BUTTON_SELECTOR = "[data-te-datepicker-toggle-button-ref]";
+const DATE_TEXT_SELECTOR = "[data-te-datepicker-date-text-ref]";
+const BACKDROP_SELECTOR = "[data-te-dropdown-backdrop-ref]";
 
-const FADE_IN_CLASSES = 'animate-[fade-in_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
-const FADE_OUT_CLASSES = 'animate-[fade-out_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
-const FADE_IN_SHORT_CLASSES = 'animate-[fade-in_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
-const FADE_OUT_SHORT_CLASSES = 'animate-[fade-out_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
+const FADE_IN_CLASSES =
+  "animate-[fade-in_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
+const FADE_OUT_CLASSES =
+  "animate-[fade-out_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
+const FADE_IN_SHORT_CLASSES =
+  "animate-[fade-in_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
+const FADE_OUT_SHORT_CLASSES =
+  "animate-[fade-out_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
 
 const Default = {
-  title: 'Select date',
+  title: "Select date",
   monthsFull: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ],
-  monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  weekdaysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  weekdaysNarrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  okBtnText: 'Ok',
-  clearBtnText: 'Clear',
-  cancelBtnText: 'Cancel',
+  monthsShort: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ],
+  weekdaysFull: [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ],
+  weekdaysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  weekdaysNarrow: ["S", "M", "T", "W", "T", "F", "S"],
+  okBtnText: "Ok",
+  clearBtnText: "Clear",
+  cancelBtnText: "Cancel",
 
-  okBtnLabel: 'Confirm selection',
-  clearBtnLabel: 'Clear selection',
-  cancelBtnLabel: 'Cancel selection',
-  nextMonthLabel: 'Next month',
-  prevMonthLabel: 'Previous month',
-  nextYearLabel: 'Next year',
-  prevYearLabel: 'Previous year',
-  nextMultiYearLabel: 'Next 24 years',
-  prevMultiYearLabel: 'Previous 24 years',
-  switchToMultiYearViewLabel: 'Choose year and month',
-  switchToMonthViewLabel: 'Choose date',
-  switchToDayViewLabel: 'Choose date',
+  okBtnLabel: "Confirm selection",
+  clearBtnLabel: "Clear selection",
+  cancelBtnLabel: "Cancel selection",
+  nextMonthLabel: "Next month",
+  prevMonthLabel: "Previous month",
+  nextYearLabel: "Next year",
+  prevYearLabel: "Previous year",
+  nextMultiYearLabel: "Next 24 years",
+  prevMultiYearLabel: "Previous 24 years",
+  switchToMultiYearViewLabel: "Choose year and month",
+  switchToMonthViewLabel: "Choose date",
+  switchToDayViewLabel: "Choose date",
 
   startDate: null,
   startDay: 0,
-  format: 'dd/mm/yyyy',
-  view: 'days',
+  format: "dd/mm/yyyy",
+  view: "days",
 
   toggleButton: true,
   disableToggleButton: false,
@@ -130,37 +156,37 @@ const Default = {
 };
 
 const DefaultType = {
-  title: 'string',
-  monthsFull: 'array',
-  monthsShort: 'array',
-  weekdaysFull: 'array',
-  weekdaysShort: 'array',
-  weekdaysNarrow: 'array',
+  title: "string",
+  monthsFull: "array",
+  monthsShort: "array",
+  weekdaysFull: "array",
+  weekdaysShort: "array",
+  weekdaysNarrow: "array",
 
-  okBtnText: 'string',
-  clearBtnText: 'string',
-  cancelBtnText: 'string',
-  okBtnLabel: 'string',
-  clearBtnLabel: 'string',
-  cancelBtnLabel: 'string',
-  nextMonthLabel: 'string',
-  prevMonthLabel: 'string',
-  nextYearLabel: 'string',
-  prevYearLabel: 'string',
-  nextMultiYearLabel: 'string',
-  prevMultiYearLabel: 'string',
-  switchToMultiYearViewLabel: 'string',
-  switchToMonthViewLabel: 'string',
-  switchToDayViewLabel: 'string',
+  okBtnText: "string",
+  clearBtnText: "string",
+  cancelBtnText: "string",
+  okBtnLabel: "string",
+  clearBtnLabel: "string",
+  cancelBtnLabel: "string",
+  nextMonthLabel: "string",
+  prevMonthLabel: "string",
+  nextYearLabel: "string",
+  prevYearLabel: "string",
+  nextMultiYearLabel: "string",
+  prevMultiYearLabel: "string",
+  switchToMultiYearViewLabel: "string",
+  switchToMonthViewLabel: "string",
+  switchToDayViewLabel: "string",
 
-  startDate: '(null|string|date)',
-  startDay: 'number',
-  format: 'string',
-  view: 'string',
+  startDate: "(null|string|date)",
+  startDay: "number",
+  format: "string",
+  view: "string",
 
-  toggleButton: 'boolean',
-  disableToggleButton: 'boolean',
-  disableInput: 'boolean',
+  toggleButton: "boolean",
+  disableToggleButton: "boolean",
+  disableInput: "boolean",
 };
 
 /**
@@ -172,7 +198,7 @@ const DefaultType = {
 class Datepicker {
   constructor(element, options) {
     this._element = element;
-    this._input = SelectorEngine.findOne('input', this._element);
+    this._input = SelectorEngine.findOne("input", this._element);
     this._options = this._getConfig(options);
     this._activeDate = new Date();
     this._selectedDate = null;
@@ -182,7 +208,7 @@ class Datepicker {
     this._popper = null;
     this._focusTrap = null;
     this._isOpen = false;
-    this._toggleButtonId = getUID('datepicker-toggle-');
+    this._toggleButtonId = getUID("datepicker-toggle-");
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
@@ -191,11 +217,11 @@ class Datepicker {
     this._init();
 
     if (this.toggleButton && this._options.disableToggle) {
-      this.toggleButton.disabled = 'true';
+      this.toggleButton.disabled = "true";
     }
 
     if (this._options.disableInput) {
-      this._input.disabled = 'true';
+      this._input.disabled = "true";
     }
   }
 
@@ -207,8 +233,12 @@ class Datepicker {
 
   get container() {
     return (
-      SelectorEngine.findOne(`[${MODAL_CONTAINER_NAME}='${this._toggleButtonId}']`) ||
-      SelectorEngine.findOne(`[${DROPDOWN_CONTAINER_NAME}='${this._toggleButtonId}']`)
+      SelectorEngine.findOne(
+        `[${MODAL_CONTAINER_NAME}='${this._toggleButtonId}']`
+      ) ||
+      SelectorEngine.findOne(
+        `[${DROPDOWN_CONTAINER_NAME}='${this._toggleButtonId}']`
+      )
     );
   }
 
@@ -219,15 +249,15 @@ class Datepicker {
   get activeCell() {
     let activeCell;
 
-    if (this._view === 'days') {
+    if (this._view === "days") {
       activeCell = this._getActiveDayCell();
     }
 
-    if (this._view === 'months') {
+    if (this._view === "months") {
       activeCell = this._getActiveMonthCell();
     }
 
-    if (this._view === 'years') {
+    if (this._view === "years") {
       activeCell = this._getActiveYearCell();
     }
 
@@ -309,7 +339,9 @@ class Datepicker {
     const index = config.startDay;
 
     const weekdaysNarrow = config.weekdaysNarrow;
-    const sortedWeekdays = weekdaysNarrow.slice(index).concat(weekdaysNarrow.slice(0, index));
+    const sortedWeekdays = weekdaysNarrow
+      .slice(index)
+      .concat(weekdaysNarrow.slice(0, index));
 
     return sortedWeekdays;
   }
@@ -318,7 +350,7 @@ class Datepicker {
     if (!this.toggleButton && this._options.toggleButton) {
       this._appendToggleButton();
       if (this._input.readOnly || this._input.disabled) {
-        this.toggleButton.style.pointerEvents = 'none';
+        this.toggleButton.style.pointerEvents = "none";
       }
     }
 
@@ -329,7 +361,7 @@ class Datepicker {
 
   _appendToggleButton() {
     const toggleButton = getToggleButtonTemplate(this._toggleButtonId);
-    this._element.insertAdjacentHTML('beforeend', toggleButton);
+    this._element.insertAdjacentHTML("beforeend", toggleButton);
   }
 
   open() {
@@ -359,8 +391,8 @@ class Datepicker {
 
     this._openModal(backdrop, template);
 
-    Manipulator.addMultiClass(this.container, FADE_IN_CLASSES)
-    Manipulator.addMultiClass(backdrop, FADE_IN_SHORT_CLASSES)
+    Manipulator.addMultiClass(this.container, FADE_IN_CLASSES);
+    Manipulator.addMultiClass(backdrop, FADE_IN_SHORT_CLASSES);
 
     this._setFocusTrap(this.container);
 
@@ -388,7 +420,7 @@ class Datepicker {
 
   _openDropdown(template) {
     this._popper = createPopper(this._input, template, {
-      placement: 'bottom-start',
+      placement: "bottom-start",
     });
     document.body.appendChild(template);
   }
@@ -396,24 +428,27 @@ class Datepicker {
   _openModal(backdrop, template) {
     document.body.appendChild(backdrop);
     document.body.appendChild(template);
-    const hasVerticalScroll = window.innerWidth > document.documentElement.clientWidth;
-    const scrollHeight = `${Math.abs(window.innerWidth - document.documentElement.clientWidth)}px`;
+    const hasVerticalScroll =
+      window.innerWidth > document.documentElement.clientWidth;
+    const scrollHeight = `${Math.abs(
+      window.innerWidth - document.documentElement.clientWidth
+    )}px`;
     if (hasVerticalScroll) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
       document.body.style.paddingRight = scrollHeight;
     }
   }
 
   _setFocusTrap(element) {
     this._focusTrap = new FocusTrap(element, {
-      event: 'keydown',
-      condition: (event) => event.key === 'Tab',
+      event: "keydown",
+      condition: (event) => event.key === "Tab",
     });
     this._focusTrap.trap();
   }
 
   _listenToUserInput() {
-    EventHandler.on(this._input, 'input', (event) => {
+    EventHandler.on(this._input, "input", (event) => {
       this._handleUserInput(event.target.value);
     });
   }
@@ -431,17 +466,25 @@ class Datepicker {
   }
 
   _listenToToggleKeydown() {
-    EventHandler.on(this._element, 'keydown', DATEPICKER_TOGGLE_SELECTOR, (event) => {
-      if (event.keyCode === ENTER && !this._isOpen) {
-        this.open();
+    EventHandler.on(
+      this._element,
+      "keydown",
+      DATEPICKER_TOGGLE_SELECTOR,
+      (event) => {
+        if (event.keyCode === ENTER && !this._isOpen) {
+          this.open();
+        }
       }
-    });
+    );
   }
 
   _listenToDateSelection() {
-    EventHandler.on(this.datesContainer, 'click', (e) => {
-      const dataset = e.target.nodeName === 'DIV' ? e.target.parentNode.dataset : e.target.dataset;
-      const cell = e.target.nodeName === 'DIV' ? e.target.parentNode : e.target;
+    EventHandler.on(this.datesContainer, "click", (e) => {
+      const dataset =
+        e.target.nodeName === "DIV"
+          ? e.target.parentNode.dataset
+          : e.target.dataset;
+      const cell = e.target.nodeName === "DIV" ? e.target.parentNode : e.target;
 
       if (dataset.teDate) {
         this._pickDay(dataset.teDate, cell);
@@ -467,7 +510,10 @@ class Datepicker {
   }
 
   _updateHeaderDate(date, monthNames, dayNames) {
-    const headerDateEl = SelectorEngine.findOne(DATE_TEXT_SELECTOR, this.container);
+    const headerDateEl = SelectorEngine.findOne(
+      DATE_TEXT_SELECTOR,
+      this.container
+    );
     const month = getMonth(date);
     const day = getDate(date);
     const dayNumber = getDayNumber(date);
@@ -475,31 +521,31 @@ class Datepicker {
   }
 
   _addControlsListeners() {
-    EventHandler.on(this.nextButton, 'click', () => {
-      if (this._view === 'days') {
+    EventHandler.on(this.nextButton, "click", () => {
+      if (this._view === "days") {
         this.nextMonth();
-      } else if (this._view === 'years') {
+      } else if (this._view === "years") {
         this.nextYears();
       } else {
         this.nextYear();
       }
     });
 
-    EventHandler.on(this.previousButton, 'click', () => {
-      if (this._view === 'days') {
+    EventHandler.on(this.previousButton, "click", () => {
+      if (this._view === "days") {
         this.previousMonth();
-      } else if (this._view === 'years') {
+      } else if (this._view === "years") {
         this.previousYears();
       } else {
         this.previousYear();
       }
     });
 
-    EventHandler.on(this.viewChangeButton, 'click', () => {
-      if (this._view === 'days') {
-        this._changeView('years');
-      } else if (this._view === 'years' || this._view === 'months') {
-        this._changeView('days');
+    EventHandler.on(this.viewChangeButton, "click", () => {
+      if (this._view === "days") {
+        this._changeView("years");
+      } else if (this._view === "years" || this._view === "months") {
+        this._changeView("days");
       }
     });
 
@@ -507,15 +553,16 @@ class Datepicker {
   }
 
   _listenToFooterButtonsClick() {
-    EventHandler.on(this.okButton, 'click', () => this.handleOk());
-    EventHandler.on(this.cancelButton, 'click', () => this.handleCancel());
-    EventHandler.on(this.clearButton, 'click', () => this.handleClear());
+    EventHandler.on(this.okButton, "click", () => this.handleOk());
+    EventHandler.on(this.cancelButton, "click", () => this.handleCancel());
+    EventHandler.on(this.clearButton, "click", () => this.handleClear());
   }
 
   _listenToOutsideClick() {
     EventHandler.on(document, EVENT_CLICK_DATA_API, (e) => {
       const isContainer = e.target === this.container;
-      const isContainerContent = this.container && this.container.contains(e.target);
+      const isContainerContent =
+        this.container && this.container.contains(e.target);
 
       if (!isContainer && !isContainerContent) {
         this.close();
@@ -524,7 +571,7 @@ class Datepicker {
   }
 
   _listenToEscapeClick() {
-    EventHandler.on(document, 'keydown', (event) => {
+    EventHandler.on(document, "keydown", (event) => {
       if (event.keyCode === ESCAPE && this._isOpen) {
         this.close();
       }
@@ -532,33 +579,33 @@ class Datepicker {
   }
 
   _listenToKeyboardNavigation() {
-    EventHandler.on(this.datesContainer, 'keydown', (event) => {
+    EventHandler.on(this.datesContainer, "keydown", (event) => {
       this._handleKeydown(event);
     });
   }
 
   _listenToDatesContainerFocus() {
-    EventHandler.on(this.datesContainer, 'focus', () => {
+    EventHandler.on(this.datesContainer, "focus", () => {
       this._focusActiveCell(this.activeCell);
     });
   }
 
   _listenToDatesContainerBlur() {
-    EventHandler.on(this.datesContainer, 'blur', () => {
+    EventHandler.on(this.datesContainer, "blur", () => {
       this._removeCurrentFocusStyles();
     });
   }
 
   _handleKeydown(event) {
-    if (this._view === 'days') {
+    if (this._view === "days") {
       this._handleDaysViewKeydown(event);
     }
 
-    if (this._view === 'months') {
+    if (this._view === "months") {
       this._handleMonthsViewKeydown(event);
     }
 
-    if (this._view === 'years') {
+    if (this._view === "years") {
       this._handleYearsViewKeydown(event);
     }
   }
@@ -581,7 +628,10 @@ class Datepicker {
         this._activeDate = addDays(this._activeDate, 7);
         break;
       case HOME:
-        this._activeDate = addDays(this._activeDate, 1 - getDate(this._activeDate));
+        this._activeDate = addDays(
+          this._activeDate,
+          1 - getDate(this._activeDate)
+        );
         break;
       case END:
         this._activeDate = addDays(
@@ -604,8 +654,10 @@ class Datepicker {
         return;
     }
 
-    if (!areDatesInSameView(oldActiveDate, this._activeDate, this._view, 24, 0)) {
-      this._changeView('days');
+    if (
+      !areDatesInSameView(oldActiveDate, this._activeDate, this._view, 24, 0)
+    ) {
+      this._changeView("days");
     }
 
     this._removeHighlightFromCell(previousActiveCell);
@@ -621,19 +673,18 @@ class Datepicker {
 
   _focusActiveCell(cell) {
     if (cell) {
-      cell.setAttribute('data-te-datepicker-cell-focused', '')
+      cell.setAttribute("data-te-datepicker-cell-focused", "");
     }
   }
 
   _removeHighlightFromCell(cell) {
     if (cell) {
-      cell.removeAttribute('data-te-datepicker-cell-focused')
-
+      cell.removeAttribute("data-te-datepicker-cell-focused");
     }
   }
 
   _getActiveDayCell() {
-    const cells = SelectorEngine.find('td', this.datesContainer);
+    const cells = SelectorEngine.find("td", this.datesContainer);
 
     const activeCell = Array.from(cells).find((cell) => {
       const cellDate = convertStringToDate(cell.dataset.teDate);
@@ -680,8 +731,10 @@ class Datepicker {
         return;
     }
 
-    if (!areDatesInSameView(oldActiveDate, this._activeDate, this._view, 24, 0)) {
-      this._changeView('months');
+    if (
+      !areDatesInSameView(oldActiveDate, this._activeDate, this._view, 24, 0)
+    ) {
+      this._changeView("months");
     }
 
     this._removeHighlightFromCell(previousActiveCell);
@@ -690,7 +743,7 @@ class Datepicker {
   }
 
   _getActiveMonthCell() {
-    const cells = SelectorEngine.find('td', this.datesContainer);
+    const cells = SelectorEngine.find("td", this.datesContainer);
 
     const activeCell = Array.from(cells).find((cell) => {
       const cellYear = parseInt(cell.dataset.teYear, 10);
@@ -746,8 +799,10 @@ class Datepicker {
         return;
     }
 
-    if (!areDatesInSameView(oldActiveDate, this._activeDate, this._view, 24, 0)) {
-      this._changeView('years');
+    if (
+      !areDatesInSameView(oldActiveDate, this._activeDate, this._view, 24, 0)
+    ) {
+      this._changeView("years");
     }
 
     this._removeHighlightFromCell(previousActiveCell);
@@ -756,7 +811,7 @@ class Datepicker {
   }
 
   _getActiveYearCell() {
-    const cells = SelectorEngine.find('td', this.datesContainer);
+    const cells = SelectorEngine.find("td", this.datesContainer);
 
     const activeCell = Array.from(cells).find((cell) => {
       const cellYear = parseInt(cell.dataset.teYear, 10);
@@ -785,7 +840,7 @@ class Datepicker {
 
     this._removeDatepickerListeners();
 
-    Manipulator.addMultiClass(this.container, FADE_OUT_CLASSES)
+    Manipulator.addMultiClass(this.container, FADE_OUT_CLASSES);
 
     this._closeModal();
 
@@ -801,7 +856,7 @@ class Datepicker {
 
   _closeDropdown() {
     const datepicker = SelectorEngine.findOne(DROPDOWN_CONTAINER_SELECTOR);
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       if (datepicker) {
         document.body.removeChild(datepicker);
       }
@@ -810,7 +865,7 @@ class Datepicker {
         this._popper.destroy();
       }
     }
-    datepicker.addEventListener('animationend', () => {
+    datepicker.addEventListener("animationend", () => {
       if (datepicker) {
         document.body.removeChild(datepicker);
       }
@@ -826,21 +881,21 @@ class Datepicker {
     const backdrop = SelectorEngine.findOne(BACKDROP_SELECTOR);
     const datepicker = SelectorEngine.findOne(MODAL_CONTAINER_SELECTOR);
 
-    Manipulator.addMultiClass(backdrop, FADE_OUT_SHORT_CLASSES)
+    Manipulator.addMultiClass(backdrop, FADE_OUT_SHORT_CLASSES);
 
     if (datepicker && backdrop) {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         document.body.removeChild(backdrop);
         document.body.removeChild(datepicker);
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
-        return
+        document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
+        return;
       }
-      backdrop.addEventListener('animationend', () => {
+      backdrop.addEventListener("animationend", () => {
         document.body.removeChild(backdrop);
         document.body.removeChild(datepicker);
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
+        document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
       });
     }
   }
@@ -853,17 +908,17 @@ class Datepicker {
   }
 
   _removeDatepickerListeners() {
-    EventHandler.off(this.nextButton, 'click');
-    EventHandler.off(this.previousButton, 'click');
-    EventHandler.off(this.viewChangeButton, 'click');
-    EventHandler.off(this.okButton, 'click');
-    EventHandler.off(this.cancelButton, 'click');
-    EventHandler.off(this.clearButton, 'click');
+    EventHandler.off(this.nextButton, "click");
+    EventHandler.off(this.previousButton, "click");
+    EventHandler.off(this.viewChangeButton, "click");
+    EventHandler.off(this.okButton, "click");
+    EventHandler.off(this.cancelButton, "click");
+    EventHandler.off(this.clearButton, "click");
 
-    EventHandler.off(this.datesContainer, 'click');
-    EventHandler.off(this.datesContainer, 'keydown');
-    EventHandler.off(this.datesContainer, 'focus');
-    EventHandler.off(this.datesContainer, 'blur');
+    EventHandler.off(this.datesContainer, "click");
+    EventHandler.off(this.datesContainer, "keydown");
+    EventHandler.off(this.datesContainer, "focus");
+    EventHandler.off(this.datesContainer, "blur");
 
     EventHandler.off(document, EVENT_CLICK_DATA_API);
   }
@@ -875,7 +930,9 @@ class Datepicker {
 
     this._removeInputAndToggleListeners();
 
-    const generatedToggleButton = SelectorEngine.findOne(`#${this._toggleButtonId}`);
+    const generatedToggleButton = SelectorEngine.findOne(
+      `#${this._toggleButtonId}`
+    );
 
     if (generatedToggleButton) {
       this._element.removeChild(generatedToggleButton);
@@ -896,9 +953,13 @@ class Datepicker {
   }
 
   _removeInputAndToggleListeners() {
-    EventHandler.off(this._input, 'input');
-    EventHandler.off(this._element, EVENT_CLICK_DATA_API, DATEPICKER_TOGGLE_SELECTOR);
-    EventHandler.off(this._element, 'keydown', DATEPICKER_TOGGLE_SELECTOR);
+    EventHandler.off(this._input, "input");
+    EventHandler.off(
+      this._element,
+      EVENT_CLICK_DATA_API,
+      DATEPICKER_TOGGLE_SELECTOR
+    );
+    EventHandler.off(this._element, "keydown", DATEPICKER_TOGGLE_SELECTOR);
   }
 
   handleOk() {
@@ -919,7 +980,7 @@ class Datepicker {
     this._addSelectedStyles(cell);
     this._selectedYear = year;
 
-    this._asyncChangeView('months');
+    this._asyncChangeView("months");
   }
 
   _selectMonth(month, cell = this.activeCell) {
@@ -928,19 +989,18 @@ class Datepicker {
     this._addSelectedStyles(cell);
     this._selectedMonth = month;
 
-    this._asyncChangeView('days');
+    this._asyncChangeView("days");
   }
 
   _removeSelectedStyles(cell) {
     if (cell) {
-      cell.removeAttribute('data-te-datepicker-cell-selected')
-
+      cell.removeAttribute("data-te-datepicker-cell-selected");
     }
   }
 
   _addSelectedStyles(cell) {
     if (cell) {
-      cell.setAttribute('data-te-datepicker-cell-selected', '')
+      cell.setAttribute("data-te-datepicker-cell-selected", "");
     }
   }
 
@@ -964,24 +1024,30 @@ class Datepicker {
     this._selectedMonth = null;
     this._selectedYear = null;
     this._removeCurrentSelectionStyles();
-    this._input.value = '';
+    this._input.value = "";
     this._setInitialDate();
-    this._changeView('days');
+    this._changeView("days");
   }
 
   _removeCurrentSelectionStyles() {
-    const currentSelected = SelectorEngine.findOne('[data-te-datepicker-cell-selected]', this.container);
+    const currentSelected = SelectorEngine.findOne(
+      "[data-te-datepicker-cell-selected]",
+      this.container
+    );
 
     if (currentSelected) {
-      currentSelected.removeAttribute('data-te-datepicker-cell-selected')
+      currentSelected.removeAttribute("data-te-datepicker-cell-selected");
     }
   }
 
   _removeCurrentFocusStyles() {
-    const currentFocused = SelectorEngine.findOne('[data-te-datepicker-cell-focused]', this.container);
+    const currentFocused = SelectorEngine.findOne(
+      "[data-te-datepicker-cell-focused]",
+      this.container
+    );
 
     if (currentFocused) {
-      currentFocused.removeAttribute('data-te-datepicker-cell-focused')
+      currentFocused.removeAttribute("data-te-datepicker-cell-focused");
     }
   }
 
@@ -995,41 +1061,45 @@ class Datepicker {
     const mmm = this._options.monthsShort[getMonth(date)];
     const mmmm = this._options.monthsFull[getMonth(date)];
     const yy =
-      getYear(date).toString().length === 2 ? getYear(date) : getYear(date).toString().slice(2, 4);
+      getYear(date).toString().length === 2
+        ? getYear(date)
+        : getYear(date).toString().slice(2, 4);
     const yyyy = getYear(date);
 
-    const preformatted = this._options.format.split(/(d{1,4}|m{1,4}|y{4}|yy|!.)/g);
-    let formatted = '';
+    const preformatted = this._options.format.split(
+      /(d{1,4}|m{1,4}|y{4}|yy|!.)/g
+    );
+    let formatted = "";
     preformatted.forEach((datePart) => {
       switch (datePart) {
-        case 'dddd':
+        case "dddd":
           datePart = datePart.replace(datePart, dddd);
           break;
-        case 'ddd':
+        case "ddd":
           datePart = datePart.replace(datePart, ddd);
           break;
-        case 'dd':
+        case "dd":
           datePart = datePart.replace(datePart, dd);
           break;
-        case 'd':
+        case "d":
           datePart = datePart.replace(datePart, d);
           break;
-        case 'mmmm':
+        case "mmmm":
           datePart = datePart.replace(datePart, mmmm);
           break;
-        case 'mmm':
+        case "mmm":
           datePart = datePart.replace(datePart, mmm);
           break;
-        case 'mm':
+        case "mm":
           datePart = datePart.replace(datePart, mm);
           break;
-        case 'm':
+        case "m":
           datePart = datePart.replace(datePart, m);
           break;
-        case 'yyyy':
+        case "yyyy":
           datePart = datePart.replace(datePart, yyyy);
           break;
-        case 'yy':
+        case "yy":
           datePart = datePart.replace(datePart, yy);
           break;
         default:
@@ -1068,21 +1138,29 @@ class Datepicker {
 
   nextMonth() {
     const nextMonth = addMonths(this._activeDate, 1);
-    const template = createDayViewTemplate(nextMonth, this._selectedDate, this._options);
+    const template = createDayViewTemplate(
+      nextMonth,
+      this._selectedDate,
+      this._options
+    );
     this._activeDate = nextMonth;
-    this.viewChangeButton.textContent = `${this._options.monthsFull[this.activeMonth]} ${
-      this.activeYear
-    }`;
+    this.viewChangeButton.textContent = `${
+      this._options.monthsFull[this.activeMonth]
+    } ${this.activeYear}`;
     this.datesContainer.innerHTML = template;
   }
 
   previousMonth() {
     const previousMonth = addMonths(this._activeDate, -1);
     this._activeDate = previousMonth;
-    const template = createDayViewTemplate(previousMonth, this._selectedDate, this._options);
-    this.viewChangeButton.textContent = `${this._options.monthsFull[this.activeMonth]} ${
-      this.activeYear
-    }`;
+    const template = createDayViewTemplate(
+      previousMonth,
+      this._selectedDate,
+      this._options
+    );
+    this.viewChangeButton.textContent = `${
+      this._options.monthsFull[this.activeMonth]
+    } ${this.activeYear}`;
     this.datesContainer.innerHTML = template;
   }
 
@@ -1117,7 +1195,13 @@ class Datepicker {
   nextYears() {
     const nextYear = addYears(this._activeDate, 24);
     this._activeDate = nextYear;
-    const template = createYearViewTemplate(nextYear, this._selectedYear, this._options, 24, 4);
+    const template = createYearViewTemplate(
+      nextYear,
+      this._selectedYear,
+      this._options,
+      24,
+      4
+    );
     this.viewChangeButton.textContent = `${this.firstYearInView} - ${this.lastYearInView}`;
     this.datesContainer.innerHTML = template;
   }
@@ -1125,7 +1209,13 @@ class Datepicker {
   previousYears() {
     const previousYear = addYears(this._activeDate, -24);
     this._activeDate = previousYear;
-    const template = createYearViewTemplate(previousYear, this._selectedYear, this._options, 24, 4);
+    const template = createYearViewTemplate(
+      previousYear,
+      this._selectedYear,
+      this._options,
+      24,
+      4
+    );
     this.viewChangeButton.textContent = `${this.firstYearInView} - ${this.lastYearInView}`;
     this.datesContainer.innerHTML = template;
   }
@@ -1143,7 +1233,7 @@ class Datepicker {
     // view after selecting year
     this.datesContainer.blur();
 
-    if (view === 'days') {
+    if (view === "days") {
       this.datesContainer.innerHTML = createDayViewTemplate(
         this._activeDate,
         this._selectedDate,
@@ -1151,7 +1241,7 @@ class Datepicker {
       );
     }
 
-    if (view === 'months') {
+    if (view === "months") {
       this.datesContainer.innerHTML = createMonthViewTemplate(
         this.activeYear,
         this._selectedYear,
@@ -1161,7 +1251,7 @@ class Datepicker {
       );
     }
 
-    if (view === 'years') {
+    if (view === "years") {
       this.datesContainer.innerHTML = createYearViewTemplate(
         this._activeDate,
         this._selectedYear,
@@ -1176,27 +1266,48 @@ class Datepicker {
   }
 
   _updateViewControlsAndAttributes(view) {
-    if (view === 'days') {
-      this.viewChangeButton.textContent = `${this._options.monthsFull[this.activeMonth]} ${
-        this.activeYear
-      }`;
-      this.viewChangeButton.setAttribute('aria-label', this._options.switchToMultiYearViewLabel);
-      this.previousButton.setAttribute('aria-label', this._options.prevMonthLabel);
-      this.nextButton.setAttribute('aria-label', this._options.nextMonthLabel);
+    if (view === "days") {
+      this.viewChangeButton.textContent = `${
+        this._options.monthsFull[this.activeMonth]
+      } ${this.activeYear}`;
+      this.viewChangeButton.setAttribute(
+        "aria-label",
+        this._options.switchToMultiYearViewLabel
+      );
+      this.previousButton.setAttribute(
+        "aria-label",
+        this._options.prevMonthLabel
+      );
+      this.nextButton.setAttribute("aria-label", this._options.nextMonthLabel);
     }
 
-    if (view === 'months') {
+    if (view === "months") {
       this.viewChangeButton.textContent = `${this.activeYear}`;
-      this.viewChangeButton.setAttribute('aria-label', this._options.switchToDayViewLabel);
-      this.previousButton.setAttribute('aria-label', this._options.prevYearLabel);
-      this.nextButton.setAttribute('aria-label', this._options.nextYearLabel);
+      this.viewChangeButton.setAttribute(
+        "aria-label",
+        this._options.switchToDayViewLabel
+      );
+      this.previousButton.setAttribute(
+        "aria-label",
+        this._options.prevYearLabel
+      );
+      this.nextButton.setAttribute("aria-label", this._options.nextYearLabel);
     }
 
-    if (view === 'years') {
+    if (view === "years") {
       this.viewChangeButton.textContent = `${this.firstYearInView} - ${this.lastYearInView}`;
-      this.viewChangeButton.setAttribute('aria-label', this._options.switchToMonthViewLabel);
-      this.previousButton.setAttribute('aria-label', this._options.prevMultiYearLabel);
-      this.nextButton.setAttribute('aria-label', this._options.nextMultiYearLabel);
+      this.viewChangeButton.setAttribute(
+        "aria-label",
+        this._options.switchToMonthViewLabel
+      );
+      this.previousButton.setAttribute(
+        "aria-label",
+        this._options.prevMultiYearLabel
+      );
+      this.nextButton.setAttribute(
+        "aria-label",
+        this._options.nextMultiYearLabel
+      );
     }
   }
 
@@ -1231,25 +1342,25 @@ class Datepicker {
     const regExp = new RegExp(`[${delimeterPattern}]`);
     const dateParts = dateString.split(regExp);
     const formatParts = format.split(regExp);
-    const isMonthString = format.indexOf('mmm') !== -1;
+    const isMonthString = format.indexOf("mmm") !== -1;
 
     const datesArray = [];
 
     for (let i = 0; i < formatParts.length; i++) {
-      if (formatParts[i].indexOf('yy') !== -1) {
+      if (formatParts[i].indexOf("yy") !== -1) {
         datesArray[0] = { value: dateParts[i], format: formatParts[i] };
       }
-      if (formatParts[i].indexOf('m') !== -1) {
+      if (formatParts[i].indexOf("m") !== -1) {
         datesArray[1] = { value: dateParts[i], format: formatParts[i] };
       }
-      if (formatParts[i].indexOf('d') !== -1 && formatParts[i].length <= 2) {
+      if (formatParts[i].indexOf("d") !== -1 && formatParts[i].length <= 2) {
         datesArray[2] = { value: dateParts[i], format: formatParts[i] };
       }
     }
 
     let monthsNames;
 
-    if (format.indexOf('mmmm') !== -1) {
+    if (format.indexOf("mmmm") !== -1) {
       monthsNames = this._options.monthsFull;
     } else {
       monthsNames = this._options.monthsShort;
@@ -1275,7 +1386,8 @@ class Datepicker {
 
   static getOrCreateInstance(element, config = {}) {
     return (
-      this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
+      this.getInstance(element) ||
+      new this(element, typeof config === "object" ? config : null)
     );
   }
 }

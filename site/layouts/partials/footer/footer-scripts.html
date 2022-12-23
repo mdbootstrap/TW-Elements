@@ -17,7 +17,7 @@
 
       this.jsonFile = jsonFile;
 
-      this.searchValue = '';
+      this.searchValue = "";
 
       this.keycodes = Object.freeze({
         ARROW_UP: 38,
@@ -29,11 +29,11 @@
     }
 
     get visibleDropdown() {
-      return this.dropdown.style.display === 'block';
+      return this.dropdown.style.display === "block";
     }
 
     get options() {
-      return this.list.getElementsByTagName('a');
+      return this.list.getElementsByTagName("a");
     }
 
     get results() {
@@ -42,7 +42,7 @@
     }
 
     init() {
-      fetch('/' + this.jsonFile)
+      fetch("/" + this.jsonFile)
         .then((response) => response.json())
         .then((response) => {
           this.data = [...response];
@@ -54,21 +54,21 @@
     }
 
     bindEvents() {
-      this.input.addEventListener('input', (e) => this.search(e));
+      this.input.addEventListener("input", (e) => this.search(e));
 
-      this.input.addEventListener('focus', (e) => {
-        this.icon.classList.add('font-bold');
+      this.input.addEventListener("focus", (e) => {
+        this.icon.classList.add("font-bold");
 
         if (e.target.value.length > 0) {
           this.search(e);
         }
       });
 
-      this.input.addEventListener('blur', () => {
-        this.icon.classList.remove('font-bold');
+      this.input.addEventListener("blur", () => {
+        this.icon.classList.remove("font-bold");
       });
 
-      this.input.addEventListener('keydown', (e) => {
+      this.input.addEventListener("keydown", (e) => {
         if (e.keyCode === this.keycodes.ARROW_DOWN && this.options.length > 0) {
           e.preventDefault();
 
@@ -76,14 +76,18 @@
         }
       });
 
-      window.addEventListener('click', (e) => {
+      window.addEventListener("click", (e) => {
         if (this.visibleDropdown && this.isOutside(e.target)) {
           this.toggleDropdown(false);
         }
       });
 
-      window.addEventListener('keydown', (e) => {
-        if (e.keyCode === this.keycodes.SLASH && e.ctrlKey && e.target !== this.input) {
+      window.addEventListener("keydown", (e) => {
+        if (
+          e.keyCode === this.keycodes.SLASH &&
+          e.ctrlKey &&
+          e.target !== this.input
+        ) {
           e.preventDefault();
           this.input.focus();
         } else if (e.keyCode === this.keycodes.ESCAPE && this.visibleDropdown) {
@@ -93,7 +97,9 @@
     }
 
     search(e) {
-      this.searchValue = this.normalizeString(this.getSearchValue(e.target.value));
+      this.searchValue = this.normalizeString(
+        this.getSearchValue(e.target.value)
+      );
 
       this.toggleDropdown(this.searchValue.length > 0);
 
@@ -107,13 +113,13 @@
     }
 
     getSearchValue(string) {
-      if (string.length > 1 && string[0] === '/') return string.slice(1);
+      if (string.length > 1 && string[0] === "/") return string.slice(1);
 
       return string;
     }
 
     toggleDropdown(value) {
-      const display = value ? 'block' : 'none';
+      const display = value ? "block" : "none";
 
       this.dropdown.style.display = display;
     }
@@ -128,7 +134,8 @@
       return this.results
         .map((result, i) => {
           const keywords = result.keywords.filter(
-            (keyword) => this.searchValue.length > 0 && keyword.match(this.searchValue)
+            (keyword) =>
+              this.searchValue.length > 0 && keyword.match(this.searchValue)
           );
 
           return `
@@ -146,19 +153,19 @@
             keywords.length > 0
               ? `<p class="text-sm text-gray-400 mb-0 pb-2 " style="max-width: 100%;    white-space: nowrap;     text-overflow: ellipsis;
     overflow: hidden;">${this.formatKeywords(keywords)}</p>`
-              : ''
+              : ""
           }
         </a>
-        ${i !== this.results.length - 1 ? '<hr class="m-0 p-0 w-50">' : ''}
+        ${i !== this.results.length - 1 ? '<hr class="m-0 p-0 w-50">' : ""}
       </li>
     `;
         })
-        .join('\n');
+        .join("\n");
     }
 
     compare({ name, keywords, category }) {
       return (
-        this.searchValue === '/' ||
+        this.searchValue === "/" ||
         this.normalizeString(name).match(this.searchValue) ||
         this.normalizeString(category).match(this.searchValue) ||
         keywords.find((keyword) => keyword.match(this.searchValue))
@@ -169,29 +176,38 @@
       return [
         ...entries
           .filter((e) => e.priority && e.priority[this.searchValue])
-          .sort((a, b) => (a.priority[this.searchValue] > b.priority[this.searchValue] ? 1 : -1)),
+          .sort((a, b) =>
+            a.priority[this.searchValue] > b.priority[this.searchValue] ? 1 : -1
+          ),
         ...entries.filter((e) => !e.priority || !e.priority[this.searchValue]),
       ];
     }
 
     highlightSearch(string) {
-      const searchIndex = this.normalizeString(string).indexOf(this.searchValue);
+      const searchIndex = this.normalizeString(string).indexOf(
+        this.searchValue
+      );
 
       if (searchIndex === -1) return string;
 
-      return `${string.slice(0, searchIndex)}<u class="font-medium	text-blue-600 ">${string.slice(
+      return `${string.slice(
+        0,
+        searchIndex
+      )}<u class="font-medium	text-blue-600 ">${string.slice(
         searchIndex,
         searchIndex + this.searchValue.length
       )}</u>${string.slice(searchIndex + this.searchValue.length)}`;
     }
 
     formatKeywords(keywords) {
-      return keywords.map((keyword) => this.highlightSearch(keyword)).join(', ');
+      return keywords
+        .map((keyword) => this.highlightSearch(keyword))
+        .join(", ");
     }
 
     setupKeyboardNavigation() {
       Array.from(this.options).forEach((option, i) => {
-        option.addEventListener('keydown', (e) => this.focusNextOption(e, i));
+        option.addEventListener("keydown", (e) => this.focusNextOption(e, i));
       });
     }
 
@@ -224,17 +240,17 @@
   }
 
   (function () {
-    const searchInput = document.getElementById('mdb-5-search-input');
-    const searchIcon = document.getElementById('mdb-5-search-icon');
-    const searchList = document.getElementById('mdb-5-search-list');
-    const searchForm = document.getElementById('mdb-5-search-container');
-    const searchDropdown = document.getElementById('mdb-5-search-dropdown');
-    const searchCount = document.getElementById('mdb-5-search-count');
+    const searchInput = document.getElementById("mdb-5-search-input");
+    const searchIcon = document.getElementById("mdb-5-search-icon");
+    const searchList = document.getElementById("mdb-5-search-list");
+    const searchForm = document.getElementById("mdb-5-search-container");
+    const searchDropdown = document.getElementById("mdb-5-search-dropdown");
+    const searchCount = document.getElementById("mdb-5-search-count");
 
     let searchJsonFile;
-    searchJsonFile = 'search.json';
+    searchJsonFile = "search.json";
 
-    var scripts = document.getElementsByTagName('script'),
+    var scripts = document.getElementsByTagName("script"),
       src = scripts[scripts.length - 1].src;
 
     const search = new Search(
@@ -250,26 +266,26 @@
     search.init();
   })();
 
-  if (document.getElementById('close_icon')) {
+  if (document.getElementById("close_icon")) {
     // grab everything we need
-    const btn = document.getElementById('hamburger');
-    const sidebar = document.getElementById('sidebar');
-    const close = document.getElementById('close_icon');
+    const btn = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+    const close = document.getElementById("close_icon");
 
     // add our event listener for the click
-    btn.addEventListener('click', () => {
-      sidebar.classList.toggle('-translate-x-full');
+    btn.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
     });
 
-    close.addEventListener('click', () => {
-      sidebar.classList.add('-translate-x-full');
+    close.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
     });
   }
 
   //Scrollspy
 
   (function () {
-    let menuSection = document.querySelectorAll('menu li');
+    let menuSection = document.querySelectorAll("menu li");
 
     if (menuSection.length == 0) return;
 
@@ -277,8 +293,8 @@
     menuSection.forEach((v) => {
       v.onclick = () => {
         setTimeout(() => {
-          menuSection.forEach((j) => j.classList.remove('active'));
-          v.classList.add('active');
+          menuSection.forEach((j) => j.classList.remove("active"));
+          v.classList.add("active");
         }, 300);
       };
     });
@@ -286,28 +302,28 @@
     // for window scrolldown event
 
     window.onscroll = () => {
-      let mainSection = document.querySelectorAll('main h2');
+      let mainSection = document.querySelectorAll("main h2");
 
       mainSection.forEach((v, i) => {
         let rect = v.getBoundingClientRect().y;
 
         if (rect < window.innerHeight + -1100) {
-          menuSection.forEach((v) => v.classList.remove('active'));
+          menuSection.forEach((v) => v.classList.remove("active"));
           if (!menuSection[i]) {
             return;
           }
-          menuSection[i].classList.add('active');
+          menuSection[i].classList.add("active");
         }
       });
     };
   })();
 
-  const clip = document.querySelectorAll('.clip');
+  const clip = document.querySelectorAll(".clip");
   for (let i = 0; i < clip.length; i++) {
-    clip[i].addEventListener('mouseenter', function (e) {
+    clip[i].addEventListener("mouseenter", function (e) {
       clip[i].play();
     });
-    clip[i].addEventListener('mouseout', function (e) {
+    clip[i].addEventListener("mouseout", function (e) {
       clip[i].pause();
     });
   }
@@ -323,120 +339,143 @@
 <link rel="stylesheet" href="/css/new-prism.css" />
 
 <script>
-  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-te-toggle="popover"]'));
+  var popoverTriggerList = [].slice.call(
+    document.querySelectorAll('[data-te-toggle="popover"]')
+  );
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new te.Popover(popoverTriggerEl);
   });
 
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-te-toggle="tooltip"]'));
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-te-toggle="tooltip"]')
+  );
 
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new te.Tooltip(tooltipTriggerEl);
   });
 </script>
 <script>
-  if (document.getElementById('flexCheckIndeterminate')) {
-    const checkbox = document.getElementById('flexCheckIndeterminate');
+  if (document.getElementById("flexCheckIndeterminate")) {
+    const checkbox = document.getElementById("flexCheckIndeterminate");
     checkbox.indeterminate = true;
   }
 </script>
 <script>
-  const manuallyEl = document.getElementById('manually-example');
-  const manuallyBtnStart = document.querySelector('[data-te-animation-start-ref]');
-  const manuallyBtnStop = document.querySelector('[data-te-animation-stop-ref]');
-  const manually = new te.Animate(manuallyEl, {
-    animation: 'pulse',
-    animationStart: 'manually',
-    animationRepeat: true,
-  });
-  manuallyBtnStart.addEventListener('click', () => {
-    manually.startAnimation();
-  });
-  manuallyBtnStop.addEventListener('click', () => {
-    manually.stopAnimation();
-  });
+  // Animations page
+  const manuallyEl = document.getElementById("manually-example");
+  if (manuallyEl) {
+    const manuallyBtnStart = document.querySelector(
+      "[data-te-animation-start-ref]"
+    );
+    const manuallyBtnStop = document.querySelector(
+      "[data-te-animation-stop-ref]"
+    );
+    const manually = new te.Animate(manuallyEl, {
+      animation: "pulse",
+      animationStart: "manually",
+      animationRepeat: true,
+    });
+    manuallyBtnStart.addEventListener("click", () => {
+      manually.startAnimation();
+    });
+    manuallyBtnStop.addEventListener("click", () => {
+      manually.stopAnimation();
+    });
 
-  //change animation
-  const changeAnimationEl = document.getElementById('change-animation-type-example');
-  const changeAnimationBtn = document.querySelector('[data-te-animation-change-ref]');
-  let animation = 'pulse';
-  const changeAnimation = new te.Animate(changeAnimationEl, {
-    animation: animation,
-    animationStart: 'onLoad',
-    animationRepeat: true,
-  });
+    //change animation
+    const changeAnimationEl = document.getElementById(
+      "change-animation-type-example"
+    );
+    const changeAnimationBtn = document.querySelector(
+      "[data-te-animation-change-ref]"
+    );
+    let animation = "pulse";
+    const changeAnimation = new te.Animate(changeAnimationEl, {
+      animation: animation,
+      animationStart: "onLoad",
+      animationRepeat: true,
+    });
 
-  changeAnimation.init();
+    changeAnimation.init();
 
-  changeAnimationBtn.addEventListener('click', () => {
-    if (animation === 'pulse') {
-      animation = 'spin';
-    } else {
-      animation = 'pulse';
-    }
-    changeAnimation.stopAnimation();
-    changeAnimation.changeAnimationType(animation);
-    changeAnimation.startAnimation();
-  });
-  //change animation
+    changeAnimationBtn.addEventListener("click", () => {
+      if (animation === "pulse") {
+        animation = "spin";
+      } else {
+        animation = "pulse";
+      }
+      changeAnimation.stopAnimation();
+      changeAnimation.changeAnimationType(animation);
+      changeAnimation.startAnimation();
+    });
+    //change animation
 
-  //list group
-  let elementNumber = 1;
-  const bindRemoveClickEvent = (el) => {
-    const element = el;
+    //list group
+    let elementNumber = 1;
+    const bindRemoveClickEvent = (el) => {
+      const element = el;
 
-    element.addEventListener('click', () => {
-      const prevElement = element.previousElementSibling ? element.previousElementSibling : element;
+      element.addEventListener("click", () => {
+        const prevElement = element.previousElementSibling
+          ? element.previousElementSibling
+          : element;
+        const animation =
+          element === prevElement
+            ? "[fade-out_1s_ease-in-out]"
+            : "[slide-out-up_1s_ease-in-out]";
+
+        prevElement.style.zIndex = "1";
+
+        element.addEventListener("animationend", () => {
+          element.remove();
+          prevElement.style.zIndex = "0";
+        });
+
+        element.classList.add(`animate-${animation}`);
+      });
+    };
+
+    const addNewOption = () => {
+      const element = document.querySelector("[data-te-animation-ref]");
+      const newElement = document.createElement("li");
+      const lastElement = element.lastElementChild || element;
       const animation =
-        element === prevElement ? '[fade-out_1s_ease-in-out]' : '[slide-out-up_1s_ease-in-out]';
+        element === lastElement
+          ? "[fade-in_1s_ease-in-out]"
+          : "[slide-in-down_1s_ease-in-out]";
 
-      prevElement.style.zIndex = '1';
+      newElement.innerText = `element ${elementNumber}`;
+      lastElement.style.zIndex = "1";
+      newElement.classList.add(
+        "px-6",
+        "py-2",
+        "border-b",
+        "border-gray-200",
+        "w-full",
+        "rounded-t-lg",
+        "relative",
+        `animate-${animation}`
+      );
 
-      element.addEventListener('animationend', () => {
-        element.remove();
-        prevElement.style.zIndex = '0';
+      newElement.addEventListener("animationend", () => {
+        lastElement.style.zIndex = "0";
+        newElement.classList.remove(animation);
       });
 
-      element.classList.add(`animate-${animation}`);
-    });
-  };
+      bindRemoveClickEvent(newElement);
+      element.appendChild(newElement);
+      elementNumber += 1;
+    };
 
-  const addNewOption = () => {
-    const element = document.querySelector('[data-te-animation-ref]');
-    const newElement = document.createElement('li');
-    const lastElement = element.lastElementChild || element;
-    const animation =
-      element === lastElement ? '[fade-in_1s_ease-in-out]' : '[slide-in-down_1s_ease-in-out]';
-
-    newElement.innerText = `element ${elementNumber}`;
-    lastElement.style.zIndex = '1';
-    newElement.classList.add(
-      'px-6',
-      'py-2',
-      'border-b',
-      'border-gray-200',
-      'w-full',
-      'rounded-t-lg',
-      'relative',
-      `animate-${animation}`
-    );
-
-    newElement.addEventListener('animationend', () => {
-      lastElement.style.zIndex = '0';
-      newElement.classList.remove(animation);
+    document.querySelectorAll("[data-te-animation-ref] li").forEach((el) => {
+      bindRemoveClickEvent(el);
     });
 
-    bindRemoveClickEvent(newElement);
-    element.appendChild(newElement);
-    elementNumber += 1;
-  };
-
-  document.querySelectorAll('[data-te-animation-ref] li').forEach((el) => {
-    bindRemoveClickEvent(el);
-  });
-
-  document.querySelector('[data-te-animation-add-ref]').addEventListener('click', () => {
-    addNewOption();
-  });
+    document
+      .querySelector("[data-te-animation-add-ref]")
+      .addEventListener("click", () => {
+        addNewOption();
+      });
+  }
   //list group
 </script>

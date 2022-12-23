@@ -5,8 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin } from './util/index';
-import Tooltip from './tooltip';
+import { defineJQueryPlugin } from "./util/index";
+import Tooltip from "./tooltip";
 
 /**
  * ------------------------------------------------------------------------
@@ -14,27 +14,27 @@ import Tooltip from './tooltip';
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'popover';
-const DATA_KEY = 'te.popover';
+const NAME = "popover";
+const DATA_KEY = "te.popover";
 const EVENT_KEY = `.${DATA_KEY}`;
-const CLASS_PREFIX = 'te-popover';
+const CLASS_PREFIX = "te-popover";
 
 const Default = {
   ...Tooltip.Default,
-  placement: 'right',
+  placement: "right",
   offset: [0, 8],
-  trigger: 'click',
-  content: '',
+  trigger: "click",
+  content: "",
   template:
     '<div class="opacity-0 transition-opacity duration-300 ease-in-out absolute top-0 left-0 z-[1070] block max-w-[267px] break-words bg-white bg-clip-padding border-0 rounded-lg shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] text-sm not-italic font-normal text-left no-underline underline-offset-auto normal-case leading-6 tracking-normal break-normal whitespace-normal" role="tooltip">' +
     '<h3 class="popover-header py-2 px-4 mb-0 bg-white border border-solid rounded-t-lg font-medium empty:hidden"></h3>' +
     '<div class="popover-body p-4 text-[#212529]"></div>' +
-    '</div>',
+    "</div>",
 };
 
 const DefaultType = {
   ...Tooltip.DefaultType,
-  content: '(string|element|function)',
+  content: "(string|element|function)",
 };
 
 const Event = {
@@ -50,8 +50,8 @@ const Event = {
   MOUSELEAVE: `mouseleave${EVENT_KEY}`,
 };
 
-const SELECTOR_TITLE = '.popover-header';
-const SELECTOR_CONTENT = '.popover-body';
+const SELECTOR_TITLE = ".popover-header";
+const SELECTOR_CONTENT = ".popover-body";
 
 /**
  * ------------------------------------------------------------------------
@@ -105,8 +105,8 @@ class Popover extends Tooltip {
     return this.each(function () {
       const data = Popover.getOrCreateInstance(this, config);
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+      if (typeof config === "string") {
+        if (typeof data[config] === "undefined") {
           throw new TypeError(`No method named "${config}"`);
         }
 

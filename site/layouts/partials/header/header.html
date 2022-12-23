@@ -1,81 +1,60 @@
-
 <nav class="shadow">
-
   <div class="px-5 lg:px-8">
-    <div class="relative flex items-center justify-between h-16">
-      <div class="flex-1 flex items-center sm:items-stretch sm:justify-start">
-        <div class="flex-shrink-0 flex items-center">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
+        <div class="flex flex-shrink-0 items-center">
           <style></style>
           {{ if ne .IsHome true }}
-          <div id="hamburger" class="mr-2 flex md:hidden text-gray-400">
-            <a href="#" class="text-gray-400">
-              <svg fill="hsl(224, 7.2%, 40%)" viewBox="0 0 100 80" width="25" height="25">
-                <rect width="80" height="14"></rect>
-                <rect y="30" width="80" height="14"></rect>
-                <rect y="60" width="80" height="14"></rect>
-              </svg>
-            </a>
-          </div>
+            <div id="hamburger" class="mr-2 flex text-gray-400 md:hidden">
+              <a href="#" class="text-gray-400">
+                <svg
+                  fill="hsl(224, 7.2%, 40%)"
+                  viewBox="0 0 100 80"
+                  width="25"
+                  height="25">
+                  <rect width="80" height="14"></rect>
+                  <rect y="30" width="80" height="14"></rect>
+                  <rect y="60" width="80" height="14"></rect>
+                </svg>
+              </a>
+            </div>
           {{ end }}
-          <a href="/" class="
-              pr-3
-              py-2
-              rounded-md
-              font-medium
-              flex
-              items-center
-              text-lg
-              dark:text-gray-400
-            " aria-current="page"><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
-            Tailwind Elements</a>
+          <a
+            href="/"
+            class="flex items-center rounded-md py-2 pr-3 text-lg font-medium dark:text-gray-400"
+            aria-current="page"
+            ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
+            Tailwind Elements</a
+          >
         </div>
-        <div class="hidden md:flex sm:ml-6 flex items-center">
+        <div class="flex hidden items-center sm:ml-6 md:flex">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
-            <a href="/quick-start/" class="
-                hover:text-blue-600
-                px-3
-                py-2
-                rounded-md
-                text-sm
-                font-medium
-                dark:text-gray-400
-                dark:hover:text-blue-600
-              ">Get started</a>
+            <a
+              href="/quick-start/"
+              class="rounded-md px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-600"
+              >Get started</a
+            >
 
-            <a href="/snippets/" class="
-                hover:text-blue-600
-                px-3
-                py-2
-                rounded-md
-                text-sm
-                font-medium
-                hidden xl:block
-                dark:text-gray-400
-                dark:hover:text-blue-600
-              ">Playground</a>
+            <a
+              href="/snippets/"
+              class="hidden rounded-md px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-600 xl:block"
+              >Playground</a
+            >
 
-            <a target="_blank" href="https://mdbgo.com/" class="
-                hover:text-blue-600
-                px-3
-                py-2
-                rounded-md
-                text-sm
-                font-medium
-                dark:text-gray-400
-                dark:hover:text-blue-600
-              ">Free hosting</a>
-              <a target="_blank" href="https://mdbootstrap.com/services/" class="
-                  hover:text-blue-600
-                  px-3
-                  py-2
-                  rounded-md
-                  text-sm
-                  font-medium
-                  dark:text-gray-400
-                  dark:hover:text-blue-600
-                ">Services</a>
+            <a
+              target="_blank"
+              href="https://mdbgo.com/"
+              class="rounded-md px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-600"
+              >Free hosting</a
+            >
+            <a
+              target="_blank"
+              href="https://mdbootstrap.com/services/"
+              class="rounded-md px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-600"
+              >Services</a
+            >
           </div>
         </div>
       </div>
@@ -88,11 +67,17 @@
               outline: 1px solid hsl(222, 14.1%, 72.2%) !important;
             }
           </style>
-          <input id="mdb-5-search-input" autocomplete="off" type="search" class="rounded-lg w-100 p-2 mr-2 bg-gray-100"
+          <input
+            id="mdb-5-search-input"
+            autocomplete="off"
+            type="search"
+            class="w-100 mr-2 rounded-lg bg-gray-100 p-2"
             placeholder='Search (ctrl + "/")' />
           <span class="input-group-text border-0">
-            <span class=" text-gray-400" id="mdb-5-search-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4"
+            <span class="text-gray-400" id="mdb-5-search-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="inline-block w-4"
                 viewBox="0 0 512 512">
                 <path
                   fill="currentColor"
@@ -101,61 +86,74 @@
             </span>
           </span>
         </form>
-        <div id="mdb-5-search-dropdown" class="rounded shadow-md hidden p-2" style="
+        <div
+          id="mdb-5-search-dropdown"
+          class="hidden rounded p-2 shadow-md"
+          style="
             position: absolute;
             top: 50px;
             overflow-y: hidden;
             z-index: 999999;
             background-color: white;
           ">
-          <ul id="mdb-5-search-list" class="
-              w-max
-              pt-0
-              scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100
-            " style="
-              overflow-y: scroll;
-              max-height: 265px;
-              min-width: 300px;
-              position: relative;
-            "></ul>
+          <ul
+            id="mdb-5-search-list"
+            class="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 w-max pt-0"
+            style="overflow-y: scroll; max-height: 265px; min-width: 300px; position: relative"></ul>
           <hr class="my-0" />
-          <p class="mb-0 mx-2 my-3 text-gray-500 text-sm">
+          <p class="mx-2 my-3 mb-0 text-sm text-gray-500">
             search results: <strong id="mdb-5-search-count"></strong>
           </p>
         </div>
       </div>
       <!-- Search -->
-      <div class="
-          absolute
-          inset-y-0
-          right-0
-          flex
-          items-center
-          pr-0
-          sm:static sm:inset-auto sm:ml-6
-        ">
+      <div
+        class="absolute inset-y-0 right-0 flex items-center pr-0 sm:static sm:inset-auto sm:ml-6">
         <!-- Theme switcher -->
         <div id="theme-switcher">
           <button
-            class="mx-2 pt-1 dark:text-gray-400 uppercase rounded-full text-gray-400 hover:text-blue-600 dark:hover:text-blue-600 focus:outline-none transition duration-150 ease-in-out flex items-center justify-center whitespace-nowrap motion-reduce:transition-none focus:text-gray-800 dark:focus:text-gray-200"
-            type="button" id="themeSwitcher" data-te-dropdown-toggle-ref data-te-dropdown-position="dropend" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" data-theme-icon aria-hidden="true" focusable="false" class="w-3 pt-1" role="img"
+            class="mx-2 flex items-center justify-center whitespace-nowrap rounded-full pt-1 uppercase text-gray-400 transition duration-150 ease-in-out hover:text-blue-600 focus:text-gray-800 focus:outline-none motion-reduce:transition-none dark:text-gray-400 dark:hover:text-blue-600 dark:focus:text-gray-200"
+            type="button"
+            id="themeSwitcher"
+            data-te-dropdown-toggle-ref
+            data-te-dropdown-position="dropend"
+            aria-expanded="false">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              data-theme-icon
+              aria-hidden="true"
+              focusable="false"
+              class="w-3 pt-1"
+              role="img"
               viewBox="0 0 384 512">
-              <path fill="currentColor"
+              <path
+                fill="currentColor"
                 d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
             </svg>
           </button>
           <ul
-            class="absolute w-[100px] bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block dark:bg-gray-800"
-            aria-labelledby="themeSwitcher" data-te-dropdown-menu-ref>
+            class="absolute z-[1000] float-left m-0 hidden w-[100px] list-none rounded-lg border-none bg-white bg-clip-padding py-2 text-left text-base shadow-lg dark:bg-gray-800 [&[data-te-dropdown-show]]:block"
+            aria-labelledby="themeSwitcher"
+            data-te-dropdown-menu-ref>
             <li>
-              <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-200 focus:dark:bg-gray-600"
-                href="#" data-theme="light" data-te-dropdown-item-ref>
+              <a
+                class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-gray-700 hover:bg-gray-100 focus:bg-gray-200 focus:outline-none active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-100 dark:hover:bg-gray-600 focus:dark:bg-gray-600"
+                href="#"
+                data-theme="light"
+                data-te-dropdown-item-ref>
                 <div class="pointer-events-none">
-                  <div class="inline-block w-[24px] text-center" data-theme-icon="light">
-                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="inline-block w-4"
-                      role="img" viewBox="0 0 512 512">
-                      <path fill="currentColor"
+                  <div
+                    class="inline-block w-[24px] text-center"
+                    data-theme-icon="light">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
+                      class="inline-block w-4"
+                      role="img"
+                      viewBox="0 0 512 512">
+                      <path
+                        fill="currentColor"
                         d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM352 256c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zm32 0c0-70.7-57.3-128-128-128s-128 57.3-128 128s57.3 128 128 128s128-57.3 128-128z" />
                     </svg>
                   </div>
@@ -164,13 +162,24 @@
               </a>
             </li>
             <li>
-              <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-200 focus:dark:bg-gray-600"
-                href="#" data-theme="dark" data-te-dropdown-item-ref>
+              <a
+                class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-gray-700 hover:bg-gray-100 focus:bg-gray-200 focus:outline-none active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-100 dark:hover:bg-gray-600 focus:dark:bg-gray-600"
+                href="#"
+                data-theme="dark"
+                data-te-dropdown-item-ref>
                 <div class="pointer-events-none">
-                  <div class="inline-block w-[24px] text-center" data-theme-icon="dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="inline-block w-3"
-                      role="img" viewBox="0 0 384 512">
-                      <path fill="currentColor"
+                  <div
+                    class="inline-block w-[24px] text-center"
+                    data-theme-icon="dark">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
+                      class="inline-block w-3"
+                      role="img"
+                      viewBox="0 0 384 512">
+                      <path
+                        fill="currentColor"
                         d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z" />
                     </svg>
                   </div>
@@ -196,22 +205,18 @@
           </ul>
         </div>
         <!-- /Theme switcher -->
-        <a href="https://github.com/mdbootstrap/Tailwind-Elements/" target="_blank" class="
-            text-gray-400
-            hover:text-blue-600
-            px-0
-            sm:px-2
-            pt-3
-            pb-2
-            rounded-md
-            text-sm
-            font-medium
-          "><svg xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 496 512" class="w-4">
+        <a
+          href="https://github.com/mdbootstrap/Tailwind-Elements/"
+          target="_blank"
+          class="rounded-md px-0 pt-3 pb-2 text-sm font-medium text-gray-400 hover:text-blue-600 sm:px-2"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 496 512"
+            class="w-4">
             <path
               fill="currentColor"
-              d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-          </svg></a>
+              d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" /></svg
+        ></a>
       </div>
     </div>
   </div>
