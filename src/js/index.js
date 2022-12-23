@@ -13,12 +13,14 @@ import Tooltip from './bs/src/tooltip';
 import Toast from './bs/src/toast';
 
 // MDB COMPONENTS
+import Animate from './mdb/animate';
 import Ripple from './mdb/ripple';
 import Datepicker from './mdb/datepicker';
 import Timepicker from './mdb/timepicker';
 import Stepper from './mdb/stepper';
 
 export {
+  Animate,
   Alert,
   Button,
   Dropdown,
