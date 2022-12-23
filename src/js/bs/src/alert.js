@@ -5,11 +5,11 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, typeCheckConfig } from './util/index';
-import EventHandler from './dom/event-handler';
-import BaseComponent from './base-component';
-import Manipulator from './dom/manipulator';
-import { enableDismissTrigger } from './util/component-functions';
+import { defineJQueryPlugin, typeCheckConfig } from "./util/index";
+import EventHandler from "./dom/event-handler";
+import BaseComponent from "./base-component";
+import Manipulator from "./dom/manipulator";
+import { enableDismissTrigger } from "./util/component-functions";
 
 /**
  * ------------------------------------------------------------------------
@@ -17,19 +17,19 @@ import { enableDismissTrigger } from './util/component-functions';
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'alert';
-const DATA_KEY = 'te.alert';
+const NAME = "alert";
+const DATA_KEY = "te.alert";
 const EVENT_KEY = `.${DATA_KEY}`;
 
 const EVENT_CLOSE = `close${EVENT_KEY}`;
 const EVENT_CLOSED = `closed${EVENT_KEY}`;
 
 const FADE_OUT_CLASSES =
-  'animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none';
-const SHOW_DATA_ATTRIBUTE = 'data-te-toast-show';
+  "animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
+const SHOW_DATA_ATTRIBUTE = "data-te-toast-show";
 
 const DefaultType = {
-  animation: 'boolean',
+  animation: "boolean",
 };
 
 const Default = {
@@ -79,7 +79,11 @@ class Alert extends BaseComponent {
     this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
 
     setTimeout(() => {
-      this._queueCallback(() => this._destroyElement(), this._element, this._config.animation);
+      this._queueCallback(
+        () => this._destroyElement(),
+        this._element,
+        this._config.animation
+      );
     }, timeout);
   }
 
@@ -88,7 +92,7 @@ class Alert extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' && config ? config : {}),
+      ...(typeof config === "object" && config ? config : {}),
     };
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType);
@@ -108,11 +112,15 @@ class Alert extends BaseComponent {
     return this.each(function () {
       const data = Alert.getOrCreateInstance(this);
 
-      if (typeof config !== 'string') {
+      if (typeof config !== "string") {
         return;
       }
 
-      if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+      if (
+        data[config] === undefined ||
+        config.startsWith("_") ||
+        config === "constructor"
+      ) {
         throw new TypeError(`No method named "${config}"`);
       }
 
@@ -127,7 +135,7 @@ class Alert extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-enableDismissTrigger(Alert, 'close');
+enableDismissTrigger(Alert, "close");
 
 /**
  * ------------------------------------------------------------------------

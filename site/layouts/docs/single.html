@@ -1,5 +1,8 @@
-{{ $page_resources := .Resources }} {{ $overview_scrollspy_file_exists :=
-fileExists (printf "/content/%s/ss.html" .File.Dir) }}
+{{ $page_resources := .Resources }}
+{{ $overview_scrollspy_file_exists := fileExists (printf
+  "/content/%s/ss.html" .File.Dir)
+}}
+
 
 <!-- Single for all single page under /docs/* -->
 <!DOCTYPE html>
@@ -10,36 +13,18 @@ fileExists (printf "/content/%s/ss.html" .File.Dir) }}
   <body class="dark:bg-zinc-800">
     {{ partial "header/header.html" . }}
 
+
     <div class="container mx-auto mt-4 pt-12">
       <div class="flex flex-wrap">
         <div
           id="sidebar"
-          class="
-            w-full
-            sm:w-3/12
-            lg:w-2/12
-            pr-4
-            tex-left
-            absolute
-            inset-y-0
-            left-0
-            transform
-            -translate-x-full
-            md:relative md:translate-x-0
-            transition
-            duration-200
-            ease-in-out
-            bg-white
-            dark:bg-zinc-800
-            z-40
-          "
-        >
+          class="tex-left absolute inset-y-0 left-0 z-40 w-full -translate-x-full transform bg-white pr-4 transition duration-200 ease-in-out dark:bg-zinc-800 sm:w-3/12 md:relative md:translate-x-0 lg:w-2/12">
           {{ partial "sidenav/standard.html" . }}
         </div>
         <!-- Right column -->
-        <div class="w-full sm:w-9/12 lg:w-8/12 px-4 sm:pr-10 lg:pr-4">
+        <div class="w-full px-4 sm:w-9/12 sm:pr-10 lg:w-8/12 lg:pr-4">
           <div class="mb-8">
-            <h1 class="text-5xl font-bold leading-normal mt-0">
+            <h1 class="mt-0 text-5xl font-bold leading-normal">
               {{ .Params.main_title }}
             </h1>
             <p class="text-gray-500">{{ .Params.description }}</p>
@@ -49,62 +34,75 @@ fileExists (printf "/content/%s/ss.html" .File.Dir) }}
           </div>
         </div>
         {{ if $overview_scrollspy_file_exists }}
-        <!-- Sidebar  -->
+          <!-- Sidebar  -->
 
-        <div class="w-full lg:w-2/12 px-4 hidden lg:block">
-          <menu class="sticky top-10">
-            <style>
-              .dc-content-animation {
+          <div class="hidden w-full px-4 lg:block lg:w-2/12">
+            <menu class="sticky top-10">
+              <style>
+                .dc-content-animation {
                   height: 20px;
                   width: 50%;
                   display: inline-block;
                   animation: placeholderPulse 1s infinite ease-in-out;
-                  -webkit-animation:  placeholderPulse 1s infinite ease-in-out;
-                
-                  
-              }
-              @keyframes placeholderPulse {
-                  0%{
-                      background-color: rgba(133, 214, 251, .1);
-                      color: rgba(133, 214, 251, .1);
+                  -webkit-animation: placeholderPulse 1s infinite ease-in-out;
+                }
+                @keyframes placeholderPulse {
+                  0% {
+                    background-color: rgba(133, 214, 251, 0.1);
+                    color: rgba(133, 214, 251, 0.1);
                   }
-                  50%{
-                      background-color: rgba(133, 214, 251, .3);
-                      color: rgba(133, 214, 251, .3);
+                  50% {
+                    background-color: rgba(133, 214, 251, 0.3);
+                    color: rgba(133, 214, 251, 0.3);
                   }
-                  100%{
-                      background-color: rgba(133, 214, 251, .1);
-                      color: rgba(133, 214, 251, .1);
-                  }}
-              .ps.nav {
+                  100% {
+                    background-color: rgba(133, 214, 251, 0.1);
+                    color: rgba(133, 214, 251, 0.1);
+                  }
+                }
+                .ps.nav {
                   flex-wrap: nowrap;
-                  position: relative; 
-              }
-          </style>
+                  position: relative;
+                }
+              </style>
 
-            <div class="relative hidden xl:block animation fade-in mb-4" id="dpl-gtm-scroll" style="min-height: 170px; animation-delay: 0ms; animation-duration: 500ms;">
-              <div class="absolute w-100 justify-content-center w-full">
-                  <div class="border border-info shadow-3 rounded overflow-hidden" style="border-color: rgba(133, 214, 251, .3) !important;">
-                      <span class="dc-content-animation mx-2 mb-2 mt-3" style="width: 40%;"></span>
-                      <span class="dc-content-animation mx-2 mb-1" style="width: 70%;"></span>
-                      <span class="dc-content-animation mx-2 mb-1"></span>
-                      <span class="dc-content-animation mx-2 mb-1" style="width: 80%;"></span>
-                      <span class="dc-content-animation mx-2 mb-1" style="width: 70%;"></span>
+              <div
+                class="animation fade-in relative mb-4 hidden xl:block"
+                id="dpl-gtm-scroll"
+                style="min-height: 170px; animation-delay: 0ms; animation-duration: 500ms">
+                <div class="w-100 justify-content-center absolute w-full">
+                  <div
+                    class="border-info shadow-3 overflow-hidden rounded border"
+                    style="border-color: rgba(133, 214, 251, 0.3) !important">
+                    <span
+                      class="dc-content-animation mx-2 mb-2 mt-3"
+                      style="width: 40%"></span>
+                    <span
+                      class="dc-content-animation mx-2 mb-1"
+                      style="width: 70%"></span>
+                    <span class="dc-content-animation mx-2 mb-1"></span>
+                    <span
+                      class="dc-content-animation mx-2 mb-1"
+                      style="width: 80%"></span>
+                    <span
+                      class="dc-content-animation mx-2 mb-1"
+                      style="width: 70%"></span>
                   </div>
+                </div>
+                <!-- Alert -->
+                <div
+                  id="gtmDC-scroll-all"
+                  class="relative"
+                  style="min-height: 1px; min-width: 1px"></div>
+                <!-- Alert -->
               </div>
-            <!-- Alert -->
-            <div id="gtmDC-scroll-all" class="relative" style="min-height:1px;min-width:1px;"></div>
-            <!-- Alert -->
 
-             
+              <ul class="dark:text-gray-200">
+                {{ with .Resources.GetMatch "ss.html" }}{{ .Content }}{{ end }}
+              </ul>
+            </menu>
           </div>
-
-            <ul class="dark:text-gray-200">
-              {{ with .Resources.GetMatch "ss.html" }} {{.Content }} {{end}}
-            </ul>
-          </menu>
-        </div>
-        {{end}}
+        {{ end }}
       </div>
     </div>
 

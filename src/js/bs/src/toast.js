@@ -5,12 +5,12 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, reflow, typeCheckConfig } from './util/index';
-import EventHandler from './dom/event-handler';
-import Manipulator from './dom/manipulator';
-import BaseComponent from './base-component';
-import { enableDismissTrigger } from './util/component-functions';
-import SelectorEngine from './dom/selector-engine';
+import { defineJQueryPlugin, reflow, typeCheckConfig } from "./util/index";
+import EventHandler from "./dom/event-handler";
+import Manipulator from "./dom/manipulator";
+import BaseComponent from "./base-component";
+import { enableDismissTrigger } from "./util/component-functions";
+import SelectorEngine from "./dom/selector-engine";
 
 /**
  * ------------------------------------------------------------------------
@@ -18,8 +18,8 @@ import SelectorEngine from './dom/selector-engine';
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'toast';
-const DATA_KEY = 'te.toast';
+const NAME = "toast";
+const DATA_KEY = "te.toast";
 const EVENT_KEY = `.${DATA_KEY}`;
 
 const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
@@ -32,19 +32,19 @@ const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 
 const FADE_IN_CLASSES =
-  'animate-[fade-in-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none';
+  "animate-[fade-in-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
 const FADE_OUT_CLASSES =
-  'animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none';
-const HIDE_DATA_ATTRIBUTE = 'data-te-toast-hide';
-const SHOW_DATA_ATTRIBUTE = 'data-te-toast-show';
-const SHOWING_DATA_ATTRIBUTE = 'data-te-toast-showing';
+  "animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
+const HIDE_DATA_ATTRIBUTE = "data-te-toast-hide";
+const SHOW_DATA_ATTRIBUTE = "data-te-toast-show";
+const SHOWING_DATA_ATTRIBUTE = "data-te-toast-showing";
 
-const SELECTOR_TOAST = '[data-te-toast-init]';
+const SELECTOR_TOAST = "[data-te-toast-init]";
 
 const DefaultType = {
-  animation: 'boolean',
-  autohide: 'boolean',
-  delay: 'number',
+  animation: "boolean",
+  autohide: "boolean",
+  delay: "number",
 };
 
 const Default = {
@@ -96,7 +96,7 @@ class Toast extends BaseComponent {
     this._clearTimeout();
 
     if (this._config.animation) {
-      Manipulator.removeMultiClass(this._element, FADE_OUT_CLASSES.split(' '));
+      Manipulator.removeMultiClass(this._element, FADE_OUT_CLASSES.split(" "));
       Manipulator.addMultiClass(this._element, FADE_IN_CLASSES);
     }
 
@@ -109,8 +109,8 @@ class Toast extends BaseComponent {
 
     this._element.removeAttribute(HIDE_DATA_ATTRIBUTE);
     reflow(this._element);
-    this._element.setAttribute(SHOW_DATA_ATTRIBUTE, '');
-    this._element.setAttribute(SHOWING_DATA_ATTRIBUTE, '');
+    this._element.setAttribute(SHOW_DATA_ATTRIBUTE, "");
+    this._element.setAttribute(SHOWING_DATA_ATTRIBUTE, "");
 
     this._queueCallback(complete, this._element, this._config.animation);
   }
@@ -130,18 +130,18 @@ class Toast extends BaseComponent {
       let timeout = 0;
       if (this._config.animation) {
         timeout = 300;
-        Manipulator.removeMultiClass(this._element, FADE_IN_CLASSES.split(' '));
+        Manipulator.removeMultiClass(this._element, FADE_IN_CLASSES.split(" "));
         Manipulator.addMultiClass(this._element, FADE_OUT_CLASSES);
       }
       setTimeout(() => {
-        this._element.setAttribute(HIDE_DATA_ATTRIBUTE, '');
+        this._element.setAttribute(HIDE_DATA_ATTRIBUTE, "");
         this._element.removeAttribute(SHOWING_DATA_ATTRIBUTE);
         this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
         EventHandler.trigger(this._element, EVENT_HIDDEN);
       }, timeout);
     };
 
-    this._element.setAttribute(SHOWING_DATA_ATTRIBUTE, '');
+    this._element.setAttribute(SHOWING_DATA_ATTRIBUTE, "");
     this._queueCallback(complete, this._element, this._config.animation);
   }
 
@@ -161,7 +161,7 @@ class Toast extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' && config ? config : {}),
+      ...(typeof config === "object" && config ? config : {}),
     };
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType);
@@ -185,12 +185,12 @@ class Toast extends BaseComponent {
 
   _onInteraction(event, isInteracting) {
     switch (event.type) {
-      case 'mouseover':
-      case 'mouseout':
+      case "mouseover":
+      case "mouseout":
         this._hasMouseInteraction = isInteracting;
         break;
-      case 'focusin':
-      case 'focusout':
+      case "focusin":
+      case "focusout":
         this._hasKeyboardInteraction = isInteracting;
         break;
       default:
@@ -211,10 +211,18 @@ class Toast extends BaseComponent {
   }
 
   _setListeners() {
-    EventHandler.on(this._element, EVENT_MOUSEOVER, (event) => this._onInteraction(event, true));
-    EventHandler.on(this._element, EVENT_MOUSEOUT, (event) => this._onInteraction(event, false));
-    EventHandler.on(this._element, EVENT_FOCUSIN, (event) => this._onInteraction(event, true));
-    EventHandler.on(this._element, EVENT_FOCUSOUT, (event) => this._onInteraction(event, false));
+    EventHandler.on(this._element, EVENT_MOUSEOVER, (event) =>
+      this._onInteraction(event, true)
+    );
+    EventHandler.on(this._element, EVENT_MOUSEOUT, (event) =>
+      this._onInteraction(event, false)
+    );
+    EventHandler.on(this._element, EVENT_FOCUSIN, (event) =>
+      this._onInteraction(event, true)
+    );
+    EventHandler.on(this._element, EVENT_FOCUSOUT, (event) =>
+      this._onInteraction(event, false)
+    );
   }
 
   _clearTimeout() {
@@ -228,8 +236,8 @@ class Toast extends BaseComponent {
     return this.each(function () {
       const data = Toast.getOrCreateInstance(this, config);
 
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
+      if (typeof config === "string") {
+        if (typeof data[config] === "undefined") {
           throw new TypeError(`No method named "${config}"`);
         }
 

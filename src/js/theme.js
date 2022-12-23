@@ -1,4 +1,4 @@
-import { switcherTemplate } from './templates/themeSwitcher';
+import { switcherTemplate } from "./templates/themeSwitcher";
 
 class ThemeSwitcher {
   constructor() {
@@ -6,16 +6,16 @@ class ThemeSwitcher {
   }
 
   init() {
-    document.body.insertAdjacentHTML('beforeend', switcherTemplate);
+    document.body.insertAdjacentHTML("beforeend", switcherTemplate);
 
-    this.element = document.querySelector('#theme-switcher');
-    this.themeSwitcherButton = this.element.querySelector('button');
-    this.themeSwitcherItems = this.element.querySelectorAll('a');
+    this.element = document.querySelector("#theme-switcher");
+    this.themeSwitcherButton = this.element.querySelector("button");
+    this.themeSwitcherItems = this.element.querySelectorAll("a");
 
-    if (!('theme' in localStorage)) {
+    if (!("theme" in localStorage)) {
       this.setLightTheme();
       // this.setSystemTheme();
-    } else if (localStorage.theme === 'dark') {
+    } else if (localStorage.theme === "dark") {
       this.setDarkTheme();
     } else {
       this.setLightTheme();
@@ -25,28 +25,28 @@ class ThemeSwitcher {
   }
 
   setSystemTheme() {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.classList.add('dark');
-      this.setActiveThemeIcon('dark');
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.documentElement.classList.add("dark");
+      this.setActiveThemeIcon("dark");
     } else {
-      document.documentElement.classList.remove('dark');
-      this.setActiveThemeIcon('light');
+      document.documentElement.classList.remove("dark");
+      this.setActiveThemeIcon("light");
     }
-    this.setActiveDropdownItem('system');
+    this.setActiveDropdownItem("system");
   }
 
   setDarkTheme() {
-    document.documentElement.classList.add('dark');
-    localStorage.theme = 'dark';
-    this.setActiveThemeIcon('dark');
-    this.setActiveDropdownItem('dark');
+    document.documentElement.classList.add("dark");
+    localStorage.theme = "dark";
+    this.setActiveThemeIcon("dark");
+    this.setActiveDropdownItem("dark");
   }
 
   setLightTheme() {
-    document.documentElement.classList.remove('dark');
-    localStorage.theme = 'light';
-    this.setActiveThemeIcon('light');
-    this.setActiveDropdownItem('light');
+    document.documentElement.classList.remove("dark");
+    localStorage.theme = "light";
+    this.setActiveThemeIcon("light");
+    this.setActiveDropdownItem("light");
   }
 
   setActiveThemeIcon(theme) {
@@ -56,23 +56,27 @@ class ThemeSwitcher {
   }
 
   setActiveDropdownItem(theme) {
-    this.element.querySelectorAll('[data-theme-icon]').forEach((item) => {
-      item.classList.remove('text-blue-500');
+    this.element.querySelectorAll("[data-theme-icon]").forEach((item) => {
+      item.classList.remove("text-blue-500");
     });
-    this.element.querySelectorAll('[data-theme-name]').forEach((item) => {
-      item.classList.remove('text-blue-500');
+    this.element.querySelectorAll("[data-theme-name]").forEach((item) => {
+      item.classList.remove("text-blue-500");
     });
-    this.element.querySelector(`[data-theme-icon=${theme}]`).classList.add('text-blue-500');
-    this.element.querySelector(`[data-theme-name=${theme}]`).classList.add('text-blue-500');
+    this.element
+      .querySelector(`[data-theme-icon=${theme}]`)
+      .classList.add("text-blue-500");
+    this.element
+      .querySelector(`[data-theme-name=${theme}]`)
+      .classList.add("text-blue-500");
   }
 
   onThemeSwitcherItemClick(event) {
     const theme = event.target.dataset.theme;
 
-    if (theme === 'system') {
-      localStorage.removeItem('theme');
+    if (theme === "system") {
+      localStorage.removeItem("theme");
       this.setSystemTheme();
-    } else if (theme === 'dark') {
+    } else if (theme === "dark") {
       this.setDarkTheme();
     } else {
       this.setLightTheme();
@@ -80,10 +84,11 @@ class ThemeSwitcher {
   }
 
   addEventListeners() {
-    const bindedOnThemeSwitcherItemClick = this.onThemeSwitcherItemClick.bind(this);
+    const bindedOnThemeSwitcherItemClick =
+      this.onThemeSwitcherItemClick.bind(this);
 
     this.themeSwitcherItems.forEach((item) => {
-      item.addEventListener('click', bindedOnThemeSwitcherItemClick);
+      item.addEventListener("click", bindedOnThemeSwitcherItemClick);
     });
   }
 }

@@ -1,9 +1,20 @@
-{{ partial "head/meta.html" . }} {{ $styles := resources.Get "css/style.css" |
-postCSS }} {{ if .Site.IsServer }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
-{{ else }} {{ $styles := $styles | minify | fingerprint | resources.PostProcess
+{{ partial "head/meta.html" . }}
+{{ $styles := resources.Get "css/style.css" | postCSS }}
+{{ if
+  .Site.IsServer
 }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" />
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
+{{ else }}
+  {{ $styles := $styles | minify | fingerprint | resources.PostProcess }}
+  <link
+    rel="stylesheet"
+    href="{{ $styles.RelPermalink }}"
+    integrity="{{ $styles.Data.Integrity }}" />
 {{ end }}
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="{{.Site.BaseURL}}css/custom.css" />
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+  rel="stylesheet" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ .Site.BaseURL }}css/custom.css" />

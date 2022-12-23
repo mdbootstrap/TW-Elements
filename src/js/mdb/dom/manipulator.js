@@ -6,11 +6,11 @@
  */
 
 function normalizeData(val) {
-  if (val === 'true') {
+  if (val === "true") {
     return true;
   }
 
-  if (val === 'false') {
+  if (val === "false") {
     return false;
   }
 
@@ -18,7 +18,7 @@ function normalizeData(val) {
     return Number(val);
   }
 
-  if (val === '' || val === 'null') {
+  if (val === "" || val === "null") {
     return null;
   }
 
@@ -48,10 +48,11 @@ const Manipulator = {
     };
 
     Object.keys(attributes)
-      .filter((key) => key.startsWith('te'))
+      .filter((key) => key.startsWith("te"))
       .forEach((key) => {
-        let pureKey = key.replace(/^te/, '');
-        pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
+        let pureKey = key.replace(/^te/, "");
+        pureKey =
+          pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
         attributes[pureKey] = normalizeData(attributes[key]);
       });
 
@@ -59,7 +60,9 @@ const Manipulator = {
   },
 
   getDataAttribute(element, key) {
-    return normalizeData(element.getAttribute(`data-te-${normalizeDataKey(key)}`));
+    return normalizeData(
+      element.getAttribute(`data-te-${normalizeDataKey(key)}`)
+    );
   },
 
   offset(element) {
@@ -102,7 +105,7 @@ const Manipulator = {
   addMultipleClasses(element, arrayClasses) {
     arrayClasses.forEach((singleClass) => {
       element.classList.add(singleClass);
-    })
+    });
   },
 
   addStyle(element, style) {
@@ -126,7 +129,7 @@ const Manipulator = {
 
   removeMultiClass(target, classes) {
     classes.forEach((item) => target.classList.remove(item));
-  }
+  },
 };
 
 export default Manipulator;
