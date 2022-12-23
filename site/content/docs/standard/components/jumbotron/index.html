@@ -38,8 +38,8 @@ menu:
     <button
       type="button"
       class="inline-block px-6 py-2.5 mt-4 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-      data-mdb-ripple="true"
-      data-mdb-ripple-color="light"
+      data-te-ripple-init
+      data-te-ripple-color="light"
     >
       Learn more
     </button>
@@ -66,8 +66,8 @@ menu:
           <button
             type="button"
             class="inline-block px-6 py-2.5 mt-4 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
+            data-te-ripple-init
+            data-te-ripple-color="light"
           >
             Learn more
           </button>
@@ -130,8 +130,8 @@ menu:
             class="inline-block px-7 py-3 mb-1 border-2 border-gray-200 text-gray-200 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
             href="#!"
             role="button"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
+            data-te-ripple-init
+            data-te-ripple-color="light"
             >Call to action</a
           >
         </div>
@@ -165,8 +165,8 @@ menu:
                   class="inline-block px-7 py-3 mb-1 border-2 border-gray-200 text-gray-200 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                   href="#!"
                   role="button"
-                  data-mdb-ripple="true"
-                  data-mdb-ripple-color="light"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
                   >Call to action</a
                 >
               </div>
@@ -192,11 +192,12 @@ menu:
   <header>
     <!-- Navbar -->
     <nav
-      class="navbar navbar-expand-md shadow-lg py-2 bg-white relative flex items-center w-full justify-between"
+      class="shadow-lg py-2 bg-white relative flex items-center w-full justify-between md:flex-wrap md:justify-start"
+      data-te-navbar-ref
     >
       <div class="px-6">
         <button
-          class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
           type="button"
           data-te-collapse-init
           data-te-target="#navbarSupportedContentX"
@@ -204,56 +205,65 @@ menu:
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            class="w-5"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-          >
-            <path
-              fill="currentColor"
-              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-            ></path>
-          </svg>
+          <span class="[&>svg]:w-5">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </span>
         </button>
-        <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentX" data-te-collapse-item>
-          <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-            <li class="nav-item">
+        <div
+          class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+          id="navbarSupportedContentX"
+          data-te-collapse-item
+        >
+          <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Home</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Features</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Pricing</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >About</a
               >
             </li>
@@ -270,8 +280,8 @@ menu:
       <button
         type="button"
         class="inline-block px-6 py-2.5 mb-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-        data-mdb-ripple="true"
-        data-mdb-ripple-color="light"
+        data-te-ripple-init
+        data-te-ripple-color="light"
       >
         Call to action
       </button>
@@ -287,11 +297,12 @@ menu:
       <header>
         <!-- Navbar -->
         <nav
-          class="navbar navbar-expand-md shadow-lg py-2 bg-white relative flex items-center w-full justify-between"
+          class="shadow-lg py-2 bg-white relative flex items-center w-full justify-between md:flex-wrap md:justify-start"
+          data-te-navbar-ref
         >
           <div class="px-6">
             <button
-              class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+              class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
               type="button"
               data-te-collapse-init
               data-te-target="#navbarSupportedContentX"
@@ -299,56 +310,65 @@ menu:
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                class="w-5"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                ></path>
-              </svg>
+              <span class="[&>svg]:w-5">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                  ></path>
+                </svg>
+              </span>
             </button>
-            <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentX" data-te-collapse-item>
-              <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-                <li class="nav-item">
+            <div
+              class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+              id="navbarSupportedContentX"
+              data-te-collapse-item
+            >
+              <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Home</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Features</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Pricing</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >About</a
                   >
                 </li>
@@ -365,8 +385,8 @@ menu:
           <button
             type="button"
             class="inline-block px-6 py-2.5 mb-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
+            data-te-ripple-init
+            data-te-ripple-color="light"
           >
             Call to action
           </button>
@@ -388,15 +408,16 @@ menu:
 
 
   <!-- prettier-ignore -->
-  {{< twsnippet/demo id="example4" title_id="section-v-4" title="Background image with navbar">}}
+  {{< twsnippet/demo id="example4" title_id="section-v-4" >}}
   <header>
     <!-- Navbar -->
     <nav
-      class="navbar navbar-expand-md shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+      class="shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between md:flex-wrap md:justify-start"
+      data-te-navbar-ref
     >
       <div class="px-6">
         <button
-          class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
           type="button"
           data-te-collapse-init
           data-te-target="#navbarSupportedContentY"
@@ -404,56 +425,65 @@ menu:
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            class="w-5"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-          >
-            <path
-              fill="currentColor"
-              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-            ></path>
-          </svg>
+          <span class="[&>svg]:w-5">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </span>
         </button>
-        <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentY" data-te-collapse-item>
-          <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-            <li class="nav-item">
+        <div
+          class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+          id="navbarSupportedContentY"
+          data-te-collapse-item
+        >
+          <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Home</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Features</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Pricing</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >About</a
               >
             </li>
@@ -483,8 +513,8 @@ menu:
               class="inline-block px-7 py-3 mb-1 border-2 border-gray-200 text-gray-200 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
               href="#!"
               role="button"
-              data-mdb-ripple="true"
-              data-mdb-ripple-color="light"
+              data-te-ripple-init
+              data-te-ripple-color="light"
               >Call to action</a
             >
           </div>
@@ -502,11 +532,12 @@ menu:
       <header>
         <!-- Navbar -->
         <nav
-          class="navbar navbar-expand-md shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+          class="shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between md:flex-wrap md:justify-start"
+          data-te-navbar-ref
         >
           <div class="px-6">
             <button
-              class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+              class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
               type="button"
               data-te-collapse-init
               data-te-target="#navbarSupportedContentY"
@@ -514,56 +545,65 @@ menu:
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                class="w-5"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                ></path>
-              </svg>
+              <span class="[&>svg]:w-5">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                  ></path>
+                </svg>
+              </span>
             </button>
-            <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentY" data-te-collapse-item>
-              <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-                <li class="nav-item">
+            <div
+              class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+              id="navbarSupportedContentY"
+              data-te-collapse-item
+            >
+              <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Home</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Features</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Pricing</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >About</a
                   >
                 </li>
@@ -593,8 +633,8 @@ menu:
                   class="inline-block px-7 py-3 mb-1 border-2 border-gray-200 text-gray-200 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                   href="#!"
                   role="button"
-                  data-mdb-ripple="true"
-                  data-mdb-ripple-color="light"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
                   >Call to action</a
                 >
               </div>
@@ -620,11 +660,12 @@ menu:
   <header>
     <!-- Navbar -->
     <nav
-      class="navbar navbar-expand-md shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+      class="shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between md:flex-wrap md:justify-start"
+      data-te-navbar-ref
     >
       <div class="px-6">
         <button
-          class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
           type="button"
           data-te-collapse-init
           data-te-target="#navbarSupportedContentO"
@@ -632,56 +673,65 @@ menu:
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            class="w-5"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-          >
-            <path
-              fill="currentColor"
-              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-            ></path>
-          </svg>
+          <span class="[&>svg]:w-5">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </span>
         </button>
-        <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentO" data-te-collapse-item>
-          <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-            <li class="nav-item">
+        <div
+          class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+          id="navbarSupportedContentO"
+          data-te-collapse-item
+        >
+          <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Home</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Features</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Pricing</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >About</a
               >
             </li>
@@ -712,8 +762,8 @@ menu:
               class="inline-block px-7 py-3 mb-1 border-2 border-gray-200 text-gray-200 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
               href="#!"
               role="button"
-              data-mdb-ripple="true"
-              data-mdb-ripple-color="light"
+              data-te-ripple-init
+              data-te-ripple-color="light"
               >Learn more about Rome</a
             >
           </div>
@@ -731,11 +781,12 @@ menu:
       <header>
         <!-- Navbar -->
         <nav
-          class="navbar navbar-expand-md shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between"
+          class="shadow-lg py-2 bg-gray-50 relative flex items-center w-full justify-between md:flex-wrap md:justify-start"
+          data-te-navbar-ref
         >
           <div class="px-6">
             <button
-              class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+              class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
               type="button"
               data-te-collapse-init
               data-te-target="#navbarSupportedContentO"
@@ -743,56 +794,65 @@ menu:
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                class="w-5"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                ></path>
-              </svg>
+              <span class="[&>svg]:w-5">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                  ></path>
+                </svg>
+              </span>
             </button>
-            <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentO" data-te-collapse-item>
-              <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-                <li class="nav-item">
+            <div
+              class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+              id="navbarSupportedContentO"
+              data-te-collapse-item
+            >
+              <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Home</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Features</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Pricing</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >About</a
                   >
                 </li>
@@ -823,8 +883,8 @@ menu:
                   class="inline-block px-7 py-3 mb-1 border-2 border-gray-200 text-gray-200 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                   href="#!"
                   role="button"
-                  data-mdb-ripple="true"
-                  data-mdb-ripple-color="light"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
                   >Learn more about Rome</a
                 >
               </div>
@@ -844,20 +904,21 @@ menu:
   <!--Title-->
   <h2 class="text-3xl font-semibold leading-normal mt-0 mb-5 text-gray-800" id="section-v-6">Fixed navbar</h2>
   <!--Description-->
-  <p class="mb-3">Stick the navbar to the top of the window by using .fixed-top class. Thanks to this whenever you scroll the page the navbar will be always visible</p>
+  <p class="mb-3">Stick the navbar to the top of the window by using <code>fixed top-0 right-0 left-0</code> classes. Thanks to this whenever you scroll the page the navbar will be always visible</p>
 
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example6">}}
-  <section class="w-full text-center" style="overflow-y: scroll; height: 400px">
+  <section class="w-100 text-center" style="overflow-y: scroll; height: 400px">
     <!-- Warning! Only for the demo purpose, we use sticky-top instead of the fixed-top class, because when using fixed-top in the demo the navbar will stick to the window instead of the demo box. That's why we also remove <header> tags from the demo-->
 
     <!-- Navbar -->
     <nav
-      class="navbar navbar-expand-md shadow-lg py-2 bg-white flex items-center w-full justify-between sticky top-0"
+      class="shadow-lg py-2 bg-white flex items-center w-full justify-between sticky top-0 md:flex-wrap md:justify-start"
+      data-te-navbar-ref
     >
       <div class="px-6">
         <button
-          class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
           type="button"
           data-te-collapse-init
           data-te-target="#navbarSupportedContentU"
@@ -865,56 +926,65 @@ menu:
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            class="w-5"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-          >
-            <path
-              fill="currentColor"
-              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-            ></path>
-          </svg>
+          <span class="[&>svg]:w-5">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </span>
         </button>
-        <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentU" data-te-collapse-item>
-          <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-            <li class="nav-item">
+        <div
+          class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+          id="navbarSupportedContentU"
+          data-te-collapse-item
+        >
+          <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Home</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Features</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Pricing</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >About</a
               >
             </li>
@@ -931,10 +1001,10 @@ menu:
       <button
         type="button"
         class="inline-block px-6 py-2.5 mb-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-        data-mdb-ripple="true"
-        data-mdb-ripple-color="light"
+        data-te-ripple-init
+        data-te-ripple-color="light"
       >
-        Call to action
+        Call to act
       </button>
     </div>
     <!-- Jumbotron -->
@@ -957,11 +1027,12 @@ menu:
       <header>
         <!-- Navbar -->
         <nav
-          class="navbar navbar-expand-md shadow-lg py-2 bg-white flex items-center w-full justify-between fixed top-0 right-0 left-0"
+          class="shadow-lg py-2 bg-white flex items-center w-full justify-between fixed top-0 right-0 left-0 md:flex-wrap md:justify-start"
+          data-te-navbar-ref
         >
           <div class="px-6">
             <button
-              class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+              class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
               type="button"
               data-te-collapse-init
               data-te-target="#navbarSupportedContentL"
@@ -969,56 +1040,65 @@ menu:
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                class="w-5"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                ></path>
-              </svg>
+              <span class="[&>svg]:w-5">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                  ></path>
+                </svg>
+              </span>
             </button>
-            <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentL" data-te-collapse-item>
-              <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-                <li class="nav-item">
+            <div
+              class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+              id="navbarSupportedContentL"
+              data-te-collapse-item
+            >
+              <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Home</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Features</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Pricing</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >About</a
                   >
                 </li>
@@ -1035,8 +1115,8 @@ menu:
           <button
             type="button"
             class="inline-block px-6 py-2.5 mb-1 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
+            data-te-ripple-init
+            data-te-ripple-color="light"
           >
             Call to action
           </button>
@@ -1059,16 +1139,17 @@ menu:
 
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example7">}}
-  <section class="w-full text-center" style="overflow-y: scroll; height: 400px">
+  <section class="w-100 text-center" style="overflow-y: scroll; height: 400px">
     <!-- Warning! Only for the demo purpose, we use sticky-top instead of the fixed-top class, because when using fixed-top in the demo the navbar will stick to the window instead of the demo box. That's why we also remove <header> tags from the demo-->
 
     <!-- Navbar -->
     <nav
-      class="navbar navbar-expand-md shadow-lg py-2 bg-gray-50 flex items-center w-full justify-between sticky top-0" style="z-index: 1020;"
+      class="shadow-lg py-2 bg-white flex items-center w-full justify-between sticky top-0 md:flex-wrap md:justify-start z-10"
+      data-te-navbar-ref
     >
       <div class="px-6">
         <button
-          class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+          class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
           type="button"
           data-te-collapse-init
           data-te-target="#navbarSupportedContentE"
@@ -1076,56 +1157,65 @@ menu:
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fas"
-            class="w-5"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 448 512"
-          >
-            <path
-              fill="currentColor"
-              d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-            ></path>
-          </svg>
+          <span class="[&>svg]:w-5">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </span>
         </button>
-        <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentE" data-te-collapse-item>
-          <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-            <li class="nav-item">
+        <div
+          class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+          id="navbarSupportedContentE"
+          data-te-collapse-item
+        >
+          <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Home</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Features</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >Pricing</a
               >
             </li>
-            <li class="nav-item">
+            <li data-te-nav-item-ref>
               <a
-                class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                 href="#!"
-                data-mdb-ripple="true"
-                data-mdb-ripple-color="light"
+                data-te-nav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 >About</a
               >
             </li>
@@ -1155,8 +1245,8 @@ menu:
               class="inline-block px-7 py-3 mb-1 border-2 border-gray-200 text-gray-200 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
               href="#!"
               role="button"
-              data-mdb-ripple="true"
-              data-mdb-ripple-color="light"
+              data-te-ripple-init
+              data-te-ripple-color="light"
               >Call to action</a
             >
           </div>
@@ -1183,11 +1273,12 @@ menu:
       <header>
         <!-- Navbar -->
         <nav
-          class="navbar navbar-expand-md shadow-lg py-2 bg-white flex items-center w-full justify-between fixed top-0 right-0 left-0"
+          class="shadow-lg py-2 bg-white flex items-center w-full justify-between fixed top-0 right-0 left-0 md:flex-wrap md:justify-start z-10"
+          data-te-navbar-ref
         >
           <div class="px-6">
             <button
-              class="navbar-toggler border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
+              class="border-0 py-3 px-2 md:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out"
               type="button"
               data-te-collapse-init
               data-te-target="#navbarSupportedContentM"
@@ -1195,56 +1286,65 @@ menu:
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                class="w-5"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                ></path>
-              </svg>
+              <span class="[&>svg]:w-5">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                  ></path>
+                </svg>
+              </span>
             </button>
-            <div class="navbar-collapse !visible hidden grow items-center" id="navbarSupportedContentM" data-te-collapse-item>
-              <ul class="navbar-nav mr-auto flex flex-col md:flex-row">
-                <li class="nav-item">
+            <div
+              class="!visible hidden grow items-center basis-[100%] md:!flex md:basis-auto"
+              id="navbarSupportedContentM"
+              data-te-collapse-item
+            >
+              <ul class="mr-auto flex flex-col md:flex-row" data-te-navbar-nav-ref>
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Home</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Features</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >Pricing</a
                   >
                 </li>
-                <li class="nav-item">
+                <li data-te-nav-item-ref>
                   <a
-                    class="nav-link block p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out"
+                    class="block md:p-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out [&.active]:text-blue-600 [&.active]:border-blue-600"
                     href="#!"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
+                    data-te-nav-link-ref
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
                     >About</a
                   >
                 </li>
@@ -1274,8 +1374,8 @@ menu:
                   class="inline-block px-7 py-3 mb-1 border-2 border-gray-200 text-gray-200 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                   href="#!"
                   role="button"
-                  data-mdb-ripple="true"
-                  data-mdb-ripple-color="light"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
                   >Call to action</a
                 >
               </div>
