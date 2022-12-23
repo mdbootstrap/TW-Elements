@@ -44,16 +44,19 @@ const EVENT_SCROLL = `scroll${EVENT_KEY}`;
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 
 const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
-const CLASS_NAME_ACTIVE = 'active';
+
+const ACTIVE_ELEMENT_NAME = 'data-te-scroll-nav-active';
+const ACTIVE_ELEMENT_NAME_DATA = 'teScrollNavActive';
+const DATA_DROPDOWN_ITEM = 'teDropdownItemRef';
 
 const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
-const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
-const SELECTOR_NAV_LINKS = '.nav-link';
-const SELECTOR_NAV_ITEMS = '.nav-item';
+const SELECTOR_NAV_LIST_GROUP = '[data-te-nav-ref], .list-group';
+const SELECTOR_NAV_LINKS = '[data-te-nav-link-ref]';
+const SELECTOR_NAV_ITEMS = '[data-te-nav-item-ref]';
 const SELECTOR_LIST_ITEMS = '.list-group-item';
 const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`;
-const SELECTOR_DROPDOWN = '.dropdown';
-const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
+const SELECTOR_DROPDOWN = '[data-te-dropdown-ref]';
+const SELECTOR_DROPDOWN_TOGGLE = '[data-te-dropdown-toggle-ref]';
 
 const METHOD_OFFSET = 'offset';
 const METHOD_POSITION = 'position';
@@ -216,24 +219,27 @@ class ScrollSpy extends BaseComponent {
 
     const link = SelectorEngine.findOne(queries.join(','), this._config.target);
 
-    link.classList.add(CLASS_NAME_ACTIVE);
-    if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
+    link.setAttribute(ACTIVE_ELEMENT_NAME, '');
+    if (
+      link.dataset[DATA_DROPDOWN_ITEM] !== undefined ||
+      link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)
+    ) {
       SelectorEngine.findOne(
         SELECTOR_DROPDOWN_TOGGLE,
         link.closest(SELECTOR_DROPDOWN)
-      ).classList.add(CLASS_NAME_ACTIVE);
+      ).setAttribute(ACTIVE_ELEMENT_NAME, '');
     } else {
       SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP).forEach((listGroup) => {
         // Set triggered links parents as active
         // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
         SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`).forEach(
-          (item) => item.classList.add(CLASS_NAME_ACTIVE)
+          (item) => item.setAttribute(ACTIVE_ELEMENT_NAME, '')
         );
 
         // Handle special case when .nav-link is inside .nav-item
         SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS).forEach((navItem) => {
           SelectorEngine.children(navItem, SELECTOR_NAV_LINKS).forEach((item) =>
-            item.classList.add(CLASS_NAME_ACTIVE)
+            item.setAttribute(ACTIVE_ELEMENT_NAME, '')
           );
         });
       });
@@ -246,8 +252,8 @@ class ScrollSpy extends BaseComponent {
 
   _clear() {
     SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
-      .filter((node) => node.classList.contains(CLASS_NAME_ACTIVE))
-      .forEach((node) => node.classList.remove(CLASS_NAME_ACTIVE));
+      .filter((node) => node.dataset[ACTIVE_ELEMENT_NAME_DATA] !== undefined)
+      .forEach((node) => node.removeAttribute(ACTIVE_ELEMENT_NAME));
   }
 
   // Static

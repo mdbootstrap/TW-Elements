@@ -56,8 +56,8 @@ const CLASS_NAME_SHOW = 'show';
 const CLASS_NAME_DROPUP = 'dropup';
 const CLASS_NAME_DROPEND = 'dropend';
 const CLASS_NAME_DROPSTART = 'dropstart';
-const CLASS_NAME_NAVBAR = 'navbar';
 
+const SELECTOR_NAVBAR = '[data-te-navbar-ref]';
 const SELECTOR_DATA_TOGGLE = '[data-te-dropdown-toggle-ref]';
 const SELECTOR_MENU = '[data-te-dropdown-menu-ref]';
 const SELECTOR_NAVBAR_NAV = '[data-te-navbar-nav-ref]';
@@ -342,7 +342,7 @@ class Dropdown extends BaseComponent {
   }
 
   _detectNavbar() {
-    return this._element.closest(`.${CLASS_NAME_NAVBAR}`) !== null;
+    return this._element.closest(SELECTOR_NAVBAR) !== null;
   }
 
   _getOffset() {

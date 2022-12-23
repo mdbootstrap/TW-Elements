@@ -26,11 +26,12 @@
       <!-- Container for demo purpose -->
       <div class="">
         <nav
-          class="relative w-full flex flex-wrap items-center justify-between py-2 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-md navbar-light"
+          class="relative w-full flex flex-nowrap items-center justify-between py-2 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg md:flex-wrap md:justify-start"
+          data-te-navbar-ref
         >
-          <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <div class="w-full flex flex-wrap items-center justify-between px-6">
             <button
-              class="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+              class="text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline block md:hidden"
               type="button"
               data-te-collapse-init
               data-te-target="#navbarSupportedContent"
@@ -38,24 +39,25 @@
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="bars"
-                class="w-6"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                ></path>
-              </svg>
+              <span class="[&>svg]:w-6">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="bars"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+                  ></path>
+                </svg>
+              </span>
             </button>
             <div
-              class="!visible hidden navbar-collapse flex-grow items-center"
+              class="!visible hidden flex-grow items-center basis-[100%] md:!flex md:basis-auto"
               data-te-collapse-item
               id="navbarSupportedContent"
             >
@@ -71,25 +73,31 @@
                 />
               </a>
               <!-- Left links -->
-              <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-                <li class="nav-item py-2 pr-2 md:pl-2">
+              <ul
+                class="flex flex-col pl-0 list-style-none mr-auto md:flex-row"
+                data-te-navbar-nav-ref
+              >
+                <li class="py-2 pr-2 md:pl-2" data-te-nav-item-ref>
                   <a
-                    class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    class="text-gray-500 hover:text-gray-700 focus:text-gray-700 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
+                    data-te-nav-link-ref
                     >Dashboard</a
                   >
                 </li>
-                <li class="nav-item py-2 pr-2 md:pl-2">
+                <li class="py-2 pr-2 md:pl-2" data-te-nav-item-ref>
                   <a
-                    class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    class="text-gray-500 hover:text-gray-700 focus:text-gray-700 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
+                    data-te-nav-link-ref
                     >Team</a
                   >
                 </li>
-                <li class="nav-item py-2 pr-2 md:pl-2 mb-2 md:mb-0">
+                <li class="py-2 pr-2 md:pl-2" data-te-nav-item-ref>
                   <a
-                    class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0"
+                    class="text-gray-500 hover:text-gray-700 focus:text-gray-700 md:px-2 disabled:text-black/30 [&.active]:text-black/90"
                     href="#"
+                    data-te-nav-link-ref
                     >Projects</a
                   >
                 </li>
@@ -108,65 +116,75 @@
                   + new job
                 </button>
               </div>
-              <div class="dropdown relative">
+              <div class="relative" data-te-dropdown-ref>
                 <a
-                  class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4 dropdown-toggle hidden-arrow flex items-center"
+                  class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4 hidden-arrow flex items-center"
                   href="#"
                   id="dropdownMenuButton1"
                   role="button"
-                  data-bs-toggle="dropdown"
+                  data-te-dropdown-toggle-ref
                   aria-expanded="false"
                 >
-                  <svg
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="far"
-                    data-icon="bell"
-                    class="w-4"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 448 512"
+                  <span class="[&>svg]:w-4">
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="far"
+                      data-icon="bell"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M439.39 362.29c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71zM67.53 368c21.22-27.97 44.42-74.33 44.53-159.42 0-.2-.06-.38-.06-.58 0-61.86 50.14-112 112-112s112 50.14 112 112c0 .2-.06.38-.06.58.11 85.1 23.31 131.46 44.53 159.42H67.53zM224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span
+                    class="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5"
+                    >1</span
                   >
-                    <path
-                      fill="currentColor"
-                      d="M439.39 362.29c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71zM67.53 368c21.22-27.97 44.42-74.33 44.53-159.42 0-.2-.06-.38-.06-.58 0-61.86 50.14-112 112-112s112 50.14 112 112c0 .2-.06.38-.06.58.11 85.1 23.31 131.46 44.53 159.42H67.53zM224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64z"
-                    ></path>
-                  </svg>
                 </a>
                 <ul
-                  class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                  class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block left-auto right-0 mt-1"
                   aria-labelledby="dropdownMenuButton1"
+                  data-te-dropdown-menu-ref
                 >
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Action</a
                     >
                   </li>
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Another action</a
                     >
                   </li>
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Something else here</a
                     >
                   </li>
                 </ul>
               </div>
-              <div class="dropdown relative">
+              <div class="relative" data-te-dropdown-ref>
                 <a
-                  class="dropdown-toggle flex items-center hidden-arrow"
+                  class="flex items-center hidden-arrow transition duration-150 ease-in-out whitespace-nowrap motion-reduce:transition-none"
                   href="#"
                   id="dropdownMenuButton2"
                   role="button"
-                  data-bs-toggle="dropdown"
+                  data-te-dropdown-toggle-ref
+                  data-te-offset="0,20"
                   aria-expanded="false"
                 >
                   <img
@@ -178,27 +196,31 @@
                   />
                 </a>
                 <ul
-                  class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding border-none left-auto right-0"
+                  class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block left-auto right-0 mt-1"
                   aria-labelledby="dropdownMenuButton2"
+                  data-te-dropdown-menu-ref
                 >
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Action</a
                     >
                   </li>
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Another action</a
                     >
                   </li>
                   <li>
                     <a
-                      class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                      class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800"
                       href="#"
+                      data-te-dropdown-item-ref
                       >Something else here</a
                     >
                   </li>

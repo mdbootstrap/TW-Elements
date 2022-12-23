@@ -63,7 +63,7 @@ class BaseComponent {
   }
 
   static get DATA_KEY() {
-    return `bs.${this.NAME}`;
+    return `te.${this.NAME}`;
   }
 
   static get EVENT_KEY() {

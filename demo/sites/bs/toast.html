@@ -28,12 +28,14 @@
       <br />
 
       <div
-        class="bg-white shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block"
+        class="bg-white shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block"
         id="static-example"
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
-        data-mdb-autohide="false"
+        data-te-autohide="false"
+        data-te-toast-init
+        data-te-toast-show
       >
         <div
           class="bg-white flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-gray-200 rounded-t-lg"
@@ -43,10 +45,25 @@
             <p class="text-gray-600 text-xs">11 mins ago</p>
             <button
               type="button"
-              class="btn-close box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-              data-mdb-dismiss="toast"
+              class="box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+              data-te-toast-dismiss
               aria-label="Close"
-            ></button>
+            >
+              <span
+                class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+              >
+                <svg
+                  class="w-[1em]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="#000"
+                >
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </span>
+            </button>
           </div>
         </div>
         <div class="py-2.5 px-3 bg-white rounded-b-lg break-words text-gray-700">
@@ -57,7 +74,59 @@
       <br />
       <br />
       <br />
+
+      <button
+        class="mx-auto mb-5 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg active:text-white transition duration-150 ease-in-out flex items-center whitespace-nowrap motion-reduce:transition-none"
+        id="toast-example-trigger"
+      >
+        Open toast - 2 sec delay
+      </button>
+
+      <div
+        class="bg-white shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block"
+        id="toast-example"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-te-delay="2000"
+        data-te-toast-init
+      >
+        <div
+          class="bg-white flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-gray-200 rounded-t-lg"
+        >
+          <p class="font-bold text-gray-500">MDBootstrap</p>
+          <div class="flex items-center">
+            <p class="text-gray-600 text-xs">11 mins ago</p>
+            <button
+              type="button"
+              class="box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+              data-te-toast-dismiss
+              aria-label="Close"
+            >
+              <span
+                class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]"
+              >
+                <svg
+                  class="w-[1em]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="#000"
+                >
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="py-2.5 px-3 bg-white rounded-b-lg break-words text-gray-700">Toast Example</div>
+      </div>
     </div>
+
+    <br />
+    <br />
+    <br />
     <!-- End your project here-->
 
     <!-- Theme switcher -->
@@ -69,6 +138,11 @@
     <!-- MDB SNIPPET -->
     <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+      const toastInstance = Toast.getInstance(document.getElementById('toast-example'));
+      document.getElementById('toast-example-trigger').addEventListener('click', () => {
+        toastInstance.show();
+      });
+    </script>
   </body>
 </html>
