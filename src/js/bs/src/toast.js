@@ -10,6 +10,7 @@ import EventHandler from './dom/event-handler';
 import Manipulator from './dom/manipulator';
 import BaseComponent from './base-component';
 import { enableDismissTrigger } from './util/component-functions';
+import SelectorEngine from './dom/selector-engine';
 
 /**
  * ------------------------------------------------------------------------
@@ -18,7 +19,7 @@ import { enableDismissTrigger } from './util/component-functions';
  */
 
 const NAME = 'toast';
-const DATA_KEY = 'bs.toast';
+const DATA_KEY = 'te.toast';
 const EVENT_KEY = `.${DATA_KEY}`;
 
 const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
@@ -30,10 +31,15 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 
-const CLASS_NAME_FADE = 'fade';
-const CLASS_NAME_HIDE = 'hide'; // @deprecated - kept here only for backwards compatibility
-const CLASS_NAME_SHOW = 'show';
-const CLASS_NAME_SHOWING = 'showing';
+const FADE_IN_CLASSES =
+  'animate-[fade-in-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none';
+const FADE_OUT_CLASSES =
+  'animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none';
+const HIDE_DATA_ATTRIBUTE = 'data-te-toast-hide';
+const SHOW_DATA_ATTRIBUTE = 'data-te-toast-show';
+const SHOWING_DATA_ATTRIBUTE = 'data-te-toast-showing';
+
+const SELECTOR_TOAST = '[data-te-toast-init]';
 
 const DefaultType = {
   animation: 'boolean',
@@ -90,26 +96,27 @@ class Toast extends BaseComponent {
     this._clearTimeout();
 
     if (this._config.animation) {
-      this._element.classList.add(CLASS_NAME_FADE);
+      Manipulator.removeMultiClass(this._element, FADE_OUT_CLASSES.split(' '));
+      Manipulator.addMultiClass(this._element, FADE_IN_CLASSES);
     }
 
     const complete = () => {
-      this._element.classList.remove(CLASS_NAME_SHOWING);
+      this._element.removeAttribute(SHOWING_DATA_ATTRIBUTE);
       EventHandler.trigger(this._element, EVENT_SHOWN);
 
       this._maybeScheduleHide();
     };
 
-    this._element.classList.remove(CLASS_NAME_HIDE); // @deprecated
+    this._element.removeAttribute(HIDE_DATA_ATTRIBUTE);
     reflow(this._element);
-    this._element.classList.add(CLASS_NAME_SHOW);
-    this._element.classList.add(CLASS_NAME_SHOWING);
+    this._element.setAttribute(SHOW_DATA_ATTRIBUTE, '');
+    this._element.setAttribute(SHOWING_DATA_ATTRIBUTE, '');
 
     this._queueCallback(complete, this._element, this._config.animation);
   }
 
   hide() {
-    if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
+    if (!this._element || this._element.dataset.teToastShow === undefined) {
       return;
     }
 
@@ -120,21 +127,29 @@ class Toast extends BaseComponent {
     }
 
     const complete = () => {
-      this._element.classList.add(CLASS_NAME_HIDE); // @deprecated
-      this._element.classList.remove(CLASS_NAME_SHOWING);
-      this._element.classList.remove(CLASS_NAME_SHOW);
-      EventHandler.trigger(this._element, EVENT_HIDDEN);
+      let timeout = 0;
+      if (this._config.animation) {
+        timeout = 300;
+        Manipulator.removeMultiClass(this._element, FADE_IN_CLASSES.split(' '));
+        Manipulator.addMultiClass(this._element, FADE_OUT_CLASSES);
+      }
+      setTimeout(() => {
+        this._element.setAttribute(HIDE_DATA_ATTRIBUTE, '');
+        this._element.removeAttribute(SHOWING_DATA_ATTRIBUTE);
+        this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
+        EventHandler.trigger(this._element, EVENT_HIDDEN);
+      }, timeout);
     };
 
-    this._element.classList.add(CLASS_NAME_SHOWING);
+    this._element.setAttribute(SHOWING_DATA_ATTRIBUTE, '');
     this._queueCallback(complete, this._element, this._config.animation);
   }
 
   dispose() {
     this._clearTimeout();
 
-    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
-      this._element.classList.remove(CLASS_NAME_SHOW);
+    if (this._element.dataset.teToastShow !== undefined) {
+      this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
     }
 
     super.dispose();
@@ -225,6 +240,19 @@ class Toast extends BaseComponent {
 }
 
 enableDismissTrigger(Toast);
+
+/**
+ * ------------------------------------------------------------------------
+ * Data Api implementation - auto initialization
+ * ------------------------------------------------------------------------
+ */
+
+SelectorEngine.find(SELECTOR_TOAST).forEach((el) => {
+  let instance = Toast.getInstance(el);
+  if (!instance) {
+    instance = new Toast(el);
+  }
+});
 
 /**
  * ------------------------------------------------------------------------

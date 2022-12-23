@@ -86,6 +86,26 @@
   <div class="mb-6">
     <p
       class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      
+      >Content & styles</p
+    >
+    <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
+      {{ $currentNode := . }} {{ range.Site.Menus.contentstyles}}
+      <li>
+        <a
+          href="{{.URL}}"
+          class=" {{ if $currentNode.IsMenuCurrent "contentstyles" . }} text-blue-600  font-bold  {{else}}   hover:text-blue-700	 {{end}}   text-sm block leading-relaxed mx-4 no-underline">
+          {{.Name}}
+ </a>
+      </li>
+      {{end}}
+
+
+    </ul>
+  </div>
+  <div class="mb-6">
+    <p
+      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
       >Navigation</p
     >
     <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">

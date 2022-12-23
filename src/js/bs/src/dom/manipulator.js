@@ -75,6 +75,14 @@ const Manipulator = {
       left: element.offsetLeft,
     };
   },
+
+  addMultiClass(target, classes) {
+    target.className += ` ${classes}`;
+  },
+
+  removeMultiClass(target, classes) {
+    classes.forEach((item) => target.classList.remove(item));
+  },
 };
 
 export default Manipulator;

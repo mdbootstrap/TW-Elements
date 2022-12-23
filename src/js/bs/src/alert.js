@@ -5,9 +5,10 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin } from './util/index';
+import { defineJQueryPlugin, typeCheckConfig } from './util/index';
 import EventHandler from './dom/event-handler';
 import BaseComponent from './base-component';
+import Manipulator from './dom/manipulator';
 import { enableDismissTrigger } from './util/component-functions';
 
 /**
@@ -17,13 +18,23 @@ import { enableDismissTrigger } from './util/component-functions';
  */
 
 const NAME = 'alert';
-const DATA_KEY = 'bs.alert';
+const DATA_KEY = 'te.alert';
 const EVENT_KEY = `.${DATA_KEY}`;
 
 const EVENT_CLOSE = `close${EVENT_KEY}`;
 const EVENT_CLOSED = `closed${EVENT_KEY}`;
-const CLASS_NAME_FADE = 'fade';
-const CLASS_NAME_SHOW = 'show';
+
+const FADE_OUT_CLASSES =
+  'animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none';
+const SHOW_DATA_ATTRIBUTE = 'data-te-toast-show';
+
+const DefaultType = {
+  animation: 'boolean',
+};
+
+const Default = {
+  animation: true,
+};
 
 /**
  * ------------------------------------------------------------------------
@@ -32,7 +43,19 @@ const CLASS_NAME_SHOW = 'show';
  */
 
 class Alert extends BaseComponent {
+  constructor(element, config) {
+    super(element);
+    this._config = this._getConfig(config);
+  }
+
   // Getters
+  static get DefaultType() {
+    return DefaultType;
+  }
+
+  static get Default() {
+    return Default;
+  }
 
   static get NAME() {
     return NAME;
@@ -47,13 +70,32 @@ class Alert extends BaseComponent {
       return;
     }
 
-    this._element.classList.remove(CLASS_NAME_SHOW);
+    let timeout = 0;
+    if (this._config.animation) {
+      timeout = 300;
+      Manipulator.addMultiClass(this._element, FADE_OUT_CLASSES);
+    }
 
-    const isAnimated = this._element.classList.contains(CLASS_NAME_FADE);
-    this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
+    this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
+
+    setTimeout(() => {
+      this._queueCallback(() => this._destroyElement(), this._element, this._config.animation);
+    }, timeout);
   }
 
   // Private
+  _getConfig(config) {
+    config = {
+      ...Default,
+      ...Manipulator.getDataAttributes(this._element),
+      ...(typeof config === 'object' && config ? config : {}),
+    };
+
+    typeCheckConfig(NAME, config, this.constructor.DefaultType);
+
+    return config;
+  }
+
   _destroyElement() {
     this._element.remove();
     EventHandler.trigger(this._element, EVENT_CLOSED);

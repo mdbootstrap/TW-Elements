@@ -119,6 +119,14 @@ const Manipulator = {
   hasClass(element, className) {
     return element.classList.contains(className);
   },
+
+  addMultiClass(target, classes) {
+    target.className += ` ${classes}`;
+  },
+
+  removeMultiClass(target, classes) {
+    classes.forEach((item) => target.classList.remove(item));
+  }
 };
 
 export default Manipulator;
