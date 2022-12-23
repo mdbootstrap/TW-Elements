@@ -50,7 +50,7 @@ import {
  */
 
 const NAME = 'datepicker';
-const DATA_KEY = 'mdb.datepicker';
+const DATA_KEY = 'te.datepicker';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 
@@ -58,6 +58,29 @@ const EVENT_CLOSE = `close${EVENT_KEY}`;
 const EVENT_OPEN = `open${EVENT_KEY}`;
 const EVENT_DATE_CHANGE = `dateChange${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
+
+const MODAL_CONTAINER_NAME = 'data-te-datepicker-modal-container-ref'
+const DROPDOWN_CONTAINER_NAME = 'data-te-datepicker-dropdown-container-ref'
+
+const DATEPICKER_INIT_SELECTOR = '[data-te-datepicker-init]'
+const DATEPICKER_TOGGLE_SELECTOR = '[data-te-datepicker-toggle-ref]'
+const MODAL_CONTAINER_SELECTOR = `[${MODAL_CONTAINER_NAME}]`
+const DROPDOWN_CONTAINER_SELECTOR = `[${DROPDOWN_CONTAINER_NAME}]`
+const VIEW_CHANGE_BUTTON_SELECTOR = '[data-te-datepicker-view-change-button-ref]'
+const PREVIOUS_BUTTON_SELECTOR = '[data-te-datepicker-previous-button-ref]'
+const NEXT_BUTTON_SELECTOR = '[data-te-datepicker-next-button-ref]'
+const OK_BUTTON_SELECTOR = '[data-te-datepicker-ok-button-ref]'
+const CANCEL_BUTTON_SELECTOR = '[data-te-datepicker-cancel-button-ref]'
+const CLEAR_BUTTON_SELECTOR = '[data-te-datepicker-clear-button-ref]'
+const VIEW_SELECTOR = '[data-te-datepicker-view-ref]'
+const TOGGLE_BUTTON_SELECTOR = '[data-te-datepicker-toggle-button-ref]'
+const DATE_TEXT_SELECTOR = '[data-te-datepicker-date-text-ref]'
+const BACKDROP_SELECTOR = '[data-te-dropdown-backdrop-ref]'
+
+const FADE_IN_CLASSES = 'animate-[fade-in_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
+const FADE_OUT_CLASSES = 'animate-[fade-out_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
+const FADE_IN_SHORT_CLASSES = 'animate-[fade-in_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
+const FADE_OUT_SHORT_CLASSES = 'animate-[fade-out_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none'
 
 const Default = {
   title: 'Select date',
@@ -184,8 +207,8 @@ class Datepicker {
 
   get container() {
     return (
-      SelectorEngine.findOne(`${'.datepicker-modal-container'}-${this._toggleButtonId}`) ||
-      SelectorEngine.findOne(`${'.datepicker-dropdown-container'}-${this._toggleButtonId}`)
+      SelectorEngine.findOne(`[${MODAL_CONTAINER_NAME}='${this._toggleButtonId}']`) ||
+      SelectorEngine.findOne(`[${DROPDOWN_CONTAINER_NAME}='${this._toggleButtonId}']`)
     );
   }
 
@@ -232,35 +255,35 @@ class Datepicker {
   }
 
   get viewChangeButton() {
-    return SelectorEngine.findOne('.datepicker-view-change-button', this.container);
+    return SelectorEngine.findOne(VIEW_CHANGE_BUTTON_SELECTOR, this.container);
   }
 
   get previousButton() {
-    return SelectorEngine.findOne('.datepicker-previous-button', this.container);
+    return SelectorEngine.findOne(PREVIOUS_BUTTON_SELECTOR, this.container);
   }
 
   get nextButton() {
-    return SelectorEngine.findOne('.datepicker-next-button', this.container);
+    return SelectorEngine.findOne(NEXT_BUTTON_SELECTOR, this.container);
   }
 
   get okButton() {
-    return SelectorEngine.findOne('.datepicker-ok-btn', this.container);
+    return SelectorEngine.findOne(OK_BUTTON_SELECTOR, this.container);
   }
 
   get cancelButton() {
-    return SelectorEngine.findOne('.datepicker-cancel-btn', this.container);
+    return SelectorEngine.findOne(CANCEL_BUTTON_SELECTOR, this.container);
   }
 
   get clearButton() {
-    return SelectorEngine.findOne('.datepicker-clear-btn', this.container);
+    return SelectorEngine.findOne(CLEAR_BUTTON_SELECTOR, this.container);
   }
 
   get datesContainer() {
-    return SelectorEngine.findOne('.datepicker-view', this.container);
+    return SelectorEngine.findOne(VIEW_SELECTOR, this.container);
   }
 
   get toggleButton() {
-    return SelectorEngine.findOne('.datepicker-toggle-button', this._element);
+    return SelectorEngine.findOne(TOGGLE_BUTTON_SELECTOR, this._element);
   }
 
   _getConfig(config) {
@@ -307,7 +330,6 @@ class Datepicker {
   _appendToggleButton() {
     const toggleButton = getToggleButtonTemplate(this._toggleButtonId);
     this._element.insertAdjacentHTML('beforeend', toggleButton);
-    Manipulator.addClass(this._input, 'form-icon-trailing');
   }
 
   open() {
@@ -337,13 +359,8 @@ class Datepicker {
 
     this._openModal(backdrop, template);
 
-    Manipulator.addClass(this.container, 'animation');
-    Manipulator.addClass(this.container, 'fade-in');
-    this.container.style.animationDuration = '300ms';
-
-    Manipulator.addClass(backdrop, 'animation');
-    Manipulator.addClass(backdrop, 'fade-in');
-    backdrop.style.animationDuration = '150ms';
+    Manipulator.addMultiClass(this.container, FADE_IN_CLASSES)
+    Manipulator.addMultiClass(backdrop, FADE_IN_SHORT_CLASSES)
 
     this._setFocusTrap(this.container);
 
@@ -380,8 +397,7 @@ class Datepicker {
     document.body.appendChild(backdrop);
     document.body.appendChild(template);
     const hasVerticalScroll = window.innerWidth > document.documentElement.clientWidth;
-    const scrollHeight = '15px';
-
+    const scrollHeight = `${Math.abs(window.innerWidth - document.documentElement.clientWidth)}px`;
     if (hasVerticalScroll) {
       document.body.style.overflow = 'hidden';
       document.body.style.paddingRight = scrollHeight;
@@ -406,7 +422,7 @@ class Datepicker {
     EventHandler.on(
       this._element,
       EVENT_CLICK_DATA_API,
-      '[data-mdb-toggle="datepicker"]',
+      DATEPICKER_TOGGLE_SELECTOR,
       (event) => {
         event.preventDefault();
         this.open();
@@ -415,7 +431,7 @@ class Datepicker {
   }
 
   _listenToToggleKeydown() {
-    EventHandler.on(this._element, 'keydown', '[data-mdb-toggle="datepicker"]', (event) => {
+    EventHandler.on(this._element, 'keydown', DATEPICKER_TOGGLE_SELECTOR, (event) => {
       if (event.keyCode === ENTER && !this._isOpen) {
         this.open();
       }
@@ -427,18 +443,18 @@ class Datepicker {
       const dataset = e.target.nodeName === 'DIV' ? e.target.parentNode.dataset : e.target.dataset;
       const cell = e.target.nodeName === 'DIV' ? e.target.parentNode : e.target;
 
-      if (dataset.mdbDate) {
-        this._pickDay(dataset.mdbDate, cell);
+      if (dataset.teDate) {
+        this._pickDay(dataset.teDate, cell);
       }
 
-      if (dataset.mdbMonth && dataset.mdbYear) {
-        const month = parseInt(dataset.mdbMonth, 10);
-        const year = parseInt(dataset.mdbYear, 10);
+      if (dataset.teMonth && dataset.teYear) {
+        const month = parseInt(dataset.teMonth, 10);
+        const year = parseInt(dataset.teYear, 10);
         this._pickMonth(month, year);
       }
 
-      if (dataset.mdbYear && !dataset.mdbMonth) {
-        const year = parseInt(dataset.mdbYear, 10);
+      if (dataset.teYear && !dataset.teMonth) {
+        const year = parseInt(dataset.teYear, 10);
         this._pickYear(year);
       }
 
@@ -451,7 +467,7 @@ class Datepicker {
   }
 
   _updateHeaderDate(date, monthNames, dayNames) {
-    const headerDateEl = SelectorEngine.findOne('.datepicker-date-text', this.container);
+    const headerDateEl = SelectorEngine.findOne(DATE_TEXT_SELECTOR, this.container);
     const month = getMonth(date);
     const day = getDate(date);
     const dayNumber = getDayNumber(date);
@@ -605,13 +621,14 @@ class Datepicker {
 
   _focusActiveCell(cell) {
     if (cell) {
-      Manipulator.addClass(cell, 'focused');
+      cell.setAttribute('data-te-datepicker-cell-focused', '')
     }
   }
 
   _removeHighlightFromCell(cell) {
     if (cell) {
-      cell.classList.remove('focused');
+      cell.removeAttribute('data-te-datepicker-cell-focused')
+
     }
   }
 
@@ -619,7 +636,7 @@ class Datepicker {
     const cells = SelectorEngine.find('td', this.datesContainer);
 
     const activeCell = Array.from(cells).find((cell) => {
-      const cellDate = convertStringToDate(cell.dataset.mdbDate);
+      const cellDate = convertStringToDate(cell.dataset.teDate);
       return isSameDate(cellDate, this._activeDate);
     });
 
@@ -676,8 +693,8 @@ class Datepicker {
     const cells = SelectorEngine.find('td', this.datesContainer);
 
     const activeCell = Array.from(cells).find((cell) => {
-      const cellYear = parseInt(cell.dataset.mdbYear, 10);
-      const cellMonth = parseInt(cell.dataset.mdbMonth, 10);
+      const cellYear = parseInt(cell.dataset.teYear, 10);
+      const cellMonth = parseInt(cell.dataset.teMonth, 10);
       return cellYear === this.activeYear && cellMonth === this.activeMonth;
     });
 
@@ -742,7 +759,7 @@ class Datepicker {
     const cells = SelectorEngine.find('td', this.datesContainer);
 
     const activeCell = Array.from(cells).find((cell) => {
-      const cellYear = parseInt(cell.dataset.mdbYear, 10);
+      const cellYear = parseInt(cell.dataset.teYear, 10);
       return cellYear === this.activeYear;
     });
 
@@ -768,8 +785,7 @@ class Datepicker {
 
     this._removeDatepickerListeners();
 
-    Manipulator.addClass(this.container, 'animation');
-    Manipulator.addClass(this.container, 'fade-out');
+    Manipulator.addMultiClass(this.container, FADE_OUT_CLASSES)
 
     this._closeModal();
 
@@ -784,7 +800,16 @@ class Datepicker {
   }
 
   _closeDropdown() {
-    const datepicker = SelectorEngine.findOne('.datepicker-dropdown-container');
+    const datepicker = SelectorEngine.findOne(DROPDOWN_CONTAINER_SELECTOR);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (datepicker) {
+        document.body.removeChild(datepicker);
+      }
+
+      if (this._popper) {
+        this._popper.destroy();
+      }
+    }
     datepicker.addEventListener('animationend', () => {
       if (datepicker) {
         document.body.removeChild(datepicker);
@@ -798,13 +823,19 @@ class Datepicker {
   }
 
   _closeModal() {
-    const backdrop = SelectorEngine.findOne('.datepicker-backdrop');
-    const datepicker = SelectorEngine.findOne('.datepicker-modal-container');
+    const backdrop = SelectorEngine.findOne(BACKDROP_SELECTOR);
+    const datepicker = SelectorEngine.findOne(MODAL_CONTAINER_SELECTOR);
 
-    Manipulator.addClass(backdrop, 'animation');
-    Manipulator.addClass(backdrop, 'fade-out');
+    Manipulator.addMultiClass(backdrop, FADE_OUT_SHORT_CLASSES)
 
     if (datepicker && backdrop) {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.body.removeChild(backdrop);
+        document.body.removeChild(datepicker);
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        return
+      }
       backdrop.addEventListener('animationend', () => {
         document.body.removeChild(backdrop);
         document.body.removeChild(datepicker);
@@ -866,8 +897,8 @@ class Datepicker {
 
   _removeInputAndToggleListeners() {
     EventHandler.off(this._input, 'input');
-    EventHandler.off(this._element, EVENT_CLICK_DATA_API, '[data-mdb-toggle="datepicker"]');
-    EventHandler.off(this._element, 'keydown', '[data-mdb-toggle="datepicker"]');
+    EventHandler.off(this._element, EVENT_CLICK_DATA_API, DATEPICKER_TOGGLE_SELECTOR);
+    EventHandler.off(this._element, 'keydown', DATEPICKER_TOGGLE_SELECTOR);
   }
 
   handleOk() {
@@ -902,13 +933,14 @@ class Datepicker {
 
   _removeSelectedStyles(cell) {
     if (cell) {
-      cell.classList.remove('selected');
+      cell.removeAttribute('data-te-datepicker-cell-selected')
+
     }
   }
 
   _addSelectedStyles(cell) {
     if (cell) {
-      Manipulator.addClass(cell, 'selected');
+      cell.setAttribute('data-te-datepicker-cell-selected', '')
     }
   }
 
@@ -916,7 +948,6 @@ class Datepicker {
     if (date) {
       const dateString = this.formatDate(date);
       this._input.value = dateString;
-      Manipulator.addClass(this._input, 'active');
       EventHandler.trigger(this._element, EVENT_DATE_CHANGE, { date });
     }
   }
@@ -934,24 +965,23 @@ class Datepicker {
     this._selectedYear = null;
     this._removeCurrentSelectionStyles();
     this._input.value = '';
-    this._input.classList.remove('active');
     this._setInitialDate();
     this._changeView('days');
   }
 
   _removeCurrentSelectionStyles() {
-    const currentSelected = SelectorEngine.findOne('.selected', this.container);
+    const currentSelected = SelectorEngine.findOne('[data-te-datepicker-cell-selected]', this.container);
 
     if (currentSelected) {
-      currentSelected.classList.remove('selected');
+      currentSelected.removeAttribute('data-te-datepicker-cell-selected')
     }
   }
 
   _removeCurrentFocusStyles() {
-    const currentFocused = SelectorEngine.findOne('.focused', this.container);
+    const currentFocused = SelectorEngine.findOne('[data-te-datepicker-cell-focused]', this.container);
 
     if (currentFocused) {
-      currentFocused.classList.remove('focused');
+      currentFocused.removeAttribute('data-te-datepicker-cell-focused')
     }
   }
 
@@ -1252,7 +1282,7 @@ class Datepicker {
 
 export default Datepicker;
 
-SelectorEngine.find('.datepicker').forEach((datepicker) => {
+SelectorEngine.find(DATEPICKER_INIT_SELECTOR).forEach((datepicker) => {
   let instance = Datepicker.getInstance(datepicker);
   if (!instance) {
     instance = new Datepicker(datepicker);

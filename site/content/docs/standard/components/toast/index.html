@@ -24,15 +24,44 @@ menu:
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example1">}}
   <div class="flex space-x-2 justify-center">
-    <div class="bg-white shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
-      <div class=" bg-white flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-gray-200 rounded-t-lg">
+    <div
+      class="bg-white shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block"
+      id="static-example"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      data-te-autohide="false"
+      data-te-toast-init
+      data-te-toast-show
+    >
+      <div
+        class="bg-white flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-gray-200 rounded-t-lg"
+      >
         <p class="font-bold text-gray-500">MDBootstrap</p>
         <div class="flex items-center">
           <p class="text-gray-600 text-xs">11 mins ago</p>
-          <button type="button" class=" btn-close box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+          <button
+            type="button"
+            class="box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+            data-te-toast-dismiss
+            aria-label="Close"
+          >
+              <span class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                <svg
+                class="w-[1em]"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="#000"
+                >
+                <path
+                d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
-      <div class="p-3 bg-white rounded-b-lg break-words text-gray-700">
+      <div class="py-2.5 px-3 bg-white rounded-b-lg break-words text-gray-700">
         Static Example
       </div>
     </div>
@@ -43,20 +72,49 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
       >}}
-      <div class="flex space-x-2 justify-center">
-        <div class="bg-white shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
-          <div class=" bg-white flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-gray-200 rounded-t-lg">
-            <p class="font-bold text-gray-500">MDBootstrap</p>
-            <div class="flex items-center">
-              <p class="text-gray-600 text-xs">11 mins ago</p>
-              <button type="button" class=" btn-close box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+        <div class="flex space-x-2 justify-center">
+          <div
+            class="bg-white shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block"
+            id="static-example"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            data-te-autohide="false"
+            data-te-toast-init
+            data-te-toast-show
+          >
+            <div
+              class="bg-white flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-gray-200 rounded-t-lg"
+            >
+              <p class="font-bold text-gray-500">MDBootstrap</p>
+              <div class="flex items-center">
+                <p class="text-gray-600 text-xs">11 mins ago</p>
+                <button
+                  type="button"
+                  class="box-content w-4 h-4 ml-2 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                  data-te-toast-dismiss
+                  aria-label="Close"
+                >
+                    <span class="focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                      <svg
+                      class="w-[1em]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="#000"
+                      >
+                      <path
+                      d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="py-2.5 px-3 bg-white rounded-b-lg break-words text-gray-700">
+              Static Example
             </div>
           </div>
-          <div class="p-3 bg-white rounded-b-lg break-words text-gray-700">
-            Static Example
-          </div>
         </div>
-      </div>
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
   </section>
@@ -93,7 +151,7 @@ menu:
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example2">}}
   <div class="flex flex-col justify-center">
-    <div class="bg-blue-600 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+    <div class="bg-blue-600 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-te-autohide="false" data-te-toast-init data-te-toast-show>
       <div class="bg-blue-600 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-blue-500 rounded-t-lg">
         <p class="font-bold text-white flex items-center">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -102,14 +160,28 @@ menu:
           MDBootstrap</p>
         <div class="flex items-center">
           <p class="text-white opacity-90 text-xs">11 mins ago</p>
-          <button type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+          <button 
+            type="button" class="box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-te-toast-dismiss aria-label="Close">
+              <span class="invert grayscale brightness-200 focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                <svg
+                  class="w-[1em]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="#000"
+                >
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
       <div class="p-3 bg-blue-600 rounded-b-lg break-words text-white">
         Hello, world! This is a toast message.
       </div>
     </div>
-    <div class="bg-green-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+    <div class="bg-green-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-te-autohide="false" data-te-toast-init data-te-toast-show>
       <div class="bg-green-500 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-green-400 rounded-t-lg">
         <p class="font-bold text-white flex items-center">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -118,14 +190,28 @@ menu:
           MDBootstrap</p>
         <div class="flex items-center">
           <p class="text-white opacity-90 text-xs">11 mins ago</p>
-          <button type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+          <button 
+            type="button" class="box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-te-toast-dismiss aria-label="Close">
+              <span class="invert grayscale brightness-200 focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                <svg
+                  class="w-[1em]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="#000"
+                >
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
       <div class="p-3 bg-green-500 rounded-b-lg break-words text-white">
         Hello, world! This is a toast message.
       </div>
     </div>
-    <div class="bg-yellow-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+    <div class="bg-yellow-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-te-autohide="false" data-te-toast-init data-te-toast-show>
       <div class="bg-yellow-500 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-yellow-400 rounded-t-lg">
         <p class="font-bold text-white flex items-center">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="exclamation-triangle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -134,14 +220,28 @@ menu:
           MDBootstrap</p>
         <div class="flex items-center">
           <p class="text-white opacity-90 text-xs">11 mins ago</p>
-          <button type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+          <button 
+            type="button" class="box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-te-toast-dismiss aria-label="Close">
+              <span class="invert grayscale brightness-200 focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                <svg
+                  class="w-[1em]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="#000"
+                >
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
       <div class="p-3 bg-yellow-500 rounded-b-lg break-words text-white">
         Hello, world! This is a toast message.
       </div>
     </div>
-    <div class="bg-red-600 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+    <div class="bg-red-600 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-te-autohide="false" data-te-toast-init data-te-toast-show>
       <div class="bg-red-600 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-red-500 rounded-t-lg">
         <p class="font-bold text-white flex items-center">
           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -150,14 +250,27 @@ menu:
           MDBootstrap</p>
         <div class="flex items-center">
           <p class="text-white opacity-90 text-xs">11 mins ago</p>
-          <button type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+          <button 
+            type="button" class="box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-te-toast-dismiss aria-label="Close">
+              <span class="invert grayscale brightness-200 focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                <svg
+                  class="w-[1em]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="#000"
+                >
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                  />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
       <div class="p-3 bg-red-600 rounded-b-lg break-words text-white">
         Hello, world! This is a toast message.
       </div>
     </div>
-  </div>
   {{< /twsnippet/demo >}}
 
   <section class="!visible hidden" data-te-collapse-item id="example2">
@@ -165,7 +278,7 @@ menu:
       {{< twsnippet/wrapper "HTML" >}} {{< twsnippet/code active=true lang="HTML"
       >}}
       <div class="flex flex-col justify-center">
-        <div class="bg-blue-600 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+        <div class="bg-blue-600 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-te-autohide="false" data-te-toast-init data-te-toast-show>
           <div class="bg-blue-600 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-blue-500 rounded-t-lg">
             <p class="font-bold text-white flex items-center">
               <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -174,14 +287,28 @@ menu:
               MDBootstrap</p>
             <div class="flex items-center">
               <p class="text-white opacity-90 text-xs">11 mins ago</p>
-              <button type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+              <button 
+                type="button" class="box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-te-toast-dismiss aria-label="Close">
+                  <span class="invert grayscale brightness-200 focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                    <svg
+                      class="w-[1em]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="#000"
+                    >
+                      <path
+                        d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                      />
+                  </svg>
+                </span>
+              </button>
             </div>
           </div>
           <div class="p-3 bg-blue-600 rounded-b-lg break-words text-white">
             Hello, world! This is a toast message.
           </div>
         </div>
-        <div class="bg-green-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+        <div class="bg-green-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-te-autohide="false" data-te-toast-init data-te-toast-show>
           <div class="bg-green-500 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-green-400 rounded-t-lg">
             <p class="font-bold text-white flex items-center">
               <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -190,14 +317,28 @@ menu:
               MDBootstrap</p>
             <div class="flex items-center">
               <p class="text-white opacity-90 text-xs">11 mins ago</p>
-              <button type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+              <button 
+                type="button" class="box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-te-toast-dismiss aria-label="Close">
+                  <span class="invert grayscale brightness-200 focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                    <svg
+                      class="w-[1em]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="#000"
+                    >
+                      <path
+                        d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                      />
+                  </svg>
+                </span>
+              </button>
             </div>
           </div>
           <div class="p-3 bg-green-500 rounded-b-lg break-words text-white">
             Hello, world! This is a toast message.
           </div>
         </div>
-        <div class="bg-yellow-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+        <div class="bg-yellow-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-te-autohide="false" data-te-toast-init data-te-toast-show>
           <div class="bg-yellow-500 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-yellow-400 rounded-t-lg">
             <p class="font-bold text-white flex items-center">
               <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="exclamation-triangle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -206,14 +347,28 @@ menu:
               MDBootstrap</p>
             <div class="flex items-center">
               <p class="text-white opacity-90 text-xs">11 mins ago</p>
-              <button type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+              <button 
+                type="button" class="box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-te-toast-dismiss aria-label="Close">
+                  <span class="invert grayscale brightness-200 focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                    <svg
+                      class="w-[1em]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="#000"
+                    >
+                      <path
+                        d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                      />
+                  </svg>
+                </span>
+              </button>
             </div>
           </div>
           <div class="p-3 bg-yellow-500 rounded-b-lg break-words text-white">
             Hello, world! This is a toast message.
           </div>
         </div>
-        <div class="bg-red-600 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
+        <div class="bg-red-600 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg hidden data-[te-toast-hide]:hidden data-[te-toast-show]:block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-te-autohide="false" data-te-toast-init data-te-toast-show>
           <div class="bg-red-600 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-red-500 rounded-t-lg">
             <p class="font-bold text-white flex items-center">
               <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -222,14 +377,27 @@ menu:
               MDBootstrap</p>
             <div class="flex items-center">
               <p class="text-white opacity-90 text-xs">11 mins ago</p>
-              <button type="button" class="btn-close btn-close-white box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-mdb-dismiss="toast" aria-label="Close"></button>
+              <button 
+                type="button" class="box-content w-4 h-4 ml-2 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline" data-te-toast-dismiss aria-label="Close">
+                  <span class="invert grayscale brightness-200 focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25 w-[1em]">
+                    <svg
+                      class="w-[1em]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="#000"
+                    >
+                      <path
+                        d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z"
+                      />
+                  </svg>
+                </span>
+              </button>
             </div>
           </div>
           <div class="p-3 bg-red-600 rounded-b-lg break-words text-white">
             Hello, world! This is a toast message.
           </div>
         </div>
-      </div>
       {{< /twsnippet/code>}} {{< /twsnippet/wrapper>}}
     </div>
   </section>

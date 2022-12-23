@@ -67,10 +67,10 @@ class Ripple {
       Data.setData(element, DATA_KEY, this);
       this._addMultiClass(this._element, CLASSNAME_RIPPLE);
     }
-
     this._clickHandler = this._createRipple.bind(this);
     this._rippleTimer = null;
     this._isMinWidthSet = false;
+    this._initialClasses = null
 
     this.init();
   }
@@ -105,10 +105,11 @@ class Ripple {
     });
 
     if (!this._element.style.minWidth) {
-      Manipulator.style(this._element, { 'min-width': `${this._element.offsetWidth}px` });
+      Manipulator.style(this._element, { 'min-width': getComputedStyle(this._element).width });
       this._isMinWidthSet = true;
     }
 
+    this._initialClasses = [...this._element.classList]
     this._addMultiClass(this._element, CLASSNAME_RIPPLE);
 
     this._options = this._getConfig();
@@ -120,7 +121,7 @@ class Ripple {
   }
 
   _removeMultiClass(target, classes) {
-    classes.split(' ').forEach((item) => target.classList.remove(item));
+    classes.forEach((item) => target.classList.remove(item));
   }
 
   _addClickEvent(target) {
@@ -199,10 +200,16 @@ class Ripple {
             Manipulator.style(this._element, { 'min-width': '' });
             this._isMinWidthSet = false;
           }
-          this._removeMultiClass(this._element, CLASSNAME_RIPPLE);
+          // check if added ripple classes wasn't there initialy
+          const classesToRemove = this._initialClasses ? this._addedNewRippleClasses(CLASSNAME_RIPPLE, this._initialClasses) : CLASSNAME_RIPPLE.split(' ');
+          this._removeMultiClass(this._element, classesToRemove);
         }
       }
     }, duration);
+  }
+
+  _addedNewRippleClasses(defaultRipple, initialClasses) {
+    return defaultRipple.split(' ').filter(item => initialClasses.findIndex(init => item === init) === -1)
   }
 
   _durationToMsNumber(time) {
