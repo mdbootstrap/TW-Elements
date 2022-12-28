@@ -2,8 +2,7 @@
   class="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-700 dark:scrollbar-track-gray-800 sticky top-0  block h-screen overflow-y-auto pt-5 pb-4 dark:bg-zinc-800 dark:text-gray-200">
   <div class="mb-6">
     <div class="flex justify-between ">
-      <p
-        class="text-blueGray-700 hover:text-blueGray-800 mb-2 block py-1 px-4 text-xs font-bold uppercase">
+      <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">
         Getting started
       </p>
       <a href="#"
@@ -39,9 +38,9 @@
           <a
             href="{{ .URL }}"
             class=" {{ if $currentNode.IsMenuCurrent "start" . }}
-              text-blue-600 font-bold
+              text-blue-600 dark:text-blue-300 font-bold
             {{ else }}
-              hover:text-blue-700
+              hover:text-blue-700 dark:hover:text-blue-400
             {{ end }} mx-4 block text-sm leading-relaxed no-underline">
             {{ .Name }}</a
           >
@@ -51,7 +50,7 @@
         <a
           target="_blank"
           href="/snippets/"
-          class="mx-4  block text-sm leading-relaxed no-underline transition hover:text-blue-700"
+          class="mx-4 block text-sm leading-relaxed no-underline transition hover:text-blue-700 dark:hover:text-blue-400"
           >Playground</a
         >
       </li>
@@ -59,7 +58,7 @@
         <a
           target="_blank"
           href="https://mdbgo.com/"
-          class="mx-4  block text-sm leading-relaxed no-underline transition hover:text-blue-700"
+          class="mx-4  block text-sm leading-relaxed no-underline transition hover:text-blue-700 dark:hover:text-blue-400"
           >Hosting & deployment</a
         >
       </li>
@@ -67,7 +66,7 @@
         <a
           target="_blank"
           href="https://mdbootstrap.com/services/"
-          class="mx-4 mb-2 block text-sm no-underline hover:text-blue-700"
+          class="mx-4 mb-2 block text-sm no-underline hover:text-blue-700 dark:hover:text-blue-400"
           >Services</a
         >
       </li>
@@ -75,7 +74,7 @@
   </div>
   <!-- <div class="mb-6">
     <p
-      class="text-blueGray-700 hover:text-blueGray-800 text-xs uppercase font-bold block py-1 px-4 mb-2"
+      class="text-xs uppercase font-bold block py-1 px-4 mb-2"
       >Deployment & hosting</p
     >
     <ul class="block flex-wrap list-none pl-0 mb-0 mt-0">
@@ -84,44 +83,18 @@
       <a
         href="{{ .URL }}"
         class=" {{ if $currentNode.IsMenuCurrent "go" . }}
-          text-blue-600 font-bold
+          text-blue-600 dark:text-blue-300 font-bold
         {{ else }}
-          hover:text-blue-700
+          hover:text-blue-700 dark:hover:text-blue-400
         {{ end }}   mx-4 mb-2 block text-sm no-underline">
         {{ .Name }}
       </a>
     </li>
   {{ end }}
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
     </ul>
   </div> -->
   <div class="mb-6">
-    <p
-      class="text-blueGray-700 hover:text-blueGray-800 mb-2 block py-1 px-4 text-xs font-bold uppercase">
-      Components
-    </p>
+    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Components</p>
     <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
       {{ $currentNode := . }}
       {{ range.Site.Menus.components }}
@@ -129,9 +102,9 @@
           <a
             href="{{ .URL }}"
             class=" {{ if $currentNode.IsMenuCurrent "components" . }}
-              text-blue-600 font-bold
+              text-blue-600 dark:text-blue-300 font-bold
             {{ else }}
-              hover:text-blue-700
+              hover:text-blue-700 dark:hover:text-blue-400
             {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
             {{ .Name }}
           </a>
@@ -141,8 +114,7 @@
     </ul>
   </div>
   <div class="mb-6">
-    <p
-      class="text-blueGray-700 hover:text-blueGray-800 mb-2 block py-1 px-4 text-xs font-bold uppercase">
+    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">
       Content & styles
     </p>
     <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
@@ -152,9 +124,9 @@
           <a
             href="{{ .URL }}"
             class=" {{ if $currentNode.IsMenuCurrent "contentstyles" . }}
-              text-blue-600 font-bold
+              text-blue-600 dark:text-blue-300 font-bold
             {{ else }}
-              hover:text-blue-700
+              hover:text-blue-700 dark:hover:text-blue-400
             {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
             {{ .Name }}
           </a>
@@ -164,10 +136,7 @@
     </ul>
   </div>
   <div class="mb-6">
-    <p
-      class="text-blueGray-700 hover:text-blueGray-800 mb-2 block py-1 px-4 text-xs font-bold uppercase">
-      Navigation
-    </p>
+    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Navigation</p>
     <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
       {{ $currentNode := . }}
       {{ range.Site.Menus.navigation }}
@@ -175,9 +144,9 @@
           <a
             href="{{ .URL }}"
             class=" {{ if $currentNode.IsMenuCurrent "navigation" . }}
-              text-blue-600 font-bold
+              text-blue-600 dark:text-blue-300 font-bold
             {{ else }}
-              hover:text-blue-700
+              hover:text-blue-700 dark:hover:text-blue-400
             {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
             {{ .Name }}
           </a>
@@ -187,10 +156,7 @@
     </ul>
   </div>
   <div class="mb-6">
-    <p
-      class="text-blueGray-700 hover:text-blueGray-800 mb-2 block py-1 px-4 text-xs font-bold uppercase">
-      Forms
-    </p>
+    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Forms</p>
     <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
       {{ $currentNode := . }}
       {{ range.Site.Menus.forms }}
@@ -198,9 +164,9 @@
           <a
             href="{{ .URL }}"
             class=" {{ if $currentNode.IsMenuCurrent "forms" . }}
-              text-blue-600 font-bold
+              text-blue-600 dark:text-blue-300 font-bold
             {{ else }}
-              hover:text-blue-700
+              hover:text-blue-700 dark:hover:text-blue-400
             {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
             {{ .Name }}
           </a>
@@ -210,10 +176,7 @@
     </ul>
   </div>
   <div class="mb-6">
-    <p
-      class="text-blueGray-700 hover:text-blueGray-800 mb-2 block py-1 px-4 text-xs font-bold uppercase">
-      Methods
-    </p>
+    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Methods</p>
     <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
       {{ $currentNode := . }}
       {{ range.Site.Menus.methods }}
@@ -221,9 +184,9 @@
           <a
             href="{{ .URL }}"
             class=" {{ if $currentNode.IsMenuCurrent "methods" . }}
-              text-blue-600 font-bold
+              text-blue-600 dark:text-blue-300 font-bold
             {{ else }}
-              hover:text-blue-700
+              hover:text-blue-700 dark:hover:text-blue-400
             {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
             {{ .Name }}
           </a>
@@ -233,8 +196,7 @@
     </ul>
   </div>
   <div class="mb-6">
-    <p
-      class="text-blueGray-700 hover:text-blueGray-800 mb-2 block py-1 px-4 text-xs font-bold uppercase">
+    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">
       Design Blocks
     </p>
     <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
@@ -244,9 +206,9 @@
           <a
             href="{{ .URL }}"
             class=" {{ if $currentNode.IsMenuCurrent "designblocks" . }}
-              text-blue-600 font-bold
+              text-blue-600 dark:text-blue-300 font-bold
             {{ else }}
-              hover:text-blue-700
+              hover:text-blue-700 dark:hover:text-blue-400
             {{ end }}   mx-4 mb-2 block text-sm leading-relaxed no-underline">
             {{ .Name }}
           </a>
@@ -257,10 +219,7 @@
   </div>
 
   <div class="mb-6">
-    <p
-      class="text-blueGray-700 hover:text-blueGray-800 mb-2 block py-1 px-4 text-xs font-bold uppercase">
-      Coming Soon
-    </p>
+    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Coming Soon</p>
     <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
       {{ $currentNode := . }}
       {{ range.Site.Menus.comingsoon }}
@@ -268,9 +227,9 @@
           <a
             href="{{ .URL }}"
             class=" {{ if $currentNode.IsMenuCurrent "comingsoon" . }}
-              text-blue-600 font-bold
+              text-blue-600 dark:text-blue-300 font-bold
             {{ else }}
-              hover:text-blue-700
+              hover:text-blue-700 dark:hover:text-blue-400
             {{ end }}   mx-4 mb-2 block text-sm leading-relaxed no-underline">
             {{ .Name }}
           </a>
