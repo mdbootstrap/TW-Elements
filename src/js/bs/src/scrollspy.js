@@ -13,6 +13,7 @@ import {
 } from './util/index';
 import EventHandler from './dom/event-handler';
 import Manipulator from './dom/manipulator';
+import MDBManipulator from '../../mdb/dom/manipulator';
 import SelectorEngine from './dom/selector-engine';
 import BaseComponent from './base-component';
 
@@ -23,7 +24,7 @@ import BaseComponent from './base-component';
  */
 
 const NAME = 'scrollspy';
-const DATA_KEY = 'bs.scrollspy';
+const DATA_KEY = 'te.scrollspy';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 
@@ -43,17 +44,23 @@ const EVENT_ACTIVATE = `activate${EVENT_KEY}`;
 const EVENT_SCROLL = `scroll${EVENT_KEY}`;
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 
-const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
-const CLASS_NAME_ACTIVE = 'active';
+const SELECTOR_DROPDOWN_ITEM = '[data-te-dropdown-item-ref]';
+const CLASS_NAME_ACTIVE = [
+  'text-[#1266f1]',
+  'font-semibold',
+  'border-l-[0.125rem]',
+  'border-solid',
+  'border-[#1266f1]',
+];
 
-const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
-const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
-const SELECTOR_NAV_LINKS = '.nav-link';
-const SELECTOR_NAV_ITEMS = '.nav-item';
-const SELECTOR_LIST_ITEMS = '.list-group-item';
-const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`;
-const SELECTOR_DROPDOWN = '.dropdown';
-const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
+const SELECTOR_DATA_SPY = '[data-te-spy="scroll"]';
+const SELECTOR_NAV_LIST_GROUP = '[data-te-nav-list-ref]';
+const SELECTOR_NAV_LINKS = '[data-te-nav-link-ref]';
+const SELECTOR_NAV_ITEMS = '[data-te-nav-item-ref]';
+const SELECTOR_LIST_ITEMS = '[data-te-list-group-item-ref]';
+const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, ${SELECTOR_DROPDOWN_ITEM}`;
+const SELECTOR_DROPDOWN = '[data-te-dropdown-ref]';
+const SELECTOR_DROPDOWN_TOGGLE = '[data-te-dropdown-toggle-ref]';
 
 const METHOD_OFFSET = 'offset';
 const METHOD_POSITION = 'position';
@@ -211,23 +218,28 @@ class ScrollSpy extends BaseComponent {
     this._clear();
 
     const queries = SELECTOR_LINK_ITEMS.split(',').map(
-      (selector) => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`
+      (selector) => `${selector}[data-te-target="${target}"],${selector}[href="${target}"]`
     );
 
     const link = SelectorEngine.findOne(queries.join(','), this._config.target);
 
-    link.classList.add(CLASS_NAME_ACTIVE);
-    if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-      SelectorEngine.findOne(
-        SELECTOR_DROPDOWN_TOGGLE,
-        link.closest(SELECTOR_DROPDOWN)
-      ).classList.add(CLASS_NAME_ACTIVE);
+    MDBManipulator.addMultipleClasses(link, CLASS_NAME_ACTIVE);
+    // link.setAttribute('data-te-nav-link-active', '');
+    // link.classList.add(CLASS_NAME_ACTIVE);
+    if (link.getAttribute(SELECTOR_DROPDOWN_ITEM)) {
+      MDBManipulator.addMultipleClasses(
+        SelectorEngine.findOne(
+          SELECTOR_DROPDOWN_TOGGLE,
+          link.closest(SELECTOR_DROPDOWN),
+          CLASS_NAME_ACTIVE
+        )
+      );
     } else {
       SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP).forEach((listGroup) => {
         // Set triggered links parents as active
         // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
         SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`).forEach(
-          (item) => item.classList.add(CLASS_NAME_ACTIVE)
+          (item) => MDBManipulator.addMultipleClasses(item, CLASS_NAME_ACTIVE)
         );
 
         // Handle special case when .nav-link is inside .nav-item
@@ -246,8 +258,8 @@ class ScrollSpy extends BaseComponent {
 
   _clear() {
     SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
-      .filter((node) => node.classList.contains(CLASS_NAME_ACTIVE))
-      .forEach((node) => node.classList.remove(CLASS_NAME_ACTIVE));
+      .filter((node) => node.classList.contains(...CLASS_NAME_ACTIVE))
+      .forEach((node) => node.classList.remove(...CLASS_NAME_ACTIVE));
   }
 
   // Static
