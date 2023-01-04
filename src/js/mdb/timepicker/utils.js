@@ -78,33 +78,19 @@ const formatNormalHours = (date) => {
 
 const toggleClassHandler = (event, classes) => {
   return EventHandler.on(document, event, classes, ({ target }) => {
-    // if (target.hasAttribute('data-te-timepicker-active')) return;
+    if (target.hasAttribute('data-te-timepicker-active')) return;
 
-    // const allElements = document.querySelectorAll(classes);
+    const allElements = document.querySelectorAll(classes);
 
-    // allElements.forEach((element) => {
-    //   if (!element.hasAttribute('data-te-timepicker-active')) return;
+    allElements.forEach((element) => {
+      if (!element.hasAttribute('data-te-timepicker-active')) return;
 
-    //   Manipulator.removeClass(element, '!opacity-100');
-    //   element.removeAttribute('data-te-timepicker-active')
-    // });
+      Manipulator.removeClass(element, '!opacity-100');
+      element.removeAttribute('data-te-timepicker-active')
+    });
 
-    // Manipulator.addClass(target, '!opacity-100');
-    // target.setAttribute('data-te-timepicker-active', '')
-
-    if (!target.hasAttribute('data-te-timepicker-active')) {
-      const allElements = document.querySelectorAll(classes);
-
-      allElements.forEach((element) => {
-        if (element.hasAttribute('data-te-timepicker-active')) {
-          Manipulator.removeClass(element, '!opacity-100');
-          element.removeAttribute('data-te-timepicker-active')
-        }
-      });
-
-      Manipulator.addClass(target, '!opacity-100');
-      target.setAttribute('data-te-timepicker-active', '')
-    }
+    Manipulator.addClass(target, '!opacity-100');
+    target.setAttribute('data-te-timepicker-active', '')
   });
 };
 
@@ -137,9 +123,7 @@ const checkBrowser = () => {
 }
 
 const takeValue = (element, isInput = true) => {
-  if (isInput) {
-    return element.value.replace(/:/gi, ' ').split(' ');
-  }
+  if (isInput) return element.value.replace(/:/gi, ' ').split(' ');
 
   return element.replace(/:/gi, ' ').split(' ');
 };
@@ -216,7 +200,7 @@ const checkValueBeforeAccept = (
   const [maxTimeHour, maxTimeMin, maxTimeFormat] = takeValue(maxTime, false);
   const [minTimeHour, minTimeMin, minTimeFormat] = takeValue(minTime, false);
 
-  if (maxTimeFormat || minTimeFormat) return [hourHeader, minute];
+  if (maxTimeFormat !== undefined || minTimeFormat !== undefined) return [hourHeader, minute];
 
   if (
     maxTimeHour !== '' &&
@@ -231,49 +215,6 @@ const checkValueBeforeAccept = (
     minTimeMin !== '' &&
     Number(hourHeader) < Number(minTimeHour)
   ) return;
-
-  // if (maxTimeFormat === undefined && minTimeFormat === undefined) {
-  //   if (maxTimeFormat === undefined) { //elko
-  //     if (maxTimeHour !== '' && minTimeHour === '') {
-  //       if (Number(hourHeader) > Number(maxTimeHour)) {
-  //         return;
-  //       }
-
-  //       if (maxTimeMin !== '' && minTimeMin === undefined) {
-  //         if (Number(hourHeader) > Number(maxTimeHour)) {
-  //           return;
-  //         }
-  //       }
-  //     } else if (maxTimeHour === '' && minTimeHour !== '') {
-  //       if (maxTimeMin === undefined && minTimeMin !== '') {
-  //         if (
-  //           Number(hourHeader) < Number(minTimeHour) ||
-  //           (Number(hourHeader) < Number(minTimeHour) && minutesHeader < Number(minTimeMin))
-  //         ) {
-  //           return;
-  //         }
-  //       }
-  //     }
-  //   } else if (minTimeFormat === undefined) { //elko
-  //     if (maxTimeHour !== '' && minTimeHour === '') {
-  //       if (Number(hourHeader) > Number(maxTimeHour)) {
-  //         return;
-  //       }
-
-  //       if (maxTimeMin !== '' && minTimeMin === undefined) {
-  //         if (Number(hourHeader) > Number(maxTimeHour) || minutesHeader > Number(maxTimeMin)) {
-  //           return;
-  //         }
-  //       }
-  //     } else if (maxTimeHour === '' && minTimeHour !== '') {
-  //       if (maxTimeMin === undefined && minTimeMin !== '') {
-  //         if (Number(hourHeader) < Number(minTimeHour) || minutesHeader < Number(minTimeMin)) {
-  //           return;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 
   return [hourHeader, minute];
 };

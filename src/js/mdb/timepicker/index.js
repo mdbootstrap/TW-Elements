@@ -34,49 +34,49 @@ import { UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, ESCAPE, ENTER } from '..
  */
 
 const NAME = 'timepicker';
-const ATTR_TIMEPICKER_INIT = '[data-te-timepicker-init]'
+const SELECTOR_ATTR_TIMEPICKER_INIT = '[data-te-timepicker-init]'
+const SELECTOR_DATA_TE_TOGGLE = '[data-te-toggle]'
 
 const DATA_KEY = `te.${NAME}`;
 
-const ATTR_AM = '[data-te-timepicker-am]'
-const ATTR_BUTTON_CANCEL = 'data-te-timepicker-cancel';
-const ATTR_BUTTON_CLEAR = 'data-te-timepicker-clear';
-const ATTR_BUTTON_SUBMIT = 'data-te-timepicker-submit';
-const ATTR_CURRENT_INLINE = 'data-te-timepicker-current-inline'
+const SELECTOR_ATTR_TIMEPICKER_AM = '[data-te-timepicker-am]'
+const SELECTOR_ATTR_TIMEPICKER_PM = '[data-te-timepicker-pm]'
+const SELECTOR_ATTR_TIMEPICKER_FORMAT24 = '[data-te-timepicker-format24]'
+const SELECTOR_ATTR_TIMEPICKER_CURRENT = '[data-te-timepicker-current]'
+const SELECTOR_ATTR_TIMEPICKER_HOUR_MODE = '[data-te-timepicker-hour-mode]'
+const SELECTOR_ATTR_TIMEPICKER_TOGGLE_BUTTON = '[data-te-timepicker-toggle-button]'
 
-const ATTR_ICON_DOWN = 'data-te-timepicker-icon-down';
-const ATTR_ICON_INLINE_HOUR = 'data-te-timepicker-icon-inline-hour';
-const ATTR_ICON_INLINE_MINUTE = 'data-te-timepicker-icon-inline-minute';
-const ATTR_ICON_UP = 'data-te-timepicker-icon-up'
-const ATTR_ICONS_HOUR_INLINE = 'data-te-timepicker-inline-hour-icons';
-const ATTR_PM = '[data-te-timepicker-pm]'
+const ATTR_TIMEPICKER_BUTTON_CANCEL = 'data-te-timepicker-cancel';
+const ATTR_TIMEPICKER_BUTTON_CLEAR = 'data-te-timepicker-clear';
+const ATTR_TIMEPICKER_BUTTON_SUBMIT = 'data-te-timepicker-submit';
+const ATTR_TIMEPICKER_CURRENT_INLINE = 'data-te-timepicker-current-inline'
+const ATTR_TIMEPICKER_ICON = 'data-te-timepicker-icon';
+const ATTR_TIMEPICKER_ICON_DOWN = 'data-te-timepicker-icon-down';
+const ATTR_TIMEPICKER_ICON_INLINE_HOUR = 'data-te-timepicker-icon-inline-hour';
+const ATTR_TIMEPICKER_ICON_INLINE_MINUTE = 'data-te-timepicker-icon-inline-minute';
+const ATTR_TIMEPICKER_ICON_UP = 'data-te-timepicker-icon-up'
+const ATTR_TIMEPICKER_ICONS_HOUR_INLINE = 'data-te-timepicker-inline-hour-icons';
 const ATTR_TIMEPICKER_TIPS_ELEMENT = 'data-te-timepicker-tips-element'
 const ATTR_TIMEPICKER_TIPS_INNER_ELEMENT = 'data-te-timepicker-tips-inner-element'
 const ATTR_TIMEPICKER_INPUT = 'data-te-timepicker-input';
 
-const SELECTOR_TIMEPICKER_FORMAT24 = '[data-te-timepicker-format24]'
-const SELECTOR_DATA_MDB_TOGGLE = '[data-te-toggle]'
 const ATTR_READONLY = 'readonly'
 const ATTR_INVALID_FEEDBACK = 'data-te-timepicker-invalid-feedback'
 const ATTR_IS_INVALID = 'data-te-timepicker-is-invalid'
-const ATTR_TIMEPICKER_ICON = 'data-te-timepicker-icon';
+const ATTR_DISABLED = 'data-te-timepicker-disabled'
 
 const ATTR_TIMEPICKER_WRAPPER = 'data-te-timepicker-wrapper'
-const ATTR_TIMEPICKER_CURRENT = '[data-te-timepicker-current]'
 const ATTR_TIMEPICKER_CLOCK_WRAPPER = 'data-te-timepicker-clock-wrapper'
 const ATTR_TIMEPICKER_CLOCK = 'data-te-timepicker-clock'
 const ATTR_TIMEPICKER_TIPS_MINUTES = 'data-te-timepicker-tips-minutes'
 const ATTR_TIMEPICKER_TIPS_HOURS = 'data-te-timepicker-tips-hours'
 const ATTR_TIMEPICKER_INNER_HOURS = 'data-te-timepicker-tips-inner'
-const ATTR_DISABLED = 'data-te-timepicker-disabled'
 const ATTR_TIMEPICKER_MIDDLE_DOT = 'data-te-timepicker-middle-dot'
 const ATTR_TIMEPICKER_HAND_POINTER = 'data-te-timepicker-hand-pointer'
 const ATTR_TIMEPICKER_CIRCLE = 'data-te-timepicker-circle'
-const ATTR_TIMEPICKER_HOUR_MODE = '[data-te-timepicker-hour-mode]'
 const ATTR_TIMEPICKER_MODAL = 'data-te-timepicker-modal'
 const ATTR_TIMEPICKER_HOUR = 'data-te-timepicker-hour'
 const ATTR_TIMEPICKER_MINUTE = 'data-te-timepicker-minute'
-const ATTR_TIMEPICKER_TOGGLE_BUTTON = '[data-te-timepicker-toggle-button]'
 const ATTR_TIMEPICKER_CLOCK_INNER = 'data-te-timepicker-clock-inner'
 const ATTR_TIMEPICKER_ACTIVE = 'data-te-timepicker-active'
 
@@ -86,6 +86,7 @@ const CLASSES_TIPS_DISABLED = ['text-[#b3afaf]', 'pointer-events-none', 'bg-tran
 const CLASSES_TRANSFORM = ['transition-[transform,height]', 'ease-in-out', 'duration-[400ms]']
 const CLASSES_MODAL = ['z-[1065]']
 const CLASS_CLOCK_ANIMATION = 'animate-[show-up-clock_350ms_linear]'
+const CLASS_OPACITY = ['!opacity-100']
 
 const Default = {
   appendValidationInfo: true,
@@ -187,16 +188,16 @@ class Timepicker {
     this.input = SelectorEngine.findOne('input', this._element);
     this.dataWithIcon = element.dataset.withIcon;
     this.dataToggle = element.dataset.toggle;
-    this.customIcon = SelectorEngine.findOne(ATTR_TIMEPICKER_TOGGLE_BUTTON, this._element);
+    this.customIcon = SelectorEngine.findOne(SELECTOR_ATTR_TIMEPICKER_TOGGLE_BUTTON, this._element);
 
     this._checkToggleButton();
 
-    this.inputFormatShow = SelectorEngine.findOne(SELECTOR_TIMEPICKER_FORMAT24, this._element);
+    this.inputFormatShow = SelectorEngine.findOne(SELECTOR_ATTR_TIMEPICKER_FORMAT24, this._element);
 
     this.inputFormat =
       this.inputFormatShow === null ? '' : Object.values(this.inputFormatShow.dataset)[0];
-    this.elementToggle = SelectorEngine.findOne(SELECTOR_DATA_MDB_TOGGLE, this._element);
-    this.toggleElement = Object.values(element.querySelector(SELECTOR_DATA_MDB_TOGGLE).dataset)[0];
+    this.elementToggle = SelectorEngine.findOne(SELECTOR_DATA_TE_TOGGLE, this._element);
+    this.toggleElement = Object.values(element.querySelector(SELECTOR_DATA_TE_TOGGLE).dataset)[0];
 
     this._hour = null;
     this._minutes = null;
@@ -351,8 +352,8 @@ class Timepicker {
   _getDomElements() {
     this._hour = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_HOUR}]`);
     this._minutes = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_MINUTE}]`);
-    this._AM = SelectorEngine.findOne(ATTR_AM);
-    this._PM = SelectorEngine.findOne(ATTR_PM);
+    this._AM = SelectorEngine.findOne(SELECTOR_ATTR_TIMEPICKER_AM);
+    this._PM = SelectorEngine.findOne(SELECTOR_ATTR_TIMEPICKER_PM);
     this._wrapper = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_WRAPPER}]`);
     this._modal = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_MODAL}]`);
     this._hand = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_HAND_POINTER}]`);
@@ -362,9 +363,7 @@ class Timepicker {
   }
 
   _handlerMaxMinHoursOptions(degrees, maxHour, minHour, maxFormat, minFormat, e) {
-    if (!maxHour && !minHour) {
-      return true;
-    }
+    if (!maxHour && !minHour) return true;
 
     const { format24, format12, disablePast, disableFuture } = this._options;
     const { _isAmEnabled, _isPmEnabled } = this;
@@ -424,6 +423,7 @@ class Timepicker {
           nextHourTip = innerTip;
         }
       });
+
       return !nextHourTip.parentElement.hasAttribute(ATTR_DISABLED)
     };
 
@@ -481,9 +481,8 @@ class Timepicker {
       }
       return true;
     };
-    if (isMinHourValid() && isMaxHourValid()) {
-      return true;
-    }
+
+    return isMinHourValid() && isMaxHourValid()
   }
 
   _handleKeyboard() {
@@ -497,8 +496,7 @@ class Timepicker {
       let maxHour = takeValue(maxTime, false)[0];
       const minFormat = takeValue(minTime, false)[2];
       const maxFormat = takeValue(maxTime, false)[2];
-      // let [minHour, minFormat] = takeValue(minTime, false);
-      // let [maxHour, maxFormat] = takeValue(maxTime, false);
+
       minHour = setMinTime(minHour, disablePast, format12);
       maxHour = setMaxTime(maxHour, disableFuture, format12);
 
@@ -527,7 +525,7 @@ class Timepicker {
       let { hour: innerHourDegrees } = this._makeInnerHoursDegrees(degrees, innerHour);
 
       if (e.keyCode === ESCAPE) {
-        const cancelBtn = SelectorEngine.findOne(`[${ATTR_BUTTON_CANCEL}]`, this._modal);
+        const cancelBtn = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_BUTTON_CANCEL}]`, this._modal);
         EventHandler.trigger(cancelBtn, 'click');
       } else if (hoursView) {
         if (innerHoursExist) {
@@ -563,17 +561,14 @@ class Timepicker {
             minFormat,
             e
           );
+
           if (!isNextHourValid) {
             return;
           }
 
-          const addRotate = () => {
-            return Manipulator.addStyle(this._hand, {
-              transform: `rotateZ(${hourObjDegrees + addDegrees}deg)`
-            });
-          };
-
-          addRotate();
+          Manipulator.addStyle(this._hand, {
+            transform: `rotateZ(${hourObjDegrees + addDegrees}deg)`
+          });
 
           if (this._isInner) {
             innerHourDegrees += 1;
@@ -602,17 +597,12 @@ class Timepicker {
             e
           );
 
-          if (!isNextHourValid) {
-            return;
-          }
+          if (!isNextHourValid) return;
 
-          const addRotate = () => {
-            return Manipulator.addStyle(this._hand, {
-              transform: `rotateZ(${hourObjDegrees - addDegrees}deg)`,
-            });
-          };
+          Manipulator.addStyle(this._hand, {
+            transform: `rotateZ(${hourObjDegrees - addDegrees}deg)`,
+          });
 
-          addRotate();
           if (this._isInner) {
             innerHourDegrees -= 1;
 
@@ -677,21 +667,19 @@ class Timepicker {
   }
 
   _setActiveClassToTipsOnOpen(hour, ...rest) {
-    if (this._isInvalidTimeFormat) {
-      return;
-    }
+    if (this._isInvalidTimeFormat) return;
 
     if (!this._options.format24) {
       [...rest].filter((e) => {
         if (e === 'PM') {
-          this._PM.classList.add('!opacity-100')
+          this._PM.classList.add(...CLASS_OPACITY)
           this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, '')
         } else if (e === 'AM') {
-          this._AM.classList.add('!opacity-100')
+          this._AM.classList.add(...CLASS_OPACITY)
           this._AM.setAttribute(ATTR_TIMEPICKER_ACTIVE, '')
         } else {
-          this._AM.classList.remove('!opacity-100')
-          this._PM.classList.remove('!opacity-100')
+          this._AM.classList.remove(...CLASS_OPACITY)
+          this._PM.classList.remove(...CLASS_OPACITY)
           this._AM.removeAttribute(ATTR_TIMEPICKER_ACTIVE)
           this._PM.removeAttribute(ATTR_TIMEPICKER_ACTIVE)
         }
@@ -742,7 +730,7 @@ class Timepicker {
         });
       }
       if (format12) {
-        this._PM.classList.add('!opacity-100')
+        this._PM.classList.add(...CLASS_OPACITY)
         this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, '');
       }
     }
@@ -764,9 +752,7 @@ class Timepicker {
       'click',
       `[data-te-toggle='${this.toggleElement}']`,
       (e) => {
-        if (this._options === null) {
-          return;
-        }
+        if (this._options === null) return;
 
         // Fix for input with open, if is not for settimeout input has incorrent jumping label
         const fixForInput = Manipulator.getDataAttribute(this.input, 'toggle') !== null ? 200 : 0;
@@ -820,7 +806,7 @@ class Timepicker {
           if (this._animations) {
             this._toggleBackdropAnimation();
           } else {
-            this._wrapper.classList.add('opacity-100')
+            this._wrapper.classList.add(...CLASS_OPACITY)
           }
           this._setActiveClassToTipsOnOpen(hour, minute, format);
           this._appendTimes();
@@ -831,7 +817,7 @@ class Timepicker {
             const allTipsHours = SelectorEngine.find(`[${ATTR_TIMEPICKER_TIPS_HOURS}]`, this._modal);
 
             if (format12) {
-              this._PM.classList.add('!opacity-100')
+              this._PM.classList.add(...CLASS_OPACITY)
               this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, '');
             }
 
@@ -875,7 +861,7 @@ class Timepicker {
     EventHandlerMulti.on(
       this._modal,
       'click mousedown mouseup touchstart touchend contextmenu',
-      `[${ATTR_ICON_UP}], [${ATTR_ICON_DOWN}]`,
+      `[${ATTR_TIMEPICKER_ICON_UP}], [${ATTR_TIMEPICKER_ICON_DOWN}]`,
       (e) => {
         const { target, type } = e;
 
@@ -956,8 +942,8 @@ class Timepicker {
           this._interval = setInterval(addHoursOrAddMinutes, 100);
         };
 
-        if (target.hasAttribute(ATTR_ICON_UP)) {
-          if (target.parentNode.hasAttribute(ATTR_ICONS_HOUR_INLINE)) {
+        if (target.hasAttribute(ATTR_TIMEPICKER_ICON_UP)) {
+          if (target.parentNode.hasAttribute(ATTR_TIMEPICKER_ICONS_HOUR_INLINE)) {
             if (isEventTypeMousedownOrTouchstart) {
               _clearAndSetThisInterval(addHours);
             } else if (type === 'mouseup' || type === 'touchend' || type === 'contextmenu') {
@@ -975,8 +961,8 @@ class Timepicker {
               addMinutes();
             }
           }
-        } else if (target.hasAttribute(ATTR_ICON_DOWN)) {
-          if (target.parentNode.hasAttribute(ATTR_ICONS_HOUR_INLINE)) {
+        } else if (target.hasAttribute(ATTR_TIMEPICKER_ICON_DOWN)) {
+          if (target.parentNode.hasAttribute(ATTR_TIMEPICKER_ICONS_HOUR_INLINE)) {
             if (isEventTypeMousedownOrTouchstart) {
               _clearAndSetThisInterval(subHours);
             } else if (type === 'mouseup' || type === 'touchend') {
@@ -1003,7 +989,7 @@ class Timepicker {
     EventHandler.on(
       this._modal,
       'click',
-      `[${ATTR_TIMEPICKER_WRAPPER}], [${ATTR_BUTTON_CANCEL}], [${ATTR_BUTTON_CLEAR}]`,
+      `[${ATTR_TIMEPICKER_WRAPPER}], [${ATTR_TIMEPICKER_BUTTON_CANCEL}], [${ATTR_TIMEPICKER_BUTTON_CLEAR}]`,
       ({ target }) => {
         const { closeModalOnBackdropClick } = this._options;
 
@@ -1027,7 +1013,7 @@ class Timepicker {
           }
         };
 
-        if (target.hasAttribute(ATTR_BUTTON_CLEAR)) {
+        if (target.hasAttribute(ATTR_TIMEPICKER_BUTTON_CLEAR)) {
           this._toggleAmPm('PM');
           this.input.value = '';
           this.input.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
@@ -1044,7 +1030,7 @@ class Timepicker {
           this._setTipsAndTimesDependOnInputValue('12', '00');
           this._setActiveClassToTipsOnOpen(hour, minute, format);
           this._hour.click();
-        } else if (target.hasAttribute(ATTR_BUTTON_CANCEL)) {
+        } else if (target.hasAttribute(ATTR_TIMEPICKER_BUTTON_CANCEL)) {
           runRemoveFunction();
         } else if (target.hasAttribute(ATTR_TIMEPICKER_WRAPPER) && closeModalOnBackdropClick) {
           runRemoveFunction();
@@ -1058,10 +1044,10 @@ class Timepicker {
   }
 
   _handleOkButton() {
-    EventHandlerMulti.on(this._modal, 'click', `[${ATTR_BUTTON_SUBMIT}]`, () => {
+    EventHandlerMulti.on(this._modal, 'click', `[${ATTR_TIMEPICKER_BUTTON_SUBMIT}]`, () => {
       let { maxTime, minTime } = this._options;
       const { format12, format24, readOnly, focusInputAfterApprove, disablePast, disableFuture } = this._options;
-      const hourModeActive = this._document.querySelector(`${ATTR_TIMEPICKER_HOUR_MODE}[${ATTR_TIMEPICKER_ACTIVE}]`);
+      const hourModeActive = this._document.querySelector(`${SELECTOR_ATTR_TIMEPICKER_HOUR_MODE}[${ATTR_TIMEPICKER_ACTIVE}]`);
 
       const currentValue = `${this._hour.textContent}:${this._minutes.textContent}`;
       const selectedHour = Number(this._hour.textContent);
@@ -1159,40 +1145,32 @@ class Timepicker {
     EventHandlerMulti.on(
       this._modal,
       'mouseover mouseleave',
-      `[${ATTR_CURRENT_INLINE}]`,
+      `[${ATTR_TIMEPICKER_CURRENT_INLINE}]`,
       ({ type, target }) => {
-        const allIconsInlineHour = SelectorEngine.find(`[${ATTR_ICON_INLINE_HOUR}]`, this._modal);
+        const allIconsInlineHour = SelectorEngine.find(`[${ATTR_TIMEPICKER_ICON_INLINE_HOUR}]`, this._modal);
         const allIconsInlineMinute = SelectorEngine.find(
-          `[${ATTR_ICON_INLINE_MINUTE}]`,
+          `[${ATTR_TIMEPICKER_ICON_INLINE_MINUTE}]`,
           this._modal
         );
 
-        if (type === 'mouseover') {
-          if (target.hasAttribute(ATTR_TIMEPICKER_HOUR)) {
-            allIconsInlineHour.forEach((icon) => {
-              icon.classList.add('opacity-100')
-              icon.setAttribute(ATTR_TIMEPICKER_ACTIVE, '')
-            });
-          } else {
-            allIconsInlineMinute.forEach((icon) => {
-              icon.classList.add('opacity-100')
-              icon.setAttribute(ATTR_TIMEPICKER_ACTIVE, '')
-            });
-          }
-        } else {
-          // eslint-disable-next-line no-lonely-if
-          if (target.hasAttribute(ATTR_TIMEPICKER_HOUR)) {
-            allIconsInlineHour.forEach((icon) => {
-              icon.classList.remove('opacity-100')
-              icon.removeAttribute(ATTR_TIMEPICKER_ACTIVE)
-            });
-          } else {
-            allIconsInlineMinute.forEach((icon) => {
-              icon.classList.remove('opacity-100')
-              icon.removeAttribute(ATTR_TIMEPICKER_ACTIVE)
-            });
-          }
+        const modifyIcons = (elements, shouldAdd) => {
+          return elements.forEach((icon) => {
+            if (shouldAdd) {
+              icon.classList.add(...CLASS_OPACITY);
+              icon.setAttribute(ATTR_TIMEPICKER_ACTIVE, '');
+
+              return;
+            }
+
+            icon.classList.remove(...CLASS_OPACITY);
+            icon.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
+          });
         }
+
+        const pickerHasHourAttr = target.hasAttribute(ATTR_TIMEPICKER_HOUR);
+        const iconElements = pickerHasHourAttr ? allIconsInlineHour : allIconsInlineMinute;
+
+        modifyIcons(iconElements, type === 'mouseover');
       }
     );
   }
@@ -1202,23 +1180,27 @@ class Timepicker {
       if (
         this._modal &&
         !this._modal.contains(target) &&
-        target.hasAttribute(ATTR_TIMEPICKER_ICON)
+        !target.hasAttribute(ATTR_TIMEPICKER_ICON)
       ) {
         clearInterval(this._interval);
         Manipulator.addStyle(this.elementToggle, {
           pointerEvents: 'auto',
         });
         this._removeModal();
+
+        if (!this._animations) return;
+
+        this._toggleBackdropAnimation(true);
       }
     });
   }
 
   _handleSwitchHourMinute() {
-    toggleClassHandler('click', ATTR_TIMEPICKER_CURRENT);
+    toggleClassHandler('click', SELECTOR_ATTR_TIMEPICKER_CURRENT);
 
-    EventHandler.on(this._modal, 'click', ATTR_TIMEPICKER_CURRENT, () => {
+    EventHandler.on(this._modal, 'click', SELECTOR_ATTR_TIMEPICKER_CURRENT, () => {
       const { format24 } = this._options;
-      const current = SelectorEngine.find(ATTR_TIMEPICKER_CURRENT, this._modal);
+      const current = SelectorEngine.find(SELECTOR_ATTR_TIMEPICKER_CURRENT, this._modal);
       const allTipsMinutes = SelectorEngine.find(`[${ATTR_TIMEPICKER_TIPS_MINUTES}]`, this._modal);
       const allTipsHours = SelectorEngine.find(`[${ATTR_TIMEPICKER_TIPS_HOURS}]`, this._modal);
       const allInnerTips = SelectorEngine.find(`[${ATTR_TIMEPICKER_INNER_HOURS}]`, this._modal);
@@ -1395,7 +1377,7 @@ class Timepicker {
   };
 
   _handleSwitchTimeMode() {
-    EventHandler.on(document, 'click', ATTR_TIMEPICKER_HOUR_MODE, ({ target }) => {
+    EventHandler.on(document, 'click', SELECTOR_ATTR_TIMEPICKER_HOUR_MODE, ({ target }) => {
       let { maxTime, minTime } = this._options;
       const { disablePast, disableFuture, format12 } = this._options;
 
@@ -1435,16 +1417,16 @@ class Timepicker {
       );
       this._toggleAmPm(target.textContent);
       if (!target.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) {
-        const allHoursMode = SelectorEngine.find(ATTR_TIMEPICKER_HOUR_MODE);
+        const allHoursMode = SelectorEngine.find(SELECTOR_ATTR_TIMEPICKER_HOUR_MODE);
 
         allHoursMode.forEach((element) => {
           if (element.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) {
-            element.classList.remove('!opacity-100')
+            element.classList.remove(...CLASS_OPACITY)
             element.removeAttribute(ATTR_TIMEPICKER_ACTIVE)
           }
         });
 
-        target.classList.add('!opacity-100')
+        target.classList.add(...CLASS_OPACITY)
         target.setAttribute(ATTR_TIMEPICKER_ACTIVE, '')
       }
     });
@@ -1557,7 +1539,7 @@ class Timepicker {
           }
 
           if (minutes && closeModalOnMinutesClick) {
-            const submitBtn = SelectorEngine.findOne(`[${ATTR_BUTTON_SUBMIT}]`, this._modal);
+            const submitBtn = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_BUTTON_SUBMIT}]`, this._modal);
             EventHandler.trigger(submitBtn, 'click');
           }
         }
@@ -1802,7 +1784,7 @@ class Timepicker {
     if (this._animations) {
       setTimeout(() => {
         this._removeModalElements();
-        reset()
+        reset();
       }, 300);
     } else {
       this._removeModalElements();
@@ -1813,12 +1795,11 @@ class Timepicker {
       this._document,
       'click keydown mousedown mouseup mousemove mouseleave mouseover touchmove touchend'
     );
+    EventHandler.off(window, 'keydown')
   }
 
   _removeModalElements() {
-    if (this._modal) {
-      this._modal.remove();
-    }
+    if (this._modal) this._modal.remove();
   }
 
   _toggleBackdropAnimation(isToRemove = false) {
@@ -1996,7 +1977,7 @@ class Timepicker {
       this._isInvalidTimeFormat &&
       !this._AM.hasAttribute(ATTR_TIMEPICKER_ACTIVE)
     ) {
-      this._PM.classList.add('!opacity-100')
+      this._PM.classList.add(...CLASS_OPACITY)
       this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, '')
     }
 
@@ -2017,7 +1998,7 @@ class Timepicker {
     setTimeout(() => {
       let currentFormat;
       if (format12) {
-        currentFormat = SelectorEngine.findOne(`${ATTR_TIMEPICKER_HOUR_MODE}[${ATTR_TIMEPICKER_ACTIVE}]`).textContent;
+        currentFormat = SelectorEngine.findOne(`${SELECTOR_ATTR_TIMEPICKER_HOUR_MODE}[${ATTR_TIMEPICKER_ACTIVE}]`).textContent;
       }
       this._handleDisablingTipsMinTime(currentFormat, minTimeFormat, minTimeMinutes, minTimeHour);
       this._handleDisablingTipsMaxTime(currentFormat, maxTimeFormat, maxTimeMinutes, maxTimeHour);
@@ -2130,7 +2111,7 @@ class Timepicker {
 export default Timepicker;
 
 EventHandler.on(window, 'DOMContentLoaded', () => {
-  SelectorEngine.find(ATTR_TIMEPICKER_INIT).forEach((timepicker) => {
+  SelectorEngine.find(SELECTOR_ATTR_TIMEPICKER_INIT).forEach((timepicker) => {
     let instance = Timepicker.getInstance(timepicker);
     const { timepickerFormat24 } = timepicker.dataset;
 
