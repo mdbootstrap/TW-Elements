@@ -60,7 +60,6 @@ const EVENT_MOUSEDOWN = `mousedown${EVENT_KEY}`;
 const EVENT_KEYDOWN = `keydown${EVENT_KEY}`;
 const EVENT_KEYUP = `keyup${EVENT_KEY}`;
 const EVENT_RESIZE = `resize${EVENT_KEY}`;
-const EVENT_ANIMATIONEND = 'animationend';
 
 const STEP_REF = `[${REF}-step-ref]`;
 const HEAD_REF = `[${REF}-head-ref]`;
@@ -125,8 +124,8 @@ class Stepper {
 
   // Private
   _init() {
-    const activeStep = SelectorEngine.find(`${STEP_REF}`, this._element)[this._activeStepIndex].setAttribute('data-et', 'active-step');
-    const stepperContent = SelectorEngine.find(`${CONTENT_REF}`, this._element);
+    const activeStep = SelectorEngine.find(`${STEP_REF}`, this._element)[this._activeStepIndex]
+      .setAttribute('data-te', 'active-step');
     const stepperHeadText = SelectorEngine.find(`${HEAD_TEXT_REF}`, this._element);
     const stepperHeadIcon = SelectorEngine.find(`${HEAD_ICON_REF}`, this._element);
 
@@ -134,11 +133,9 @@ class Stepper {
       this._activeStepIndex = this._steps.indexOf(activeStep);
       this._toggleStepClass(this._activeStepIndex, 'add', this._options.stepperActive);
 
-      stepperContent[this._activeStepIndex].classList.add('block');
       stepperHeadText[this._activeStepIndex].classList.add('font-medium')
       stepperHeadIcon[this._activeStepIndex].classList.add('bg-[#0d6efd]')
     } else {
-      stepperContent[this._activeStepIndex].classList.add('block');
       stepperHeadText[this._activeStepIndex].classList.add('font-medium')
       stepperHeadIcon[this._activeStepIndex].classList.add('bg-[#0d6efd]')
       this._toggleStepClass(this._activeStepIndex, 'add', this._options.stepperActive);
@@ -258,10 +255,10 @@ class Stepper {
 
     this._activeStepIndex = index;
 
-    this._steps[this._activeStepIndex].setAttribute('data-et', 'active-step');
+    this._steps[this._activeStepIndex].setAttribute('data-te', 'active-step');
     this._steps.forEach((step, index) => {
       if (step[this._activeStepIndex] !== index) {
-        step.removeAttribute('data-et')
+        step.removeAttribute('data-te')
       }
     })
   }
@@ -317,7 +314,7 @@ class Stepper {
   }
 
   _toggleStepperClass() {
-    const vertical = SelectorEngine.findOne('[data-mdb-stepper-type]', this._element);
+    const vertical = SelectorEngine.findOne('[data-te-stepper-type]', this._element);
 
     if (vertical !== null) {
       this._steps.forEach((el) => {
@@ -486,16 +483,13 @@ class Stepper {
   }
 
   _toggleActive(index) {
-    const stepperContent = SelectorEngine.find(`${CONTENT_REF}`, this._element);
     const stepperHeadText = SelectorEngine.find(`${HEAD_TEXT_REF}`, this._element);
     const stepperHeadIcon = SelectorEngine.find(`${HEAD_ICON_REF}`, this._element);
 
-    stepperContent[index].classList.add('block');
     stepperHeadText[index].classList.add('font-medium');
     stepperHeadIcon[index].classList.add('bg-[#0d6efd]');
     stepperHeadIcon[index].classList.remove('bg-[#198754]');
 
-    stepperContent[this._activeStepIndex].classList.remove('block');
     stepperHeadText[this._activeStepIndex].classList.remove('font-medium');
     stepperHeadIcon[this._activeStepIndex].classList.remove('bg-[#0d6efd]');
 
@@ -514,7 +508,7 @@ class Stepper {
 
   _hideInactiveSteps() {
     this._steps.forEach((el) => {
-      if (!el.getAttribute('data-et')) {
+      if (!el.getAttribute('data-te')) {
         this._hideElement(SelectorEngine.findOne(`${CONTENT_REF}`, el));
       }
     });
@@ -538,17 +532,17 @@ class Stepper {
   }
 
   _hideElement(stepContent) {
-    const isActive = SelectorEngine.parents(stepContent, `${STEP_REF}`)[0].getAttribute('data-et');
+    const isActive = SelectorEngine.parents(stepContent, `${STEP_REF}`)[0].getAttribute('data-te');
 
     // prevent hiding during a quick step change
     if (!isActive && this._currentView !== STEPPER_VERTICAL) {
-      stepContent.style.display = 'none';
+      // stepContent.style.display = 'none';
     } else {
       stepContent.classList.add('!my-0');
       stepContent.classList.add('!py-0');
       stepContent.classList.add('!h-0');
-    }
-  }
+    };
+  };
 
   _showElement(stepContent) {
     if (this._currentView === STEPPER_VERTICAL) {
@@ -571,35 +565,32 @@ class Stepper {
     this._steps.forEach((el, i) => {
       const stepContent = SelectorEngine.findOne(`${CONTENT_REF}`, el);
 
-      this._clearStepAnimation(stepContent);
-
       if (i !== index && i !== this._activeStepIndex) {
         this._hideElement(stepContent);
       }
     });
 
+    const CLASS_NAME_SLIDE_RIGHT = 'translate-x-[150%]';
+    const CLASS_NAME_SLIDE_LEFT = '-translate-x-[150%]';
+    const CLASS_NAME_SLIDE_IN = 'translate-0';
+
     if (isForward) {
-      activeStepAnimation = 'slide-out-left';
-      nextStepAnimation = 'slide-in-right';
+      activeStepAnimation = CLASS_NAME_SLIDE_LEFT;
+      nextStepAnimation = CLASS_NAME_SLIDE_IN;
+      nextStepContent.classList.remove('translate-x-[150%]');
+      nextStepContent.classList.remove('-translate-x-[150%]');
     } else {
-      activeStepAnimation = 'slide-out-right';
-      nextStepAnimation = 'slide-in-left';
+      activeStepAnimation = CLASS_NAME_SLIDE_RIGHT;
+      nextStepAnimation = CLASS_NAME_SLIDE_IN;
+      nextStepContent.classList.remove('-translate-x-[150%]');
+      nextStepContent.classList.remove('translate-x-[150%]');
     }
 
-    activeStepContent.classList.add(activeStepAnimation, 'animation', 'fast');
-    nextStepContent.classList.add(nextStepAnimation, 'animation', 'fast');
+    activeStepContent.classList.add(activeStepAnimation);
+    nextStepContent.classList.add(nextStepAnimation);
 
     this._setHeight(this._steps[index]);
-
-    EventHandler.one(activeStepContent, EVENT_ANIMATIONEND, (e) => {
-      this._clearStepAnimation(e.target);
-      this._hideElement(e.target);
-    });
-
-    EventHandler.one(nextStepContent, EVENT_ANIMATIONEND, (e) => {
-      this._clearStepAnimation(e.target);
-    });
-  }
+  };
 
   _animateVerticalStep(index) {
     const nextStepContent = SelectorEngine.findOne(`${CONTENT_REF}`, this._steps[index]);
@@ -607,17 +598,6 @@ class Stepper {
 
     this._hideElement(activeStepContent);
     this._showElement(nextStepContent);
-  }
-
-  _clearStepAnimation(element) {
-    element.classList.remove(
-      'slide-out-left',
-      'slide-in-right',
-      'slide-out-right',
-      'slide-in-left',
-      'animation',
-      'fast'
-    );
   }
 
   static getInstance(element) {
