@@ -11,6 +11,9 @@ module.exports = plugin(() => {}, {
         body: ["Roboto", "sans-serif"],
         mono: ["ui-monospace", "monospace"],
       },
+      boxShadow: {
+        "te-blue": "0 0 0 1px rgb(37, 99, 235)",
+      },
       keyframes: {
         "fade-in": {
           "0%": { opacity: 0 },
