@@ -2,6 +2,8 @@
 {{ $overview_scrollspy_file_exists := fileExists (printf
   "/content/%s/ss.html" .File.Dir)
 }}
+{{ $api_file_exists := fileExists (printf "/content/%s/a.html" .File.Dir) }}
+{{ $api_scrollspy_file_exists := fileExists (printf "/content/%s/a-ss.html" .File.Dir) }}
 
 
 <!-- Single for all single page under /docs/* -->
@@ -23,7 +25,38 @@
         </div>
         <!-- Right column -->
         <div class="w-full px-4 sm:w-9/12 sm:pr-10 lg:w-8/12 lg:pr-4">
-          <div class="mb-8">
+          <ul id="docs-nav-pills" class="flex" role="tablist">
+            <li>
+              <a
+                id="docs-tab-overview"
+                class="inline-block rounded bg-gray-200 px-7 py-3 text-sm font-medium uppercase leading-snug text-gray-700 shadow-md transition duration-150 ease-in-out hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg data-[te-nav-active]:bg-blue-600 data-[te-nav-active]:text-white data-[te-nav-active]:hover:bg-blue-700 data-[te-nav-active]:focus:bg-blue-700 data-[te-nav-active]:active:bg-blue-800"
+                data-te-nav-active
+                href="#docsTabsOverview"
+                role="tab"
+                >Overview</a
+              >
+            </li>
+
+            {{ if $api_file_exists }}
+              <li>
+                <a
+                  id="docs-tab-api"
+                  class="relative ml-3 inline-block overflow-hidden rounded bg-gray-200 px-7 py-3 align-bottom text-sm font-medium uppercase leading-tight text-gray-700 shadow-md transition duration-150 ease-in-out hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg data-[te-nav-active]:bg-blue-600 data-[te-nav-active]:text-white data-[te-nav-active]:hover:bg-blue-700 data-[te-nav-active]:focus:bg-blue-700 data-[te-nav-active]:active:bg-blue-800"
+                  href="#docsTabsAPI"
+                  role="tab"
+                  >API</a
+                >
+              </li>
+            {{ end }}
+          </ul>
+
+          <div
+            data-te-tab-ref
+            data-te-tab-active
+            id="docsTabsOverview"
+            class="opacity-0 transition-opacity duration-300 ease-in-out data-[te-tab-active]:block data-[te-tab-active]:opacity-100"
+            role="tabpanel"
+            class="mb-8">
             <h1 class="mt-0 text-5xl font-bold leading-normal">
               {{ .Params.main_title }}
             </h1>
@@ -32,8 +65,23 @@
             </p>
 
             <hr class="my-12" />
+
             <main>{{ .Content }}</main>
           </div>
+
+          {{ if and $api_file_exists }}
+            <div
+              data-te-tab-ref
+              id="docsTabsAPI"
+              class="opacity-0 transition-opacity duration-300 ease-in-out data-[te-tab-active]:block data-[te-tab-active]:opacity-100"
+              role="tabpanel">
+              <!--Main column-->
+              {{ with $page_resources.GetMatch "a.html" }}
+                {{ .Content }}
+              {{ end }}
+              <!--/.Main column-->
+            </div>
+          {{ end }}
         </div>
         {{ if $overview_scrollspy_file_exists }}
           <!-- Sidebar  -->
@@ -105,9 +153,114 @@
             </menu>
           </div>
         {{ end }}
+
+        {{ if $api_scrollspy_file_exists }}
+          <!-- Sidebar  -->
+
+          <div class="hidden w-full px-4 lg:block lg:w-2/12">
+            <menu class="sticky top-10">
+              <style>
+                .dc-content-animation {
+                  height: 20px;
+                  width: 50%;
+                  display: inline-block;
+                  animation: placeholderPulse 1s infinite ease-in-out;
+                  -webkit-animation: placeholderPulse 1s infinite ease-in-out;
+                }
+                @keyframes placeholderPulse {
+                  0% {
+                    background-color: rgba(133, 214, 251, 0.1);
+                    color: rgba(133, 214, 251, 0.1);
+                  }
+                  50% {
+                    background-color: rgba(133, 214, 251, 0.3);
+                    color: rgba(133, 214, 251, 0.3);
+                  }
+                  100% {
+                    background-color: rgba(133, 214, 251, 0.1);
+                    color: rgba(133, 214, 251, 0.1);
+                  }
+                }
+                .ps.nav {
+                  flex-wrap: nowrap;
+                  position: relative;
+                }
+              </style>
+
+              <div
+                class="animation fade-in relative mb-4 hidden xl:block"
+                id="dpl-gtm-scroll"
+                style="min-height: 170px; animation-delay: 0ms; animation-duration: 500ms">
+                <div class="w-100 justify-content-center absolute w-full">
+                  <div
+                    class="border-info shadow-3 overflow-hidden rounded border"
+                    style="border-color: rgba(133, 214, 251, 0.3) !important">
+                    <span
+                      class="dc-content-animation mx-2 mb-2 mt-3"
+                      style="width: 40%"></span>
+                    <span
+                      class="dc-content-animation mx-2 mb-1"
+                      style="width: 70%"></span>
+                    <span class="dc-content-animation mx-2 mb-1"></span>
+                    <span
+                      class="dc-content-animation mx-2 mb-1"
+                      style="width: 80%"></span>
+                    <span
+                      class="dc-content-animation mx-2 mb-1"
+                      style="width: 70%"></span>
+                  </div>
+                </div>
+                <!-- Alert -->
+                <div
+                  id="gtmDC-scroll-all"
+                  class="relative"
+                  style="min-height: 1px; min-width: 1px"></div>
+                <!-- Alert -->
+              </div>
+
+              <ul class="dark:text-gray-200">
+                {{ with .Resources.GetMatch "a-ss.html" }}
+                  {{ .Content }}
+                {{ end }}
+              </ul>
+            </menu>
+          </div>
+        {{ end }}
       </div>
     </div>
 
     {{ partial "footer/footer-docs.html" . }}
   </body>
+
+  <script>
+    const activeTab = document.querySelector("[data-te-tab-active]");
+    const overviewButton = document.querySelector("#docs-tab-overview");
+    const apiButton = document.querySelector("#docs-tab-api");
+    const tabs = document.querySelectorAll("[data-te-tab-ref]");
+
+    overviewButton.addEventListener("click", () => {
+      setTimeout(() => {
+        tabs[0].style.display = "block";
+        tabs[1].style.display = "none";
+      }, 300);
+
+      overviewButton.setAttribute("data-te-nav-active", "");
+      apiButton.removeAttribute("data-te-nav-active");
+      tabs[0].setAttribute("data-te-tab-active", "");
+      tabs[1].removeAttribute("data-te-tab-active");
+    });
+    apiButton.addEventListener("click", () => {
+      setTimeout(() => {
+        tabs[1].style.display = "block";
+        tabs[0].style.display = "none";
+      }, 300);
+
+      apiButton.setAttribute("data-te-nav-active", "");
+      overviewButton.removeAttribute("data-te-nav-active");
+      tabs[1].setAttribute("data-te-tab-active", "");
+      tabs[0].removeAttribute("data-te-tab-active");
+    });
+    // const changeActiveTab =
+    console.log(apiButton);
+  </script>
 </html>
