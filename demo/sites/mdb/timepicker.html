@@ -63,8 +63,8 @@
         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
         placeholder="Select a date" />
       <label for="floatingInput" class="text-gray-700">Select a time</label>
-      <button tabindex="0" type="button" class="timepicker-toggle-button" data-mdb-toggle="timepicker-with-button">
-        <i class="fab fa-react fa*2x timepicker-icon"></i>
+      <button tabindex="0" type="button" class="timepicker-toggle-button" data-te-toggle="timepicker-with-button" data-te-timepicker-toggle-button>
+        <i class="fab fa-react fa*2x" data-te-timepicker-icon></i>
       </button>
     </div>
     <br />
@@ -82,6 +82,8 @@
         type="button"
         role="button"
         data-te-toggle="timepicker-with-icon"
+        data-te-timepicker-toggle-button
+        data-te-timepicker-icon
       ></i>
     </div>
     <br />
@@ -90,18 +92,6 @@
     <p class="mb-4">Without icon</p>
     <div class="timepicker-without-icon relative form-floating mb-3 xl:w-96" data-te-with-icon="false" data-te-timepicker-init>
       <div class="form-outline">
-        <input type="text"
-          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-          placeholder="Select a date" />
-        <label for="floatingInput" class="text-gray-700">Select a time</label>
-      </div>
-      <button data-te-toggle="timepicker-without-icon">
-        Toggle Timepicker
-      </button>
-    </div>
-
-    <div id="timepicker-without-icon" class="relative form-floating mb-3 xl:w-96">
-      <div class="form-outline" data-te-with-icon="false">
         <input type="text"
           class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           placeholder="Select a date" />
@@ -299,10 +289,6 @@
       format24:true,
       inline: true
     });
-    // const wiTimepicker = document.querySelector('#timepicer-without-icon');
-    // const wiInitTimepicker = new te.Timepicker(wiTimepicker, {
-    //   withIcon: false
-    // })
 
     //Default time string PM
     const pickerStartedPM = document.querySelector('.timepicker-default-time-string-pm ');
