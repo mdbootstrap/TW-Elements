@@ -1,10 +1,9 @@
 /* eslint-disable consistent-return */
-import EventHandler from '../dom/event-handler';
-import Manipulator from '../dom/manipulator';
+import EventHandler from "../dom/event-handler";
+import Manipulator from "../dom/manipulator";
 
-// eslint-disable-next-line import/prefer-default-export
 const formatToAmPm = (date) => {
-  if (date === '') return;
+  if (date === "") return;
   let hours;
   let minutes;
   let amOrPm;
@@ -14,12 +13,12 @@ const formatToAmPm = (date) => {
     minutes = date.getMinutes();
     hours %= 12;
     if (hours === 0) {
-      amOrPm = 'AM';
+      amOrPm = "AM";
     }
     hours = hours || 12;
 
     if (amOrPm === undefined) {
-      amOrPm = hours >= 12 ? 'PM' : 'AM';
+      amOrPm = hours >= 12 ? "PM" : "AM";
     }
     minutes = minutes < 10 ? `0${minutes}` : minutes;
   } else {
@@ -27,12 +26,12 @@ const formatToAmPm = (date) => {
 
     hours %= 12;
     if (hours === 0) {
-      amOrPm = 'AM';
+      amOrPm = "AM";
     }
     hours = hours || 12;
 
     if (amOrPm === undefined) {
-      amOrPm = hours >= 12 ? 'PM' : 'AM';
+      amOrPm = hours >= 12 ? "PM" : "AM";
     }
   }
 
@@ -45,26 +44,34 @@ const formatToAmPm = (date) => {
 
 const isValidDate = (date) => {
   // eslint-disable-next-line no-restricted-globals
-  return date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date);
+  return (
+    date &&
+    Object.prototype.toString.call(date) === "[object Date]" &&
+    !isNaN(date)
+  );
 };
 
 const toggleClassHandler = (event, classes) => {
   return EventHandler.on(document, event, classes, ({ target }) => {
-    if (!Manipulator.hasClass(target, 'active')) {
+    if (!Manipulator.hasClass(target, "active")) {
       const allElements = document.querySelectorAll(classes);
 
       allElements.forEach((element) => {
-        if (Manipulator.hasClass(element, 'active')) {
-          Manipulator.removeClass(element, 'active');
+        if (Manipulator.hasClass(element, "active")) {
+          Manipulator.removeClass(element, "active");
         }
       });
 
-      Manipulator.addClass(target, 'active');
+      Manipulator.addClass(target, "active");
     }
   });
 };
 
-const findMousePosition = ({ clientX, clientY, touches }, object, isMobile = false) => {
+const findMousePosition = (
+  { clientX, clientY, touches },
+  object,
+  isMobile = false
+) => {
   const { left, top } = object.getBoundingClientRect();
   let obj = {};
   if (!isMobile || !touches) {
@@ -83,18 +90,26 @@ const findMousePosition = ({ clientX, clientY, touches }, object, isMobile = fal
 };
 
 const checkBrowser = () => {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
 };
 
 const takeValue = (element, isInput = true) => {
   let valueInput;
   if (isInput) {
-    valueInput = element.value.replace(/:/gi, ' ');
+    valueInput = element.value.replace(/:/gi, " ");
   } else {
-    valueInput = element.replace(/:/gi, ' ');
+    valueInput = element.replace(/:/gi, " ");
   }
 
-  return valueInput.split(' ');
+  return valueInput.split(" ");
 };
 
-export { checkBrowser, findMousePosition, formatToAmPm, toggleClassHandler, takeValue };
+export {
+  checkBrowser,
+  findMousePosition,
+  formatToAmPm,
+  toggleClassHandler,
+  takeValue,
+};
