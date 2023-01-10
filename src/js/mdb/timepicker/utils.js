@@ -1,15 +1,18 @@
 /* eslint-disable consistent-return */
-import EventHandler from '../dom/event-handler';
+import EventHandler from "../dom/event-handler";
 
-const ATTR_TIMEPICKER_DISABLED = 'data-te-timepicker-disabled';
-const ATTR_TIMEPICKER_ACTIVE = 'data-te-timepicker-active'
+const ATTR_TIMEPICKER_DISABLED = "data-te-timepicker-disabled";
+const ATTR_TIMEPICKER_ACTIVE = "data-te-timepicker-active";
 
-const CLASSES_TIPS_DISABLED = ['text-[#b3afaf]', 'pointer-events-none', 'bg-transparent'];
-const CLASS_OPACITY = ['!opacity'];
+const CLASSES_TIPS_DISABLED = [
+  "text-[#b3afaf]",
+  "pointer-events-none",
+  "bg-transparent",
+];
+const CLASS_OPACITY = ["!opacity"];
 
-// eslint-disable-next-line import/prefer-default-export
 const formatToAmPm = (date) => {
-  if (date === '') return;
+  if (date === "") return;
   let hours;
   let minutes;
   let amOrPm;
@@ -21,13 +24,13 @@ const formatToAmPm = (date) => {
     minutes = date.getMinutes();
     hours %= 12;
     if (hours === 0) {
-      amOrPm = 'AM';
+      amOrPm = "AM";
     }
 
     hours = hours || 12;
 
     if (amOrPm === undefined) {
-      amOrPm = hours === 12 ? 'PM' : 'AM';
+      amOrPm = hours === 12 ? "PM" : "AM";
     }
 
     minutes = minutes < 10 ? `0${minutes}` : minutes;
@@ -37,12 +40,12 @@ const formatToAmPm = (date) => {
 
     hours %= 12;
     if (hours === 0) {
-      amOrPm = 'AM';
+      amOrPm = "AM";
     }
     hours = hours || 12;
 
     if (amOrPm === undefined) {
-      amOrPm = originalHours >= 12 ? 'PM' : 'AM';
+      amOrPm = originalHours >= 12 ? "PM" : "AM";
     }
   }
 
@@ -54,11 +57,15 @@ const formatToAmPm = (date) => {
 };
 
 const isValidDate = (date) => {
-  return date && Object.prototype.toString.call(date) === '[object Date]' && !Number.isNaN(date);
+  return (
+    date &&
+    Object.prototype.toString.call(date) === "[object Date]" &&
+    !Number.isNaN(date)
+  );
 };
 
 const formatNormalHours = (date) => {
-  if (date === '') return;
+  if (date === "") return;
 
   let hours;
   let minutes;
@@ -75,8 +82,8 @@ const formatNormalHours = (date) => {
   return {
     hours,
     minutes,
-  }
-}
+  };
+};
 
 const toggleClassHandler = (event, classes) => {
   return EventHandler.on(document, event, classes, ({ target }) => {
@@ -87,16 +94,20 @@ const toggleClassHandler = (event, classes) => {
     allElements.forEach((element) => {
       if (!element.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) return;
 
-      element.classList.remove(...CLASS_OPACITY)
-      element.removeAttribute(ATTR_TIMEPICKER_ACTIVE)
+      element.classList.remove(...CLASS_OPACITY);
+      element.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
     });
 
-    target.classList.add(...CLASS_OPACITY)
-    target.setAttribute(ATTR_TIMEPICKER_ACTIVE, '')
+    target.classList.add(...CLASS_OPACITY);
+    target.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
   });
 };
 
-const findMousePosition = ({ clientX, clientY, touches }, object, isMobile = false) => {
+const findMousePosition = (
+  { clientX, clientY, touches },
+  object,
+  isMobile = false
+) => {
   const { left, top } = object.getBoundingClientRect();
   let obj = {};
   if (!isMobile || !touches) {
@@ -117,17 +128,19 @@ const findMousePosition = ({ clientX, clientY, touches }, object, isMobile = fal
 const checkBrowser = () => {
   const isBrowserMatched =
     (navigator.maxTouchPoints &&
-    navigator.maxTouchPoints > 2 &&
-    /MacIntel/.test(navigator.platform)) ||
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      navigator.maxTouchPoints > 2 &&
+      /MacIntel/.test(navigator.platform)) ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
 
   return isBrowserMatched;
-}
+};
 
 const takeValue = (element, isInput = true) => {
-  if (isInput) return element.value.replace(/:/gi, ' ').split(' ');
+  if (isInput) return element.value.replace(/:/gi, " ").split(" ");
 
-  return element.replace(/:/gi, ' ').split(' ');
+  return element.replace(/:/gi, " ").split(" ");
 };
 
 const compareTimes = (time1, time2) => {
@@ -136,22 +149,24 @@ const compareTimes = (time1, time2) => {
 
   const bothFormatsEqual = time1maxTimeFormat === time2maxTimeFormat;
   const condition =
-    (time1maxTimeFormat === 'PM' && time2maxTimeFormat === 'AM') ||
+    (time1maxTimeFormat === "PM" && time2maxTimeFormat === "AM") ||
     (bothFormatsEqual && time1Hour > time2Hour) ||
-    (time1Minutes > time2Minutes);
+    time1Minutes > time2Minutes;
 
   return condition;
-}
+};
 
 const getCurrentTime = () => {
   const date = new Date();
   const currentHours = date.getHours();
   const currentMinutes = date.getMinutes();
 
-  const currentTime = `${currentHours}:${currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}`;
+  const currentTime = `${currentHours}:${
+    currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes
+  }`;
 
   return currentTime;
-}
+};
 
 const setMinTime = (minTime, disabledPast, format12) => {
   if (!disabledPast) {
@@ -160,16 +175,18 @@ const setMinTime = (minTime, disabledPast, format12) => {
   let currentTime = getCurrentTime();
 
   if (format12) {
-    currentTime = `${formatToAmPm(currentTime).hours}:${formatToAmPm(currentTime).minutes} ${
-      formatToAmPm(currentTime).amOrPm
-    }`;
+    currentTime = `${formatToAmPm(currentTime).hours}:${
+      formatToAmPm(currentTime).minutes
+    } ${formatToAmPm(currentTime).amOrPm}`;
   }
-  if ((minTime !== '' && compareTimes(currentTime, minTime)) || minTime === '') {
+  if (
+    (minTime !== "" && compareTimes(currentTime, minTime)) ||
+    minTime === ""
+  ) {
     minTime = currentTime;
   }
   return minTime;
-
-}
+};
 
 const setMaxTime = (maxTime, disabledFuture, format12) => {
   if (!disabledFuture) return maxTime;
@@ -177,12 +194,15 @@ const setMaxTime = (maxTime, disabledFuture, format12) => {
   let currentTime = getCurrentTime();
 
   if (format12) {
-    currentTime = `${formatToAmPm(currentTime).hours}:${formatToAmPm(currentTime).minutes} ${
-      formatToAmPm(currentTime).amOrPm
-    }`;
+    currentTime = `${formatToAmPm(currentTime).hours}:${
+      formatToAmPm(currentTime).minutes
+    } ${formatToAmPm(currentTime).amOrPm}`;
   }
 
-  if ((maxTime !== '' && !compareTimes(currentTime, maxTime)) || maxTime === '') {
+  if (
+    (maxTime !== "" && !compareTimes(currentTime, maxTime)) ||
+    maxTime === ""
+  ) {
     maxTime = currentTime;
   }
 
@@ -192,7 +212,7 @@ const setMaxTime = (maxTime, disabledFuture, format12) => {
 const checkValueBeforeAccept = (
   { format12, maxTime, minTime, disablePast, disableFuture },
   input,
-  hourHeader,
+  hourHeader
 ) => {
   const minute = takeValue(input)[1];
 
@@ -202,63 +222,82 @@ const checkValueBeforeAccept = (
   const [maxTimeHour, maxTimeMin, maxTimeFormat] = takeValue(maxTime, false);
   const [minTimeHour, minTimeMin, minTimeFormat] = takeValue(minTime, false);
 
-  if (maxTimeFormat !== undefined || minTimeFormat !== undefined) return [hourHeader, minute];
+  if (maxTimeFormat !== undefined || minTimeFormat !== undefined)
+    return [hourHeader, minute];
 
   if (
-    maxTimeHour !== '' &&
-    minTimeHour === '' &&
+    maxTimeHour !== "" &&
+    minTimeHour === "" &&
     Number(hourHeader) > Number(maxTimeHour)
-  ) return;
+  )
+    return;
 
   if (
-    maxTimeHour === '' &&
-    minTimeHour !== '' &&
+    maxTimeHour === "" &&
+    minTimeHour !== "" &&
     maxTimeMin === undefined &&
-    minTimeMin !== '' &&
+    minTimeMin !== "" &&
     Number(hourHeader) < Number(minTimeHour)
-  ) return;
+  )
+    return;
 
   return [hourHeader, minute];
 };
 
 const _verifyMaxTimeHourAndAddDisabledClass = (tips, maxTimeHour) => {
   tips.forEach((tip) => {
-    if (tip.textContent === '00' || Number(tip.textContent) > maxTimeHour) {
-      tip.classList.add(...CLASSES_TIPS_DISABLED)
-      tip.setAttribute(ATTR_TIMEPICKER_DISABLED, '')
+    if (tip.textContent === "00" || Number(tip.textContent) > maxTimeHour) {
+      tip.classList.add(...CLASSES_TIPS_DISABLED);
+      tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
 };
 
 const _verifyMinTimeHourAndAddDisabledClass = (tips, minTimeHour) => {
   tips.forEach((tip) => {
-    if (tip.textContent !== '00' && Number(tip.textContent) < minTimeHour) {
-      tip.classList.add(...CLASSES_TIPS_DISABLED)
-      tip.setAttribute(ATTR_TIMEPICKER_DISABLED, '')
+    if (tip.textContent !== "00" && Number(tip.textContent) < minTimeHour) {
+      tip.classList.add(...CLASSES_TIPS_DISABLED);
+      tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
 };
 
-const _verifyMaxTimeMinutesTipsAndAddDisabledClass = (tips, maxMinutes, maxHour, currHour) => {
+const _verifyMaxTimeMinutesTipsAndAddDisabledClass = (
+  tips,
+  maxMinutes,
+  maxHour,
+  currHour
+) => {
   tips.forEach((tip) => {
-    if (Number(tip.textContent) > maxMinutes && Number(currHour) === Number(maxHour)) {
-      tip.classList.add(...CLASSES_TIPS_DISABLED)
-      tip.setAttribute(ATTR_TIMEPICKER_DISABLED, '')
+    if (
+      Number(tip.textContent) > maxMinutes &&
+      Number(currHour) === Number(maxHour)
+    ) {
+      tip.classList.add(...CLASSES_TIPS_DISABLED);
+      tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
 };
 
-const _verifyMinTimeMinutesTipsAndAddDisabledClass = (tips, minMinutes, minHour, currHour) => {
+const _verifyMinTimeMinutesTipsAndAddDisabledClass = (
+  tips,
+  minMinutes,
+  minHour,
+  currHour
+) => {
   tips.forEach((tip) => {
-    if (Number(tip.textContent) < minMinutes && Number(currHour) === Number(minHour)) {
-      tip.classList.add(...CLASSES_TIPS_DISABLED)
-      tip.setAttribute(ATTR_TIMEPICKER_DISABLED, '')
+    if (
+      Number(tip.textContent) < minMinutes &&
+      Number(currHour) === Number(minHour)
+    ) {
+      tip.classList.add(...CLASSES_TIPS_DISABLED);
+      tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
 };
 
 const _convertHourToNumber = (string) => {
-  if (string.startsWith('0')) return Number(string.slice(1));
+  if (string.startsWith("0")) return Number(string.slice(1));
 
   return Number(string);
 };

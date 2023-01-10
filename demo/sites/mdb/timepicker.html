@@ -1,394 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Timepicker</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="" />
-  <meta name="author" content="Tailwind Elements" />
-  <title>Timepicker</title>
+    <!-- Roboto font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
 
-  <!-- Roboto font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-  <!-- Tailwind -->
-  <link rel="stylesheet" href="../../css/tailwind.min.css" />
-  <!-- PRISM -->
-  <link rel="stylesheet" href="../../dev/css/new-prism.css" />
-  <!-- Custom styles -->
-  <style></style>
-</head>
+  <body class="dark:bg-zinc-800">
+    <!-- Start your project here-->
+    <div class="mx-10 lg:mx-96">
+      <br />
+      <br />
+      <br />
 
-<body>
-  <!-- Start your project here-->
-  <div class="mx-10 lg:mx-96">
-    <br />
-    <br />
-    <br />
-
-    <p class="mb-4">Basic example</p>
-    <div class="relative form-outline mb-3 xl:w-96" data-te-timepicker-init>
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Inline Timepicker with 12h</p>
-    <div class="timepicker-inline-12 relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Inline Timepicker with 24h</p>
-    <div class="timepicker-inline-24 relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Custom Icon with button</p>
-    <div class="timepicker-with-button relative form-outline mb-3 xl:w-96" data-te-timepicker-init>
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-      <button tabindex="0" type="button" class="timepicker-toggle-button" data-te-toggle="timepicker-with-button" data-te-timepicker-toggle-button>
-        <i class="fab fa-react fa*2x" data-te-timepicker-icon></i>
-      </button>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Custom Icon with icon</p>
-    <div class="timepicker-with-icon relative form-outline mb-3 xl:w-96" data-te-timepicker-init>
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-      <i
-        class="fab fa-react fa-2x timepicker-icon timepicker-toggle-button"
-        tabindex="0"
-        type="button"
-        role="button"
-        data-te-toggle="timepicker-with-icon"
-        data-te-timepicker-toggle-button
-        data-te-timepicker-icon
-      ></i>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Without icon</p>
-    <div class="timepicker-without-icon relative form-floating mb-3 xl:w-96" data-te-with-icon="false" data-te-timepicker-init>
-      <div class="form-outline">
-        <input type="text"
-          class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      <p class="mb-4">Basic example</p>
+      <div class="form-outline relative mb-3 xl:w-96" data-te-timepicker-init>
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
           placeholder="Select a date" />
         <label for="floatingInput" class="text-gray-700">Select a time</label>
       </div>
-      <button class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-te-toggle="timepicker-without-icon">
-        Toggle Timepicker
-      </button>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Inline Timepicker with 12h</p>
+      <div class="timepicker-inline-12 form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Inline Timepicker with 24h</p>
+      <div class="timepicker-inline-24 form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Custom Icon with button</p>
+      <div
+        class="timepicker-with-button form-outline relative mb-3 xl:w-96"
+        data-te-timepicker-init>
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+        <button
+          tabindex="0"
+          type="button"
+          class="timepicker-toggle-button"
+          data-te-toggle="timepicker-with-button"
+          data-te-timepicker-toggle-button>
+          <i class="fab fa-react fa*2x" data-te-timepicker-icon></i>
+        </button>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Custom Icon with icon</p>
+      <div
+        class="timepicker-with-icon form-outline relative mb-3 xl:w-96"
+        data-te-timepicker-init>
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+        <i
+          class="fab fa-react fa-2x timepicker-icon timepicker-toggle-button"
+          tabindex="0"
+          type="button"
+          role="button"
+          data-te-toggle="timepicker-with-icon"
+          data-te-timepicker-toggle-button
+          data-te-timepicker-icon></i>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Without icon</p>
+      <div
+        class="timepicker-without-icon form-floating relative mb-3 xl:w-96"
+        data-te-with-icon="false"
+        data-te-timepicker-init>
+        <div class="form-outline">
+          <input
+            type="text"
+            class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+            placeholder="Select a date" />
+          <label for="floatingInput" class="text-gray-700">Select a time</label>
+        </div>
+        <button
+          class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+          data-te-toggle="timepicker-without-icon">
+          Toggle Timepicker
+        </button>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Default time</p>
+      <div
+        class="timepicker-default-time-string-pm form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">With string PM</label>
+      </div>
+      <div
+        class="timepicker-default-time-string-am form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">With string AM</label>
+      </div>
+      <div
+        class="timepicker-default-time-string-without-pm-am form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700"
+          >With string wighout AM/PM</label
+        >
+      </div>
+      <div
+        class="timepicker-default-time-string-24h form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">With string 24h</label>
+      </div>
+      <div
+        class="timepicker-default-time-with-new-date-12h form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700"
+          >With new Date with 12h</label
+        >
+      </div>
+      <div
+        class="timepicker-default-time-with-new-date-24h form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700"
+          >With new Date with 24h</label
+        >
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Handle input value</p>
+      <div id="timepicker-value" class="form-outline relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date"
+          data-te-timepicker-format24="true" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <div class="my-2">Input value: <span id="span-input-value"></span></div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Format 24h</p>
+      <div
+        class="timepicker-format form-floating relative mb-3 xl:w-96"
+        data-te-format24="true">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date"
+          data-te-toggle="timepicker" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Just Input</p>
+      <div
+        class="timepicker-just-input form-floating relative mb-3 xl:w-96"
+        data-mdb-with-icon="false"
+        data-te-timepicker-init>
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date"
+          data-mdb-toggle="timepicker-just-input" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Increment</p>
+      <div class="timepicker-inc form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Max time</p>
+      <div class="timepicker-max-time form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Max time with PM</p>
+      <div class="timepicker-max-time-pm form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Max time with AM</p>
+      <div class="timepicker-max-time-am form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Min time</p>
+      <div class="timepicker-min-time form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Min time with PM</p>
+      <div class="timepicker-min-time-pm form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Min time with AM</p>
+      <div class="timepicker-min-time-am form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Disable past</p>
+      <div class="timepicker-disable-past form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
+      <p class="mb-4">Disable future</p>
+      <div
+        class="timepicker-disable-future form-floating relative mb-3 xl:w-96">
+        <input
+          type="text"
+          class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+          placeholder="Select a date" />
+        <label for="floatingInput" class="text-gray-700">Select a time</label>
+      </div>
+      <br />
+      <br />
+      <br />
     </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Default time</p>
-    <div class="timepicker-default-time-string-pm relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">With string PM</label>
-    </div>
-    <div class="timepicker-default-time-string-am relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">With string AM</label>
-    </div>
-    <div class="timepicker-default-time-string-without-pm-am relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">With string wighout AM/PM</label>
-    </div>
-    <div class="timepicker-default-time-string-24h relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">With string 24h</label>
-    </div>
-    <div class="timepicker-default-time-with-new-date-12h relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">With new Date with 12h</label>
-    </div>
-    <div class="timepicker-default-time-with-new-date-24h relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">With new Date with 24h</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Handle input value</p>
-    <div id="timepicker-value" class="relative form-outline mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" data-te-timepicker-format24="true"/>
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <div class="my-2">
-      Input value: <span id="span-input-value"></span>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Format 24h</p>
-    <div class="timepicker-format relative form-floating mb-3 xl:w-96" data-te-format24="true">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" data-te-toggle="timepicker"/>
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Just Input</p>
-    <div class="timepicker-just-input relative form-floating mb-3 xl:w-96" data-mdb-with-icon="false" data-te-timepicker-init>
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" data-mdb-toggle="timepicker-just-input"/>
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Increment</p>
-    <div class="timepicker-inc relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Max time</p>
-    <div class="timepicker-max-time relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Max time with PM</p>
-    <div class="timepicker-max-time-pm relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Max time with AM</p>
-    <div class="timepicker-max-time-am relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Min time</p>
-    <div class="timepicker-min-time relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Min time with PM</p>
-    <div class="timepicker-min-time-pm relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Min time with AM</p>
-    <div class="timepicker-min-time-am relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Disable past</p>
-    <div class="timepicker-disable-past relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-    <p class="mb-4">Disable future</p>
-    <div class="timepicker-disable-future relative form-floating mb-3 xl:w-96">
-      <input type="text"
-        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Select a date" />
-      <label for="floatingInput" class="text-gray-700">Select a time</label>
-    </div>
-    <br />
-    <br />
-    <br />
-  </div>
-  <!-- End your project here-->
+    <!-- End your project here-->
 
-  <!-- MDB -->
-  <script type="text/javascript" src="../../js/index.min.js"></script>
-  <!-- PRISM -->
-  <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
-  <!-- MDB SNIPPET -->
-  <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
-  <!-- Custom scripts -->
-  <script type="text/javascript">
-    const pickerInline = document.querySelector('.timepicker-inline-12');
-    const timepickerMaxMin = new te.Timepicker(pickerInline, {
-      format12:true,
-      inline: true
-    });
+    <!-- Theme switcher -->
+    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script
+      type="text/javascript"
+      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+      const pickerInline = document.querySelector(".timepicker-inline-12");
+      const timepickerMaxMin = new te.Timepicker(pickerInline, {
+        format12: true,
+        inline: true,
+      });
 
-    const pickerInline2 = document.querySelector('.timepicker-inline-24');
-    const timepickerMaxMin2 = new te.Timepicker(pickerInline2, {
-      format24:true,
-      inline: true
-    });
+      const pickerInline2 = document.querySelector(".timepicker-inline-24");
+      const timepickerMaxMin2 = new te.Timepicker(pickerInline2, {
+        format24: true,
+        inline: true,
+      });
 
-    //Default time string PM
-    const pickerStartedPM = document.querySelector('.timepicker-default-time-string-pm ');
-    const tmStartedPM = new te.Timepicker(pickerStartedPM, {
-      defaultTime: '02:12 PM'
-    });
+      //Default time string PM
+      const pickerStartedPM = document.querySelector(
+        ".timepicker-default-time-string-pm "
+      );
+      const tmStartedPM = new te.Timepicker(pickerStartedPM, {
+        defaultTime: "02:12 PM",
+      });
 
-    //Default time string AM
-    const pickerStartedAM = document.querySelector('.timepicker-default-time-string-am');
-    const tmStartedAM = new te.Timepicker(pickerStartedAM, {
-      defaultTime: '05:12 AM'
-    });
+      //Default time string AM
+      const pickerStartedAM = document.querySelector(
+        ".timepicker-default-time-string-am"
+      );
+      const tmStartedAM = new te.Timepicker(pickerStartedAM, {
+        defaultTime: "05:12 AM",
+      });
 
+      //Default time without PM/AM
+      const pickerStartedWithoutPmAm = document.querySelector(
+        ".timepicker-default-time-string-without-pm-am"
+      );
+      const tmStartedWithoutPmAm = new te.Timepicker(pickerStartedWithoutPmAm, {
+        defaultTime: "05:12",
+      });
 
-    //Default time without PM/AM
-    const pickerStartedWithoutPmAm = document.querySelector(
-      '.timepicker-default-time-string-without-pm-am'
-    );
-    const tmStartedWithoutPmAm = new te.Timepicker(pickerStartedWithoutPmAm, {
-      defaultTime: '05:12',
-    });
+      //Default time with 24h
+      const pickerStartedWith24h = document.querySelector(
+        ".timepicker-default-time-string-24h"
+      );
+      const tmStartedWith24h = new te.Timepicker(pickerStartedWith24h, {
+        defaultTime: "23:44",
+        format24: true,
+      });
 
-    //Default time with 24h
-    const pickerStartedWith24h = document.querySelector('.timepicker-default-time-string-24h');
-    const tmStartedWith24h = new te.Timepicker(pickerStartedWith24h, {
-      defaultTime: '23:44',
-      format24: true,
-    });
+      //Default time date 12h
+      const pickerStartedWithDate12h = document.querySelector(
+        ".timepicker-default-time-with-new-date-12h"
+      );
+      const tmStartedWithDate12h = new te.Timepicker(pickerStartedWithDate12h, {
+        defaultTime: new Date(),
+      });
 
-    //Default time date 12h
-    const pickerStartedWithDate12h = document.querySelector('.timepicker-default-time-with-new-date-12h');
-    const tmStartedWithDate12h = new te.Timepicker(pickerStartedWithDate12h, {
-      defaultTime: new Date(),
-    });
+      //Default time date 24h
+      const pickerStartedWithDate24h = document.querySelector(
+        ".timepicker-default-time-with-new-date-24h"
+      );
+      const tmStartedWithDate24h = new te.Timepicker(pickerStartedWithDate24h, {
+        defaultTime: new Date(),
+        format24: true,
+      });
+      const timepickerValue = document.querySelector("#timepicker-value");
+      const tminputValue = new te.Timepicker(timepickerValue);
 
-    //Default time date 24h
-    const pickerStartedWithDate24h = document.querySelector('.timepicker-default-time-with-new-date-24h');
-    const tmStartedWithDate24h = new te.Timepicker(pickerStartedWithDate24h, {
-      defaultTime: new Date(),
-      format24: true,
-    });
-    const timepickerValue = document.querySelector('#timepicker-value');
-    const tminputValue = new te.Timepicker(timepickerValue);
+      timepickerValue.addEventListener("input.te.timepicker", (input) => {
+        const valueDiv = document.querySelector("#span-input-value");
 
-    timepickerValue.addEventListener('input.te.timepicker', (input) => {
-      const valueDiv = document.querySelector('#span-input-value');
+        valueDiv.innerText = input.target.value;
+      });
 
-      valueDiv.innerText = input.target.value;
-    });
+      const picker = document.querySelector(".timepicker-format");
+      const tpFormat24 = new te.Timepicker(picker, {
+        format24: true,
+      });
 
-    const picker = document.querySelector('.timepicker-format');
-    const tpFormat24 = new te.Timepicker(picker, {
-      format24: true
-    });
+      const pickerInc = document.querySelector(".timepicker-inc");
+      const timepickerInc = new te.Timepicker(pickerInc, {
+        increment: true,
+      });
 
-    const pickerInc = document.querySelector('.timepicker-inc');
-    const timepickerInc = new te.Timepicker(pickerInc, {
-      increment: true,
-    });
+      const pickerMaxTime = document.querySelector(".timepicker-max-time");
+      const timepickerMaxTime = new te.Timepicker(pickerMaxTime, {
+        maxTime: "6:35",
+      });
 
-    const pickerMaxTime = document.querySelector('.timepicker-max-time');
-    const timepickerMaxTime = new te.Timepicker(pickerMaxTime, {
-      maxTime: '6:35'
-    });
+      const pickerMaxTimePM = document.querySelector(".timepicker-max-time-pm");
+      const tmMaxPm = new te.Timepicker(pickerMaxTimePM, {
+        maxTime: "6:35 PM",
+      });
 
-    const pickerMaxTimePM = document.querySelector('.timepicker-max-time-pm');
-    const tmMaxPm = new te.Timepicker(pickerMaxTimePM, {
-      maxTime: '6:35 PM'
-    });
+      const pickerMaxTimeAM = document.querySelector(".timepicker-max-time-am");
+      const tmMaxAm = new te.Timepicker(pickerMaxTimeAM, {
+        maxTime: "6:35 AM",
+      });
 
-    const pickerMaxTimeAM = document.querySelector('.timepicker-max-time-am');
-    const tmMaxAm = new te.Timepicker(pickerMaxTimeAM, {
-      maxTime: '6:35 AM'
-    });
+      const pickerMinTime = document.querySelector(".timepicker-min-time");
+      const timepickerMinTime = new te.Timepicker(pickerMinTime, {
+        minTime: "10:15",
+      });
 
-    const pickerMinTime = document.querySelector('.timepicker-min-time');
-    const timepickerMinTime = new te.Timepicker(pickerMinTime, {
-      minTime: '10:15'
-    });
+      const pickerMinTimePM = document.querySelector(".timepicker-min-time-pm");
+      const tmMinPm = new te.Timepicker(pickerMinTimePM, {
+        minTime: "6:35 PM",
+      });
 
-    const pickerMinTimePM = document.querySelector('.timepicker-min-time-pm');
-    const tmMinPm = new te.Timepicker(pickerMinTimePM, {
-      minTime: '6:35 PM'
-    });
+      const pickerMinTimeAM = document.querySelector(".timepicker-min-time-am");
+      const tmMinAm = new te.Timepicker(pickerMinTimeAM, {
+        minTime: "6:35 AM",
+      });
 
-    const pickerMinTimeAM = document.querySelector('.timepicker-min-time-am');
-    const tmMinAm = new te.Timepicker(pickerMinTimeAM, {
-      minTime: '6:35 AM'
-    });
+      const pickerDisablePast = document.querySelector(
+        ".timepicker-disable-past"
+      );
+      const timepickerDisablePast = new te.Timepicker(pickerDisablePast, {
+        disablePast: true,
+      });
 
-    const pickerDisablePast = document.querySelector('.timepicker-disable-past');
-    const timepickerDisablePast = new te.Timepicker(pickerDisablePast, {
-      disablePast: true
-    });
-
-    const pickerDisableFuture = document.querySelector('.timepicker-disable-future');
-    const timepickerDisableFuture = new te.Timepicker(pickerDisableFuture, {
-      disableFuture: true
-    });
-  </script>
-</body>
-
+      const pickerDisableFuture = document.querySelector(
+        ".timepicker-disable-future"
+      );
+      const timepickerDisableFuture = new te.Timepicker(pickerDisableFuture, {
+        disableFuture: true,
+      });
+    </script>
+  </body>
 </html>
