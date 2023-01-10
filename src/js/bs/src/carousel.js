@@ -14,11 +14,11 @@ import {
   reflow,
   triggerTransitionEnd,
   typeCheckConfig,
-} from './util/index';
-import EventHandler from './dom/event-handler';
-import Manipulator from './dom/manipulator';
-import SelectorEngine from './dom/selector-engine';
-import BaseComponent from './base-component';
+} from "./util/index";
+import EventHandler from "./dom/event-handler";
+import Manipulator from "./dom/manipulator";
+import SelectorEngine from "./dom/selector-engine";
+import BaseComponent from "./base-component";
 
 /**
  * ------------------------------------------------------------------------
@@ -26,13 +26,13 @@ import BaseComponent from './base-component';
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'carousel';
-const DATA_KEY = 'te.carousel';
+const NAME = "carousel";
+const DATA_KEY = "te.carousel";
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = '.data-api';
+const DATA_API_KEY = ".data-api";
 
-const ARROW_LEFT_KEY = 'ArrowLeft';
-const ARROW_RIGHT_KEY = 'ArrowRight';
+const ARROW_LEFT_KEY = "ArrowLeft";
+const ARROW_RIGHT_KEY = "ArrowRight";
 const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
 const SWIPE_THRESHOLD = 40;
 
@@ -40,24 +40,24 @@ const Default = {
   interval: 5000,
   keyboard: true,
   slide: false,
-  pause: 'hover',
+  pause: "hover",
   wrap: true,
   touch: true,
 };
 
 const DefaultType = {
-  interval: '(number|boolean)',
-  keyboard: 'boolean',
-  slide: '(boolean|string)',
-  pause: '(string|boolean)',
-  wrap: 'boolean',
-  touch: 'boolean',
+  interval: "(number|boolean)",
+  keyboard: "boolean",
+  slide: "(boolean|string)",
+  pause: "(string|boolean)",
+  wrap: "boolean",
+  touch: "boolean",
 };
 
-const ORDER_NEXT = 'next';
-const ORDER_PREV = 'prev';
-const DIRECTION_LEFT = 'left';
-const DIRECTION_RIGHT = 'right';
+const ORDER_NEXT = "next";
+const ORDER_PREV = "prev";
+const DIRECTION_LEFT = "left";
+const DIRECTION_RIGHT = "right";
 
 const KEY_TO_DIRECTION = {
   [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
@@ -78,40 +78,44 @@ const EVENT_DRAG_START = `dragstart${EVENT_KEY}`;
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
-const ATTR_CAROUSEL = 'data-te-carousel-init';
-const ATTR_ACTIVE = 'data-te-carousel-active';
-const ATTR_SLIDE = 'data-te-carousel-slide';
-const ATTR_END = 'data-te-carousel-item-end';
-const ATTR_START = 'data-te-carousel-item-start';
-const ATTR_NEXT = 'data-te-carousel-item-next';
-const ATTR_PREV = 'data-te-carousel-item-prev';
-const ATTR_POINTER_EVENT = 'data-te-carousel-pointer-event';
+const ATTR_CAROUSEL = "data-te-carousel-init";
+const ATTR_ACTIVE = "data-te-carousel-active";
+const ATTR_SLIDE = "data-te-carousel-slide";
+const ATTR_END = "data-te-carousel-item-end";
+const ATTR_START = "data-te-carousel-item-start";
+const ATTR_NEXT = "data-te-carousel-item-next";
+const ATTR_PREV = "data-te-carousel-item-prev";
+const ATTR_POINTER_EVENT = "data-te-carousel-pointer-event";
 
 // Styling classes
-const CLASS_NAME_POINTER = 'touch-pan-y';
-const CLASS_NAME_BLOCK = '!block';
-const CLASS_NAME_VISIBLE = ['data-[te-carousel-fade]:opacity-100', 'data-[te-carousel-fade]:z-[1]'];
-const CLASS_NAME_INVISIBLE = [
-  'data-[te-carousel-fade]:z-0',
-  'data-[te-carousel-fade]:opacity-0',
-  'data-[te-carousel-fade]:duration-0',
-  'data-[te-carousel-fade]:delay-600',
+const CLASS_NAME_POINTER = "touch-pan-y";
+const CLASS_NAME_BLOCK = "!block";
+const CLASS_NAME_VISIBLE = [
+  "data-[te-carousel-fade]:opacity-100",
+  "data-[te-carousel-fade]:z-[1]",
 ];
-const CLASS_NAME_SLIDE_RIGHT = 'translate-x-full';
-const CLASS_NAME_SLIDE_LEFT = '-translate-x-full';
+const CLASS_NAME_INVISIBLE = [
+  "data-[te-carousel-fade]:z-0",
+  "data-[te-carousel-fade]:opacity-0",
+  "data-[te-carousel-fade]:duration-0",
+  "data-[te-carousel-fade]:delay-600",
+];
+const CLASS_NAME_SLIDE_RIGHT = "translate-x-full";
+const CLASS_NAME_SLIDE_LEFT = "-translate-x-full";
 
-const SELECTOR_DATA_CAROUSEL_INIT = '[data-te-carousel-init]';
-const SELECTOR_DATA_ACTIVE = '[data-te-carousel-active]';
-const SELECTOR_DATA_ITEM = '[data-te-carousel-item]';
+const SELECTOR_DATA_CAROUSEL_INIT = "[data-te-carousel-init]";
+const SELECTOR_DATA_ACTIVE = "[data-te-carousel-active]";
+const SELECTOR_DATA_ITEM = "[data-te-carousel-item]";
 const SELECTOR_DATA_ACTIVE_ITEM = `${SELECTOR_DATA_ACTIVE}${SELECTOR_DATA_ITEM}`;
 const SELECTOR_DATA_ITEM_IMG = `${SELECTOR_DATA_ITEM} img`;
-const SELECTOR_DATA_NEXT_PREV = '[data-te-carousel-item-next], [data-te-carousel-item-prev]';
-const SELECTOR_DATA_INDICATORS = '[data-te-carousel-indicators]';
-const SELECTOR_INDICATOR = '[data-te-target]';
-const SELECTOR_DATA_SLIDE = '[data-te-slide], [data-te-slide-to]';
+const SELECTOR_DATA_NEXT_PREV =
+  "[data-te-carousel-item-next], [data-te-carousel-item-prev]";
+const SELECTOR_DATA_INDICATORS = "[data-te-carousel-indicators]";
+const SELECTOR_INDICATOR = "[data-te-target]";
+const SELECTOR_DATA_SLIDE = "[data-te-slide], [data-te-slide-to]";
 
-const POINTER_TYPE_TOUCH = 'touch';
-const POINTER_TYPE_PEN = 'pen';
+const POINTER_TYPE_TOUCH = "touch";
+const POINTER_TYPE_PEN = "pen";
 
 /**
  * ------------------------------------------------------------------------
@@ -132,9 +136,13 @@ class Carousel extends BaseComponent {
     this.touchDeltaX = 0;
 
     this._config = this._getConfig(config);
-    this._indicatorsElement = SelectorEngine.findOne(SELECTOR_DATA_INDICATORS, this._element);
+    this._indicatorsElement = SelectorEngine.findOne(
+      SELECTOR_DATA_INDICATORS,
+      this._element
+    );
     this._touchSupported =
-      'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
+      "ontouchstart" in document.documentElement ||
+      navigator.maxTouchPoints > 0;
     this._pointerEvent = Boolean(window.PointerEvent);
 
     this._addEventListeners();
@@ -196,14 +204,19 @@ class Carousel extends BaseComponent {
       this._updateInterval();
 
       this._interval = setInterval(
-        (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
+        (document.visibilityState ? this.nextWhenVisible : this.next).bind(
+          this
+        ),
         this._config.interval
       );
     }
   }
 
   to(index) {
-    this._activeElement = SelectorEngine.findOne(SELECTOR_DATA_ACTIVE_ITEM, this._element);
+    this._activeElement = SelectorEngine.findOne(
+      SELECTOR_DATA_ACTIVE_ITEM,
+      this._element
+    );
     const activeIndex = this._getItemIndex(this._activeElement);
 
     if (index > this._items.length - 1 || index < 0) {
@@ -232,14 +245,17 @@ class Carousel extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {}),
+      ...(typeof config === "object" ? config : {}),
     };
     typeCheckConfig(NAME, config, DefaultType);
     return config;
   }
 
   _applyInitialClasses() {
-    const activeElement = SelectorEngine.findOne(SELECTOR_DATA_ACTIVE_ITEM, this._element);
+    const activeElement = SelectorEngine.findOne(
+      SELECTOR_DATA_ACTIVE_ITEM,
+      this._element
+    );
     activeElement.classList.add(CLASS_NAME_BLOCK, ...CLASS_NAME_VISIBLE);
 
     this._setActiveIndicatorElement(activeElement);
@@ -265,12 +281,18 @@ class Carousel extends BaseComponent {
 
   _addEventListeners() {
     if (this._config.keyboard) {
-      EventHandler.on(this._element, EVENT_KEYDOWN, (event) => this._keydown(event));
+      EventHandler.on(this._element, EVENT_KEYDOWN, (event) =>
+        this._keydown(event)
+      );
     }
 
-    if (this._config.pause === 'hover') {
-      EventHandler.on(this._element, EVENT_MOUSEENTER, (event) => this.pause(event));
-      EventHandler.on(this._element, EVENT_MOUSELEAVE, (event) => this.cycle(event));
+    if (this._config.pause === "hover") {
+      EventHandler.on(this._element, EVENT_MOUSEENTER, (event) =>
+        this.pause(event)
+      );
+      EventHandler.on(this._element, EVENT_MOUSELEAVE, (event) =>
+        this.cycle(event)
+      );
     }
 
     if (this._config.touch && this._touchSupported) {
@@ -284,7 +306,8 @@ class Carousel extends BaseComponent {
     const hasPointerPenTouch = (event) => {
       return (
         this._pointerEvent &&
-        (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH)
+        (event.pointerType === POINTER_TYPE_PEN ||
+          event.pointerType === POINTER_TYPE_TOUCH)
       );
     };
 
@@ -299,7 +322,9 @@ class Carousel extends BaseComponent {
     const move = (event) => {
       // ensure swiping with one touch and not pinching
       this.touchDeltaX =
-        event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this.touchStartX;
+        event.touches && event.touches.length > 1
+          ? 0
+          : event.touches[0].clientX - this.touchStartX;
     };
 
     const end = (event) => {
@@ -308,7 +333,7 @@ class Carousel extends BaseComponent {
       }
 
       this._handleSwipe();
-      if (this._config.pause === 'hover') {
+      if (this._config.pause === "hover") {
         // If it's a touch-enabled device, mouseenter/leave are fired as
         // part of the mouse compatibility events on first tap - the carousel
         // would stop cycling until user tapped out of it;
@@ -329,16 +354,22 @@ class Carousel extends BaseComponent {
       }
     };
 
-    SelectorEngine.find(SELECTOR_DATA_ITEM_IMG, this._element).forEach((itemImg) => {
-      EventHandler.on(itemImg, EVENT_DRAG_START, (event) => event.preventDefault());
-    });
+    SelectorEngine.find(SELECTOR_DATA_ITEM_IMG, this._element).forEach(
+      (itemImg) => {
+        EventHandler.on(itemImg, EVENT_DRAG_START, (event) =>
+          event.preventDefault()
+        );
+      }
+    );
 
     if (this._pointerEvent) {
-      EventHandler.on(this._element, EVENT_POINTERDOWN, (event) => start(event));
+      EventHandler.on(this._element, EVENT_POINTERDOWN, (event) =>
+        start(event)
+      );
       EventHandler.on(this._element, EVENT_POINTERUP, (event) => end(event));
 
       this._element.classList.add(CLASS_NAME_POINTER);
-      this._element.setAttribute(`${ATTR_POINTER_EVENT}`, '');
+      this._element.setAttribute(`${ATTR_POINTER_EVENT}`, "");
     } else {
       EventHandler.on(this._element, EVENT_TOUCHSTART, (event) => start(event));
       EventHandler.on(this._element, EVENT_TOUCHMOVE, (event) => move(event));
@@ -369,7 +400,12 @@ class Carousel extends BaseComponent {
 
   _getItemByOrder(order, activeElement) {
     const isNext = order === ORDER_NEXT;
-    return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap);
+    return getNextActiveElement(
+      this._items,
+      activeElement,
+      isNext,
+      this._config.wrap
+    );
   }
 
   _triggerSlideEvent(relatedTarget, eventDirectionName) {
@@ -388,22 +424,30 @@ class Carousel extends BaseComponent {
 
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
-      const activeIndicator = SelectorEngine.findOne(SELECTOR_DATA_ACTIVE, this._indicatorsElement);
+      const activeIndicator = SelectorEngine.findOne(
+        SELECTOR_DATA_ACTIVE,
+        this._indicatorsElement
+      );
 
       activeIndicator.removeAttribute(ATTR_ACTIVE);
-      activeIndicator.removeAttribute('aria-current');
-      activeIndicator.classList.remove('opacity-100');
+      activeIndicator.removeAttribute("aria-current");
+      activeIndicator.classList.remove("opacity-100");
 
-      const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement);
+      const indicators = SelectorEngine.find(
+        SELECTOR_INDICATOR,
+        this._indicatorsElement
+      );
 
       for (let i = 0; i < indicators.length; i++) {
         if (
-          Number.parseInt(indicators[i].getAttribute('data-te-slide-to'), 10) ===
-          this._getItemIndex(element)
+          Number.parseInt(
+            indicators[i].getAttribute("data-te-slide-to"),
+            10
+          ) === this._getItemIndex(element)
         ) {
-          indicators[i].setAttribute(`${ATTR_ACTIVE}`, '');
-          indicators[i].setAttribute('aria-current', 'true');
-          indicators[i].classList.add('opacity-100');
+          indicators[i].setAttribute(`${ATTR_ACTIVE}`, "");
+          indicators[i].setAttribute("aria-current", "true");
+          indicators[i].classList.add("opacity-100");
           break;
         }
       }
@@ -412,26 +456,35 @@ class Carousel extends BaseComponent {
 
   _updateInterval() {
     const element =
-      this._activeElement || SelectorEngine.findOne(SELECTOR_DATA_ACTIVE_ITEM, this._element);
+      this._activeElement ||
+      SelectorEngine.findOne(SELECTOR_DATA_ACTIVE_ITEM, this._element);
 
     if (!element) {
       return;
     }
 
-    const elementInterval = Number.parseInt(element.getAttribute('data-te-interval'), 10);
+    const elementInterval = Number.parseInt(
+      element.getAttribute("data-te-interval"),
+      10
+    );
 
     if (elementInterval) {
-      this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
+      this._config.defaultInterval =
+        this._config.defaultInterval || this._config.interval;
       this._config.interval = elementInterval;
     } else {
-      this._config.interval = this._config.defaultInterval || this._config.interval;
+      this._config.interval =
+        this._config.defaultInterval || this._config.interval;
     }
   }
 
   _slide(directionOrOrder, element) {
     const order = this._directionToOrder(directionOrOrder);
 
-    const activeElement = SelectorEngine.findOne(SELECTOR_DATA_ACTIVE_ITEM, this._element);
+    const activeElement = SelectorEngine.findOne(
+      SELECTOR_DATA_ACTIVE_ITEM,
+      this._element
+    );
     const activeElementIndex = this._getItemIndex(activeElement);
 
     const nextElement = element || this._getItemByOrder(order, activeElement);
@@ -445,9 +498,13 @@ class Carousel extends BaseComponent {
     const eventDirectionName = this._orderToDirection(order);
 
     const activeClass =
-      directionalAttr === ATTR_START ? CLASS_NAME_SLIDE_LEFT : CLASS_NAME_SLIDE_RIGHT;
+      directionalAttr === ATTR_START
+        ? CLASS_NAME_SLIDE_LEFT
+        : CLASS_NAME_SLIDE_RIGHT;
     const nextClass =
-      directionalAttr !== ATTR_START ? CLASS_NAME_SLIDE_LEFT : CLASS_NAME_SLIDE_RIGHT;
+      directionalAttr !== ATTR_START
+        ? CLASS_NAME_SLIDE_LEFT
+        : CLASS_NAME_SLIDE_RIGHT;
 
     if (nextElement && nextElement.hasAttribute(ATTR_ACTIVE)) {
       this._isSliding = false;
@@ -487,26 +544,33 @@ class Carousel extends BaseComponent {
     };
 
     if (this._element.hasAttribute(ATTR_SLIDE)) {
-      nextElement.setAttribute(`${orderAttr}`, '');
+      nextElement.setAttribute(`${orderAttr}`, "");
       nextElement.classList.add(CLASS_NAME_BLOCK, nextClass);
 
       reflow(nextElement);
 
-      activeElement.setAttribute(`${directionalAttr}`, '');
+      activeElement.setAttribute(`${directionalAttr}`, "");
       activeElement.classList.add(activeClass, ...CLASS_NAME_INVISIBLE);
       activeElement.classList.remove(...CLASS_NAME_VISIBLE);
 
-      nextElement.setAttribute(`${directionalAttr}`, '');
+      nextElement.setAttribute(`${directionalAttr}`, "");
       nextElement.classList.add(...CLASS_NAME_VISIBLE);
-      nextElement.classList.remove(CLASS_NAME_SLIDE_RIGHT, CLASS_NAME_SLIDE_LEFT);
+      nextElement.classList.remove(
+        CLASS_NAME_SLIDE_RIGHT,
+        CLASS_NAME_SLIDE_LEFT
+      );
 
       const completeCallBack = () => {
         nextElement.removeAttribute(directionalAttr);
         nextElement.removeAttribute(orderAttr);
-        nextElement.setAttribute(`${ATTR_ACTIVE}`, '');
+        nextElement.setAttribute(`${ATTR_ACTIVE}`, "");
 
         activeElement.removeAttribute(ATTR_ACTIVE);
-        activeElement.classList.remove(activeClass, ...CLASS_NAME_INVISIBLE, CLASS_NAME_BLOCK);
+        activeElement.classList.remove(
+          activeClass,
+          ...CLASS_NAME_INVISIBLE,
+          CLASS_NAME_BLOCK
+        );
         activeElement.removeAttribute(orderAttr);
         activeElement.removeAttribute(directionalAttr);
 
@@ -520,7 +584,7 @@ class Carousel extends BaseComponent {
       activeElement.removeAttribute(ATTR_ACTIVE);
       activeElement.classList.remove(CLASS_NAME_BLOCK);
 
-      nextElement.setAttribute(`${ATTR_ACTIVE}`, '');
+      nextElement.setAttribute(`${ATTR_ACTIVE}`, "");
       nextElement.classList.add(CLASS_NAME_BLOCK);
 
       this._isSliding = false;
@@ -562,19 +626,19 @@ class Carousel extends BaseComponent {
     const data = Carousel.getOrCreateInstance(element, config);
 
     let { _config } = data;
-    if (typeof config === 'object') {
+    if (typeof config === "object") {
       _config = {
         ..._config,
         ...config,
       };
     }
 
-    const action = typeof config === 'string' ? config : _config.slide;
+    const action = typeof config === "string" ? config : _config.slide;
 
-    if (typeof config === 'number') {
+    if (typeof config === "number") {
       data.to(config);
-    } else if (typeof action === 'string') {
-      if (typeof data[action] === 'undefined') {
+    } else if (typeof action === "string") {
+      if (typeof data[action] === "undefined") {
         throw new TypeError(`No method named "${action}"`);
       }
 
@@ -602,7 +666,7 @@ class Carousel extends BaseComponent {
       ...Manipulator.getDataAttributes(target),
       ...Manipulator.getDataAttributes(this),
     };
-    const slideIndex = this.getAttribute('data-te-slide-to');
+    const slideIndex = this.getAttribute("data-te-slide-to");
 
     if (slideIndex) {
       config.interval = false;
@@ -624,13 +688,21 @@ class Carousel extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler);
+EventHandler.on(
+  document,
+  EVENT_CLICK_DATA_API,
+  SELECTOR_DATA_SLIDE,
+  Carousel.dataApiClickHandler
+);
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
   const carousels = SelectorEngine.find(SELECTOR_DATA_CAROUSEL_INIT);
 
   for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel.carouselInterface(carousels[i], Carousel.getInstance(carousels[i]));
+    Carousel.carouselInterface(
+      carousels[i],
+      Carousel.getInstance(carousels[i])
+    );
   }
 });
 

@@ -7,7 +7,7 @@
 
 const MAX_UID = 1000000;
 const MILLISECONDS_MULTIPLIER = 1000;
-const TRANSITION_END = 'transitionend';
+const TRANSITION_END = "transitionend";
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 const toType = (obj) => {
@@ -36,25 +36,27 @@ const getUID = (prefix) => {
 };
 
 const getSelector = (element) => {
-  let selector = element.getAttribute('data-bs-target') || element.getAttribute('data-te-target');
+  let selector =
+    element.getAttribute("data-bs-target") ||
+    element.getAttribute("data-te-target");
 
-  if (!selector || selector === '#') {
-    let hrefAttr = element.getAttribute('href');
+  if (!selector || selector === "#") {
+    let hrefAttr = element.getAttribute("href");
 
     // The only valid content that could double as a selector are IDs or classes,
     // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
     // `document.querySelector` will rightfully complain it is invalid.
     // See https://github.com/twbs/bootstrap/issues/32273
-    if (!hrefAttr || (!hrefAttr.includes('#') && !hrefAttr.startsWith('.'))) {
+    if (!hrefAttr || (!hrefAttr.includes("#") && !hrefAttr.startsWith("."))) {
       return null;
     }
 
     // Just in case some CMS puts out a full URL with the anchor appended
-    if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
-      hrefAttr = `#${hrefAttr.split('#')[1]}`;
+    if (hrefAttr.includes("#") && !hrefAttr.startsWith("#")) {
+      hrefAttr = `#${hrefAttr.split("#")[1]}`;
     }
 
-    selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
+    selector = hrefAttr && hrefAttr !== "#" ? hrefAttr.trim() : null;
   }
 
   return selector;
@@ -82,7 +84,8 @@ const getTransitionDurationFromElement = (element) => {
   }
 
   // Get transition-duration of the element
-  let { transitionDuration, transitionDelay } = window.getComputedStyle(element);
+  let { transitionDuration, transitionDelay } =
+    window.getComputedStyle(element);
 
   const floatTransitionDuration = Number.parseFloat(transitionDuration);
   const floatTransitionDelay = Number.parseFloat(transitionDelay);
@@ -93,11 +96,12 @@ const getTransitionDurationFromElement = (element) => {
   }
 
   // If multiple durations are defined, take the first
-  transitionDuration = transitionDuration.split(',')[0];
-  transitionDelay = transitionDelay.split(',')[0];
+  transitionDuration = transitionDuration.split(",")[0];
+  transitionDelay = transitionDelay.split(",")[0];
 
   return (
-    (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) *
+    (Number.parseFloat(transitionDuration) +
+      Number.parseFloat(transitionDelay)) *
     MILLISECONDS_MULTIPLIER
   );
 };
@@ -107,15 +111,15 @@ const triggerTransitionEnd = (element) => {
 };
 
 const isElement = (obj) => {
-  if (!obj || typeof obj !== 'object') {
+  if (!obj || typeof obj !== "object") {
     return false;
   }
 
-  if (typeof obj.jquery !== 'undefined') {
+  if (typeof obj.jquery !== "undefined") {
     obj = obj[0];
   }
 
-  return typeof obj.nodeType !== 'undefined';
+  return typeof obj.nodeType !== "undefined";
 };
 
 const getElement = (obj) => {
@@ -124,7 +128,7 @@ const getElement = (obj) => {
     return obj.jquery ? obj[0] : obj;
   }
 
-  if (typeof obj === 'string' && obj.length > 0) {
+  if (typeof obj === "string" && obj.length > 0) {
     return document.querySelector(obj);
   }
 
@@ -135,7 +139,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
   Object.keys(configTypes).forEach((property) => {
     const expectedTypes = configTypes[property];
     const value = config[property];
-    const valueType = value && isElement(value) ? 'element' : toType(value);
+    const valueType = value && isElement(value) ? "element" : toType(value);
 
     if (!new RegExp(expectedTypes).test(valueType)) {
       throw new TypeError(
@@ -150,7 +154,7 @@ const isVisible = (element) => {
     return false;
   }
 
-  return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
+  return getComputedStyle(element).getPropertyValue("visibility") === "visible";
 };
 
 const isDisabled = (element) => {
@@ -158,15 +162,18 @@ const isDisabled = (element) => {
     return true;
   }
 
-  if (element.classList.contains('disabled')) {
+  if (element.classList.contains("disabled")) {
     return true;
   }
 
-  if (typeof element.disabled !== 'undefined') {
+  if (typeof element.disabled !== "undefined") {
     return element.disabled;
   }
 
-  return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
+  return (
+    element.hasAttribute("disabled") &&
+    element.getAttribute("disabled") !== "false"
+  );
 };
 
 const findShadowRoot = (element) => {
@@ -175,7 +182,7 @@ const findShadowRoot = (element) => {
   }
 
   // Can find the shadow root otherwise it'll return the document
-  if (typeof element.getRootNode === 'function') {
+  if (typeof element.getRootNode === "function") {
     const root = element.getRootNode();
     return root instanceof ShadowRoot ? root : null;
   }
@@ -210,7 +217,7 @@ const reflow = (element) => {
 const getjQuery = () => {
   const { jQuery } = window;
 
-  if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+  if (jQuery && !document.body.hasAttribute("data-bs-no-jquery")) {
     return jQuery;
   }
 
@@ -220,10 +227,10 @@ const getjQuery = () => {
 const DOMContentLoadedCallbacks = [];
 
 const onDOMContentLoaded = (callback) => {
-  if (document.readyState === 'loading') {
+  if (document.readyState === "loading") {
     // add listener on the first call when the document is in loading state
     if (!DOMContentLoadedCallbacks.length) {
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         DOMContentLoadedCallbacks.forEach((callback) => callback());
       });
     }
@@ -234,7 +241,7 @@ const onDOMContentLoaded = (callback) => {
   }
 };
 
-const isRTL = () => document.documentElement.dir === 'rtl';
+const isRTL = () => document.documentElement.dir === "rtl";
 
 const defineJQueryPlugin = (plugin) => {
   onDOMContentLoaded(() => {
@@ -254,19 +261,24 @@ const defineJQueryPlugin = (plugin) => {
 };
 
 const execute = (callback) => {
-  if (typeof callback === 'function') {
+  if (typeof callback === "function") {
     callback();
   }
 };
 
-const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
+const executeAfterTransition = (
+  callback,
+  transitionElement,
+  waitForTransition = true
+) => {
   if (!waitForTransition) {
     execute(callback);
     return;
   }
 
   const durationPadding = 5;
-  const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding;
+  const emulatedDuration =
+    getTransitionDurationFromElement(transitionElement) + durationPadding;
 
   let called = false;
 
@@ -297,7 +309,12 @@ const executeAfterTransition = (callback, transitionElement, waitForTransition =
  * @param isCycleAllowed
  * @return {Element|elem} The proper element
  */
-const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+const getNextActiveElement = (
+  list,
+  activeElement,
+  shouldGetNext,
+  isCycleAllowed
+) => {
   let index = list.indexOf(activeElement);
 
   // if the element does not exist in the list return an element depending on the direction and if cycle is allowed

@@ -282,7 +282,7 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
 
 ##### NPM
 
-1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ 'Node.js (LTS)') and [TailwindCSS](https://tailwindcss.com/ 'TailwindCSS').
+1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ "Node.js (LTS)") and [TailwindCSS](https://tailwindcss.com/ "TailwindCSS").
 
 2. Run the following command to install the package via NPM:
 
@@ -294,8 +294,11 @@ npm install tw-elements
 
 ```javascript
 module.exports = {
-  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
-  plugins: [require('tw-elements/dist/plugin')],
+  content: [
+    "./src/**/*.{html,js}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
+  ],
+  plugins: [require("tw-elements/dist/plugin")],
 };
 ```
 
