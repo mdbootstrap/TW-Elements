@@ -10,11 +10,12 @@ import {
   getElement,
   getSelectorFromElement,
   typeCheckConfig,
-} from "./util/index";
-import EventHandler from "./dom/event-handler";
-import Manipulator from "./dom/manipulator";
-import SelectorEngine from "./dom/selector-engine";
-import BaseComponent from "./base-component";
+} from './util/index';
+import EventHandler from './dom/event-handler';
+import Manipulator from './dom/manipulator';
+import MDBManipulator from '../../mdb/dom/manipulator';
+import SelectorEngine from './dom/selector-engine';
+import BaseComponent from './base-component';
 
 /**
  * ------------------------------------------------------------------------
@@ -22,44 +23,47 @@ import BaseComponent from "./base-component";
  * ------------------------------------------------------------------------
  */
 
-const NAME = "scrollspy";
-const DATA_KEY = "bs.scrollspy";
+const NAME = 'scrollspy';
+const DATA_KEY = 'te.scrollspy';
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = ".data-api";
+const DATA_API_KEY = '.data-api';
 
 const Default = {
   offset: 10,
-  method: "auto",
-  target: "",
+  method: 'auto',
+  target: '',
 };
 
 const DefaultType = {
-  offset: "number",
-  method: "string",
-  target: "(string|element)",
+  offset: 'number',
+  method: 'string',
+  target: '(string|element)',
 };
 
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`;
 const EVENT_SCROLL = `scroll${EVENT_KEY}`;
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 
-const CLASS_NAME_DROPDOWN_ITEM = "dropdown-item";
+const SELECTOR_DROPDOWN_ITEM = '[data-te-dropdown-item-ref]';
+const CLASS_NAME_ACTIVE = [
+  'text-[#1266f1]',
+  'font-semibold',
+  'border-l-[0.125rem]',
+  'border-solid',
+  'border-[#1266f1]',
+];
 
-const ACTIVE_ELEMENT_NAME = "data-te-scroll-nav-active";
-const ACTIVE_ELEMENT_NAME_DATA = "teScrollNavActive";
-const DATA_DROPDOWN_ITEM = "teDropdownItemRef";
+const SELECTOR_DATA_SPY = '[data-te-spy="scroll"]';
+const SELECTOR_NAV_LIST_GROUP = '[data-te-nav-list-ref]';
+const SELECTOR_NAV_LINKS = '[data-te-nav-link-ref]';
+const SELECTOR_NAV_ITEMS = '[data-te-nav-item-ref]';
+const SELECTOR_LIST_ITEMS = '[data-te-list-group-item-ref]';
+const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, ${SELECTOR_DROPDOWN_ITEM}`;
+const SELECTOR_DROPDOWN = '[data-te-dropdown-ref]';
+const SELECTOR_DROPDOWN_TOGGLE = '[data-te-dropdown-toggle-ref]';
 
-const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
-const SELECTOR_NAV_LIST_GROUP = "[data-te-nav-ref], .list-group";
-const SELECTOR_NAV_LINKS = "[data-te-nav-link-ref]";
-const SELECTOR_NAV_ITEMS = "[data-te-nav-item-ref]";
-const SELECTOR_LIST_ITEMS = ".list-group-item";
-const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`;
-const SELECTOR_DROPDOWN = "[data-te-dropdown-ref]";
-const SELECTOR_DROPDOWN_TOGGLE = "[data-te-dropdown-toggle-ref]";
-
-const METHOD_OFFSET = "offset";
-const METHOD_POSITION = "position";
+const METHOD_OFFSET = 'offset';
+const METHOD_POSITION = 'position';
 
 /**
  * ------------------------------------------------------------------------
@@ -70,8 +74,7 @@ const METHOD_POSITION = "position";
 class ScrollSpy extends BaseComponent {
   constructor(element, config) {
     super(element);
-    this._scrollElement =
-      this._element.tagName === "BODY" ? window : this._element;
+    this._scrollElement = this._element.tagName === 'BODY' ? window : this._element;
     this._config = this._getConfig(config);
     this._offsets = [];
     this._targets = [];
@@ -98,39 +101,27 @@ class ScrollSpy extends BaseComponent {
 
   refresh() {
     const autoMethod =
-      this._scrollElement === this._scrollElement.window
-        ? METHOD_OFFSET
-        : METHOD_POSITION;
+      this._scrollElement === this._scrollElement.window ? METHOD_OFFSET : METHOD_POSITION;
 
-    const offsetMethod =
-      this._config.method === "auto" ? autoMethod : this._config.method;
+    const offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
 
-    const offsetBase =
-      offsetMethod === METHOD_POSITION ? this._getScrollTop() : 0;
+    const offsetBase = offsetMethod === METHOD_POSITION ? this._getScrollTop() : 0;
 
     this._offsets = [];
     this._targets = [];
     this._scrollHeight = this._getScrollHeight();
 
-    const targets = SelectorEngine.find(
-      SELECTOR_LINK_ITEMS,
-      this._config.target
-    );
+    const targets = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target);
 
     targets
       .map((element) => {
         const targetSelector = getSelectorFromElement(element);
-        const target = targetSelector
-          ? SelectorEngine.findOne(targetSelector)
-          : null;
+        const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null;
 
         if (target) {
           const targetBCR = target.getBoundingClientRect();
           if (targetBCR.width || targetBCR.height) {
-            return [
-              Manipulator[offsetMethod](target).top + offsetBase,
-              targetSelector,
-            ];
+            return [Manipulator[offsetMethod](target).top + offsetBase, targetSelector];
           }
         }
 
@@ -155,7 +146,7 @@ class ScrollSpy extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === "object" && config ? config : {}),
+      ...(typeof config === 'object' && config ? config : {}),
     };
 
     config.target = getElement(config.target) || document.documentElement;
@@ -174,10 +165,7 @@ class ScrollSpy extends BaseComponent {
   _getScrollHeight() {
     return (
       this._scrollElement.scrollHeight ||
-      Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-      )
+      Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
     );
   }
 
@@ -190,8 +178,7 @@ class ScrollSpy extends BaseComponent {
   _process() {
     const scrollTop = this._getScrollTop() + this._config.offset;
     const scrollHeight = this._getScrollHeight();
-    const maxScroll =
-      this._config.offset + scrollHeight - this._getOffsetHeight();
+    const maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight();
 
     if (this._scrollHeight !== scrollHeight) {
       this.refresh();
@@ -207,11 +194,7 @@ class ScrollSpy extends BaseComponent {
       return;
     }
 
-    if (
-      this._activeTarget &&
-      scrollTop < this._offsets[0] &&
-      this._offsets[0] > 0
-    ) {
+    if (this._activeTarget && scrollTop < this._offsets[0] && this._offsets[0] > 0) {
       this._activeTarget = null;
       this._clear();
       return;
@@ -221,8 +204,7 @@ class ScrollSpy extends BaseComponent {
       const isActiveTarget =
         this._activeTarget !== this._targets[i] &&
         scrollTop >= this._offsets[i] &&
-        (typeof this._offsets[i + 1] === "undefined" ||
-          scrollTop < this._offsets[i + 1]);
+        (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1]);
 
       if (isActiveTarget) {
         this._activate(this._targets[i]);
@@ -235,42 +217,38 @@ class ScrollSpy extends BaseComponent {
 
     this._clear();
 
-    const queries = SELECTOR_LINK_ITEMS.split(",").map(
-      (selector) =>
-        `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`
+    const queries = SELECTOR_LINK_ITEMS.split(',').map(
+      (selector) => `${selector}[data-te-target="${target}"],${selector}[href="${target}"]`
     );
 
-    const link = SelectorEngine.findOne(queries.join(","), this._config.target);
+    const link = SelectorEngine.findOne(queries.join(','), this._config.target);
 
-    link.setAttribute(ACTIVE_ELEMENT_NAME, "");
-    if (
-      link.dataset[DATA_DROPDOWN_ITEM] !== undefined ||
-      link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)
-    ) {
-      SelectorEngine.findOne(
-        SELECTOR_DROPDOWN_TOGGLE,
-        link.closest(SELECTOR_DROPDOWN)
-      ).setAttribute(ACTIVE_ELEMENT_NAME, "");
-    } else {
-      SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP).forEach(
-        (listGroup) => {
-          // Set triggered links parents as active
-          // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-          SelectorEngine.prev(
-            listGroup,
-            `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`
-          ).forEach((item) => item.setAttribute(ACTIVE_ELEMENT_NAME, ""));
-
-          // Handle special case when .nav-link is inside .nav-item
-          SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS).forEach(
-            (navItem) => {
-              SelectorEngine.children(navItem, SELECTOR_NAV_LINKS).forEach(
-                (item) => item.setAttribute(ACTIVE_ELEMENT_NAME, "")
-              );
-            }
-          );
-        }
+    MDBManipulator.addMultipleClasses(link, CLASS_NAME_ACTIVE);
+    // link.setAttribute('data-te-nav-link-active', '');
+    // link.classList.add(CLASS_NAME_ACTIVE);
+    if (link.getAttribute(SELECTOR_DROPDOWN_ITEM)) {
+      MDBManipulator.addMultipleClasses(
+        SelectorEngine.findOne(
+          SELECTOR_DROPDOWN_TOGGLE,
+          link.closest(SELECTOR_DROPDOWN),
+          CLASS_NAME_ACTIVE
+        )
       );
+    } else {
+      SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP).forEach((listGroup) => {
+        // Set triggered links parents as active
+        // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+        SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`).forEach(
+          (item) => MDBManipulator.addMultipleClasses(item, CLASS_NAME_ACTIVE)
+        );
+
+        // Handle special case when .nav-link is inside .nav-item
+        SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS).forEach((navItem) => {
+          SelectorEngine.children(navItem, SELECTOR_NAV_LINKS).forEach((item) =>
+            item.classList.add(CLASS_NAME_ACTIVE)
+          );
+        });
+      });
     }
 
     EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
@@ -280,8 +258,8 @@ class ScrollSpy extends BaseComponent {
 
   _clear() {
     SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
-      .filter((node) => node.dataset[ACTIVE_ELEMENT_NAME_DATA] !== undefined)
-      .forEach((node) => node.removeAttribute(ACTIVE_ELEMENT_NAME));
+      .filter((node) => node.classList.contains(...CLASS_NAME_ACTIVE))
+      .forEach((node) => node.classList.remove(...CLASS_NAME_ACTIVE));
   }
 
   // Static
@@ -290,11 +268,11 @@ class ScrollSpy extends BaseComponent {
     return this.each(function () {
       const data = ScrollSpy.getOrCreateInstance(this, config);
 
-      if (typeof config !== "string") {
+      if (typeof config !== 'string') {
         return;
       }
 
-      if (typeof data[config] === "undefined") {
+      if (typeof data[config] === 'undefined') {
         throw new TypeError(`No method named "${config}"`);
       }
 
