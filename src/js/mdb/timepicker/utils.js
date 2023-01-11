@@ -9,7 +9,7 @@ const CLASSES_TIPS_DISABLED = [
   "pointer-events-none",
   "bg-transparent",
 ];
-const CLASS_OPACITY = ["!opacity"];
+const CLASS_OPACITY = ["!opacity-100"];
 
 const formatToAmPm = (date) => {
   if (date === "") return;
