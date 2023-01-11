@@ -255,7 +255,7 @@ module.exports = plugin(() => {}, {
         primary: {
           DEFAULT: "#3B71CA",
           50: "#F1F5FB",
-          100: "#D5E1F3",
+          100: "#E3EBF7",
           200: "#B9CCEC",
           300: "#9DB8E4",
           400: "#81A4DC",
@@ -268,7 +268,7 @@ module.exports = plugin(() => {}, {
         secondary: {
           DEFAULT: "#9FA6B2",
           50: "#F8F9F9",
-          100: "#EAECEE",
+          100: "#F1F2F4",
           200: "#DDDFE3",
           300: "#CFD2D8",
           400: "#C1C6CD",
@@ -281,7 +281,7 @@ module.exports = plugin(() => {}, {
         success: {
           DEFAULT: "#14A44D",
           50: "#EAFCF2",
-          100: "#C1F7D7",
+          100: "#D6FAE4",
           200: "#97F2BC",
           300: "#6EEDA1",
           400: "#44E886",
@@ -294,7 +294,7 @@ module.exports = plugin(() => {}, {
         danger: {
           DEFAULT: "#DC4C64",
           50: "#FCF2F4",
-          100: "#F7D9DE",
+          100: "#FAE5E9",
           200: "#F2BFC8",
           300: "#EDA6B2",
           400: "#E88C9B",
@@ -307,7 +307,7 @@ module.exports = plugin(() => {}, {
         warning: {
           DEFAULT: "#E4A11B",
           50: "#FDF8EF",
-          100: "#F9EBCE",
+          100: "#FBF2DE",
           200: "#F5DDAD",
           300: "#F2D08D",
           400: "#EEC36C",
@@ -320,7 +320,7 @@ module.exports = plugin(() => {}, {
         info: {
           DEFAULT: "#54B4D3",
           50: "#F3FAFC",
-          100: "#DBEFF6",
+          100: "#E7F4F9",
           200: "#C2E4EF",
           300: "#AAD9E9",
           400: "#92CEE3",
