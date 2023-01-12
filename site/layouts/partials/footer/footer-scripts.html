@@ -484,3 +484,70 @@
   }
   //list group
 </script>
+<script>
+  // possibility of linking with a hash to a specific pills
+  window.addEventListener("load", (event) => {
+    const locationHash = window.location.hash;
+    const scrollTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    if (locationHash === "#docsTabsAPI") {
+      const apiTab = document.querySelector(
+        '#docs-nav-pills a[href="#docsTabsAPI"]'
+      );
+
+      if (apiTab) {
+        const apiTabsInstance = new te.Tab(apiTab);
+
+        apiTabsInstance.show();
+        scrollTop();
+      }
+    } else if (locationHash === "#docsTabsOverview") {
+      scrollTop();
+    } else if (
+      ["#topTemplates", "#newTemplates", "#trendingTemplates"].indexOf(
+        locationHash
+      ) !== -1
+    ) {
+      const templateTab = document.querySelector(
+        '#templates-nav-pills a[href="' + locationHash + '"]'
+      );
+
+      if (templateTab) {
+        const templateTabsInstance = new mdb.Tab(templateTab);
+
+        templateTabsInstance.show();
+        scrollTop();
+      }
+    }
+
+    const navPills = document.querySelectorAll(
+      '#docs-nav-pills a[data-te-toggle="pill"]'
+    );
+
+    if (navPills.length) {
+      navPills.forEach((el) => {
+        el.addEventListener("click", (e) => {
+          window.location.hash = e.target.hash;
+
+          scrollTop();
+        });
+      });
+    }
+
+    const templatePills = document.querySelectorAll(
+      '#templates-nav-pills a[data-te-toggle="pill"]'
+    );
+
+    if (templatePills.length) {
+      templatePills.forEach((el) => {
+        el.addEventListener("click", (e) => {
+          window.location.hash = e.target.hash;
+
+          scrollTop();
+        });
+      });
+    }
+  });
+</script>
