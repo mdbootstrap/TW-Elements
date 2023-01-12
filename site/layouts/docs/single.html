@@ -18,16 +18,16 @@
       <div class="flex">
         <div
           id="sidebar"
-          class="tex-left absolute inset-y-0 left-0 z-40 w-full -translate-x-full transform bg-white pr-4 transition duration-200 ease-in-out dark:bg-zinc-800 sm:w-3/12 md:relative md:translate-x-0 lg:w-1/5">
+          class="tex-left absolute inset-y-0 left-0 z-40 w-full -translate-x-full transform bg-white pr-4 transition duration-200 ease-in-out dark:bg-zinc-800 sm:w-3/12 md:relative md:translate-x-0 lg:w-1/6 md:w-1/5">
           {{ partial "sidenav/standard.html" . }}
         </div>
 
-        <div class="flex flex-col w-full px-4">
+        <div class="flex flex-col w-full lg:w-5/6 md:w-4/5 px-4">
           <ul id="docs-nav-pills" class="flex mx-4 mb-4" role="tablist" data-te-nav-ref>
             <li>
               <a
                 id="docs-tab-overview"
-                class="bg-[#f3f4f6] dark:bg-gray-600 text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:!bg-[#2563eb] data-[te-nav-active]:!text-white dark:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
+                class="bg-[#f3f4f6] dark:bg-gray-600 text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:!bg-[#2563eb] data-[te-nav-active]:!text-white dark:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
                 href="#docsTabsOverview"
                 role="tab"
                 data-te-toggle="pill"
@@ -41,7 +41,7 @@
             <li>
                 <a
                   id="docs-tab-api"
-                  class="bg-[#f3f4f6] dark:bg-gray-600 text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 md:mr-2 focus:outline-none focus:ring-0 data-[te-nav-active]:!bg-[#2563eb] data-[te-nav-active]:!text-white dark:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
+                  class="bg-[#f3f4f6] dark:bg-gray-600 text-[#4b5563] shadow-none font-medium text-xs leading-tight uppercase rounded px-6 py-3 my-2 focus:outline-none focus:ring-0 data-[te-nav-active]:!bg-[#2563eb] data-[te-nav-active]:!text-white dark:text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f]"
                   href="#docsTabsAPI"
                   data-te-toggle="pill"
                   data-te-target="#docsTabsAPI"
@@ -56,12 +56,12 @@
           <div
             id="docsTabsOverview"
             role="tabpanel"
-            class="w-full px-4 transition-opacity opacity-0 opacity-100 duration-150 ease-linear hidden data-[te-tab-active]:flex mb-8"
+            class="px-4 transition-opacity opacity-0 opacity-100 duration-150 ease-linear hidden data-[te-tab-active]:flex mb-8"
             role="tabpanel"
             aria-labelledby="docs-tab-overview-tab"
             data-te-tab-active
           >
-            <div class="flex flex-col pr-4 lg:w-4/5">
+            <div class="flex flex-col pr-4 w-full lg:w-4/5">
               <h1 class="mt-0 text-5xl font-bold leading-normal">
                 {{ .Params.main_title }}
               </h1>
@@ -234,10 +234,10 @@
                   <!-- {{ end }} -->
                 </div>
             {{ end }}
-          </div> <!--zamyka-->
-        </div> <!--zamyka-->
-      </div> <!--zamyka-->
-    </div> <!--zamyka-->
+          </div>
+        </div>
+      </div>
+    </div>
 
     {{ partial "footer/footer-docs.html" . }}
   </body>
