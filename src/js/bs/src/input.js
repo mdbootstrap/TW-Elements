@@ -114,16 +114,26 @@ class Input {
 
   forceActive() {
     this.input.setAttribute(DATA_ACTIVE, "");
+
+    SelectorEngine.findOne(SELECTOR_NOTCH, this.input.parentNode).setAttribute(
+      DATA_ACTIVE,
+      ""
+    );
   }
 
   forceInactive() {
     this.input.removeAttribute(DATA_ACTIVE);
+
+    SelectorEngine.findOne(
+      SELECTOR_NOTCH,
+      this.input.parentNode
+    ).removeAttribute(DATA_ACTIVE);
   }
 
   dispose() {
     this._removeBorder();
 
-    Data.removeData(this._element, DATA_KEY);
+    Data.remove(this._element, DATA_KEY);
     this._element = null;
   }
 
@@ -131,13 +141,7 @@ class Input {
 
   _getLabelData() {
     this._label = SelectorEngine.findOne("label", this._element);
-    const notchWrapper = SelectorEngine.findOne(SELECTOR_NOTCH, this._element);
 
-    notchWrapper &&
-      SelectorEngine.findOne(SELECTOR_NOTCH, this._element).setAttribute(
-        DATA_FOCUSED,
-        ""
-      );
     if (this._label === null) {
       this._showPlaceholder();
     } else {
@@ -282,6 +286,10 @@ class Input {
         this._element
       );
 
+      if (event && event.type === "focus") {
+        notchWrapper.setAttribute(DATA_FOCUSED, "");
+      }
+
       if (input.value !== "") {
         input.setAttribute(DATA_ACTIVE, "");
         notchWrapper.setAttribute(DATA_ACTIVE, "");
@@ -343,7 +351,7 @@ class Input {
 
   static jQueryInterface(config, options) {
     return this.each(function () {
-      let data = Data.getData(this, DATA_KEY);
+      let data = Data.get(this, DATA_KEY);
       const _config = typeof config === "object" && config;
       if (!data && /dispose/.test(config)) {
         return;
@@ -361,7 +369,7 @@ class Input {
   }
 
   static getInstance(element) {
-    return Data.getData(element, DATA_KEY);
+    return Data.get(element, DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {
