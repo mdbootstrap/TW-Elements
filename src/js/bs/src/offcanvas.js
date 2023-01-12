@@ -11,15 +11,15 @@ import {
   isDisabled,
   isVisible,
   typeCheckConfig,
-} from './util/index';
-import ScrollBarHelper from './util/scrollbar';
-import EventHandler from './dom/event-handler';
-import BaseComponent from './base-component';
-import SelectorEngine from './dom/selector-engine';
-import Manipulator from './dom/manipulator';
-import Backdrop from './util/backdrop';
-import FocusTrap from './util/focustrap';
-import { enableDismissTrigger } from './util/component-functions';
+} from "./util/index";
+import ScrollBarHelper from "./util/scrollbar";
+import EventHandler from "./dom/event-handler";
+import BaseComponent from "./base-component";
+import SelectorEngine from "./dom/selector-engine";
+import Manipulator from "./dom/manipulator";
+import Backdrop from "./util/backdrop";
+import FocusTrap from "./util/focustrap";
+import { enableDismissTrigger } from "./util/component-functions";
 
 /**
  * ------------------------------------------------------------------------
@@ -27,12 +27,12 @@ import { enableDismissTrigger } from './util/component-functions';
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'offcanvas';
-const DATA_KEY = 'te.offcanvas';
+const NAME = "offcanvas";
+const DATA_KEY = "te.offcanvas";
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = '.data-api';
+const DATA_API_KEY = ".data-api";
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
-const ESCAPE_KEY = 'Escape';
+const ESCAPE_KEY = "Escape";
 
 const Default = {
   backdrop: true,
@@ -41,13 +41,13 @@ const Default = {
 };
 
 const DefaultType = {
-  backdrop: 'boolean',
-  keyboard: 'boolean',
-  scroll: 'boolean',
+  backdrop: "boolean",
+  keyboard: "boolean",
+  scroll: "boolean",
 };
 
-const CLASS_NAME_SHOW = 'show';
-const OPEN_SELECTOR = '[data-te-offcanvas-init][data-te-offcanvas-show]';
+const CLASS_NAME_SHOW = "show";
+const OPEN_SELECTOR = "[data-te-offcanvas-init][data-te-offcanvas-show]";
 
 const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
@@ -56,7 +56,7 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
 
-const SELECTOR_DATA_TOGGLE = '[data-te-offcanvas-toggle]';
+const SELECTOR_DATA_TOGGLE = "[data-te-offcanvas-toggle]";
 
 /**
  * ------------------------------------------------------------------------
@@ -96,14 +96,16 @@ class Offcanvas extends BaseComponent {
       return;
     }
 
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, { relatedTarget });
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
+      relatedTarget,
+    });
 
     if (showEvent.defaultPrevented) {
       return;
     }
 
     this._isShown = true;
-    this._element.style.visibility = 'visible';
+    this._element.style.visibility = "visible";
 
     this._backdrop.show();
 
@@ -111,10 +113,10 @@ class Offcanvas extends BaseComponent {
       new ScrollBarHelper().hide();
     }
 
-    this._element.removeAttribute('aria-hidden');
-    this._element.setAttribute('aria-modal', true);
-    this._element.setAttribute('role', 'dialog');
-    this._element.setAttribute(`data-te-offcanvas-${CLASS_NAME_SHOW}`, '');
+    this._element.removeAttribute("aria-hidden");
+    this._element.setAttribute("aria-modal", true);
+    this._element.setAttribute("role", "dialog");
+    this._element.setAttribute(`data-te-offcanvas-${CLASS_NAME_SHOW}`, "");
 
     const completeCallBack = () => {
       if (!this._config.scroll) {
@@ -145,10 +147,10 @@ class Offcanvas extends BaseComponent {
     this._backdrop.hide();
 
     const completeCallback = () => {
-      this._element.setAttribute('aria-hidden', true);
-      this._element.removeAttribute('aria-modal');
-      this._element.removeAttribute('role');
-      this._element.style.visibility = 'hidden';
+      this._element.setAttribute("aria-hidden", true);
+      this._element.removeAttribute("aria-modal");
+      this._element.removeAttribute("role");
+      this._element.style.visibility = "hidden";
 
       if (!this._config.scroll) {
         new ScrollBarHelper().reset();
@@ -172,7 +174,7 @@ class Offcanvas extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {}),
+      ...(typeof config === "object" ? config : {}),
     };
     typeCheckConfig(NAME, config, DefaultType);
     return config;
@@ -207,11 +209,15 @@ class Offcanvas extends BaseComponent {
     return this.each(function () {
       const data = Offcanvas.getOrCreateInstance(this, config);
 
-      if (typeof config !== 'string') {
+      if (typeof config !== "string") {
         return;
       }
 
-      if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+      if (
+        data[config] === undefined ||
+        config.startsWith("_") ||
+        config === "constructor"
+      ) {
         throw new TypeError(`No method named "${config}"`);
       }
 
@@ -226,36 +232,43 @@ class Offcanvas extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  const target = getElementFromSelector(this);
+EventHandler.on(
+  document,
+  EVENT_CLICK_DATA_API,
+  SELECTOR_DATA_TOGGLE,
+  function (event) {
+    const target = getElementFromSelector(this);
 
-  if (['A', 'AREA'].includes(this.tagName)) {
-    event.preventDefault();
-  }
-
-  if (isDisabled(this)) {
-    return;
-  }
-
-  EventHandler.one(target, EVENT_HIDDEN, () => {
-    // focus on trigger when it is closed
-    if (isVisible(this)) {
-      this.focus();
+    if (["A", "AREA"].includes(this.tagName)) {
+      event.preventDefault();
     }
-  });
 
-  // avoid conflict when clicking a toggler of an offcanvas, while another is open
-  const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR);
-  if (allReadyOpen && allReadyOpen !== target) {
-    Offcanvas.getInstance(allReadyOpen).hide();
+    if (isDisabled(this)) {
+      return;
+    }
+
+    EventHandler.one(target, EVENT_HIDDEN, () => {
+      // focus on trigger when it is closed
+      if (isVisible(this)) {
+        this.focus();
+      }
+    });
+
+    // avoid conflict when clicking a toggler of an offcanvas, while another is open
+    const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR);
+    if (allReadyOpen && allReadyOpen !== target) {
+      Offcanvas.getInstance(allReadyOpen).hide();
+    }
+
+    const data = Offcanvas.getOrCreateInstance(target);
+    data.toggle(this);
   }
-
-  const data = Offcanvas.getOrCreateInstance(target);
-  data.toggle(this);
-});
+);
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () =>
-  SelectorEngine.find(OPEN_SELECTOR).forEach((el) => Offcanvas.getOrCreateInstance(el).show())
+  SelectorEngine.find(OPEN_SELECTOR).forEach((el) =>
+    Offcanvas.getOrCreateInstance(el).show()
+  )
 );
 
 enableDismissTrigger(Offcanvas);

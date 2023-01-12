@@ -1,6 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable indent */
-
 export const getTimepickerTemplate = ({
   okLabel,
   cancelLabel,
@@ -47,7 +44,7 @@ export const getTimepickerTemplate = ({
         ${
           showClearBtn
             ? `<button type='button' class='timepicker-button timepicker-clear ripple' tabindex="0">${clearLabel}</button>`
-            : ''
+            : ""
         }
         <button type='button' class='timepicker-button timepicker-cancel ripple' tabindex="0">${cancelLabel}</button>
         <button type='button' class='timepicker-button timepicker-submit ripple' tabindex="0">${okLabel}</button>

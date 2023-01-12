@@ -12,15 +12,15 @@ import {
   isVisible,
   reflow,
   typeCheckConfig,
-} from './util/index';
-import EventHandler from './dom/event-handler';
-import Manipulator from './dom/manipulator';
-import SelectorEngine from './dom/selector-engine';
-import ScrollBarHelper from './util/scrollbar';
-import BaseComponent from './base-component';
-import Backdrop from './util/backdrop';
-import FocusTrap from './util/focustrap';
-import { enableDismissTrigger } from './util/component-functions';
+} from "./util/index";
+import EventHandler from "./dom/event-handler";
+import Manipulator from "./dom/manipulator";
+import SelectorEngine from "./dom/selector-engine";
+import ScrollBarHelper from "./util/scrollbar";
+import BaseComponent from "./base-component";
+import Backdrop from "./util/backdrop";
+import FocusTrap from "./util/focustrap";
+import { enableDismissTrigger } from "./util/component-functions";
 
 /**
  * ------------------------------------------------------------------------
@@ -28,11 +28,11 @@ import { enableDismissTrigger } from './util/component-functions';
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'modal';
-const DATA_KEY = 'te.modal';
+const NAME = "modal";
+const DATA_KEY = "te.modal";
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = '.data-api';
-const ESCAPE_KEY = 'Escape';
+const DATA_API_KEY = ".data-api";
+const ESCAPE_KEY = "Escape";
 
 const Default = {
   backdrop: true,
@@ -41,9 +41,9 @@ const Default = {
 };
 
 const DefaultType = {
-  backdrop: '(boolean|string)',
-  keyboard: 'boolean',
-  focus: 'boolean',
+  backdrop: "(boolean|string)",
+  keyboard: "boolean",
+  focus: "boolean",
 };
 
 const EVENT_HIDE = `hide${EVENT_KEY}`;
@@ -58,13 +58,13 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`;
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
-const OPEN_SELECTOR_BODY = 'data-te-modal-open';
-const CLASS_NAME_SHOW = 'transform-none';
-const CLASS_NAME_STATIC = 'scale-[1.02]';
+const OPEN_SELECTOR_BODY = "data-te-modal-open";
+const CLASS_NAME_SHOW = "transform-none";
+const CLASS_NAME_STATIC = "scale-[1.02]";
 
-const OPEN_SELECTOR = 'data-te-open';
-const SELECTOR_DIALOG = '[data-te-modal-dialog-ref]';
-const SELECTOR_MODAL_BODY = '[data-te-modal-body-ref]';
+const OPEN_SELECTOR = "data-te-open";
+const SELECTOR_DIALOG = "[data-te-modal-dialog-ref]";
+const SELECTOR_MODAL_BODY = "[data-te-modal-body-ref]";
 const SELECTOR_DATA_TOGGLE = '[data-te-toggle="modal"]';
 
 /**
@@ -124,7 +124,7 @@ class Modal extends BaseComponent {
 
     this._scrollBar.hide();
 
-    document.body.setAttribute(OPEN_SELECTOR_BODY, 'true');
+    document.body.setAttribute(OPEN_SELECTOR_BODY, "true");
 
     this._adjustDialog();
 
@@ -175,7 +175,9 @@ class Modal extends BaseComponent {
   }
 
   dispose() {
-    [window, this._dialog].forEach((htmlElement) => EventHandler.off(htmlElement, EVENT_KEY));
+    [window, this._dialog].forEach((htmlElement) =>
+      EventHandler.off(htmlElement, EVENT_KEY)
+    );
 
     this._backdrop.dispose();
     this._focustrap.deactivate();
@@ -205,7 +207,7 @@ class Modal extends BaseComponent {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...(typeof config === 'object' ? config : {}),
+      ...(typeof config === "object" ? config : {}),
     };
     typeCheckConfig(NAME, config, DefaultType);
     return config;
@@ -215,23 +217,26 @@ class Modal extends BaseComponent {
     const isAnimated = this._isAnimated();
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog);
 
-    if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
+    if (
+      !this._element.parentNode ||
+      this._element.parentNode.nodeType !== Node.ELEMENT_NODE
+    ) {
       // Don't move modal's DOM position
       document.body.append(this._element);
     }
 
-    this._element.style.display = 'block';
-    this._element.classList.remove('hidden');
-    this._element.removeAttribute('aria-hidden');
-    this._element.setAttribute('aria-modal', true);
-    this._element.setAttribute('role', 'dialog');
-    this._element.setAttribute(`${OPEN_SELECTOR}`, 'true');
+    this._element.style.display = "block";
+    this._element.classList.remove("hidden");
+    this._element.removeAttribute("aria-hidden");
+    this._element.setAttribute("aria-modal", true);
+    this._element.setAttribute("role", "dialog");
+    this._element.setAttribute(`${OPEN_SELECTOR}`, "true");
     this._element.scrollTop = 0;
 
     const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
     modalDialog.classList.add(CLASS_NAME_SHOW);
-    modalDialog.classList.remove('opacity-0');
-    modalDialog.classList.add('opacity-100');
+    modalDialog.classList.remove("opacity-0");
+    modalDialog.classList.add("opacity-100");
 
     if (modalBody) {
       modalBody.scrollTop = 0;
@@ -281,16 +286,16 @@ class Modal extends BaseComponent {
   _hideModal() {
     const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
     modalDialog.classList.remove(CLASS_NAME_SHOW);
-    modalDialog.classList.remove('opacity-100');
-    modalDialog.classList.add('opacity-0');
+    modalDialog.classList.remove("opacity-100");
+    modalDialog.classList.add("opacity-0");
 
     setTimeout(() => {
-      this._element.style.display = 'none';
-    }, '300');
+      this._element.style.display = "none";
+    }, "300");
 
-    this._element.setAttribute('aria-hidden', true);
-    this._element.removeAttribute('aria-modal');
-    this._element.removeAttribute('role');
+    this._element.setAttribute("aria-hidden", true);
+    this._element.removeAttribute("aria-modal");
+    this._element.removeAttribute("role");
     this._isTransitioning = false;
     this._backdrop.hide(() => {
       document.body.removeAttribute(OPEN_SELECTOR_BODY);
@@ -313,7 +318,7 @@ class Modal extends BaseComponent {
 
       if (this._config.backdrop === true) {
         this.hide();
-      } else if (this._config.backdrop === 'static') {
+      } else if (this._config.backdrop === "static") {
         this._triggerBackdropTransition();
       }
     });
@@ -333,36 +338,37 @@ class Modal extends BaseComponent {
     }
 
     const { classList, scrollHeight, style } = this._element;
-    const isModalOverflowing = scrollHeight > document.documentElement.clientHeight;
+    const isModalOverflowing =
+      scrollHeight > document.documentElement.clientHeight;
 
     // return if the following background transition hasn't yet completed
     if (
-      (!isModalOverflowing && style.overflowY === 'hidden') ||
+      (!isModalOverflowing && style.overflowY === "hidden") ||
       classList.contains(CLASS_NAME_STATIC)
     ) {
       return;
     }
 
     if (!isModalOverflowing) {
-      style.overflowY = 'hidden';
+      style.overflowY = "hidden";
     }
 
     classList.add(CLASS_NAME_STATIC);
-    classList.add('transition-scale');
-    classList.add('duration-300');
-    classList.add('ease-in-out');
+    classList.add("transition-scale");
+    classList.add("duration-300");
+    classList.add("ease-in-out");
     this._queueCallback(() => {
       classList.remove(CLASS_NAME_STATIC);
 
       setTimeout(() => {
-        classList.remove('transition-scale');
-        classList.remove('duration-300');
-        classList.remove('ease-in-out');
-      }, '300');
+        classList.remove("transition-scale");
+        classList.remove("duration-300");
+        classList.remove("ease-in-out");
+      }, "300");
 
       if (!isModalOverflowing) {
         this._queueCallback(() => {
-          style.overflowY = '';
+          style.overflowY = "";
         }, this._dialog);
       }
     }, this._dialog);
@@ -375,7 +381,8 @@ class Modal extends BaseComponent {
   // ----------------------------------------------------------------------
 
   _adjustDialog() {
-    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+    const isModalOverflowing =
+      this._element.scrollHeight > document.documentElement.clientHeight;
     const scrollbarWidth = this._scrollBar.getWidth();
     const isBodyOverflowing = scrollbarWidth > 0;
 
@@ -395,8 +402,8 @@ class Modal extends BaseComponent {
   }
 
   _resetAdjustments() {
-    this._element.style.paddingLeft = '';
-    this._element.style.paddingRight = '';
+    this._element.style.paddingLeft = "";
+    this._element.style.paddingRight = "";
   }
 
   // Static
@@ -405,11 +412,11 @@ class Modal extends BaseComponent {
     return this.each(function () {
       const data = Modal.getOrCreateInstance(this, config);
 
-      if (typeof config !== 'string') {
+      if (typeof config !== "string") {
         return;
       }
 
-      if (typeof data[config] === 'undefined') {
+      if (typeof data[config] === "undefined") {
         throw new TypeError(`No method named "${config}"`);
       }
 
@@ -424,36 +431,41 @@ class Modal extends BaseComponent {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
-  const target = getElementFromSelector(this);
+EventHandler.on(
+  document,
+  EVENT_CLICK_DATA_API,
+  SELECTOR_DATA_TOGGLE,
+  function (event) {
+    const target = getElementFromSelector(this);
 
-  if (['A', 'AREA'].includes(this.tagName)) {
-    event.preventDefault();
-  }
-
-  EventHandler.one(target, EVENT_SHOW, (showEvent) => {
-    if (showEvent.defaultPrevented) {
-      // only register focus restorer if modal will actually get shown
-      return;
+    if (["A", "AREA"].includes(this.tagName)) {
+      event.preventDefault();
     }
 
-    EventHandler.one(target, EVENT_HIDDEN, () => {
-      if (isVisible(this)) {
-        this.focus();
+    EventHandler.one(target, EVENT_SHOW, (showEvent) => {
+      if (showEvent.defaultPrevented) {
+        // only register focus restorer if modal will actually get shown
+        return;
       }
+
+      EventHandler.one(target, EVENT_HIDDEN, () => {
+        if (isVisible(this)) {
+          this.focus();
+        }
+      });
     });
-  });
 
-  // avoid conflict when clicking moddal toggler while another one is open
-  const allReadyOpen = SelectorEngine.findOne(`[${OPEN_SELECTOR}="true"]`);
-  if (allReadyOpen) {
-    Modal.getInstance(allReadyOpen).hide();
+    // avoid conflict when clicking moddal toggler while another one is open
+    const allReadyOpen = SelectorEngine.findOne(`[${OPEN_SELECTOR}="true"]`);
+    if (allReadyOpen) {
+      Modal.getInstance(allReadyOpen).hide();
+    }
+
+    const data = Modal.getOrCreateInstance(target);
+
+    data.toggle(this);
   }
-
-  const data = Modal.getOrCreateInstance(target);
-
-  data.toggle(this);
-});
+);
 
 enableDismissTrigger(Modal);
 
