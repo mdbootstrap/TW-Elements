@@ -1,4 +1,9 @@
-import { element, getjQuery, onDOMContentLoaded } from "./util/index";
+import {
+  element,
+  getjQuery,
+  onDOMContentLoaded,
+  typeCheckConfig,
+} from "./util/index";
 import Data from "./dom/data";
 import EventHandler from "./dom/event-handler";
 import Manipulator from "./dom/manipulator";
@@ -50,6 +55,14 @@ const SELECTOR_NOTCH = `[${DATA_NOTCH}]`;
 const SELECTOR_NOTCH_LEADING = `[${DATA_NOTCH_LEADING}]`;
 const SELECTOR_NOTCH_MIDDLE = `[${DATA_NOTCH_MIDDLE}]`;
 const SELECTOR_HELPER = `[${DATA_HELPER}]`;
+
+const Default = {
+  inputFormWhite: false,
+};
+
+const DefaultType = {
+  inputFormWhite: "(boolean|string)",
+};
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -57,7 +70,8 @@ const SELECTOR_HELPER = `[${DATA_HELPER}]`;
  */
 
 class Input {
-  constructor(element) {
+  constructor(element, config) {
+    this._config = this._getConfig(config, element);
     this._element = element;
     this._label = null;
     this._labelWidth = 0;
@@ -138,6 +152,16 @@ class Input {
   }
 
   // Private
+
+  _getConfig(config, element) {
+    config = {
+      ...Default,
+      ...Manipulator.getDataAttributes(element),
+      ...(typeof config === "object" ? config : {}),
+    };
+    typeCheckConfig(NAME, config, DefaultType);
+    return config;
+  }
 
   _getLabelData() {
     this._label = SelectorEngine.findOne("label", this._element);
@@ -238,22 +262,40 @@ class Input {
     }
   }
 
+  _changeClassColorsToFormWhite = (element) => {
+    return element
+      .split("#3b71ca")
+      .join("#ffffff")
+      .split("blue-600")
+      .join("white");
+  };
+
   _applyDivs() {
+    let notchLeading = NOTCH_LEADING_CLASSES;
+    let notchMiddle = NOTCH_MIDDLE_CLASSES;
+    let notchTrailing = NOTCH_TRAILING_CLASSES;
+
+    if (this._config.inputFormWhite) {
+      notchLeading = this._changeClassColorsToFormWhite(notchLeading);
+      notchMiddle = this._changeClassColorsToFormWhite(notchMiddle);
+      notchTrailing = this._changeClassColorsToFormWhite(notchTrailing);
+    }
+
     const allNotchWrappers = SelectorEngine.find(SELECTOR_NOTCH, this._element);
     const notchWrapper = element("div");
     Manipulator.addMultiClass(notchWrapper, NOTCH_CLASSES);
     notchWrapper.setAttribute(DATA_NOTCH, "");
     this._notchLeading = element("div");
 
-    Manipulator.addMultiClass(this._notchLeading, NOTCH_LEADING_CLASSES);
+    Manipulator.addMultiClass(this._notchLeading, notchLeading);
     this._notchLeading.setAttribute(DATA_NOTCH_LEADING, "");
     this._notchMiddle = element("div");
 
-    Manipulator.addMultiClass(this._notchMiddle, NOTCH_MIDDLE_CLASSES);
+    Manipulator.addMultiClass(this._notchMiddle, notchMiddle);
     this._notchMiddle.setAttribute(DATA_NOTCH_MIDDLE, "");
     this._notchTrailing = element("div");
 
-    Manipulator.addMultiClass(this._notchTrailing, NOTCH_TRAILING_CLASSES);
+    Manipulator.addMultiClass(this._notchTrailing, notchTrailing);
     this._notchTrailing.setAttribute(DATA_NOTCH_TRAILING, "");
     if (allNotchWrappers.length >= 1) {
       return;
