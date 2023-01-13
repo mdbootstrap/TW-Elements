@@ -32,7 +32,7 @@ menu:
   {{< twsnippet/demo id="example1">}}
   <div class="flex justify-center space-x-2">
     <div
-      class="pointer-events-auto mx-auto hidden w-96 max-w-full rounded-lg bg-white bg-clip-padding text-sm shadow-lg data-[te-toast-show]:block data-[te-toast-hide]:hidden"
+      class="pointer-events-auto mx-auto hidden w-96 max-w-full rounded-lg bg-white bg-clip-padding text-sm shadow-lg data-[te-toast-show]:block data-[te-toast-hide]:hidden dark:bg-zinc-600"
       id="static-example"
       role="alert"
       aria-live="assertive"
@@ -41,13 +41,13 @@ menu:
       data-te-toast-init
       data-te-toast-show>
       <div
-        class="flex items-center justify-between rounded-t-lg border-b border-gray-200 bg-white bg-clip-padding py-2 px-3">
-        <p class="font-bold text-gray-500">MDBootstrap</p>
+        class="flex items-center justify-between rounded-t-lg border-b border-gray-200 bg-white bg-clip-padding py-2 px-3 dark:border-gray-500 dark:bg-zinc-600">
+        <p class="font-bold text-gray-500 dark:text-gray-200">MDBootstrap</p>
         <div class="flex items-center">
-          <p class="text-xs text-gray-600">11 mins ago</p>
+          <p class="text-xs text-gray-600 dark:text-gray-300">11 mins ago</p>
           <button
             type="button"
-            class="ml-2 box-content h-4 w-4 rounded-none border-none text-black opacity-50 hover:text-black hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+            class="ml-2 box-content h-4 w-4 rounded-none border-none text-black opacity-50 hover:text-black hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none dark:text-gray-300"
             data-te-toast-dismiss
             aria-label="Close">
             <span
@@ -56,7 +56,7 @@ menu:
                 class="w-[1em]"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
-                fill="#000">
+                fill="currentColor">
                 <path
                   d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z" />
               </svg>
@@ -64,7 +64,8 @@ menu:
           </button>
         </div>
       </div>
-      <div class="break-words rounded-b-lg bg-white py-2.5 px-3 text-gray-700">
+      <div
+        class="break-words rounded-b-lg bg-white py-2.5 px-3 text-gray-700 dark:bg-zinc-600 dark:text-gray-300">
         Static Example
       </div>
     </div>
@@ -73,51 +74,45 @@ menu:
 
 
   <section class="!visible hidden" data-te-collapse-item id="example1">
-    <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
-      <div class="flex justify-center space-x-2">
+    <div class="flex justify-center space-x-2">
+      <div
+        class="pointer-events-auto mx-auto hidden w-96 max-w-full rounded-lg bg-white bg-clip-padding text-sm shadow-lg data-[te-toast-show]:block data-[te-toast-hide]:hidden dark:bg-zinc-600"
+        id="static-example"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        data-te-autohide="false"
+        data-te-toast-init
+        data-te-toast-show>
         <div
-          class="pointer-events-auto mx-auto hidden w-96 max-w-full rounded-lg bg-white bg-clip-padding text-sm shadow-lg data-[te-toast-show]:block data-[te-toast-hide]:hidden"
-          id="static-example"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-          data-te-autohide="false"
-          data-te-toast-init
-          data-te-toast-show>
-          <div
-            class="flex items-center justify-between rounded-t-lg border-b border-gray-200 bg-white bg-clip-padding py-2 px-3">
-            <p class="font-bold text-gray-500">MDBootstrap</p>
-            <div class="flex items-center">
-              <p class="text-xs text-gray-600">11 mins ago</p>
-              <button
-                type="button"
-                class="ml-2 box-content h-4 w-4 rounded-none border-none text-black opacity-50 hover:text-black hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-                data-te-toast-dismiss
-                aria-label="Close">
-                <span
-                  class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
-                  <svg
-                    class="w-[1em]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    fill="#000">
-                    <path
-                      d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z" />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </div>
-          <div
-            class="break-words rounded-b-lg bg-white py-2.5 px-3 text-gray-700">
-            Static Example
+          class="flex items-center justify-between rounded-t-lg border-b border-gray-200 bg-white bg-clip-padding py-2 px-3 dark:border-gray-500 dark:bg-zinc-600">
+          <p class="font-bold text-gray-500 dark:text-gray-200">MDBootstrap</p>
+          <div class="flex items-center">
+            <p class="text-xs text-gray-600 dark:text-gray-300">11 mins ago</p>
+            <button
+              type="button"
+              class="ml-2 box-content h-4 w-4 rounded-none border-none text-black opacity-50 hover:text-black hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none dark:text-gray-300"
+              data-te-toast-dismiss
+              aria-label="Close">
+              <span
+                class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
+                <svg
+                  class="w-[1em]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="currentColor">
+                  <path
+                    d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z" />
+                </svg>
+              </span>
+            </button>
           </div>
         </div>
+        <div
+          class="break-words rounded-b-lg bg-white py-2.5 px-3 text-gray-700 dark:bg-zinc-600 dark:text-gray-300">
+          Static Example
+        </div>
       </div>
-      {{< /twsnippet/code >}}
-      {{< /twsnippet/wrapper >}}
     </div>
   </section>
 </section>
