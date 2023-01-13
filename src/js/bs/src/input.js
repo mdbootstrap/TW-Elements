@@ -34,17 +34,32 @@ const NOTCH_CLASSES =
 const NOTCH_DIV_CLASSES =
   "pointer-events-none border border-gray-300 border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none";
 
+const NOTCH_LEADING_NORMAL =
+  " group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600";
+const NOTCH_LEADING_WHITE =
+  " group-data-[te-input-focused]:shadow-[-1px_0_0_#ffffff,_0_1px_0_0_#ffffff,_0_-1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
+
 const NOTCH_LEADING_CLASSES =
   NOTCH_DIV_CLASSES +
-  " left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0 group-data-[te-input-focused]:border-blue-600 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca]";
+  " left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0";
+
+const NOTCH_MIDDLE_NORMAL =
+  " group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600";
+const NOTCH_MIDDLE_WHITE =
+  " group-data-[te-input-focused]:shadow-[0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
 
 const NOTCH_MIDDLE_CLASSES =
   NOTCH_DIV_CLASSES +
-  " grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent group-data-[te-input-focused]:border-blue-600 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca]";
+  " grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent";
+
+const NOTCH_TRAILING_NORMAL =
+  " group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600";
+const NOTCH_TRAILING_WHITE =
+  " group-data-[te-input-focused]:shadow-[1px_0_0_#ffffff,_0_-1px_0_0_#ffffff,_0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
 
 const NOTCH_TRAILING_CLASSES =
   NOTCH_DIV_CLASSES +
-  " grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0 group-data-[te-input-focused]:border-blue-600 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca]";
+  " grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0";
 
 const COUNTER_CLASSES = "text-right leading-[1.6]";
 
@@ -262,24 +277,16 @@ class Input {
     }
   }
 
-  _changeClassColorsToFormWhite = (element) => {
-    return element
-      .split("#3b71ca")
-      .join("#ffffff")
-      .split("blue-600")
-      .join("white");
-  };
-
   _applyDivs() {
-    let notchLeading = NOTCH_LEADING_CLASSES;
-    let notchMiddle = NOTCH_MIDDLE_CLASSES;
-    let notchTrailing = NOTCH_TRAILING_CLASSES;
-
-    if (this._config.inputFormWhite) {
-      notchLeading = this._changeClassColorsToFormWhite(notchLeading);
-      notchMiddle = this._changeClassColorsToFormWhite(notchMiddle);
-      notchTrailing = this._changeClassColorsToFormWhite(notchTrailing);
-    }
+    const shadowLeading = this._config.inputFormWhite
+      ? NOTCH_LEADING_WHITE
+      : NOTCH_LEADING_NORMAL;
+    const shadowMiddle = this._config.inputFormWhite
+      ? NOTCH_MIDDLE_WHITE
+      : NOTCH_MIDDLE_NORMAL;
+    const shadowTrailing = this._config.inputFormWhite
+      ? NOTCH_TRAILING_WHITE
+      : NOTCH_TRAILING_NORMAL;
 
     const allNotchWrappers = SelectorEngine.find(SELECTOR_NOTCH, this._element);
     const notchWrapper = element("div");
@@ -287,15 +294,24 @@ class Input {
     notchWrapper.setAttribute(DATA_NOTCH, "");
     this._notchLeading = element("div");
 
-    Manipulator.addMultiClass(this._notchLeading, notchLeading);
+    Manipulator.addMultiClass(
+      this._notchLeading,
+      NOTCH_LEADING_CLASSES + shadowLeading
+    );
     this._notchLeading.setAttribute(DATA_NOTCH_LEADING, "");
     this._notchMiddle = element("div");
 
-    Manipulator.addMultiClass(this._notchMiddle, notchMiddle);
+    Manipulator.addMultiClass(
+      this._notchMiddle,
+      NOTCH_MIDDLE_CLASSES + shadowMiddle
+    );
     this._notchMiddle.setAttribute(DATA_NOTCH_MIDDLE, "");
     this._notchTrailing = element("div");
 
-    Manipulator.addMultiClass(this._notchTrailing, notchTrailing);
+    Manipulator.addMultiClass(
+      this._notchTrailing,
+      NOTCH_TRAILING_CLASSES + shadowTrailing
+    );
     this._notchTrailing.setAttribute(DATA_NOTCH_TRAILING, "");
     if (allNotchWrappers.length >= 1) {
       return;
