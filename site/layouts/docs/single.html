@@ -25,27 +25,27 @@
         </div>
 
         <div class="flex w-full flex-col px-4 md:w-4/5 lg:w-5/6">
-          <ul
-            id="docs-nav-pills"
-            class="mx-4 mt-3 mb-6 flex"
-            role="tablist"
-            data-te-nav-ref>
-            <li>
-              <a
-                id="docs-tab-overview"
-                class="my-2 mr-4 rounded bg-[#f3f4f6] px-10 py-4 text-xs font-medium uppercase leading-tight text-[#4b5563] shadow-none focus:outline-none focus:ring-0 data-[te-nav-active]:!bg-[#2563eb] data-[te-nav-active]:!text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f] dark:bg-gray-600 dark:text-white"
-                href="#docsTabsOverview"
-                role="tab"
-                data-te-toggle="pill"
-                data-te-target="#docsTabsOverview"
-                aria-selected="true"
-                aria-controls="docsTabsOverview"
-                data-te-nav-active
-                >Overview</a
-              >
-            </li>
+          {{ if $api_file_exists }}
+            <ul
+              id="docs-nav-pills"
+              class="mx-4 mt-3 mb-6 flex"
+              role="tablist"
+              data-te-nav-ref>
+              <li>
+                <a
+                  id="docs-tab-overview"
+                  class="my-2 mr-4 rounded bg-[#f3f4f6] px-10 py-4 text-xs font-medium uppercase leading-tight text-[#4b5563] shadow-none focus:outline-none focus:ring-0 data-[te-nav-active]:!bg-[#2563eb] data-[te-nav-active]:!text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f] dark:bg-gray-600 dark:text-white"
+                  href="#docsTabsOverview"
+                  role="tab"
+                  data-te-toggle="pill"
+                  data-te-target="#docsTabsOverview"
+                  aria-selected="true"
+                  aria-controls="docsTabsOverview"
+                  data-te-nav-active
+                  >Overview</a
+                >
+              </li>
 
-            {{ if $api_file_exists }}
               <li>
                 <a
                   id="docs-tab-api"
@@ -59,8 +59,9 @@
                   >API</a
                 >
               </li>
-            {{ end }}
-          </ul>
+            </ul>
+          {{ end }}
+
 
           <!-- Right column -->
           <div
