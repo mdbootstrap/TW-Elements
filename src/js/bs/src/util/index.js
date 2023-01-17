@@ -260,6 +260,10 @@ const defineJQueryPlugin = (plugin) => {
   });
 };
 
+const element = (tag) => {
+  return document.createElement(tag);
+};
+
 const execute = (callback) => {
   if (typeof callback === "function") {
     callback();
@@ -354,4 +358,5 @@ export {
   defineJQueryPlugin,
   execute,
   executeAfterTransition,
+  element,
 };

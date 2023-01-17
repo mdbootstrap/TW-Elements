@@ -1422,6 +1422,7 @@ class Timepicker {
         this._removeModal();
 
         EventHandler.trigger(this.input, "input.te.timepicker");
+        EventHandler.trigger(this.input, "input");
       }
     );
   }

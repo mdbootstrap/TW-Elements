@@ -131,7 +131,7 @@ export const getToggleButtonTemplate = (options, id) => {
   const { iconSVG } = options;
 
   return `
-  <button id="${id}" tabindex="0" type="button" class="h-4 w-4 ml-auto fill-gray-700 dark:fill-white absolute outline-none border-none bg-transparent -right-[10px] top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-[300ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer hover:fill-[#3b71ca] focus:fill-[#3b71ca] dark:hover:fill-[#3b71ca] dark:focus:fill-[#3b71ca]" data-te-toggle="timepicker" data-te-timepicker-toggle-button data-te-timepicker-icon>
+  <button id="${id}" tabindex="0" type="button" class="h-4 w-4 ml-auto fill-gray-700 dark:fill-white absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-[300ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer hover:fill-[#3b71ca] focus:fill-[#3b71ca] dark:hover:fill-[#3b71ca] dark:focus:fill-[#3b71ca]" data-te-toggle="timepicker" data-te-timepicker-toggle-button data-te-timepicker-icon>
       ${iconSVG}  
   </button>
 `;
