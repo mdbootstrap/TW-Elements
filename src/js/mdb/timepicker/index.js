@@ -1,21 +1,38 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-else-return */
-import { createPopper } from '@popperjs/core';
-import { typeCheckConfig, element, getUID } from '../util/index';
-import { getTimepickerTemplate, getToggleButtonTemplate } from './templates';
-import Data from '../dom/data';
-import Manipulator from '../dom/manipulator';
-import EventHandler, { EventHandlerMulti } from '../dom/event-handler';
+import { createPopper } from "@popperjs/core";
+import { typeCheckConfig, element, getUID } from "../util/index";
+import { getTimepickerTemplate, getToggleButtonTemplate } from "./templates";
+import Data from "../dom/data";
+import Manipulator from "../dom/manipulator";
+import EventHandler, { EventHandlerMulti } from "../dom/event-handler";
 import {
   formatToAmPm,
   toggleClassHandler,
   checkBrowser,
   findMousePosition,
   takeValue,
-} from './utils';
-import FocusTrap from '../util/focusTrap';
-import SelectorEngine from '../dom/selector-engine';
-import { UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, ESCAPE, ENTER } from '../util/keycodes';
+  formatNormalHours,
+  setMinTime,
+  setMaxTime,
+  _convertHourToNumber,
+  checkValueBeforeAccept,
+  _verifyMaxTimeHourAndAddDisabledClass,
+  _verifyMaxTimeMinutesTipsAndAddDisabledClass,
+  _verifyMinTimeHourAndAddDisabledClass,
+  _verifyMinTimeMinutesTipsAndAddDisabledClass,
+} from "./utils";
+import { hide, reset } from "../util/scrollbar";
+import FocusTrap from "../util/focusTrap";
+import SelectorEngine from "../dom/selector-engine";
+import {
+  UP_ARROW,
+  DOWN_ARROW,
+  LEFT_ARROW,
+  RIGHT_ARROW,
+  ESCAPE,
+  ENTER,
+} from "../util/keycodes";
 
 /**
  * ------------------------------------------------------------------------
@@ -23,105 +40,169 @@ import { UP_ARROW, DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, ESCAPE, ENTER } from '..
  * ------------------------------------------------------------------------
  */
 
-const NAME = 'timepicker';
+const NAME = "timepicker";
+const ATTR_NAME = `data-te-${NAME}`;
+const SELECTOR_ATTR_TIMEPICKER_INIT = `[${ATTR_NAME}-init]`;
+const SELECTOR_DATA_TE_TOGGLE = "[data-te-toggle]";
 
-const DATA_KEY = `mdb.${NAME}`;
+const DATA_KEY = `te.${NAME}`;
+const EVENT_KEY = `.${DATA_KEY}`;
+const DATA_API_KEY = ".data-api";
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_MOUSEDOWN_DATA_API = `mousedown${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_MOUSEUP_DATA_API = `mouseup${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_MOUSEMOVE_DATA_API = `mousemove${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_MOUSELEAVE_DATA_API = `mouseleave${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_MOUSEOVER_DATA_API = `mouseover${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_TOUCHMOVE_DATA_API = `touchmove${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_TOUCHEND_DATA_API = `touchend${EVENT_KEY}${DATA_API_KEY}`;
+const EVENT_TOUCHSTART_DATA_API = `touchstart${EVENT_KEY}${DATA_API_KEY}`;
 
-const ACTIVE_CLASS = 'active';
-const AM_CLASS = `${NAME}-am`;
-const BUTTON_CANCEL_CLASS = `${NAME}-cancel`;
-const BUTTON_CLEAR_CLASS = `${NAME}-clear`;
-const BUTTON_SUBMIT_CLASS = `${NAME}-submit`;
-const CIRCLE_CLASS = `${NAME}-circle`;
-const CLOCK_ANIMATION_CLASS = `${NAME}-clock-animation`;
-const CLOCK_CLASS = `${NAME}-clock`;
-const CLOCK_INNER_CLASS = `${NAME}-clock-inner`;
-const CLOCK_WRAPPER_CLASS = `${NAME}-clock-wrapper`;
-const CURRENT_CLASS = `.${NAME}-current`;
-const CURRENT_INLINE_CLASS = `${NAME}-current-inline`;
-const WRAPPER_OPEN_ANIMATION_CLASS = 'fade-in';
-const WRAPPER_CLOSE_ANIMATION_CLASS = 'fade-out';
+const SELECTOR_ATTR_TIMEPICKER_AM = `[${ATTR_NAME}-am]`;
+const SELECTOR_ATTR_TIMEPICKER_PM = `[${ATTR_NAME}-pm]`;
+const SELECTOR_ATTR_TIMEPICKER_FORMAT24 = `[${ATTR_NAME}-format24]`;
+const SELECTOR_ATTR_TIMEPICKER_CURRENT = `[${ATTR_NAME}-current]`;
+const SELECTOR_ATTR_TIMEPICKER_HOUR_MODE = `[${ATTR_NAME}-hour-mode]`;
+const SELECTOR_ATTR_TIMEPICKER_TOGGLE_BUTTON = `[${ATTR_NAME}-toggle-button]`;
 
-const HAND_CLASS = `${NAME}-hand-pointer`;
-const HOUR_CLASS = `${NAME}-hour`;
-const HOUR_MODE_CLASS = `${NAME}-hour-mode`;
-const ICON_DOWN_CLASS = `${NAME}-icon-down`;
-const ICON_INLINE_HOUR_CLASS = `${NAME}-icon-inline-hour`;
-const ICON_INLINE_MINUTE_CLASS = `${NAME}-icon-inline-minute`;
-const ICON_UP_CLASS = `${NAME}-icon-up`;
-const ICONS_HOUR_INLINE = `${NAME}-inline-hour-icons`;
-const MIDDLE_DOT_CLASS = `${NAME}-middle-dot`;
-const MINUTE_CLASS = `${NAME}-minute`;
-const MODAL_CLASS = `${NAME}-modal`;
-const PM_CLASS = `${NAME}-pm`;
-const TIPS_ELEMENT_CLASS = `${NAME}-tips-element`;
-const TIPS_HOURS_CLASS = `${NAME}-time-tips-hours`;
-const TIPS_INNER_ELEMENT_CLASS = `${NAME}-tips-inner-element`;
-const TIPS_INNER_HOURS_CLASS = `${NAME}-time-tips-inner`;
-const TIPS_MINUTES_CLASS = `${NAME}-time-tips-minutes`;
-const TRANSFORM_CLASS = `${NAME}-transform`;
-const WRAPPER_CLASS = `${NAME}-wrapper`;
-const INPUT_CLASS = `${NAME}-input`;
+const ATTR_TIMEPICKER_BUTTON_CANCEL = `${ATTR_NAME}-cancel`;
+const ATTR_TIMEPICKER_BUTTON_CLEAR = `${ATTR_NAME}-clear`;
+const ATTR_TIMEPICKER_BUTTON_SUBMIT = `${ATTR_NAME}-submit`;
+const ATTR_TIMEPICKER_ICON = `${ATTR_NAME}-icon`;
+const ATTR_TIMEPICKER_ICON_UP = `${ATTR_NAME}-icon-up`;
+const ATTR_TIMEPICKER_ICON_DOWN = `${ATTR_NAME}-icon-down`;
+const ATTR_TIMEPICKER_ICON_INLINE_HOUR = `${ATTR_NAME}-icon-inline-hour`;
+const ATTR_TIMEPICKER_ICON_INLINE_MINUTE = `${ATTR_NAME}-icon-inline-minute`;
+const ATTR_TIMEPICKER_ICONS_HOUR_INLINE = `${ATTR_NAME}-inline-hour-icons`;
+const ATTR_TIMEPICKER_CURRENT_INLINE = `${ATTR_NAME}-current-inline`;
+
+const ATTR_READONLY = "readonly";
+const ATTR_TIMEPICKER_INVALID_FEEDBACK = `${ATTR_NAME}-invalid-feedback`;
+const ATTR_TIMEPICKER_IS_INVALID = `${ATTR_NAME}-is-invalid`;
+const ATTR_TIMEPICKER_DISABLED = `${ATTR_NAME}-disabled`;
+const ATTR_TIMEPICKER_ACTIVE = `${ATTR_NAME}-active`;
+
+const ATTR_TIMEPICKER_INPUT = `${ATTR_NAME}-input`;
+const ATTR_TIMEPICKER_CLOCK = `${ATTR_NAME}-clock`;
+const ATTR_TIMEPICKER_CLOCK_INNER = `${ATTR_NAME}-clock-inner`;
+const ATTR_TIMEPICKER_WRAPPER = `${ATTR_NAME}-wrapper`;
+const ATTR_TIMEPICKER_CLOCK_WRAPPER = `${ATTR_NAME}-clock-wrapper`;
+const ATTR_TIMEPICKER_HOUR = `${ATTR_NAME}-hour`;
+const ATTR_TIMEPICKER_MINUTE = `${ATTR_NAME}-minute`;
+const ATTR_TIMEPICKER_TIPS_ELEMENT = `${ATTR_NAME}-tips-element`;
+const ATTR_TIMEPICKER_TIPS_HOURS = `${ATTR_NAME}-tips-hours`;
+const ATTR_TIMEPICKER_TIPS_MINUTES = `${ATTR_NAME}-tips-minutes`;
+const ATTR_TIMEPICKER_INNER_HOURS = `${ATTR_NAME}-tips-inner`;
+const ATTR_TIMEPICKER_TIPS_INNER_ELEMENT = `${ATTR_NAME}-tips-inner-element`;
+const ATTR_TIMEPICKER_MIDDLE_DOT = `${ATTR_NAME}-middle-dot`;
+const ATTR_TIMEPICKER_HAND_POINTER = `${ATTR_NAME}-hand-pointer`;
+const ATTR_TIMEPICKER_CIRCLE = `${ATTR_NAME}-circle`;
+const ATTR_TIMEPICKER_MODAL = `${ATTR_NAME}-modal`;
+
+const CLASS_ACTIVE_TIPS = ["text-white", "bg-[#3b71ca]", "font-normal"];
+const CLASSES_TIPS = [
+  "absolute",
+  "rounded-[100%]",
+  "w-[32px]",
+  "h-[32px]",
+  "text-center",
+  "cursor-pointer",
+  "text-[1.1rem]",
+  "rounded-[100%]",
+  "bg-transparent",
+  "flex",
+  "justify-center",
+  "items-center",
+  "font-light",
+  "focus:outline-none",
+  "selection:bg-transparent",
+];
+const CLASSES_TIPS_DISABLED = [
+  "text-[#b3afaf]",
+  "pointer-events-none",
+  "bg-transparent",
+];
+const CLASSES_TRANSFORM = [
+  "transition-[transform,height]",
+  "ease-in-out",
+  "duration-[400ms]",
+];
+const CLASS_MODAL = ["z-[1065]"];
+const CLASS_CLOCK_ANIMATION = "animate-[show-up-clock_350ms_linear]";
+const CLASS_OPACITY = ["!opacity-100"];
+const defaultIcon =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg>';
 
 const Default = {
   appendValidationInfo: true,
-  bodyID: '',
-  cancelLabel: 'Cancel',
-  clearLabel: 'Clear',
+  bodyID: "",
+  cancelLabel: "Cancel",
+  clearLabel: "Clear",
   closeModalOnBackdropClick: true,
   closeModalOnMinutesClick: false,
-  defaultTime: '',
+  container: "body",
+  defaultTime: "",
   disabled: false,
+  disablePast: false,
+  disableFuture: false,
+  enableValidation: true,
   focusInputAfterApprove: false,
-  footerID: '',
+  footerID: "",
   format12: true,
-  headID: '',
+  format24: false,
+  headID: "",
   increment: false,
-  invalidLabel: 'Invalid Time Format',
-  maxHour: '',
-  minHour: '',
-  maxTime: '',
-  minTime: '',
-  modalID: '',
-  okLabel: 'Ok',
+  inline: false,
+  invalidLabel: "Invalid Time Format",
+  maxTime: "",
+  minTime: "",
+  modalID: "",
+  okLabel: "Ok",
   overflowHidden: true,
-  pickerID: '',
+  pickerID: "",
   readOnly: false,
   showClearBtn: true,
   switchHoursToMinutesOnClick: true,
-  iconClass: 'far fa-clock fa-sm timepicker-icon',
+  iconSVG: defaultIcon,
   withIcon: true,
-  pmLabel: 'PM',
-  amLabel: 'AM',
+  pmLabel: "PM",
+  amLabel: "AM",
+  animations: true,
 };
 
 const DefaultType = {
-  appendValidationInfo: 'boolean',
-  bodyID: 'string',
-  cancelLabel: 'string',
-  clearLabel: 'string',
-  closeModalOnBackdropClick: 'boolean',
-  closeModalOnMinutesClick: 'boolean',
-  disabled: 'boolean',
-  footerID: 'string',
-  format12: 'boolean',
-  headID: 'string',
-  increment: 'boolean',
-  invalidLabel: 'string',
-  maxHour: '(string|number)',
-  minHour: '(string|number)',
-  modalID: 'string',
-  okLabel: 'string',
-  overflowHidden: 'boolean',
-  pickerID: 'string',
-  readOnly: 'boolean',
-  showClearBtn: 'boolean',
-  switchHoursToMinutesOnClick: 'boolean',
-  defaultTime: '(string|date|number)',
-  iconClass: 'string',
-  withIcon: 'boolean',
-  pmLabel: 'string',
-  amLabel: 'string',
+  appendValidationInfo: "boolean",
+  bodyID: "string",
+  cancelLabel: "string",
+  clearLabel: "string",
+  closeModalOnBackdropClick: "boolean",
+  closeModalOnMinutesClick: "boolean",
+  container: "string",
+  disabled: "boolean",
+  disablePast: "boolean",
+  disableFuture: "boolean",
+  enableValidation: "boolean",
+  footerID: "string",
+  format12: "boolean",
+  format24: "boolean",
+  headID: "string",
+  increment: "boolean",
+  inline: "boolean",
+  invalidLabel: "string",
+  modalID: "string",
+  okLabel: "string",
+  overflowHidden: "boolean",
+  pickerID: "string",
+  readOnly: "boolean",
+  showClearBtn: "boolean",
+  switchHoursToMinutesOnClick: "boolean",
+  defaultTime: "(string|date|number)",
+  iconSVG: "string",
+  withIcon: "boolean",
+  pmLabel: "string",
+  amLabel: "string",
+  animations: "boolean",
 };
 
 /**
@@ -141,25 +222,77 @@ class Timepicker {
     this._document = document;
     this._options = this._getConfig(options);
     this._currentTime = null;
-    this._toggleButtonId = getUID('timepicker-toggle-');
+    this._toggleButtonId = getUID("timepicker-toggle-");
 
-    this.hoursArray = ['12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
-    this.innerHours = ['00', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'];
-    this.minutesArray = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'];
+    this.hoursArray = [
+      "12",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+    ];
+    this.innerHours = [
+      "00",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+    ];
+    this.minutesArray = [
+      "00",
+      "05",
+      "10",
+      "15",
+      "20",
+      "25",
+      "30",
+      "35",
+      "40",
+      "45",
+      "50",
+      "55",
+    ];
 
-    this.input = SelectorEngine.findOne('input', this._element);
+    this.input = SelectorEngine.findOne("input", this._element);
     this.dataWithIcon = element.dataset.withIcon;
     this.dataToggle = element.dataset.toggle;
-    this.customIcon = SelectorEngine.findOne('.timepicker-toggle-button', this._element);
+    this.customIcon = SelectorEngine.findOne(
+      SELECTOR_ATTR_TIMEPICKER_TOGGLE_BUTTON,
+      this._element
+    );
 
     this._checkToggleButton();
 
-    this.inputFormatShow = SelectorEngine.findOne('[data-mdb-timepicker-format24]', this._element);
+    this.inputFormatShow = SelectorEngine.findOne(
+      SELECTOR_ATTR_TIMEPICKER_FORMAT24,
+      this._element
+    );
 
     this.inputFormat =
-      this.inputFormatShow === null ? '' : Object.values(this.inputFormatShow.dataset)[0];
-    this.elementToggle = SelectorEngine.findOne('[data-mdb-toggle]', this._element);
-    this.toggleElement = Object.values(element.querySelector('[data-mdb-toggle]').dataset)[0];
+      this.inputFormatShow === null
+        ? ""
+        : Object.values(this.inputFormatShow.dataset)[0];
+    this.elementToggle = SelectorEngine.findOne(
+      SELECTOR_DATA_TE_TOGGLE,
+      this._element
+    );
+    this.toggleElement = Object.values(
+      element.querySelector(SELECTOR_DATA_TE_TOGGLE).dataset
+    )[0];
 
     this._hour = null;
     this._minutes = null;
@@ -174,15 +307,35 @@ class Timepicker {
     this._interval = null;
 
     this._inputValue =
-      this._options.defaultTime !== '' ? this._options.defaultTime : this.input.value;
+      this._options.defaultTime !== ""
+        ? this._options.defaultTime
+        : this.input.value;
+
+    if (this._options.format24) {
+      this._options.format12 = false;
+
+      this._currentTime = formatNormalHours(this._inputValue);
+    }
 
     if (this._options.format12) {
+      this._options.format24 = false;
+
       this._currentTime = formatToAmPm(this._inputValue);
     }
 
     if (this._options.readOnly) {
-      this.input.setAttribute('readonly', true);
+      this.input.setAttribute(ATTR_READONLY, true);
     }
+
+    if (this.inputFormat === "true" && this.inputFormat !== "") {
+      this._options.format12 = false;
+      this._options.format24 = true;
+      this._currentTime = formatNormalHours(this._inputValue);
+    }
+
+    this._animations =
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+      this._options.animations;
 
     this.init();
 
@@ -193,6 +346,10 @@ class Timepicker {
     this._isInner = false;
     this._isAmEnabled = false;
     this._isPmEnabled = false;
+
+    if (this._options.format12 && !this._options.defaultTime) {
+      this._isPmEnabled = true;
+    }
 
     this._objWithDataOnChange = { degrees: null };
   }
@@ -206,36 +363,45 @@ class Timepicker {
   // Public
 
   init() {
+    const { format12, format24, enableValidation } = this._options;
     let zero;
     let hoursFormat;
     let _amOrPm;
 
-    Manipulator.addClass(this.input, INPUT_CLASS);
+    this.input.setAttribute(ATTR_TIMEPICKER_INPUT, "");
 
     if (this._currentTime !== undefined) {
       const { hours, minutes, amOrPm } = this._currentTime;
 
-      zero = Number(hours) < 10 ? 0 : '';
+      zero = Number(hours) < 10 ? 0 : "";
       hoursFormat = `${zero}${Number(hours)}:${minutes}`;
       _amOrPm = amOrPm;
 
-      this.input.value = `${hoursFormat} ${_amOrPm}`;
+      if (format12) {
+        this.input.value = `${hoursFormat} ${_amOrPm}`;
+      } else if (format24) {
+        this.input.value = `${hoursFormat}`;
+      }
     } else {
-      zero = '';
-      hoursFormat = '';
-      _amOrPm = '';
+      zero = "";
+      hoursFormat = "";
+      _amOrPm = "";
 
-      this.input.value = '';
+      this.input.value = "";
     }
 
-    if (this.input.value.length > 0 && this.input.value !== '') {
-      Manipulator.addClass(this.input, 'active');
+    if (this.input.value.length > 0 && this.input.value !== "") {
+      this.input.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
     }
 
-    if (this._options !== null || this._element !== null) {
-      this._handleOpen();
-      this._listenToToggleKeydown();
+    if (this._options === null && this._element === null) return;
+
+    if (enableValidation) {
+      this._getValidate("keydown change blur focus");
     }
+
+    this._handleOpen();
+    this._listenToToggleKeydown();
   }
 
   dispose() {
@@ -245,143 +411,248 @@ class Timepicker {
       Data.removeData(this._element, DATA_KEY);
     }
 
-    this._element = null;
-    this._options = null;
-    this.input = null;
-    this._focusTrap = null;
+    setTimeout(() => {
+      this._element = null;
+      this._options = null;
+      this.input = null;
+      this._focusTrap = null;
+    }, 350);
 
-    EventHandler.off(this._document, 'click', `[data-mdb-toggle='${this.toggleElement}']`);
-    EventHandler.off(this._element, 'keydown', `[data-mdb-toggle='${this.toggleElement}']`);
+    EventHandler.off(
+      this._document,
+      "click",
+      `[data-te-toggle='${this.toggleElement}']`
+    );
+    EventHandler.off(
+      this._element,
+      "keydown",
+      `[data-te-toggle='${this.toggleElement}']`
+    );
+  }
+
+  update(options = {}) {
+    this._options = this._getConfig({ ...this._options, ...options });
   }
 
   // private
 
   _checkToggleButton() {
-    if (this.customIcon === null) {
-      if (this.dataWithIcon !== undefined) {
-        this._options.withIcon = null;
+    if (this.customIcon !== null) return;
 
-        if (this.dataWithIcon === 'true') {
-          this._appendToggleButton(this._options);
-        }
-      }
+    if (this.dataWithIcon !== undefined) {
+      this._options.withIcon = null;
 
-      if (this._options.withIcon) {
+      if (this.dataWithIcon === "true") {
         this._appendToggleButton(this._options);
       }
+    }
+
+    if (this._options.withIcon) {
+      this._appendToggleButton(this._options);
     }
   }
 
   _appendToggleButton() {
-    const toggleButton = getToggleButtonTemplate(this._options, this._toggleButtonId);
+    const toggleButton = getToggleButtonTemplate(
+      this._options,
+      this._toggleButtonId
+    );
 
-    this.input.insertAdjacentHTML('afterend', toggleButton);
+    this.input.insertAdjacentHTML("afterend", toggleButton);
   }
 
   _getDomElements() {
-    this._hour = SelectorEngine.findOne(`.${HOUR_CLASS}`);
-    this._minutes = SelectorEngine.findOne(`.${MINUTE_CLASS}`);
-    this._AM = SelectorEngine.findOne(`.${AM_CLASS}`);
-    this._PM = SelectorEngine.findOne(`.${PM_CLASS}`);
-    this._wrapper = SelectorEngine.findOne(`.${WRAPPER_CLASS}`);
-    this._modal = SelectorEngine.findOne(`.${MODAL_CLASS}`);
-    this._hand = SelectorEngine.findOne(`.${HAND_CLASS}`);
-    this._circle = SelectorEngine.findOne(`.${CIRCLE_CLASS}`);
-    this._clock = SelectorEngine.findOne(`.${CLOCK_CLASS}`);
-    this._clockInner = SelectorEngine.findOne(`.${CLOCK_INNER_CLASS}`);
+    this._hour = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_HOUR}]`);
+    this._minutes = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_MINUTE}]`);
+    this._AM = SelectorEngine.findOne(SELECTOR_ATTR_TIMEPICKER_AM);
+    this._PM = SelectorEngine.findOne(SELECTOR_ATTR_TIMEPICKER_PM);
+    this._wrapper = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_WRAPPER}]`);
+    this._modal = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_MODAL}]`);
+    this._hand = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_HAND_POINTER}]`);
+    this._circle = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_CIRCLE}]`);
+    this._clock = SelectorEngine.findOne(`[${ATTR_TIMEPICKER_CLOCK}]`);
+    this._clockInner = SelectorEngine.findOne(
+      `[${ATTR_TIMEPICKER_CLOCK_INNER}]`
+    );
   }
 
-  _handlerMaxMinHoursOptions(degrees, fn, maxHour, minHour, maxFormat, minFormat) {
-    const maxHourDegrees = maxHour !== '' ? maxHour * 30 : '';
-    let minHourDegrees = minHour !== '' ? minHour * 30 : '';
+  _handlerMaxMinHoursOptions(
+    degrees,
+    maxHour,
+    minHour,
+    maxFormat,
+    minFormat,
+    e
+  ) {
+    if (!maxHour && !minHour) return true;
 
-    if (maxHour !== '' && minHour !== '') {
-      if (degrees <= 0) {
-        degrees = 360 + degrees;
-      }
-      if (degrees <= maxHourDegrees && degrees >= minHourDegrees) {
-        return fn();
-      }
-    } else if (minHour !== '') {
-      if (degrees <= 0) {
-        degrees = 360 + degrees;
-      }
+    const { format24, format12, disablePast, disableFuture } = this._options;
+    const { _isAmEnabled, _isPmEnabled } = this;
+    const key = e.keyCode;
 
-      if (Number(minHour) > 12) {
-        minHourDegrees = minHour * 30 - minHourDegrees;
-      }
+    const _isMouseOnInnerClock =
+      e.target.hasAttribute(ATTR_TIMEPICKER_CLOCK_INNER) ||
+      e.target.hasAttribute(ATTR_TIMEPICKER_INNER_HOURS) ||
+      e.target.hasAttribute(ATTR_TIMEPICKER_TIPS_INNER_ELEMENT);
 
-      if (degrees >= minHourDegrees && minFormat === undefined) {
-        return fn();
-      } else if (minFormat !== undefined) {
-        if (minFormat === 'PM' && this._isAmEnabled) {
-          return;
-        }
+    minHour = setMinTime(minHour, disablePast, format12);
+    maxHour = setMaxTime(maxHour, disableFuture, format12);
 
-        if (minFormat === 'PM' && this._isPmEnabled) {
-          if (degrees >= minHourDegrees) {
-            return fn();
-          }
-        }
+    const maxHourDegrees = maxHour !== "" ? maxHour * 30 : "";
+    const minHourDegrees = minHour !== "" ? minHour * 30 : "";
 
-        if (minFormat === 'AM' && this._isPmEnabled) {
-          return fn();
-        } else if (minFormat === 'AM' && this._isAmEnabled) {
-          if (degrees >= minHourDegrees) {
-            return fn();
-          }
-        }
-      }
-    } else if (maxHour !== '') {
-      if (degrees <= 0) {
-        degrees = 360 + degrees;
-      }
-      if (degrees <= maxHourDegrees && maxFormat === undefined) {
-        return fn();
-      } else if (maxFormat !== undefined) {
-        if (maxFormat === 'AM' && this._isPmEnabled) {
-          return;
-        }
-
-        if (maxFormat === 'AM' && this._isAmEnabled) {
-          if (degrees <= maxHourDegrees) {
-            return fn();
-          }
-        }
-
-        if (maxFormat === 'PM' && this._isPmEnabled) {
-          if (degrees <= maxHourDegrees) {
-            return fn();
-          }
-        } else if (maxFormat === 'PM' && this._isAmEnabled) {
-          return fn();
-        }
-      }
-    } else {
-      return fn();
+    if (degrees <= 0) {
+      degrees = 360 + degrees;
     }
 
-    return fn;
+    const _handleKeyboardEvents = () => {
+      const tips = document.querySelectorAll(
+        `[${ATTR_TIMEPICKER_TIPS_ELEMENT}]`
+      );
+      const innerTips = document.querySelectorAll(
+        `[${ATTR_TIMEPICKER_TIPS_INNER_ELEMENT}]`
+      );
+
+      const currentHour = _convertHourToNumber(this._hour.innerText);
+      let nextHourTip;
+      let numberToAdd;
+      let nextHour;
+
+      if (key === UP_ARROW) {
+        numberToAdd = 1;
+      } else if (key === DOWN_ARROW) {
+        numberToAdd = -1;
+      }
+
+      if (currentHour === 12 && key === UP_ARROW) {
+        nextHour = 1;
+      } else if (currentHour === 0 && key === UP_ARROW) {
+        nextHour = 13;
+      } else if (currentHour === 0 && key === DOWN_ARROW) {
+        nextHour = 23;
+      } else if (currentHour === 13 && key === DOWN_ARROW) {
+        nextHour = 0;
+      } else if (currentHour === 1 && key === DOWN_ARROW) {
+        nextHour = 12;
+      } else {
+        nextHour = currentHour + numberToAdd;
+      }
+
+      tips.forEach((tip) => {
+        if (Number(tip.textContent) === nextHour) {
+          nextHourTip = tip;
+        }
+      });
+      innerTips.forEach((innerTip) => {
+        if (Number(innerTip.textContent) === nextHour) {
+          nextHourTip = innerTip;
+        }
+      });
+
+      return !nextHourTip.parentElement.hasAttribute(ATTR_TIMEPICKER_DISABLED);
+    };
+
+    const _handle24FormatMouseEvents = () => {
+      const minInnerHourDegrees =
+        minHour !== "" && minHour > 12 ? (minHour - 12) * 30 : "";
+      const maxInnerHourDegrees =
+        maxHour !== "" && maxHour > 12 ? (maxHour - 12) * 30 : "";
+
+      if (
+        (minInnerHourDegrees && degrees < minInnerHourDegrees) ||
+        (maxInnerHourDegrees && degrees > maxInnerHourDegrees) ||
+        (maxHour && maxHour < 12)
+      ) {
+        return;
+      }
+      return true;
+    };
+
+    if (format24 && e.type !== "keydown" && _isMouseOnInnerClock) {
+      return _handle24FormatMouseEvents();
+    }
+    if (e.type === "keydown") {
+      return _handleKeyboardEvents(e);
+    }
+
+    const minFormatAndCurrentFormatEqual =
+      !minFormat ||
+      (minFormat === "PM" && _isPmEnabled) ||
+      (minHour !== "" && minFormat === "AM" && _isAmEnabled);
+
+    const maxFormatAndCurrentFormatEqual =
+      !maxFormat ||
+      (maxFormat === "PM" && _isPmEnabled) ||
+      (maxHour !== "" && maxFormat === "AM" && _isAmEnabled);
+
+    const isMinHourValid = () => {
+      if (!minHour) {
+        return true;
+      } else if (
+        (minFormat === "PM" && _isAmEnabled) ||
+        (minFormatAndCurrentFormatEqual && degrees < minHourDegrees)
+      ) {
+        return;
+      }
+      return true;
+    };
+
+    const isMaxHourValid = () => {
+      if (!maxHour) {
+        return true;
+      } else if (
+        (maxFormat === "AM" && _isPmEnabled) ||
+        (maxFormatAndCurrentFormatEqual && degrees > maxHourDegrees)
+      ) {
+        return;
+      }
+      return true;
+    };
+
+    return isMinHourValid() && isMaxHourValid();
   }
 
   _handleKeyboard() {
-    EventHandler.on(this._document, 'keydown', '', (e) => {
+    EventHandler.on(this._document, EVENT_KEYDOWN_DATA_API, "", (e) => {
       let hour;
       let minute;
       let innerHour;
-      const { maxHour, minHour, increment } = this._options;
+      const {
+        increment,
+        maxTime,
+        minTime,
+        format12,
+        disablePast,
+        disableFuture,
+      } = this._options;
 
-      const notNullMinutes = SelectorEngine.findOne(`.${TIPS_MINUTES_CLASS}`) !== null;
-      const notNullInnerHours = SelectorEngine.findOne(`.${TIPS_INNER_HOURS_CLASS}`) !== null;
+      let minHour = takeValue(minTime, false)[0];
+      let maxHour = takeValue(maxTime, false)[0];
+      const minFormat = takeValue(minTime, false)[2];
+      const maxFormat = takeValue(maxTime, false)[2];
 
-      const degrees = Number(this._hand.style.transform.replace(/[^\d-]/g, ''));
+      minHour = setMinTime(minHour, disablePast, format12);
+      maxHour = setMaxTime(maxHour, disableFuture, format12);
 
-      const allTipsMinutes = SelectorEngine.find(`.${TIPS_MINUTES_CLASS}`, this._modal);
-      const allTipsHours = SelectorEngine.find(`.${TIPS_HOURS_CLASS}`, this._modal);
-      const allInnerTips = SelectorEngine.find(`.${TIPS_INNER_HOURS_CLASS}`, this._modal);
+      const hoursView =
+        SelectorEngine.findOne(`[${ATTR_TIMEPICKER_TIPS_MINUTES}]`) === null;
+      const innerHoursExist =
+        SelectorEngine.findOne(`[${ATTR_TIMEPICKER_INNER_HOURS}]`) !== null;
 
-      const maxHourNumber = maxHour !== '' ? Number(maxHour) : '';
-      const minHourNumber = minHour !== '' ? Number(minHour) : '';
+      const degrees = Number(this._hand.style.transform.replace(/[^\d-]/g, ""));
+
+      const allTipsMinutes = SelectorEngine.find(
+        `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`,
+        this._modal
+      );
+      const allTipsHours = SelectorEngine.find(
+        `[${ATTR_TIMEPICKER_TIPS_HOURS}]`,
+        this._modal
+      );
+      const allInnerTips = SelectorEngine.find(
+        `[${ATTR_TIMEPICKER_INNER_HOURS}]`,
+        this._modal
+      );
 
       let hourTime = this._makeHourDegrees(e.target, degrees, hour).hour;
       const { degrees: hourObjDegrees, addDegrees } = this._makeHourDegrees(
@@ -390,27 +661,34 @@ class Timepicker {
         hour
       );
 
-      let { minute: minHourMinutes, degrees: minObjDegrees } = this._makeMinutesDegrees(
+      let { minute: minHourMinutes, degrees: minObjDegrees } =
+        this._makeMinutesDegrees(degrees, minute);
+      const addMinDegrees = this._makeMinutesDegrees(
         degrees,
         minute
-      );
-      const addMinDegrees = this._makeMinutesDegrees(degrees, minute).addDegrees;
+      ).addDegrees;
 
-      let { hour: innerHourDegrees } = this._makeInnerHoursDegrees(degrees, innerHour);
+      let { hour: innerHourDegrees } = this._makeInnerHoursDegrees(
+        degrees,
+        innerHour
+      );
 
       if (e.keyCode === ESCAPE) {
-        const cancelBtn = SelectorEngine.findOne(`.${BUTTON_CANCEL_CLASS}`, this._modal);
-        EventHandler.trigger(cancelBtn, 'click');
-      }
-
-      if (!notNullMinutes) {
-        if (notNullInnerHours) {
+        const cancelBtn = SelectorEngine.findOne(
+          `[${ATTR_TIMEPICKER_BUTTON_CANCEL}]`,
+          this._modal
+        );
+        EventHandler.trigger(cancelBtn, "click");
+      } else if (hoursView) {
+        if (innerHoursExist) {
           if (e.keyCode === RIGHT_ARROW) {
             this._isInner = false;
             Manipulator.addStyle(this._hand, {
-              height: 'calc(40% + 1px)',
+              height: "calc(40% + 1px)",
             });
-            this._hour.textContent = this._setHourOrMinute(hourTime > 12 ? 1 : hourTime);
+            this._hour.textContent = this._setHourOrMinute(
+              hourTime > 12 ? 1 : hourTime
+            );
             this._toggleClassActive(this.hoursArray, this._hour, allTipsHours);
             this._toggleClassActive(this.innerHours, this._hour, allInnerTips);
           }
@@ -418,32 +696,44 @@ class Timepicker {
           if (e.keyCode === LEFT_ARROW) {
             this._isInner = true;
             Manipulator.addStyle(this._hand, {
-              height: '21.5%',
+              height: "21.5%",
             });
 
             this._hour.textContent = this._setHourOrMinute(
-              innerHourDegrees >= 24 || innerHourDegrees === '00' ? 0 : innerHourDegrees
+              innerHourDegrees >= 24 || innerHourDegrees === "00"
+                ? 0
+                : innerHourDegrees
             );
             this._toggleClassActive(this.innerHours, this._hour, allInnerTips);
-            this._toggleClassActive(this.hoursArray, this._hour - 1, allTipsHours);
+            this._toggleClassActive(
+              this.hoursArray,
+              this._hour - 1,
+              allTipsHours
+            );
           }
         }
-
         if (e.keyCode === UP_ARROW) {
-          const addRotate = () => {
-            return Manipulator.addStyle(this._hand, {
-              transform: `rotateZ(${hourObjDegrees + addDegrees}deg)`,
-            });
-          };
+          const isNextHourValid = this._handlerMaxMinHoursOptions(
+            hourObjDegrees + 30,
+            maxHour,
+            minHour,
+            maxFormat,
+            minFormat,
+            e
+          );
 
-          this._handlerMaxMinHoursOptions(hourObjDegrees + 30, addRotate, maxHour, minHour);
+          if (!isNextHourValid) return;
+
+          Manipulator.addStyle(this._hand, {
+            transform: `rotateZ(${hourObjDegrees + addDegrees}deg)`,
+          });
 
           if (this._isInner) {
             innerHourDegrees += 1;
 
             if (innerHourDegrees === 24) {
               innerHourDegrees = 0;
-            } else if (innerHourDegrees === 25 || innerHourDegrees === '001') {
+            } else if (innerHourDegrees === 25 || innerHourDegrees === "001") {
               innerHourDegrees = 13;
             }
 
@@ -451,36 +741,27 @@ class Timepicker {
             this._toggleClassActive(this.innerHours, this._hour, allInnerTips);
           } else {
             hourTime += 1;
-
-            // Condition for max/min option
-            if (maxHour !== '' && minHour !== '') {
-              if (hourTime > maxHour) {
-                hourTime = maxHourNumber;
-              } else if (hourTime < minHour) {
-                hourTime = minHourNumber;
-              }
-            } else if (maxHour !== '' && minHour === '') {
-              if (hourTime > maxHour) {
-                hourTime = maxHourNumber;
-              }
-            } else if (maxHour === '' && minHour !== '') {
-              if (hourTime >= 12) {
-                hourTime = 12;
-              }
-            }
-
-            this._hour.textContent = this._setHourOrMinute(hourTime > 12 ? 1 : hourTime);
+            this._hour.textContent = this._setHourOrMinute(
+              hourTime > 12 ? 1 : hourTime
+            );
             this._toggleClassActive(this.hoursArray, this._hour, allTipsHours);
           }
         }
         if (e.keyCode === DOWN_ARROW) {
-          const addRotate = () => {
-            return Manipulator.addStyle(this._hand, {
-              transform: `rotateZ(${hourObjDegrees - addDegrees}deg)`,
-            });
-          };
+          const isNextHourValid = this._handlerMaxMinHoursOptions(
+            hourObjDegrees - 30,
+            maxHour,
+            minHour,
+            maxFormat,
+            minFormat,
+            e
+          );
 
-          this._handlerMaxMinHoursOptions(hourObjDegrees - 30, addRotate, maxHour, minHour);
+          if (!isNextHourValid) return;
+
+          Manipulator.addStyle(this._hand, {
+            transform: `rotateZ(${hourObjDegrees - addDegrees}deg)`,
+          });
 
           if (this._isInner) {
             innerHourDegrees -= 1;
@@ -495,26 +776,9 @@ class Timepicker {
             this._toggleClassActive(this.innerHours, this._hour, allInnerTips);
           } else {
             hourTime -= 1;
-
-            // Condition for max/min option
-            if (maxHour !== '' && minHour !== '') {
-              if (hourTime > maxHourNumber) {
-                hourTime = maxHourNumber;
-              } else if (hourTime < minHourNumber) {
-                hourTime = minHourNumber;
-              }
-            } else if (maxHour === '' && minHour !== '') {
-              if (hourTime <= minHourNumber) {
-                hourTime = minHourNumber;
-              }
-            } else if (maxHour !== '' && minHour === '') {
-              const maxNumber = 1;
-              if (maxNumber >= hourTime) {
-                hourTime = maxNumber;
-              }
-            }
-
-            this._hour.textContent = this._setHourOrMinute(hourTime === 0 ? 12 : hourTime);
+            this._hour.textContent = this._setHourOrMinute(
+              hourTime === 0 ? 12 : hourTime
+            );
             this._toggleClassActive(this.hoursArray, this._hour, allTipsHours);
           }
         }
@@ -528,7 +792,7 @@ class Timepicker {
           if (increment) {
             minHourMinutes += 4;
 
-            if (minHourMinutes === '0014') {
+            if (minHourMinutes === "0014") {
               minHourMinutes = 5;
             }
           }
@@ -536,8 +800,14 @@ class Timepicker {
           this._minutes.textContent = this._setHourOrMinute(
             minHourMinutes > 59 ? 0 : minHourMinutes
           );
-          this._toggleClassActive(this.minutesArray, this._minutes, allTipsMinutes);
-          this._toggleBackgroundColorCircle(`${TIPS_MINUTES_CLASS}`);
+          this._toggleClassActive(
+            this.minutesArray,
+            this._minutes,
+            allTipsMinutes
+          );
+          this._toggleBackgroundColorCircle(
+            `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`
+          );
         }
         if (e.keyCode === DOWN_ARROW) {
           minObjDegrees -= addMinDegrees;
@@ -557,33 +827,58 @@ class Timepicker {
           }
 
           this._minutes.textContent = this._setHourOrMinute(minHourMinutes);
-          this._toggleClassActive(this.minutesArray, this._minutes, allTipsMinutes);
-          this._toggleBackgroundColorCircle(`${TIPS_MINUTES_CLASS}`);
+          this._toggleClassActive(
+            this.minutesArray,
+            this._minutes,
+            allTipsMinutes
+          );
+          this._toggleBackgroundColorCircle(
+            `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`
+          );
         }
       }
     });
   }
 
   _setActiveClassToTipsOnOpen(hour, ...rest) {
-    if (this._isInvalidTimeFormat) {
-      return;
+    if (this._isInvalidTimeFormat) return;
+
+    if (!this._options.format24) {
+      [...rest].filter((e) => {
+        if (e === "PM") {
+          this._PM.classList.add(...CLASS_OPACITY);
+          this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+        } else if (e === "AM") {
+          this._AM.classList.add(...CLASS_OPACITY);
+          this._AM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+        } else {
+          this._AM.classList.remove(...CLASS_OPACITY);
+          this._PM.classList.remove(...CLASS_OPACITY);
+          this._AM.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
+          this._PM.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
+        }
+
+        return e;
+      });
+
+      const allTipsHours = SelectorEngine.find(
+        `[${ATTR_TIMEPICKER_TIPS_HOURS}]`,
+        this._modal
+      );
+      this._addActiveClassToTip(allTipsHours, hour);
+    } else {
+      const allTipsHours = SelectorEngine.find(
+        `[${ATTR_TIMEPICKER_TIPS_HOURS}]`,
+        this._modal
+      );
+      const allInnerTips = SelectorEngine.find(
+        `[${ATTR_TIMEPICKER_INNER_HOURS}]`,
+        this._modal
+      );
+
+      this._addActiveClassToTip(allTipsHours, hour);
+      this._addActiveClassToTip(allInnerTips, hour);
     }
-
-    [...rest].filter((e) => {
-      if (e === 'PM') {
-        Manipulator.addClass(this._PM, ACTIVE_CLASS);
-      } else if (e === 'AM') {
-        Manipulator.addClass(this._AM, ACTIVE_CLASS);
-      } else {
-        Manipulator.removeClass(this._AM, ACTIVE_CLASS);
-        Manipulator.removeClass(this._PM, ACTIVE_CLASS);
-      }
-
-      return e;
-    });
-
-    const allTipsHours = SelectorEngine.find(`.${TIPS_HOURS_CLASS}`, this._modal);
-    this._addActiveClassToTip(allTipsHours, hour);
   }
 
   _setTipsAndTimesDependOnInputValue(hour, minute) {
@@ -599,72 +894,78 @@ class Timepicker {
           transform: `rotateZ(${rotateDegrees}deg)`,
         });
         Manipulator.addStyle(this._circle, {
-          backgroundColor: '#1976d2',
+          backgroundColor: "#1976d2",
         });
 
-        if (Number(hour) > 12 || hour === '00') {
+        if (Number(hour) > 12 || hour === "00") {
           Manipulator.addStyle(this._hand, {
-            height: '21.5%',
+            height: "21.5%",
           });
         }
       }
     } else {
-      this._hour.textContent = '12';
-      this._minutes.textContent = '00';
+      this._hour.textContent = "12";
+      this._minutes.textContent = "00";
 
       if (!inline) {
         Manipulator.addStyle(this._hand, {
-          transform: 'rotateZ(0deg)',
+          transform: "rotateZ(0deg)",
         });
       }
       if (format12) {
-        Manipulator.addClass(this._PM, ACTIVE_CLASS);
+        this._PM.classList.add(...CLASS_OPACITY);
+        this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
       }
     }
   }
 
   _listenToToggleKeydown() {
-    EventHandler.on(this._element, 'keydown', `[data-mdb-toggle='${this.toggleElement}']`, (e) => {
-      if (e.keyCode === ENTER) {
-        e.preventDefault();
-        EventHandler.trigger(this.elementToggle, 'click');
+    EventHandler.on(
+      this._element,
+      "keydown",
+      `[data-te-toggle='${this.toggleElement}']`,
+      (e) => {
+        if (e.keyCode === ENTER) {
+          e.preventDefault();
+          EventHandler.trigger(this.elementToggle, "click");
+        }
       }
-    });
+    );
   }
 
   _handleOpen() {
+    const container = this._getContainer();
     EventHandlerMulti.on(
       this._element,
-      'click',
-      `[data-mdb-toggle='${this.toggleElement}']`,
+      "click",
+      `[data-te-toggle='${this.toggleElement}']`,
       (e) => {
-        if (this._options === null) {
-          return;
-        }
+        if (this._options === null) return;
 
         // Fix for input with open, if is not for settimeout input has incorrent jumping label
-        const fixForInput = Manipulator.getDataAttribute(this.input, 'toggle') !== null ? 200 : 0;
+        const fixForInput =
+          Manipulator.getDataAttribute(this.input, "toggle") !== null ? 200 : 0;
 
         setTimeout(() => {
           Manipulator.addStyle(this.elementToggle, {
-            pointerEvents: 'none',
+            pointerEvents: "none",
           });
 
           this.elementToggle.blur();
 
           let checkInputValue;
 
-          if (takeValue(this.input)[0] === '') {
-            checkInputValue = ['12', '00', 'PM'];
+          if (takeValue(this.input)[0] === "") {
+            checkInputValue = ["12", "00", "PM"];
           } else {
             checkInputValue = takeValue(this.input);
           }
 
-          const { modalID, inline, format12, overflowHidden } = this._options;
+          const { modalID, inline, format12 } = this._options;
           const [hour, minute, format] = checkInputValue;
-          const div = element('div');
+          const div = element("div");
 
-          if (Number(hour) > 12 || hour === '00') {
+          if (Number(hour) > 12 || hour === "00") {
             this._isInner = true;
           }
 
@@ -672,39 +973,52 @@ class Timepicker {
           e.target.blur();
 
           div.innerHTML = getTimepickerTemplate(this._options);
-          Manipulator.addClass(div, MODAL_CLASS);
+          div.classList.add(...CLASS_MODAL);
+          div.setAttribute(ATTR_TIMEPICKER_MODAL, "");
 
-          div.setAttribute('role', 'dialog');
-          div.setAttribute('tabIndex', '-1');
-          div.setAttribute('id', modalID);
+          div.setAttribute("role", "dialog");
+          div.setAttribute("tabIndex", "-1");
+          div.setAttribute("id", modalID);
 
           if (!inline) {
-            this._document.body.appendChild(div);
+            container.appendChild(div);
+            hide();
           } else {
             this._popper = createPopper(this.input, div, {
-              placement: 'bottom-start',
+              placement: "bottom-start",
             });
 
-            this._document.body.appendChild(div);
+            container.appendChild(div);
           }
 
           this._getDomElements();
-          this._toggleBackdropAnimation();
+          if (this._animations) {
+            this._toggleBackdropAnimation();
+          } else {
+            this._wrapper.classList.add(...CLASS_OPACITY);
+          }
           this._setActiveClassToTipsOnOpen(hour, minute, format);
           this._appendTimes();
           this._setActiveClassToTipsOnOpen(hour, minute, format);
           this._setTipsAndTimesDependOnInputValue(hour, minute);
 
-          if (this.input.value === '') {
-            const allTipsHours = SelectorEngine.find(`.${TIPS_HOURS_CLASS}`, this._modal);
+          if (this.input.value === "") {
+            const allTipsHours = SelectorEngine.find(
+              `[${ATTR_TIMEPICKER_TIPS_HOURS}]`,
+              this._modal
+            );
 
             if (format12) {
-              Manipulator.addClass(this._PM, ACTIVE_CLASS);
+              this._PM.classList.add(...CLASS_OPACITY);
+              this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
             }
 
-            this._hour.textContent = '12';
-            this._minutes.textContent = '00';
-            this._addActiveClassToTip(allTipsHours, Number(this._hour.textContent));
+            this._hour.textContent = "12";
+            this._minutes.textContent = "00";
+            this._addActiveClassToTip(
+              allTipsHours,
+              Number(this._hour.textContent)
+            );
           }
 
           this._handleSwitchTimeMode();
@@ -720,31 +1034,23 @@ class Timepicker {
             this._handleClockClick();
             this._handleKeyboard();
 
+            // initial opacity on hour/minute mode fix
+            const initActive = document.querySelector(
+              `${SELECTOR_ATTR_TIMEPICKER_CURRENT}[${ATTR_TIMEPICKER_ACTIVE}]`
+            );
+            initActive.classList.add(...CLASS_OPACITY);
+
             Manipulator.addStyle(this._hour, {
-              pointerEvents: 'none',
+              pointerEvents: "none",
             });
             Manipulator.addStyle(this._minutes, {
-              pointerEvents: '',
+              pointerEvents: "",
             });
-          }
-
-          if (overflowHidden) {
-            const hasVerticalScroll = window.innerWidth > document.documentElement.clientWidth;
-            Manipulator.addStyle(this._document.body, {
-              overflow: 'hidden',
-            });
-
-            if (!checkBrowser() && hasVerticalScroll) {
-              const scrollHeight = '15px';
-              Manipulator.addStyle(this._document.body, {
-                paddingRight: scrollHeight,
-              });
-            }
           }
 
           this._focusTrap = new FocusTrap(this._wrapper, {
-            event: 'keydown',
-            condition: ({ key }) => key === 'Tab',
+            event: "keydown",
+            condition: ({ key }) => key === "Tab",
           });
           this._focusTrap.trap();
         }, fixForInput);
@@ -753,109 +1059,140 @@ class Timepicker {
   }
 
   _handleInlineClicks() {
+    let selectedHour;
+    let minuteNumber;
+    const countMinutes = (count) => {
+      let minutes = count;
+
+      if (minutes > 59) {
+        minutes = 0;
+      } else if (minutes < 0) {
+        minutes = 59;
+      }
+
+      return minutes;
+    };
+
+    const countHours = (count) => {
+      let hour = count;
+
+      if (this._options.format24) {
+        if (hour > 24) {
+          hour = 1;
+        } else if (hour < 0) {
+          hour = 23;
+        }
+
+        if (hour > 23) {
+          hour = 0;
+        }
+      } else {
+        if (hour > 12) {
+          hour = 1;
+        } else if (hour < 1) {
+          hour = 12;
+        }
+
+        if (hour > 12) {
+          hour = 1;
+        }
+      }
+
+      return hour;
+    };
+
+    const incrementHours = (hour) => {
+      const counteredNumber = countHours(hour);
+      this._hour.textContent = this._setHourOrMinute(counteredNumber);
+    };
+    const incrementMinutes = (minutes) => {
+      const counteredNumber = countMinutes(minutes);
+      this._minutes.textContent = this._setHourOrMinute(counteredNumber);
+    };
+
+    const addHours = () => {
+      selectedHour += 1;
+      incrementHours(selectedHour);
+    };
+    const addMinutes = () => {
+      minuteNumber += 1;
+      incrementMinutes(minuteNumber);
+    };
+
+    const subHours = () => {
+      selectedHour -= 1;
+      incrementHours(selectedHour);
+    };
+
+    const subMinutes = () => {
+      minuteNumber -= 1;
+      incrementMinutes(minuteNumber);
+    };
+
+    const _clearAndSetThisInterval = (addHoursOrAddMinutes) => {
+      clearInterval(this._interval);
+      this._interval = setInterval(addHoursOrAddMinutes, 100);
+    };
     EventHandlerMulti.on(
       this._modal,
-      'click mousedown mouseup touchstart touchend contextmenu',
-      `.${ICON_UP_CLASS}, .${ICON_DOWN_CLASS}`,
+      "click mousedown mouseup touchstart touchend contextmenu",
+      `[${ATTR_TIMEPICKER_ICON_UP}], [${ATTR_TIMEPICKER_ICON_DOWN}]`,
       (e) => {
+        selectedHour = Number(this._hour.textContent);
+        minuteNumber = Number(this._minutes.textContent);
         const { target, type } = e;
+        const isEventTypeMousedownOrTouchstart =
+          type === "mousedown" || type === "touchstart";
 
-        let hourNumber = Number(this._hour.textContent);
-        let minuteNumber = Number(this._minutes.textContent);
-
-        const countMinutes = (count) => {
-          let minutes = count;
-
-          if (minutes > 59) {
-            minutes = 0;
-          } else if (minutes < 0) {
-            minutes = 59;
-          }
-
-          return minutes;
-        };
-
-        const countHours = (count) => {
-          let hour = count;
-
-          if (hour > 12) {
-            hour = 1;
-          } else if (hour < 1) {
-            hour = 12;
-          }
-
-          if (hour > 12) {
-            hour = 1;
-          }
-
-          return hour;
-        };
-
-        const incrementHours = (hour) => {
-          const counteredNumber = countHours(hour);
-          this._hour.textContent = this._setHourOrMinute(counteredNumber);
-        };
-        const incrementMinutes = (minutes) => {
-          const counteredNumber = countMinutes(minutes);
-          this._minutes.textContent = this._setHourOrMinute(counteredNumber);
-        };
-
-        const addHours = () => {
-          hourNumber += 1;
-          incrementHours(hourNumber);
-        };
-        const addMinutes = () => {
-          minuteNumber += 1;
-          incrementMinutes(minuteNumber);
-        };
-
-        const subHours = () => {
-          hourNumber -= 1;
-          incrementHours(hourNumber);
-        };
-
-        const subMinutes = () => {
-          minuteNumber -= 1;
-          incrementMinutes(minuteNumber);
-        };
-
-        if (Manipulator.hasClass(target, ICON_UP_CLASS)) {
-          if (Manipulator.hasClass(target.parentNode, ICONS_HOUR_INLINE)) {
-            if (type === 'mousedown' || type === 'touchstart') {
-              clearInterval(this._interval);
-              this._interval = setInterval(addHours, 100);
-            } else if (type === 'mouseup' || type === 'touchend' || type === 'contextmenu') {
+        if (target.closest(`[${ATTR_TIMEPICKER_ICON_UP}]`)) {
+          if (
+            target
+              .closest(`[${ATTR_TIMEPICKER_ICON_UP}]`)
+              .parentNode.hasAttribute(ATTR_TIMEPICKER_ICONS_HOUR_INLINE)
+          ) {
+            if (isEventTypeMousedownOrTouchstart) {
+              _clearAndSetThisInterval(addHours);
+            } else if (
+              type === "mouseup" ||
+              type === "touchend" ||
+              type === "contextmenu"
+            ) {
               clearInterval(this._interval);
             } else {
               addHours();
             }
           } else {
             // eslint-disable-next-line no-lonely-if
-            if (type === 'mousedown' || type === 'touchstart') {
-              clearInterval(this._interval);
-              this._interval = setInterval(addMinutes, 100);
-            } else if (type === 'mouseup' || type === 'touchend' || type === 'contextmenu') {
+            if (isEventTypeMousedownOrTouchstart) {
+              _clearAndSetThisInterval(addMinutes);
+            } else if (
+              type === "mouseup" ||
+              type === "touchend" ||
+              type === "contextmenu"
+            ) {
               clearInterval(this._interval);
             } else {
               addMinutes();
             }
           }
-        } else if (Manipulator.hasClass(target, ICON_DOWN_CLASS)) {
-          if (Manipulator.hasClass(target.parentNode, ICONS_HOUR_INLINE)) {
-            if (type === 'mousedown' || type === 'touchstart') {
-              clearInterval(this._interval);
-              this._interval = setInterval(subHours, 100);
-            } else if (type === 'mouseup' || type === 'touchend') {
+        } else if (target.closest(`[${ATTR_TIMEPICKER_ICON_DOWN}]`)) {
+          if (
+            target
+              .closest(`[${ATTR_TIMEPICKER_ICON_DOWN}]`)
+              .parentNode.hasAttribute(ATTR_TIMEPICKER_ICONS_HOUR_INLINE)
+          ) {
+            if (isEventTypeMousedownOrTouchstart) {
+              _clearAndSetThisInterval(subHours);
+            } else if (type === "mouseup" || type === "touchend") {
               clearInterval(this._interval);
             } else {
               subHours();
             }
           } else {
             // eslint-disable-next-line no-lonely-if
-            if (type === 'mousedown' || type === 'touchstart') {
-              clearInterval(this._interval);
-              this._interval = setInterval(subMinutes, 100);
-            } else if (type === 'mouseup' || type === 'touchend') {
+            if (isEventTypeMousedownOrTouchstart) {
+              _clearAndSetThisInterval(subMinutes);
+            } else if (type === "mouseup" || type === "touchend") {
               clearInterval(this._interval);
             } else {
               subMinutes();
@@ -864,21 +1201,60 @@ class Timepicker {
         }
       }
     );
+    EventHandler.on(window, EVENT_KEYDOWN_DATA_API, (e) => {
+      const key = e.code;
+      const isHourBtnFocused =
+        document.activeElement.hasAttribute(ATTR_TIMEPICKER_HOUR);
+      const isMinuteBtnFocused = document.activeElement.hasAttribute(
+        ATTR_TIMEPICKER_MINUTE
+      );
+      const isBodyFocused = document.activeElement === document.body;
+
+      selectedHour = Number(this._hour.textContent);
+      minuteNumber = Number(this._minutes.textContent);
+
+      switch (key) {
+        case "ArrowUp":
+          e.preventDefault();
+          if (isBodyFocused || isHourBtnFocused) {
+            this._hour.focus();
+            addHours();
+          } else if (isMinuteBtnFocused) {
+            addMinutes();
+          }
+          break;
+        case "ArrowDown":
+          e.preventDefault();
+          if (isBodyFocused || isHourBtnFocused) {
+            this._hour.focus();
+            subHours();
+          } else if (isMinuteBtnFocused) {
+            subMinutes();
+          }
+          break;
+        default:
+          break;
+      }
+    });
   }
 
   _handleClose() {
     EventHandler.on(
       this._modal,
-      'click',
-      `.${WRAPPER_CLASS}, .${BUTTON_CANCEL_CLASS}, .${BUTTON_CLEAR_CLASS}`,
+      "click",
+      `[${ATTR_TIMEPICKER_WRAPPER}], [${ATTR_TIMEPICKER_BUTTON_CANCEL}], [${ATTR_TIMEPICKER_BUTTON_CLEAR}]`,
       ({ target }) => {
         const { closeModalOnBackdropClick } = this._options;
 
         const runRemoveFunction = () => {
           Manipulator.addStyle(this.elementToggle, {
-            pointerEvents: 'auto',
+            pointerEvents: "auto",
           });
-          this._toggleBackdropAnimation(true);
+
+          if (this._animations) {
+            this._toggleBackdropAnimation(true);
+          }
+
           this._removeModal();
           this._focusTrap.disable();
           this._focusTrap = null;
@@ -890,25 +1266,29 @@ class Timepicker {
           }
         };
 
-        if (Manipulator.hasClass(target, BUTTON_CLEAR_CLASS)) {
-          this.input.value = '';
-          Manipulator.removeClass(this.input, 'active');
+        if (target.hasAttribute(ATTR_TIMEPICKER_BUTTON_CLEAR)) {
+          this._toggleAmPm("PM");
+          this.input.value = "";
+          this.input.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
 
           let checkInputValue;
 
-          if (takeValue(this.input)[0] === '') {
-            checkInputValue = ['12', '00', 'PM'];
+          if (takeValue(this.input)[0] === "") {
+            checkInputValue = ["12", "00", "PM"];
           } else {
             checkInputValue = takeValue(this.input);
           }
 
           const [hour, minute, format] = checkInputValue;
-          this._setTipsAndTimesDependOnInputValue('12', '00');
+          this._setTipsAndTimesDependOnInputValue("12", "00");
           this._setActiveClassToTipsOnOpen(hour, minute, format);
           this._hour.click();
-        } else if (Manipulator.hasClass(target, BUTTON_CANCEL_CLASS)) {
+        } else if (target.hasAttribute(ATTR_TIMEPICKER_BUTTON_CANCEL)) {
           runRemoveFunction();
-        } else if (Manipulator.hasClass(target, WRAPPER_CLASS) && closeModalOnBackdropClick) {
+        } else if (
+          target.hasAttribute(ATTR_TIMEPICKER_WRAPPER) &&
+          closeModalOnBackdropClick
+        ) {
           runRemoveFunction();
         }
       }
@@ -920,214 +1300,549 @@ class Timepicker {
   }
 
   _handleOkButton() {
-    EventHandlerMulti.on(this._modal, 'click', `.${BUTTON_SUBMIT_CLASS}`, () => {
-      const { readOnly, focusInputAfterApprove } = this._options;
-      const hourModeActive = this._document.querySelector(`.${HOUR_MODE_CLASS}.${ACTIVE_CLASS}`);
-      const currentValue = `${this._hour.textContent}:${this._minutes.textContent}`;
+    EventHandlerMulti.on(
+      this._modal,
+      "click",
+      `[${ATTR_TIMEPICKER_BUTTON_SUBMIT}]`,
+      () => {
+        let { maxTime, minTime } = this._options;
+        const {
+          format12,
+          format24,
+          readOnly,
+          focusInputAfterApprove,
+          disablePast,
+          disableFuture,
+        } = this._options;
+        const hourModeActive = this._document.querySelector(
+          `${SELECTOR_ATTR_TIMEPICKER_HOUR_MODE}[${ATTR_TIMEPICKER_ACTIVE}]`
+        );
 
-      Manipulator.addClass(this.input, 'active');
-      Manipulator.addStyle(this.elementToggle, {
-        pointerEvents: 'auto',
-      });
+        const currentValue = `${this._hour.textContent}:${this._minutes.textContent}`;
+        const selectedHour = Number(this._hour.textContent);
+        const selectedMinutes = Number(this._minutes.textContent);
 
-      if (this._isInvalidTimeFormat) {
-        Manipulator.removeClass(this.input, 'is-invalid');
+        minTime = setMinTime(minTime, disablePast, format12);
+        maxTime = setMaxTime(maxTime, disableFuture, format12);
+
+        const [maxTimeHour, maxTimeMinutes, maxTimeFormat] = takeValue(
+          maxTime,
+          false
+        );
+        const [minTimeHour, minTimeMinutes, minTimeFormat] = takeValue(
+          minTime,
+          false
+        );
+
+        const isHourLessThanMinHour = selectedHour < Number(minTimeHour);
+        const isHourGreaterThanMaxHour = selectedHour > Number(maxTimeHour);
+        let maxFormatAndCurrentFormatEqual = true;
+        if (hourModeActive) {
+          maxFormatAndCurrentFormatEqual =
+            maxTimeFormat === hourModeActive.textContent;
+        }
+
+        let minFormatAndCurrentFormatEqual = true;
+        if (hourModeActive) {
+          minFormatAndCurrentFormatEqual =
+            minTimeFormat === hourModeActive.textContent;
+        }
+
+        const hourEqualToMaxAndMinutesGreaterThanMax =
+          selectedMinutes > maxTimeMinutes &&
+          selectedHour === Number(maxTimeHour);
+        const hourEqualToMinAndMinutesLessThanMin =
+          selectedMinutes < minTimeMinutes &&
+          selectedHour === Number(minTimeHour);
+
+        this.input.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+        Manipulator.addStyle(this.elementToggle, {
+          pointerEvents: "auto",
+        });
+
+        if (maxTime !== "") {
+          if (
+            maxFormatAndCurrentFormatEqual &&
+            (isHourGreaterThanMaxHour || hourEqualToMaxAndMinutesGreaterThanMax)
+          ) {
+            return;
+          } else if (
+            maxTimeFormat === "AM" &&
+            hourModeActive.textContent === "PM"
+          ) {
+            return;
+          }
+        }
+        if (minTime !== "") {
+          if (
+            minFormatAndCurrentFormatEqual &&
+            (isHourLessThanMinHour || hourEqualToMinAndMinutesLessThanMin)
+          ) {
+            return;
+          }
+          if (minTimeFormat === "PM" && hourModeActive.textContent === "AM") {
+            return;
+          }
+        }
+
+        if (
+          checkValueBeforeAccept(
+            this._options,
+            this.input,
+            this._hour.textContent
+          ) === undefined
+        ) {
+          return;
+        }
+
+        if (this._isInvalidTimeFormat) {
+          this.input.removeAttribute(ATTR_TIMEPICKER_IS_INVALID);
+        }
+
+        if (!readOnly && focusInputAfterApprove) {
+          this.input.focus();
+        }
+
+        Manipulator.addStyle(this.elementToggle, {
+          pointerEvents: "auto",
+        });
+
+        if (format24) {
+          this.input.value = currentValue;
+        } else if (hourModeActive === null) {
+          this.input.value = `${currentValue} PM`;
+        } else {
+          this.input.value = `${currentValue} ${hourModeActive.textContent}`;
+        }
+
+        if (this._animations) {
+          this._toggleBackdropAnimation(true);
+        }
+
+        this._removeModal();
+
+        EventHandler.trigger(this.input, "input.te.timepicker");
       }
-
-      if (!readOnly && focusInputAfterApprove) {
-        this.input.focus();
-      }
-
-      Manipulator.addStyle(this.elementToggle, {
-        pointerEvents: 'auto',
-      });
-
-      if (hourModeActive === null) {
-        this.input.value = `${currentValue} PM`;
-      } else {
-        this.input.value = `${currentValue} ${hourModeActive.textContent}`;
-      }
-
-      this._toggleBackdropAnimation(true);
-      this._removeModal();
-
-      EventHandler.trigger(this.input, 'input.mdb.timepicker');
-    });
+    );
   }
 
   _handleHoverInlineBtn() {
     EventHandlerMulti.on(
       this._modal,
-      'mouseover mouseleave',
-      `.${CURRENT_INLINE_CLASS}`,
+      "mouseover mouseleave",
+      `[${ATTR_TIMEPICKER_CURRENT_INLINE}]`,
       ({ type, target }) => {
-        const allIconsInlineHour = SelectorEngine.find(`.${ICON_INLINE_HOUR_CLASS}`, this._modal);
+        const allIconsInlineHour = SelectorEngine.find(
+          `[${ATTR_TIMEPICKER_ICON_INLINE_HOUR}]`,
+          this._modal
+        );
         const allIconsInlineMinute = SelectorEngine.find(
-          `.${ICON_INLINE_MINUTE_CLASS}`,
+          `[${ATTR_TIMEPICKER_ICON_INLINE_MINUTE}]`,
           this._modal
         );
 
-        if (type === 'mouseover') {
-          if (Manipulator.hasClass(target, HOUR_CLASS)) {
-            allIconsInlineHour.forEach((icon) => Manipulator.addClass(icon, ACTIVE_CLASS));
-          } else {
-            allIconsInlineMinute.forEach((icon) => Manipulator.addClass(icon, ACTIVE_CLASS));
-          }
-        } else {
-          // eslint-disable-next-line no-lonely-if
-          if (Manipulator.hasClass(target, HOUR_CLASS)) {
-            allIconsInlineHour.forEach((icon) => Manipulator.removeClass(icon, ACTIVE_CLASS));
-          } else {
-            allIconsInlineMinute.forEach((icon) => Manipulator.removeClass(icon, ACTIVE_CLASS));
-          }
-        }
+        const modifyIcons = (elements, shouldAdd) => {
+          return elements.forEach((icon) => {
+            if (shouldAdd) {
+              icon.classList.add(...CLASS_OPACITY);
+              icon.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+
+              return;
+            }
+
+            icon.classList.remove(...CLASS_OPACITY);
+            icon.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
+          });
+        };
+
+        const pickerHasHourAttr = target.hasAttribute(ATTR_TIMEPICKER_HOUR);
+        const iconElements = pickerHasHourAttr
+          ? allIconsInlineHour
+          : allIconsInlineMinute;
+
+        modifyIcons(iconElements, type === "mouseover");
       }
     );
   }
 
   _handleDocumentClickInline() {
-    EventHandler.on(document, 'click', ({ target }) => {
+    EventHandler.on(document, EVENT_CLICK_DATA_API, ({ target }) => {
       if (
         this._modal &&
         !this._modal.contains(target) &&
-        !Manipulator.hasClass(target, 'timepicker-icon')
+        !target.hasAttribute(ATTR_TIMEPICKER_ICON)
       ) {
         clearInterval(this._interval);
         Manipulator.addStyle(this.elementToggle, {
-          pointerEvents: 'auto',
+          pointerEvents: "auto",
         });
         this._removeModal();
+
+        if (!this._animations) return;
+
+        this._toggleBackdropAnimation(true);
       }
     });
   }
 
   _handleSwitchHourMinute() {
-    toggleClassHandler('click', CURRENT_CLASS);
+    toggleClassHandler("click", SELECTOR_ATTR_TIMEPICKER_CURRENT);
 
-    EventHandler.on(this._modal, 'click', CURRENT_CLASS, () => {
-      const current = SelectorEngine.find(CURRENT_CLASS, this._modal);
-      const allTipsMinutes = SelectorEngine.find(`.${TIPS_MINUTES_CLASS}`, this._modal);
-      const allTipsHours = SelectorEngine.find(`.${TIPS_HOURS_CLASS}`, this._modal);
-      const allInnerTips = SelectorEngine.find(`.${TIPS_INNER_HOURS_CLASS}`, this._modal);
-      const hourValue = Number(this._hour.textContent);
-      const minuteValue = Number(this._minutes.textContent);
+    EventHandler.on(
+      this._modal,
+      "click",
+      SELECTOR_ATTR_TIMEPICKER_CURRENT,
+      () => {
+        const { format24 } = this._options;
+        const current = SelectorEngine.find(
+          SELECTOR_ATTR_TIMEPICKER_CURRENT,
+          this._modal
+        );
+        const allTipsMinutes = SelectorEngine.find(
+          `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`,
+          this._modal
+        );
+        const allTipsHours = SelectorEngine.find(
+          `[${ATTR_TIMEPICKER_TIPS_HOURS}]`,
+          this._modal
+        );
+        const allInnerTips = SelectorEngine.find(
+          `[${ATTR_TIMEPICKER_INNER_HOURS}]`,
+          this._modal
+        );
+        const hourValue = Number(this._hour.textContent);
+        const minuteValue = Number(this._minutes.textContent);
 
-      const switchTips = (array, classes) => {
-        allTipsHours.forEach((tip) => tip.remove());
-        allTipsMinutes.forEach((tip) => tip.remove());
-        Manipulator.addClass(this._hand, TRANSFORM_CLASS);
+        const switchTips = (array, classes) => {
+          allTipsHours.forEach((tip) => tip.remove());
+          allTipsMinutes.forEach((tip) => tip.remove());
+          this._hand.classList.add(...CLASSES_TRANSFORM);
 
-        setTimeout(() => {
-          Manipulator.removeClass(this._hand, TRANSFORM_CLASS);
-        }, 401);
+          setTimeout(() => {
+            this._hand.classList.remove(...CLASSES_TRANSFORM);
+          }, 401);
 
-        this._getAppendClock(array, `.${CLOCK_CLASS}`, classes);
+          this._getAppendClock(array, `[${ATTR_TIMEPICKER_CLOCK}]`, classes);
 
-        const toggleActiveClass = () => {
-          const allTipsHours = SelectorEngine.find(`.${TIPS_HOURS_CLASS}`, this._modal);
-          const allTipsMinutes = SelectorEngine.find(`.${TIPS_MINUTES_CLASS}`, this._modal);
+          const toggleActiveClass = () => {
+            const allTipsHours = SelectorEngine.find(
+              `[${ATTR_TIMEPICKER_TIPS_HOURS}]`,
+              this._modal
+            );
+            const allTipsMinutes = SelectorEngine.find(
+              `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`,
+              this._modal
+            );
 
-          this._addActiveClassToTip(allTipsHours, hourValue);
-          this._addActiveClassToTip(allTipsMinutes, minuteValue);
+            this._addActiveClassToTip(allTipsHours, hourValue);
+            this._addActiveClassToTip(allTipsMinutes, minuteValue);
+          };
+
+          if (!format24) {
+            setTimeout(() => {
+              toggleActiveClass();
+            }, 401);
+          } else {
+            const allTipsInnerHours = SelectorEngine.find(
+              `[${ATTR_TIMEPICKER_INNER_HOURS}]`,
+              this._modal
+            );
+
+            setTimeout(() => {
+              this._addActiveClassToTip(allTipsInnerHours, hourValue);
+              toggleActiveClass();
+            }, 401);
+          }
         };
 
-        setTimeout(() => {
-          toggleActiveClass();
-        }, 401);
-      };
+        current.forEach((e) => {
+          if (e.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) {
+            if (e.hasAttribute(ATTR_TIMEPICKER_MINUTE)) {
+              this._hand.classList.add(...CLASSES_TRANSFORM);
 
-      current.forEach((e) => {
-        if (Manipulator.hasClass(e, ACTIVE_CLASS)) {
-          if (Manipulator.hasClass(e, MINUTE_CLASS)) {
-            Manipulator.addClass(this._hand, TRANSFORM_CLASS);
-
-            Manipulator.addStyle(this._hand, {
-              transform: `rotateZ(${this._minutes.textContent * 6}deg)`,
-              height: 'calc(40% + 1px)',
-            });
-
-            if (allInnerTips.length > 0) {
-              allInnerTips.forEach((innerTip) => innerTip.remove());
-            }
-            switchTips(this.minutesArray, `${TIPS_MINUTES_CLASS}`, allTipsMinutes);
-            this._hour.style.pointerEvents = '';
-            this._minutes.style.pointerEvents = 'none';
-          } else if (Manipulator.hasClass(e, HOUR_CLASS)) {
-            Manipulator.addStyle(this._hand, {
-              transform: `rotateZ(${this._hour.textContent * 30}deg)`,
-            });
-
-            if (Number(this._hour.textContent) > 12) {
               Manipulator.addStyle(this._hand, {
-                transform: `rotateZ(${this._hour.textContent * 30 - 360}deg)`,
-                height: '21.5%',
+                transform: `rotateZ(${this._minutes.textContent * 6}deg)`,
+                height: "calc(40% + 1px)",
+              });
+
+              if (format24 && allInnerTips.length > 0) {
+                allInnerTips.forEach((innerTip) => innerTip.remove());
+              }
+              switchTips(
+                this.minutesArray,
+                ATTR_TIMEPICKER_TIPS_MINUTES,
+                allTipsMinutes
+              );
+              this._hour.style.pointerEvents = "";
+              this._minutes.style.pointerEvents = "none";
+            } else if (e.hasAttribute(ATTR_TIMEPICKER_HOUR)) {
+              Manipulator.addStyle(this._hand, {
+                transform: `rotateZ(${this._hour.textContent * 30}deg)`,
               });
 
               if (Number(this._hour.textContent) > 12) {
                 Manipulator.addStyle(this._hand, {
-                  height: '21.5%',
+                  transform: `rotateZ(${this._hour.textContent * 30 - 360}deg)`,
+                  height: "21.5%",
+                });
+
+                if (Number(this._hour.textContent) > 12) {
+                  Manipulator.addStyle(this._hand, {
+                    height: "21.5%",
+                  });
+                }
+              } else {
+                Manipulator.addStyle(this._hand, {
+                  height: "calc(40% + 1px)",
                 });
               }
-            } else {
-              Manipulator.addStyle(this._hand, {
-                height: 'calc(40% + 1px)',
+
+              if (format24) {
+                this._getAppendClock(
+                  this.innerHours,
+                  `[${ATTR_TIMEPICKER_CLOCK_INNER}]`,
+                  ATTR_TIMEPICKER_INNER_HOURS
+                );
+              }
+
+              if (allInnerTips.length > 0) {
+                allInnerTips.forEach((innerTip) => innerTip.remove());
+              }
+
+              switchTips(
+                this.hoursArray,
+                ATTR_TIMEPICKER_TIPS_HOURS,
+                allTipsHours
+              );
+
+              Manipulator.addStyle(this._hour, {
+                pointerEvents: "none",
+              });
+              Manipulator.addStyle(this._minutes, {
+                pointerEvents: "",
               });
             }
-
-            if (allInnerTips.length > 0) {
-              allInnerTips.forEach((innerTip) => innerTip.remove());
-            }
-
-            switchTips(this.hoursArray, `${TIPS_HOURS_CLASS}`, allTipsHours);
-
-            Manipulator.addStyle(this._hour, {
-              pointerEvents: 'none',
-            });
-            Manipulator.addStyle(this._minutes, {
-              pointerEvents: '',
-            });
-          }
-        }
-      });
-    });
-  }
-
-  _handleSwitchTimeMode() {
-    EventHandler.on(document, 'click', `.${HOUR_MODE_CLASS}`, ({ target }) => {
-      if (!Manipulator.hasClass(target, ACTIVE_CLASS)) {
-        const allHoursMode = SelectorEngine.find(`.${HOUR_MODE_CLASS}`);
-
-        allHoursMode.forEach((element) => {
-          if (Manipulator.hasClass(element, ACTIVE_CLASS)) {
-            Manipulator.removeClass(element, ACTIVE_CLASS);
           }
         });
-
-        Manipulator.addClass(target, ACTIVE_CLASS);
       }
-    });
+    );
+  }
+
+  _handleDisablingTipsMaxTime(
+    selectedFormat,
+    maxTimeFormat,
+    maxTimeMinutes,
+    maxTimeHour
+  ) {
+    if (!this._options.maxTime && !this._options.disableFuture) {
+      return;
+    }
+
+    const outerHoursTips = SelectorEngine.find(
+      `[${ATTR_TIMEPICKER_TIPS_HOURS}]`
+    );
+    const innerHoursTips = SelectorEngine.find(
+      `[${ATTR_TIMEPICKER_INNER_HOURS}]`
+    );
+    const allTipsMinutes = SelectorEngine.find(
+      `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`
+    );
+
+    if (!maxTimeFormat || maxTimeFormat === selectedFormat) {
+      _verifyMaxTimeHourAndAddDisabledClass(innerHoursTips, maxTimeHour);
+      _verifyMaxTimeHourAndAddDisabledClass(outerHoursTips, maxTimeHour);
+      _verifyMaxTimeMinutesTipsAndAddDisabledClass(
+        allTipsMinutes,
+        maxTimeMinutes,
+        maxTimeHour,
+        this._hour.textContent
+      );
+      return;
+    }
+    if (maxTimeFormat === "AM" && selectedFormat === "PM") {
+      outerHoursTips.forEach((tip) => {
+        tip.classList.add(...CLASSES_TIPS_DISABLED);
+        tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
+      });
+      allTipsMinutes.forEach((tip) => {
+        tip.classList.add(...CLASSES_TIPS_DISABLED);
+        tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
+      });
+    }
+  }
+
+  _handleDisablingTipsMinTime(
+    selectedFormat,
+    minTimeFormat,
+    minTimeMinutes,
+    minTimeHour
+  ) {
+    if (!this._options.minTime && !this._options.disablePast) {
+      return;
+    }
+
+    const outerHoursTips = SelectorEngine.find(
+      `[${ATTR_TIMEPICKER_TIPS_HOURS}]`
+    );
+    const innerHoursTips = SelectorEngine.find(
+      `[${ATTR_TIMEPICKER_INNER_HOURS}]`
+    );
+    const allTipsMinutes = SelectorEngine.find(
+      `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`
+    );
+
+    if (!minTimeFormat || minTimeFormat === selectedFormat) {
+      _verifyMinTimeHourAndAddDisabledClass(outerHoursTips, minTimeHour);
+      _verifyMinTimeHourAndAddDisabledClass(innerHoursTips, minTimeHour);
+      _verifyMinTimeMinutesTipsAndAddDisabledClass(
+        allTipsMinutes,
+        minTimeMinutes,
+        minTimeHour,
+        this._hour.textContent
+      );
+    } else if (minTimeFormat === "PM" && selectedFormat === "AM") {
+      outerHoursTips.forEach((tip) => {
+        tip.classList.add(...CLASSES_TIPS_DISABLED);
+        tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
+      });
+      allTipsMinutes.forEach((tip) => {
+        tip.classList.add(...CLASSES_TIPS_DISABLED);
+        tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
+      });
+    }
+  }
+
+  _toggleAmPm = (enabled) => {
+    if (enabled === "PM") {
+      this._isPmEnabled = true;
+      this._isAmEnabled = false;
+    } else if (enabled === "AM") {
+      this._isPmEnabled = false;
+      this._isAmEnabled = true;
+    }
+  };
+
+  _handleSwitchTimeMode() {
+    EventHandler.on(
+      document,
+      "click",
+      SELECTOR_ATTR_TIMEPICKER_HOUR_MODE,
+      ({ target }) => {
+        let { maxTime, minTime } = this._options;
+        const { disablePast, disableFuture, format12 } = this._options;
+
+        minTime = setMinTime(minTime, disablePast, format12);
+        maxTime = setMaxTime(maxTime, disableFuture, format12);
+
+        const [maxTimeHour, maxTimeMinutes, maxTimeFormat] = takeValue(
+          maxTime,
+          false
+        );
+        const [minTimeHour, minTimeMinutes, minTimeFormat] = takeValue(
+          minTime,
+          false
+        );
+
+        const allTipsHour = SelectorEngine.find(
+          `[${ATTR_TIMEPICKER_TIPS_HOURS}]`
+        );
+        const allTipsMinutes = SelectorEngine.find(
+          `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`
+        );
+
+        const clearDisabledClassForAllTips = () => {
+          allTipsHour.forEach((tip) => {
+            tip.classList.remove(...CLASSES_TIPS_DISABLED);
+            tip.removeAttribute(ATTR_TIMEPICKER_DISABLED);
+          });
+
+          allTipsMinutes.forEach((tip) => {
+            tip.classList.remove(...CLASSES_TIPS_DISABLED);
+            tip.removeAttribute(ATTR_TIMEPICKER_DISABLED);
+          });
+        };
+
+        clearDisabledClassForAllTips();
+        this._handleDisablingTipsMinTime(
+          target.textContent,
+          minTimeFormat,
+          minTimeMinutes,
+          minTimeHour
+        );
+        this._handleDisablingTipsMaxTime(
+          target.textContent,
+          maxTimeFormat,
+          maxTimeMinutes,
+          maxTimeHour
+        );
+        this._toggleAmPm(target.textContent);
+        if (!target.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) {
+          const allHoursMode = SelectorEngine.find(
+            SELECTOR_ATTR_TIMEPICKER_HOUR_MODE
+          );
+
+          allHoursMode.forEach((element) => {
+            if (element.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) {
+              element.classList.remove(...CLASS_OPACITY);
+              element.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
+            }
+          });
+
+          target.classList.add(...CLASS_OPACITY);
+          target.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+        }
+      }
+    );
   }
 
   _handleClockClick() {
-    const clockWrapper = SelectorEngine.findOne(`.${CLOCK_WRAPPER_CLASS}`);
+    let { maxTime, minTime } = this._options;
+    const { disablePast, disableFuture, format12 } = this._options;
+
+    minTime = setMinTime(minTime, disablePast, format12);
+    maxTime = setMaxTime(maxTime, disableFuture, format12);
+
+    const maxTimeFormat = takeValue(maxTime, false)[2];
+    const minTimeFormat = takeValue(minTime, false)[2];
+
+    const maxTimeHour = takeValue(maxTime, false)[0];
+    const minTimeHour = takeValue(minTime, false)[0];
+
+    const clockWrapper = SelectorEngine.findOne(
+      `[${ATTR_TIMEPICKER_CLOCK_WRAPPER}]`
+    );
     EventHandlerMulti.on(
       document,
-      'mousedown mouseup mousemove mouseleave mouseover touchstart touchmove touchend',
-      '',
+      `${EVENT_MOUSEDOWN_DATA_API} ${EVENT_MOUSEUP_DATA_API} ${EVENT_MOUSEMOVE_DATA_API} ${EVENT_MOUSELEAVE_DATA_API} ${EVENT_MOUSEOVER_DATA_API} ${EVENT_TOUCHSTART_DATA_API} ${EVENT_TOUCHMOVE_DATA_API} ${EVENT_TOUCHEND_DATA_API}`,
+      "",
       (e) => {
         if (!checkBrowser()) {
           e.preventDefault();
         }
 
-        const { maxHour, minHour } = this._options;
         const { type, target } = e;
-        const { closeModalOnMinutesClick, switchHoursToMinutesOnClick } = this._options;
-        const minutes = SelectorEngine.findOne(`.${TIPS_MINUTES_CLASS}`, this._modal) !== null;
-        const hours = SelectorEngine.findOne(`.${TIPS_HOURS_CLASS}`, this._modal) !== null;
+        const { closeModalOnMinutesClick, switchHoursToMinutesOnClick } =
+          this._options;
+        const minutes =
+          SelectorEngine.findOne(
+            `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`,
+            this._modal
+          ) !== null;
+        const hours =
+          SelectorEngine.findOne(
+            `[${ATTR_TIMEPICKER_TIPS_HOURS}]`,
+            this._modal
+          ) !== null;
         const innerHours =
-          SelectorEngine.findOne(`.${TIPS_INNER_HOURS_CLASS}`, this._modal) !== null;
+          SelectorEngine.findOne(
+            `[${ATTR_TIMEPICKER_INNER_HOURS}]`,
+            this._modal
+          ) !== null;
 
-        const allTipsMinutes = SelectorEngine.find(`.${TIPS_MINUTES_CLASS}`, this._modal);
+        const allTipsMinutes = SelectorEngine.find(
+          `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`,
+          this._modal
+        );
 
         const mouseClick = findMousePosition(e, clockWrapper);
         const radius = clockWrapper.offsetWidth / 2;
@@ -1143,24 +1858,26 @@ class Timepicker {
         let elFromPoint = null;
 
         if (
-          type === 'mousedown' ||
-          type === 'mousemove' ||
-          type === 'touchmove' ||
-          type === 'touchstart'
+          type === "mousedown" ||
+          type === "mousemove" ||
+          type === "touchmove" ||
+          type === "touchstart"
         ) {
-          if (type === 'mousedown' || type === 'touchstart' || type === 'touchmove') {
+          if (
+            type === "mousedown" ||
+            type === "touchstart" ||
+            type === "touchmove"
+          ) {
             if (
-              Manipulator.hasClass(target, CLOCK_WRAPPER_CLASS) ||
-              Manipulator.hasClass(target, CLOCK_CLASS) ||
-              Manipulator.hasClass(target, TIPS_MINUTES_CLASS) ||
-              Manipulator.hasClass(target, CLOCK_INNER_CLASS) ||
-              Manipulator.hasClass(target, TIPS_INNER_HOURS_CLASS) ||
-              Manipulator.hasClass(target, TIPS_HOURS_CLASS) ||
-              Manipulator.hasClass(target, CIRCLE_CLASS) ||
-              Manipulator.hasClass(target, HAND_CLASS) ||
-              Manipulator.hasClass(target, MIDDLE_DOT_CLASS) ||
-              Manipulator.hasClass(target, TIPS_ELEMENT_CLASS) ||
-              Manipulator.hasClass(target, TIPS_INNER_ELEMENT_CLASS)
+              this._hasTargetInnerClass(target) ||
+              target.hasAttribute(ATTR_TIMEPICKER_CLOCK_WRAPPER) ||
+              target.hasAttribute(ATTR_TIMEPICKER_CLOCK) ||
+              target.hasAttribute(ATTR_TIMEPICKER_TIPS_MINUTES) ||
+              target.hasAttribute(ATTR_TIMEPICKER_TIPS_HOURS) ||
+              target.hasAttribute(ATTR_TIMEPICKER_CIRCLE) ||
+              target.hasAttribute(ATTR_TIMEPICKER_HAND_POINTER) ||
+              target.hasAttribute(ATTR_TIMEPICKER_MIDDLE_DOT) ||
+              target.hasAttribute(ATTR_TIMEPICKER_TIPS_ELEMENT)
             ) {
               this._isMouseMove = true;
 
@@ -1171,29 +1888,46 @@ class Timepicker {
               }
             }
           }
-        } else if (type === 'mouseup' || type === 'touchend') {
+        } else if (type === "mouseup" || type === "touchend") {
           this._isMouseMove = false;
 
           if (
-            Manipulator.hasClass(target, CLOCK_CLASS) ||
-            Manipulator.hasClass(target, CLOCK_INNER_CLASS) ||
-            Manipulator.hasClass(target, TIPS_INNER_HOURS_CLASS) ||
-            Manipulator.hasClass(target, TIPS_HOURS_CLASS) ||
-            Manipulator.hasClass(target, CIRCLE_CLASS) ||
-            Manipulator.hasClass(target, HAND_CLASS) ||
-            Manipulator.hasClass(target, MIDDLE_DOT_CLASS) ||
-            Manipulator.hasClass(target, TIPS_ELEMENT_CLASS) ||
-            Manipulator.hasClass(target, TIPS_INNER_ELEMENT_CLASS)
+            this._hasTargetInnerClass(target) ||
+            target.hasAttribute(ATTR_TIMEPICKER_CLOCK) ||
+            target.hasAttribute(ATTR_TIMEPICKER_TIPS_HOURS) ||
+            target.hasAttribute(ATTR_TIMEPICKER_CIRCLE) ||
+            target.hasAttribute(ATTR_TIMEPICKER_HAND_POINTER) ||
+            target.hasAttribute(ATTR_TIMEPICKER_MIDDLE_DOT) ||
+            target.hasAttribute(ATTR_TIMEPICKER_TIPS_ELEMENT)
           ) {
             if ((hours || innerHours) && switchHoursToMinutesOnClick) {
-              EventHandler.trigger(this._minutes, 'click');
+              const isHourlessThanMinOrGreaterThanMax =
+                Number(this._hour.textContent) > maxTimeHour ||
+                Number(this._hour.textContent) < minTimeHour;
+              if (
+                this._options.format24 &&
+                maxTimeHour !== "" &&
+                minTimeHour !== "" &&
+                isHourlessThanMinOrGreaterThanMax
+              ) {
+                return;
+              } else if (
+                this._options.format24 &&
+                minTimeHour !== "" &&
+                this._hour.textContent < minTimeHour
+              ) {
+                return;
+              }
             }
+            EventHandler.trigger(this._minutes, "click");
           }
 
           if (minutes && closeModalOnMinutesClick) {
-            const submitBtn = SelectorEngine.findOne(`.${BUTTON_SUBMIT_CLASS}`, this._modal);
-
-            EventHandler.trigger(submitBtn, 'click');
+            const submitBtn = SelectorEngine.findOne(
+              `[${ATTR_TIMEPICKER_BUTTON_SUBMIT}]`,
+              this._modal
+            );
+            EventHandler.trigger(submitBtn, "click");
           }
         }
 
@@ -1202,19 +1936,18 @@ class Timepicker {
 
           const degrees = Math.trunc((rds * 180) / Math.PI) + 90;
 
-          const { degrees: minDegrees, minute: minTimeObj } = this._makeMinutesDegrees(
-            degrees,
-            minute
-          );
+          const { degrees: minDegrees, minute: minTimeObj } =
+            this._makeMinutesDegrees(degrees, minute);
 
-          if (this._handlerMaxMinMinutesOptions(minDegrees, minTimeObj) === undefined) {
+          if (
+            this._handlerMaxMinMinutesOptions(minDegrees, minTimeObj) ===
+            undefined
+          ) {
             return;
           }
 
-          const { degrees: _degrees, minute: minuteTimes } = this._handlerMaxMinMinutesOptions(
-            minDegrees,
-            minTimeObj
-          );
+          const { degrees: _degrees, minute: minuteTimes } =
+            this._handlerMaxMinMinutesOptions(minDegrees, minTimeObj);
 
           if (this._isMouseMove) {
             Manipulator.addStyle(this._hand, {
@@ -1226,13 +1959,21 @@ class Timepicker {
             }
 
             const changeMinutes = () => {
-              return minuteTimes >= 10 || minuteTimes === '00' ? minuteTimes : `0${minuteTimes}`;
+              return minuteTimes >= 10 || minuteTimes === "00"
+                ? minuteTimes
+                : `0${minuteTimes}`;
             };
 
             this._minutes.textContent = changeMinutes();
 
-            this._toggleClassActive(this.minutesArray, this._minutes, allTipsMinutes);
-            this._toggleBackgroundColorCircle(`${TIPS_MINUTES_CLASS}`);
+            this._toggleClassActive(
+              this.minutesArray,
+              this._minutes,
+              allTipsMinutes
+            );
+            this._toggleBackgroundColorCircle(
+              `[${ATTR_TIMEPICKER_TIPS_MINUTES}]`
+            );
 
             this._objWithDataOnChange.degreesMinutes = _degrees;
             this._objWithDataOnChange.minutes = minuteTimes;
@@ -1246,33 +1987,43 @@ class Timepicker {
           degrees = Math.round(degrees / 30) * 30;
 
           Manipulator.addStyle(this._circle, {
-            backgroundColor: '#1976d2',
+            backgroundColor: "#1976d2",
           });
           if (this._makeHourDegrees(target, degrees, hour) === undefined) {
             return;
           }
           const makeDegrees = () => {
-            if (checkBrowser() && degrees) {
-              const { degrees: touchDegrees, hour: touchHours } = this._makeHourDegrees(
-                elFromPoint,
-                degrees,
-                hour
-              );
+            if (checkBrowser() && degrees && elFromPoint) {
+              const { degrees: touchDegrees, hour: touchHours } =
+                this._makeHourDegrees(elFromPoint, degrees, hour);
 
-              return this._handleMoveHand(elFromPoint, touchHours, touchDegrees);
-            } else {
-              const { degrees: movedDegrees, hour: movedHours } = this._makeHourDegrees(
-                target,
-                degrees,
-                hour
+              return this._handleMoveHand(
+                elFromPoint,
+                touchHours,
+                touchDegrees
               );
+            } else {
+              const { degrees: movedDegrees, hour: movedHours } =
+                this._makeHourDegrees(target, degrees, hour);
 
               return this._handleMoveHand(target, movedHours, movedDegrees);
             }
           };
 
           this._objWithDataOnChange.degreesHours = degrees;
-          this._handlerMaxMinHoursOptions(degrees, makeDegrees, maxHour, minHour);
+
+          if (
+            this._handlerMaxMinHoursOptions(
+              degrees,
+              maxTimeHour,
+              minTimeHour,
+              maxTimeFormat,
+              minTimeFormat,
+              e
+            )
+          ) {
+            makeDegrees();
+          }
         }
 
         e.stopPropagation();
@@ -1280,40 +2031,55 @@ class Timepicker {
     );
   }
 
+  _hasTargetInnerClass(target) {
+    return (
+      target.hasAttribute(ATTR_TIMEPICKER_CLOCK_INNER) ||
+      target.hasAttribute(ATTR_TIMEPICKER_INNER_HOURS) ||
+      target.hasAttribute(ATTR_TIMEPICKER_TIPS_INNER_ELEMENT)
+    );
+  }
+
   _handleMoveHand(target, hour, degrees) {
-    const allTipsHours = SelectorEngine.find(`.${TIPS_HOURS_CLASS}`, this._modal);
-    const allTipsInner = SelectorEngine.find(`.${TIPS_INNER_HOURS_CLASS}`, this._modal);
+    const allTipsHours = SelectorEngine.find(
+      `[${ATTR_TIMEPICKER_TIPS_HOURS}]`,
+      this._modal
+    );
+    const allTipsInner = SelectorEngine.find(
+      `[${ATTR_TIMEPICKER_INNER_HOURS}]`,
+      this._modal
+    );
 
-    if (this._isMouseMove) {
-      if (
-        Manipulator.hasClass(target, CLOCK_INNER_CLASS) ||
-        Manipulator.hasClass(target, TIPS_INNER_HOURS_CLASS) ||
-        Manipulator.hasClass(target, TIPS_INNER_ELEMENT_CLASS)
-      ) {
-        Manipulator.addStyle(this._hand, {
-          height: '21.5%',
-        });
-      } else {
-        Manipulator.addStyle(this._hand, {
-          height: 'calc(40% + 1px)',
-        });
-      }
+    if (!this._isMouseMove) return;
 
+    if (this._hasTargetInnerClass(target)) {
       Manipulator.addStyle(this._hand, {
-        transform: `rotateZ(${degrees}deg)`,
+        height: "21.5%",
       });
-
-      this._hour.textContent = hour >= 10 || hour === '00' ? hour : `0${hour}`;
-
-      this._toggleClassActive(this.hoursArray, this._hour, allTipsHours);
-      this._toggleClassActive(this.innerHours, this._hour, allTipsInner);
-
-      this._objWithDataOnChange.hour = hour >= 10 || hour === '00' ? hour : `0${hour}`;
+    } else {
+      Manipulator.addStyle(this._hand, {
+        height: "calc(40% + 1px)",
+      });
     }
+
+    Manipulator.addStyle(this._hand, {
+      transform: `rotateZ(${degrees}deg)`,
+    });
+
+    this._hour.textContent = hour >= 10 || hour === "00" ? hour : `0${hour}`;
+
+    this._toggleClassActive(this.hoursArray, this._hour, allTipsHours);
+    this._toggleClassActive(this.innerHours, this._hour, allTipsInner);
+
+    this._objWithDataOnChange.hour =
+      hour >= 10 || hour === "00" ? hour : `0${hour}`;
   }
 
   _handlerMaxMinMinutesOptions(degrees, minute) {
-    const { increment, maxTime, minTime } = this._options;
+    let { maxTime, minTime } = this._options;
+    const { format12, increment, disablePast, disableFuture } = this._options;
+
+    minTime = setMinTime(minTime, disablePast, format12);
+    maxTime = setMaxTime(maxTime, disableFuture, format12);
 
     const maxMin = takeValue(maxTime, false)[1];
     const minMin = takeValue(minTime, false)[1];
@@ -1323,64 +2089,70 @@ class Timepicker {
     const maxTimeFormat = takeValue(maxTime, false)[2];
     const minTimeFormat = takeValue(minTime, false)[2];
 
-    const maxMinDegrees = maxMin !== '' ? maxMin * 6 : '';
-    const minMinDegrees = minMin !== '' ? minMin * 6 : '';
+    const maxMinDegrees = maxMin !== "" ? maxMin * 6 : "";
+    const minMinDegrees = minMin !== "" ? minMin * 6 : "";
 
-    if (maxTimeFormat === undefined && minTimeFormat === undefined) {
-      if (maxTime !== '' && minTime !== '') {
-        if (degrees <= maxMinDegrees && degrees >= minMinDegrees) {
+    const selectedHour = Number(this._hour.textContent);
+
+    if (!maxTimeFormat && !minTimeFormat) {
+      if (maxTime !== "" && minTime !== "") {
+        if (
+          (maxHourTime === selectedHour && degrees > maxMinDegrees) ||
+          (minHourTime === selectedHour && degrees < minMinDegrees)
+        ) {
           return degrees;
         }
-      } else if (minTime !== '' && Number(this._hour.textContent) <= Number(minHourTime)) {
+      } else if (minTime !== "" && selectedHour <= Number(minHourTime)) {
         if (degrees <= minMinDegrees - 6) {
           return degrees;
         }
-      } else if (maxTime !== '' && Number(this._hour.textContent) >= Number(maxHourTime)) {
+      } else if (maxTime !== "" && selectedHour >= Number(maxHourTime)) {
         if (degrees >= maxMinDegrees + 6) {
           return degrees;
         }
       }
     } else {
       // eslint-disable-next-line no-lonely-if
-      if (minTime !== '') {
-        if (minTimeFormat === 'PM' && this._isAmEnabled) {
+      if (minTime !== "") {
+        if (minTimeFormat === "PM" && this._isAmEnabled) {
           return;
         }
 
-        if (minTimeFormat === 'PM' && this._isPmEnabled) {
-          if (Number(this._hour.textContent) < Number(minHourTime)) {
+        if (minTimeFormat === "PM" && this._isPmEnabled) {
+          if (selectedHour < Number(minHourTime)) {
             return;
           }
 
-          if (Number(this._hour.textContent) <= Number(minHourTime)) {
+          if (selectedHour <= Number(minHourTime)) {
             if (degrees <= minMinDegrees - 6) {
               return degrees;
             }
           }
-        } else if (minTimeFormat === 'AM' && this._isAmEnabled) {
-          if (Number(this._hour.textContent) < Number(minHourTime)) {
+        } else if (minTimeFormat === "AM" && this._isAmEnabled) {
+          if (selectedHour < Number(minHourTime)) {
             return;
           }
 
-          if (Number(this._hour.textContent) <= Number(minHourTime)) {
+          if (selectedHour <= Number(minHourTime)) {
             if (degrees <= minMinDegrees - 6) {
               return degrees;
             }
           }
         }
-      } else if (maxTime !== '') {
-        if (maxTimeFormat === 'AM' && this._isPmEnabled) {
+      }
+      if (maxTime !== "") {
+        if (maxTimeFormat === "AM" && this._isPmEnabled) {
           return;
         }
 
-        if (maxTimeFormat === 'PM' && this._isPmEnabled) {
-          if (Number(this._hour.textContent) >= Number(maxHourTime)) {
+        if (maxTimeFormat === "PM" && this._isPmEnabled) {
+          if (selectedHour >= Number(maxHourTime)) {
             if (degrees >= maxMinDegrees + 6) {
               return degrees;
             }
           }
-        } else if (maxTimeFormat === 'AM' && this._isAmEnabled) {
-          if (Number(this._hour.textContent) >= Number(maxHourTime)) {
+        } else if (maxTimeFormat === "AM" && this._isAmEnabled) {
+          if (selectedHour >= Number(maxHourTime)) {
             if (degrees >= maxMinDegrees + 6) {
               return degrees;
             }
@@ -1406,70 +2178,86 @@ class Timepicker {
   }
 
   _removeModal() {
-    setTimeout(() => {
-      this._modal.remove();
-      Manipulator.addStyle(this._document.body, {
-        overflow: '',
-      });
-      if (!checkBrowser()) {
-        Manipulator.addStyle(this._document.body, {
-          paddingRight: '',
-        });
-      }
-    }, 300);
+    if (this._animations) {
+      setTimeout(() => {
+        this._removeModalElements();
+        reset();
+      }, 300);
+    } else {
+      this._removeModalElements();
+      reset();
+    }
 
     EventHandlerMulti.off(
       this._document,
-      'click keydown mousedown mouseup mousemove mouseleave mouseover touchmove touchend'
+      `${EVENT_CLICK_DATA_API} ${EVENT_KEYDOWN_DATA_API} ${EVENT_MOUSEDOWN_DATA_API} ${EVENT_MOUSEUP_DATA_API} ${EVENT_MOUSEMOVE_DATA_API} ${EVENT_MOUSELEAVE_DATA_API} ${EVENT_MOUSEOVER_DATA_API} ${EVENT_TOUCHSTART_DATA_API} ${EVENT_TOUCHMOVE_DATA_API} ${EVENT_TOUCHEND_DATA_API}`
     );
+    EventHandler.off(window, EVENT_KEYDOWN_DATA_API);
+  }
+
+  _removeModalElements() {
+    if (this._modal) this._modal.remove();
   }
 
   _toggleBackdropAnimation(isToRemove = false) {
     if (isToRemove) {
-      Manipulator.addClass(this._wrapper, 'animation');
-      Manipulator.addClass(this._wrapper, WRAPPER_CLOSE_ANIMATION_CLASS);
-      this._wrapper.style.animationDuration = '300ms';
+      this._wrapper.classList.add("animate-[fade-out_350ms_ease-in-out]");
     } else {
-      Manipulator.addClass(this._wrapper, 'animation');
-      Manipulator.addClass(this._wrapper, WRAPPER_OPEN_ANIMATION_CLASS);
-      this._wrapper.style.animationDuration = '300ms';
+      this._wrapper.classList.add("animate-[fade-in_350ms_ease-in-out]");
 
-      if (!this._options.inline) Manipulator.addClass(this._clock, CLOCK_ANIMATION_CLASS);
+      if (!this._options.inline)
+        this._clock.classList.add(CLASS_CLOCK_ANIMATION);
     }
+
+    setTimeout(() => {
+      this._wrapper.classList.remove(
+        "animate-[fade-out_350ms_ease-in-out]",
+        "animate-[fade-in_350ms_ease-in-out]"
+      );
+    }, 351);
   }
 
   _toggleBackgroundColorCircle = (classes) => {
-    const tips = this._modal.querySelector(`.${classes}.${ACTIVE_CLASS}`) !== null;
-
+    const tips =
+      this._modal.querySelector(`${classes}[${ATTR_TIMEPICKER_ACTIVE}]`) !==
+      null;
     if (tips) {
       Manipulator.addStyle(this._circle, {
-        backgroundColor: '#1976d2',
+        backgroundColor: "#1976d2",
       });
-    } else {
-      Manipulator.addStyle(this._circle, {
-        backgroundColor: 'transparent',
-      });
+
+      return;
     }
+
+    Manipulator.addStyle(this._circle, {
+      backgroundColor: "transparent",
+    });
   };
 
   _toggleClassActive = (array, { textContent }, tips) => {
-    const findInArray = [...array].find((e) => Number(e) === Number(textContent));
+    const findInArray = [...array].find(
+      (e) => Number(e) === Number(textContent)
+    );
 
     return tips.forEach((e) => {
-      if (!Manipulator.hasClass(e, 'disabled')) {
-        if (e.textContent === findInArray) {
-          Manipulator.addClass(e, ACTIVE_CLASS);
-        } else {
-          Manipulator.removeClass(e, ACTIVE_CLASS);
-        }
+      if (e.hasAttribute(ATTR_TIMEPICKER_DISABLED)) return;
+
+      if (e.textContent === findInArray) {
+        e.classList.add(...CLASS_ACTIVE_TIPS);
+        e.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+        return;
       }
+
+      e.classList.remove(...CLASS_ACTIVE_TIPS);
+      e.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
     });
   };
 
   _addActiveClassToTip(tips, value) {
     tips.forEach((tip) => {
       if (Number(tip.textContent) === Number(value)) {
-        Manipulator.addClass(tip, ACTIVE_CLASS);
+        tip.classList.add(...CLASS_ACTIVE_TIPS);
+        tip.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
       }
     });
   }
@@ -1490,7 +2278,7 @@ class Timepicker {
       minute = (Math.round(degrees / 6) * 6) / 6;
 
       if (minute === 60) {
-        minute = '00';
+        minute = "00";
       }
     }
 
@@ -1506,22 +2294,17 @@ class Timepicker {
   };
 
   _makeHourDegrees = (target, degrees, hour) => {
-    const { maxHour, minHour } = this._options;
     if (!target) {
       return;
     }
-    if (
-      Manipulator.hasClass(target, CLOCK_INNER_CLASS) ||
-      Manipulator.hasClass(target, TIPS_INNER_HOURS_CLASS) ||
-      Manipulator.hasClass(target, TIPS_INNER_ELEMENT_CLASS)
-    ) {
+    if (this._hasTargetInnerClass(target)) {
       if (degrees < 0) {
         hour = Math.round(360 + degrees / 30) % 24;
         degrees = 360 + degrees;
       } else {
         hour = Math.round(degrees / 30) + 12;
         if (hour === 12) {
-          hour = '00';
+          hour = "00";
         }
       }
     } else if (degrees < 0) {
@@ -1538,18 +2321,6 @@ class Timepicker {
       degrees = 0;
     }
 
-    if (maxHour !== '') {
-      if (hour > Number(maxHour)) {
-        return;
-      }
-    }
-
-    if (minHour !== '') {
-      if (hour < Number(minHour)) {
-        return;
-      }
-    }
-
     return {
       degrees,
       hour,
@@ -1564,7 +2335,7 @@ class Timepicker {
     } else {
       hour = Math.round(degrees / 30) + 12;
       if (hour === 12) {
-        hour = '00';
+        hour = "00";
       }
     }
 
@@ -1580,24 +2351,60 @@ class Timepicker {
   }
 
   _appendTimes() {
-    this._getAppendClock(this.hoursArray, `.${CLOCK_CLASS}`, `${TIPS_HOURS_CLASS}`);
-  }
+    const { format24 } = this._options;
 
-  _getAppendClock = (array = [], clockClass = `.${CLOCK_CLASS}`, tipsClass) => {
-    const { maxHour, minHour, minTime, maxTime, inline, format12 } = this._options;
-    const [maxTimeHour, maxTimeMinutes, maxTimeFormat] = takeValue(maxTime, false);
-    const [minTimeHour, minTimeMinutes, minTimeFormat] = takeValue(minTime, false);
+    if (format24) {
+      this._getAppendClock(
+        this.hoursArray,
+        `[${ATTR_TIMEPICKER_CLOCK}]`,
+        ATTR_TIMEPICKER_TIPS_HOURS
+      );
+      this._getAppendClock(
+        this.innerHours,
+        `[${ATTR_TIMEPICKER_CLOCK_INNER}]`,
+        ATTR_TIMEPICKER_INNER_HOURS
+      );
 
-    // fix for append clock for max/min if input has invalid  value
-    if (!inline) {
-      if (format12) {
-        if (this._isInvalidTimeFormat && !Manipulator.hasClass(this._AM, 'active')) {
-          Manipulator.addClass(this._PM, 'active');
-        }
-      }
+      return;
     }
 
-    const hourModeActive = SelectorEngine.findOne(`.${HOUR_MODE_CLASS}.${ACTIVE_CLASS}`);
+    this._getAppendClock(
+      this.hoursArray,
+      `[${ATTR_TIMEPICKER_CLOCK}]`,
+      ATTR_TIMEPICKER_TIPS_HOURS
+    );
+  }
+
+  _getAppendClock = (
+    array = [],
+    clockClass = `[${ATTR_TIMEPICKER_CLOCK}]`,
+    tipsClass
+  ) => {
+    let { minTime, maxTime } = this._options;
+    const { inline, format12, disablePast, disableFuture } = this._options;
+
+    minTime = setMinTime(minTime, disablePast, format12);
+    maxTime = setMaxTime(maxTime, disableFuture, format12);
+
+    const [maxTimeHour, maxTimeMinutes, maxTimeFormat] = takeValue(
+      maxTime,
+      false
+    );
+    const [minTimeHour, minTimeMinutes, minTimeFormat] = takeValue(
+      minTime,
+      false
+    );
+
+    // fix for append clock for max/min if input has invalid  value
+    if (
+      !inline &&
+      format12 &&
+      this._isInvalidTimeFormat &&
+      !this._AM.hasAttribute(ATTR_TIMEPICKER_ACTIVE)
+    ) {
+      this._PM.classList.add(...CLASS_OPACITY);
+      this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+    }
 
     const clock = SelectorEngine.findOne(clockClass);
 
@@ -1607,22 +2414,42 @@ class Timepicker {
       return el * (Math.PI / 180);
     }
 
-    if (clock === null) {
-      return;
-    }
+    if (clock === null) return;
 
     const clockWidth = (clock.offsetWidth - 32) / 2;
     const clockHeight = (clock.offsetHeight - 32) / 2;
     const radius = clockWidth - 4;
 
+    setTimeout(() => {
+      let currentFormat;
+      if (format12) {
+        currentFormat = SelectorEngine.findOne(
+          `${SELECTOR_ATTR_TIMEPICKER_HOUR_MODE}[${ATTR_TIMEPICKER_ACTIVE}]`
+        ).textContent;
+      }
+      this._handleDisablingTipsMinTime(
+        currentFormat,
+        minTimeFormat,
+        minTimeMinutes,
+        minTimeHour
+      );
+      this._handleDisablingTipsMaxTime(
+        currentFormat,
+        maxTimeFormat,
+        maxTimeMinutes,
+        maxTimeHour
+      );
+    }, 0);
+
     [...array].forEach((e, i) => {
       const angle = rad(i * elements);
 
-      const span = element('span');
-      const spanToTips = element('span');
+      const span = element("span");
+      const spanToTips = element("span");
 
       spanToTips.innerHTML = e;
-      Manipulator.addClass(span, tipsClass);
+      span.classList.add(...CLASSES_TIPS);
+      span.setAttribute(tipsClass, "");
 
       const itemWidth = span.offsetWidth;
       const itemHeight = span.offsetHeight;
@@ -1632,172 +2459,14 @@ class Timepicker {
         bottom: `${clockHeight + Math.cos(angle) * radius - itemHeight}px`,
       });
 
-      if (array.includes('05')) {
-        Manipulator.addClass(span, `${TIPS_MINUTES_CLASS}`);
+      if (array.includes("05")) {
+        span.setAttribute(ATTR_TIMEPICKER_TIPS_MINUTES, "");
       }
 
-      if (array.includes('13')) {
-        spanToTips.classList.add(TIPS_INNER_ELEMENT_CLASS);
+      if (array.includes("13")) {
+        spanToTips.setAttribute(ATTR_TIMEPICKER_TIPS_INNER_ELEMENT, "");
       } else {
-        spanToTips.classList.add(TIPS_ELEMENT_CLASS);
-      }
-
-      if (!Manipulator.hasClass(span, `${TIPS_MINUTES_CLASS}`)) {
-        if (maxHour !== '') {
-          if (Number(e) > Number(maxHour)) {
-            Manipulator.addClass(span, 'disabled');
-          }
-        }
-
-        if (minHour !== '') {
-          if (Number(e) < Number(minHour)) {
-            Manipulator.addClass(span, 'disabled');
-          }
-        }
-
-        if (maxTime !== '') {
-          if (maxTimeFormat !== undefined) {
-            if (maxTimeFormat === 'PM' && hourModeActive.textContent === 'PM') {
-              this._isAmEnabled = false;
-              this._isPmEnabled = true;
-              if (Number(e) > Number(maxTimeHour)) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            }
-
-            if (maxTimeFormat === 'AM' && hourModeActive.textContent === 'PM') {
-              this._isAmEnabled = false;
-              this._isPmEnabled = true;
-              Manipulator.addClass(span, 'disabled');
-            } else if (maxTimeFormat === 'AM' && hourModeActive.textContent === 'AM') {
-              this._isAmEnabled = true;
-              this._isPmEnabled = false;
-              if (Number(e) > Number(maxTimeHour)) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            }
-          } else {
-            // eslint-disable-next-line no-lonely-if
-            if (Number(e) > Number(maxTimeHour)) {
-              Manipulator.addClass(span, 'disabled');
-            }
-          }
-        }
-
-        if (minTime !== '') {
-          if (Number(e) < Number(minTimeHour)) {
-            Manipulator.addClass(span, 'disabled');
-          }
-        }
-
-        if (minTime !== '') {
-          if (minTimeFormat !== undefined) {
-            if (minTimeFormat === 'PM' && hourModeActive.textContent === 'PM') {
-              this._isAmEnabled = false;
-              this._isPmEnabled = true;
-              if (Number(e) < Number(minTimeHour)) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            } else if (minTimeFormat === 'PM' && hourModeActive.textContent === 'AM') {
-              this._isAmEnabled = true;
-              this._isPmEnabled = false;
-              Manipulator.addClass(span, 'disabled');
-            }
-
-            if (minTimeFormat === 'AM' && hourModeActive.textContent === 'PM') {
-              this._isAmEnabled = false;
-              this._isPmEnabled = true;
-              Manipulator.removeClass(span, 'disabled');
-            } else if (minTimeFormat === 'AM' && hourModeActive.textContent === 'AM') {
-              this._isAmEnabled = true;
-              this._isPmEnabled = false;
-              if (Number(e) < Number(minTimeHour)) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            }
-          }
-        }
-      } else if (Manipulator.hasClass(span, `${TIPS_MINUTES_CLASS}`)) {
-        if (maxTime !== '') {
-          if (
-            Number(e) > Number(maxTimeMinutes) &&
-            Number(this._hour.textContent) >= Number(maxTimeHour)
-          ) {
-            Manipulator.addClass(span, 'disabled');
-          }
-        }
-
-        if (minTime !== '') {
-          if (
-            Number(e) < Number(minTimeMinutes) &&
-            Number(this._hour.textContent) <= Number(minTimeHour)
-          ) {
-            Manipulator.addClass(span, 'disabled');
-          }
-        }
-
-        if (maxTime !== '') {
-          if (maxTimeFormat !== undefined) {
-            if (maxTimeFormat === 'PM' && hourModeActive.textContent === 'PM') {
-              if (
-                Number(e) > Number(maxTimeMinutes) &&
-                Number(this._hour.textContent) >= Number(maxTimeHour)
-              ) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            } else if (maxTimeFormat === 'PM' && hourModeActive.textContent === 'AM') {
-              Manipulator.removeClass(span, 'disabled');
-            }
-
-            if (maxTimeFormat === 'AM' && hourModeActive.textContent === 'PM') {
-              Manipulator.addClass(span, 'disabled');
-            } else if (maxTimeFormat === 'AM' && hourModeActive.textContent === 'AM') {
-              if (
-                Number(this._hour.textContent) >= Number(maxTimeHour) &&
-                Number(e) > Number(maxTimeMinutes)
-              ) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            }
-          } else {
-            // eslint-disable-next-line no-lonely-if
-            if (maxTimeFormat !== undefined) {
-              if (Number(e) > Number(maxTimeHour)) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            }
-          }
-        }
-
-        if (minTime !== '') {
-          if (minTimeFormat !== undefined) {
-            if (minTimeFormat === 'PM' && hourModeActive.textContent === 'PM') {
-              if (
-                Number(e) < Number(minTimeMinutes) &&
-                Number(this._hour.textContent) === Number(minTimeHour)
-              ) {
-                Manipulator.addClass(span, 'disabled');
-              } else if (Number(this._hour.textContent) < Number(minTimeHour)) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            } else if (minTimeFormat === 'PM' && hourModeActive.textContent === 'AM') {
-              Manipulator.addClass(span, 'disabled');
-            }
-
-            if (minTimeFormat === 'AM' && hourModeActive.textContent === 'PM') {
-              Manipulator.removeClass(span, 'disabled');
-            } else if (minTimeFormat === 'AM' && hourModeActive.textContent === 'AM') {
-              if (
-                Number(this._hour.textContent) === Number(minTimeHour) &&
-                Number(e) < Number(minTimeMinutes)
-              ) {
-                Manipulator.addClass(span, 'disabled');
-              } else if (Number(this._hour.textContent) < Number(minTimeHour)) {
-                Manipulator.addClass(span, 'disabled');
-              }
-            }
-          }
-        }
+        spanToTips.setAttribute(ATTR_TIMEPICKER_TIPS_ELEMENT, "");
       }
 
       span.appendChild(spanToTips);
@@ -1818,6 +2487,61 @@ class Timepicker {
     return config;
   }
 
+  _getContainer() {
+    return SelectorEngine.findOne(this._options.container);
+  }
+
+  _getValidate(event) {
+    const { invalidLabel, format24, format12, appendValidationInfo } =
+      this._options;
+    let inValidDiv;
+
+    if (appendValidationInfo) {
+      inValidDiv = element("div");
+      inValidDiv.setAttribute(ATTR_TIMEPICKER_INVALID_FEEDBACK, "");
+      inValidDiv.innerHTML = invalidLabel;
+    }
+
+    EventHandlerMulti.on(this.input, event, ({ target }) => {
+      if (this._options === null || this.input.value === "") return;
+
+      const regexAMFormat = /^(0?[1-9]|1[012])(:[0-5]\d) [APap][mM]$/;
+      const regexNormalFormat = /^([01]\d|2[0-3])(:[0-5]\d)$/;
+      const testedAMRegex = regexAMFormat.test(target.value);
+      const testedNormalRegex = regexNormalFormat.test(target.value);
+
+      if (
+        (testedNormalRegex !== true && format24) ||
+        (testedAMRegex !== true && format12)
+      ) {
+        if (appendValidationInfo) {
+          this.input.setAttribute(ATTR_TIMEPICKER_IS_INVALID, "");
+
+          this.input.parentNode.insertBefore(
+            inValidDiv,
+            this.input.nextSibling
+          );
+        }
+
+        Manipulator.addStyle(target, { marginBottom: 0 });
+        Manipulator.addStyle(inValidDiv, { bottom: "-23px" });
+
+        this._isInvalidTimeFormat = true;
+        return;
+      }
+
+      this.input.removeAttribute(ATTR_TIMEPICKER_IS_INVALID);
+      this._isInvalidTimeFormat = false;
+      const allInvalid = SelectorEngine.findOne(
+        `[${ATTR_TIMEPICKER_INVALID_FEEDBACK}]`
+      );
+
+      if (allInvalid === null) return;
+
+      allInvalid.remove();
+    });
+  }
+
   // Static
   static getInstance(element) {
     return Data.getData(element, DATA_KEY);
@@ -1825,19 +2549,26 @@ class Timepicker {
 
   static getOrCreateInstance(element, config = {}) {
     return (
-      this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
+      this.getInstance(element) ||
+      new this(element, typeof config === "object" ? config : null)
     );
   }
 }
 
 export default Timepicker;
 
-EventHandler.on(window, 'DOMContentLoaded', () => {
-  SelectorEngine.find(`.${NAME}`).forEach((timepicker) => {
+EventHandler.on(window, "DOMContentLoaded", () => {
+  SelectorEngine.find(SELECTOR_ATTR_TIMEPICKER_INIT).forEach((timepicker) => {
     let instance = Timepicker.getInstance(timepicker);
+    const { timepickerFormat24 } = timepicker.dataset;
 
-    if (!instance) {
-      instance = new Timepicker(timepicker);
+    if (instance) return;
+
+    if (timepickerFormat24 === "true") {
+      instance = new Timepicker(timepicker, { format24: true });
+      return;
     }
+
+    instance = new Timepicker(timepicker);
   });
 });
