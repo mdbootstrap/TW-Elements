@@ -46,7 +46,7 @@ const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 
 const SELECTOR_DROPDOWN_ITEM = "[data-te-dropdown-item-ref]";
 const CLASS_NAME_ACTIVE = [
-  "text-[#1266f1]",
+  "!text-[#1266f1]",
   "font-semibold",
   "border-l-[0.125rem]",
   "border-solid",

@@ -250,6 +250,16 @@ module.exports = plugin(() => {}, {
         "placeholder-wave": {
           "100%": { maskPosition: "-200% 0%" },
         },
+        "show-up-clock": {
+          "0%": {
+            opacity: "0",
+            transform: "scale(0.7)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
       },
     },
   },
