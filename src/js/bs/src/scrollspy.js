@@ -13,6 +13,7 @@ import {
 } from "./util/index";
 import EventHandler from "./dom/event-handler";
 import Manipulator from "./dom/manipulator";
+import MDBManipulator from "../../mdb/dom/manipulator";
 import SelectorEngine from "./dom/selector-engine";
 import BaseComponent from "./base-component";
 
@@ -23,7 +24,7 @@ import BaseComponent from "./base-component";
  */
 
 const NAME = "scrollspy";
-const DATA_KEY = "bs.scrollspy";
+const DATA_KEY = "te.scrollspy";
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = ".data-api";
 
@@ -43,18 +44,21 @@ const EVENT_ACTIVATE = `activate${EVENT_KEY}`;
 const EVENT_SCROLL = `scroll${EVENT_KEY}`;
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 
-const CLASS_NAME_DROPDOWN_ITEM = "dropdown-item";
+const SELECTOR_DROPDOWN_ITEM = "[data-te-dropdown-item-ref]";
+const CLASS_NAME_ACTIVE = [
+  "!text-[#1266f1]",
+  "font-semibold",
+  "border-l-[0.125rem]",
+  "border-solid",
+  "border-[#1266f1]",
+];
 
-const ACTIVE_ELEMENT_NAME = "data-te-scroll-nav-active";
-const ACTIVE_ELEMENT_NAME_DATA = "teScrollNavActive";
-const DATA_DROPDOWN_ITEM = "teDropdownItemRef";
-
-const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
-const SELECTOR_NAV_LIST_GROUP = "[data-te-nav-ref], .list-group";
+const SELECTOR_DATA_SPY = '[data-te-spy="scroll"]';
+const SELECTOR_NAV_LIST_GROUP = "[data-te-nav-list-ref]";
 const SELECTOR_NAV_LINKS = "[data-te-nav-link-ref]";
 const SELECTOR_NAV_ITEMS = "[data-te-nav-item-ref]";
-const SELECTOR_LIST_ITEMS = ".list-group-item";
-const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`;
+const SELECTOR_LIST_ITEMS = "[data-te-list-group-item-ref]";
+const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, ${SELECTOR_DROPDOWN_ITEM}`;
 const SELECTOR_DROPDOWN = "[data-te-dropdown-ref]";
 const SELECTOR_DROPDOWN_TOGGLE = "[data-te-dropdown-toggle-ref]";
 
@@ -237,20 +241,22 @@ class ScrollSpy extends BaseComponent {
 
     const queries = SELECTOR_LINK_ITEMS.split(",").map(
       (selector) =>
-        `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`
+        `${selector}[data-te-target="${target}"],${selector}[href="${target}"]`
     );
 
     const link = SelectorEngine.findOne(queries.join(","), this._config.target);
 
-    link.setAttribute(ACTIVE_ELEMENT_NAME, "");
-    if (
-      link.dataset[DATA_DROPDOWN_ITEM] !== undefined ||
-      link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)
-    ) {
-      SelectorEngine.findOne(
-        SELECTOR_DROPDOWN_TOGGLE,
-        link.closest(SELECTOR_DROPDOWN)
-      ).setAttribute(ACTIVE_ELEMENT_NAME, "");
+    MDBManipulator.addMultipleClasses(link, CLASS_NAME_ACTIVE);
+    // link.setAttribute('data-te-nav-link-active', '');
+    // link.classList.add(CLASS_NAME_ACTIVE);
+    if (link.getAttribute(SELECTOR_DROPDOWN_ITEM)) {
+      MDBManipulator.addMultipleClasses(
+        SelectorEngine.findOne(
+          SELECTOR_DROPDOWN_TOGGLE,
+          link.closest(SELECTOR_DROPDOWN),
+          CLASS_NAME_ACTIVE
+        )
+      );
     } else {
       SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP).forEach(
         (listGroup) => {
@@ -259,13 +265,15 @@ class ScrollSpy extends BaseComponent {
           SelectorEngine.prev(
             listGroup,
             `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`
-          ).forEach((item) => item.setAttribute(ACTIVE_ELEMENT_NAME, ""));
+          ).forEach((item) =>
+            MDBManipulator.addMultipleClasses(item, CLASS_NAME_ACTIVE)
+          );
 
           // Handle special case when .nav-link is inside .nav-item
           SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS).forEach(
             (navItem) => {
               SelectorEngine.children(navItem, SELECTOR_NAV_LINKS).forEach(
-                (item) => item.setAttribute(ACTIVE_ELEMENT_NAME, "")
+                (item) => item.classList.add(CLASS_NAME_ACTIVE)
               );
             }
           );
@@ -280,8 +288,8 @@ class ScrollSpy extends BaseComponent {
 
   _clear() {
     SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
-      .filter((node) => node.dataset[ACTIVE_ELEMENT_NAME_DATA] !== undefined)
-      .forEach((node) => node.removeAttribute(ACTIVE_ELEMENT_NAME));
+      .filter((node) => node.classList.contains(...CLASS_NAME_ACTIVE))
+      .forEach((node) => node.classList.remove(...CLASS_NAME_ACTIVE));
   }
 
   // Static

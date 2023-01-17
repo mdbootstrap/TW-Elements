@@ -75,7 +75,7 @@
                 <div class="grid gap-4 md:grid-cols-2">
                   <div>
                     <select
-                      class="form-select m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-4 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+                      class="form-select m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-[0.32rem] text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
                       aria-label="Default select example">
                       <option value="1">Today</option>
                       <option value="2">Yesterday</option>
@@ -86,14 +86,16 @@
                   </div>
                   <div>
                     <div
-                      class="datepicker form-floating relative"
-                      data-mdb-toggle-button="false">
+                      class="relative"
+                      data-te-datepicker-init
+                      data-te-input-wrapper-init>
                       <input
                         type="text"
-                        class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-                        placeholder="Select a date"
-                        data-mdb-toggle="datepicker" />
-                      <label for="floatingInput" class="text-gray-700"
+                        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-gray-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                        placeholder="Select a date" />
+                      <label
+                        for="floatingInput"
+                        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-gray-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none"
                         >Custom date</label
                       >
                     </div>

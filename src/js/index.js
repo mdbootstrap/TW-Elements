@@ -11,6 +11,7 @@ import ScrollSpy from "./bs/src/scrollspy";
 import Tab from "./bs/src/tab";
 import Tooltip from "./bs/src/tooltip";
 import Toast from "./bs/src/toast";
+import Input from "./bs/src/input";
 
 // MDB COMPONENTS
 import Animate from "./mdb/animate";
@@ -37,4 +38,5 @@ export {
   Datepicker,
   Timepicker,
   Stepper,
+  Input,
 };

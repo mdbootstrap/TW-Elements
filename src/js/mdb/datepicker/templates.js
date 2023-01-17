@@ -28,12 +28,12 @@ const CLEAR_BUTTON_REF = "data-te-datepicker-clear-button-ref";
 const VIEW_CHANGE_BUTTON_REF = "data-te-datepicker-view-change-button-ref";
 
 const MODAL_CONTAINER_CLASSES =
-  "flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[328px] h-[512px] bg-white rounded-[0.6rem] shadow-lg z-[1066] xs:max-md:landscape:w-[475px] xs:max-md:landscape:h-[360px] xs:max-md:landscape:flex-row";
+  "flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[328px] h-[512px] bg-white rounded-[0.6rem] shadow-lg z-[1066] xs:max-md:landscape:w-[475px] xs:max-md:landscape:h-[360px] xs:max-md:landscape:flex-row dark:bg-zinc-700";
 const DATEPICKER_BACKDROP_CLASSES =
   "w-full h-full fixed top-0 right-0 left-0 bottom-0 bg-black/40 z-[1065]";
 const DATEPICKER_MAIN_CLASSES = "relative h-full";
 const DATEPICKER_HEADER_CLASSES =
-  "xs:max-md:landscape:h-full h-[120px] px-6 bg-blue-500 flex flex-col rounded-t-lg";
+  "xs:max-md:landscape:h-full h-[120px] px-6 bg-blue-500 flex flex-col rounded-t-lg dark:bg-zinc-800";
 const DATEPICKER_TITLE_CLASSES = "h-8 flex flex-col justify-end";
 const DATEPICKER_TITLE_TEXT_CLASSES =
   "text-[10px] font-normal uppercase tracking-[1.7px] text-white";
@@ -43,14 +43,14 @@ const DATEPICKER_DATE_TEXT_CLASSES = "text-[34px] font-normal text-white";
 const DATEPICKER_VIEW_CLASSES = "outline-none px-3";
 const DATEPICKER_DATE_CONTROLS_CLASSES =
   "px-3 pt-2.5 pb-0 flex justify-between text-black/[64]";
-const DATEPICKER_VIEW_CHANGE_BUTTON_CLASSES = `p-2.5 text-neutral-500 font-medium text-[0.9rem] rounded-xl shadow-none bg-transparent m-0 border-none hover:bg-neutral-200 focus:bg-neutral-200 after:content-[${""}] after:inline-block after:w-0 after:h-0 after:border-solid after:border-x-[5px] after:border-x-transparent after:border-t-[5px] after:m-0 after:ml-[5px] after:align-middle`;
+const DATEPICKER_VIEW_CHANGE_BUTTON_CLASSES = `outline-none p-2.5 text-neutral-500 font-medium text-[0.9rem] rounded-xl shadow-none bg-transparent m-0 border-none hover:bg-neutral-200 focus:bg-neutral-200 after:content-[${""}] after:inline-block after:w-0 after:h-0 after:border-solid after:border-x-[5px] after:border-x-transparent after:border-t-[5px] after:m-0 after:ml-[5px] after:align-middle dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
 const DATEPICKER_ARROW_CONTROLS_CLASSES = "mt-2.5";
-const DATEPICKER_PREVIOUS_BUTTON_CLASSES = `relative p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-black/[64] bg-transparent mr-6 hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:content-[${""}] after:m-[15.5px] after:border-0 after:border-solid after:border-current after:border-t-2 after:border-l-2 after:translate-x-[2px] after:-rotate-45`;
-const DATEPICKER_NEXT_BUTTON_CLASSES = `relative p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-black/[64] bg-transparent hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:content-[${""}] after:m-[15.5px] after:border-0 after:border-solid after:border-current after:border-t-2 after:border-r-2 after:translate-x-[-2px] after:rotate-45`;
+const DATEPICKER_PREVIOUS_BUTTON_CLASSES = `relative p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-black/[64] bg-transparent mr-6 hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:content-[${""}] after:m-[15.5px] after:border-0 after:border-solid after:border-current after:border-t-2 after:border-l-2 after:translate-x-[2px] after:-rotate-45 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
+const DATEPICKER_NEXT_BUTTON_CLASSES = `relative p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-black/[64] bg-transparent hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:content-[${""}] after:m-[15.5px] after:border-0 after:border-solid after:border-current after:border-t-2 after:border-r-2 after:translate-x-[-2px] after:rotate-45 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
 const DATEPICKER_FOOTER_CLASSES =
   "h-14 flex absolute w-full bottom-0 justify-end items-center px-3";
 const DATEPICKER_FOOTER_BTN_CLASSES =
-  "bg-white text-blue-500 border-none cursor-pointer py-0 px-2.5 uppercase text-[0.8rem] leading-10 font-medium h-10 tracking-[.1rem] rounded-[10px] mb-2.5 hover:bg-neutral-200 focus:bg-neutral-200";
+  "outline-none bg-white text-blue-500 border-none cursor-pointer py-0 px-2.5 uppercase text-[0.8rem] leading-10 font-medium h-10 tracking-[.1rem] rounded-[10px] mb-2.5 hover:bg-neutral-200 focus:bg-neutral-200 dark:bg-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10";
 const DATEPICKER_CLEAR_BTN_CLASSES = "mr-auto";
 const DATEPICKER_DAY_HEADING_CLASSES =
   "w-10 h-10 text-center text-[12px] font-normal";
@@ -60,14 +60,14 @@ const DATEPICKER_CELL_SMALL_CLASSES =
   "w-10 h-10 xs:max-md:landscape:w-8 xs:max-md:landscape:h-8";
 const DATEPICKER_CELL_LARGE_CLASSES = "w-[76px] h-[42px]";
 const DATEPICKER_CELL_CONTENT_CLASSES =
-  "group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-neutral-300 group-[[data-te-datepicker-cell-selected]]:bg-blue-500 group-[[data-te-datepicker-cell-selected]]:text-white group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-neutral-100 group-[[data-te-datepicker-cell-focused]]:data-[te-datepicker-cell-selected]:bg-blue-500 group-[[data-te-datepicker-cell-current]]:border-solid group-[[data-te-datepicker-cell-current]]:border-black group-[[data-te-datepicker-cell-current]]:border";
+  "mx-auto group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-neutral-300 group-[[data-te-datepicker-cell-selected]]:bg-blue-500 group-[[data-te-datepicker-cell-selected]]:text-white group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-neutral-100 group-[[data-te-datepicker-cell-focused]]:data-[te-datepicker-cell-selected]:bg-blue-500 group-[[data-te-datepicker-cell-current]]:border-solid group-[[data-te-datepicker-cell-current]]:border-black group-[[data-te-datepicker-cell-current]]:border dark:group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-white/10 dark:group-[[data-te-datepicker-cell-current]]:border-white dark:group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-white/10";
 const DATEPICKER_CELL_CONTENT_SMALL_CLASSES =
   "w-9 h-9 leading-9 rounded-[50%] text-[13px]";
 const DATEPICKER_CELL_CONTENT_LARGE_CLASSES =
   "w-[72px] h-10 leading-10 py-[1px] px-0.5 rounded-[999px]";
 const DATEPICKER_TABLE_CLASSES = "mx-auto w-[304px]";
 const DATEPICKER_TOGGLE_BUTTON_CLASSES =
-  "w-3.5 h-3.5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:text-blue-500 focus:text-blue-500";
+  "outline-none w-3.5 h-3.5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:fill-blue-600 focus:fill-blue-600 dark:hover:fill-blue-400 dark:focus:fill-blue-400 dark:fill-gray-200";
 
 export function getDatepickerTemplate(
   date,
