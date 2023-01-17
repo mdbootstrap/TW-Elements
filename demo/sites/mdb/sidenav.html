@@ -29,6 +29,148 @@
       <h2 class="mb-6 text-2xl font-bold text-gray-900">Basic example</h2>
 
       <section
+        class="relative flex h-96 min-h-full items-start justify-center overflow-x-hidden border bg-gray-50">
+        <!-- Sidenav -->
+        <!-- <nav
+          id="sidenav-1"
+          class="sidenav absolute w-60 h-full top-0 left-0 -translate-x-full z-[1035] bg-white overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)]"
+          data-mdb-hidden="false"
+        > -->
+        <nav
+          id="sidenav-1"
+          class="sidenav absolute top-0 left-0 z-[1035] h-full w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0"
+          data-te-sidenav-init
+          data-te-sidenav-hidden="false"
+          data-te-sidenav-position="absolute">
+          <ul
+            class="sidenav-menu relative m-0 list-none px-[0.2rem]"
+            data-te-sidenav-menu-ref>
+            <li class="sidenav-item relative">
+              <a
+                class="sidenav-link flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-slate-50 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                data-te-sidenav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="primary">
+                <span class="mr-3 h-3 w-3 [&>svg]:fill-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                      d="M256 352C293.2 352 319.2 334.5 334.4 318.1C343.3 308.4 358.5 307.7 368.3 316.7C378 325.7 378.6 340.9 369.6 350.6C347.7 374.5 309.7 400 256 400C202.3 400 164.3 374.5 142.4 350.6C133.4 340.9 133.1 325.7 143.7 316.7C153.5 307.7 168.7 308.4 177.6 318.1C192.8 334.5 218.8 352 256 352zM208.4 208C208.4 225.7 194 240 176.4 240C158.7 240 144.4 225.7 144.4 208C144.4 190.3 158.7 176 176.4 176C194 176 208.4 190.3 208.4 208zM304.4 208C304.4 190.3 318.7 176 336.4 176C354 176 368.4 190.3 368.4 208C368.4 225.7 354 240 336.4 240C318.7 240 304.4 225.7 304.4 208zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z" />
+                  </svg>
+                </span>
+                <span>Link 1</span>
+              </a>
+            </li>
+            <li class="sidenav-item  relative">
+              <a
+                class="sidenav-link flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-slate-50 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                data-te-sidenav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="primary">
+                <span class="mr-3 h-3 w-3 [&>svg]:fill-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                      d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM388.1 312.8c12.3-3.8 24.3 6.9 19.3 18.7C382.4 390.6 324.2 432 256.3 432s-126.2-41.4-151.1-100.5c-5-11.8 7-22.5 19.3-18.7c39.7 12.2 84.5 19 131.8 19s92.1-6.8 131.8-19zM208.4 208c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32zm128 32c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                  </svg>
+                </span>
+                <span>Category 1</span></a
+              >
+              <ul
+                class="sidenav-collapse show relative m-0 hidden list-none p-0 data-[te-sidenav-state-show]:block "
+                data-te-sidenav-collapse-ref
+                data-te-sidenav-state-show>
+                <li class="sidenav-item relative">
+                  <a
+                    class="sidenav-link flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-slate-50 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                    data-te-sidenav-link-ref
+                    data-te-collapse-item
+                    data-te-ripple-init
+                    data-te-ripple-color="primary"
+                    >Link 2</a
+                  >
+                </li>
+                <li class="sidenav-item relative">
+                  <a
+                    class="sidenav-link flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-slate-50 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                    data-te-sidenav-link-ref
+                    data-te-collapse-item
+                    data-te-ripple-init
+                    data-te-ripple-color="primary"
+                    >Link 3</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="sidenav-item relative">
+              <a
+                class="sidenav-link flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-slate-50 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                data-te-sidenav-link-ref
+                data-te-ripple-init
+                data-te-ripple-color="primary">
+                <span class="mr-3 h-3 w-3 [&>svg]:fill-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                    <path
+                      d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM388.1 312.8c12.3-3.8 24.3 6.9 19.3 18.7C382.4 390.6 324.2 432 256.3 432s-126.2-41.4-151.1-100.5c-5-11.8 7-22.5 19.3-18.7c39.7 12.2 84.5 19 131.8 19s92.1-6.8 131.8-19zm-16.9-79.2c-17.6-23.5-52.8-23.5-70.4 0c-5.3 7.1-15.3 8.5-22.4 3.2s-8.5-15.3-3.2-22.4c30.4-40.5 91.2-40.5 121.6 0c5.3 7.1 3.9 17.1-3.2 22.4s-17.1 3.9-22.4-3.2zM176.4 240c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+                  </svg>
+                </span>
+                <span>Category 2</span></a
+              >
+              <ul
+                class="sidenav-collapse show relative m-0 hidden list-none p-0 data-[te-sidenav-state-show]:block "
+                data-te-sidenav-collapse-ref
+                data-te-sidenav-state-show>
+                <li class="sidenav-item relative">
+                  <a
+                    class="sidenav-link flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-slate-50 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                    data-te-sidenav-link-ref
+                    data-te-collapse-item
+                    data-te-ripple-init
+                    data-te-ripple-color="primary"
+                    >Link 4</a
+                  >
+                </li>
+                <li class="sidenav-item relative">
+                  <a
+                    class="sidenav-link flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-slate-50 data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none"
+                    data-te-sidenav-link-ref
+                    data-te-collapse-item
+                    data-te-ripple-init
+                    data-te-ripple-color="primary"
+                    >Link 5</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- Sidenav -->
+
+        <!-- Toggler -->
+        <button
+          class="mt-10 inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+          data-te-sidenav-toggle-ref
+          data-te-target="#sidenav-1"
+          aria-controls="#sidenav-1"
+          aria-haspopup="true"
+          data-te-ripple-init
+          data-te-ripple-color="white">
+          <span class="block h-3 w-3 [&>svg]:fill-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path
+                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+            </svg>
+          </span>
+        </button>
+        <!-- Toggler -->
+      </section>
+
+      <!-- <br />
+      <br />
+      <br />
+      <section
         class="relative h-96 min-h-full overflow-x-hidden border bg-gray-50">
         <div class="absolute h-full w-60 bg-white px-1 shadow-md">
           <ul class="relative">
@@ -65,8 +207,8 @@
 
       <br />
       <br />
-      <br />
-
+      <br /> -->
+      <!-- 
       <h2 class="mb-6 text-2xl font-bold text-gray-900">Example with icons</h2>
 
       <section
@@ -142,8 +284,8 @@
 
       <br />
       <br />
-      <br />
-
+      <br /> -->
+      <!-- 
       <h2 class="mb-6 text-2xl font-bold text-gray-900">
         Collapsible items example
       </h2>
@@ -670,7 +812,7 @@
             <p class="py-2 text-sm text-gray-700">tailwind-elements.com</p>
           </div>
         </div>
-      </section>
+      </section> -->
 
       <br />
       <br />
