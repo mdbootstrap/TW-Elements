@@ -2,6 +2,8 @@
 {{ $overview_scrollspy_file_exists := fileExists (printf
   "/content/%s/ss.html" .File.Dir)
 }}
+{{ $api_file_exists := fileExists (printf "/content/%s/a.html" .File.Dir) }}
+{{ $api_scrollspy_file_exists := fileExists (printf "/content/%s/a-ss.html" .File.Dir) }}
 
 
 <!-- Single for all single page under /docs/* -->
@@ -15,96 +17,176 @@
 
 
     <div class="container mx-auto mt-4 pt-12">
-      <div class="flex flex-wrap">
+      <div class="flex">
         <div
           id="sidebar"
-          class="tex-left absolute inset-y-0 left-0 z-40 w-full -translate-x-full transform bg-white pr-4 transition duration-200 ease-in-out dark:bg-zinc-800 sm:w-3/12 md:relative md:translate-x-0 lg:w-2/12">
+          class="tex-left absolute inset-y-0 left-0 z-40 w-full -translate-x-full transform bg-white pr-4 transition duration-200 ease-in-out dark:bg-zinc-800 sm:w-3/12 md:relative md:w-1/5 md:translate-x-0 lg:w-1/6">
           {{ partial "sidenav/standard.html" . }}
         </div>
-        <!-- Right column -->
-        <div class="w-full px-4 sm:w-9/12 sm:pr-10 lg:w-8/12 lg:pr-4">
-          <div class="mb-8">
-            <h1 class="mt-0 text-5xl font-bold leading-normal">
-              {{ .Params.main_title }}
-            </h1>
-            <p class="text-gray-500 dark:text-gray-300">
-              {{ .Params.description }}
-            </p>
 
-            <hr class="my-12" />
-            <main>{{ .Content }}</main>
-          </div>
-        </div>
-        {{ if $overview_scrollspy_file_exists }}
-          <!-- Sidebar  -->
+        <div class="flex w-full flex-col px-4 md:w-4/5 lg:w-5/6">
+          {{ if $api_file_exists }}
+            <ul
+              id="docs-nav-pills"
+              class="mx-4 mt-3 mb-6 flex"
+              role="tablist"
+              data-te-nav-ref>
+              <li>
+                <a
+                  id="docs-tab-overview"
+                  class="my-2 mr-4 rounded bg-[#f3f4f6] px-10 py-4 text-xs font-medium uppercase leading-tight text-[#4b5563] shadow-none focus:outline-none focus:ring-0 data-[te-nav-active]:!bg-[#2563eb] data-[te-nav-active]:!text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f] dark:bg-gray-600 dark:text-white"
+                  href="#docsTabsOverview"
+                  role="tab"
+                  data-te-toggle="pill"
+                  data-te-target="#docsTabsOverview"
+                  aria-selected="true"
+                  aria-controls="docsTabsOverview"
+                  data-te-nav-active
+                  >Overview</a
+                >
+              </li>
 
-          <div class="hidden w-full px-4 lg:block lg:w-2/12">
-            <menu class="sticky top-10">
-              <style>
-                .dc-content-animation {
-                  height: 20px;
-                  width: 50%;
-                  display: inline-block;
-                  animation: placeholderPulse 1s infinite ease-in-out;
-                  -webkit-animation: placeholderPulse 1s infinite ease-in-out;
-                }
-                @keyframes placeholderPulse {
-                  0% {
-                    background-color: rgba(133, 214, 251, 0.1);
-                    color: rgba(133, 214, 251, 0.1);
-                  }
-                  50% {
-                    background-color: rgba(133, 214, 251, 0.3);
-                    color: rgba(133, 214, 251, 0.3);
-                  }
-                  100% {
-                    background-color: rgba(133, 214, 251, 0.1);
-                    color: rgba(133, 214, 251, 0.1);
-                  }
-                }
-                .ps.nav {
-                  flex-wrap: nowrap;
-                  position: relative;
-                }
-              </style>
+              <li>
+                <a
+                  id="docs-tab-api"
+                  class="my-2 rounded bg-[#f3f4f6] px-10 py-4 text-xs font-medium uppercase leading-tight text-[#4b5563] shadow-none focus:outline-none focus:ring-0 data-[te-nav-active]:!bg-[#2563eb] data-[te-nav-active]:!text-white data-[te-nav-active]:shadow-[0_4px_6px_-1px_#0000001a,0_2px_4px_-1px_#0000000f] dark:bg-gray-600 dark:text-white"
+                  href="#docsTabsAPI"
+                  data-te-toggle="pill"
+                  data-te-target="#docsTabsAPI"
+                  aria-selected="false"
+                  aria-controls="docsTabsAPI"
+                  role="tab"
+                  >API</a
+                >
+              </li>
+            </ul>
+          {{ end }}
 
-              <div
-                class="animation fade-in relative mb-4 hidden xl:block"
-                id="dpl-gtm-scroll"
-                style="min-height: 170px; animation-delay: 0ms; animation-duration: 500ms">
-                <div class="w-100 justify-content-center absolute w-full">
-                  <div
-                    class="border-info shadow-3 overflow-hidden rounded border"
-                    style="border-color: rgba(133, 214, 251, 0.3) !important">
-                    <span
-                      class="dc-content-animation mx-2 mb-2 mt-3"
-                      style="width: 40%"></span>
-                    <span
-                      class="dc-content-animation mx-2 mb-1"
-                      style="width: 70%"></span>
-                    <span class="dc-content-animation mx-2 mb-1"></span>
-                    <span
-                      class="dc-content-animation mx-2 mb-1"
-                      style="width: 80%"></span>
-                    <span
-                      class="dc-content-animation mx-2 mb-1"
-                      style="width: 70%"></span>
-                  </div>
-                </div>
-                <!-- Alert -->
+
+          <!-- Right column -->
+          <div
+            id="docsTabsOverview"
+            role="tabpanel"
+            class="mb-8 hidden px-4 opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:flex"
+            role="tabpanel"
+            aria-labelledby="docs-tab-overview-tab"
+            data-te-tab-active>
+            <div class="flex w-full flex-col pr-4 lg:w-4/5">
+              <h1 class="mt-0 text-5xl font-bold leading-normal">
+                {{ .Params.main_title }}
+              </h1>
+              <p class="text-gray-500 dark:text-gray-300">
+                {{ .Params.description }}
+              </p>
+
+              <hr class="my-12" />
+              <main>{{ .Content }}</main>
+            </div>
+
+            <!-- Sidebar  -->
+
+            <div class="hidden px-4 lg:block lg:w-1/5">
+              <menu class="sticky top-10">
+                <style>
+                  .dc-content-animation {
+                    height: 20px;
+                    width: 50%;
+                    display: inline-block;
+                    animation: placeholderPulse 1s infinite ease-in-out;
+                    -webkit-animation: placeholderPulse 1s infinite ease-in-out;
+                  }
+                  @keyframes placeholderPulse {
+                    0% {
+                      background-color: rgba(133, 214, 251, 0.1);
+                      color: rgba(133, 214, 251, 0.1);
+                    }
+                    50% {
+                      background-color: rgba(133, 214, 251, 0.3);
+                      color: rgba(133, 214, 251, 0.3);
+                    }
+                    100% {
+                      background-color: rgba(133, 214, 251, 0.1);
+                      color: rgba(133, 214, 251, 0.1);
+                    }
+                  }
+                  .ps.nav {
+                    flex-wrap: nowrap;
+                    position: relative;
+                  }
+                </style>
+
                 <div
-                  id="gtmDC-scroll-all"
-                  class="relative"
-                  style="min-height: 1px; min-width: 1px"></div>
-                <!-- Alert -->
-              </div>
+                  class="animation fade-in relative mb-4 hidden xl:block"
+                  id="dpl-gtm-scroll"
+                  style="min-height: 170px; animation-delay: 0ms; animation-duration: 500ms">
+                  <div class="w-100 justify-content-center absolute w-full">
+                    <div
+                      class="border-info shadow-3 overflow-hidden rounded border"
+                      style="border-color: rgba(133, 214, 251, 0.3) !important">
+                      <span
+                        class="dc-content-animation mx-2 mb-2 mt-3"
+                        style="width: 40%"></span>
+                      <span
+                        class="dc-content-animation mx-2 mb-1"
+                        style="width: 70%"></span>
+                      <span class="dc-content-animation mx-2 mb-1"></span>
+                      <span
+                        class="dc-content-animation mx-2 mb-1"
+                        style="width: 80%"></span>
+                      <span
+                        class="dc-content-animation mx-2 mb-1"
+                        style="width: 70%"></span>
+                    </div>
+                  </div>
+                  <!-- Alert -->
+                  <div
+                    id="gtmDC-scroll-all"
+                    class="relative"
+                    style="min-height: 1px; min-width: 1px"></div>
+                  <!-- Alert -->
+                </div>
 
-              <ul class="dark:text-gray-200">
-                {{ with .Resources.GetMatch "ss.html" }}{{ .Content }}{{ end }}
-              </ul>
-            </menu>
+                <ul class="dark:text-gray-200">
+                  {{ with .Resources.GetMatch "ss.html" }}
+                    {{ .Content }}
+                  {{ end }}
+                </ul>
+              </menu>
+            </div>
           </div>
-        {{ end }}
+
+          {{ if $api_file_exists }}
+            <div
+              id="docsTabsAPI"
+              class="mb-8 hidden justify-between px-4 opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:flex"
+              role="tabpanel"
+              aria-labelledby="docs-tab-api-tab">
+              <div class="flex flex-col pr-4 lg:w-4/5">
+                <h1 class="mt-0 text-5xl font-bold leading-normal">
+                  {{ .Params.main_title }} - API
+                </h1>
+
+                <hr class="my-10" />
+                <main>
+                  {{ with $page_resources.GetMatch "a.html" }}
+                    {{ .Content }}
+                  {{ end }}
+                </main>
+              </div>
+              <!-- Sidebar  -->
+
+              <div class="hidden px-4 lg:block lg:w-1/5">
+                <menu class="sticky top-10">
+                  <ul class="dark:text-gray-200">
+                    {{ with .Resources.GetMatch "a-ss.html" }}
+                      {{ .Content }}
+                    {{ end }}
+                  </ul>
+                </menu>
+              </div>
+            </div>
+          {{ end }}
+        </div>
       </div>
     </div>
 

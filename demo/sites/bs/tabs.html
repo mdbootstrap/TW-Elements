@@ -39,55 +39,52 @@
       </h3>
 
       <ul
-        class="nav nav-tabs mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
-        id="tabs-tab"
-        role="tablist">
-        <li class="nav-item" role="presentation">
+        class="mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
+        role="tablist"
+        data-te-nav-ref>
+        <li role="presentation">
           <a
             href="#tabs-home"
-            class="nav-link active my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
-            id="tabs-home-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-home"
+            class="my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
+            data-te-toggle="pill"
+            data-te-target="#tabs-home"
+            data-te-nav-active
             role="tab"
             aria-controls="tabs-home"
             aria-selected="true"
             >Home</a
           >
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#tabs-profile"
-            class="nav-link my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
-            id="tabs-profile-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-profile"
+            class="focus:border-transparen my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
+            data-te-toggle="pill"
+            data-te-target="#tabs-profile"
             role="tab"
             aria-controls="tabs-profile"
             aria-selected="false"
             >Profile</a
           >
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#tabs-messages"
-            class="nav-link my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
-            id="tabs-messages-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-messages"
+            class="my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
+            data-te-toggle="pill"
+            data-te-target="#tabs-messages"
             role="tab"
             aria-controls="tabs-messages"
             aria-selected="false"
             >Messages</a
           >
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#tabs-contact"
-            class="nav-link disabled pointer-events-none my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
-            id="tabs-contact-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-contact"
+            class="disabled pointer-events-none my-2 block border-x-0 border-t-0 border-b-2 border-transparent bg-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#9ca3af] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent"
+            data-te-toggle="pill"
+            data-te-target="#tabs-contact"
             role="tab"
             aria-controls="tabs-contact"
             aria-selected="false"
@@ -95,30 +92,31 @@
           >
         </li>
       </ul>
-      <div class="tab-content" id="tabs-tabContent">
+      <div>
         <div
-          class="tab-pane fade show active"
+          class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-home"
           role="tabpanel"
-          aria-labelledby="tabs-home-tab">
+          aria-labelledby="tabs-home-tab"
+          data-te-tab-active>
           Tab 1 content
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-profile"
           role="tabpanel"
           aria-labelledby="tabs-profile-tab">
           Tab 2 content
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-messages"
           role="tabpanel"
           aria-labelledby="tabs-profile-tab">
           Tab 3 content
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-contact"
           role="tabpanel"
           aria-labelledby="tabs-contact-tab">
@@ -133,42 +131,44 @@
       <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">Fill</h3>
 
       <ul
-        class="nav nav-tabs mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
+        class="mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
         id="tabs-tabFill"
-        role="tablist">
-        <li class="nav-item flex-auto text-center" role="presentation">
+        role="tablist"
+        data-te-nav-ref>
+        <li class="flex-auto text-center" role="presentation">
           <a
             href="#tabs-homeFill"
-            class="nav-link active my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-home-tabFill"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-homeFill"
+            data-te-toggle="pill"
+            data-te-target="#tabs-homeFill"
+            data-te-nav-active
             role="tab"
             aria-controls="tabs-homeFill"
             aria-selected="true"
             >Home</a
           >
         </li>
-        <li class="nav-item flex-auto text-center" role="presentation">
+        <li class="flex-auto text-center" role="presentation">
           <a
             href="#tabs-profileFill"
-            class="nav-link my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-profile-tabFill"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-profileFill"
+            data-te-toggle="pill"
+            data-te-target="#tabs-profileFill"
             role="tab"
             aria-controls="tabs-profileFill"
             aria-selected="false"
             >Very very very very long link</a
           >
         </li>
-        <li class="nav-item flex-auto text-center" role="presentation">
+        <li class="flex-auto text-center" role="presentation">
           <a
             href="#tabs-messagesFill"
-            class="nav-link my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-messages-tabFill"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-messagesFill"
+            data-te-toggle="pill"
+            data-te-target="#tabs-messagesFill"
             role="tab"
             aria-controls="tabs-messagesFill"
             aria-selected="false"
@@ -176,23 +176,24 @@
           >
         </li>
       </ul>
-      <div class="tab-content" id="tabs-tabContentFill">
+      <div>
         <div
-          class="tab-pane fade show active"
+          class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-homeFill"
           role="tabpanel"
-          aria-labelledby="tabs-home-tabFill">
+          aria-labelledby="tabs-home-tabFill"
+          data-te-tab-active>
           Tab 1 content fill
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-profileFill"
           role="tabpanel"
           aria-labelledby="tabs-profile-tabFill">
           Tab 2 content fill
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-messagesFill"
           role="tabpanel"
           aria-labelledby="tabs-profile-tabFill">
@@ -209,42 +210,44 @@
       </h3>
 
       <ul
-        class="nav nav-tabs nav-justified mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
+        class="mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
         id="tabs-tabJustify"
-        role="tablist">
-        <li class="nav-item flex-grow text-center" role="presentation">
+        role="tablist"
+        data-te-nav-ref>
+        <li class="flex-grow basis-0 text-center" role="presentation">
           <a
             href="#tabs-homeJustify"
-            class="nav-link active my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full basis-0 border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-home-tabJustify"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-homeJustify"
+            data-te-toggle="pill"
+            data-te-target="#tabs-homeJustify"
+            data-te-nav-active
             role="tab"
             aria-controls="tabs-homeJustify"
             aria-selected="true"
             >Home</a
           >
         </li>
-        <li class="nav-item flex-grow text-center" role="presentation">
+        <li class="flex-grow basis-0 text-center" role="presentation">
           <a
             href="#tabs-profileJustify"
-            class="nav-link my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full basis-0 border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-profile-tabJustify"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-profileJustify"
+            data-te-toggle="pill"
+            data-te-target="#tabs-profileJustify"
             role="tab"
             aria-controls="tabs-profileJustify"
             aria-selected="false"
             >Very very very very long link</a
           >
         </li>
-        <li class="nav-item flex-grow text-center" role="presentation">
+        <li class="flex-grow basis-0 text-center" role="presentation">
           <a
             href="#tabs-messagesJustify"
-            class="nav-link my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full basis-0 border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-messages-tabJustify"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-messagesJustify"
+            data-te-toggle="pill"
+            data-te-target="#tabs-messagesJustify"
             role="tab"
             aria-controls="tabs-messagesJustify"
             aria-selected="false"
@@ -252,23 +255,24 @@
           >
         </li>
       </ul>
-      <div class="tab-content" id="tabs-tabContentJustify">
+      <div>
         <div
-          class="tab-pane fade show active"
+          class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-homeJustify"
+          data-te-tab-active
           role="tabpanel"
           aria-labelledby="tabs-home-tabJustify">
           Tab 1 content justify
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-profileJustify"
           role="tabpanel"
           aria-labelledby="tabs-profile-tabJustify">
           Tab 2 content justify
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-messagesJustify"
           role="tabpanel"
           aria-labelledby="tabs-profile-tabJustify">
@@ -286,42 +290,44 @@
 
       <div class="flex items-start">
         <ul
-          class="nav nav-tabs mr-4 flex list-none flex-col flex-wrap border-b-0 pl-0"
+          class="mr-4 flex list-none flex-col flex-wrap border-b-0 pl-0"
           id="tabs-tabVertical"
-          role="tablist">
-          <li class="nav-item flex-grow text-center" role="presentation">
+          role="tablist"
+          data-te-nav-ref>
+          <li class="flex-grow text-center" role="presentation">
             <a
               href="#tabs-homeVertical"
-              class="nav-link active my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+              class="my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
               id="tabs-home-tabVertical"
-              data-bs-toggle="pill"
-              data-bs-target="#tabs-homeVertical"
+              data-te-toggle="pill"
+              data-te-target="#tabs-homeVertical"
+              data-te-nav-active
               role="tab"
               aria-controls="tabs-homeVertical"
               aria-selected="true"
               >Home</a
             >
           </li>
-          <li class="nav-item flex-grow text-center" role="presentation">
+          <li class="flex-grow text-center" role="presentation">
             <a
               href="#tabs-profileVertical"
-              class="nav-link my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+              class="my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
               id="tabs-profile-tabVertical"
-              data-bs-toggle="pill"
-              data-bs-target="#tabs-profileVertical"
+              data-te-toggle="pill"
+              data-te-target="#tabs-profileVertical"
               role="tab"
               aria-controls="tabs-profileVertical"
               aria-selected="false"
               >Profile</a
             >
           </li>
-          <li class="nav-item flex-grow text-center" role="presentation">
+          <li class="flex-grow text-center" role="presentation">
             <a
               href="#tabs-messagesVertical"
-              class="nav-link my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+              class="my-2 block border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
               id="tabs-messages-tabVertical"
-              data-bs-toggle="pill"
-              data-bs-target="#tabs-messagesVertical"
+              data-te-toggle="pill"
+              data-te-target="#tabs-messagesVertical"
               role="tab"
               aria-controls="tabs-messagesVertical"
               aria-selected="false"
@@ -329,23 +335,24 @@
             >
           </li>
         </ul>
-        <div class="tab-content" id="tabs-tabContentVertical">
+        <div>
           <div
-            class="tab-pane fade show active"
+            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-homeVertical"
             role="tabpanel"
+            data-te-tab-active
             aria-labelledby="tabs-home-tabVertical">
             Tab 1 content vertical
           </div>
           <div
-            class="tab-pane fade"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-profileVertical"
             role="tabpanel"
             aria-labelledby="tabs-profile-tabVertical">
             Tab 2 content vertical
           </div>
           <div
-            class="tab-pane fade"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-messagesVertical"
             role="tabpanel"
             aria-labelledby="tabs-profile-tabVertical">
@@ -363,42 +370,44 @@
       </h3>
 
       <ul
-        class="nav nav-tabs mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
+        class="mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
         id="tabs-tab3"
-        role="tablist">
-        <li class="nav-item" role="presentation">
+        role="tablist"
+        data-te-nav-ref>
+        <li role="presentation">
           <a
             href="#tabs-home3"
-            class="nav-link active my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-home-tab3"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-home3"
+            data-te-toggle="pill"
+            data-te-target="#tabs-home3"
+            data-te-nav-active
             role="tab"
             aria-controls="tabs-home3"
             aria-selected="true"
             >Home</a
           >
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#tabs-profile3"
-            class="nav-link my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-profile-tab3"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-profile3"
+            data-te-toggle="pill"
+            data-te-target="#tabs-profile3"
             role="tab"
             aria-controls="tabs-profile3"
             aria-selected="false"
             >Profile</a
           >
         </li>
-        <li class="nav-item" role="presentation">
+        <li role="presentation">
           <a
             href="#tabs-messages3"
-            class="nav-link my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="my-2 block w-full border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 text-xs font-medium uppercase leading-tight text-[#4b5563] hover:isolate hover:border-transparent hover:bg-gray-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-[#2563eb] data-[te-nav-active]:text-[#2563eb] dark:hover:bg-transparent"
             id="tabs-messages-tab3"
-            data-bs-toggle="pill"
-            data-bs-target="#tabs-messages3"
+            data-te-toggle="pill"
+            data-te-target="#tabs-messages3"
             role="tab"
             aria-controls="tabs-messages3"
             aria-selected="false"
@@ -406,23 +415,24 @@
           >
         </li>
       </ul>
-      <div class="tab-content" id="tabs-tabContent3">
+      <div>
         <div
-          class="tab-pane fade show active"
+          class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-home3"
           role="tabpanel"
+          data-te-tab-active
           aria-labelledby="tabs-home-tab3">
           Tab 1 content button version
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-profile3"
           role="tabpanel"
           aria-labelledby="tabs-profile-tab3">
           Tab 2 content button version
         </div>
         <div
-          class="tab-pane fade"
+          class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-messages3"
           role="tabpanel"
           aria-labelledby="tabs-profile-tab3">
