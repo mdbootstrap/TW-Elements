@@ -5,7 +5,8 @@
 
 
 <div
-  class="tab-pane fade {{ if eq (.Get `active`) true }}active show{{ end }}"
+  class="hidden opacity-0 {{ if eq (.Get `active`) true }}opacity-100{{ end }} transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+  {{ if eq (.Get `active`) true }}data-te-tab-active{{ end }}
   id="mdb_{{ $hash }}"
   role="tabpanel">
   <pre
