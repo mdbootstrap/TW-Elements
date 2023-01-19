@@ -274,7 +274,10 @@ class Carousel extends BaseComponent {
       SELECTOR_DATA_ACTIVE_ITEM,
       this._element
     );
-    activeElement.classList.add(this._classes.block, this._classes.visible);
+    activeElement.classList.add(
+      this._classes.block,
+      ...this._classes.visible.split(" ")
+    );
 
     this._setActiveIndicatorElement(activeElement);
   }
@@ -568,11 +571,14 @@ class Carousel extends BaseComponent {
       reflow(nextElement);
 
       activeElement.setAttribute(`${directionalAttr}`, "");
-      activeElement.classList.add(activeClass, this._classes.invisible);
-      activeElement.classList.remove(this._classes.visible);
+      activeElement.classList.add(
+        activeClass,
+        ...this._classes.invisible.split(" ")
+      );
+      activeElement.classList.remove(...this._classes.visible.split(" "));
 
       nextElement.setAttribute(`${directionalAttr}`, "");
-      nextElement.classList.add(this._classes.visible);
+      nextElement.classList.add(...this._classes.visible.split(" "));
       nextElement.classList.remove(
         this._classes.slideRight,
         this._classes.slideLeft
@@ -586,7 +592,7 @@ class Carousel extends BaseComponent {
         activeElement.removeAttribute(ATTR_ACTIVE);
         activeElement.classList.remove(
           activeClass,
-          this._classes.invisible,
+          ...this._classes.invisible.split(" "),
           this._classes.block
         );
         activeElement.removeAttribute(orderAttr);
