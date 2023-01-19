@@ -48,7 +48,7 @@
     </section>
     <!--Section: Code-->
 
-    <h5 class="mt-5 font-bold">Dismiss</h5>
+    <h5 class="font-bold">Dismiss</h5>
     <p>
       Dismissal can be achieved with <strong>data</strong> attributes on a
       button <strong>within the modal</strong> as demonstrated below:
@@ -70,7 +70,7 @@
       </section>
       <!--Section: Code-->
 
-      <p class="mt-5">
+      <p>
         or on a button <strong>outside the modal</strong> using the
         <code>data-te-target</code> as demonstrated below:
       </p>
@@ -92,7 +92,7 @@
         <!--Section: Code-->
 
         <div
-          class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
+          class="mb-5 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
           role="alert">
           <p class="mb-2">
             While both ways to dismiss a modal are supported, keep in mind that
@@ -108,26 +108,24 @@
         <p>Create a modal with a single line of JavaScript:</p>
 
         <!--Section: Code-->
-        <section class="mb-4">
-          {{< twsnippet/no-demo id="api-example4" >}}
-          <section
-            class="!visible hidden"
-            data-te-collapse-item
-            id="api-example4">
-            <div class="pt-4">
-              {{< twsnippet/wrapper "JavaScript" >}}
-              {{< twsnippet/code active=true lang="js" >}}
-              const myModal = new mdb.Modal(document.getElementById('myModal'),
-              options)
-              {{< /twsnippet/code >}}
-              {{< /twsnippet/wrapper >}}
-            </div>
-          </section>
-          <!--Section: Code-->
+        {{< twsnippet/no-demo id="api-example4" >}}
+        <section
+          class="!visible hidden"
+          data-te-collapse-item
+          id="api-example4">
+          <div class="pt-4">
+            {{< twsnippet/wrapper "JavaScript" >}}
+            {{< twsnippet/code active=true lang="js" >}}
+            const myModal = new mdb.Modal(document.getElementById('myModal'),
+            options)
+            {{< /twsnippet/code >}}
+            {{< /twsnippet/wrapper >}}
+          </div>
         </section>
+        <!--Section: Code-->
         <!--Section: Usage-->
 
-        <hr class="my-5 dark:border-gray-600" />
+        <hr class="mb-5 dark:border-gray-600" />
 
         <!--Section: Options-->
         <section id="api-section-options">
@@ -148,27 +146,44 @@
               <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                   <table
-                    class="min-w-full text-left text-sm font-light text-gray-900 dark:text-gray-100">
+                    class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
                     <thead
                       class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
                       <tr>
-                        <th scope="col" class="px-6 py-4">Name</th>
-                        <th scope="col" class="px-6 py-4">Type</th>
-                        <th scope="col" class="px-6 py-4">Default</th>
+                        <th
+                          scope="col"
+                          class="border-r px-6 py-4 dark:border-neutral-500">
+                          Name
+                        </th>
+                        <th
+                          scope="col"
+                          class="border-r px-6 py-4 dark:border-neutral-500">
+                          Type
+                        </th>
+                        <th
+                          scope="col"
+                          class="border-r px-6 py-4 dark:border-neutral-500">
+                          Default
+                        </th>
                         <th scope="col" class="px-6 py-4">Description</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr
                         class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                        <td class="px-6 py-4 font-medium">
+                        <td
+                          class="border-r px-6 py-4 font-medium dark:border-neutral-500">
                           <code>backdrop</code>
                         </td>
-                        <td class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           boolean or the string <code>'static'</code>
                         </td>
-                        <td class="px-6 py-4"><code>true</code></td>
-                        <td class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                          <code>true</code>
+                        </td>
+                        <td class="px-6 py-4 max-lg:whitespace-nowrap">
                           Includes a modal-backdrop element. Alternatively,
                           specify
                           <code>static</code> for a backdrop which doesn't close
@@ -177,23 +192,37 @@
                       </tr>
                       <tr
                         class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                        <td class="px-6 py-4 font-medium">
+                        <td
+                          class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>keyboard</code>
                         </td>
-                        <td class="px-6 py-4">boolean</td>
-                        <td class="px-6 py-4"><code>true</code></td>
-                        <td class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                          boolean
+                        </td>
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                          <code>true</code>
+                        </td>
+                        <td class="px-6 py-4 max-lg:whitespace-nowrap">
                           Closes the modal when escape key is pressed.
                         </td>
                       </tr>
                       <tr
                         class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                        <td class="px-6 py-4 font-medium">
+                        <td
+                          class="border-r px-6 py-4 font-medium dark:border-neutral-500">
                           <code>focus</code>
                         </td>
-                        <td class="px-6 py-4">boolean</td>
-                        <td class="px-6 py-4"><code>true</code></td>
-                        <td class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                          boolean
+                        </td>
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                          <code>true</code>
+                        </td>
+                        <td class="px-6 py-4 max-lg:whitespace-nowrap">
                           Puts the focus on the modal when initialized.
                         </td>
                       </tr>
@@ -206,7 +235,7 @@
         </section>
         <!--Section: Options-->
 
-        <hr class="my-5 dark:border-gray-600" />
+        <hr class="mb-5 dark:border-gray-600" />
         <!--Section: Classes-->
         <section id="api-section-classes">
           <!-- Section title -->
@@ -228,36 +257,50 @@
               <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                   <table
-                    class="min-w-full text-left text-sm font-light text-gray-900 dark:text-gray-100">
+                    class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
                     <thead
                       class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
                       <tr>
-                        <th scope="col" class="px-6 py-4">Name</th>
-                        <th scope="col" class="px-6 py-4">Default</th>
+                        <th
+                          scope="col"
+                          class="border-r px-6 py-4 dark:border-neutral-500">
+                          Name
+                        </th>
+                        <th
+                          scope="col"
+                          class="border-r px-6 py-4 dark:border-neutral-500">
+                          Default
+                        </th>
                         <th scope="col" class="px-6 py-4">Description</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr
                         class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                        <td class="px-6 py-4 font-medium">
+                        <td
+                          class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>static</code>
                         </td>
-                        <td class="px-6 py-4">scale-[1.02]</td>
-                        <td class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                          scale-[1.02]
+                        </td>
+                        <td class="px-6 py-4 max-lg:whitespace-nowrap">
                           Size of zoom when clicking outside the modal in static
                           type.
                         </td>
                       </tr>
                       <tr
                         class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                        <td class="px-6 py-4 font-medium">
+                        <td
+                          class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>staticProperties</code>
                         </td>
-                        <td class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           transition-scale duration-300 ease-in-out
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 max-lg:whitespace-nowrap">
                           Style in which static modal zoom in and zoom out when
                           clicking outside modal.
                         </td>
@@ -306,46 +349,62 @@
               <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                   <table
-                    class="min-w-full text-left text-sm font-light text-gray-900 dark:text-gray-100">
+                    class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
                     <thead
                       class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
                       <tr>
-                        <th scope="col" class="px-6 py-4">Method</th>
-                        <th scope="col" class="px-6 py-4">Description</th>
+                        <th
+                          scope="col"
+                          class="border-r px-6 py-4 dark:border-neutral-500">
+                          Method
+                        </th>
+                        <th
+                          scope="col"
+                          class="border-r px-6 py-4 dark:border-neutral-500">
+                          Description
+                        </th>
                         <th scope="col" class="px-6 py-4">Example</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr
                         class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>dispose</code>
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           Destroys an element’s modal.
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td class="px-6 py-4 max-lg:whitespace-nowrap">
                           <code>myModal.dispose()</code>
                         </td>
                       </tr>
                       <tr
                         class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>handleUpdate</code>
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           Manually readjust the modal’s position if the height
                           of a modal changes while it is open (i.e. in case a
                           scrollbar appears).
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td class="px-6 py-4">
                           <code>myModal.handleUpdate()</code>
                         </td>
                       </tr>
                       <tr
                         class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                        <td scope="col" class="px-6 py-4"><code>hide</code></td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                          <code>hide</code>
+                        </td>
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           Manually hides a modal.
                           <strong
                             >Returns to the caller before the modal has actually
@@ -354,14 +413,19 @@
                           (i.e. before the <code>hidden.mdb.modal</code> event
                           occurs).
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>myModal.hide()</code>
                         </td>
                       </tr>
                       <tr
                         class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                        <td scope="col" class="px-6 py-4"><code>show</code></td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                          <code>show</code>
+                        </td>
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           Manually opens a modal.
                           <strong
                             >Returns to the caller before the modal has actually
@@ -370,16 +434,19 @@
                           (i.e. before the <code>shown.mdb.modal</code> event
                           occurs).
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>myModal.show()</code>
                         </td>
                       </tr>
                       <tr
                         class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>toggle</code>
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           Manually toggles a modal.
                           <strong
                             >Returns to the caller before the modal has actually
@@ -388,34 +455,39 @@
                           (i.e. before the <code>shown.mdb.modal</code> or
                           <code>hidden.mdb.modal</code> event occurs).
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>myModal.toggle()</code>
                         </td>
                       </tr>
                       <tr
                         class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>getInstance</code>
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           Static method which allows you to get the modal
                           instance associated with a DOM element.
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td class="px-6 py-4 max-lg:whitespace-nowrap">
                           <code>Modal.getInstance()</code>
                         </td>
                       </tr>
                       <tr
                         class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           <code>getOrCreateInstance</code>
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td
+                          class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                           Static method which allows you to get the modal
                           instance associated with a DOM element or create a new
                           one in case it wasn't initialized.
                         </td>
-                        <td scope="col" class="px-6 py-4">
+                        <td class="px-6 py-4 max-lg:whitespace-nowrap">
                           <code>Modal.getOrCreateInstance()</code>
                         </td>
                       </tr>
@@ -427,26 +499,24 @@
           </div>
 
           <!--Section: Code-->
-          <section class="mb-4">
-            {{< twsnippet/no-demo id="api-example5" >}}
-            <section
-              class="!visible hidden"
-              data-te-collapse-item
-              id="api-example5">
-              <div class="pt-4">
-                {{< twsnippet/wrapper "JavaScript" >}}
-                {{< twsnippet/code active=true lang="js" >}}
-                const myModalEl = document.getElementById('myModal') const modal
-                = new mdb.Modal(myModalEl) modal.show()
-                {{< /twsnippet/code >}}
-                {{< /twsnippet/wrapper >}}
-              </div>
-            </section>
-            <!--Section: Code-->
+          {{< twsnippet/no-demo id="api-example5" >}}
+          <section
+            class="!visible hidden"
+            data-te-collapse-item
+            id="api-example5">
+            <div class="pt-4">
+              {{< twsnippet/wrapper "JavaScript" >}}
+              {{< twsnippet/code active=true lang="js" >}}
+              const myModalEl = document.getElementById('myModal') const modal =
+              new mdb.Modal(myModalEl) modal.show()
+              {{< /twsnippet/code >}}
+              {{< /twsnippet/wrapper >}}
+            </div>
           </section>
+          <!--Section: Code-->
           <!--Section: Methods-->
 
-          <hr class="my-5 dark:border-gray-600" />
+          <hr class="mb-5 dark:border-gray-600" />
 
           <!--Section: Events-->
           <section id="api-section-events">
@@ -467,21 +537,26 @@
                 <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                   <div class="overflow-hidden">
                     <table
-                      class="min-w-full text-left text-sm font-light text-gray-900 dark:text-gray-100">
+                      class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
                       <thead
                         class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
                         <tr>
-                          <th scope="col" class="px-6 py-4">Event type</th>
+                          <th
+                            scope="col"
+                            class="border-r px-6 py-4 dark:border-neutral-500">
+                            Event type
+                          </th>
                           <th scope="col" class="px-6 py-4">Description</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr
                           class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                          <td scope="col" class="px-6 py-4">
+                          <td
+                            class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                             <code>show.mdb.modal</code>
                           </td>
-                          <td scope="col" class="px-6 py-4">
+                          <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event fires immediately when the
                             <code>show</code> instance method is called. If
                             caused by a click, the clicked element is available
@@ -491,10 +566,11 @@
                         </tr>
                         <tr
                           class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                          <td scope="col" class="px-6 py-4">
+                          <td
+                            class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                             <code>shown.mdb.modal</code>
                           </td>
-                          <td scope="col" class="px-6 py-4">
+                          <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event is fired when the modal has been made
                             visible to the user (will wait for CSS transitions
                             to complete). If caused by a click, the clicked
@@ -504,20 +580,22 @@
                         </tr>
                         <tr
                           class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                          <td scope="col" class="px-6 py-4">
+                          <td
+                            class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                             <code>hide.mdb.modal</code>
                           </td>
-                          <td scope="col" class="px-6 py-4">
+                          <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event is fired immediately when the
                             <code>hide</code> instance method has been called.
                           </td>
                         </tr>
                         <tr
                           class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                          <td scope="col" class="px-6 py-4">
+                          <td
+                            class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                             <code>hidden.mdb.modal</code>
                           </td>
-                          <td scope="col" class="px-6 py-4">
+                          <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event is fired when the modal has finished
                             being hidden from the user (will wait for CSS
                             transitions to complete).
@@ -525,10 +603,11 @@
                         </tr>
                         <tr
                           class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                          <td scope="col" class="px-6 py-4">
+                          <td
+                            class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                             <code>hidePrevented.mdb.modal</code>
                           </td>
-                          <td scope="col" class="px-6 py-4">
+                          <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event is fired when the modal is shown, its
                             backdrop is
                             <code>static</code> and a click outside the modal or
@@ -545,24 +624,22 @@
             </div>
 
             <!--Section: Code-->
-            <section class="mb-4">
-              {{< twsnippet/no-demo id="api-example6" >}}
-              <section
-                class="!visible hidden"
-                data-te-collapse-item
-                id="api-example6">
-                <div class="pt-4">
-                  {{< twsnippet/wrapper "JavaScript" >}}
-                  {{< twsnippet/code active=true lang="js" >}}
-                  const myModalEl = document.getElementById('myModal')
-                  myModalEl.addEventListener('hidden.mdb.modal', (e) => { // do
-                  something... })
-                  {{< /twsnippet/code >}}
-                  {{< /twsnippet/wrapper >}}
-                </div>
-              </section>
-              <!--Section: Code-->
+            {{< twsnippet/no-demo id="api-example6" >}}
+            <section
+              class="!visible hidden"
+              data-te-collapse-item
+              id="api-example6">
+              <div class="pt-4">
+                {{< twsnippet/wrapper "JavaScript" >}}
+                {{< twsnippet/code active=true lang="js" >}}
+                const myModalEl = document.getElementById('myModal')
+                myModalEl.addEventListener('hidden.mdb.modal', (e) => { // do
+                something... })
+                {{< /twsnippet/code >}}
+                {{< /twsnippet/wrapper >}}
+              </div>
             </section>
+            <!--Section: Code-->
             <!--Section: Events-->
           </section>
           <!--Section: Docs content-->
