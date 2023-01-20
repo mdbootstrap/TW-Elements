@@ -1,4 +1,4 @@
-// import PerfectScrollbar from 'perfect-scrollbar';
+import PerfectScrollbar from "perfect-scrollbar";
 import {
   array,
   element,
@@ -8,19 +8,17 @@ import {
   onDOMContentLoaded,
   isRTL,
 } from "./util/index";
-// import FocusTrap from "../mdb/util/focusTrap";
-// import { ENTER, TAB, ESCAPE } from "../mdb/util/keycodes";
-// import Touch from "../mdb/util/touch";
-// import Collapse from "../bootstrap/mdb-prefix/collapse";
+import FocusTrap from "./util/focusTrap";
+import { ENTER, TAB, ESCAPE } from "./util/keycodes";
+import Touch from "./util/touch/index";
 import Collapse from "../bs/src/collapse";
-// import Data from "../mdb/dom/data";
 import Data from "./dom/data";
 import EventHandler from "./dom/event-handler";
 import Manipulator from "./dom/manipulator";
 import SelectorEngine from "./dom/selector-engine";
-// import Ripple from "../free/ripple";
 import Ripple from "./ripple";
 import Backdrop from "../bs/src/util/backdrop";
+import addPerfectScrollbarStyles from "./util/addPerfectScrollbarStyles";
 
 /**
  * ------------------------------------------------------------------------
@@ -30,70 +28,72 @@ import Backdrop from "../bs/src/util/backdrop";
 
 const NAME = "sidenav";
 const DATA_KEY = "te.sidenav";
-const ARROW_CLASS = "rotate-icon";
-// const BACKDROP_CLASS = "sidenav-backdrop";
-// const SELECTOR_SIDENAV = ".sidenav";
+const ARROW_DATA = "data-te-sidenav-rotate-icon-ref";
 const SELECTOR_SIDENAV = "[data-te-sidenav-init]";
-
 const SELECTOR_TOGGLE = "[data-te-sidenav-toggle-ref]";
 
-// const SELECTOR_TOGGLE_COLLAPSE = '[data-mdb-toggle="collapse"]';
 const SELECTOR_TOGGLE_COLLAPSE = "[data-te-collapse-init]";
 
-const SELECTOR_SHOW_SLIM = '[data-mdb-slim="true"]';
-const SELECTOR_HIDE_SLIM = '[data-mdb-slim="false"]';
+const SELECTOR_SHOW_SLIM = '[data-te-sidenav-slim="true"]';
+const SELECTOR_HIDE_SLIM = '[data-te-sidenav-slim="false"]';
 
 const SELECTOR_NAVIGATION = "[data-te-sidenav-menu-ref]";
 const SELECTOR_COLLAPSE = "[data-te-sidenav-collapse-ref]";
 const SELECTOR_LINK = "[data-te-sidenav-link-ref]";
 
+const ARROW_SVG_TEMPLATE =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>';
+
 const TRANSLATION_LEFT = isRTL ? 100 : -100;
 const TRANSLATION_RIGHT = isRTL ? -100 : 100;
+
+const SLIM_CLASSES =
+  " data-[te-sidenav-slim='true']:hidden data-[te-sidenav-slim-collapsed='true']:w-[77px] [&[data-te-sidenav-slim-collapsed='true'][data-te-sidenav-slim='false']]:hidden [&[data-te-sidenav-slim-collapsed='true'][data-te-sidenav-slim='true']]:[display:unset]";
 
 let instanceCount = 0;
 
 const OPTIONS_TYPE = {
-  accordion: "(boolean)",
-  backdrop: "(boolean)",
-  backdropClass: "(null|string)",
-  closeOnEsc: "(boolean)",
-  color: "(string)",
-  content: "(null|string)",
-  expandable: "(boolean)",
-  expandOnHover: "(boolean)",
-  focusTrap: "(boolean)",
+  sidenavAccordion: "(boolean)",
+  sidenavBackdrop: "(boolean)",
+  sidenavBackdropClass: "(null|string)",
+  sidenavCloseOnEsc: "(boolean)",
+  sidenavColor: "(string)",
+  sidenavContent: "(null|string)",
+  sidenavExpandable: "(boolean)",
+  sidenavExpandOnHover: "(boolean)",
+  sidenavFocusTrap: "(boolean)",
   sidenavHidden: "(boolean)",
-  mode: "(string)",
-  scrollContainer: "(null|string)",
-  slim: "(boolean)",
-  slimCollapsed: "(boolean)",
-  slimWidth: "(number)",
+  sidenavMode: "(string)",
+  sidenavScrollContainer: "(null|string)",
+  sidenavSlim: "(boolean)",
+  sidenavSlimCollapsed: "(boolean)",
+  sidenavSlimWidth: "(number)",
   sidenavPosition: "(string)",
-  right: "(boolean)",
-  transitionDuration: "(number)",
-  width: "(number)",
+  sidenavRight: "(boolean)",
+  sidenavTransitionDuration: "(number)",
+  sidenavWidth: "(number)",
 };
 
 const DEFAULT_OPTIONS = {
-  accordion: false,
-  backdrop: true,
-  backdropClass: null,
-  closeOnEsc: true,
-  color: "primary",
-  content: null,
-  expandable: true,
-  expandOnHover: false,
-  focusTrap: true,
+  sidenavAccordion: false,
+  sidenavBackdrop: true,
+  sidenavBackdropClass: null,
+  sidenavCloseOnEsc: true,
+  sidenavColor: "primary",
+  sidenavContent: null,
+  sidenavExpandable: true,
+  sidenavExpandOnHover: false,
+  sidenavFocusTrap: true,
   sidenavHidden: true,
-  mode: "over",
-  scrollContainer: null,
-  slim: false,
-  slimCollapsed: false,
-  slimWidth: 77,
+  sidenavMode: "over",
+  sidenavScrollContainer: null,
+  sidenavSlim: false,
+  sidenavSlimCollapsed: false,
+  sidenavSlimWidth: 77,
   sidenavPosition: "fixed",
-  right: false,
-  transitionDuration: 300,
-  width: 240,
+  sidenavRight: false,
+  sidenavTransitionDuration: 300,
+  sidenavWidth: 240,
 };
 
 /**
@@ -119,17 +119,17 @@ class Sidenav {
     this._tempSlim = false;
     this._backdrop = this._initializeBackDrop();
 
-    // this._focusTrap = null;
-    // this._perfectScrollbar = null;
-    // this._touch = null;
+    this._focusTrap = null;
+    this._perfectScrollbar = null;
+    this._touch = null;
 
-    // this.escHandler = (e) => {
-    //   if (e.keyCode === ESCAPE && this.toggler && isVisible(this.toggler)) {
-    //     this._update(false);
+    this.escHandler = (e) => {
+      if (e.keyCode === ESCAPE && this.toggler && isVisible(this.toggler)) {
+        this._update(false);
 
-    //     EventHandler.off(window, "keydown", this.escHandler);
-    //   }
-    // };
+        EventHandler.off(window, "keydown", this.escHandler);
+      }
+    };
 
     this.hashHandler = () => {
       this._setActiveElements();
@@ -141,7 +141,7 @@ class Sidenav {
       this._setup();
     }
 
-    if (this.options.backdrop) {
+    if (this.options.sidenavBackdrop && this.options.sidenavMode === "over") {
       EventHandler.on(this._element, "transitionend", this._addBackdropOnInit);
     }
   }
@@ -161,7 +161,10 @@ class Sidenav {
       if (!el.parentNode || el.parentNode === document) {
         return el;
       }
-      if (el.parentNode.style.sidenavPosition === "relative") {
+      if (
+        el.parentNode.style.position === "relative" ||
+        el.parentNode.classList.contains("relative")
+      ) {
         return el.parentNode;
       }
       return findContainer(el.parentNode);
@@ -182,7 +185,7 @@ class Sidenav {
 
     const { x } = this._element.getBoundingClientRect();
 
-    if (this.options.right) {
+    if (this.options.sidenavRight) {
       return Math.abs(x - containerEnd) > 10;
     }
 
@@ -229,15 +232,17 @@ class Sidenav {
   }
 
   get transitionDuration() {
-    return `${this.options.transitionDuration / 1000}s`;
+    return `${this.options.sidenavTransitionDuration / 1000}s`;
   }
 
   get translation() {
-    return this.options.right ? TRANSLATION_RIGHT : TRANSLATION_LEFT;
+    return this.options.sidenavRight ? TRANSLATION_RIGHT : TRANSLATION_LEFT;
   }
 
   get width() {
-    return this._slimCollapsed ? this.options.slimWidth : this.options.width;
+    return this._slimCollapsed
+      ? this.options.sidenavSlimWidth
+      : this.options.sidenavWidth;
   }
 
   // Public
@@ -247,16 +252,12 @@ class Sidenav {
   }
 
   dispose() {
-    // if (this._backdrop) {
-    //   this._removeBackdrop();
-    // }
-
-    // EventHandler.off(window, "keydown", this.escHandler);
-    this.options.backdrop && this._backdrop.dispose();
+    EventHandler.off(window, "keydown", this.escHandler);
+    this.options.sidenavBackdrop && this._backdrop.dispose();
 
     EventHandler.off(window, "hashchange", this.hashHandler);
 
-    // this._touch.dispose();
+    this._touch.dispose();
 
     Data.removeData(this._element, DATA_KEY);
 
@@ -266,13 +267,13 @@ class Sidenav {
   hide() {
     this._setVisibility(false);
     this._update(false);
-    this.options.backdrop && this._backdrop.hide();
+    this.options.sidenavBackdrop && this._backdrop.hide();
   }
 
   show() {
     this._setVisibility(true);
     this._update(true);
-    this.options.backdrop && this._backdrop.show();
+    this.options.sidenavBackdrop && this._backdrop.show();
   }
 
   toggle() {
@@ -293,14 +294,17 @@ class Sidenav {
   // Private
 
   _appendArrow(node) {
-    const arrow = element("i");
+    const arrowSVG = element("svg");
+    arrowSVG.className = `absolute w-3 h-3 right-0 ml-auto mr-[0.8rem] transition-transform duration-300 motion-reduce:transition-none ${
+      this.options.sidenavColor === "white"
+        ? "[&>svg]:fill-gray-300"
+        : "[&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+    }`;
+    arrowSVG.innerHTML = ARROW_SVG_TEMPLATE;
+    arrowSVG.setAttribute(ARROW_DATA, "");
 
-    ["fas", "fa-angle-down", ARROW_CLASS].forEach((className) => {
-      Manipulator.addClass(arrow, className);
-    });
-
-    if (SelectorEngine.find(`.${ARROW_CLASS}`, node).length === 0) {
-      node.appendChild(arrow);
+    if (SelectorEngine.find(`[${ARROW_DATA}]`, node).length === 0) {
+      node.appendChild(arrowSVG);
     }
   }
 
@@ -344,15 +348,15 @@ class Sidenav {
     if (
       inverseDirecion &&
       this._slimCollapsed &&
-      this.options.slim &&
-      this.options.expandable
+      this.options.sidenavSlim &&
+      this.options.sidenavExpandable
     ) {
       this.toggleSlim();
     } else if (!inverseDirecion) {
       if (
         this._slimCollapsed ||
-        !this.options.slim ||
-        !this.options.expandable
+        !this.options.sidenavSlim ||
+        !this.options.sidenavExpandable
       ) {
         if (this.toggler && isVisible(this.toggler)) {
           this.toggle();
@@ -395,11 +399,12 @@ class Sidenav {
   }
 
   _initializeBackDrop() {
-    if (!this.options.backdrop) {
+    if (!this.options.sidenavBackdrop) {
       return;
     }
     const backdropClasses =
-      this.options.backdropClass || this.options.sidenavPosition === "absolute"
+      this.options.sidenavBackdropClass ||
+      this.options.sidenavPosition === "absolute"
         ? [
             "opacity-50",
             "transition-all",
@@ -416,7 +421,7 @@ class Sidenav {
         : null;
 
     return new Backdrop({
-      isVisible: this.options.backdrop,
+      isVisible: this.options.sidenavBackdrop,
       isAnimated: true,
       rootElement: this._element.parentNode,
       backdropClasses,
@@ -424,15 +429,24 @@ class Sidenav {
     });
   }
 
+  _updateBackdrop(show) {
+    if (this.options.sidenavMode === "over") {
+      show ? this._backdrop.show() : this._backdrop.hide();
+      return;
+    }
+    SelectorEngine.findOne("[data-te-backdrop-show]", this.container) &&
+      this._backdrop.hide();
+  }
+
   _setup() {
     // Touch events
-    // this._setupTouch();
+    this._setupTouch();
 
     // Focus trap
 
-    // if (this.options.focusTrap) {
-    //   this._setupFocusTrap();
-    // }
+    if (this.options.sidenavFocusTrap) {
+      this._setupFocusTrap();
+    }
 
     // Collapse
 
@@ -440,7 +454,7 @@ class Sidenav {
 
     // Slim
 
-    if (this.options.slim) {
+    if (this.options.sidenavSlim) {
       this._setupSlim();
     }
 
@@ -454,7 +468,7 @@ class Sidenav {
 
     // Content
 
-    if (this.options.content) {
+    if (this.options.sidenavContent) {
       this._setupContent();
     }
 
@@ -478,11 +492,11 @@ class Sidenav {
 
     this.links.forEach((link) => {
       EventHandler.on(link, "click", () => this._setActiveElements(link));
-      //   EventHandler.on(link, "keydown", (e) => {
-      // if (e.keyCode === ENTER) {
-      //   this._setActiveElements(link);
-      // }
-      //   });
+      EventHandler.on(link, "keydown", (e) => {
+        if (e.keyCode === ENTER) {
+          this._setActiveElements(link);
+        }
+      });
     });
 
     EventHandler.on(window, "hashchange", this.hashHandler);
@@ -504,12 +518,12 @@ class Sidenav {
   _setupCollapseList({ list, index, menu, menuIndex }) {
     const ID = this._generateCollpaseID(index, menuIndex);
 
-    list.classList.add("collapse");
     list.setAttribute("id", ID);
+    list.setAttribute("data-te-collapse-item", "");
 
     const [toggler] = SelectorEngine.prev(list, SELECTOR_LINK);
 
-    Manipulator.setDataAttribute(toggler, "toggle", "collapse");
+    Manipulator.setDataAttribute(toggler, "collapse-init", "");
     toggler.setAttribute("href", `#${ID}`);
     toggler.setAttribute("role", "button");
 
@@ -517,14 +531,16 @@ class Sidenav {
       Collapse.getInstance(list) ||
       new Collapse(list, {
         toggle: false,
-        parent: this.options.accordion ? menu : list,
+        parent: this.options.sidenavAccordion ? menu : list,
       });
 
     // Arrow
-
     this._appendArrow(toggler);
 
-    if (Manipulator.hasClass(list, "show")) {
+    if (
+      list.dataset.teSidenavStateShow === "" ||
+      list.dataset.teCollapseShow === ""
+    ) {
       this._rotateArrow(toggler, 180);
     }
 
@@ -538,9 +554,9 @@ class Sidenav {
         this._tempSlim = false;
       }
 
-      //   if (this.options.mode === "over" && this._focusTrap) {
-      //     this._focusTrap.update();
-      //   }
+      if (this.options.sidenavMode === "over" && this._focusTrap) {
+        this._focusTrap.update();
+      }
     });
 
     EventHandler.on(list, "show.te.collapse", () =>
@@ -552,7 +568,7 @@ class Sidenav {
     );
 
     EventHandler.on(list, "shown.te.collapse", () => {
-      if (this.options.mode === "over" && this._focusTrap) {
+      if (this.options.sidenavMode === "over" && this._focusTrap) {
         this._focusTrap.update();
       }
     });
@@ -563,14 +579,14 @@ class Sidenav {
 
         this._tempSlim = false;
       }
-      if (this.options.mode === "over" && this._focusTrap) {
+      if (this.options.sidenavMode === "over" && this._focusTrap) {
         this._focusTrap.update();
       }
     });
   }
 
   _setupContent() {
-    this._content = SelectorEngine.find(this.options.content);
+    this._content = SelectorEngine.find(this.options.sidenavContent);
     this._initialContentStyle = this._content.map((el) => {
       const { paddingLeft, paddingRight, marginLeft, marginRight, transition } =
         window.getComputedStyle(el);
@@ -578,17 +594,17 @@ class Sidenav {
     });
   }
 
-  //   _setupFocusTrap() {
-  //     this._focusTrap = new FocusTrap(
-  //       this._element,
-  //       {
-  //         event: "keydown",
-  //         condition: (e) => e.keyCode === TAB,
-  //         onlyVisible: true,
-  //       },
-  //       this.toggler
-  //     );
-  //   }
+  _setupFocusTrap() {
+    this._focusTrap = new FocusTrap(
+      this._element,
+      {
+        event: "keydown",
+        condition: (e) => e.keyCode === TAB,
+        onlyVisible: true,
+      },
+      this.toggler
+    );
+  }
 
   _setupInitialStyling() {
     this._setColor();
@@ -598,9 +614,9 @@ class Sidenav {
   _setupScrolling() {
     let container = this._element;
 
-    if (this.options.scrollContainer) {
+    if (this.options.sidenavScrollContainer) {
       container = SelectorEngine.findOne(
-        this.options.scrollContainer,
+        this.options.sidenavScrollContainer,
         this._element
       );
 
@@ -618,18 +634,21 @@ class Sidenav {
       });
     }
 
-    // this._perfectScrollbar = new PerfectScrollbar(container, {
-    //   suppressScrollX: true,
-    //   handlers: ['click-rail', 'drag-thumb', 'wheel', 'touch'],
-    // });
+    this._perfectScrollbar = new PerfectScrollbar(container, {
+      suppressScrollX: true,
+      handlers: ["click-rail", "drag-thumb", "wheel", "touch"],
+    });
+
+    addPerfectScrollbarStyles(container);
   }
 
   _setupSlim() {
-    this._slimCollapsed = this.options.slimCollapsed;
+    this._slimCollapsed = this.options.sidenavSlimCollapsed;
 
     this._toggleSlimDisplay(this._slimCollapsed);
+    this._element.className += SLIM_CLASSES;
 
-    if (this.options.expandOnHover) {
+    if (this.options.sidenavExpandOnHover) {
       this._element.addEventListener("mouseenter", () => {
         if (this._slimCollapsed) {
           this._setSlim(false);
@@ -647,36 +666,47 @@ class Sidenav {
   _setupRippleEffect() {
     this.links.forEach((link) => {
       let wave = Ripple.getInstance(link);
+      let color = this.options.sidenavColor;
 
-      if (wave && wave._options.color !== this.options.color) {
+      if (wave && wave._options.sidenavColor !== this.options.sidenavColor) {
         wave.dispose();
       } else if (wave) {
         return;
       }
 
-      wave = new Ripple(link, { rippleColor: this.options.color });
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        color = "white";
+      }
+
+      wave = new Ripple(link, { rippleColor: color });
     });
   }
 
-  //   _setupTouch() {
-  //     this._touch = new Touch(this._element, "swipe", { threshold: 20 });
-  //     this._touch.init();
+  _setupTouch() {
+    this._touch = new Touch(this._element, "swipe", { threshold: 20 });
+    this._touch.init();
 
-  //     EventHandler.on(this._element, "swipeleft", (e) =>
-  //       this._handleSwipe(e, this.options.right)
-  //     );
+    EventHandler.on(this._element, "swipeleft", (e) =>
+      this._handleSwipe(e, this.options.sidenavRight)
+    );
 
-  //     EventHandler.on(this._element, "swiperight", (e) =>
-  //       this._handleSwipe(e, !this.options.right)
-  //     );
-  //   }
+    EventHandler.on(this._element, "swiperight", (e) =>
+      this._handleSwipe(e, !this.options.sidenavRight)
+    );
+  }
 
   _setActive(link, reference) {
     // Link
-    Manipulator.addClass(link, "active");
+    // Manipulator.addClass(link, "active");
+    link.setAttribute("data-te-sidebar-state-active", "");
 
     if (this._activeNode) {
-      this._activeNode.classList.remove("active");
+      // this._activeNode.classList.remove("active");
+      link.removeAttribute("data-te-sidebar-state-active");
     }
     this._activeNode = link;
 
@@ -712,9 +742,9 @@ class Sidenav {
         const [collapseToggler] = SelectorEngine.prev(collapse, SELECTOR_LINK);
 
         if (collapseToggler !== el) {
-          collapseToggler.classList.remove("active");
+          collapseToggler.removeAttribute("data-te-sidenav-state-active");
         } else {
-          Manipulator.addClass(collapseToggler, "active");
+          collapseToggler.setAttribute("data-te-sidenav-state-active", "");
         }
       });
     });
@@ -746,7 +776,7 @@ class Sidenav {
       "light",
       "dark",
     ];
-    const { color: optionColor } = this.options;
+    const { sidenavColor: optionColor } = this.options;
     const color = colors.includes(optionColor) ? optionColor : "primary";
 
     colors.forEach((color) => {
@@ -801,11 +831,11 @@ class Sidenav {
   }
 
   _setMode(mode) {
-    if (this.options.mode === mode) {
+    if (this.options.sidenavMode === mode) {
       return;
     }
 
-    this._options.mode = mode;
+    this._options.sidenavMode = mode;
 
     this._update(this.isVisible);
   }
@@ -839,7 +869,8 @@ class Sidenav {
   }
 
   _rotateArrow(toggler, angle) {
-    const [arrow] = SelectorEngine.children(toggler, `.${ARROW_CLASS}`);
+    const [arrow] = SelectorEngine.children(toggler, `[${ARROW_DATA}]`);
+
     if (!arrow) {
       return;
     }
@@ -853,7 +884,7 @@ class Sidenav {
 
     instance.toggle();
 
-    if (this._slimCollapsed && this.options.expandable) {
+    if (this._slimCollapsed && this.options.sidenavExpandable) {
       this._tempSlim = true;
 
       this._setSlim(false);
@@ -885,19 +916,22 @@ class Sidenav {
     };
 
     if (slim) {
-      setTimeout(() => toggleElements(true), this.options.transitionDuration);
+      setTimeout(
+        () => toggleElements(true),
+        this.options.sidenavTransitionDuration
+      );
     } else {
       toggleElements();
     }
   }
 
   async _triggerEvents(startEvent, completeEvent) {
-    EventHandler.trigger(this._element, `${startEvent}.mdb.sidenav`);
+    EventHandler.trigger(this._element, `${startEvent}.te.sidenav`);
 
     if (completeEvent) {
       await setTimeout(() => {
-        EventHandler.trigger(this._element, `${completeEvent}.mdb.sidenav`);
-      }, this.options.transitionDuration + 5);
+        EventHandler.trigger(this._element, `${completeEvent}.te.sidenav`);
+      }, this.options.sidenavTransitionDuration + 5);
     }
   }
 
@@ -908,20 +942,23 @@ class Sidenav {
 
     this._updateDisplay(show);
 
-    this.options.backdrop && show
-      ? this._backdrop.show()
-      : this._backdrop.hide();
+    if (this.options.sidenavBackdrop) {
+      this._updateBackdrop(show);
+    }
 
     this._updateOffsets(show);
 
-    if (show && this.options.closeOnEsc && this.options.mode !== "side") {
-      //   console.log(window, this.escHandler);
-      //   EventHandler.on(window, "keydown", this.escHandler);
+    if (
+      show &&
+      this.options.sidenavCloseOnEsc &&
+      this.options.sidenavMode !== "side"
+    ) {
+      EventHandler.on(window, "keydown", this.escHandler);
     }
 
-    // if (this.options.focusTrap) {
-    //   this._updateFocus(show);
-    // }
+    if (this.options.sidenavFocusTrap) {
+      this._updateFocus(show);
+    }
   }
 
   _updateDisplay(value) {
@@ -934,7 +971,7 @@ class Sidenav {
   _updateFocus(show) {
     this._setTabindex(show);
 
-    if (this.options.mode === "over" && this.options.focusTrap) {
+    if (this.options.sidenavMode === "over" && this.options.sidenavFocusTrap) {
       if (show) {
         this._focusTrap.trap();
         return;
@@ -947,21 +984,21 @@ class Sidenav {
   }
 
   _updateOffsets(show, initial = false) {
-    const [paddingPosition, marginPosition] = this.options.right
+    const [paddingPosition, marginPosition] = this.options.sidenavRight
       ? ["right", "left"]
       : ["left", "right"];
 
     const padding = {
       property: this._getProperty("padding", paddingPosition),
-      value: this.options.mode === "over" ? 0 : this.width,
+      value: this.options.sidenavMode === "over" ? 0 : this.width,
     };
 
     const margin = {
       property: this._getProperty("margin", marginPosition),
-      value: this.options.mode === "push" ? -1 * this.width : 0,
+      value: this.options.sidenavMode === "push" ? -1 * this.width : 0,
     };
 
-    EventHandler.trigger(this._element, "update.mdb.sidenav", {
+    EventHandler.trigger(this._element, "update.te.sidenav", {
       margin,
       padding,
     });

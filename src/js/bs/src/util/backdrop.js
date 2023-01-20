@@ -20,7 +20,7 @@ const Default = {
   isAnimated: false,
   rootElement: "body", // give the choice to place backdrop under different elements
   clickCallback: null,
-  customClasses: null,
+  backdropClasses: null,
 };
 
 const DefaultType = {
@@ -28,7 +28,7 @@ const DefaultType = {
   isAnimated: "boolean",
   rootElement: "(element|string)",
   clickCallback: "(function|null)",
-  customClasses: "(array|null)",
+  backdropClasses: "(array|null)",
 };
 const NAME = "backdrop";
 const EVENT_MOUSEDOWN = `mousedown.te.${NAME}`;
