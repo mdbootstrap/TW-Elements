@@ -15,8 +15,8 @@
     <p>
       The modal plugin toggles your hidden content on demand, via data
       attributes or JavaScript. It also overrides default scrolling behavior and
-      generates a <code>.modal-backdrop</code> to provide a click area for
-      dismissing shown modals when clicking outside the modal.
+      generates a custom backdrop to provide a click area for dismissing shown
+      modals when clicking outside the modal.
     </p>
 
     <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
@@ -63,7 +63,7 @@
             {{< twsnippet/code active=true lang="html" >}}
               <button type="button" data-te-dismiss="modal" aria-label="Close">
                 Close
-            </button>
+              </button>
             {{< /twsnippet/code >}}
           {{< /twsnippet/wrapper >}} 
         </div>
@@ -83,8 +83,15 @@
             <div class="pt-4">
           {{< twsnippet/wrapper "HTML" >}}
             {{< twsnippet/code active=true lang="html" >}}
-              <button type="button" class="btn-close" data-mdb-dismiss="modal" data-mdb-target="#my-modal"
-                aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close"
+              data-te-dismiss="modal"
+              data-te-target="#my-modal"
+              aria-label="Close"
+            >
+              X
+            </button>;                  
             {{< /twsnippet/code >}}
           {{< /twsnippet/wrapper >}} 
         </div>
@@ -116,8 +123,8 @@
           <div class="pt-4">
             {{< twsnippet/wrapper "JavaScript" >}}
             {{< twsnippet/code active=true lang="js" >}}
-            const myModal = new mdb.Modal(document.getElementById('myModal'),
-            options)
+            const myModal = new te.Modal(document.getElementById("myModal"),
+            options);
             {{< /twsnippet/code >}}
             {{< /twsnippet/wrapper >}}
           </div>
@@ -410,7 +417,7 @@
                             >Returns to the caller before the modal has actually
                             been hidden</strong
                           >
-                          (i.e. before the <code>hidden.mdb.modal</code> event
+                          (i.e. before the <code>hidden.te.modal</code> event
                           occurs).
                         </td>
                         <td
@@ -431,7 +438,7 @@
                             >Returns to the caller before the modal has actually
                             been shown</strong
                           >
-                          (i.e. before the <code>shown.mdb.modal</code> event
+                          (i.e. before the <code>shown.te.modal</code> event
                           occurs).
                         </td>
                         <td
@@ -452,8 +459,8 @@
                             >Returns to the caller before the modal has actually
                             been shown or hidden</strong
                           >
-                          (i.e. before the <code>shown.mdb.modal</code> or
-                          <code>hidden.mdb.modal</code> event occurs).
+                          (i.e. before the <code>shown.te.modal</code> or
+                          <code>hidden.te.modal</code> event occurs).
                         </td>
                         <td
                           class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -507,8 +514,8 @@
             <div class="pt-4">
               {{< twsnippet/wrapper "JavaScript" >}}
               {{< twsnippet/code active=true lang="js" >}}
-              const myModalEl = document.getElementById('myModal') const modal =
-              new mdb.Modal(myModalEl) modal.show()
+              const myModalEl = document.getElementById("myModal"); const modal
+              = new te.Modal(myModalEl); modal.show();
               {{< /twsnippet/code >}}
               {{< /twsnippet/wrapper >}}
             </div>
@@ -554,7 +561,7 @@
                           class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
                           <td
                             class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                            <code>show.mdb.modal</code>
+                            <code>show.te.modal</code>
                           </td>
                           <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event fires immediately when the
@@ -568,7 +575,7 @@
                           class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
                           <td
                             class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                            <code>shown.mdb.modal</code>
+                            <code>shown.te.modal</code>
                           </td>
                           <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event is fired when the modal has been made
@@ -582,7 +589,7 @@
                           class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
                           <td
                             class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                            <code>hide.mdb.modal</code>
+                            <code>hide.te.modal</code>
                           </td>
                           <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event is fired immediately when the
@@ -593,7 +600,7 @@
                           class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
                           <td
                             class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                            <code>hidden.mdb.modal</code>
+                            <code>hidden.te.modal</code>
                           </td>
                           <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event is fired when the modal has finished
@@ -605,14 +612,14 @@
                           class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
                           <td
                             class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                            <code>hidePrevented.mdb.modal</code>
+                            <code>hidePrevented.te.modal</code>
                           </td>
                           <td class="px-6 py-4 max-lg:whitespace-nowrap">
                             This event is fired when the modal is shown, its
                             backdrop is
                             <code>static</code> and a click outside the modal or
                             an escape key press is performed with the keyboard
-                            option or <code>data-mdb-keyboard</code> set to
+                            option or <code>data-te-keyboard</code> set to
                             <code>false</code>.
                           </td>
                         </tr>
@@ -632,9 +639,9 @@
               <div class="pt-4">
                 {{< twsnippet/wrapper "JavaScript" >}}
                 {{< twsnippet/code active=true lang="js" >}}
-                const myModalEl = document.getElementById('myModal')
-                myModalEl.addEventListener('hidden.mdb.modal', (e) => { // do
-                something... })
+                const myModalEl = document.getElementById("myModal");
+                myModalEl.addEventListener("hidden.te.modal", (e) => { // do
+                something... });
                 {{< /twsnippet/code >}}
                 {{< /twsnippet/wrapper >}}
               </div>
