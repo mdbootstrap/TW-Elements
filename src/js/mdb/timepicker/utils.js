@@ -10,30 +10,21 @@ const formatToAmPm = (date) => {
   let amOrPm;
 
   if (isValidDate(date)) {
+    // hours will be 0 ~ 23
     hours = date.getHours();
     minutes = date.getMinutes();
-    hours %= 12;
-    if (hours === 0) {
-      amOrPm = 'AM';
-    }
-    hours = hours || 12;
 
-    if (amOrPm === undefined) {
-      amOrPm = hours >= 12 ? 'PM' : 'AM';
-    }
+    amOrPm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
     minutes = minutes < 10 ? `0${minutes}` : minutes;
   } else {
     [hours, minutes, amOrPm] = takeValue(date, false);
 
-    hours %= 12;
-    if (hours === 0) {
-      amOrPm = 'AM';
-    }
-    hours = hours || 12;
-
     if (amOrPm === undefined) {
       amOrPm = hours >= 12 ? 'PM' : 'AM';
     }
+
+    hours = hours % 12 || 12;
   }
 
   return {
