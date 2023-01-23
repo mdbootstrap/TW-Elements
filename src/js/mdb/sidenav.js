@@ -1,7 +1,6 @@
 import PerfectScrollbar from "perfect-scrollbar";
 import {
   array,
-  element,
   isVisible,
   getjQuery,
   typeCheckConfig,
@@ -41,14 +40,8 @@ const SELECTOR_NAVIGATION = "[data-te-sidenav-menu-ref]";
 const SELECTOR_COLLAPSE = "[data-te-sidenav-collapse-ref]";
 const SELECTOR_LINK = "[data-te-sidenav-link-ref]";
 
-const ARROW_SVG_TEMPLATE =
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>';
-
 const TRANSLATION_LEFT = isRTL ? 100 : -100;
 const TRANSLATION_RIGHT = isRTL ? -100 : 100;
-
-const SLIM_CLASSES =
-  " data-[te-sidenav-slim='true']:hidden data-[te-sidenav-slim-collapsed='true']:w-[77px] [&[data-te-sidenav-slim-collapsed='true'][data-te-sidenav-slim='false']]:hidden [&[data-te-sidenav-slim-collapsed='true'][data-te-sidenav-slim='true']]:[display:unset]";
 
 let instanceCount = 0;
 
@@ -265,19 +258,19 @@ class Sidenav {
   }
 
   hide() {
-    this._setVisibility(false);
+    this._emitEvents(false);
     this._update(false);
     this.options.sidenavBackdrop && this._backdrop.hide();
   }
 
   show() {
-    this._setVisibility(true);
+    this._emitEvents(true);
     this._update(true);
     this.options.sidenavBackdrop && this._backdrop.show();
   }
 
   toggle() {
-    this._setVisibility(!this.isVisible);
+    this._emitEvents(!this.isVisible);
     this._update(!this.isVisible);
   }
 
@@ -292,21 +285,6 @@ class Sidenav {
   }
 
   // Private
-
-  _appendArrow(node) {
-    const arrowSVG = element("svg");
-    arrowSVG.className = `absolute w-3 h-3 right-0 ml-auto mr-[0.8rem] transition-transform duration-300 motion-reduce:transition-none ${
-      this.options.sidenavColor === "white"
-        ? "[&>svg]:fill-gray-300"
-        : "[&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
-    }`;
-    arrowSVG.innerHTML = ARROW_SVG_TEMPLATE;
-    arrowSVG.setAttribute(ARROW_DATA, "");
-
-    if (SelectorEngine.find(`[${ARROW_DATA}]`, node).length === 0) {
-      node.appendChild(arrowSVG);
-    }
-  }
 
   _collapseItems() {
     this.navigation.forEach((menu) => {
@@ -535,13 +513,12 @@ class Sidenav {
       });
 
     // Arrow
-    this._appendArrow(toggler);
 
     if (
       list.dataset.teSidenavStateShow === "" ||
       list.dataset.teCollapseShow === ""
     ) {
-      this._rotateArrow(toggler, 180);
+      this._rotateArrow(toggler, false);
     }
 
     // Event listeners
@@ -560,11 +537,11 @@ class Sidenav {
     });
 
     EventHandler.on(list, "show.te.collapse", () =>
-      this._rotateArrow(toggler, 180)
+      this._rotateArrow(toggler, false)
     );
 
     EventHandler.on(list, "hide.te.collapse", () =>
-      this._rotateArrow(toggler, 0)
+      this._rotateArrow(toggler, true)
     );
 
     EventHandler.on(list, "shown.te.collapse", () => {
@@ -587,6 +564,15 @@ class Sidenav {
 
   _setupContent() {
     this._content = SelectorEngine.find(this.options.sidenavContent);
+
+    this._content.forEach((el) => {
+      const searchFor = ["!p", "!m", "!px", "!pl", "!pr", "!mx", "!ml", "!mr"];
+      const classesToRemove = [...el.classList].filter(
+        (singleClass) => searchFor.indexOf(singleClass.split("-")[0]) >= 0
+      );
+      classesToRemove.forEach((remove) => el.classList.remove(remove));
+    });
+
     this._initialContentStyle = this._content.map((el) => {
       const { paddingLeft, paddingRight, marginLeft, marginRight, transition } =
         window.getComputedStyle(el);
@@ -646,7 +632,6 @@ class Sidenav {
     this._slimCollapsed = this.options.sidenavSlimCollapsed;
 
     this._toggleSlimDisplay(this._slimCollapsed);
-    this._element.className += SLIM_CLASSES;
 
     if (this.options.sidenavExpandOnHover) {
       this._element.addEventListener("mouseenter", () => {
@@ -840,43 +825,46 @@ class Sidenav {
     this._update(this.isVisible);
   }
 
-  _setSlim(value) {
-    const events = value ? ["collapse", "collapsed"] : ["expand", "expanded"];
+  _setSlim(isSlimCollapsed) {
+    const events = isSlimCollapsed
+      ? ["collapse", "collapsed"]
+      : ["expand", "expanded"];
     this._triggerEvents(...events);
 
-    if (value) {
+    if (isSlimCollapsed) {
       this._collapseItems();
     }
 
-    this._slimCollapsed = value;
+    this._slimCollapsed = isSlimCollapsed;
 
-    this._toggleSlimDisplay(value);
+    this._toggleSlimDisplay(isSlimCollapsed);
 
     Manipulator.style(this._element, { width: `${this.width}px` });
 
     this._updateOffsets(this.isVisible);
   }
 
-  _setTabindex(value) {
+  _setTabindex(tabIndexValue) {
     this.links.forEach((link) => {
-      link.tabIndex = value ? 1 : -1;
+      link.tabIndex = tabIndexValue ? 1 : -1;
     });
   }
 
-  _setVisibility(show) {
+  _emitEvents(show) {
     const events = show ? ["show", "shown"] : ["hide", "hidden"];
     this._triggerEvents(...events);
   }
 
-  _rotateArrow(toggler, angle) {
+  _rotateArrow(toggler, collapsed) {
     const [arrow] = SelectorEngine.children(toggler, `[${ARROW_DATA}]`);
 
     if (!arrow) {
       return;
     }
-    Manipulator.style(arrow, {
-      transform: `rotate(${angle}deg)`,
-    });
+
+    collapsed
+      ? Manipulator.removeClass(arrow, "rotate-180")
+      : Manipulator.addClass(arrow, "rotate-180");
   }
 
   _toggleCategory(e, instance) {
@@ -961,8 +949,8 @@ class Sidenav {
     }
   }
 
-  _updateDisplay(value) {
-    const translation = value ? 0 : this.translation;
+  _updateDisplay(show) {
+    const translation = show ? 0 : this.translation;
     Manipulator.style(this._element, {
       transform: `translateX(${translation}%)`,
     });
@@ -1006,12 +994,13 @@ class Sidenav {
     if (!this._content) {
       return;
     }
+    this._content.className = "";
 
     this._setContentOffsets(show, { padding, margin }, initial);
   }
 
-  _updateTogglerAria(value) {
-    this.toggler.setAttribute("aria-expanded", value);
+  _updateTogglerAria(show) {
+    this.toggler.setAttribute("aria-expanded", show);
   }
 
   _addBackdropOnInit = () => {
