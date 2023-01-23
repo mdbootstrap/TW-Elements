@@ -277,6 +277,8 @@ module.exports = plugin(() => {}, {
           700: "#285192",
           800: "#204075",
           900: "#183058",
+          "accent-100": "#d9e4f3",
+          "accent-200": "#cedbee",
         },
         secondary: {
           DEFAULT: "#9FA6B2",
