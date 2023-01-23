@@ -381,14 +381,13 @@ class Sidenav {
       return;
     }
     const backdropClasses =
-      this.options.sidenavBackdropClass ||
-      this.options.sidenavPosition === "absolute"
+      this.options.sidenavBackdropClass || this.options.sidenavPosition
         ? [
             "opacity-50",
             "transition-all",
             "duration-300",
             "ease-in-out",
-            "absolute",
+            this.options.sidenavPosition,
             "top-0",
             "left-0",
             "z-50",
