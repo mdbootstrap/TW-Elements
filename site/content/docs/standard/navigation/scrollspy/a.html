@@ -46,8 +46,6 @@
 
     <h4 class="font-bold">Via JavaScript</h4>
 
-    <p>Create a modal with a single line of JavaScript:</p>
-
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
@@ -55,8 +53,8 @@
         {{< twsnippet/wrapper "JavaScript" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-            const scrollSpy = new mdb.ScrollSpy(document.body, {
-                target: '#navbar-example'
+            const scrollSpy = new te.ScrollSpy(document.body, {
+              target: '#navbar-example'
             });
             {{< /twsnippet/code >}}
             {{< /twsnippet/wrapper >}}
@@ -293,12 +291,6 @@
         Methods
       </h2>
 
-      <h4 class="mt-4">Passing options</h4>
-      <p>
-        Activates your content as a modal. Accepts an optional options
-        <code>object</code>.
-      </p>
-
       <div class="flex flex-col">
         <div class="overflow-x-auto">
           <div class="inline-block min-w-full py-2">
@@ -449,12 +441,12 @@
             {{< twsnippet/wrapper "JavaScript" >}}
             <!-- prettier-ignore -->
             {{< twsnippet/code active=true lang="js" >}}
-                const myModalEl = document.getElementById("myModal");
-                myModalEl.addEventListener("hidden.te.modal", (e) => {
-                  // do something...
-                });
-                {{< /twsnippet/code >}}
-                {{< /twsnippet/wrapper >}}
+              const firstScrollSpyEl = document.querySelector('[data-mdb-spy="scroll"]');
+              firstScrollSpyEl.addEventListener('activate.mdb.scrollspy', () => {
+                // do something...
+              });
+            {{< /twsnippet/code >}}
+            {{< /twsnippet/wrapper >}}
           </div>
         </section>
         <!--Section: Code-->
