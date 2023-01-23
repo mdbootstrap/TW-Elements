@@ -40,19 +40,21 @@ const DefaultType = {
   target: "(string|element)",
 };
 
+const DefaultClasses = {
+  active:
+    "!text-[#1266f1] font-semibold border-l-[0.125rem] border-solid border-[#1266f1]",
+};
+
+const DefaultClassesType = {
+  active: "string",
+};
+
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`;
 const EVENT_SCROLL = `scroll${EVENT_KEY}`;
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 
+const LINK_ACTIVE = "data-te-nav-link-active";
 const SELECTOR_DROPDOWN_ITEM = "[data-te-dropdown-item-ref]";
-const CLASS_NAME_ACTIVE = [
-  "!text-[#1266f1]",
-  "font-semibold",
-  "border-l-[0.125rem]",
-  "border-solid",
-  "border-[#1266f1]",
-];
-
 const SELECTOR_DATA_SPY = '[data-te-spy="scroll"]';
 const SELECTOR_NAV_LIST_GROUP = "[data-te-nav-list-ref]";
 const SELECTOR_NAV_LINKS = "[data-te-nav-link-ref]";
@@ -72,11 +74,12 @@ const METHOD_POSITION = "position";
  */
 
 class ScrollSpy extends BaseComponent {
-  constructor(element, config) {
+  constructor(element, config, classes) {
     super(element);
     this._scrollElement =
       this._element.tagName === "BODY" ? window : this._element;
     this._config = this._getConfig(config);
+    this._classes = this._getClasses(classes);
     this._offsets = [];
     this._targets = [];
     this._activeTarget = null;
@@ -169,6 +172,20 @@ class ScrollSpy extends BaseComponent {
     return config;
   }
 
+  _getClasses(classes) {
+    const dataAttributes = MDBManipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
+  }
+
   _getScrollTop() {
     return this._scrollElement === window
       ? this._scrollElement.pageYOffset
@@ -246,17 +263,14 @@ class ScrollSpy extends BaseComponent {
 
     const link = SelectorEngine.findOne(queries.join(","), this._config.target);
 
-    MDBManipulator.addMultipleClasses(link, CLASS_NAME_ACTIVE);
-    // link.setAttribute('data-te-nav-link-active', '');
-    // link.classList.add(CLASS_NAME_ACTIVE);
+    link.classList.add(...this._classes.active.split(" "));
+    link.setAttribute(LINK_ACTIVE, "");
+
     if (link.getAttribute(SELECTOR_DROPDOWN_ITEM)) {
-      MDBManipulator.addMultipleClasses(
-        SelectorEngine.findOne(
-          SELECTOR_DROPDOWN_TOGGLE,
-          link.closest(SELECTOR_DROPDOWN),
-          CLASS_NAME_ACTIVE
-        )
-      );
+      SelectorEngine.findOne(
+        SELECTOR_DROPDOWN_TOGGLE,
+        link.closest(SELECTOR_DROPDOWN)
+      ).classList.add(...this._classes.active.split(" "));
     } else {
       SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP).forEach(
         (listGroup) => {
@@ -265,15 +279,16 @@ class ScrollSpy extends BaseComponent {
           SelectorEngine.prev(
             listGroup,
             `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`
-          ).forEach((item) =>
-            MDBManipulator.addMultipleClasses(item, CLASS_NAME_ACTIVE)
-          );
+          ).forEach((item) => {
+            item.classList.add(...this._classes.active.split(" "));
+            item.setAttribute(LINK_ACTIVE, "");
+          });
 
           // Handle special case when .nav-link is inside .nav-item
           SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS).forEach(
             (navItem) => {
               SelectorEngine.children(navItem, SELECTOR_NAV_LINKS).forEach(
-                (item) => item.classList.add(CLASS_NAME_ACTIVE)
+                (item) => item.classList.add(...this._classes.active.split(" "))
               );
             }
           );
@@ -288,8 +303,13 @@ class ScrollSpy extends BaseComponent {
 
   _clear() {
     SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target)
-      .filter((node) => node.classList.contains(...CLASS_NAME_ACTIVE))
-      .forEach((node) => node.classList.remove(...CLASS_NAME_ACTIVE));
+      .filter((node) =>
+        node.classList.contains(...this._classes.active.split(" "))
+      )
+      .forEach((node) => {
+        node.classList.remove(...this._classes.active.split(" "));
+        node.removeAttribute(LINK_ACTIVE);
+      });
   }
 
   // Static
