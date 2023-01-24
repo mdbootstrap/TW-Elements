@@ -266,7 +266,9 @@ class Sidenav {
   show() {
     this._emitEvents(true);
     this._update(true);
-    this.options.sidenavBackdrop && this._backdrop.show();
+    this.options.sidenavBackdrop &&
+      this.options.sidenavMode === "over" &&
+      this._backdrop.show();
   }
 
   toggle() {
@@ -282,6 +284,18 @@ class Sidenav {
     this._options = options;
 
     this._setup();
+  }
+
+  getBreakpoint(prefix) {
+    const breakpointList = {
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      "2xl": 1536,
+    };
+
+    return breakpointList[prefix];
   }
 
   // Private
@@ -567,7 +581,9 @@ class Sidenav {
     this._content.forEach((el) => {
       const searchFor = ["!p", "!m", "!px", "!pl", "!pr", "!mx", "!ml", "!mr"];
       const classesToRemove = [...el.classList].filter(
-        (singleClass) => searchFor.indexOf(singleClass.split("-")[0]) >= 0
+        (singleClass) =>
+          searchFor.findIndex((el) => singleClass.split("-")[0].includes(el)) >=
+          0
       );
       classesToRemove.forEach((remove) => el.classList.remove(remove));
     });
