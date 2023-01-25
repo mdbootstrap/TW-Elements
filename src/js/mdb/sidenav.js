@@ -43,6 +43,14 @@ const SELECTOR_LINK = "[data-te-sidenav-link-ref]";
 const TRANSLATION_LEFT = isRTL ? 100 : -100;
 const TRANSLATION_RIGHT = isRTL ? -100 : 100;
 
+const BREAKPOINT_LIST = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  "2xl": 1536,
+};
+
 let instanceCount = 0;
 
 const OPTIONS_TYPE = {
@@ -57,6 +65,9 @@ const OPTIONS_TYPE = {
   sidenavFocusTrap: "(boolean)",
   sidenavHidden: "(boolean)",
   sidenavMode: "(string)",
+  sidenavModeBreakpointsOver: "(null|string)",
+  sidenavModeBreakpointsSide: "(null|string)",
+  sidenavModeBreakpointsPush: "(null|string)",
   sidenavScrollContainer: "(null|string)",
   sidenavSlim: "(boolean)",
   sidenavSlimCollapsed: "(boolean)",
@@ -79,6 +90,9 @@ const DEFAULT_OPTIONS = {
   sidenavFocusTrap: true,
   sidenavHidden: true,
   sidenavMode: "over",
+  sidenavModeBreakpointsOver: null,
+  sidenavModeBreakpointsSide: null,
+  sidenavModeBreakpointsPush: null,
   sidenavScrollContainer: null,
   sidenavSlim: false,
   sidenavSlimCollapsed: false,
@@ -116,6 +130,9 @@ class Sidenav {
     this._perfectScrollbar = null;
     this._touch = null;
 
+    this.breakpointList = BREAKPOINT_LIST;
+    this._setModeFromBreakpoints();
+
     this.escHandler = (e) => {
       if (e.keyCode === ESCAPE && this.toggler && isVisible(this.toggler)) {
         this._update(false);
@@ -134,7 +151,11 @@ class Sidenav {
       this._setup();
     }
 
-    if (this.options.sidenavBackdrop && this.options.sidenavMode === "over") {
+    if (
+      this.options.sidenavBackdrop &&
+      !this.options.sidenavHidden &&
+      this.options.sidenavMode === "over"
+    ) {
       EventHandler.on(this._element, "transitionend", this._addBackdropOnInit);
     }
   }
@@ -238,6 +259,12 @@ class Sidenav {
       : this.options.sidenavWidth;
   }
 
+  get isBackdropVisible() {
+    return Boolean(
+      SelectorEngine.findOne("[data-te-backdrop-show]", this.container)
+    );
+  }
+
   // Public
 
   changeMode(mode) {
@@ -260,14 +287,16 @@ class Sidenav {
   hide() {
     this._emitEvents(false);
     this._update(false);
-    this.options.sidenavBackdrop && this._backdrop.hide();
+    this._options.sidenavBackdrop &&
+      this.isBackdropVisible &&
+      this._backdrop.hide();
   }
 
   show() {
     this._emitEvents(true);
     this._update(true);
-    this.options.sidenavBackdrop &&
-      this.options.sidenavMode === "over" &&
+    this._options.sidenavBackdrop &&
+      this._options.sidenavMode === "over" &&
       this._backdrop.show();
   }
 
@@ -287,18 +316,42 @@ class Sidenav {
   }
 
   getBreakpoint(prefix) {
-    const breakpointList = {
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-      "2xl": 1536,
-    };
-
-    return breakpointList[prefix];
+    return this.breakpointList[prefix];
   }
 
   // Private
+
+  _setModeFromBreakpoints() {
+    const value = window.innerWidth;
+    const breakpoint = { ...this.breakpointList };
+
+    if (value === undefined || !breakpoint) {
+      return;
+    }
+
+    const overCalculated = eval(this.options.sidenavModeBreakpointsOver);
+    const sideCalculated = eval(this.options.sidenavModeBreakpointsSide);
+    const pushCalculated = eval(this.options.sidenavModeBreakpointsPush);
+
+    const sortAsc = (a, b) => {
+      if (a - b < 0) return -1;
+      if (b - a < 0) return 1;
+      return 0;
+    };
+
+    const closestPositive = [overCalculated, sideCalculated, pushCalculated]
+      .filter((value) => value != null && value >= 0)
+      .sort(sortAsc)[0];
+
+    if (overCalculated > 0 && overCalculated === closestPositive) {
+      this._options.sidenavMode = "over";
+      this._options.sidenavHidden = true;
+    } else if (sideCalculated > 0 && sideCalculated === closestPositive) {
+      this._options.sidenavMode = "side";
+    } else if (pushCalculated > 0 && pushCalculated === closestPositive) {
+      this._options.sidenavMode = "push";
+    }
+  }
 
   _collapseItems() {
     this.navigation.forEach((menu) => {
@@ -421,12 +474,13 @@ class Sidenav {
   }
 
   _updateBackdrop(show) {
-    if (this.options.sidenavMode === "over") {
-      show ? this._backdrop.show() : this._backdrop.hide();
+    if (this._options.sidenavMode === "over") {
+      show
+        ? this._backdrop.show()
+        : this.isBackdropVisible && this._backdrop.hide();
       return;
     }
-    SelectorEngine.findOne("[data-te-backdrop-show]", this.container) &&
-      this._backdrop.hide();
+    this.isBackdropVisible && this._backdrop.hide();
   }
 
   _setup() {
@@ -579,11 +633,29 @@ class Sidenav {
     this._content = SelectorEngine.find(this.options.sidenavContent);
 
     this._content.forEach((el) => {
-      const searchFor = ["!p", "!m", "!px", "!pl", "!pr", "!mx", "!ml", "!mr"];
+      const searchFor = [
+        "!p",
+        "!m",
+        "!px",
+        "!pl",
+        "!pr",
+        "!mx",
+        "!ml",
+        "!mr",
+        "!-p",
+        "!-m",
+        "!-px",
+        "!-pl",
+        "!-pr",
+        "!-mx",
+        "!-ml",
+        "!-mr",
+      ];
       const classesToRemove = [...el.classList].filter(
         (singleClass) =>
-          searchFor.findIndex((el) => singleClass.split("-")[0].includes(el)) >=
-          0
+          searchFor.findIndex((el) =>
+            singleClass.split(/-[0-9]/)[0].includes(el)
+          ) >= 0
       );
       classesToRemove.forEach((remove) => el.classList.remove(remove));
     });
@@ -993,12 +1065,12 @@ class Sidenav {
 
     const padding = {
       property: this._getProperty("padding", paddingPosition),
-      value: this.options.sidenavMode === "over" ? 0 : this.width,
+      value: this._options.sidenavMode === "over" ? 0 : this.width,
     };
 
     const margin = {
       property: this._getProperty("margin", marginPosition),
-      value: this.options.sidenavMode === "push" ? -1 * this.width : 0,
+      value: this._options.sidenavMode === "push" ? -1 * this.width : 0,
     };
 
     EventHandler.trigger(this._element, "update.te.sidenav", {
@@ -1019,9 +1091,13 @@ class Sidenav {
   }
 
   _addBackdropOnInit = () => {
+    if (this._options.sidenavHidden) {
+      return;
+    }
     this._backdrop.show();
     EventHandler.off(this._element, "transitionend", this._addBackdropOnInit);
   };
+
   // Static
 
   static toggleSidenav() {
