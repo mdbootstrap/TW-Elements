@@ -474,7 +474,7 @@ class Sidenav {
   }
 
   _updateBackdrop(show) {
-    if (this._options.sidenavMode === "over") {
+    if (this.options.sidenavMode === "over") {
       show
         ? this._backdrop.show()
         : this.isBackdropVisible && this._backdrop.hide();
@@ -653,9 +653,7 @@ class Sidenav {
       ];
       const classesToRemove = [...el.classList].filter(
         (singleClass) =>
-          searchFor.findIndex((el) =>
-            singleClass.split(/-[0-9]/)[0].includes(el)
-          ) >= 0
+          searchFor.findIndex((el) => singleClass.includes(el)) >= 0
       );
       classesToRemove.forEach((remove) => el.classList.remove(remove));
     });
@@ -698,6 +696,7 @@ class Sidenav {
       );
 
       const siblingsHeight = siblings.reduce((a, b) => {
+        console.log(b.offsetHeight);
         return a + b.clientHeight;
       }, 0);
 
@@ -1065,12 +1064,12 @@ class Sidenav {
 
     const padding = {
       property: this._getProperty("padding", paddingPosition),
-      value: this._options.sidenavMode === "over" ? 0 : this.width,
+      value: this.options.sidenavMode === "over" ? 0 : this.width,
     };
 
     const margin = {
       property: this._getProperty("margin", marginPosition),
-      value: this._options.sidenavMode === "push" ? -1 * this.width : 0,
+      value: this.options.sidenavMode === "push" ? -1 * this.width : 0,
     };
 
     EventHandler.trigger(this._element, "update.te.sidenav", {
