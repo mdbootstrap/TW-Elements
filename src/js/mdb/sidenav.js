@@ -696,7 +696,6 @@ class Sidenav {
       );
 
       const siblingsHeight = siblings.reduce((a, b) => {
-        console.log(b.offsetHeight);
         return a + b.clientHeight;
       }, 0);
 
