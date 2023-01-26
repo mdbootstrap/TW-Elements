@@ -14,7 +14,7 @@ import {
   typeCheckConfig,
 } from "./util/index";
 import EventHandler from "./dom/event-handler";
-import Manipulator from "./dom/manipulator";
+import Manipulator from "../../mdb/dom/manipulator";
 import SelectorEngine from "./dom/selector-engine";
 import ScrollBarHelper from "./util/scrollbar";
 import BaseComponent from "./base-component";
@@ -46,6 +46,18 @@ const DefaultType = {
   focus: "boolean",
 };
 
+const DefaultClasses = {
+  show: "transform-none",
+  static: "scale-[1.02]",
+  staticProperties: "transition-scale duration-300 ease-in-out",
+};
+
+const DefaultClassesType = {
+  show: "string",
+  static: "string",
+  staticProperties: "string",
+};
+
 const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
@@ -59,9 +71,6 @@ const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
 const OPEN_SELECTOR_BODY = "data-te-modal-open";
-const CLASS_NAME_SHOW = "transform-none";
-const CLASS_NAME_STATIC = "scale-[1.02]";
-
 const OPEN_SELECTOR = "data-te-open";
 const SELECTOR_DIALOG = "[data-te-modal-dialog-ref]";
 const SELECTOR_MODAL_BODY = "[data-te-modal-body-ref]";
@@ -74,10 +83,11 @@ const SELECTOR_DATA_TOGGLE = '[data-te-toggle="modal"]';
  */
 
 class Modal extends BaseComponent {
-  constructor(element, config) {
+  constructor(element, config, classes) {
     super(element);
 
     this._config = this._getConfig(config);
+    this._classes = this._getClasses(classes);
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
     this._backdrop = this._initializeBackDrop();
     this._focustrap = this._initializeFocusTrap();
@@ -165,7 +175,7 @@ class Modal extends BaseComponent {
     this._focustrap.deactivate();
 
     const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
-    modalDialog.classList.remove(CLASS_NAME_SHOW);
+    modalDialog.classList.remove(this._classes.show);
 
     EventHandler.off(this._element, EVENT_CLICK_DISMISS);
     EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS);
@@ -213,6 +223,20 @@ class Modal extends BaseComponent {
     return config;
   }
 
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
+  }
+
   _showElement(relatedTarget) {
     const isAnimated = this._isAnimated();
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog);
@@ -234,7 +258,8 @@ class Modal extends BaseComponent {
     this._element.scrollTop = 0;
 
     const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
-    modalDialog.classList.add(CLASS_NAME_SHOW);
+
+    modalDialog.classList.add(this._classes.show);
     modalDialog.classList.remove("opacity-0");
     modalDialog.classList.add("opacity-100");
 
@@ -285,13 +310,13 @@ class Modal extends BaseComponent {
 
   _hideModal() {
     const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
-    modalDialog.classList.remove(CLASS_NAME_SHOW);
+    modalDialog.classList.remove(this._classes.show);
     modalDialog.classList.remove("opacity-100");
     modalDialog.classList.add("opacity-0");
 
     setTimeout(() => {
       this._element.style.display = "none";
-    }, "300");
+    }, 300);
 
     this._element.setAttribute("aria-hidden", true);
     this._element.removeAttribute("aria-modal");
@@ -344,7 +369,7 @@ class Modal extends BaseComponent {
     // return if the following background transition hasn't yet completed
     if (
       (!isModalOverflowing && style.overflowY === "hidden") ||
-      classList.contains(CLASS_NAME_STATIC)
+      classList.contains(this._classes.static)
     ) {
       return;
     }
@@ -353,18 +378,15 @@ class Modal extends BaseComponent {
       style.overflowY = "hidden";
     }
 
-    classList.add(CLASS_NAME_STATIC);
-    classList.add("transition-scale");
-    classList.add("duration-300");
-    classList.add("ease-in-out");
+    classList.add(...this._classes.static.split(" "));
+    classList.add(...this._classes.staticProperties.split(" "));
+
     this._queueCallback(() => {
-      classList.remove(CLASS_NAME_STATIC);
+      classList.remove(this._classes.static);
 
       setTimeout(() => {
-        classList.remove("transition-scale");
-        classList.remove("duration-300");
-        classList.remove("ease-in-out");
-      }, "300");
+        classList.remove(...this._classes.staticProperties.split(" "));
+      }, 300);
 
       if (!isModalOverflowing) {
         this._queueCallback(() => {

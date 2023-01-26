@@ -16,7 +16,7 @@ import {
   typeCheckConfig,
 } from "./util/index";
 import EventHandler from "./dom/event-handler";
-import Manipulator from "./dom/manipulator";
+import Manipulator from "../../mdb/dom/manipulator";
 import SelectorEngine from "./dom/selector-engine";
 import BaseComponent from "./base-component";
 
@@ -54,6 +54,25 @@ const DefaultType = {
   touch: "boolean",
 };
 
+const DefaultClasses = {
+  pointer: "touch-pan-y",
+  block: "!block",
+  visible: "data-[te-carousel-fade]:opacity-100 data-[te-carousel-fade]:z-[1]",
+  invisible:
+    "data-[te-carousel-fade]:z-0 data-[te-carousel-fade]:opacity-0 data-[te-carousel-fade]:duration-0 data-[te-carousel-fade]:delay-600",
+  slideRight: "translate-x-full",
+  slideLeft: "-translate-x-full",
+};
+
+const DefaultClassesType = {
+  pointer: "string",
+  block: "string",
+  visible: "string",
+  invisible: "string",
+  slideRight: "string",
+  slideLeft: "string",
+};
+
 const ORDER_NEXT = "next";
 const ORDER_PREV = "prev";
 const DIRECTION_LEFT = "left";
@@ -87,22 +106,6 @@ const ATTR_NEXT = "data-te-carousel-item-next";
 const ATTR_PREV = "data-te-carousel-item-prev";
 const ATTR_POINTER_EVENT = "data-te-carousel-pointer-event";
 
-// Styling classes
-const CLASS_NAME_POINTER = "touch-pan-y";
-const CLASS_NAME_BLOCK = "!block";
-const CLASS_NAME_VISIBLE = [
-  "data-[te-carousel-fade]:opacity-100",
-  "data-[te-carousel-fade]:z-[1]",
-];
-const CLASS_NAME_INVISIBLE = [
-  "data-[te-carousel-fade]:z-0",
-  "data-[te-carousel-fade]:opacity-0",
-  "data-[te-carousel-fade]:duration-0",
-  "data-[te-carousel-fade]:delay-600",
-];
-const CLASS_NAME_SLIDE_RIGHT = "translate-x-full";
-const CLASS_NAME_SLIDE_LEFT = "-translate-x-full";
-
 const SELECTOR_DATA_CAROUSEL_INIT = "[data-te-carousel-init]";
 const SELECTOR_DATA_ACTIVE = "[data-te-carousel-active]";
 const SELECTOR_DATA_ITEM = "[data-te-carousel-item]";
@@ -123,7 +126,7 @@ const POINTER_TYPE_PEN = "pen";
  * ------------------------------------------------------------------------
  */
 class Carousel extends BaseComponent {
-  constructor(element, config) {
+  constructor(element, config, classes) {
     super(element);
 
     this._items = null;
@@ -136,6 +139,7 @@ class Carousel extends BaseComponent {
     this.touchDeltaX = 0;
 
     this._config = this._getConfig(config);
+    this._classes = this._getClasses(classes);
     this._indicatorsElement = SelectorEngine.findOne(
       SELECTOR_DATA_INDICATORS,
       this._element
@@ -251,12 +255,29 @@ class Carousel extends BaseComponent {
     return config;
   }
 
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
+  }
+
   _applyInitialClasses() {
     const activeElement = SelectorEngine.findOne(
       SELECTOR_DATA_ACTIVE_ITEM,
       this._element
     );
-    activeElement.classList.add(CLASS_NAME_BLOCK, ...CLASS_NAME_VISIBLE);
+    activeElement.classList.add(
+      this._classes.block,
+      ...this._classes.visible.split(" ")
+    );
 
     this._setActiveIndicatorElement(activeElement);
   }
@@ -368,7 +389,7 @@ class Carousel extends BaseComponent {
       );
       EventHandler.on(this._element, EVENT_POINTERUP, (event) => end(event));
 
-      this._element.classList.add(CLASS_NAME_POINTER);
+      this._element.classList.add(this._classes.pointer);
       this._element.setAttribute(`${ATTR_POINTER_EVENT}`, "");
     } else {
       EventHandler.on(this._element, EVENT_TOUCHSTART, (event) => start(event));
@@ -499,12 +520,12 @@ class Carousel extends BaseComponent {
 
     const activeClass =
       directionalAttr === ATTR_START
-        ? CLASS_NAME_SLIDE_LEFT
-        : CLASS_NAME_SLIDE_RIGHT;
+        ? this._classes.slideLeft
+        : this._classes.slideRight;
     const nextClass =
       directionalAttr !== ATTR_START
-        ? CLASS_NAME_SLIDE_LEFT
-        : CLASS_NAME_SLIDE_RIGHT;
+        ? this._classes.slideLeft
+        : this._classes.slideRight;
 
     if (nextElement && nextElement.hasAttribute(ATTR_ACTIVE)) {
       this._isSliding = false;
@@ -545,19 +566,22 @@ class Carousel extends BaseComponent {
 
     if (this._element.hasAttribute(ATTR_SLIDE)) {
       nextElement.setAttribute(`${orderAttr}`, "");
-      nextElement.classList.add(CLASS_NAME_BLOCK, nextClass);
+      nextElement.classList.add(this._classes.block, nextClass);
 
       reflow(nextElement);
 
       activeElement.setAttribute(`${directionalAttr}`, "");
-      activeElement.classList.add(activeClass, ...CLASS_NAME_INVISIBLE);
-      activeElement.classList.remove(...CLASS_NAME_VISIBLE);
+      activeElement.classList.add(
+        activeClass,
+        ...this._classes.invisible.split(" ")
+      );
+      activeElement.classList.remove(...this._classes.visible.split(" "));
 
       nextElement.setAttribute(`${directionalAttr}`, "");
-      nextElement.classList.add(...CLASS_NAME_VISIBLE);
+      nextElement.classList.add(...this._classes.visible.split(" "));
       nextElement.classList.remove(
-        CLASS_NAME_SLIDE_RIGHT,
-        CLASS_NAME_SLIDE_LEFT
+        this._classes.slideRight,
+        this._classes.slideLeft
       );
 
       const completeCallBack = () => {
@@ -568,8 +592,8 @@ class Carousel extends BaseComponent {
         activeElement.removeAttribute(ATTR_ACTIVE);
         activeElement.classList.remove(
           activeClass,
-          ...CLASS_NAME_INVISIBLE,
-          CLASS_NAME_BLOCK
+          ...this._classes.invisible.split(" "),
+          this._classes.block
         );
         activeElement.removeAttribute(orderAttr);
         activeElement.removeAttribute(directionalAttr);
@@ -582,10 +606,10 @@ class Carousel extends BaseComponent {
       this._queueCallback(completeCallBack, activeElement, true);
     } else {
       activeElement.removeAttribute(ATTR_ACTIVE);
-      activeElement.classList.remove(CLASS_NAME_BLOCK);
+      activeElement.classList.remove(this._classes.block);
 
       nextElement.setAttribute(`${ATTR_ACTIVE}`, "");
-      nextElement.classList.add(CLASS_NAME_BLOCK);
+      nextElement.classList.add(this._classes.block);
 
       this._isSliding = false;
       triggerSlidEvent();
