@@ -33,7 +33,7 @@ const DATEPICKER_BACKDROP_CLASSES =
   "w-full h-full fixed top-0 right-0 left-0 bottom-0 bg-black/40 z-[1065]";
 const DATEPICKER_MAIN_CLASSES = "relative h-full";
 const DATEPICKER_HEADER_CLASSES =
-  "xs:max-md:landscape:h-full h-[120px] px-6 bg-blue-500 flex flex-col rounded-t-lg dark:bg-zinc-800";
+  "xs:max-md:landscape:h-full h-[120px] px-6 bg-blue-500 flex flex-col rounded-t-lg dark:bg-neutral-800";
 const DATEPICKER_TITLE_CLASSES = "h-8 flex flex-col justify-end";
 const DATEPICKER_TITLE_TEXT_CLASSES =
   "text-[10px] font-normal uppercase tracking-[1.7px] text-white";
