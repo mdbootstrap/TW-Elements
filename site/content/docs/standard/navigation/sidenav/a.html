@@ -829,7 +829,7 @@
                     </td>
                     <td class="px-6 py-4 max-lg:whitespace-nowrap">
                       <code class="text-red-500 dark:text-red-300"
-                        >sidenavInstance.update({ mode: 'side' })</code
+                        >sidenavInstance.update({ sidenavMode: 'side' })</code
                       >
                     </td>
                   </tr>
@@ -1021,10 +1021,10 @@
           <!-- prettier-ignore -->
           {{< twsnippet/code active=true lang="js" >}}
           <script>
-            const sidenav = document.getElementById('mySidenav')
-            sidenav.addEventListener('update.te.sidenav', event => {
+            const sidenav = document.getElementById("mySidenav");
+            sidenav.addEventListener("update.te.sidenav", (event) => {
               console.log(event.margin, event.padding);
-            }
+            });
           </script>
           {{< /twsnippet/code >}}
           {{< /twsnippet/wrapper >}}

@@ -447,22 +447,23 @@ class Sidenav {
     if (!this.options.sidenavBackdrop) {
       return;
     }
-    const backdropClasses =
-      this.options.sidenavBackdropClass || this.options.sidenavPosition
-        ? [
-            "opacity-50",
-            "transition-all",
-            "duration-300",
-            "ease-in-out",
-            this.options.sidenavPosition,
-            "top-0",
-            "left-0",
-            "z-50",
-            "bg-black/10",
-            "w-full",
-            "h-full",
-          ]
-        : null;
+    const backdropClasses = this.options.sidenavBackdropClass
+      ? this.options.sidenavBackdropClass.split(" ")
+      : this.options.sidenavPosition
+      ? [
+          "opacity-50",
+          "transition-all",
+          "duration-300",
+          "ease-in-out",
+          this.options.sidenavPosition,
+          "top-0",
+          "left-0",
+          "z-50",
+          "bg-black/10",
+          "w-full",
+          "h-full",
+        ]
+      : null;
 
     return new Backdrop({
       isVisible: this.options.sidenavBackdrop,
