@@ -67,7 +67,7 @@ class Tab extends BaseComponent {
     if (
       this._element.parentNode &&
       this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-      this._element.getAttribute(TAB_ACTIVE)
+      this._element.getAttribute(NAV_ACTIVE) === ""
     ) {
       return;
     }
