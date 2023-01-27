@@ -260,9 +260,7 @@ class Sidenav {
   }
 
   get isBackdropVisible() {
-    return Boolean(
-      SelectorEngine.findOne("[data-te-backdrop-show]", this.container)
-    );
+    return Boolean(this._backdrop._element);
   }
 
   // Public
@@ -462,6 +460,7 @@ class Sidenav {
           "bg-black/10",
           "w-full",
           "h-full",
+          this._element.id,
         ]
       : null;
 
