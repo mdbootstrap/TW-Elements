@@ -1,7 +1,7 @@
 export const switcherTemplate = `
 <div class="fixed right-5 bottom-5 z-[9999]" id="theme-switcher">
   <button
-    class="w-[30px] h-[30px] text-black dark:text-white uppercase rounded-full hover:shadow-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:bg-gray-300 dark:focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out flex items-center justify-center whitespace-nowrap motion-reduce:transition-none"
+    class="w-[30px] h-[30px] text-black dark:text-white uppercase rounded-full hover:shadow-lg hover:bg-neutral-200 dark:hover:bg-gray-700 focus:bg-gray-300 dark:focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out flex items-center justify-center whitespace-nowrap motion-reduce:transition-none"
     type="button" id="themeSwitcher" data-te-dropdown-toggle-ref aria-expanded="false">
     <svg xmlns="http://www.w3.org/2000/svg" data-theme-icon aria-hidden="true" focusable="false"
       class="w-3" role="img" 
@@ -14,7 +14,7 @@ export const switcherTemplate = `
     class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block dark:bg-gray-800"
     aria-labelledby="themeSwitcher" data-te-dropdown-menu-ref>
     <li>
-      <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-200 focus:dark:bg-gray-600"
+      <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-neutral-200 focus:dark:bg-gray-600"
         href="#" data-theme="light" data-te-dropdown-item-ref>
         <div class="pointer-events-none">
           <div class="inline-block w-[24px] text-center" data-theme-icon="light">
@@ -29,7 +29,7 @@ export const switcherTemplate = `
       </a>
     </li>
     <li>
-      <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-200 focus:dark:bg-gray-600"
+      <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-neutral-200 focus:dark:bg-gray-600"
         href="#" data-theme="dark" data-te-dropdown-item-ref>
         <div class="pointer-events-none">
           <div class="inline-block w-[24px] text-center" data-theme-icon="dark">
@@ -50,7 +50,7 @@ export const switcherTemplate = `
 /*
 <li>
   <a
-    class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-200 focus:dark:bg-gray-600"
+    class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-neutral-200 focus:dark:bg-gray-600"
     href="#"
     data-theme="system"
     data-te-dropdown-item-ref

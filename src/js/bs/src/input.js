@@ -37,7 +37,7 @@ const NOTCH_DIV_CLASSES =
 const NOTCH_LEADING_NORMAL =
   " border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary";
 const NOTCH_LEADING_WHITE =
-  " border-gray-200 group-data-[te-input-focused]:shadow-[-1px_0_0_#ffffff,_0_1px_0_0_#ffffff,_0_-1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
+  " border-neutral-200 group-data-[te-input-focused]:shadow-[-1px_0_0_#ffffff,_0_1px_0_0_#ffffff,_0_-1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
 
 const NOTCH_LEADING_CLASSES =
   NOTCH_DIV_CLASSES +
@@ -46,7 +46,7 @@ const NOTCH_LEADING_CLASSES =
 const NOTCH_MIDDLE_NORMAL =
   " border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary";
 const NOTCH_MIDDLE_WHITE =
-  " border-gray-200 group-data-[te-input-focused]:shadow-[0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
+  " border-neutral-200 group-data-[te-input-focused]:shadow-[0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
 
 const NOTCH_MIDDLE_CLASSES =
   NOTCH_DIV_CLASSES +
@@ -55,7 +55,7 @@ const NOTCH_MIDDLE_CLASSES =
 const NOTCH_TRAILING_NORMAL =
   " border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary";
 const NOTCH_TRAILING_WHITE =
-  " border-gray-200 group-data-[te-input-focused]:shadow-[1px_0_0_#ffffff,_0_-1px_0_0_#ffffff,_0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
+  " border-neutral-200 group-data-[te-input-focused]:shadow-[1px_0_0_#ffffff,_0_-1px_0_0_#ffffff,_0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
 
 const NOTCH_TRAILING_CLASSES =
   NOTCH_DIV_CLASSES +
