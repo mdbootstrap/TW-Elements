@@ -92,9 +92,11 @@ class Chip {
 
     if (this._options.closeIcon) {
       const createIcon = element("span");
+
       createIcon.classList = this._classes.iconClasses;
       createIcon.setAttribute(ATTR_CHIP_CLOSE);
       createIcon.innerHTML = this._options.iconSVG;
+
       el.insertAdjacentElement("beforeend", createIcon);
     }
   }
@@ -115,6 +117,7 @@ class Chip {
       ATTR_SELECTOR_CHIP_CLOSE,
       this._element
     );
+
     if (deleteElement.length === 0) return;
 
     EventHandler.on(this._element, "click", ATTR_SELECTOR_CHIP_CLOSE, () => {
@@ -135,7 +138,9 @@ class Chip {
       ...Manipulator.getDataAttributes(this._element),
       ...options,
     };
+
     typeCheckConfig(NAME, config, DefaultType);
+
     return config;
   }
 
@@ -168,9 +173,11 @@ class Chip {
 EventHandler.on(window, "DOMContentLoaded", () => {
   SelectorEngine.find(ATTR_SELECTOR_CHIP_INIT).forEach((chip) => {
     let instance = Chip.getInstance(chip);
+
     if (!instance) {
       instance = new Chip(chip);
     }
+
     return instance.init();
   });
 });

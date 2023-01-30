@@ -265,6 +265,7 @@ class ChipsInput extends Chip {
         if (!isContainer && !isContainerContent) {
           chip.contentEditable = false;
           chip.classList.remove(...this._classes.contentEditable.split(" "));
+
           if (chipText.textContent !== "") {
             setTimeout(() => {
               Manipulator.addStyle(close, { display: "block" });
