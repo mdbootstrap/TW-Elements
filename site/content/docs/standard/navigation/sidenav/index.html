@@ -4337,32 +4337,32 @@ menu:
       {{< /twsnippet/code >}}
       {{< twsnippet/code lang="js" >}}
       <script type="text/javascript">
-        const sidenav = document.getElementById("sidenav-1");
-        const sidenavInstance = te.Sidenav.getInstance(sidenav);
+        const sidenav2 = document.getElementById("sidenav-1");
+        const sidenavInstance2 = te.Sidenav.getInstance(sidenav);
 
-        let innerWidth = null;
+        let innerWidth2 = null;
 
-        const setMode = (e) => {
+        const setMode2 = (e) => {
           // Check necessary for Android devices
-          if (window.innerWidth === innerWidth) {
+          if (window.innerWidth === innerWidth2) {
             return;
           }
 
-          innerWidth = window.innerWidth;
+          innerWidth2 = window.innerWidth;
 
-          if (window.innerWidth < sidenavInstance.getBreakpoint("xl")) {
-            sidenavInstance.changeMode("over");
-            sidenavInstance.hide();
+          if (window.innerWidth < sidenavInstance2.getBreakpoint("xl")) {
+            sidenavInstance2.changeMode("over");
+            sidenavInstance2.hide();
           } else {
-            sidenavInstance.changeMode("side");
-            sidenavInstance.show();
+            sidenavInstance2.changeMode("side");
+            sidenavInstance2.show();
           }
         };
 
-        setMode();
+        setMode2();
 
         // Event listeners
-        window.addEventListener("resize", setMode);
+        window.addEventListener("resize", setMode2);
       </script>
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}

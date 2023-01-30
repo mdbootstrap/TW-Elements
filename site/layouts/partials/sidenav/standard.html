@@ -13,7 +13,9 @@
       </span>
       <span>Getting started</span>
       <span
-        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        class="{{ if in .Page "start" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -25,7 +27,10 @@
 
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
-      data-te-sidenav-collapse-ref>
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "start" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.start }}
         <li class="relative">
@@ -103,7 +108,9 @@
       </span>
       <span>Components</span>
       <span
-        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        class="{{ if in .Page "components" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -114,7 +121,10 @@
     </a>
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
-      data-te-sidenav-collapse-ref>
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "components" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.components }}
         <li class="relative">
@@ -145,7 +155,9 @@
       </span>
       <span>Content & styles</span>
       <span
-        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        class="{{ if in .Page "contentstyles" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -156,7 +168,10 @@
     </a>
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
-      data-te-sidenav-collapse-ref>
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "contentstyles" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.contentstyles }}
         <li>
@@ -187,7 +202,9 @@
       </span>
       <span>Navigation</span>
       <span
-        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        class="{{ if in .Page "navigation" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -198,7 +215,10 @@
     </a>
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
-      data-te-sidenav-collapse-ref>
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "navigation" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.navigation }}
         <li>
@@ -229,7 +249,9 @@
       </span>
       <span>Forms</span>
       <span
-        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        class="{{ if in .Page "forms" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -240,7 +262,10 @@
     </a>
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
-      data-te-sidenav-collapse-ref>
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "forms" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.forms }}
         <li>
@@ -271,7 +296,9 @@
       </span>
       <span>Methods</span>
       <span
-        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        class="{{ if in .Page "methods" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -282,7 +309,10 @@
     </a>
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
-      data-te-sidenav-collapse-ref>
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "methods" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.methods }}
         <li>
@@ -313,7 +343,9 @@
       </span>
       <span>Design Blocks</span>
       <span
-        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        class="{{ if in .Page "designblocks" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -324,7 +356,10 @@
     </a>
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
-      data-te-sidenav-collapse-ref>
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "designblocks" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.designblocks }}
         <li>
@@ -356,7 +391,9 @@
       </span>
       <span>Coming Soon</span>
       <span
-        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        class="{{ if in .Page "comingsoon" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -367,7 +404,10 @@
     </a>
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
-      data-te-sidenav-collapse-ref>
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "comingsoon" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.comingsoon }}
         <li>
