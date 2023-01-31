@@ -768,44 +768,43 @@ menu:
         </div>
       </section>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
-      <script>
-        const instanceMode = te.Sidenav.getInstance(
-          document.getElementById("sidenav-2")
-        );
-        const modes = ["push", "over", "side"];
+      const instanceMode = te.Sidenav.getInstance(
+        document.getElementById("sidenav-2")
+      );
+      const modes = ["push", "over", "side"];
 
-        modes.forEach((mode) => {
-          const modeSwitch = document.getElementById(mode);
-          modeSwitch.addEventListener("click", () => {
-            console.log(mode);
-            const instance = te.Sidenav.getInstance(
-              document.getElementById("sidenav-2")
-            );
-            instance.changeMode(mode);
-            modes.forEach((el) => {
-              if (el === mode) {
-                ["text-blue-600", "border-blue-600"].forEach((item) =>
-                  modeSwitch.classList.remove(item)
-                );
-                modeSwitch.className +=
-                  " bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 focus:bg-blue-700 border-transparent";
-              } else {
-                const node = document.getElementById(el);
-                node.className += " text-blue-600 border-blue-600";
-                [
-                  "bg-blue-600",
-                  "text-white",
-                  "hover:bg-blue-700",
-                  "active:bg-blue-800",
-                  "focus:bg-blue-700",
-                  "border-transparent",
-                ].forEach((item) => node.classList.remove(item));
-              }
-            });
+      modes.forEach((mode) => {
+        const modeSwitch = document.getElementById(mode);
+        modeSwitch.addEventListener("click", () => {
+          console.log(mode);
+          const instance = te.Sidenav.getInstance(
+            document.getElementById("sidenav-2")
+          );
+          instance.changeMode(mode);
+          modes.forEach((el) => {
+            if (el === mode) {
+              ["text-blue-600", "border-blue-600"].forEach((item) =>
+                modeSwitch.classList.remove(item)
+              );
+              modeSwitch.className +=
+                " bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 focus:bg-blue-700 border-transparent";
+            } else {
+              const node = document.getElementById(el);
+              node.className += " text-blue-600 border-blue-600";
+              [
+                "bg-blue-600",
+                "text-white",
+                "hover:bg-blue-700",
+                "active:bg-blue-800",
+                "focus:bg-blue-700",
+                "border-transparent",
+              ].forEach((item) => node.classList.remove(item));
+            }
           });
         });
-      </script>
+      });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -1449,17 +1448,16 @@ menu:
         </div>
       </section>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
-      <script>
-        document
-          .getElementById("slim-toggler")
-          .addEventListener("click", () => {
-            const instance = te.Sidenav.getInstance(
-              document.getElementById("sidenav-4")
-            );
-            instance.toggleSlim();
-          });
-      </script>
+      document
+        .getElementById("slim-toggler")
+        .addEventListener("click", () => {
+          const instance = te.Sidenav.getInstance(
+            document.getElementById("sidenav-4")
+          );
+          instance.toggleSlim();
+        });
 
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
@@ -3582,35 +3580,34 @@ menu:
       </body>
 
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
-      <script type="text/javascript">
-        const sidenav = document.getElementById("full-screen-example");
-        const sidenavInstance = te.Sidenav.getInstance(sidenav);
+      const sidenav = document.getElementById("full-screen-example");
+      const sidenavInstance = te.Sidenav.getInstance(sidenav);
 
-        let innerWidth = null;
+      let innerWidth = null;
 
-        const setMode = (e) => {
-          // Check necessary for Android devices
-          if (window.innerWidth === innerWidth) {
-            return;
-          }
+      const setMode = (e) => {
+        // Check necessary for Android devices
+        if (window.innerWidth === innerWidth) {
+          return;
+        }
 
-          innerWidth = window.innerWidth;
+        innerWidth = window.innerWidth;
 
-          if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
-            sidenavInstance.changeMode("over");
-            sidenavInstance.hide();
-          } else {
-            sidenavInstance.changeMode("side");
-            sidenavInstance.show();
-          }
-        };
+        if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+          sidenavInstance.changeMode("over");
+          sidenavInstance.hide();
+        } else {
+          sidenavInstance.changeMode("side");
+          sidenavInstance.show();
+        }
+      };
 
-        setMode();
+      setMode();
 
-        // Event listeners
-        window.addEventListener("resize", setMode);
-      </script>
+      // Event listeners
+      window.addEventListener("resize", setMode);
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -3766,15 +3763,14 @@ menu:
         <!-- Content -->
       </body>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
-      <script type="text/javascript">
-        window.addEventListener("load", () => {
-          const sidenav = document.getElementById("full-screen-example");
-          const sidenavInstance = te.Sidenav.getInstance(sidenav);
+      window.addEventListener("load", () => {
+        const sidenav = document.getElementById("full-screen-example");
+        const sidenavInstance = te.Sidenav.getInstance(sidenav);
 
-          sidenavInstance.show();
-        });
-      </script>
+        sidenavInstance.show();
+      });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -4341,35 +4337,34 @@ menu:
       </body>
 
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
-      <script type="text/javascript">
-        const sidenav2 = document.getElementById("sidenav-1");
-        const sidenavInstance2 = te.Sidenav.getInstance(sidenav2);
+      const sidenav2 = document.getElementById("sidenav-1");
+      const sidenavInstance2 = te.Sidenav.getInstance(sidenav2);
 
-        let innerWidth2 = null;
+      let innerWidth2 = null;
 
-        const setMode2 = (e) => {
-          // Check necessary for Android devices
-          if (window.innerWidth === innerWidth2) {
-            return;
-          }
+      const setMode2 = (e) => {
+        // Check necessary for Android devices
+        if (window.innerWidth === innerWidth2) {
+          return;
+        }
 
-          innerWidth2 = window.innerWidth;
+        innerWidth2 = window.innerWidth;
 
-          if (window.innerWidth < sidenavInstance2.getBreakpoint("xl")) {
-            sidenavInstance2.changeMode("over");
-            sidenavInstance2.hide();
-          } else {
-            sidenavInstance2.changeMode("side");
-            sidenavInstance2.show();
-          }
-        };
+        if (window.innerWidth < sidenavInstance2.getBreakpoint("xl")) {
+          sidenavInstance2.changeMode("over");
+          sidenavInstance2.hide();
+        } else {
+          sidenavInstance2.changeMode("side");
+          sidenavInstance2.show();
+        }
+      };
 
-        setMode2();
+      setMode2();
 
-        // Event listeners
-        window.addEventListener("resize", setMode2);
-      </script>
+      // Event listeners
+      window.addEventListener("resize", setMode2);
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>

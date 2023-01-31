@@ -67,7 +67,7 @@ const OPTIONS_TYPE = {
   sidenavRight: "(boolean)",
   sidenavTransitionDuration: "(number)",
   sidenavWidth: "(number)",
-  sidenavBreakpointList: "(object)",
+  sidenavBreakpointList: "(string)",
 };
 
 const DEFAULT_OPTIONS = {
@@ -93,13 +93,7 @@ const DEFAULT_OPTIONS = {
   sidenavRight: false,
   sidenavTransitionDuration: 300,
   sidenavWidth: 240,
-  sidenavBreakpointList: {
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280,
-    "2xl": 1536,
-  },
+  sidenavBreakpointList: "sm:640,md:768,lg:1024,xl:1280,2xl:1536",
 };
 
 /**
@@ -311,14 +305,28 @@ class Sidenav {
   }
 
   getBreakpoint(prefix) {
-    return this.options.sidenavBreakpointList[prefix];
+    return this._transformBreakpointStringToObject(
+      this.options.sidenavBreakpointList
+    )[prefix];
   }
 
   // Private
+  _transformBreakpointStringToObject(string) {
+    let object = {};
+
+    string.split(",").forEach((point) => {
+      const pointValues = point.split(":");
+      object = { ...object, [pointValues[0]]: parseInt(pointValues[1]) };
+    });
+
+    return object;
+  }
 
   _setModeFromBreakpoints() {
     const innerWidth = window.innerWidth;
-    const breakpoint = { ...this.options.sidenavBreakpointList };
+    const breakpoint = this._transformBreakpointStringToObject(
+      this.options.sidenavBreakpointList
+    );
 
     if (innerWidth === undefined || !breakpoint) {
       return;
