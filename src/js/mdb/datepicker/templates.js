@@ -67,7 +67,7 @@ const DATEPICKER_CELL_CONTENT_LARGE_CLASSES =
   "w-[72px] h-10 leading-10 py-[1px] px-0.5 rounded-[999px]";
 const DATEPICKER_TABLE_CLASSES = "mx-auto w-[304px]";
 const DATEPICKER_TOGGLE_BUTTON_CLASSES =
-  "outline-none w-3.5 h-3.5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:fill-primary focus:fill-primary dark:hover:fill-blue-400 dark:focus:fill-blue-400 dark:fill-neutral-200";
+  "outline-none w-3.5 h-3.5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:fill-primary focus:fill-primary dark:hover:fill-primary-400 dark:focus:fill-primary-400 dark:fill-neutral-200";
 
 export function getDatepickerTemplate(
   date,
