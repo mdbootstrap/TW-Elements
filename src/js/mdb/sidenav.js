@@ -44,14 +44,6 @@ const SELECTOR_LINK = "[data-te-sidenav-link-ref]";
 const TRANSLATION_LEFT = isRTL ? 100 : -100;
 const TRANSLATION_RIGHT = isRTL ? -100 : 100;
 
-const BREAKPOINT_LIST = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  "2xl": 1536,
-};
-
 const OPTIONS_TYPE = {
   sidenavAccordion: "(boolean)",
   sidenavBackdrop: "(boolean)",
@@ -101,7 +93,13 @@ const DEFAULT_OPTIONS = {
   sidenavRight: false,
   sidenavTransitionDuration: 300,
   sidenavWidth: 240,
-  sidenavBreakpointList: BREAKPOINT_LIST,
+  sidenavBreakpointList: {
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    "2xl": 1536,
+  },
 };
 
 /**
