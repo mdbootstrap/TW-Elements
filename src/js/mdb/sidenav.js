@@ -6,6 +6,7 @@ import {
   typeCheckConfig,
   onDOMContentLoaded,
   isRTL,
+  getUID,
 } from "./util/index";
 import FocusTrap from "./util/focusTrap";
 import { ENTER, TAB, ESCAPE } from "./util/keycodes";
@@ -51,8 +52,6 @@ const BREAKPOINT_LIST = {
   "2xl": 1536,
 };
 
-let instanceCount = 0;
-
 const OPTIONS_TYPE = {
   sidenavAccordion: "(boolean)",
   sidenavBackdrop: "(boolean)",
@@ -76,6 +75,7 @@ const OPTIONS_TYPE = {
   sidenavRight: "(boolean)",
   sidenavTransitionDuration: "(number)",
   sidenavWidth: "(number)",
+  sidenavBreakpointList: "(object)",
 };
 
 const DEFAULT_OPTIONS = {
@@ -101,6 +101,7 @@ const DEFAULT_OPTIONS = {
   sidenavRight: false,
   sidenavTransitionDuration: 300,
   sidenavWidth: 240,
+  sidenavBreakpointList: BREAKPOINT_LIST,
 };
 
 /**
@@ -114,8 +115,7 @@ class Sidenav {
     this._element = node;
     this._options = options;
 
-    instanceCount++;
-    this._ID = instanceCount;
+    this._ID = getUID("");
 
     this._content = null;
     this._initialContentStyle = null;
@@ -130,7 +130,6 @@ class Sidenav {
     this._perfectScrollbar = null;
     this._touch = null;
 
-    this.breakpointList = BREAKPOINT_LIST;
     this._setModeFromBreakpoints();
 
     this.escHandler = (e) => {
@@ -314,16 +313,16 @@ class Sidenav {
   }
 
   getBreakpoint(prefix) {
-    return this.breakpointList[prefix];
+    return this.options.sidenavBreakpointList[prefix];
   }
 
   // Private
 
   _setModeFromBreakpoints() {
-    const value = window.innerWidth;
-    const breakpoint = { ...this.breakpointList };
+    const innerWidth = window.innerWidth;
+    const breakpoint = { ...this.options.sidenavBreakpointList };
 
-    if (value === undefined || !breakpoint) {
+    if (innerWidth === undefined || !breakpoint) {
       return;
     }
 
@@ -458,6 +457,7 @@ class Sidenav {
           "left-0",
           "z-50",
           "bg-black/10",
+          "dark:bg-black-60",
           "w-full",
           "h-full",
           this._element.id,
@@ -833,6 +833,7 @@ class Sidenav {
           }
         });
     });
+    reference && this._updateFocus(this.isVisible);
   }
 
   _setColor() {
