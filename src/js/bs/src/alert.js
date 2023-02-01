@@ -41,15 +41,15 @@ const Default = {
 };
 
 const DefaultClasses = {
-  fadeInClasses:
+  fadeIn:
     "animate-[fade-in_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none",
-  fadeOutClasses:
+  fadeOut:
     "animate-[fade-out_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none",
 };
 
 const DefaultClassesType = {
-  fadeInClasses: "string",
-  fadeOutClasses: "string",
+  fadeIn: "string",
+  fadeOut: "string",
 };
 
 /**
@@ -91,7 +91,7 @@ class Alert extends BaseComponent {
     let timeout = 0;
     if (this._config.animation) {
       timeout = 300;
-      Manipulator.addMultiClass(this._element, this._classes.fadeOutClasses);
+      Manipulator.addMultiClass(this._element, this._classes.fadeOut);
     }
     this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
 
@@ -121,20 +121,20 @@ class Alert extends BaseComponent {
           Object.assign(e.target.style, {
             display: "block",
           });
-          EventHandler.off(e.target, "transitionend", handler);
+          EventHandler.off(e.target, "animationend", handler);
         };
         this._element.setAttribute(SHOW_DATA_ATTRIBUTE, "");
 
-        EventHandler.on(this._element, "transitionend", handler);
+        EventHandler.on(this._element, "animationend", handler);
       }
     }
 
     if (this._config.animation) {
       Manipulator.removeMultiClass(
         this._element,
-        this._classes.fadeOutClasses.split(" ")
+        this._classes.fadeOut.split(" ")
       );
-      Manipulator.addMultiClass(this._element, this._classes.fadeInClasses);
+      Manipulator.addMultiClass(this._element, this._classes.fadeIn);
     }
   }
 
@@ -142,12 +142,6 @@ class Alert extends BaseComponent {
     if (!this._element) {
       return;
     }
-    Manipulator.removeMultiClass(
-      this._element,
-      this._classes.fadeInClasses.split(" ")
-    );
-    Manipulator.addMultiClass(this._element, this._classes.fadeOutClasses);
-
     if (this._element.hasAttribute(SHOW_DATA_ATTRIBUTE)) {
       this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
       const handler = (e) => {
@@ -160,10 +154,16 @@ class Alert extends BaseComponent {
           this._timeout = null;
         }
 
-        EventHandler.off(e.target, "transitionend", handler);
+        EventHandler.off(e.target, "animationend", handler);
       };
 
-      EventHandler.on(this._element, "transitionend", handler);
+      EventHandler.on(this._element, "animationend", handler);
+
+      Manipulator.removeMultiClass(
+        this._element,
+        this._classes.fadeIn.split(" ")
+      );
+      Manipulator.addMultiClass(this._element, this._classes.fadeOut);
     }
   }
 
