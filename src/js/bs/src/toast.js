@@ -31,10 +31,6 @@ const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 
-const FADE_IN_CLASSES =
-  "animate-[fade-in-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
-const FADE_OUT_CLASSES =
-  "animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
 const HIDE_DATA_ATTRIBUTE = "data-te-toast-hide";
 const SHOW_DATA_ATTRIBUTE = "data-te-toast-show";
 const SHOWING_DATA_ATTRIBUTE = "data-te-toast-showing";
@@ -53,6 +49,18 @@ const Default = {
   delay: 5000,
 };
 
+const DefaultClasses = {
+  fadeIn:
+    "animate-[fade-in_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none",
+  fadeOut:
+    "animate-[fade-out_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none",
+};
+
+const DefaultClassesType = {
+  fadeIn: "string",
+  fadeOut: "string",
+};
+
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -60,10 +68,11 @@ const Default = {
  */
 
 class Toast extends BaseComponent {
-  constructor(element, config) {
+  constructor(element, config, classes) {
     super(element);
 
     this._config = this._getConfig(config);
+    this._classes = this._getClasses(classes);
     this._timeout = null;
     this._hasMouseInteraction = false;
     this._hasKeyboardInteraction = false;
@@ -96,8 +105,11 @@ class Toast extends BaseComponent {
     this._clearTimeout();
 
     if (this._config.animation) {
-      Manipulator.removeMultiClass(this._element, FADE_OUT_CLASSES.split(" "));
-      Manipulator.addMultiClass(this._element, FADE_IN_CLASSES);
+      Manipulator.removeMultiClass(
+        this._element,
+        this._classes.fadeOut.split(" ")
+      );
+      Manipulator.addMultiClass(this._element, this._classes.fadeIn);
     }
 
     const complete = () => {
@@ -130,8 +142,11 @@ class Toast extends BaseComponent {
       let timeout = 0;
       if (this._config.animation) {
         timeout = 300;
-        Manipulator.removeMultiClass(this._element, FADE_IN_CLASSES.split(" "));
-        Manipulator.addMultiClass(this._element, FADE_OUT_CLASSES);
+        Manipulator.removeMultiClass(
+          this._element,
+          this._classes.fadeIn.split(" ")
+        );
+        Manipulator.addMultiClass(this._element, this._classes.fadeOut);
       }
       setTimeout(() => {
         this._element.setAttribute(HIDE_DATA_ATTRIBUTE, "");
@@ -167,6 +182,20 @@ class Toast extends BaseComponent {
     typeCheckConfig(NAME, config, this.constructor.DefaultType);
 
     return config;
+  }
+
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
   }
 
   _maybeScheduleHide() {
