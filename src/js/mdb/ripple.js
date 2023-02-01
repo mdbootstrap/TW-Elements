@@ -324,9 +324,9 @@ class Ripple {
 
   _toggleUnbound(target) {
     if (this._options.rippleUnbound === true) {
-      Manipulator.addClass(target, this._classes.unbound);
+      this._addMultiClass(target, this._classes.unbound);
     } else {
-      target.classList.remove(this._classes.unbound);
+      this._removeMultiClass(target, this._classes.unbound.split(" "));
     }
   }
 
