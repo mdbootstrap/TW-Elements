@@ -331,7 +331,7 @@ class Ripple {
   }
 
   _addColor(target) {
-    let rippleColor = this._options.rippleColor || "rgb(0,255,0)";
+    let rippleColor = this._options.rippleColor || "rgb(0,0,0)";
 
     if (
       localStorage.theme === "dark" ||
