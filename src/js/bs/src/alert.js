@@ -5,11 +5,12 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, typeCheckConfig } from "./util/index";
+import { defineJQueryPlugin, typeCheckConfig, isVisible } from "./util/index";
 import EventHandler from "./dom/event-handler";
 import BaseComponent from "./base-component";
 import Manipulator from "./dom/manipulator";
 import { enableDismissTrigger } from "./util/component-functions";
+import SelectorEngine from "./dom/selector-engine";
 
 /**
  * ------------------------------------------------------------------------
@@ -24,16 +25,31 @@ const EVENT_KEY = `.${DATA_KEY}`;
 const EVENT_CLOSE = `close${EVENT_KEY}`;
 const EVENT_CLOSED = `closed${EVENT_KEY}`;
 
-const FADE_OUT_CLASSES =
-  "animate-[fade-out-frame_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
-const SHOW_DATA_ATTRIBUTE = "data-te-toast-show";
+const SHOW_DATA_ATTRIBUTE = "data-te-alert-show";
+const SELECTOR_ALERT = "[data-te-alert-init]";
 
 const DefaultType = {
   animation: "boolean",
+  autohide: "boolean",
+  delay: "number",
 };
 
 const Default = {
   animation: true,
+  autohide: true,
+  delay: 1000,
+};
+
+const DefaultClasses = {
+  fadeIn:
+    "animate-[fade-in_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none",
+  fadeOut:
+    "animate-[fade-out_0.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none",
+};
+
+const DefaultClassesType = {
+  fadeIn: "string",
+  fadeOut: "string",
 };
 
 /**
@@ -43,9 +59,11 @@ const Default = {
  */
 
 class Alert extends BaseComponent {
-  constructor(element, config) {
+  constructor(element, config, classes) {
     super(element);
+    this._element = element;
     this._config = this._getConfig(config);
+    this._classes = this._getClasses(classes);
   }
 
   // Getters
@@ -73,9 +91,8 @@ class Alert extends BaseComponent {
     let timeout = 0;
     if (this._config.animation) {
       timeout = 300;
-      Manipulator.addMultiClass(this._element, FADE_OUT_CLASSES);
+      Manipulator.addMultiClass(this._element, this._classes.fadeOut);
     }
-
     this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
 
     setTimeout(() => {
@@ -85,6 +102,69 @@ class Alert extends BaseComponent {
         this._config.animation
       );
     }, timeout);
+  }
+
+  show() {
+    if (!this._element) {
+      return;
+    }
+
+    if (this._config.autohide) {
+      this._setupAutohide();
+    }
+    if (!this._element.hasAttribute(SHOW_DATA_ATTRIBUTE)) {
+      Object.assign(this._element.style, {
+        display: "block",
+      });
+      if (isVisible(this._element)) {
+        const handler = (e) => {
+          Object.assign(e.target.style, {
+            display: "block",
+          });
+          EventHandler.off(e.target, "animationend", handler);
+        };
+        this._element.setAttribute(SHOW_DATA_ATTRIBUTE, "");
+
+        EventHandler.on(this._element, "animationend", handler);
+      }
+    }
+
+    if (this._config.animation) {
+      Manipulator.removeMultiClass(
+        this._element,
+        this._classes.fadeOut.split(" ")
+      );
+      Manipulator.addMultiClass(this._element, this._classes.fadeIn);
+    }
+  }
+
+  hide() {
+    if (!this._element) {
+      return;
+    }
+    if (this._element.hasAttribute(SHOW_DATA_ATTRIBUTE)) {
+      this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
+      const handler = (e) => {
+        Object.assign(e.target.style, {
+          display: "none",
+        });
+
+        if (this._timeout !== null) {
+          clearTimeout(this._timeout);
+          this._timeout = null;
+        }
+
+        EventHandler.off(e.target, "animationend", handler);
+      };
+
+      EventHandler.on(this._element, "animationend", handler);
+
+      Manipulator.removeMultiClass(
+        this._element,
+        this._classes.fadeIn.split(" ")
+      );
+      Manipulator.addMultiClass(this._element, this._classes.fadeOut);
+    }
   }
 
   // Private
@@ -98,6 +178,26 @@ class Alert extends BaseComponent {
     typeCheckConfig(NAME, config, this.constructor.DefaultType);
 
     return config;
+  }
+
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
+  }
+
+  _setupAutohide() {
+    this._timeout = setTimeout(() => {
+      this.hide();
+    }, this._config.delay);
   }
 
   _destroyElement() {
@@ -128,6 +228,20 @@ class Alert extends BaseComponent {
     });
   }
 }
+
+/**
+ * ------------------------------------------------------------------------
+ * Data Api implementation - auto initialization
+ * ------------------------------------------------------------------------
+ */
+
+SelectorEngine.find(SELECTOR_ALERT).forEach((alert) => {
+  let instance = Alert.getInstance(alert);
+  if (!instance) {
+    instance = new Alert(alert);
+  }
+  return instance;
+});
 
 /**
  * ------------------------------------------------------------------------

@@ -1,17 +1,29 @@
-<nav class="shadow">
+{{ $hidden_sidenav := .Params.hidden_sidenav }}
+
+
+<nav
+  class="{{ if and (ne $hidden_sidenav true) (ne .IsHome true) }}
+    xl:pl-60
+  {{ end }} shadow">
   <div class="px-5 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
           <style></style>
           {{ if ne .IsHome true }}
-            <div id="hamburger" class="mr-2 flex text-gray-400 md:hidden">
+            <div
+              id="hamburger"
+              class="{{ if ne $hidden_sidenav true }}
+                xl:hidden
+              {{ end }} mr-4 flex text-gray-400"
+              data-te-sidenav-toggle-ref
+              data-te-target="#sidenav-main">
               <a href="#" class="text-gray-400">
                 <svg
                   fill="hsl(224, 7.2%, 40%)"
                   viewBox="0 0 100 80"
-                  width="25"
-                  height="25">
+                  width="20"
+                  height="20">
                   <rect width="80" height="14"></rect>
                   <rect y="30" width="80" height="14"></rect>
                   <rect y="60" width="80" height="14"></rect>
@@ -19,15 +31,21 @@
               </a>
             </div>
           {{ end }}
-          <a
-            href="/"
-            class="flex items-center rounded-md py-2 pr-3 text-lg font-medium dark:text-gray-100"
-            aria-current="page"
-            ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
-            Tailwind Elements</a
-          >
+          {{ if or (eq .IsHome true) (eq $hidden_sidenav true) }}
+            <a
+              href="/"
+              class="flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-gray-100"
+              aria-current="page"
+              ><img
+                src="/img/logo.png"
+                class="mr-3"
+                alt=""
+                style="width: 40px" />
+              Tailwind Elements</a
+            >
+          {{ end }}
         </div>
-        <div class="flex hidden items-center sm:ml-6 md:flex">
+        <div class="hidden items-center sm:ml-6 md:flex">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 

@@ -46,27 +46,6 @@ const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
-// Styling classes
-const CLASS_NAME_VISIBLE = "!visible";
-const CLASS_NAME_HIDDEN = "hidden";
-const CLASS_NAME_BASE_TRANSITION = [
-  "overflow-hidden",
-  "duration-[350ms]",
-  "ease-[cubic-bezier(0.25,0.1,0.25,1.0)]",
-  "motion-reduce:transition-none",
-];
-const CLASS_NAME_COLLAPSING = [
-  "h-0",
-  "transition-[height]",
-  ...CLASS_NAME_BASE_TRANSITION,
-];
-const CLASS_NAME_COLLAPSING_HORIZONTAL = [
-  "w-0",
-  "h-auto",
-  "transition-[width]",
-  ...CLASS_NAME_BASE_TRANSITION,
-];
-
 const ATTR_SHOW = "data-te-collapse-show";
 const ATTR_COLLAPSED = "data-te-collapse-collapsed";
 const ATTR_COLLAPSING = "data-te-collapse-collapsing";
@@ -81,6 +60,25 @@ const SELECTOR_DATA_ACTIVES =
   "[data-te-collapse-item][data-te-collapse-show], [data-te-collapse-item][data-te-collapse-collapsing]";
 const SELECTOR_DATA_COLLAPSE_INIT = "[data-te-collapse-init]";
 
+const DefaultClasses = {
+  visible: "!visible",
+  hidden: "hidden",
+  baseTransition:
+    "overflow-hidden duration-[350ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none",
+  collapsing:
+    "h-0 transition-[height] overflow-hidden duration-[350ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none",
+  collapsingHorizontal:
+    "w-0 h-auto transition-[width] overflow-hidden duration-[350ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none",
+};
+
+const DefaultClassesType = {
+  visible: "string",
+  hidden: "string",
+  baseTransition: "string",
+  collapsing: "string",
+  collapsingHorizontal: "string",
+};
+
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -88,11 +86,12 @@ const SELECTOR_DATA_COLLAPSE_INIT = "[data-te-collapse-init]";
  */
 
 class Collapse extends BaseComponent {
-  constructor(element, config) {
+  constructor(element, config, classes) {
     super(element);
 
     this._isTransitioning = false;
     this._config = this._getConfig(config);
+    this._classes = this._getClasses(classes);
     this._triggerArray = [];
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_COLLAPSE_INIT);
@@ -190,11 +189,18 @@ class Collapse extends BaseComponent {
     const dimension = this._getDimension();
     const CLASS_NAME_TRANSITION =
       dimension === "height"
-        ? CLASS_NAME_COLLAPSING
-        : CLASS_NAME_COLLAPSING_HORIZONTAL;
+        ? this._classes.collapsing
+        : this._classes.collapsingHorizontal;
 
-    this._element.classList.remove(CLASS_NAME_VISIBLE, CLASS_NAME_HIDDEN);
-    this._element.classList.add(...CLASS_NAME_TRANSITION);
+    Manipulator.removeMultiClass(
+      this._element,
+      this._classes.visible.split(" ")
+    );
+    Manipulator.removeMultiClass(
+      this._element,
+      this._classes.hidden.split(" ")
+    );
+    Manipulator.addMultiClass(this._element, CLASS_NAME_TRANSITION);
     this._element.removeAttribute(ATTR_COLLAPSE_ITEM);
     this._element.setAttribute(ATTR_COLLAPSING, "");
 
@@ -206,11 +212,15 @@ class Collapse extends BaseComponent {
     const complete = () => {
       this._isTransitioning = false;
 
-      this._element.classList.remove(
-        ...CLASS_NAME_TRANSITION,
-        CLASS_NAME_HIDDEN
+      Manipulator.removeMultiClass(
+        this._element,
+        this._classes.hidden.split(" ")
       );
-      this._element.classList.add(CLASS_NAME_VISIBLE);
+      Manipulator.removeMultiClass(
+        this._element,
+        CLASS_NAME_TRANSITION.split(" ")
+      );
+      Manipulator.addMultiClass(this._element, this._classes.visible);
       this._element.removeAttribute(ATTR_COLLAPSING);
       this._element.setAttribute(ATTR_COLLAPSE_ITEM, "");
       this._element.setAttribute(ATTR_SHOW, "");
@@ -241,8 +251,8 @@ class Collapse extends BaseComponent {
     const dimension = this._getDimension();
     const CLASS_NAME_TRANSITION =
       dimension === "height"
-        ? CLASS_NAME_COLLAPSING
-        : CLASS_NAME_COLLAPSING_HORIZONTAL;
+        ? this._classes.collapsing
+        : this._classes.collapsingHorizontal;
 
     this._element.style[dimension] = `${
       this._element.getBoundingClientRect()[dimension]
@@ -250,8 +260,15 @@ class Collapse extends BaseComponent {
 
     reflow(this._element);
 
-    this._element.classList.add(...CLASS_NAME_TRANSITION);
-    this._element.classList.remove(CLASS_NAME_VISIBLE, CLASS_NAME_HIDDEN);
+    Manipulator.addMultiClass(this._element, CLASS_NAME_TRANSITION);
+    Manipulator.removeMultiClass(
+      this._element,
+      this._classes.visible.split(" ")
+    );
+    Manipulator.removeMultiClass(
+      this._element,
+      this._classes.hidden.split(" ")
+    );
     this._element.setAttribute(ATTR_COLLAPSING, "");
     this._element.removeAttribute(ATTR_COLLAPSE_ITEM);
     this._element.removeAttribute(ATTR_SHOW);
@@ -271,8 +288,13 @@ class Collapse extends BaseComponent {
     const complete = () => {
       this._isTransitioning = false;
 
-      this._element.classList.remove(...CLASS_NAME_TRANSITION);
-      this._element.classList.add(CLASS_NAME_VISIBLE, CLASS_NAME_HIDDEN);
+      Manipulator.removeMultiClass(
+        this._element,
+        CLASS_NAME_TRANSITION.split(" ")
+      );
+      Manipulator.addMultiClass(this._element, this._classes.visible);
+      Manipulator.addMultiClass(this._element, this._classes.hidden);
+
       this._element.removeAttribute(ATTR_COLLAPSING);
       this._element.setAttribute(ATTR_COLLAPSE_ITEM, "");
 
@@ -300,6 +322,19 @@ class Collapse extends BaseComponent {
     config.parent = getElement(config.parent);
     typeCheckConfig(NAME, config, DefaultType);
     return config;
+  }
+
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+    return classes;
   }
 
   _getDimension() {
