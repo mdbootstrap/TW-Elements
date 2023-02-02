@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body class="dark:bg-zinc-800">
+    {{ .Content }}
+    {{ range .Pages }}
+      <div style="border: 1px solid black; margin: 10px; padding: 10px">
+        <div style="font-size: 20px">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </div>
+        <div style="color: grey; font-size: 16px">
+          {{ dateFormat "Monday, Jan 2, 2006" .Date }}
+        </div>
+
+        <p style="font-size: 18px">{{ .Summary }}</p>
+      </div>
+    {{ end }}
+  </body>
+</html>
