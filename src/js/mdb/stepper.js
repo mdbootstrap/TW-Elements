@@ -145,10 +145,10 @@ class Stepper {
       );
 
       stepperHeadText[this._activeStepIndex].classList.add("font-medium");
-      stepperHeadIcon[this._activeStepIndex].classList.add("bg-[#0d6efd]");
+      stepperHeadIcon[this._activeStepIndex].classList.add("!bg-[#0d6efd]");
     } else {
       stepperHeadText[this._activeStepIndex].classList.add("font-medium");
-      stepperHeadIcon[this._activeStepIndex].classList.add("bg-[#0d6efd]");
+      stepperHeadIcon[this._activeStepIndex].classList.add("!bg-[#0d6efd]");
       this._toggleStepClass(
         this._activeStepIndex,
         "add",
@@ -547,7 +547,7 @@ class Stepper {
 
     stepperHead[this._activeStepIndex].classList.add("color-[#858585]");
     stepperHead[this._activeStepIndex].classList.add("cursor-default");
-    stepperHeadIcon[this._activeStepIndex].classList.add("bg-[#858585]");
+    stepperHeadIcon[this._activeStepIndex].classList.add("!bg-[#858585]");
     this._toggleStepClass(
       this._activeStepIndex,
       "add",
@@ -566,11 +566,11 @@ class Stepper {
     );
 
     stepperHeadText[index].classList.add("font-medium");
-    stepperHeadIcon[index].classList.add("bg-[#0d6efd]");
-    stepperHeadIcon[index].classList.remove("bg-[#198754]");
+    stepperHeadIcon[index].classList.add("!bg-[#0d6efd]");
+    stepperHeadIcon[index].classList.remove("!bg-[#198754]");
 
     stepperHeadText[this._activeStepIndex].classList.remove("font-medium");
-    stepperHeadIcon[this._activeStepIndex].classList.remove("bg-[#0d6efd]");
+    stepperHeadIcon[this._activeStepIndex].classList.remove("!bg-[#0d6efd]");
 
     this._toggleStepClass(index, "add", this._options.stepperActive);
     this._toggleStepClass(
@@ -585,8 +585,8 @@ class Stepper {
       `${HEAD_ICON_REF}`,
       this._element
     );
-    stepperHeadIcon[index].classList.add("bg-[#198754]");
-    stepperHeadIcon[index].classList.remove("bg-[#dc3545]");
+    stepperHeadIcon[index].classList.add("!bg-[#198754]");
+    stepperHeadIcon[index].classList.remove("!bg-[#dc3545]");
 
     this._toggleStepClass(index, "add", this._options.stepperCompleted);
     this._toggleStepClass(index, "remove", this._options.stepperInvalid);

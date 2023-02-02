@@ -621,6 +621,7 @@ menu:
   {{< /twsnippet/demo >}}
 
 
+  <!-- prettier-ignore -->
   <section class="!visible hidden" data-te-collapse-item id="example4">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML,JavaScript" >}}
@@ -632,12 +633,18 @@ menu:
           class="mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"></div>
       </div>
       {{< /twsnippet/code >}}
-
       {{< twsnippet/code lang="js" >}}
-      const chipsInitialNew = document.querySelector("#chips-initial"); const
-      newChipsNew = new te.ChipsInput(chipsInitialNew, { initialValues: [ { tag:
-      "MDBReact" }, { tag: "MDBAngular" }, { tag: "MDBVue" }, { tag: "MDB5" }, {
-      tag: "MDB" }, ], });
+        const chipsInitial = document.querySelector("#chips-initial");
+
+        const chipsInitialInstance = new te.ChipsInput(chipsInitial, {
+          initialValues: [
+            { tag: "MDBReact" },
+            { tag: "MDBAngular" },
+            { tag: "MDBVue" },
+            { tag: "MDB5" },
+            { tag: "MDB" },
+          ],
+        });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
