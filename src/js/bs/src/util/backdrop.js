@@ -20,6 +20,7 @@ const Default = {
   isAnimated: false,
   rootElement: "body", // give the choice to place backdrop under different elements
   clickCallback: null,
+  backdropClasses: null,
 };
 
 const DefaultType = {
@@ -27,6 +28,7 @@ const DefaultType = {
   isAnimated: "boolean",
   rootElement: "(element|string)",
   clickCallback: "(function|null)",
+  backdropClasses: "(array|null)",
 };
 const NAME = "backdrop";
 const EVENT_MOUSEDOWN = `mousedown.te.${NAME}`;
@@ -50,8 +52,7 @@ class Backdrop {
       reflow(this._getElement());
     }
 
-    Manipulator.removeClass(this._getElement(), "opacity-0");
-    Manipulator.addMultipleClasses(this._getElement(), [
+    const backdropClasses = this._config.backdropClasses || [
       "opacity-50",
       "transition-all",
       "duration-300",
@@ -63,7 +64,10 @@ class Backdrop {
       "bg-black",
       "w-screen",
       "h-screen",
-    ]);
+    ];
+
+    Manipulator.removeClass(this._getElement(), "opacity-0");
+    Manipulator.addMultipleClasses(this._getElement(), backdropClasses);
     this._element.setAttribute("data-te-backdrop-show", "");
 
     this._emulateAnimation(() => {

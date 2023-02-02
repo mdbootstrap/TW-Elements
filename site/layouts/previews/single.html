@@ -1,0 +1,20 @@
+{{ $page_resources := .Resources }}
+
+
+<!-- Single for all single page under /previews/* -->
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+  <head>
+    {{ partial "head/head.html" . }}
+  </head>
+  <body class="dark:bg-zinc-800">
+    {{ .Content }}
+
+
+    <!-- TE -->
+    <script type="text/javascript" src="/js/index.min.js"></script>
+    {{ with .Resources.GetMatch "index-js.html" }}
+      {{ .Content }}
+    {{ end }}
+  </body>
+</html>

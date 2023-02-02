@@ -1,77 +1,78 @@
-<div
-  class="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-700 dark:scrollbar-track-gray-800 sticky top-0  block h-screen overflow-y-auto pt-5 pb-4 dark:bg-zinc-800 dark:text-gray-200">
-  <div class="mb-6">
-    <div class="flex justify-between ">
-      <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">
-        Getting started
-      </p>
-      <a href="#"
-        ><div id="close_icon" class="visible md:invisible">
-          <svg
-            viewPort="0 0 12 12"
-            version="1.1"
-            width="40"
-            height="15"
-            xmlns="http://www.w3.org/2000/svg">
-            <line
-              x1="1"
-              y1="11"
-              x2="11"
-              y2="1"
-              stroke="black"
-              stroke-width="2" />
-            <line
-              x1="1"
-              y1="1"
-              x2="11"
-              y2="11"
-              stroke="black"
-              stroke-width="2" />
-          </svg></div
-      ></a>
-    </div>
+<ul class="relative m-0 list-none px-[0.2rem] pb-80" data-te-sidenav-menu-ref>
+  <li class="relative">
+    <a
+      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zM432 456c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z" />
+        </svg>
+      </span>
+      <span>Getting started</span>
+      <span
+        class="{{ if in .Page "start" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+      </span>
+    </a>
 
-    <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "start" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.start }}
-        <li class="mb-0 mt-0">
+        <li class="relative">
           <a
             href="{{ .URL }}"
-            class=" {{ if $currentNode.IsMenuCurrent "start" . }}
-              text-blue-600 dark:text-blue-300 font-bold
-            {{ else }}
-              hover:text-blue-700 dark:hover:text-blue-400
-            {{ end }} mx-4 block text-sm leading-relaxed no-underline">
+            class="{{ if $currentNode.IsMenuCurrent "start"  . }}
+              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
             {{ .Name }}</a
           >
         </li>
       {{ end }}
-      <li class="mb-0 mt-0">
+      <li class="relative">
         <a
           target="_blank"
           href="/snippets/"
-          class="mx-4 block text-sm leading-relaxed no-underline transition hover:text-blue-700 dark:hover:text-blue-400"
+          class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref
           >Playground</a
         >
       </li>
-      <li>
+      <li class="relative">
         <a
           target="_blank"
           href="https://mdbgo.com/"
-          class="mx-4  block text-sm leading-relaxed no-underline transition hover:text-blue-700 dark:hover:text-blue-400"
+          class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref
           >Hosting & deployment</a
         >
       </li>
-      <li>
+      <li class="relative">
         <a
           target="_blank"
           href="https://mdbootstrap.com/services/"
-          class="mx-4 mb-2 block text-sm no-underline hover:text-blue-700 dark:hover:text-blue-400"
+          class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref
           >Services</a
         >
       </li>
     </ul>
-  </div>
+  </li>
   <!-- <div class="mb-6">
     <p
       class="text-xs uppercase font-bold block py-1 px-4 mb-2"
@@ -93,149 +94,334 @@
   {{ end }}
     </ul>
   </div> -->
-  <div class="mb-6">
-    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Components</p>
-    <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
+  <li class="relative">
+    <a
+      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M290.8 48.6l78.4 29.7L288 109.5 206.8 78.3l78.4-29.7c1.8-.7 3.8-.7 5.7 0zM136 92.5V204.7c-1.3 .4-2.6 .8-3.9 1.3l-96 36.4C14.4 250.6 0 271.5 0 294.7V413.9c0 22.2 13.1 42.3 33.5 51.3l96 42.2c14.4 6.3 30.7 6.3 45.1 0L288 457.5l113.5 49.9c14.4 6.3 30.7 6.3 45.1 0l96-42.2c20.3-8.9 33.5-29.1 33.5-51.3V294.7c0-23.3-14.4-44.1-36.1-52.4l-96-36.4c-1.3-.5-2.6-.9-3.9-1.3V92.5c0-23.3-14.4-44.1-36.1-52.4l-96-36.4c-12.8-4.8-26.9-4.8-39.7 0l-96 36.4C150.4 48.4 136 69.3 136 92.5zM392 210.6l-82.4 31.2V152.6L392 121v89.6zM154.8 250.9l78.4 29.7L152 311.7 70.8 280.6l78.4-29.7c1.8-.7 3.8-.7 5.7 0zm18.8 204.4V354.8L256 323.2v95.9l-82.4 36.2zM421.2 250.9c1.8-.7 3.8-.7 5.7 0l78.4 29.7L424 311.7l-81.2-31.1 78.4-29.7zM523.2 421.2l-77.6 34.1V354.8L528 323.2v90.7c0 3.2-1.9 6-4.8 7.3z" />
+        </svg>
+      </span>
+      <span>Components</span>
+      <span
+        class="{{ if in .Page "components" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+      </span>
+    </a>
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "components" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.components }}
-        <li>
+        <li class="relative">
           <a
             href="{{ .URL }}"
-            class=" {{ if $currentNode.IsMenuCurrent "components" . }}
-              text-blue-600 dark:text-blue-300 font-bold
-            {{ else }}
-              hover:text-blue-700 dark:hover:text-blue-400
-            {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
+            class="{{ if $currentNode.IsMenuCurrent "components"  . }}
+              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
         </li>
       {{ end }}
 
     </ul>
-  </div>
-  <div class="mb-6">
-    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">
-      Content & styles
-    </p>
-    <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
+  </li>
+  <li class="relative">
+    <a
+      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z" />
+        </svg>
+      </span>
+      <span>Content & styles</span>
+      <span
+        class="{{ if in .Page "contentstyles" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+      </span>
+    </a>
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "contentstyles" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.contentstyles }}
         <li>
           <a
             href="{{ .URL }}"
-            class=" {{ if $currentNode.IsMenuCurrent "contentstyles" . }}
-              text-blue-600 dark:text-blue-300 font-bold
-            {{ else }}
-              hover:text-blue-700 dark:hover:text-blue-400
-            {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
+            class="{{ if $currentNode.IsMenuCurrent "contentstyles"  . }}
+              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
         </li>
       {{ end }}
 
     </ul>
-  </div>
-  <div class="mb-6">
-    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Navigation</p>
-    <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
+  </li>
+  <li class="relative">
+    <a
+      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+        </svg>
+      </span>
+      <span>Navigation</span>
+      <span
+        class="{{ if in .Page "navigation" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+      </span>
+    </a>
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "navigation" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.navigation }}
         <li>
           <a
             href="{{ .URL }}"
-            class=" {{ if $currentNode.IsMenuCurrent "navigation" . }}
-              text-blue-600 dark:text-blue-300 font-bold
-            {{ else }}
-              hover:text-blue-700 dark:hover:text-blue-400
-            {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
+            class="{{ if $currentNode.IsMenuCurrent "navigation"  . }}
+              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
         </li>
       {{ end }}
 
     </ul>
-  </div>
-  <div class="mb-6">
-    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Forms</p>
-    <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
+  </li>
+  <li class="relative">
+    <a
+      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
+        </svg>
+      </span>
+      <span>Forms</span>
+      <span
+        class="{{ if in .Page "forms" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+      </span>
+    </a>
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "forms" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.forms }}
         <li>
           <a
             href="{{ .URL }}"
-            class=" {{ if $currentNode.IsMenuCurrent "forms" . }}
-              text-blue-600 dark:text-blue-300 font-bold
-            {{ else }}
-              hover:text-blue-700 dark:hover:text-blue-400
-            {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
+            class="{{ if $currentNode.IsMenuCurrent "forms"  . }}
+              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
         </li>
       {{ end }}
 
     </ul>
-  </div>
-  <div class="mb-6">
-    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Methods</p>
-    <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
+  </li>
+  <li class="relative">
+    <a
+      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
+        </svg>
+      </span>
+      <span>Methods</span>
+      <span
+        class="{{ if in .Page "methods" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+      </span>
+    </a>
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "methods" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.methods }}
         <li>
           <a
             href="{{ .URL }}"
-            class=" {{ if $currentNode.IsMenuCurrent "methods" . }}
-              text-blue-600 dark:text-blue-300 font-bold
-            {{ else }}
-              hover:text-blue-700 dark:hover:text-blue-400
-            {{ end }}   mx-4 block text-sm leading-relaxed no-underline">
+            class="{{ if $currentNode.IsMenuCurrent "methods"  . }}
+              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
         </li>
       {{ end }}
 
     </ul>
-  </div>
-  <div class="mb-6">
-    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">
-      Design Blocks
-    </p>
-    <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
+  </li>
+  <li class="relative">
+    <a
+      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M264.5 5.2c14.9-6.9 32.1-6.9 47 0l218.6 101c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 149.8C37.4 145.8 32 137.3 32 128s5.4-17.9 13.9-21.8L264.5 5.2zM476.9 209.6l53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 277.8C37.4 273.8 32 265.3 32 256s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0l152-70.2zm-152 198.2l152-70.2 53.2 24.6c8.5 3.9 13.9 12.4 13.9 21.8s-5.4 17.9-13.9 21.8l-218.6 101c-14.9 6.9-32.1 6.9-47 0L45.9 405.8C37.4 401.8 32 393.3 32 384s5.4-17.9 13.9-21.8l53.2-24.6 152 70.2c23.4 10.8 50.4 10.8 73.8 0z" />
+        </svg>
+      </span>
+      <span>Design Blocks</span>
+      <span
+        class="{{ if in .Page "designblocks" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+      </span>
+    </a>
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "designblocks" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.designblocks }}
         <li>
           <a
             href="{{ .URL }}"
-            class=" {{ if $currentNode.IsMenuCurrent "designblocks" . }}
-              text-blue-600 dark:text-blue-300 font-bold
-            {{ else }}
-              hover:text-blue-700 dark:hover:text-blue-400
-            {{ end }}   mx-4 mb-2 block text-sm leading-relaxed no-underline">
+            class="{{ if $currentNode.IsMenuCurrent "designblocks"  . }}
+              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
         </li>
       {{ end }}
 
     </ul>
-  </div>
+  </li>
 
-  <div class="mb-6">
-    <p class="mb-2 block py-1 px-4 text-xs font-bold uppercase">Coming Soon</p>
-    <ul class="mb-0 mt-0 block list-none flex-wrap pl-0">
+  <li class="relative">
+    <a
+      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] py-4 px-6 text-[0.875rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:fill-gray-400 dark:[&>svg]:fill-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M128 32h32c17.7 0 32 14.3 32 32V96H96V64c0-17.7 14.3-32 32-32zm64 96V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V388.9c0-34.6 9.4-68.6 27.2-98.3C40.9 267.8 49.7 242.4 53 216L60.5 156c2-16 15.6-28 31.8-28H192zm227.8 0c16.1 0 29.8 12 31.8 28L459 216c3.3 26.4 12.1 51.8 25.8 74.6c17.8 29.7 27.2 63.7 27.2 98.3V448c0 17.7-14.3 32-32 32H352c-17.7 0-32-14.3-32-32V128h99.8zM320 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32V96H320V64zm-32 64V288H224V128h64z" />
+        </svg>
+      </span>
+      <span>Coming Soon</span>
+      <span
+        class="{{ if in .Page "comingsoon" }}
+          rotate-180
+        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:fill-gray-600 dark:[&>svg]:fill-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+        </svg>
+      </span>
+    </a>
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref
+      {{ if in .Page "comingsoon" }}
+        data-te-collapse-show
+      {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.comingsoon }}
         <li>
           <a
             href="{{ .URL }}"
-            class=" {{ if $currentNode.IsMenuCurrent "comingsoon" . }}
-              text-blue-600 dark:text-blue-300 font-bold
-            {{ else }}
-              hover:text-blue-700 dark:hover:text-blue-400
-            {{ end }}   mx-4 mb-2 block text-sm leading-relaxed no-underline">
+            class="{{ if $currentNode.IsMenuCurrent "comingsoon"  . }}
+              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+            data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
         </li>
       {{ end }}
 
     </ul>
-  </div>
-</div>
+  </li>
+</ul>
