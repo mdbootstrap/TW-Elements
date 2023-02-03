@@ -42,7 +42,7 @@ const Default = {
 
 const DefaultClasses = {
   iconClasses:
-    "close fas fa-times float-right pl-[8px] text-[16px] opacity-[.53] cursor-pointer fill-[#afafaf] hover:text-[#8b8b8b] transition-all duration-200 ease-in-out",
+    "float-right pl-[8px] text-[16px] opacity-[.53] cursor-pointer fill-[#afafaf] hover:text-[#8b8b8b] transition-all duration-200 ease-in-out",
 };
 
 const DefaultClassesType = {
