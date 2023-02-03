@@ -19,6 +19,7 @@ import Ripple from "./mdb/ripple";
 import Datepicker from "./mdb/datepicker";
 import Timepicker from "./mdb/timepicker";
 import Stepper from "./mdb/stepper";
+import Select from "./mdb/select";
 
 export {
   Animate,
@@ -31,6 +32,7 @@ export {
   Modal,
   Popover,
   ScrollSpy,
+  Select,
   Tab,
   Toast,
   Tooltip,
