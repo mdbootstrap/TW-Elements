@@ -57,6 +57,27 @@ const Manipulator = {
     return attributes;
   },
 
+  getDataClassAttributes(element) {
+    if (!element) {
+      return {};
+    }
+
+    const attributes = {
+      ...element.dataset,
+    };
+
+    Object.keys(attributes)
+      .filter((key) => key.startsWith("teClass"))
+      .forEach((key) => {
+        let pureKey = key.replace(/^teClass/, "");
+        pureKey =
+          pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
+        attributes[pureKey] = normalizeData(attributes[key]);
+      });
+
+    return attributes;
+  },
+
   getDataAttribute(element, key) {
     return normalizeData(
       element.getAttribute(`data-te-${normalizeDataKey(key)}`)

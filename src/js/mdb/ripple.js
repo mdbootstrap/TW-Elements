@@ -17,15 +17,13 @@ import SelectorEngine from "./dom/selector-engine";
 
 const NAME = "ripple";
 const DATA_KEY = "te.ripple";
-const CLASSNAME_RIPPLE = "relative overflow-hidden inline-block align-bottom";
-const CLASSNAME_RIPPLE_WAVE =
-  "rounded-[50%] opacity-50 pointer-events-none absolute touch-none scale-0 transition-[transform,_opacity] ease-[cubic-bezier(0,0,0.15,1),_cubic-bezier(0,0,0.15,1)] z-[999] bg-[radial-gradient(circle,_rgba(0,0,0,0.2)_0%,_rgba(0,0,0,0.3)_40%,_rgba(0,0,0,0.4)_50%,_rgba(0,0,0,0.5)_60%,_transparent_70%)]";
-const SELECTOR_COMPONENT = ["[data-te-ripple-init]"];
 
-const CLASSNAME_UNBOUND = "overflow-visible";
 const GRADIENT =
   "rgba({{color}}, 0.2) 0, rgba({{color}}, 0.3) 40%, rgba({{color}}, 0.4) 50%, rgba({{color}}, 0.5) 60%, rgba({{color}}, 0) 70%";
+
+const SELECTOR_COMPONENT = ["[data-te-ripple-init]"];
 const DEFAULT_RIPPLE_COLOR = [0, 0, 0];
+
 const BOOTSTRAP_COLORS = [
   { name: "primary", gradientColor: "#1268f1" },
   { name: "secondary", gradientColor: "#b33cfd" },
@@ -44,6 +42,7 @@ const TRANSITION_BREAK_OPACITY = 0.5;
 const Default = {
   rippleCentered: false,
   rippleColor: "",
+  rippleColorDark: "",
   rippleDuration: "500ms",
   rippleRadius: 0,
   rippleUnbound: false,
@@ -52,9 +51,23 @@ const Default = {
 const DefaultType = {
   rippleCentered: "boolean",
   rippleColor: "string",
+  rippleColorDark: "string",
   rippleDuration: "string",
   rippleRadius: "number",
   rippleUnbound: "boolean",
+};
+
+const DefaultClasses = {
+  ripple: "relative overflow-hidden inline-block align-bottom",
+  rippleWave:
+    "rounded-[50%] opacity-50 pointer-events-none absolute touch-none scale-0 transition-[transform,_opacity] ease-[cubic-bezier(0,0,0.15,1),_cubic-bezier(0,0,0.15,1)] z-[999] bg-[radial-gradient(circle,_rgba(0,0,0,0.2)_0%,_rgba(0,0,0,0.3)_40%,_rgba(0,0,0,0.4)_50%,_rgba(0,0,0,0.5)_60%,_transparent_70%)]",
+  unbound: "overflow-visible",
+};
+
+const DefaultClassesType = {
+  ripple: "string",
+  rippleWave: "string",
+  unbound: "string",
 };
 
 /**
@@ -64,13 +77,14 @@ const DefaultType = {
  */
 
 class Ripple {
-  constructor(element, options) {
+  constructor(element, options, classes) {
     this._element = element;
     this._options = this._getConfig(options);
+    this._classes = this._getClasses(classes);
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
-      this._addMultiClass(this._element, CLASSNAME_RIPPLE);
+      this._addMultiClass(this._element, this._classes.ripple);
     }
     this._clickHandler = this._createRipple.bind(this);
     this._rippleTimer = null;
@@ -117,7 +131,7 @@ class Ripple {
     }
 
     this._initialClasses = [...this._element.classList];
-    this._addMultiClass(this._element, CLASSNAME_RIPPLE);
+    this._addMultiClass(this._element, this._classes.ripple);
 
     this._options = this._getConfig();
     this._createRipple(event);
@@ -136,8 +150,8 @@ class Ripple {
   }
 
   _createRipple(event) {
-    if (this._element.className.indexOf(CLASSNAME_RIPPLE) < 0) {
-      this._addMultiClass(this._element, CLASSNAME_RIPPLE);
+    if (this._element.className.indexOf(this._classes.ripple) < 0) {
+      this._addMultiClass(this._element, this._classes.ripple);
     }
 
     const { layerX, layerY } = event;
@@ -187,11 +201,9 @@ class Ripple {
     Object.keys(styles).forEach(
       (property) => (ripple.style[property] = styles[property])
     );
-    this._addMultiClass(ripple, CLASSNAME_RIPPLE_WAVE);
+    this._addMultiClass(ripple, this._classes.rippleWave);
     ripple.setAttribute("data-te-ripple-ref", "");
-    if (this._options.rippleColor !== "") {
-      this._addColor(ripple, wrapper);
-    }
+    this._addColor(ripple, wrapper);
 
     this._toggleUnbound(wrapper);
     this._appendRipple(ripple, wrapper);
@@ -218,10 +230,10 @@ class Ripple {
           // check if added ripple classes wasn't there initialy
           const classesToRemove = this._initialClasses
             ? this._addedNewRippleClasses(
-                CLASSNAME_RIPPLE,
+                this._classes.ripple,
                 this._initialClasses
               )
-            : CLASSNAME_RIPPLE.split(" ");
+            : this._classes.ripple.split(" ");
           this._removeMultiClass(this._element, classesToRemove);
         }
       }
@@ -251,6 +263,20 @@ class Ripple {
 
     typeCheckConfig(NAME, config, DefaultType);
     return config;
+  }
+
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
   }
 
   _getDiameter({ offsetX, offsetY, height, width }) {
@@ -298,20 +324,30 @@ class Ripple {
 
   _toggleUnbound(target) {
     if (this._options.rippleUnbound === true) {
-      Manipulator.addClass(target, CLASSNAME_UNBOUND);
+      this._addMultiClass(target, this._classes.unbound);
     } else {
-      target.classList.remove(CLASSNAME_UNBOUND);
+      this._removeMultiClass(target, this._classes.unbound.split(" "));
     }
   }
 
   _addColor(target) {
+    let rippleColor = this._options.rippleColor || "rgb(0,0,0)";
+
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      rippleColor = this._options.rippleColorDark || this._options.rippleColor;
+    }
+
     const IS_BOOTSTRAP_COLOR = BOOTSTRAP_COLORS.find(
-      (color) => color.name === this._options.rippleColor.toLowerCase()
+      (color) => color.name === rippleColor.toLowerCase()
     );
 
     const rgbValue = IS_BOOTSTRAP_COLOR
       ? this._colorToRGB(IS_BOOTSTRAP_COLOR.gradientColor).join(",")
-      : this._colorToRGB(this._options.rippleColor).join(",");
+      : this._colorToRGB(rippleColor).join(",");
 
     const gradientImage = GRADIENT.split("{{color}}").join(`${rgbValue}`);
     target.style.backgroundImage = `radial-gradient(circle, ${gradientImage})`;

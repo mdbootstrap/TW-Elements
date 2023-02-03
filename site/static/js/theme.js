@@ -90,6 +90,18 @@ class ThemeSwitcher {
     this.setCustomTogglersState();
   }
 
+  onThemeSwitcherShortCut() {
+    if (!("theme" in localStorage)) {
+      document.querySelector("html").classList.contains("dark")
+        ? this.setLightTheme()
+        : this.setDarkTheme();
+    } else if (localStorage.theme === "dark") {
+      this.setLightTheme();
+    } else {
+      this.setDarkTheme();
+    }
+  }
+
   addEventListeners() {
     const bindedOnThemeSwitcherItemClick =
       this.onThemeSwitcherItemClick.bind(this);
@@ -125,6 +137,12 @@ class ThemeSwitcher {
         customToggler.checked = true;
       } else {
         customToggler.checked = false;
+      }
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key.toLocaleLowerCase() === "d" && event.shiftKey) {
+        this.onThemeSwitcherShortCut(event);
       }
     });
   }
