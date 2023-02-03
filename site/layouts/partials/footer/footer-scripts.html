@@ -340,6 +340,18 @@
       clip[i].pause();
     });
   }
+
+  // Copy to clipboard
+  const copyElements = document.querySelectorAll("[data-te-copy-to-clipboard]");
+  copyElements.forEach((copyElement) => {
+    const handleCopyElementClick = (event) => {
+      const codeElement = event.target.querySelector("code");
+      navigator.clipboard.writeText(codeElement.innerText);
+    };
+
+    copyElement.addEventListener("click", handleCopyElementClick, false);
+  });
+  // Copy to clipboard
 </script>
 
 <script>
