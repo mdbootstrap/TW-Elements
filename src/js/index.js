@@ -20,11 +20,13 @@ import Datepicker from "./mdb/datepicker";
 import Timepicker from "./mdb/timepicker";
 import Sidenav from "./mdb/sidenav";
 import Stepper from "./mdb/stepper";
+import ChipsInput from "./mdb/chips";
 
 export {
   Animate,
   Alert,
   Button,
+  ChipsInput,
   Dropdown,
   Carousel,
   Collapse,
