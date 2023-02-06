@@ -148,9 +148,9 @@ export function getWrapperTemplate(id, config, label, classes) {
   _setSizeClasses(
     arrow,
     config,
-    classes.selectArrowSizeDefault,
-    classes.selectArrowSizeSm,
-    classes.selectArrowSizeLg
+    classes.selectArrowDefault,
+    classes.selectArrowSm,
+    classes.selectArrowLg
   );
 
   if (config.selectFormWhite) {

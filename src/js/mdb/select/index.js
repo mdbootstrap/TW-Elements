@@ -112,7 +112,7 @@ const DefaultType = {
   selectValidation: "boolean",
   selectValidFeedback: "string",
   selectInvalidFeedback: "string",
-  selectPlaceholder: "",
+  selectPlaceholder: "string",
 };
 
 const DefaultClasses = {
@@ -124,6 +124,7 @@ const DefaultClasses = {
   initialized: "hidden",
   inputGroup:
     "flex items-center whitespace-nowrap p-2.5 text-center text-base font-normal leading-[1.6] text-gray-700 dark:bg-zinc-800 dark:text-gray-200 dark:placeholder:text-gray-200",
+  noResult: "flex items-center px-4",
   optionsList: "list-none m-0 p-0",
   optionsWrapper: "overflow-y-auto",
   optionsWrapperScrollbar:
@@ -131,9 +132,9 @@ const DefaultClasses = {
   selectArrow:
     "absolute right-2 text-[0.8rem] cursor-pointer peer-focus:text-blue-600 peer-data-[te-input-focused]:text-blue-600 group-data-[te-was-validated]/validation:peer-valid:text-green-600 group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)]",
   selectArrowWhite: "text-gray-50",
-  selectArrowSizeDefault: "top-2",
-  selectArrowSizeLg: "top-[13px]",
-  selectArrowSizeSm: "top-1",
+  selectArrowDefault: "top-2",
+  selectArrowLg: "top-[13px]",
+  selectArrowSm: "top-1",
   selectClearBtn:
     "absolute top-2 right-7 text-black cursor-pointer focus:text-blue-600 outline-none dark:text-gray-200",
   selectClearBtnWhite: "!text-gray-50",
@@ -168,7 +169,6 @@ const DefaultClasses = {
   selectOptionSecondaryText:
     "block text-[0.8rem] text-gray-500 dark:text-gray-300",
   selectOptionText: "group",
-
   selectValidationValid:
     "hidden absolute -mt-3 w-auto text-sm text-green-600 cursor-pointer group-data-[te-was-validated]/validation:peer-valid:block",
   selectValidationInvalid:
@@ -181,13 +181,14 @@ const DefaultClassesType = {
   formOutline: "string",
   initialized: "string",
   inputGroup: "string",
+  noResult: "string",
   optionsList: "string",
   optionsWrapper: "string",
   optionsWrapperScrollbar: "string",
   selectArrow: "string",
-  selectArrowSizeDefault: "string",
-  selectArrowSizeLg: "string",
-  selectArrowSizeSm: "string",
+  selectArrowDefault: "string",
+  selectArrowLg: "string",
+  selectArrowSm: "string",
   selectClearBtn: "string",
   selectClearBtnDefault: "string",
   selectClearBtnLg: "string",
@@ -1319,8 +1320,7 @@ class Select {
   }
 
   _getNoResultTemplate() {
-    const noResult = "flex items-center px-4";
-    return `<div class="${noResult}" ${DATA_NO_RESULT} style="height: ${this._config.selectOptionHeight}px">${this._config.selectNoResultText}</div>`;
+    return `<div class="${this._classes.noResult}" ${DATA_NO_RESULT} style="height: ${this._config.selectOptionHeight}px">${this._config.selectNoResultText}</div>`;
   }
 
   _filter(value, options) {
