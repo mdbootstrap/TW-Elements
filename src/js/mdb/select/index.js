@@ -131,7 +131,8 @@ const DefaultClasses = {
     "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-button]:block [&::-webkit-scrollbar-button]:h-0 [&::-webkit-scrollbar-button]:bg-transparent [&::-webkit-scrollbar-track-piece]:bg-transparent [&::-webkit-scrollbar-track-piece]:rounded-none [&::-webkit-scrollbar-track-piece]: [&::-webkit-scrollbar-track-piece]:rounded-l [&::-webkit-scrollbar-thumb]:h-[50px] [&::-webkit-scrollbar-thumb]:bg-[#999] [&::-webkit-scrollbar-thumb]:rounded",
   selectArrow:
     "absolute right-2 text-[0.8rem] cursor-pointer peer-focus:text-blue-600 peer-data-[te-input-focused]:text-blue-600 group-data-[te-was-validated]/validation:peer-valid:text-green-600 group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)]",
-  selectArrowWhite: "text-gray-50",
+  selectArrowWhite:
+    "text-gray-50 peer-focus:!text-white peer-data-[te-input-focused]:!text-white",
   selectArrowDefault: "top-2",
   selectArrowLg: "top-[13px]",
   selectArrowSm: "top-1",
