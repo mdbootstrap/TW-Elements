@@ -4,7 +4,7 @@ import {
   onDOMContentLoaded,
   typeCheckConfig,
 } from "../util/bs_index";
-import Data from "../dom/bs_data";
+import Data from "../dom/data";
 import EventHandler from "../dom/bs_event-handler";
 import Manipulator from "../dom/bs_manipulator";
 import SelectorEngine from "../dom/bs_selector-engine";

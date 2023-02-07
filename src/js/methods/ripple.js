@@ -83,7 +83,7 @@ class Ripple {
     this._classes = this._getClasses(classes);
 
     if (this._element) {
-      Data.setData(element, DATA_KEY, this);
+      Data.set(element, DATA_KEY, this);
       this._addMultiClass(this._element, this._classes.ripple);
     }
     this._clickHandler = this._createRipple.bind(this);
@@ -107,7 +107,7 @@ class Ripple {
   }
 
   dispose() {
-    Data.removeData(this._element, DATA_KEY);
+    Data.remove(this._element, DATA_KEY);
     EventHandler.off(this._element, "click", this._clickHandler);
     this._element = null;
     this._options = null;
@@ -416,7 +416,7 @@ class Ripple {
 
   static jQueryInterface(options) {
     return this.each(function () {
-      const data = Data.getData(this, DATA_KEY);
+      const data = Data.get(this, DATA_KEY);
       if (!data) {
         return new Ripple(this, options);
       }
@@ -426,7 +426,7 @@ class Ripple {
   }
 
   static getInstance(element) {
-    return Data.getData(element, DATA_KEY);
+    return Data.get(element, DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {

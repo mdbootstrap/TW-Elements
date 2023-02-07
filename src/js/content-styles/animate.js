@@ -65,7 +65,7 @@ class Animate {
     this._options = this._getConfig(options);
 
     if (this._element) {
-      Data.setData(element, DATA_KEY, this);
+      Data.set(element, DATA_KEY, this);
     }
   }
 
@@ -97,7 +97,7 @@ class Animate {
     EventHandler.off(window, "scroll");
     EventHandler.off(this._element, "mouseover");
 
-    Data.removeData(this._element, DATA_KEY);
+    Data.remove(this._element, DATA_KEY);
     this._element = null;
     this._animateElement = null;
     this._isFirstScroll = null;
@@ -329,7 +329,7 @@ class Animate {
   }
 
   static getInstance(element) {
-    return Data.getData(element, DATA_KEY);
+    return Data.get(element, DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {

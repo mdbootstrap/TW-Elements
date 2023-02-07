@@ -321,7 +321,7 @@ class Datepicker {
     this._toggleButtonId = getUID("datepicker-toggle-");
 
     if (this._element) {
-      Data.setData(element, DATA_KEY, this);
+      Data.set(element, DATA_KEY, this);
     }
 
     this._init();
@@ -1066,7 +1066,7 @@ class Datepicker {
       this._element.removeChild(generatedToggleButton);
     }
 
-    Data.removeData(this._element, DATA_KEY);
+    Data.remove(this._element, DATA_KEY);
 
     this._element = null;
     this._input = null;
@@ -1519,7 +1519,7 @@ class Datepicker {
   }
 
   static getInstance(element) {
-    return Data.getData(element, DATA_KEY);
+    return Data.get(element, DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {

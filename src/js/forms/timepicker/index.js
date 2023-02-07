@@ -205,7 +205,7 @@ class Timepicker {
     this._element = element;
 
     if (this._element) {
-      Data.setData(element, DATA_KEY, this);
+      Data.set(element, DATA_KEY, this);
     }
 
     this._document = document;
@@ -398,7 +398,7 @@ class Timepicker {
     this._removeModal();
 
     if (this._element !== null) {
-      Data.removeData(this._element, DATA_KEY);
+      Data.remove(this._element, DATA_KEY);
     }
 
     setTimeout(() => {
@@ -2569,7 +2569,7 @@ class Timepicker {
 
   // Static
   static getInstance(element) {
-    return Data.getData(element, DATA_KEY);
+    return Data.get(element, DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {

@@ -78,7 +78,7 @@ class Stepper {
     this._verticalStepperStyles = [];
 
     if (this._element) {
-      Data.setData(element, DATA_KEY, this);
+      Data.set(element, DATA_KEY, this);
       this._init();
     }
   }
@@ -106,7 +106,7 @@ class Stepper {
 
     EventHandler.off(window, EVENT_RESIZE);
 
-    Data.removeData(this._element, DATA_KEY);
+    Data.remove(this._element, DATA_KEY);
     this._element = null;
   }
 
@@ -704,7 +704,7 @@ class Stepper {
   }
 
   static getInstance(element) {
-    return Data.getData(element, DATA_KEY);
+    return Data.get(element, DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {
