@@ -149,6 +149,7 @@ class Carousel extends BaseComponent {
       navigator.maxTouchPoints > 0;
     this._pointerEvent = Boolean(window.PointerEvent);
 
+    this._setActiveElementClass();
     this._addEventListeners();
   }
 
@@ -298,6 +299,14 @@ class Carousel extends BaseComponent {
     }
 
     this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT);
+  }
+
+  _setActiveElementClass() {
+    this._activeElement = SelectorEngine.findOne(
+      SELECTOR_DATA_ACTIVE_ITEM,
+      this._element
+    );
+    Manipulator.addClass(this._activeElement, "hidden");
   }
 
   _addEventListeners() {

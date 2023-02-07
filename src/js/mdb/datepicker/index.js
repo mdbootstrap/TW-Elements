@@ -87,6 +87,49 @@ const FADE_IN_SHORT_CLASSES =
 const FADE_OUT_SHORT_CLASSES =
   "animate-[fade-out_0.15s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none";
 
+// templates classes
+const MODAL_CONTAINER_CLASSES =
+  "flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[328px] h-[512px] bg-white rounded-[0.6rem] shadow-lg z-[1066] xs:max-md:landscape:w-[475px] xs:max-md:landscape:h-[360px] xs:max-md:landscape:flex-row dark:bg-zinc-700";
+const DATEPICKER_BACKDROP_CLASSES =
+  "w-full h-full fixed top-0 right-0 left-0 bottom-0 bg-black/40 z-[1065]";
+const DATEPICKER_MAIN_CLASSES = "relative h-full";
+const DATEPICKER_HEADER_CLASSES =
+  "xs:max-md:landscape:h-full h-[120px] px-6 bg-blue-500 flex flex-col rounded-t-lg dark:bg-zinc-800";
+const DATEPICKER_TITLE_CLASSES = "h-8 flex flex-col justify-end";
+const DATEPICKER_TITLE_TEXT_CLASSES =
+  "text-[10px] font-normal uppercase tracking-[1.7px] text-white";
+const DATEPICKER_DATE_CLASSES =
+  "xs:max-md:landscape:mt-24 h-[72px] flex flex-col justify-end";
+const DATEPICKER_DATE_TEXT_CLASSES = "text-[34px] font-normal text-white";
+const DATEPICKER_VIEW_CLASSES = "outline-none px-3";
+const DATEPICKER_DATE_CONTROLS_CLASSES =
+  "px-3 pt-2.5 pb-0 flex justify-between text-black/[64]";
+const DATEPICKER_VIEW_CHANGE_BUTTON_CLASSES = `outline-none p-2.5 text-neutral-500 font-medium text-[0.9rem] rounded-xl shadow-none bg-transparent m-0 border-none hover:bg-neutral-200 focus:bg-neutral-200 after:content-[${""}] after:inline-block after:w-0 after:h-0 after:border-solid after:border-x-[5px] after:border-x-transparent after:border-t-[5px] after:m-0 after:ml-[5px] after:align-middle dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
+const DATEPICKER_ARROW_CONTROLS_CLASSES = "mt-2.5";
+const DATEPICKER_PREVIOUS_BUTTON_CLASSES = `relative p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-black/[64] bg-transparent mr-6 hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:content-[${""}] after:m-[15.5px] after:border-0 after:border-solid after:border-current after:border-t-2 after:border-l-2 after:translate-x-[2px] after:-rotate-45 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
+const DATEPICKER_NEXT_BUTTON_CLASSES = `relative p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-black/[64] bg-transparent hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:content-[${""}] after:m-[15.5px] after:border-0 after:border-solid after:border-current after:border-t-2 after:border-r-2 after:translate-x-[-2px] after:rotate-45 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
+const DATEPICKER_FOOTER_CLASSES =
+  "h-14 flex absolute w-full bottom-0 justify-end items-center px-3";
+const DATEPICKER_FOOTER_BTN_CLASSES =
+  "outline-none bg-white text-blue-500 border-none cursor-pointer py-0 px-2.5 uppercase text-[0.8rem] leading-10 font-medium h-10 tracking-[.1rem] rounded-[10px] mb-2.5 hover:bg-neutral-200 focus:bg-neutral-200 dark:bg-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10";
+const DATEPICKER_CLEAR_BTN_CLASSES = "mr-auto";
+const DATEPICKER_DAY_HEADING_CLASSES =
+  "w-10 h-10 text-center text-[12px] font-normal";
+const DATEPICKER_CELL_CLASSES =
+  "text-center data-[te-datepicker-cell-disabled]:text-neutral-300 data-[te-datepicker-cell-disabled]:cursor-default data-[te-datepicker-cell-disabled]:pointer-events-none data-[te-datepicker-cell-disabled]:hover:cursor-default hover:cursor-pointer group";
+const DATEPICKER_CELL_SMALL_CLASSES =
+  "w-10 h-10 xs:max-md:landscape:w-8 xs:max-md:landscape:h-8";
+const DATEPICKER_CELL_LARGE_CLASSES = "w-[76px] h-[42px]";
+const DATEPICKER_CELL_CONTENT_CLASSES =
+  "mx-auto group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-neutral-300 group-[[data-te-datepicker-cell-selected]]:bg-blue-500 group-[[data-te-datepicker-cell-selected]]:text-white group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-neutral-100 group-[[data-te-datepicker-cell-focused]]:data-[te-datepicker-cell-selected]:bg-blue-500 group-[[data-te-datepicker-cell-current]]:border-solid group-[[data-te-datepicker-cell-current]]:border-black group-[[data-te-datepicker-cell-current]]:border dark:group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-white/10 dark:group-[[data-te-datepicker-cell-current]]:border-white dark:group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-white/10";
+const DATEPICKER_CELL_CONTENT_SMALL_CLASSES =
+  "w-9 h-9 leading-9 rounded-[50%] text-[13px]";
+const DATEPICKER_CELL_CONTENT_LARGE_CLASSES =
+  "w-[72px] h-10 leading-10 py-[1px] px-0.5 rounded-[999px]";
+const DATEPICKER_TABLE_CLASSES = "mx-auto w-[304px]";
+const DATEPICKER_TOGGLE_BUTTON_CLASSES =
+  "outline-none w-3.5 h-3.5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:fill-blue-600 focus:fill-blue-600 dark:hover:fill-blue-400 dark:focus:fill-blue-400 dark:fill-gray-200";
+
 const Default = {
   title: "Select date",
   monthsFull: [
@@ -189,6 +232,72 @@ const DefaultType = {
   disableInput: "boolean",
 };
 
+const DefaultClasses = {
+  fadeIn: FADE_IN_CLASSES,
+  fadeOut: FADE_OUT_CLASSES,
+  fadeInShort: FADE_IN_SHORT_CLASSES,
+  fadeOutShort: FADE_OUT_SHORT_CLASSES,
+  modalContainer: MODAL_CONTAINER_CLASSES,
+  datepickerBackdrop: DATEPICKER_BACKDROP_CLASSES,
+  datepickerMain: DATEPICKER_MAIN_CLASSES,
+  datepickerHeader: DATEPICKER_HEADER_CLASSES,
+  datepickerTitle: DATEPICKER_TITLE_CLASSES,
+  datepickerTitleText: DATEPICKER_TITLE_TEXT_CLASSES,
+  datepickerDate: DATEPICKER_DATE_CLASSES,
+  datepickerDateText: DATEPICKER_DATE_TEXT_CLASSES,
+  datepickerView: DATEPICKER_VIEW_CLASSES,
+  datepickerDateControls: DATEPICKER_DATE_CONTROLS_CLASSES,
+  datepickerViewChangeButton: DATEPICKER_VIEW_CHANGE_BUTTON_CLASSES,
+  datepickerArrowControls: DATEPICKER_ARROW_CONTROLS_CLASSES,
+  datepickerPreviousButton: DATEPICKER_PREVIOUS_BUTTON_CLASSES,
+  datepickerNextButton: DATEPICKER_NEXT_BUTTON_CLASSES,
+  datepickerFooter: DATEPICKER_FOOTER_CLASSES,
+  datepickerFooterBtn: DATEPICKER_FOOTER_BTN_CLASSES,
+  datepickerClearBtn: DATEPICKER_CLEAR_BTN_CLASSES,
+  datepickerDayHeading: DATEPICKER_DAY_HEADING_CLASSES,
+  datepickerCell: DATEPICKER_CELL_CLASSES,
+  datepickerCellSmall: DATEPICKER_CELL_SMALL_CLASSES,
+  datepickerCellLarge: DATEPICKER_CELL_LARGE_CLASSES,
+  datepickerCellContent: DATEPICKER_CELL_CONTENT_CLASSES,
+  datepickerCellContentSmall: DATEPICKER_CELL_CONTENT_SMALL_CLASSES,
+  datepickerCellContentLarge: DATEPICKER_CELL_CONTENT_LARGE_CLASSES,
+  datepickerTable: DATEPICKER_TABLE_CLASSES,
+  datepickerToggleButton: DATEPICKER_TOGGLE_BUTTON_CLASSES,
+};
+
+const DefaultClassesType = {
+  fadeIn: "string",
+  fadeOut: "string",
+  fadeInShort: "string",
+  fadeOutShort: "string",
+  modalContainer: "string",
+  datepickerBackdrop: "string",
+  datepickerMain: "string",
+  datepickerHeader: "string",
+  datepickerTitle: "string",
+  datepickerTitleText: "string",
+  datepickerDate: "string",
+  datepickerDateText: "string",
+  datepickerView: "string",
+  datepickerDateControls: "string",
+  datepickerViewChangeButton: "string",
+  datepickerArrowControls: "string",
+  datepickerPreviousButton: "string",
+  datepickerNextButton: "string",
+  datepickerFooter: "string",
+  datepickerFooterBtn: "string",
+  datepickerClearBtn: "string",
+  datepickerDayHeading: "string",
+  datepickerCell: "string",
+  datepickerCellSmall: "string",
+  datepickerCellLarge: "string",
+  datepickerCellContent: "string",
+  datepickerCellContentSmall: "string",
+  datepickerCellContentLarge: "string",
+  datepickerTable: "string",
+  datepickerToggleButton: "string",
+};
+
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -196,10 +305,11 @@ const DefaultType = {
  */
 
 class Datepicker {
-  constructor(element, options) {
+  constructor(element, options, classes) {
     this._element = element;
     this._input = SelectorEngine.findOne("input", this._element);
     this._options = this._getConfig(options);
+    this._classes = this._getClasses(classes);
     this._activeDate = new Date();
     this._selectedDate = null;
     this._selectedYear = null;
@@ -335,6 +445,20 @@ class Datepicker {
     return config;
   }
 
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
+  }
+
   _getNewDaysOrderArray(config) {
     const index = config.startDay;
 
@@ -360,7 +484,10 @@ class Datepicker {
   }
 
   _appendToggleButton() {
-    const toggleButton = getToggleButtonTemplate(this._toggleButtonId);
+    const toggleButton = getToggleButtonTemplate(
+      this._toggleButtonId,
+      this._classes.datepickerToggleButton
+    );
     this._element.insertAdjacentHTML("beforeend", toggleButton);
   }
 
@@ -376,7 +503,7 @@ class Datepicker {
 
     this._setInitialDate();
 
-    const backdrop = getBackdropTemplate();
+    const backdrop = getBackdropTemplate(this._classes.datepickerBackdrop);
     const template = getDatepickerTemplate(
       this._activeDate,
       this._selectedDate,
@@ -386,13 +513,14 @@ class Datepicker {
       4,
       24,
       24,
-      this._toggleButtonId
+      this._toggleButtonId,
+      this._classes
     );
 
     this._openModal(backdrop, template);
 
-    Manipulator.addMultiClass(this.container, FADE_IN_CLASSES);
-    Manipulator.addMultiClass(backdrop, FADE_IN_SHORT_CLASSES);
+    Manipulator.addMultiClass(this.container, this._classes.fadeIn);
+    Manipulator.addMultiClass(backdrop, this._classes.fadeInShort);
 
     this._setFocusTrap(this.container);
 
@@ -840,7 +968,7 @@ class Datepicker {
 
     this._removeDatepickerListeners();
 
-    Manipulator.addMultiClass(this.container, FADE_OUT_CLASSES);
+    Manipulator.addMultiClass(this.container, this._classes.fadeOut);
 
     this._closeModal();
 
@@ -881,7 +1009,7 @@ class Datepicker {
     const backdrop = SelectorEngine.findOne(BACKDROP_SELECTOR);
     const datepicker = SelectorEngine.findOne(MODAL_CONTAINER_SELECTOR);
 
-    Manipulator.addMultiClass(backdrop, FADE_OUT_SHORT_CLASSES);
+    Manipulator.addMultiClass(backdrop, this._classes.fadeOutShort);
 
     if (datepicker && backdrop) {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1142,7 +1270,8 @@ class Datepicker {
     const template = createDayViewTemplate(
       nextMonth,
       this._selectedDate,
-      this._options
+      this._options,
+      this._classes
     );
     this._activeDate = nextMonth;
     this.viewChangeButton.textContent = `${
@@ -1157,7 +1286,8 @@ class Datepicker {
     const template = createDayViewTemplate(
       previousMonth,
       this._selectedDate,
-      this._options
+      this._options,
+      this._classes
     );
     this.viewChangeButton.textContent = `${
       this._options.monthsFull[this.activeMonth]
@@ -1174,7 +1304,8 @@ class Datepicker {
       this._selectedYear,
       this._selectedMonth,
       this._options,
-      4
+      4,
+      this._classes
     );
     this.datesContainer.innerHTML = template;
   }
@@ -1188,7 +1319,8 @@ class Datepicker {
       this._selectedYear,
       this._selectedMonth,
       this._options,
-      4
+      4,
+      this._classes
     );
     this.datesContainer.innerHTML = template;
   }
@@ -1201,7 +1333,8 @@ class Datepicker {
       this._selectedYear,
       this._options,
       24,
-      4
+      4,
+      this._classes
     );
     this.viewChangeButton.textContent = `${this.firstYearInView} - ${this.lastYearInView}`;
     this.datesContainer.innerHTML = template;
@@ -1215,7 +1348,8 @@ class Datepicker {
       this._selectedYear,
       this._options,
       24,
-      4
+      4,
+      this._classes
     );
     this.viewChangeButton.textContent = `${this.firstYearInView} - ${this.lastYearInView}`;
     this.datesContainer.innerHTML = template;
@@ -1238,7 +1372,8 @@ class Datepicker {
       this.datesContainer.innerHTML = createDayViewTemplate(
         this._activeDate,
         this._selectedDate,
-        this._options
+        this._options,
+        this._classes
       );
     }
 
@@ -1248,7 +1383,8 @@ class Datepicker {
         this._selectedYear,
         this._selectedMonth,
         this._options,
-        4
+        4,
+        this._classes
       );
     }
 
@@ -1258,7 +1394,8 @@ class Datepicker {
         this._selectedYear,
         this._options,
         24,
-        4
+        4,
+        this._classes
       );
     }
 

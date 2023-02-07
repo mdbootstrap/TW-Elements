@@ -1,9 +1,9 @@
 {{ $page_resources := .Resources }}
-{{ $overview_scrollspy_file_exists := fileExists (printf
-  "/content/%s/ss.html" .File.Dir)
-}}
+{{ $overview_scrollspy_file_exists := fileExists (printf "/content/%s/ss.html" .File.Dir) }}
+{{ $scrollspy_file_exists := fileExists (printf "/content/%s/ss.html" .File.Dir) }}
 {{ $api_file_exists := fileExists (printf "/content/%s/a.html" .File.Dir) }}
 {{ $api_scrollspy_file_exists := fileExists (printf "/content/%s/a-ss.html" .File.Dir) }}
+{{ $hidden_sidenav := .Params.hidden_sidenav }}
 
 
 <!-- Single for all single page under /docs/* -->
@@ -16,15 +16,40 @@
     {{ partial "header/header.html" . }}
 
 
-    <div class="container mx-auto mt-4 pt-12">
+    <!-- prettier-ignore  -->
+    <nav
+      id="sidenav-main"
+      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-zinc-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      data-te-sidenav-init
+      {{ if ne $hidden_sidenav true }}
+      data-te-sidenav-mode-breakpoint-over="0"
+      data-te-sidenav-mode-breakpoint-side="xl" data-te-sidenav-hidden="false"
+      data-te-sidenav-mode="side"
+    {{ else }}
+      data-te-sidenav-hidden="true" data-te-sidenav-mode="over"
+    {{ end }}
+      data-te-sidenav-content="#page-content"
+      data-te-sidenav-accordion="true">
+      <a
+        href="/"
+        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-gray-100"
+        aria-current="page"
+        ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
+        Tailwind Elements</a
+      >
+      {{ partial "sidenav/standard.html" . }}
+    </nav>
+    <div
+      class="{{ if eq $hidden_sidenav true }}
+        mx-auto w-1/2
+      {{ else }}
+        w-full
+      {{ end }} {{ if ne $hidden_sidenav true }}
+        xl:!pl-72
+      {{ end }} mt-4 px-12 pt-12"
+      id="page-content">
       <div class="flex">
-        <div
-          id="sidebar"
-          class="tex-left absolute inset-y-0 left-0 z-40 w-full -translate-x-full transform bg-white pr-4 transition duration-200 ease-in-out dark:bg-zinc-800 sm:w-3/12 md:relative md:w-1/5 md:translate-x-0 lg:w-1/6">
-          {{ partial "sidenav/standard.html" . }}
-        </div>
-
-        <div class="flex w-full flex-col px-4 md:w-4/5 lg:w-5/6">
+        <div class="flex w-full flex-col">
           {{ if $api_file_exists }}
             <ul
               id="docs-nav-pills"
@@ -71,7 +96,10 @@
             role="tabpanel"
             aria-labelledby="docs-tab-overview-tab"
             data-te-tab-active>
-            <div class="flex w-full flex-col pr-4 lg:w-4/5">
+            <div
+              class="{{ if $scrollspy_file_exists }}
+                lg:w-4/5
+              {{ end }} flex w-full flex-col pr-4">
               <h1 class="mt-0 text-5xl font-bold leading-normal">
                 {{ .Params.main_title }}
               </h1>
@@ -84,75 +112,77 @@
             </div>
 
             <!-- Sidebar  -->
+            {{ if $scrollspy_file_exists }}
+              <div class="hidden px-4 lg:block lg:w-1/5">
+                <menu class="sticky top-10">
+                  <style>
+                    .dc-content-animation {
+                      height: 20px;
+                      width: 50%;
+                      display: inline-block;
+                      animation: placeholderPulse 1s infinite ease-in-out;
+                      -webkit-animation: placeholderPulse 1s infinite
+                        ease-in-out;
+                    }
+                    @keyframes placeholderPulse {
+                      0% {
+                        background-color: rgba(133, 214, 251, 0.1);
+                        color: rgba(133, 214, 251, 0.1);
+                      }
+                      50% {
+                        background-color: rgba(133, 214, 251, 0.3);
+                        color: rgba(133, 214, 251, 0.3);
+                      }
+                      100% {
+                        background-color: rgba(133, 214, 251, 0.1);
+                        color: rgba(133, 214, 251, 0.1);
+                      }
+                    }
+                    .ps.nav {
+                      flex-wrap: nowrap;
+                      position: relative;
+                    }
+                  </style>
 
-            <div class="hidden px-4 lg:block lg:w-1/5">
-              <menu class="sticky top-10">
-                <style>
-                  .dc-content-animation {
-                    height: 20px;
-                    width: 50%;
-                    display: inline-block;
-                    animation: placeholderPulse 1s infinite ease-in-out;
-                    -webkit-animation: placeholderPulse 1s infinite ease-in-out;
-                  }
-                  @keyframes placeholderPulse {
-                    0% {
-                      background-color: rgba(133, 214, 251, 0.1);
-                      color: rgba(133, 214, 251, 0.1);
-                    }
-                    50% {
-                      background-color: rgba(133, 214, 251, 0.3);
-                      color: rgba(133, 214, 251, 0.3);
-                    }
-                    100% {
-                      background-color: rgba(133, 214, 251, 0.1);
-                      color: rgba(133, 214, 251, 0.1);
-                    }
-                  }
-                  .ps.nav {
-                    flex-wrap: nowrap;
-                    position: relative;
-                  }
-                </style>
-
-                <div
-                  class="animation fade-in relative mb-4 hidden xl:block"
-                  id="dpl-gtm-scroll"
-                  style="min-height: 170px; animation-delay: 0ms; animation-duration: 500ms">
-                  <div class="w-100 justify-content-center absolute w-full">
-                    <div
-                      class="border-info shadow-3 overflow-hidden rounded border"
-                      style="border-color: rgba(133, 214, 251, 0.3) !important">
-                      <span
-                        class="dc-content-animation mx-2 mb-2 mt-3"
-                        style="width: 40%"></span>
-                      <span
-                        class="dc-content-animation mx-2 mb-1"
-                        style="width: 70%"></span>
-                      <span class="dc-content-animation mx-2 mb-1"></span>
-                      <span
-                        class="dc-content-animation mx-2 mb-1"
-                        style="width: 80%"></span>
-                      <span
-                        class="dc-content-animation mx-2 mb-1"
-                        style="width: 70%"></span>
-                    </div>
-                  </div>
-                  <!-- Alert -->
                   <div
-                    id="gtmDC-scroll-all"
-                    class="relative"
-                    style="min-height: 1px; min-width: 1px"></div>
-                  <!-- Alert -->
-                </div>
+                    class="animation fade-in relative mb-4 hidden xl:block"
+                    id="dpl-gtm-scroll"
+                    style="min-height: 170px; animation-delay: 0ms; animation-duration: 500ms">
+                    <div class="w-100 justify-content-center absolute w-full">
+                      <div
+                        class="shadow-3 overflow-hidden rounded border border-info"
+                        style="border-color: rgba(133, 214, 251, 0.3) !important">
+                        <span
+                          class="dc-content-animation mx-2 mb-2 mt-3"
+                          style="width: 40%"></span>
+                        <span
+                          class="dc-content-animation mx-2 mb-1"
+                          style="width: 70%"></span>
+                        <span class="dc-content-animation mx-2 mb-1"></span>
+                        <span
+                          class="dc-content-animation mx-2 mb-1"
+                          style="width: 80%"></span>
+                        <span
+                          class="dc-content-animation mx-2 mb-1"
+                          style="width: 70%"></span>
+                      </div>
+                    </div>
+                    <!-- Alert -->
+                    <div
+                      id="gtmDC-scroll-all"
+                      class="relative"
+                      style="min-height: 1px; min-width: 1px"></div>
+                    <!-- Alert -->
+                  </div>
 
-                <ul class="dark:text-gray-200">
-                  {{ with .Resources.GetMatch "ss.html" }}
-                    {{ .Content }}
-                  {{ end }}
-                </ul>
-              </menu>
-            </div>
+                  <ul class="dark:text-gray-200">
+                    {{ with .Resources.GetMatch "ss.html" }}
+                      {{ .Content }}
+                    {{ end }}
+                  </ul>
+                </menu>
+              </div>
+            {{ end }}
           </div>
 
           {{ if $api_file_exists }}
@@ -161,7 +191,10 @@
               class="mb-8 hidden justify-between px-4 opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:flex"
               role="tabpanel"
               aria-labelledby="docs-tab-api-tab">
-              <div class="flex w-full flex-col pr-4 lg:w-4/5">
+              <div
+                class="{{ if $api_scrollspy_file_exists }}
+                  lg:w-4/5
+                {{ end }} flex w-full flex-col pr-4">
                 <h1 class="mt-0 text-5xl font-bold leading-normal">
                   {{ .Params.main_title }} - API
                 </h1>
@@ -191,5 +224,36 @@
     </div>
 
     {{ partial "footer/footer-docs.html" . }}
+
+    {{ if ne $hidden_sidenav true }}
+      <script>
+        const sidenav = document.getElementById("sidenav-main");
+        const sidenavInstance = te.Sidenav.getInstance(sidenav);
+
+        let innerWidth = null;
+
+        const setMode = (e) => {
+          // Check necessary for Android devices
+          if (window.innerWidth === innerWidth) {
+            return;
+          }
+
+          innerWidth = window.innerWidth;
+
+          if (window.innerWidth < sidenavInstance.getBreakpoint("xl")) {
+            sidenavInstance.changeMode("over");
+            sidenavInstance.hide();
+          } else {
+            sidenavInstance.changeMode("side");
+            sidenavInstance.show();
+          }
+        };
+
+        setMode();
+
+        // Event listeners
+        window.addEventListener("resize", setMode);
+      </script>
+    {{ end }}
   </body>
 </html>
