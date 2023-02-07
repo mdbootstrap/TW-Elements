@@ -2,6 +2,7 @@ import SelectorEngine from "../dom/selector-engine";
 
 const DATA_ACTIVE = "data-te-input-state-active";
 const DATA_SELECTED = "data-te-input-selected";
+const DATA_MULTIPLE_ACTIVE = "data-te-input-multiple-active";
 
 const SELECTOR_FORM_CHECK_INPUT = "[data-te-form-check-input]";
 
@@ -116,7 +117,11 @@ class SelectOption {
   }
 
   setActiveStyles() {
-    if (!this.active && !this.multiple) {
+    if (!this.active) {
+      if (this.multiple) {
+        this.node.setAttribute(DATA_MULTIPLE_ACTIVE, "");
+        return;
+      }
       this.active = true;
       this.node.setAttribute(DATA_ACTIVE, "");
     }
@@ -126,6 +131,9 @@ class SelectOption {
     if (this.active) {
       this.active = false;
       this.node.removeAttribute(DATA_ACTIVE);
+    }
+    if (this.multiple) {
+      this.node.removeAttribute(DATA_MULTIPLE_ACTIVE);
     }
   }
 }
