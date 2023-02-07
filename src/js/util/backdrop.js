@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from "../dom/bs_event-handler";
+import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import {
   execute,

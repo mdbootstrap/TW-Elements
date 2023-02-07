@@ -11,7 +11,7 @@ import {
   isDisabled,
   reflow,
 } from "../util/bs_index";
-import EventHandler from "../dom/bs_event-handler";
+import EventHandler from "../dom/event-handler";
 import SelectorEngine from "../dom/bs_selector-engine";
 import BaseComponent from "../base-component";
 

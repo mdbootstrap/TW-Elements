@@ -11,7 +11,7 @@ import {
   getSelectorFromElement,
   typeCheckConfig,
 } from "../util/bs_index";
-import EventHandler from "../dom/bs_event-handler";
+import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/bs_manipulator";
 import MDBManipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/bs_selector-engine";

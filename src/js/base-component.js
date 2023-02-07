@@ -7,7 +7,7 @@
 
 import Data from "./dom/data";
 import { executeAfterTransition, getElement } from "./util/bs_index";
-import EventHandler from "./dom/bs_event-handler";
+import EventHandler from "./dom/event-handler";
 
 /**
  * ------------------------------------------------------------------------

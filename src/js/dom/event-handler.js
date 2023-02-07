@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): dom/event-handler.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap (v5.1.3): dom/event-handler.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -13,7 +13,6 @@ import { getjQuery } from "../util/index";
  * ------------------------------------------------------------------------
  */
 
-const $ = getjQuery();
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/;
 const stripNameRegex = /\..*/;
 const stripUidRegex = /::\d+$/;
@@ -23,7 +22,8 @@ const customEvents = {
   mouseenter: "mouseover",
   mouseleave: "mouseout",
 };
-const nativeEvents = [
+const customEventsRegex = /^(mouseenter|mouseleave)/i;
+const nativeEvents = new Set([
   "click",
   "dblclick",
   "mouseup",
@@ -70,7 +70,7 @@ const nativeEvents = [
   "error",
   "abort",
   "scroll",
-];
+]);
 
 /**
  * ------------------------------------------------------------------------
@@ -112,7 +112,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
       target && target !== this;
       target = target.parentNode
     ) {
-      for (let i = domElements.length; i--; "") {
+      for (let i = domElements.length; i--; ) {
         if (domElements[i] === target) {
           event.delegateTarget = target;
 
@@ -151,15 +151,8 @@ function normalizeParams(originalTypeEvent, handler, delegationFn) {
   const delegation = typeof handler === "string";
   const originalHandler = delegation ? delegationFn : handler;
 
-  // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
-  let typeEvent = originalTypeEvent.replace(stripNameRegex, "");
-  const custom = customEvents[typeEvent];
-
-  if (custom) {
-    typeEvent = custom;
-  }
-
-  const isNative = nativeEvents.indexOf(typeEvent) > -1;
+  let typeEvent = getTypeEvent(originalTypeEvent);
+  const isNative = nativeEvents.has(typeEvent);
 
   if (!isNative) {
     typeEvent = originalTypeEvent;
@@ -176,6 +169,28 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   if (!handler) {
     handler = delegationFn;
     delegationFn = null;
+  }
+
+  // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
+  // this prevents the handler from being dispatched the same way as mouseover or mouseout does
+  if (customEventsRegex.test(originalTypeEvent)) {
+    const wrapFn = (fn) => {
+      return function (event) {
+        if (
+          !event.relatedTarget ||
+          (event.relatedTarget !== event.delegateTarget &&
+            !event.delegateTarget.contains(event.relatedTarget))
+        ) {
+          return fn.call(this, event);
+        }
+      };
+    };
+
+    if (delegationFn) {
+      delegationFn = wrapFn(delegationFn);
+    } else {
+      handler = wrapFn(handler);
+    }
   }
 
   const [delegation, originalHandler, typeEvent] = normalizeParams(
@@ -235,7 +250,7 @@ function removeNamespacedHandlers(element, events, typeEvent, namespace) {
   const storeElementEvent = events[typeEvent] || {};
 
   Object.keys(storeElementEvent).forEach((handlerKey) => {
-    if (handlerKey.indexOf(namespace) > -1) {
+    if (handlerKey.includes(namespace)) {
       const event = storeElementEvent[handlerKey];
 
       removeHandler(
@@ -247,6 +262,12 @@ function removeNamespacedHandlers(element, events, typeEvent, namespace) {
       );
     }
   });
+}
+
+function getTypeEvent(event) {
+  // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
+  event = event.replace(stripNameRegex, "");
+  return customEvents[event] || event;
 }
 
 const EventHandler = {
@@ -270,7 +291,7 @@ const EventHandler = {
     );
     const inNamespace = typeEvent !== originalTypeEvent;
     const events = getEvent(element);
-    const isNamespace = originalTypeEvent.charAt(0) === ".";
+    const isNamespace = originalTypeEvent.startsWith(".");
 
     if (typeof originalHandler !== "undefined") {
       // Simplest case: handler is passed, remove that listener ONLY.
@@ -303,7 +324,7 @@ const EventHandler = {
     Object.keys(storeElementEvent).forEach((keyHandlers) => {
       const handlerKey = keyHandlers.replace(stripUidRegex, "");
 
-      if (!inNamespace || originalTypeEvent.indexOf(handlerKey) > -1) {
+      if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
         const event = storeElementEvent[keyHandlers];
 
         removeHandler(
@@ -322,9 +343,10 @@ const EventHandler = {
       return null;
     }
 
-    const typeEvent = event.replace(stripNameRegex, "");
+    const $ = getjQuery();
+    const typeEvent = getTypeEvent(event);
     const inNamespace = event !== typeEvent;
-    const isNative = nativeEvents.indexOf(typeEvent) > -1;
+    const isNative = nativeEvents.has(typeEvent);
 
     let jQueryEvent;
     let bubbles = true;
@@ -351,7 +373,7 @@ const EventHandler = {
       });
     }
 
-    // merge custom informations in our event
+    // merge custom information in our event
     if (typeof args !== "undefined") {
       Object.keys(args).forEach((key) => {
         Object.defineProperty(evt, key, {

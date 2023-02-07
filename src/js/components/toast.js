@@ -6,7 +6,7 @@
  */
 
 import { defineJQueryPlugin, reflow, typeCheckConfig } from "../util/bs_index";
-import EventHandler from "../dom/bs_event-handler";
+import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/bs_manipulator";
 import BaseComponent from "../base-component";
 import { enableDismissTrigger } from "../util/component-functions";

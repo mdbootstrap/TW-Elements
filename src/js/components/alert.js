@@ -10,7 +10,7 @@ import {
   typeCheckConfig,
   isVisible,
 } from "../util/bs_index";
-import EventHandler from "../dom/bs_event-handler";
+import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 import Manipulator from "../dom/bs_manipulator";
 import { enableDismissTrigger } from "../util/component-functions";

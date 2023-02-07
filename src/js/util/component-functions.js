@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from "../dom/bs_event-handler";
+import EventHandler from "../dom/event-handler";
 import { getElementFromSelector, isDisabled } from "./bs_index";
 
 const enableDismissTrigger = (component, method = "hide") => {
