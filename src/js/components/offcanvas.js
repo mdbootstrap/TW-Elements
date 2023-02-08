@@ -12,7 +12,7 @@ import {
   isVisible,
   typeCheckConfig,
 } from "../util/index";
-import ScrollBarHelper from "../util/bs_scrollbar";
+import ScrollBarHelper from "../util/scrollbar";
 import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 import SelectorEngine from "../dom/selector-engine";

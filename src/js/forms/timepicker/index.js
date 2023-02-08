@@ -22,7 +22,7 @@ import {
   _verifyMinTimeHourAndAddDisabledClass,
   _verifyMinTimeMinutesTipsAndAddDisabledClass,
 } from "./utils";
-import { hide, reset } from "../../util/scrollbar";
+import ScrollBarHelper from "../../util/scrollbar";
 import FocusTrap from "../../util/focusTrap";
 import SelectorEngine from "../../dom/selector-engine";
 import {
@@ -342,6 +342,8 @@ class Timepicker {
     }
 
     this._objWithDataOnChange = { degrees: null };
+
+    this._scrollBar = new ScrollBarHelper();
   }
 
   // Getters
@@ -978,7 +980,7 @@ class Timepicker {
 
           if (!inline) {
             container.appendChild(div);
-            hide();
+            this._scrollBar.hide();
           } else {
             this._popper = createPopper(this.input, div, {
               placement: "bottom-start",
@@ -2192,11 +2194,11 @@ class Timepicker {
     if (this._animations) {
       setTimeout(() => {
         this._removeModalElements();
-        reset();
+        this._scrollBar.reset();
       }, 300);
     } else {
       this._removeModalElements();
-      reset();
+      this._scrollBar.reset();
     }
 
     EventHandlerMulti.off(
