@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): dom/manipulator.js
+ * Bootstrap (v5.1.3): dom/manipulator.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -43,11 +43,9 @@ const Manipulator = {
       return {};
     }
 
-    const attributes = {
-      ...element.dataset,
-    };
+    const attributes = {};
 
-    Object.keys(attributes)
+    Object.keys(element.dataset)
       .filter((key) => key.startsWith("te"))
       .forEach((key) => {
         if (key.startsWith("teClass")) {
@@ -57,7 +55,7 @@ const Manipulator = {
         let pureKey = key.replace(/^te/, "");
         pureKey =
           pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
-        attributes[pureKey] = normalizeData(attributes[key]);
+        attributes[pureKey] = normalizeData(element.dataset[key]);
       });
 
     return attributes;
@@ -94,8 +92,8 @@ const Manipulator = {
     const rect = element.getBoundingClientRect();
 
     return {
-      top: rect.top + document.body.scrollTop,
-      left: rect.left + document.body.scrollLeft,
+      top: rect.top + window.pageYOffset,
+      left: rect.left + window.pageXOffset,
     };
   },
 

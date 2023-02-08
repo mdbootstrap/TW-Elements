@@ -20,7 +20,7 @@ import {
 import { DefaultAllowlist, sanitizeHtml } from "../util/bs_sanitizer";
 import Data from "../dom/data";
 import EventHandler from "../dom/event-handler";
-import Manipulator from "../dom/bs_manipulator";
+import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/bs_selector-engine";
 import BaseComponent from "../base-component";
 

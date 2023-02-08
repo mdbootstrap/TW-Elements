@@ -6,7 +6,7 @@
  */
 
 import SelectorEngine from "../dom/bs_selector-engine";
-import Manipulator from "../dom/bs_manipulator";
+import Manipulator from "../dom/manipulator";
 import { isElement } from "./bs_index";
 
 const SELECTOR_FIXED_CONTENT =
