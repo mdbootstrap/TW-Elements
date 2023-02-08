@@ -19,7 +19,7 @@ import SelectorEngine from "../dom/selector-engine";
 import ScrollBarHelper from "../util/scrollbar";
 import BaseComponent from "../base-component";
 import Backdrop from "../util/backdrop";
-import FocusTrap from "../util/bs_focustrap";
+import FocusTrap from "../util/focusTrap";
 import { enableDismissTrigger } from "../util/component-functions";
 
 /**
@@ -172,7 +172,7 @@ class Modal extends BaseComponent {
     this._setEscapeEvent();
     this._setResizeEvent();
 
-    this._focustrap.deactivate();
+    this._focustrap.disable();
 
     const modalDialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
     modalDialog.classList.remove(this._classes.show);
@@ -190,7 +190,7 @@ class Modal extends BaseComponent {
     );
 
     this._backdrop.dispose();
-    this._focustrap.deactivate();
+    this._focustrap.disable();
     super.dispose();
   }
 
@@ -208,8 +208,9 @@ class Modal extends BaseComponent {
   }
 
   _initializeFocusTrap() {
-    return new FocusTrap({
-      trapElement: this._element,
+    return new FocusTrap(this._element, {
+      event: "keydown",
+      condition: (event) => event.key === "Tab",
     });
   }
 
@@ -273,7 +274,7 @@ class Modal extends BaseComponent {
 
     const transitionComplete = () => {
       if (this._config.focus) {
-        this._focustrap.activate();
+        this._focustrap.trap();
       }
 
       this._isTransitioning = false;

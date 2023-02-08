@@ -18,7 +18,7 @@ import BaseComponent from "../base-component";
 import SelectorEngine from "../dom/selector-engine";
 import Manipulator from "../dom/manipulator";
 import Backdrop from "../util/backdrop";
-import FocusTrap from "../util/bs_focustrap";
+import FocusTrap from "../util/focusTrap";
 import { enableDismissTrigger } from "../util/component-functions";
 
 /**
@@ -120,7 +120,7 @@ class Offcanvas extends BaseComponent {
 
     const completeCallBack = () => {
       if (!this._config.scroll) {
-        this._focustrap.activate();
+        this._focustrap.trap();
       }
 
       EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget });
@@ -140,7 +140,7 @@ class Offcanvas extends BaseComponent {
       return;
     }
 
-    this._focustrap.deactivate();
+    this._focustrap.disable();
     this._element.blur();
     this._isShown = false;
     this._element.removeAttribute(`data-te-offcanvas-${CLASS_NAME_SHOW}`);
@@ -164,7 +164,7 @@ class Offcanvas extends BaseComponent {
 
   dispose() {
     this._backdrop.dispose();
-    this._focustrap.deactivate();
+    this._focustrap.disable();
     super.dispose();
   }
 
@@ -190,8 +190,9 @@ class Offcanvas extends BaseComponent {
   }
 
   _initializeFocusTrap() {
-    return new FocusTrap({
-      trapElement: this._element,
+    return new FocusTrap(this._element, {
+      event: "keydown",
+      condition: (event) => event.key === "Tab",
     });
   }
 

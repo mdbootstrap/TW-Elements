@@ -27,6 +27,7 @@ class FocusTrap {
     this._setElements();
     this._init();
     this._setFocusTrap();
+    console.log(this._focusableElements);
   }
 
   disable() {
@@ -82,10 +83,12 @@ class FocusTrap {
   }
 
   _setElements() {
-    this._focusableElements = SelectorEngine.find(
-      this._selector,
-      this._element
-    );
+    // this._focusableElements = SelectorEngine.find(
+    //   this._selector,
+    //   this._element
+    // );
+
+    this._focusableElements = SelectorEngine.focusableChildren(this._element);
 
     if (this._onlyVisible) {
       this._focusableElements = this._filterVisible(this._focusableElements);
