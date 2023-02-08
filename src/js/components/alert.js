@@ -14,7 +14,7 @@ import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 import Manipulator from "../dom/manipulator";
 import { enableDismissTrigger } from "../util/component-functions";
-import SelectorEngine from "../dom/bs_selector-engine";
+import SelectorEngine from "../dom/selector-engine";
 
 /**
  * ------------------------------------------------------------------------

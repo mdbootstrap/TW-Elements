@@ -12,7 +12,7 @@ import {
   reflow,
 } from "../util/bs_index";
 import EventHandler from "../dom/event-handler";
-import SelectorEngine from "../dom/bs_selector-engine";
+import SelectorEngine from "../dom/selector-engine";
 import BaseComponent from "../base-component";
 
 /**

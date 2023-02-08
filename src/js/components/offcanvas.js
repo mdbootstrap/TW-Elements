@@ -15,7 +15,7 @@ import {
 import ScrollBarHelper from "../util/bs_scrollbar";
 import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
-import SelectorEngine from "../dom/bs_selector-engine";
+import SelectorEngine from "../dom/selector-engine";
 import Manipulator from "../dom/manipulator";
 import Backdrop from "../util/backdrop";
 import FocusTrap from "../util/bs_focustrap";
