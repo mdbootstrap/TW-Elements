@@ -7,7 +7,7 @@
 
 import SelectorEngine from "../dom/selector-engine";
 import Manipulator from "../dom/manipulator";
-import { isElement } from "./bs_index";
+import { isElement } from "./index";
 
 const SELECTOR_FIXED_CONTENT =
   ".fixed-top, .fixed-bottom, .is-fixed, .sticky-top";

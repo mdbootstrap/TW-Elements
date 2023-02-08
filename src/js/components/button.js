@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin } from "../util/bs_index";
+import { defineJQueryPlugin } from "../util/index";
 import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 

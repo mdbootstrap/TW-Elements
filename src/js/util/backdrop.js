@@ -13,7 +13,7 @@ import {
   getElement,
   reflow,
   typeCheckConfig,
-} from "./bs_index";
+} from "./index";
 
 const Default = {
   isVisible: true, // if false, we use the backdrop helper without adding any element to the dom

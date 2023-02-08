@@ -3,7 +3,7 @@ import {
   getjQuery,
   onDOMContentLoaded,
   typeCheckConfig,
-} from "../util/bs_index";
+} from "../util/index";
 import Data from "../dom/data";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";

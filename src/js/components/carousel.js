@@ -14,7 +14,7 @@ import {
   reflow,
   triggerTransitionEnd,
   typeCheckConfig,
-} from "../util/bs_index";
+} from "../util/index";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";

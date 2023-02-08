@@ -11,7 +11,7 @@ import {
   isDisabled,
   isVisible,
   typeCheckConfig,
-} from "../util/bs_index";
+} from "../util/index";
 import ScrollBarHelper from "../util/bs_scrollbar";
 import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";

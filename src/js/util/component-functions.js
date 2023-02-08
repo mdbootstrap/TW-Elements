@@ -6,7 +6,7 @@
  */
 
 import EventHandler from "../dom/event-handler";
-import { getElementFromSelector, isDisabled } from "./bs_index";
+import { getElementFromSelector, isDisabled } from "./index";
 
 const enableDismissTrigger = (component, method = "hide") => {
   const clickEvent = `click.dismiss${component.EVENT_KEY}`;

@@ -16,7 +16,7 @@ import {
   isRTL,
   noop,
   typeCheckConfig,
-} from "../util/bs_index";
+} from "../util/index";
 import { DefaultAllowlist, sanitizeHtml } from "../util/bs_sanitizer";
 import Data from "../dom/data";
 import EventHandler from "../dom/event-handler";

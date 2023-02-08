@@ -10,7 +10,7 @@ import {
   getElement,
   getSelectorFromElement,
   typeCheckConfig,
-} from "../util/bs_index";
+} from "../util/index";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import MDBManipulator from "../dom/manipulator";

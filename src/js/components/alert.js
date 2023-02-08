@@ -5,11 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  defineJQueryPlugin,
-  typeCheckConfig,
-  isVisible,
-} from "../util/bs_index";
+import { defineJQueryPlugin, typeCheckConfig, isVisible } from "../util/index";
 import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 import Manipulator from "../dom/manipulator";

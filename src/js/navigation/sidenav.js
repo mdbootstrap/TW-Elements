@@ -41,8 +41,8 @@ const SELECTOR_NAVIGATION = "[data-te-sidenav-menu-ref]";
 const SELECTOR_COLLAPSE = "[data-te-sidenav-collapse-ref]";
 const SELECTOR_LINK = "[data-te-sidenav-link-ref]";
 
-const TRANSLATION_LEFT = isRTL ? 100 : -100;
-const TRANSLATION_RIGHT = isRTL ? -100 : 100;
+const TRANSLATION_LEFT = isRTL() ? 100 : -100;
+const TRANSLATION_RIGHT = isRTL() ? -100 : 100;
 
 const OPTIONS_TYPE = {
   sidenavAccordion: "(boolean)",

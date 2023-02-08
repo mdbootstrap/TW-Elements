@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, reflow, typeCheckConfig } from "../util/bs_index";
+import { defineJQueryPlugin, reflow, typeCheckConfig } from "../util/index";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import BaseComponent from "../base-component";
