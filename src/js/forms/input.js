@@ -101,7 +101,7 @@ class Input {
     this._maxLength = 0;
     this._leadingIcon = null;
     if (this._element) {
-      Data.set(element, DATA_KEY, this);
+      Data.setData(element, DATA_KEY, this);
       this.init();
     }
   }
@@ -162,7 +162,7 @@ class Input {
   dispose() {
     this._removeBorder();
 
-    Data.remove(this._element, DATA_KEY);
+    Data.removeData(this._element, DATA_KEY);
     this._element = null;
   }
 
@@ -409,7 +409,7 @@ class Input {
 
   static jQueryInterface(config, options) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY);
+      let data = Data.getData(this, DATA_KEY);
       const _config = typeof config === "object" && config;
       if (!data && /dispose/.test(config)) {
         return;
@@ -427,7 +427,7 @@ class Input {
   }
 
   static getInstance(element) {
-    return Data.get(element, DATA_KEY);
+    return Data.getData(element, DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {

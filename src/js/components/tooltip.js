@@ -279,7 +279,7 @@ class Tooltip extends BaseComponent {
     this._addAttachmentClass(attachment);
 
     const { container } = this._config;
-    Data.set(tip, this.constructor.DATA_KEY, this);
+    Data.setData(tip, this.constructor.DATA_KEY, this);
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip);

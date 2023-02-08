@@ -182,7 +182,7 @@ class Collapse extends BaseComponent {
       }
 
       if (!activesData) {
-        Data.set(elemActive, DATA_KEY, null);
+        Data.setData(elemActive, DATA_KEY, null);
       }
     });
 

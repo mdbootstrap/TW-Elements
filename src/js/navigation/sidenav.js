@@ -145,7 +145,7 @@ class Sidenav {
     };
 
     if (node) {
-      Data.set(node, DATA_KEY, this);
+      Data.setData(node, DATA_KEY, this);
 
       this._setup();
     }
@@ -276,7 +276,7 @@ class Sidenav {
 
     this._touch.dispose();
 
-    Data.remove(this._element, DATA_KEY);
+    Data.removeData(this._element, DATA_KEY);
 
     this._element = null;
   }
@@ -1133,7 +1133,7 @@ class Sidenav {
 
   static jQueryInterface(config, options) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY);
+      let data = Data.getData(this, DATA_KEY);
       const _config = typeof config === "object" && config;
 
       if (!data && /dispose/.test(config)) {
@@ -1155,7 +1155,7 @@ class Sidenav {
   }
 
   static getInstance(element) {
-    return Data.get(element, DATA_KEY);
+    return Data.getData(element, DATA_KEY);
   }
 
   static getOrCreateInstance(element, config = {}) {
