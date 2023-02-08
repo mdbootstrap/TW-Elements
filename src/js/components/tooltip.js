@@ -17,7 +17,7 @@ import {
   noop,
   typeCheckConfig,
 } from "../util/index";
-import { DefaultAllowlist, sanitizeHtml } from "../util/bs_sanitizer";
+import { DefaultAllowlist, sanitizeHtml } from "../util/sanitizer";
 import Data from "../dom/data";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
