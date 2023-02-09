@@ -19,8 +19,8 @@ menu:
   <!--Title-->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
-    id="basic">
-    Basic
+    id="basic-example">
+    Basic example
   </h2>
   <!--Description-->
   <p class="mb-3">
@@ -33,13 +33,15 @@ menu:
   {{< twsnippet/demo id="example1">}}
   <div class="flex justify-center">
     <div class="mb-3 xl:w-96">
-      <select
-        class="form-select m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-        aria-label="Default select example">
-        <option selected>Open this select menu</option>
+      <select data-te-select-init class="w-full">
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
       </select>
     </div>
   </div>
@@ -52,13 +54,15 @@ menu:
       {{< twsnippet/code active=true lang="HTML" >}}
       <div class="flex justify-center">
         <div class="mb-3 xl:w-96">
-          <select
-            class="form-select m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-            aria-label="Default select example">
-            <option selected>Open this select menu</option>
+          <select data-te-select-init>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
           </select>
         </div>
       </div>
@@ -158,36 +162,29 @@ menu:
   <!--Title-->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
-    id="sizing">
-    Sizing
+    id="multiselect">
+    Multiselect
   </h2>
   <!--Description-->
   <p class="mb-3">
-    Choose from small and large custom selectors to match similarly sized text
-    inputs.
+    Add multiple attribute to the select element to activate multiple mode.
   </p>
 
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example2">}}
   <div class="flex justify-center">
     <div class="mb-3 xl:w-96">
-      <select
-        class="form-select form-select-lg m-0 mb-3 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-4 py-2 text-xl font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-        aria-label=".form-select-lg example">
-        <option selected>Open this select menu</option>
+      <select data-te-select-init multiple>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
       </select>
-
-      <select
-        class="form-select form-select-sm m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-2 py-1 text-sm font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-        aria-label=".form-select-sm example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      <label data-te-select-label-ref>Example label</label>
     </div>
   </div>
   {{< /twsnippet/demo >}}
@@ -199,23 +196,17 @@ menu:
       {{< twsnippet/code active=true lang="HTML" >}}
       <div class="flex justify-center">
         <div class="mb-3 xl:w-96">
-          <select
-            class="form-select form-select-lg m-0 mb-3 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-4 py-2 text-xl font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-            aria-label=".form-select-lg example">
-            <option selected>Open this select menu</option>
+          <select data-te-select-init multiple>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
           </select>
-
-          <select
-            class="form-select form-select-sm m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-2 py-1 text-sm font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-            aria-label=".form-select-sm example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
+          <label data-te-select-label-ref>Example label</label>
         </div>
       </div>
       {{< /twsnippet/code >}}
@@ -230,28 +221,28 @@ menu:
   <!--Title-->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
-    id="disabled">
-    Disabled
+    id="select-with-label">
+    Select with label
   </h2>
   <!--Description-->
   <p class="mb-3">
-    Use <code>disabled</code> attribute on a select to give it a grayed out
-    appearance and remove pointer events.
+    You can add select label by adding
+    <code>data-te-select-label-ref</code> attribute to the label element. Select
+    and label should be wrapped in a container.
   </p>
 
   <!-- prettier-ignore -->
   {{< twsnippet/demo id="example3">}}
   <div class="flex justify-center">
     <div class="mb-3 xl:w-96">
-      <select
-        class="form-select m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-        aria-label="Disabled select example"
-        disabled>
-        <option selected>Open this select menu</option>
+      <select data-te-select-init>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
       </select>
+      <label data-te-select-label-ref>Example label</label>
     </div>
   </div>
   {{< /twsnippet/demo >}}
@@ -263,15 +254,14 @@ menu:
       {{< twsnippet/code active=true lang="HTML" >}}
       <div class="flex justify-center">
         <div class="mb-3 xl:w-96">
-          <select
-            class="form-select m-0 block w-full appearance-none rounded border border-solid border-gray-300 bg-white bg-clip-padding bg-no-repeat px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-            aria-label="Disabled select example"
-            disabled>
-            <option selected>Open this select menu</option>
+          <select data-te-select-init>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
           </select>
+          <label data-te-select-label-ref>Example label</label>
         </div>
       </div>
       {{< /twsnippet/code >}}
@@ -280,6 +270,1442 @@ menu:
   </section>
 </section>
 <!-- Section: Disabled -->
+
+<!-- Section: Select with placeholder -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="select-with-placeholder">
+    Select with placeholder
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Use <code>data-te-select-placeholder</code> attribute to set placeholder for
+    select input. The placeholder will be displayed when input is focused and no
+    option is selected.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select
+        data-te-select-init
+        data-te-select-placeholder="Example placeholder"
+        multiple>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select
+            data-te-select-init
+            data-te-select-placeholder="Example placeholder"
+            multiple>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Select with placeholder -->
+
+<!-- Section: Size -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="size">
+    Size
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Change the size of select input by changing the value of
+    <code>data-te-select-size</code> attribute.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <div class="mb-8">
+        <select data-te-select-init data-te-select-size="sm">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+        </select>
+        <label data-te-select-label-ref>Size sm</label>
+      </div>
+
+      <div class="mb-8">
+        <select data-te-select-init>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+        </select>
+        <label data-te-select-label-ref>Size default</label>
+      </div>
+
+      <div>
+        <select data-te-select-init data-te-select-size="lg">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+        </select>
+        <label data-te-select-label-ref>Size lg</label>
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <div class="mb-8">
+            <select data-te-select-init data-te-select-size="sm">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+            </select>
+            <label data-te-select-label-ref>Size sm</label>
+          </div>
+
+          <div class="mb-8">
+            <select data-te-select-init>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+            </select>
+            <label data-te-select-label-ref>Size default</label>
+          </div>
+
+          <div>
+            <select data-te-select-init data-te-select-size="lg">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+            </select>
+            <label data-te-select-label-ref>Size lg</label>
+          </div>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Size -->
+
+<!-- Section: Disabled select -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="disabled-select">
+    Disabled select
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Add <code>disabled</code> attribute to the select element to disable select
+    input.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example6">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init disabled>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init disabled>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Disabled select -->
+
+<!-- Section: Disabled options -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="disabled-options">
+    Disabled options
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Use <code>disabled</code> attribute on option element to disable specific
+    option.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example7">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init>
+        <option value="1">One</option>
+        <option value="2" disabled>Two</option>
+        <option value="3" disabled>Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example7">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init>
+            <option value="1">One</option>
+            <option value="2" disabled>Two</option>
+            <option value="3" disabled>Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Disabled options -->
+
+<!-- Section: Clear button -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="clear-button">
+    Clear button
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Set <code>data-te-select-clear-button</code> option to true to display the
+    button that will allow to clear current selections.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example8">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init data-te-select-clear-button="true">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example8">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init data-te-select-clear-button="true">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Clear button -->
+
+<!-- Section: Custom content -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="custom-content">
+    Custom content
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    A custom content container with a class
+    <code>data-te-select-custom-content-ref</code> will be displayed at the end
+    of the select dropdown.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example9">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+      <div class="p-4" data-te-select-custom-content-ref>
+        <button
+          class="inline-block rounded bg-blue-600 px-4 py-1.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+          data-te-ripple-init
+          data-te-ripple-color="white">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example9">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+          <div class="p-4" data-te-select-custom-content-ref>
+            <button
+              class="inline-block rounded bg-blue-600 px-4 py-1.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+              data-te-ripple-init
+              data-te-ripple-color="white">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Custom content -->
+
+<!-- Section: Visible options -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="visible-options">
+    Visible options
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Use <code>data-te-select-visible-options</code> option to change the number
+    of options that will be displayed in the select dropdown without scrolling.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example10">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init data-te-select-visible-options="3">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example10">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init data-te-select-visible-options="3">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Visible options -->
+
+<!-- Section: Secondary text -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="secondary-text">
+    Secondary text
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Add <code>data-te-select-secondary-text</code> data attribute to the
+    specific options to display secondary text.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example11">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init data-te-select-option-height="52">
+        <option value="1" data-te-select-secondary-text="Secondary text">
+          One
+        </option>
+        <option value="2" data-te-select-secondary-text="Secondary text">
+          Two
+        </option>
+        <option value="3" data-te-select-secondary-text="Secondary text">
+          Three
+        </option>
+        <option value="4" data-te-select-secondary-text="Secondary text">
+          Four
+        </option>
+        <option value="5" data-te-select-secondary-text="Secondary text">
+          Five
+        </option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example11">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init data-te-select-option-height="52">
+            <option value="1" data-te-select-secondary-text="Secondary text">
+              One
+            </option>
+            <option value="2" data-te-select-secondary-text="Secondary text">
+              Two
+            </option>
+            <option value="3" data-te-select-secondary-text="Secondary text">
+              Three
+            </option>
+            <option value="4" data-te-select-secondary-text="Secondary text">
+              Four
+            </option>
+            <option value="5" data-te-select-secondary-text="Secondary text">
+              Five
+            </option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Secondary text -->
+
+<!-- Section: Search -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="search">
+    Search
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Set <code>data-te-select-filter</code> option to <code>true</code> to enable
+    options filtering.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example12">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init data-te-select-filter="true">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
+        <option value="9">Nine</option>
+        <option value="10">Ten</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example12">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init data-te-select-filter="true">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
+            <option value="9">Nine</option>
+            <option value="10">Ten</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Search -->
+
+<!-- Section: Select with search inside a modal -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="select-inside-modal">
+    Select with search inside a modal
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Due to a focus trap in modals, it is not possible to focus the outer
+    elements (like select dropdown). You can use select
+    <code>data-te-select-container</code> option to resolve this problem.
+  </p>
+  <p class="mb-3">
+    The <code>data-te-select-container</code> accepts selector of the element
+    inside of wich select dropdown will be rendered. In this case, the selector
+    should point to the modal container (the element with attribute
+    <code>data-te-modal-init</code>). It is important to use a unique selector
+    to assign select to a specific modal.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example13">}}
+  <!-- Button trigger modal -->
+  <div class="flex justify-center">
+    <button
+      type="button"
+      class="rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+      data-te-toggle="modal"
+      data-te-target="#exampleModal"
+      data-te-ripple-init
+      data-te-ripple-color="light">
+      Launch demo modal
+    </button>
+    <!-- Modal -->
+    <div
+      data-te-modal-init
+      class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+        <div
+          class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-zinc-600">
+          <div
+            class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b border-gray-200 p-4 dark:border-gray-500">
+            <h5
+              class="text-xl font-medium leading-normal text-gray-800 dark:text-gray-200"
+              id="exampleModalLabel">
+              Modal title
+            </h5>
+            <button
+              type="button"
+              class="-my-2 -mr-2 ml-auto box-content h-4 w-4 rounded-none border-none p-2 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+              data-te-modal-dismiss
+              aria-label="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor">
+                <path
+                  d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z" />
+              </svg>
+            </button>
+          </div>
+          <div class="relative flex-auto p-4" data-te-modal-body-ref>
+            <select
+              data-te-select-init
+              data-te-select-container="#exampleModal"
+              data-te-select-filter="true">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+              <option value="6">Six</option>
+              <option value="7">Seven</option>
+              <option value="8">Eight</option>
+              <option value="9">Nine</option>
+              <option value="10">Ten</option>
+            </select>
+          </div>
+          <div
+            class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t border-gray-200 p-4 dark:border-gray-500">
+            <button
+              type="button"
+              class="rounded bg-purple-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg"
+              data-te-modal-dismiss
+              data-te-ripple-init
+              data-te-ripple-color="light">
+              Close
+            </button>
+            <button
+              type="button"
+              class="ml-1 rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+              data-te-ripple-init
+              data-te-ripple-color="light">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example13">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+          data-te-toggle="modal"
+          data-te-target="#exampleModal"
+          data-te-ripple-init
+          data-te-ripple-color="light">
+          Launch demo modal
+        </button>
+        <!-- Modal -->
+        <div
+          data-te-modal-init
+          class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div
+            data-te-modal-dialog-ref
+            class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+            <div
+              class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-zinc-600">
+              <div
+                class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b border-gray-200 p-4 dark:border-gray-500">
+                <h5
+                  class="text-xl font-medium leading-normal text-gray-800 dark:text-gray-200"
+                  id="exampleModalLabel">
+                  Modal title
+                </h5>
+                <button
+                  type="button"
+                  class="-my-2 -mr-2 ml-auto box-content h-4 w-4 rounded-none border-none p-2 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                  data-te-modal-dismiss
+                  aria-label="Close">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor">
+                    <path
+                      d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z" />
+                  </svg>
+                </button>
+              </div>
+              <div class="relative flex-auto p-4" data-te-modal-body-ref>
+                <select
+                  data-te-select-init
+                  data-te-container="#exampleModal"
+                  data-te-select-filter="true">
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                  <option value="4">Four</option>
+                  <option value="5">Five</option>
+                  <option value="6">Six</option>
+                  <option value="7">Seven</option>
+                  <option value="8">Eight</option>
+                  <option value="9">Nine</option>
+                  <option value="10">Ten</option>
+                </select>
+              </div>
+              <div
+                class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t border-gray-200 p-4 dark:border-gray-500">
+                <button
+                  type="button"
+                  class="rounded bg-purple-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg"
+                  data-te-modal-dismiss
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="ml-1 rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Select with search inside a modal -->
+
+<!-- Section: Option groups -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="option-groups">
+    Option groups
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    It is possible to group options by using <code>optgroup</code> element.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example14">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init>
+        <optgroup label="Label 1">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </optgroup>
+        <optgroup label="Label 2">
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+          <option value="6">Six</option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example14">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init>
+            <optgroup label="Label 1">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </optgroup>
+            <optgroup label="Label 2">
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+              <option value="6">Six</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Option groups -->
+
+<!-- Section: Select with icons -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="select-with-icons">
+    Select with icons
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Add <code>data-te-select-icon</code> data attribute to the specific options
+    to display the option icon.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example15">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init>
+        <option
+          value="1"
+          data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp">
+          One
+        </option>
+        <option
+          value="2"
+          data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp">
+          Two
+        </option>
+        <option
+          value="3"
+          data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp">
+          Three
+        </option>
+        <option
+          value="4"
+          data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp">
+          Four
+        </option>
+        <option
+          value="5"
+          data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp">
+          Five
+        </option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example15">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init>
+            <option
+              value="1"
+              data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp">
+              One
+            </option>
+            <option
+              value="2"
+              data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp">
+              Two
+            </option>
+            <option
+              value="3"
+              data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp">
+              Three
+            </option>
+            <option
+              value="4"
+              data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp">
+              Four
+            </option>
+            <option
+              value="5"
+              data-te-select-icon="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp">
+              Five
+            </option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Select with icons -->
+
+<!-- Section: Validation -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="validation">
+    Validation
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Set <code>data-te-select-validation</code> option to true to enable
+    component validation. The <code>selectValidFeedback</code> and
+    <code>selectInvalidFeedback</code> options allow to modify the validation
+    messages.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example16">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <form
+        class="group/validation needs-validation"
+        data-te-needs-validation
+        novalidate>
+        <select
+          id="basic-select"
+          data-te-select-init
+          data-te-select-validation="true"
+          data-te-select-valid-feedback="This value is valid"
+          data-te-select-invalid-feedback="This value is invalid"
+          data-te-select-clear-button="true">
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+          <option value="6">Six</option>
+          <option value="7">Seven</option>
+          <option value="8">Eight</option>
+        </select>
+        <button
+          type="submit"
+          id="submit"
+          class="mt-4 inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example16">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <form
+            class="group/validation needs-validation"
+            data-te-needs-validation
+            novalidate>
+            <select
+              id="basic-select"
+              data-te-select-init
+              data-te-select-validation="true"
+              data-te-select-valid-feedback="This value is valid"
+              data-te-select-invalid-feedback="This value is invalid"
+              data-te-select-clear-button="true">
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="4">Four</option>
+              <option value="5">Five</option>
+              <option value="6">Six</option>
+              <option value="7">Seven</option>
+              <option value="8">Eight</option>
+            </select>
+            <button
+              type="submit"
+              id="submit"
+              class="mt-4 inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      (() => {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              event.preventDefault();
+              event.stopPropagation();
+
+              form.setAttribute("data-te-was-validated", "");
+            },
+            false
+          );
+        });
+      })();
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Validation -->
+
+<!-- Section: Set value -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="set-value">
+    Set value
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    The <code>setValue</code> method allows to programatically set the component
+    selections.
+  </p>
+</section>
+<!-- Section: Set value -->
+
+<!-- Section: Single selection -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="single-selection">
+    Single selection
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Add single value string to the arguments list to correctly select option
+    with corresponding value in single selection mode.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example17">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select id="singleSelection" data-te-select-init>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example17">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select id="singleSelection" data-te-select-init>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const singleSelect = document.querySelector("#singleSelection");
+      const singleSelectInstance = te.Select.getInstance(singleSelect);
+      singleSelectInstance.setValue("4");
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Single selection -->
+
+<!-- Section: Multi selection -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="multi-selection">
+    Multi selection
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Add array of string values to the arguments list to correctly select option
+    with corresponding value in multi selection mode.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example18">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select id="multiSelection" data-te-select-init multiple>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example18">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select id="multiSelection" data-te-select-init multiple>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const multiSelect = document.querySelector("#multiSelection");
+      const multiSelectInstance = te.Select.getInstance(multiSelect);
+      multiSelectInstance.setValue(["3", "4", "5"]);
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Multi selection -->
+
+<!-- Section: Select with toggle element -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="select-with-toggle-element">
+    Select with toggle element
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    If you want to toggle Select via button, you have to add
+    <code>data-te-select-toggle</code> attribute to this button with ID of the
+    Select element.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example19">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init multiple id="mySelect">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+      </select>
+
+      <button
+        id="toggleMySelect"
+        class="mt-4 inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+        data-te-select-toggle="mySelect">
+        Toggle Select
+      </button>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example19">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init multiple id="mySelect">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+          </select>
+
+          <button
+            id="toggleMySelect"
+            class="mt-4 inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
+            data-te-select-toggle="mySelect">
+            Toggle Select
+          </button>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const selectEl = document.getElementById("mySelect");
+      const select = te.Select.getInstance(selectEl);
+
+      document.getElementById("toggleMySelect").onclick = function () {
+        select.open();
+      };
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Select with toggle element -->
+
+<!-- Section: Auto select -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="auto-select">
+    Auto select
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Set <code>autoSelect</code> option to
+    <code>data-te-select-auto-select</code> to enable selecting on Tab press.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example20">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init data-te-select-auto-select="true">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
+      </select>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example20">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init data-te-select-auto-select="true">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
+          </select>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Auto select -->
+
+<!-- Section: Hidden selected option -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="hidden-selected-option">
+    Hidden selected option
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    Add the first option with the hidden and selected attributes and an empty
+    value to leave select with no selection.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example21">}}
+  <div class="flex justify-center">
+    <div class="mb-3 xl:w-96">
+      <select data-te-select-init>
+        <option value="" hidden selected></option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
+      </select>
+      <label data-te-select-label-ref>Example label</label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example21">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init>
+            <option value="" hidden selected></option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
+          </select>
+          <label data-te-select-label-ref>Example label</label>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Hidden selected option -->
+
+<!-- Section: Select with CSS classes -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="hidden-selected-option">
+    Select with CSS classes
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    In order to use select with additional CSS classes you need to place it in
+    the <code>div</code> wrapper and use CSS classes on that div.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example22">}}
+  <div class="flex justify-center">
+    <div class="mb-3 shadow-xl xl:w-96">
+      <select data-te-select-init>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
+      </select>
+      <label data-te-select-label-ref>Example label</label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example22">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex justify-center">
+        <div class="mb-3 xl:w-96">
+          <select data-te-select-init>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
+          </select>
+          <label data-te-select-label-ref>Example label</label>
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Select with CSS classes -->
 
 <hr class="my-12 dark:border-gray-600" />
 
