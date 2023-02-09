@@ -1,0 +1,184 @@
+---
+title: "Changelog"
+date: 2023-02-09T10:00:00+02:00
+draft: false
+main_title: "Changelog"
+subheading: ""
+seo_title: "Tailwind Elements Changelog"
+description: ""
+image: ""
+video: ""
+url: "docs/standard/getting-started/changelog/"
+menu:
+  start:
+    name: "Changelog"
+    weight: 3
+---
+
+<style>
+  .markdown-body h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.5em;
+    font-weight: 500;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .markdown-body ul,
+  .markdown-body ol {
+    padding-left: 2em;
+    list-style-type: disc;
+  }
+  .markdown-body p,
+  .markdown-body blockquote,
+  .markdown-body ul,
+  .markdown-body ol,
+  .markdown-body dl,
+  .markdown-body table,
+  .markdown-body pre,
+  .markdown-body details {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  .markdown-body a:not(.user-mention) {
+    color: #248aff;
+    text-decoration: none;
+  }
+  .markdown-body a:hover {
+    text-decoration: underline;
+  }
+  .markdown-body .user-mention {
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .dark .markdown-body a:not(.user-mention) {
+    color: #58a6ff;
+  }
+  .dark .markdown-body h2 {
+    border-bottom: 1px solid rgb(75, 85, 99);
+  }
+</style>
+
+<section id="changelog">
+  <!-- Release data -->
+  <section
+    id="v1.0.0-beta1"
+    class="mb-6 rounded-lg border border-gray-300 p-5 dark:border-gray-600">
+    <a
+      class="hover:underline"
+      href="https://github.com/mdbootstrap/tailwind-elements/releases/tag/v1.0.0-beta1"
+      ><h2 class="text-[32px] font-semibold">v1.0.0-beta1</h2></a
+    >
+    <p class="mb-8 text-lg font-normal text-gray-500">released 20.02.2023</p>
+
+    <!-- Github common content -->
+    <div class="markdown-body">
+      <h2>Dark mode integration</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1189"
+            >#1189</a
+          >: Cards dark mode by @iprzybysz
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1205"
+            >#1205</a
+          >: Modal dark mode by @trochonovitz
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1206"
+            >#1206</a
+          >: Login form dark mode by @shigure92
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1207"
+            >#1207</a
+          >: List group dark mode by @shigure92
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1208"
+            >#1208</a
+          >: Jumbotron dark mode by @shigure92
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1209"
+            >#1209</a
+          >: Hover effects dark mode by @shigure92
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1210"
+            >#1210</a
+          >: Headers dark mode by @shigure92
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1211"
+            >#1211</a
+          >: Dropdown dark mode by @juujisai
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1212"
+            >#1212</a
+          >: Collapse dark mode by @iprzybysz
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1213"
+            >#1213</a
+          >: Chips dark mode by @iprzybysz
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1214"
+            >#1214</a
+          >: Charts dark mode by @iprzybysz
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1175"
+            >#1175</a
+          >: Timepicker dark mode by @r-jacko
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1176"
+            >#1176</a
+          >: Textarea dark mode by @juujisai
+        </li>
+      </ul>
+      <h2>Docs</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1116"
+            >#1116</a
+          >: Dark mode switcher by @smolenski-mikolaj
+        </li>
+        <li>
+          <a href="https://github.com/mdbootstrap/Tailwind-Elements/pull/1170"
+            >#1170</a
+          >: Dark mode integration by @smolenski-mikolaj
+        </li>
+      </ul>
+    </div>
+    <!-- Github common content -->
+  </section>
+  <!-- Release data -->
+</section>
+
+<script>
+  const changelog = document.querySelector("#changelog");
+  const changelogItems = changelog.querySelectorAll("li");
+
+  changelogItems.forEach((item) => {
+    const regex = /[^@]*$/g;
+    const user = item.innerText.match(regex)[0];
+    item.innerHTML = item.innerHTML.replace(
+      `@${user}`,
+      `<a class="user-mention" href="https://github.com/${user}">@${user}</a>`
+    );
+  });
+</script>
