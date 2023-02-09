@@ -16,9 +16,16 @@ class FocusTrap {
     this._lastElement = null;
 
     this.handler = (e) => {
-      if (this._condition(e) && e.target === this._lastElement) {
+      if (this._condition(e) && !e.shiftKey && e.target === this._lastElement) {
         e.preventDefault();
         this._firstElement.focus();
+      } else if (
+        this._condition(e) &&
+        e.shiftKey &&
+        e.target === this._firstElement
+      ) {
+        e.preventDefault();
+        this._lastElement.focus();
       }
     };
   }
@@ -95,7 +102,7 @@ class FocusTrap {
 
   _setFocusTrap() {
     this._focusableElements.forEach((element, i) => {
-      if (i === this._focusableElements.length - 1) {
+      if (i === this._focusableElements.length - 1 || i === 0) {
         element.addEventListener(this._event, this.handler);
       } else {
         element.removeEventListener(this._event, this.handler);
