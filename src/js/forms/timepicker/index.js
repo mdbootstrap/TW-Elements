@@ -838,20 +838,14 @@ class Timepicker {
     if (!this._options.format24) {
       [...rest].filter((e) => {
         if (e === "PM") {
-          Manipulator.addMultiClass(this._PM, this._classes.opacity);
+          Manipulator.addClass(this._PM, this._classes.opacity);
           this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
         } else if (e === "AM") {
-          Manipulator.addMultiClass(this._AM, this._classes.opacity);
+          Manipulator.addClass(this._AM, this._classes.opacity);
           this._AM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
         } else {
-          Manipulator.removeMultiClass(
-            this._AM,
-            this._classes.opacity.split(" ")
-          );
-          Manipulator.removeMultiClass(
-            this._PM,
-            this._classes.opacity.split(" ")
-          );
+          Manipulator.removeClass(this._AM, this._classes.opacity);
+          Manipulator.removeClass(this._PM, this._classes.opacity);
           this._AM.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
           this._PM.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
         }
@@ -911,7 +905,7 @@ class Timepicker {
         });
       }
       if (format12) {
-        Manipulator.addMultiClass(this._PM, this._classes.opacity);
+        Manipulator.addClass(this._PM, this._classes.opacity);
         this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
       }
     }
@@ -971,7 +965,7 @@ class Timepicker {
           e.target.blur();
 
           div.innerHTML = getTimepickerTemplate(this._options);
-          Manipulator.addMultiClass(div, this._classes.modal);
+          Manipulator.addClass(div, this._classes.modal);
           div.setAttribute(ATTR_TIMEPICKER_MODAL, "");
 
           div.setAttribute("role", "dialog");
@@ -993,7 +987,7 @@ class Timepicker {
           if (this._animations) {
             this._toggleBackdropAnimation();
           } else {
-            Manipulator.addMultiClass(this._wrapper, this._classes.opacity);
+            Manipulator.addClass(this._wrapper, this._classes.opacity);
           }
           this._setActiveClassToTipsOnOpen(hour, minute, format);
           this._appendTimes();
@@ -1007,7 +1001,7 @@ class Timepicker {
             );
 
             if (format12) {
-              Manipulator.addMultiClass(this._PM, this._classes.opacity);
+              Manipulator.addClass(this._PM, this._classes.opacity);
               this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
             }
 
@@ -1036,7 +1030,7 @@ class Timepicker {
             const initActive = document.querySelector(
               `${SELECTOR_ATTR_TIMEPICKER_CURRENT}[${ATTR_TIMEPICKER_ACTIVE}]`
             );
-            Manipulator.addMultiClass(initActive, this._classes.opacity);
+            Manipulator.addClass(initActive, this._classes.opacity);
 
             Manipulator.addStyle(this._hour, {
               pointerEvents: "none",
@@ -1443,15 +1437,12 @@ class Timepicker {
         const modifyIcons = (elements, shouldAdd) => {
           return elements.forEach((icon) => {
             if (shouldAdd) {
-              Manipulator.addMultiClass(icon, this._classes.opacity);
+              Manipulator.addClass(icon, this._classes.opacity);
               icon.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
               return;
             }
 
-            Manipulator.removeMultiClass(
-              icon,
-              this._classes.opacity.split(" ")
-            );
+            Manipulator.removeClass(icon, this._classes.opacity);
             icon.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
           });
         };
@@ -1517,13 +1508,10 @@ class Timepicker {
         const switchTips = (array, classes) => {
           allTipsHours.forEach((tip) => tip.remove());
           allTipsMinutes.forEach((tip) => tip.remove());
-          Manipulator.addMultiClass(this._hand, this._classes.transform);
+          Manipulator.addClass(this._hand, this._classes.transform);
 
           setTimeout(() => {
-            Manipulator.removeMultiClass(
-              this._hand,
-              this._classes.transform.split(" ")
-            );
+            Manipulator.removeClass(this._hand, this._classes.transform);
           }, 401);
 
           this._getAppendClock(array, `[${ATTR_TIMEPICKER_CLOCK}]`, classes);
@@ -1562,7 +1550,7 @@ class Timepicker {
         current.forEach((e) => {
           if (e.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) {
             if (e.hasAttribute(ATTR_TIMEPICKER_MINUTE)) {
-              Manipulator.addMultiClass(this._hand, this._classes.transform);
+              Manipulator.addClass(this._hand, this._classes.transform);
 
               Manipulator.addStyle(this._hand, {
                 transform: `rotateZ(${this._minutes.textContent * 6}deg)`,
@@ -1665,11 +1653,11 @@ class Timepicker {
     }
     if (maxTimeFormat === "AM" && selectedFormat === "PM") {
       outerHoursTips.forEach((tip) => {
-        Manipulator.addMultiClass(tip, this._classes.tipsDisabled);
+        Manipulator.addClass(tip, this._classes.tipsDisabled);
         tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
       });
       allTipsMinutes.forEach((tip) => {
-        Manipulator.addMultiClass(tip, this._classes.tipsDisabled);
+        Manipulator.addClass(tip, this._classes.tipsDisabled);
         tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
       });
     }
@@ -1706,11 +1694,11 @@ class Timepicker {
       );
     } else if (minTimeFormat === "PM" && selectedFormat === "AM") {
       outerHoursTips.forEach((tip) => {
-        Manipulator.addMultiClass(tip, this._classes.tipsDisabled);
+        Manipulator.addClass(tip, this._classes.tipsDisabled);
         tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
       });
       allTipsMinutes.forEach((tip) => {
-        Manipulator.addMultiClass(tip, this._classes.tipsDisabled);
+        Manipulator.addClass(tip, this._classes.tipsDisabled);
         tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
       });
     }
@@ -1756,18 +1744,12 @@ class Timepicker {
 
         const clearDisabledClassForAllTips = () => {
           allTipsHour.forEach((tip) => {
-            Manipulator.removeMultiClass(
-              tip,
-              this._classes.tipsDisabled.split(" ")
-            );
+            Manipulator.removeClass(tip, this._classes.tipsDisabled);
             tip.removeAttribute(ATTR_TIMEPICKER_DISABLED);
           });
 
           allTipsMinutes.forEach((tip) => {
-            Manipulator.removeMultiClass(
-              tip,
-              this._classes.tipsDisabled.split(" ")
-            );
+            Manipulator.removeClass(tip, this._classes.tipsDisabled);
             tip.removeAttribute(ATTR_TIMEPICKER_DISABLED);
           });
         };
@@ -1793,15 +1775,12 @@ class Timepicker {
 
           allHoursMode.forEach((element) => {
             if (element.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) {
-              Manipulator.removeMultiClass(
-                element,
-                this._classes.opacity.split(" ")
-              );
+              Manipulator.removeClass(element, this._classes.opacity);
               element.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
             }
           });
 
-          Manipulator.addMultiClass(target, this._classes.opacity);
+          Manipulator.addClass(target, this._classes.opacity);
           target.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
         }
       }
@@ -2219,7 +2198,7 @@ class Timepicker {
       this._wrapper.classList.add("animate-[fade-in_350ms_ease-in-out]");
 
       if (!this._options.inline)
-        Manipulator.addMultiClass(this._clock, this._classes.clockAnimation);
+        Manipulator.addClass(this._clock, this._classes.clockAnimation);
     }
 
     setTimeout(() => {
@@ -2256,12 +2235,12 @@ class Timepicker {
       if (e.hasAttribute(ATTR_TIMEPICKER_DISABLED)) return;
 
       if (e.textContent === findInArray) {
-        Manipulator.addMultiClass(e, this._classes.tipsActive);
+        Manipulator.addClass(e, this._classes.tipsActive);
         e.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
         return;
       }
 
-      Manipulator.removeMultiClass(e, this._classes.tipsActive.split(" "));
+      Manipulator.removeClass(e, this._classes.tipsActive);
       e.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
     });
   };
@@ -2269,7 +2248,7 @@ class Timepicker {
   _addActiveClassToTip(tips, value) {
     tips.forEach((tip) => {
       if (Number(tip.textContent) === Number(value)) {
-        Manipulator.addMultiClass(tip, this._classes.tipsActive);
+        Manipulator.addClass(tip, this._classes.tipsActive);
         tip.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
       }
     });
@@ -2415,7 +2394,7 @@ class Timepicker {
       this._isInvalidTimeFormat &&
       !this._AM.hasAttribute(ATTR_TIMEPICKER_ACTIVE)
     ) {
-      Manipulator.addMultiClass(this._PM, this._classes.opacity);
+      Manipulator.addClass(this._PM, this._classes.opacity);
       this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
     }
 
@@ -2461,7 +2440,7 @@ class Timepicker {
       const spanToTips = element("span");
 
       spanToTips.innerHTML = e;
-      Manipulator.addMultiClass(span, this._classes.tips);
+      Manipulator.addClass(span, this._classes.tips);
       span.setAttribute(tipsClass, "");
 
       const itemWidth = span.offsetWidth;

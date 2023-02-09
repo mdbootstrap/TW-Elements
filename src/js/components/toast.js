@@ -105,11 +105,8 @@ class Toast extends BaseComponent {
     this._clearTimeout();
 
     if (this._config.animation) {
-      Manipulator.removeMultiClass(
-        this._element,
-        this._classes.fadeOut.split(" ")
-      );
-      Manipulator.addMultiClass(this._element, this._classes.fadeIn);
+      Manipulator.removeClass(this._element, this._classes.fadeOut);
+      Manipulator.addClass(this._element, this._classes.fadeIn);
     }
 
     const complete = () => {
@@ -142,11 +139,8 @@ class Toast extends BaseComponent {
       let timeout = 0;
       if (this._config.animation) {
         timeout = 300;
-        Manipulator.removeMultiClass(
-          this._element,
-          this._classes.fadeIn.split(" ")
-        );
-        Manipulator.addMultiClass(this._element, this._classes.fadeOut);
+        Manipulator.removeClass(this._element, this._classes.fadeIn);
+        Manipulator.addClass(this._element, this._classes.fadeOut);
       }
       setTimeout(() => {
         this._element.setAttribute(HIDE_DATA_ATTRIBUTE, "");

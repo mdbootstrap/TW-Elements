@@ -108,27 +108,26 @@ const Manipulator = {
     Object.assign(element.style, style);
   },
 
-  toggleClass(element, className) {
+  toggleClass(element, classNameOrList) {
     if (!element) {
       return;
     }
 
-    if (element.classList.contains(className)) {
-      element.classList.remove(className);
-    } else {
-      element.classList.add(className);
-    }
-  },
-
-  addClass(element, className) {
-    if (element.classList.contains(className)) return;
-    element.classList.add(className);
-  },
-
-  addMultipleClasses(element, arrayClasses) {
-    arrayClasses.forEach((singleClass) => {
-      element.classList.add(singleClass);
+    _classNameOrListToArray(classNameOrList).forEach((className) => {
+      if (element.classList.contains(className)) {
+        element.classList.remove(className);
+      } else {
+        element.classList.add(className);
+      }
     });
+  },
+
+  addClass(element, classNameOrList) {
+    _classNameOrListToArray(classNameOrList).forEach(
+      (className) =>
+        !element.classList.contains(className) &&
+        element.classList.add(className)
+    );
   },
 
   addStyle(element, style) {
@@ -137,22 +136,27 @@ const Manipulator = {
     });
   },
 
-  removeClass(element, className) {
-    if (!element.classList.contains(className)) return;
-    element.classList.remove(className);
+  removeClass(element, classNameOrList) {
+    _classNameOrListToArray(classNameOrList).forEach(
+      (className) =>
+        element.classList.contains(className) &&
+        element.classList.remove(className)
+    );
   },
 
   hasClass(element, className) {
     return element.classList.contains(className);
   },
-
-  addMultiClass(target, classes) {
-    target.className += ` ${classes}`;
-  },
-
-  removeMultiClass(target, classes) {
-    classes.forEach((item) => target.classList.remove(item));
-  },
 };
+
+function _classNameOrListToArray(classNameOrList) {
+  if (typeof classNameOrList === "string") {
+    return classNameOrList.split(" ");
+  } else if (Array.isArray(classNameOrList)) {
+    return classNameOrList;
+  }
+
+  return false;
+}
 
 export default Manipulator;

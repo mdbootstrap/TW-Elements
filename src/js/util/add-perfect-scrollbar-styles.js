@@ -23,7 +23,7 @@ const addPerfectScrollbarStyles = (container = document) => {
   ];
 
   classes.forEach((item) => {
-    Manipulator.addMultiClass(
+    Manipulator.addClass(
       SelectorEngine.findOne(`.${item.ps}`, container),
       item.te
     );
@@ -32,7 +32,7 @@ const addPerfectScrollbarStyles = (container = document) => {
       item.ps
     );
   });
-  Manipulator.addMultiClass(container, psClasses);
+  Manipulator.addClass(container, psClasses);
   Manipulator.removeClass(container, "ps");
 };
 

@@ -91,7 +91,7 @@ class Alert extends BaseComponent {
     let timeout = 0;
     if (this._config.animation) {
       timeout = 300;
-      Manipulator.addMultiClass(this._element, this._classes.fadeOut);
+      Manipulator.addClass(this._element, this._classes.fadeOut);
     }
     this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
 
@@ -130,11 +130,8 @@ class Alert extends BaseComponent {
     }
 
     if (this._config.animation) {
-      Manipulator.removeMultiClass(
-        this._element,
-        this._classes.fadeOut.split(" ")
-      );
-      Manipulator.addMultiClass(this._element, this._classes.fadeIn);
+      Manipulator.removeClass(this._element, this._classes.fadeOut);
+      Manipulator.addClass(this._element, this._classes.fadeIn);
     }
   }
 
@@ -159,11 +156,8 @@ class Alert extends BaseComponent {
 
       EventHandler.on(this._element, "animationend", handler);
 
-      Manipulator.removeMultiClass(
-        this._element,
-        this._classes.fadeIn.split(" ")
-      );
-      Manipulator.addMultiClass(this._element, this._classes.fadeOut);
+      Manipulator.removeClass(this._element, this._classes.fadeIn);
+      Manipulator.addClass(this._element, this._classes.fadeOut);
     }
   }
 

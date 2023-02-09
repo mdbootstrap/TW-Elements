@@ -67,7 +67,7 @@ class Backdrop {
     ];
 
     Manipulator.removeClass(this._getElement(), "opacity-0");
-    Manipulator.addMultipleClasses(this._getElement(), backdropClasses);
+    Manipulator.addClass(this._getElement(), backdropClasses);
     this._element.setAttribute("data-te-backdrop-show", "");
 
     this._emulateAnimation(() => {

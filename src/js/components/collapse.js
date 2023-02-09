@@ -192,15 +192,9 @@ class Collapse extends BaseComponent {
         ? this._classes.collapsing
         : this._classes.collapsingHorizontal;
 
-    Manipulator.removeMultiClass(
-      this._element,
-      this._classes.visible.split(" ")
-    );
-    Manipulator.removeMultiClass(
-      this._element,
-      this._classes.hidden.split(" ")
-    );
-    Manipulator.addMultiClass(this._element, CLASS_NAME_TRANSITION);
+    Manipulator.removeClass(this._element, this._classes.visible);
+    Manipulator.removeClass(this._element, this._classes.hidden);
+    Manipulator.addClass(this._element, CLASS_NAME_TRANSITION);
     this._element.removeAttribute(ATTR_COLLAPSE_ITEM);
     this._element.setAttribute(ATTR_COLLAPSING, "");
 
@@ -212,15 +206,9 @@ class Collapse extends BaseComponent {
     const complete = () => {
       this._isTransitioning = false;
 
-      Manipulator.removeMultiClass(
-        this._element,
-        this._classes.hidden.split(" ")
-      );
-      Manipulator.removeMultiClass(
-        this._element,
-        CLASS_NAME_TRANSITION.split(" ")
-      );
-      Manipulator.addMultiClass(this._element, this._classes.visible);
+      Manipulator.removeClass(this._element, this._classes.hidden);
+      Manipulator.removeClass(this._element, CLASS_NAME_TRANSITION);
+      Manipulator.addClass(this._element, this._classes.visible);
       this._element.removeAttribute(ATTR_COLLAPSING);
       this._element.setAttribute(ATTR_COLLAPSE_ITEM, "");
       this._element.setAttribute(ATTR_SHOW, "");
@@ -260,15 +248,9 @@ class Collapse extends BaseComponent {
 
     reflow(this._element);
 
-    Manipulator.addMultiClass(this._element, CLASS_NAME_TRANSITION);
-    Manipulator.removeMultiClass(
-      this._element,
-      this._classes.visible.split(" ")
-    );
-    Manipulator.removeMultiClass(
-      this._element,
-      this._classes.hidden.split(" ")
-    );
+    Manipulator.addClass(this._element, CLASS_NAME_TRANSITION);
+    Manipulator.removeClass(this._element, this._classes.visible);
+    Manipulator.removeClass(this._element, this._classes.hidden);
     this._element.setAttribute(ATTR_COLLAPSING, "");
     this._element.removeAttribute(ATTR_COLLAPSE_ITEM);
     this._element.removeAttribute(ATTR_SHOW);
@@ -288,12 +270,9 @@ class Collapse extends BaseComponent {
     const complete = () => {
       this._isTransitioning = false;
 
-      Manipulator.removeMultiClass(
-        this._element,
-        CLASS_NAME_TRANSITION.split(" ")
-      );
-      Manipulator.addMultiClass(this._element, this._classes.visible);
-      Manipulator.addMultiClass(this._element, this._classes.hidden);
+      Manipulator.removeClass(this._element, CLASS_NAME_TRANSITION);
+      Manipulator.addClass(this._element, this._classes.visible);
+      Manipulator.addClass(this._element, this._classes.hidden);
 
       this._element.removeAttribute(ATTR_COLLAPSING);
       this._element.setAttribute(ATTR_COLLAPSE_ITEM, "");

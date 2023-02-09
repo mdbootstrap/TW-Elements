@@ -519,8 +519,8 @@ class Datepicker {
 
     this._openModal(backdrop, template);
 
-    Manipulator.addMultiClass(this.container, this._classes.fadeIn);
-    Manipulator.addMultiClass(backdrop, this._classes.fadeInShort);
+    Manipulator.addClass(this.container, this._classes.fadeIn);
+    Manipulator.addClass(backdrop, this._classes.fadeInShort);
 
     this._setFocusTrap(this.container);
 
@@ -968,7 +968,7 @@ class Datepicker {
 
     this._removeDatepickerListeners();
 
-    Manipulator.addMultiClass(this.container, this._classes.fadeOut);
+    Manipulator.addClass(this.container, this._classes.fadeOut);
 
     this._closeModal();
 
@@ -1009,7 +1009,7 @@ class Datepicker {
     const backdrop = SelectorEngine.findOne(BACKDROP_SELECTOR);
     const datepicker = SelectorEngine.findOne(MODAL_CONTAINER_SELECTOR);
 
-    Manipulator.addMultiClass(backdrop, this._classes.fadeOutShort);
+    Manipulator.addClass(backdrop, this._classes.fadeOutShort);
 
     if (datepicker && backdrop) {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

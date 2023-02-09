@@ -214,7 +214,7 @@ class Input {
       return;
     }
     this._counterElement = document.createElement("div");
-    Manipulator.addMultiClass(this._counterElement, COUNTER_CLASSES);
+    Manipulator.addClass(this._counterElement, COUNTER_CLASSES);
     this._counterElement.setAttribute(DATA_FORM_COUNTER, "");
     const actualLength = this.input.value.length;
     this._counterElement.innerHTML = `${actualLength} / ${this._maxLength}`;
@@ -290,25 +290,25 @@ class Input {
 
     const allNotchWrappers = SelectorEngine.find(SELECTOR_NOTCH, this._element);
     const notchWrapper = element("div");
-    Manipulator.addMultiClass(notchWrapper, NOTCH_CLASSES);
+    Manipulator.addClass(notchWrapper, NOTCH_CLASSES);
     notchWrapper.setAttribute(DATA_NOTCH, "");
     this._notchLeading = element("div");
 
-    Manipulator.addMultiClass(
+    Manipulator.addClass(
       this._notchLeading,
       NOTCH_LEADING_CLASSES + shadowLeading
     );
     this._notchLeading.setAttribute(DATA_NOTCH_LEADING, "");
     this._notchMiddle = element("div");
 
-    Manipulator.addMultiClass(
+    Manipulator.addClass(
       this._notchMiddle,
       NOTCH_MIDDLE_CLASSES + shadowMiddle
     );
     this._notchMiddle.setAttribute(DATA_NOTCH_MIDDLE, "");
     this._notchTrailing = element("div");
 
-    Manipulator.addMultiClass(
+    Manipulator.addClass(
       this._notchTrailing,
       NOTCH_TRAILING_CLASSES + shadowTrailing
     );

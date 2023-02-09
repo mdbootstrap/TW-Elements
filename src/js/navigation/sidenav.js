@@ -791,11 +791,9 @@ class Sidenav {
 
   _setActive(link, reference) {
     // Link
-    // Manipulator.addClass(link, "active");
     link.setAttribute("data-te-sidebar-state-active", "");
 
     if (this._activeNode) {
-      // this._activeNode.classList.remove("active");
       link.removeAttribute("data-te-sidebar-state-active");
     }
     this._activeNode = link;

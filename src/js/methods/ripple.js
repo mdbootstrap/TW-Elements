@@ -84,7 +84,7 @@ class Ripple {
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
-      this._addMultiClass(this._element, this._classes.ripple);
+      Manipulator.addClass(this._element, this._classes.ripple);
     }
     this._clickHandler = this._createRipple.bind(this);
     this._rippleTimer = null;
@@ -131,18 +131,10 @@ class Ripple {
     }
 
     this._initialClasses = [...this._element.classList];
-    this._addMultiClass(this._element, this._classes.ripple);
+    Manipulator.addClass(this._element, this._classes.ripple);
 
     this._options = this._getConfig();
     this._createRipple(event);
-  }
-
-  _addMultiClass(target, classes) {
-    target.className += ` ${classes}`;
-  }
-
-  _removeMultiClass(target, classes) {
-    classes.forEach((item) => target.classList.remove(item));
   }
 
   _addClickEvent(target) {
@@ -151,7 +143,7 @@ class Ripple {
 
   _createRipple(event) {
     if (this._element.className.indexOf(this._classes.ripple) < 0) {
-      this._addMultiClass(this._element, this._classes.ripple);
+      Manipulator.addClass(this._element, this._classes.ripple);
     }
 
     const { layerX, layerY } = event;
@@ -201,7 +193,7 @@ class Ripple {
     Object.keys(styles).forEach(
       (property) => (ripple.style[property] = styles[property])
     );
-    this._addMultiClass(ripple, this._classes.rippleWave);
+    Manipulator.addClass(ripple, this._classes.rippleWave);
     ripple.setAttribute("data-te-ripple-ref", "");
     this._addColor(ripple, wrapper);
 
@@ -234,7 +226,7 @@ class Ripple {
                 this._initialClasses
               )
             : this._classes.ripple.split(" ");
-          this._removeMultiClass(this._element, classesToRemove);
+          Manipulator.removeClass(this._element, classesToRemove);
         }
       }
     }, duration);
@@ -318,15 +310,15 @@ class Ripple {
     const FIX_ADD_RIPPLE_EFFECT = 50; // delay for active animations
     parent.appendChild(target);
     setTimeout(() => {
-      this._addMultiClass(target, "opacity-0 scale-100");
+      Manipulator.addClass(target, "opacity-0 scale-100");
     }, FIX_ADD_RIPPLE_EFFECT);
   }
 
   _toggleUnbound(target) {
     if (this._options.rippleUnbound === true) {
-      this._addMultiClass(target, this._classes.unbound);
+      Manipulator.addClass(target, this._classes.unbound);
     } else {
-      this._removeMultiClass(target, this._classes.unbound.split(" "));
+      Manipulator.removeClass(target, this._classes.unbound);
     }
   }
 

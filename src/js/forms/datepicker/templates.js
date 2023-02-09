@@ -62,7 +62,7 @@ export function getDatepickerTemplate(
       )}
     `;
 
-  Manipulator.addMultiClass(template, classes.modalContainer);
+  Manipulator.addClass(template, classes.modalContainer);
   template.setAttribute(MODAL_CONTAINER_REF, id);
 
   template.innerHTML = modalContent;
@@ -72,7 +72,7 @@ export function getDatepickerTemplate(
 
 export function getBackdropTemplate(backdropClasses) {
   const backdrop = element("div");
-  Manipulator.addMultiClass(backdrop, backdropClasses);
+  Manipulator.addClass(backdrop, backdropClasses);
   backdrop.setAttribute(BACKDROP_REF, "");
 
   return backdrop;
@@ -80,7 +80,7 @@ export function getBackdropTemplate(backdropClasses) {
 
 export function createContainer(modalContainerClasses) {
   const container = element("div");
-  Manipulator.addMultiClass(container, modalContainerClasses);
+  Manipulator.addClass(container, modalContainerClasses);
   container.setAttribute(MODAL_CONTAINER_REF, "");
 
   return container;
