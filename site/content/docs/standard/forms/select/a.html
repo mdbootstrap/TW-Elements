@@ -8,28 +8,26 @@
     <!--Title-->
     <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
 
+    <p>
+      Elements with the
+      <code class="text-red-500 dark:text-red-300">data-te-select-init</code>
+      attribute will be automatically initialized - you can set all available
+      options with data attributes.
+    </p>
+
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example1" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example1">
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="html" >}}
-        <div class="flex items-center justify-center">
-          <div
-            class="relative mb-3 xl:w-96"
-            data-te-datepicker-init
-            data-te-input-wrapper-init>
-            <input
-              type="text"
-              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-gray-200 dark:placeholder:text-gray-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-              placeholder="Select a date" />
-            <label
-              for="floatingInput"
-              class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-gray-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-gray-200 dark:peer-focus:text-gray-200"
-              >Select a date</label
-            >
-          </div>
-        </div>
+        <select data-te-select-init>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+        </select>
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -38,39 +36,24 @@
 
     <h4 class="mb-4 font-bold">Via JavaScript</h4>
 
+    <p>
+      You can access an instance from your Javascript code, by using the
+      <code class="text-red-500 dark:text-red-300">getInstance</code> static
+      method of the Select class - it allows making use of all the public
+      methods listed in the
+      <a class="text-blue-600" href="#api-section-methods">Methods</a> section.
+    </p>
+
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "HTML,JavaScript" >}}
+        {{< twsnippet/wrapper "JavaScript" >}}
         <!-- prettier-ignore -->
-        {{< twsnippet/code active=true lang="html" >}}
-        <div class="flex items-center justify-center">
-          <div
-            id="myDatepicker"
-            class="relative mb-3 xl:w-96"
-            data-te-input-wrapper-init>
-            <input
-              type="text"
-              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-gray-200 dark:placeholder:text-gray-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-              placeholder="Select a date" />
-            <label
-              for="floatingInput"
-              class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-gray-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-gray-200 dark:peer-focus:text-gray-200"
-              >Select a date</label
-            >
-          </div>
-        </div>
-        {{< /twsnippet/code >}}
-        <!-- prettier-ignore -->
-        {{< twsnippet/code lang="js" >}}
-          const options = {
-            format: "dd-mm-yyyy",
-          };
-          const myDatepicker = new te.Datepicker(
-            document.getElementById("myDatepicker"),
-            options
-          );
+        {{< twsnippet/code active=true lang="js" >}}
+        const singleSelect = document.querySelector("#singleSelection");
+        const singleSelectInstance = te.Select.getInstance(singleSelect);
+        singleSelectInstance.setValue("4");
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -92,7 +75,10 @@
     <p class="mb-4">
       Options can be passed via data attributes or JavaScript. For data
       attributes, append the option name to
-      <code>data-te-</code>, as in <code>data-te-cancelBtnLabel="cancel"</code>.
+      <code class="text-red-500 dark:text-red-300">data-te-select</code>, as in
+      <code class="text-red-500 dark:text-red-300"
+        >data-te-select-size="lg"</code
+      >.
     </p>
 
     <div class="flex flex-col">
@@ -127,79 +113,7 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>cancelBtnLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Cancel selection"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes cancel button aria label
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>cancelBtnText</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Cancel"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes cancel button text
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>clearBtnLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Clear selection"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes clear button aria label
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>clearBtnText</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Clear"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes clear button text
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>disableInput</code>
+                    <code class="text-red-500 dark:text-red-300">disabled</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -207,17 +121,17 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>false</code>
+                    <code class="text-red-500 dark:text-red-300">false</code>
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Disables datepicker input
+                    Changes select input state to disabled
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>disableToggleButton</code>
+                    <code class="text-red-500 dark:text-red-300">multiple</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -225,17 +139,39 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>false</code>
+                    <code class="text-red-500 dark:text-red-300">false</code>
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Disables toggle button
+                    Allows to select multiple values
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>format</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectAll</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Displays select all option in multiselect dropdown
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectAllLabel</code
+                    >
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -243,60 +179,41 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"dd/mm/yyyy"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    hanges date format displayed in input
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>monthsFull</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Array
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code
-                      >[ 'January', 'February', 'March', 'April', 'May', 'June',
-                      'July', 'August', 'September', 'October', 'November',
-                      'December' ]</code
+                    <code class="text-red-500 dark:text-red-300"
+                      >"Select all"</code
                     >
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes array of months full names
+                    Changes label of select all option.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>monthsShort</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Array
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code
-                      >['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
-                      'Sep', 'Oct', 'Nov', 'Dec']</code
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectAutoSelect</code
                     >
                   </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">true</code>
+                  </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes array of months short names
+                    Enables auto selecting on Tab press
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>nextMonthLabel</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectContainer</code
+                    >
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -304,161 +221,40 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Next month"</code>
+                    <code class="text-red-500 dark:text-red-300">"body"</code>
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes next button aria label in days view
+                    Container for the select dropdown. Accepts an element
+                    selector inside of which select dropdown will be rendered.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>nextMultiYearLabel</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectClearButton</code
+                    >
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
+                    Boolean
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Next 24 years"</code>
+                    <code class="text-red-500 dark:text-red-300">false</code>
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes next button aria label in years view
+                    Adds clear button to the select input.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>nextYearLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Next year"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes next button aria label in months view
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>okBtnText</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Ok"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes ok button text
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>okBtnLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Confirm selection"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes ok button aria label
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>prevMonthLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Previous month"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes previous button aria label in days view
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>prevMultiYearLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Previous 24 years"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes previous button aria label in years view
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>prevYearLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Previous year"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes previous button aria label in months view
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>startDate</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    (Null|String|Date)
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>null</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes default date to which datepicker will navigate
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>startDay</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectDisplayedLabels</code
+                    >
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -466,17 +262,84 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>0</code>
+                    <code class="text-red-500 dark:text-red-300">5</code>
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes default start day (0 for Sunday, 1 for Monday...)
+                    The maximum number of comma-separated list of options
+                    displayed on the Multiselect. If a user selects more options
+                    than that value, the X options selected text will be
+                    displayed instead. If set to -1, the limit is off.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>switchToDayViewLabel</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectFilter</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Displays filter input that allow to search for specific
+                    option.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectFilterDebounce</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">300</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Adds delay to the options list updates when using filter
+                    input. Improves performance of the select with filter.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectFormWhite</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Adjust input colors for dark backgrounds.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectNoResultText</code
+                    >
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -484,141 +347,208 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Choose date"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes view change button aria label in years view
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>switchToMonthViewLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Choose date"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes view change button aria label in months view
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>switchToMultiYearViewLabel</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Choose year and month"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes view change button aria label in days view
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>title</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"Select date"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes datepicker title
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>view</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    String
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>"days"</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes default datepicker view (days/years/months)
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>weekdaysFull</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Array
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code
-                      >['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-                      'Friday', 'Saturday']</code
+                    <code class="text-red-500 dark:text-red-300"
+                      >"No results"</code
                     >
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes array of weekdays full names
+                    The text that will be displayed when no option is found
+                    after using select filter
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>weekdaysNarrow</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectOptionsSelectedLabel</code
+                    >
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Array
+                    String
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>['S', 'M', 'T', 'W', 'T', 'F', 'S']</code>
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes array of weekdays narrow names
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>weekdaysShort</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Array
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code
-                      >['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']</code
+                    <code class="text-red-500 dark:text-red-300"
+                      >"options selected"</code
                     >
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Changes array of weekdays short names
+                    The text which is displayed on the Multiselect when there
+                    are more than 5 (default) options selected, e.g. 7 options
+                    selected.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectOptionHeight</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">38</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Height of the select option. Used to determine dropdown
+                    height and number of visible options.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectPlaceholder</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">-</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    The text that will be displayed as select input placeholder
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectSearchPlaceholder</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >"Search..."</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Changes placeholder of the select search input.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectSize</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >"default"</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Changes input size. Available options: 'sm', 'lg',
+                    'default'.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectValidation</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Adds required validation to the component.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectValidFeedback</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">"Valid"</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    The text which is displayed below the Material Select when
+                    the validate option is enabled and the select is valid.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectInvalidFeedback</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >"Invalid"</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    The text which is displayed below the Material Select when
+                    the validate option is enabled and the select is invalid.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >selectVisibleOptions</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">5</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    The maximum number of options which are visible in the
+                    select dropdown without scrolling.
                   </td>
                 </tr>
               </tbody>
@@ -631,6 +561,7 @@
   <!--Section: Options-->
 
   <hr class="my-5 dark:border-gray-600" />
+
   <!--Section: Classes-->
   <section id="api-section-classes">
     <!-- Section title -->
@@ -643,11 +574,7 @@
       Custom classes can be passed via data attributes or JavaScript. For data
       attributes, append the class name to
       <code>data-te-class</code>, as in
-      <code
-        >data-te-class-fade-in="animate-[fade-in_1.3s_both] p-[auto]
-        motion-reduce:transition-none motion-reduce:animate-none"</code
-      >
-      (default animation duration is 0.3s).
+      <code>data-te-class-form-outline="relative bg-red-600"</code>
     </p>
 
     <div class="flex flex-col">
@@ -677,49 +604,93 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerArrowControls</code>
+                    <code>dropdown</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    mt-2.5
+                    relative outline-none min-w-[100px] m-0 scale-[0.8]
+                    opacity-0 bg-white
+                    shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)]
+                    transition duration-200 motion-reduce:transition-none
+                    data-[te-select-open]:scale-100
+                    data-[te-select-open]:opacity-100 dark:bg-zinc-700
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Sets margin top for next and prev month buttons.
+                    Sets transition, size and appearance styles for select
+                    dropdown.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerBackdrop</code>
+                    <code>formCheckInput</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    w-full h-full fixed top-0 right-0 left-0 bottom-0
-                    bg-black/40 z-[1065]
+                    relative float-left mt-[3px] mr-2 h-4 w-4 cursor-pointer
+                    appearance-none rounded-sm border border-gray-300 bg-white
+                    bg-contain bg-center bg-no-repeat align-top transition
+                    duration-200 motion-reduce:transition-none
+                    checked:border-blue-600 checked:bg-blue-600
+                    checked:after:absolute checked:after:ml-[5px]
+                    checked:after:mt-px checked:after:block
+                    checked:after:h-[9px] checked:after:w-[5px]
+                    checked:after:rotate-45 checked:after:border-2
+                    checked:after:border-t-0 checked:after:border-l-0
+                    checked:after:border-solid checked:after:border-white
+                    checked:after:bg-transparent checked:after:content-['']
+                    focus:outline-none
+                    group-data-[te-select-option-text-ref]:mr-2.5
+                    dark:bg-zinc-700 dark:checked:bg-blue-500
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Sets size, position and background color for datepicker
-                    backdrop
+                    Sets styles for checkbox input inside the select dropdown.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerCell</code>
+                    <code>formOutline</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    text-center
-                    data-[te-datepicker-cell-disabled]:text-neutral-300
-                    data-[te-datepicker-cell-disabled]:cursor-default
-                    data-[te-datepicker-cell-disabled]:pointer-events-none
-                    data-[te-datepicker-cell-disabled]:hover:cursor-default
-                    hover:cursor-pointer group
+                    relative
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Sets size, alignment, text color and other styles for cell
+                    Sets position attribute form select input wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>initialized</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    hidden
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Hides original select input
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>inputGroup</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex items-center whitespace-nowrap p-2.5 text-center
+                    text-base font-normal leading-[1.6] text-gray-700
+                    dark:bg-zinc-800 dark:text-gray-200
+                    dark:placeholder:text-gray-200
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets size, position and other styles for input group
                     wrapper.
                   </td>
                 </tr>
@@ -727,435 +698,569 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerCellContent</code>
+                    <code>noResult</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    mx-auto
-                    group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-neutral-300
-                    group-[[data-te-datepicker-cell-selected]]:bg-blue-500
-                    group-[[data-te-datepicker-cell-selected]]:text-white
-                    group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-neutral-100
-                    group-[[data-te-datepicker-cell-focused]]:data-[te-datepicker-cell-selected]:bg-blue-500
-                    group-[[data-te-datepicker-cell-current]]:border-solid
-                    group-[[data-te-datepicker-cell-current]]:border-black
-                    group-[[data-te-datepicker-cell-current]]:border
-                    dark:group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-white/10
-                    dark:group-[[data-te-datepicker-cell-current]]:border-white
-                    dark:group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-white/10
+                    flex items-center px-4
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Main colors for different cell states (hover, focus, current
-                    etc.)
+                    Sets position and padding of no-result information when
+                    filtering options.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerCellContentLarge</code>
+                    <code>optionsList</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    w-[72px] h-10 leading-10 py-[1px] px-0.5 rounded-[999px]
+                    list-none m-0 p-0
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size, paddings and border radius for large cell content.
+                    Sets margins and paddings for option list.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerCellContentSmall</code>
+                    <code>optionsWrapper</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    w-9 h-9 leading-9 rounded-[50%] text-[13px]
+                    overflow-y-auto
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size, border radius and font size for small cell content.
+                    Sets overflow for options wrapper element.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerCellLarge</code>
+                    <code>optionsWrapperScrollbar</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    w-[76px] h-[42px]
+                    [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-1
+                    [&::-webkit-scrollbar-button]:block
+                    [&::-webkit-scrollbar-button]:h-0
+                    [&::-webkit-scrollbar-button]:bg-transparent
+                    [&::-webkit-scrollbar-track-piece]:bg-transparent
+                    [&::-webkit-scrollbar-track-piece]:rounded-none
+                    [&::-webkit-scrollbar-track-piece]:
+                    [&::-webkit-scrollbar-track-piece]:rounded-l
+                    [&::-webkit-scrollbar-thumb]:h-[50px]
+                    [&::-webkit-scrollbar-thumb]:bg-[#999]
+                    [&::-webkit-scrollbar-thumb]:rounded
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size of large cells.
+                    Changes the default scrollbar appearance.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerCellSmall</code>
+                    <code>selectArrow</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    w-10 h-10 xs:max-md:landscape:w-8 xs:max-md:landscape:h-8
+                    absolute right-2 text-[0.8rem] cursor-pointer
+                    peer-focus:text-blue-600
+                    peer-data-[te-input-focused]:text-blue-600
+                    group-data-[te-was-validated]/validation:peer-valid:text-green-600
+                    group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size of small cells with different width breakpoints.
+                    Sets styles for select input arrow.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerClearBtn</code>
+                    <code>selectArrowWhite</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    mr-auto
+                    text-gray-50 peer-focus:!text-white
+                    peer-data-[te-input-focused]:!text-white
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Margin for clear button (to set it's position).
+                    Sets arrow color for
+                    <code>selectFormWhite</code> attribute.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerDate</code>
+                    <code>selectArrowDefault</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    xs:max-md:landscape:mt-24 h-[72px] flex flex-col justify-end
+                    top-2
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Margins and display options for header date wrapper.
+                    Sets arrows top position if select size is default
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerDateText</code>
+                    <code>selectArrowLg</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    text-[34px] font-normal text-white
+                    top-[13px]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size, font size and text color of header date text.
+                    Sets arrows top position if select size is set to large
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerDateControls</code>
+                    <code>selectArrowSm</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    px-3 pt-2.5 pb-0 flex justify-between text-black/[64]
+                    top-1
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Sets paddings, display options and text color of datepicker
-                    controls: prev and next buttons and view change button.
+                    Sets arrows top position if select size is set to small
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerDayHeading</code>
+                    <code>selectClearBtn</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    w-10 h-10 text-center text-[12px] font-normal
+                    absolute top-2 right-7 text-black cursor-pointer
+                    focus:text-blue-600 outline-none dark:text-gray-200
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size, font and alignment for table header (narrow weekdays)
+                    Sets position, size and other styles for clear button.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerFooter</code>
+                    <code>selectClearBtnWhite</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    h-14 flex absolute w-full bottom-0 justify-end items-center
-                    px-3
+                    !text-gray-50
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size, position and alignment for datepicker footer wrapper.
+                    Sets clear button's color for
+                    <code>selectFormWhite</code> attribute.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerFooterBtn</code>
+                    <code>selectClearBtnDefault</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    outline-none bg-white text-blue-500 border-none
-                    cursor-pointer py-0 px-2.5 uppercase text-[0.8rem]
-                    leading-10 font-medium h-10 tracking-[.1rem] rounded-[10px]
-                    mb-2.5 hover:bg-neutral-200 focus:bg-neutral-200
-                    dark:bg-transparent dark:text-white dark:hover:bg-white/10
-                    dark:focus:bg-white/10
+                    top-2 text-base
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Styles for buttons that are placed inside the footer.
+                    Sets arrows top position and font size if select size is set
+                    to default
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerHeader</code>
+                    <code>selectClearBtnLg</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    xs:max-md:landscape:h-full h-[120px] px-6 bg-blue-500 flex
-                    flex-col rounded-t-lg dark:bg-zinc-800
+                    top-[11px] text-base
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size, paddings, background and other styles for header
-                    wrapper.
+                    Sets arrows top position and font size if select size is set
+                    to large.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerNextButton</code>
+                    <code>selectClearBtnSm</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    relative p-0 w-10 h-10 leading-10 border-none outline-none
-                    m-0 text-black/[64] bg-transparent hover:bg-neutral-200
-                    hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%]
-                    after:top-0 after:left-0 after:right-0 after:bottom-0
-                    after:absolute after:content-[${""}] after:m-[15.5px]
-                    after:border-0 after:border-solid after:border-current
-                    after:border-t-2 after:border-r-2 after:translate-x-[-2px]
-                    after:rotate-45 dark:text-white dark:hover:bg-white/10
-                    dark:focus:bg-white/10
+                    top-1 text-[0.8rem]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Styling for next button (controls).
+                    Sets arrows top position and font size if select size is set
+                    to small.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerPreviousButton</code>
+                    <code>selectDropdownContainer</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    relative p-0 w-10 h-10 leading-10 border-none outline-none
-                    m-0 text-black/[64] bg-transparent mr-6 hover:bg-neutral-200
-                    hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%]
-                    after:top-0 after:left-0 after:right-0 after:bottom-0
-                    after:absolute after:content-[${""}] after:m-[15.5px]
-                    after:border-0 after:border-solid after:border-current
-                    after:border-t-2 after:border-l-2 after:translate-x-[2px]
-                    after:-rotate-45 dark:text-white dark:hover:bg-white/10
-                    dark:focus:bg-white/10
+                    z-[1070]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Styling for prev button (controls).
+                    Sets index value for select's dropdown container.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerTable</code>
+                    <code>selectFakeValue</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    mx-auto w-[304px]
+                    transform-none hidden data-[te-input-state-active]:block
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Size and horizontal margin of day cells.
+                    Sets styles for fake value.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerTitle</code>
+                    <code>selectFilterInput</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    h-8 flex flex-col justify-end
+                    relative m-0 block w-full min-w-0 flex-auto rounded border
+                    border-solid border-gray-300 bg-transparent bg-clip-padding
+                    px-3 py-1.5 text-base font-normal text-gray-700 transition
+                    duration-300 ease-in-out motion-reduce:transition-none
+                    focus:border-blue-600 focus:text-gray-700
+                    focus:shadow-te-blue focus:outline-none dark:text-gray-200
+                    dark:placeholder:text-gray-200
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Styling for datepicker title wrapper.
+                    Sets styles for search input appearance.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerTitleText</code>
+                    <code>selectInput</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    text-[10px] font-normal uppercase tracking-[1.7px]
-                    text-white
+                    peer block min-h-[auto] w-full rounded border-0
+                    bg-transparent outline-none transition-all duration-200
+                    ease-linear focus:placeholder:opacity-100
+                    data-[te-input-state-active]:placeholder:opacity-100
+                    motion-reduce:transition-none dark:text-gray-200
+                    dark:placeholder:text-gray-200
+                    [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0
+                    cursor-pointer data-[te-input-disabled]:bg-[#e9ecef]
+                    data-[te-input-disabled]:cursor-default
+                    group-data-[te-was-validated]/validation:mb-4
+                    dark:data-[te-input-disabled]:bg-zinc-600
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Font styles for datepicker title text.
+                    Sets styles for select inputs.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerToggleButton</code>
+                    <code>selectInputWhite</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    outline-none w-3.5 h-3.5 absolute outline-none border-none
-                    bg-transparent right-2.5 top-1/2 -translate-x-1/2
-                    -translate-y-1/2 hover:fill-blue-600 focus:fill-blue-600
-                    dark:hover:fill-blue-400 dark:focus:fill-blue-400
-                    dark:fill-gray-200
+                    !text-gray-50
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Styling for datepicker toggle button (inside input)
+                    Sets inputs font color for
+                    <code>selectFormWhite</code> attribute.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerMain</code>
+                    <code>selectInputSizeDefault</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    relative h-full
+                    py-[0.32rem] px-3 leading-[1.6]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Position and height of datepicker main content.
+                    Sets padding and line height for default input size.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerView</code>
+                    <code>selectInputSizeLg</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    outline-none px-3
+                    py-[0.32rem] px-3 leading-[2.15]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Padding and outline for datepicker table wraper.
+                    Sets padding and line height for large input size.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>datepickerViewChangeButton</code>
+                    <code>selectInputSizeSm</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    outline-none p-2.5 text-neutral-500 font-medium
-                    text-[0.9rem] rounded-xl shadow-none bg-transparent m-0
-                    border-none hover:bg-neutral-200 focus:bg-neutral-200
-                    after:content-[${""}] after:inline-block after:w-0 after:h-0
-                    after:border-solid after:border-x-[5px]
-                    after:border-x-transparent after:border-t-[5px] after:m-0
-                    after:ml-[5px] after:align-middle dark:text-white
-                    dark:hover:bg-white/10 dark:focus:bg-white/10
+                    py-[0.33rem] px-3 text-xs leading-[1.5]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Styling for datepicker change view button.
+                    Sets font size, padding and line height for small input
+                    size.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>fadeIn</code>
+                    <code>selectLabel</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    animate-[fade-in_0.3s_both] p-[auto]
-                    motion-reduce:transition-none motion-reduce:animate-none
+                    pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%]
+                    origin-[0_0] truncate text-gray-500 transition-all
+                    duration-200 ease-out peer-focus:scale-[0.8]
+                    peer-focus:text-blue-600
+                    peer-data-[te-input-state-active]:scale-[0.8]
+                    motion-reduce:transition-none dark:text-gray-200
+                    dark:peer-focus:text-gray-200
+                    data-[te-input-state-active]:scale-[0.8]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Classes for setting proper animation on datepicker open
+                    Sets styles for select input label.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>fadeInShort</code>
+                    <code>selectLabelWhite</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    animate-[fade-in_0.15s_both] p-[auto]
-                    motion-reduce:transition-none motion-reduce:animate-none
+                    !text-gray-50
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Classes for setting proper animation on backdrop open
+                    Sets label color for
+                    <code>selectFormWhite</code> attribute.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>fadeOut</code>
+                    <code>selectLabelSizeDefault</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    animate-[fade-out_0.3s_both] p-[auto]
-                    motion-reduce:transition-none motion-reduce:animate-none
+                    pt-[0.37rem] leading-[1.6] peer-focus:-translate-y-[0.9rem]
+                    peer-data-[te-input-state-active]:-translate-y-[0.9rem]
+                    data-[te-input-state-active]:-translate-y-[0.9rem]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Classes for setting proper animation on datepicker close
+                    Sets label styles for default select input size.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>fadeOutShort</code>
+                    <code>selectLabelSizeLg</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    animate-[fade-out_0.15s_both] p-[auto]
-                    motion-reduce:transition-none motion-reduce:animate-none
+                    pt-[0.37rem] leading-[2.15]
+                    peer-focus:-translate-y-[1.15rem]
+                    peer-data-[te-input-state-active]:-translate-y-[1.15rem]
+                    data-[te-input-state-active]:-translate-y-[1.15rem]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Classes for setting proper animation on backdrop close
+                    Sets label styles for large select input size.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>modalContainer</code>
+                    <code>selectLabelSizeSm</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2
-                    -translate-y-1/2 w-[328px] h-[512px] bg-white
-                    rounded-[0.6rem] shadow-lg z-[1066]
-                    xs:max-md:landscape:w-[475px] xs:max-md:landscape:h-[360px]
-                    xs:max-md:landscape:flex-row dark:bg-zinc-700
+                    pt-[0.37rem] text-xs leading-[1.5]
+                    peer-focus:-translate-y-[0.75rem]
+                    peer-data-[te-input-state-active]:-translate-y-[0.75rem]
+                    data-[te-input-state-active]:-translate-y-[0.75rem]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Styling for main wrapper of datepicker.
+                    Sets label styles for small select input size.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>selectOption</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex flex-row items-center justify-between w-full px-4
+                    truncate text-gray-700 bg-transparent select-none
+                    cursor-pointer data-[te-input-multiple-active]:bg-black/5
+                    hover:[&:not([data-te-select-option-disabled])]:bg-black/5
+                    data-[te-input-state-active]:bg-black/5
+                    data-[te-select-option-selected]:data-[te-input-state-active]:bg-black/5
+                    data-[te-select-selected]:data-[te-select-option-disabled]:cursor-default
+                    data-[te-select-selected]:data-[te-select-option-disabled]:text-gray-400
+                    data-[te-select-selected]:data-[te-select-option-disabled]:bg-transparent
+                    data-[te-select-option-selected]:bg-black/[0.02]
+                    data-[te-select-option-disabled]:text-gray-400
+                    data-[te-select-option-disabled]:cursor-default
+                    group-data-[te-select-option-group-ref]/opt:pl-7
+                    dark:text-gray-200
+                    dark:hover:[&:not([data-te-select-option-disabled])]:bg-white/30
+                    dark:data-[te-input-state-active]:bg-white/30
+                    dark:data-[te-select-option-selected]:data-[te-input-state-active]:bg-white/30
+                    dark:data-[te-select-option-disabled]:text-gray-400
+                    dark:data-[te-input-multiple-active]:bg-white/30
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles for every select options.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>selectOptionGroup</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    group/opt
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Adds named group class to opt elements.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>selectOptionGroupLabel</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex flex-row items-center w-full px-4 truncate
+                    bg-transparent text-black/50 select-none dark:text-gray-300
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles for opt group labels.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>selectOptionIcon</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    w-7 h-7 rounded-full
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets size and border radius for icons.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>selectOptionSecondaryText</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    block text-[0.8rem] text-gray-500 dark:text-gray-300
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets font size, colors and other styles for secondary text.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>selectOptionText</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    group
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Adds group class to option text.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>selectValidationValid</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    hidden absolute -mt-3 w-auto text-sm text-green-600
+                    cursor-pointer
+                    group-data-[te-was-validated]/validation:peer-valid:block
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles for valid feedback information.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>selectValidationInvalid</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    hidden absolute -mt-3 w-auto text-sm text-[rgb(220,76,100)]
+                    cursor-pointer
+                    group-data-[te-was-validated]/validation:peer-invalid:block
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles for invalid feedback information.
                   </td>
                 </tr>
               </tbody>
@@ -1172,14 +1277,11 @@
         {{< twsnippet/wrapper "JavaScript" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-          new te.Datepicker(
-            document.querySelector("#datepicker"),
+          new te.Select(
+            document.querySelector("#select"),
+            {},
             {
-              cancelBtnText: "Cancel Picking",
-            },
-            {
-              fadeIn:
-                "animate-[fade-in_1.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none",
+              selectOptionIcon: "w-7 h-7 rounded-full",
             }
           );
         {{< /twsnippet/code >}}
@@ -1241,90 +1343,107 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>open</code>
+                    <code class="text-red-500 dark:text-red-300">open</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Manually opens a datepicker
+                    Manually opens a select
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    <code>myDatepicker.open()</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >mySelect.open()</code
+                    >
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>close</code>
+                    <code class="text-red-500 dark:text-red-300">close</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Manually closes a datepicker
+                    Manually closes a select
                   </td>
                   <td class="px-6 py-4">
-                    <code>myDatepicker.close()</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >mySelect.close()</code
+                    >
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>dispose</code>
+                    <code class="text-red-500 dark:text-red-300">setValue</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Disposes a datepicker instance
+                    Programatically set component selections. Add single value
+                    for default select and array of values for multiselect.
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code> myDatepicker.dispose()</code>
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>getInstance</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Static method which allows you to get the datepicker
-                    instance associated to a DOM element.
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>Datepicker.getInstance(datepickerEl)</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >mySelect.setValue('3')</code
+                    >
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>getOrCreateInstance</code>
+                    <code class="text-red-500 dark:text-red-300">dispose</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Static method which returns the datepicker instance
-                    associated to a DOM element or create a new one in case it
-                    wasn't initialized.
+                    Disposes a select instance
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>Datepicker.getOrCreateInstance(datepickerEl)</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >mySelect.dispose()</code
+                    >
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>update</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >getInstance</code
+                    >
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Updates options of a datepicker instance.
+                    Static method which allows you to get the select instance
+                    associated to a DOM element.
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >Select.getInstance(selectEl)</code
+                    >
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >getOrCreateInstance</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which returns the select instance associated
+                    to a DOM element or create a new one in case it wasn't
+                    initialized.
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    <code>datepicker.update({inline: true})</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >Select.getOrCreateInstance(selectEl)</code
+                    >
                   </td>
                 </tr>
               </tbody>
@@ -1341,9 +1460,9 @@
         {{< twsnippet/wrapper "JavaScript" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-          const datepickerEl = document.getElementById("myDatepicker");
-          const datepicker = new te.Datepicker(datepickerEl);
-          datepicker.open();
+        const selectEl = document.getElementById('mySelect');
+        const select = new te.Select(selectEl);
+        select.open();
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -1384,30 +1503,62 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>open.te.datepicker</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >open.te.select</code
+                    >
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    This event fires immediately when the datepicker is opened.
+                    This event fires immediately when the select is opened.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>close.te.datepicker</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >close.te.select</code
+                    >
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    This event fires immediately when the datepicker is closed.
+                    This event fires immediately when the select is closed.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>dateChange.te.datepicker</code>
+                    <code class="text-red-500 dark:text-red-300"
+                      >valueChange.te.select</code
+                    >
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    This event fires immediately when the new date is selected.
+                    This event fires immediately when the select value changes.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >optionSelect.te.select</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event fires immediately when the select option is
+                    selected.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >optionDeselect.te.select</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event fires immediately when the select option is
+                    deselected.
                   </td>
                 </tr>
               </tbody>
@@ -1424,10 +1575,10 @@
         {{< twsnippet/wrapper "JavaScript" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-          const sidenav = document.getElementById("mySidenav");
-          sidenav.addEventListener("update.te.sidenav", (event) => {
-            console.log(event.margin, event.padding);
-          });
+        const mySelect = document.getElementById('mySelect');
+        mySelect.addEventListener('open.te.select', (e) => {
+          // do something...
+        });
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
