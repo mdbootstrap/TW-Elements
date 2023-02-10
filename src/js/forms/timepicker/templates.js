@@ -15,7 +15,7 @@ export const getTimepickerTemplate = ({
   const normalTemplate = `<div id='${pickerID}' class='touch-none opacity-100 z-[1065] inset-0 bg-[#00000066] h-full flex items-center justify-center flex-col fixed' data-te-timepicker-wrapper>
       <div class="flex items-center justify-center flex-col max-h-[calc(100%-64px)] overflow-y-auto shadow-[0_10px_15px_-3px_rgba(0,0,0,0.07),0_4px_6px_-2px_rgba(0,0,0,0.05)] min-[320px]:max-[825px]:landscape:rounded-lg">
         <div class="flex flex-col min-w-[310px] min-h-[325px] bg-white rounded-t-[0.6rem] min-[320px]:max-[825px]:landscape:!flex-row min-[320px]:max-[825px]:landscape:min-w-[auto] min-[320px]:max-[825px]:landscape:min-h-[auto] min-[320px]:max-[825px]:landscape:overflow-y-auto justify-around">
-        <div id='${headID}' class='bg-[#3b71ca] dark:bg-zinc-700 h-[100px] rounded-t-lg pr-[24px] pl-[50px] py-[10px] min-[320px]:max-[825px]:landscape:rounded-tr-none min-[320px]:max-[825px]:landscape:rounded-bl-none min-[320px]:max-[825px]:landscape:p-[10px] min-[320px]:max-[825px]:landscape:pr-[10px] min-[320px]:max-[825px]:landscape:h-auto min-[320px]:max-[825px]:landscape:min-h-[305px] flex flex-row items-center justify-center' style='padding-right:${
+        <div id='${headID}' class='bg-[#3b71ca] dark:bg-neutral-700 h-[100px] rounded-t-lg pr-[24px] pl-[50px] py-[10px] min-[320px]:max-[825px]:landscape:rounded-tr-none min-[320px]:max-[825px]:landscape:rounded-bl-none min-[320px]:max-[825px]:landscape:p-[10px] min-[320px]:max-[825px]:landscape:pr-[10px] min-[320px]:max-[825px]:landscape:h-auto min-[320px]:max-[825px]:landscape:min-h-[305px] flex flex-row items-center justify-center' style='padding-right:${
     format24 ? 50 : 10
   }px'>
         <div class='min-[320px]:max-[825px]:landscape:flex-col flex w-full justify-evenly'>
@@ -40,8 +40,8 @@ export const getTimepickerTemplate = ({
       </div>
       ${
         !inline
-          ? `<div id='${bodyID}' class='min-w-[310px] max-w-[325px] min-h-[305px] overflow-x-hidden h-full flex justify-center flex-col items-center dark:bg-zinc-500' data-te-timepicker-clock-wrapper>
-            <div class='relative rounded-[100%] w-[260px] h-[260px] cursor-default my-0 mx-auto bg-[#00000012] dark:bg-zinc-600/50' data-te-timepicker-clock>
+          ? `<div id='${bodyID}' class='min-w-[310px] max-w-[325px] min-h-[305px] overflow-x-hidden h-full flex justify-center flex-col items-center dark:bg-neutral-500' data-te-timepicker-clock-wrapper>
+            <div class='relative rounded-[100%] w-[260px] h-[260px] cursor-default my-0 mx-auto bg-[#00000012] dark:bg-neutral-600/50' data-te-timepicker-clock>
               <span class='top-1/2 left-1/2 w-[6px] h-[6px] -translate-y-1/2 -translate-x-1/2 rounded-[50%] bg-[#3b71ca] absolute' data-te-timepicker-middle-dot></span>
               <div class='bg-[#3b71ca] bottom-1/2 h-2/5 left-[calc(50%-1px)] rtl:!left-auto origin-[center_bottom_0] rtl:!origin-[50%_50%_0] w-[2px] absolute' data-te-timepicker-hand-pointer>
                 <div class='-top-[21px] -left-[15px] w-[4px] border-[14px] border-solid border-[#3b71ca] h-[4px] box-content rounded-[100%] absolute' data-te-timepicker-circle></div>
@@ -56,7 +56,7 @@ export const getTimepickerTemplate = ({
           : ""
       }
     </div>
-    <div id='${footerID}' class='rounded-b-lg flex justify-between items-center w-full h-[56px] px-[12px] bg-white dark:bg-zinc-500'>
+    <div id='${footerID}' class='rounded-b-lg flex justify-between items-center w-full h-[56px] px-[12px] bg-white dark:bg-neutral-500'>
       <div class="w-full flex justify-between">
         ${
           showClearBtn
@@ -73,7 +73,7 @@ export const getTimepickerTemplate = ({
   const inlineTemplate = `<div id='${pickerID}' class='touch-none opacity-100 z-[1065] inset-0 bg-[#00000066] h-full flex items-center justify-center flex-col rounded-lg' data-te-timepicker-wrapper>
         <div class="flex items-center justify-center flex-col max-h-[calc(100%-64px)] overflow-y-auto shadow-[0_10px_15px_-3px_rgba(0,0,0,0.07),0_4px_6px_-2px_rgba(0,0,0,0.05)]">
           <div class="flex flex-col min-h-[auto] min-w-[310px] bg-white rounded-[0.6rem] min-[320px]:max-[825px]:landscape:!flex-row min-[320px]:max-[825px]:landscape:rounded-bl-lg min-[320px]:max-[825px]:landscape:min-w-[auto] min-[320px]:max-[825px]:landscape::min-h-[auto] min-[320px]:max-[825px]:landscape:overflow-y-auto justify-around">
-          <div id='${headID}' class='bg-[#3b71ca] dark:bg-zinc-700 h-[100px] rounded-t-lg min-[320px]:max-[825px]:landscape:rounded-tr-none min-[320px]:max-[825px]:landscape:rounded-bl-none min-[320px]:max-[825px]:landscape:p-[10px] min-[320px]:max-[825px]:landscape:pr-[10px] min-[320px]:max-[825px]:landscape:h-auto min-[320px]:max-[825px]:landscape:min-h-[305px] flex flex-row items-center justify-center p-0 rounded-b-lg'
+          <div id='${headID}' class='bg-[#3b71ca] dark:bg-neutral-700 h-[100px] rounded-t-lg min-[320px]:max-[825px]:landscape:rounded-tr-none min-[320px]:max-[825px]:landscape:rounded-bl-none min-[320px]:max-[825px]:landscape:p-[10px] min-[320px]:max-[825px]:landscape:pr-[10px] min-[320px]:max-[825px]:landscape:h-auto min-[320px]:max-[825px]:landscape:min-h-[305px] flex flex-row items-center justify-center p-0 rounded-b-lg'
           style='padding-right:10px'>
           <div class='min-[320px]:max-[825px]:landscape:flex-col flex w-full justify-evenly items-center'>
               <div class="[direction:ltr] rtl:[direction:rtl]">
@@ -131,7 +131,7 @@ export const getToggleButtonTemplate = (options, id) => {
   const { iconSVG } = options;
 
   return `
-  <button id="${id}" tabindex="0" type="button" class="h-4 w-4 ml-auto fill-gray-700 dark:fill-white absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-[300ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer hover:fill-[#3b71ca] focus:fill-[#3b71ca] dark:hover:fill-[#3b71ca] dark:focus:fill-[#3b71ca]" data-te-toggle="timepicker" data-te-timepicker-toggle-button data-te-timepicker-icon>
+  <button id="${id}" tabindex="0" type="button" class="h-4 w-4 ml-auto fill-neutral-700 dark:fill-white absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-[300ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer hover:fill-[#3b71ca] focus:fill-[#3b71ca] dark:hover:fill-[#3b71ca] dark:focus:fill-[#3b71ca]" data-te-toggle="timepicker" data-te-timepicker-toggle-button data-te-timepicker-icon>
       ${iconSVG}  
   </button>
 `;
