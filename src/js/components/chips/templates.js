@@ -20,7 +20,6 @@ export const getInputField = ({ inputID, labelText }, classes) => {
 };
 
 export const getChip = ({ text, iconSVG }, classes) => {
-  console.log(classes);
   return `<div data-te-chip-init data-te-ripple-init class="${classes.chipElement}">
     <span data-te-chip-text>${text}</span> 
       <span data-te-chip-close class="${classes.chipCloseIcon}">
