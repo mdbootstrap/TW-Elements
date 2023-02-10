@@ -1586,7 +1586,11 @@ class Timepicker {
   }
 
   _handleSwitchHourMinute() {
-    toggleClassHandler("click", SELECTOR_ATTR_TIMEPICKER_CURRENT);
+    toggleClassHandler(
+      "click",
+      SELECTOR_ATTR_TIMEPICKER_CURRENT,
+      this._classes
+    );
 
     EventHandler.on(
       this._modal,
@@ -1749,13 +1753,22 @@ class Timepicker {
     );
 
     if (!maxTimeFormat || maxTimeFormat === selectedFormat) {
-      _verifyMaxTimeHourAndAddDisabledClass(innerHoursTips, maxTimeHour);
-      _verifyMaxTimeHourAndAddDisabledClass(outerHoursTips, maxTimeHour);
+      _verifyMaxTimeHourAndAddDisabledClass(
+        innerHoursTips,
+        maxTimeHour,
+        this._classes
+      );
+      _verifyMaxTimeHourAndAddDisabledClass(
+        outerHoursTips,
+        maxTimeHour,
+        this._classes
+      );
       _verifyMaxTimeMinutesTipsAndAddDisabledClass(
         allTipsMinutes,
         maxTimeMinutes,
         maxTimeHour,
-        this._hour.textContent
+        this._hour.textContent,
+        this._classes
       );
       return;
     }
@@ -1792,13 +1805,22 @@ class Timepicker {
     );
 
     if (!minTimeFormat || minTimeFormat === selectedFormat) {
-      _verifyMinTimeHourAndAddDisabledClass(outerHoursTips, minTimeHour);
-      _verifyMinTimeHourAndAddDisabledClass(innerHoursTips, minTimeHour);
+      _verifyMinTimeHourAndAddDisabledClass(
+        outerHoursTips,
+        minTimeHour,
+        this._classes
+      );
+      _verifyMinTimeHourAndAddDisabledClass(
+        innerHoursTips,
+        minTimeHour,
+        this._classes
+      );
       _verifyMinTimeMinutesTipsAndAddDisabledClass(
         allTipsMinutes,
         minTimeMinutes,
         minTimeHour,
-        this._hour.textContent
+        this._hour.textContent,
+        this._classes
       );
     } else if (minTimeFormat === "PM" && selectedFormat === "AM") {
       outerHoursTips.forEach((tip) => {
