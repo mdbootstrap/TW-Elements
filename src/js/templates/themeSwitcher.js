@@ -11,8 +11,12 @@ export const switcherTemplate = `
     </svg>
   </button>
   <ul
-    class="min-w-max absolute bg-white text-base z-[1000] float-left py-2 list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block dark:bg-neutral-800"
+    class="min-w-max absolute bg-white text-base z-[1000] overflow-hidden float-left list-none text-left rounded-lg shadow-lg hidden m-0 bg-clip-padding border-none [&[data-te-dropdown-show]]:block dark:bg-neutral-800"
     aria-labelledby="themeSwitcher" data-te-dropdown-menu-ref>
+    <li class="scale-[0.8] text py-1 flex justify-center items-center text-gray-400 font-bold">
+      <svg class="-ml-1 fill-gray-400" xmlns="http://www.w3.org/2000/svg" height="20" width="20"><path d="M7 17v-5.792H3L10 2l7 9.208h-4V17Zm1.5-1.5h3V9.708h2.438L10 4.438l-3.938 5.27H8.5ZM10 9.708Z"/></svg>
+      <span class="ml-1 mr-2">+</span>
+      <span>D</span>
     <li>
       <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 disabled:text-neutral-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-neutral-600 focus:outline-none focus:bg-neutral-200 focus:dark:bg-neutral-600"
         href="#" data-theme="light" data-te-dropdown-item-ref>

@@ -1,17 +1,29 @@
-<nav class="shadow">
+{{ $hidden_sidenav := .Params.hidden_sidenav }}
+
+
+<nav
+  class="{{ if and (ne $hidden_sidenav true) (ne .IsHome true) }}
+    xl:pl-60
+  {{ end }} shadow">
   <div class="px-5 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
           <style></style>
           {{ if ne .IsHome true }}
-            <div id="hamburger" class="mr-2 flex text-neutral-400 md:hidden">
+            <div
+              id="hamburger"
+              class="{{ if ne $hidden_sidenav true }}
+                xl:hidden
+              {{ end }} mr-4 flex text-neutral-400"
+              data-te-sidenav-toggle-ref
+              data-te-target="#sidenav-main">
               <a href="#" class="text-neutral-400">
                 <svg
                   fill="hsl(224, 7.2%, 40%)"
                   viewBox="0 0 100 80"
-                  width="25"
-                  height="25">
+                  width="20"
+                  height="20">
                   <rect width="80" height="14"></rect>
                   <rect y="30" width="80" height="14"></rect>
                   <rect y="60" width="80" height="14"></rect>
@@ -19,15 +31,21 @@
               </a>
             </div>
           {{ end }}
-          <a
-            href="/"
-            class="flex items-center rounded-md py-2 pr-3 text-lg font-medium dark:text-neutral-100"
-            aria-current="page"
-            ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
-            Tailwind Elements</a
-          >
+          {{ if or (eq .IsHome true) (eq $hidden_sidenav true) }}
+            <a
+              href="/"
+              class="flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-neutral-100"
+              aria-current="page"
+              ><img
+                src="/img/logo.png"
+                class="mr-3"
+                alt=""
+                style="width: 40px" />
+              Tailwind Elements</a
+            >
+          {{ end }}
         </div>
-        <div class="flex hidden items-center sm:ml-6 md:flex">
+        <div class="hidden items-center sm:ml-6 md:flex">
           <div class="flex space-x-4">
             <!-- Current: "bg-neutral-900 text-white", Default: "text-neutral-300 hover:bg-neutral-700 hover:text-white" -->
 
@@ -61,7 +79,7 @@
 
       <!-- Search -->
       <div id="mdb-5-search-container" class="hidden lg:block">
-        <form>
+        <form class="mb-0">
           <style>
             #mdb-5-search-input:focus-within {
               outline: 1px solid hsl(222, 14.1%, 72.2%) !important;
@@ -93,7 +111,8 @@
             id="mdb-5-search-list"
             class="scrollbar-thin scrollbar-thumb-neutral-400 scrollbar-track-neutral-100 dark:scrollbar-thumb-neutral-500 dark:scrollbar-track-neutral-600 relative max-h-[265px] w-max min-w-[300px] overflow-y-scroll pt-0"></ul>
           <hr class="my-0 dark:border-neutral-600" />
-          <p class="mx-2 my-3 mb-0 text-sm text-neutral-600 dark:text-neutral-100">
+          <p
+            class="mx-2 my-3 mb-0 text-sm text-neutral-600 dark:text-neutral-100">
             search results: <strong id="mdb-5-search-count"></strong>
           </p>
         </div>
@@ -124,9 +143,24 @@
             </svg>
           </button>
           <ul
-            class="absolute z-[1000] float-left m-0 hidden w-[120px] list-none rounded-lg border-none bg-white bg-clip-padding py-2 text-left text-base shadow-lg dark:bg-neutral-800 [&[data-te-dropdown-show]]:block"
+            class="absolute z-[1000] float-left m-0 hidden w-[120px] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-800 [&[data-te-dropdown-show]]:block"
             aria-labelledby="themeSwitcher"
             data-te-dropdown-menu-ref>
+            <li
+              class="text flex scale-[0.8] items-center justify-center py-1 font-bold text-gray-400">
+              <svg
+                class="-ml-1 fill-gray-400"
+                xmlns="http://www.w3.org/2000/svg"
+                height="20"
+                width="20">
+                <path
+                  d="M7 17v-5.792H3L10 2l7 9.208h-4V17Zm1.5-1.5h3V9.708h2.438L10 4.438l-3.938 5.27H8.5ZM10 9.708Z" />
+              </svg>
+              <span class="ml-1 mr-2">+</span>
+              <span>D</span>
+            </li>
+
+            <li></li>
             <li>
               <a
                 class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-200 focus:outline-none active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-600 focus:dark:bg-neutral-600"
