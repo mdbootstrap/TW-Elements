@@ -15,10 +15,10 @@
               id="hamburger"
               class="{{ if ne $hidden_sidenav true }}
                 xl:hidden
-              {{ end }} mr-4 flex text-gray-400"
+              {{ end }} mr-4 flex text-neutral-400"
               data-te-sidenav-toggle-ref
               data-te-target="#sidenav-main">
-              <a href="#" class="text-gray-400">
+              <a href="#" class="text-neutral-400">
                 <svg
                   fill="hsl(224, 7.2%, 40%)"
                   viewBox="0 0 100 80"
@@ -34,7 +34,7 @@
           {{ if or (eq .IsHome true) (eq $hidden_sidenav true) }}
             <a
               href="/"
-              class="flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-gray-100"
+              class="flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-neutral-100"
               aria-current="page"
               ><img
                 src="/img/logo.png"
@@ -47,30 +47,30 @@
         </div>
         <div class="hidden items-center sm:ml-6 md:flex">
           <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <!-- Current: "bg-neutral-900 text-white", Default: "text-neutral-300 hover:bg-neutral-700 hover:text-white" -->
 
             <a
               href="/quick-start/"
-              class="rounded-md px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+              class="rounded-md px-3 py-2 text-sm font-medium hover:text-primary dark:text-neutral-100 dark:hover:text-primary-400"
               >Get started</a
             >
 
             <a
               href="/snippets/"
-              class="hidden rounded-md px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400 xl:block"
+              class="hidden rounded-md px-3 py-2 text-sm font-medium hover:text-primary dark:text-neutral-100 dark:hover:text-primary-400 xl:block"
               >Playground</a
             >
 
             <a
               target="_blank"
               href="https://mdbgo.com/"
-              class="rounded-md px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+              class="rounded-md px-3 py-2 text-sm font-medium hover:text-primary dark:text-neutral-100 dark:hover:text-primary-400"
               >Free hosting</a
             >
             <a
               target="_blank"
               href="https://mdbootstrap.com/services/"
-              class="rounded-md px-3 py-2 text-sm font-medium hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+              class="rounded-md px-3 py-2 text-sm font-medium hover:text-primary dark:text-neutral-100 dark:hover:text-primary-400"
               >Services</a
             >
           </div>
@@ -89,10 +89,10 @@
             id="mdb-5-search-input"
             autocomplete="off"
             type="search"
-            class="w-100 mr-2 rounded-lg bg-gray-100 p-2 dark:bg-gray-700"
+            class="w-100 mr-2 rounded-lg bg-neutral-100 p-2 dark:bg-neutral-700"
             placeholder='Search (ctrl + "/")' />
           <span class="input-group-text border-0">
-            <span class="text-gray-400" id="mdb-5-search-icon">
+            <span class="text-neutral-400" id="mdb-5-search-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -110,12 +110,13 @@
         </form>
         <div
           id="mdb-5-search-dropdown"
-          class="absolute top-[50px] z-[999999] hidden overflow-hidden rounded bg-white p-2 shadow-md dark:bg-gray-800">
+          class="absolute top-[50px] z-[999999] hidden overflow-hidden rounded bg-white p-2 shadow-md dark:bg-neutral-800">
           <ul
             id="mdb-5-search-list"
-            class="scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-500 dark:scrollbar-track-gray-600 relative max-h-[265px] w-max min-w-[300px] overflow-y-scroll pt-0"></ul>
-          <hr class="my-0 dark:border-gray-600" />
-          <p class="mx-2 my-3 mb-0 text-sm text-gray-600 dark:text-gray-100">
+            class="scrollbar-thin scrollbar-thumb-neutral-400 scrollbar-track-neutral-100 dark:scrollbar-thumb-neutral-500 dark:scrollbar-track-neutral-600 relative max-h-[265px] w-max min-w-[300px] overflow-y-scroll pt-0"></ul>
+          <hr class="my-0 dark:border-neutral-600" />
+          <p
+            class="mx-2 my-3 mb-0 text-sm text-neutral-600 dark:text-neutral-100">
             search results: <strong id="mdb-5-search-count"></strong>
           </p>
         </div>
@@ -126,7 +127,7 @@
         <!-- Theme switcher -->
         <div id="theme-switcher">
           <button
-            class="rounded-2 flex items-center justify-center whitespace-nowrap px-1.5 py-2 uppercase text-gray-400 transition duration-150 ease-in-out hover:text-blue-600 focus:text-gray-800 motion-reduce:transition-none dark:text-gray-100 dark:hover:text-blue-400 dark:focus:text-gray-200 sm:p-2"
+            class="rounded-2 flex items-center justify-center whitespace-nowrap px-1.5 py-2 uppercase text-neutral-400 transition duration-150 ease-in-out hover:text-primary focus:text-neutral-800 motion-reduce:transition-none dark:text-neutral-100 dark:hover:text-primary-400 dark:focus:text-neutral-200 sm:p-2"
             type="button"
             id="themeSwitcher"
             data-te-dropdown-toggle-ref
@@ -144,12 +145,27 @@
             </svg>
           </button>
           <ul
-            class="absolute z-[1000] float-left m-0 hidden w-[120px] list-none rounded-lg border-none bg-white bg-clip-padding py-2 text-left text-base shadow-lg dark:bg-gray-800 [&[data-te-dropdown-show]]:block"
+            class="absolute z-[1000] float-left m-0 hidden w-[120px] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-800 [&[data-te-dropdown-show]]:block"
             aria-labelledby="themeSwitcher"
             data-te-dropdown-menu-ref>
+            <li
+              class="text flex scale-[0.8] items-center justify-center py-1 font-bold text-gray-400">
+              <svg
+                class="-ml-1 fill-gray-400"
+                xmlns="http://www.w3.org/2000/svg"
+                height="20"
+                width="20">
+                <path
+                  d="M7 17v-5.792H3L10 2l7 9.208h-4V17Zm1.5-1.5h3V9.708h2.438L10 4.438l-3.938 5.27H8.5ZM10 9.708Z" />
+              </svg>
+              <span class="ml-1 mr-2">+</span>
+              <span>D</span>
+            </li>
+
+            <li></li>
             <li>
               <a
-                class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-gray-700 hover:bg-gray-100 focus:bg-gray-200 focus:outline-none active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-100 dark:hover:bg-gray-600 focus:dark:bg-gray-600"
+                class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-200 focus:outline-none active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-600 focus:dark:bg-neutral-600"
                 href="#"
                 data-theme="light"
                 data-te-dropdown-item-ref>
@@ -172,7 +188,7 @@
             </li>
             <li>
               <a
-                class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-gray-700 hover:bg-gray-100 focus:bg-gray-200 focus:outline-none active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-100 dark:hover:bg-gray-600 focus:dark:bg-gray-600"
+                class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-200 focus:outline-none active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-600 focus:dark:bg-neutral-600"
                 href="#"
                 data-theme="dark"
                 data-te-dropdown-item-ref>
@@ -196,7 +212,7 @@
               </a>
             </li>
             <!-- <li>
-              <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 dark:text-gray-100 hover:bg-gray-100 disabled:text-gray-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-zinc-800 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-200 focus:dark:bg-gray-600"
+              <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 disabled:text-neutral-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-neutral-600 focus:outline-none focus:bg-neutral-200 focus:dark:bg-neutral-600"
                 href="#" data-theme="system" data-te-dropdown-item-ref>
                 <div class="pointer-events-none">
                   <div class="inline-block w-[24px] text-center" data-theme-icon="system">
@@ -216,8 +232,8 @@
         <a
           href="https://github.com/mdbootstrap/Tailwind-Elements/"
           target="_blank"
-          class="rounded-md px-1.5 py-2 text-sm font-medium text-gray-400 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400 sm:p-2">
-          <svg
+          class="rounded-md px-1.5 py-2 text-sm font-medium text-neutral-400 hover:text-primary dark:text-neutral-200 dark:hover:text-primary-400 sm:p-2"
+          ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4"
             fill="currentColor"
