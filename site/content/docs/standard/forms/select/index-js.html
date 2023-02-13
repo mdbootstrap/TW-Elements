@@ -1,0 +1,49 @@
+---
+---
+
+<script>
+  // single selection
+  const singleSelect = document.querySelector("#singleSelection");
+  const singleSelectInstance = te.Select.getInstance(singleSelect);
+  singleSelectInstance.setValue("4");
+  // single selection
+
+  // multi selection
+  const multiSelect = document.querySelector("#multiSelection");
+  const multiSelectInstance = te.Select.getInstance(multiSelect);
+  multiSelectInstance.setValue(["3", "4", "5"]);
+  // multi selection
+
+  // select with toggle element
+  const selectEl = document.getElementById("mySelect");
+  const select = te.Select.getInstance(selectEl);
+
+  document.getElementById("toggleMySelect").onclick = function () {
+    select.open();
+  };
+  // select with toggle element
+
+  // validation
+  (() => {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          form.setAttribute("data-te-was-validated", "");
+        },
+        false
+      );
+    });
+  })();
+
+  // validation
+</script>

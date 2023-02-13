@@ -57,17 +57,17 @@ class ThemeSwitcher {
 
   setActiveDropdownItem(theme) {
     this.element.querySelectorAll("[data-theme-icon]").forEach((item) => {
-      item.classList.remove("text-blue-500");
+      item.classList.remove("text-primary-500");
     });
     this.element.querySelectorAll("[data-theme-name]").forEach((item) => {
-      item.classList.remove("text-blue-500");
+      item.classList.remove("text-primary-500");
     });
     this.element
       .querySelector(`[data-theme-icon=${theme}]`)
-      .classList.add("text-blue-500");
+      .classList.add("text-primary-500");
     this.element
       .querySelector(`[data-theme-name=${theme}]`)
-      .classList.add("text-blue-500");
+      .classList.add("text-primary-500");
   }
 
   onThemeSwitcherItemClick(event) {
@@ -83,12 +83,30 @@ class ThemeSwitcher {
     }
   }
 
+  onThemeSwitcherShortCut() {
+    if (!("theme" in localStorage)) {
+      document.querySelector("html").classList.contains("dark")
+        ? this.setLightTheme()
+        : this.setDarkTheme();
+    } else if (localStorage.theme === "dark") {
+      this.setLightTheme();
+    } else {
+      this.setDarkTheme();
+    }
+  }
+
   addEventListeners() {
     const bindedOnThemeSwitcherItemClick =
       this.onThemeSwitcherItemClick.bind(this);
 
     this.themeSwitcherItems.forEach((item) => {
       item.addEventListener("click", bindedOnThemeSwitcherItemClick);
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key.toLocaleLowerCase() === "d" && event.shiftKey) {
+        this.onThemeSwitcherShortCut(event);
+      }
     });
   }
 }
