@@ -177,15 +177,32 @@ function createViewTemplate(
 function createControls(month, year, options, classes) {
   return `
     <div class="${classes.datepickerDateControls}">
-      <button class="${classes.datepickerViewChangeButton}" aria-label="${options.switchToMultiYearViewLabel}" ${VIEW_CHANGE_BUTTON_REF}>
-        ${options.monthsFull[month]} ${year}
+      <button class="${classes.datepickerViewChangeButton}" aria-label="${
+    options.switchToMultiYearViewLabel
+  }" ${VIEW_CHANGE_BUTTON_REF}>
+        ${options.monthsFull[month]} ${year} ${createViewChangeButtonIcon(
+    options,
+    classes
+  )}
       </button>
       <div class="${classes.datepickerArrowControls}">
-        <button class="${classes.datepickerPreviousButton}" aria-label="${options.prevMonthLabel}" ${PREVIOUS_BUTTON_REF}></button>
-        <button class="${classes.datepickerNextButton}" aria-label="${options.nextMonthLabel}" ${NEXT_BUTTON_REF}></button>
+        <button class="${classes.datepickerPreviousButton}" aria-label="${
+    options.prevMonthLabel
+  }" ${PREVIOUS_BUTTON_REF}>${options.changeMonthIconTemplate}</button>
+        <button class="${classes.datepickerNextButton}" aria-label="${
+    options.nextMonthLabel
+  }" ${NEXT_BUTTON_REF}>${options.changeMonthIconTemplate}</button>
       </div>
     </div>
     `;
+}
+
+export function createViewChangeButtonIcon(options, classes) {
+  return `
+  <span class="${classes.datepickerViewChangeIcon}">
+  ${options.viewChangeIconTemplate}
+  </span>
+  `;
 }
 
 function createFooter(options, classes) {
