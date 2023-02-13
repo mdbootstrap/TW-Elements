@@ -1,6 +1,6 @@
 {{ $page_resources := .Resources }}
-{{ $overview_scrollspy_file_exists := fileExists (printf "/content/%s/ss.html" .File.Dir) }}
-{{ $scrollspy_file_exists := fileExists (printf "/content/%s/ss.html" .File.Dir) }}
+{{ $overview_scrollspy_file_exists := fileExists (printf "/content/%s/index-ss.html" .File.Dir) }}
+{{ $scrollspy_file_exists := fileExists (printf "/content/%s/index-ss.html" .File.Dir) }}
 {{ $api_file_exists := fileExists (printf "/content/%s/a.html" .File.Dir) }}
 {{ $api_scrollspy_file_exists := fileExists (printf "/content/%s/a-ss.html" .File.Dir) }}
 {{ $hidden_sidenav := .Params.hidden_sidenav }}
@@ -213,7 +213,7 @@
                   </div>
 
                   <ul class="dark:text-neutral-200">
-                    {{ with .Resources.GetMatch "ss.html" }}
+                    {{ with .Resources.GetMatch "index-ss.html" }}
                       {{ .Content }}
                     {{ end }}
                   </ul>
