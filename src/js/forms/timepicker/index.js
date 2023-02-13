@@ -1384,7 +1384,10 @@ class Timepicker {
           this._setTipsAndTimesDependOnInputValue("12", "00");
           this._setActiveClassToTipsOnOpen(hour, minute, format);
           this._hour.click();
-        } else if (target.hasAttribute(ATTR_TIMEPICKER_BUTTON_CANCEL)) {
+        } else if (
+          target.hasAttribute(ATTR_TIMEPICKER_BUTTON_CANCEL) ||
+          target.hasAttribute(ATTR_TIMEPICKER_BUTTON_SUBMIT)
+        ) {
           runRemoveFunction();
         } else if (
           target.hasAttribute(ATTR_TIMEPICKER_WRAPPER) &&
