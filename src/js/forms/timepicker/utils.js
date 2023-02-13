@@ -1,15 +1,9 @@
 /* eslint-disable consistent-return */
 import EventHandler from "../../dom/event-handler";
+import Manipulator from "../../dom/manipulator";
 
 const ATTR_TIMEPICKER_DISABLED = "data-te-timepicker-disabled";
 const ATTR_TIMEPICKER_ACTIVE = "data-te-timepicker-active";
-
-const CLASSES_TIPS_DISABLED = [
-  "text-[#b3afaf]",
-  "pointer-events-none",
-  "bg-transparent",
-];
-const CLASS_OPACITY = ["!opacity-100"];
 
 const formatToAmPm = (date) => {
   if (date === "") return;
@@ -85,20 +79,20 @@ const formatNormalHours = (date) => {
   };
 };
 
-const toggleClassHandler = (event, classes) => {
-  return EventHandler.on(document, event, classes, ({ target }) => {
+const toggleClassHandler = (event, selector, classes) => {
+  return EventHandler.on(document, event, selector, ({ target }) => {
     if (target.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) return;
 
-    const allElements = document.querySelectorAll(classes);
+    const allElements = document.querySelectorAll(selector);
 
     allElements.forEach((element) => {
       if (!element.hasAttribute(ATTR_TIMEPICKER_ACTIVE)) return;
 
-      element.classList.remove(...CLASS_OPACITY);
+      Manipulator.removeClass(element, classes.opacity);
       element.removeAttribute(ATTR_TIMEPICKER_ACTIVE);
     });
 
-    target.classList.add(...CLASS_OPACITY);
+    Manipulator.addClass(target, classes.opacity);
     target.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
   });
 };
@@ -244,19 +238,19 @@ const checkValueBeforeAccept = (
   return [hourHeader, minute];
 };
 
-const _verifyMaxTimeHourAndAddDisabledClass = (tips, maxTimeHour) => {
+const _verifyMaxTimeHourAndAddDisabledClass = (tips, maxTimeHour, classes) => {
   tips.forEach((tip) => {
     if (tip.textContent === "00" || Number(tip.textContent) > maxTimeHour) {
-      tip.classList.add(...CLASSES_TIPS_DISABLED);
+      Manipulator.addClass(tip, classes.tipsDisabled);
       tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
 };
 
-const _verifyMinTimeHourAndAddDisabledClass = (tips, minTimeHour) => {
+const _verifyMinTimeHourAndAddDisabledClass = (tips, minTimeHour, classes) => {
   tips.forEach((tip) => {
     if (tip.textContent !== "00" && Number(tip.textContent) < minTimeHour) {
-      tip.classList.add(...CLASSES_TIPS_DISABLED);
+      Manipulator.addClass(tip, classes.tipsDisabled);
       tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
@@ -266,14 +260,15 @@ const _verifyMaxTimeMinutesTipsAndAddDisabledClass = (
   tips,
   maxMinutes,
   maxHour,
-  currHour
+  currHour,
+  classes
 ) => {
   tips.forEach((tip) => {
     if (
       Number(tip.textContent) > maxMinutes &&
       Number(currHour) === Number(maxHour)
     ) {
-      tip.classList.add(...CLASSES_TIPS_DISABLED);
+      Manipulator.addClass(tip, classes.tipsDisabled);
       tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
@@ -283,14 +278,15 @@ const _verifyMinTimeMinutesTipsAndAddDisabledClass = (
   tips,
   minMinutes,
   minHour,
-  currHour
+  currHour,
+  classes
 ) => {
   tips.forEach((tip) => {
     if (
       Number(tip.textContent) < minMinutes &&
       Number(currHour) === Number(minHour)
     ) {
-      tip.classList.add(...CLASSES_TIPS_DISABLED);
+      Manipulator.addClass(tip, classes.tipsDisabled);
       tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
