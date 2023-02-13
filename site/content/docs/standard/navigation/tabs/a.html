@@ -6,9 +6,7 @@
   <!-- Section: Usage-->
   <section id="api-section-usage">
     <!-- Title -->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="basic">
+    <h2 class="mt-0 mb-5 text-3xl font-semibold leading-normal" id="basic">
       Usage
     </h2>
 
@@ -199,17 +197,87 @@
     <hr class="mb-5 dark:border-neutral-600" />
     <!-- Section: Classes-->
 
-    <!-- Section: Classes-->
+    <section id="api-section-classes">
+      <!-- Section title -->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+        Classes
+      </h2>
 
-    <!-- <hr class="my-5 dark:border-neutral-600" /> -->
+      <p>
+        Custom classes can be passed via data attributes or JavaScript. For data
+        attributes, append the class name to
+        <code>data-te-class</code>, as in
+        <code>data-te-class-show="opacity-100 bg-red-600"</code>
+      </p>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Default
+                    </th>
+                    <th scope="col" class="px-6 py-4">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>show</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      opacity-100
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets classes for visible tab.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Section: Code-->
+      {{< twsnippet/no-demo id="api-example8" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example8">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "JavaScript" >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code active=true lang="js" >}}
+            const someTabTriggerEl = document.querySelector('#someTabTrigger');
+            const tab = new te.Tab(someTabTriggerEl, {show: "opacity-100 bg-red-600"});
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+      <!--Section: Code-->
+    </section>
+    <!--Section: Classes-->
+
+    <hr class="my-5 dark:border-neutral-600" />
 
     <!-- Section: Methods-->
     <section id="api-section-methods">
       <!-- Section title -->
-      <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal">
-        Methods
-      </h2>
+      <h2 class="mt-0 mb-5 text-3xl font-semibold leading-normal">Methods</h2>
 
       <div
         class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
@@ -325,10 +393,7 @@
       <!-- Section: Events-->
       <section id="api-section-events">
         <!-- Section title -->
-        <h2
-          class="mt-0 mb-5 text-3xl font-semibold leading-normal">
-          Events
-        </h2>
+        <h2 class="mt-0 mb-5 text-3xl font-semibold leading-normal">Events</h2>
 
         <p>When showing a new tab, the events fire in the following order:</p>
         <br />
