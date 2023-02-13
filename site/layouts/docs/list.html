@@ -9,40 +9,37 @@
     {{ partial "header/header.html" . }}
 
 
-    <!-- prettier-ignore  -->
     <nav
       id="sidenav-main"
       class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
       data-te-sidenav-init
       {{ if ne $hidden_sidenav true }}
-      data-te-sidenav-mode-breakpoint-over="0"
-      data-te-sidenav-mode-breakpoint-side="xl" data-te-sidenav-hidden="false"
-      data-te-sidenav-mode="side"
-    {{ else }}
-      data-te-sidenav-hidden="true" data-te-sidenav-mode="over"
-    {{ end }}
+        data-te-sidenav-mode-breakpoint-over="0"
+        data-te-sidenav-mode-breakpoint-side="xl" data-te-sidenav-hidden="false"
+        data-te-sidenav-mode="side"
+      {{ else }}
+        data-te-sidenav-hidden="true" data-te-sidenav-mode="over"
+      {{ end }}
       data-te-sidenav-content="#page-content"
       data-te-sidenav-accordion="true">
       <a
         href="/"
-        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-gray-100"
+        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-neutral-100"
         aria-current="page"
         ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
         Tailwind Elements</a
       >
       {{ partial "sidenav/standard.html" . }}
     </nav>
-    <div
-      class="{{ if eq $hidden_sidenav true }}
-        mx-auto w-1/2
-      {{ else }}
-        w-full
-      {{ end }} {{ if ne $hidden_sidenav true }}
-        xl:!pl-72
-      {{ end }} mt-4 px-12 pt-12"
-      id="page-content">
-      <div class="flex">
-        <div class="flex w-full flex-col">
+    <div class="mt-10" id="page-content">
+      <div
+        class="{{ if eq $hidden_sidenav true }}
+          mx-auto w-1/2
+        {{ else }}
+          max-w-[540px] sm:max-w-[604px] md:max-w-[720px] lg:max-w-[972px]
+          xl:max-w-full xl:px-12 2xl:max-w-[1400px] mx-auto
+        {{ end }} flex">
+        <div class="flex w-full flex-col ">
           <ul
             id="docs-nav-pills"
             class="mx-4 mt-3 flex"
@@ -96,7 +93,7 @@
           <div
             id="docsTabsOverview"
             role="tabpanel"
-            class="mb-8 hidden px-4 opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:flex"
+            class="mb-8 hidden px-4 opacity-0 opacity-100 transition-opacity data-[te-tab-active]:flex"
             role="tabpanel"
             aria-labelledby="docs-tab-overview-tab"
             data-te-tab-active>
