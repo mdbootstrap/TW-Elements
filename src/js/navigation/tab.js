@@ -10,7 +10,9 @@ import {
   getElementFromSelector,
   isDisabled,
   reflow,
+  typeCheckConfig,
 } from "../util/index";
+import Manipulator from "../dom/manipulator";
 import EventHandler from "../dom/event-handler";
 import SelectorEngine from "../dom/selector-engine";
 import BaseComponent from "../base-component";
@@ -32,21 +34,30 @@ const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
-const CLASS_NAME_DROPDOWN_MENU = "dropdown-menu";
+const DATA_NAME_DROPDOWN_MENU = "data-te-dropdown-menu-ref";
 const TAB_ACTIVE = "data-te-tab-active";
 const NAV_ACTIVE = "data-te-nav-active";
-const FADE = "opacity-0";
-const SHOW = "opacity-100";
 
-const SELECTOR_DROPDOWN = ".dropdown";
+const FADE = "opacity-0";
+
+const SELECTOR_DROPDOWN = "[data-te-dropdown-ref]";
 const SELECTOR_NAV = "[data-te-nav-ref]";
 const SELECTOR_TAB_ACTIVE = `[${TAB_ACTIVE}]`;
 const SELECTOR_NAV_ACTIVE = `[${NAV_ACTIVE}]`;
 const SELECTOR_ACTIVE_UL = ":scope > li > .active";
 const SELECTOR_DATA_TOGGLE =
   '[data-te-toggle="tab"], [data-te-toggle="pill"], [data-te-toggle="list"]';
-const SELECTOR_DROPDOWN_TOGGLE = ".dropdown-toggle";
-const SELECTOR_DROPDOWN_ACTIVE_CHILD = ":scope > .dropdown-menu .active";
+const SELECTOR_DROPDOWN_TOGGLE = "[data-te-dropdown-toggle-ref]";
+const SELECTOR_DROPDOWN_ACTIVE_CHILD =
+  ":scope > [data-te-dropdown-menu-ref] [data-te-dropdown-show]";
+
+const DefaultClasses = {
+  show: "opacity-100",
+};
+
+const DefaultClassesType = {
+  show: "string",
+};
 
 /**
  * ------------------------------------------------------------------------
@@ -55,6 +66,10 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD = ":scope > .dropdown-menu .active";
  */
 
 class Tab extends BaseComponent {
+  constructor(element, classes) {
+    super(element);
+    this._classes = this._getClasses(classes);
+  }
   // Getters
 
   static get NAME() {
@@ -138,6 +153,20 @@ class Tab extends BaseComponent {
 
   // Private
 
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
+  }
+
   _activate(element, container, callback, activeNavElement, navElement) {
     const activeElements =
       container && (container.nodeName === "UL" || container.nodeName === "OL")
@@ -158,7 +187,7 @@ class Tab extends BaseComponent {
       );
 
     if (active && isTransitioning) {
-      active.classList.remove(SHOW);
+      Manipulator.removeClass(active, this._classes.show);
       this._queueCallback(complete, element, true);
     } else {
       complete();
@@ -194,7 +223,7 @@ class Tab extends BaseComponent {
     reflow(element);
 
     if (element.classList.contains(FADE)) {
-      element.classList.add(SHOW);
+      Manipulator.addClass(element, this._classes.show);
     }
 
     let parent = element.parentNode;
@@ -202,7 +231,7 @@ class Tab extends BaseComponent {
       parent = parent.parentNode;
     }
 
-    if (parent && parent.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
+    if (parent && parent.hasAttribute(DATA_NAME_DROPDOWN_MENU)) {
       const dropdownElement = element.closest(SELECTOR_DROPDOWN);
 
       if (dropdownElement) {
