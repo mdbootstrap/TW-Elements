@@ -57,17 +57,17 @@ class ThemeSwitcher {
 
   setActiveDropdownItem(theme) {
     this.element.querySelectorAll("[data-theme-icon]").forEach((item) => {
-      item.classList.remove("text-blue-500");
+      item.classList.remove("text-primary-500");
     });
     this.element.querySelectorAll("[data-theme-name]").forEach((item) => {
-      item.classList.remove("text-blue-500");
+      item.classList.remove("text-primary-500");
     });
     this.element
       .querySelector(`[data-theme-icon=${theme}]`)
-      .classList.add("text-blue-500");
+      .classList.add("text-primary-500");
     this.element
       .querySelector(`[data-theme-name=${theme}]`)
-      .classList.add("text-blue-500");
+      .classList.add("text-primary-500");
   }
 
   onThemeSwitcherItemClick(event) {

@@ -12,7 +12,7 @@ module.exports = plugin(() => {}, {
         mono: ["ui-monospace", "monospace"],
       },
       boxShadow: {
-        "te-blue": "0 0 0 1px rgb(37, 99, 235)",
+        "te-primary": "0 0 0 1px rgb(59, 113, 202)",
       },
       keyframes: {
         "fade-in": {

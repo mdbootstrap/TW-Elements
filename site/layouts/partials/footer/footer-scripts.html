@@ -149,17 +149,17 @@
           return `
       <li class="p-0 pt-2">
         <a class="py-1" href="${result.href}">
-          <p class="uppercase text-gray-600 dark:text-gray-100 mb-0">${this.highlightSearch(
+          <p class="uppercase text-neutral-600 dark:text-neutral-100 mb-0">${this.highlightSearch(
             result.name,
             this.searchValue
           )}</p>
-          <p class="text-sm mb-0 pb-2 text-gray-400 font-semibold">Category: ${this.highlightSearch(
+          <p class="text-sm mb-0 pb-2 text-neutral-400 font-semibold">Category: ${this.highlightSearch(
             result.category,
             this.searchValue
           )}</p>
           ${
             keywords.length > 0
-              ? `<p class="text-sm text-gray-400 mb-0 pb-2 max-w-full whitespace-nowrap	text-overflow-ellipsis overflow-hidden">${this.formatKeywords(
+              ? `<p class="text-sm text-neutral-400 mb-0 pb-2 max-w-full whitespace-nowrap	text-overflow-ellipsis overflow-hidden">${this.formatKeywords(
                   keywords
                 )}</p>`
               : ""
@@ -167,7 +167,7 @@
         </a>
         ${
           i !== this.results.length - 1
-            ? '<hr class="m-0 p-0 w-50 dark:border-gray-600">'
+            ? '<hr class="m-0 p-0 w-50 dark:border-neutral-600">'
             : ""
         }
       </li>
@@ -206,7 +206,7 @@
       return `${string.slice(
         0,
         searchIndex
-      )}<u class="font-medium	text-blue-600 dark:text-blue-400">${string.slice(
+      )}<u class="font-medium	text-primary dark:text-primary-400">${string.slice(
         searchIndex,
         searchIndex + this.searchValue.length
       )}</u>${string.slice(searchIndex + this.searchValue.length)}`;

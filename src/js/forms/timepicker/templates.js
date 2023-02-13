@@ -175,7 +175,7 @@ export const getToggleButtonTemplate = (options, id, classes) => {
 
   return `
   <button id="${id}" tabindex="0" type="button" class="${classes.timepickerToggleButton}" data-te-toggle="timepicker" data-te-timepicker-toggle-button data-te-timepicker-icon>
-      ${iconSVG}  
+    ${iconSVG}
   </button>
 `;
 };

@@ -30,15 +30,15 @@ const preventKeydown = (event) => {
 
 function _setSizeClasses(element, config, defaultSize, smSize, lgSize) {
   if (config.selectSize === "default") {
-    Manipulator.addMultiClass(element, defaultSize);
+    Manipulator.addClass(element, defaultSize);
   }
 
   if (config.selectSize === "sm") {
-    Manipulator.addMultiClass(element, smSize);
+    Manipulator.addClass(element, smSize);
   }
 
   if (config.selectSize === "lg") {
-    Manipulator.addMultiClass(element, lgSize);
+    Manipulator.addClass(element, lgSize);
   }
 }
 
@@ -49,14 +49,14 @@ export function getWrapperTemplate(id, config, label, classes) {
 
   const formOutline = element("div");
   formOutline.setAttribute(DATA_FORM_OUTLINE, "");
-  Manipulator.addMultiClass(formOutline, classes.formOutline);
+  Manipulator.addClass(formOutline, classes.formOutline);
 
   const input = element("input");
   const role = config.selectFilter ? "combobox" : "listbox";
   const multiselectable = config.multiple ? "true" : "false";
   const disabled = config.disabled ? "true" : "false";
   input.setAttribute(DATA_SELECT_INPUT, "");
-  Manipulator.addMultiClass(input, classes.selectInput);
+  Manipulator.addClass(input, classes.selectInput);
 
   _setSizeClasses(
     input,
@@ -67,7 +67,7 @@ export function getWrapperTemplate(id, config, label, classes) {
   );
 
   if (config.selectFormWhite) {
-    Manipulator.addMultiClass(input, classes.selectInputWhite);
+    Manipulator.addClass(input, classes.selectInputWhite);
   }
 
   input.setAttribute("type", "text");
@@ -106,7 +106,7 @@ export function getWrapperTemplate(id, config, label, classes) {
   }
 
   const validFeedback = element("div");
-  Manipulator.addMultiClass(validFeedback, classes.selectValidationValid);
+  Manipulator.addClass(validFeedback, classes.selectValidationValid);
 
   const validFeedBackText = document.createTextNode(
     `${config.selectValidFeedback}`
@@ -114,7 +114,7 @@ export function getWrapperTemplate(id, config, label, classes) {
   validFeedback.appendChild(validFeedBackText);
 
   const invalidFeedback = element("div");
-  Manipulator.addMultiClass(invalidFeedback, classes.selectValidationInvalid);
+  Manipulator.addClass(invalidFeedback, classes.selectValidationInvalid);
 
   const invalidFeedBackText = document.createTextNode(
     `${config.selectInvalidFeedback}`
@@ -124,7 +124,7 @@ export function getWrapperTemplate(id, config, label, classes) {
   const clearBtn = element("span");
   clearBtn.setAttribute(DATA_CLEAR_BUTTON, "");
 
-  Manipulator.addMultiClass(clearBtn, classes.selectClearBtn);
+  Manipulator.addClass(clearBtn, classes.selectClearBtn);
 
   _setSizeClasses(
     clearBtn,
@@ -135,7 +135,7 @@ export function getWrapperTemplate(id, config, label, classes) {
   );
 
   if (config.selectFormWhite) {
-    Manipulator.addMultiClass(clearBtn, classes.selectClearBtnWhite);
+    Manipulator.addClass(clearBtn, classes.selectClearBtnWhite);
   }
 
   const clearBtnText = document.createTextNode("\u2715");
@@ -143,7 +143,7 @@ export function getWrapperTemplate(id, config, label, classes) {
   clearBtn.setAttribute("tabindex", "0");
 
   const arrow = element("span");
-  Manipulator.addMultiClass(arrow, classes.selectArrow);
+  Manipulator.addClass(arrow, classes.selectArrow);
 
   _setSizeClasses(
     arrow,
@@ -154,7 +154,7 @@ export function getWrapperTemplate(id, config, label, classes) {
   );
 
   if (config.selectFormWhite) {
-    Manipulator.addMultiClass(arrow, classes.selectArrowWhite);
+    Manipulator.addClass(arrow, classes.selectArrowWhite);
   }
 
   const arrowText = document.createTextNode("\u25BC");
@@ -163,7 +163,7 @@ export function getWrapperTemplate(id, config, label, classes) {
   formOutline.appendChild(input);
 
   if (label) {
-    Manipulator.addMultiClass(label, classes.selectLabel);
+    Manipulator.addClass(label, classes.selectLabel);
 
     _setSizeClasses(
       label,
@@ -174,7 +174,7 @@ export function getWrapperTemplate(id, config, label, classes) {
     );
 
     if (config.selectFormWhite) {
-      Manipulator.addMultiClass(label, classes.selectLabelWhite);
+      Manipulator.addClass(label, classes.selectLabelWhite);
     }
 
     formOutline.appendChild(label);
@@ -207,7 +207,7 @@ export function getDropdownTemplate(
 ) {
   const dropdownContainer = document.createElement("div");
   dropdownContainer.setAttribute(DATA_SELECT_DROPDOWN_CONTAINER, "");
-  Manipulator.addMultiClass(dropdownContainer, classes.selectDropdownContainer);
+  Manipulator.addClass(dropdownContainer, classes.selectDropdownContainer);
 
   dropdownContainer.setAttribute("id", `${id}`);
   dropdownContainer.style.width = `${width}px`;
@@ -215,12 +215,12 @@ export function getDropdownTemplate(
   const dropdown = document.createElement("div");
   dropdown.setAttribute("tabindex", 0);
   dropdown.setAttribute(DATA_DROPDOWN, "");
-  Manipulator.addMultiClass(dropdown, classes.dropdown);
+  Manipulator.addClass(dropdown, classes.dropdown);
 
   const optionsWrapper = element("div");
   optionsWrapper.setAttribute(DATA_OPTIONS_WRAPPER, "");
-  Manipulator.addMultiClass(optionsWrapper, classes.optionsWrapper);
-  Manipulator.addMultiClass(optionsWrapper, classes.optionsWrapperScrollbar);
+  Manipulator.addClass(optionsWrapper, classes.optionsWrapper);
+  Manipulator.addClass(optionsWrapper, classes.optionsWrapperScrollbar);
   optionsWrapper.style.maxHeight = `${height}px`;
 
   const optionsList = getOptionsListTemplate(
@@ -256,7 +256,7 @@ export function getOptionsListTemplate(
 ) {
   const optionsList = element("div");
   optionsList.setAttribute(DATA_OPTIONS_LIST, "");
-  Manipulator.addMultiClass(optionsList, classes.optionsList);
+  Manipulator.addClass(optionsList, classes.optionsList);
 
   let optionsNodes;
 
@@ -280,12 +280,12 @@ export function getOptionsListTemplate(
 
 export function getFilterTemplate(placeholder, classes) {
   const inputGroup = element("div");
-  Manipulator.addMultiClass(inputGroup, classes.inputGroup);
+  Manipulator.addClass(inputGroup, classes.inputGroup);
 
   const input = element("input");
 
   input.setAttribute(DATA_FILTER_INPUT, "");
-  Manipulator.addMultiClass(input, classes.selectFilterInput);
+  Manipulator.addClass(input, classes.selectFilterInput);
   input.placeholder = placeholder;
   input.setAttribute("role", "searchbox");
   input.setAttribute("type", "text");
@@ -339,7 +339,7 @@ function createSelectAllNode(option, options, config, classes) {
   const isSelected = allOptionsSelected(options);
   const optionNode = element("div");
   optionNode.setAttribute(DATA_OPTION, "");
-  Manipulator.addMultiClass(optionNode, classes.selectOption);
+  Manipulator.addClass(optionNode, classes.selectOption);
   optionNode.setAttribute(DATA_OPTION_ALL, "");
   Manipulator.addStyle(optionNode, {
     height: `${config.selectOptionHeight}px`,
@@ -363,7 +363,7 @@ function createOptionTemplate(option, config, classes) {
   }
   const optionNode = element("div");
   optionNode.setAttribute(DATA_OPTION, "");
-  Manipulator.addMultiClass(optionNode, classes.selectOption);
+  Manipulator.addClass(optionNode, classes.selectOption);
 
   Manipulator.addStyle(optionNode, {
     height: `${config.selectOptionHeight}px`,
@@ -399,7 +399,7 @@ function createOptionTemplate(option, config, classes) {
 function getOptionContentTemplate(option, config, classes) {
   const content = element("span");
   content.setAttribute(DATA_SELECT_OPTION_TEXT, "");
-  Manipulator.addMultiClass(content, classes.selectOptionText);
+  Manipulator.addClass(content, classes.selectOptionText);
 
   const label = document.createTextNode(option.label);
 
@@ -419,7 +419,7 @@ function getOptionContentTemplate(option, config, classes) {
 
 function getSecondaryTextTemplate(text, classes) {
   const span = element("span");
-  Manipulator.addMultiClass(span, classes.selectOptionSecondaryText);
+  Manipulator.addClass(span, classes.selectOptionSecondaryText);
   const textContent = document.createTextNode(text);
   span.appendChild(textContent);
   return span;
@@ -428,7 +428,7 @@ function getSecondaryTextTemplate(text, classes) {
 function getCheckboxTemplate(option, classes) {
   const checkbox = element("input");
   checkbox.setAttribute("type", "checkbox");
-  Manipulator.addMultiClass(checkbox, classes.formCheckInput);
+  Manipulator.addClass(checkbox, classes.formCheckInput);
   checkbox.setAttribute(DATA_FORM_CHECK_INPUT, "");
 
   const label = element("label");
@@ -448,7 +448,7 @@ function getCheckboxTemplate(option, classes) {
 function getOptionIconTemplate(option, classes) {
   const container = element("span");
   const image = element("img");
-  Manipulator.addMultiClass(image, classes.selectOptionIcon);
+  Manipulator.addClass(image, classes.selectOptionIcon);
 
   image.src = option.icon;
 
@@ -460,7 +460,7 @@ function createOptionGroupTemplate(optionGroup, config, classes) {
   const group = element("div");
 
   group.setAttribute(DATA_SELECT_OPTION_GROUP, "");
-  Manipulator.addMultiClass(group, classes.selectOptionGroup);
+  Manipulator.addClass(group, classes.selectOptionGroup);
 
   group.setAttribute("role", "group");
   group.setAttribute("id", optionGroup.id);
@@ -471,7 +471,7 @@ function createOptionGroupTemplate(optionGroup, config, classes) {
 
   const label = element("label");
   label.setAttribute(DATA_SELECT_OPTION_GROUP_LABEL, "");
-  Manipulator.addMultiClass(label, classes.selectOptionGroupLabel);
+  Manipulator.addClass(label, classes.selectOptionGroupLabel);
 
   Manipulator.addStyle(label, { height: `${config.selectOptionHeight}px` });
   label.setAttribute("for", optionGroup.id);
@@ -489,9 +489,9 @@ function createOptionGroupTemplate(optionGroup, config, classes) {
 export function getFakeValueTemplate(value, classes) {
   const fakeValue = element("div");
   fakeValue.innerHTML = value;
-  Manipulator.addMultiClass(fakeValue, classes.selectLabel);
+  Manipulator.addClass(fakeValue, classes.selectLabel);
 
-  Manipulator.addMultiClass(fakeValue, classes.selectFakeValue);
+  Manipulator.addClass(fakeValue, classes.selectFakeValue);
 
   return fakeValue;
 }
