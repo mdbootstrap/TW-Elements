@@ -521,7 +521,7 @@ class Select {
       this._classes
     );
     this._element.parentNode.insertBefore(template, this._element);
-    Manipulator.addMultiClass(this._element, this._classes.initialized);
+    Manipulator.addClass(this._element, this._classes.initialized);
     template.appendChild(this._element);
   }
 
@@ -1605,7 +1605,7 @@ class Select {
     labels.forEach((label) => {
       label.removeAttribute(DATA_ACTIVE);
     });
-    Manipulator.removeMultiClass(this._element, this._classes.initialized);
+    Manipulator.removeClass(this._element, this._classes.initialized);
     this._element.removeActiveStyles(DATA_SELECT_INIT);
 
     wrapperParent.removeChild(this._wrapper);
