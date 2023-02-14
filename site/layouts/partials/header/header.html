@@ -4,7 +4,9 @@
 <nav
   class="{{ if and (ne $hidden_sidenav true) (ne .IsHome true) }}
     xl:pl-60
-  {{ end }} fixed top-0 left-0 z-50 w-full bg-white shadow dark:bg-neutral-800">
+  {{ end }} {{ if eq .IsHome true }}
+    fixed top-0 left-0 z-50 w-full bg-white dark:bg-neutral-800
+  {{ end }} shadow">
   <div class="px-3">
     <div class="relative flex h-[58px] items-center justify-between">
       <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
