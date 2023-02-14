@@ -25,15 +25,12 @@ menu:
   <!--Description-->
   <p class="mb-3">
     It is more and more common to design a dark version of your project to go
-    along with the default design. For that Tailwind offers very simple solution
-    how configurate dark theme.
-  </p>
-
-  <p class="mb-3">
-    To make this as easy as possible, Tailwind includes a
+    along with the default design. To make this as easy as possible, Tailwind
+    includes a
     <code>dark</code> variant that lets you style your site differently when
     dark mode is enabled: you can simply check this feature out by pressing
-    theme switcher located at the right corner.
+    theme switcher located at the right corner or use a shortcut
+    <code>shift + D</code>.
   </p>
 </section>
 <!-- Section: Introduction -->
@@ -187,30 +184,30 @@ menu:
           document.documentElement.classList.remove('dark');
         };
 
-        setDarkTheme() {
+        function setDarkTheme() {
           document.documentElement.classList.add("dark");
           localStorage.theme = "dark";
         };
       
-        setLightTheme() {
+        function setLightTheme() {
           document.documentElement.classList.remove("dark");
           localStorage.theme = "light";
         };
 
-        onThemeSwitcherItemClick(event) {
+        function onThemeSwitcherItemClick(event) {
           const theme = event.target.dataset.theme;
 
           if (theme === "system") {
             localStorage.removeItem("theme");
-            this.setSystemTheme();
+            setSystemTheme();
           } else if (theme === "dark") {
-            this.setDarkTheme();
+            setDarkTheme();
           } else {
-            this.setLightTheme();
+            setLightTheme();
           }
         };
 
-        const themeSwitcherItems = document.element.querySelectorAll("#theme-switcher");
+        const themeSwitcherItems = document.querySelectorAll("#theme-switcher");
         themeSwitcherItems.forEach((item) => {
           item.addEventListener("click", onThemeSwitcherItemClick);
         });
