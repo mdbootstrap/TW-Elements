@@ -44,6 +44,11 @@ const ATTR_SELECTOR_CHIPS_WRAPPER = `[${ATTR_CHIPS_WRAPPER}]`;
 const ATTR_SELECTOR_CHIP_TEXT = `[${ATTR_CHIP_TEXT}]`;
 const ATTR_SELECTOR_CHIPS_PLACEHOLDER = `[${ATTR_CHIPS_PLACEHOLDER}]`;
 
+const DATA_NOTCH_LEADING = "data-te-input-notch-leading-ref";
+const DATA_NOTCH_MIDDLE = "data-te-input-notch-middle-ref";
+const SELECTOR_NOTCH_LEADING = `[${DATA_NOTCH_LEADING}]`;
+const SELECTOR_NOTCH_MIDDLE = `[${DATA_NOTCH_MIDDLE}]`;
+
 // input helpers
 const ATTR_INPUT_STATE_ACTIVE = "data-te-input-state-active";
 const ATTR_SELECTOR_INPUT_NOTCH_REF = "[data-te-input-notch-ref]";
@@ -112,6 +117,11 @@ class ChipsInput extends Chip {
   constructor(element, data = {}, classes) {
     super(element, data);
     this._element = element;
+    this._label = null;
+    this._labelWidth = 0;
+    this._labelMarginLeft = 0;
+    this._notchLeading = null;
+    this._notchMiddle = null;
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
@@ -158,6 +168,10 @@ class ChipsInput extends Chip {
     this._handleEditable();
     this._handleChipsFocus();
     this._handleClicksOnChips();
+    this._getLabelData();
+    this._getLabelWidth();
+    this._getNotchData();
+    this._applyNotch();
   }
 
   dispose() {
@@ -166,6 +180,33 @@ class ChipsInput extends Chip {
   }
 
   // Private
+
+  _getNotchData() {
+    this._notchMiddle = SelectorEngine.findOne(
+      SELECTOR_NOTCH_MIDDLE,
+      this._element
+    );
+    this._notchLeading = SelectorEngine.findOne(
+      SELECTOR_NOTCH_LEADING,
+      this._element
+    );
+  }
+
+  _getLabelData() {
+    this._label = SelectorEngine.findOne("label", this._element);
+  }
+
+  _getLabelWidth() {
+    this._labelWidth = this._label.clientWidth * 0.8 + 8;
+  }
+
+  _applyNotch() {
+    this._notchMiddle.style.width = `${this._labelWidth}px`;
+    this._notchLeading.style.width = `${this._labelMarginLeft + 9}px`;
+
+    if (this._label === null) return;
+    this._label.style.marginLeft = `${this._labelMarginLeft}px`;
+  }
 
   _setChipsClass() {
     this._element.setAttribute(ATTR_CHIPS_INIT, "");
