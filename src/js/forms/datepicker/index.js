@@ -131,7 +131,7 @@ const DATEPICKER_CELL_CONTENT_LARGE_CLASSES =
   "w-[72px] h-10 leading-10 py-[1px] px-0.5 rounded-[999px]";
 const DATEPICKER_TABLE_CLASSES = "mx-auto w-[304px]";
 const DATEPICKER_TOGGLE_BUTTON_CLASSES =
-  "flex items-center justify-content-center outline-none [&>svg]:w-5 [&>svg]:h-5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:text-primary focus:text-primary dark:hover:text-primary-400 dark:focus:text-primary-400 dark:text-neutral-200";
+  "flex items-center justify-content-center [&>svg]:w-5 [&>svg]:h-5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:text-primary focus:text-primary dark:hover:text-primary-400 dark:focus:text-primary-400 dark:text-neutral-200";
 const DATEPICKER_VIEW_CHANGE_ICON_CLASSES =
   "inline-block pointer-events-none ml-[3px] [&>svg]:w-4 [&>svg]:h-4 [&>svg]:fill-neutral-500 dark:[&>svg]:fill-white";
 
