@@ -28,6 +28,7 @@ import {
   createMonthViewTemplate,
   createYearViewTemplate,
   getToggleButtonTemplate,
+  createViewChangeButtonIcon,
 } from "./templates";
 import {
   ENTER,
@@ -104,10 +105,12 @@ const DATEPICKER_DATE_TEXT_CLASSES = "text-[34px] font-normal text-white";
 const DATEPICKER_VIEW_CLASSES = "outline-none px-3";
 const DATEPICKER_DATE_CONTROLS_CLASSES =
   "px-3 pt-2.5 pb-0 flex justify-between text-black/[64]";
-const DATEPICKER_VIEW_CHANGE_BUTTON_CLASSES = `outline-none p-2.5 text-neutral-500 font-medium text-[0.9rem] rounded-xl shadow-none bg-transparent m-0 border-none hover:bg-neutral-200 focus:bg-neutral-200 after:content-[""] after:inline-block after:w-0 after:h-0 after:border-solid after:border-x-[5px] after:border-x-transparent after:border-t-[5px] after:m-0 after:ml-[5px] after:align-middle dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
+const DATEPICKER_VIEW_CHANGE_BUTTON_CLASSES = `flex items-center outline-none p-2.5 text-neutral-500 font-medium text-[0.9rem] rounded-xl shadow-none bg-transparent m-0 border-none hover:bg-neutral-200 focus:bg-neutral-200  dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
 const DATEPICKER_ARROW_CONTROLS_CLASSES = "mt-2.5";
-const DATEPICKER_PREVIOUS_BUTTON_CLASSES = `relative p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-black/[64] bg-transparent mr-6 hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:content-[""] after:m-[15.5px] after:border-0 after:border-solid after:border-current after:border-t-2 after:border-l-2 after:translate-x-[2px] after:-rotate-45 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
-const DATEPICKER_NEXT_BUTTON_CLASSES = `relative p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-black/[64] bg-transparent hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] after:top-0 after:left-0 after:right-0 after:bottom-0 after:absolute after:content-[""] after:m-[15.5px] after:border-0 after:border-solid after:border-current after:border-t-2 after:border-r-2 after:translate-x-[-2px] after:rotate-45 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10`;
+const DATEPICKER_PREVIOUS_BUTTON_CLASSES =
+  "p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-gray-600 bg-transparent mr-6 hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 [&>svg]:w-4 [&>svg]:h-4 [&>svg]:mx-auto";
+const DATEPICKER_NEXT_BUTTON_CLASSES =
+  "p-0 w-10 h-10 leading-10 border-none outline-none m-0 text-gray-600 bg-transparent hover:bg-neutral-200 hover:rounded-[50%] focus:bg-neutral-200 focus:rounded-[50%] dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 [&>svg]:w-4 [&>svg]:h-4 [&>svg]:rotate-180 [&>svg]:mx-auto";
 const DATEPICKER_FOOTER_CLASSES =
   "h-14 flex absolute w-full bottom-0 justify-end items-center px-3";
 const DATEPICKER_FOOTER_BTN_CLASSES =
@@ -128,7 +131,9 @@ const DATEPICKER_CELL_CONTENT_LARGE_CLASSES =
   "w-[72px] h-10 leading-10 py-[1px] px-0.5 rounded-[999px]";
 const DATEPICKER_TABLE_CLASSES = "mx-auto w-[304px]";
 const DATEPICKER_TOGGLE_BUTTON_CLASSES =
-  "outline-none w-5 h-5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2";
+  "flex items-center justify-content-center outline-none [&>svg]:w-5 [&>svg]:h-5 absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:text-primary focus:text-primary dark:hover:text-primary-400 dark:focus:text-primary-400 dark:text-neutral-200";
+const DATEPICKER_VIEW_CHANGE_ICON_CLASSES =
+  "inline-block pointer-events-none ml-[3px] [&>svg]:w-4 [&>svg]:h-4 [&>svg]:fill-neutral-500 dark:[&>svg]:fill-white";
 
 const Default = {
   title: "Select date",
@@ -174,7 +179,6 @@ const Default = {
   okBtnText: "Ok",
   clearBtnText: "Clear",
   cancelBtnText: "Cancel",
-
   okBtnLabel: "Confirm selection",
   clearBtnLabel: "Clear selection",
   cancelBtnLabel: "Cancel selection",
@@ -182,17 +186,23 @@ const Default = {
   prevMonthLabel: "Previous month",
   nextYearLabel: "Next year",
   prevYearLabel: "Previous year",
+  changeMonthIconTemplate: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+  </svg>
+  `,
   nextMultiYearLabel: "Next 24 years",
   prevMultiYearLabel: "Previous 24 years",
   switchToMultiYearViewLabel: "Choose year and month",
   switchToMonthViewLabel: "Choose date",
   switchToDayViewLabel: "Choose date",
-
   startDate: null,
   startDay: 0,
   format: "dd/mm/yyyy",
   view: "days",
-
+  viewChangeIconTemplate: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+  </svg>
+  `,
   toggleButton: true,
   disableToggleButton: false,
   disableInput: false,
@@ -205,7 +215,6 @@ const DefaultType = {
   weekdaysFull: "array",
   weekdaysShort: "array",
   weekdaysNarrow: "array",
-
   okBtnText: "string",
   clearBtnText: "string",
   cancelBtnText: "string",
@@ -218,15 +227,15 @@ const DefaultType = {
   prevYearLabel: "string",
   nextMultiYearLabel: "string",
   prevMultiYearLabel: "string",
+  changeMonthIconTemplate: "string",
   switchToMultiYearViewLabel: "string",
   switchToMonthViewLabel: "string",
   switchToDayViewLabel: "string",
-
   startDate: "(null|string|date)",
   startDay: "number",
   format: "string",
   view: "string",
-
+  viewChangeIconTemplate: "string",
   toggleButton: "boolean",
   disableToggleButton: "boolean",
   disableInput: "boolean",
@@ -248,6 +257,7 @@ const DefaultClasses = {
   datepickerView: DATEPICKER_VIEW_CLASSES,
   datepickerDateControls: DATEPICKER_DATE_CONTROLS_CLASSES,
   datepickerViewChangeButton: DATEPICKER_VIEW_CHANGE_BUTTON_CLASSES,
+  datepickerViewChangeIcon: DATEPICKER_VIEW_CHANGE_ICON_CLASSES,
   datepickerArrowControls: DATEPICKER_ARROW_CONTROLS_CLASSES,
   datepickerPreviousButton: DATEPICKER_PREVIOUS_BUTTON_CLASSES,
   datepickerNextButton: DATEPICKER_NEXT_BUTTON_CLASSES,
@@ -1277,6 +1287,10 @@ class Datepicker {
     this.viewChangeButton.textContent = `${
       this._options.monthsFull[this.activeMonth]
     } ${this.activeYear}`;
+    this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+      this._options,
+      this._classes
+    );
     this.datesContainer.innerHTML = template;
   }
 
@@ -1292,6 +1306,10 @@ class Datepicker {
     this.viewChangeButton.textContent = `${
       this._options.monthsFull[this.activeMonth]
     } ${this.activeYear}`;
+    this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+      this._options,
+      this._classes
+    );
     this.datesContainer.innerHTML = template;
   }
 
@@ -1299,6 +1317,10 @@ class Datepicker {
     const nextYear = addYears(this._activeDate, 1);
     this._activeDate = nextYear;
     this.viewChangeButton.textContent = `${this.activeYear}`;
+    this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+      this._options,
+      this._classes
+    );
     const template = createMonthViewTemplate(
       this.activeYear,
       this._selectedYear,
@@ -1314,6 +1336,10 @@ class Datepicker {
     const previousYear = addYears(this._activeDate, -1);
     this._activeDate = previousYear;
     this.viewChangeButton.textContent = `${this.activeYear}`;
+    this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+      this._options,
+      this._classes
+    );
     const template = createMonthViewTemplate(
       this.activeYear,
       this._selectedYear,
@@ -1337,6 +1363,10 @@ class Datepicker {
       this._classes
     );
     this.viewChangeButton.textContent = `${this.firstYearInView} - ${this.lastYearInView}`;
+    this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+      this._options,
+      this._classes
+    );
     this.datesContainer.innerHTML = template;
   }
 
@@ -1352,6 +1382,10 @@ class Datepicker {
       this._classes
     );
     this.viewChangeButton.textContent = `${this.firstYearInView} - ${this.lastYearInView}`;
+    this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+      this._options,
+      this._classes
+    );
     this.datesContainer.innerHTML = template;
   }
 
@@ -1408,6 +1442,10 @@ class Datepicker {
       this.viewChangeButton.textContent = `${
         this._options.monthsFull[this.activeMonth]
       } ${this.activeYear}`;
+      this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+        this._options,
+        this._classes
+      );
       this.viewChangeButton.setAttribute(
         "aria-label",
         this._options.switchToMultiYearViewLabel
@@ -1421,6 +1459,10 @@ class Datepicker {
 
     if (view === "months") {
       this.viewChangeButton.textContent = `${this.activeYear}`;
+      this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+        this._options,
+        this._classes
+      );
       this.viewChangeButton.setAttribute(
         "aria-label",
         this._options.switchToDayViewLabel
@@ -1434,6 +1476,10 @@ class Datepicker {
 
     if (view === "years") {
       this.viewChangeButton.textContent = `${this.firstYearInView} - ${this.lastYearInView}`;
+      this.viewChangeButton.innerHTML += createViewChangeButtonIcon(
+        this._options,
+        this._classes
+      );
       this.viewChangeButton.setAttribute(
         "aria-label",
         this._options.switchToMonthViewLabel
