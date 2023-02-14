@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Roboto font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+
+  <body class="dark:bg-neutral-800">
+    <!-- Start your project here-->
+    <div class="mx-96">
+      <br />
+      <br />
+      <br />
+
+      <p class="mb-4">Basic</p>
+      <div
+        class="mb-4 rounded-lg bg-primary-100 p-6 text-base text-primary-600"
+        role="alert">
+        A simple primary alert—check it out!
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <p class="mb-4">Link</p>
+      <div
+        class="mb-4 rounded-lg bg-primary-100 p-6 text-base text-primary-600"
+        role="alert">
+        A simple primary alert with
+        <a href="#" class="font-bold">an example link</a>. Give it a click if
+        you like.
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <p class="mb-4">With icon</p>
+      <div
+        class="mb-4 inline-flex w-full items-center rounded-lg bg-primary-100 p-6 text-base text-primary-600"
+        role="alert">
+        <span class="mr-2 h-4 w-4">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="info-circle"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512">
+            <path
+              fill="currentColor"
+              d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path>
+          </svg>
+        </span>
+        A simple primary alert—check it out!
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <button
+        class="mx-auto mb-5 flex items-center whitespace-nowrap rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+        id="alert-example-trigger">
+        Open alert
+      </button>
+
+      <div
+        class="mb-3 hidden w-full items-center rounded-lg bg-yellow-100 py-5 px-6 text-base text-yellow-700 "
+        role="alert"
+        id="alert-example"
+        data-te-alert-init>
+        <strong class="mr-1">Holy guacamole! </strong> You should check in on
+        some of those fields below.
+        <button
+          type="button"
+          class="ml-auto box-content h-4 w-4 rounded-none border-none p-1 text-yellow-900 opacity-50 hover:text-yellow-900 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+          data-te-alert-dismiss
+          aria-label="Close">
+          <span
+            class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="#000">
+              <path
+                d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <!-- End your project here-->
+
+    <!-- Theme switcher -->
+    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script
+      type="text/javascript"
+      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+      const alertInstance = te.Alert.getInstance(
+        document.getElementById("alert-example")
+      );
+      document
+        .getElementById("alert-example-trigger")
+        .addEventListener("click", () => {
+          alertInstance.show();
+        });
+    </script>
+  </body>
+</html>
