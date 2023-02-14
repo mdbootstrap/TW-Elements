@@ -550,6 +550,10 @@ class Sidenav {
     if (!this.options.sidenavHidden) {
       this._updateOffsets(true, true);
     }
+
+    if (this.options.sidenavMode === "over") {
+      this._setTabindex(true);
+    }
   }
 
   _setupActiveState() {
@@ -950,7 +954,7 @@ class Sidenav {
 
   _setTabindex(tabIndexValue) {
     this.links.forEach((link) => {
-      link.tabIndex = tabIndexValue ? 1 : -1;
+      link.tabIndex = tabIndexValue ? 0 : -1;
     });
   }
 
