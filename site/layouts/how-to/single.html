@@ -147,67 +147,32 @@
             {{ if $scrollspy_file_exists }}
               <div class="hidden px-4 lg:block lg:w-1/5">
                 <menu class="sticky top-10">
-                  <style>
-                    .dc-content-animation {
-                      height: 20px;
-                      width: 50%;
-                      display: inline-block;
-                      animation: placeholderPulse 1s infinite ease-in-out;
-                      -webkit-animation: placeholderPulse 1s infinite
-                        ease-in-out;
-                    }
-                    @keyframes placeholderPulse {
-                      0% {
-                        background-color: rgba(133, 214, 251, 0.1);
-                        color: rgba(133, 214, 251, 0.1);
-                      }
-                      50% {
-                        background-color: rgba(133, 214, 251, 0.3);
-                        color: rgba(133, 214, 251, 0.3);
-                      }
-                      100% {
-                        background-color: rgba(133, 214, 251, 0.1);
-                        color: rgba(133, 214, 251, 0.1);
-                      }
-                    }
-                    .ps.nav {
-                      flex-wrap: nowrap;
-                      position: relative;
-                    }
-                  </style>
-
                   <div
-                    class="animation fade-in relative mb-4 hidden xl:block"
-                    id="dpl-gtm-scroll"
-                    style="min-height: 170px; animation-delay: 0ms; animation-duration: 500ms">
-                    <div class="w-100 justify-content-center absolute w-full">
+                    class="relative mb-4 hidden h-[190px] delay-[0] duration-500 xl:block"
+                    id="dpl-gtm-scroll">
+                    <div class="absolute h-full w-[170px]">
                       <div
-                        class="shadow-3 overflow-hidden rounded border border-info"
-                        style="border-color: rgba(133, 214, 251, 0.3) !important">
+                        class="shadow-3 overflow-hidden rounded-lg border border-[rgba(133,214,251,0.3)]">
                         <span
-                          class="dc-content-animation mx-2 mb-2 mt-3"
-                          style="width: 40%"></span>
+                          class="mx-2 mb-2 mt-3 inline-block h-[20px] w-[40%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
                         <span
-                          class="dc-content-animation mx-2 mb-1"
-                          style="width: 70%"></span>
-                        <span class="dc-content-animation mx-2 mb-1"></span>
+                          class="mx-2 mb-1 inline-block h-[20px] w-[70%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
                         <span
-                          class="dc-content-animation mx-2 mb-1"
-                          style="width: 80%"></span>
+                          class="mx-2 mb-1 inline-block h-[20px] w-[50%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
                         <span
-                          class="dc-content-animation mx-2 mb-1"
-                          style="width: 70%"></span>
+                          class="mx-2 mb-1 inline-block h-[20px] w-[80%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
+                        <span
+                          class="mx-2 mb-4 inline-block h-[20px] w-[70%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
                       </div>
                     </div>
                     <!-- Alert -->
                     <div
                       id="gtmDC-scroll-all"
-                      class="relative"
-                      style="min-height: 1px; min-width: 1px"></div>
+                      class="relative min-h-[1px] min-w-[170px] max-w-[170px]"></div>
                     <!-- Alert -->
                   </div>
 
-                  <ul class="dark:text-gray-200">
+                  <ul class="dark:text-neutral-200">
                     {{ with .Resources.GetMatch "index-ss.html" }}
                       {{ .Content }}
                     {{ end }}
