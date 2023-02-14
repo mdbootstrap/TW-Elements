@@ -100,8 +100,9 @@ const ATTR_TIMEPICKER_HAND_POINTER = `${ATTR_NAME}-hand-pointer`;
 const ATTR_TIMEPICKER_CIRCLE = `${ATTR_NAME}-circle`;
 const ATTR_TIMEPICKER_MODAL = `${ATTR_NAME}-modal`;
 
-const defaultIcon =
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg>';
+const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hover:text-[#3b71ca] focus:text-[#3b71ca] dark:hover:text-[#3b71ca] dark:focus:text-[#3b71ca]">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>`;
 
 const Default = {
   appendValidationInfo: true,
@@ -182,6 +183,76 @@ const DefaultClasses = {
   modal: "z-[1065]",
   clockAnimation: "animate-[show-up-clock_350ms_linear]",
   opacity: "!opacity-100",
+  timepickerWrapper:
+    "touch-none opacity-100 z-[1065] inset-0 bg-[#00000066] h-full flex items-center justify-center flex-col fixed",
+  timepickerContainer:
+    "flex items-center justify-center flex-col max-h-[calc(100%-64px)] overflow-y-auto shadow-[0_10px_15px_-3px_rgba(0,0,0,0.07),0_4px_6px_-2px_rgba(0,0,0,0.05)] min-[320px]:max-[825px]:landscape:rounded-lg",
+  timepickerElements:
+    "flex flex-col min-w-[310px] min-h-[325px] bg-white rounded-t-[0.6rem] min-[320px]:max-[825px]:landscape:!flex-row min-[320px]:max-[825px]:landscape:min-w-[auto] min-[320px]:max-[825px]:landscape:min-h-[auto] min-[320px]:max-[825px]:landscape:overflow-y-auto justify-around",
+  timepickerHead:
+    "bg-[#3b71ca] dark:bg-zinc-700 h-[100px] rounded-t-lg pr-[24px] pl-[50px] py-[10px] min-[320px]:max-[825px]:landscape:rounded-tr-none min-[320px]:max-[825px]:landscape:rounded-bl-none min-[320px]:max-[825px]:landscape:p-[10px] min-[320px]:max-[825px]:landscape:pr-[10px] min-[320px]:max-[825px]:landscape:h-auto min-[320px]:max-[825px]:landscape:min-h-[305px] flex flex-row items-center justify-center",
+  timepickerHeadContent:
+    "min-[320px]:max-[825px]:landscape:flex-col flex w-full justify-evenly",
+  timepickerCurrentWrapper: "[direction:ltr] rtl:[direction:rtl]",
+  timepickerCurrentButtonWrapper: "relative h-full",
+  timepickerCurrentButton:
+    "text-[3.75rem] font-light leading-[1.2] tracking-[-0.00833em] text-white opacity-[.54] border-none bg-transparent p-0 min-[320px]:max-[825px]:landscape:text-5xl min-[320px]:max-[825px]:landscape:font-normal cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none ",
+  timepickerDot:
+    "font-light leading-[1.2] tracking-[-0.00833em] text-[3.75rem] opacity-[.54] border-none bg-transparent p-0 text-white min-[320px]:max-[825px]:landscape:text-[3rem] min-[320px]:max-[825px]:landscape:font-normal",
+  timepickerModeWrapper:
+    "flex flex-col justify-center text-[18px] text-[#ffffff8a] min-[320px]:max-[825px]:landscape:!justify-around min-[320px]:max-[825px]:landscape:!flex-row",
+  timepickerModeAm:
+    "p-0 bg-transparent border-none text-white opacity-[.54] cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none",
+  timepickerModePm:
+    "p-0 bg-transparent border-none text-white opacity-[.54] cursor-pointer hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none",
+  timepickerClockWrapper:
+    "min-w-[310px] max-w-[325px] min-h-[305px] overflow-x-hidden h-full flex justify-center flex-col items-center dark:bg-zinc-500",
+  timepickerClock:
+    "relative rounded-[100%] w-[260px] h-[260px] cursor-default my-0 mx-auto bg-[#00000012] dark:bg-zinc-600/50",
+  timepickerMiddleDot:
+    "top-1/2 left-1/2 w-[6px] h-[6px] -translate-y-1/2 -translate-x-1/2 rounded-[50%] bg-[#3b71ca] absolute",
+  timepickerHandPointer:
+    "bg-[#3b71ca] bottom-1/2 h-2/5 left-[calc(50%-1px)] rtl:!left-auto origin-[center_bottom_0] rtl:!origin-[50%_50%_0] w-[2px] absolute",
+  timepickerPointerCircle:
+    "-top-[21px] -left-[15px] w-[4px] border-[14px] border-solid border-[#3b71ca] h-[4px] box-content rounded-[100%] absolute",
+  timepickerClockInner:
+    "absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[160px] h-[160px] rounded-[100%]",
+  timepickerFooterWrapper:
+    "rounded-b-lg flex justify-between items-center w-full h-[56px] px-[12px] bg-white dark:bg-zinc-500",
+  timepickerFooter: "w-full flex justify-between",
+  timepickerFooterButton:
+    "text-[0.8rem] min-w-[64px] box-border font-medium leading-[40px] rounded-[10px] tracking-[0.1rem] uppercase text-[#3b71ca] dark:text-white border-none bg-transparent transition-[background-color,box-shadow,border] duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-[0ms] outline-none py-0 px-[10px] h-[40px] mb-[10px] hover:bg-[#00000014] focus:bg-[#00000014] focus:outline-none",
+  timepickerInlineWrapper:
+    "touch-none opacity-100 z-[1065] inset-0 bg-[#00000066] h-full flex items-center justify-center flex-col rounded-lg",
+  timepickerInlineContainer:
+    "flex items-center justify-center flex-col max-h-[calc(100%-64px)] overflow-y-auto shadow-[0_10px_15px_-3px_rgba(0,0,0,0.07),0_4px_6px_-2px_rgba(0,0,0,0.05)]",
+  timepickerInlineElements:
+    "flex flex-col min-h-[auto] min-w-[310px] bg-white rounded-[0.6rem] min-[320px]:max-[825px]:landscape:!flex-row min-[320px]:max-[825px]:landscape:rounded-bl-lg min-[320px]:max-[825px]:landscape:min-w-[auto] min-[320px]:max-[825px]:landscape::min-h-[auto] min-[320px]:max-[825px]:landscape:overflow-y-auto justify-around",
+  timepickerInlineHead:
+    "bg-[#3b71ca] dark:bg-zinc-700 h-[100px] rounded-t-lg min-[320px]:max-[825px]:landscape:rounded-tr-none min-[320px]:max-[825px]:landscape:rounded-bl-none min-[320px]:max-[825px]:landscape:p-[10px] min-[320px]:max-[825px]:landscape:pr-[10px] min-[320px]:max-[825px]:landscape:h-auto min-[320px]:max-[825px]:landscape:min-h-[305px] flex flex-row items-center justify-center p-0 rounded-b-lg",
+  timepickerInlineHeadContent:
+    "min-[320px]:max-[825px]:landscape:flex-col flex w-full justify-evenly items-center",
+  timepickerInlineHourWrapper: "relative h-full !opacity-100",
+  timepickerCurrentMinuteWrapper: "relative h-full",
+  timepickerInlineIconUp:
+    "absolute fill-white -top-[35px] opacity-0 hover:opacity-100 transition-all duration-200 ease-[ease] cursor-pointer -translate-x-1/2 -translate-y-1/2 left-1/2 w-[30px] h-[30px] flex justify-center items-center",
+  timepickerInlineIconSvg: "h-4 w-4",
+  timepickerInlineCurrentButton:
+    "font-light leading-[1.2] tracking-[-0.00833em] text-white border-none bg-transparent p-0 min-[320px]:max-[825px]:landscape:text-5xl min-[320px]:max-[825px]:landscape:font-normal !opacity-100 cursor-pointer focus:bg-[#00000026] hover:outline-none focus:outline-none text-[2.5rem] hover:bg-[unset]",
+  timepickerInlineIconDown:
+    "absolute fill-white -bottom-[47px] opacity-0 hover:opacity-100 transition-all duration-200 ease-[ease] cursor-pointer -translate-x-1/2 -translate-y-1/2 left-1/2 w-[30px] h-[30px] flex justify-center items-center",
+  timepickerInlineDot:
+    "font-light leading-[1.2] tracking-[-0.00833em] opacity-[.54] border-none bg-transparent p-0 text-white min-[320px]:max-[825px]:landscape:text-[3rem] min-[320px]:max-[825px]:landscape:font-normal text-[2.5rem]",
+  timepickerInlineModeWrapper:
+    "flex justify-center text-[18px] text-[#ffffff8a] min-[320px]:max-[825px]:landscape:!justify-around min-[320px]:max-[825px]:landscape:!flex-row",
+  timepickerInlineModeAm:
+    "hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none p-0 bg-transparent border-none text-white opacity-[.54] cursor-pointer mr-2 ml-6",
+  timepickerInlineModePm:
+    "hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026] focus:outline-none p-0 bg-transparent border-none text-white opacity-[.54] cursor-pointer",
+  timepickerInlineSubmitButton:
+    "hover:bg-[#00000014] focus:bg-[#00000014] focus:outline-none text-[0.8rem] box-border font-medium leading-[40px] tracking-[.1rem] uppercase border-none bg-transparent [transition:background-color_250ms_cubic-bezier(0.4,0,0.2,1)_0ms,box-shadow_250ms_cubic-bezier(0.4,0,0.2,1)_0ms,border_250ms_cubic-bezier(0.4,0,0.2,1)_0ms] outline-none rounded-[100%] h-[48px] min-w-[48px] inline-block ml-[30px] text-white py-1 px-2 mb-0",
+  timepickerToggleButton:
+    "h-4 w-4 ml-auto fill-gray-700 dark:fill-white absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-[300ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer hover:fill-[#3b71ca] focus:fill-[#3b71ca] dark:hover:fill-[#3b71ca] dark:focus:fill-[#3b71ca]",
 };
 
 const DefaultClassesType = {
@@ -192,6 +263,43 @@ const DefaultClassesType = {
   modal: "string",
   clockAnimation: "string",
   opacity: "string",
+  timepickerWrapper: "string",
+  timepickerContainer: "string",
+  timepickerElements: "string",
+  timepickerHead: "string",
+  timepickerHeadContent: "string",
+  timepickerCurrentWrapper: "string",
+  timepickerCurrentButtonWrapper: "string",
+  timepickerCurrentButton: "string",
+  timepickerDot: "string",
+  timepickerModeWrapper: "string",
+  timepickerModeAm: "string",
+  timepickerModePm: "string",
+  timepickerClockWrapper: "string",
+  timepickerClock: "string",
+  timepickerMiddleDot: "string",
+  timepickerHandPointer: "string",
+  timepickerPointerCircle: "string",
+  timepickerClockInner: "string",
+  timepickerFooterWrapper: "string",
+  timepickerFooterButton: "string",
+  timepickerInlineWrapper: "string",
+  timepickerInlineContainer: "string",
+  timepickerInlineElements: "string",
+  timepickerInlineHead: "string",
+  timepickerInlineHeadContent: "string",
+  timepickerInlineHourWrapper: "string",
+  timepickerCurrentMinuteWrapper: "string",
+  timepickerInlineIconUp: "string",
+  timepickerInlineIconSvg: "string",
+  timepickerInlineCurrentButton: "string",
+  timepickerInlineIconDown: "string",
+  timepickerInlineDot: "string",
+  timepickerInlineModeWrapper: "string",
+  timepickerInlineModeAm: "string",
+  timepickerInlineModePm: "string",
+  timepickerInlineSubmitButton: "string",
+  timepickerToggleButton: "string",
 };
 
 /**
@@ -447,7 +555,8 @@ class Timepicker {
   _appendToggleButton() {
     const toggleButton = getToggleButtonTemplate(
       this._options,
-      this._toggleButtonId
+      this._toggleButtonId,
+      this._classes
     );
 
     this.input.insertAdjacentHTML("afterend", toggleButton);
@@ -964,7 +1073,7 @@ class Timepicker {
           this.input.blur();
           e.target.blur();
 
-          div.innerHTML = getTimepickerTemplate(this._options);
+          div.innerHTML = getTimepickerTemplate(this._options, this._classes);
           Manipulator.addClass(div, this._classes.modal);
           div.setAttribute(ATTR_TIMEPICKER_MODAL, "");
 
@@ -1275,7 +1384,10 @@ class Timepicker {
           this._setTipsAndTimesDependOnInputValue("12", "00");
           this._setActiveClassToTipsOnOpen(hour, minute, format);
           this._hour.click();
-        } else if (target.hasAttribute(ATTR_TIMEPICKER_BUTTON_CANCEL)) {
+        } else if (
+          target.hasAttribute(ATTR_TIMEPICKER_BUTTON_CANCEL) ||
+          target.hasAttribute(ATTR_TIMEPICKER_BUTTON_SUBMIT)
+        ) {
           runRemoveFunction();
         } else if (
           target.hasAttribute(ATTR_TIMEPICKER_WRAPPER) &&
@@ -1478,7 +1590,11 @@ class Timepicker {
   }
 
   _handleSwitchHourMinute() {
-    toggleClassHandler("click", SELECTOR_ATTR_TIMEPICKER_CURRENT);
+    toggleClassHandler(
+      "click",
+      SELECTOR_ATTR_TIMEPICKER_CURRENT,
+      this._classes
+    );
 
     EventHandler.on(
       this._modal,
@@ -1641,13 +1757,22 @@ class Timepicker {
     );
 
     if (!maxTimeFormat || maxTimeFormat === selectedFormat) {
-      _verifyMaxTimeHourAndAddDisabledClass(innerHoursTips, maxTimeHour);
-      _verifyMaxTimeHourAndAddDisabledClass(outerHoursTips, maxTimeHour);
+      _verifyMaxTimeHourAndAddDisabledClass(
+        innerHoursTips,
+        maxTimeHour,
+        this._classes
+      );
+      _verifyMaxTimeHourAndAddDisabledClass(
+        outerHoursTips,
+        maxTimeHour,
+        this._classes
+      );
       _verifyMaxTimeMinutesTipsAndAddDisabledClass(
         allTipsMinutes,
         maxTimeMinutes,
         maxTimeHour,
-        this._hour.textContent
+        this._hour.textContent,
+        this._classes
       );
       return;
     }
@@ -1684,13 +1809,22 @@ class Timepicker {
     );
 
     if (!minTimeFormat || minTimeFormat === selectedFormat) {
-      _verifyMinTimeHourAndAddDisabledClass(outerHoursTips, minTimeHour);
-      _verifyMinTimeHourAndAddDisabledClass(innerHoursTips, minTimeHour);
+      _verifyMinTimeHourAndAddDisabledClass(
+        outerHoursTips,
+        minTimeHour,
+        this._classes
+      );
+      _verifyMinTimeHourAndAddDisabledClass(
+        innerHoursTips,
+        minTimeHour,
+        this._classes
+      );
       _verifyMinTimeMinutesTipsAndAddDisabledClass(
         allTipsMinutes,
         minTimeMinutes,
         minTimeHour,
-        this._hour.textContent
+        this._hour.textContent,
+        this._classes
       );
     } else if (minTimeFormat === "PM" && selectedFormat === "AM") {
       outerHoursTips.forEach((tip) => {

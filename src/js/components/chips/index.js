@@ -78,6 +78,20 @@ const DefaultClasses = {
   transition:
     "transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]",
   contentEditable: "outline-none !border-[3px] !border-solid !border-[#b2b3b4]",
+  chipsInputWrapper:
+    "relative flex items-center flex-wrap transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]",
+  chipsInput:
+    "peer block min-h-[auto] w-[150px] rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-gray-200 dark:placeholder:text-gray-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0",
+  chipsLabel:
+    "pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-gray-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-gray-200 dark:peer-focus:text-gray-200",
+  chipsNotchesWrapper:
+    "group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none",
+  chipsNotchesLeading:
+    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0 border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600",
+  chipsNotchesMiddle:
+    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600",
+  chipsNotchesTrailing:
+    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0 border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-blue-600",
 };
 
 const DefaultClassesType = {
@@ -85,6 +99,13 @@ const DefaultClassesType = {
   inputWrapperPadding: "string",
   transition: "string",
   contentEditable: "string",
+  chipsInputWrapper: "string",
+  chipsInput: "string",
+  chipsLabel: "string",
+  chipsNotchesWrapper: "string",
+  chipsNotchesLeading: "string",
+  chipsNotchesMiddle: "string",
+  chipsNotchesTrailing: "string",
 };
 
 class ChipsInput extends Chip {
@@ -493,7 +514,7 @@ class ChipsInput extends Chip {
   _appendInputToElement(selector) {
     if (!this._element.hasAttribute(selector)) return;
 
-    const inputField = getInputField(this._options);
+    const inputField = getInputField(this._options, this._classes);
 
     this._element.insertAdjacentHTML("beforeend", inputField);
   }
@@ -502,7 +523,7 @@ class ChipsInput extends Chip {
     const divElement = element("div");
     const instance = Chip.getInstance(divElement);
 
-    const divWithChips = new Chip(instance, { text: value });
+    const divWithChips = new Chip(instance, { text: value }, this._classes);
 
     if (this._options.parentSelector !== "") {
       const parent = document.querySelector(this._options.parentSelector);
@@ -516,7 +537,7 @@ class ChipsInput extends Chip {
     SelectorEngine.find(ATTR_SELECTOR_CHIP_INIT).forEach((chip) => {
       let instance = Chip.getInstance(chip);
       if (!instance) {
-        instance = new Chip(chip);
+        instance = new Chip(chip, {}, this._classes);
       }
       return instance.init();
     });

@@ -300,14 +300,27 @@
   (function () {
     let menuSection = document.querySelectorAll("menu li");
 
+    const scrollspyClasses = [
+      "data-[te-spy-active]:border-l-2",
+      "data-[te-spy-active]:border-solid",
+      "data-[te-spy-active]:border-l-blue-600",
+      "data-[te-spy-active]:text-blue-600",
+      "dark:data-[te-spy-active]:border-l-blue-300",
+      "dark:data-[te-spy-active]:text-blue-300",
+    ];
+
     if (menuSection.length == 0) return;
+
+    menuSection.forEach((section) =>
+      section.classList.add(...scrollspyClasses)
+    );
 
     // for clickable event
     menuSection.forEach((v) => {
       v.onclick = () => {
         setTimeout(() => {
-          menuSection.forEach((j) => j.classList.remove("active"));
-          v.classList.add("active");
+          menuSection.forEach((j) => j.removeAttribute("data-te-spy-active"));
+          v.setAttribute("data-te-spy-active", "");
         }, 300);
       };
     });
@@ -321,11 +334,11 @@
         let rect = v.getBoundingClientRect().y;
 
         if (rect < window.innerHeight + -940) {
-          menuSection.forEach((v) => v.classList.remove("active"));
+          menuSection.forEach((v) => v.removeAttribute("data-te-spy-active"));
           if (!menuSection[i]) {
             return;
           }
-          menuSection[i].classList.add("active");
+          menuSection[i].setAttribute("data-te-spy-active", "");
         }
       });
     };
