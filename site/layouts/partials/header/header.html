@@ -11,36 +11,34 @@
     <div class="relative flex h-[58px] items-center justify-between">
       <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          <style></style>
-          <div
-            id="hamburger"
-            class="{{ if and (ne $hidden_sidenav true) (ne .IsHome true) }}
-              xl:hidden
-            {{ end }} mr-4 flex text-neutral-400"
-            data-te-sidenav-toggle-ref
-            data-te-target="#sidenav-main">
-            <a href="#" class="text-neutral-400 [&>svg]:w-4">
-              <svg
-                fill="hsl(224, 7.2%, 40%)"
-                viewBox="0 0 100 80"
-                width="20"
-                height="20">
-                <rect width="80" height="14"></rect>
-                <rect y="30" width="80" height="14"></rect>
-                <rect y="60" width="80" height="14"></rect>
-              </svg>
-            </a>
-          </div>
+          {{ if ne .IsHome true }}
+            <div
+              id="hamburger"
+              class="{{ if ne $hidden_sidenav true }}
+                xl:hidden
+              {{ end }} mr-4 flex text-neutral-400"
+              data-te-sidenav-toggle-ref
+              data-te-target="#sidenav-main">
+              <a href="#" class="text-neutral-400">
+                <svg
+                  fill="hsl(224, 7.2%, 40%)"
+                  viewBox="0 0 100 80"
+                  width="20"
+                  height="20">
+                  <rect width="80" height="14"></rect>
+                  <rect y="30" width="80" height="14"></rect>
+                  <rect y="60" width="80" height="14"></rect>
+                </svg>
+              </a>
+            </div>
+          {{ end }}
           {{ if or (eq .IsHome true) (eq $hidden_sidenav true) }}
             <a
               href="/"
-              class="flex items-center justify-center rounded-md pr-3 font-medium dark:text-neutral-100"
+              class="flex items-center justify-center rounded-md pr-6 text-lg font-medium dark:text-neutral-100"
               aria-current="page"
-              ><img
-                src="/img/logo.png"
-                class="mr-3"
-                alt=""
-                style="width: 20px; height:20px" />
+              ><img src="/img/logo.png" class="mr-2 h-[30px]" alt="logo" />
+              Tailwind Elements
             </a>
           {{ end }}
         </div>
