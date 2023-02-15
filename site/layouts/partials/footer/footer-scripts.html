@@ -147,19 +147,21 @@
           );
 
           return `
-      <li class="p-0 pt-2">
-        <a class="py-1" href="${result.href}">
-          <p class="uppercase text-neutral-600 dark:text-neutral-100 mb-0">${this.highlightSearch(
+      <li>
+        <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-white/20 focus:bg-white/20 outline-none dark:text-neutral-200" href="${
+          result.href
+        }">
+          <p class="uppercase mb-0">${this.highlightSearch(
             result.name,
             this.searchValue
           )}</p>
-          <p class="text-sm mb-0 pb-2 text-neutral-400 font-semibold">Category: ${this.highlightSearch(
+          <p class="text-[0.875em] mb-0 pb-2">Category: ${this.highlightSearch(
             result.category,
             this.searchValue
           )}</p>
           ${
             keywords.length > 0
-              ? `<p class="text-sm text-neutral-400 mb-0 pb-2 max-w-full whitespace-nowrap	text-overflow-ellipsis overflow-hidden">${this.formatKeywords(
+              ? `<p class="text-[0.875em] mb-0 pb-2 max-w-full whitespace-nowraptext-overflow-ellipsis overflow-hidden">${this.formatKeywords(
                   keywords
                 )}</p>`
               : ""

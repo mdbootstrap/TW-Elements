@@ -42,16 +42,33 @@
     {{ partial "header/header.html" . }}
 
 
+    <nav
+      id="sidenav-main"
+      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      data-te-sidenav-init
+      data-te-sidenav-mode="over"
+      data-te-sidenav-content="#page-content"
+      data-te-sidenav-accordion="true">
+      <a
+        href="/"
+        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium outline-none dark:text-neutral-100"
+        aria-current="page"
+        ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
+        Tailwind Elements</a
+      >
+      {{ partial "sidenav/standard.html" . }}
+    </nav>
+
     <div
       id="gtmDC-frontpage-all"
       class="absolute z-10 hidden h-[74px] w-full lg:block"></div>
 
-    <main class="relative">
+    <main class="relative leading-[1.6]">
       <!-- Section: Intro -->
       <section
-        class="container mx-auto mt-24 mb-20 px-3 pb-20 sm:px-8 md:px-10 xl:max-w-screen-xl 2xl:px-0">
-        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-          <div class="relative text-center lg:col-span-5 lg:text-left">
+        class="mx-auto mt-24 mb-[64px] pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+        <div class="grid grid-cols-1 items-center pt-6 lg:grid-cols-12">
+          <div class="relative mx-3 text-center lg:col-span-5 lg:text-left">
             <div>
               <h1 class="mb-8 mt-0 text-4xl font-bold">
                 Top quality<br />
@@ -68,14 +85,14 @@
 
               <div class="">
                 <ol class="text-md mb-10 text-gray-600 dark:text-gray-400">
-                  <li class="mb-3">
+                  <li class="mb-4">
                     <span
                       class="mr-2 inline-block pb-1 align-middle text-primary-500 dark:text-primary-300">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        stroke-width="3"
                         stroke="currentColor"
                         class="h-5 w-5">
                         <path
@@ -85,14 +102,14 @@
                       </svg> </span
                     >500+ UI components
                   </li>
-                  <li class="mb-3">
+                  <li class="mb-4">
                     <span
                       class="mr-2 inline-block pb-1 align-middle text-primary-500 dark:text-primary-300">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        stroke-width="3"
                         stroke="currentColor"
                         class="h-5 w-5">
                         <path
@@ -102,14 +119,14 @@
                       </svg> </span
                     >Super simple, 1 minute installation
                   </li>
-                  <li class="mb-3">
+                  <li class="mb-4">
                     <span
                       class="mr-2 inline-block pb-1 align-middle text-primary-500 dark:text-primary-300">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        stroke-width="3"
                         stroke="currentColor"
                         class="h-5 w-5">
                         <path
@@ -119,14 +136,14 @@
                       </svg> </span
                     >Easy theming and customization
                   </li>
-                  <li class="mb-3">
+                  <li class="mb-4">
                     <span
                       class="mr-2 inline-block pb-1 align-middle text-primary-500 dark:text-primary-300">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        stroke-width="1.5"
+                        stroke-width="3"
                         stroke="currentColor"
                         class="h-5 w-5">
                         <path
@@ -165,7 +182,7 @@
               </div>
             </div>
           </div>
-          <div class="flex justify-center lg:col-span-7">
+          <div class="mx-3 mt-5 flex justify-center lg:col-span-7 lg:mt-0">
             <picture>
               <source
                 srcset="https://mdbcdn.b-cdn.net/img/home/main.webp"
@@ -182,11 +199,11 @@
 
       <!-- Section: Essential -->
       <section
-        class="container mx-auto mt-24 mb-20 grid grid-cols-1 gap-12 px-3 pb-20 sm:px-8 md:px-10 lg:grid-cols-12 xl:max-w-screen-xl 2xl:px-0">
-        <div class="relative mb-6 flex items-center lg:col-span-5 lg:mb-0">
+        class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+        <div class="relative mx-3 mb-6 flex items-center lg:col-span-5 lg:mb-0">
           <div class="text-center lg:text-left">
             <h4
-              class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
+              class="pb-2 text-[1.5rem] font-bold text-gray-600 dark:text-gray-200">
               Key components that will save your time
             </h4>
             <p class="pb-6 font-medium text-gray-500  dark:text-gray-400">
@@ -200,8 +217,8 @@
             </p>
             <div class="flex justify-center lg:justify-start">
               <a
-                class="rounded bg-gray-200 px-5 py-2.5 text-xs font-medium uppercase text-primary-800 transition ease-in-out hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none  active:bg-gray-500 active:shadow-lg dark:bg-gray-600 dark:text-primary-200 dark:hover:bg-gray-500 dark:focus:bg-gray-500 dark:active:bg-gray-400"
-                href="docs/standard/getting-started/quick-start/"
+                class="rounded bg-primary-100 px-5 py-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                href="/docs/standard/getting-started/quick-start/"
                 role="button"
                 data-te-ripple-init
                 data-te-ripple-color="light"
@@ -210,7 +227,7 @@
             </div>
           </div>
         </div>
-        <div class="mb-4 flex items-center lg:col-span-7 lg:mb-0">
+        <div class="mx-3 mb-4 flex items-center lg:col-span-7 lg:mb-0">
           <picture>
             <source
               srcset="https://mdbcdn.b-cdn.net/img/home/essential.webp"
@@ -273,9 +290,9 @@
             d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
         </svg>
         <div
-          class="container mx-auto mt-24 mb-20 grid grid-cols-1 gap-12 px-3 pb-20 sm:px-8 md:px-10 lg:grid-cols-12 xl:max-w-screen-xl 2xl:px-0">
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
           <div
-            class="relative order-1 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
+            class="relative order-1 mx-6 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
             <div class="text-center lg:text-left">
               <h4
                 class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
@@ -390,8 +407,9 @@
             d="M -0.664 3.46 C -0.664 3.46 405.288 15.475 461.728 21.285 C 601.037 35.625 672.268 76.086 701.056 97.646 C 756.056 138.838 797.267 216.257 857.745 245.156 C 885.704 258.516 980.334 280.547 1048.511 268.826 C 1121.622 256.256 1199.864 226.267 1214.176 220.176 C 1241.273 208.643 1280.201 191.509 1343.494 179.436 C 1434.325 162.111 1439.504 196.099 1439.503 183.204 C 1439.502 161.288 1440 0 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L -0.664 3.46 Z"></path>
         </svg>
         <div
-          class="container mx-auto mt-24 mb-20 grid grid-cols-1 gap-12 px-3 pb-20 sm:px-8 md:px-10 lg:grid-cols-12 xl:max-w-screen-xl 2xl:px-0">
-          <div class="relative mb-6 flex items-center lg:col-span-5 lg:mb-0">
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+          <div
+            class="relative mx-3 mb-6 flex items-center lg:col-span-5 lg:mb-0">
             <div class="text-center lg:text-left">
               <h4
                 class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
@@ -409,7 +427,8 @@
               </p>
             </div>
           </div>
-          <div class="relative mb-4 flex items-center lg:col-span-7 lg:mb-0">
+          <div
+            class="relative mx-3 mb-4 flex items-center lg:col-span-7 lg:mb-0">
             <picture>
               <source
                 srcset="https://mdbcdn.b-cdn.net/img/home/design-system.webp"
@@ -473,9 +492,9 @@
             d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
         </svg>
         <div
-          class="container mx-auto mt-24 mb-20 grid grid-cols-1 gap-12 px-3 pb-20 sm:px-8 md:px-10 lg:grid-cols-12 xl:max-w-screen-xl 2xl:px-0">
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
           <div
-            class="relative order-1 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
+            class="relative order-1 mx-3 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
             <div class="text-center lg:text-left">
               <h4
                 class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
@@ -499,7 +518,7 @@
             </div>
           </div>
           <div
-            class="relative order-2 mb-4 flex items-center lg:order-1 lg:col-span-7 lg:mb-0">
+            class="relative order-2 mx-3 mb-4 flex items-center lg:order-1 lg:col-span-7 lg:mb-0">
             <picture>
               <source
                 id="theming-image"
@@ -575,8 +594,9 @@
             d="M -0.664 3.46 C -0.664 3.46 405.288 15.475 461.728 21.285 C 601.037 35.625 672.268 76.086 701.056 97.646 C 756.056 138.838 797.267 216.257 857.745 245.156 C 885.704 258.516 980.334 280.547 1048.511 268.826 C 1121.622 256.256 1199.864 226.267 1214.176 220.176 C 1241.273 208.643 1280.201 191.509 1343.494 179.436 C 1434.325 162.111 1439.504 196.099 1439.503 183.204 C 1439.502 161.288 1440 0 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L -0.664 3.46 Z"></path>
         </svg>
         <div
-          class="container mx-auto mt-24 mb-20 grid grid-cols-1 gap-12 px-3 pb-20 sm:px-8 md:px-10 lg:grid-cols-12 xl:max-w-screen-xl 2xl:px-0">
-          <div class="relative mb-6 flex items-center lg:col-span-5 lg:mb-0">
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+          <div
+            class="relative mx-3 mb-6 flex items-center lg:col-span-5 lg:mb-0">
             <div class="text-center lg:text-left">
               <h4
                 class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
@@ -593,7 +613,8 @@
               </p>
             </div>
           </div>
-          <div class="relative mb-4 flex items-center lg:col-span-7 lg:mb-0">
+          <div
+            class="relative mx-3 mb-4 flex items-center lg:col-span-7 lg:mb-0">
             <picture>
               <source
                 srcset="https://mdbcdn.b-cdn.net/img/home/design-system.webp"
@@ -609,35 +630,45 @@
       <!-- Section: Community support -->
 
       <!-- Section: MDB GO -->
-      <section class="mt-24 mb-20 px-3 pb-20 sm:px-8 md:px-10">
+      <section
+        class="mx-auto mt-24 mb-[64px] px-3 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
         <div class="text-center">
           <h4
             class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
             Use
             <a
               href="https://mdbgo.com/"
-              class="text-primary-700 underline dark:text-primary-400"
+              class="text-primary underline dark:text-primary-400"
               target="_blank"
               >MDB GO</a
             >
             - Free hosting & deployment tool
           </h4>
-          <p class="pb-6 font-medium text-gray-500  dark:text-gray-400">
+          <p class="pb-14 font-medium text-gray-500  dark:text-gray-400">
             Publish with a single command
           </p>
         </div>
 
-        <div class="mx-auto max-w-xl px-4 sm:px-10">
-          <ol class="mb-10 border-l border-gray-300 dark:border-gray-600">
+        <div class="mx-auto w-full px-3 min-[992px]:w-1/2">
+          <ol class="mb-10 border-l border-gray-300 pl-8 dark:border-gray-600">
             <li>
-              <div class="flex-start flex items-center pt-3">
+              <div class="flex-start relative mt-3 flex items-center">
                 <div
-                  class="-ml-1 mr-3 h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                  class="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="h-5 w-5 text-primary">
+                    <path
+                      d="M11 5a3 3 0 11-6 0 3 3 0 016 0zM2.615 16.428a1.224 1.224 0 01-.569-1.175 6.002 6.002 0 0111.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 018 18a9.953 9.953 0 01-5.385-1.572zM16.25 5.75a.75.75 0 00-1.5 0v2h-2a.75.75 0 000 1.5h2v2a.75.75 0 001.5 0v-2h2a.75.75 0 000-1.5h-2v-2z" />
+                  </svg>
+                </div>
                 <p class="text-sm font-bold text-gray-500 dark:text-gray-400">
                   Step 1
                 </p>
               </div>
-              <div class="mt-0.5 ml-4 mb-6">
+              <div class="mt-0.5 mb-12">
                 <h4
                   class="mb-1.5 text-xl font-semibold text-gray-800 dark:text-gray-200">
                   Create a free account
@@ -652,14 +683,27 @@
               </div>
             </li>
             <li>
-              <div class="flex-start flex items-center pt-3">
+              <div class="flex-start relative flex items-center pt-3">
                 <div
-                  class="-ml-1 mr-3 h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                  class="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="h-5 w-5 text-primary">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                  </svg>
+                </div>
                 <p class="text-sm font-bold text-gray-500 dark:text-gray-400">
                   Step 2
                 </p>
               </div>
-              <div class="mt-0.5 ml-4 mb-6">
+              <div class="mt-0.5 mb-12">
                 <h4
                   class="mb-1.5 text-xl font-semibold text-gray-800 dark:text-gray-200">
                   Install the MDB CLI
@@ -694,14 +738,27 @@
               </div>
             </li>
             <li>
-              <div class="flex-start flex items-center pt-3">
+              <div class="flex-start relative flex items-center pt-3">
                 <div
-                  class="-ml-1 mr-3 h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                  class="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="h-5 w-4 -rotate-90 text-primary">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  </svg>
+                </div>
                 <p class="text-sm font-bold text-gray-500 dark:text-gray-400">
                   Step 3
                 </p>
               </div>
-              <div class="mt-0.5 ml-4 mb-6">
+              <div class="mt-0.5 mb-12">
                 <h4
                   class="mb-1.5 text-xl font-semibold text-gray-800 dark:text-gray-200">
                   Log in
@@ -736,14 +793,25 @@
               </div>
             </li>
             <li>
-              <div class="flex-start flex items-center pt-3">
+              <div class="flex-start relative flex items-center pt-3">
                 <div
-                  class="-ml-1 mr-3 h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                  class="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-5 w-5 text-primary">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.75a6 6 0 00-5.98 6.496A5.25 5.25 0 006.75 20.25H18a4.5 4.5 0 002.206-8.423 3.75 3.75 0 00-4.133-4.303A6.001 6.001 0 0010.5 3.75zm2.03 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v4.94a.75.75 0 001.5 0v-4.94l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </div>
                 <p class="text-sm font-bold text-gray-500 dark:text-gray-400">
                   Step 4
                 </p>
               </div>
-              <div class="mt-0.5 ml-4 mb-6">
+              <div class="mt-0.5 mb-12">
                 <h4
                   class="mb-1.5 text-xl font-semibold text-gray-800 dark:text-gray-200">
                   Publish your project to the internet
@@ -845,9 +913,9 @@
             d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
         </svg>
         <div
-          class="container mx-auto mt-24 mb-20 grid grid-cols-1 gap-12 px-3 pb-20 sm:px-8 md:px-10 lg:grid-cols-12 xl:max-w-screen-xl 2xl:px-0">
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
           <div
-            class="relative order-1 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
+            class="relative order-1 mx-3 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
             <div class="text-center lg:text-left">
               <h4
                 class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
@@ -866,7 +934,7 @@
                 order to keep in touch and support us in this.
               </p>
               <a
-                class="rounded bg-gray-200 px-5 py-2.5 text-xs font-medium uppercase text-primary-800 transition ease-in-out hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none  active:bg-gray-500 active:shadow-lg dark:bg-gray-600 dark:text-primary-200 dark:hover:bg-gray-500 dark:focus:bg-gray-500 dark:active:bg-gray-400"
+                class="rounded bg-primary-100 px-5 py-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
                 href="/builder/"
                 role="button"
                 data-te-ripple-init
@@ -876,7 +944,7 @@
             </div>
           </div>
           <div
-            class="relative order-2 mb-4 flex items-center lg:order-1 lg:col-span-7 lg:mb-0">
+            class="relative order-2 mx-3 mb-4 flex items-center lg:order-1 lg:col-span-7 lg:mb-0">
             <picture>
               <source
                 srcset="https://mdbcdn.b-cdn.net/img/home/templates.webp"

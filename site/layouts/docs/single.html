@@ -38,7 +38,9 @@
       >
       {{ partial "sidenav/standard.html" . }}
     </nav>
-    <div class="mt-10" id="page-content">
+    <div
+      class="{{ if ne $hidden_sidenav true }}xl:!pl-60{{ end }} mt-10"
+      id="page-content">
       <div
         class="{{ if eq $hidden_sidenav true }}
           mx-auto w-1/2

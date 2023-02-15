@@ -1,5 +1,7 @@
 <footer
-  class="mt-16 bg-neutral-100 text-center text-neutral-600 transition-colors duration-500 dark:bg-neutral-900 dark:text-neutral-100">
+  class="{{ if ne .IsHome true }}
+    xl:pl-60
+  {{ end }} mt-16 bg-slate-100 text-center text-neutral-600 transition-colors duration-500 dark:bg-neutral-900 dark:text-neutral-100 lg:text-left">
   <!-- Section: Design Block -->
   <script async src="https://f.convertkit.com/ckjs/ck.5.js"></script>
   <form
@@ -44,12 +46,12 @@
       </div>
     </div>
     <div
-      class="bg-neutral-200 p-6 text-center transition-colors duration-500 dark:bg-black">
+      class="bg-slate-200 p-4 text-center transition-colors duration-500 dark:bg-black">
       <span>© 2023 Copyright:</span>
       <a
-        class="font-semibold text-neutral-600 dark:text-neutral-400"
+        class="font-semibold text-primary dark:text-white"
         href="https://mdbootstrap.com/"
-        >MDBootstrap</a
+        >MDBootstrap.com</a
       >
     </div>
   </form>

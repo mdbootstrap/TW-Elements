@@ -4,129 +4,140 @@
 <nav
   class="{{ if and (ne $hidden_sidenav true) (ne .IsHome true) }}
     xl:pl-60
+  {{ end }} {{ if eq .IsHome true }}
+    fixed top-0 left-0 z-50 w-full bg-white dark:bg-neutral-800
   {{ end }} shadow">
-  <div class="px-5 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
+  <div class="px-3">
+    <div class="relative flex h-[58px] items-center justify-between">
       <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
           <style></style>
-          {{ if ne .IsHome true }}
-            <div
-              id="hamburger"
-              class="{{ if ne $hidden_sidenav true }}
-                xl:hidden
-              {{ end }} mr-4 flex text-neutral-400"
-              data-te-sidenav-toggle-ref
-              data-te-target="#sidenav-main">
-              <a href="#" class="text-neutral-400">
-                <svg
-                  fill="hsl(224, 7.2%, 40%)"
-                  viewBox="0 0 100 80"
-                  width="20"
-                  height="20">
-                  <rect width="80" height="14"></rect>
-                  <rect y="30" width="80" height="14"></rect>
-                  <rect y="60" width="80" height="14"></rect>
-                </svg>
-              </a>
-            </div>
-          {{ end }}
+          <div
+            id="hamburger"
+            class="{{ if and (ne $hidden_sidenav true) (ne .IsHome true) }}
+              xl:hidden
+            {{ end }} mr-4 flex text-neutral-400"
+            data-te-sidenav-toggle-ref
+            data-te-target="#sidenav-main">
+            <a href="#" class="text-neutral-400 [&>svg]:w-4">
+              <svg
+                fill="hsl(224, 7.2%, 40%)"
+                viewBox="0 0 100 80"
+                width="20"
+                height="20">
+                <rect width="80" height="14"></rect>
+                <rect y="30" width="80" height="14"></rect>
+                <rect y="60" width="80" height="14"></rect>
+              </svg>
+            </a>
+          </div>
           {{ if or (eq .IsHome true) (eq $hidden_sidenav true) }}
             <a
               href="/"
-              class="flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-neutral-100"
+              class="flex items-center justify-center rounded-md pr-3 font-medium dark:text-neutral-100"
               aria-current="page"
               ><img
                 src="/img/logo.png"
                 class="mr-3"
                 alt=""
-                style="width: 40px" />
+                style="width: 20px; height:20px" />
             </a>
           {{ end }}
         </div>
-        <div class="hidden items-center sm:ml-6 md:flex">
-          <div class="flex space-x-4">
+        <!-- Search -->
+        <div
+          id="mdb-5-search-container"
+          class="relative hidden lg:flex lg:items-center">
+          <form class="relative flex flex-wrap items-stretch">
+            <style>
+              #mdb-5-search-input:focus-within {
+                box-shadow: inset 0 0 0 1px #3b71ca;
+              }
+            </style>
+            <input
+              id="mdb-5-search-input"
+              autocomplete="off"
+              type="search"
+              class="focus:shadow-te-blue relative m-0 inline-block w-[1%] min-w-[225px] flex-auto rounded border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-1 text-base font-normal text-gray-700 outline-none transition duration-300 ease-in-out focus:border-blue-600 focus:text-gray-700 dark:border-neutral-600 dark:text-gray-200 dark:placeholder:text-gray-200"
+              placeholder='Search (ctrl + "/" to focus)' />
+            <span
+              class="flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal text-gray-700 dark:text-gray-200">
+              <span class="text-neutral-400" id="mdb-5-search-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="3"
+                  stroke="currentColor"
+                  class="h-5 w-5">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+              </span>
+            </span>
+          </form>
+          <div
+            id="mdb-5-search-dropdown"
+            class="lpy-2 absolute top-[36px] z-[999999] hidden w-full overflow-hidden rounded bg-white shadow-md dark:bg-neutral-700">
+            <ul
+              id="mdb-5-search-list"
+              class="scrollbar-thin scrollbar-thumb-neutral-400 scrollbar-track-neutral-100 dark:scrollbar-thumb-neutral-500 dark:scrollbar-track-neutral-600 relative max-h-[265px] w-full overflow-y-scroll pt-0"></ul>
+            <hr class="my-0 dark:border-neutral-600" />
+            <p
+              class="my-4 mr-4 text-end text-xs text-neutral-600 dark:text-neutral-100">
+              search results: <strong id="mdb-5-search-count"></strong>
+            </p>
+          </div>
+        </div>
+        <!-- Search -->
+
+        <div class="ml-auto hidden items-center sm:flex">
+          <div class="flex">
             <!-- Current: "bg-neutral-900 text-white", Default: "text-neutral-300 hover:bg-neutral-700 hover:text-white" -->
 
             <a
               href="/docs/standard/getting-started/quick-start/"
-              class="rounded-md px-3 py-2 text-sm font-medium hover:text-primary dark:text-neutral-100 dark:hover:text-primary-400"
+              class="hidden py-2 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 sm:block sm:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
               >Get started</a
             >
 
             <a
+              href="/license/"
+              class="hidden py-2 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 sm:block sm:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+              >License</a
+            >
+
+            <a
               href="/snippets/"
-              class="hidden rounded-md px-3 py-2 text-sm font-medium hover:text-primary dark:text-neutral-100 dark:hover:text-primary-400 xl:block"
+              class="hidden py-2 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 xl:block [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
               >Playground</a
             >
 
             <a
               target="_blank"
-              href="https://mdbgo.com/"
-              class="rounded-md px-3 py-2 text-sm font-medium hover:text-primary dark:text-neutral-100 dark:hover:text-primary-400"
-              >Free hosting</a
+              href="https://mdbootstrap.com/services/"
+              class="hidden py-2 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 xl:block [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+              >Services</a
             >
+
             <a
               target="_blank"
-              href="https://mdbootstrap.com/services/"
-              class="rounded-md px-3 py-2 text-sm font-medium hover:text-primary dark:text-neutral-100 dark:hover:text-primary-400"
-              >Services</a
+              href="https://mdbgo.com/"
+              class="hidden py-2 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:block lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
+              >Free hosting</a
             >
           </div>
         </div>
       </div>
 
-      <!-- Search -->
-      <div id="mdb-5-search-container" class="hidden lg:block">
-        <form class="mb-0">
-          <style>
-            #mdb-5-search-input:focus-within {
-              outline: 1px solid hsl(222, 14.1%, 72.2%) !important;
-            }
-          </style>
-          <input
-            id="mdb-5-search-input"
-            autocomplete="off"
-            type="search"
-            class="w-100 mr-2 rounded-lg bg-neutral-100 p-2 outline-none dark:bg-neutral-700"
-            placeholder='Search (ctrl + "/")' />
-          <span class="input-group-text border-0">
-            <span class="text-neutral-400" id="mdb-5-search-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="inline-block h-6 w-6 pb-0.5">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-              </svg>
-            </span>
-          </span>
-        </form>
-        <div
-          id="mdb-5-search-dropdown"
-          class="absolute top-[52px] z-[999999] hidden overflow-hidden rounded border bg-white p-2 shadow-md dark:border-gray-600 dark:bg-neutral-800">
-          <ul
-            id="mdb-5-search-list"
-            class="scrollbar-thin scrollbar-thumb-neutral-400 scrollbar-track-neutral-100 dark:scrollbar-thumb-neutral-500 dark:scrollbar-track-neutral-600 relative max-h-[265px] w-max min-w-[300px] overflow-y-scroll pt-0"></ul>
-          <hr class="my-0 dark:border-neutral-600" />
-          <p
-            class="mx-2 my-3 mb-0 text-sm text-neutral-600 dark:text-neutral-100">
-            search results: <strong id="mdb-5-search-count"></strong>
-          </p>
-        </div>
-      </div>
-      <!-- Search -->
       <div
         class="absolute inset-y-0 right-0 flex items-center pr-0 sm:static sm:inset-auto sm:ml-4">
         <!-- Theme switcher -->
         <div id="theme-switcher" class="w-8">
           <button
-            class="rounded-2 flex items-center justify-center whitespace-nowrap p-2 uppercase text-neutral-400 transition duration-150 ease-in-out hover:text-primary focus:text-neutral-800 motion-reduce:transition-none dark:text-neutral-100 dark:hover:text-primary-400 dark:focus:text-neutral-200"
+            class="rounded-2 flex items-center justify-center whitespace-nowrap px-1.5 py-2 uppercase text-neutral-500 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 sm:p-2"
             type="button"
             id="themeSwitcher"
             data-te-dropdown-toggle-ref
@@ -231,7 +242,7 @@
         <a
           href="https://github.com/mdbootstrap/Tailwind-Elements/"
           target="_blank"
-          class="rounded-md p-2 text-sm font-medium text-neutral-400 hover:text-primary dark:text-neutral-200 dark:hover:text-primary-400"
+          class="rounded-md px-1.5 py-2 text-sm font-medium text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 sm:p-2"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4"
