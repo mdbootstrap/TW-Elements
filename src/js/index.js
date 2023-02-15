@@ -1,26 +1,30 @@
-// BOOTSTRAP CORE COMPONENTS
-import Button from './bs/src/button';
-import Dropdown from './bs/src/dropdown';
-import Collapse from './bs/src/collapse';
-import Offcanvas from './bs/src/offcanvas';
-import Alert from './bs/src/alert';
-import Carousel from './bs/src/carousel';
-import Modal from './bs/src/modal';
-import Popover from './bs/src/popover';
-import ScrollSpy from './bs/src/scrollspy';
-import Tab from './bs/src/tab';
-import Tooltip from './bs/src/tooltip';
-import Toast from './bs/src/toast';
-
-// MDB COMPONENTS
-import Ripple from './mdb/ripple';
-import Datepicker from './mdb/datepicker';
-import Timepicker from './mdb/timepicker';
-import Stepper from './mdb/stepper';
+import Button from "./components/button";
+import Dropdown from "./components/dropdown";
+import Collapse from "./components/collapse";
+import Offcanvas from "./components/offcanvas";
+import Alert from "./components/alert";
+import Carousel from "./components/carousel";
+import Modal from "./components/modal";
+import Popover from "./components/popover";
+import ScrollSpy from "./navigation/scrollspy";
+import Tab from "./navigation/tab";
+import Tooltip from "./components/tooltip";
+import Toast from "./components/toast";
+import Input from "./forms/input";
+import Animate from "./content-styles/animate";
+import Ripple from "./methods/ripple";
+import Datepicker from "./forms/datepicker";
+import Timepicker from "./forms/timepicker";
+import Sidenav from "./navigation/sidenav";
+import Stepper from "./components/stepper";
+import Select from "./forms/select";
+import ChipsInput from "./components/chips";
 
 export {
+  Animate,
   Alert,
   Button,
+  ChipsInput,
   Dropdown,
   Carousel,
   Collapse,
@@ -28,11 +32,14 @@ export {
   Modal,
   Popover,
   ScrollSpy,
+  Select,
   Tab,
   Toast,
   Tooltip,
   Ripple,
   Datepicker,
   Timepicker,
+  Sidenav,
   Stepper,
+  Input,
 };
