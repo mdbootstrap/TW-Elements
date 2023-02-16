@@ -1,0 +1,81 @@
+---
+---
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LfTWMAZAAAAABAbmTnK1SN7reusxKw8NODkugoO"></script>
+<script>
+  const contactForm = document.querySelector("#contactFormLicense");
+  const copyMessageCheckbox = document.querySelector("#copyMessage");
+
+  const successAlert = document.querySelector("#successAlert");
+  const successAlertInstance = te.Alert.getInstance(successAlert);
+
+  const warningAlert = document.querySelector("#warningAlert");
+  const warningAlertInstance = te.Alert.getInstance(warningAlert);
+
+  const handleContactFormSubmit = (event) => {
+    event.preventDefault();
+
+    grecaptcha.ready(function () {
+      grecaptcha
+        .execute("6LfTWMAZAAAAABAbmTnK1SN7reusxKw8NODkugoO", {
+          action: "contact",
+        })
+        .then(function (token) {
+          const recaptchaResponse =
+            document.getElementById("recaptchaResponse");
+          recaptchaResponse.value = token;
+
+          const xhr = new XMLHttpRequest();
+          xhr.open(
+            "POST",
+            "https://tst.tailwind-elements.com/api/docs/dpl/contact-form/enterprise",
+            true
+          );
+          xhr.setRequestHeader("content-type", "application/json");
+          xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              successAlertInstance.show();
+            }
+          };
+
+          const date = new Date().toISOString().slice(0, 19).replace("T", " ");
+
+          const contactFormData = new FormData(contactForm);
+          const formData = {
+            userName: contactFormData.get("userName"),
+            userMail: contactFormData.get("userMail"),
+            teamNumber: contactFormData.get("teamNumber"),
+            companyName: contactFormData.get("companyName"),
+            userMail: contactFormData.get("userMail"),
+            projectBudget: contactFormData.get("projectBudget"),
+            userMessage: contactFormData.get("userMessage"),
+            copyMessage: copyMessageCheckbox.checked,
+            mailToSend: "enterprise@mdbootstrap.com",
+            mailSubject: "MDB License Contact Form",
+            mailSource: "License Page",
+          };
+
+          xhr.send(
+            JSON.stringify({
+              mail: formData.mailToSend,
+              name: formData.userName,
+              fromEmail: formData.userMail,
+              subject: formData.mailSubject,
+              source: formData.mailSource,
+              phone: "",
+              projectBudget: formData.projectBudget,
+              companyName: formData.companyName,
+              teamNumber: formData.teamNumber,
+              contactMethod: "",
+              body: formData.userMessage,
+              copy: formData.copyMessage,
+              date: date,
+              recaptchaResponse: recaptchaResponse.value,
+            })
+          );
+        });
+    });
+  };
+
+  contactForm.addEventListener("submit", handleContactFormSubmit);
+</script>
