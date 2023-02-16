@@ -104,7 +104,11 @@ class ThemeSwitcher {
     });
 
     window.addEventListener("keydown", (event) => {
-      if (event.key.toLocaleLowerCase() === "d" && event.shiftKey) {
+      if (
+        document.activeElement === document.body &&
+        event.key.toLocaleLowerCase() === "d" &&
+        event.shiftKey
+      ) {
         this.onThemeSwitcherShortCut(event);
       }
     });
