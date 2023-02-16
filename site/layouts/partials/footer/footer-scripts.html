@@ -148,7 +148,7 @@
 
           return `
       <li>
-        <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-white/20 focus:bg-white/20 outline-none dark:text-neutral-200" href="${
+        <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-neutral-100 focus:bg-neutral-100 outline-none dark:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" href="${
           result.href
         }">
           <p class="uppercase mb-0">${this.highlightSearch(
@@ -305,10 +305,10 @@
     const scrollspyClasses = [
       "data-[te-spy-active]:border-l-2",
       "data-[te-spy-active]:border-solid",
-      "data-[te-spy-active]:border-l-blue-600",
-      "data-[te-spy-active]:text-blue-600",
-      "dark:data-[te-spy-active]:border-l-blue-300",
-      "dark:data-[te-spy-active]:text-blue-300",
+      "data-[te-spy-active]:border-l-primary",
+      "data-[te-spy-active]:text-primary",
+      "dark:data-[te-spy-active]:border-l-primary-400",
+      "dark:data-[te-spy-active]:text-primary-400",
     ];
 
     if (menuSection.length == 0) return;
@@ -330,7 +330,7 @@
     // for window scrolldown event
 
     window.onscroll = () => {
-      const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]"
+      const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
       let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
 
       mainSection.forEach((v, i) => {

@@ -461,7 +461,7 @@ class Carousel extends BaseComponent {
 
       activeIndicator.removeAttribute(ATTR_ACTIVE);
       activeIndicator.removeAttribute("aria-current");
-      activeIndicator.classList.remove("opacity-100");
+      activeIndicator.classList.remove("!opacity-100");
 
       const indicators = SelectorEngine.find(
         SELECTOR_INDICATOR,
@@ -477,7 +477,7 @@ class Carousel extends BaseComponent {
         ) {
           indicators[i].setAttribute(`${ATTR_ACTIVE}`, "");
           indicators[i].setAttribute("aria-current", "true");
-          indicators[i].classList.add("opacity-100");
+          indicators[i].classList.add("!opacity-100");
           break;
         }
       }
