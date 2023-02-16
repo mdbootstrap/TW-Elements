@@ -76,7 +76,7 @@ hidden_sidenav: true
               Or anything else, please do not hesitate to contact us:
             </p>
 
-            <form class="contact-form-license" method="post" action="">
+            <form id="contactFormLicense" method="post" action="">
               <!-- Name input -->
               <div class="relative mb-4" data-te-input-wrapper-init>
                 <input
@@ -169,17 +169,24 @@ hidden_sidenav: true
                 <input
                   class="relative float-left mt-[0.15rem] mr-[6px] -ml-[1.5rem] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-[rgba(0,0,0,0.25)] bg-white before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:ml-[0.25rem] checked:after:-mt-px checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:bg-white focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:ml-[0.25rem] checked:focus:after:-mt-px checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-t-0 checked:focus:after:border-l-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent"
                   type="checkbox"
-                  value=""
-                  id="copyLicense"
-                  name="copyLicense"
+                  value="copyMessage"
+                  id="copyMessage"
+                  name="copyMessage"
                   checked="" />
-                <label class="cursor-pointer pt-0.5" for="copyLicense">
+                <label class="cursor-pointer pt-0.5" for="copyMessage">
                   Send me a copy of this message
                 </label>
               </div>
 
+              <input
+                type="hidden"
+                name="recaptchaResponse"
+                id="recaptchaResponse" />
+
               <!-- Submit button -->
               <button
+                data-te-ripple-init
+                data-te-ripple-color="light"
                 type="submit"
                 class="mt-4 mb-2 inline-block w-full rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
                 value="Send">
@@ -912,3 +919,34 @@ hidden_sidenav: true
     </div>
   </section>
 </section>
+
+<div
+  class="fixed top-4 right-4 hidden items-center rounded-lg bg-warning-100 py-4 px-6 text-base text-warning-800 data-[te-alert-show]:!flex"
+  role="alert"
+  id="successAlert"
+  data-te-alert-init
+  data-te-alert-autohide
+  data-te-delay="4000"
+  data-te-stacking
+  data-te-append-to-body>
+  <strong>Message sent!</strong>
+  <button
+    type="button"
+    class="ml-auto box-content rounded-none border-none p-1 text-success-900 opacity-50 hover:text-success-900 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+    data-te-alert-dismiss
+    aria-label="Close">
+    <span
+      class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="h-6 w-6">
+        <path
+          fill-rule="evenodd"
+          d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+  </button>
+</div>
