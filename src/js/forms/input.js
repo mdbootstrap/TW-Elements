@@ -29,40 +29,6 @@ const DATA_ACTIVE = "data-te-input-state-active";
 const DATA_FOCUSED = "data-te-input-focused";
 const DATA_FORM_COUNTER = "data-te-input-form-counter";
 
-const NOTCH_CLASSES =
-  "group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none";
-const NOTCH_DIV_CLASSES =
-  "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none";
-
-const NOTCH_LEADING_NORMAL =
-  " border-neutral-300 dark:border-neutral-600 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary";
-const NOTCH_LEADING_WHITE =
-  " border-neutral-200 group-data-[te-input-focused]:shadow-[-1px_0_0_#ffffff,_0_1px_0_0_#ffffff,_0_-1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
-
-const NOTCH_LEADING_CLASSES =
-  NOTCH_DIV_CLASSES +
-  " left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0";
-
-const NOTCH_MIDDLE_NORMAL =
-  " border-neutral-300 dark:border-neutral-600 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary";
-const NOTCH_MIDDLE_WHITE =
-  " border-neutral-200 group-data-[te-input-focused]:shadow-[0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
-
-const NOTCH_MIDDLE_CLASSES =
-  NOTCH_DIV_CLASSES +
-  " grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent";
-
-const NOTCH_TRAILING_NORMAL =
-  " border-neutral-300 dark:border-neutral-600 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary";
-const NOTCH_TRAILING_WHITE =
-  " border-neutral-200 group-data-[te-input-focused]:shadow-[1px_0_0_#ffffff,_0_-1px_0_0_#ffffff,_0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white";
-
-const NOTCH_TRAILING_CLASSES =
-  NOTCH_DIV_CLASSES +
-  " grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0";
-
-const COUNTER_CLASSES = "text-right leading-[1.6]";
-
 const SELECTOR_OUTLINE_INPUT = `[${DATA_WRAPPER}] input`;
 const SELECTOR_OUTLINE_TEXTAREA = `[${DATA_WRAPPER}] textarea`;
 
@@ -76,8 +42,47 @@ const Default = {
 };
 
 const DefaultType = {
-  inputFormWhite: "(boolean|string)",
+  inputFormWhite: "(boolean)",
 };
+
+const DefaultClasses = {
+  notch:
+    "group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none",
+  notchLeading:
+    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0",
+  notchLeadingNormal:
+    "border-neutral-300 dark:border-neutral-600 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
+  notchLeadingWhite:
+    "border-neutral-200 group-data-[te-input-focused]:shadow-[-1px_0_0_#ffffff,_0_1px_0_0_#ffffff,_0_-1px_0_0_#ffffff] group-data-[te-input-focused]:border-white",
+  notchMiddle:
+    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent",
+  notchMiddleNormal:
+    "border-neutral-300 dark:border-neutral-600 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
+  notchMiddleWhite:
+    "border-neutral-200 group-data-[te-input-focused]:shadow-[0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white",
+  notchTrailing:
+    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0",
+  notchTrailingNormal:
+    "border-neutral-300 dark:border-neutral-600 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
+  notchTrailingWhite:
+    "border-neutral-200 group-data-[te-input-focused]:shadow-[1px_0_0_#ffffff,_0_-1px_0_0_#ffffff,_0_1px_0_0_#ffffff] group-data-[te-input-focused]:border-white",
+  counter: "text-right leading-[1.6]",
+};
+
+const DefaultClassesType = {
+  notch: "string",
+  notchLeading: "string",
+  notchLeadingNormal: "string",
+  notchLeadingWhite: "string",
+  notchMiddle: "string",
+  notchMiddleNormal: "string",
+  notchMiddleWhite: "string",
+  notchTrailing: "string",
+  notchTrailingNormal: "string",
+  notchTrailingWhite: "string",
+  counter: "string",
+};
+
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -85,9 +90,10 @@ const DefaultType = {
  */
 
 class Input {
-  constructor(element, config) {
+  constructor(element, config, classes) {
     this._config = this._getConfig(config, element);
     this._element = element;
+    this._classes = this._getClasses(classes);
     this._label = null;
     this._labelWidth = 0;
     this._labelMarginLeft = 0;
@@ -178,6 +184,20 @@ class Input {
     return config;
   }
 
+  _getClasses(classes) {
+    const dataAttributes = Manipulator.getDataClassAttributes(this._element);
+
+    classes = {
+      ...DefaultClasses,
+      ...dataAttributes,
+      ...classes,
+    };
+
+    typeCheckConfig(NAME, classes, DefaultClassesType);
+
+    return classes;
+  }
+
   _getLabelData() {
     this._label = SelectorEngine.findOne("label", this._element);
 
@@ -214,7 +234,7 @@ class Input {
       return;
     }
     this._counterElement = document.createElement("div");
-    Manipulator.addClass(this._counterElement, COUNTER_CLASSES);
+    Manipulator.addClass(this._counterElement, this._classes.counter);
     this._counterElement.setAttribute(DATA_FORM_COUNTER, "");
     const actualLength = this.input.value.length;
     this._counterElement.innerHTML = `${actualLength} / ${this._maxLength}`;
@@ -279,38 +299,38 @@ class Input {
 
   _applyDivs() {
     const shadowLeading = this._config.inputFormWhite
-      ? NOTCH_LEADING_WHITE
-      : NOTCH_LEADING_NORMAL;
+      ? this._classes.notchLeadingWhite
+      : this._classes.notchLeadingNormal;
     const shadowMiddle = this._config.inputFormWhite
-      ? NOTCH_MIDDLE_WHITE
-      : NOTCH_MIDDLE_NORMAL;
+      ? this._classes.notchMiddleWhite
+      : this._classes.notchMiddleNormal;
     const shadowTrailing = this._config.inputFormWhite
-      ? NOTCH_TRAILING_WHITE
-      : NOTCH_TRAILING_NORMAL;
+      ? this._classes.notchTrailingWhite
+      : this._classes.notchTrailingNormal;
 
     const allNotchWrappers = SelectorEngine.find(SELECTOR_NOTCH, this._element);
     const notchWrapper = element("div");
-    Manipulator.addClass(notchWrapper, NOTCH_CLASSES);
+    Manipulator.addClass(notchWrapper, this._classes.notch);
     notchWrapper.setAttribute(DATA_NOTCH, "");
     this._notchLeading = element("div");
 
     Manipulator.addClass(
       this._notchLeading,
-      NOTCH_LEADING_CLASSES + shadowLeading
+      `${this._classes.notchLeading} ${shadowLeading}`
     );
     this._notchLeading.setAttribute(DATA_NOTCH_LEADING, "");
     this._notchMiddle = element("div");
 
     Manipulator.addClass(
       this._notchMiddle,
-      NOTCH_MIDDLE_CLASSES + shadowMiddle
+      `${this._classes.notchMiddle} ${shadowMiddle}`
     );
     this._notchMiddle.setAttribute(DATA_NOTCH_MIDDLE, "");
     this._notchTrailing = element("div");
 
     Manipulator.addClass(
       this._notchTrailing,
-      NOTCH_TRAILING_CLASSES + shadowTrailing
+      `${this._classes.notchTrailing} ${shadowTrailing}`
     );
     this._notchTrailing.setAttribute(DATA_NOTCH_TRAILING, "");
     if (allNotchWrappers.length >= 1) {

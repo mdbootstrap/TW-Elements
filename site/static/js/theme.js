@@ -44,6 +44,9 @@ class ThemeSwitcher {
     this.setActiveThemeIcon("dark");
     this.setActiveDropdownItem("dark");
     this.activeTheme = "dark";
+    this.customTogglers.forEach((customToggler) => {
+      customToggler.checked = true;
+    });
   }
 
   setLightTheme() {
@@ -52,6 +55,9 @@ class ThemeSwitcher {
     this.setActiveThemeIcon("light");
     this.setActiveDropdownItem("light");
     this.activeTheme = "light";
+    this.customTogglers.forEach((customToggler) => {
+      customToggler.checked = false;
+    });
   }
 
   setActiveThemeIcon(theme) {
@@ -141,7 +147,7 @@ class ThemeSwitcher {
     });
 
     window.addEventListener("keydown", (event) => {
-      if (event.key.toLocaleLowerCase() === "d" && event.shiftKey) {
+      if (document.activeElement === document.body && event.key.toLocaleLowerCase() === "d" && event.shiftKey) {
         this.onThemeSwitcherShortCut(event);
       }
     });

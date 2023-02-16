@@ -60,7 +60,7 @@ class Backdrop {
       "fixed",
       "top-0",
       "left-0",
-      "z-50",
+      "z-[1040]",
       "bg-black",
       "w-screen",
       "h-screen",

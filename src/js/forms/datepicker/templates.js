@@ -177,15 +177,32 @@ function createViewTemplate(
 function createControls(month, year, options, classes) {
   return `
     <div class="${classes.datepickerDateControls}">
-      <button class="${classes.datepickerViewChangeButton}" aria-label="${options.switchToMultiYearViewLabel}" ${VIEW_CHANGE_BUTTON_REF}>
-        ${options.monthsFull[month]} ${year}
+      <button class="${classes.datepickerViewChangeButton}" aria-label="${
+    options.switchToMultiYearViewLabel
+  }" ${VIEW_CHANGE_BUTTON_REF}>
+        ${options.monthsFull[month]} ${year} ${createViewChangeButtonIcon(
+    options,
+    classes
+  )}
       </button>
       <div class="${classes.datepickerArrowControls}">
-        <button class="${classes.datepickerPreviousButton}" aria-label="${options.prevMonthLabel}" ${PREVIOUS_BUTTON_REF}></button>
-        <button class="${classes.datepickerNextButton}" aria-label="${options.nextMonthLabel}" ${NEXT_BUTTON_REF}></button>
+        <button class="${classes.datepickerPreviousButton}" aria-label="${
+    options.prevMonthLabel
+  }" ${PREVIOUS_BUTTON_REF}>${options.changeMonthIconTemplate}</button>
+        <button class="${classes.datepickerNextButton}" aria-label="${
+    options.nextMonthLabel
+  }" ${NEXT_BUTTON_REF}>${options.changeMonthIconTemplate}</button>
       </div>
     </div>
     `;
+}
+
+export function createViewChangeButtonIcon(options, classes) {
+  return `
+  <span class="${classes.datepickerViewChangeIcon}">
+  ${options.viewChangeIconTemplate}
+  </span>
+  `;
 }
 
 function createFooter(options, classes) {
@@ -490,7 +507,7 @@ function getYearsArray(date, yearsInView, yearsInRow) {
 export function getToggleButtonTemplate(id, toggleBtnClasses) {
   return `
     <button id="${id}" type="button" class="${toggleBtnClasses}" data-te-datepicker-toggle-button-ref data-te-datepicker-toggle-ref>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 hover:fill-primary focus:fill-primary dark:hover:fill-primary-400 dark:focus:fill-primary-400 dark:fill-gray-200">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
       <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z" clip-rule="evenodd" />
       </svg>  
     </button>

@@ -92,8 +92,8 @@ const Manipulator = {
     const rect = element.getBoundingClientRect();
 
     return {
-      top: rect.top + window.pageYOffset,
-      left: rect.left + window.pageXOffset,
+      top: rect.top + document.body.scrollTop,
+      left: rect.left + document.body.scrollLeft,
     };
   },
 
