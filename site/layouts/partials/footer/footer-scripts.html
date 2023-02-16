@@ -330,7 +330,8 @@
     // for window scrolldown event
 
     window.onscroll = () => {
-      let mainSection = document.querySelectorAll("main h2");
+      const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
+      let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
 
       mainSection.forEach((v, i) => {
         let rect = v.getBoundingClientRect().y;
