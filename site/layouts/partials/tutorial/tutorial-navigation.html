@@ -1,20 +1,21 @@
 <div
-  class="accordion-item rounded-t-[0.25rem] border-0 bg-white  dark:bg-zinc-800">
-  <h2 class="accordion-header mb-0" id="headingOne">
+  data-te-accordion-item
+  class="rounded-t-[0.25rem] border-0 bg-white dark:bg-neutral-800">
+  <h2 data-te-accordion-header class="mb-0" id="headingOne">
     <button
-      class="[&:not([data-te-collapse-collapsed])] dark:[&:not([data-te-collapse-collapsed])] group relative flex w-full items-center rounded-t-[15px] border-0 bg-white py-4 px-5 text-left text-base text-gray-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-zinc-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-blue-600 dark:[&:not([data-te-collapse-collapsed])]:bg-zinc-800 dark:[&:not([data-te-collapse-collapsed])]:text-blue-300"
+      class="group relative flex w-full items-center rounded-lg border-0 bg-white py-4 px-5 text-left text-base text-gray-800 outline-none transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-zinc-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-primary-100 [&:not([data-te-collapse-collapsed])]:text-primary dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-700 dark:[&:not([data-te-collapse-collapsed])]:text-primary-300"
       type="button"
       data-te-collapse-init
+      data-te-collapse-collapsed
       data-te-target="#collapseOne"
-      aria-expanded="false"
-      aria-controls="collapseOne"
-      data-te-collapse-collapsed>
+      aria-expanded="true"
+      aria-controls="collapseOne">
       <svg
         aria-hidden="true"
         focusable="false"
         data-prefix="fas"
         data-icon="circle"
-        class="check-button mr-1 h-3 w-4"
+        class="check-button mr-2 h-3 w-3 align-middle"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512"
@@ -36,11 +37,11 @@
   </h2>
   <div
     id="collapseOne"
-    class="accordion-collapse !visible hidden"
+    class="group !visible hidden"
     data-te-collapse-item
     aria-labelledby="headingOne"
-    data-mdb-parent="#tutorials-menu">
-    <div class="px-5">
+    data-te-parent="#tutorials-menu">
+    <div class="px-5 pt-2">
       <div class="flex justify-center">
         <ul class="w-96 text-gray-800 dark:text-gray-200">
           {{ partial "tutorial/tutorial-nav-link.html" (dict "context" . "href" "/learn/lesson-1/" "text"
@@ -57,22 +58,22 @@
     </div>
   </div>
 </div>
-<div class="accordion-item border border-0 bg-white dark:bg-zinc-800">
-  <h2 class="accordion-header mb-0" id="headingTwo">
+<div data-te-accordion-item class="border-0 bg-white dark:bg-zinc-800">
+  <h2 data-te-accordion-header class="mb-0" id="headingTwo">
     <button
-      class="[&:not([data-te-collapse-collapsed])] dark:[&:not([data-te-collapse-collapsed])] group relative flex w-full items-center rounded-t-[15px] border-0 bg-white py-4 px-5 text-left text-base text-gray-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-zinc-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-blue-600 dark:[&:not([data-te-collapse-collapsed])]:bg-zinc-800 dark:[&:not([data-te-collapse-collapsed])]:text-blue-300"
+      class="group relative flex w-full items-center rounded-lg border-0 bg-white py-4 px-5 text-left text-base text-gray-800 outline-none transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-zinc-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-primary-100 [&:not([data-te-collapse-collapsed])]:text-primary dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-700 dark:[&:not([data-te-collapse-collapsed])]:text-primary-300"
       type="button"
       data-te-collapse-init
+      data-te-collapse-collapsed
       data-te-target="#collapseTwo"
       aria-expanded="false"
-      data-te-collapse-collapsed
       aria-controls="collapseTwo">
       <svg
         aria-hidden="true"
         focusable="false"
         data-prefix="fas"
         data-icon="circle"
-        class="check-button mr-1 h-3 w-4"
+        class="check-button mr-2 h-3 w-3 align-middle"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512"
@@ -94,11 +95,11 @@
   </h2>
   <div
     id="collapseTwo"
-    class="accordion-collapse !visible hidden"
+    class="!visible hidden"
     data-te-collapse-item
     aria-labelledby="headingTwo"
-    data-mdb-parent="#tutorials-menu">
-    <div class="px-5">
+    data-te-parent="#tutorials-menu">
+    <div class="px-5 pt-2">
       <div class="flex justify-center">
         <ul class="w-96 text-gray-800 dark:text-gray-200">
           {{ partial "tutorial/tutorial-nav-link.html" (dict "context" . "href" "/learn/lesson-4/" "text"
@@ -116,22 +117,23 @@
   </div>
 </div>
 <div
-  class="accordion-item rounded-b-[0.25rem] border border-0 bg-white dark:bg-zinc-800">
-  <h2 class="accordion-header mb-0" id="headingThree">
+  data-te-accordion-item
+  class="rounded-b-[0.25rem] border-0 bg-white dark:bg-zinc-800">
+  <h2 data-te-accordion-header class="mb-0" id="headingThree">
     <button
-      class="[&:not([data-te-collapse-collapsed])] dark:[&:not([data-te-collapse-collapsed])] group relative flex w-full items-center rounded-t-[15px] border-0 bg-white py-4 px-5 text-left text-base text-gray-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-zinc-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-blue-600 dark:[&:not([data-te-collapse-collapsed])]:bg-zinc-800 dark:[&:not([data-te-collapse-collapsed])]:text-blue-300"
+      class="group relative flex w-full items-center rounded-lg border-0 bg-white py-4 px-5 text-left text-base text-gray-800 outline-none transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-zinc-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-primary-100 [&:not([data-te-collapse-collapsed])]:text-primary dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-700 dark:[&:not([data-te-collapse-collapsed])]:text-primary-300"
       type="button"
       data-te-collapse-init
+      data-te-collapse-collapsed
       data-te-target="#collapseThree"
       aria-expanded="false"
-      aria-controls="collapseThree"
-      data-te-collapse-collapsed>
+      aria-controls="collapseThree">
       <svg
         aria-hidden="true"
         focusable="false"
         data-prefix="fas"
         data-icon="circle"
-        class="check-button mr-1 h-3 w-4"
+        class="check-button mr-2 h-3 w-3 align-middle"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512"
@@ -153,11 +155,11 @@
   </h2>
   <div
     id="collapseThree"
-    class="accordion-collapse !visible hidden"
+    class="!visible hidden"
     data-te-collapse-item
     aria-labelledby="headingThree"
-    data-mdb-parent="#tutorials-menu">
-    <div class="px-5">
+    data-te-parent="#tutorials-menu">
+    <div class="px-5 pt-2">
       <div class="flex justify-center">
         <ul class="w-96 text-gray-800 dark:text-gray-200">
           {{ partial "tutorial/tutorial-nav-link.html" (dict "context" . "href" "/learn/lesson-7/" "text"

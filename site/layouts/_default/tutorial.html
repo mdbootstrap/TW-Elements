@@ -1,243 +1,254 @@
-{{ partial "head/head.html" . }}
-{{ partial "header/header.html" . }}
+{{ $hidden_sidenav := .Params.hidden_sidenav }}
 
 
-<main class="py-5" style="margin-top: 58px;">
-  <div class="contents">
-    <section id="mdb-tutorial-content" class="container mx-auto">
-      <div class="gx-lg-5 grid grid-cols-12 gap-1">
-        <!-- Column: Sidebar -->
-        <div class="col-span-4 mx-5 mb-5 hidden lg:block">
-          <div id="tutorials-menu">
-            {{ partial "tutorial/tutorial-navigation.html" . }}
-          </div>
-
-          <div
-            class="accordion accordion-borderless mt-4"
-            id="tutorials-menu"
-            data-mdb-perfect-scrollbar="true"
-            style="position: relative; height: 100vh"></div>
-        </div>
-        <!-- Column: Sidebar -->
-
-        <!-- Column: Content -->
-        <div class="col-span-8 mb-5">
-          {{ .Content }}
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+  <head>
+    {{ partial "head/head.html" . }}
+  </head>
+  <body class="transition-colors duration-500 dark:bg-neutral-800">
+    {{ partial "header/header.html" . }}
 
 
-          <hr class="hr my-5" />
+    <nav
+      id="sidenav-main"
+      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      data-te-sidenav-init
+      {{ if ne $hidden_sidenav true }}
+        data-te-sidenav-mode-breakpoint-over="0"
+        data-te-sidenav-mode-breakpoint-side="xl" data-te-sidenav-hidden="false"
+        data-te-sidenav-mode="side"
+      {{ else }}
+        data-te-sidenav-hidden="true" data-te-sidenav-mode="over"
+      {{ end }}
+      data-te-sidenav-content="#page-content"
+      data-te-sidenav-accordion="true">
+      <a
+        href="/"
+        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium outline-none dark:text-neutral-100"
+        aria-current="page"
+        ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
+        Tailwind Elements</a
+      >
+      {{ partial "sidenav/standard.html" . }}
+    </nav>
 
-          <!-- Section: Nav buttons -->
-          <section class="flex justify-between">
-            <div>
-              <a
-                type="button"
-                class="inline-block rounded bg-transparent px-6 py-2.5 text-xs font-medium uppercase leading-tight text-blue-600 transition duration-300 ease-in-out hover:bg-gray-100 focus:bg-gray-100 focus:text-blue-700 focus:outline-none focus:ring-0 active:bg-gray-200 active:text-blue-800"
-                data-te-ripple-init
-                href="https://twitter.com/ascensus_mdb"
-                rel="nofollow"
-                target="_blank">
-                Ask question</a
-              >
+    <main class="mt-[58px] py-5">
+      <div class="contents">
+        <section id="mdb-tutorial-content" class="container mx-auto">
+          <div class="grid grid-cols-12 gap-1">
+            <!-- Column: Sidebar -->
+            <div class="col-span-4 mx-5 mb-5 hidden lg:block">
+              <div id="tutorials-menu">
+                {{ partial "tutorial/tutorial-navigation.html" . }}
+              </div>
             </div>
+            <!-- Column: Sidebar -->
 
-            <div class="flex">
-              {{ if and (isset .Params "previous_lesson") (ne .Params.previous_lesson "") }}
-                <a
-                  type="button"
-                  class="mr-3 inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
-                  href="{{ .Params.previous_lesson }}"
-                  ><i class="fas fa-caret-left me-2"></i>Prev</a
-                >
-              {{ end }}
+            <!-- Column: Content -->
+            <div class="col-span-8 mb-5">
+              {{ .Content }}
 
-              {{ if and (isset .Params "next_lesson") (ne .Params.next_lesson "") }}
-                <a
-                  type="button"
-                  class="inline-block flex rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
-                  href="{{ .Params.next_lesson }}">
-                  Next
-                  <svg
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fas"
-                    data-icon="caret-right"
-                    class="ml-1 h-4 w-4"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 576 512">
-                    <path
-                      fill="currentColor"
-                      d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z" />
-                  </svg>
-                </a>
-              {{ end }}
-            </div>
-          </section>
-          <!-- Section: Nav buttons -->
 
-          <hr class="hr my-5" />
+              <hr class="hr my-5" />
 
-          <!-- Section: About author -->
-          <section class="">
-            <!-- Media object -->
-            <div class="flex">
-              <!-- Image -->
-              <img
-                src="https://pbs.twimg.com/profile_images/1154666340298493952/F57OFDN7_400x400.jpg"
-                alt="John Doe"
-                class="mr-3 rounded-full"
-                style="width: 90px; height: 90px;" />
-              <!-- Body -->
-              <div>
-                <div class="mb-4 flex justify-between">
-                  <div>
-                    <p class="mb-2 font-bold" style="color: #757575;">
-                      About author
-                    </p>
-                    <h5 class="font-bold">Michal Szymanski</h5>
-                  </div>
-                  <div class="mb-2">
+              <!-- Section: Nav buttons -->
+              <section class="flex justify-between">
+                <div>
+                  <a
+                    type="button"
+                    class="inline-block rounded bg-transparent px-6 py-2.5 text-xs font-medium uppercase leading-tight text-primary-600 outline-none transition duration-300 ease-in-out hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-200 active:text-primary-800"
+                    data-te-ripple-init
+                    href="https://twitter.com/ascensus_mdb"
+                    rel="nofollow"
+                    target="_blank">
+                    Ask question</a
+                  >
+                </div>
+
+                <div class="flex">
+                  {{ if and (isset .Params "previous_lesson") (ne .Params.previous_lesson "") }}
                     <a
-                      href="https://twitter.com/ascensus_mdb"
-                      target="_blank"
-                      rel="nofollow"
-                      class=" flex"
-                      style=" color: #3b71ca ;">
+                      type="button"
+                      class="mr-3 flex items-center rounded bg-primary-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md outline-none transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                      href="{{ .Params.previous_lesson }}"
+                      ><i class="fas fa-caret-left me-2"></i>Prev</a
+                    >
+                  {{ end }}
+
+                  {{ if and (isset .Params "next_lesson") (ne .Params.next_lesson "") }}
+                    <a
+                      type="button"
+                      class="flex items-center rounded bg-primary-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md outline-none transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                      href="{{ .Params.next_lesson }}">
+                      Next
                       <svg
                         aria-hidden="true"
                         focusable="false"
-                        data-prefix="fab"
-                        data-icon="twitter"
-                        class="mr-1 mt-1 h-4 w-4 decoration-blue-50"
+                        data-prefix="fas"
+                        data-icon="caret-right"
+                        class="ml-1 -mr-3 h-4 w-4"
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 576 512">
                         <path
                           fill="currentColor"
-                          d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                          d="M0 384.662V127.338c0-17.818 21.543-26.741 34.142-14.142l128.662 128.662c7.81 7.81 7.81 20.474 0 28.284L34.142 398.804C21.543 411.404 0 402.48 0 384.662z" />
                       </svg>
-                      <strong class="decoration-blue-50"
-                        >@ascensus_mdb</strong
-                      ></a
-                    >
+                    </a>
+                  {{ end }}
+                </div>
+              </section>
+              <!-- Section: Nav buttons -->
+
+              <hr class="hr my-5" />
+
+              <!-- Section: About author -->
+              <section class="">
+                <!-- Media object -->
+                <div class="flex">
+                  <!-- Image -->
+                  <img
+                    src="https://pbs.twimg.com/profile_images/1154666340298493952/F57OFDN7_400x400.jpg"
+                    alt="John Doe"
+                    class="mr-3 rounded-full"
+                    style="width: 90px; height: 90px;" />
+                  <!-- Body -->
+                  <div>
+                    <div class="mb-4 flex justify-between">
+                      <div>
+                        <p class="mb-2 font-bold" style="color: #757575;">
+                          About author
+                        </p>
+                        <h5 class="font-bold">Michal Szymanski</h5>
+                      </div>
+                      <div class="mb-2">
+                        <a
+                          href="https://twitter.com/ascensus_mdb"
+                          target="_blank"
+                          rel="nofollow"
+                          class=" flex"
+                          style=" color: #3b71ca ;">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            data-prefix="fab"
+                            data-icon="twitter"
+                            class="mr-1 mt-1 h-4 w-4 decoration-primary-50"
+                            role="img"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 576 512">
+                            <path
+                              fill="currentColor"
+                              d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                          </svg>
+                          <strong class="decoration-primary-50"
+                            >@ascensus_mdb</strong
+                          ></a
+                        >
+                      </div>
+                    </div>
+                    <p>
+                      Co Founder at MDBootstrap / Listed in Forbes „30 under 30"
+                      / Open-source enthusiast /
+                      <a
+                        class="font-bold"
+                        style=" color: #3b71ca;"
+                        href="https://youtu.be/bbKBlGxwgj8"
+                        target="_blank"
+                        rel="nofollow"
+                        >Dancer</a
+                      >, nerd & book lover.
+                    </p>
+                    <p class="mt-3">
+                      Author of hundreds of articles on programming, business,
+                      marketing and productivity. In the past, an educator
+                      working with troubled youth in orphanages and correctional
+                      facilities.
+                    </p>
                   </div>
                 </div>
-                <p>
-                  Co Founder at MDBootstrap / Listed in Forbes „30 under 30" /
-                  Open-source enthusiast /
-                  <a
-                    class="font-bold"
-                    style=" color: #3b71ca;"
-                    href="https://youtu.be/bbKBlGxwgj8"
-                    target="_blank"
-                    rel="nofollow"
-                    >Dancer</a
-                  >, nerd & book lover.
-                </p>
-                <p class="mt-3">
-                  Author of hundreds of articles on programming, business,
-                  marketing and productivity. In the past, an educator working
-                  with troubled youth in orphanages and correctional facilities.
-                </p>
-              </div>
+                <!-- Media object -->
+              </section>
+              <!-- Section: About author -->
             </div>
-            <!-- Media object -->
-          </section>
-          <!-- Section: About author -->
-        </div>
-        <!-- Column: Content -->
+            <!-- Column: Content -->
+          </div>
+        </section>
       </div>
-    </section>
-  </div>
-</main>
+    </main>
 
-<script>
-  const currentProgress = JSON.parse(
-    localStorage.getItem("mdb.tutorial.progress") || "[]"
-  );
-  const checkProgress = Array.from(currentProgress).includes(location.pathname);
-  if (!checkProgress) {
-    currentProgress.push(location.pathname);
-    localStorage.setItem(
-      "mdb.tutorial.progress",
-      JSON.stringify(currentProgress)
-    );
-  }
+    {{ partial "footer/footer-scripts.html" . }}
 
-  const accordion = document.getElementById("tutorials-menu");
-  const tutorials = accordion.querySelectorAll(".accordion-item");
 
-  tutorials.forEach((tutorial) => {
-    const links = tutorial.querySelectorAll(".accordion-collapse a");
-    const progress = localStorage.getItem("mdb.tutorial.progress");
+    <script>
+      const currentProgress = JSON.parse(
+        localStorage.getItem("te.tutorial.progress") || "[]"
+      );
+      const checkProgress = Array.from(currentProgress).includes(
+        location.pathname
+      );
+      if (!checkProgress) {
+        currentProgress.push(location.pathname);
+        localStorage.setItem(
+          "te.tutorial.progress",
+          JSON.stringify(currentProgress)
+        );
+      }
 
-    links.forEach((link) => {
-      if (progress.includes(link.getAttribute("href"))) {
-        link.classList.add("seen-lesson");
-        const children = link.querySelectorAll("svg");
-        children.forEach((child) => {
-          const svg = child.querySelector("path");
-          svg.setAttribute(
-            "d",
-            "M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+      const accordion = document.getElementById("tutorials-menu");
+      const tutorials = accordion.querySelectorAll("[data-te-accordion-item]");
+
+      tutorials.forEach((tutorial) => {
+        const links = tutorial.querySelectorAll("[data-te-collapse-item] a");
+        const progress = localStorage.getItem("te.tutorial.progress");
+
+        links.forEach((link) => {
+          if (progress.includes(link.getAttribute("href"))) {
+            link.setAttribute("te-seen-lesson", true);
+            const children = link.querySelectorAll("svg");
+            children.forEach((child) => {
+              const svg = child.querySelector("path");
+              svg.setAttribute(
+                "d",
+                "M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+              );
+              svg.setAttribute("style", "color:#3b71ca;");
+            });
+          }
+
+          const currentCollapseItem =
+            link.parentElement.parentElement.parentElement.parentElement;
+          const currentCollapseToggler = tutorial.querySelector(
+            `[data-te-target="#${currentCollapseItem.id}"]`
           );
-          svg.setAttribute("style", "color:#3b71ca;");
+
+          if (link.href === window.location.href) {
+            currentCollapseToggler.click();
+            link.classList.add("bg-primary-100", "dark:bg-neutral-700");
+          }
         });
-      }
-    });
-  });
 
-  tutorials.forEach((tutorial) => {
-    const links = tutorial.querySelectorAll(".accordion-collapse a");
-    links.forEach((link) => {
-      if (link.href === window.location.href) {
-        link.classList.add("rounded-lg", "bg-blue-100", "p-4", "text-blue-800");
-        link.classList.add("dark:bg-blue-800", "dark:text-gray-200");
-        link.classList.add("active");
-        link.parentElement.parentElement.parentElement.parentElement.classList.add(
-          "show"
+        const activeLinks = tutorial.querySelectorAll(
+          "[data-te-collapse-item] a[data-te-seen-lesson]"
         );
-        link.parentElement.parentElement.parentElement.parentElement.classList.remove(
-          "hidden"
-        );
-        link.parentElement.parentElement.parentElement.parentElement.setAttribute(
-          "data-te-collapse-show",
-          ""
-        );
-        const accordionHeader = tutorial.querySelector(".accordion-header");
-        const buttonHeader = accordionHeader.querySelector("button");
-        buttonHeader.setAttribute("aria-expanded", "true");
-        buttonHeader.removeAttribute("data-te-collapse-collapsed");
-      } else {
-        console.log("nie dziala");
-        link.classList.remove("dark:bg-blue-800", "dark:text-gray-200");
-        link.parentElement.parentElement.parentElement.parentElement.removeAttribute(
-          "data-te-collapse-show",
-          ""
-        );
-      }
-    });
 
-    const activeLinks = tutorial.querySelectorAll(
-      ".accordion-collapse a.seen-lesson"
-    );
-    if (links.length === activeLinks.length) {
-      console.log("Dziala");
-      const accordionHeader = tutorial.querySelector(".accordion-header");
-      accordionHeader.classList.add("active");
-      const buttonHeader = accordionHeader.querySelector("button");
-      const children = buttonHeader.querySelectorAll(".check-button");
-      children.forEach((child) => {
-        const svg = child.querySelector("path");
-        svg.setAttribute(
-          "d",
-          "M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
-        );
-        svg.setAttribute("style", "color:#3b71ca;");
+        if (links.length === activeLinks.length) {
+          const accordionHeader = tutorial.querySelector(
+            "[data-te-accordion-header]"
+          );
+          const buttonHeader = accordionHeader.querySelector("button");
+          const children = buttonHeader.querySelectorAll(".check-button");
+          children.forEach((child) => {
+            const svg = child.querySelector("path");
+            svg.setAttribute(
+              "d",
+              "M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"
+            );
+            svg.setAttribute("style", "color:#3b71ca;");
+          });
+        }
       });
-    }
-  });
-</script>
-
-{{ partial "footer/footer-scripts.html" . }}
+    </script>
+  </body>
+</html>
