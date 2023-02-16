@@ -145,10 +145,12 @@ class Stepper {
       );
 
       stepperHeadText[this._activeStepIndex].classList.add("font-medium");
-      stepperHeadIcon[this._activeStepIndex].classList.add("!bg-[#0d6efd]");
+      stepperHeadIcon[this._activeStepIndex].classList.add("!bg-primary-100");
+      stepperHeadIcon[this._activeStepIndex].classList.add("!text-primary-700");
     } else {
       stepperHeadText[this._activeStepIndex].classList.add("font-medium");
-      stepperHeadIcon[this._activeStepIndex].classList.add("!bg-[#0d6efd]");
+      stepperHeadIcon[this._activeStepIndex].classList.add("!bg-primary-100");
+      stepperHeadIcon[this._activeStepIndex].classList.add("!text-primary-700");
       this._toggleStepClass(
         this._activeStepIndex,
         "add",
@@ -566,11 +568,16 @@ class Stepper {
     );
 
     stepperHeadText[index].classList.add("font-medium");
-    stepperHeadIcon[index].classList.add("!bg-[#0d6efd]");
-    stepperHeadIcon[index].classList.remove("!bg-[#198754]");
+    stepperHeadIcon[index].classList.add("!bg-primary-100");
+    stepperHeadIcon[index].classList.add("!text-primary-700");
+    stepperHeadIcon[index].classList.remove("!bg-success-100");
+    stepperHeadIcon[index].classList.remove("!text-success-700");
 
     stepperHeadText[this._activeStepIndex].classList.remove("font-medium");
-    stepperHeadIcon[this._activeStepIndex].classList.remove("!bg-[#0d6efd]");
+    stepperHeadIcon[this._activeStepIndex].classList.remove("!bg-primary-100");
+    stepperHeadIcon[this._activeStepIndex].classList.remove(
+      "!text-primary-700"
+    );
 
     this._toggleStepClass(index, "add", this._options.stepperActive);
     this._toggleStepClass(
@@ -585,8 +592,10 @@ class Stepper {
       `${HEAD_ICON_REF}`,
       this._element
     );
-    stepperHeadIcon[index].classList.add("!bg-[#198754]");
-    stepperHeadIcon[index].classList.remove("!bg-[#dc3545]");
+    stepperHeadIcon[index].classList.add("!bg-success-100");
+    stepperHeadIcon[index].classList.add("!text-success-700");
+    stepperHeadIcon[index].classList.remove("!bg-danger-100");
+    stepperHeadIcon[index].classList.remove("!text-danger-700");
 
     this._toggleStepClass(index, "add", this._options.stepperCompleted);
     this._toggleStepClass(index, "remove", this._options.stepperInvalid);

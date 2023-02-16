@@ -42,7 +42,7 @@ const DefaultType = {
 
 const DefaultClasses = {
   active:
-    "!text-[#1266f1] font-semibold border-l-[0.125rem] border-solid border-[#1266f1]",
+    "!text-primary dark:!text-primary-400 font-semibold border-l-[0.125rem] border-solid border-primary dark:border-primary-400",
 };
 
 const DefaultClassesType = {
