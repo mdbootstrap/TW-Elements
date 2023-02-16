@@ -288,7 +288,7 @@ class Modal extends BaseComponent {
 
   _setEscapeEvent() {
     if (this._isShown) {
-      EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, (event) => {
+      EventHandler.on(document, EVENT_KEYDOWN_DISMISS, (event) => {
         if (this._config.keyboard && event.key === ESCAPE_KEY) {
           event.preventDefault();
           this.hide();
