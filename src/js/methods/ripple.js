@@ -60,7 +60,7 @@ const DefaultType = {
 const DefaultClasses = {
   ripple: "relative overflow-hidden inline-block align-bottom",
   rippleWave:
-    "rounded-[50%] opacity-50 pointer-events-none absolute touch-none scale-0 transition-[transform,_opacity] ease-[cubic-bezier(0,0,0.15,1)] z-[999] bg-[radial-gradient(circle,_rgba(0,0,0,0.2)_0%,_rgba(0,0,0,0.3)_40%,_rgba(0,0,0,0.4)_50%,_rgba(0,0,0,0.5)_60%,_transparent_70%)]",
+    "rounded-[50%] opacity-50 pointer-events-none absolute touch-none scale-0 transition-[transform,_opacity] ease-[cubic-bezier(0,0,0.15,1),_cubic-bezier(0,0,0.15,1)] z-[999]",
   unbound: "overflow-visible",
 };
 
@@ -205,6 +205,11 @@ class Ripple {
     if (this._rippleTimer) {
       clearTimeout(this._rippleTimer);
       this._rippleTimer = null;
+    }
+    if (ripple) {
+      setTimeout(() => {
+        ripple.classList.add("!opacity-0");
+      }, 10);
     }
     this._rippleTimer = setTimeout(() => {
       if (ripple) {
