@@ -575,7 +575,9 @@ class Stepper {
 
     stepperHeadText[this._activeStepIndex].classList.remove("font-medium");
     stepperHeadIcon[this._activeStepIndex].classList.remove("!bg-primary-100");
-    stepperHeadIcon[this._activeStepIndex].classList.remove("!text-primary-700");
+    stepperHeadIcon[this._activeStepIndex].classList.remove(
+      "!text-primary-700"
+    );
 
     this._toggleStepClass(index, "add", this._options.stepperActive);
     this._toggleStepClass(
