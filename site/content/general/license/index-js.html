@@ -1,7 +1,7 @@
 ---
 ---
 
-<script src="https://www.google.com/recaptcha/api.js?render=6LcpeIgkAAAAALdS4oKmgSPscp8ZYFLjavMstifN"></script>
+{{< license-recaptcha >}}
 <script>
   const contactForm = document.querySelector("#contactFormLicense");
   const copyMessageCheckbox = document.querySelector("#copyMessage");
@@ -9,15 +9,20 @@
   const successAlert = document.querySelector("#successAlert");
   const successAlertInstance = te.Alert.getInstance(successAlert);
 
-  const warningAlert = document.querySelector("#warningAlert");
-  const warningAlertInstance = te.Alert.getInstance(warningAlert);
+  const isTst =
+    window.location.origin.includes("tst") ||
+    window.location.origin.includes("localhost");
+
+  const recaptchaKey = isTst
+    ? "6LcpeIgkAAAAALdS4oKmgSPscp8ZYFLjavMstifN"
+    : "6Ld6dIgkAAAAAIpY7wJD8aZnFAWF-S1O5HOtdItU";
 
   const handleContactFormSubmit = (event) => {
     event.preventDefault();
 
     grecaptcha.ready(function () {
       grecaptcha
-        .execute("6LcpeIgkAAAAALdS4oKmgSPscp8ZYFLjavMstifN", {
+        .execute(recaptchaKey, {
           action: "contact",
         })
         .then(function (token) {
@@ -50,7 +55,7 @@
             projectBudget: contactFormData.get("projectBudget"),
             userMessage: contactFormData.get("userMessage"),
             copyMessage: copyMessageCheckbox.checked,
-            mailToSend: "enterprise@mdbootstrap.com",
+            mailToSend: "tailiwind@mdbootstrap.com",
             mailSubject: "MDB License Contact Form",
             mailSource: "License Page",
           };
