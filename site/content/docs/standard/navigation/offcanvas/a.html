@@ -1,0 +1,602 @@
+---
+---
+
+<!-- Section: Docs content-->
+<section>
+  <!-- Section: Usage-->
+  <section id="api-section-usage">
+    <!-- Title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="basic">
+      Usage
+    </h2>
+
+    <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
+    <p class="mb-4">
+      Add <code> data-te-offcanvas-toggle</code> and a
+      <code>data-te-target</code> or <code>href</code> to the element to
+      automatically assign control of one offcanvas element. The
+      <code>data-te-target</code> attribute accepts a CSS selector to apply the
+      offcanvas to. Be sure to add the class offcanvas to the offcanvas element.
+    </p>
+
+    <p>
+      Add a dismiss button with the
+      <code>data-te-offcanvas-dismiss</code> attribute, which triggers the
+      JavaScript functionality. Be sure to use the
+      <code>&lt;button&gt;</code> element with it for proper behavior across all
+      devices.
+    </p>
+
+    <!-- Section: Code-->
+    <section>
+      {{< twsnippet/no-demo id="api-example1" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example1">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "HTML" >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code active=true lang="html" >}}
+          <div class="flex space-x-2">
+            <div>
+              <a
+                class="mr-1.5 inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                data-te-offcanvas-toggle
+                href="#offcanvasExample"
+                role="button"
+                aria-controls="offcanvasExample"
+                data-te-ripple-init
+                data-te-ripple-color="light">
+                Link with href
+              </a>
+              <button
+                class="inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                type="button"
+                data-te-offcanvas-toggle
+                data-te-target="#offcanvasExample"
+                aria-controls="offcanvasExample"
+                data-te-ripple-init
+                data-te-ripple-color="light">
+                Button with data-te-target
+              </button>
+
+              <div
+                class="invisible fixed bottom-0 top-0 left-0 z-[1045] flex w-96 max-w-full -translate-x-full flex-col border-none bg-white bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out dark:bg-neutral-800 dark:text-neutral-200 [&[data-te-offcanvas-show]]:transform-none"
+                tabindex="-1"
+                id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel"
+                data-te-offcanvas-init>
+                <div class="flex items-center justify-between p-4">
+                  <h5
+                    class="mb-0 font-semibold leading-normal"
+                    id="offcanvasExampleLabel">
+                    Offcanvas
+                  </h5>
+                  <button
+                    type="button"
+                    class="box-content rounded-none border-none opacity-50 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                    data-te-offcanvas-dismiss>
+                    <span
+                      class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="h-6 w-6">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+                <div class="flex-grow overflow-y-auto p-4">
+                  <div>
+                    Some text as placeholder. In real life you can have the
+                    elements you have chosen. Like, text, images, lists, etc.
+                  </div>
+                  <div class="relative mt-4" data-te-dropdown-ref>
+                    <button
+                      class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-te-dropdown-toggle-ref
+                      data-te-ripple-init
+                      data-te-ripple-color="light">
+                      Dropdown button
+                      <span class="ml-2 w-2">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fas"
+                          data-icon="caret-down"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 320 512">
+                          <path
+                            fill="currentColor"
+                            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path>
+                        </svg>
+                      </span>
+                    </button>
+                    <ul
+                      class="absolute z-[1000] float-left m-0 hidden min-w-max list-none rounded-lg border-none bg-white bg-clip-padding py-2 text-left text-base shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block"
+                      aria-labelledby="dropdownMenuButton"
+                      data-te-dropdown-menu-ref>
+                      <li>
+                        <a
+                          class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500"
+                          href="#"
+                          data-te-dropdown-item-ref
+                          >Action
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500"
+                          href="#"
+                          data-te-dropdown-item-ref
+                          >Another action
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500"
+                          href="#"
+                          data-te-dropdown-item-ref
+                          >Something else here
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+    </section>
+    <!-- Section: Code-->
+
+    <h5 class="font-bold">Dismiss</h5>
+    <p>
+      Dismissal can be achieved with <strong>data</strong> attributes on a
+      button <strong>within the offcanvas</strong> as demonstrated below:
+    </p>
+    <!-- Section: Code-->
+    <section>
+      {{< twsnippet/no-demo id="api-example2" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example2">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "HTML" >}}
+          {{< twsnippet/code active=true lang="html" >}}
+          <button
+            type="button"
+            class="box-content rounded-none border-none opacity-50 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+            data-te-offcanvas-dismiss></button>
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+    </section>
+    <!-- Section: Code-->
+
+    <p>
+      or on a button <strong>outside the offcanvas</strong> using the
+      <code>data-te-target</code> as demonstrated below:
+    </p>
+
+    <!-- Section: Code-->
+    <section class="mb-4">
+      {{< twsnippet/no-demo id="api-example3" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example3">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "HTML" >}}
+          {{< twsnippet/code active=true lang="html" >}}
+          <button
+            type="button"
+            class="box-content rounded-none border-none opacity-50 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+            data-te-offcanvas-dismiss
+            data-te-target="#my-offcanvas"></button>
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+    </section>
+    <!-- Section: Code-->
+
+    <h4 class="mb-5 text-lg font-bold">Via JavaScript</h4>
+
+    <p>Enable manually with:</p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example4" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example4">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const offcanvasElementList = [].slice.call(document.querySelectorAll('[data-te-offcanvas-init]'))
+        const offcanvasList = offcanvasElementList.map((offcanvasEl) => {
+          return new te.Offcanvas(offcanvasEl)
+        });
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+
+  <hr class="my-5 dark:border-neutral-600" />
+
+  <!-- Section: Options-->
+  <section id="api-section-options">
+    <!-- Section title -->
+    <h2 class="mt-0 mb-5 text-3xl font-semibold leading-normal">Options</h2>
+
+    <p>
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to <code>data-te-</code>, as in
+      <code>data-te-backdrop="false"</code>.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-neutral-900 dark:border-neutral-500 dark:text-neutral-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Type
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>backdrop</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Apply a backdrop on body while offcanvas is open.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>keyboard</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Closes the modal when escape key is pressed.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>scroll</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allow body scrolling while offcanvas is open
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Options-->
+
+  <hr class="my-5 dark:border-neutral-600" />
+
+  <!-- Section: Methods-->
+  <section id="api-section-methods">
+    <!-- Section title -->
+    <h2 class="mt-0 mb-5 text-3xl font-semibold leading-normal">Methods</h2>
+
+    <div
+      class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
+      role="alert">
+      <p class="mb-2">
+        <strong>Asynchronous methods and transitions:</strong>
+        <br />
+        All API methods are <strong>asynchronous</strong> and start a
+        <strong>transition</strong>. They return to the caller as soon as the
+        transition is started but <strong>before it ends</strong>. In addition,
+        a method call on a
+        <strong>transitioning component will be ignored</strong>.
+      </p>
+    </div>
+
+    <p class="mb-2">
+      Activates your content as an offcanvas element. Accepts an optional
+      options
+      <code>object</code>.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-neutral-900 dark:border-neutral-500 dark:text-neutral-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Method
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Description
+                  </th>
+                  <th scope="col" class="px-6 py-4">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>toggle</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Toggles an offcanvas element to shown or hidden.<strong>
+                      Returns to the caller before the offcanvas element has
+                      actually been shown or hidden</strong
+                    >
+                    (i.e. before the <code>shown.te.offcanvas</code> or
+                    <code>hidden.te.offcanvas</code> event occurs).
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myOffcanvas.toggle()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>show</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Shows an offcanvas element.
+                    <strong>
+                      Returns to the caller before the offcanvas element has
+                      actually been shown </strong
+                    >(i.e. before the <code>shown.te.offcanvas</code> event
+                    occurs).
+                  </td>
+                  <td class="px-6 py-4">
+                    <code>myOffcanvas.show()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>hide</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Hides an offcanvas element.<strong
+                      >Returns to the caller before the offcanvas element has
+                      actually been hidden </strong
+                    >(i.e. before the <code>hidden.te.offcanvas</code> event
+                    occurs).
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>myOffcanvas.hide()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which allows you to get the modal instance
+                    associated with a DOM element.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Offcanvas.getInstance()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getOrCreateInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which allows you to get the modal instance
+                    associated with a DOM element or create a new one in case it
+                    wasn't initialized.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Offcanvas.getOrCreateInstance()</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Code-->
+    {{< twsnippet/no-demo id="api-example5" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example5">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+              const myOffcanvasEl = document.getElementById("myOffcanvas");
+              const myOffcanvas = new te.Offcanvas(myOffcanvasEl);
+              myOffcanvas.show();              
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!-- Section: Code-->
+    <!-- Section: Methods-->
+  </section>
+
+  <hr class="mb-5 dark:border-neutral-600" />
+
+  <!-- Section: Events-->
+  <section id="api-section-events">
+    <!-- Section title -->
+    <h2 class="mt-0 mb-5 text-3xl font-semibold leading-normal">Events</h2>
+    <p>
+      Bootstrap’s offcanvas class exposes a few events for hooking into
+      offcanvas functionality.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-neutral-900 dark:border-neutral-500 dark:text-neutral-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Event type
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>show.te.offcanvas</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event fires immediately when the
+                    <code>show</code> instance method is called.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>shown.te.offcanvas</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event is fired when an offcanvas element has been made
+                    visible to the user (will wait for CSS transitions to
+                    complete).
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>hide.te.modal</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event is fired immediately when the
+                    <code>hide</code> instance method has been called.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>hidden.te.modal</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event is fired when an offcanvas element has been
+                    hidden from the user (will wait for CSS transitions to
+                    complete).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Code-->
+    {{< twsnippet/no-demo id="api-example6" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example6">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+            const myOffcanvasEl = document.getElementById("myOffcanvas");
+            myOffcanvasEl.addEventListener("hidden.te.offcanvas", (e) => {
+              // do something...
+            });
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!-- Section: Code-->
+    <!-- Section: Events-->
+  </section>
+</section>

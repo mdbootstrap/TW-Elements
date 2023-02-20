@@ -1,0 +1,224 @@
+---
+title: "Tailwind - Dark mode"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Dark mode configuration in Tailwind"
+seo_title: "Tailwind CSS Dark mode"
+description: "Using Tailwind CSS to style your site in dark mode."
+image: "img/components-big.jpg"
+video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
+url: "docs/standard/getting-started/dark-mode/"
+menu:
+  gettingstarted:
+    name: "Dark mode"
+    weight: 2
+---
+
+<!-- Section: Introduction -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="introduction"
+    data-te-spy-item>
+    Introduction
+  </h2>
+
+  <!--Description-->
+  <p class="mb-3">
+    It is more and more common to design a dark version of your project to go
+    along with the default design. To make this as easy as possible, Tailwind
+    includes a
+    <code>dark</code> variant that lets you style your site differently when
+    dark mode is enabled: you can simply check this feature out by pressing
+    theme switcher located at the right corner or use a shortcut
+    <code>shift + D</code>.
+  </p>
+</section>
+<!-- Section: Introduction -->
+
+<!-- Section: Enabling dark mode -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="toggling"
+    data-te-spy-item>
+    Enabling dark mode
+  </h2>
+
+  <!--Description-->
+  <p class="mb-3">
+    By default dark mode uses the <code>prefers-color-scheme</code> CSS media
+    feature, but you can also build sites that support toggling dark mode
+    manually using the <code>class</code> strategy. After that all you got to do
+    is add <code>dark</code> class on your <code>html</code> element.
+  </p>
+
+  <p class="mb-3">
+    <code>darkMode: 'media'</code> is the default value and is not required to
+    write it explicit.
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example2" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "tailwind.config.js, index.html" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="javascript" >}}
+        module.exports = {
+          darkMode: 'class',
+          // ...
+        }
+      {{< /twsnippet/code >}}
+      {{< twsnippet/code lang="HTML" >}}
+      <!-- Dark mode not enabled -->
+      <html>
+        <body>
+          <!-- Will be white -->
+          <div class="bg-white dark:bg-black">
+            <!-- ... -->
+          </div>
+        </body>
+      </html>
+
+      <!-- Dark mode enabled -->
+      <html class="dark">
+        <body>
+          <!-- Will be black -->
+          <div class="bg-white dark:bg-black">
+            <!-- ... -->
+          </div>
+        </body>
+      </html>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+</section>
+<!-- Section: Enabling dark mode -->
+
+<!-- Section: Manual selection -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="manual"
+    data-te-spy-item>
+    Manually switching
+  </h2>
+
+  <!--Description-->
+  <p class="mb-3">
+    More practical is setting a manual type of changing version of your website.
+    By implementing this you need to write a little bit of JavaScript code. The
+    <code>class</code> strategy can be used to support both the user's system
+    preference or a manually selected mode by using the
+    <a
+      href="https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia"
+      class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700 dark:text-blue-400"
+      target="_blank"
+      rel="nofollow"
+      >Window.matchMedia() API</a
+    >.
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example5" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "index.html, theme.js" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div>
+        <a
+          id="theme-switcher"
+          class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-gray-700 hover:bg-gray-100 focus:bg-gray-200 focus:outline-none active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-100 dark:hover:bg-gray-600 focus:dark:bg-gray-600"
+          href="#"
+          data-theme="light">
+          <div class="pointer-events-none">
+            <div
+              class="inline-block w-[24px] text-center"
+              data-theme-icon="light">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="inline-block h-6 w-6">
+                <path
+                  d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+              </svg>
+            </div>
+            <span data-theme-name="light">Light</span>
+          </div>
+        </a>
+        <a
+          id="theme-switcher"
+          class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-gray-700 hover:bg-gray-100 focus:bg-gray-200 focus:outline-none active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-100 dark:hover:bg-gray-600 focus:dark:bg-gray-600"
+          href="#"
+          data-theme="dark"
+          data-te-dropdown-item-ref>
+          <div class="pointer-events-none">
+            <div
+              class="inline-block w-[24px] text-center"
+              data-theme-icon="dark">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="inline-block h-6 w-6">
+                <path
+                  fill-rule="evenodd"
+                  d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <span data-theme-name="dark">Dark</span>
+          </div>
+        </a>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="javascript" >}}
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        };
+
+        function setDarkTheme() {
+          document.documentElement.classList.add("dark");
+          localStorage.theme = "dark";
+        };
+      
+        function setLightTheme() {
+          document.documentElement.classList.remove("dark");
+          localStorage.theme = "light";
+        };
+
+        function onThemeSwitcherItemClick(event) {
+          const theme = event.target.dataset.theme;
+
+          if (theme === "system") {
+            localStorage.removeItem("theme");
+            setSystemTheme();
+          } else if (theme === "dark") {
+            setDarkTheme();
+          } else {
+            setLightTheme();
+          }
+        };
+
+        const themeSwitcherItems = document.querySelectorAll("#theme-switcher");
+        themeSwitcherItems.forEach((item) => {
+          item.addEventListener("click", onThemeSwitcherItemClick);
+        });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+</section>
+<!-- Section: Customizing the default theme -->

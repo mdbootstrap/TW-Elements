@@ -1,31 +1,31 @@
-const Path = require('path');
-const Webpack = require('webpack');
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const Path = require("path");
+const Webpack = require("webpack");
+const merge = require("webpack-merge");
+const common = require("./webpack.common.js");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const intro = require("./intro");
 
 let entry;
 
-if (process.env.mode === 'demo') {
+if (process.env.mode === "demo") {
   entry = {
-    'js/index': Path.resolve(__dirname, '../src/js/index.js'),
-    'css/index': Path.resolve(__dirname, '../src/css/index.css'),
-    'css/tailwind': Path.resolve(__dirname, '../src/scss/tailwind.scss'),
+    "js/index": Path.resolve(__dirname, "../src/js/index.js"),
+    "css/tailwind": Path.resolve(__dirname, "../src/scss/tailwind.scss"),
   };
 } else {
   entry = {
-    'js/index': Path.resolve(__dirname, '../src/js/index.js'),
-    'css/index': Path.resolve(__dirname, '../src/scss/cdn.scss'),
+    "js/index": Path.resolve(__dirname, "../src/js/index.js"),
+    "css/index": Path.resolve(__dirname, "../src/scss/tailwind.scss"),
   };
 }
 
 module.exports = merge(common, {
-  mode: 'production',
+  mode: "production",
   entry,
-  devtool: 'source-map',
-  stats: 'errors-only',
+  devtool: "source-map",
+  stats: "errors-only",
   bail: true,
   optimization: {
     minimizer: [
@@ -46,16 +46,26 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin(),
     new Webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+      "process.env.NODE_ENV": JSON.stringify("production"),
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
+    new Webpack.BannerPlugin({
+      banner: intro,
+      entryOnly: true,
+      include: /index\.min\.js/i,
+    }),
+    new Webpack.BannerPlugin({
+      banner: intro,
+      entryOnly: true,
+      include: /index\.min\.css/i,
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: "babel-loader",
       },
     ],
   },

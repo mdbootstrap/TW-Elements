@@ -1,0 +1,392 @@
+---
+---
+
+<!-- Section: Docs content-->
+<section>
+  <!-- Section: Usage-->
+  <section id="api-section-usage">
+    <!-- Title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      id="basic"
+      data-te-spy-item>
+      Usage
+    </h2>
+
+    <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
+
+    <!-- Section: Code-->
+    {{< twsnippet/no-demo id="api-example1" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example1">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="html" >}}
+        <ul
+          data-te-stepper-init
+          id="stepper"
+          class="relative m-0 flex w-3/4 list-none justify-between overflow-hidden p-0 transition-[height] duration-200 ease-in-out">
+          ...
+        </ul>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!-- Section: Code-->
+
+    <h4 class="mb-4 font-bold">Via JavaScript</h4>
+
+    <!-- Section: Code-->
+    {{< twsnippet/no-demo id="api-example4" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example4">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+              const stepper = new te.Stepper(document.getElementById('stepper'));
+            {{< /twsnippet/code >}}
+            {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!-- Section: Code-->
+    <!-- Section: Usage-->
+
+    <hr class="mb-5 dark:border-neutral-600" />
+
+    <!-- Section: Options-->
+    <section id="api-section-options">
+      <!-- Section title -->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+        data-te-spy-item>
+        Options
+      </h2>
+
+      <p>
+        Options can be passed via data attributes or JavaScript. For data
+        attributes, append the option name to <code>data-te-</code>, as in
+        <code>data-te-stepper-type="vertical"</code>.
+      </p>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-neutral-900 dark:border-neutral-500 dark:text-neutral-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Type
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Default
+                    </th>
+                    <th scope="col" class="px-6 py-4">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>stepperType</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      string
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>'horizontal'</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Set stepper view.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperLinear</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      boolean
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>false</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Set to <code>true</code> to use the linear stepper.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>stepperNoEditable</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      boolean
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>false</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Set to <code>true</code> to block editing of the completed
+                      step.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Options-->
+
+    <hr class="my-5 dark:border-neutral-600" />
+    <!-- Section: Classes-->
+
+    <!-- Section: Classes-->
+
+    <!-- <hr class="my-5 dark:border-neutral-600" /> -->
+
+    <!-- Section: Methods-->
+    <section id="api-section-methods">
+      <!-- Section title -->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+        data-te-spy-item>
+        Methods
+      </h2>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-neutral-900 dark:border-neutral-500 dark:text-neutral-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Method
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Description
+                    </th>
+                    <th scope="col" class="px-6 py-4">Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>changeStep</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Switch to the step given as the parameter.
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      <code>Stepper.changeStep()</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>getInstance</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Static method which allows you to get the stepper instance
+                      associated to a DOM element.
+                    </td>
+                    <td class="px-6 py-4">
+                      <code>Stepper.getInstance(myStepperEl)</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>getOrCreateInstance</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Static method which returns the stepper instance
+                      associated to a DOM element or create a new one in case it
+                      wasn't initialized.
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>Stepper.getOrCreateInstance(myStepperEl)</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>nextStep</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Switch to the next step.
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepper.nextStep()</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>previousStep</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Switch to the previous step.
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepper.previousStep()</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Code-->
+      {{< twsnippet/no-demo id="api-example5" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example5">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "JavaScript" >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code active=true lang="js" >}}
+                const myStepperEl = document.getElementById('stepper');
+                const stepper = new te.Stepper(myStepperEl);
+                stepper.nextStep();          
+              {{< /twsnippet/code >}}
+              {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+      <!-- Section: Code-->
+      <!-- Section: Methods-->
+
+      <hr class="mb-5 dark:border-neutral-600" />
+
+      <!-- Section: Events-->
+      <section id="api-section-events">
+        <!-- Section title -->
+        <h2
+          class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+          data-te-spy-item>
+          Events
+        </h2>
+
+        <div class="flex flex-col">
+          <div class="overflow-x-auto">
+            <div class="inline-block min-w-full py-2">
+              <div class="overflow-hidden">
+                <table
+                  class="min-w-full border text-left text-sm font-light text-neutral-900 dark:border-neutral-500 dark:text-neutral-100">
+                  <thead
+                    class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                    <tr>
+                      <th
+                        scope="col"
+                        class="border-r px-6 py-4 dark:border-neutral-500">
+                        Event type
+                      </th>
+                      <th scope="col" class="px-6 py-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>onChangeStep.te.stepper</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        Event emitted before the step change.
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>onValid.te.stepper</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        Event emitted after successful step validation.
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>onInvalid.te.stepper</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        Event emitted after unsuccessful step validation.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Code-->
+        {{< twsnippet/no-demo id="api-example6" >}}
+        <section
+          class="!visible hidden"
+          data-te-collapse-item
+          id="api-example6">
+          <div class="pt-4">
+            {{< twsnippet/wrapper "JavaScript" >}}
+            <!-- prettier-ignore -->
+            {{< twsnippet/code active=true lang="js" >}}
+                  const stepOne = document.querySelectorAll('[data-te-stepper-step-ref]')[0];
+                  stepOne.addEventListener('onChangeStep.mdb.stepper', () => {
+                    // do something...
+                  }); 
+                {{< /twsnippet/code >}}
+                {{< /twsnippet/wrapper >}}
+          </div>
+        </section>
+        <!-- Section: Code-->
+        <!-- Section: Events-->
+      </section>
+      <!-- Section: Docs content-->
+    </section>
+  </section>
+</section>

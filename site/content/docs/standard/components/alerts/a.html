@@ -1,0 +1,544 @@
+---
+---
+
+<!--Section: Docs content-->
+<section>
+  <!--Section: Usage-->
+  <section id="api-section-usage">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="basic"
+      data-te-spy-item>
+      Usage
+    </h2>
+
+    <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example1" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example1">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="html" >}}
+        <div
+          class="alert-dismissible mb-3 hidden w-full items-center rounded-lg bg-yellow-100 py-5 px-6 text-base text-yellow-700 data-[te-alert-show]:inline-flex"
+          role="alert"
+          data-te-alert-init
+          data-te-alert-show>
+          <strong class="mr-1">Holy guacamole! </strong> You should check in on
+          some of those fields below.
+          <button
+            type="button"
+            class="ml-auto box-content h-4 w-4 rounded-none border-none p-1 text-yellow-900 opacity-50 hover:text-yellow-900 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+            data-te-alert-dismiss
+            aria-label="Close">
+            <span
+              class="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="#000">
+                <path
+                  d="M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z" />
+              </svg>
+            </span>
+          </button>
+        </div>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <h5 class="font-bold">Dismiss</h5>
+
+    <p>
+      Dismissal can be achieved with <strong>data</strong> attributes on a
+      button <strong>within the alert</strong> as demonstrated below:
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example2" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="html" >}}
+        <button
+          type="button"
+          class="ml-auto box-content h-4 w-4 rounded-none border-none p-1 text-yellow-900 opacity-50 hover:text-yellow-900 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+          data-te-alert-dismiss
+          aria-label="Close"></button>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <p>
+      or on a button outside the alert using the <code>data-te-target</code> as
+      demonstrated below:
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example3" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example3">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="html" >}}
+        <button
+          type="button"
+          class="ml-auto box-content h-4 w-4 rounded-none border-none p-1 text-yellow-900 opacity-50 hover:text-yellow-900 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+          data-te-alert-dismiss
+          data-te-target="#my-alert"
+          aria-label="Close"></button>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <h4 class="font-bold">Via JavaScript</h4>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example4" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example4">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        te.Alert.getInstance(document.getElementById('myAlert')).update({
+          position: ...,
+          width: ...,
+        });
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Usage-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Options-->
+  <section id="api-section-options">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Options
+    </h2>
+
+    <p>
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to <code>data-te-</code>, as in
+      <code>data-te-delay="500"</code>.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Type
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>delay</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>1000</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets the length of animation delay.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>autohide</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Alerts will hide automatically or not.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>animation</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to animate appearing and disappearing of the alert.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Options-->
+
+  <hr class="my-5 dark:border-gray-600" />
+
+  <!--Section: Classes-->
+  <section id="api-section-classes">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Classes
+    </h2>
+
+    <p>
+      Custom classes can be passed via data attributes or JavaScript. For data
+      attributes, append the class name to
+      <code>data-te-class</code>, as in
+      <code>data-te-class-fadeIn="animate-[fade-in_0.5s_both]"</code>.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>fadeIn</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    animate-[fade-in_0.3s_both] p-[auto]
+                    motion-reduce:transition-none motion-reduce:animate-none
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets fadeIn animation styles.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>fadeOut</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    animate-[fade-out_0.3s_both] p-[auto]
+                    motion-reduce:transition-none motion-reduce:animate-none
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets fadeOut animation styles.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Classes-->
+
+  <hr class="my-5 dark:border-gray-600" />
+
+  <!--Section: Methods-->
+  <section id="api-section-methods">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Methods
+    </h2>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Method
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Description
+                  </th>
+                  <th scope="col" class="px-6 py-4">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>show</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Manually shows an alert.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myAlert.show()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>hide</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Manually hides an alert.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myAlert.hide()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>close</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Manually hides an alert (deletes it from DOM).
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myAlert.close()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>dispose</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Removes an <code>te.Alert</code> instance
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myAlert.dispose()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which allows you to get the alert instance
+                    associated to a DOM element.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Alert.getInstance()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getOrCreateInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which returns an alert instance associated to
+                    a DOM element or create a new one in case it wasn't
+                    initialized.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Alert.getOrCreateInstance()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>update</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Updates options of an <code>te.Alert</code> instance.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myAlert.update({position: 'top-right'})</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example5" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example5">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        te.Alert.getInstance(document.getElementById('myAlert')).show();
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+    <!--Section: Methods-->
+
+    <hr class="mb-5 dark:border-gray-600" />
+
+    <!--Section: Events-->
+    <section id="api-section-events">
+      <!-- Section title -->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        data-te-spy-item>
+        Events
+      </h2>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Event type
+                    </th>
+                    <th scope="col" class="px-6 py-4">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>close.te.alert</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Fires immediately when the close instance method is
+                      called.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>closed.te.alert</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Fired when the alert has been closed and CSS transitions
+                      have completed.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Section: Code-->
+      {{< twsnippet/no-demo id="api-example6" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example6">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "JavaScript" >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code active=true lang="js" >}}
+          const myAlertEl = document.getElementById('myAlert')
+          myAlertEl.addEventListener('close.te.alert', () => {
+            // do something...
+          });
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+      <!--Section: Code-->
+      <!--Section: Events-->
+    </section>
+  </section>
+</section>

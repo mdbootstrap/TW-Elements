@@ -1,0 +1,105 @@
+---
+title: "Extended documentation"
+date: 2023-02-08T10:00:00+02:00
+draft: false
+main_title: "Exteded documentation"
+seo_title: "Tailwind CSS Extended documentation"
+description: "Extended documentation with experimental components and functionalities."
+image: "https://tecdn.b-cdn.net/docs/standard/extended/bootstrap-address-form/assets/featured.jpg"
+url: "docs/standard/extended/"
+custom_links: "Main docs=https://tailwind-elements.com/"
+---
+
+<!--Section: Docs content-->
+<section>
+  <h1>Extended documentation</h1>
+  <p class="mb-4">
+    Extended documentation with experimental components and functionalities.
+  </p>
+
+  <!-- Extended docs -->
+  <section class="grid grid-cols-12">
+    <div class="col-span-8">
+      <div class="relative mb-5" data-te-input-wrapper-init>
+        <input
+          type="search"
+          id="pages-search-input"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-gray-200 dark:placeholder:text-gray-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          placeholder="Search"
+          aria-label="Search" />
+      </div>
+
+      <a
+        href="/docs/standard/extended/example/"
+        class="-mt-[1px] block border py-2 px-6 transition-colors duration-500 hover:bg-gray-100 active:bg-gray-200 dark:border-gray-600 dark:hover:bg-gray-700"
+        data-page-list-item
+        data-title="Example title"
+        data-desc="Example description">
+        <h5 class="my-1 text-lg font-bold">Example title</h5>
+        <p class="mb-1">Example description</p>
+      </a>
+
+      <hr class="my-10 dark:border-gray-600" />
+    </div>
+  </section>
+  <!-- Extended docs -->
+
+  <!-- How to docs -->
+  <section class="grid grid-cols-12">
+    <div class="col-span-8">
+      <h2 class="mb-4 text-[28px] font-bold">"How To" docs</h2>
+      <div>
+        <a
+          href="/how-to/example/"
+          class="block border border-b-0 py-2 px-6 transition-colors duration-500 first:rounded-t-lg last:rounded-b-lg last:!border-b hover:bg-gray-100 active:bg-gray-200 dark:border-gray-600 dark:hover:bg-gray-700">
+          <h5 class="my-1 text-lg font-semibold">How to ...</h5>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- How to docs -->
+</section>
+<!--Section: Docs content-->
+
+<script>
+  const searchInput = document.querySelector("#pages-search-input");
+  const pageItems = document.querySelectorAll("[data-page-list-item]");
+
+  const setItemsBorderRadius = (items) => {
+    if (items.length === 0) {
+      return;
+    }
+
+    items.forEach((item) => {
+      item.classList.remove("rounded-t-lg", "rounded-b-lg");
+    });
+
+    items[0].classList.add("rounded-t-lg");
+    items[items.length - 1].classList.add("rounded-b-lg");
+  };
+
+  setItemsBorderRadius(pageItems);
+
+  searchInput.addEventListener("input", (event) => {
+    const searchInputValue = event.target.value.toLowerCase();
+
+    let visiblePageItems = [];
+
+    pageItems.forEach((item) => {
+      const pageTitle = item.dataset.title.toLowerCase();
+      const pageDescription = item.dataset.desc.toLowerCase();
+
+      if (
+        pageTitle.indexOf(searchInputValue) === -1 &&
+        pageDescription.indexOf(searchInputValue) === -1
+      ) {
+        item.classList.add("hidden");
+      } else {
+        item.classList.remove("hidden");
+        visiblePageItems.push(item);
+      }
+
+      setItemsBorderRadius(visiblePageItems);
+    });
+  });
+</script>

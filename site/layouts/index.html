@@ -4,677 +4,951 @@
   <head>
     {{ partial "head/head.html" . }}
   </head>
-  <body style="background-color: hsl(0, 0%, 98%)">
-    {{ partial "header/header.html" . }}
-
+  <body class="bg-white transition-colors duration-500 dark:bg-neutral-800">
     <svg
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1440 320"
       preserveAspectRatio="none"
-      class="svg absolute hidden lg:block"
-      style="height: 570px; width: 100%; z-index: -10"
-    >
+      class="absolute top-[60px] hidden h-[580px] w-full transition-opacity duration-300 dark:opacity-0 lg:block">
       <defs>
-        <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
-          <stop stop-color="hsl(217, 91.2%, 99.1%)" offset="0%"></stop>
-          <stop stop-color="hsl(217, 91.2%, 90.1%)" offset="100%"></stop>
+        <linearGradient id="sw-gradient-light" x1="0" x2="0" y1="1" y2="0">
+          <stop stop-color="hsl(209, 92.2%, 92.1%)" offset="0%"></stop>
+          <stop stop-color="hsl(209, 92.2%, 99.1%)" offset="100%"></stop>
         </linearGradient>
       </defs>
       <path
-        fill="url(#sw-gradient-0)"
-        d="M 0.351 264.418 C 0.351 264.418 33.396 268.165 47.112 270.128 C 265.033 301.319 477.487 325.608 614.827 237.124 C 713.575 173.504 692.613 144.116 805.776 87.876 C 942.649 19.853 1317.845 20.149 1440.003 23.965 C 1466.069 24.779 1440.135 24.024 1440.135 24.024 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 264.418 Z"
-      ></path>
+        fill="url(#sw-gradient-light)"
+        d="M -0.664 3.46 C -0.664 3.46 405.288 15.475 461.728 21.285 C 601.037 35.625 672.268 76.086 701.056 97.646 C 756.056 138.838 797.267 216.257 857.745 245.156 C 885.704 258.516 980.334 280.547 1048.511 268.826 C 1121.622 256.256 1199.864 226.267 1214.176 220.176 C 1241.273 208.643 1280.201 191.509 1343.494 179.436 C 1434.325 162.111 1439.504 196.099 1439.503 183.204 C 1439.502 161.288 1440 0 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L -0.664 3.46 Z"></path>
     </svg>
 
-    <div id="gtmDC-frontpage-all" class="d-none d-lg-block" style="width:100%;height:74px;z-index:10;position:absolute;">
-    </div>
+    <svg
+      data-name="Layer 2"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1440 320"
+      preserveAspectRatio="none"
+      class="absolute top-[60px] hidden h-[580px] w-full opacity-0 transition-opacity duration-300 dark:opacity-100 lg:block">
+      <defs>
+        <linearGradient id="sw-gradient-dark" x1="0" x2="0" y1="1" y2="0">
+          <stop stop-color="hsl(240, 4%, 28%)" offset="0%"></stop>
+          <stop stop-color="hsl(0, 0%, 15%)" offset="100%"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        fill="url(#sw-gradient-dark)"
+        d="M -0.664 3.46 C -0.664 3.46 405.288 15.475 461.728 21.285 C 601.037 35.625 672.268 76.086 701.056 97.646 C 756.056 138.838 797.267 216.257 857.745 245.156 C 885.704 258.516 980.334 280.547 1048.511 268.826 C 1121.622 256.256 1199.864 226.267 1214.176 220.176 C 1241.273 208.643 1280.201 191.509 1343.494 179.436 C 1434.325 162.111 1439.504 196.099 1439.503 183.204 C 1439.502 161.288 1440 0 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L -0.664 3.46 Z"></path>
+    </svg>
 
-    <div class="container mt-24 mx-auto xl:max-w-screen-xl 2xl:px-0 px-5">
+    {{ partial "header/header.html" . }}
+
+
+    <nav
+      id="sidenav-main"
+      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      data-te-sidenav-init
+      data-te-sidenav-mode="over"
+      data-te-sidenav-content="#page-content"
+      data-te-sidenav-accordion="true">
+      <a
+        href="/"
+        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium outline-none dark:text-neutral-100"
+        aria-current="page"
+        ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
+        Tailwind Elements</a
+      >
+      {{ partial "sidenav/standard.html" . }}
+    </nav>
+
+    <div
+      id="gtmDC-frontpage-all"
+      class="absolute top-[60px] z-10 hidden h-[74px] w-full lg:block"></div>
+
+    <main class="relative leading-[1.6]">
       <!-- Section: Intro -->
-      <section class="mb-20 pb-20">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 flex items-center">
-          <div class="">
-            <h1 class="mb-8 mt-0">Tailwind <span class="text-blue-700">Elements</span></h1>
-
-            <p class="text-gray-600 text-lg mb-8">
-              Bootstrap components recreated with Tailwind CSS, but with better design and more
-              functionalities.
-            </p>
-
-            <div class="">
-              <ol class="mb-10 text-gray-600 text-md">
-                <li class="mb-3">
-                  <i class="fas fa-check text-blue-700 mr-3"></i>500+ UI components
-                </li>
-                <li class="mb-3">
-                  <i class="fas fa-check text-blue-700 mr-3"></i>Super simple, 1 minute installation
-                </li>
-                <li class="mb-3"><i class="fas fa-check text-blue-700 mr-3"></i>Free hosting</li>
-                <li class="">
-                  <i class="fas fa-check text-blue-700 mr-3"></i>MIT license - free for personal
-                  &amp; commercial use
-                </li>
-              </ol>
-
-              <div class="flex items-center">
-                <a
-                  class="px-14 py-4 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mr-4"
-                  href="/quick-start/"
-                  role="button"
-                  >Get started</a
+      <section
+        class="mx-auto mt-24 mb-[64px] pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+        <div class="grid grid-cols-1 items-center pt-6 lg:grid-cols-12">
+          <div class="relative mx-3 text-center lg:col-span-5 lg:text-left">
+            <div>
+              <h1 class="mb-8 mt-0 text-4xl font-bold">
+                Top quality<br />
+                <span class="text-primary dark:text-primary-400"
+                  >open-source UI Kit</span
                 >
+              </h1>
 
-                <a
-                  href="https://github.com/mdbootstrap/Tailwind-Elements/"
-                  target="_blank"
-                  class="text-gray-800"
-                >
-                  <i class="fab fa-github" style="font-size: 40px"></i>
-                </a>
+              <p
+                class="mb-8 text-sm font-medium text-gray-600 dark:text-gray-400">
+                Bootstrap components recreated with Tailwind CSS, but with
+                better design and more functionalities
+              </p>
+
+              <div class="">
+                <ol class="text-md mb-10 text-gray-600 dark:text-gray-400">
+                  <li class="mb-4">
+                    <span
+                      class="mr-2 inline-block pb-1 align-middle text-primary dark:text-primary-400">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="3"
+                        stroke="currentColor"
+                        class="h-5 w-5">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5" />
+                      </svg> </span
+                    >500+ UI components
+                  </li>
+                  <li class="mb-4">
+                    <span
+                      class="mr-2 inline-block pb-1 align-middle text-primary dark:text-primary-400">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="3"
+                        stroke="currentColor"
+                        class="h-5 w-5">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5" />
+                      </svg> </span
+                    >Super simple, 1 minute installation
+                  </li>
+                  <li class="mb-4">
+                    <span
+                      class="mr-2 inline-block pb-1 align-middle text-primary dark:text-primary-400">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="3"
+                        stroke="currentColor"
+                        class="h-5 w-5">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5" />
+                      </svg> </span
+                    >Easy theming and customization
+                  </li>
+                  <li class="mb-4">
+                    <span
+                      class="mr-2 inline-block pb-1 align-middle text-primary dark:text-primary-400">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="3"
+                        stroke="currentColor"
+                        class="h-5 w-5">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5" />
+                      </svg> </span
+                    >Free hosting
+                  </li>
+                </ol>
+
+                <div class="flex items-center justify-center lg:justify-start">
+                  <a
+                    class="mr-4 inline-block rounded bg-primary px-12 pt-3 pb-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                    href="docs/standard/getting-started/quick-start/"
+                    role="button"
+                    data-te-ripple-init
+                    data-te-ripple-color="light"
+                    >Get started</a
+                  >
+
+                  <a
+                    href="https://github.com/mdbootstrap/Tailwind-Elements/"
+                    target="_blank"
+                    class="text-gray-800 focus:text-gray-600 focus:outline-none active:text-gray-600 dark:text-gray-200">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-10 w-10"
+                      fill="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <div class="rounded-lg shadow-lg bg-white"> <a href="https://www.youtube.com/watch?v=-GmnyjgI4Jc" target="_blank"> <img class="rounded-t-lg" src="https://tailwind-elements.com/img/tailwind-video.png" alt="TailwindVideo"> </a></div>
+          <div class="mx-3 mt-5 flex justify-center lg:col-span-7 lg:mt-0">
+            <picture>
+              <source
+                srcset="https://tecdn.b-cdn.net/img/home/main.webp"
+                type="image/webp" />
+              <img
+                src="https://tecdn.b-cdn.net/img/home/main.png"
+                class="w-100"
+                alt="" />
+            </picture>
+          </div>
         </div>
       </section>
       <!-- Section: Intro -->
 
-      <!-- Section: Main -->
-      <section id="section-main" class="mb-20 pb-20">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center">
-          <!-- Card -->
-          <div>
-            <a href="#section-components" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/components.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/components.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Components</p>
+      <!-- Section: Essential -->
+      <section
+        class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+        <div class="relative mx-3 mb-6 flex items-center lg:col-span-5 lg:mb-0">
+          <div class="text-center lg:text-left">
+            <h4
+              class="pb-2 text-[1.5rem] font-bold text-gray-600 dark:text-gray-200">
+              Key components that will save your time
+            </h4>
+            <p class="pb-6 font-medium text-gray-500  dark:text-gray-400">
+              Open source license
+            </p>
+            <p class="pb-6 text-gray-500 dark:text-gray-400">
+              A collection of stunning components made with attention to the
+              smallest details. Forms, cards, buttons, and hundreds of others –
+              in Tailwind Elements you will find all the essential elements
+              necessary for every project.
+            </p>
+            <div class="flex justify-center lg:justify-start">
+              <a
+                class="rounded bg-primary-100 px-5 py-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                href="/docs/standard/getting-started/quick-start/"
+                role="button"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+                >Explore</a
+              >
+            </div>
           </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="#section-blocks" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/design-blocks.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/design-blocks.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Design blocks (sections)</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="docs/standard/templates/"class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/templates.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/templates.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Templates <small>(coming soon)</small></p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="https://mdbgo.com/" target="_blank" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/free-hosting.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/free-hosting.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Free hosting</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/snippets/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/playground.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/playground.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Playground</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/builder/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/drag-and-drop.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/drag-and-drop.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Drag &amp; drop builder <small>(coming soon, but try out our <a href="https://mdb-builder.com/" target="_blank" class="text-blue-500">Bootstrap Builder</a> )</small></p>
-
-          </div>
-          <!-- Card -->
+        </div>
+        <div class="mx-3 mb-4 flex items-center lg:col-span-7 lg:mb-0">
+          <picture>
+            <source
+              srcset="https://tecdn.b-cdn.net/img/home/essential.webp"
+              type="image/webp" />
+            <img
+              src="https://tecdn.b-cdn.net/img/home/essential.png"
+              class="w-100"
+              alt="" />
+          </picture>
         </div>
       </section>
-      <!-- Section: Main -->
+      <!-- Section: Essential -->
 
-      <!-- Section: Components -->
-      <section id="section-components" class="mb-20 pb-20">
-        <h2 class="font-medium leading-tight text-4xl mt-0 mb-20 text-center">Components</h2>
+      <!-- Section: Theming -->
+      <section class="relative">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-light"
+          class="pointer-events-none absolute hidden w-full overflow-hidden transition-opacity duration-300 dark:opacity-0 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-light"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="0%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 92.1%)" offset="50%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 98%)" offset="80%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-light)"
+            d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-dark"
+          class="pointer-events-none absolute hidden w-full opacity-0 transition-opacity duration-300 dark:opacity-100 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-dark"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(0, 0%, 24%)" offset="0%"></stop>
+              <stop stop-color="hsl(0, 0%, 19%)" offset="50%"></stop>
+              <stop stop-color="hsl(0, 0%, 17%)" offset="80%"></stop>
+              <stop stop-color="hsl(0, 0%, 15%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-dark)"
+            d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
+        </svg>
+        <div
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+          <div
+            class="relative order-1 mx-6 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
+            <div class="text-center lg:text-left">
+              <h4
+                class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
+                Easy theming
+              </h4>
+              <p class="pb-6 font-medium text-gray-500  dark:text-gray-400">
+                Dark mode and custom themes
+              </p>
+              <div class="mb-4 flex justify-center lg:justify-start">
+                <input
+                  class="float-left mt-px h-[20px] w-9 cursor-pointer appearance-none rounded-full bg-gray-300 bg-contain bg-no-repeat align-top shadow-sm outline-none before:absolute before:z-[2] before:mt-0.5 before:ml-0.5 before:h-[16px] before:w-[16px] before:rounded-full before:border-0 before:bg-white before:content-[''] before:[transition:background-color_.2s,transform_.2s] checked:bg-primary-600 before:checked:[transform:translateX(16px)] focus:outline-none"
+                  type="checkbox"
+                  role="switch"
+                  data-te-theme-toggler
+                  id="theme-toggler" />
+                <label
+                  class="inline-block cursor-pointer pl-2 text-gray-500 dark:text-gray-400"
+                  for="theme-toggler"
+                  >Toggle dark mode</label
+                >
+              </div>
+              <p class="pb-4 text-gray-500 dark:text-gray-400">
+                With Tailwind Elements, adding a dark mode to your project is
+                child's play. Using tailwind's classes in combination with a
+                <i>dark</i> variant you can easily integrate any website with
+                two themes. We have included the dark theme variant by default
+                in all our components!
+              </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center mb-10">
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/forms/datepicker/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/datepicker.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/datepicker.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Datepicker</p>
+              <p class="pb-6 text-gray-500 dark:text-gray-400">
+                In addition, as in any tailwind project, it is possible to
+                customize the default theme by overwriting project's color
+                palette, type scale, fonts, breakpoints, border radius values,
+                and more via <i>tailwind.config.js</i> configuration file.
+              </p>
+            </div>
           </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/components/dropdown/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/dropdown.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/dropdown.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Dropdown</p>
+          <div
+            class="relative order-2 mb-4 flex items-center lg:order-1 lg:col-span-7 lg:mb-0">
+            <picture>
+              <source
+                id="theming-image"
+                srcset="https://tecdn.b-cdn.net/img/home/theme-light.webp"
+                type="image/webp" />
+              <img
+                src="https://ascensus-mdb-new.mdbgo.io/img/theme-light.png"
+                class="absolute left-0 top-0 w-full px-4 transition-opacity duration-500 dark:opacity-0"
+                id="img-light-theme"
+                alt="TE light theme components preview" />
+            </picture>
+            <picture>
+              <source
+                id="theming-image"
+                srcset="https://tecdn.b-cdn.net/img/home/theme-dark.webp"
+                type="image/webp" />
+              <img
+                id="img-dark-theme"
+                class="w-full px-4 opacity-0 transition-opacity duration-500  dark:opacity-100"
+                alt="TE dark theme components preview" />
+            </picture>
           </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/components/modal/" class="block mb-5">
-              <picture>
-                <source srcset="https://mdbootstrap.com/img/tw-demo/modal.webp" type="image/webp" />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/modal.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Modal</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/components/charts/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/charts.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/charts.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Charts</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/components/tooltip/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/tooltips-1.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/tooltips-1.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Tooltips</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/components/carousel/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/carousel.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/carousel.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Carousel</p>
-          </div>
-          <!-- Card -->
-
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/components/accordion/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/accordion.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/accordion.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Accordion</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/navigation/tabs/" class="block mb-5">
-              <picture>
-                <source srcset="https://mdbootstrap.com/img/tw-demo/tabs.webp" type="image/webp" />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/tabs.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Tabs</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/components/stepper/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/stepper.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/stepper.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Stepper</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/forms/timepicker/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/timepicker.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/timepicker.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Timepicker</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/navigation/footer/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/footer.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/footer.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Footer</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/navigation/navbar/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/navbar.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/navbar.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Navbar</p>
-          </div>
-          <!-- Card -->
-        </div>
-
-        <div class="flex justify-center text-center">
-          <a
-            class="px-8 py-4 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-md focus:bg-blue-700 focus:shadow-md focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-md transition duration-150 ease-in-out"
-            href="/quick-start/"
-            role="button"
-            >View all components</a
-          >
         </div>
       </section>
-      <!-- Section: Components -->
+      <!-- Section: Theming -->
 
-      <!-- Section: Design blocks -->
-      <section id="section-blocks" class="mb-20 pb-20">
-        <h2 class="font-medium leading-tight text-4xl mt-0 mb-20 text-center">Design blocks</h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center mb-10">
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/hero-sections/" class="block mb-5">
-              <picture>
-                <source srcset="https://mdbootstrap.com/img/tw-demo/hero.webp" type="image/webp" />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/hero.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Hero</p>
+      <!-- Section: Design system -->
+      <section class="relative">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-light"
+          class="pointer-events-none absolute hidden w-full overflow-hidden transition-opacity duration-300 dark:opacity-0 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-light"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="0%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 92.1%)" offset="50%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 98%)" offset="80%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-light)"
+            d="M -0.664 3.46 C -0.664 3.46 405.288 15.475 461.728 21.285 C 601.037 35.625 672.268 76.086 701.056 97.646 C 756.056 138.838 797.267 216.257 857.745 245.156 C 885.704 258.516 980.334 280.547 1048.511 268.826 C 1121.622 256.256 1199.864 226.267 1214.176 220.176 C 1241.273 208.643 1280.201 191.509 1343.494 179.436 C 1434.325 162.111 1439.504 196.099 1439.503 183.204 C 1439.502 161.288 1440 0 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L -0.664 3.46 Z"></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-dark"
+          class="pointer-events-none absolute hidden w-full opacity-0 transition-opacity duration-300 dark:opacity-100 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-dark"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(0, 0%, 24%)" offset="0%"></stop>
+              <stop stop-color="hsl(0, 0%, 19%)" offset="50%"></stop>
+              <stop stop-color="hsl(0, 0%, 17%)" offset="80%"></stop>
+              <stop stop-color="hsl(0, 0%, 15%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-dark)"
+            d="M -0.664 3.46 C -0.664 3.46 405.288 15.475 461.728 21.285 C 601.037 35.625 672.268 76.086 701.056 97.646 C 756.056 138.838 797.267 216.257 857.745 245.156 C 885.704 258.516 980.334 280.547 1048.511 268.826 C 1121.622 256.256 1199.864 226.267 1214.176 220.176 C 1241.273 208.643 1280.201 191.509 1343.494 179.436 C 1434.325 162.111 1439.504 196.099 1439.503 183.204 C 1439.502 161.288 1440 0 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L -0.664 3.46 Z"></path>
+        </svg>
+        <div
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+          <div
+            class="relative mx-3 mb-6 flex items-center lg:col-span-5 lg:mb-0">
+            <div class="text-center lg:text-left">
+              <h4
+                class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
+                A design system that will make your projects stand out
+              </h4>
+              <p class="pb-6 font-medium text-gray-500  dark:text-gray-400">
+                Elegant, subtle and classy
+              </p>
+              <p class="pb-6 text-gray-500 dark:text-gray-400">
+                Tired of the default Material Design, but still want to use the
+                potential of a Google standard? The Tailwind Elements design
+                system, called Material Minimal, is the perfect choice for you –
+                it combines the best of Material Design, but adds subtlety,
+                elegance and a unique taste to it.
+              </p>
+            </div>
           </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/pricing/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/pricing.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/pricing.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Pricing</p>
+          <div
+            class="relative mx-3 mb-4 flex items-center lg:col-span-7 lg:mb-0">
+            <picture>
+              <source
+                srcset="https://tecdn.b-cdn.net/img/home/design-system.webp"
+                type="image/webp" />
+              <img
+                src="https://tecdn.b-cdn.net/img/home/design-system.png"
+                class="w-100"
+                alt="" />
+            </picture>
           </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/cta/" class="block mb-5">
-              <picture>
-                <source srcset="https://mdbootstrap.com/img/tw-demo/cta.webp" type="image/webp" />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/cta.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Call to action</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/features/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/features.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/features.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Features</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/contact/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/contact.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/contact.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Contact</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/news/" class="block mb-5">
-              <picture>
-                <source srcset="https://mdbootstrap.com/img/tw-demo/news.webp" type="image/webp" />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/news.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">News / blog</p>
-          </div>
-          <!-- Card -->
-
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/team/" class="block mb-5">
-              <picture>
-                <source srcset="https://mdbootstrap.com/img/tw-demo/team.webp" type="image/webp" />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/team.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Team</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/stats/" class="block mb-5">
-              <picture>
-                <source srcset="https://mdbootstrap.com/img/tw-demo/stats.webp" type="image/webp" />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/stats.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Stats</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/testimonials/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/testimonials.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/testimonials.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Testimonials</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/content/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/content.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/content.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Content</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/newsletter/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/newsletter.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/newsletter.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Newsletter</p>
-          </div>
-          <!-- Card -->
-          <!-- Card -->
-          <div>
-            <a href="/docs/standard/designblocks/project-sections/" class="block mb-5">
-              <picture>
-                <source
-                  srcset="https://mdbootstrap.com/img/tw-demo/projects.webp"
-                  type="image/webp"
-                />
-                <img
-                  src="https://mdbootstrap.com/img/tw-demo/projects.jpg"
-                  class="rounded-lg shadow-md bg-white w-full"
-                  alt=""
-                />
-              </picture>
-            </a>
-
-            <p class="font-semibold">Projects</p>
-          </div>
-          <!-- Card -->
-        </div>
-
-        <div class="flex justify-center text-center">
-          <a
-            class="px-8 py-4 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-md focus:bg-blue-700 focus:shadow-md focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-md transition duration-150 ease-in-out"
-            href="/docs/standard/designblocks/landing-page/"
-            role="button"
-            >View all design blocks</a
-          >
         </div>
       </section>
-      <!-- Section: Design blocks -->
-    </div>
+      <!-- Section: Design system -->
+
+      <!-- Section: Customize -->
+      <section class="relative">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-light"
+          class="pointer-events-none absolute hidden w-full overflow-hidden transition-opacity duration-300 dark:opacity-0 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-light"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="0%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 92.1%)" offset="50%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 98%)" offset="80%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-light)"
+            d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-dark"
+          class="pointer-events-none absolute hidden w-full opacity-0 transition-opacity duration-300 dark:opacity-100 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-dark"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(0, 0%, 24%)" offset="0%"></stop>
+              <stop stop-color="hsl(0, 0%, 19%)" offset="50%"></stop>
+              <stop stop-color="hsl(0, 0%, 17%)" offset="80%"></stop>
+              <stop stop-color="hsl(0, 0%, 15%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-dark)"
+            d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
+        </svg>
+        <div
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+          <div
+            class="relative order-1 mx-3 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
+            <div class="text-center lg:text-left">
+              <h4
+                class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
+                Customize whatever you want
+              </h4>
+              <p class="pb-6 font-medium text-gray-500  dark:text-gray-400">
+                Powerful and simple API
+              </p>
+              <p class="pb-4 text-gray-500 dark:text-gray-400">
+                Components, navigation, forms – Tailwind Elements provides an
+                easy-to-use API that allows you to customize everything
+                according to your needs and taste.
+              </p>
+              <p class="pb-6 text-gray-500 dark:text-gray-400">
+                We enable class customization of all elements nested inside
+                advanced components. The same goes for options and even icons.
+                We give full freedom to choose a set of icons in the project.
+                You can even select several different libraries and our
+                components will display any icon easily.
+              </p>
+            </div>
+          </div>
+          <div
+            class="relative order-2 mx-3 mb-4 flex items-center lg:order-1 lg:col-span-7 lg:mb-0">
+            <picture>
+              <source
+                srcset="
+                  https://tecdn.b-cdn.net/img/home/customize-whatever-you-want.webp
+                "
+                type="image/webp" />
+              <img
+                src="https://tecdn.b-cdn.net/img/home/customize-whatever-you-want.png"
+                class="w-100"
+                alt="" />
+            </picture>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Customize -->
+
+      <!-- Section: Community support -->
+      <section class="relative">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-light"
+          class="pointer-events-none absolute hidden w-full overflow-hidden transition-opacity duration-300 dark:opacity-0 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-light"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="0%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 92.1%)" offset="50%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 98%)" offset="80%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-light)"
+            d="M -0.664 3.46 C -0.664 3.46 405.288 15.475 461.728 21.285 C 601.037 35.625 672.268 76.086 701.056 97.646 C 756.056 138.838 797.267 216.257 857.745 245.156 C 885.704 258.516 980.334 280.547 1048.511 268.826 C 1121.622 256.256 1199.864 226.267 1214.176 220.176 C 1241.273 208.643 1280.201 191.509 1343.494 179.436 C 1434.325 162.111 1439.504 196.099 1439.503 183.204 C 1439.502 161.288 1440 0 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L -0.664 3.46 Z"></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-dark"
+          class="pointer-events-none absolute hidden w-full opacity-0 transition-opacity duration-300 dark:opacity-100 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-dark"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(0, 0%, 24%)" offset="0%"></stop>
+              <stop stop-color="hsl(0, 0%, 19%)" offset="50%"></stop>
+              <stop stop-color="hsl(0, 0%, 17%)" offset="80%"></stop>
+              <stop stop-color="hsl(0, 0%, 15%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-dark)"
+            d="M -0.664 3.46 C -0.664 3.46 405.288 15.475 461.728 21.285 C 601.037 35.625 672.268 76.086 701.056 97.646 C 756.056 138.838 797.267 216.257 857.745 245.156 C 885.704 258.516 980.334 280.547 1048.511 268.826 C 1121.622 256.256 1199.864 226.267 1214.176 220.176 C 1241.273 208.643 1280.201 191.509 1343.494 179.436 C 1434.325 162.111 1439.504 196.099 1439.503 183.204 C 1439.502 161.288 1440 0 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L -0.664 3.46 Z"></path>
+        </svg>
+        <div
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+          <div
+            class="relative mx-3 mb-6 flex items-center lg:col-span-5 lg:mb-0">
+            <div class="text-center lg:text-left">
+              <h4
+                class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
+                Community support
+              </h4>
+              <p class="pb-6 font-medium text-gray-500  dark:text-gray-400">
+                Our joint work and passion
+              </p>
+              <p class="pb-6 text-gray-500 dark:text-gray-400">
+                Our source code is publicly available, as is project management.
+                We are grateful for every submitted issue or feature request.
+                Thanks to this, we can constantly develop and improve the
+                quality of our UI KIT, together with you!
+              </p>
+            </div>
+          </div>
+          <div
+            class="relative mx-3 mb-4 flex items-center lg:col-span-7 lg:mb-0">
+            <picture>
+              <source
+                srcset="https://tecdn.b-cdn.net/img/home/community-support.webp"
+                type="image/webp" />
+              <img
+                src="https://tecdn.b-cdn.net/img/home/community-support.png"
+                class="w-100"
+                alt="" />
+            </picture>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Community support -->
+
+      <!-- Section: MDB GO -->
+      <section
+        class="mx-auto mt-24 mb-[64px] px-3 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+        <div class="text-center">
+          <h4
+            class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
+            Use
+            <a
+              href="https://mdbgo.com/"
+              class="text-primary underline dark:text-primary-400"
+              target="_blank"
+              >MDB GO</a
+            >
+            - Free hosting & deployment tool
+          </h4>
+          <p class="pb-14 font-medium text-gray-500  dark:text-gray-400">
+            Publish with a single command
+          </p>
+        </div>
+
+        <div class="mx-auto w-full px-3 min-[992px]:w-1/2">
+          <ol class="mb-10 border-l border-gray-300 pl-8 dark:border-gray-600">
+            <li>
+              <div class="flex-start relative mt-3 flex items-center">
+                <div
+                  class="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="h-5 w-5 text-primary">
+                    <path
+                      d="M11 5a3 3 0 11-6 0 3 3 0 016 0zM2.615 16.428a1.224 1.224 0 01-.569-1.175 6.002 6.002 0 0111.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 018 18a9.953 9.953 0 01-5.385-1.572zM16.25 5.75a.75.75 0 00-1.5 0v2h-2a.75.75 0 000 1.5h2v2a.75.75 0 001.5 0v-2h2a.75.75 0 000-1.5h-2v-2z" />
+                  </svg>
+                </div>
+                <p class="text-sm font-bold text-gray-500 dark:text-gray-400">
+                  Step 1
+                </p>
+              </div>
+              <div class="mt-0.5 mb-12">
+                <h4
+                  class="mb-1.5 text-xl font-semibold text-gray-800 dark:text-gray-200">
+                  Create a free account
+                </h4>
+                <p class="mb-3 text-gray-500 dark:text-gray-400">
+                  30 seconds, a few clicks, and it's done.
+                </p>
+                <p class="mb-3 text-gray-500 dark:text-gray-400">
+                  If you already have an account on mdbootstrap.com you don't
+                  need to register, you can just use that.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="flex-start relative flex items-center pt-3">
+                <div
+                  class="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="h-5 w-5 text-primary">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                  </svg>
+                </div>
+                <p class="text-sm font-bold text-gray-500 dark:text-gray-400">
+                  Step 2
+                </p>
+              </div>
+              <div class="mt-0.5 mb-12">
+                <h4
+                  class="mb-1.5 text-xl font-semibold text-gray-800 dark:text-gray-200">
+                  Install the MDB CLI
+                </h4>
+                <p class="mb-3 text-gray-500 dark:text-gray-400">
+                  Open your terminal and install the MDB CLI globally by
+                  entering the command below.
+                </p>
+                <div
+                  data-te-copy-to-clipboard
+                  class="relative inline-block w-64 cursor-pointer rounded bg-black py-2 pl-3 text-primary-300 dark:text-primary-300"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <code
+                    class="pointer-events-none text-primary-300 dark:text-primary-300"
+                    >npm install -g mdb-cli</code
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="pointer-events-none absolute right-0 top-0 mt-2 mr-2 h-5 w-5">
+                    >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                  </svg>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flex-start relative flex items-center pt-3">
+                <div
+                  class="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="h-5 w-4 -rotate-90 text-primary">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  </svg>
+                </div>
+                <p class="text-sm font-bold text-gray-500 dark:text-gray-400">
+                  Step 3
+                </p>
+              </div>
+              <div class="mt-0.5 mb-12">
+                <h4
+                  class="mb-1.5 text-xl font-semibold text-gray-800 dark:text-gray-200">
+                  Log in
+                </h4>
+                <p class="mb-3 text-gray-500 dark:text-gray-400">
+                  Enter the following command in the terminal, and then log in
+                  using your details from step 1.
+                </p>
+                <div
+                  data-te-copy-to-clipboard
+                  class="relative inline-block w-64 cursor-pointer rounded bg-black py-2 pl-3 text-primary-300 dark:text-primary-300"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <code
+                    class="pointer-events-none text-primary-300 dark:text-primary-300"
+                    >mdb login</code
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="pointer-events-none absolute right-0 top-0 mt-2 mr-2 h-5 w-5">
+                    >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                  </svg>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flex-start relative flex items-center pt-3">
+                <div
+                  class="absolute -left-12 flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-5 w-5 text-primary">
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.5 3.75a6 6 0 00-5.98 6.496A5.25 5.25 0 006.75 20.25H18a4.5 4.5 0 002.206-8.423 3.75 3.75 0 00-4.133-4.303A6.001 6.001 0 0010.5 3.75zm2.03 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v4.94a.75.75 0 001.5 0v-4.94l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <p class="text-sm font-bold text-gray-500 dark:text-gray-400">
+                  Step 4
+                </p>
+              </div>
+              <div class="mt-0.5 mb-12">
+                <h4
+                  class="mb-1.5 text-xl font-semibold text-gray-800 dark:text-gray-200">
+                  Publish your project to the internet
+                </h4>
+                <p class="mb-3 text-gray-500 dark:text-gray-400">
+                  In the terminal, go to the folder where your project is
+                  located. Then enter the command below, accept or fill in your
+                  project's options and it's ready! After a few seconds, your
+                  project will be available on the Internet. And yes, it is that
+                  simple.
+                </p>
+                <div
+                  data-te-copy-to-clipboard
+                  class="relative inline-block w-64 cursor-pointer rounded bg-black py-2 pl-3 text-primary-300 dark:text-primary-300"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <code
+                    class="pointer-events-none text-primary-300 dark:text-primary-300"
+                    >mdb publish</code
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="pointer-events-none absolute right-0 top-0 mt-2 mr-2 h-5 w-5">
+                    >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                  </svg>
+                </div>
+              </div>
+            </li>
+          </ol>
+          <p class="text-gray-600 dark:text-gray-300">
+            This is just the beginning of the adventure. To find out about all
+            the possibilities, go to the
+            <a
+              href="https://mdbgo.com/docs/getting-started/overview/"
+              class="text-primary-700 underline dark:text-primary-400"
+              target="_blank"
+              >getting started</a
+            >
+            page.
+          </p>
+        </div>
+      </section>
+      <!-- Section: MDB GO -->
+
+      <!-- Section: Coming soon -->
+      <section class="relative">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-light"
+          class="pointer-events-none absolute hidden w-full overflow-hidden transition-opacity duration-300 dark:opacity-0 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-light"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="0%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 92.1%)" offset="50%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 98%)" offset="80%"></stop>
+              <stop stop-color="hsl(209, 92.2%, 100%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-light)"
+            d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          id="svg-theming-dark"
+          class="pointer-events-none absolute hidden w-full opacity-0 transition-opacity duration-300 dark:opacity-100 lg:block">
+          <defs>
+            <linearGradient
+              id="gradient-svg-theming-dark"
+              x1="0"
+              x2="0"
+              y1="1"
+              y2="0">
+              <stop stop-color="hsl(0, 0%, 24%)" offset="0%"></stop>
+              <stop stop-color="hsl(0, 0%, 19%)" offset="50%"></stop>
+              <stop stop-color="hsl(0, 0%, 17%)" offset="80%"></stop>
+              <stop stop-color="hsl(0, 0%, 15%)" offset="100%"></stop>
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#gradient-svg-theming-dark)"
+            d="M 0.351 306.998 C 0.351 306.998 106.387 303.855 120.22 303.067 C 376.703 288.465 418.036 245.269 555.376 156.785 C 654.124 93.165 748.046 49.314 901.379 38.868 C 1053.87 28.479 1440.135 82.672 1440.135 82.672 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 L 0.351 306.998 Z"></path>
+        </svg>
+        <div
+          class="mx-auto mt-24 mb-[64px] grid grid-cols-1 pb-[64px] min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] lg:grid-cols-12 min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
+          <div
+            class="relative order-1 mx-3 mb-6 flex items-center lg:order-2 lg:col-span-5 lg:mb-0">
+            <div class="text-center lg:text-left">
+              <h4
+                class="pb-2 text-[1.5rem] font-bold leading-tight text-gray-600 dark:text-gray-200">
+                Coming soon
+              </h4>
+              <p class="pb-6 font-medium text-gray-500  dark:text-gray-400">
+                Templates, Builder, Tutorials, new Design Blocks, new Components
+              </p>
+              <p class="pb-4 text-gray-500 dark:text-gray-400">
+                We are planning to release new elements and improvements in the
+                upcoming future as well as try to launch this project on sites
+                like Product Hunt.
+              </p>
+              <p class="pb-6 text-gray-500 dark:text-gray-400">
+                We will be honored if you decide to leave your email address in
+                order to keep in touch and support us in this.
+              </p>
+              <a
+                class="rounded bg-primary-100 px-5 py-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                href="/builder/"
+                role="button"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+                >Waiting list</a
+              >
+            </div>
+          </div>
+          <div
+            class="relative order-2 mx-3 mb-4 flex items-center lg:order-1 lg:col-span-7 lg:mb-0">
+            <picture>
+              <source
+                srcset="https://tecdn.b-cdn.net/img/home/templates.webp"
+                type="image/webp" />
+              <img
+                src="https://tecdn.b-cdn.net/img/home/templates.png"
+                class="w-100"
+                alt="" />
+            </picture>
+          </div>
+        </div>
+      </section>
+      <!-- Section: Coming soon -->
+    </main>
 
     <!-- <div class="container mx-auto mt-4 pt-12">
       <div class="flex flex-wrap">
@@ -683,7 +957,7 @@
             <h1 class="text-5xl font-bold leading-normal mt-0">
               {{ .Params.main_title }}
             </h1>
-            <p class="text-gray-500">{{ .Params.description }}</p>
+            <p class="text-neutral-500">{{ .Params.description }}</p>
 
             <hr class="my-12" />
 

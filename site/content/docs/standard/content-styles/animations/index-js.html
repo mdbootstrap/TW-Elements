@@ -1,0 +1,124 @@
+---
+---
+
+<script>
+  // Animations page
+  const manuallyEl = document.getElementById("manually-example");
+  if (manuallyEl) {
+    const manuallyBtnStart = document.querySelector(
+      "[data-te-animation-start-ref]"
+    );
+    const manuallyBtnStop = document.querySelector(
+      "[data-te-animation-stop-ref]"
+    );
+    const manually = new te.Animate(manuallyEl, {
+      animation: "pulse",
+      animationStart: "manually",
+      animationRepeat: true,
+    });
+    manuallyBtnStart.addEventListener("click", () => {
+      manually.startAnimation();
+    });
+    manuallyBtnStop.addEventListener("click", () => {
+      manually.stopAnimation();
+    });
+
+    //change animation
+    const changeAnimationEl = document.getElementById(
+      "change-animation-type-example"
+    );
+    const changeAnimationBtn = document.querySelector(
+      "[data-te-animation-change-ref]"
+    );
+    let animation = "pulse";
+    const changeAnimation = new te.Animate(changeAnimationEl, {
+      animation: animation,
+      animationStart: "onLoad",
+      animationRepeat: true,
+    });
+
+    changeAnimation.init();
+
+    changeAnimationBtn.addEventListener("click", () => {
+      if (animation === "pulse") {
+        animation = "spin";
+      } else {
+        animation = "pulse";
+      }
+      changeAnimation.stopAnimation();
+      changeAnimation.changeAnimationType(animation);
+      changeAnimation.startAnimation();
+    });
+    //change animation
+
+    //list group
+    let elementNumber = 1;
+    const bindRemoveClickEvent = (el) => {
+      const element = el;
+
+      element.addEventListener("click", () => {
+        const prevElement = element.previousElementSibling
+          ? element.previousElementSibling
+          : element;
+        const animation =
+          element === prevElement
+            ? "[fade-out_1s_ease-in-out]"
+            : "[slide-out-up_1s_ease-in-out]";
+
+        prevElement.style.zIndex = "1";
+
+        element.addEventListener("animationend", () => {
+          element.remove();
+          prevElement.style.zIndex = "0";
+        });
+
+        element.classList.add(`animate-${animation}`);
+      });
+    };
+
+    const addNewOption = () => {
+      const element = document.querySelector("[data-te-animation-ref]");
+      const newElement = document.createElement("li");
+      const lastElement = element.lastElementChild || element;
+      const animation =
+        element === lastElement
+          ? "[fade-in_1s_ease-in-out]"
+          : "[slide-in-down_1s_ease-in-out]";
+
+      newElement.innerText = `element ${elementNumber}`;
+      lastElement.style.zIndex = "1";
+      newElement.classList.add(
+        "px-6",
+        "py-2",
+        "[&:not(:last-child)]:border-b",
+        "border-gray-200",
+        "w-full",
+        "rounded-t-lg",
+        "relative",
+        `animate-${animation}`,
+        "bg-white",
+        "dark:bg-neutral-600"
+      );
+
+      newElement.addEventListener("animationend", () => {
+        lastElement.style.zIndex = "0";
+        newElement.classList.remove(animation);
+      });
+
+      bindRemoveClickEvent(newElement);
+      element.appendChild(newElement);
+      elementNumber += 1;
+    };
+
+    document.querySelectorAll("[data-te-animation-ref] li").forEach((el) => {
+      bindRemoveClickEvent(el);
+    });
+
+    document
+      .querySelector("[data-te-animation-add-ref]")
+      .addEventListener("click", () => {
+        addNewOption();
+      });
+  }
+  //list group
+</script>

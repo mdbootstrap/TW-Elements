@@ -1,10 +1,8 @@
-# Tailwind Elements [<img src="https://tailwind-elements.com/img/logo.png" width="45" align="right" alt="Tailwind-elements">](https://tailwind-elements.com/)<a href="https://www.npmjs.com/package/tw-elements"><img src="https://img.shields.io/npm/dt/tw-elements.svg" alt="Total Downloads"></a> <a href="https://github.com/mdbootstrap/Tailwind-Elements/releases"><img src="https://img.shields.io/npm/v/tw-elements.svg" alt="Latest Release"></a> <a href="https://twitter.com/intent/tweet/?text=Thanks+@TailwindElement+for+creating+an+amazing+collection+of+open+source+components+for+@tailwindcss%20https://tailwind-elements.com/&hashtags=tailwindCSS,bootstrap,webdesign,javascript,100DaysOfCode,DevCommunity"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a> 
-
+# Tailwind Elements [<img src="https://tailwind-elements.com/img/logo.png" width="45" align="right" alt="Tailwind-elements">](https://tailwind-elements.com/)<a href="https://www.npmjs.com/package/tw-elements"><img src="https://img.shields.io/npm/dt/tw-elements.svg" alt="Total Downloads"></a> <a href="https://github.com/mdbootstrap/Tailwind-Elements/releases"><img src="https://img.shields.io/npm/v/tw-elements.svg" alt="Latest Release"></a> <a href="https://twitter.com/intent/tweet/?text=Thanks+@TailwindElement+for+creating+an+amazing+collection+of+open+source+components+for+@tailwindcss%20https://tailwind-elements.com/&hashtags=tailwindCSS,bootstrap,webdesign,javascript,100DaysOfCode,DevCommunity"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
 
 Tailwind Elements **is a plugin** that extends the functionality of the library with many interactive components.
 
 In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript. However, they do not require any additional installation, all the necessary code is always included in the example and copied to any Tailwind project - it will work.
-
 
   <table>
     <tbody>
@@ -280,12 +278,11 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
   </a>
 </p>
 
-
 ## Quick Start tutorial
 
 ##### NPM
 
-1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ 'Node.js (LTS)') and [TailwindCSS](https://tailwindcss.com/ 'TailwindCSS').
+1. Before starting the project make sure to install [Node.js (LTS)](https://nodejs.org/en/ "Node.js (LTS)") and [TailwindCSS](https://tailwindcss.com/ "TailwindCSS").
 
 2. Run the following command to install the package via NPM:
 
@@ -297,8 +294,11 @@ npm install tw-elements
 
 ```javascript
 module.exports = {
-  content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
-  plugins: [require('tw-elements/dist/plugin')],
+  content: [
+    "./src/**/*.{html,js}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
+  ],
+  plugins: [require("tw-elements/dist/plugin")],
 };
 ```
 
@@ -362,7 +362,7 @@ Add the stylesheet files below in the _head_ section:
 
 ```
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -370,7 +370,7 @@ Add the stylesheet files below in the _head_ section:
     theme: {
       extend: {
         fontFamily: {
-          sans: ['Inter', 'sans-serif'],
+          sans: ['Roboto', 'sans-serif'],
         },
       }
     }

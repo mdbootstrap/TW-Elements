@@ -1,0 +1,255 @@
+{{ $page_resources := .Resources }}
+{{ $overview_scrollspy_file_exists := fileExists (printf "/content/%s/index-ss.html" .File.Dir) }}
+{{ $scrollspy_file_exists := fileExists (printf "/content/%s/index-ss.html" .File.Dir) }}
+{{ $api_file_exists := fileExists (printf "/content/%s/a.html" .File.Dir) }}
+{{ $api_scrollspy_file_exists := fileExists (printf "/content/%s/a-ss.html" .File.Dir) }}
+{{ $hidden_sidenav := .Params.hidden_sidenav }}
+
+
+<!-- Single for all single page under /docs/* -->
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+  <head>
+    {{ partial "head/head.html" . }}
+  </head>
+  <body class="transition-colors duration-500 dark:bg-zinc-800">
+    {{ partial "header/header.html" . }}
+
+
+    <nav
+      id="sidenav-main"
+      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      data-te-sidenav-init
+      {{ if ne $hidden_sidenav true }}
+        data-te-sidenav-mode-breakpoint-over="0"
+        data-te-sidenav-mode-breakpoint-side="xl" data-te-sidenav-hidden="false"
+        data-te-sidenav-mode="side"
+      {{ else }}
+        data-te-sidenav-hidden="true" data-te-sidenav-mode="over"
+      {{ end }}
+      data-te-sidenav-content="#page-content"
+      data-te-sidenav-accordion="true">
+      <a
+        href="/"
+        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-neutral-100"
+        aria-current="page"
+        ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px"
+      /></a>
+      {{ partial "sidenav/standard.html" . }}
+    </nav>
+    <div class="mt-10" id="page-content">
+      <div
+        class="{{ if eq $hidden_sidenav true }}
+          mx-auto w-1/2
+        {{ else }}
+          max-w-[540px] sm:max-w-[604px] md:max-w-[720px] lg:max-w-[972px]
+          xl:max-w-full xl:px-12 2xl:max-w-[1400px] mx-auto
+        {{ end }} flex">
+        <div class="flex w-full flex-col ">
+          {{ if (or ($api_file_exists) (isset .Params "custom_links")) }}
+            <ul
+              id="docs-nav-pills"
+              class="mx-4 mt-3 mb-6 flex"
+              role="tablist"
+              data-te-nav-ref>
+              <li>
+                <a
+                  id="docs-tab-overview"
+                  class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pt-4 pb-3.5 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
+                  href="#docsTabsOverview"
+                  role="tab"
+                  data-te-toggle="pill"
+                  data-te-target="#docsTabsOverview"
+                  aria-selected="true"
+                  aria-controls="docsTabsOverview"
+                  data-te-nav-active
+                  >Overview</a
+                >
+              </li>
+
+              {{ if $api_file_exists }}
+                <li>
+                  <a
+                    id="docs-tab-api"
+                    class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pt-4 pb-3.5 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
+                    href="#docsTabsAPI"
+                    data-te-toggle="pill"
+                    data-te-target="#docsTabsAPI"
+                    aria-selected="false"
+                    aria-controls="docsTabsAPI"
+                    role="tab"
+                    >API</a
+                  >
+                </li>
+              {{ end }}
+
+              {{ if isset .Params "custom_links" }}
+                {{ $link_entries := split .Params.custom_links "," }}
+                {{ range $entry := $link_entries }}
+                  {{ $link_data := split $entry "=" }}
+                  <li class="nav-item">
+                    <a
+                      class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pt-4 pb-3.5 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
+                      href="{{ index $link_data 1 }}"
+                      target="_blank"
+                      >{{ index $link_data 0 }}<span
+                        class=" inline-block align-bottom"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="ml-2 h-4 w-4">
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </span>
+                    </a>
+                  </li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          {{ end }}
+
+
+          <div
+            id="docsTabsOverview"
+            role="tabpanel"
+            class="mb-8 hidden px-4 opacity-0 opacity-100 transition-opacity data-[te-tab-active]:flex"
+            role="tabpanel"
+            aria-labelledby="docs-tab-overview-tab"
+            data-te-tab-active>
+            <div
+              class="{{ if $scrollspy_file_exists }}
+                lg:w-4/5
+              {{ end }}
+               flex w-full flex-col pr-4">
+              {{ if not (isset .Params "custom_links") }}
+                <h1 class="mt-0 text-5xl font-bold leading-normal">
+                  {{ .Params.main_title }}
+                </h1>
+                <p class="text-gray-500 dark:text-gray-300">
+                  {{ .Params.description }}
+                </p>
+
+                <hr class="my-12 dark:border-gray-600" />
+              {{ end }}
+
+
+              <main>{{ .Content }}</main>
+            </div>
+
+            <!-- Sidebar  -->
+            {{ if $scrollspy_file_exists }}
+              <div class="hidden px-4 lg:block lg:w-1/5">
+                <menu class="sticky top-10">
+                  <div
+                    class="relative mb-4 hidden h-[190px] delay-[0] duration-500 xl:block"
+                    id="dpl-gtm-scroll">
+                    <div class="absolute h-full w-[170px]">
+                      <div
+                        class="shadow-3 overflow-hidden rounded-lg border border-[rgba(133,214,251,0.3)]">
+                        <span
+                          class="mx-2 mb-2 mt-3 inline-block h-[20px] w-[40%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
+                        <span
+                          class="mx-2 mb-1 inline-block h-[20px] w-[70%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
+                        <span
+                          class="mx-2 mb-1 inline-block h-[20px] w-[50%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
+                        <span
+                          class="mx-2 mb-1 inline-block h-[20px] w-[80%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
+                        <span
+                          class="mx-2 mb-4 inline-block h-[20px] w-[70%] animate-[pulse_1s_ease-in-out_infinite] bg-[rgba(133,214,251,0.3)]"></span>
+                      </div>
+                    </div>
+                    <!-- Alert -->
+                    <div
+                      id="gtmDC-scroll-all"
+                      class="relative min-h-[1px] w-[170px]"></div>
+                    <!-- Alert -->
+                  </div>
+
+                  <ul class="dark:text-neutral-200">
+                    {{ with .Resources.GetMatch "index-ss.html" }}
+                      {{ .Content }}
+                    {{ end }}
+                  </ul>
+                </menu>
+              </div>
+            {{ end }}
+          </div>
+
+          {{ if $api_file_exists }}
+            <div
+              id="docsTabsAPI"
+              class="mb-8 hidden justify-between px-4 opacity-0 transition-opacity data-[te-tab-active]:flex"
+              role="tabpanel"
+              aria-labelledby="docs-tab-api-tab">
+              <div
+                class="{{ if $api_scrollspy_file_exists }}
+                  lg:w-4/5
+                {{ end }} flex w-full flex-col pr-4">
+                <h1 class="mt-0 text-5xl font-bold leading-normal">
+                  {{ .Params.main_title }} - API
+                </h1>
+
+                <hr class="my-10 dark:border-gray-600" />
+                <main>
+                  {{ with $page_resources.GetMatch "a.html" }}
+                    {{ .Content }}
+                  {{ end }}
+                </main>
+              </div>
+              <!-- Sidebar  -->
+
+              <div class="hidden px-4 lg:block lg:w-1/5">
+                <menu class="sticky top-10">
+                  <ul class="dark:text-gray-200">
+                    {{ with .Resources.GetMatch "a-ss.html" }}
+                      {{ .Content }}
+                    {{ end }}
+                  </ul>
+                </menu>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+
+    {{ partial "footer/footer-docs.html" . }}
+
+    {{ if ne $hidden_sidenav true }}
+      <script>
+        const sidenav = document.getElementById("sidenav-main");
+        const sidenavInstance = te.Sidenav.getInstance(sidenav);
+
+        let innerWidth = null;
+
+        const setMode = (e) => {
+          // Check necessary for Android devices
+          if (window.innerWidth === innerWidth) {
+            return;
+          }
+
+          innerWidth = window.innerWidth;
+
+          if (window.innerWidth < sidenavInstance.getBreakpoint("xl")) {
+            sidenavInstance.changeMode("over");
+            sidenavInstance.hide();
+          } else {
+            sidenavInstance.changeMode("side");
+            sidenavInstance.show();
+          }
+        };
+
+        setMode();
+
+        // Event listeners
+        window.addEventListener("resize", setMode);
+      </script>
+    {{ end }}
+  </body>
+</html>

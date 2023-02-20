@@ -7,11 +7,10 @@
     <meta name="author" content="Tailwind Elements" />
     <title>Album example · Bootstrap v5.1</title>
 
-    <!-- Inter font -->
+    <!-- Roboto font -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
     <!-- Tailwind -->
     <link rel="stylesheet" href="../../css/tailwind.min.css" />
     <!-- PRISM -->
@@ -20,53 +19,68 @@
     <style></style>
   </head>
 
-  <body>
+  <body class="dark:bg-neutral-800">
     <!-- Container for demo purpose -->
-    <div class="container my-24 px-6 mx-auto">
+    <div class="container my-24 mx-auto px-6">
       <!-- Section: Design Block -->
-      <section class="mb-32 text-gray-800">
-        <h5 class="text-xl font-semibold text-center mb-10 md:mb-6">Leave a reply</h5>
+      <section class="mb-32 text-neutral-800">
+        <h5
+          class="mb-10 text-center text-xl font-semibold dark:text-white md:mb-6">
+          Leave a reply
+        </h5>
 
         <form>
-          <div class="form-group mb-6">
+          <div class="relative mb-6" data-te-input-wrapper-init>
             <input
               type="text"
-              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
               id="exampleInput7"
-              placeholder="Name"
-            />
+              placeholder="Name" />
+            <label
+              for="exampleInput7"
+              class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+              >Name
+            </label>
           </div>
-          <div class="form-group mb-6">
+          <div class="relative mb-6" data-te-input-wrapper-init>
             <input
               type="email"
-              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
               id="exampleInput8"
-              placeholder="Email address"
-            />
+              placeholder="Email address" />
+            <label
+              for="exampleInput8"
+              class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+              >Email address
+            </label>
           </div>
-          <div class="form-group mb-6">
+          <div class="relative mb-6" data-te-input-wrapper-init>
             <textarea
-              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
               id="exampleFormControlTextarea13"
               rows="3"
-              placeholder="Message"
-            ></textarea>
+              placeholder="Message"></textarea>
+            <label
+              for="exampleFormControlTextarea13"
+              class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+              >Message
+            </label>
           </div>
-          <div class="form-group form-check text-center mb-6">
+          <div class="form-group form-check mb-6 text-center">
             <input
               type="checkbox"
-              class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+              class="form-check-input mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-neutral-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-primary checked:bg-primary focus:outline-none"
               id="exampleCheck87"
-              checked
-            />
-            <label class="form-check-label inline-block text-gray-800" for="exampleCheck87"
+              checked />
+            <label
+              class="form-check-label inline-block text-neutral-800 dark:text-white"
+              for="exampleCheck87"
               >Send me a copy of this message</label
             >
           </div>
           <button
             type="submit"
-            class="w-full px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-          >
+            class="w-full rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg">
             Send
           </button>
         </form>
@@ -75,12 +89,16 @@
     </div>
     <!-- Container for demo purpose -->
 
+    <!-- Theme switcher -->
+    <script type="text/javascript" src="../../js/theme.min.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="../../js/index.min.js"></script>
     <!-- PRISM -->
     <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

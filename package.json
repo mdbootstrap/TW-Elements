@@ -1,28 +1,22 @@
 {
   "name": "tw-elements",
-  "version": "1.0.0-alpha13",
+  "version": "1.0.0-beta1",
+  "license": "AGPL",
   "homepage": "https://tailwind-elements.com/",
-  "author": "MDBootstrap",
+  "author": "MDBootstrap <office@mdbootstrap.com>",
   "style": "dist/css/index.min.css",
-  "sass": "src/scss/index.scss",
+  "sass": "src/scss/tailwind.scss",
   "main": "dist/js/index.min.js",
   "scripts": {
-    "start": "concurrently 'npm:start-webpack' 'npm:start-sass' 'npm:start-plugin'",
-    "start-webpack": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open",
-    "start-sass": "sass ./src/scss/index.scss ./src/css/index.css --watch",
-    "start-plugin": "node helpers/cssToTwPlugin",
-    "build": "npm run build-sass && npm run build-plugin && npm run build-webpack && npm run create-zip && npm run copy-files && cd ./site && npm run build-tailwind",
-    "build-webpack": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
-    "build-demo": "cross-env NODE_ENV=production --env.mode=demo webpack --config webpack/webpack.config.prod.js --colors",
-    "build-sass": "sass ./src/scss/index.scss ./src/css/index.css",
-    "build-plugin": "node helpers/buildPlugin",
-    "copy-files": "node helpers/copyFiles",
-    "create-zip": "node helpers/createZip",
-    "deploy": "npm run build-demo && cd dist-demo/ && mdb publish",
-    "deploy-ov": "npm run build-demo && cd dist-demo/ && mdb publish --override",
-    "getBSsrc": "node getBSsrc",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open",
+    "build": "npm run build:webpack && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
+    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
+    "build:demo": "cross-env NODE_ENV=production --env.mode=demo webpack --config webpack/webpack.config.prod.js --colors",
+    "copy:te-files": "node helpers/copyTeFiles",
+    "create:te-starter": "node helpers/createTeStarter",
+    "deploy": "npm run build:demo && cd dist-demo/ && mdb publish --override",
     "test": "jest",
-    "lint": "lint-staged && pretty-quick --staged"
+    "lint": "lint-staged && pretty-quick"
   },
   "files": [
     "dist/**/*"
@@ -35,9 +29,6 @@
   "lint-staged": {
     "src/**/*.js": [
       "eslint --fix"
-    ],
-    "src/**/*.css": [
-      "stylelint --fix"
     ]
   },
   "repository": {
@@ -45,10 +36,9 @@
     "url": "https://github.com/mdbootstrap/Tailwind-Elements"
   },
   "keywords": [
-    "bootstrap",
-    "webpack"
+    "tailwind",
+    "material design"
   ],
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -68,7 +58,7 @@
     "css-loader": "^3.5.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.3",
@@ -82,20 +72,14 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss": "^8.4.5",
     "postcss-loader": "^4.0.3",
-    "prettier": "^2.0.5",
+    "prettier": "^2.8.1",
+    "prettier-plugin-go-template": "^0.0.13",
+    "prettier-plugin-tailwindcss": "^0.2.1",
     "pretty-quick": "^2.0.1",
     "remove-files-webpack-plugin": "^1.5.0",
     "sass": "^1.30.0",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
-    "stylelint": "^13.5.0",
-    "stylelint-config-prettier": "^8.0.1",
-    "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-recommended-scss": "^4.2.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-order": "^4.1.0",
-    "stylelint-prettier": "^1.1.2",
-    "stylelint-scss": "^3.17.2",
     "stylis": "^2.0.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",
@@ -110,8 +94,8 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "deepmerge": "^4.2.2",
     "detect-autofill": "^1.1.3",
-    "perfect-scrollbar": "^1.5.0",
+    "perfect-scrollbar": "^1.5.5",
     "popper.js": "^1.16.1",
-    "tailwindcss": "~3.0.7"
+    "tailwindcss": "3.2.4"
   }
 }

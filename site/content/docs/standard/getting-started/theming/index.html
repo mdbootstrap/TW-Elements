@@ -1,0 +1,447 @@
+---
+title: "Tailwind - Theming"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Theme configuration in Tailwind"
+seo_title: "Tailwind CSS Theming"
+description: "Customizing the default theme for your project."
+image: "img/components-big.jpg"
+video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
+url: "docs/standard/getting-started/theming"
+menu:
+  gettingstarted:
+    name: "Theming"
+    weight: 3
+---
+
+<!-- Section: Introduction -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="introduction"
+    data-te-spy-item>
+    Introduction
+  </h2>
+
+  <!--Description-->
+  <p class="mb-3">
+    If your project requires a more custom shape or just a more organized
+    structure, Tailwind offers very simple solutions to set up a global theme.
+  </p>
+
+  <p class="mb-3">
+    All properties bound to theme are in Tailwind config file located in the
+    root of your project: <code>tailwind.config.js</code>. There you define your
+    project’s color palette, type scale, fonts, breakpoints, border radius
+    values, and more.
+  </p>
+
+  <p class="mb-3">
+    Code below is an example of how this file would look like. Configuring theme
+    is unnecessary because Tailwind provide default values for most of the
+    useful properties.
+  </p>
+
+  <p class="mb-3">
+    About particular names of properties used in example below you can read more
+    in Taiwind documentation - in section
+    <a
+      class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700 dark:text-blue-400"
+      href="https://tailwindcss.com/docs/theme#configuration-reference"
+      target="_blank"
+      >Configuration references</a
+    >.
+  </p>
+
+  <div
+    class="my-6 rounded-lg bg-blue-100 py-5 px-6 text-base text-blue-700"
+    role="alert">
+    <p class="mb-2">
+      <strong>Default theme:</strong>
+      <br />
+      For a complete list of theme options (or reference for your changes) you
+      can see
+      <a
+        class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700 dark:text-blue-400"
+        href="https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/defaultConfig.stub.js#L7"
+        target="_blank"
+        >default settings</a
+      >
+      for Tailwind theme.
+    </p>
+  </div>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example1" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "tailwind.config.js" >}}
+      <!--prettier-ignore-->
+      {{< twsnippet/code active=true lang="javascript" >}}
+          module.exports = {
+            theme: {
+              screens: {
+                sm: '480px',
+                md: '768px',
+                lg: '976px',
+                xl: '1440px',
+              },
+              colors: {
+                'blue': '#1fb6ff',
+                'purple': '#7e5bef',
+                'pink': '#ff49db',
+                'orange': '#ff7849',
+                'green': '#13ce66',
+                'yellow': '#ffc82c',
+                'gray-dark': '#273444',
+                'gray': '#8492a6',
+                'gray-light': '#d3dce6',
+              },
+              fontFamily: {
+                sans: ['Graphik', 'sans-serif'],
+                serif: ['Merriweather', 'serif'],
+              },
+              extend: {
+                spacing: {
+                  '128': '32rem',
+                  '144': '36rem',
+                },
+                borderRadius: {
+                  '4xl': '2rem',
+                }
+              }
+            }
+          }
+        {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Introduction -->
+
+<hr class="mb-5 dark:border-gray-600" />
+
+<!-- Section: Theme structure -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="structure"
+    data-te-spy-item>
+    Theme structure
+  </h2>
+
+  <!--Description-->
+  <p class="mb-3">
+    Structure for configuration contains the <code>theme</code> object which
+    includes following keys: <code>screen</code>, <code>colors</code> and
+    <code>spacing</code>.
+  </p>
+
+  <div
+    class="my-6 rounded-lg bg-blue-100 py-5 px-6 text-base text-blue-700"
+    role="alert">
+    <p class="mb-2">
+      <strong>Core plugins:</strong>
+      <br />
+      The <code>corePlugins</code> section lets you completely disable classes
+      that Tailwind would normally generate by default if you don’t need them
+      for your project. For more information check out the
+      <a
+        class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700 dark:text-blue-400"
+        href="https://tailwindcss.com/docs/configuration#core-plugins"
+        target="_blank"
+        >Core Pugins section</a
+      >
+      in Tailwind documentation.
+    </p>
+  </div>
+
+  <h2 class="my-5 text-lg font-bold" id="screens">Screens</h2>
+
+  <p class="mb-3">
+    The <code>screens</code> key allows you to customize the responsive
+    breakpoints in your project.
+  </p>
+
+  <p class="mb-3">
+    For more informations check out Tailwind documentation about
+    <a
+      class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700 dark:text-blue-400"
+      href="https://tailwindcss.com/docs/breakpoints"
+      target="_blank"
+      >breakpoint customization</a
+    >.
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example2" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "tailwind.config.js" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="javascript" >}}
+        module.exports = {
+          theme: {
+            screens: {
+              'sm': '640px',
+              'md': '768px',
+              'lg': '1024px',
+              'xl': '1280px',
+              '2xl': '1536px',
+            }
+          }
+        }
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+
+  <h2 class="mb-5 text-lg font-bold" id="colors">Colors</h2>
+
+  <p class="mb-3">
+    The <code>colors</code> key allows you to customize the global color palette
+    for your project.
+  </p>
+
+  <p class="mb-3">
+    For more informations check out Tailwind documentation about
+    <a
+      class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700 dark:text-blue-400"
+      href="https://tailwindcss.com/docs/colors"
+      target="_blank"
+      >colors customization</a
+    >.
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example3" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "tailwind.config.js" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="javascript" >}}
+        module.exports = {
+          theme: {
+            colors: {
+              transparent: 'transparent',
+              black: '#000',
+              white: '#fff',
+              gray: {
+                100: '#f7fafc',
+                // ...
+                900: '#1a202c',
+              },
+
+              // ...
+            }
+          }
+        }
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+
+  <h2 class="mb-5 text-lg font-bold" id="spacing">Spacing</h2>
+
+  <p class="mb-3">
+    The <code>spacing</code> key allows you to customize the global spacing and
+    sizing scale for your project.
+  </p>
+
+  <p class="mb-3">
+    For more informations check out Tailwind documentation about
+    <a
+      class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700 dark:text-blue-400"
+      href="https://tailwindcss.com/docs/customizing-spacing"
+      target="_blank"
+      >spacing customization</a
+    >.
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example4" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "tailwind.config.js" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="javascript" >}}
+        module.exports = {
+          theme: {
+            spacing: {
+              px: '1px',
+              0: '0',
+              0.5: '0.125rem',
+              1: '0.25rem',
+              1.5: '0.375rem',
+              2: '0.5rem',
+              2.5: '0.625rem',
+              3: '0.75rem',
+              3.5: '0.875rem',
+              4: '1rem',
+              5: '1.25rem',
+              6: '1.5rem',
+              7: '1.75rem',
+              8: '2rem',
+              9: '2.25rem',
+              10: '2.5rem',
+              11: '2.75rem',
+              12: '3rem',
+              14: '3.5rem',
+              16: '4rem',
+              20: '5rem',
+              24: '6rem',
+              28: '7rem',
+              32: '8rem',
+              36: '9rem',
+              40: '10rem',
+              44: '11rem',
+              48: '12rem',
+              52: '13rem',
+              56: '14rem',
+              60: '15rem',
+              64: '16rem',
+              72: '18rem',
+              80: '20rem',
+              96: '24rem',
+            },
+          }
+        }
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+</section>
+<!-- Section: Theme structure -->
+
+<hr class="mb-5 dark:border-gray-600" />
+
+<!-- Section: Customizing the default theme -->
+<section>
+  <!--Title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="customizing"
+    data-te-spy-item>
+    Customizing the default theme
+  </h2>
+
+  <!--Description-->
+  <p class="mb-3">
+    You can customize theme in Tailwind in a two similiar ways: by extending
+    default values or editing them.
+  </p>
+
+  <h2 class="my-5 text-lg font-bold" id="extending">
+    Extending the default theme
+  </h2>
+
+  <p class="mb-3">
+    Extending the default theme preserves values already made by Tailwind. Just
+    add your extensions under the <code>extend</code> key in the theme section
+    of your configuration file. This particular case below is showing how to add
+    an extra breakpoint but save the existing ones at the same time.
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example5" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "tailwind.config.js" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="javascript" >}}
+        module.exports = {
+          theme: {
+            extend: {
+              // Adds a new breakpoint in addition to the default breakpoints
+              screens: {
+                '3xl': '1600px',
+              }
+            }
+          }
+        }
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+
+  <h2 class="mb-5 text-lg font-bold" id="overriding">
+    Overriding the default theme
+  </h2>
+
+  <p class="mb-3">
+    Overriding the default theme completely replace options already made by
+    Tailwind. Just add your overrides directly under the
+    <code>theme</code> section of your configuration file. This particular case
+    below is showing how completely replace Tailwind’s default configuration for
+    that key, so in the example below none of the default opacity utilities
+    would be generated.
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example6" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "tailwind.config.js" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="javascript" >}}
+        module.exports = {
+          theme: {
+            // Replaces all of the default `opacity` values
+            opacity: {
+              '0': '0',
+              '20': '0.2',
+              '40': '0.4',
+              '60': '0.6',
+              '80': '0.8',
+              '100': '1',
+            }
+          }
+        }
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+
+  <p class="mb-3">
+    You can of course both override some parts of the default theme and extend
+    other parts of the default theme within the same configuration.
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example7" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example7">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "tailwind.config.js" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="javascript" >}}
+        module.exports = {
+          theme: {
+            opacity: {
+              '0': '0',
+              '20': '0.2',
+              '40': '0.4',
+              '60': '0.6',
+              '80': '0.8',
+              '100': '1',
+            },
+            extend: {
+              screens: {
+                '3xl': '1600px',
+              }
+            }
+          }
+        }
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+</section>
+<!-- Section: Customizing the default theme -->

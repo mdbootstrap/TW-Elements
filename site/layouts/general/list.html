@@ -1,0 +1,143 @@
+{{ $hidden_sidenav := .Params.hidden_sidenav }}
+
+
+<html lang="{{ .Language.Lang }}">
+  <head>
+    {{ partial "head/head.html" . }}
+  </head>
+  <body class="dark:bg-zinc-800">
+    {{ partial "header/header.html" . }}
+
+
+    <!-- prettier-ignore  -->
+    <nav
+      id="sidenav-main"
+      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-zinc-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      data-te-sidenav-init
+      {{ if ne $hidden_sidenav true }}
+      data-te-sidenav-mode-breakpoint-over="0"
+      data-te-sidenav-mode-breakpoint-side="xl" data-te-sidenav-hidden="false"
+      data-te-sidenav-mode="side"
+    {{ else }}
+      data-te-sidenav-hidden="true" data-te-sidenav-mode="over"
+    {{ end }}
+      data-te-sidenav-content="#page-content"
+      data-te-sidenav-accordion="true">
+      <a
+        href="/"
+        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-gray-100"
+        aria-current="page"
+        ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
+      </a>
+      {{ partial "sidenav/standard.html" . }}
+    </nav>
+    <div
+      class="{{ if eq $hidden_sidenav true }}
+        mx-auto w-1/2
+      {{ else }}
+        w-full
+      {{ end }} {{ if ne $hidden_sidenav true }}
+        xl:!pl-72
+      {{ end }} mt-4 px-12 pt-12"
+      id="page-content">
+      <div class="flex">
+        <div class="flex w-full flex-col">
+          <ul
+            id="docs-nav-pills"
+            class="mx-4 mt-3 flex"
+            role="tablist"
+            data-te-nav-ref>
+            <li>
+              <a
+                id="docs-tab-overview"
+                class="my-2 block min-w-[120px] rounded bg-neutral-100 px-6 pt-4 pb-3.5 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
+                href="#docsTabsOverview"
+                role="tab"
+                data-te-toggle="pill"
+                data-te-target="#docsTabsOverview"
+                aria-selected="true"
+                aria-controls="docsTabsOverview"
+                data-te-nav-active
+                >Overview</a
+              >
+            </li>
+
+            {{ if isset .Params "custom_links" }}
+              {{ $link_entries := split .Params.custom_links "," }}
+              {{ range $entry := $link_entries }}
+                {{ $link_data := split $entry "=" }}
+                <li class="nav-item">
+                  <a
+                    class="my-2 block min-w-[120px] rounded bg-neutral-100 px-6 pt-4 pb-3.5 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
+                    href="{{ index $link_data 1 }}"
+                    target="_blank"
+                    >{{ index $link_data 0 }}<span
+                      class=" inline-block align-bottom"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="ml-2 h-4 w-4">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                    </span>
+                  </a>
+                </li>
+              {{ end }}
+            {{ end }}
+          </ul>
+
+          <div
+            id="docsTabsOverview"
+            role="tabpanel"
+            class="mb-8 hidden px-4 opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:flex"
+            role="tabpanel"
+            aria-labelledby="docs-tab-overview-tab"
+            data-te-tab-active>
+            <div class="flex w-full flex-col pr-4">
+              <main>{{ .Content }}</main>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{ partial "footer/footer-docs.html" . }}
+
+    {{ if ne $hidden_sidenav true }}
+      <script>
+        const sidenav = document.getElementById("sidenav-main");
+        const sidenavInstance = te.Sidenav.getInstance(sidenav);
+
+        let innerWidth = null;
+
+        const setMode = (e) => {
+          // Check necessary for Android devices
+          if (window.innerWidth === innerWidth) {
+            return;
+          }
+
+          innerWidth = window.innerWidth;
+
+          if (window.innerWidth < sidenavInstance.getBreakpoint("xl")) {
+            sidenavInstance.changeMode("over");
+            sidenavInstance.hide();
+          } else {
+            sidenavInstance.changeMode("side");
+            sidenavInstance.show();
+          }
+        };
+
+        setMode();
+
+        // Event listeners
+        window.addEventListener("resize", setMode);
+      </script>
+    {{ end }}
+  </body>
+</html>

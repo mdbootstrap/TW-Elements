@@ -7,11 +7,10 @@
     <meta name="author" content="Tailwind Elements" />
     <title>Album example · Bootstrap v5.1</title>
 
-    <!-- Inter font -->
+    <!-- Roboto font -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
     <!-- Tailwind -->
     <link rel="stylesheet" href="../../css/tailwind.min.css" />
     <!-- PRISM -->
@@ -20,33 +19,40 @@
     <style></style>
   </head>
 
-  <body>
+  <body class="dark:bg-neutral-800">
     <!-- Start your project here-->
     <div>
       <!-- Container for demo purpose -->
-      <div class="container my-12 py-12 mx-auto">
+      <div class="container my-12 mx-auto py-12">
         <!-- Section: Design Block -->
-        <section class="mb-20 text-gray-900">
-          <h2 class="text-4xl font-black mb-2">Press</h2>
+        <section class="mb-20 text-neutral-900">
+          <h2 class="mb-2 text-4xl font-black">Press</h2>
           <div class="grid grid-cols-2">
             <div class="flex items-center">
-              <p class="text-xl opacity-80 mb-4">
+              <p class="mb-4 text-xl opacity-80">
                 Get weekly articles in your inbox on how to grow your business.
               </p>
             </div>
-            <div class="md:w-2/3 lg:ml-auto self-center flex md:flex-row h-full">
-              <div class="mr-2 mb-4 md:mb-0">
+            <div
+              class="flex h-full self-center md:w-2/3 md:flex-row lg:ml-auto">
+              <div
+                class="relative mr-2 mb-4 md:mb-0"
+                data-te-input-wrapper-init>
                 <input
                   type="text"
-                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                  id="exampleFormControlInput2"
-                  placeholder="Form control lg"
-                />
+                  class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                  id="exampleFormControlInput1"
+                  placeholder="Form control lg" />
+                <label
+                  for="exampleFormControlInput1"
+                  class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+                  >Form control lg
+                </label>
               </div>
               <a
                 href="#!"
                 type="button"
-                class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out md:mr-2"
+                class="inline-block rounded bg-primary px-7 py-3 text-sm font-medium uppercase leading-snug text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg md:mr-2"
                 >Notify me</a
               >
             </div>
@@ -56,31 +62,35 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div class="mb-12">
-              <p class="opacity-80 mb-2 pb-1 text-xs">Mar 16, 2021</p>
-              <h5 class="font-semibold text-xl mb-4">Boost your conversion rate</h5>
-              <p class="text-gray-500 pb-1 mb-4">
-                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
-                magnam aliquam quaerat voluptatem.
+              <p class="mb-2 pb-1 text-xs opacity-80">Mar 16, 2021</p>
+              <h5 class="mb-4 text-xl font-semibold">
+                Boost your conversion rate
+              </h5>
+              <p class="mb-4 pb-1 text-neutral-500">
+                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit, sed quia non numquam eius modi
+                tempora incidunt ut labore et dolore magnam aliquam quaerat
+                voluptatem.
               </p>
               <a
                 href="#!"
-                class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transform ease-in-out duration-300 font-bold"
+                class="transform font-bold text-primary duration-300 ease-in-out hover:text-primary-700 focus:text-primary-700 active:text-primary-800"
                 >Read full story</a
               >
             </div>
             <div class="mb-12">
-              <p class="opacity-80 mb-2 pb-1 text-xs">Mar 10, 2021</p>
-              <h5 class="font-semibold text-xl mb-4">
+              <p class="mb-2 pb-1 text-xs opacity-80">Mar 10, 2021</p>
+              <h5 class="mb-4 text-xl font-semibold">
                 How to use search engine optimization to drive sales
               </h5>
-              <p class="text-gray-500 pb-1 mb-4">
-                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-                laboriosam, nisi ut aliquid ex ea commodi consequatur.
+              <p class="mb-4 pb-1 text-neutral-500">
+                Ut enim ad minima veniam, quis nostrum exercitationem ullam
+                corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+                consequatur.
               </p>
               <a
                 href="#!"
-                class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transform ease-in-out duration-300 font-bold"
+                class="transform font-bold text-primary duration-300 ease-in-out hover:text-primary-700 focus:text-primary-700 active:text-primary-800"
                 >Read full story</a
               >
             </div>
@@ -88,29 +98,35 @@
 
           <div class="grid grid-cols-2 gap-4">
             <div class="mb-12">
-              <p class="opacity-80 mb-2 pb-1 text-xs">Feb 13, 2021</p>
-              <h5 class="font-semibold text-xl mb-4">Improve your customer expirience</h5>
-              <p class="text-gray-500 pb-1 mb-4">
-                Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
-                molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+              <p class="mb-2 pb-1 text-xs opacity-80">Feb 13, 2021</p>
+              <h5 class="mb-4 text-xl font-semibold">
+                Improve your customer expirience
+              </h5>
+              <p class="mb-4 pb-1 text-neutral-500">
+                Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+                esse quam nihil molestiae consequatur, vel illum qui dolorem eum
+                fugiat quo voluptas nulla pariatur.
               </p>
               <a
                 href="#!"
-                class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transform ease-in-out duration-300 font-bold"
+                class="transform font-bold text-primary duration-300 ease-in-out hover:text-primary-700 focus:text-primary-700 active:text-primary-800"
                 >Read full story</a
               >
             </div>
             <div class="mb-12">
-              <p class="opacity-80 mb-2 pb-1 text-xs">Jan 27, 2021</p>
-              <h5 class="font-semibold text-xl mb-4">Writing effective landing page copy</h5>
-              <p class="text-gray-500 pb-1 mb-4">
-                Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <p class="mb-2 pb-1 text-xs opacity-80">Jan 27, 2021</p>
+              <h5 class="mb-4 text-xl font-semibold">
+                Writing effective landing page copy
+              </h5>
+              <p class="mb-4 pb-1 text-neutral-500">
+                Ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
               </p>
               <a
                 href="#!"
-                class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transform ease-in-out duration-300 font-bold"
+                class="transform font-bold text-primary duration-300 ease-in-out hover:text-primary-700 focus:text-primary-700 active:text-primary-800"
                 >Read full story</a
               >
             </div>
@@ -125,45 +141,48 @@
     <!-- Start your project here-->
     <div>
       <!-- Container for demo purpose -->
-      <div class="container my-12 py-12 mx-auto">
+      <div class="container my-12 mx-auto py-12">
         <!-- Section: Design Block -->
-        <section class="mb-20 text-gray-900">
+        <section class="mb-20 text-neutral-900">
           <div class="grid grid-cols-1">
-            <h2 class="text-4xl font-black mb-2 pb-1">Recent publications</h2>
-            <p class="text-xl opacity-80 mb-0">
-              Ab placeat inventore labore, illo vel quas modi officiis consectetur reiciendis.
-              Pariatur consectetur omnis cumque dolorem debitis.
+            <h2 class="mb-2 pb-1 text-4xl font-black">Recent publications</h2>
+            <p class="mb-0 text-xl opacity-80">
+              Ab placeat inventore labore, illo vel quas modi officiis
+              consectetur reiciendis. Pariatur consectetur omnis cumque dolorem
+              debitis.
             </p>
           </div>
 
           <hr class="my-12" />
 
-          <div class="grid lg:grid-cols-3 gap-4">
+          <div class="grid gap-4 lg:grid-cols-3">
             <div class="mb-12">
               <div>
                 <div class="pb-4">
-                  <p class="pb-1 mb-4">
+                  <p class="mb-4 pb-1">
                     <span
-                      class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-blue-200 text-blue-600 rounded-full"
+                      class="inline-block whitespace-nowrap rounded-full bg-primary-200 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-primary"
                       >Starter</span
                     >
                   </p>
-                  <h5 class="text-xl font-semibold mb-4">Boost your conversion rate</h5>
-                  <p class="text-gray-500 mb-4">
-                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                    adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.
+                  <h5 class="mb-4 text-xl font-semibold">
+                    Boost your conversion rate
+                  </h5>
+                  <p class="mb-4 text-neutral-500">
+                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit
+                    amet, consectetur, adipisci velit, sed quia non numquam eius
+                    modi tempora incidunt ut labore.
                   </p>
                 </div>
                 <div class="flex flex-row items-center">
                   <img
                     src="https://mdbootstrap.com/img/Photos/Avatars/img%20(33).jpg"
-                    class="rounded-full w-10"
+                    class="w-10 rounded-full"
                     height="45"
                     alt="avatar"
-                    loading="lazy"
-                  />
+                    loading="lazy" />
                   <div class="ml-4">
-                    <p class="text-xs font-semibold mb-1">Giulia Trovato</p>
+                    <p class="mb-1 text-xs font-semibold">Giulia Trovato</p>
                     <p class="text-xs opacity-80">Mar 16, 2021 • 7 min read</p>
                   </div>
                 </div>
@@ -172,30 +191,30 @@
             <div class="mb-12">
               <div>
                 <div class="pb-4">
-                  <p class="pb-1 mb-4">
+                  <p class="mb-4 pb-1">
                     <span
-                      class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-200 text-red-600 rounded-full"
+                      class="inline-block whitespace-nowrap rounded-full bg-red-200 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-red-600"
                       >Creativity</span
                     >
                   </p>
-                  <h5 class="text-xl font-semibold mb-4">
+                  <h5 class="mb-4 text-xl font-semibold">
                     How to use search engine optimization to drive sales
                   </h5>
-                  <p class="text-gray-500 mb-4">
-                    Ratione nulla, deserunt error quos ducimus debitis, maiores nobis natus iure,
-                    aspernatur impedit consectetur architecto saepe omnis nam quae.
+                  <p class="mb-4 text-neutral-500">
+                    Ratione nulla, deserunt error quos ducimus debitis, maiores
+                    nobis natus iure, aspernatur impedit consectetur architecto
+                    saepe omnis nam quae.
                   </p>
                 </div>
                 <div class="flex flex-row items-center">
                   <img
                     src="https://mdbootstrap.com/img/Photos/Avatars/img%20(22).jpg"
-                    class="rounded-full w-10"
+                    class="w-10 rounded-full"
                     height="45"
                     alt="avatar"
-                    loading="lazy"
-                  />
+                    loading="lazy" />
                   <div class="ml-4">
-                    <p class="text-xs font-semibold mb-1">Chiara Altieri</p>
+                    <p class="mb-1 text-xs font-semibold">Chiara Altieri</p>
                     <p class="text-xs opacity-80">Mar 15, 2021 • 6 min read</p>
                   </div>
                 </div>
@@ -204,28 +223,29 @@
             <div class="mb-12">
               <div>
                 <div class="pb-4">
-                  <p class="pb-1 mb-4">
+                  <p class="mb-4 pb-1">
                     <span
-                      class="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-green-200 text-green-600 rounded-full"
+                      class="inline-block whitespace-nowrap rounded-full bg-green-200 py-1 px-2.5 text-center align-baseline text-xs font-bold leading-none text-green-600"
                       >Case Study</span
                     >
                   </p>
-                  <h5 class="text-xl font-semibold mb-4">Improve your customer experience</h5>
-                  <p class="text-gray-500 mb-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit, voluptas earum omnis
-                    eaque laboriosam dolor.
+                  <h5 class="mb-4 text-xl font-semibold">
+                    Improve your customer experience
+                  </h5>
+                  <p class="mb-4 text-neutral-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit,
+                    voluptas earum omnis eaque laboriosam dolor.
                   </p>
                 </div>
                 <div class="flex flex-row items-center">
                   <img
                     src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg"
-                    class="rounded-full w-10"
+                    class="w-10 rounded-full"
                     height="45"
                     alt="avatar"
-                    loading="lazy"
-                  />
+                    loading="lazy" />
                   <div class="ml-4">
-                    <p class="text-xs font-semibold mb-1">Alice Russo</p>
+                    <p class="mb-1 text-xs font-semibold">Alice Russo</p>
                     <p class="text-xs opacity-80">Mar 14, 2021 • 8 min read</p>
                   </div>
                 </div>
@@ -242,29 +262,32 @@
     <!-- Start your project here-->
     <div>
       <!-- Container for demo purpose -->
-      <div class="container my-12 py-12 mx-auto px-3">
+      <div class="container my-12 mx-auto py-12 px-3">
         <!-- Section: Design Block -->
-        <section class="mb-20 text-gray-900">
+        <section class="mb-20 text-neutral-900">
           <div class="mb-12 flex justify-center">
             <div class="mb-6">
-              <div class="relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg">
+              <div
+                class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg">
                 <img
                   src="https://mdbootstrap.com/img/Photos/new-templates/landing-page/img40.jpg"
-                  class="w-96"
-                />
+                  class="w-96" />
                 <a href="#!">
                   <div
-                    class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
-                  ></div>
+                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"></div>
                 </a>
               </div>
             </div>
             <div class="lg:ml-6">
-              <h3 class="text-2xl font-bold mb-4"><a href="#!">Maldives holiday highlights</a></h3>
-              <p class="text-xl text-gray-500 mb-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat ipsa quam eligendi
-                quod aliquam voluptatum minus ipsam unde totam suscipit maxime, mollitia a ducimus
-                corporis quis vel. Nobis, perspiciatis porro quisquam est, qui dolorem ipsum...
+              <h3 class="mb-4 text-2xl font-bold">
+                <a href="#!">Maldives holiday highlights</a>
+              </h3>
+              <p class="mb-4 text-xl text-neutral-500">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Placeat ipsa quam eligendi quod aliquam voluptatum minus ipsam
+                unde totam suscipit maxime, mollitia a ducimus corporis quis
+                vel. Nobis, perspiciatis porro quisquam est, qui dolorem
+                ipsum...
                 <a href="#!" class="link-dark">Read more</a>
               </p>
               <div class="flex items-center">
@@ -272,12 +295,11 @@
                   <div>
                     <img
                       src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg"
-                      class="rounded-md shadow-lg w-10"
-                      alt="avatar"
-                    />
+                      class="w-10 rounded-md shadow-lg"
+                      alt="avatar" />
                   </div>
                 </div>
-                <div class="grow ml-2 pl-1">
+                <div class="ml-2 grow pl-1">
                   <p class="mb-0">Maria Smantha</p>
                 </div>
               </div>
@@ -285,26 +307,29 @@
           </div>
           <div class="mb-12 flex justify-center">
             <div class="mb-6">
-              <div class="relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg">
+              <div
+                class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg">
                 <img
                   src="https://mdbootstrap.com/img/Photos/new-templates/landing-page/img41.jpg"
-                  class="w-96"
-                />
+                  class="w-96" />
                 <a href="#!">
                   <div
-                    class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
-                  ></div>
+                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"></div>
                 </a>
               </div>
             </div>
             <div class="lg:ml-6">
-              <h3 class="text-2xl font-bold mb-4">
-                <a href="#!">Van Life How To: Your Complete Guide to Living in a Van</a>
+              <h3 class="mb-4 text-2xl font-bold">
+                <a href="#!"
+                  >Van Life How To: Your Complete Guide to Living in a Van</a
+                >
               </h3>
-              <p class="text-xl text-gray-500 mb-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat ipsa quam eligendi
-                quod aliquam voluptatum minus ipsam unde totam suscipit maxime, mollitia a ducimus
-                corporis quis vel. Nobis, perspiciatis porro quisquam est, qui dolorem ipsum...
+              <p class="mb-4 text-xl text-neutral-500">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Placeat ipsa quam eligendi quod aliquam voluptatum minus ipsam
+                unde totam suscipit maxime, mollitia a ducimus corporis quis
+                vel. Nobis, perspiciatis porro quisquam est, qui dolorem
+                ipsum...
                 <a href="#!" class="link-dark">Read more</a>
               </p>
               <div class="flex items-center">
@@ -312,12 +337,11 @@
                   <div>
                     <img
                       src="https://mdbootstrap.com/img/Photos/Avatars/img%20(27).jpg"
-                      class="rounded-md shadow-lg w-10"
-                      alt="avatar"
-                    />
+                      class="w-10 rounded-md shadow-lg"
+                      alt="avatar" />
                   </div>
                 </div>
-                <div class="grow ml-2 pl-1">
+                <div class="ml-2 grow pl-1">
                   <p class="mb-0">Lorenzo Bocelli</p>
                 </div>
               </div>
@@ -325,24 +349,27 @@
           </div>
           <div class="mb-12 flex justify-center">
             <div class="mb-6">
-              <div class="relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg">
+              <div
+                class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg">
                 <img
                   src="https://mdbootstrap.com/img/Photos/new-templates/landing-page/img42.jpg"
-                  class="w-96"
-                />
+                  class="w-96" />
                 <a href="#!">
                   <div
-                    class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed"
-                  ></div>
+                    class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"></div>
                 </a>
               </div>
             </div>
             <div class="lg:ml-6">
-              <h3 class="text-2xl font-bold mb-4"><a href="#!">Beginner's Guide To Surfing</a></h3>
-              <p class="text-xl text-gray-500 mb-4">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat ipsa quam eligendi
-                quod aliquam voluptatum minus ipsam unde totam suscipit maxime, mollitia a ducimus
-                corporis quis vel. Nobis, perspiciatis porro quisquam est, qui dolorem ipsum...
+              <h3 class="mb-4 text-2xl font-bold">
+                <a href="#!">Beginner's Guide To Surfing</a>
+              </h3>
+              <p class="mb-4 text-xl text-neutral-500">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Placeat ipsa quam eligendi quod aliquam voluptatum minus ipsam
+                unde totam suscipit maxime, mollitia a ducimus corporis quis
+                vel. Nobis, perspiciatis porro quisquam est, qui dolorem
+                ipsum...
                 <a href="#!" class="link-dark">Read more</a>
               </p>
               <div class="flex items-center">
@@ -350,12 +377,11 @@
                   <div>
                     <img
                       src="https://mdbootstrap.com/img/Photos/Avatars/img%20(28).jpg"
-                      class="rounded-md shadow-lg w-10"
-                      alt="avatar"
-                    />
+                      class="w-10 rounded-md shadow-lg"
+                      alt="avatar" />
                   </div>
                 </div>
-                <div class="grow ml-2 pl-1">
+                <div class="ml-2 grow pl-1">
                   <p class="mb-0">Giulia Trovato</p>
                 </div>
               </div>
@@ -368,12 +394,16 @@
     </div>
     <!-- End your project here-->
 
+    <!-- Theme switcher -->
+    <script type="text/javascript" src="../../js/theme.min.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="../../js/index.min.js"></script>
     <!-- PRISM -->
     <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

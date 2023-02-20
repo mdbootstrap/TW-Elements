@@ -2,18 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Tailwind elements</title>
     <!-- Favicon -->
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
-    <!-- Inter font -->
+    <!-- Roboto font -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
     <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.2.4"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          fontFamily: {
+            sans: ["Roboto", "sans-serif"],
+            body: ["Roboto", "sans-serif"],
+            mono: ["ui-monospace", "monospace"],
+          },
+        },
+      };
+    </script>
     <!-- Tailwind Elements CSS -->
     <link rel="stylesheet" href="css/index.min.css" />
     <!-- Custom styles -->
@@ -22,21 +35,21 @@
 
   <body>
     <!-- Start your project here-->
-    <div class="mx-96">
-      <div style="text-align: center; margin-top: 150px">
+    <div
+      class="mx-auto max-w-[540px] sm:max-w-[604px] md:max-w-[720px] lg:max-w-[972px] xl:max-w-full xl:px-12 2xl:max-w-[1400px]">
+      <div class="mt-[150px] text-center">
         <img
-          src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png"
-          style="width: 250px; height: 90px; margin: 0 auto"
-        />
-        <h5 class="pt-3 text-3xl">Tailwind elements</h5>
+          src="https://tecdn.b-cdn.net/img/logo/mdb-transparent-250px.png"
+          class="mx-auto h-[90px] w-[250px]" />
+        <h5 class="pt-3 text-3xl">Tailwind Elements</h5>
         <p class="pt-2 pb-5 font-semibold">MDB Team</p>
-        <a href="https://tailwind-elements.com/" target="_blank">
-          <button
-            type="button"
-            class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-          >
-            Check Tailwind Elements docs
-          </button>
+        <a
+          href="https://tailwind-elements.com/"
+          data-te-ripple-init
+          data-te-ripple-color="light"
+          target="_blank"
+          class="inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+          Check Tailwind Elements docs
         </a>
       </div>
     </div>

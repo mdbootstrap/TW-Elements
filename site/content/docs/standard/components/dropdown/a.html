@@ -1,0 +1,669 @@
+---
+---
+
+<!--Section: Docs content-->
+<section>
+  <!--Section: Usage-->
+  <section id="api-section-usage">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="basic"
+      data-te-spy-item>
+      Usage
+    </h2>
+
+    <div
+      class="mb-4 rounded-lg bg-info-100 py-5 px-6 text-base text-info-800"
+      role="alert">
+      <strong>Note:</strong>
+      <br />
+      On touch-enabled devices, opening a dropdown adds empty
+      <code>mouseover</code> handlers to the immediate children of the
+      <code>&lt;body&gt;</code> element. This admittedly ugly hack is necessary
+      to work around a
+      <a
+        target="_blank"
+        rel="nofollow"
+        href="https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html"
+        >quirk in iOS’ event delegation</a
+      >, which would otherwise prevent a tap anywhere outside of the dropdown
+      from triggering the code that closes the dropdown. Once the dropdown is
+      closed, these additional empty <code>mouseover</code> handlers are
+      removed.
+    </div>
+
+    <h4 class="mb-3 text-lg font-bold">Via data attributes</h4>
+
+    <p>
+      Add <code>data-te-dropdown-toggle-ref</code> to a link or button to toggle
+      a dropdown.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example1" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example1">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="html" >}}
+        <div class="flex justify-center">
+          <div>
+            <div class="relative" data-te-dropdown-ref>
+              <button
+                class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none"
+                type="button"
+                id="dropdownMenuButton1"
+                data-te-dropdown-toggle-ref
+                aria-expanded="false"
+                data-te-ripple-init
+                data-te-ripple-color="light">
+                Dropdown button
+                <span class="ml-2 w-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="h-5 w-5">
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </button>
+              <ul
+                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                aria-labelledby="dropdownMenuButton1"
+                data-te-dropdown-menu-ref>
+                <li>
+                  <a
+                    class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                    href="#"
+                    data-te-dropdown-item-ref
+                    >Action</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                    href="#"
+                    data-te-dropdown-item-ref
+                    >Another action</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
+                    href="#"
+                    data-te-dropdown-item-ref
+                    >Something else here</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <h4 class="mb-5 text-lg font-bold">Via JavaScript</h4>
+
+    <p>Call the dropdowns via JavaScript:</p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example2" >}}
+    <!-- prettier-ignore -->
+    <section class="!visible hidden" data-te-collapse-item id="api-example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JS" >}}
+        {{< twsnippet/code active=true lang="js" >}}
+        const dropdownElementList = [].slice.call(document.querySelectorAll('[data-te-dropdown-toggle-ref]'));
+        const dropdownList = dropdownElementList.map((dropdownToggleEl) => {
+          return new te.Dropdown(dropdownToggleEl);
+        });
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Options-->
+  <section id="api-section-options">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Options
+    </h2>
+
+    <p>
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to <code>data-te-</code>, as in
+      <code>data-te-offset=""</code>.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Type
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>autoClose</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    boolean | string
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <p class="mb-4">
+                      Configure the auto close behavior of the dropdown:
+                    </p>
+                    <ul class="list-disc pl-7">
+                      <li>
+                        <code>true</code> clicking outside or inside the
+                        dropdown menu.
+                      </li>
+                      <li>
+                        <code>false</code> <code>hide</code> also will not be
+                        closed by pressing
+                        <strong>esc</strong>
+                        key)
+                      </li>
+                      <li>
+                        <code>'inside'</code> - the dropdown will be closed
+                        (only) by clicking inside the dropdown menu.
+                      </li>
+                      <li>
+                        <code>'outside'</code> - the dropdown will be closed
+                        (only) by clicking outside the dropdown menu.
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>boundary</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    string | element
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>'clippingParents'</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Overflow constraint boundary of the dropdown menu (applies
+                    only to Popper's preventOverflow modifier). By default it's
+                    <code>'clippingParents'</code> and can accept an HTMLElement
+                    reference (via JavaScript only). For more information refer
+                    to Popper's
+                    <a
+                      class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700"
+                      href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary"
+                      >detectOverflow docs</a
+                    >.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>display</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    string
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>'dynamic'</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    By default, we use Popper for dynamic positioning. Disable
+                    this with
+                    <code>static</code>.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>dropdownAnimation</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    string
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>'on'</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Turn on / off dropdown animation.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>offset</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    array | string | function
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>0</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <p class="mb-4">
+                      Offset of the dropdown relative to its target.
+                    </p>
+                    <p class="mb-4">
+                      When a function is used to determine the offset, it is
+                      called with an object containing the offset data as its
+                      first argument. The function must return an object with
+                      the same structure. The triggering element DOM node is
+                      passed as the second argument.
+                    </p>
+                    <p>
+                      For more information refer to Popper's
+                      <a
+                        class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700"
+                        href="https://popper.js.org/docs/v2/modifiers/offset/#options"
+                        >offset docs</a
+                      >.
+                    </p>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>popperConfig</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    null | object | function
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>null</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <p class="mb-4">
+                      To change Bootstrap's default Popper config, see
+                      <a
+                        class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700"
+                        href="https://popper.js.org/docs/v2/constructors/#options"
+                        >Popper's configuration</a
+                      >.
+                    </p>
+                    <p>
+                      When a function is used to create the Popper
+                      configuration, it's called with an object that contains
+                      the Bootstrap's default Popper configuration. It helps you
+                      use and merge the default with your own configuration. The
+                      function must return a configuration object for Popper.
+                    </p>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>reference</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    string | element | object
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>'toggle'</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Reference element of the dropdown menu. Accepts the values
+                    of <code>'toggle'</code>, <code>'parent'</code>, an
+                    HTMLElement reference or an object providing
+                    <code>getBoundingClientRect</code>. For more information
+                    refer to Popper's
+                    <a
+                      class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700"
+                      href="https://popper.js.org/docs/v2/constructors/#createpopper"
+                      >constructor docs</a
+                    >
+                    and
+                    <a
+                      class="mb-4 text-blue-600 transition duration-300 ease-in-out hover:text-blue-700"
+                      href="https://popper.js.org/docs/v2/virtual-elements/"
+                      >virtual element docs</a
+                    >.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="mt-5">
+              Note when <code>boundary</code> is set to any value other than
+              <code>'scrollParent'</code>, the style
+              <code>position: static</code> is applied to the
+              <code>.dropdown</code> container.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Options-->
+
+  <!--Section: Classes-->
+  <!--Section: Classes-->
+
+  <hr class="my-5 dark:border-gray-600" />
+
+  <!--Section: Methods-->
+  <section id="api-section-methods">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Methods
+    </h2>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Method
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Description
+                  </th>
+                  <th scope="col" class="px-6 py-4">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>toggle</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Toggles the dropdown menu of a given navbar or tabbed
+                    navigation.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myDropdown.toggle()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>show</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Shows the dropdown menu of a given navbar or tabbed
+                    navigation.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myDropdown.show()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>hide</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Hides the dropdown menu of a given navbar or tabbed
+                    navigation.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myDropdown.hide()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>update</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Updates the position of an element's dropdown.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myDropdown.update({autoClose: false})</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>dispose</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Destroys an element's dropdown.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myDropdown.dispose()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which allows you to get the alert instance
+                    associated to a DOM element.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Dropdown.getInstance()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getOrCreateInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which returns an alert instance associated to
+                    a DOM element or create a new one in case it wasn't
+                    initialized.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Dropdown.getOrCreateInstance()</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example5" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example5">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const myDropdown = document.getElementById('myDropdown');
+        const myDropdownInstance = new te.Dropdown(myDropdown);
+        myDropdownInstance.show();
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Methods-->
+
+  <!--Section: Events-->
+  <section id="api-section-events">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Events
+    </h2>
+
+    <p>
+      All dropdown events are fired at the toggling element and then bubbled up.
+      So you can also add event listeners on the
+      <code>[data-te-dropdown-menu-ref]</code>’s parent element.
+      <code>hide.te.dropdown</code> and <code>hidden.te.dropdown</code> events
+      have a <code>clickEvent</code> property (only when the original Event type
+      is <code>click</code>) that contains an Event Object for the click event.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Event type
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>show.te.dropdown</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Fires immediately when the show instance method is called.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>shown.te.dropdown</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Fired when the dropdown has been made visible to the user
+                    and CSS transitions have completed.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>hide.te.dropdown</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Fires immediately when the hide instance method has been
+                    called.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>hidden.te.dropdown</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Fired when the dropdown has finished being hidden from the
+                    user and CSS transitions have completed.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example6" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example6">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const myDropdown = document.getElementById('myDropdown');
+        myDropdown.addEventListener('show.te.dropdown', () => {
+          // do something...
+        });
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Events-->
+</section>

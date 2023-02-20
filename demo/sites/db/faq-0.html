@@ -7,11 +7,10 @@
     <meta name="author" content="Tailwind Elements" />
     <title>Album example · Bootstrap v5.1</title>
 
-    <!-- Inter font -->
+    <!-- Roboto font -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
     <!-- Tailwind -->
     <link rel="stylesheet" href="../../css/tailwind.min.css" />
     <!-- PRISM -->
@@ -20,110 +19,118 @@
     <style></style>
   </head>
 
-  <body>
+  <body class="dark:bg-neutral-800">
     <!-- Start your project here-->
     <div>
       <!-- Container for demo purpose -->
-      <div class="container my-12 py-12 mx-auto px-4">
+      <div class="container my-12 mx-auto py-12 px-4">
         <!-- Section: Design Block -->
-        <section class="mb-20 text-gray-900">
-          <h2 class="text-3xl font-bold mb-6 pl-6">Frequently asked questions</h2>
+        <section class="mb-20 text-neutral-900">
+          <h2 class="mb-6 pl-6 text-3xl font-bold">
+            Frequently asked questions
+          </h2>
 
-          <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div id="accordionFlushExample">
             <div
-              class="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200"
-            >
-              <h2 class="accordion-header mb-0" id="flush-headingOne">
+              class="rounded-none border border-t-0 border-l-0 border-r-0 border-neutral-200 bg-white">
+              <h2 class="mb-0" id="flush-headingOne">
                 <button
-                  class="accordion-button relative flex items-center w-full py-4 px-5 text-base text-gray-800 font-bold text-left bg-white border-0 rounded-none transition focus:outline-none"
+                  class="group relative flex w-full items-center rounded-none border-0 bg-white py-4 px-5 text-left text-base font-bold text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)]"
                   type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseOne"
+                  data-te-collapse-init
+                  data-te-target="#flush-collapseOne"
                   aria-expanded="false"
-                  aria-controls="flush-collapseOne"
-                >
+                  aria-controls="flush-collapseOne">
                   Anim pariatur cliche reprehenderit?
                 </button>
               </h2>
               <div
                 id="flush-collapseOne"
-                class="accordion-collapse border-0 collapse show"
+                class="!visible border-0"
+                data-te-collapse-item
+                data-te-collapse-show
                 aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body py-4 px-5 text-gray-500">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                  richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                  brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                  sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
-                  et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                  sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
-                  craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                  heard of them accusamus labore sustainable VHS.
+                data-te-parent="#accordionFlushExample">
+                <div class="py-4 px-5 text-neutral-500">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life
+                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                  non cupidatat skateboard dolor brunch. Food truck quinoa
+                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                  aliqua put a bird on it squid single-origin coffee nulla
+                  assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
+                  beer labore wes anderson cred nesciunt sapiente ea proident.
+                  Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                  beer farm-to-table, raw denim aesthetic synth nesciunt you
+                  probably haven't heard of them accusamus labore sustainable
+                  VHS.
                 </div>
               </div>
             </div>
             <div
-              class="accordion-item border-l-0 border-r-0 rounded-none bg-white border border-gray-200"
-            >
-              <h2 class="accordion-header mb-0" id="flush-headingTwo">
+              class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white">
+              <h2 class="mb-0" id="flush-headingTwo">
                 <button
-                  class="accordion-button collapsed relative flex items-center w-full py-4 px-5 text-base text-gray-800 font-bold text-left bg-white border-0 rounded-none transition focus:outline-none"
+                  class="group relative flex w-full items-center rounded-none border-0 bg-white py-4 px-5 text-left text-base font-bold text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)]"
                   type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseTwo"
+                  data-te-collapse-init
+                  data-te-collapse-collapsed
+                  data-te-target="#flush-collapseTwo"
                   aria-expanded="false"
-                  aria-controls="flush-collapseTwo"
-                >
+                  aria-controls="flush-collapseTwo">
                   Non cupidatat skateboard dolor brunch?
                 </button>
               </h2>
               <div
                 id="flush-collapseTwo"
-                class="accordion-collapse border-0 collapse"
+                class="!visible hidden border-0"
+                data-te-collapse-item
                 aria-labelledby="flush-headingTwo"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body py-4 px-5 text-gray-500">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                  richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                  brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                  sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
-                  et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                  sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
-                  craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                  heard of them accusamus labore sustainable VHS.
+                data-te-parent="#accordionFlushExample">
+                <div class="py-4 px-5 text-neutral-500">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life
+                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                  non cupidatat skateboard dolor brunch. Food truck quinoa
+                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                  aliqua put a bird on it squid single-origin coffee nulla
+                  assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
+                  beer labore wes anderson cred nesciunt sapiente ea proident.
+                  Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
+                  beer farm-to-table, raw denim aesthetic synth nesciunt you
+                  probably haven't heard of them accusamus labore sustainable
+                  VHS.
                 </div>
               </div>
             </div>
             <div
-              class="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200"
-            >
-              <h2 class="accordion-header mb-0" id="flush-headingThree">
+              class="rounded-none border border-l-0 border-r-0 border-b-0 border-t-0 border-neutral-200 bg-white">
+              <h2 class="mb-0" id="flush-headingThree">
                 <button
-                  class="accordion-button collapsed relative flex items-center w-full py-4 px-5 text-base text-gray-800 font-bold text-left bg-white border-0 rounded-none transition focus:outline-none"
+                  class="group relative flex w-full items-center rounded-none border-0 bg-white py-4 px-5 text-left text-base font-bold text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)]"
                   type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseThree"
+                  data-te-collapse-init
+                  data-te-collapse-collapsed
+                  data-te-target="#flush-collapseThree"
                   aria-expanded="false"
-                  aria-controls="flush-collapseThree"
-                >
-                  Praesentium voluptatibus temporibus consequatur non aspernatur?
+                  aria-controls="flush-collapseThree">
+                  Praesentium voluptatibus temporibus consequatur non
+                  aspernatur?
                 </button>
               </h2>
               <div
                 id="flush-collapseThree"
-                class="accordion-collapse collapse"
+                class="!visible hidden rounded-b-lg"
+                data-te-collapse-item
                 aria-labelledby="flush-headingThree"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body py-4 px-5 text-gray-500">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit optio vitae
-                  inventore autem fugiat rerum sed laborum. Natus recusandae laboriosam quos
-                  pariatur corrupti id dignissimos deserunt, praesentium voluptatibus temporibus
-                  consequatur non aspernatur laborum rerum nemo dolorem libero inventore provident
-                  exercitationem sunt totam aperiam. Facere sunt quos commodi obcaecati temporibus
-                  alias amet! Quam quisquam laboriosam quae repellendus non cum adipisci odio?
+                data-te-parent="#accordionFlushExample">
+                <div class="py-4 px-5 text-neutral-500">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+                  optio vitae inventore autem fugiat rerum sed laborum. Natus
+                  recusandae laboriosam quos pariatur corrupti id dignissimos
+                  deserunt, praesentium voluptatibus temporibus consequatur non
+                  aspernatur laborum rerum nemo dolorem libero inventore
+                  provident exercitationem sunt totam aperiam. Facere sunt quos
+                  commodi obcaecati temporibus alias amet! Quam quisquam
+                  laboriosam quae repellendus non cum adipisci odio?
                 </div>
               </div>
             </div>
@@ -138,45 +145,53 @@
     <!-- Start your project here-->
     <div>
       <!-- Container for demo purpose -->
-      <div class="container my-12 py-12 mx-auto px-4">
+      <div class="container my-12 mx-auto py-12 px-4">
         <!-- Section: Design Block -->
-        <section class="mb-20 text-gray-900">
-          <div class="grid md:grid-cols-2 gap-4">
+        <section class="mb-20 text-neutral-900">
+          <div class="grid gap-4 md:grid-cols-2">
             <div class="mb-6 md:mb-0">
-              <h2 class="text-3xl font-bold mb-6">Frequently asked questions</h2>
+              <h2 class="mb-6 text-3xl font-bold">
+                Frequently asked questions
+              </h2>
 
-              <p class="text-gray-500">
+              <p class="text-neutral-500">
                 Didn't find your answer in the FAQ?
                 <a
                   href="#!"
-                  class="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300"
+                  class="text-primary transition duration-300 hover:text-primary-700 focus:text-primary-700 active:text-primary-800"
                   >Contact our sales team</a
                 >.
               </p>
             </div>
 
             <div class="mb-6 md:mb-0">
-              <p class="font-bold mb-4">Anim pariatur cliche reprehenderit?</p>
-              <p class="text-gray-500 mb-12">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt autem numquam dolore
-                molestias aperiam culpa alias veritatis architecto eos, molestiae vitae ex eligendi
-                libero eveniet dolorem, doloremque rem aliquid perferendis.
+              <p class="mb-4 font-bold">Anim pariatur cliche reprehenderit?</p>
+              <p class="mb-12 text-neutral-500">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
+                autem numquam dolore molestias aperiam culpa alias veritatis
+                architecto eos, molestiae vitae ex eligendi libero eveniet
+                dolorem, doloremque rem aliquid perferendis.
               </p>
 
-              <p class="font-bold mb-4">Non cupidatat skateboard dolor brunch?</p>
-              <p class="text-gray-500 mb-12">
-                Distinctio corporis, iure facere ducimus quos consectetur ipsa ut magnam autem
-                doloremque ex! Id, sequi. Voluptatum magnam sed fugit iusto minus et suscipit?
-                Minima sunt at nulla tenetur, numquam unde quod modi magnam ab deserunt ipsam sint
-                aliquid dolores libero repellendus cupiditate mollitia quidem dolorem odit
+              <p class="mb-4 font-bold">
+                Non cupidatat skateboard dolor brunch?
+              </p>
+              <p class="mb-12 text-neutral-500">
+                Distinctio corporis, iure facere ducimus quos consectetur ipsa
+                ut magnam autem doloremque ex! Id, sequi. Voluptatum magnam sed
+                fugit iusto minus et suscipit? Minima sunt at nulla tenetur,
+                numquam unde quod modi magnam ab deserunt ipsam sint aliquid
+                dolores libero repellendus cupiditate mollitia quidem dolorem
+                odit
               </p>
 
-              <p class="font-bold mb-4">
+              <p class="mb-4 font-bold">
                 Praesentium voluptatibus temporibus consequatur non aspernatur?
               </p>
-              <p class="text-gray-500 mb-12">
-                Minima sunt at nulla tenetur, numquam unde quod modi magnam ab deserunt ipsam sint
-                aliquid dolores libero repellendus cupiditate mollitia quidem dolorem.
+              <p class="mb-12 text-neutral-500">
+                Minima sunt at nulla tenetur, numquam unde quod modi magnam ab
+                deserunt ipsam sint aliquid dolores libero repellendus
+                cupiditate mollitia quidem dolorem.
               </p>
             </div>
           </div>
@@ -190,91 +205,113 @@
     <!-- Start your project here-->
     <div>
       <!-- Container for demo purpose -->
-      <div class="container my-12 py-12 mx-auto px-4">
+      <div class="container my-12 mx-auto py-12 px-4">
         <!-- Section: Design Block -->
-        <section class="mb-20 text-gray-900">
-          <div class="grid lg:grid-cols-2 gap-4 lg:gap-x-12 lg:mb-0">
+        <section class="mb-20 text-neutral-900">
+          <div class="grid gap-4 lg:mb-0 lg:grid-cols-2 lg:gap-x-12">
             <div class="mb-12 lg:mb-0">
-              <h2 class="text-3xl font-bold mb-6">Frequently asked questions</h2>
+              <h2 class="mb-6 text-3xl font-bold">
+                Frequently asked questions
+              </h2>
 
-              <p class="text-gray-500 mb-12">
+              <p class="mb-12 text-neutral-500">
                 Didn't find your answer in the FAQ? Contact our sales team.
               </p>
 
               <form>
-                <div class="form-group mb-6">
+                <div class="relative mb-6" data-te-input-wrapper-init>
                   <input
                     type="text"
-                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                     id="exampleInput7"
-                    placeholder="Name"
-                  />
+                    placeholder="Name" />
+                  <label
+                    for="exampleInput7"
+                    class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+                    >Name
+                  </label>
                 </div>
-                <div class="form-group mb-6">
+                <div class="relative mb-6" data-te-input-wrapper-init>
                   <input
                     type="email"
-                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                     id="exampleInput8"
-                    placeholder="Email address"
-                  />
+                    placeholder="Email address" />
+                  <label
+                    for="exampleInput8"
+                    class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+                    >Email address
+                  </label>
                 </div>
-                <div class="form-group mb-6">
+                <div class="relative mb-6" data-te-input-wrapper-init>
                   <textarea
-                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                     id="exampleFormControlTextarea13"
                     rows="3"
-                    placeholder="Message"
-                  ></textarea>
+                    placeholder="Message"></textarea>
+                  <label
+                    for="exampleFormControlTextarea13"
+                    class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+                    >Message
+                  </label>
                 </div>
-                <div class="form-group form-check text-center mb-6">
+                <div class="form-group form-check mb-6 text-center">
                   <input
                     type="checkbox"
-                    class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                    class="form-check-input mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-neutral-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-primary checked:bg-primary focus:outline-none"
                     id="exampleCheck87"
-                    checked
-                  />
-                  <label class="form-check-label inline-block text-gray-800" for="exampleCheck87"
+                    checked />
+                  <label
+                    class="form-check-label inline-block text-neutral-800 dark:text-white"
+                    for="exampleCheck87"
                     >Send me a copy of this message</label
                   >
                 </div>
                 <button
                   type="submit"
-                  class="w-full px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                >
+                  class="w-full rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg">
                   Send
                 </button>
               </form>
             </div>
 
             <div class="mb-6 md:mb-0">
-              <p class="font-bold mb-4">Anim pariatur cliche reprehenderit?</p>
-              <p class="text-gray-500 mb-12">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt autem numquam dolore
-                molestias aperiam culpa alias veritatis architecto eos, molestiae vitae ex eligendi
-                libero eveniet dolorem, doloremque rem aliquid perferendis.
+              <p class="mb-4 font-bold">Anim pariatur cliche reprehenderit?</p>
+              <p class="mb-12 text-neutral-500">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
+                autem numquam dolore molestias aperiam culpa alias veritatis
+                architecto eos, molestiae vitae ex eligendi libero eveniet
+                dolorem, doloremque rem aliquid perferendis.
               </p>
 
-              <p class="font-bold mb-4">Non cupidatat skateboard dolor brunch?</p>
-              <p class="text-gray-500 mb-12">
-                Distinctio corporis, iure facere ducimus quos consectetur ipsa ut magnam autem
-                doloremque ex! Id, sequi. Voluptatum magnam sed fugit iusto minus et suscipit?
-                Minima sunt at nulla tenetur, numquam unde quod modi magnam ab deserunt ipsam sint
-                aliquid dolores libero repellendus cupiditate mollitia quidem dolorem odit
+              <p class="mb-4 font-bold">
+                Non cupidatat skateboard dolor brunch?
+              </p>
+              <p class="mb-12 text-neutral-500">
+                Distinctio corporis, iure facere ducimus quos consectetur ipsa
+                ut magnam autem doloremque ex! Id, sequi. Voluptatum magnam sed
+                fugit iusto minus et suscipit? Minima sunt at nulla tenetur,
+                numquam unde quod modi magnam ab deserunt ipsam sint aliquid
+                dolores libero repellendus cupiditate mollitia quidem dolorem
+                odit
               </p>
 
-              <p class="font-bold mb-4">
+              <p class="mb-4 font-bold">
                 Praesentium voluptatibus temporibus consequatur non aspernatur?
               </p>
-              <p class="text-gray-500 mb-12">
-                Minima sunt at nulla tenetur, numquam unde quod modi magnam ab deserunt ipsam sint
-                aliquid dolores libero repellendus cupiditate mollitia quidem dolorem.
+              <p class="mb-12 text-neutral-500">
+                Minima sunt at nulla tenetur, numquam unde quod modi magnam ab
+                deserunt ipsam sint aliquid dolores libero repellendus
+                cupiditate mollitia quidem dolorem.
               </p>
 
-              <p class="font-bold mb-4">Voluptatum magnam sed fugit iusto minus et suscipit?</p>
-              <p class="text-gray-500 mb-12">
-                Laudantium perferendis, est alias iure ut veniam suscipit dolorem fugit. Et ipsam
-                corporis earum ea ut quae cum non iusto blanditiis ipsum dolor eius reiciendis,
-                velit adipisci quas.
+              <p class="mb-4 font-bold">
+                Voluptatum magnam sed fugit iusto minus et suscipit?
+              </p>
+              <p class="mb-12 text-neutral-500">
+                Laudantium perferendis, est alias iure ut veniam suscipit
+                dolorem fugit. Et ipsam corporis earum ea ut quae cum non iusto
+                blanditiis ipsum dolor eius reiciendis, velit adipisci quas.
               </p>
             </div>
           </div>
@@ -285,12 +322,16 @@
     </div>
     <!-- End your project here-->
 
+    <!-- Theme switcher -->
+    <script type="text/javascript" src="../../js/theme.min.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="../../js/index.min.js"></script>
     <!-- PRISM -->
     <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

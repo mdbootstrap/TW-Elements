@@ -1,0 +1,836 @@
+---
+---
+
+<!--Section: Docs content-->
+<section>
+  <!--Section: Usage-->
+  <section id="api-section-usage">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="basic"
+      data-te-spy-item>
+      Usage
+    </h2>
+
+    <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
+
+    <p class="mb-4">
+      Use data attributes to easily control the position of the carousel.
+      <code>data-te-slide</code> accepts the keywords <code>prev</code> or
+      <code>next</code>, which alters the slide position relative to its current
+      position. Alternatively, use <code>data-te-slide-to</code> to pass a raw
+      slide index to the carousel <code>data-te-slide-to="2"</code>, which
+      shifts the slide position to a particular index beginning with
+      <code>0</code>.
+    </p>
+
+    <p>
+      The <code>data-te-carousel-init</code> and
+      <code>data-te-carousel-slide</code> attributes are used to mark a carousel
+      as animating starting at page load. If you don’t use these attributes to
+      initialize your carousel, you have to initialize it yourself.
+      <strong>
+        It cannot be used in combination with (redundant and unnecessary)
+        explicit JavaScript initialization of the same carousel.
+      </strong>
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example1" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example1">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="html" >}}
+        <div
+          id="carouselExampleCaptions"
+          class="relative"
+          data-te-carousel-init
+          data-te-carousel-slide>
+          <div
+            class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+            data-te-carousel-indicators>
+            <button
+              type="button"
+              data-te-target="#carouselExampleCaptions"
+              data-te-slide-to="0"
+              data-te-carousel-active
+              class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+              aria-current="true"
+              aria-label="Slide 1"></button>
+            <button
+              type="button"
+              data-te-target="#carouselExampleCaptions"
+              data-te-slide-to="1"
+              class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+              aria-label="Slide 2"></button>
+            <button
+              type="button"
+              data-te-target="#carouselExampleCaptions"
+              data-te-slide-to="2"
+              class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+              aria-label="Slide 3"></button>
+          </div>
+          <div
+            class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+            <div
+              class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+              data-te-carousel-active
+              data-te-carousel-item
+              style="backface-visibility: hidden">
+              <img
+                src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(15).jpg"
+                class="block w-full"
+                alt="..." />
+              <div
+                class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+                <h5 class="text-xl">First slide label</h5>
+                <p>
+                  Some representative placeholder content for the first slide.
+                </p>
+              </div>
+            </div>
+            <div
+              class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+              data-te-carousel-item
+              style="backface-visibility: hidden">
+              <img
+                src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(22).jpg"
+                class="block w-full"
+                alt="..." />
+              <div
+                class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+                <h5 class="text-xl">Second slide label</h5>
+                <p>
+                  Some representative placeholder content for the second slide.
+                </p>
+              </div>
+            </div>
+            <div
+              class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+              data-te-carousel-item
+              style="backface-visibility: hidden">
+              <img
+                src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg"
+                class="block w-full"
+                alt="..." />
+              <div
+                class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+                <h5 class="text-xl">Third slide label</h5>
+                <p>
+                  Some representative placeholder content for the third slide.
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="absolute top-0 bottom-0 left-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+            type="button"
+            data-te-target="#carouselExampleCaptions"
+            data-te-slide="prev">
+            <span class="inline-block h-8 w-8">
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="#fff">
+                <path
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+              </svg>
+            </span>
+            <span
+              class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+              >Previous</span
+            >
+          </button>
+          <button
+            class="absolute top-0 bottom-0 right-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+            type="button"
+            data-te-target="#carouselExampleCaptions"
+            data-te-slide="next">
+            <span class="inline-block h-8 w-8">
+              <svg
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="#fff">
+                <path
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </span>
+            <span
+              class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+              >Next</span
+            >
+          </button>
+        </div>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <h4 class="font-bold">Via JavaScript</h4>
+
+    <p>Create a carousel with a single line of JavaScript:</p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example2" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const myCarousel = new te.Carousel(document.getElementById("myCarousel"), options);
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Usage-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Options-->
+  <section id="api-section-options">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Options
+    </h2>
+
+    <p>
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to <code>data-te-</code>, as in
+      <code>data-te-interval="4000"</code>.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Type
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>interval</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>5000</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    The amount of time to delay between automatically cycling an
+                    item. If false, carousel will not automatically cycle.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>keyboard</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Whether the carousel should react to keyboard events.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>pause</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    string | boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>"hover"</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <p class="mb-4">
+                      If set to <code>"hover"</code>, pauses the cycling of the
+                      carousel on <code>mouseenter</code> and resumes the
+                      cycling of the carousel on <code>mouseleave</code>. If set
+                      to false, hovering over the carousel won't pause it.
+                    </p>
+                    <p>
+                      On touch-enabled devices, when set to
+                      <code>"hover"</code>, cycling will pause on
+                      <code>touchend</code> (once the user finished interacting
+                      with the carousel) for two intervals, before automatically
+                      resuming. Note that this is in addition to the above mouse
+                      behavior.
+                    </p>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>slide</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    string | boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Autoplays the carousel after the user manually cycles the
+                    first item. If "carousel", autoplays the carousel on load.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>wrap</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Whether the carousel should cycle continuously or have hard
+                    stops.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>touch</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Whether the carousel should support left/right swipe
+                    interactions on touchscreen devices.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Options-->
+
+  <hr class="my-5 dark:border-gray-600" />
+  <!--Section: Classes-->
+  <section id="api-section-classes">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Classes
+    </h2>
+
+    <p>
+      Custom classes can be passed via data attributes or JavaScript. For data
+      attributes, append the class name to
+      <code>data-te-class</code>, as in
+      <code>data-te-class-pointer="touch-pan-x"</code> (in default there is a
+      touch-pan-y).
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>pointer</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    touch-pan-y
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles for controlling a carousel element's behavior on
+                    touchscreens.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>block</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    !block
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Style the display of active carousel slide.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>visible</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    data-[te-carousel-fade]:opacity-100
+                    data-[te-carousel-fade]:z-[1]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets transition styles on carousel slides visible.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>invisible</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    data-[te-carousel-fade]:z-0
+                    data-[te-carousel-fade]:opacity-0
+                    data-[te-carousel-fade]:duration-0
+                    data-[te-carousel-fade]:delay-600
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets transition styles on carousel slides invisible.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>slideRight</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    translate-x-full
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Utilities for translating a carousel element.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>slideLeft</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    -translate-x-full
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Utilities for translating a carousel element.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Classes-->
+
+  <hr class="my-5 dark:border-gray-600" />
+
+  <!--Section: Methods-->
+  <section id="api-section-methods">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      data-te-spy-item>
+      Methods
+    </h2>
+
+    <div
+      class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
+      role="alert">
+      <p class="mb-2">
+        <strong>Asynchronous methods and transitions:</strong>
+        <br />
+        All API methods are <strong>asynchronous</strong> and start a
+        <strong>transition</strong>. They return to the caller as soon as the
+        transition is started but <strong>before it ends</strong>. In addition,
+        a method call on a
+        <strong>transitioning component will be ignored</strong>.
+      </p>
+    </div>
+
+    <p>
+      You can create a carousel instance with the carousel constructor, for
+      example, to initialize with additional options and start cycling through
+      items:
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Method
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Description
+                  </th>
+                  <th scope="col" class="px-6 py-4">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>cycle</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Cycles through the carousel items from left to right.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myCarousel.cycle()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>pause</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Stops the carousel from cycling through items.
+                  </td>
+                  <td class="px-6 py-4">
+                    <code>myCarousel.pause()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>prev</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Cycles to the previous item.
+                    <strong>
+                      Returns to the caller before the previous item has been
+                      shown
+                    </strong>
+                    (e.g., before the slid.te.carousel event occurs).
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>myCarousel.prev()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>next</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Cycles to the next item.
+                    <strong>
+                      Returns to the caller before the next item has been shown
+                    </strong>
+                    (e.g., before the slid.te.carousel event occurs).
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>myCarousel.next()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>nextWhenVisible</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Don’t cycle the carousel to next when the page isn’t visible
+                    or the carousel or its parent isn’t visible.
+                    <strong>
+                      Returns to the caller before the next item has been shown
+                    </strong>
+                    (e.g., before the slid.te.carousel event occurs).
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>myCarousel.nextWhenVisible()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>to</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Cycles the carousel to a particular frame (0 based, similar
+                    to an array).
+                    <strong>
+                      Returns to the caller before the target item has been
+                      shown
+                    </strong>
+                    (e.g., before the slid.te.carousel event occurs).
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myCarousel.to(0)</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>dispose</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Destroys an element's carousel.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myCarousel.dispose()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which allows you to get the carousel instance
+                    associated with a DOM element.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Carousel.getInstance() </code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getOrCreateInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which allows you to get the carousel instance
+                    associated with a DOM element or create a new one in case it
+                    wasn't initialized.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Carousel.getOrCreateInstance()</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example3" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example3">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const myCarouselEl = document.getElementById("myCarousel");
+        const myCarousel = new te.Carousel(myCarouselEl);
+        carousel.pause();              
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+    <!--Section: Methods-->
+
+    <hr class="mb-5 dark:border-gray-600" />
+
+    <!--Section: Events-->
+    <section id="api-section-events">
+      <!-- Section title -->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        data-te-spy-item>
+        Events
+      </h2>
+
+      <p class="mb-4">
+        Bootstrap’s carousel class exposes two events for hooking into carousel
+        functionality. Both events have the following additional properties:
+      </p>
+
+      <ul class="ml-8 mb-4 list-disc">
+        <li>
+          <code>direction</code>: The direction in which the carousel is sliding
+          (either <code>"left"</code> or <code>"right"</code>).
+        </li>
+        <li>
+          <code>relatedTarget</code>: The DOM element that is being slid into
+          place as the active item.
+        </li>
+        <li><code>from</code>: The index of the current item</li>
+        <li><code>to</code>: The index of the next item</li>
+      </ul>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Event type
+                    </th>
+                    <th scope="col" class="px-6 py-4">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>slide.te.carousel</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Fires immediately when the <code>slide</code> instance
+                      method is invoked.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>slid.te.carousel</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Fired when the carousel has completed its slide
+                      transition.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Section: Code-->
+      {{< twsnippet/no-demo id="api-example4" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example4">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "JavaScript" >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code active=true lang="js" >}}
+          const myCarousel = document.getElementById('#myCarousel');
+          myCarousel.addEventListener('slide.te.carousel', () => {
+            // do something...
+          });
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+      <!--Section: Code-->
+      <!--Section: Events-->
+    </section>
+  </section>
+</section>

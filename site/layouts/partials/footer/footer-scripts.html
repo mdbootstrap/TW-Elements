@@ -1,3 +1,11 @@
+<!-- TE -->
+<script type="text/javascript" src="/js/index.min.js"></script>
+<!-- THEME SWITCHER -->
+<script type="text/javascript" src="/js/theme.js"></script>
+<!-- PRISM -->
+<script type="text/javascript" src="/js/new-prism.js"></script>
+<link rel="stylesheet" href="/css/new-prism.css" />
+
 <script>
   class Search {
     constructor(input, icon, list, form, dropdown, count, jsonFile) {
@@ -17,7 +25,7 @@
 
       this.jsonFile = jsonFile;
 
-      this.searchValue = '';
+      this.searchValue = "";
 
       this.keycodes = Object.freeze({
         ARROW_UP: 38,
@@ -29,11 +37,11 @@
     }
 
     get visibleDropdown() {
-      return this.dropdown.style.display === 'block';
+      return this.dropdown.style.display === "block";
     }
 
     get options() {
-      return this.list.getElementsByTagName('a');
+      return this.list.getElementsByTagName("a");
     }
 
     get results() {
@@ -42,7 +50,7 @@
     }
 
     init() {
-      fetch('/' + this.jsonFile)
+      fetch("/" + this.jsonFile)
         .then((response) => response.json())
         .then((response) => {
           this.data = [...response];
@@ -54,21 +62,21 @@
     }
 
     bindEvents() {
-      this.input.addEventListener('input', (e) => this.search(e));
+      this.input.addEventListener("input", (e) => this.search(e));
 
-      this.input.addEventListener('focus', (e) => {
-        this.icon.classList.add('font-bold');
+      this.input.addEventListener("focus", (e) => {
+        this.icon.classList.add("font-bold");
 
         if (e.target.value.length > 0) {
           this.search(e);
         }
       });
 
-      this.input.addEventListener('blur', () => {
-        this.icon.classList.remove('font-bold');
+      this.input.addEventListener("blur", () => {
+        this.icon.classList.remove("font-bold");
       });
 
-      this.input.addEventListener('keydown', (e) => {
+      this.input.addEventListener("keydown", (e) => {
         if (e.keyCode === this.keycodes.ARROW_DOWN && this.options.length > 0) {
           e.preventDefault();
 
@@ -76,14 +84,18 @@
         }
       });
 
-      window.addEventListener('click', (e) => {
+      window.addEventListener("click", (e) => {
         if (this.visibleDropdown && this.isOutside(e.target)) {
           this.toggleDropdown(false);
         }
       });
 
-      window.addEventListener('keydown', (e) => {
-        if (e.keyCode === this.keycodes.SLASH && e.ctrlKey && e.target !== this.input) {
+      window.addEventListener("keydown", (e) => {
+        if (
+          e.keyCode === this.keycodes.SLASH &&
+          e.ctrlKey &&
+          e.target !== this.input
+        ) {
           e.preventDefault();
           this.input.focus();
         } else if (e.keyCode === this.keycodes.ESCAPE && this.visibleDropdown) {
@@ -93,7 +105,9 @@
     }
 
     search(e) {
-      this.searchValue = this.normalizeString(this.getSearchValue(e.target.value));
+      this.searchValue = this.normalizeString(
+        this.getSearchValue(e.target.value)
+      );
 
       this.toggleDropdown(this.searchValue.length > 0);
 
@@ -107,13 +121,13 @@
     }
 
     getSearchValue(string) {
-      if (string.length > 1 && string[0] === '/') return string.slice(1);
+      if (string.length > 1 && string[0] === "/") return string.slice(1);
 
       return string;
     }
 
     toggleDropdown(value) {
-      const display = value ? 'block' : 'none';
+      const display = value ? "block" : "none";
 
       this.dropdown.style.display = display;
     }
@@ -128,37 +142,45 @@
       return this.results
         .map((result, i) => {
           const keywords = result.keywords.filter(
-            (keyword) => this.searchValue.length > 0 && keyword.match(this.searchValue)
+            (keyword) =>
+              this.searchValue.length > 0 && keyword.match(this.searchValue)
           );
 
           return `
-      <li class="p-0 pt-2">
-        <a class="py-1" href="${result.href}">
-          <p class="uppercase text-gray-600 mb-0">${this.highlightSearch(
+      <li>
+        <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-neutral-100 focus:bg-neutral-100 outline-none dark:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" href="${
+          result.href
+        }">
+          <p class="uppercase mb-0">${this.highlightSearch(
             result.name,
             this.searchValue
           )}</p>
-          <p class="text-sm mb-0 pb-2 text-gray-400 font-semibold">Category: ${this.highlightSearch(
+          <p class="text-[0.875em] mb-0 pb-2">Category: ${this.highlightSearch(
             result.category,
             this.searchValue
           )}</p>
           ${
             keywords.length > 0
-              ? `<p class="text-sm text-gray-400 mb-0 pb-2 " style="max-width: 100%;    white-space: nowrap;     text-overflow: ellipsis;
-    overflow: hidden;">${this.formatKeywords(keywords)}</p>`
-              : ''
+              ? `<p class="text-[0.875em] mb-0 pb-2 max-w-full whitespace-nowraptext-overflow-ellipsis overflow-hidden">${this.formatKeywords(
+                  keywords
+                )}</p>`
+              : ""
           }
         </a>
-        ${i !== this.results.length - 1 ? '<hr class="m-0 p-0 w-50">' : ''}
+        ${
+          i !== this.results.length - 1
+            ? '<hr class="m-0 p-0 w-50 dark:border-neutral-600">'
+            : ""
+        }
       </li>
     `;
         })
-        .join('\n');
+        .join("\n");
     }
 
     compare({ name, keywords, category }) {
       return (
-        this.searchValue === '/' ||
+        this.searchValue === "/" ||
         this.normalizeString(name).match(this.searchValue) ||
         this.normalizeString(category).match(this.searchValue) ||
         keywords.find((keyword) => keyword.match(this.searchValue))
@@ -169,29 +191,38 @@
       return [
         ...entries
           .filter((e) => e.priority && e.priority[this.searchValue])
-          .sort((a, b) => (a.priority[this.searchValue] > b.priority[this.searchValue] ? 1 : -1)),
+          .sort((a, b) =>
+            a.priority[this.searchValue] > b.priority[this.searchValue] ? 1 : -1
+          ),
         ...entries.filter((e) => !e.priority || !e.priority[this.searchValue]),
       ];
     }
 
     highlightSearch(string) {
-      const searchIndex = this.normalizeString(string).indexOf(this.searchValue);
+      const searchIndex = this.normalizeString(string).indexOf(
+        this.searchValue
+      );
 
       if (searchIndex === -1) return string;
 
-      return `${string.slice(0, searchIndex)}<u class="font-medium	text-blue-600 ">${string.slice(
+      return `${string.slice(
+        0,
+        searchIndex
+      )}<u class="font-medium	text-primary dark:text-primary-400">${string.slice(
         searchIndex,
         searchIndex + this.searchValue.length
       )}</u>${string.slice(searchIndex + this.searchValue.length)}`;
     }
 
     formatKeywords(keywords) {
-      return keywords.map((keyword) => this.highlightSearch(keyword)).join(', ');
+      return keywords
+        .map((keyword) => this.highlightSearch(keyword))
+        .join(", ");
     }
 
     setupKeyboardNavigation() {
       Array.from(this.options).forEach((option, i) => {
-        option.addEventListener('keydown', (e) => this.focusNextOption(e, i));
+        option.addEventListener("keydown", (e) => this.focusNextOption(e, i));
       });
     }
 
@@ -224,17 +255,17 @@
   }
 
   (function () {
-    const searchInput = document.getElementById('mdb-5-search-input');
-    const searchIcon = document.getElementById('mdb-5-search-icon');
-    const searchList = document.getElementById('mdb-5-search-list');
-    const searchForm = document.getElementById('mdb-5-search-container');
-    const searchDropdown = document.getElementById('mdb-5-search-dropdown');
-    const searchCount = document.getElementById('mdb-5-search-count');
+    const searchInput = document.getElementById("te-search-input");
+    const searchIcon = document.getElementById("te-search-icon");
+    const searchList = document.getElementById("te-search-list");
+    const searchForm = document.getElementById("te-search-container");
+    const searchDropdown = document.getElementById("te-search-dropdown");
+    const searchCount = document.getElementById("te-search-count");
 
     let searchJsonFile;
-    searchJsonFile = 'search.json';
+    searchJsonFile = "search.json";
 
-    var scripts = document.getElementsByTagName('script'),
+    var scripts = document.getElementsByTagName("script"),
       src = scripts[scripts.length - 1].src;
 
     const search = new Search(
@@ -250,35 +281,48 @@
     search.init();
   })();
 
-  if (document.getElementById('close_icon')) {
+  if (document.getElementById("close_icon")) {
     // grab everything we need
-    const btn = document.getElementById('hamburger');
-    const sidebar = document.getElementById('sidebar');
-    const close = document.getElementById('close_icon');
+    const btn = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+    const close = document.getElementById("close_icon");
 
     // add our event listener for the click
-    btn.addEventListener('click', () => {
-      sidebar.classList.toggle('-translate-x-full');
+    btn.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
     });
 
-    close.addEventListener('click', () => {
-      sidebar.classList.add('-translate-x-full');
+    close.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
     });
   }
 
   //Scrollspy
 
   (function () {
-    let menuSection = document.querySelectorAll('menu li');
+    let menuSection = document.querySelectorAll("menu li");
+
+    const scrollspyClasses = [
+      "data-[te-spy-active]:border-l-2",
+      "data-[te-spy-active]:border-solid",
+      "data-[te-spy-active]:border-l-primary",
+      "data-[te-spy-active]:text-primary",
+      "dark:data-[te-spy-active]:border-l-primary-400",
+      "dark:data-[te-spy-active]:text-primary-400",
+    ];
 
     if (menuSection.length == 0) return;
+
+    menuSection.forEach((section) =>
+      section.classList.add(...scrollspyClasses)
+    );
 
     // for clickable event
     menuSection.forEach((v) => {
       v.onclick = () => {
         setTimeout(() => {
-          menuSection.forEach((j) => j.classList.remove('active'));
-          v.classList.add('active');
+          menuSection.forEach((j) => j.removeAttribute("data-te-spy-active"));
+          v.setAttribute("data-te-spy-active", "");
         }, 300);
       };
     });
@@ -286,55 +330,110 @@
     // for window scrolldown event
 
     window.onscroll = () => {
-      let mainSection = document.querySelectorAll('main h2');
+      const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
+      let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
 
       mainSection.forEach((v, i) => {
         let rect = v.getBoundingClientRect().y;
 
-        if (rect < window.innerHeight + -1100) {
-          menuSection.forEach((v) => v.classList.remove('active'));
+        if (rect < window.innerHeight + -940) {
+          menuSection.forEach((v) => v.removeAttribute("data-te-spy-active"));
           if (!menuSection[i]) {
             return;
           }
-          menuSection[i].classList.add('active');
+          menuSection[i].setAttribute("data-te-spy-active", "");
         }
       });
     };
   })();
 
-  const clip = document.querySelectorAll('.clip');
+  const clip = document.querySelectorAll(".clip");
   for (let i = 0; i < clip.length; i++) {
-    clip[i].addEventListener('mouseenter', function (e) {
+    clip[i].addEventListener("mouseenter", function (e) {
       clip[i].play();
     });
-    clip[i].addEventListener('mouseout', function (e) {
+    clip[i].addEventListener("mouseout", function (e) {
       clip[i].pause();
     });
   }
-</script>
-<script type="text/javascript" src="/js/index.min.js"></script>
 
-<!-- PRISM -->
-<script type="text/javascript" src="/js/new-prism.js"></script>
-<!-- MDB SNIPPET -->
-<!-- <script type="text/javascript" src="/js/twsnippet.js"></script> -->
-<link rel="stylesheet" href="/css/new-prism.css" />
+  // Copy to clipboard
+  const copyElements = document.querySelectorAll("[data-te-copy-to-clipboard]");
+  copyElements.forEach((copyElement) => {
+    const handleCopyElementClick = (event) => {
+      const codeElement = event.target.querySelector("code");
+      navigator.clipboard.writeText(codeElement.innerText);
+    };
+
+    copyElement.addEventListener("click", handleCopyElementClick, false);
+  });
+  // Copy to clipboard
+</script>
 
 <script>
-  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    return new Popover(popoverTriggerEl);
-  });
+  // possibility of linking with a hash to a specific pills
+  window.addEventListener("load", (event) => {
+    const locationHash = window.location.hash;
+    const scrollTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    if (locationHash === "#docsTabsAPI") {
+      const apiTab = document.querySelector(
+        '#docs-nav-pills a[href="#docsTabsAPI"]'
+      );
 
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new Tooltip(tooltipTriggerEl);
+      if (apiTab) {
+        const apiTabsInstance = new te.Tab(apiTab);
+
+        apiTabsInstance.show();
+        scrollTop();
+      }
+    } else if (locationHash === "#docsTabsOverview") {
+      scrollTop();
+    } else if (
+      ["#topTemplates", "#newTemplates", "#trendingTemplates"].indexOf(
+        locationHash
+      ) !== -1
+    ) {
+      const templateTab = document.querySelector(
+        '#templates-nav-pills a[href="' + locationHash + '"]'
+      );
+
+      if (templateTab) {
+        const templateTabsInstance = new mdb.Tab(templateTab);
+
+        templateTabsInstance.show();
+        scrollTop();
+      }
+    }
+
+    const navPills = document.querySelectorAll(
+      '#docs-nav-pills a[data-te-toggle="pill"]'
+    );
+
+    if (navPills.length) {
+      navPills.forEach((el) => {
+        el.addEventListener("click", (e) => {
+          window.location.hash = e.target.hash;
+
+          scrollTop();
+        });
+      });
+    }
+
+    const templatePills = document.querySelectorAll(
+      '#templates-nav-pills a[data-te-toggle="pill"]'
+    );
+
+    if (templatePills.length) {
+      templatePills.forEach((el) => {
+        el.addEventListener("click", (e) => {
+          window.location.hash = e.target.hash;
+
+          scrollTop();
+        });
+      });
+    }
   });
-</script>
-<script>
-  if (document.getElementById('flexCheckIndeterminate')) {
-    const checkbox = document.getElementById('flexCheckIndeterminate');
-    checkbox.indeterminate = true;
-  }
 </script>

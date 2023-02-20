@@ -1,0 +1,81 @@
+{{ $page_resources := .Resources }}
+{{ $overview_scrollspy_file_exists := fileExists (printf "/content/%s/index-ss.html" .File.Dir) }}
+{{ $scrollspy_file_exists := fileExists (printf "/content/%s/index-ss.html" .File.Dir) }}
+{{ $api_file_exists := fileExists (printf "/content/%s/a.html" .File.Dir) }}
+{{ $api_scrollspy_file_exists := fileExists (printf "/content/%s/a-ss.html" .File.Dir) }}
+{{ $hidden_sidenav := .Params.hidden_sidenav }}
+
+
+<!-- Single for all single page under /docs/* -->
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+  <head>
+    {{ partial "head/head.html" . }}
+  </head>
+  <body class="transition-colors duration-500 dark:bg-zinc-800">
+    {{ partial "header/header.html" . }}
+
+
+    <nav
+      id="sidenav-main"
+      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      data-te-sidenav-init
+      {{ if ne $hidden_sidenav true }}
+        data-te-sidenav-mode-breakpoint-over="0"
+        data-te-sidenav-mode-breakpoint-side="xl" data-te-sidenav-hidden="false"
+        data-te-sidenav-mode="side"
+      {{ else }}
+        data-te-sidenav-hidden="true" data-te-sidenav-mode="over"
+      {{ end }}
+      data-te-sidenav-content="#page-content"
+      data-te-sidenav-accordion="true">
+      <a
+        href="/"
+        class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium dark:text-neutral-100"
+        aria-current="page"
+        ><img
+          src="/img/logo.png"
+          class="mr-3"
+          alt=""
+          style="width: 40px" />Tailwind Elements</a
+      >
+      {{ partial "sidenav/standard.html" . }}
+    </nav>
+    <div class="mt-10" id="page-content">
+      <main>{{ .Content }}</main>
+    </div>
+
+    {{ partial "footer/footer-docs.html" . }}
+
+    {{ if ne $hidden_sidenav true }}
+      <script>
+        const sidenav = document.getElementById("sidenav-main");
+        const sidenavInstance = te.Sidenav.getInstance(sidenav);
+
+        let innerWidth = null;
+
+        const setMode = (e) => {
+          // Check necessary for Android devices
+          if (window.innerWidth === innerWidth) {
+            return;
+          }
+
+          innerWidth = window.innerWidth;
+
+          if (window.innerWidth < sidenavInstance.getBreakpoint("xl")) {
+            sidenavInstance.changeMode("over");
+            sidenavInstance.hide();
+          } else {
+            sidenavInstance.changeMode("side");
+            sidenavInstance.show();
+          }
+        };
+
+        setMode();
+
+        // Event listeners
+        window.addEventListener("resize", setMode);
+      </script>
+    {{ end }}
+  </body>
+</html>

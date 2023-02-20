@@ -1,0 +1,757 @@
+---
+---
+
+<!--Section: Docs content-->
+<section>
+  <!--Section: Usage-->
+  <section id="api-section-usage">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="basic"
+      data-te-spy-item>
+      Usage
+    </h2>
+
+    <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example1" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example1">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="html" >}}
+        <div
+          data-te-chip-init
+          data-te-ripple-init
+          class="[word-wrap: break-word] my-[5px] mr-4 flex h-[32px] cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] py-0 px-[12px] text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-gray-200"
+          data-te-close="true">
+          Text
+        </div>
+
+        <div class="flex w-full flex-wrap justify-center">
+          <div
+            data-te-chips-init
+            data-te-chips-placeholder
+            class="mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"></div>
+        </div>
+
+        <div class="flex w-full flex-wrap justify-center">
+          <div
+            id="chips-initial"
+            data-te-chips-initial
+            class="mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"></div>
+        </div>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <h4 class="font-bold">Via JavaScript</h4>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example4" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example4">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+          const chipsInput = new te.ChipsInput(
+            document.getElementById("chipsInputId"),
+            options,
+            classes
+          );
+            {{< /twsnippet/code >}}
+            {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+    <!--Section: Usage-->
+
+    <hr class="mb-5 dark:border-gray-600" />
+
+    <!--Section: Options-->
+    <section id="api-section-options">
+      <!-- Section title -->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        data-te-spy-item>
+        Options
+      </h2>
+
+      <p>
+        Options can be passed via data attributes or JavaScript. For data
+        attributes, append the option name to <code>data-te-</code>, as in
+        <code>data-te-editable="true"</code>.
+      </p>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Type
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Default
+                    </th>
+                    <th scope="col" class="px-6 py-4">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>inputID</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      string
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>''</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Change input ID
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>parentSelector</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      ''
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>''</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Set parent selector to show chips.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>initialValues</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Array
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>[{ tag: 'init1' }, {tag: 'init2' }]</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Add custom tags on init.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>editable</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Boolean
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>false</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Change editable options to chips in
+                      <code>data-te-chips-placeholder</code> or
+                      <code>data-te-chips-initial</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>labelText</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      String
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>Example label</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Change label
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Section: Options-->
+
+    <hr class="my-5 dark:border-gray-600" />
+    <!--Section: Classes-->
+    <section id="api-section-classes">
+      <!-- Section title -->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        data-te-spy-item>
+        Classes
+      </h2>
+
+      <p>
+        Custom classes can be passed via data attributes or JavaScript. For data
+        attributes, append the class name to
+        <code>data-te-class</code>, as in
+        <code
+          >data-te-class-transition="transition-all duration-300
+          ease-linear"</code
+        >.
+      </p>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Default
+                    </th>
+                    <th scope="col" class="px-6 py-4">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>opacity</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      opacity-0
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Styles given during an element removal animation.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>inputWrapperPadding</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      p-[5px]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Visual properties for an input wrapper element.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>transition</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      transition-all duration-300
+                      ease-[cubic-bezier(0.25,0.1,0.25,1)]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Transition styles that appear when adding first chip to
+                      the input.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>contentEditable</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      outline-none !border-[3px] !border-solid !border-[#b2b3b4]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Visual properties for a currently edited element.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipCloseIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      w-4 float-right pl-[8px] text-[16px] opacity-[.53]
+                      cursor-pointer fill-[#afafaf] hover:fill-[#8b8b8b]
+                      dark:fill-gray-400 dark:hover:fill-gray-100 transition-all
+                      duration-200 ease-in-out
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Styles for close chips button.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipElement</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      flex justify-between items-center h-[32px] leading-loose
+                      py-[5px] px-[12px] mr-4 my-[5px] text-[13px] font-normal
+                      text-[#4f4f4f] cursor-pointer bg-[#eceff1] dark:text-white
+                      dark:bg-neutral-600 rounded-[16px] transition-[opacity]
+                      duration-300 ease-linear [word-wrap: break-word]
+                      shadow-none normal-case hover:!shadow-none
+                      active:bg-[#cacfd1] inline-block font-medium
+                      leading-normal text-[#4f4f4f] text-center no-underline
+                      align-middle cursor-pointer select-none border-[.125rem]
+                      border-solid border-transparent py-1.5 px-3 text-xs
+                      rounded
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for chips elements set by JavaScript.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipsInputWrapper</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      relative flex items-center flex-wrap transition-all
+                      duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for chips input wrapper.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipsInput</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      peer block min-h-[auto] w-[150px] rounded border-0
+                      bg-transparent py-[0.32rem] px-3 leading-[1.6]
+                      outline-none transition-all duration-200 ease-linear
+                      focus:placeholder:opacity-100
+                      data-[te-input-state-active]:placeholder:opacity-100
+                      motion-reduce:transition-none dark:text-gray-200
+                      dark:placeholder:text-gray-200
+                      [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Styles for chips input element. Sets different appearance
+                      depending on input state.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipsLabel</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%]
+                      origin-[0_0] truncate pt-[0.37rem] leading-[1.6]
+                      text-gray-500 transition-all duration-200 ease-out
+                      peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8]
+                      peer-focus:text-blue-600
+                      peer-data-[te-input-state-active]:-translate-y-[0.9rem]
+                      peer-data-[te-input-state-active]:scale-[0.8]
+                      motion-reduce:transition-none dark:text-gray-200
+                      dark:peer-focus:text-gray-200
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for chips input label.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipsNotchesWrapper</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      group flex absolute left-0 top-0 w-full max-w-full h-full
+                      text-left pointer-events-none
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets position and size for notch wrapper.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipsNotchesLeading</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      pointer-events-none border border-solid box-border
+                      bg-transparent transition-all duration-200 ease-linear
+                      motion-reduce:transition-none left-0 top-0 h-full w-2
+                      border-r-0 rounded-l-[0.25rem]
+                      group-data-[te-input-focused]:border-r-0
+                      group-data-[te-input-state-active]:border-r-0
+                      border-gray-300 dark:border-gray-600
+                      group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca]
+                      group-data-[te-input-focused]:border-blue-600
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the leading input notch. Allows the notch
+                      to change it's appearance depending on inputs state.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipsNotchesMiddle</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      pointer-events-none border border-solid box-border
+                      bg-transparent transition-all duration-200 ease-linear
+                      motion-reduce:transition-none grow-0 shrink-0 basis-auto
+                      w-auto max-w-[calc(100%-1rem)] h-full border-r-0
+                      border-l-0 group-data-[te-input-focused]:border-x-0
+                      group-data-[te-input-state-active]:border-x-0
+                      group-data-[te-input-focused]:border-t
+                      group-data-[te-input-state-active]:border-t
+                      group-data-[te-input-focused]:border-solid
+                      group-data-[te-input-state-active]:border-solid
+                      group-data-[te-input-focused]:border-t-transparent
+                      group-data-[te-input-state-active]:border-t-transparent
+                      border-gray-300 dark:border-gray-600
+                      group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca]
+                      group-data-[te-input-focused]:border-blue-600
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the middle input notch. Allows the notch
+                      to change it's appearance depending on inputs state.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>chipsNotchesTrailing</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      pointer-events-none border border-solid box-border
+                      bg-transparent transition-all duration-200 ease-linear
+                      motion-reduce:transition-none grow h-full border-l-0
+                      rounded-r-[0.25rem]
+                      group-data-[te-input-focused]:border-l-0
+                      group-data-[te-input-state-active]:border-l-0
+                      border-gray-300 dark:border-gray-600
+                      group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca]
+                      group-data-[te-input-focused]:border-blue-600
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the trailing input notch. Allows the notch
+                      to change it's appearance depending on inputs state.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Section: Classes-->
+
+    <hr class="my-5 dark:border-gray-600" />
+
+    <!--Section: Methods-->
+    <section id="api-section-methods">
+      <!-- Section title -->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        data-te-spy-item>
+        Methods
+      </h2>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Method
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Description
+                    </th>
+                    <th scope="col" class="px-6 py-4">Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>dispose</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Destroy chips
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      <code>myChips.dispose()</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>getInstance</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Static method which allows you to get the chips instance
+                      associated to a DOM element.
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>ChipsInput.getInstance(myChips)</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>getOrCreateInstance</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Static method which returns the chips instance associated
+                      to a DOM element or create a new one in case it wasn't
+                      initialized.
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>ChipsInput.getOrCreateInstance(myChips)</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Section: Code-->
+      {{< twsnippet/no-demo id="api-example5" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example5">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "JavaScript" >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code active=true lang="js" >}}
+                const myChips = document.getElementById('myChipsID')
+                const chips = new te.ChipsInput(myChips)
+                chips.dispose()
+              {{< /twsnippet/code >}}
+              {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+      <!--Section: Code-->
+      <!--Section: Methods-->
+
+      <hr class="mb-5 dark:border-gray-600" />
+
+      <!--Section: Events-->
+      <section id="api-section-events">
+        <!-- Section title -->
+        <h2
+          class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+          data-te-spy-item>
+          Events
+        </h2>
+
+        <div class="flex flex-col">
+          <div class="overflow-x-auto">
+            <div class="inline-block min-w-full py-2">
+              <div class="overflow-hidden">
+                <table
+                  class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+                  <thead
+                    class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                    <tr>
+                      <th
+                        scope="col"
+                        class="border-r px-6 py-4 dark:border-neutral-500">
+                        Event type
+                      </th>
+                      <th scope="col" class="px-6 py-4">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>add.te.chips</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        This event fires start if you add chip to
+                        <code>data-te-chips-placeholder</code> or
+                        <code>data-te-chips-initial</code>
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>arrowDown.te.chips</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        This event fires start if you click arrow down in the
+                        <code>data-te-chips-placeholder</code> or
+                        <code>data-te-chips-initial</code>
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>arrowLeft.te.chips</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        This event fires start if you click arrow left in the
+                        <code>data-te-chips-placeholder</code> or
+                        <code>data-te-chips-initial</code>
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>arrowRight.te.chips</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        This event fires start if you click arrow right in the
+                        <code>data-te-chips-placeholder</code> or
+                        <code>data-te-chips-initial</code>
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>arrowUp.te.chips</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        This event fires start if you click arrow up in the
+                        <code>data-te-chips-placeholder</code> or
+                        <code>data-te-chips-initial</code>
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>delete.te.chips</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        This event fires start if you click delete
+                        button/backspace in the
+                        <code>data-te-chips-placeholder</code> or
+                        <code>data-te-chips-initial</code>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Section: Code-->
+        {{< twsnippet/no-demo id="api-example6" >}}
+        <section
+          class="!visible hidden"
+          data-te-collapse-item
+          id="api-example6">
+          <div class="pt-4">
+            {{< twsnippet/wrapper "JavaScript" >}}
+            <!-- prettier-ignore -->
+            {{< twsnippet/code active=true lang="js" >}}
+              const myChips = document.getElementById('myChipsID');
+              myChips.addEventListener('delete.te.chips', () => {
+                // do something...
+              });
+            {{< /twsnippet/code >}}
+            {{< /twsnippet/wrapper >}}
+          </div>
+        </section>
+        <!--Section: Code-->
+        <!--Section: Events-->
+      </section>
+      <!--Section: Docs content-->
+    </section>
+  </section>
+</section>
