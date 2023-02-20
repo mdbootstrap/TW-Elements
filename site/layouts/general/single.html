@@ -4,6 +4,7 @@
 {{ $api_file_exists := fileExists (printf "/content/%s/a.html" .File.Dir) }}
 {{ $api_scrollspy_file_exists := fileExists (printf "/content/%s/a-ss.html" .File.Dir) }}
 {{ $hidden_sidenav := .Params.hidden_sidenav }}
+{{ $hidden_top_margin := .Params.hidden_top_margin }}
 
 
 <!-- Single for all single page under /docs/* -->
@@ -41,7 +42,13 @@
       >
       {{ partial "sidenav/standard.html" . }}
     </nav>
-    <div class="mt-10" id="page-content">
+    <div
+      id="page-content"
+      {{ if ne $hidden_top_margin true }}
+        class="mt-10"
+      {{ else }}
+        class="mt-0"
+      {{ end }}>
       <main>{{ .Content }}</main>
     </div>
 
