@@ -558,7 +558,7 @@
                   class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>withicon</code>
+                    <code>withIcon</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -573,10 +573,10 @@
                   </td>
                 </tr>
                 <tr
-                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>iconClass</code>
+                    <code>iconSVG</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -584,10 +584,21 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>'fas fas fa-clock fa-sm timepicker-icon'</code>
+                    <code>
+                      &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                      fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot;
+                      stroke-width=&quot;1.5&quot;
+                      stroke=&quot;currentColor&quot; class=&quot;h-5 w-5
+                      hover:text-[#3b71ca] focus:text-[#3b71ca]
+                      dark:hover:text-[#3b71ca]
+                      dark:focus:text-[#3b71ca]&quot;&gt; &lt;path
+                      stroke-linecap=&quot;round&quot;
+                      stroke-linejoin=&quot;round&quot; d=&quot;M12 6v6h4.5m4.5
+                      0a9 9 0 11-18 0 9 9 0 0118 0z&quot; /&gt; &lt;/svg&gt;
+                    </code>
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Allows to set custom classes to timepicker icon.
+                    Allows to set custom icon.
                   </td>
                 </tr>
                 <tr
@@ -634,6 +645,8 @@
     </div>
   </section>
   <!--Section: Options-->
+
+  <hr class="my-5 dark:border-gray-600" />
 
   <!--Section: Classes-->
   <section id="api-section-classes">
@@ -1517,8 +1530,8 @@
         {{< twsnippet/wrapper "JavaScript" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-        const myTimepickerEl = document.getElementById('myTimepicker')
-        const myTimepicker = new te.Timepicker(myTimepickerEl)
+        const myTimepickerEl = document.getElementById('myTimepicker');
+        const myTimepicker = new te.Timepicker(myTimepickerEl);
         myTimepicker.dispose();
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -1582,7 +1595,7 @@
         {{< twsnippet/wrapper "JavaScript" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-        const myTimepicker = document.getElementById('myTimepicker')
+        const myTimepicker = document.getElementById('myTimepicker');
         myTimepicker.addEventListener('input.te.timepicker', (e) => {
           // do something...
         });
