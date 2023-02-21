@@ -302,6 +302,24 @@
   (function () {
     let menuSection = document.querySelectorAll("menu li");
 
+    // SmoothScroll
+    function mdbScrollSpyTo(e) {
+      e.preventDefault();
+      const hash = e.target.getAttribute("href");
+      const target = document.getElementById(hash.substring(1));
+
+      window.scroll({
+        top: target.offsetTop - 100,
+        behavior: "smooth",
+      });
+
+      if (history.pushState) {
+        history.pushState(null, null, hash);
+      } else {
+        location.hash = hash;
+      }
+    }
+
     const scrollspyClasses = [
       "data-[te-spy-active]:border-l-2",
       "data-[te-spy-active]:border-solid",
@@ -319,6 +337,7 @@
 
     // for clickable event
     menuSection.forEach((v) => {
+      v.addEventListener("click", mdbScrollSpyTo, false);
       v.onclick = () => {
         setTimeout(() => {
           menuSection.forEach((j) => j.removeAttribute("data-te-spy-active"));
