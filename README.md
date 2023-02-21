@@ -333,7 +333,7 @@ mdb login
 3. Initialize a project and choose **Tailwind Elements** from the list:
 
 ```
-mdb init
+mdb init tailwind-elements-free
 ```
 
 4. Install the dependencies (inside the project directory):
@@ -361,7 +361,6 @@ You can easily test Tailwind Elements by adding CDN scripts to your classic HTML
 Add the stylesheet files below in the _head_ section:
 
 ```
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 <script src="https://cdn.tailwindcss.com"></script>
