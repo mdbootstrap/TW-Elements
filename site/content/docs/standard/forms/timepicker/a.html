@@ -1,0 +1,1609 @@
+---
+---
+
+<!--Section: Docs content-->
+<section>
+  <!--Section: Usage-->
+  <section id="api-section-usage">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="basic">
+      Usage
+    </h2>
+
+    <p class="mb-5">
+      <strong>Timepicker</strong> allows to select a time and display it on the
+      selected output. It can be initialized automatically by adding
+      <code>data-te-input-wrapper-init</code> attribute, or manually with JS.
+    </p>
+
+    <hr class="mb-5 dark:border-gray-600" />
+
+    <h4 class="my-3 text-lg font-bold">Via data attributes</h4>
+
+    <p>
+      Add <code>data-te-input-wrapper-init</code> and
+      <code>data-te-input-wrapper-init</code> attributes to selected wrapper
+      with input. It will automatically initialize timepicker using this
+      element.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example1" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example1">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="html" >}}
+        <div
+          class="relative mb-3 xl:w-96"
+          data-te-timepicker-init
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="form1" />
+          <label
+            for="form1"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+            >Select a time</label
+          >
+        </div>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <h4 class="mb-5 text-lg font-bold">Via JavaScript</h4>
+
+    <p>Call Timepicker manually with:</p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example2" >}}
+    <!-- prettier-ignore -->
+    <section class="!visible hidden" data-te-collapse-item id="api-example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JS" >}}
+        {{< twsnippet/code active=true lang="js" >}}
+        const myTimepicker = new te.Timepicker(document.getElementById('wrapper-id'), options);
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Options-->
+  <section id="api-section-options">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+      Options
+    </h2>
+
+    <p>
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to <code>data-te-</code>, as in
+      <code>data-te-format24=""</code>.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Type
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>appendValidationInfo</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to append div with information about invalid format.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>bodyID</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>""</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set Timepicker modal body ID.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>cancelLabel</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>"Cancel"</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Text of cancel button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>clearLabel</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>"Clear"</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Text of clear button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>closeModalOnMinutesClick</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to close modal if minutes are selected.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>container</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>"body"</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set the parent element for the timepicker.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>disabled</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Set a disabled attribute to input in wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>enableValidation</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Enables input validation.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>footerID</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set Timepicker modal footer ID.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>format12</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to use format 12h.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>format24</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to use format 24h.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>headID</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>""</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set Timepicker modal head ID.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>increment</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set increment minutes by 5.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>inline</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to use a inline version of timepicker.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>invalidLabel</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>"Invalid Time Format"</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to change a text in the invalid div.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>minTime</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>""</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set min time for picker. It accepts minutes and
+                    optionally AM/PM format.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>maxTime</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>""</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set max time for picker. It accepts minutes and
+                    optionally AM/PM format.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>modalID</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>""</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set Timepicker modal ID.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>okLabel</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>"Ok"</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to change a text inside submit button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>overflowHidden</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to disable/enable a overflow hidden to body if modal
+                    is shown.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>pickerID</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>""</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set Timepicker picker ID.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>readOnly</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set readonly property to input inside wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>showClearBtn</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to attach/remove clear button in modal.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>switchHoursToMinutesOnClick</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to enable/disable switching to minutes if hours are
+                    selected.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>withIcon</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>true</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to enable/disable append a icon to input.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>iconSVG</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>
+                      &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;
+                      fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot;
+                      stroke-width=&quot;1.5&quot;
+                      stroke=&quot;currentColor&quot; class=&quot;h-5 w-5
+                      hover:text-[#3b71ca] focus:text-[#3b71ca]
+                      dark:hover:text-[#3b71ca]
+                      dark:focus:text-[#3b71ca]&quot;&gt; &lt;path
+                      stroke-linecap=&quot;round&quot;
+                      stroke-linejoin=&quot;round&quot; d=&quot;M12 6v6h4.5m4.5
+                      0a9 9 0 11-18 0 9 9 0 0118 0z&quot; /&gt; &lt;/svg&gt;
+                    </code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set custom icon.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>pmLabel</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>'PM'</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set custom text to PM button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>amLabel</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>'AM'</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set custom text to AM button.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Options-->
+
+  <hr class="my-5 dark:border-gray-600" />
+
+  <!--Section: Classes-->
+  <section id="api-section-classes">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+      Classes
+    </h2>
+
+    <p>
+      Custom classes can be passed via data attributes or JavaScript. For data
+      attributes, append the class name to
+      <code>data-te-class</code>, as in <code>data-te-class-tips=""</code>.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>tips</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    absolute rounded-[100%] w-[32px] h-[32px] text-center
+                    cursor-pointer text-[1.1rem] rounded-[100%] bg-transparent
+                    flex justify-center items-center font-light
+                    focus:outline-none selection:bg-transparent
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker tips.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>tipsActive</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    text-white bg-[#3b71ca] font-normal
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker active tips.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>tipsDisabled</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    text-[#b3afaf] pointer-events-none bg-transparent
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker disabled tips.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>transform</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    transition-[transform,height] ease-in-out duration-[400ms]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets Timepicker animation styles.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>modal</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    z-[1065]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets stack order od Timepicker modal element.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>clockAnimation</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    animate-[show-up-clock_350ms_linear]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets Timepicker clock animation styles.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>opacity</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    !opacity-100
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets opacity of Timepicker active elements.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    touch-none opacity-100 z-[1065] inset-0 bg-[#00000066]
+                    h-full flex items-center justify-center flex-col fixed
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerContainer</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex items-center justify-center flex-col
+                    max-h-[calc(100%-64px)] overflow-y-auto
+                    shadow-[0_10px_15px_-3px_rgba(0,0,0,0.07),0_4px_6px_-2px_rgba(0,0,0,0.05)]
+                    min-[320px]:max-[825px]:landscape:rounded-lg
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker container.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerElements</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex flex-col min-w-[310px] min-h-[325px] bg-white
+                    rounded-t-[0.6rem]
+                    min-[320px]:max-[825px]:landscape:!flex-row
+                    min-[320px]:max-[825px]:landscape:min-w-[auto]
+                    min-[320px]:max-[825px]:landscape:min-h-[auto]
+                    min-[320px]:max-[825px]:landscape:overflow-y-auto
+                    justify-around
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker elements.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerHead</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    bg-[#3b71ca] dark:bg-zinc-700 h-[100px] rounded-t-lg
+                    pr-[24px] pl-[50px] py-[10px]
+                    min-[320px]:max-[825px]:landscape:rounded-tr-none
+                    min-[320px]:max-[825px]:landscape:rounded-bl-none
+                    min-[320px]:max-[825px]:landscape:p-[10px]
+                    min-[320px]:max-[825px]:landscape:pr-[10px]
+                    min-[320px]:max-[825px]:landscape:h-auto
+                    min-[320px]:max-[825px]:landscape:min-h-[305px] flex
+                    flex-row items-center justify-center
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker head.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerHeadContent</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    min-[320px]:max-[825px]:landscape:flex-col flex w-full
+                    justify-evenly
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker head content.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerCurrentWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    [direction:ltr] rtl:[direction:rtl]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets direction properties of Timepicker current wrapper
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerCurrentButtonWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    relative h-full
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker current button wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerCurrentButton</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    text-[3.75rem] font-light leading-[1.2]
+                    tracking-[-0.00833em] text-white opacity-[.54] border-none
+                    bg-transparent p-0
+                    min-[320px]:max-[825px]:landscape:text-5xl
+                    min-[320px]:max-[825px]:landscape:font-normal cursor-pointer
+                    hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026]
+                    focus:outline-none
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker current button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerDot</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    font-light leading-[1.2] tracking-[-0.00833em]
+                    text-[3.75rem] opacity-[.54] border-none bg-transparent p-0
+                    text-white min-[320px]:max-[825px]:landscape:text-[3rem]
+                    min-[320px]:max-[825px]:landscape:font-normal
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker dot.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerModeWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex flex-col justify-center text-[18px] text-[#ffffff8a]
+                    min-[320px]:max-[825px]:landscape:!justify-around
+                    min-[320px]:max-[825px]:landscape:!flex-row
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker mode wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerModeAm</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    p-0 bg-transparent border-none text-white opacity-[.54]
+                    cursor-pointer hover:bg-[#00000026] hover:outline-none
+                    focus:bg-[#00000026] focus:outline-none
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker AM button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerModePm</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    p-0 bg-transparent border-none text-white opacity-[.54]
+                    cursor-pointer hover:bg-[#00000026] hover:outline-none
+                    focus:bg-[#00000026] focus:outline-none
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker PM button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerClockWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    min-w-[310px] max-w-[325px] min-h-[305px] overflow-x-hidden
+                    h-full flex justify-center flex-col items-center
+                    dark:bg-zinc-500
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker clock wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerClock</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    relative rounded-[100%] w-[260px] h-[260px] cursor-default
+                    my-0 mx-auto bg-[#00000012] dark:bg-zinc-600/50
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker clock.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerMiddleDot</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    top-1/2 left-1/2 w-[6px] h-[6px] -translate-y-1/2
+                    -translate-x-1/2 rounded-[50%] bg-[#3b71ca] absolute
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker middle dot.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerHandPointer</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    bg-[#3b71ca] bottom-1/2 h-2/5 left-[calc(50%-1px)]
+                    rtl:!left-auto origin-[center_bottom_0]
+                    rtl:!origin-[50%_50%_0] w-[2px] absolute
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker hand pointer.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerPointerCircle</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    -top-[21px] -left-[15px] w-[4px] border-[14px] border-solid
+                    border-[#3b71ca] h-[4px] box-content rounded-[100%] absolute
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker pointer circle.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerClockInner</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
+                    w-[160px] h-[160px] rounded-[100%]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker inner clock.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerFooterWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    rounded-b-lg flex justify-between items-center w-full
+                    h-[56px] px-[12px] bg-white dark:bg-zinc-500
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker footer wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerFooter</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    w-full flex justify-between
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker footer.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerFooterButton</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    text-[0.8rem] min-w-[64px] box-border font-medium
+                    leading-[40px] rounded-[10px] tracking-[0.1rem] uppercase
+                    text-[#3b71ca] dark:text-white border-none bg-transparent
+                    transition-[background-color,box-shadow,border]
+                    duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+                    delay-[0ms] outline-none py-0 px-[10px] h-[40px] mb-[10px]
+                    hover:bg-[#00000014] focus:bg-[#00000014] focus:outline-none
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker footer button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    touch-none opacity-100 z-[1065] inset-0 bg-[#00000066]
+                    h-full flex items-center justify-center flex-col rounded-lg
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineContainer</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex items-center justify-center flex-col
+                    max-h-[calc(100%-64px)] overflow-y-auto
+                    shadow-[0_10px_15px_-3px_rgba(0,0,0,0.07),0_4px_6px_-2px_rgba(0,0,0,0.05)]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline container.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineElements</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex flex-col min-h-[auto] min-w-[310px] bg-white
+                    rounded-[0.6rem] min-[320px]:max-[825px]:landscape:!flex-row
+                    min-[320px]:max-[825px]:landscape:rounded-bl-lg
+                    min-[320px]:max-[825px]:landscape:min-w-[auto]
+                    min-[320px]:max-[825px]:landscape::min-h-[auto]
+                    min-[320px]:max-[825px]:landscape:overflow-y-auto
+                    justify-around
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline elements.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineHead</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    bg-[#3b71ca] dark:bg-zinc-700 h-[100px] rounded-t-lg
+                    min-[320px]:max-[825px]:landscape:rounded-tr-none
+                    min-[320px]:max-[825px]:landscape:rounded-bl-none
+                    min-[320px]:max-[825px]:landscape:p-[10px]
+                    min-[320px]:max-[825px]:landscape:pr-[10px]
+                    min-[320px]:max-[825px]:landscape:h-auto
+                    min-[320px]:max-[825px]:landscape:min-h-[305px] flex
+                    flex-row items-center justify-center p-0 rounded-b-lg
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline head.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineHeadContent</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    min-[320px]:max-[825px]:landscape:flex-col flex w-full
+                    justify-evenly items-center
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline head content.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineHourWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    relative h-full !opacity-100
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline hour wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerCurrentMinuteWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    relative h-full
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker current minute wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineIconUp</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    absolute fill-white -top-[35px] opacity-0 hover:opacity-100
+                    transition-all duration-200 ease-[ease] cursor-pointer
+                    -translate-x-1/2 -translate-y-1/2 left-1/2 w-[30px] h-[30px]
+                    flex justify-center items-center
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline up icon.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineIconSvg</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    h-4 w-4
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline SVG icon.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineCurrentButton</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    font-light leading-[1.2] tracking-[-0.00833em] text-white
+                    border-none bg-transparent p-0
+                    min-[320px]:max-[825px]:landscape:text-5xl
+                    min-[320px]:max-[825px]:landscape:font-normal !opacity-100
+                    cursor-pointer focus:bg-[#00000026] hover:outline-none
+                    focus:outline-none text-[2.5rem] hover:bg-[unset]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline current button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineIconDown</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    absolute fill-white -bottom-[47px] opacity-0
+                    hover:opacity-100 transition-all duration-200 ease-[ease]
+                    cursor-pointer -translate-x-1/2 -translate-y-1/2 left-1/2
+                    w-[30px] h-[30px] flex justify-center items-center
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline down icon.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineDot</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    font-light leading-[1.2] tracking-[-0.00833em] opacity-[.54]
+                    border-none bg-transparent p-0 text-white
+                    min-[320px]:max-[825px]:landscape:text-[3rem]
+                    min-[320px]:max-[825px]:landscape:font-normal text-[2.5rem]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline dot.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineModeWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex justify-center text-[18px] text-[#ffffff8a]
+                    min-[320px]:max-[825px]:landscape:!justify-around
+                    min-[320px]:max-[825px]:landscape:!flex-row
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline mode wrapper.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineModeAm</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026]
+                    focus:outline-none p-0 bg-transparent border-none text-white
+                    opacity-[.54] cursor-pointer mr-2 ml-6
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline AM button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineModePm</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    hover:bg-[#00000026] hover:outline-none focus:bg-[#00000026]
+                    focus:outline-none p-0 bg-transparent border-none text-white
+                    opacity-[.54] cursor-pointer
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline PM button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerInlineSubmitButton</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    hover:bg-[#00000014] focus:bg-[#00000014] focus:outline-none
+                    text-[0.8rem] box-border font-medium leading-[40px]
+                    tracking-[.1rem] uppercase border-none bg-transparent
+                    [transition:background-color_250ms_cubic-bezier(0.4,0,0.2,1)_0ms,box-shadow_250ms_cubic-bezier(0.4,0,0.2,1)_0ms,border_250ms_cubic-bezier(0.4,0,0.2,1)_0ms]
+                    outline-none rounded-[100%] h-[48px] min-w-[48px]
+                    inline-block ml-[30px] text-white py-1 px-2 mb-0
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker Inline submit button.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>timepickerToggleButton</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    h-4 w-4 ml-auto absolute outline-none border-none
+                    bg-transparent right-2.5 top-1/2 -translate-x-1/2
+                    -translate-y-1/2 transition-all duration-300
+                    ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer
+                    hover:text-primary focus:text-primary
+                    dark:hover:text-primary-400 dark:focus:text-primary-400
+                    dark:text-neutral-200
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles of Timepicker toggle button.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Classes-->
+
+  <hr class="my-5 dark:border-gray-600" />
+
+  <!--Section: Methods-->
+  <section id="api-section-methods">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+      Methods
+    </h2>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Method
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Description
+                  </th>
+                  <th scope="col" class="px-6 py-4">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>dispose</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Destroy timepicker with this method
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>myTimepicker.dispose()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which allows you to get the alert instance
+                    associated to a DOM element.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Timepicker.getInstance()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>getOrCreateInstance</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which returns an alert instance associated to
+                    a DOM element or create a new one in case it wasn't
+                    initialized.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Timepicker.getOrCreateInstance()</code>
+                  </td>
+                </tr>
+                <tr
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>update</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Updates options of a timepicker instance.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code>Timepicker.update({inline: true})</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example3" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example3">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const myTimepickerEl = document.getElementById('myTimepicker');
+        const myTimepicker = new te.Timepicker(myTimepickerEl);
+        myTimepicker.dispose();
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Methods-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Events-->
+  <section id="api-section-events">
+    <!-- Section title -->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+      Events
+    </h2>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Event type
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>input.te.timepicker</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event fires when timepicker modal is approved and
+                    showing current elements with data-mdb-toggle. You can use
+                    it for taking a value when you are saving value to input.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example4" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example4">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const myTimepicker = document.getElementById('myTimepicker');
+        myTimepicker.addEventListener('input.te.timepicker', (e) => {
+          // do something...
+        });
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Events-->
+</section>

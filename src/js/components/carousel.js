@@ -1,9 +1,13 @@
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): carousel.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
+/*
+--------------------------------------------------------------------------
+Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+--------------------------------------------------------------------------
+*/
 
 import {
   defineJQueryPlugin,
@@ -20,11 +24,11 @@ import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";
 import BaseComponent from "../base-component";
 
-/**
- * ------------------------------------------------------------------------
- * Constants
- * ------------------------------------------------------------------------
- */
+/*
+------------------------------------------------------------------------
+Constants
+------------------------------------------------------------------------
+*/
 
 const NAME = "carousel";
 const DATA_KEY = "te.carousel";
@@ -120,11 +124,11 @@ const SELECTOR_DATA_SLIDE = "[data-te-slide], [data-te-slide-to]";
 const POINTER_TYPE_TOUCH = "touch";
 const POINTER_TYPE_PEN = "pen";
 
-/**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
- */
+/*
+------------------------------------------------------------------------
+Class Definition
+------------------------------------------------------------------------
+*/
 class Carousel extends BaseComponent {
   constructor(element, config, classes) {
     super(element);
@@ -461,7 +465,7 @@ class Carousel extends BaseComponent {
 
       activeIndicator.removeAttribute(ATTR_ACTIVE);
       activeIndicator.removeAttribute("aria-current");
-      activeIndicator.classList.remove("opacity-100");
+      activeIndicator.classList.remove("!opacity-100");
 
       const indicators = SelectorEngine.find(
         SELECTOR_INDICATOR,
@@ -477,7 +481,7 @@ class Carousel extends BaseComponent {
         ) {
           indicators[i].setAttribute(`${ATTR_ACTIVE}`, "");
           indicators[i].setAttribute("aria-current", "true");
-          indicators[i].classList.add("opacity-100");
+          indicators[i].classList.add("!opacity-100");
           break;
         }
       }
@@ -715,11 +719,11 @@ class Carousel extends BaseComponent {
   }
 }
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
+/*
+------------------------------------------------------------------------
+Data Api implementation
+------------------------------------------------------------------------
+*/
 
 EventHandler.on(
   document,

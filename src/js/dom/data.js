@@ -1,15 +1,19 @@
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta2): dom/data.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
+/*
+--------------------------------------------------------------------------
+Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
 
-/**
- * ------------------------------------------------------------------------
- * Constants
- * ------------------------------------------------------------------------
- */
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+--------------------------------------------------------------------------
+*/
+
+/*
+------------------------------------------------------------------------
+Constants
+------------------------------------------------------------------------
+*/
 
 const mapData = (() => {
   const storeData = {};

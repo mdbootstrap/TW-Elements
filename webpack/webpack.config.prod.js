@@ -5,6 +5,7 @@ const common = require("./webpack.common.js");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const intro = require("./intro");
 
 let entry;
 
@@ -48,6 +49,16 @@ module.exports = merge(common, {
       "process.env.NODE_ENV": JSON.stringify("production"),
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
+    new Webpack.BannerPlugin({
+      banner: intro,
+      entryOnly: true,
+      include: /index\.min\.js/i,
+    }),
+    new Webpack.BannerPlugin({
+      banner: intro,
+      entryOnly: true,
+      include: /index\.min\.css/i,
+    }),
   ],
   module: {
     rules: [

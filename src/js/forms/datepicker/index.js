@@ -1,3 +1,14 @@
+/*
+--------------------------------------------------------------------------
+Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+--------------------------------------------------------------------------
+*/
+
 import { createPopper } from "@popperjs/core";
 import Data from "../../dom/data";
 import EventHandler from "../../dom/event-handler";
@@ -44,11 +55,11 @@ import {
   PAGE_DOWN,
 } from "../../util/keycodes";
 
-/**
- * ------------------------------------------------------------------------
- * Constants
- * ------------------------------------------------------------------------
- */
+/*
+------------------------------------------------------------------------
+Constants
+------------------------------------------------------------------------
+*/
 
 const NAME = "datepicker";
 const DATA_KEY = "te.datepicker";
@@ -95,7 +106,7 @@ const DATEPICKER_BACKDROP_CLASSES =
   "w-full h-full fixed top-0 right-0 left-0 bottom-0 bg-black/40 z-[1065]";
 const DATEPICKER_MAIN_CLASSES = "relative h-full";
 const DATEPICKER_HEADER_CLASSES =
-  "xs:max-md:landscape:h-full h-[120px] px-6 bg-blue-500 flex flex-col rounded-t-lg dark:bg-zinc-800";
+  "xs:max-md:landscape:h-full h-[120px] px-6 bg-primary flex flex-col rounded-t-lg dark:bg-zinc-800";
 const DATEPICKER_TITLE_CLASSES = "h-8 flex flex-col justify-end";
 const DATEPICKER_TITLE_TEXT_CLASSES =
   "text-[10px] font-normal uppercase tracking-[1.7px] text-white";
@@ -114,7 +125,7 @@ const DATEPICKER_NEXT_BUTTON_CLASSES =
 const DATEPICKER_FOOTER_CLASSES =
   "h-14 flex absolute w-full bottom-0 justify-end items-center px-3";
 const DATEPICKER_FOOTER_BTN_CLASSES =
-  "outline-none bg-white text-blue-500 border-none cursor-pointer py-0 px-2.5 uppercase text-[0.8rem] leading-10 font-medium h-10 tracking-[.1rem] rounded-[10px] mb-2.5 hover:bg-neutral-200 focus:bg-neutral-200 dark:bg-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10";
+  "outline-none bg-white text-primary border-none cursor-pointer py-0 px-2.5 uppercase text-[0.8rem] leading-10 font-medium h-10 tracking-[.1rem] rounded-[10px] mb-2.5 hover:bg-neutral-200 focus:bg-neutral-200 dark:bg-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10";
 const DATEPICKER_CLEAR_BTN_CLASSES = "mr-auto";
 const DATEPICKER_DAY_HEADING_CLASSES =
   "w-10 h-10 text-center text-[12px] font-normal";
@@ -124,7 +135,7 @@ const DATEPICKER_CELL_SMALL_CLASSES =
   "w-10 h-10 xs:max-md:landscape:w-8 xs:max-md:landscape:h-8";
 const DATEPICKER_CELL_LARGE_CLASSES = "w-[76px] h-[42px]";
 const DATEPICKER_CELL_CONTENT_CLASSES =
-  "mx-auto group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-neutral-300 group-[[data-te-datepicker-cell-selected]]:bg-blue-500 group-[[data-te-datepicker-cell-selected]]:text-white group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-neutral-100 group-[[data-te-datepicker-cell-focused]]:data-[te-datepicker-cell-selected]:bg-blue-500 group-[[data-te-datepicker-cell-current]]:border-solid group-[[data-te-datepicker-cell-current]]:border-black group-[[data-te-datepicker-cell-current]]:border dark:group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-white/10 dark:group-[[data-te-datepicker-cell-current]]:border-white dark:group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-white/10";
+  "mx-auto group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-neutral-300 group-[[data-te-datepicker-cell-selected]]:bg-primary group-[[data-te-datepicker-cell-selected]]:text-white group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-neutral-100 group-[[data-te-datepicker-cell-focused]]:data-[te-datepicker-cell-selected]:bg-primary group-[[data-te-datepicker-cell-current]]:border-solid group-[[data-te-datepicker-cell-current]]:border-black group-[[data-te-datepicker-cell-current]]:border dark:group-[:not([data-te-datepicker-cell-disabled]):not([data-te-datepicker-cell-selected]):hover]:bg-white/10 dark:group-[[data-te-datepicker-cell-current]]:border-white dark:group-[:not([data-te-datepicker-cell-selected])[data-te-datepicker-cell-focused]]:bg-white/10";
 const DATEPICKER_CELL_CONTENT_SMALL_CLASSES =
   "w-9 h-9 leading-9 rounded-[50%] text-[13px]";
 const DATEPICKER_CELL_CONTENT_LARGE_CLASSES =
@@ -308,11 +319,11 @@ const DefaultClassesType = {
   datepickerToggleButton: "string",
 };
 
-/**
- * ------------------------------------------------------------------------
- * Class Definition
- * ------------------------------------------------------------------------
- */
+/*
+------------------------------------------------------------------------
+Class Definition
+------------------------------------------------------------------------
+*/
 
 class Datepicker {
   constructor(element, options, classes) {
