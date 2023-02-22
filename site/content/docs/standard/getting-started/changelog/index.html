@@ -768,14 +768,20 @@ menu:
     const progress =
       (milestoneData.closed_issues / milestoneData.open_issues) * 100;
     const dueOn = new Date(milestoneData.due_on);
-    const dueOnDate = ("0" + dueOn.getDate()).slice(-2);
-    const dueOnMonth = ("0" + dueOn.getMonth()).slice(-2);
-    const dueOnYear = dueOn.getFullYear();
 
     upcomingReleaseElement.classList.remove("hidden");
-    upcomingReleaseElement.innerHTML = `${milestoneData.title} planned for ${dueOnDate}.${dueOnMonth}.${dueOnYear}`;
     upcomingReleaseProgressBar.classList.remove("hidden");
     upcomingReleaseProgressBar.children[0].style.width = `${progress}%`;
+
+    if (dueOn) {
+      const dueOnDate = ("0" + dueOn.getDate()).slice(-2);
+      const dueOnMonth = ("0" + dueOn.getMonth()).slice(-2);
+      const dueOnYear = dueOn.getFullYear();
+
+      upcomingReleaseElement.innerHTML = `${milestoneData.title} planned for ${dueOnDate}.${dueOnMonth}.${dueOnYear}`;
+    } else {
+      upcomingReleaseElement.innerHTML = milestoneData.title;
+    }
   }
 </script>
 
