@@ -143,6 +143,64 @@ menu:
   </p>
 </section>
 
+<hr class="my-10 dark:border-gray-600" />
+
+<section>
+  <h2 class="text-3xl font-semibold leading-tight">New release coming soon</h2>
+  <p id="upcomingReleaseData" class="hidden text-gray-400"></p>
+
+  <div
+    id="upcomingReleaseProgressBar"
+    class="my-4 hidden h-1 w-full bg-neutral-200 dark:bg-neutral-600">
+    <div class="h-1 bg-primary" style="width: 45%"></div>
+  </div>
+
+  <p class="mt-4">
+    We're working hard on resolving issues & introducing new improvements in the
+    upcoming release.
+  </p>
+  <p class="font-semibold">In the meantime we invite you to:</p>
+
+  <ul class="ml-6 mt-2 list-disc">
+    <li>
+      Trach our
+      <a
+        href="https://github.com/orgs/mdbootstrap/projects"
+        target="_blank"
+        class="font-semibold text-primary dark:text-primary-400"
+        >live progress</a
+      >
+    </li>
+    <li>
+      Motivate us with some
+      <a
+        href="https://github.com/mdbootstrap/Tailwind-Elements/discussions/categories/kind-words-general-feedback"
+        target="_blank"
+        class="font-semibold text-primary dark:text-primary-400"
+        >words of encouragament</a
+      >
+    </li>
+    <li>
+      Share your
+      <a
+        href="https://github.com/mdbootstrap/Tailwind-Elements/discussions/categories/share-ideas-request-features"
+        target="_blank"
+        class="font-semibold text-primary dark:text-primary-400"
+        >ideas & feature requests</a
+      >
+    </li>
+    <li>
+      Engage, discuss & have fun in our
+      <a
+        href="https://github.com/mdbootstrap/Tailwind-Elements/discussions"
+        target="_blank"
+        class="font-semibold text-primary dark:text-primary-400"
+        >open-source community</a
+      >
+    </li>
+  </ul>
+</section>
+
 <hr class="mt-10 mb-14 dark:border-gray-600" />
 
 <section id="changelog">
@@ -686,6 +744,38 @@ menu:
   </section>
   <!-- Release data -->
 </section>
+
+<script type="module">
+  import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+
+  const octokit = new Octokit();
+
+  const response = await octokit.request(
+    "GET /repos/mdbootstrap/tailwind-elements/milestones"
+  );
+
+  if ((response.status === 200) & (response.data.length !== 0)) {
+    const upcomingReleaseElement = document.querySelector(
+      "#upcomingReleaseData"
+    );
+    const upcomingReleaseProgressBar = document.querySelector(
+      "#upcomingReleaseProgressBar"
+    );
+
+    const milestoneData = response.data[0];
+    const progress =
+      (milestoneData.closed_issues / milestoneData.open_issues) * 100;
+    const dueOn = new Date(milestoneData.due_on);
+    const dueOnDate = ("0" + dueOn.getDate()).slice(-2);
+    const dueOnMonth = ("0" + dueOn.getMonth()).slice(-2);
+    const dueOnYear = dueOn.getFullYear();
+
+    upcomingReleaseElement.classList.remove("hidden");
+    upcomingReleaseElement.innerHTML = `${milestoneData.title} planned for ${dueOnDate}.${dueOnMonth}.${dueOnYear}`;
+    upcomingReleaseProgressBar.classList.remove("hidden");
+    upcomingReleaseProgressBar.children[0].style.width = `${progress}%`;
+  }
+</script>
 
 <script>
   const changelog = document.querySelector("#changelog");
