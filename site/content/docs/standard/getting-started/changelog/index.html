@@ -165,9 +165,9 @@ menu:
 
   <ul class="ml-6 mt-2 list-disc">
     <li>
-      Trach our
+      Track our
       <a
-        href="https://github.com/orgs/mdbootstrap/projects"
+        href="https://github.com/orgs/mdbootstrap/projects/1"
         target="_blank"
         class="font-semibold text-primary dark:text-primary-400"
         >live progress</a
@@ -764,23 +764,33 @@ menu:
       "#upcomingReleaseProgressBar"
     );
 
-    const milestoneData = response.data[0];
+    Array.prototype.hasMin = function (attr) {
+      return (
+        (this.length &&
+          this.reduce(function (prev, curr) {
+            return prev[attr] < curr[attr] ? prev : curr;
+          })) ||
+        null
+      );
+    };
+
+    const milestoneData = response.data.hasMin("number");
     const progress =
       (milestoneData.closed_issues / milestoneData.open_issues) * 100;
-    const dueOn = new Date(milestoneData.due_on);
 
     upcomingReleaseElement.classList.remove("hidden");
     upcomingReleaseProgressBar.classList.remove("hidden");
     upcomingReleaseProgressBar.children[0].style.width = `${progress}%`;
 
-    if (dueOn) {
+    if (milestoneData.due_on === null) {
+      upcomingReleaseElement.innerHTML = milestoneData.title;
+    } else {
+      const dueOn = new Date(milestoneData.due_on);
       const dueOnDate = ("0" + dueOn.getDate()).slice(-2);
       const dueOnMonth = ("0" + dueOn.getMonth()).slice(-2);
       const dueOnYear = dueOn.getFullYear();
 
       upcomingReleaseElement.innerHTML = `${milestoneData.title} planned for ${dueOnDate}.${dueOnMonth}.${dueOnYear}`;
-    } else {
-      upcomingReleaseElement.innerHTML = milestoneData.title;
     }
   }
 </script>
