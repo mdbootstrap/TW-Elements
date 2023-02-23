@@ -104,7 +104,7 @@ menu:
     data-format="inline"
     data-version="5"
     data-options='{"settings":{"after_subscribe":{"action":"redirect","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":"https://mdbootstrap.com/confirm/"},"analytics":{"google":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":false,"url":"https://convertkit.com?utm_source=dynamic&amp;utm_medium=referral&amp;utm_campaign=poweredby&amp;utm_content=form"},"recaptcha":{"enabled":true},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'>
-    <div class="mb-4 flex justify-center gap-2">
+    <div class="mb-4 flex justify-start gap-2">
       <div class="relative w-full max-w-[400px]" data-te-input-wrapper-init>
         <input
           type="email"
@@ -147,14 +147,26 @@ menu:
 
 <section>
   <h2 class="text-3xl font-semibold leading-tight">New release coming soon</h2>
-  <p
-    id="upcomingReleaseData"
-    class="hidden text-gray-500 dark:text-gray-400"></p>
+  <div class="relative h-12">
+    <div id="progressPlaceholder" class="absolute w-full">
+      <p class="animate-pulse">
+        <span
+          class="inline-block min-h-[1em] w-1/3 flex-auto cursor-wait bg-current align-middle text-base text-neutral-700 opacity-50 dark:text-neutral-50"></span>
+      </p>
+      <p class="animate-pulse">
+        <span
+          class="inline-block min-h-[1em] w-full flex-auto cursor-wait bg-current align-middle text-base text-neutral-700 opacity-50 dark:text-neutral-50"></span>
+      </p>
+    </div>
+    <p
+      id="upcomingReleaseData"
+      class="absolute hidden text-gray-500 opacity-0 transition-opacity dark:text-gray-400"></p>
 
-  <div
-    id="upcomingReleaseProgressBar"
-    class="my-4 hidden h-1 w-full bg-neutral-200 dark:bg-neutral-600">
-    <div class="h-1 bg-primary" style="width: 45%"></div>
+    <div
+      id="upcomingReleaseProgressBar"
+      class="absolute bottom-0 mb-1 hidden h-1 w-full bg-neutral-200 opacity-0 transition-opacity dark:bg-neutral-600">
+      <div class="h-1 bg-primary" style="width: 45%"></div>
+    </div>
   </div>
 
   <p class="mt-4">
@@ -775,23 +787,30 @@ menu:
     };
 
     const milestoneData = response.data.hasMin("number");
+    const progressPlaceholder = document.querySelector("#progressPlaceholder");
     const progress =
       (milestoneData.closed_issues / milestoneData.open_issues) * 100;
 
+    progressPlaceholder.classList.add("hidden");
     upcomingReleaseElement.classList.remove("hidden");
     upcomingReleaseProgressBar.classList.remove("hidden");
-    upcomingReleaseProgressBar.children[0].style.width = `${progress}%`;
 
-    if (milestoneData.due_on === null) {
-      upcomingReleaseElement.innerHTML = milestoneData.title;
-    } else {
-      const dueOn = new Date(milestoneData.due_on);
-      const dueOnDate = ("0" + dueOn.getDate()).slice(-2);
-      const dueOnMonth = ("0" + dueOn.getMonth()).slice(-2);
-      const dueOnYear = dueOn.getFullYear();
+    setTimeout(() => {
+      upcomingReleaseElement.classList.add("opacity-100");
+      upcomingReleaseProgressBar.classList.add("opacity-100");
+      upcomingReleaseProgressBar.children[0].style.width = `${progress}%`;
 
-      upcomingReleaseElement.innerHTML = `${milestoneData.title} planned for ${dueOnDate}.${dueOnMonth}.${dueOnYear}`;
-    }
+      if (milestoneData.due_on === null) {
+        upcomingReleaseElement.innerHTML = milestoneData.title;
+      } else {
+        const dueOn = new Date(milestoneData.due_on);
+        const dueOnDate = ("0" + dueOn.getDate()).slice(-2);
+        const dueOnMonth = ("0" + dueOn.getMonth()).slice(-2);
+        const dueOnYear = dueOn.getFullYear();
+
+        upcomingReleaseElement.innerHTML = `${milestoneData.title} planned for ${dueOnDate}.${dueOnMonth}.${dueOnYear}`;
+      }
+    }, 10);
   }
 </script>
 
