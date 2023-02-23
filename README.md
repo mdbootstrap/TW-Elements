@@ -311,7 +311,7 @@ module.exports = {
 Alternatively, you can import it in the following way (bundler version):
 
 ```
-import 'tw-elements';
+import * as te from 'tw-elements';
 ```
 
 ##### MDB GO / CLI
