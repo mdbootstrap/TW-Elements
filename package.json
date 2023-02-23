@@ -9,7 +9,7 @@
   "main": "dist/js/index.min.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open",
-    "build": "npm run build:webpack && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
+    "build": "npm run build:webpack && npm run copy:te-files && cd ./site && npm run build:tailwind",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "build:demo": "cross-env NODE_ENV=production --env.mode=demo webpack --config webpack/webpack.config.prod.js --colors",
     "copy:te-files": "node helpers/copyTeFiles",
