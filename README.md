@@ -366,14 +366,18 @@ Add the stylesheet files below in the _head_ section:
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
+    darkMode: "class",
     theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Roboto', 'sans-serif'],
-        },
-      }
-    }
-  }
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+        body: ["Roboto", "sans-serif"],
+        mono: ["ui-monospace", "monospace"],
+      },
+    },
+    corePlugins: {
+      preflight: false,
+    },
+  };
 </script>
 ```
 
