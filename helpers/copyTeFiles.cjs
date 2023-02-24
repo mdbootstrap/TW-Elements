@@ -15,8 +15,8 @@ try {
 }
 
 try {
-  fs.copySync("dist/plugin.js", "site/static/js/plugin.js");
-  console.log("Successfully copied plugin.js");
+  fs.copySync("dist/plugin.cjs", "site/static/js/plugin.cjs");
+  console.log("Successfully copied plugin.cjs");
 } catch (err) {
-  console.log("Failed to copy plugin.js");
+  console.log("Failed to copy plugin.cjs");
 }
