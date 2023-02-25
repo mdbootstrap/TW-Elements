@@ -163,9 +163,9 @@ Collection of free, popular components like modal, dropdown, carousel, popover, 
     </td>
   </tr>
   <tr>
-    <td align="center"><b>Accordion</b></td>
-    <td align="center"><b>Tabs</b></td>
-    <td align="center"><b>Stepper</b></td>
+    <td align="center"><b>Timepicker</b></td>
+    <td align="center"><b>Footer</b></td>
+    <td align="center"><b>Navbar</b></td>
   </tr>
 </table>
 
