@@ -24,7 +24,9 @@
     }
   };
 
-  setMode();
+  if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+    setMode();
+  }
 
   // Event listeners
   window.addEventListener("resize", setMode);
