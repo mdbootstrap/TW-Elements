@@ -1157,9 +1157,9 @@ class Datepicker {
     if (date) {
       const dateString = this.formatDate(date);
       this._input.value = dateString;
-      EventHandler.trigger(this._element, EVENT_DATE_CHANGE, { date });
-      EventHandler.trigger(this._input, "input");
     }
+    EventHandler.trigger(this._element, EVENT_DATE_CHANGE, { date });
+    EventHandler.trigger(this._input, "input");
   }
 
   handleCancel() {
