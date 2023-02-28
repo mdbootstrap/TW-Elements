@@ -99,4 +99,12 @@ if (process.env.mode === "demo") {
   fs.copy(`./src/scss`, `./${distName}/src/scss`, (err) => {
     if (err) throw err;
   });
+  fs.mkdir("dist/types");
+  fs.appendFile(
+    "dist/types/index.d.ts",
+    "declare module 'tw-elements'",
+    (err) => {
+      if (err) throw err;
+    }
+  );
 }
