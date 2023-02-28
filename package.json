@@ -12,6 +12,7 @@
     "start": "vite --open",
     "dev": "vite",
     "build": "vite build && node config/te-config.cjs && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
+    "build:modules": "vite build && node config/te-modules.cjs && node config/te-config.cjs && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
     "build:demo": "cross-env --env.mode=demo vite build && cross-env --env.mode=demo node config/te-config.cjs",
     "copy:te-files": "node helpers/copyTeFiles.cjs",
     "create:te-starter": "node helpers/createTeStarter.cjs",
