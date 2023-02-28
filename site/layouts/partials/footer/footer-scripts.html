@@ -303,9 +303,9 @@
     let menuSection = document.querySelectorAll("menu li");
 
     // SmoothScroll
-    function mdbScrollSpyTo(e) {
-      e.preventDefault();
-      const hash = e.target.getAttribute("href");
+    function teScrollSpyTo(event) {
+      event.preventDefault();
+      const hash = event.target.getAttribute("href");
       const target = document.getElementById(hash.substring(1));
 
       window.scroll({
@@ -336,14 +336,14 @@
     );
 
     // for clickable event
-    menuSection.forEach((v) => {
-      v.addEventListener("click", mdbScrollSpyTo, false);
-      v.onclick = () => {
+    menuSection.forEach((menuElement) => {
+      menuElement.addEventListener("click", teScrollSpyTo, false);
+      menuElement.addEventListener("click", () => {
         setTimeout(() => {
           menuSection.forEach((j) => j.removeAttribute("data-te-spy-active"));
-          v.setAttribute("data-te-spy-active", "");
+          menuElement.setAttribute("data-te-spy-active", "");
         }, 300);
-      };
+      });
     });
 
     // for window scrolldown event
@@ -352,11 +352,13 @@
       const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
       let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
 
-      mainSection.forEach((v, i) => {
-        let rect = v.getBoundingClientRect().y;
+      mainSection.forEach((header, i) => {
+        let rect = header.getBoundingClientRect().top;
 
-        if (rect < window.innerHeight + -940) {
-          menuSection.forEach((v) => v.removeAttribute("data-te-spy-active"));
+        if (rect < window.innerHeight + -1100) {
+          menuSection.forEach((menuElement) =>
+            menuElement.removeAttribute("data-te-spy-active")
+          );
           if (!menuSection[i]) {
             return;
           }
