@@ -1,4 +1,5 @@
 {{ $hidden_sidenav := .Params.hidden_sidenav }}
+{{ $single_section := .Params.single_section }}
 
 
 <html lang="{{ .Language.Lang }}">
@@ -42,7 +43,9 @@
         <div class="flex w-full flex-col ">
           <ul
             id="docs-nav-pills"
-            class="mx-4 mt-3 flex"
+            class="{{ if eq $single_section true }}
+              hidden
+            {{ end }} mx-4 mt-3 flex"
             role="tablist"
             data-te-nav-ref>
             <li>
