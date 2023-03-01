@@ -130,7 +130,7 @@ const DefaultClasses = {
   dropdown:
     "relative outline-none min-w-[100px] m-0 scale-[0.8] opacity-0 bg-white shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)] transition duration-200 motion-reduce:transition-none data-[te-select-open]:scale-100 data-[te-select-open]:opacity-100 dark:bg-zinc-700",
   formCheckInput:
-    "relative float-left mt-[3px] mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 motion-reduce:transition-none checked:border-blue-600 checked:bg-blue-600 checked:after:absolute checked:after:ml-[5px] checked:after:mt-px checked:after:block checked:after:h-[9px] checked:after:w-[5px] checked:after:rotate-45 checked:after:border-2 checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] focus:outline-none group-data-[te-select-option-text-ref]:mr-2.5 dark:bg-zinc-700 dark:checked:bg-blue-500",
+    "relative float-left mt-[3px] mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 motion-reduce:transition-none checked:border-primary checked:bg-primary checked:after:absolute checked:after:ml-[5px] checked:after:mt-px checked:after:block checked:after:h-[9px] checked:after:w-[5px] checked:after:rotate-45 checked:after:border-2 checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] focus:outline-none group-data-[te-select-option-text-ref]:mr-2.5 dark:bg-zinc-700 dark:checked:bg-blue-500",
   formOutline: "relative",
   initialized: "hidden",
   inputGroup:
@@ -141,14 +141,14 @@ const DefaultClasses = {
   optionsWrapperScrollbar:
     "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-button]:block [&::-webkit-scrollbar-button]:h-0 [&::-webkit-scrollbar-button]:bg-transparent [&::-webkit-scrollbar-track-piece]:bg-transparent [&::-webkit-scrollbar-track-piece]:rounded-none [&::-webkit-scrollbar-track-piece]: [&::-webkit-scrollbar-track-piece]:rounded-l [&::-webkit-scrollbar-thumb]:h-[50px] [&::-webkit-scrollbar-thumb]:bg-[#999] [&::-webkit-scrollbar-thumb]:rounded",
   selectArrow:
-    "absolute right-2 text-[0.8rem] cursor-pointer peer-focus:text-blue-600 peer-data-[te-input-focused]:text-blue-600 group-data-[te-was-validated]/validation:peer-valid:text-green-600 group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)]",
+    "absolute right-2 text-[0.8rem] cursor-pointer peer-focus:text-primary peer-data-[te-input-focused]:text-primary group-data-[te-was-validated]/validation:peer-valid:text-green-600 group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)]",
   selectArrowWhite:
     "text-gray-50 peer-focus:!text-white peer-data-[te-input-focused]:!text-white",
   selectArrowDefault: "top-2",
   selectArrowLg: "top-[13px]",
   selectArrowSm: "top-1",
   selectClearBtn:
-    "absolute top-2 right-7 text-black cursor-pointer focus:text-blue-600 outline-none dark:text-gray-200",
+    "absolute top-2 right-7 text-black cursor-pointer focus:text-primary outline-none dark:text-gray-200",
   selectClearBtnWhite: "!text-gray-50",
   selectClearBtnDefault: "top-2 text-base",
   selectClearBtnLg: "top-[11px] text-base",
@@ -156,7 +156,7 @@ const DefaultClasses = {
   selectDropdownContainer: "z-[1070]",
   selectFakeValue: "transform-none hidden data-[te-input-state-active]:block",
   selectFilterInput:
-    "relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-gray-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition duration-300 ease-in-out motion-reduce:transition-none focus:border-blue-600 focus:text-gray-700 focus:shadow-te-blue focus:outline-none dark:text-gray-200 dark:placeholder:text-gray-200",
+    "relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-gray-300 bg-transparent bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition duration-300 ease-in-out motion-reduce:transition-none focus:border-primary focus:text-gray-700 focus:shadow-te-primary focus:outline-none dark:text-gray-200 dark:placeholder:text-gray-200",
   selectInput:
     "peer block min-h-[auto] w-full rounded border-0 bg-transparent outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-gray-200 dark:placeholder:text-gray-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 cursor-pointer data-[te-input-disabled]:bg-[#e9ecef] data-[te-input-disabled]:cursor-default group-data-[te-was-validated]/validation:mb-4 dark:data-[te-input-disabled]:bg-zinc-600",
   selectInputWhite: "!text-gray-50",
@@ -164,7 +164,7 @@ const DefaultClasses = {
   selectInputSizeLg: "py-[0.32rem] px-3 leading-[2.15]",
   selectInputSizeSm: "py-[0.33rem] px-3 text-xs leading-[1.5]",
   selectLabel:
-    "pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate text-gray-500 transition-all duration-200 ease-out peer-focus:scale-[0.8] peer-focus:text-blue-600 peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-gray-200 dark:peer-focus:text-gray-200 data-[te-input-state-active]:scale-[0.8]",
+    "pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate text-gray-500 transition-all duration-200 ease-out peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-gray-200 dark:peer-focus:text-gray-200 data-[te-input-state-active]:scale-[0.8]",
   selectLabelWhite: "!text-gray-50",
   selectLabelSizeDefault:
     "pt-[0.37rem] leading-[1.6] peer-focus:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] data-[te-input-state-active]:-translate-y-[0.9rem]",
