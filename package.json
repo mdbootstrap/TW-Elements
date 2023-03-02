@@ -15,6 +15,8 @@
     "copy:te-files": "node helpers/copyTeFiles",
     "create:te-starter": "node helpers/createTeStarter",
     "deploy": "npm run build:demo && cd dist-demo/ && mdb publish --override",
+    "docs:install": "npm install && cd ./site && npm install && cd ../ && npm run build",
+    "docs:start": "cd ./site && npm start",
     "test": "jest",
     "lint": "lint-staged && pretty-quick"
   },
