@@ -302,24 +302,6 @@
   (function () {
     let menuSection = document.querySelectorAll("menu li");
 
-    // SmoothScroll
-    function teScrollSpyTo(event) {
-      event.preventDefault();
-      const hash = event.target.getAttribute("href");
-      const target = document.getElementById(hash.substring(1));
-
-      window.scroll({
-        top: target.offsetTop - 100,
-        behavior: "smooth",
-      });
-
-      if (history.pushState) {
-        history.pushState(null, null, hash);
-      } else {
-        location.hash = hash;
-      }
-    }
-
     const scrollspyClasses = [
       "data-[te-spy-active]:border-l-2",
       "data-[te-spy-active]:border-solid",
@@ -335,6 +317,24 @@
       section.classList.add(...scrollspyClasses)
     );
 
+    // SmoothScroll
+    function teScrollSpyTo(event) {
+      event.preventDefault();
+      const hash = event.target.getAttribute("href");
+      const target = document.getElementById(hash.substring(1));
+      // console.log(target);
+      window.scroll({
+        top: target.offsetTop,
+        behavior: "smooth",
+      });
+
+      if (history.pushState) {
+        history.pushState(null, null, hash);
+      } else {
+        location.hash = hash;
+      }
+    }
+
     // for clickable event
     menuSection.forEach((menuElement) => {
       menuElement.addEventListener("click", teScrollSpyTo, false);
@@ -347,15 +347,14 @@
     });
 
     // for window scrolldown event
-
-    window.onscroll = () => {
+    window.addEventListener("scroll", () => {
       const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
       let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
 
       mainSection.forEach((header, i) => {
-        let rect = header.getBoundingClientRect().top;
+        let rect = header.getBoundingClientRect().bottom;
 
-        if (rect < window.innerHeight + -1100) {
+        if (rect < 100) {
           menuSection.forEach((menuElement) =>
             menuElement.removeAttribute("data-te-spy-active")
           );
@@ -365,7 +364,7 @@
           menuSection[i].setAttribute("data-te-spy-active", "");
         }
       });
-    };
+    });
   })();
 
   const clip = document.querySelectorAll(".clip");
