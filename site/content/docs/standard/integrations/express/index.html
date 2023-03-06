@@ -196,6 +196,40 @@ menu:
     </p>
   </section>
 
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p>
+    In root directory create <code>index.js</code> file where will be located
+    your Express.js configuration.
+  </p>
+
+  {{< twsnippet/no-demo id="example13" >}}
+  <!-- Section: Code-->
+  <section class="!visible hidden" data-te-collapse-item id="example13">
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "index.js" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        const express = require("express");
+        const app = express();
+        const port = 3000;
+        const path = require("path");
+
+        app.set("view engine", "ejs");
+        app.use(express.static("public"));
+
+        app.get("/", (req, res) => {
+          res.render("index");
+        });
+
+        app.listen(port, () => {
+          console.log(`Example app listening on port ${port}`);
+        });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!-- Section: Code-->
+
   <hr class="mb-5 dark:border-neutral-600" />
 
   <!-- Creating and configuring Tailwind & Tailwind Elements-->
