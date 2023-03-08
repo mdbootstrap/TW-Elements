@@ -10,39 +10,53 @@ if (process.env.mode === "demo") {
   distName = "dist";
 }
 
-// add disclaimer to js file
+// add disclaimer to js files
 
-const jsWithDisclaimer =
+const umdJsWithDisclaimer =
   intro() +
-  fs.readFileSync(`./${distName}/js/index.min.js`, {
+  fs.readFileSync(`./${distName}/js/tw-elements.umd.min.js`, {
     encoding: "utf-8",
   });
 
-fs.writeFileSync(`./${distName}/js/index.min.js`, jsWithDisclaimer, {
+fs.writeFileSync(
+  `./${distName}/js/tw-elements.umd.min.js`,
+  umdJsWithDisclaimer,
+  {
+    encoding: "utf-8",
+  }
+);
+
+const esJsWithDisclaimer =
+  intro() +
+  fs.readFileSync(`./${distName}/js/tw-elements.es.min.js`, {
+    encoding: "utf-8",
+  });
+
+fs.writeFileSync(`./${distName}/js/tw-elements.es.min.js`, esJsWithDisclaimer, {
   encoding: "utf-8",
 });
 
 // build index.min.css from tailwind.scss
 
 shell.exec(
-  `npx tailwindcss -i ./src/scss/tailwind.scss -o ./${distName}/css/index.min.css --minify`
+  `npx tailwindcss -i ./src/scss/tailwind.scss -o ./${distName}/css/tw-elements.min.css --minify`
 );
 
 // to creat .map file
 
 shell.exec(
-  `sass ./${distName}/css/index.min.css ./${distName}/css/index.min.css --style compressed`
+  `sass ./${distName}/css/tw-elements.min.css ./${distName}/css/tw-elements.min.css --style compressed`
 );
 
 // add disclaimer to css file
 
 const cssWithDisclaimer =
   intro() +
-  fs.readFileSync(`./${distName}/css/index.min.css`, {
+  fs.readFileSync(`./${distName}/css/tw-elements.min.css`, {
     encoding: "utf-8",
   });
 
-fs.writeFileSync(`./${distName}/css/index.min.css`, cssWithDisclaimer, {
+fs.writeFileSync(`./${distName}/css/tw-elements.min.css`, cssWithDisclaimer, {
   encoding: "utf-8",
 });
 
@@ -99,12 +113,4 @@ if (process.env.mode === "demo") {
   fs.copy(`./src/scss`, `./${distName}/src/scss`, (err) => {
     if (err) throw err;
   });
-  fs.mkdir("dist/types");
-  fs.appendFile(
-    "dist/types/index.d.ts",
-    "declare module 'tw-elements'",
-    (err) => {
-      if (err) throw err;
-    }
-  );
 }

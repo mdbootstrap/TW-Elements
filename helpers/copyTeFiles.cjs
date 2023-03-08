@@ -1,17 +1,13 @@
 const fs = require("fs-extra");
 
 try {
-  fs.copySync("dist/js/index.min.js", "site/static/js/index.min.js");
-  console.log("Successfully copied index.min.js");
+  fs.copySync(
+    "dist/js/tw-elements.umd.min.js",
+    "site/static/js/tw-elements.umd.min.js"
+  );
+  console.log("Successfully copied tw-elements.umd.min.js");
 } catch (err) {
-  console.log("Failed to copy index.min.js");
-}
-
-try {
-  fs.copySync("dist/js/index.min.js.map", "site/static/js/index.min.js.map");
-  console.log("Successfully copied index.min.js.map");
-} catch (err) {
-  console.log("Failed to copy index.min.js.map");
+  console.log("Failed to copy tw-elements.umd.min.js");
 }
 
 try {

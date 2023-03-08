@@ -12,16 +12,11 @@ export default defineConfig({
   },
   build: {
     outDir: distName,
-    emptyOutDir: process.env.buildFile ? false : true,
     lib: {
       entry: resolve(__dirname, process.env.buildFile || "src/js/index.js"),
 
       name: "te",
-      fileName: () =>
-        `${process.env.buildFile ? "js/module" : "js"}/${
-          process.env.buildFile ? process.env.buildFileName : "index.min"
-        }.js`,
-      formats: ["es"],
+      fileName: (format) => `js/tw-elements.${format}.min.js`,
     },
     sourcemap: true,
   },

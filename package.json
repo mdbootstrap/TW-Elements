@@ -5,15 +5,16 @@
   "license": "AGPL",
   "homepage": "https://tailwind-elements.com/",
   "author": "MDBootstrap <office@mdbootstrap.com>",
-  "style": "dist/css/index.min.css",
-  "sass": "src/scss/tailwind.scss",
-  "main": "dist/js/index.min.js",
+  "style": "./dist/css/index.min.css",
+  "sass": "./src/scss/tailwind.scss",
+  "main": "./dist/js/tw-elements.umd.min.js",
+  "module": "./dist/js/tw-elements.es.min.js",
+  "types": "./types/tw-elements.d.ts",
   "scripts": {
     "start": "vite --open",
     "dev": "vite",
-    "build": "vite build && node config/te-config.cjs && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
-    "build:modules": "vite build && node config/te-modules.cjs && node config/te-config.cjs && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
-    "build:demo": "cross-env --env.mode=demo vite build && cross-env --env.mode=demo node config/te-config.cjs",
+    "build": "vite build && node config/build.cjs && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
+    "build:demo": "cross-env --env.mode=demo vite build && cross-env --env.mode=demo node config/build.cjs",
     "copy:te-files": "node helpers/copyTeFiles.cjs",
     "create:te-starter": "node helpers/createTeStarter.cjs",
     "deploy": "npm run build:demo && cd dist-demo/ && mdb publish --override",
@@ -23,7 +24,8 @@
     "lint": "lint-staged && pretty-quick"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "types/**/*"
   ],
   "husky": {
     "hooks": {
@@ -75,7 +77,6 @@
     "deepmerge": "^4.2.2",
     "detect-autofill": "^1.1.3",
     "perfect-scrollbar": "^1.5.5",
-    "popper.js": "^1.16.1",
     "tailwindcss": "3.2.4"
   }
 }

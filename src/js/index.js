@@ -31,30 +31,6 @@ import Stepper from "./components/stepper";
 import Select from "./forms/select";
 import ChipsInput from "./components/chips";
 
-const te = {
-  Animate,
-  Alert,
-  Button,
-  ChipsInput,
-  Dropdown,
-  Carousel,
-  Collapse,
-  Offcanvas,
-  Modal,
-  Popover,
-  ScrollSpy,
-  Select,
-  Tab,
-  Toast,
-  Tooltip,
-  Ripple,
-  Datepicker,
-  Timepicker,
-  Sidenav,
-  Stepper,
-  Input,
-};
-
 export {
   Animate,
   Alert,
@@ -78,6 +54,3 @@ export {
   Stepper,
   Input,
 };
-
-// add global te variable
-window.te = te;
