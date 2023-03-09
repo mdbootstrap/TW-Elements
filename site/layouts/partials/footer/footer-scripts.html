@@ -317,34 +317,54 @@
       section.classList.add(...scrollspyClasses)
     );
 
+    // SmoothScroll
+    function teScrollSpyTo(event) {
+      event.preventDefault();
+      const hash = event.target.getAttribute("href");
+      const target = document.getElementById(hash.substring(1));
+      // console.log(target);
+      window.scroll({
+        top: target.offsetTop,
+        behavior: "smooth",
+      });
+
+      if (history.pushState) {
+        history.pushState(null, null, hash);
+      } else {
+        location.hash = hash;
+      }
+    }
+
     // for clickable event
-    menuSection.forEach((v) => {
-      v.onclick = () => {
+    menuSection.forEach((menuElement) => {
+      menuElement.addEventListener("click", teScrollSpyTo, false);
+      menuElement.addEventListener("click", () => {
         setTimeout(() => {
           menuSection.forEach((j) => j.removeAttribute("data-te-spy-active"));
-          v.setAttribute("data-te-spy-active", "");
+          menuElement.setAttribute("data-te-spy-active", "");
         }, 300);
-      };
+      });
     });
 
     // for window scrolldown event
-
-    window.onscroll = () => {
+    window.addEventListener("scroll", () => {
       const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
       let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
 
-      mainSection.forEach((v, i) => {
-        let rect = v.getBoundingClientRect().y;
+      mainSection.forEach((header, i) => {
+        let rect = header.getBoundingClientRect().bottom;
 
-        if (rect < window.innerHeight + -940) {
-          menuSection.forEach((v) => v.removeAttribute("data-te-spy-active"));
+        if (rect < 100) {
+          menuSection.forEach((menuElement) =>
+            menuElement.removeAttribute("data-te-spy-active")
+          );
           if (!menuSection[i]) {
             return;
           }
           menuSection[i].setAttribute("data-te-spy-active", "");
         }
       });
-    };
+    });
   })();
 
   const clip = document.querySelectorAll(".clip");
