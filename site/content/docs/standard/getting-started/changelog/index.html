@@ -805,7 +805,7 @@ menu:
       } else {
         const dueOn = new Date(milestoneData.due_on);
         const dueOnDate = ("0" + dueOn.getDate()).slice(-2);
-        const dueOnMonth = ("0" + dueOn.getMonth()).slice(-2);
+        const dueOnMonth = ("0" + (dueOn.getMonth() + 1)).slice(-2);
         const dueOnYear = dueOn.getFullYear();
 
         upcomingReleaseElement.innerHTML = `${milestoneData.title} planned for ${dueOnDate}.${dueOnMonth}.${dueOnYear}`;
