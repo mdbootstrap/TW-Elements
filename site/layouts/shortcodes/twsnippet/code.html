@@ -11,7 +11,7 @@
   role="tabpanel">
   <pre
     class="grey text-[14px] lighten-3 line-numbers language-{{ .Get `lang` }} mb-0 dark:bg-neutral-600">
-        <code>
+        <code class="{{if ne (.Get `type`) ``}}type-{{.Get `type`}}{{end}}">
             {{ .Inner | htmlEscape | htmlUnescape }}
         </code>
     </pre>
