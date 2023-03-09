@@ -14,116 +14,101 @@ menu:
     name: "Charts"
 ---
 
-<!-- Section: Line chart -->
+<!-- Section: Bar chart -->
 <section>
   <!-- Title -->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-    id="line"
+    id="bar"
     data-te-spy-item>
-    Line chart
+    Bar chart
   </h2>
 
   <!-- Description -->
   <p class="mb-3">
-    Line graphs show how a continuous variable changes over time, for example,
-    get trends in sales or profit margins each month, quarter, or year.
+    You can initialize simple charts with <code>data-te-attributes</code> - it
+    doesn't require any additional JS code.
   </p>
 
-  <p class="mb-3">
-    The variable that measures time is plotted on the x-axis. The continuous
-    variable is plotted on the y-axis.
-  </p>
-
-  <!-- prettier-ignore -->
-  {{< twsnippet/demo id="example1">}}
-  <div class="overflow-hidden rounded-lg shadow-lg">
-    <div
-      class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-      Line chart
-    </div>
-    <canvas class="p-10" id="chartLine"></canvas>
+  <div
+    class="mb-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:border-white dark:bg-sky-900 ">
+    <strong>Note:</strong> This method allows only one dataset - more
+    complicated charts require JavaScript initialization.
   </div>
 
-  <!-- Required chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!--Section: Demo-->
+  <div class="mb-6 rounded-lg border p-6">
+    <div class="mx-auto w-3/5 overflow-hidden">
+      <canvas
+        data-te-chart="bar"
+        data-te-dataset-label="Traffic"
+        data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+        data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
+      </canvas>
+    </div>
+  </div>
+  <!--Section: Demo-->
 
-  <!-- Chart line -->
-  <script>
-    const labels = ["January", "February", "March", "April", "May", "June"];
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: "My First dataset",
-          backgroundColor: "hsl(217, 57%, 51%)",
-          borderColor: "hsl(217, 57%, 51%)",
-          data: [0, 10, 5, 2, 20, 30, 45],
-        },
-      ],
-    };
+  <p><strong>Via data-te-attributes:</strong></p>
 
-    const configLineChart = {
-      type: "line",
-      data,
-      options: {},
-    };
-
-    var chartLine = new Chart(
-      document.getElementById("chartLine"),
-      configLineChart
-    );
-  </script>
-  {{< /twsnippet/demo >}}
-
-
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example1" >}}
   <section class="!visible hidden" data-te-collapse-item id="example1">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
-      <div class="overflow-hidden rounded-lg shadow-lg">
-        <div
-          class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-          Line chart
-        </div>
-        <canvas class="p-10" id="chartLine"></canvas>
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-3/5 overflow-hidden">
+        <canvas
+          data-te-chart="bar"
+          data-te-dataset-label="Traffic"
+          data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+          data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
+        </canvas>
       </div>
-
-      <!-- Required chart.js -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-      <!-- Chart line -->
-      <script>
-        const labels = ["January", "February", "March", "April", "May", "June"];
-        const data = {
-          labels: labels,
-          datasets: [
-            {
-              label: "My First dataset",
-              backgroundColor: "hsl(217, 57%, 51%)",
-              borderColor: "hsl(217, 57%, 51%)",
-              data: [0, 10, 5, 2, 20, 30, 45],
-            },
-          ],
-        };
-
-        const configLineChart = {
-          type: "line",
-          data,
-          options: {},
-        };
-
-        var chartLine = new Chart(
-          document.getElementById("chartLine"),
-          configLineChart
-        );
-      </script>
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
+  <!--Section: Code-->
+
+  <p>
+    The same effect achieved <strong>via Javascript</strong> initialization:
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example2" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-3/5 overflow-hidden">
+        <canvas id="bar-chart"></canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Chart
+      const dataBar = {
+        type: 'bar',
+        data: {
+          labels: ['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+            },
+          ],
+        },
+      };
+
+      new te.Chart(document.getElementById('bar-chart'), dataBar);
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
 </section>
-<!-- Section: Line chart -->
+<!-- Section: Bar chart -->
 
 <!-- Section: Sharing request -->
 <section class="pt-7">
@@ -212,287 +197,202 @@ menu:
 </section>
 <!-- Section: Sharing request -->
 
-<!-- Section: Bar chart -->
+<!--Section: Line Chart-->
 <section>
   <!-- Title -->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-    id="bar"
+    id="line"
     data-te-spy-item>
-    Bar chart
+    Line chart
   </h2>
 
   <!-- Description -->
   <p class="mb-3">
-    A bar chart shows the counts of values for levels of a categorical or
-    nominal variable. A bar graph displays data in a number of bars, each
-    representing a particular category. The height of each bar is proportional
-    to the specified aggregation.
+    To use our minimalistic line chart, set the <code>type</code> option to
+    <code>line</code>.
   </p>
 
-  <!-- prettier-ignore -->
-  {{< twsnippet/demo id="example2">}}
-
-  <div class="overflow-hidden rounded-lg shadow-lg">
-    <div
-      class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-      Bar chart
+  <!--Section: Demo-->
+  <div class="mb-6 rounded-lg border p-6">
+    <div class="mx-auto w-1/2 overflow-hidden">
+      <canvas
+        data-te-chart="line"
+        data-te-dataset-label="Traffic"
+        data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+        data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
+      </canvas>
     </div>
-    <canvas class="p-10" id="chartBar"></canvas>
   </div>
+  <!--Section: Demo-->
 
-  <!-- Required chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <p><strong>Via data-te-attributes:</strong></p>
 
-  <!-- Chart bar -->
-  <script>
-    const labelsBarChart = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-    ];
-    const dataBarChart = {
-      labels: labelsBarChart,
-      datasets: [
-        {
-          label: "My First dataset",
-          backgroundColor: "hsl(217, 57%, 51%)",
-          borderColor: "hsl(217, 57%, 51%)",
-          data: [0, 10, 5, 2, 20, 30, 45],
-        },
-      ],
-    };
-
-    const configBarChart = {
-      type: "bar",
-      data: dataBarChart,
-      options: {},
-    };
-
-    var chartBar = new Chart(
-      document.getElementById("chartBar"),
-      configBarChart
-    );
-  </script>
-  {{< /twsnippet/demo >}}
-
-
-  <section class="!visible hidden" data-te-collapse-item id="example2">
-    <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
-      <div class="overflow-hidden rounded-lg shadow-lg">
-        <div
-          class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-          Bar chart
-        </div>
-        <canvas class="p-10" id="chartBar"></canvas>
-      </div>
-
-      <!-- Required chart.js -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-      <!-- Chart bar -->
-      <script>
-        const labelsBarChart = [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-        ];
-        const dataBarChart = {
-          labels: labelsBarChart,
-          datasets: [
-            {
-              label: "My First dataset",
-              backgroundColor: "hsl(217, 57%, 51%)",
-              borderColor: "hsl(217, 57%, 51%)",
-              data: [0, 10, 5, 2, 20, 30, 45],
-            },
-          ],
-        };
-
-        const configBarChart = {
-          type: "bar",
-          data: dataBarChart,
-          options: {},
-        };
-
-        var chartBar = new Chart(
-          document.getElementById("chartBar"),
-          configBarChart
-        );
-      </script>
-      {{< /twsnippet/code >}}
-      {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
-</section>
-<!-- Section: Bar chart -->
-
-<!-- Section: Radar chart -->
-<section>
-  <!-- Title -->
-  <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-    id="radar"
-    data-te-spy-item>
-    Radar chart
-  </h2>
-
-  <!-- Description -->
-  <p class="mb-3">
-    Radar charts are a way to show multiple data points and the variation
-    between them. This is useful for comparing points from two or more different
-    data sets.
-  </p>
-
-  <!-- prettier-ignore -->
-  {{< twsnippet/demo id="example3">}}
-  <div class="overflow-hidden rounded-lg shadow-lg">
-    <div
-      class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-      Radar chart
-    </div>
-    <canvas class="p-10" id="chartRadar"></canvas>
-  </div>
-
-  <!-- Required chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- Chart radar -->
-  <script>
-    const dataRadar = {
-      labels: [
-        "Eating",
-        "Drinking",
-        "Sleeping",
-        "Designing",
-        "Coding",
-        "Cycling",
-        "Running",
-      ],
-      datasets: [
-        {
-          label: "My First Dataset",
-          data: [65, 59, 90, 81, 56, 55, 40],
-          fill: true,
-          backgroundColor: "rgba(133, 105, 241, 0.2)",
-          borderColor: "rgb(133, 105, 241)",
-          pointBackgroundColor: "rgb(133, 105, 241)",
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgb(133, 105, 241)",
-        },
-        {
-          label: "My Second Dataset",
-          data: [28, 48, 40, 19, 96, 27, 100],
-          fill: true,
-          backgroundColor: "rgba(54, 162, 235, 0.2)",
-          borderColor: "rgb(54, 162, 235)",
-          pointBackgroundColor: "rgb(54, 162, 235)",
-          pointBorderColor: "#fff",
-          pointHoverBackgroundColor: "#fff",
-          pointHoverBorderColor: "rgb(54, 162, 235)",
-        },
-      ],
-    };
-
-    const configRadarChart = {
-      type: "radar",
-      data: dataRadar,
-      options: {},
-    };
-
-    var chartBar = new Chart(
-      document.getElementById("chartRadar"),
-      configRadarChart
-    );
-  </script>
-  {{< /twsnippet/demo >}}
-
-
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example3" >}}
   <section class="!visible hidden" data-te-collapse-item id="example3">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
-      <div class="overflow-hidden rounded-lg shadow-lg">
-        <div
-          class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-          Radar chart
-        </div>
-        <canvas class="p-10" id="chartRadar"></canvas>
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-1/2 overflow-hidden">
+        <canvas
+          data-te-chart="line"
+          data-te-dataset-label="Traffic"
+          data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+          data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
+        </canvas>
       </div>
-
-      <!-- Required chart.js -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-      <!-- Chart radar -->
-      <script>
-        const dataRadar = {
-          labels: [
-            "Eating",
-            "Drinking",
-            "Sleeping",
-            "Designing",
-            "Coding",
-            "Cycling",
-            "Running",
-          ],
-          datasets: [
-            {
-              label: "My First Dataset",
-              data: [65, 59, 90, 81, 56, 55, 40],
-              fill: true,
-              backgroundColor: "rgba(133, 105, 241, 0.2)",
-              borderColor: "rgb(133, 105, 241)",
-              pointBackgroundColor: "rgb(133, 105, 241)",
-              pointBorderColor: "#fff",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgb(133, 105, 241)",
-            },
-            {
-              label: "My Second Dataset",
-              data: [28, 48, 40, 19, 96, 27, 100],
-              fill: true,
-              backgroundColor: "rgba(54, 162, 235, 0.2)",
-              borderColor: "rgb(54, 162, 235)",
-              pointBackgroundColor: "rgb(54, 162, 235)",
-              pointBorderColor: "#fff",
-              pointHoverBackgroundColor: "#fff",
-              pointHoverBorderColor: "rgb(54, 162, 235)",
-            },
-          ],
-        };
-
-        const configRadarChart = {
-          type: "radar",
-          data: dataRadar,
-          options: {},
-        };
-
-        var chartBar = new Chart(
-          document.getElementById("chartRadar"),
-          configRadarChart
-        );
-      </script>
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
+  <!--Section: Code-->
+
+  <p>
+    The same effect achieved <strong>via Javascript</strong> initialization:
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example4" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-3/5 overflow-hidden">
+        <canvas id="line-chart"></canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Chart
+      const dataLine = {
+        type: 'line',
+        data: {
+          labels: ['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+            },
+          ],
+        },
+      };
+      
+      new te.Chart(document.getElementById('line-chart'), dataLine);
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
 </section>
-<!-- Section: Radar chart -->
+<!--Section: Line Chart-->
+
+<!-- Section: Bar chart horizontal -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 pt-5 text-3xl font-semibold leading-normal"
+    id="chart-horizontal"
+    data-te-spy-item>
+    Bar chart horizontal
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-3">
+    Change the orientation of your bar chart from vertical to horizontal by
+    setting the <code>indexAxis</code> option to <code>'y'</code>.
+  </p>
+
+  <!--Section: Demo-->
+  <div class="mb-6 rounded-lg border p-6">
+    <div class="mx-auto w-1/2 overflow-hidden">
+      <canvas id="bar-chart-horizontal"></canvas>
+    </div>
+  </div>
+  <!--Section: Demo-->
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example5" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-1/2 overflow-hidden">
+        <canvas id="bar-chart-horizontal"></canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Chart
+      const dataBarHorizontal = {
+        type: "bar",
+        data: {
+          labels: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+          ],
+          datasets: [
+            {
+              label: "Traffic",
+              data: [30, 15, 62, 65, 61, 65, 40],
+            },
+          ],
+        },
+      };
+    
+      const optionsBarHorizontal = {
+        options: {
+          indexAxis: "y",
+          scales: {
+            x: {
+              stacked: true,
+              grid: {
+                display: true,
+                borderDash: [2],
+                zeroLineColor: "rgba(0,0,0,0)",
+                zeroLineBorderDash: [2],
+                zeroLineBorderDashOffset: [2],
+              },
+              ticks: {
+                color: "rgba(0,0,0, 0.5)",
+              },
+            },
+            y: {
+              stacked: true,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                color: "rgba(0,0,0, 0.5)",
+              },
+            },
+          },
+        },
+      };
+    
+      new te.Chart(
+        document.getElementById("bar-chart-horizontal"),
+        dataBarHorizontal,
+        optionsBarHorizontal
+      );
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+</section>
+<!-- Section: Bar chart horizontal -->
 
 <!-- Section: Pie chart -->
 <section>
   <!-- Title -->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mt-0 mb-5 pt-5 text-3xl font-semibold leading-normal"
     id="pie"
     data-te-spy-item>
     Pie chart
@@ -500,100 +400,92 @@ menu:
 
   <!-- Description -->
   <p class="mb-3">
-    A pie chart shows the relationships of parts to the whole for a variable.
-    Pie charts help you understand the parts-to-a-whole relationship.
+    A chart with the type <code>pie</code> splits the circle into several pieces
+    to represent a dataset's values as an area's percentage.
   </p>
 
-  <!-- prettier-ignore -->
-  {{< twsnippet/demo id="example4">}}
-  <div class="overflow-hidden rounded-lg shadow-lg">
-    <div
-      class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-      Pie chart
+  <!--Section: Demo-->
+  <div class="mb-6 rounded-lg border p-6">
+    <div class="mx-auto w-1/2 overflow-hidden">
+      <canvas
+        data-te-chart="pie"
+        data-te-dataset-label="Traffic"
+        data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+        data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
+        data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
+      </canvas>
     </div>
-    <canvas class="p-10" id="chartPie"></canvas>
   </div>
+  <!--Section: Demo-->
 
-  <!-- Required chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <p><strong>Via data-te-attributes:</strong></p>
 
-  <!-- Chart pie -->
-  <script>
-    const dataPie = {
-      labels: ["JavaScript", "Python", "Ruby"],
-      datasets: [
-        {
-          label: "My First Dataset",
-          data: [300, 50, 100],
-          backgroundColor: [
-            "rgb(133, 105, 241)",
-            "rgb(164, 101, 241)",
-            "rgb(101, 143, 241)",
-          ],
-          hoverOffset: 4,
-        },
-      ],
-    };
-
-    const configPie = {
-      type: "pie",
-      data: dataPie,
-      options: {},
-    };
-
-    var chartBar = new Chart(document.getElementById("chartPie"), configPie);
-  </script>
-  {{< /twsnippet/demo >}}
-
-
-  <section class="!visible hidden" data-te-collapse-item id="example4">
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example6" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example6">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
-      <div class="overflow-hidden rounded-lg shadow-lg">
-        <div
-          class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-          Pie chart
-        </div>
-        <canvas class="p-10" id="chartPie"></canvas>
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-1/2 overflow-hidden">
+        <canvas
+          data-te-chart="pie"
+          data-te-dataset-label="Traffic"
+          data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+          data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
+          data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
+        </canvas>
       </div>
-
-      <!-- Required chart.js -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-      <!-- Chart pie -->
-      <script>
-        const dataPie = {
-          labels: ["JavaScript", "Python", "Ruby"],
-          datasets: [
-            {
-              label: "My First Dataset",
-              data: [300, 50, 100],
-              backgroundColor: [
-                "rgb(133, 105, 241)",
-                "rgb(164, 101, 241)",
-                "rgb(101, 143, 241)",
-              ],
-              hoverOffset: 4,
-            },
-          ],
-        };
-
-        const configPie = {
-          type: "pie",
-          data: dataPie,
-          options: {},
-        };
-
-        var chartBar = new Chart(
-          document.getElementById("chartPie"),
-          configPie
-        );
-      </script>
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
+  <!--Section: Code-->
+
+  <p>
+    The same effect achieved <strong>via Javascript</strong> initialization:
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example7" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example7">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-3/5 overflow-hidden">
+        <canvas id="pie-chart"></canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Chart
+      const dataPie = {
+        type: 'pie',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+              backgroundColor: [
+                'rgba(63, 81, 181, 0.5)',
+                'rgba(77, 182, 172, 0.5)',
+                'rgba(66, 133, 244, 0.5)',
+                'rgba(156, 39, 176, 0.5)',
+                'rgba(233, 30, 99, 0.5)',
+                'rgba(66, 73, 244, 0.4)',
+                'rgba(66, 133, 244, 0.2)',
+              ],
+            },
+          ],
+        },
+      };
+      
+      new te.Chart(document.getElementById('pie-chart'), dataPie);
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
 </section>
 <!-- Section: Pie chart -->
 
@@ -601,7 +493,7 @@ menu:
 <section>
   <!-- Title -->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mt-0 mb-5 pt-5 text-3xl font-semibold leading-normal"
     id="doughnut"
     data-te-spy-item>
     Doughnut chart
@@ -609,106 +501,375 @@ menu:
 
   <!-- Description -->
   <p class="mb-3">
-    Doughnut chart is a circular graphic which is used to show the proportions
-    of categorical data, with the size of each piece representing the proportion
-    of each category.
+    Another type of graph representing data as an area's percentage is a
+    doughnut chart.
   </p>
 
-  <!-- prettier-ignore -->
-  {{< twsnippet/demo id="example5">}}
-  <div class="overflow-hidden rounded-lg shadow-lg">
-    <div
-      class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-      Doughnut chart
+  <!--Section: Demo-->
+  <div class="mb-6 rounded-lg border p-6">
+    <div class="mx-auto w-1/2 overflow-hidden">
+      <canvas
+        data-te-chart="doughnut"
+        data-te-dataset-label="Traffic"
+        data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+        data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
+        data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
+      </canvas>
     </div>
-    <canvas class="p-10" id="chartDoughnut"></canvas>
   </div>
+  <!--Section: Demo-->
 
-  <!-- Required chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <p><strong>Via data-te-attributes:</strong></p>
 
-  <!-- Chart doughnut -->
-  <script>
-    const dataDoughnut = {
-      labels: ["JavaScript", "Python", "Ruby"],
-      datasets: [
-        {
-          label: "My First Dataset",
-          data: [300, 50, 100],
-          backgroundColor: [
-            "rgb(133, 105, 241)",
-            "rgb(164, 101, 241)",
-            "rgb(101, 143, 241)",
-          ],
-          hoverOffset: 4,
-        },
-      ],
-    };
-
-    const configDoughnut = {
-      type: "doughnut",
-      data: dataDoughnut,
-      options: {},
-    };
-
-    var chartBar = new Chart(
-      document.getElementById("chartDoughnut"),
-      configDoughnut
-    );
-  </script>
-  {{< /twsnippet/demo >}}
-
-
-  <section class="!visible hidden" data-te-collapse-item id="example5">
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example8" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example8">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
-      <div class="overflow-hidden rounded-lg shadow-lg">
-        <div
-          class="bg-neutral-50 py-3 px-5 dark:bg-neutral-700 dark:text-neutral-200">
-          Doughnut chart
-        </div>
-        <canvas class="p-10" id="chartDoughnut"></canvas>
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-1/2 overflow-hidden">
+        <canvas
+          data-te-chart="doughnut"
+          data-te-dataset-label="Traffic"
+          data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+          data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
+          data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
+        </canvas>
       </div>
-
-      <!-- Required chart.js -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-      <!-- Chart doughnut -->
-      <script>
-        const dataDoughnut = {
-          labels: ["JavaScript", "Python", "Ruby"],
-          datasets: [
-            {
-              label: "My First Dataset",
-              data: [300, 50, 100],
-              backgroundColor: [
-                "rgb(133, 105, 241)",
-                "rgb(164, 101, 241)",
-                "rgb(101, 143, 241)",
-              ],
-              hoverOffset: 4,
-            },
-          ],
-        };
-
-        const configDoughnut = {
-          type: "doughnut",
-          data: dataDoughnut,
-          options: {},
-        };
-
-        var chartBar = new Chart(
-          document.getElementById("chartDoughnut"),
-          configDoughnut
-        );
-      </script>
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
+  <!--Section: Code-->
+
+  <p>
+    The same effect achieved <strong>via Javascript</strong> initialization:
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example9" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example9">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-3/5 overflow-hidden">
+        <canvas id="doughnut-chart"></canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Chart
+      const dataDoughnut = {
+        type: 'doughnut',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+              backgroundColor: [
+                'rgba(63, 81, 181, 0.5)',
+                'rgba(77, 182, 172, 0.5)',
+                'rgba(66, 133, 244, 0.5)',
+                'rgba(156, 39, 176, 0.5)',
+                'rgba(233, 30, 99, 0.5)',
+                'rgba(66, 73, 244, 0.4)',
+                'rgba(66, 133, 244, 0.2)',
+              ],
+            },
+          ],
+        },
+      };
+      
+      new te.Chart(document.getElementById('doughnut-chart'), dataDoughnut);
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
 </section>
 <!-- Section: Doughnut chart -->
+
+<!-- Section: Polar chart -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 pt-5 text-3xl font-semibold leading-normal"
+    id="polar"
+    data-te-spy-item>
+    Polar chart
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-3">
+    Polar area graph will split the circle into pieces with equal angles and
+    different radius.
+  </p>
+
+  <!--Section: Demo-->
+  <div class="mb-6 rounded-lg border p-6">
+    <div class="mx-auto w-1/2 overflow-hidden">
+      <canvas
+        data-te-chart="polarArea"
+        data-te-dataset-label="Traffic"
+        data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+        data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
+        data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
+      </canvas>
+    </div>
+  </div>
+  <!--Section: Demo-->
+
+  <p><strong>Via data-te-attributes:</strong></p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example10" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example10">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-1/2 overflow-hidden">
+        <canvas
+          data-te-chart="polarArea"
+          data-te-dataset-label="Traffic"
+          data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+          data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
+          data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
+        </canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+
+  <p>
+    The same effect achieved <strong>via Javascript</strong> initialization:
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example11" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example11">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-3/5 overflow-hidden">
+        <canvas id="polar-area-chart"></canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Chart
+      const dataPolar = {
+        type: 'polarArea',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+              backgroundColor: [
+                'rgba(63, 81, 181, 0.5)',
+                'rgba(77, 182, 172, 0.5)',
+                'rgba(66, 133, 244, 0.5)',
+                'rgba(156, 39, 176, 0.5)',
+                'rgba(233, 30, 99, 0.5)',
+                'rgba(66, 73, 244, 0.4)',
+                'rgba(66, 133, 244, 0.2)',
+              ],
+            },
+          ],
+        },
+      };
+      
+      new te.Chart(document.getElementById('polar-area-chart'), dataPolar);
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+</section>
+<!-- Section: Polar chart -->
+
+<!-- Section: Radar chart -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 pt-5 text-3xl font-semibold leading-normal"
+    id="radar"
+    data-te-spy-item>
+    Radar chart
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-3">
+    This type of chart will enclose the area based on a dataset's values.
+  </p>
+
+  <!--Section: Demo-->
+  <div class="mb-6 rounded-lg border p-6">
+    <div class="mx-auto w-1/2 overflow-hidden">
+      <canvas
+        data-te-chart="radar"
+        data-te-dataset-label="Traffic"
+        data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+        data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
+      </canvas>
+    </div>
+  </div>
+  <!--Section: Demo-->
+
+  <p><strong>Via data-te-attributes:</strong></p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example12" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example12">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-1/2 overflow-hidden">
+        <canvas
+          data-te-chart="radar"
+          data-te-dataset-label="Traffic"
+          data-te-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
+          data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
+        </canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+
+  <p>
+    The same effect achieved <strong>via Javascript</strong> initialization:
+  </p>
+
+  <!--Section: Code-->
+  {{< twsnippet/no-demo id="example13" >}}
+  <section class="!visible hidden" data-te-collapse-item id="example13">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-3/5 overflow-hidden">
+        <canvas id="radar-chart"></canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Chart
+      const dataRadar = {
+        type: 'radar',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+            },
+          ],
+        },
+      };
+      
+      new te.Chart(document.getElementById('radar-chart'), dataRadar);
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+</section>
+<!-- Section: Radar chart -->
+
+<!-- Section: Bubble chart -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 pt-5 text-3xl font-semibold leading-normal"
+    id="bubble"
+    data-te-spy-item>
+    Bubble chart
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-3">
+    This graph visualizes data in a series of "bubbles" with customized
+    coordinates and radius.
+  </p>
+
+  <div
+    class="mb-4 rounded-md border-l-[6px] border-solid border-cyan-600 bg-cyan-100/50 p-2.5 dark:border-white dark:bg-sky-900 ">
+    <strong>Note:</strong> As mentioned before, charts with more than 1 dataset
+    be used via data-te-attributes. All more complicated structures require
+    initialization via JavaScript.
+  </div>
+
+  <!--Section: Demo-->
+  {{< twsnippet/demo id="example14" >}}
+  <div class="mx-auto w-1/2 overflow-hidden">
+    <canvas id="bubble-chart"></canvas>
+  </div>
+  {{< /twsnippet/demo >}}
+  <!--Section: Demo-->
+  <!--Section: Code-->
+  <section class="!visible hidden" data-te-collapse-item id="example14">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="mx-auto w-1/2 overflow-hidden">
+        <canvas id="bubble-chart"></canvas>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Chart
+      const dataBubble = {
+        type: "bubble",
+        data: {
+          datasets: [
+            {
+              label: "John",
+              data: [
+                {
+                  x: 3,
+                  y: 7,
+                  r: 10,
+                },
+              ],
+            },
+            {
+              label: "Peter",
+              data: [
+                {
+                  x: 5,
+                  y: 7,
+                  r: 10,
+                },
+              ],
+              backgroundColor: "rgba(66, 133, 244, 0.2)",
+            },
+            {
+              label: "Donald",
+              data: [
+                {
+                  x: 7,
+                  y: 7,
+                  r: 10,
+                },
+              ],
+              backgroundColor: "rgba(66, 133, 244, 0.8)",
+            },
+          ],
+        },
+      };
+    
+      new te.Chart(document.getElementById("bubble-chart"), dataBubble);
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--Section: Code-->
+</section>
+<!-- Section: Bubble chart -->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
