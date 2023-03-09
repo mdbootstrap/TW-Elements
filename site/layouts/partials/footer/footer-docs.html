@@ -1,5 +1,8 @@
+{{ $hidden_sidenav := .Params.hidden_sidenav }}
+
+
 <footer
-  class="{{ if ne .IsHome true }}
+  class="{{ if or (eq .IsHome true) (eq $hidden_sidenav false) }}
     xl:pl-60
   {{ end }} mt-16 bg-slate-100 text-center text-neutral-600 transition-colors duration-500 dark:bg-neutral-900 dark:text-neutral-100 lg:text-left">
   <!-- Section: Design Block -->

@@ -1,80 +1,95 @@
 # Tailwind Elements [<img src="https://tailwind-elements.com/img/logo.png" width="45" align="right" alt="Tailwind-elements">](https://tailwind-elements.com/)<a href="https://www.npmjs.com/package/tw-elements"><img src="https://img.shields.io/npm/dt/tw-elements.svg" alt="Total Downloads"></a> <a href="https://github.com/mdbootstrap/Tailwind-Elements/releases"><img src="https://img.shields.io/npm/v/tw-elements.svg" alt="Latest Release"></a> <a href="https://twitter.com/intent/tweet/?text=Thanks+@TailwindElement+for+creating+an+amazing+collection+of+open+source+components+for+@tailwindcss%20https://tailwind-elements.com/&hashtags=tailwindCSS,bootstrap,webdesign,javascript,100DaysOfCode,DevCommunity"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
 
-Tailwind Elements **is a plugin** that extends the functionality of the library with many interactive components.
-
-In some dynamic components (like dropdowns or modals) we add Font Awesome icons and custom JavaScript. However, they do not require any additional installation, all the necessary code is always included in the example and copied to any Tailwind project - it will work.
+Tailwind Elements is a huge collection of free, interactive components for Tailwind CSS.
 
   <table>
     <tbody>
     <tr>
       <td>
-          <a href="https://tailwind-elements.com/" alt="Tailwind-elements" rel="dofollow">
-          		<img src="https://tailwind-elements.com/img/tailwind-video.png">
+          <a href="https://tailwind-elements.com/docs/standard/getting-started/quick-start/" alt="Tailwind-elements" rel="dofollow">
+          		<img width="600" src="https://tailwind-elements.com/img/tailwind-video.png">
           </a>
       </td>
-      <td>
-       <p><b>Bootstrap components recreated with Tailwind CSS, but with better design and more functionalities.</b></p>
+      <td>    
         <ul>
          <li>500+ UI components</li>
-         <li>Super simple, 1 minute installation</li>
-         <li>Free hosting</li>
-         <li><b>MIT license - free for personal & commercial use</b></li>
+         <li>117+ design blocks</li>         
+         <li>Dark mode support</li>      
+         <li>Easy theming & customization</li>
+         <li>Simple, 1 minute install</li>    
+         <li>Free for personal & commercial use</li>
         </ul>
+        <p><b><a href="https://tailwind-elements.com/docs/standard/getting-started/quick-start/">Get started with Tailwind Elements now!</a></b></p>
       </td>
     </tr>
    </tbody>
   </table>
+
+------
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Community](#community)
+- [Coming soon](#coming-soon)
+- [Components](#components)
+- [Design blocks](#design-blocks)
+- [Installation](#installation)
  
+------
+## Community
+
+Tailwind Elements is a **community-driven** project.
+We invite you to **track our [live progress 👁️](https://github.com/orgs/mdbootstrap/projects/1)** on the upcoming release.
+
+In the meantime you can also:
+- Motivate us with some [words of encouragament ❤️](https://github.com/mdbootstrap/Tailwind-Elements/discussions/categories/kind-words-general-feedback)
+- Share your [ideas & feature requests 💡](https://github.com/mdbootstrap/Tailwind-Elements/discussions/categories/share-ideas-request-features)
+- Aks for help & help others in our [community support 🙏](https://github.com/mdbootstrap/Tailwind-Elements/discussions/categories/support-from-community)
+- **Engage, discuss & have fun in our [open-source community 💬](https://github.com/mdbootstrap/Tailwind-Elements/discussions)**
+
+**If you want to help the project grow, start by simply sharing it with your peers!**
+- [Share via Dev.to](https://dev.to/new?prefill=---%0Atitle%3A%20500+%20open-source%20components%20for%20TailwindCSS%20%0Apublished%3A%20true%0Atags%3Atailwindcss%0A---%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20[![Tailwind%20components](https://tailwind-elements.com/img/components-big.jpg)](https://tailwind-elements.com/)%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20I%27d%20like%20to%20share%20my%20latest%20discovery%20with%20you.%20\n%20%20%20%20%20%20%20%20[Tailwind%20Elements](https://tailwind-elements.com/)%20is%20currently,%20the%20most%20popular%203rd%20party%20UI%20kit%20for%20TailwindCSS%20with%20over%2010k%20Github%20stars.%20%20%20%20%20%20%20%20[![GitHub%20Repo%20stars](https://img.shields.io/github/stars/mdbootstrap/tailwind-elements?style=social)](https://github.com/mdbootstrap/Tailwind-Elements/)%20%20%20%20%20%20%20%20It%27s%20a%20**huge%20collection%20of%20stunning%20components**%20made%20with%20attention%20to%20the%20smallest%20detail.%20%20%20%20%20%20%20%20%20Forms,%20cards,%20buttons,%20and%20hundreds%20of%20others.%20%20%20%20%20%20%20%20%20All%20components%20have%20**dark%20mode**%20and%20very%20intuitive%20**theming%20options**.%20%20%20%20%20%20%20%20The%20project%20is%20supported%20by%20an%20[engaged%20community%20on%20GitHub](https://github.com/mdbootstrap/Tailwind-Elements/discussions),%20I%20recommend%20you%20check%20it%20out%20and%20join%20one%20of%20the%20many%20discussions.%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20You%20will%20find%20installation%20instructions%20[here](https://tailwind-elements.com/docs/getting-started/installation),%20and%20you%20can%20track%20the%20progress%20of%20the%20project%20live%20%20%20%20%20%20%20%20%20[here](https://tailwind-elements.com/docs/standard/getting-started/changelog/).%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20The%20project%20was%20kickstarted%20by%20@MDBootstrap,%20a%20group%20of%20open-source%20developers%20behind%20[MDB%20UI%20Kit](https://github.com/mdbootstrap/mdb-ui-kit)%20-%20a%20high-quality%20UI%20kit%20for%20Bootstrap,%20and%20also%20behind%20[MDB%20GO](https://mdbgo.com/)%20-%20hosting%20and%20deployment%20platform.%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20I%20highly%20recommend%20you%20to%20check%20it%20out!%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20%7B%25%20link%20mdbootstrap/tailwind-elements-breakthrough-version-is-here-59hh%20%25%7D%20%20%20%20%20%20%20%20\n)
+- [Share via Twitter](https://twitter.com/intent/tweet?text=500%2B%20open-source%20components%20for%20%23TailwindCSS%20%F0%9F%A4%A9%0Ahttps%3A//tailwind-elements.com/%0A%0ACongrats%20%40MDBootstrap%20%40ascensus_mdb%20%40dawidadach%20for%20this%20awesome%20design%20collection!%0A%0AI%20will%20keep%20using%20it%20in%20my%20projects%20for%20sure!%0A%0A%23uiux%20%23webdevelopment%20%23HTML%20%23CSS%20%23design%20%23Webdesign%20%23programming%20)
+- [Share via Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A//tailwind-elements.com)
+- [Share via LinkedIn](http://www.linkedin.com/shareArticle?url=https%3A%2F%2Ftailwind-elements.com%2F&title=500%2B%20open-source%20components%20for%20TailwindCSS)
+- [Share via Pinterest](https://www.pinterest.com/pin/create/button?url=https://tailwind-elements.com/&media=https://tailwind-elements.com/img/components-big.jpg&description=TailwindElements)
+- [Share via Reddit](https://reddit.com/submit?url=https://tailwind-elements.com/&title=500+%20open-source%20components%20for%20TailwindCSS)
+- [Share via StumbleUpon](https://www.stumbleupon.com/submit?url=https://tailwind-elements.com/&title=500+%20open-source%20components%20for%20TailwindCSS)
+- [Share via Vkontakte](https://vk.com/share.php?url=https://tailwind-elements.com/)
+- [Share via Weibo](https://service.weibo.com/share/share.php?url=https://tailwind-elements.com/&title=500+%20open-source%20components%20for%20TailwindCSS)
+- [Share via Hackernews](https://news.ycombinator.com/submitlink?u=https://tailwind-elements.com/&t=500+%20open-source%20components%20for%20TailwindCSS)
+- [Share via Gmail](https://mail.google.com/mail/?view=cm&to=%7Bemail_address%7D&su=Check%20out%20this%20project&body=Hello,%0AI%27m%20reaching%20out%20to%20recommend%20my%20latest%20discovery.%0A%0AIt%27s%20over%20500+%20open-source%20components%20for%20TailwindCSS%20with%20excellent%20support%20and%20an%20awesome%20community:%0Ahttps://tailwind-elements.com/%0A%0AI%20hope%20you%20will%20find%20it%20useful.%0ABest%20regards,&bcc=%7Bemail_address%7D&cc=%7Bemail_address%7D)
+- [Share via email](mailto:?subject=Check%20out%20this%20project&amp;body=Hello%2C%0AI'm%20reaching%20out%20to%20recommend%20my%20latest%20discovery.%0A%0AIt's%20over%20500%20%20open-source%20components%20for%20Tailwind%20CSS%20with%20excellent%20support%20and%20an%20awesome%20community%3A%0Ahttps%3A%2F%2Ftailwind-elements.com%2F%0A%0AI%20hope%20you%20will%20find%20it%20useful.%0ABest%20regards%2C)
+
+Thank you! 
+
+------
+## Coming soon
+
+Check out the upcoming features - make sure to **join the waiting list** in order to **get early access**!
+
  <table>
   <tr>
     <td>
-        <a href="https://tailwind-elements.com/#section-components">
-            <img alt="Components" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        <a href="https://tailwind-elements.com/docs/standard/builder/">
+            <img alt="Design blocks" src="https://mdbootstrap.com/img/tw-demo/drag-and-drop.webp">
         </a>
     </td>
     <td>
-        <a href="https://tailwind-elements.com/#section-blocks">
-            <img alt="Design blocks" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
-        </a>
-    </td>
-    <td>
-        <a href="#">
+        <a href="https://tailwind-elements.com/docs/standard/templates/">
             <img alt="Templates" src="https://mdbootstrap.com/img/tw-demo/templates.webp">
         </a>
-    </td>
-  </tr>
-    <tr>
-    <td align="center"><b>Components</b></td>
-    <td align="center"><b>Design blocks (sections)</b></td>
-    <td align="center"><b>Templates (coming soon)</b></td>
+    </td>    
   </tr>
   <tr>
-    <td>
-        <a href="https://mdbgo.com/">
-            <img alt="Free hosting" src="https://mdbootstrap.com/img/tw-demo/free-hosting.webp">
-        </a>
-    </td>
-    <td>
-        <a href="https://tailwind-elements.com/snippets/">
-            <img alt="Playground" src="https://mdbootstrap.com/img/tw-demo/playground.webp">
-        </a>
-    </td>
-    <td>
-        <a href="https://mdb-builder.com/">
-            <img alt="Drag & drop builder" src="https://mdbootstrap.com/img/tw-demo/drag-and-drop.webp">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center"><b>Free hosting</b></td>
-    <td align="center"><b>Playground</b></td>
-    <td align="center"><b>Drag & drop builder (coming soon)</b></td>
+    <td align="center"><b>Drag & drop builder</b></td>
+    <td align="center"><b>Templates</b></td>
   </tr>
 </table>
 
-# Components
+------
+## Components
 
-Collection of free, popular components like modal, dropdown, carousel, popover, cards, charts and many more.
+A collection of stunning components made with attention to the smallest details. Forms, cards, buttons, and hundreds of others – in Tailwind Elements you will find all the essential elements necessary for every project.
 
 <table>
   <tr>
@@ -102,7 +117,7 @@ Collection of free, popular components like modal, dropdown, carousel, popover, 
   
   <tr>
     <td>
-        <a href="https://tailwind-elements.com/docs/standard/components/charts/">
+        <a href="https://tailwind-elements.com/docs/standard/data/charts/">
             <img alt="Charts" src="https://mdbootstrap.com/img/tw-demo/charts.webp">
         </a>
     </td>
@@ -135,7 +150,7 @@ Collection of free, popular components like modal, dropdown, carousel, popover, 
         </a>
     </td>
     <td>
-        <a href="https://tailwind-elements.com/docs/standard/components/stepper//">
+        <a href="https://tailwind-elements.com/docs/standard/components/stepper/">
             <img alt="Stepper" src="https://mdbootstrap.com/img/tw-demo/stepper.webp">
         </a>
     </td>
@@ -148,7 +163,7 @@ Collection of free, popular components like modal, dropdown, carousel, popover, 
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/forms/timepicker/">
-            <img alt="Tailwind CSS Progress Bar" src="https://mdbootstrap.com/img/tw-demo/timepicker.webp">
+            <img alt="Tailwind CSS Time picker" src="https://mdbootstrap.com/img/tw-demo/timepicker.webp">
         </a>
     </td>
     <td>
@@ -158,24 +173,343 @@ Collection of free, popular components like modal, dropdown, carousel, popover, 
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/navigation/navbar/">
-            <img alt="Tailwind CSS Toast" src="https://mdbootstrap.com/img/tw-demo/navbar.webp">
+            <img alt="Tailwind CSS Navbar" src="https://mdbootstrap.com/img/tw-demo/navbar.webp">
         </a>
     </td>
   </tr>
   <tr>
-    <td align="center"><b>Accordion</b></td>
-    <td align="center"><b>Tabs</b></td>
-    <td align="center"><b>Stepper</b></td>
+    <td align="center"><b>Timepicker</b></td>
+    <td align="center"><b>Footer</b></td>
+    <td align="center"><b>Navbar</b></td>
   </tr>
+  <!--New row-->
+    <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/alerts/">
+            <img alt="Tailwind CSS Time picker" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-pro/alert-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/avatar/">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/badges/">
+            <img alt="Tailwind CSS Navbar" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/badge-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Alerts</b></td>
+    <td align="center"><b>Avatar</b></td>
+    <td align="center"><b>Badges</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/button-group/">
+            <img alt="Tailwind CSS Time picker" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/button-group-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/buttons/">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/button-2.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/cards/">
+            <img alt="Tailwind CSS Navbar" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/card-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Button group</b></td>
+    <td align="center"><b>Buttons</b></td>
+    <td align="center"><b>Cards</b></td>
+  </tr>
+<!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/chips/">
+            <img alt="Tailwind CSS Time picker" src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/pro/demo-new/assets/images/chips.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/collapse/">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/collapse-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/gallery/">
+            <img alt="Tailwind CSS Navbar" src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/pro/demo-new/assets/images/lightbox.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Chips</b></td>
+    <td align="center"><b>Collapse</b></td>
+    <td align="center"><b>Gallery</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/jumbotron/">
+            <img alt="Tailwind CSS Time picker" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/header-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/link/">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/listgroup/">
+            <img alt="Tailwind CSS Navbar" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/list-group-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Jumbotron</b></td>
+    <td align="center"><b>Link</b></td>
+    <td align="center"><b>List group</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/notifications/">
+            <img alt="Tailwind CSS Time picker" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/paragraphs/">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/placeholders/">
+            <img alt="Tailwind CSS Navbar" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/placeholder-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Notifications</b></td>
+    <td align="center"><b>Paragraphs</b></td>
+    <td align="center"><b>Placeholders</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/popover/">
+            <img alt="Tailwind CSS Time picker" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/popover-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/progress/">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/progress-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/rating/">
+            <img alt="Tailwind CSS Navbar" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-pro/rating-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Popover</b></td>
+    <td align="center"><b>Progress</b></td>
+    <td align="center"><b>Rating</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/scroll-back-to-top-button/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/social-buttons/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/spinners/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/spinner-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Scroll to top</b></td>
+    <td align="center"><b>Social buttons</b></td>
+    <td align="center"><b>Spinners</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/timeline/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/toast/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-pro/toast-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/tooltip/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/tooltip-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Timeline</b></td>
+    <td align="center"><b>Toast</b></td>
+    <td align="center"><b>Tooltip</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/video/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/video-carousel/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/checkbox/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/checkbox-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Video</b></td>
+    <td align="center"><b>Video carousel</b></td>
+    <td align="center"><b>Checkbox</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/file-input/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/plugins/file-upload.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/input-group/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/login-form/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>File input</b></td>
+    <td align="center"><b>Input group</b></td>
+    <td align="center"><b>Login form</b></td>
+  </tr>  
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/radio/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/radio-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/range/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/range-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/registration-form/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Radio</b></td>
+    <td align="center"><b>Range</b></td>
+    <td align="center"><b>Registration form</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/search/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/search-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/select/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-pro/select-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/switch/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Search</b></td>
+    <td align="center"><b>Select</b></td>
+    <td align="center"><b>Switch</b></td>
+  </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/forms/textarea/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/data/tables/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/table-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/methods/ripple/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Textarea</b></td>
+    <td align="center"><b>Tables</b></td>
+    <td align="center"><b>Ripple</b></td>
+  </tr>
+<!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/content-styles/animations/">
+            <img alt="Tailwind Component" src="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/pro/demo-new/assets/images/animations2.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/content-styles/mask/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/mask-1.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/content-styles/shadows/">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/components-free/shadow-1.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Animations</b></td>
+    <td align="center"><b>Masks</b></td>
+    <td align="center"><b>Shadows</b></td>
+  </tr>
+  
 </table>
 
-<p align="center">
-  <a href="https://tailwind-elements.com/quick-start/">
-    <img src="https://v1.mdbootstrap.com/wp-content/uploads/2022/05/view-components-1.png">
-  </a>
-</p>
 
-# Design blocks
+------
+## Design blocks
 
 Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks examples such as Teams, services, projects, faq, and many more.
 
@@ -229,7 +563,7 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/designblocks/team/">
-            <img alt="Accordion" src="https://mdbootstrap.com/img/tw-demo/team.webp">
+            <img alt="Team" src="https://mdbootstrap.com/img/tw-demo/team.webp">
         </a>
     </td>
     <td>
@@ -251,7 +585,7 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/designblocks/content/">
-            <img alt="Contact" src="https://mdbootstrap.com/img/tw-demo/content.webp">
+            <img alt="Content" src="https://mdbootstrap.com/img/tw-demo/content.webp">
         </a>
     </td>
     <td>
@@ -266,19 +600,59 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
     </td>
   </tr>
   <tr>
-    <td align="center"><b>Contact</b></td>
+    <td align="center"><b>Content</b></td>
     <td align="center"><b>Newsletter</b></td>
     <td align="center"><b>Projects</b></td>
   </tr>
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/designblocks/headers/">
+            <img alt="Headers" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/designblocks/faq/">
+            <img alt="FAQ" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/designblocks/logo-clouds/">
+            <img alt="Logo Clouds" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Headers</b></td>
+    <td align="center"><b>FAQ</b></td>
+    <td align="center"><b>Logo Clouds</b></td>
+  </tr>
+    <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/designblocks/banners/">
+            <img alt="Headers" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/designblocks/mega-menu/">
+            <img alt="FAQ" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/">
+            <img alt="Logo Clouds" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Banners</b></td>
+    <td align="center"><b>Mega Menu</b></td>
+    <td align="center"><b>More coming soon</b></td>
+  </tr>
 </table>
 
-<p align="center">
-  <a href="https://tailwind-elements.com/docs/standard/designblocks/landing-page/">
-    <img src="https://v1.mdbootstrap.com/wp-content/uploads/2022/05/view-design-blocks.png">
-  </a>
-</p>
 
-## Quick Start tutorial
+------
+## Installation
 
 ##### NPM
 

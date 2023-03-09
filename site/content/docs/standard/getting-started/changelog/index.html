@@ -5,9 +5,9 @@ draft: false
 main_title: "Changelog"
 subheading: ""
 seo_title: "Tailwind Elements Changelog"
-description: ""
-image: ""
-video: ""
+description: "Track live progress on updates for our Tailwind CSS UI Kit - see the latest changelog for all our components, pages, plugins and more."
+image: "img/components-big.jpg"
+video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
 url: "docs/standard/getting-started/changelog/"
 menu:
   gettingstarted:
@@ -805,7 +805,7 @@ menu:
       } else {
         const dueOn = new Date(milestoneData.due_on);
         const dueOnDate = ("0" + dueOn.getDate()).slice(-2);
-        const dueOnMonth = ("0" + dueOn.getMonth()).slice(-2);
+        const dueOnMonth = ("0" + (dueOn.getMonth() + 1)).slice(-2);
         const dueOnYear = dueOn.getFullYear();
 
         upcomingReleaseElement.innerHTML = `${milestoneData.title} planned for ${dueOnDate}.${dueOnMonth}.${dueOnYear}`;
