@@ -14,7 +14,7 @@ import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import BaseComponent from "../base-component";
 import { enableDismissTrigger } from "../util/component-functions";
-import SelectorEngine from "../dom/selector-engine";
+// import SelectorEngine from "../dom/selector-engine";
 
 /*
 ------------------------------------------------------------------------
@@ -39,7 +39,7 @@ const HIDE_DATA_ATTRIBUTE = "data-te-toast-hide";
 const SHOW_DATA_ATTRIBUTE = "data-te-toast-show";
 const SHOWING_DATA_ATTRIBUTE = "data-te-toast-showing";
 
-const SELECTOR_TOAST = "[data-te-toast-init]";
+// const SELECTOR_TOAST = "[data-te-toast-init]";
 
 const DefaultType = {
   animation: "boolean",
@@ -275,19 +275,6 @@ class Toast extends BaseComponent {
 }
 
 enableDismissTrigger(Toast);
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-SelectorEngine.find(SELECTOR_TOAST).forEach((el) => {
-  let instance = Toast.getInstance(el);
-  if (!instance) {
-    instance = new Toast(el);
-  }
-});
 
 /**
  * ------------------------------------------------------------------------

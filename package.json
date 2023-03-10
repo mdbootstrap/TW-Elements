@@ -13,8 +13,8 @@
   "scripts": {
     "start": "vite --open",
     "dev": "vite",
-    "build": "vite build && node config/build.cjs && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
-    "build:demo": "cross-env --env.mode=demo vite build && cross-env --env.mode=demo node config/build.cjs",
+    "build": "vite build && cross-env --env.buildFile=umd vite build && node config/build.cjs && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
+    "build:demo": "cross-env --env.mode=demo vite build && cross-env --env.buildFile=umd vite build && cross-env --env.mode=demo node config/build.cjs",
     "copy:te-files": "node helpers/copyTeFiles.cjs",
     "create:te-starter": "node helpers/createTeStarter.cjs",
     "deploy": "npm run build:demo && cd dist-demo/ && mdb publish --override",

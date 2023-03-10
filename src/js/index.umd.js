@@ -32,6 +32,33 @@ import Select from "./forms/select";
 import ChipsInput from "./components/chips";
 import init from "./autoinit/autoinit";
 
+const te = {
+  Animate,
+  Alert,
+  Button,
+  ChipsInput,
+  Dropdown,
+  Carousel,
+  Collapse,
+  Offcanvas,
+  Modal,
+  Popover,
+  ScrollSpy,
+  Select,
+  Tab,
+  Toast,
+  Tooltip,
+  Ripple,
+  Datepicker,
+  Timepicker,
+  Sidenav,
+  Stepper,
+  Input,
+};
+
+Object.keys(te).forEach((component) => init(te[component]));
+window.te = te;
+
 export {
   Animate,
   Alert,

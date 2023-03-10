@@ -12,9 +12,13 @@ export default defineConfig({
   },
   build: {
     outDir: distName,
+    emptyOutDir: process.env.buildFile ? false : true,
     lib: {
-      entry: resolve(__dirname, process.env.buildFile || "src/js/index.js"),
-
+      entry: resolve(
+        __dirname,
+        `src/js/index${process.env.buildFile === "umd" ? ".umd" : ""}.js`
+      ),
+      formats: process.env.buildFile ? ["umd"] : ["es"],
       name: "te",
       fileName: (format) => `js/tw-elements.${format}.min.js`,
     },

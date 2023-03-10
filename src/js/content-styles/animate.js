@@ -23,7 +23,7 @@ Constants
 
 const NAME = "animation";
 const DATA_KEY = "te.animation";
-const SELECTOR_EXPAND = "[data-te-animation-init]";
+// const SELECTOR_EXPAND = "[data-te-animation-init]";
 
 const DefaultType = {
   animation: "string",
@@ -77,6 +77,7 @@ class Animate {
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
+      this._init();
     }
   }
 
@@ -350,16 +351,6 @@ class Animate {
     );
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-SelectorEngine.find(SELECTOR_EXPAND).forEach((el) => {
-  Animate.autoInit(new Animate(el));
-});
 
 /**
  * ------------------------------------------------------------------------

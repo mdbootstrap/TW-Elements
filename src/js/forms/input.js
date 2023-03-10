@@ -576,9 +576,6 @@ EventHandler.on(window, "shown.te.tab", (e) => {
   });
 });
 
-// auto-init
-SelectorEngine.find(`[${DATA_WRAPPER}]`).map((element) => new Input(element));
-
 // form reset handler
 EventHandler.on(window, "reset", (e) => {
   SelectorEngine.find(SELECTOR_OUTLINE_INPUT, e.target).forEach((element) => {

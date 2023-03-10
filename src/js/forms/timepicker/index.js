@@ -53,7 +53,7 @@ Constants
 
 const NAME = "timepicker";
 const ATTR_NAME = `data-te-${NAME}`;
-const SELECTOR_ATTR_TIMEPICKER_INIT = `[${ATTR_NAME}-init]`;
+// const SELECTOR_ATTR_TIMEPICKER_INIT = `[${ATTR_NAME}-init]`;
 const SELECTOR_DATA_TE_TOGGLE = "[data-te-toggle]";
 
 const DATA_KEY = `te.${NAME}`;
@@ -2707,19 +2707,3 @@ class Timepicker {
 }
 
 export default Timepicker;
-
-EventHandler.on(window, "DOMContentLoaded", () => {
-  SelectorEngine.find(SELECTOR_ATTR_TIMEPICKER_INIT).forEach((timepicker) => {
-    let instance = Timepicker.getInstance(timepicker);
-    const { timepickerFormat24 } = timepicker.dataset;
-
-    if (instance) return;
-
-    if (timepickerFormat24 === "true") {
-      instance = new Timepicker(timepicker, { format24: true });
-      return;
-    }
-
-    instance = new Timepicker(timepicker);
-  });
-});

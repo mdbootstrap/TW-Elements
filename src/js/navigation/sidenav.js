@@ -40,7 +40,7 @@ Constants
 const NAME = "sidenav";
 const DATA_KEY = "te.sidenav";
 const ARROW_DATA = "data-te-sidenav-rotate-icon-ref";
-const SELECTOR_SIDENAV = "[data-te-sidenav-init]";
+// const SELECTOR_SIDENAV = "[data-te-sidenav-init]";
 const SELECTOR_TOGGLE = "[data-te-sidenav-toggle-ref]";
 
 const SELECTOR_TOGGLE_COLLAPSE = "[data-te-collapse-init]";
@@ -1186,15 +1186,6 @@ class Sidenav {
  */
 
 EventHandler.on(document, "click", SELECTOR_TOGGLE, Sidenav.toggleSidenav());
-
-SelectorEngine.find(SELECTOR_SIDENAV).forEach((sidenav) => {
-  let instance = Sidenav.getInstance(sidenav);
-  if (!instance) {
-    instance = new Sidenav(sidenav);
-  }
-
-  return instance;
-});
 
 /**
  * ------------------------------------------------------------------------

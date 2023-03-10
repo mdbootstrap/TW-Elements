@@ -14,7 +14,6 @@ import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 import Manipulator from "../dom/manipulator";
 import { enableDismissTrigger } from "../util/component-functions";
-import SelectorEngine from "../dom/selector-engine";
 
 /*
 ------------------------------------------------------------------------
@@ -30,7 +29,7 @@ const EVENT_CLOSE = `close${EVENT_KEY}`;
 const EVENT_CLOSED = `closed${EVENT_KEY}`;
 
 const SHOW_DATA_ATTRIBUTE = "data-te-alert-show";
-const SELECTOR_ALERT = "[data-te-alert-init]";
+// const SELECTOR_ALERT = "[data-te-alert-init]";
 
 const DefaultType = {
   animation: "boolean",
@@ -226,20 +225,6 @@ class Alert extends BaseComponent {
     });
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-SelectorEngine.find(SELECTOR_ALERT).forEach((alert) => {
-  let instance = Alert.getInstance(alert);
-  if (!instance) {
-    instance = new Alert(alert);
-  }
-  return instance;
-});
 
 /*
 ------------------------------------------------------------------------
