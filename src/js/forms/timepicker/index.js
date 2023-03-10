@@ -2708,18 +2708,16 @@ class Timepicker {
 
 export default Timepicker;
 
-EventHandler.on(window, "DOMContentLoaded", () => {
-  SelectorEngine.find(SELECTOR_ATTR_TIMEPICKER_INIT).forEach((timepicker) => {
-    let instance = Timepicker.getInstance(timepicker);
-    const { timepickerFormat24 } = timepicker.dataset;
+SelectorEngine.find(SELECTOR_ATTR_TIMEPICKER_INIT).forEach((timepicker) => {
+  let instance = Timepicker.getInstance(timepicker);
+  const { timepickerFormat24 } = timepicker.dataset;
 
-    if (instance) return;
+  if (instance) return;
 
-    if (timepickerFormat24 === "true") {
-      instance = new Timepicker(timepicker, { format24: true });
-      return;
-    }
+  if (timepickerFormat24 === "true") {
+    instance = new Timepicker(timepicker, { format24: true });
+    return;
+  }
 
-    instance = new Timepicker(timepicker);
-  });
+  instance = new Timepicker(timepicker);
 });
