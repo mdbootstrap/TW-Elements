@@ -156,7 +156,7 @@
       </h2>
 
       <div class="mx-auto w-1/2 overflow-hidden">
-        <canvas id="scatter-chart" data-te-darkmode-off></canvas>
+        <canvas id="scatter-chart"></canvas>
       </div>
 
       <br />
@@ -486,17 +486,6 @@
             x: {
               type: "logarithmic",
               position: "bottom",
-              ticks: {
-                userCallback: function (tick) {
-                  var remain =
-                    tick /
-                    Math.pow(10, Math.floor(chartjs.helpers.log10(tick)));
-                  if (remain === 1 || remain === 2 || remain === 5) {
-                    return tick.toString() + "Hz";
-                  }
-                  return "";
-                },
-              },
               scaleLabel: {
                 labelString: "Frequency",
                 display: true,
@@ -504,11 +493,6 @@
             },
             y: {
               type: "linear",
-              ticks: {
-                userCallback: function (tick) {
-                  return tick.toString() + "dB";
-                },
-              },
               scaleLabel: {
                 labelString: "Voltage",
                 display: true,
@@ -654,25 +638,27 @@
       };
 
       const optionsDarkMode = {
-        scales: {
-          y: {
-            ticks: {
-              color: "rgb(100,50,200)",
+        options: {
+          scales: {
+            y: {
+              ticks: {
+                color: "rgb(100,50,200)",
+              },
+              grid: {
+                display: false,
+              },
             },
-            grid: {
-              display: false,
+            x: {
+              ticks: {
+                color: "yellow",
+              },
             },
           },
-          x: {
-            ticks: {
-              color: "yellow",
-            },
-          },
-        },
-        plugins: {
-          legend: {
-            labels: {
-              color: "green",
+          plugins: {
+            legend: {
+              labels: {
+                color: "green",
+              },
             },
           },
         },

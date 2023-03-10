@@ -503,8 +503,8 @@ class Chart {
       ...dataAttributes,
       options: {
         ...opt,
-        ...config,
       },
+      ...config,
     };
 
     typeCheckConfig(NAME, config, DARK_OPTIONS_TYPE);
