@@ -11,7 +11,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 import * as Popper from "@popperjs/core";
 
 import {
-  defineJQueryPlugin,
   getElement,
   getElementFromSelector,
   getNextActiveElement,
@@ -128,6 +127,9 @@ class Dropdown extends BaseComponent {
     ).matches;
     this._animationCanPlay =
       this._config.dropdownAnimation === "on" && !isPrefersReducedMotionSet;
+
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -234,6 +236,28 @@ class Dropdown extends BaseComponent {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+
+    EventHandler.on(
+      document,
+      EVENT_KEYDOWN_DATA_API,
+      SELECTOR_DATA_TOGGLE,
+      Dropdown.dataApiKeydownHandler
+    );
+    EventHandler.on(
+      document,
+      EVENT_KEYDOWN_DATA_API,
+      SELECTOR_MENU,
+      Dropdown.dataApiKeydownHandler
+    );
+    EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus);
+    EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
+
+    this._didInit = true;
+  }
 
   _completeHide(relatedTarget) {
     if (this._fadeOutAnimate && this._fadeOutAnimate.playState === "running") {
@@ -587,44 +611,5 @@ class Dropdown extends BaseComponent {
     }
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(
-  document,
-  EVENT_KEYDOWN_DATA_API,
-  SELECTOR_DATA_TOGGLE,
-  Dropdown.dataApiKeydownHandler
-);
-EventHandler.on(
-  document,
-  EVENT_KEYDOWN_DATA_API,
-  SELECTOR_MENU,
-  Dropdown.dataApiKeydownHandler
-);
-EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus);
-EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
-EventHandler.on(
-  document,
-  EVENT_CLICK_DATA_API,
-  SELECTOR_DATA_TOGGLE,
-  function (event) {
-    event.preventDefault();
-    Dropdown.getOrCreateInstance(this).toggle();
-  }
-);
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Dropdown to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Dropdown);
 
 export default Dropdown;

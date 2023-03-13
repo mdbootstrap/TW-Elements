@@ -46,7 +46,6 @@ const ATTR_CHIP_INIT = "data-te-chip-init";
 const ATTR_CHIP_CLOSE = "data-te-chip-close";
 const ATTR_CHIP_TEXT = "data-te-chip-text";
 
-const ATTR_SELECTOR_CHIPS_INIT = `[${ATTR_CHIPS_INIT}]`;
 const ATTR_SELECTOR_CHIPS_ACTIVE = `[${ATTR_CHIPS_ACTIVE}]`;
 const ATTR_SELECTOR_CHIP_INIT = `[${ATTR_CHIP_INIT}]`;
 const ATTR_SELECTOR_CHIP_ACTIVE = `${ATTR_SELECTOR_CHIP_INIT}${ATTR_SELECTOR_CHIPS_ACTIVE}`;
@@ -658,14 +657,3 @@ class ChipsInput extends Chip {
 }
 
 export default ChipsInput;
-
-EventHandler.on(window, "DOMContentLoaded", () => {
-  SelectorEngine.find(ATTR_SELECTOR_CHIPS_INIT).forEach((chip) => {
-    let instance = ChipsInput.getInstance(chip);
-
-    if (!instance) {
-      instance = new ChipsInput(chip);
-    }
-    return instance;
-  });
-});

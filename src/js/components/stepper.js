@@ -36,7 +36,6 @@ const NAME = "stepper";
 const DATA_KEY = "te.stepper";
 const EVENT_KEY = `.${DATA_KEY}`;
 const REF = `data-te-${NAME}`;
-// const SELECTOR_EXPAND = `[${REF}-init]`;
 
 const STEPPER_HORIZONTAL = "horizontal";
 const STEPPER_VERTICAL = "vertical";

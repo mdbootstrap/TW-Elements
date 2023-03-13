@@ -10,7 +10,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 */
 
 import {
-  defineJQueryPlugin,
   getElement,
   getSelectorFromElement,
   getElementFromSelector,
@@ -122,6 +121,9 @@ class Collapse extends BaseComponent {
     if (this._config.toggle) {
       this.toggle();
     }
+
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -294,6 +296,35 @@ class Collapse extends BaseComponent {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+
+    EventHandler.on(
+      document,
+      EVENT_CLICK_DATA_API,
+      SELECTOR_DATA_COLLAPSE_INIT,
+      function (event) {
+        // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+        if (
+          event.target.tagName === "A" ||
+          (event.delegateTarget && event.delegateTarget.tagName === "A")
+        ) {
+          event.preventDefault();
+        }
+
+        const selector = getSelectorFromElement(this);
+        const selectorElements = SelectorEngine.find(selector);
+
+        selectorElements.forEach((element) => {
+          Collapse.getOrCreateInstance(element, { toggle: false }).toggle();
+        });
+      }
+    );
+
+    this._didInit = true;
+  }
 
   _getConfig(config) {
     config = {
@@ -381,42 +412,5 @@ class Collapse extends BaseComponent {
     });
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(
-  document,
-  EVENT_CLICK_DATA_API,
-  SELECTOR_DATA_COLLAPSE_INIT,
-  function (event) {
-    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
-    if (
-      event.target.tagName === "A" ||
-      (event.delegateTarget && event.delegateTarget.tagName === "A")
-    ) {
-      event.preventDefault();
-    }
-
-    const selector = getSelectorFromElement(this);
-    const selectorElements = SelectorEngine.find(selector);
-
-    selectorElements.forEach((element) => {
-      Collapse.getOrCreateInstance(element, { toggle: false }).toggle();
-    });
-  }
-);
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Collapse to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Collapse);
 
 export default Collapse;

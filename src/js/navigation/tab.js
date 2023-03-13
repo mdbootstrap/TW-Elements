@@ -9,13 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import {
-  defineJQueryPlugin,
-  getElementFromSelector,
-  isDisabled,
-  reflow,
-  typeCheckConfig,
-} from "../util/index";
+import { getElementFromSelector, reflow, typeCheckConfig } from "../util/index";
 import Manipulator from "../dom/manipulator";
 import EventHandler from "../dom/event-handler";
 import SelectorEngine from "../dom/selector-engine";
@@ -30,13 +24,11 @@ Constants
 const NAME = "tab";
 const DATA_KEY = "te.tab";
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = ".data-api";
 
 const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
 const DATA_NAME_DROPDOWN_MENU = "data-te-dropdown-menu-ref";
 const TAB_ACTIVE = "data-te-tab-active";
@@ -49,8 +41,6 @@ const SELECTOR_NAV = "[data-te-nav-ref]";
 const SELECTOR_TAB_ACTIVE = `[${TAB_ACTIVE}]`;
 const SELECTOR_NAV_ACTIVE = `[${NAV_ACTIVE}]`;
 const SELECTOR_ACTIVE_UL = ":scope > li > .active";
-const SELECTOR_DATA_TOGGLE =
-  '[data-te-toggle="tab"], [data-te-toggle="pill"], [data-te-toggle="list"]';
 const SELECTOR_DROPDOWN_TOGGLE = "[data-te-dropdown-toggle-ref]";
 const SELECTOR_DROPDOWN_ACTIVE_CHILD =
   ":scope > [data-te-dropdown-menu-ref] [data-te-dropdown-show]";
@@ -268,38 +258,5 @@ class Tab extends BaseComponent {
     });
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(
-  document,
-  EVENT_CLICK_DATA_API,
-  SELECTOR_DATA_TOGGLE,
-  function (event) {
-    if (["A", "AREA"].includes(this.tagName)) {
-      event.preventDefault();
-    }
-
-    if (isDisabled(this)) {
-      return;
-    }
-
-    const data = Tab.getOrCreateInstance(this);
-    data.show();
-  }
-);
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Tab to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Tab);
 
 export default Tab;

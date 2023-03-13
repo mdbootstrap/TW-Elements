@@ -28,7 +28,6 @@ const DATA_KEY = `te.${NAME}`;
 
 const ATTR_CHIP_CLOSE = "data-te-chip-close";
 
-// const ATTR_SELECTOR_CHIP_INIT = "[data-te-chip-init]";
 const ATTR_SELECTOR_CHIP_CLOSE = `[${ATTR_CHIP_CLOSE}]`;
 
 const EVENT_DELETE = "delete.te.chips";

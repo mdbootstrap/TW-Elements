@@ -10,7 +10,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 */
 
 import {
-  defineJQueryPlugin,
   getElement,
   getSelectorFromElement,
   typeCheckConfig,
@@ -93,6 +92,8 @@ class ScrollSpy extends BaseComponent {
 
     this.refresh();
     this._process();
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -161,6 +162,18 @@ class ScrollSpy extends BaseComponent {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+    EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+      SelectorEngine.find(SELECTOR_DATA_SPY).forEach(
+        (spy) => new ScrollSpy(spy)
+      );
+    });
+
+    this._didInit = true;
+  }
 
   _getConfig(config) {
     config = {
@@ -334,24 +347,5 @@ class ScrollSpy extends BaseComponent {
     });
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  SelectorEngine.find(SELECTOR_DATA_SPY).forEach((spy) => new ScrollSpy(spy));
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .ScrollSpy to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(ScrollSpy);
 
 export default ScrollSpy;

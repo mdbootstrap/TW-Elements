@@ -53,7 +53,6 @@ Constants
 
 const NAME = "timepicker";
 const ATTR_NAME = `data-te-${NAME}`;
-// const SELECTOR_ATTR_TIMEPICKER_INIT = `[${ATTR_NAME}-init]`;
 const SELECTOR_DATA_TE_TOGGLE = "[data-te-toggle]";
 
 const DATA_KEY = `te.${NAME}`;
