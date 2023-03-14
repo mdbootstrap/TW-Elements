@@ -150,19 +150,18 @@ const init = (components) => {
 };
 
 const initTE = (components) => {
-  const componentList = [];
-  Object.keys(defaultInitSelectors).map((element) => {
+  const componentList = Object.keys(defaultInitSelectors).map((element) => {
     const requireAutoinit = Boolean(
       document.body.querySelector(defaultInitSelectors[element].selector)
     );
     if (requireAutoinit) {
       const component = components[defaultInitSelectors[element].name];
-      componentList.push(component);
       if (!component) {
         console.warn(
           `Please import ${defaultInitSelectors[element].name} from "tw-elements" package and add it to a object parameter inside "initTE" function`
         );
       }
+      return component;
     }
   });
   init(componentList);
