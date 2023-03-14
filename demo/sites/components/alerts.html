@@ -117,15 +117,17 @@
     <!-- MDB SNIPPET -->
     <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="module">
-      const alertInstance = te.Alert.getInstance(
-        document.getElementById("alert-example")
-      );
-      document
-        .getElementById("alert-example-trigger")
-        .addEventListener("click", () => {
-          alertInstance.show();
-        });
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+        const alertInstance = te.Alert.getInstance(
+          document.getElementById("alert-example")
+        );
+        document
+          .getElementById("alert-example-trigger")
+          .addEventListener("click", () => {
+            alertInstance.show();
+          });
+      });
     </script>
   </body>
 </html>

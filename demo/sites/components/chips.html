@@ -279,17 +279,19 @@
     <!-- MDB SNIPPET -->
     <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="module">
-      const chipsInitialNew = document.querySelector("#chips-initial");
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+        const chipsInitialNew = document.querySelector("#chips-initial");
 
-      const newChipsNew = new te.ChipsInput(chipsInitialNew, {
-        initialValues: [
-          { tag: "MDBReact" },
-          { tag: "MDBAngular" },
-          { tag: "MDBVue" },
-          { tag: "MDB5" },
-          { tag: "MDB" },
-        ],
+        const newChipsNew = new te.ChipsInput(chipsInitialNew, {
+          initialValues: [
+            { tag: "MDBReact" },
+            { tag: "MDBAngular" },
+            { tag: "MDBVue" },
+            { tag: "MDB5" },
+            { tag: "MDB" },
+          ],
+        });
       });
     </script>
   </body>

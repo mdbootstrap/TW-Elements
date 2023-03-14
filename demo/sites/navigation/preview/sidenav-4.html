@@ -518,35 +518,37 @@
     <!-- MDB SNIPPET -->
     <script type="module" src="../../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="module">
-      const sidenav = document.getElementById("sidenav-1");
-      const sidenavInstance = te.Sidenav.getInstance(sidenav);
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidenav = document.getElementById("sidenav-1");
+        const sidenavInstance = te.Sidenav.getInstance(sidenav);
 
-      let innerWidth = null;
+        let innerWidth = null;
 
-      const setMode = (e) => {
-        // Check necessary for Android devices
-        if (window.innerWidth === innerWidth) {
-          return;
+        const setMode = (e) => {
+          // Check necessary for Android devices
+          if (window.innerWidth === innerWidth) {
+            return;
+          }
+
+          innerWidth = window.innerWidth;
+
+          if (window.innerWidth < sidenavInstance.getBreakpoint("xl")) {
+            sidenavInstance.changeMode("over");
+            sidenavInstance.hide();
+          } else {
+            sidenavInstance.changeMode("side");
+            sidenavInstance.show();
+          }
+        };
+
+        if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+          setMode();
         }
 
-        innerWidth = window.innerWidth;
-
-        if (window.innerWidth < sidenavInstance.getBreakpoint("xl")) {
-          sidenavInstance.changeMode("over");
-          sidenavInstance.hide();
-        } else {
-          sidenavInstance.changeMode("side");
-          sidenavInstance.show();
-        }
-      };
-
-      if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
-        setMode();
-      }
-
-      // Event listeners
-      window.addEventListener("resize", setMode);
+        // Event listeners
+        window.addEventListener("resize", setMode);
+      });
     </script>
   </body>
 </html>
