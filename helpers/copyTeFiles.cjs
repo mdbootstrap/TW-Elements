@@ -11,6 +11,16 @@ try {
 }
 
 try {
+  fs.copySync(
+    "dist/js/tw-elements.umd.min.js.map",
+    "site/static/js/tw-elements.umd.min.js.map"
+  );
+  console.log("Successfully copied tw-elements.umd.min.js.map");
+} catch (err) {
+  console.log("Failed to copy tw-elements.umd.min.js.map");
+}
+
+try {
   fs.copySync("dist/plugin.cjs", "site/static/js/plugin.cjs");
   console.log("Successfully copied plugin.cjs");
 } catch (err) {

@@ -502,6 +502,7 @@ class Timepicker {
 
     if (this.input.value.length > 0 && this.input.value !== "") {
       this.input.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+      EventHandler.trigger(this.input, "input");
     }
 
     if (this._options === null && this._element === null) return;

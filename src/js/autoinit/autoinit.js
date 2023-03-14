@@ -7,6 +7,7 @@ import {
   buttonCallback,
   modalCallback,
   rippleCallback,
+  collapseCallback,
 } from "./autoinitCallbacks";
 
 const defaultInitSelectors = {
@@ -24,10 +25,6 @@ const defaultInitSelectors = {
   },
   chips: {
     selector: "[data-te-chips-init]",
-    isToggler: false,
-  },
-  collapse: {
-    selector: "[data-te-collapse-init]",
     isToggler: false,
   },
   datepicker: {
@@ -69,6 +66,11 @@ const defaultInitSelectors = {
     selector: "[data-te-toggle='button']",
     isToggler: true,
     callback: buttonCallback,
+  },
+  collapse: {
+    selector: "[data-te-collapse-init]",
+    isToggler: true,
+    callback: collapseCallback,
   },
   dropdown: {
     selector: "[data-te-dropdown-toggle-ref]",

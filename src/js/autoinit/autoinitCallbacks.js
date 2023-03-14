@@ -1,6 +1,11 @@
 import EventHandler from "../dom/event-handler";
 import SelectorEngine from "../dom/selector-engine";
-import { isDisabled, getElementFromSelector, isVisible } from "../util";
+import {
+  isDisabled,
+  getElementFromSelector,
+  isVisible,
+  getSelectorFromElement,
+} from "../util";
 
 const dropdownCallback = (component, initSelector) => {
   EventHandler.on(
@@ -134,6 +139,30 @@ const rippleCallback = (component, initSelector) => {
   );
 };
 
+const collapseCallback = (component, initSelector) => {
+  EventHandler.on(
+    document,
+    `click.te.${component.NAME}.data-api`,
+    initSelector,
+    function (event) {
+      // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+      if (
+        event.target.tagName === "A" ||
+        (event.delegateTarget && event.delegateTarget.tagName === "A")
+      ) {
+        event.preventDefault();
+      }
+
+      const selector = getSelectorFromElement(this);
+      const selectorElements = SelectorEngine.find(selector);
+
+      selectorElements.forEach((element) => {
+        component.getOrCreateInstance(element, { toggle: false }).toggle();
+      });
+    }
+  );
+};
+
 export {
   dropdownCallback,
   tabCallback,
@@ -141,4 +170,5 @@ export {
   buttonCallback,
   modalCallback,
   rippleCallback,
+  collapseCallback,
 };

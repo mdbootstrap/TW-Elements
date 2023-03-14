@@ -141,7 +141,6 @@ class Input {
     this._activate();
     this._getHelper();
     this._getCounter();
-    this._didInit = false;
     this._getEvents();
     this._initiated = true;
   }
@@ -234,9 +233,6 @@ class Input {
   }
 
   _getEvents() {
-    if (this._didInit) {
-      return;
-    }
     EventHandler.on(
       document,
       "focus",
@@ -382,8 +378,6 @@ class Input {
       }
       instance.forceActive();
     });
-
-    this._didInit = true;
   }
 
   _showCounter() {
