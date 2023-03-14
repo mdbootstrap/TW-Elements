@@ -12,87 +12,105 @@ import {
 
 const defaultInitSelectors = {
   alert: {
+    name: "Alert",
     selector: "[data-te-alert-init]",
     isToggler: false,
   },
   animation: {
+    name: "Animate",
     selector: "[data-te-animation-init]",
     isToggler: false,
   },
   carousel: {
+    name: "Carousel",
     selector: "[data-te-carousel-init]",
     isToggler: false,
   },
   chips: {
+    name: "Chips",
     selector: "[data-te-chips-init]",
     isToggler: false,
   },
   datepicker: {
+    name: "Datepicker",
     selector: "[data-te-datepicker-init]",
     isToggler: false,
   },
   input: {
+    name: "Input",
     selector: "[data-te-input-wrapper-init]",
     isToggler: false,
   },
   scrollspy: {
+    name: "Scrollspy",
     selector: "[data-te-spy='scroll']",
     isToggler: false,
   },
   select: {
+    name: "Select",
     selector: "[data-te-select-init]",
     isToggler: false,
   },
   sidenav: {
+    name: "Sidenav",
     selector: "[data-te-sidenav-init]",
     isToggler: false,
   },
   stepper: {
+    name: "Stepper",
     selector: "[data-te-stepper-init]",
     isToggler: false,
   },
-
   timepicker: {
+    name: "Timepicker",
     selector: "[data-te-timepicker-init]",
     isToggler: false,
   },
   toast: {
+    name: "Toast",
     selector: "[data-te-toast-init]",
     isToggler: false,
   },
 
   // togglers
   button: {
+    name: "Button",
     selector: "[data-te-toggle='button']",
     isToggler: true,
     callback: buttonCallback,
   },
   collapse: {
+    name: "Collapse",
     selector: "[data-te-collapse-init]",
     isToggler: true,
     callback: collapseCallback,
   },
   dropdown: {
+    name: "Dropdown",
     selector: "[data-te-dropdown-toggle-ref]",
     isToggler: true,
     callback: dropdownCallback,
   },
   modal: {
+    name: "Modal",
     selector: "[data-te-toggle='modal']",
     isToggler: true,
     callback: modalCallback,
   },
   ripple: {
+    name: "Ripple",
     selector: "[data-te-ripple-init]",
     isToggler: true,
     callback: rippleCallback,
   },
   offcanvas: {
+    name: "Offcanvas",
     selector: "[data-te-offcanvas-toggle]",
     isToggler: true,
     callback: offcanvasCallback,
   },
   tab: {
+    name: "Tab",
     selector:
       "[data-te-toggle='tab'], [data-te-toggle='pill'], [data-te-toggle='list']",
     isToggler: true,
@@ -105,6 +123,9 @@ const getComponentData = (component) => {
 };
 
 const initComponent = (component) => {
+  if (!component) {
+    return;
+  }
   const thisComponent = getComponentData(component);
   const isToggler = thisComponent?.isToggler || false;
 
@@ -124,8 +145,27 @@ const initComponent = (component) => {
   });
 };
 
-const init = (...components) => {
+const init = (components) => {
   components.forEach((component) => initComponent(component));
 };
 
-export default init;
+const initTE = (components) => {
+  const componentList = [];
+  Object.keys(defaultInitSelectors).map((element) => {
+    const requireAutoinit = Boolean(
+      document.body.querySelector(defaultInitSelectors[element].selector)
+    );
+    if (requireAutoinit) {
+      const component = components[defaultInitSelectors[element].name];
+      componentList.push(component);
+      if (!component) {
+        console.warn(
+          `Please import ${defaultInitSelectors[element].name} from "tw-elements" package and add it to a object parameter inside "initTE" function`
+        );
+      }
+    }
+  });
+  init(componentList);
+};
+
+export default initTE;

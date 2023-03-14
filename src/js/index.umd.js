@@ -30,7 +30,7 @@ import Sidenav from "./navigation/sidenav";
 import Stepper from "./components/stepper";
 import Select from "./forms/select";
 import ChipsInput from "./components/chips";
-import init from "./autoinit/autoinit";
+import initTE from "./autoinit/index";
 
 const te = {
   Animate,
@@ -56,7 +56,7 @@ const te = {
   Input,
 };
 
-Object.keys(te).forEach((component) => init(te[component]));
+initTE(te);
 window.te = te;
 
 export {
@@ -81,5 +81,5 @@ export {
   Sidenav,
   Stepper,
   Input,
-  init,
+  initTE,
 };
