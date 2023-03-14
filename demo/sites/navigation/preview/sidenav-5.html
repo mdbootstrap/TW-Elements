@@ -456,47 +456,49 @@
     <!-- MDB SNIPPET -->
     <script type="module" src="../../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="module">
-      const sidenav = document.getElementById("full-screen-example");
-      const sidenavInstance = te.Sidenav.getInstance(sidenav);
-      const currentModeTxt = document.getElementById("mode-current");
-      const currentWidthTxt = document.getElementById("width-current");
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidenav = document.getElementById("full-screen-example");
+        const sidenavInstance = te.Sidenav.getInstance(sidenav);
+        const currentModeTxt = document.getElementById("mode-current");
+        const currentWidthTxt = document.getElementById("width-current");
 
-      let innerWidth = null;
+        let innerWidth = null;
 
-      const setMode = (e) => {
-        // Check necessary for Android devices
-        if (window.innerWidth === innerWidth) {
-          return;
+        const setMode = (e) => {
+          // Check necessary for Android devices
+          if (window.innerWidth === innerWidth) {
+            return;
+          }
+
+          innerWidth = window.innerWidth;
+          currentWidthTxt.textContent = innerWidth;
+
+          if (window.innerWidth >= sidenavInstance.getBreakpoint("xl")) {
+            currentModeTxt.innerText = "push";
+            sidenavInstance.changeMode("push");
+            sidenavInstance.show();
+          } else if (
+            window.innerWidth > sidenavInstance.getBreakpoint("sm") &&
+            window.innerWidth < sidenavInstance.getBreakpoint("xl")
+          ) {
+            currentModeTxt.innerText = "side";
+            sidenavInstance.changeMode("side");
+            sidenavInstance.show();
+          } else {
+            currentModeTxt.innerText = "over";
+            sidenavInstance.changeMode("over");
+            sidenavInstance.hide();
+          }
+        };
+
+        if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+          setMode();
         }
 
-        innerWidth = window.innerWidth;
-        currentWidthTxt.textContent = innerWidth;
-
-        if (window.innerWidth >= sidenavInstance.getBreakpoint("xl")) {
-          currentModeTxt.innerText = "push";
-          sidenavInstance.changeMode("push");
-          sidenavInstance.show();
-        } else if (
-          window.innerWidth > sidenavInstance.getBreakpoint("sm") &&
-          window.innerWidth < sidenavInstance.getBreakpoint("xl")
-        ) {
-          currentModeTxt.innerText = "side";
-          sidenavInstance.changeMode("side");
-          sidenavInstance.show();
-        } else {
-          currentModeTxt.innerText = "over";
-          sidenavInstance.changeMode("over");
-          sidenavInstance.hide();
-        }
-      };
-
-      if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
-        setMode();
-      }
-
-      // Event listeners
-      window.addEventListener("resize", setMode);
+        // Event listeners
+        window.addEventListener("resize", setMode);
+      });
     </script>
   </body>
 </html>

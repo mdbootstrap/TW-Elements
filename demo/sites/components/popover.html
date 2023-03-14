@@ -118,12 +118,14 @@
     <!-- MDB SNIPPET -->
     <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="module">
-      var popoverTriggerList = [].slice.call(
-        document.querySelectorAll('[data-te-toggle="popover"]')
-      );
-      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new te.Popover(popoverTriggerEl);
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+        var popoverTriggerList = [].slice.call(
+          document.querySelectorAll('[data-te-toggle="popover"]')
+        );
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+          return new te.Popover(popoverTriggerEl);
+        });
       });
     </script>
   </body>

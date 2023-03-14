@@ -128,15 +128,17 @@
     <!-- MDB SNIPPET -->
     <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="module">
-      const toastInstance = te.Toast.getInstance(
-        document.getElementById("toast-example")
-      );
-      document
-        .getElementById("toast-example-trigger")
-        .addEventListener("click", () => {
-          toastInstance.show();
-        });
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+        const toastInstance = te.Toast.getInstance(
+          document.getElementById("toast-example")
+        );
+        document
+          .getElementById("toast-example-trigger")
+          .addEventListener("click", () => {
+            toastInstance.show();
+          });
+      });
     </script>
   </body>
 </html>
