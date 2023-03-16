@@ -67,91 +67,83 @@ menu:
       >.
     </p>
   </div>
+</section>
 
-  <div
-    class="rounded-lg bg-primary-100 p-6 text-base text-info-800"
-    role="alert">
-    <p>
-      Due to the way the library is imported, components are not accessible via
-      JavaScript (only via data attributes).
-    </p>
-  </div>
+<hr class="my-5 dark:border-neutral-600" />
 
-  <hr class="my-5 dark:border-neutral-600" />
+<!-- Section: Creating React app-->
+<section id="section-react-app">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="react-application"
+    data-te-spy-item>
+    Creating a new React application
+  </h2>
 
-  <!-- Section: Creating React app-->
-  <section id="section-react-app">
-    <!-- Section title-->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="react-application"
-      data-te-spy-item>
-      Creating a new React application
-    </h2>
+  <!-- Description -->
+  <p class="mb-5">
+    Let's create a fresh React application so that we can go through all the
+    steps together. We are going to do this through
+    <a
+      class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+      href="https://vitejs.dev/"
+      target="_blank"
+      rel="nofollow"
+      >Vite</a
+    >
+    - very popular and extremly light module bundler.
+  </p>
 
-    <!-- Description -->
-    <p class="mb-5">
-      Let's create a fresh React application so that we can go through all the
-      steps together. We are going to do this through
-      <a
-        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-        href="https://vitejs.dev/"
-        target="_blank"
-        rel="nofollow"
-        >Vite</a
-      >
-      - very popular and extremly light module bundler.
-    </p>
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Create new project</p>
 
-    <h2 class="text-lg font-bold">Step 1</h2>
-    <p class="mb-5">Create new project</p>
-
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
         npm create vite@latest my-project -- --template react
         cd my-project
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="mb-5 dark:border-neutral-600" />
+<hr class="mb-5 dark:border-neutral-600" />
 
-  <!-- Creating and configuring Tailwind & Tailwind Elements-->
-  <section id="section-tailwind">
-    <!-- Section title-->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="tailwind"
-      data-te-spy-item>
-      Installing and configuring Tailwind CSS and Tailwind Elements
-    </h2>
+<!-- Creating and configuring Tailwind & Tailwind Elements-->
+<section id="section-tailwind">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="tailwind"
+    data-te-spy-item>
+    Installing and configuring Tailwind CSS and Tailwind Elements
+  </h2>
 
-    <!-- Description -->
-    <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-    <p class="mb-5">Install Tailwind CSS</p>
+  <!-- Description -->
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Install Tailwind CSS</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
         npm install -D tailwindcss postcss autoprefixer
         npx tailwindcss init -p
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 2</h2>
-    <p class="mb-5">
-      Add the paths to all of your template files in your
-      <code>tailwind.config.cjs</code> file.
-    </p>
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">
+    Add the paths to all of your template files in your
+    <code>tailwind.config.cjs</code> file.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
@@ -167,46 +159,46 @@ menu:
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 3</h2>
-    <p class="mb-5">
-      Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
-      your <code>./src/index.css</code> file.
-    </p>
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
+    your <code>./src/index.css</code> file.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "index.css" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "index.css" "" "mobile" >}}
         {{< twsnippet/code active=true lang="CSS" >}}
         @tailwind base;
         @tailwind components;
         @tailwind utilities;
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 4</h2>
-    <p class="mb-5">Install Tailwind Elements.</p>
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">Install Tailwind Elements.</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
         npm install tw-elements
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 5</h2>
-    <p class="mb-5">
-      In <code>App.jsx</code> file (located in <code>src/</code> directory) put
-      lifecycle method where are you going to dynamically importing library.
-    </p>
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">
+    In <code>App.jsx</code> file (located in <code>src/</code> directory) put
+    lifecycle method where are you going to dynamically importing library.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           useEffect(() => {
             const importTE = async () => {
@@ -216,7 +208,59 @@ menu:
           }, []);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
-  <!--/Creating and configuring Tailwind & Tailwind Elements-->
+  </div>
 </section>
+<!--/Creating and configuring Tailwind & Tailwind Elements-->
+
+<!--Initializing via JS-->
+<section id="section-initializing-js">
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="initializing-js"
+    data-te-spy-item>
+    Initializing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have autoinit which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Import library.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import * as te from "tw-elements";
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Initialize component in lifecycle hook.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import React, { useEffect } from "svelte";
+
+        useEffect(() => {
+          const options = {
+            format: "dd-mm-yyyy",
+          };
+          const myDatepicker = new te.Datepicker(
+            document.getElementById("myDatepicker"),
+            options
+          );
+        }, []);
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Initializing via JS-->
