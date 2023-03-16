@@ -13,8 +13,7 @@ menu:
     name: "Svelte"
 ---
 
-<!-- Section: Basic example -->
-
+<!-- Prerequisites -->
 <section id="section-prerequisites">
   <!-- Title -->
   <h2
@@ -49,95 +48,89 @@ menu:
       >
     </li>
   </ul>
+</section>
+<!-- /Prerequisites -->
 
-  <div
-    class="mt-5 rounded-lg bg-primary-100 p-6 text-base text-info-800"
-    role="alert">
-    <p>
-      Due to the way the library is imported, components are not accessible via
-      JavaScript (only via data attributes).
-    </p>
-  </div>
+<hr class="my-5 dark:border-neutral-600" />
 
-  <hr class="my-5 dark:border-neutral-600" />
+<!-- Creating Svelte app-->
+<section id="section-svelte-app">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="svelte-application"
+    data-te-spy-item>
+    Creating a new Svelte application
+  </h2>
 
-  <!-- Section: Creating Svelte app-->
-  <section id="section-svelte-app">
-    <!-- Section title-->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="svelte-application"
-      data-te-spy-item>
-      Creating a new Svelte application
-    </h2>
+  <!-- Description -->
+  <p>
+    Let's create a fresh Svelte application so that we can go through all the
+    steps together.
+  </p>
 
-    <!-- Description -->
-    <p>
-      Let's create a fresh Svelte application so that we can go through all the
-      steps together.
-    </p>
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Create new project.</p>
 
-    <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-    <p class="mb-5">Create new project.</p>
-
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
           npm create svelte@latest my-project
           cd my-project
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 2</h2>
-    <p class="mb-5">Install all dependencies.</p>
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Install all dependencies.</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
           npm install
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
+  </div>
+</section>
+<!-- /Creating Svelte app-->
 
-  <hr class="mb-5 dark:border-neutral-600" />
+<hr class="mb-5 dark:border-neutral-600" />
 
-  <!-- Creating and configuring Tailwind & Tailwind Elements-->
-  <section id="section-tailwind">
-    <!-- Section title-->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="tailwind"
-      data-te-spy-item>
-      Installing and configuring Tailwind CSS and Tailwind Elements
-    </h2>
+<!-- Creating and configuring Tailwind & Tailwind Elements-->
+<section id="section-tailwind">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="tailwind"
+    data-te-spy-item>
+    Installing and configuring Tailwind CSS and Tailwind Elements
+  </h2>
 
-    <!-- Description -->
-    <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-    <p class="mb-5">Install Tailwind CSS</p>
+  <!-- Description -->
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Install Tailwind CSS</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
           npm install -D tailwindcss postcss autoprefixer
           npx tailwindcss init tailwind.config.cjs -p
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 2</h2>
-    <p class="mb-5">
-      Add the paths to all of your template files in your
-      <code>tailwind.config.cjs</code> file.
-    </p>
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">
+    Add the paths to all of your template files in your
+    <code>tailwind.config.cjs</code> file.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
@@ -152,18 +145,18 @@ menu:
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 3</h2>
-    <p class="mb-5">
-      In your <code>svelte.config.js</code> file, import
-      <code>vitePreprocess</code> to enable processing <code>style</code> blocks
-      as PostCSS.
-    </p>
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    In your <code>svelte.config.js</code> file, import
+    <code>vitePreprocess</code> to enable processing <code>style</code> blocks
+    as PostCSS.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "svelte.config.js" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "svelte.config.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           import adapter from '@sveltejs/adapter-auto';
           import { vitePreprocess } from '@sveltejs/kit/vite';
@@ -179,66 +172,66 @@ menu:
           export default config;
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 4</h2>
-    <p class="mb-5">
-      Create a <code>./src/app.css</code> file and add the
-      <code>@tailwind</code> directives for each of Tailwind’s layers.
-    </p>
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">
+    Create a <code>./src/app.css</code> file and add the
+    <code>@tailwind</code> directives for each of Tailwind’s layers.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "app.css" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "app.css" "" "mobile" >}}
         {{< twsnippet/code active=true lang="CSS" >}}
         @tailwind base;
         @tailwind components;
         @tailwind utilities;
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 5</h2>
-    <p class="mb-5">
-      Create a <code>./src/routes/+layout.svelte</code> file and import the
-      newly-created <code>app.css</code> file.
-    </p>
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">
+    Create a <code>./src/routes/+layout.svelte</code> file and import the
+    newly-created <code>app.css</code> file.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "+layout.svelte" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "+layout.svelte" "" "mobile" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-      <script>
-        import "../app.css";
-      </script>
+    <script>
+      import "../app.css";
+    </script>
 
-      <slot />
-      {{< /twsnippet/code >}}
-      {{< /twsnippet/wrapper >}}
-    </div>
+    <slot />
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
 
-    <h2 class="text-lg font-bold">Step 6</h2>
-    <p class="mb-5">Install Tailwind Elements.</p>
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">Install Tailwind Elements.</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
         npm install tw-elements
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 7</h2>
-    <p class="mb-5">
-      In <code>+layout.svelte</code> file (located in
-      <code>src/routes/</code> directory) put lifecycle method where are you
-      going to dynamically importing library.
-    </p>
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    In <code>+layout.svelte</code> file (located in
+    <code>src/routes/</code> directory) put lifecycle method where are you going
+    to dynamically importing library.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "+layout.svelte" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "+layout.svelte" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           import { onMount } from "svelte";
 
@@ -247,7 +240,61 @@ menu:
           });
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
-  <!--/Creating and configuring Tailwind & Tailwind Elements-->
+  </div>
 </section>
+<!--/Creating and configuring Tailwind & Tailwind Elements-->
+
+<hr class="my-5 dark:border-neutral-600" />
+
+<!-- Importing via JS-->
+<section id="section-importing-js">
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="importing-js"
+    data-te-spy-item>
+    Importing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have autoinit which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Import library.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "+page.svelte" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import * as te from "tw-elements";
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Initialize component in lifecycle hook.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "+page.svelte" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { onMount } from "svelte";
+
+        onMount(() => {
+          const options = {
+            format: "dd-mm-yyyy",
+          };
+          const myDatepicker = new te.Datepicker(
+            document.getElementById("myDatepicker"),
+            options
+          );
+        });
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!-- /Importing via JS-->
