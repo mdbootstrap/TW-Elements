@@ -383,9 +383,6 @@ class Chart {
 
     // handle mode change (dark- and lightmode)
     this._darkOptions = this._getDarkConfig(darkOptions);
-    this._darkModeSystem = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
     this._darkModeClassContainer = document.querySelector("html");
     this._prevConfig = null;
     this._observer = null;
@@ -398,7 +395,7 @@ class Chart {
 
     if (this._darkOptions.darkmodeOff !== null) {
       // check mode on start
-      this._handleMode(this._darkModeSystem);
+      this._handleMode(this.systemColorMode);
       // observe darkmode class container change
       this._observer = new MutationObserver(this._observerCallback.bind(this));
       this._observer.observe(this._darkModeClassContainer, {
@@ -410,6 +407,15 @@ class Chart {
   // Getters
   static get NAME() {
     return NAME;
+  }
+
+  get systemColorMode() {
+    return (
+      localStorage.theme ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light")
+    );
   }
 
   // Public
@@ -541,8 +547,8 @@ class Chart {
     }
   }
 
-  _handleMode(systemDark = undefined) {
-    if (systemDark || this._darkModeClassContainer.classList.contains("dark")) {
+  _handleMode(systemColor) {
+    if (systemColor === "dark") {
       this._changeDatasetBorderColor();
       this.update(null, this._darkOptions.options);
     } else {
@@ -554,7 +560,7 @@ class Chart {
   _observerCallback(mutationList) {
     for (const mutation of mutationList) {
       if (mutation.type === "attributes") {
-        this._handleMode();
+        this._handleMode(this.systemColorMode);
       }
     }
   }
