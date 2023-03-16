@@ -49,83 +49,75 @@ menu:
       >
     </li>
   </ul>
+</section>
 
-  <div
-    class="mt-5 rounded-lg bg-primary-100 p-6 text-base text-info-800"
-    role="alert">
-    <p>
-      Due to the way the library is imported, components are not accessible via
-      JavaScript (only via data attributes).
-    </p>
-  </div>
+<hr class="my-5 dark:border-neutral-600" />
 
-  <hr class="my-5 dark:border-neutral-600" />
+<!-- Section: Creating Nuxt app-->
+<section id="section-nuxt-app">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="laravel-application"
+    data-te-spy-item>
+    Creating a new Laravel application
+  </h2>
 
-  <!-- Section: Creating Nuxt app-->
-  <section id="section-nuxt-app">
-    <!-- Section title-->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="laravel-application"
-      data-te-spy-item>
-      Creating a new Laravel application
-    </h2>
+  <!-- Description -->
+  <p class="mb-5">
+    Let's create a fresh Laravel application so that we can go through all the
+    steps together.
+  </p>
 
-    <!-- Description -->
-    <p class="mb-5">
-      Let's create a fresh Laravel application so that we can go through all the
-      steps together.
-    </p>
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Create new project</p>
 
-    <h2 class="text-lg font-bold">Step 1</h2>
-    <p class="mb-5">Create new project</p>
-
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
           composer create-project laravel/laravel my-project
           cd my-project
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="mb-5 dark:border-neutral-600" />
+<hr class="mb-5 dark:border-neutral-600" />
 
-  <!-- Creating and configuring Tailwind & Tailwind Elements-->
-  <section id="section-tailwind">
-    <!-- Section title-->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="tailwind"
-      data-te-spy-item>
-      Installing and configuring Tailwind CSS and Tailwind Elements
-    </h2>
+<!-- Creating and configuring Tailwind & Tailwind Elements-->
+<section id="section-tailwind">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="tailwind"
+    data-te-spy-item>
+    Installing and configuring Tailwind CSS and Tailwind Elements
+  </h2>
 
-    <!-- Description -->
-    <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-    <p class="mb-5">Install Tailwind CSS</p>
+  <!-- Description -->
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Install Tailwind CSS</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
           npm install -D tailwindcss postcss autoprefixer
           npx tailwindcss init -p
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 2</h2>
-    <p class="mb-5">
-      Add the paths to all of your template files in your
-      <code>tailwind.config.cjs</code> file.
-    </p>
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">
+    Add the paths to all of your template files in your
+    <code>tailwind.config.cjs</code> file.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           /** @type {import('tailwindcss').Config} */
           module.exports = {
@@ -142,83 +134,82 @@ menu:
           }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 3</h2>
-    <p class="mb-5">
-      Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
-      your <code>./resources/css/app.css</code> file.
-    </p>
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
+    your <code>./resources/css/app.css</code> file.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "app.css" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "app.css" "" "mobile" >}}
         {{< twsnippet/code active=true lang="CSS" >}}
           @tailwind base;
           @tailwind components;
           @tailwind utilities;
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 4</h2>
-    <p class="mb-5">Install Tailwind Elements.</p>
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">Install Tailwind Elements.</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
           npm install tw-elements
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 5</h2>
-    <p class="mb-5">
-      Import Tailwind Elements in <code>app.js</code> file which is located in
-      <code>./resources/js</code> directory.
-    </p>
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">
+    Import Tailwind Elements in <code>app.js</code> file which is located in
+    <code>./resources/js</code> directory.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "app.js" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "app.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           import * as te from "tw-elements";
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 6</h2>
-    <p class="mb-5">
-      Make sure your compiled CSS and JS are included in the
-      <code>head</code> in <code>welcome.blade.php</code> file (located in
-      <code>./resources/views</code> directory).
-    </p>
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">
+    Make sure your compiled CSS and JS are included in the
+    <code>head</code> in <code>welcome.blade.php</code> file (located in
+    <code>./resources/views</code> directory).
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
           @vite('resources/css/app.css')
           @vite('resources/js/app.js')
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 7</h2>
-    <p class="mb-5">
-      Alternatively you can import Tailwind Elements by adding
-      <code>script</code> tag in <code>body</code> section.
-    </p>
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    Alternatively you can import Tailwind Elements by adding
+    <code>script</code> tag in <code>body</code> section.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "welcome.blade.php" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "welcome.blade.php" "" "mobile" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-      <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-      {{< /twsnippet/code >}}
-      {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
-  <!--/Creating and configuring Tailwind & Tailwind Elements-->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
 </section>
+<!--/Creating and configuring Tailwind & Tailwind Elements-->
