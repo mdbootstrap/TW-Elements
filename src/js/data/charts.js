@@ -414,8 +414,6 @@ class Chart {
       localStorage.theme ||
       (this._darkModeClassContainer.classList.contains("dark")
         ? "dark"
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
         : "light")
     );
   }
