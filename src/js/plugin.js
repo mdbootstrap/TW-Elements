@@ -19,7 +19,7 @@ module.exports = plugin(
       [['input[type="range"]::-webkit-slider-thumb']]: {
         height: spacing[4],
         width: spacing[4],
-        background: theme("colors.primary.600"),
+        background: theme("colors.primary.DEFAULT"),
         "border-radius": borderRadius.full,
         border: 0,
         appearance: "none",
@@ -36,7 +36,7 @@ module.exports = plugin(
       [['input[type="range"]::-moz-range-thumb']]: {
         height: spacing[4],
         width: spacing[4],
-        background: theme("colors.primary.600"),
+        background: theme("colors.primary.DEFAULT"),
         "border-radius": borderRadius.full,
         border: 0,
         appearance: "none",
@@ -51,16 +51,16 @@ module.exports = plugin(
         background: theme("colors.neutral.500"),
       },
       [['input[type="range"]::-moz-range-progress']]: {
-        background: theme("colors.primary.500"),
+        background: theme("colors.primary.400"),
       },
       [['input[type="range"]::-ms-fill-lower']]: {
-        background: theme("colors.primary.500"),
+        background: theme("colors.primary.400"),
       },
       [['input[type="range"]:focus']]: {
         outline: "none",
       },
       [['input[type="range"]:focus::-webkit-slider-thumb']]: {
-        background: theme("colors.primary.500"),
+        background: theme("colors.primary.400"),
       },
     });
   },
