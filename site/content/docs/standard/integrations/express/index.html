@@ -50,15 +50,6 @@ menu:
     </li>
   </ul>
 
-  <div
-    class="mt-5 rounded-lg bg-primary-100 p-6 text-base text-info-800"
-    role="alert">
-    <p>
-      Due to the way the library is imported, components via JavaScript are
-      accessible only with CDN (Step 9).
-    </p>
-  </div>
-
   <hr class="my-5 dark:border-neutral-600" />
 
   <!-- Section: Creating Express app-->
@@ -243,7 +234,6 @@ menu:
       <!--prettier-ignore-->
       {{< twsnippet/wrapper "index.ejs" "" "mobile" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-          ...
       <link href="/output.css" rel="stylesheet" />
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
@@ -259,30 +249,14 @@ menu:
       <!--prettier-ignore-->
       {{< twsnippet/wrapper "index.ejs" "" "mobile" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-      <script src="/tw-elements/dist/js/index.min.js" type="module"></script>
+      <script
+        src="/tw-elements/dist/js/index.min.js"
+        type="text/javascript"></script>
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
 
     <h2 class="text-lg font-bold">Step 8</h2>
-    <p class="mb-5">
-      Alternatively you can add import in any other JS file but you got to
-      remember linking it in your HTML file.
-    </p>
-
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "index.ejs, main.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="HTML" >}}
-      <script src="/public/main.js" type="module"></script>
-      {{< /twsnippet/code >}}
-      {{< twsnippet/code lang="JavaScript" >}}
-      import * as te from 'tw-elements';
-      {{< /twsnippet/code >}}
-      {{< /twsnippet/wrapper >}}
-    </div>
-
-    <h2 class="text-lg font-bold">Step 9</h2>
     <p class="mb-5">
       Alternatively at the end of <code>body</code> in
       <code>index.ejs</code> include <code>script</code> tag with linking to
