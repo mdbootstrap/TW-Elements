@@ -1,14 +1,14 @@
 ---
-title: "{COMPONENT}"
-date: 2023-03-07T16:00:58+02:00
+title: "Visibility"
+date: 2023-03-017T10:00:00+02:00
 draft: false
-main_title: "{COMPONENT}"
-subheading: "Tailwind CSS {COMPONENT}"
-seo_title: "Tailwind CSS {COMPONENT} - Free Examples & Tutorial"
-description: "Use responsive {COMPONENT} component with helper examples for {KEYWORDS/SECTIONS} {Free download, open-source license.}"
+main_title: "Visibility"
+subheading: "Tailwind CSS Visibility"
+seo_title: "Tailwind CSS Visibility - Free Examples & Tutorial"
+description: "Use responsive Visibility utilities with Tailwind elements. Control the visibility, without modifying the display, of elements with visibility utilities."
 image: "img/components-big.jpg"
 video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
-url: "docs/standard/extended/example"
+url: "docs/standard/extended/visibility"
 custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/cards/"
 ---
 
@@ -34,16 +34,28 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
     <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Basic example</h2>
 
     <!--Description-->
-    <p>Simple example of an address form on checkout.</p>
+    <p class="mb-3">
+      Set the <code>visibility</code> of elements with our visibility utilities.
+      These utility classes do not modify the <code>display</code> value at all
+      and do not affect layout – <code>.invisible</code> elements still take up
+      space in the page. Content will be hidden both visually and for assistive
+      technology/screen reader users.
+    </p>
+
+    <p>Apply <code>.visible</code> or <code>.invisible</code> as needed.</p>
 
     <!--Section: Demo-->
     {{< twsnippet/demo id="example1" >}}
-    <div class="flex justify-center space-x-2">
-      <button
-        type="button"
-        class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
-        Button
-      </button>
+    <div class="">
+      <div class="visible flex h-[60px] bg-primary text-white">
+        <p class="self-center pl-3">visible</p>
+      </div>
+      <div class="invisible flex h-[60px] bg-primary text-white">
+        <p class="self-center pl-3">invisible</p>
+      </div>
+      <div class="visible flex h-[60px] bg-primary text-white">
+        <p class="self-center pl-3">visible</p>
+      </div>
     </div>
     {{< /twsnippet/demo >}}
     <!--Section: Demo-->
@@ -53,13 +65,9 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-        <div class="flex justify-center space-x-2">
-          <button
-            type="button"
-            class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
-            Button
-          </button>
-        </div>
+        <div class="visible">...</div>
+        <div class="invisible">...</div>
+        <div class="visible">...</div>
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -76,23 +84,20 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
 
     <!--Chips with links-->
     <div class="mt-5 mb-10 flex flex-wrap justify-start">
+      <!--Main-->
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/content-styles/colors/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
+        Colors</a
+      >
+
       <!--Extended docs-->
-      <a
-        href="#"
-        class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Test</a
-      >
 
       <a
-        href="#"
+        href="https://tailwind-elements.com/docs/standard/extended/opacity"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Test</a
-      >
-
-      <a
-        href="#"
-        class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Test</a
+        Opacity</a
       >
     </div>
 
