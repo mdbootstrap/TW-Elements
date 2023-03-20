@@ -74,6 +74,7 @@
 
       this.input.addEventListener("blur", () => {
         this.icon.classList.remove("font-bold");
+        this.removeDataFocus();
       });
 
       this.input.addEventListener("keydown", (e) => {
@@ -100,6 +101,13 @@
           this.input.focus();
         } else if (e.keyCode === this.keycodes.ESCAPE && this.visibleDropdown) {
           this.toggleDropdown(false);
+        } else if (
+          e.keyCode === this.keycodes.ENTER &&
+          this.visibleDropdown &&
+          this.dropdown.querySelector("[data-te-first-search-focused]")
+        ) {
+          e.preventDefault();
+          window.location.href = this.results[0]?.href;
         }
       });
     }
@@ -138,6 +146,12 @@
       this.count.innerHTML = this.results.length;
     }
 
+    removeDataFocus() {
+      this.dropdown
+        .querySelector("[data-te-first-search-focused]")
+        ?.removeAttribute("data-te-first-search-focused");
+    }
+
     getResultsMarkup() {
       return this.results
         .map((result, i) => {
@@ -148,9 +162,9 @@
 
           return `
       <li>
-        <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-neutral-100 focus:bg-neutral-100 outline-none dark:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" href="${
-          result.href
-        }">
+        <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-neutral-100 focus:bg-neutral-100 outline-none dark:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600 data-[te-first-search-focused]:bg-neutral-100 dark:data-[te-first-search-focused]:bg-neutral-600" ${
+          !i ? "data-te-first-search-focused" : ""
+        } href="${result.href}">
           <p class="uppercase mb-0">${this.highlightSearch(
             result.name,
             this.searchValue
