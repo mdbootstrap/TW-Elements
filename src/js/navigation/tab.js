@@ -42,8 +42,6 @@ const DATA_NAME_DROPDOWN_MENU = "data-te-dropdown-menu-ref";
 const TAB_ACTIVE = "data-te-tab-active";
 const NAV_ACTIVE = "data-te-nav-active";
 
-const FADE = "opacity-0";
-
 const SELECTOR_DROPDOWN = "[data-te-dropdown-ref]";
 const SELECTOR_NAV = "[data-te-nav-ref]";
 const SELECTOR_TAB_ACTIVE = `[${TAB_ACTIVE}]`;
@@ -57,10 +55,12 @@ const SELECTOR_DROPDOWN_ACTIVE_CHILD =
 
 const DefaultClasses = {
   show: "opacity-100",
+  hide: "opacity-0",
 };
 
 const DefaultClassesType = {
   show: "string",
+  hide: "string",
 };
 
 /*
@@ -179,7 +179,7 @@ class Tab extends BaseComponent {
 
     const active = activeElements[0];
     const isTransitioning =
-      callback && active && active.classList.contains(FADE);
+      callback && active && active.hasAttribute(TAB_ACTIVE);
 
     const complete = () =>
       this._transitionComplete(
@@ -192,6 +192,7 @@ class Tab extends BaseComponent {
 
     if (active && isTransitioning) {
       Manipulator.removeClass(active, this._classes.show);
+      Manipulator.addClass(active, this._classes.hide);
       this._queueCallback(complete, element, true);
     } else {
       complete();
@@ -226,7 +227,8 @@ class Tab extends BaseComponent {
 
     reflow(element);
 
-    if (element.classList.contains(FADE)) {
+    if (element.classList.contains(this._classes.hide)) {
+      Manipulator.removeClass(element, this._classes.hide);
       Manipulator.addClass(element, this._classes.show);
     }
 
