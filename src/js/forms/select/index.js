@@ -1428,6 +1428,8 @@ class Select {
 
     setTimeout(() => {
       this._input.removeAttribute(DATA_FOCUSED);
+      this._input.blur();
+
       SelectorEngine.findOne(SELECTOR_NOTCH, this._wrapper).removeAttribute(
         DATA_FOCUSED
       );
