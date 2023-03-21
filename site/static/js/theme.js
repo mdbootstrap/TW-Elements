@@ -11,10 +11,10 @@ class ThemeSwitcher {
   }
 
   init() {
-    if (!("theme" in localStorage)) {
+    if (!this.getCookie("tailwindTheme")) {
       this.setLightTheme();
       // this.setSystemTheme();
-    } else if (localStorage.theme === "dark") {
+    } else if (this.getCookie("tailwindTheme") === "dark") {
       this.setDarkTheme();
     } else {
       this.setLightTheme();
@@ -40,7 +40,7 @@ class ThemeSwitcher {
 
   setDarkTheme() {
     document.documentElement.classList.add("dark");
-    localStorage.theme = "dark";
+    this.setCookie("tailwindTheme","dark",365);
     this.setActiveThemeIcon("dark");
     this.setActiveDropdownItem("dark");
     this.activeTheme = "dark";
@@ -51,7 +51,7 @@ class ThemeSwitcher {
 
   setLightTheme() {
     document.documentElement.classList.remove("dark");
-    localStorage.theme = "light";
+    this.setCookie("tailwindTheme","light",365);
     this.setActiveThemeIcon("light");
     this.setActiveDropdownItem("light");
     this.activeTheme = "light";
@@ -85,7 +85,7 @@ class ThemeSwitcher {
     const theme = event.target.dataset.theme;
 
     if (theme === "system") {
-      localStorage.removeItem("theme");
+      this.eraseCookie("tailwindTheme");
       this.setSystemTheme();
     } else if (theme === "dark") {
       this.setDarkTheme();
@@ -97,11 +97,11 @@ class ThemeSwitcher {
   }
 
   onThemeSwitcherShortCut() {
-    if (!("theme" in localStorage)) {
+    if (!this.getCookie("tailwindTheme")) {
       document.querySelector("html").classList.contains("dark")
         ? this.setLightTheme()
         : this.setDarkTheme();
-    } else if (localStorage.theme === "dark") {
+    } else if (this.getCookie("tailwindTheme") === "dark") {
       this.setLightTheme();
     } else {
       this.setDarkTheme();
@@ -151,6 +151,31 @@ class ThemeSwitcher {
         this.onThemeSwitcherShortCut(event);
       }
     });
+  }
+
+  setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
+
+  getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+
+  eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   }
 }
 

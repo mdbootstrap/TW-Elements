@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ .Language.Lang }}">
+<html lang="{{ .Language.Lang }}" class="{{ .Site.Params.tailwindTheme }}">
   <head>
-    {{ partial "head/head.html" . }} {{ partial "header/header.html" . }}
+    {{ partial "head/head.html" . }}
+    {{ partial "header/header.html" . }}
   </head>
   <body>
-    {{ block "main" . }}{{ end }} {{ partial "footer/footer.html" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer/footer.html" . }}
   </body>
 </html>
