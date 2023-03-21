@@ -685,7 +685,7 @@ module.exports = {
 Alternatively, you can import it in the following way (bundler version):
 
 ```
-import 'tw-elements';
+import * as te from 'tw-elements';
 ```
 
 ##### MDB GO / CLI
@@ -740,14 +740,18 @@ Add the stylesheet files below in the _head_ section:
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
+    darkMode: "class",
     theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Roboto', 'sans-serif'],
-        },
-      }
-    }
-  }
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+        body: ["Roboto", "sans-serif"],
+        mono: ["ui-monospace", "monospace"],
+      },
+    },
+    corePlugins: {
+      preflight: false,
+    },
+  };
 </script>
 ```
 

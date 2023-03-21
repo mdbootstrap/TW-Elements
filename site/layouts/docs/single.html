@@ -12,6 +12,7 @@
   <head>
     {{ partial "head/head.html" . }}
   </head>
+
   <body class="transition-colors duration-500 dark:bg-neutral-800">
     {{ partial "header/header.html" . }}
 
@@ -131,10 +132,16 @@
               {{ end }}
                flex w-full flex-col px-3">
               {{ if not (isset .Params "custom_links") }}
-                <h1
+                <h2
                   class="mt-0 text-3xl font-bold leading-8 sm:text-[33px] md:text-4xl lg:text-[40px]">
                   {{ .Params.main_title }}
+                </h2>
+
+                <h1
+                  class="my-3 text-base font-bold text-neutral-500 dark:text-neutral-300">
+                  {{ .Params.subheading }}
                 </h1>
+
                 <p class="text-neutral-500 dark:text-neutral-300">
                   {{ .Params.description }}
                 </p>
