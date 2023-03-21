@@ -56,8 +56,9 @@ const te = {
   Input,
 };
 
-initTE(te);
+window.autoinit = [];
 window.te = te;
+initTE(te);
 
 export {
   Animate,

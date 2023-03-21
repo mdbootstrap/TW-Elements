@@ -123,9 +123,11 @@ const getComponentData = (component) => {
 };
 
 const initComponent = (component) => {
-  if (!component) {
+  if (!component || (component && window.autoinit.includes(component.NAME))) {
     return;
   }
+  window.autoinit && window.autoinit.push(component.NAME);
+
   const thisComponent = getComponentData(component);
   const isToggler = thisComponent?.isToggler || false;
 
