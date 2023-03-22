@@ -152,8 +152,8 @@ class Modal extends BaseComponent {
         }
       });
     });
-
-    this._showBackdrop(() => this._showElement(relatedTarget));
+    this._showElement(relatedTarget);
+    this._showBackdrop();
   }
 
   hide() {

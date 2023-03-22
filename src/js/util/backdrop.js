@@ -59,7 +59,7 @@ class Backdrop {
     const backdropClasses = this._config.backdropClasses || [
       "opacity-50",
       "transition-all",
-      "duration-100",
+      "duration-300",
       "ease-in-out",
       "fixed",
       "top-0",
