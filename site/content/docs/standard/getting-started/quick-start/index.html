@@ -41,10 +41,10 @@ menu:
     class="mt-0 mb-5 text-3xl font-semibold leading-normal"
     id="formats"
     data-te-spy-item>
-    Tailwind-Elements Formats
+    Tailwind Elements formats
   </h2>
   <p class="mb-6">
-    Tailwind-Elements, in order to meet the new, "modular" approach, allows the
+    Tailwind Elements, in order to meet the new, "modular" approach, allows the
     use of <code>ES</code> and <code>UMD</code> formats. These formats will
     differ in the way components are initialized and will be used in different
     cases.
@@ -73,11 +73,10 @@ menu:
   <p class="mb-6">
     In short, the way to initialize components. In order to allow bundlers to
     perform proper treeshaking, we have moved component initialization to the
-    <code>initTE</code> method. Tailwind-Elements in <code>UMD</code> format
-    will work without adding more elements, but will lack treeshaking.
-    Tailwind-Elements in <code>ES</code> format, on the other hand, allows
-    components to be used as separate modules, resulting in the much smaller
-    build size.
+    <code>initTE</code> method. Tailwind Elements in <code>UMD</code> format
+    will work without adding more elements, but will lack treeshaking. Tailwind
+    Elements in <code>ES</code> format, on the other hand, allows components to
+    be used as separate modules, resulting in the much smaller build size.
   </p>
 
   <h3 class="mb-3 font-bold">About the <code>initTE</code> method</h3>
@@ -227,7 +226,7 @@ menu:
 <p class="mt-6 mb-2">
   8. Add js files patterns that loads dynamic component classes to the content
   array inside the <code>tailwind.config.cjs</code>. Extend the default tailwind
-  classes by adding the <code>tailwind-elements</code> plugin.
+  classes by adding the <code>Tailwind Elements</code> plugin.
 </p>
 
 <div class="pt-2">
@@ -254,6 +253,13 @@ menu:
   component should have proper styles, and change the current image after arrow
   click or after some delay.
 </p>
+
+<div
+  class="my-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:border-white dark:bg-sky-900 ">
+  <strong>Note:</strong> You can init more than one component at once, for
+  example:
+  <code>initTE({ Carousel, Datepicker, Select, Timepicker });</code>
+</div>
 
 <div class="pt-2">
   {{< twsnippet/wrapper "index.html,main.js" >}}

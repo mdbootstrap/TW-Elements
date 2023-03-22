@@ -437,3 +437,74 @@
     }
   });
 </script>
+
+<!-- umd toggler -->
+<script>
+  const switchInputs = document.querySelectorAll("[data-te-umd-toggler]");
+
+  switchInputs.forEach((item) => {
+    const umdScriptEnabled = item.dataset.script === "javascript";
+
+    if (umdScriptEnabled) {
+      item.checked = true;
+    }
+
+    const tabs = [...item.parentNode.parentNode.querySelectorAll("a")];
+
+    // change umd name to javascript
+    const indexOfUmd = tabs.findIndex(
+      (item) => item.textContent.toLowerCase() === "umd"
+    );
+    if (indexOfUmd >= 0) {
+      tabs[indexOfUmd].textContent = "javascript";
+    }
+  });
+
+  switchInputs.forEach((item) =>
+    item.addEventListener("change", toggleScriptTab)
+  );
+
+  function getSortedScriptTabs(e, tabs) {
+    // check if javascript is first or umd - it's needed to reverse array to highlight proper tabs
+    const providedArray = e.target.value
+      .replace("[", "")
+      .replace("]", "")
+      .split(" ");
+    const isScriptFirst =
+      providedArray.indexOf("umd") > providedArray.indexOf("javascript");
+
+    // get script elements and reverse them if needed
+    const scripts = tabs.filter((item) => item.textContent === "javascript");
+    return isScriptFirst ? scripts : scripts.reverse();
+  }
+
+  function toggleScriptTab(e) {
+    const inputParent = e.target.parentNode.parentNode;
+    const tabs = [...inputParent.querySelectorAll("a")];
+
+    const sortedScriptTabs = getSortedScriptTabs(e, tabs);
+
+    // check if script tag is active to change pane that is visible
+    const activeTab = inputParent
+      .querySelector("[data-te-nav-active]")
+      .textContent.toLowerCase();
+    const isScriptCurrentTab =
+      activeTab === "javascript" || activeTab === "umd";
+
+    // change visibility of tabs and its content
+    e.target.checked
+      ? _toggleScriptTabs(...sortedScriptTabs, isScriptCurrentTab)
+      : _toggleScriptTabs(
+          ...sortedScriptTabs.slice().reverse(),
+          isScriptCurrentTab
+        );
+  }
+
+  function _toggleScriptTabs(tab1, tab2, isScriptCurrentTab) {
+    tab1.classList.toggle("hidden");
+    tab2.classList.toggle("hidden");
+
+    isScriptCurrentTab && tab2.click();
+  }
+</script>
+<!-- umd toggler -->
