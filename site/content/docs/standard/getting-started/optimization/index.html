@@ -27,18 +27,17 @@ menu:
 <div class="w-full">
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-    id="purgecss"
+    id="css-customization"
     data-te-spy-item>
-    PurgeCSS
+    CSS customization
   </h2>
 
-  <div
-    class="my-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:border-white dark:bg-sky-900 ">
-    <strong>Note:</strong> Tailwind is optimized to create as little CSS as
-    possible, so there is no need to do anything else other than configure
+  <p class="mb-6">
+    Tailwind is optimized to create as little CSS as possible, so there is no
+    need to do anything else other than configure
     <code>tailwind.config.cjs</code> file. However, if you still want to add
     <code>PurgeCSS</code> you can do so by following the steps below.
-  </div>
+  </p>
 
   <p class="mb-6">
     <a
@@ -52,80 +51,30 @@ menu:
   </p>
 
   <p class="mb-6">
-    Adding it to a project is very simple and can be divided into few steps.
-  </p>
-
-  <p class="mb-3 font-bold">Step 1</p>
-  <p>
-    Create a new project with Tailwind Elements. If you need step by step
-    tutorial on how to create a new vite app and connect it with Tailwind
-    Elements, go to the
-    <a
-      class="text-primary"
-      href="/docs/standard/getting-started/quick-start/#vite"
-      target="_blank"
-      >Getting Started Vite</a
-    >
-    page
+    If you are using <code>PostCSS</code> plugin, another possibility to further
+    optimize your app is to add <code>cssnano</code> at the end of the
+    <code>postcss.config.cjs</code>
   </p>
 
   <div class="pt-2">
     <!-- prettier-ignore -->
     {{< twsnippet/wrapper "terminal" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
-    mdb init tailwind-elements-free
+    npm install -D cssnano
     {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
   </div>
-
-  <p class="mb-3 font-bold">Step 2</p>
-  <p>Install <code>@fullhuman/postcss-purgecss</code> using NPM.</p>
-
-  <div class="pt-2">
-    <!-- prettier-ignore -->
-    {{< twsnippet/wrapper "terminal" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
-    npm install -D @fullhuman/postcss-purgecss
-    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
-  </div>
-
-  <p class="mb-3 font-bold">Step 3</p>
-  <p>
-    Configure your <code>package.json</code> file by adding a
-    <code>postbuild</code> script.
-  </p>
-
-  <div class="pt-2">
-    <!-- prettier-ignore -->
-    {{< twsnippet/wrapper "package.json" >}}{{< twsnippet/code active=true lang="json" >}}
-    "postbuild": "purgecss --css node-modules/mdb-vue-ui-kit/css/*.css --content dist/index.html dist/assets/*.js --output dist/assets",
-    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
-  </div>
-
-  <p class="mb-3 font-bold">Step 4</p>
-  <p>Edit <code>postcss.config.cjs</code> file in your root directory.</p>
 
   <div class="pt-2">
     <!-- prettier-ignore -->
     {{< twsnippet/wrapper "postcss.config.cjs" >}}{{< twsnippet/code active=true lang="js" >}}
-    const purgecss = require("@fullhuman/postcss-purgecss");
-
-    module.exports = () => ({
-      plugins:
-        process.env.NODE_ENV === "production"
-          ? [
-              purgecss({
-                content: ["dist/index.html", "dist/assets/*.js"],
-                css: ["dist/assets/*.css"],
-                output: "dist/assets",
-              }),
-            ]
-          : [],
-    });
+    module.exports = {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+        ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
+      }
+    }
     {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
   </div>
-
-  <p>
-    That's all! Now you can run <code>npm run build</code> to create the
-    production build with significantly less weight on .js and .css files.
-  </p>
 </div>
 
 <hr class="my-10" />
