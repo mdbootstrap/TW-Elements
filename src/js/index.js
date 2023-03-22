@@ -30,6 +30,7 @@ import Sidenav from "./navigation/sidenav";
 import Stepper from "./components/stepper";
 import Select from "./forms/select";
 import ChipsInput from "./components/chips";
+import Chart from "./data/charts";
 
 export {
   Animate,
@@ -53,4 +54,5 @@ export {
   Sidenav,
   Stepper,
   Input,
+  Chart,
 };
