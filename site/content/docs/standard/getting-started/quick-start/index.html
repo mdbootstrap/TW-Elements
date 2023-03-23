@@ -82,10 +82,15 @@ menu:
   <h3 class="mb-3 font-bold">About the <code>initTE</code> method</h3>
   <p>
     To use the initTE method, you need to import it from the
-    <code>tw-elements</code>, same as for components. If it finds a component
-    that should be inited but has not been passed as an argument (for example,
-    it finds a data atribute that would suggest that it should be initialized
-    automatically), it will display a warning in the console.
+    <code>tw-elements</code>, same as for components. You can add a second
+    parameter of type <code>Boolean</code> that acts as a debugger. By default
+    it's value is set to <code>false</code>, so it will fire only when you want
+    to. How does it work? If it finds a component that should be inited but has
+    not been passed as an argument (for example, it finds a data atribute that
+    would suggest that it should be initialized automatically), it will display
+    a warning in a console. We encourage to use it in the last invocation of
+    <code>initTE</code> method because it shows what inits are lacking at the
+    current moment.
   </p>
 </div>
 
@@ -392,7 +397,7 @@ menu:
   <!-- prettier-ignore -->
   {{< twsnippet/code lang="js" >}}
   import { Carousel, initTE } from "tw-elements";
-  initTE({ Carousel });
+  initTE({ Carousel }, true ); // set second parameter to true if you want to use a debugger
   {{< /twsnippet/code >}}
   {{< /twsnippet/wrapper >}}
 </div>
