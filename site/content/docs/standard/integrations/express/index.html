@@ -1,0 +1,276 @@
+---
+title: "Express integration"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Elements Express integration"
+subheading: ""
+seo_title: "Tailwind Elements integration with Express - Free Examples & Tutorial"
+description: "This article shows you how to integrate Express application with Tailwind Elements. Free download, AGPL license."
+image: "img/components-big.jpg"
+url: "docs/standard/integrations/express-integration/"
+menu:
+  integrations:
+    name: "Express"
+---
+
+<!-- Section: Basic example -->
+
+<section id="section-prerequisites">
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="prerequisites"
+    data-te-spy-item>
+    Prerequisites
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    Before starting the project make sure to install the following utilities:
+  </p>
+
+  <ul class="ml-4 list-disc">
+    <li>
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://nodejs.org/en/"
+        target="_blank"
+        >Node LTS</a
+      >
+      (14.x.x or higher recommended)
+    </li>
+    <li>
+      Code editor. We recommend
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://code.visualstudio.com/"
+        target="_blank"
+        >VSCode</a
+      >
+    </li>
+  </ul>
+
+  <hr class="my-5 dark:border-neutral-600" />
+
+  <!-- Section: Creating Express app-->
+  <section id="section-express-app">
+    <!-- Section title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      id="laravel-application"
+      data-te-spy-item>
+      Creating a new Express application
+    </h2>
+
+    <!-- Description -->
+    <p class="mb-5">
+      Let's create a fresh Express application so that we can go through all the
+      steps together.
+    </p>
+
+    <h2 class="text-lg font-bold">Step 1</h2>
+    <p class="mb-5">Create new project</p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        mkdir my-project
+        cd my-project
+        npm init
+        {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 2</h2>
+    <p class="mb-5">Install Express</p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npm install express
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 3</h2>
+    <p class="mb-5">
+      Create folder <code>views</code> (in root directory) and put inside
+      <code>index.ejs</code> file with classical HTML structure.
+    </p>
+  </section>
+
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">
+    In root directory create <code>index.js</code> file where will be located
+    your Express configuration.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "index.js" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        const express = require("express");
+        const app = express();
+        const port = 3000;
+        const path = require("path");
+
+        app.set("view engine", "ejs");
+        app.use(express.static("public"));
+        app.use(express.static("node_modules"));
+
+        app.get("/", (req, res) => {
+          res.render("index");
+        });
+
+        app.listen(port, () => {
+          console.log(`Example app listening on port ${port}`);
+        });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+  </div>
+
+  <hr class="mb-5 dark:border-neutral-600" />
+
+  <!-- Creating and configuring Tailwind & Tailwind Elements-->
+  <section id="section-tailwind">
+    <!-- Section title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      id="tailwind"
+      data-te-spy-item>
+      Installing and configuring Tailwind CSS and Tailwind Elements
+    </h2>
+
+    <!-- Description -->
+    <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+    <p class="mb-5">Install Tailwind CSS</p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+          npm install -D tailwindcss postcss autoprefixer
+          npx tailwindcss init -p
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 2</h2>
+    <p class="mb-5">
+      Add the paths to all of your template files in your
+      <code>tailwind.config.cjs</code> file.
+    </p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+          /** @type {import('tailwindcss').Config} */
+          module.exports = {
+          content: [
+            "./public/**/*.{html,js,css}",
+            "./src/**/*.{html,js,css}",
+            "./node_modules/tw-elements/dist/js/**/*.js",
+          ],
+          plugins: [require("tw-elements/dist/plugin")]
+          }
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 3</h2>
+    <p class="mb-5">
+      Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
+      your <code>input.css</code> file in root directory.
+    </p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "input.css" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="CSS" >}}
+          @tailwind base;
+          @tailwind components;
+          @tailwind utilities;
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 4</h2>
+    <p class="mb-5">
+      Start the Tailwind CLI build process. Run the CLI tool to scan your
+      template files for classes and build your CSS.
+    </p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+          npx tailwindcss -i ./src/input.css -o ./public/output.css --watch
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 5</h2>
+    <p class="mb-5">Install ejs.</p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plainext" type="terminal" >}}
+          npm install ejs
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 6</h2>
+    <p class="mb-5">
+      In <code>index.ejs</code> file, at the end of <code>head</code> link
+      Tailwind's CSS file.
+    </p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "index.ejs" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+      <link href="/output.css" rel="stylesheet" />
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 7</h2>
+    <p class="mb-5">
+      In <code>index.ejs</code> file, at the end of <code>body</code> link
+      script for Tailwind Elements JS file.
+    </p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "index.ejs" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+      <script
+        src="/tw-elements/dist/js/index.min.js"
+        type="text/javascript"></script>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+
+    <h2 class="text-lg font-bold">Step 8</h2>
+    <p class="mb-5">
+      Alternatively at the end of <code>body</code> in
+      <code>index.ejs</code> include <code>script</code> tag with linking to
+      Tailwind Elements CDN.
+    </p>
+
+    <div class="pb-4">
+      <!--prettier-ignore-->
+      {{< twsnippet/wrapper "index.ejs" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+      <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!--/Creating and configuring Tailwind & Tailwind Elements-->
+</section>
