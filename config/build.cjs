@@ -18,7 +18,7 @@ if (process.env.mode === "demo") {
 } else {
   // add disclaimer to js files
   const umdJsWithDisclaimer =
-    intro() +
+    intro(version) +
     fs.readFileSync(`./${distName}/js/tw-elements.umd.min.js`, {
       encoding: "utf-8",
     });
@@ -32,7 +32,7 @@ if (process.env.mode === "demo") {
   );
 
   const esJsWithDisclaimer =
-    intro() +
+    intro(version) +
     fs.readFileSync(`./${distName}/js/tw-elements.es.min.js`, {
       encoding: "utf-8",
     });
@@ -58,7 +58,7 @@ if (process.env.mode === "demo") {
 
   // add disclaimer to css file
   const cssWithDisclaimer =
-    intro() +
+    intro(version) +
     fs.readFileSync(`./${distName}/css/tw-elements.min.css`, {
       encoding: "utf-8",
     });

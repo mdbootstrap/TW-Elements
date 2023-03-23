@@ -1,4 +1,5 @@
-const intro = () => `/*!
+const intro = (version) => `/*!
+* Taliwind Elements ${version}
 * 
 * Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
 * Copyright © 2023 MDBootstrap.com
