@@ -1,5 +1,4 @@
 import SelectorEngine from "../dom/selector-engine";
-import { element } from "../util";
 import jqueryInit from "./jqueryInit";
 import {
   dropdownCallback,
@@ -10,8 +9,6 @@ import {
   rippleCallback,
   collapseCallback,
 } from "./autoinitCallbacks";
-
-const ATTR = "data-te-inited-componets-list";
 
 const defaultInitSelectors = {
   alert: {
@@ -125,39 +122,11 @@ const getComponentData = (component) => {
   return defaultInitSelectors[component.NAME] || null;
 };
 
-const getInitContainer = (attr) => {
-  return document.querySelector(`[${attr}]`) || null;
-};
-
-const initContainer = (attr) => {
-  let container = getInitContainer(attr);
-  if (container) {
-    return;
-  }
-  container = element("div");
-  container.setAttribute(attr, "");
-  document.body.appendChild(container);
-};
-
-const getInitContainerList = () => {
-  return getInitContainer(ATTR).dataset.teInitedComponetsList;
-};
-
-const setInitContainerValue = (componentName) => {
-  const container = getInitContainer(ATTR);
-  if (!container) {
-    return;
-  }
-  const containerCurrentValue = getInitContainerList();
-
-  container.setAttribute(ATTR, `${componentName} ${containerCurrentValue}`);
-};
-
 const initComponent = (component) => {
-  if (!component || getInitContainerList().includes(component.NAME)) {
+  if (!component || initiatedComponents?.includes(component.NAME)) {
     return;
   }
-  setInitContainerValue(component.NAME);
+  initiatedComponents?.push(component.NAME);
 
   const thisComponent = getComponentData(component);
   const isToggler = thisComponent?.isToggler || false;
@@ -197,8 +166,6 @@ const initTE = (components, checkOtherImports = true) => {
       return component;
     }
   });
-
-  initContainer(ATTR);
 
   init(componentList);
 };
