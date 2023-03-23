@@ -9,7 +9,11 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
+import initTE from "../../autoinit/index";
+import Input from "../../forms/input";
+
 export const getInputField = ({ inputID, labelText }, classes) => {
+  initTE({ Input }, false);
   return `<div data-te-chips-input-wrapper data-te-input-wrapper-init class="${classes.chipsInputWrapper}">
       <input
           type="text"

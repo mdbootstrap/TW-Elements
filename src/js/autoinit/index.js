@@ -1,4 +1,5 @@
 import SelectorEngine from "../dom/selector-engine";
+import { element } from "../util";
 import jqueryInit from "./jqueryInit";
 import {
   dropdownCallback,
@@ -9,6 +10,8 @@ import {
   rippleCallback,
   collapseCallback,
 } from "./autoinitCallbacks";
+
+const ATTR = "data-te-inited-componets-list";
 
 const defaultInitSelectors = {
   alert: {
@@ -27,7 +30,7 @@ const defaultInitSelectors = {
     isToggler: false,
   },
   chips: {
-    name: "Chips",
+    name: "ChipsInput",
     selector: "[data-te-chips-init]",
     isToggler: false,
   },
@@ -42,7 +45,7 @@ const defaultInitSelectors = {
     isToggler: false,
   },
   scrollspy: {
-    name: "Scrollspy",
+    name: "ScrollSpy",
     selector: "[data-te-spy='scroll']",
     isToggler: false,
   },
@@ -122,11 +125,39 @@ const getComponentData = (component) => {
   return defaultInitSelectors[component.NAME] || null;
 };
 
-const initComponent = (component) => {
-  if (!component || (component && window.autoinit.includes(component.NAME))) {
+const getInitContainer = (attr) => {
+  return document.querySelector(`[${attr}]`) || null;
+};
+
+const initContainer = (attr) => {
+  let container = getInitContainer(attr);
+  if (container) {
     return;
   }
-  window.autoinit && window.autoinit.push(component.NAME);
+  container = element("div");
+  container.setAttribute(attr, "");
+  document.body.appendChild(container);
+};
+
+const getInitContainerList = () => {
+  return getInitContainer(ATTR).dataset.teInitedComponetsList;
+};
+
+const setInitContainerValue = (componentName) => {
+  const container = getInitContainer(ATTR);
+  if (!container) {
+    return;
+  }
+  const containerCurrentValue = getInitContainerList();
+
+  container.setAttribute(ATTR, `${componentName} ${containerCurrentValue}`);
+};
+
+const initComponent = (component) => {
+  if (!component || getInitContainerList().includes(component.NAME)) {
+    return;
+  }
+  setInitContainerValue(component.NAME);
 
   const thisComponent = getComponentData(component);
   const isToggler = thisComponent?.isToggler || false;
@@ -151,14 +182,14 @@ const init = (components) => {
   components.forEach((component) => initComponent(component));
 };
 
-const initTE = (components) => {
+const initTE = (components, checkOtherImports = true) => {
   const componentList = Object.keys(defaultInitSelectors).map((element) => {
     const requireAutoinit = Boolean(
       document.body.querySelector(defaultInitSelectors[element].selector)
     );
     if (requireAutoinit) {
       const component = components[defaultInitSelectors[element].name];
-      if (!component) {
+      if (!component && checkOtherImports) {
         console.warn(
           `Please import ${defaultInitSelectors[element].name} from "tw-elements" package and add it to a object parameter inside "initTE" function`
         );
@@ -166,6 +197,9 @@ const initTE = (components) => {
       return component;
     }
   });
+
+  initContainer(ATTR);
+
   init(componentList);
 };
 

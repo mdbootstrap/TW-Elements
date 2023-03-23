@@ -19,7 +19,7 @@ export default defineConfig({
     lib: process.env.mode !== "demo" && {
       entry: resolve(
         __dirname,
-        `src/js/index${process.env.buildFile === "umd" ? ".umd" : ""}.js`
+        `src/js/index.${process.env.buildFile === "umd" ? "umd" : "es"}.js`
       ),
       formats: process.env.buildFile ? ["umd"] : ["es"],
       name: "te",

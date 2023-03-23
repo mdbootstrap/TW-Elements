@@ -56,8 +56,6 @@ const te = {
   Input,
 };
 
-window.autoinit = [];
-window.te = te;
 initTE(te);
 
 export {

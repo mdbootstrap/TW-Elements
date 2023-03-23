@@ -32,8 +32,6 @@ import Select from "./forms/select";
 import ChipsInput from "./components/chips";
 import initTE from "./autoinit/index";
 
-window.autoinit = [];
-
 export {
   Animate,
   Alert,
