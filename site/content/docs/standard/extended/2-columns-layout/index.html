@@ -1,14 +1,14 @@
 ---
-title: "{COMPONENT}"
+title: "2 columns layout"
 date: 2023-03-07T16:00:58+02:00
 draft: false
 main_title: "{COMPONENT}"
-subheading: "Tailwind CSS {COMPONENT}"
-seo_title: "Tailwind CSS {COMPONENT} - Free Examples & Tutorial"
-description: "Use responsive {COMPONENT} component with helper examples for {KEYWORDS/SECTIONS} {Free download, open-source license.}"
+subheading: "Tailwind CSS 2 columns layout"
+seo_title: "Tailwind CSS 2 columns layout - Free Examples & Tutorial"
+description: "Use a responsive 2 columns layout with Tailwind elements. A tutorial on how to simply create a 2 columns layout."
 image: "img/components-big.jpg"
 video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
-url: "docs/standard/extended/example"
+url: "docs/standard/extended/2-columns-layout"
 custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/cards/"
 ---
 
@@ -34,16 +34,36 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
     <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Basic example</h2>
 
     <!--Description-->
-    <p>Simple example of an address form on checkout.</p>
+    <p>
+      Use the <code>.grid</code> and <code>.grid-cols-2</code> classes to create
+      a 2 columns layout.
+    </p>
 
     <!--Section: Demo-->
     {{< twsnippet/demo id="example1" >}}
-    <div class="flex justify-center space-x-2">
-      <button
-        type="button"
-        class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
-        Button
-      </button>
+    <div class="space-x-2">
+      <div class="grid grid-cols-2 gap-4">
+        <div
+          class="flex h-12 w-full items-center justify-center bg-primary text-white">
+          1
+        </div>
+        <div
+          class="flex h-12 w-full items-center justify-center bg-primary text-white">
+          2
+        </div>
+        <div
+          class="flex h-12 w-full items-center justify-center bg-primary text-white">
+          3
+        </div>
+        <div
+          class="flex h-12 w-full items-center justify-center bg-primary text-white">
+          4
+        </div>
+        <div
+          class="flex h-12 w-full items-center justify-center bg-primary text-white">
+          5
+        </div>
+      </div>
     </div>
     {{< /twsnippet/demo >}}
     <!--Section: Demo-->
@@ -53,12 +73,12 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-        <div class="flex justify-center space-x-2">
-          <button
-            type="button"
-            class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
-            Button
-          </button>
+        <div class="grid grid-cols-2 gap-4">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
         </div>
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -71,7 +91,7 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
   <hr class="mb-10 dark:border-gray-600" />
 
   <!-- Section: Related resources -->
-  <section id="section-related-resources">
+  <section id="section-related-resources" class="hidden">
     <h2 class="text-[32px] font-medium" data-te-spy-item>Related resources</h2>
 
     <!--Chips with links-->

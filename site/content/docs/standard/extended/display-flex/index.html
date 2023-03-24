@@ -1,14 +1,14 @@
 ---
-title: "{COMPONENT}"
+title: "Display flex"
 date: 2023-03-07T16:00:58+02:00
 draft: false
-main_title: "{COMPONENT}"
-subheading: "Tailwind CSS {COMPONENT}"
-seo_title: "Tailwind CSS {COMPONENT} - Free Examples & Tutorial"
-description: "Use responsive {COMPONENT} component with helper examples for {KEYWORDS/SECTIONS} {Free download, open-source license.}"
+main_title: "Display flex"
+subheading: "Tailwind CSS Display flex"
+seo_title: "Tailwind CSS Display flex - Free Examples & Tutorial"
+description: "Use responsive display flex utilities with Tailwind Elements. A simple and quick way to create a flexible element."
 image: "img/components-big.jpg"
 video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
-url: "docs/standard/extended/example"
+url: "docs/standard/extended/display-flex"
 custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/cards/"
 ---
 
@@ -34,16 +34,12 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
     <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Basic example</h2>
 
     <!--Description-->
-    <p>Simple example of an address form on checkout.</p>
+    <p>Use <code>.flex</code> class to create a block-level flex container.</p>
 
     <!--Section: Demo-->
     {{< twsnippet/demo id="example1" >}}
-    <div class="flex justify-center space-x-2">
-      <button
-        type="button"
-        class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
-        Button
-      </button>
+    <div class="mx-3 mt-3">
+      <div class="flex bg-primary p-2 text-white">I'm a flexbox container!</div>
     </div>
     {{< /twsnippet/demo >}}
     <!--Section: Demo-->
@@ -53,13 +49,47 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-        <div class="flex justify-center space-x-2">
-          <button
-            type="button"
-            class="inline-block rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
-            Button
-          </button>
-        </div>
+        <div class="... flex">I'm a flexbox container!</div>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <p class="pt-5">
+      Use <code>.inline-flex</code> to create an inline flex container that
+      flows with text.
+    </p>
+
+    <!--Section: Demo-->
+    {{< twsnippet/demo id="example2" >}}
+    <div class="mx-3 mt-3">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam
+        doloribus distinctio neque aspernatur voluptate maiores aut quia, libero
+        nesciunt error enim labore facilis modi
+        <span class="inline-flex items-baseline bg-primary text-white">
+          <span>I'm an inline flexbox container!</span>
+        </span>
+        blanditiis vel exercitationem odit. Quibusdam dicta saepe minus
+        repudiandae veritatis temporibus in minima quasi. Vitae, neque.
+      </p>
+    </div>
+    {{< /twsnippet/demo >}}
+    <!--Section: Demo-->
+
+    <!--Section: Code-->
+    <section class="!visible hidden" data-te-collapse-item id="example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+        <p>
+          ...
+          <span class="... inline-flex items-baseline">
+            <span>I'm an inline flexbox container!</span>
+          </span>
+          ...
+        </p>
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -76,23 +106,31 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
 
     <!--Chips with links-->
     <div class="mt-5 mb-10 flex flex-wrap justify-start">
+      <!--Main-->
+
       <!--Extended docs-->
       <a
-        href="#"
+        href="https://tailwind-elements.com/docs/standard/extended/background-image/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Test</a
+        Background image</a
       >
 
       <a
-        href="#"
+        href="https://tailwind-elements.com/docs/standard/extended/visibility/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Test</a
+        Visibility</a
       >
 
       <a
-        href="#"
+        href="https://tailwind-elements.com/docs/standard/extended/display-block/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Test</a
+        Display block</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/display-none/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
+        Display none</a
       >
     </div>
 
