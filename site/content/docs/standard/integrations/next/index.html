@@ -49,83 +49,75 @@ menu:
       >
     </li>
   </ul>
+</section>
 
-  <div
-    class="mt-5 rounded-lg bg-primary-100 p-6 text-base text-info-800"
-    role="alert">
-    <p>
-      Due to the way the library is imported, components are not accessible via
-      JavaScript (only via data attributes).
-    </p>
-  </div>
+<hr class="my-5 dark:border-neutral-600" />
 
-  <hr class="my-5 dark:border-neutral-600" />
+<!-- Section: Creating Next app-->
+<section id="section-next-app">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="next-application"
+    data-te-spy-item>
+    Creating a new Next application
+  </h2>
 
-  <!-- Section: Creating Next app-->
-  <section id="section-next-app">
-    <!-- Section title-->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="next-application"
-      data-te-spy-item>
-      Creating a new Next application
-    </h2>
+  <!-- Description -->
+  <p class="mb-5">
+    Let's create a fresh Next application so that we can go through all the
+    steps together.
+  </p>
 
-    <!-- Description -->
-    <p class="mb-5">
-      Let's create a fresh Next application so that we can go through all the
-      steps together.
-    </p>
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Create new project</p>
 
-    <h2 class="text-lg font-bold">Step 1</h2>
-    <p class="mb-5">Create new project</p>
-
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
         npx create-next-app@latest
         cd my-project
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="mb-5 dark:border-neutral-600" />
+<hr class="mb-5 dark:border-neutral-600" />
 
-  <!-- Creating and configuring Tailwind & Tailwind Elements-->
-  <section id="section-tailwind">
-    <!-- Section title-->
-    <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-      id="tailwind"
-      data-te-spy-item>
-      Installing and configuring Tailwind CSS and Tailwind Elements
-    </h2>
+<!-- Creating and configuring Tailwind & Tailwind Elements-->
+<section id="section-tailwind">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="tailwind"
+    data-te-spy-item>
+    Installing and configuring Tailwind CSS and Tailwind Elements
+  </h2>
 
-    <!-- Description -->
-    <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-    <p class="mb-5">Install Tailwind CSS</p>
+  <!-- Description -->
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Install Tailwind CSS</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
         npm install -D tailwindcss postcss autoprefixer
         npx tailwindcss init -p
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 2</h2>
-    <p class="mb-5">
-      Add the paths to all of your template files in your
-      <code>tailwind.config.cjs</code> file.
-    </p>
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">
+    Add the paths to all of your template files in your
+    <code>tailwind.config.cjs</code> file.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
@@ -146,47 +138,46 @@ menu:
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 3</h2>
-    <p class="mb-5">
-      Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
-      your <code>./src/styles/global.css</code> file.
-    </p>
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
+    your <code>./src/styles/global.css</code> file.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "global.css" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "global.css" "" "mobile" >}}
         {{< twsnippet/code active=true lang="CSS" >}}
         @tailwind base;
         @tailwind components;
         @tailwind utilities;
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 4</h2>
-    <p class="mb-5">Install Tailwind Elements.</p>
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">Install Tailwind Elements.</p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
         npm install tw-elements
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 5</h2>
-    <p class="mb-5">
-      In <code>_app.js</code> file (located in
-      <code>src/pages/</code> directory) put lifecycle method where are you
-      going to dynamically importing library.
-    </p>
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">
+    In <code>_app.js</code> file (located in <code>src/pages/</code> directory)
+    put lifecycle method where are you going to dynamically importing library.
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           useEffect(() => {
             const importTE = async () => {
@@ -196,23 +187,97 @@ menu:
           }, []);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
-    </div>
+  </div>
 
-    <h2 class="text-lg font-bold">Step 6</h2>
-    <p class="mb-5">
-      Alternatively you can import Tailwind Elements by adding
-      <code>script</code> tag in <code>_app.js</code> file (located in
-      <code>src/pages/</code> directory).
-    </p>
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">
+    Alternatively you can import Tailwind Elements by adding
+    <code>script</code> tag in <code>_app.js</code> file (located in
+    <code>src/pages/</code> directory).
+  </p>
 
-    <div class="pb-4">
-      <!--prettier-ignore-->
-      {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-      <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-      {{< /twsnippet/code >}}
-      {{< /twsnippet/wrapper >}}
-    </div>
-  </section>
-  <!--/Creating and configuring Tailwind & Tailwind Elements-->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
 </section>
+<!--/Creating and configuring Tailwind & Tailwind Elements-->
+
+<hr class="my-5 dark:border-neutral-600" />
+
+<!--Initializing via JS-->
+<section id="section-initializing-js">
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="initializing-js"
+    data-te-spy-item>
+    Initializing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have autoinit which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Create standalone component. Import library inside.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Component.js" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import * as te from "tw-elements";
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Initialize component in lifecycle hook.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { useEffect } from "react";
+
+        useEffect(() => {
+          const options = {
+            format: "dd-mm-yyyy",
+          };
+          const myDatepicker = new te.Datepicker(
+            document.getElementById("myDatepicker"),
+            options
+          );
+        }, []);
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    Import client-side component wrapping it into dynamic import with
+    <code>ssr</code> object set to <code>false</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+      import dynamic from "next/dynamic";
+
+      ...
+      const Component = dynamic(() => import("./component"), {
+        ssr: false,
+      });
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Initializing via JS-->
