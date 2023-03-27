@@ -1,16 +1,16 @@
 ---
-title: "Next integration"
+title: "Remix integration"
 date: 2021-04-29T16:00:58+02:00
 draft: false
-main_title: "Tailwind Elements Next integration"
+main_title: "Tailwind Elements Remix integration"
 subheading: ""
-seo_title: "Tailwind Elements integration with Next - Free Examples & Tutorial"
-description: "This article shows you how to integrate Next application with Tailwind Elements. Free download, AGPL license."
+seo_title: "Tailwind Elements integration with Remix - Free Examples & Tutorial"
+description: "This article shows you how to integrate Remix application with Tailwind Elements. Free download, AGPL license."
 image: "img/components-big.jpg"
-url: "docs/standard/integrations/next-integration/"
+url: "docs/standard/integrations/remix-integration/"
 menu:
   integrations:
-    name: "Next"
+    name: "Remix"
 ---
 
 <!-- Section: Basic example -->
@@ -53,19 +53,19 @@ menu:
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!-- Section: Creating Next app-->
-<section id="section-next-app">
+<!-- Section: Creating Remix app-->
+<section id="section-remix-app">
   <!-- Section title-->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-    id="next-application"
+    id="remix-application"
     data-te-spy-item>
-    Creating a new Next application
+    Creating a new Remix application
   </h2>
 
   <!-- Description -->
   <p class="mb-5">
-    Let's create a fresh Next application so that we can go through all the
+    Let's create a fresh Remix application so that we can go through all the
     steps together.
   </p>
 
@@ -76,7 +76,7 @@ menu:
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npx create-next-app@latest
+        npx create-remix@latest my-project
         cd my-project
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -95,8 +95,26 @@ menu:
     Installing and configuring Tailwind CSS and Tailwind Elements
   </h2>
 
-  <!-- Description -->
   <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">
+    Enable built-in Tailwind CSS support in Remix. Set the
+    <code>unstable_tailwind</code> feature flag in your
+    <code>remix.config.js</code> file. Eventually this will become stable and
+    won't be necessary.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "remix.config.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        future: {
+          unstable_tailwind: true,
+        },
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="mt-5 text-lg font-bold">Step 2</h2>
   <p class="mb-5">Install Tailwind CSS</p>
 
   <div class="pb-4">
@@ -109,7 +127,7 @@ menu:
         {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 2</h2>
+  <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
     <code>tailwind.config.cjs</code> file.
@@ -122,13 +140,7 @@ menu:
         /** @type {import('tailwindcss').Config} */
         module.exports = {
         content: [
-            "./app/**/*.{js,ts,jsx,tsx}",
-            "./pages/**/*.{js,ts,jsx,tsx}",
-            "./components/**/*.{js,ts,jsx,tsx}",
-            "./node_modules/tw-elements/dist/js/**/*.js"
-
-            // Or if using `src` directory:
-            "./src/**/*.{js,ts,jsx,tsx}",
+            "./app/**/*.{js,jsx,ts,tsx}"
             "./node_modules/tw-elements/dist/js/**/*.js"
         ],
         theme: {
@@ -142,13 +154,13 @@ menu:
 
   <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
-    Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
-    your <code>./src/styles/global.css</code> file.
+    Create a <code>./app/tailwind.css</code> file and add the
+    <code>@tailwind</code> directives for each of Tailwind’s layers.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "global.css" "" "mobile" >}}
+    {{< twsnippet/wrapper "tailwind.css" "" "mobile" >}}
         {{< twsnippet/code active=true lang="CSS" >}}
         @tailwind base;
         @tailwind components;
@@ -158,6 +170,25 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">
+    Import the newly-created <code>./app/tailwind.css</code> file in your
+    <code>./app/root.jsx</code> file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        import stylesheet from "~/tailwind.css";
+
+        export const links: LinksFunction = () => [
+          { rel: "stylesheet", href: stylesheet },
+        ];
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 5</h2>
   <p class="mb-5">Install Tailwind Elements.</p>
 
   <div class="pb-4">
@@ -169,45 +200,29 @@ menu:
         {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 5</h2>
+  <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    In <code>_app.js</code> file (located in <code>src/pages/</code> directory)
-    put lifecycle method where are you going to dynamically importing library.
+    In <code>root.jsx</code> file (located in <code>app/</code> directory) put
+    lifecycle method where are you going to dynamically importing library.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
+          import { useEffect } from "react";
+
           useEffect(() => {
             const importTE = async () => {
-              (await import("tw-elements")).default;
+              await import("tw-elements");
             };
             importTE();
           }, []);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
   </div>
-
-  <h2 class="text-lg font-bold">Step 6</h2>
-  <p class="mb-5">
-    Alternatively you can import Tailwind Elements by adding
-    <code>script</code> tag in <code>_app.js</code> file (located in
-    <code>src/pages/</code> directory).
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="HTML" >}}
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
 </section>
 <!--/Creating and configuring Tailwind & Tailwind Elements-->
-
-<hr class="my-5 dark:border-neutral-600" />
 
 <!--Initializing via JS-->
 <section id="section-initializing-js">
@@ -221,17 +236,21 @@ menu:
 
   <!-- Description -->
   <p class="mb-5">
-    By default all components have autoinit which means they are initialized by
+    By default all components have auto init which means they are initialized by
     data attributes. But if you want to make init by JavaScript - there is also
     possibility to do that.
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Create standalone component. Import library inside.</p>
+  <p class="mb-5">
+    Create standalone component which will has a name with
+    <code>Component.client.jsx</code>. It shows framework that should not render
+    this component in a server-side mode. Then import library.
+  </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
         import * as te from "tw-elements";
       {{< /twsnippet/code >}}
@@ -243,7 +262,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
         import { useEffect } from "react";
 
@@ -261,21 +280,33 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 3</h2>
-  <p class="mb-5">
-    Import client-side component wrapping it into dynamic import with
-    <code>ssr</code> object set to <code>false</code>.
-  </p>
+  <p class="mb-5">Install <code>remix-utils</code>.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npm i remix-utils
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">Import client-side component.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-      import dynamic from "next/dynamic";
+      import { ClientOnly } from "remix-utils";
+      import Component from "./components/Component.client";
 
       ...
-      const Component = dynamic(() => import("./component"), {
-        ssr: false,
-      });
+      export default function App() {
+        return (
+          ...
+    <ClientOnly fallback="{null}">{() => <Component />}</ClientOnly>
+    ); }
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
