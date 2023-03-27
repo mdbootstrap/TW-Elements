@@ -25,29 +25,34 @@ Tailwind Elements is a huge collection of free, interactive components for Tailw
    </tbody>
   </table>
 
-------
+---
+
 ## Table of Contents
+
 - [Table of Contents](#table-of-contents)
 - [Community](#community)
 - [Coming soon](#coming-soon)
 - [Components](#components)
 - [Design blocks](#design-blocks)
 - [Installation](#installation)
- 
-------
+
+---
+
 ## Community
 
 Tailwind Elements is a **community-driven** project.
 We invite you to **track our [live progress 👁️](https://github.com/orgs/mdbootstrap/projects/1)** on the upcoming release.
 
 In the meantime you can also:
+
 - Motivate us with some [words of encouragament ❤️](https://github.com/mdbootstrap/Tailwind-Elements/discussions/categories/kind-words-general-feedback)
 - Share your [ideas & feature requests 💡](https://github.com/mdbootstrap/Tailwind-Elements/discussions/categories/share-ideas-request-features)
 - Aks for help & help others in our [community support 🙏](https://github.com/mdbootstrap/Tailwind-Elements/discussions/categories/support-from-community)
 - **Engage, discuss & have fun in our [open-source community 💬](https://github.com/mdbootstrap/Tailwind-Elements/discussions)**
 
 **If you want to help the project grow, start by simply sharing it with your peers!**
-- [Share via Dev.to](https://dev.to/new?prefill=---%0Atitle%3A%20500+%20open-source%20components%20for%20TailwindCSS%20%0Apublished%3A%20true%0Atags%3Atailwindcss%0A---%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20[![Tailwind%20components](https://tailwind-elements.com/img/components-big.jpg)](https://tailwind-elements.com/)%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20I%27d%20like%20to%20share%20my%20latest%20discovery%20with%20you.%20\n%20%20%20%20%20%20%20%20[Tailwind%20Elements](https://tailwind-elements.com/)%20is%20currently,%20the%20most%20popular%203rd%20party%20UI%20kit%20for%20TailwindCSS%20with%20over%2010k%20Github%20stars.%20%20%20%20%20%20%20%20[![GitHub%20Repo%20stars](https://img.shields.io/github/stars/mdbootstrap/tailwind-elements?style=social)](https://github.com/mdbootstrap/Tailwind-Elements/)%20%20%20%20%20%20%20%20It%27s%20a%20**huge%20collection%20of%20stunning%20components**%20made%20with%20attention%20to%20the%20smallest%20detail.%20%20%20%20%20%20%20%20%20Forms,%20cards,%20buttons,%20and%20hundreds%20of%20others.%20%20%20%20%20%20%20%20%20All%20components%20have%20**dark%20mode**%20and%20very%20intuitive%20**theming%20options**.%20%20%20%20%20%20%20%20The%20project%20is%20supported%20by%20an%20[engaged%20community%20on%20GitHub](https://github.com/mdbootstrap/Tailwind-Elements/discussions),%20I%20recommend%20you%20check%20it%20out%20and%20join%20one%20of%20the%20many%20discussions.%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20You%20will%20find%20installation%20instructions%20[here](https://tailwind-elements.com/docs/getting-started/installation),%20and%20you%20can%20track%20the%20progress%20of%20the%20project%20live%20%20%20%20%20%20%20%20%20[here](https://tailwind-elements.com/docs/standard/getting-started/changelog/).%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20The%20project%20was%20kickstarted%20by%20@MDBootstrap,%20a%20group%20of%20open-source%20developers%20behind%20[MDB%20UI%20Kit](https://github.com/mdbootstrap/mdb-ui-kit)%20-%20a%20high-quality%20UI%20kit%20for%20Bootstrap,%20and%20also%20behind%20[MDB%20GO](https://mdbgo.com/)%20-%20hosting%20and%20deployment%20platform.%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20I%20highly%20recommend%20you%20to%20check%20it%20out!%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20%7B%25%20link%20mdbootstrap/tailwind-elements-breakthrough-version-is-here-59hh%20%25%7D%20%20%20%20%20%20%20%20\n)
+
+- [Share via Dev.to](<https://dev.to/new?prefill=---%0Atitle%3A%20500+%20open-source%20components%20for%20TailwindCSS%20%0Apublished%3A%20true%0Atags%3Atailwindcss%0A---%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20[![Tailwind%20components](https://tailwind-elements.com/img/components-big.jpg)](https://tailwind-elements.com/)%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20I%27d%20like%20to%20share%20my%20latest%20discovery%20with%20you.%20\n%20%20%20%20%20%20%20%20[Tailwind%20Elements](https://tailwind-elements.com/)%20is%20currently,%20the%20most%20popular%203rd%20party%20UI%20kit%20for%20TailwindCSS%20with%20over%2010k%20Github%20stars.%20%20%20%20%20%20%20%20[![GitHub%20Repo%20stars](https://img.shields.io/github/stars/mdbootstrap/tailwind-elements?style=social)](https://github.com/mdbootstrap/Tailwind-Elements/)%20%20%20%20%20%20%20%20It%27s%20a%20**huge%20collection%20of%20stunning%20components**%20made%20with%20attention%20to%20the%20smallest%20detail.%20%20%20%20%20%20%20%20%20Forms,%20cards,%20buttons,%20and%20hundreds%20of%20others.%20%20%20%20%20%20%20%20%20All%20components%20have%20**dark%20mode**%20and%20very%20intuitive%20**theming%20options**.%20%20%20%20%20%20%20%20The%20project%20is%20supported%20by%20an%20[engaged%20community%20on%20GitHub](https://github.com/mdbootstrap/Tailwind-Elements/discussions),%20I%20recommend%20you%20check%20it%20out%20and%20join%20one%20of%20the%20many%20discussions.%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20You%20will%20find%20installation%20instructions%20[here](https://tailwind-elements.com/docs/getting-started/installation),%20and%20you%20can%20track%20the%20progress%20of%20the%20project%20live%20%20%20%20%20%20%20%20%20[here](https://tailwind-elements.com/docs/standard/getting-started/changelog/).%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20The%20project%20was%20kickstarted%20by%20@MDBootstrap,%20a%20group%20of%20open-source%20developers%20behind%20[MDB%20UI%20Kit](https://github.com/mdbootstrap/mdb-ui-kit)%20-%20a%20high-quality%20UI%20kit%20for%20Bootstrap,%20and%20also%20behind%20[MDB%20GO](https://mdbgo.com/)%20-%20hosting%20and%20deployment%20platform.%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20I%20highly%20recommend%20you%20to%20check%20it%20out!%20%20%20%20%20%20%20%20\n%20%20%20%20%20%20%20%20%7B%25%20link%20mdbootstrap/tailwind-elements-breakthrough-version-is-here-59hh%20%25%7D%20%20%20%20%20%20%20%20\n>)
 - [Share via Twitter](https://twitter.com/intent/tweet?text=500%2B%20open-source%20components%20for%20%23TailwindCSS%20%F0%9F%A4%A9%0Ahttps%3A//tailwind-elements.com/%0A%0ACongrats%20%40MDBootstrap%20%40ascensus_mdb%20%40dawidadach%20for%20this%20awesome%20design%20collection!%0A%0AI%20will%20keep%20using%20it%20in%20my%20projects%20for%20sure!%0A%0A%23uiux%20%23webdevelopment%20%23HTML%20%23CSS%20%23design%20%23Webdesign%20%23programming%20)
 - [Share via Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A//tailwind-elements.com)
 - [Share via LinkedIn](http://www.linkedin.com/shareArticle?url=https%3A%2F%2Ftailwind-elements.com%2F&title=500%2B%20open-source%20components%20for%20TailwindCSS)
@@ -58,11 +63,12 @@ In the meantime you can also:
 - [Share via Weibo](https://service.weibo.com/share/share.php?url=https://tailwind-elements.com/&title=500+%20open-source%20components%20for%20TailwindCSS)
 - [Share via Hackernews](https://news.ycombinator.com/submitlink?u=https://tailwind-elements.com/&t=500+%20open-source%20components%20for%20TailwindCSS)
 - [Share via Gmail](https://mail.google.com/mail/?view=cm&to=%7Bemail_address%7D&su=Check%20out%20this%20project&body=Hello,%0AI%27m%20reaching%20out%20to%20recommend%20my%20latest%20discovery.%0A%0AIt%27s%20over%20500+%20open-source%20components%20for%20TailwindCSS%20with%20excellent%20support%20and%20an%20awesome%20community:%0Ahttps://tailwind-elements.com/%0A%0AI%20hope%20you%20will%20find%20it%20useful.%0ABest%20regards,&bcc=%7Bemail_address%7D&cc=%7Bemail_address%7D)
-- [Share via email](mailto:?subject=Check%20out%20this%20project&amp;body=Hello%2C%0AI'm%20reaching%20out%20to%20recommend%20my%20latest%20discovery.%0A%0AIt's%20over%20500%20%20open-source%20components%20for%20Tailwind%20CSS%20with%20excellent%20support%20and%20an%20awesome%20community%3A%0Ahttps%3A%2F%2Ftailwind-elements.com%2F%0A%0AI%20hope%20you%20will%20find%20it%20useful.%0ABest%20regards%2C)
+- [Share via email](mailto:?subject=Check%20out%20this%20project&body=Hello%2C%0AI'm%20reaching%20out%20to%20recommend%20my%20latest%20discovery.%0A%0AIt's%20over%20500%20%20open-source%20components%20for%20Tailwind%20CSS%20with%20excellent%20support%20and%20an%20awesome%20community%3A%0Ahttps%3A%2F%2Ftailwind-elements.com%2F%0A%0AI%20hope%20you%20will%20find%20it%20useful.%0ABest%20regards%2C)
 
-Thank you! 
+Thank you!
 
-------
+---
+
 ## Coming soon
 
 Check out the upcoming features - make sure to **join the waiting list** in order to **get early access**!
@@ -86,7 +92,8 @@ Check out the upcoming features - make sure to **join the waiting list** in orde
   </tr>
 </table>
 
-------
+---
+
 ## Components
 
 A collection of stunning components made with attention to the smallest details. Forms, cards, buttons, and hundreds of others – in Tailwind Elements you will find all the essential elements necessary for every project.
@@ -191,7 +198,7 @@ A collection of stunning components made with attention to the smallest details.
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/avatar/">
-            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/avatar.webp">
         </a>
     </td>
     <td>
@@ -260,7 +267,7 @@ A collection of stunning components made with attention to the smallest details.
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/link/">
-            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/link.webp">
         </a>
     </td>
     <td>
@@ -278,12 +285,12 @@ A collection of stunning components made with attention to the smallest details.
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/notifications/">
-            <img alt="Tailwind CSS Time picker" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind CSS Time picker" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/notification.webp">
         </a>
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/paragraphs/">
-            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind CSS Tables" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/paragraphs.webp">
         </a>
     </td>
     <td>
@@ -324,12 +331,12 @@ A collection of stunning components made with attention to the smallest details.
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/scroll-back-to-top-button/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/scroll-back-to-top.webp">
         </a>
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/social-buttons/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/social-media.webp">
         </a>
     </td>
     <td>
@@ -347,7 +354,7 @@ A collection of stunning components made with attention to the smallest details.
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/timeline/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/timeline.webp">
         </a>
     </td>
     <td>
@@ -370,12 +377,12 @@ A collection of stunning components made with attention to the smallest details.
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/video/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/video.webp">
         </a>
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/components/video-carousel/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/video-carousel.webp">
         </a>
     </td>
     <td>
@@ -393,17 +400,17 @@ A collection of stunning components made with attention to the smallest details.
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/forms/file-input/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/plugins/file-upload.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/file-upload.webp">
         </a>
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/forms/input-group/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/input-group.webp">
         </a>
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/forms/login-form/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/login-form.webp">
         </a>
     </td>
   </tr>
@@ -426,7 +433,7 @@ A collection of stunning components made with attention to the smallest details.
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/forms/registration-form/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/registration-form.webp">
         </a>
     </td>
   </tr>
@@ -449,7 +456,7 @@ A collection of stunning components made with attention to the smallest details.
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/forms/switch/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/switch.webp">
         </a>
     </td>
   </tr>
@@ -462,7 +469,7 @@ A collection of stunning components made with attention to the smallest details.
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/forms/textarea/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/textarea.webp">
         </a>
     </td>
     <td>
@@ -472,7 +479,7 @@ A collection of stunning components made with attention to the smallest details.
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/methods/ripple/">
-            <img alt="Tailwind Component" src="https://mdbootstrap.com/img/tw-demo/components.webp">
+            <img alt="Tailwind Component" src="https://mdbootstrap.com/docs/standard/pro/demo/assets/images/ripple.webp">
         </a>
     </td>
   </tr>
@@ -507,8 +514,8 @@ A collection of stunning components made with attention to the smallest details.
   
 </table>
 
+---
 
-------
 ## Design blocks
 
 Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks examples such as Teams, services, projects, faq, and many more.
@@ -650,8 +657,8 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
   </tr>
 </table>
 
+---
 
-------
 ## Installation
 
 ##### NPM
