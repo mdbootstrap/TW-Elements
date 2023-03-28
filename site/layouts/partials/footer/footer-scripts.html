@@ -327,16 +327,34 @@
 
     if (menuSection.length == 0) return;
 
-    menuSection.forEach((section) =>
-      section.classList.add(...scrollspyClasses)
-    );
+    menuSection.forEach((section) => {
+      section.classList.add(...scrollspyClasses);
+    });
 
     // SmoothScroll
     function teScrollSpyTo(event) {
       event.preventDefault();
       const hash = event.target.getAttribute("href");
       const target = document.getElementById(hash.substring(1));
-      // console.log(target);
+      console.log(target);
+      window.scroll({
+        top: target.offsetTop,
+        behavior: "smooth",
+      });
+
+      if (history.pushState) {
+        history.pushState(null, null, hash);
+      } else {
+        location.hash = hash;
+      }
+    }
+
+    // SmoothScroll
+    function teScrollSpyTo(event) {
+      event.preventDefault();
+      const hash = event.target.getAttribute("href");
+      const target = document.getElementById(hash.substring(1));
+
       window.scroll({
         top: target.offsetTop,
         behavior: "smooth",
@@ -363,19 +381,25 @@
     // for window scrolldown event
     window.addEventListener("scroll", () => {
       const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
-      let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
+      let mainSection = [
+        ...document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM),
+      ].filter((section) => section.getBoundingClientRect().y !== 0);
+
+      let filteredMenuSection = [
+        ...document.querySelectorAll("menu li"),
+      ].filter((section) => section.getBoundingClientRect().y !== 0);
 
       mainSection.forEach((header, i) => {
-        let rect = header.getBoundingClientRect().bottom;
+        let rect = header.getBoundingClientRect().y;
 
-        if (rect < 100) {
-          menuSection.forEach((menuElement) =>
+        if (rect <= 100) {
+          filteredMenuSection.forEach((menuElement) =>
             menuElement.removeAttribute("data-te-spy-active")
           );
-          if (!menuSection[i]) {
+          if (!filteredMenuSection[i]) {
             return;
           }
-          menuSection[i].setAttribute("data-te-spy-active", "");
+          filteredMenuSection[i].setAttribute("data-te-spy-active", "");
         }
       });
     });
