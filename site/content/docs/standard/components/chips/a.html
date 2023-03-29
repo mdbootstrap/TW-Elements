@@ -16,8 +16,8 @@
     <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
 
     <p>
-      Elements with the
-      <code class="text-red-500 dark:text-red-300">data-te-chips-init</code>
+      Elements with the <code>data-te-chip-init</code> and
+      <code>data-te-chips-init</code>
       attribute will be automatically initialized - you can set all available
       options with data attributes. For ES format, you must first import and
       call the <code>initTE</code> method.
@@ -75,14 +75,21 @@
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
           import {
+            Chip,
             ChipsInput,
             initTE,
           } from "tw-elements";
           
-          initTE({ ChipsInput });
+          initTE({ Chip, ChipsInput });
         
           const chipsInput = new ChipsInput(
             document.getElementById("chipsInputId"),
+            options,
+            classes
+          );
+
+          const chip = new Chip(
+            document.getElementById("chipId"),
             options,
             classes
           );
@@ -91,6 +98,12 @@
         {{< twsnippet/code lang="js" >}}
           const chipsInput = new te.ChipsInput(
             document.getElementById("chipsInputId"),
+            options,
+            classes
+          );
+
+          const chip = new te.Chip(
+            document.getElementById("chipId"),
             options,
             classes
           );
@@ -117,8 +130,8 @@
         {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-        import { ChipsInput, initTE } from "tw-elements";
-        initTE({ ChipsInput });
+        import { Chip, ChipsInput, initTE } from "tw-elements";
+        initTE({ Chip, ChipsInput });
         {{< /twsnippet/code >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code lang="js" >}}

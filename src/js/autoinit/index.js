@@ -31,6 +31,11 @@ const defaultInitSelectors = {
     selector: "[data-te-chips-init]",
     isToggler: false,
   },
+  chip: {
+    name: "Chip",
+    selector: "[data-te-chip-init]",
+    isToggler: false,
+  },
   datepicker: {
     name: "Datepicker",
     selector: "[data-te-datepicker-init]",

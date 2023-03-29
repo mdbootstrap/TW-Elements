@@ -30,6 +30,7 @@ import Sidenav from "./navigation/sidenav";
 import Stepper from "./components/stepper";
 import Select from "./forms/select";
 import ChipsInput from "./components/chips";
+import Chip from "./components/chips/chip";
 import initTE from "./autoinit/index";
 
 export {
@@ -37,6 +38,7 @@ export {
   Alert,
   Button,
   ChipsInput,
+  Chip,
   Dropdown,
   Carousel,
   Collapse,
