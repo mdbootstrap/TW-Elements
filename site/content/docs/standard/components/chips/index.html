@@ -12,6 +12,7 @@ url: "docs/standard/components/chips/"
 menu:
   components:
     name: "Chips"
+autoinits: "ChipsInput"
 ---
 
 <!-- Section: Basic example -->
@@ -131,7 +132,7 @@ menu:
   <section class="!visible hidden" data-te-collapse-item id="example1">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
+      {{< twsnippet/code active=true lang="HTML,javascript" >}}
       <div class="flex w-full flex-wrap justify-center">
         <div
           data-te-chip-init
@@ -221,6 +222,15 @@ menu:
           </span>
         </div>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Ripple,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Ripple });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -522,7 +532,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example2">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <div class="flex w-full flex-wrap justify-center">
         <div
@@ -713,6 +723,15 @@ menu:
         </div>
       </div>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Ripple,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Ripple });
+      {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
@@ -747,7 +766,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example3">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <div class="flex w-full flex-wrap justify-center">
         <div
@@ -755,6 +774,15 @@ menu:
           data-te-chips-placeholder
           class="mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"></div>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        ChipsInput,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ ChipsInput });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -788,7 +816,7 @@ menu:
   <!-- prettier-ignore -->
   <section class="!visible hidden" data-te-collapse-item id="example4">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,JavaScript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <div class="flex w-full flex-wrap justify-center">
         <div
@@ -797,6 +825,28 @@ menu:
           class="mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"></div>
       </div>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+        import {
+          ChipsInput,
+          initTE,
+        } from "tw-elements";
+        
+        initTE({ ChipsInput });
+
+        const chipsInitial = document.querySelector("#chips-initial");
+
+        const chipsInitialInstance = new ChipsInput(chipsInitial, {
+          initialValues: [
+            { tag: "MDBReact" },
+            { tag: "MDBAngular" },
+            { tag: "MDBVue" },
+            { tag: "MDB5" },
+            { tag: "MDB" },
+          ],
+        });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
         const chipsInitial = document.querySelector("#chips-initial");
 
@@ -845,7 +895,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example5">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <div class="flex w-full flex-wrap justify-center">
         <div
@@ -855,10 +905,14 @@ menu:
           data-te-editable="true"></div>
       </div>
       {{< /twsnippet/code >}}
-
+      <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
-      const chipsInitialNew = document.querySelector("#chips-initial"); const
-      newChipsNew = new te.ChipsInput(chipsInitialNew, { editable: true, });
+      import {
+        ChipsInput,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ ChipsInput });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>

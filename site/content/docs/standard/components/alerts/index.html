@@ -12,6 +12,7 @@ url: "docs/standard/components/alerts/"
 menu:
   components:
     name: "Alerts"
+autoinits: "Alert"
 ---
 
 <!-- Section: Basic Example -->
@@ -793,7 +794,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example5">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <div
         class="mb-3 hidden w-full items-center rounded-lg bg-warning-100 py-5 px-6 text-base text-warning-800 data-[te-alert-show]:inline-flex"
@@ -822,6 +823,15 @@ menu:
           </span>
         </button>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Alert,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Alert });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>

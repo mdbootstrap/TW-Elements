@@ -141,7 +141,7 @@
                 </p>
 
                 {{ if $autoinits }}
-                  <div class="my-4 flex text-sm">
+                  <div class="my-4 flex flex-wrap text-sm">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -156,7 +156,15 @@
                     </svg>
 
                     <strong class="mr-2">Required ES init:</strong>
-                    {{ $autoinits }}
+                    {{ $autoinits }} <code class="ml-1">*</code>
+                    <div class="mt-6 w-full">
+                      <strong><code>*</code> UMD</strong> autoinits are enabled
+                      by default. This means that you don't need to initialize
+                      the component manually. However if you are using Tailwind
+                      Elements <strong>ES</strong> format then you should pass
+                      the <strong>{{ $autoinits }}</strong> component to the
+                      <code>initTE</code> method.
+                    </div>
                   </div>
                 {{ end }}
 

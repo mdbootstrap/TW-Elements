@@ -13,6 +13,7 @@ url: "docs/standard/navigation/scrollspy/"
 menu:
   navigation:
     name: "Scrollspy"
+autoinits: "Scrollspy"
 ---
 
 <!-- Section: Basic example -->
@@ -207,7 +208,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example1">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <div class="grid grid-cols-3">
         <div class="col-span-2">
@@ -375,6 +376,15 @@ menu:
           <!-- Scrollspy -->
         </div>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Scrollspy,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Scrollspy });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>

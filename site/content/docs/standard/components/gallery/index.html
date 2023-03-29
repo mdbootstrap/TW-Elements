@@ -392,7 +392,8 @@ menu:
     data-te-carousel-init
     data-te-carousel-slide>
     <div
-      class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0">
+      class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+      data-te-carousel-indicators>
       <button
         type="button"
         data-te-target="#carouselExampleCaptions"
@@ -529,7 +530,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example3">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <div
         id="carouselExampleCaptions"
@@ -537,7 +538,8 @@ menu:
         data-te-carousel-init
         data-te-carousel-slide>
         <div
-          class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0">
+          class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+          data-te-carousel-indicators>
           <button
             type="button"
             data-te-target="#carouselExampleCaptions"
@@ -675,6 +677,15 @@ menu:
           >
         </button>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Carousel,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Carousel });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>

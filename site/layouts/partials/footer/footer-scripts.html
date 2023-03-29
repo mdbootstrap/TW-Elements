@@ -443,7 +443,7 @@
   const switchInputs = document.querySelectorAll("[data-te-umd-toggler]");
 
   switchInputs.forEach((item) => {
-    const umdScriptEnabled = item.dataset.script === "javascript";
+    const umdScriptEnabled = item.dataset.script.toLowerCase() === "javascript";
 
     if (umdScriptEnabled) {
       item.checked = true;

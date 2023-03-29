@@ -15,7 +15,7 @@
     <p class="mb-5">
       <strong>Timepicker</strong> allows to select a time and display it on the
       selected output. It can be initialized automatically by adding
-      <code>data-te-input-wrapper-init</code> attribute, or manually with JS.
+      <code>data-te-timepicker-init</code> attribute, or manually with JS.
     </p>
 
     <hr class="mb-5 dark:border-gray-600" />
@@ -23,10 +23,13 @@
     <h4 class="my-3 text-lg font-bold">Via data attributes</h4>
 
     <p>
-      Add <code>data-te-input-wrapper-init</code> and
-      <code>data-te-input-wrapper-init</code> attributes to selected wrapper
-      with input. It will automatically initialize timepicker using this
-      element.
+      Elements with the
+      <code class="text-red-500 dark:text-red-300"
+        >data-te-input-wrapper-init</code
+      >
+      and <code>data-te-timepicker-init</code> attribute will be automatically
+      initialized - you can set all available options with data attributes. For
+      ES format, you must first import and call the <code>initTE</code> method.
     </p>
 
     <!--Section: Code-->
@@ -57,16 +60,64 @@
 
     <h4 class="mb-5 text-lg font-bold">Via JavaScript</h4>
 
-    <p>Call Timepicker manually with:</p>
+    <p>
+      You can access an instance from your Javascript code, by using the
+      <code class="text-red-500 dark:text-red-300">getInstance</code> static
+      method of the Timepicker class - it allows making use of all the public
+      methods listed in the
+      <a class="text-blue-600" href="#api-section-methods">Methods</a> section.
+    </p>
 
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example2" >}}
     <!-- prettier-ignore -->
     <section class="!visible hidden" data-te-collapse-item id="api-example2">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JS" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        import {
+          Input,
+          Timepicker,
+          initTE,
+        } from "tw-elements";
+        
+        initTE({ Input, Timepicker });
+
+        const myTimepicker = new Timepicker(document.getElementById('wrapper-id'), options);
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
         const myTimepicker = new te.Timepicker(document.getElementById('wrapper-id'), options);
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <h4 class="mb-4 font-bold">Import</h4>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Timepicker, initTE } from "tw-elements";
+        initTE({ Timepicker });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -1527,9 +1578,18 @@
     {{< twsnippet/no-demo id="api-example3" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example3">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        import { Timepicker, initTE } from "tw-elements";
+        initTE({ Timepicker });
+
+        const myTimepickerEl = document.getElementById('myTimepicker');
+        const myTimepicker = new Timepicker(myTimepickerEl);
+        myTimepicker.dispose();
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
         const myTimepickerEl = document.getElementById('myTimepicker');
         const myTimepicker = new te.Timepicker(myTimepickerEl);
         myTimepicker.dispose();

@@ -538,7 +538,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example6">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div
         id="carouselExampleCaptions"
@@ -677,6 +677,15 @@ menu:
         </button>
       </div>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Carousel,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Carousel });
+      {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
@@ -719,7 +728,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example7">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div
         id="carouselExampleCaptionsFull"
@@ -918,6 +927,16 @@ menu:
         </button>
       </div>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Carousel,
+        Ripple,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Carousel, Ripple });
+      {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
@@ -993,7 +1012,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example9">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <video
         src="https://tecdn.b-cdn.net/img/video/forest.mp4"
@@ -1001,13 +1020,17 @@ menu:
         loop
         class="clip w-full"></video>
       {{< /twsnippet/code >}}
-      {{< /twsnippet/wrapper >}}
-      {{< twsnippet/wrapper "JavaScript" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}} const clip =
-      document.querySelectorAll('.clip'); for (let i = 0; i < clip.length; i++)
-      { clip[i].addEventListener('mouseenter', function (e) { clip[i].play();
-      }); clip[i].addEventListener('mouseout', function (e) { clip[i].pause();
-      }); }
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="JavaScript" >}} 
+      const clip = document.querySelectorAll(".clip");
+      for (let i = 0; i < clip.length; i++) {
+        clip[i].addEventListener("mouseenter", function (e) {
+          clip[i].play();
+        });
+        clip[i].addEventListener("mouseout", function (e) {
+          clip[i].pause();
+        });
+      }
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>

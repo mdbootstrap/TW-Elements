@@ -17,6 +17,16 @@
 
     <p>For all buttons except fixed buttons</p>
 
+    <p>
+      Elements with the
+      <code class="text-red-500 dark:text-red-300"
+        >data-te-toggle="button"</code
+      >
+      attribute will be automatically initialized - you can set all available
+      options with data attributes. For ES format, you must first import and
+      call the <code>initTE</code> method.
+    </p>
+
     <!-- Section: Code-->
     {{< twsnippet/no-demo id="api-example1" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example1">
@@ -26,6 +36,7 @@
         {{< twsnippet/code active=true lang="html" >}}
         <button
           type="button"
+          data-te-toggle="button"
           class="inline-block rounded bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg">
           Button
         </button>
@@ -37,18 +48,64 @@
 
     <h4 class="font-bold">Via JavaScript</h4>
 
+    <p>
+      You can access an instance from your Javascript code, by using the
+      <code class="text-red-500 dark:text-red-300">getInstance</code> static
+      method of the Button class - it allows making use of all the public
+      methods listed in the
+      <a class="text-blue-600" href="#api-section-methods">Methods</a> section.
+    </p>
+
     <!-- Section: Code-->
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-            const exampleEl = document.querySelector('example');
-            const myButton = new te.Button(exampleEl);
+        import { Button, initTE } from "tw-elements";
+        initTE({ Button });
+
+        const exampleEl = document.querySelector('example');
+        const myButton = new Button(exampleEl);
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        const exampleEl = document.querySelector('example');
+        const myButton = new te.Button(exampleEl);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
+
+      <h4 class="mb-4 font-bold">Import</h4>
+
+      <p>
+        Importing components depends on how your application works. If you
+        intend to use the Tailwind Elements <code>ES</code> format, you must
+        first import the component and then initialize it with the
+        <code>initTE</code> method. If you are going to use the
+        <code>UMD</code> format, just import the
+        <code>tw-elements</code> package.
+      </p>
+
+      <!--Section: Code-->
+      {{< twsnippet/no-demo id="api-example41" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example41">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "javascript,umd" >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code active=true lang="js" >}}
+          import { Button, initTE } from "tw-elements";
+          initTE({ Button });
+          {{< /twsnippet/code >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code lang="js" >}}
+          import "tw-elements";
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+      <!--Section: Code-->
     </section>
     <!-- Section: Code-->
     <!-- Section: Usage-->
@@ -190,16 +247,27 @@
       {{< twsnippet/no-demo id="api-example5" >}}
       <section class="!visible hidden" data-te-collapse-item id="api-example5">
         <div class="pt-4">
-          {{< twsnippet/wrapper "JavaScript" >}}
+          {{< twsnippet/wrapper "javascript,umd" >}}
           <!-- prettier-ignore -->
           {{< twsnippet/code active=true lang="js" >}}
+            import { Button, initTE } from "tw-elements";
+            initTE({ Button });
+          
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach((button) => {
+                const button = new Button(button);
+                button.toggle();
+            });
+          {{< /twsnippet/code >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code lang="js" >}}
             const buttons = document.querySelectorAll('button');
             buttons.forEach((button) => {
                 const button = new te.Button(button);
                 button.toggle();
             });
-            {{< /twsnippet/code >}}
-            {{< /twsnippet/wrapper >}}
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
         </div>
       </section>
       <!-- Section: Code-->

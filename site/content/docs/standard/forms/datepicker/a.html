@@ -15,6 +15,16 @@
 
     <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
 
+    <p>
+      Elements with the
+      <code class="text-red-500 dark:text-red-300"
+        >data-te-datepicker-init</code
+      >
+      attribute will be automatically initialized - you can set all available
+      options with data attributes. For ES format, you must first import and
+      call the <code>initTE</code> method.
+    </p>
+
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example1" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example1">
@@ -45,11 +55,19 @@
 
     <h4 class="mb-4 font-bold">Via JavaScript</h4>
 
+    <p>
+      You can access an instance from your Javascript code, by using the
+      <code class="text-red-500 dark:text-red-300">getInstance</code> static
+      method of the Datepicker class - it allows making use of all the public
+      methods listed in the
+      <a class="text-blue-600" href="#api-section-methods">Methods</a> section.
+    </p>
+
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "HTML,JavaScript" >}}
+        {{< twsnippet/wrapper "HTML,javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="html" >}}
         <div class="flex items-center justify-center">
@@ -71,13 +89,62 @@
         {{< /twsnippet/code >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code lang="js" >}}
+        import {
+          Datepicker,
+          Input,
+          initTE,
+        } from "tw-elements";
+        
+        initTE({ Datepicker, Input });
+
           const options = {
             format: "dd-mm-yyyy",
           };
-          const myDatepicker = new te.Datepicker(
+          const myDatepicker = new Datepicker(
             document.getElementById("myDatepicker"),
             options
           );
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        const options = {
+          format: "dd-mm-yyyy",
+        };
+        const myDatepicker = new te.Datepicker(
+          document.getElementById("myDatepicker"),
+          options
+        );
+      {{< /twsnippet/code >}}
+        
+      
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <h4 class="mb-4 font-bold">Import</h4>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Datepicker, initTE } from "tw-elements";
+        initTE({ Datepicker });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -1233,9 +1300,30 @@
     {{< twsnippet/no-demo id="api-example45" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example45">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        import {
+          Datepicker,
+          Input,
+          initTE,
+        } from "tw-elements";
+        
+        initTE({ Datepicker, Input });
+
+          new Datepicker(
+            document.querySelector("#datepicker"),
+            {
+              cancelBtnText: "Cancel Picking",
+            },
+            {
+              fadeIn:
+                "animate-[fade-in_1.3s_both] p-[auto] motion-reduce:transition-none motion-reduce:animate-none",
+            }
+          );
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           new te.Datepicker(
             document.querySelector("#datepicker"),
             {
@@ -1403,9 +1491,23 @@
     {{< twsnippet/no-demo id="api-example5" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example5">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        import {
+          Datepicker,
+          Input,
+          initTE,
+        } from "tw-elements";
+        
+        initTE({ Datepicker, Input });
+
+        const datepickerEl = document.getElementById("myDatepicker");
+        const datepicker = new Datepicker(datepickerEl);
+        datepicker.open();
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const datepickerEl = document.getElementById("myDatepicker");
           const datepicker = new te.Datepicker(datepickerEl);
           datepicker.open();
