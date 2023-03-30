@@ -31,12 +31,12 @@ const SELECTOR_COMPONENT = ["[data-te-ripple-init]"];
 const DEFAULT_RIPPLE_COLOR = [0, 0, 0];
 
 const BOOTSTRAP_COLORS = [
-  { name: "primary", gradientColor: "#1268f1" },
-  { name: "secondary", gradientColor: "#b33cfd" },
-  { name: "success", gradientColor: "#00b749" },
-  { name: "danger", gradientColor: "#f93152" },
-  { name: "warning", gradientColor: "#ffaa00" },
-  { name: "info", gradientColor: "#39c0ed" },
+  { name: "primary", gradientColor: "#3B71CA" },
+  { name: "secondary", gradientColor: "#9FA6B2" },
+  { name: "success", gradientColor: "#14A44D" },
+  { name: "danger", gradientColor: "#DC4C64" },
+  { name: "warning", gradientColor: "#E4A11B" },
+  { name: "info", gradientColor: "#54B4D3" },
   { name: "light", gradientColor: "#fbfbfb" },
   { name: "dark", gradientColor: "#262626" },
 ];

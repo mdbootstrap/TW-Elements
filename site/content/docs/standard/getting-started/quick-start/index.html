@@ -443,7 +443,7 @@ menu:
 
 <p class="mb-2">2. Run the following command to install the package via NPM:</p>
 <div class="pt-2">
-  {{< twsnippet/wrapper "terminal" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
   npm install tw-elements
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
@@ -456,7 +456,7 @@ menu:
 </p>
 <div class="pt-2">
   <!-- prettier-ignore -->
-  {{< twsnippet/wrapper "tailwind.config.js" >}}{{< twsnippet/code active=true lang="JavaScript" >}}
+  {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}{{< twsnippet/code active=true lang="JavaScript" >}}
   module.exports = {
     content: [
       "./src/**/*.{html,js}",
@@ -510,14 +510,14 @@ menu:
   1. To start using MDB GO / CLI install it with one command:
 </p>
 <div class="pt-2">
-  {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
+  {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
   npm install -g mdb-cli
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <p class="mt-4 mb-2">2. Log into the CLI using your MDB account:</p>
 <div class="pt-2">
-  {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
+  {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
   mdb login
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
@@ -527,7 +527,7 @@ menu:
   list:
 </p>
 <div class="pt-2">
-  {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
+  {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
   mdb init tailwind-elements-free
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
@@ -536,21 +536,21 @@ menu:
   4. Install the dependencies (inside the project directory):
 </p>
 <div class="pt-2">
-  {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
+  {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
   npm install
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <p class="mt-4 mb-2">5. Run the app:</p>
 <div class="pt-2">
-  {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
+  {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
   npm start
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <p class="mt-4 mb-2">6. Publish when you're ready:</p>
 <div class="pt-2">
-  {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
+  {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" >}}
   mdb publish
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
@@ -582,7 +582,7 @@ menu:
 
 <div class="pt-2">
   <!-- prettier-ignore -->
-  {{< twsnippet/wrapper "index.html" >}}{{< twsnippet/code active=true lang="HTML" >}}
+  {{< twsnippet/wrapper "index.html" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
   <link
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
     rel="stylesheet" />
@@ -599,6 +599,9 @@ menu:
           body: ["Roboto", "sans-serif"],
           mono: ["ui-monospace", "monospace"],
         },
+      },
+      corePlugins: {
+        preflight: false,
       },
     };
   </script>

@@ -508,3 +508,13 @@
   }
 </script>
 <!-- umd toggler -->
+
+<script type="module">
+  const tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-te-toggle="tooltip"]')
+  );
+
+  const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new te.Tooltip(tooltipTriggerEl);
+  });
+</script>

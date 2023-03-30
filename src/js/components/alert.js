@@ -117,14 +117,12 @@ class Alert extends BaseComponent {
       this._setupAutohide();
     }
     if (!this._element.hasAttribute(SHOW_DATA_ATTRIBUTE)) {
-      Object.assign(this._element.style, {
-        display: "block",
-      });
+      Manipulator.removeClass(this._element, "hidden");
+      Manipulator.addClass(this._element, "block");
       if (isVisible(this._element)) {
         const handler = (e) => {
-          Object.assign(e.target.style, {
-            display: "block",
-          });
+          Manipulator.removeClass(this._element, "hidden");
+          Manipulator.addClass(this._element, "block");
           EventHandler.off(e.target, "animationend", handler);
         };
         this._element.setAttribute(SHOW_DATA_ATTRIBUTE, "");
@@ -146,9 +144,8 @@ class Alert extends BaseComponent {
     if (this._element.hasAttribute(SHOW_DATA_ATTRIBUTE)) {
       this._element.removeAttribute(SHOW_DATA_ATTRIBUTE);
       const handler = (e) => {
-        Object.assign(e.target.style, {
-          display: "none",
-        });
+        Manipulator.addClass(this._element, "hidden");
+        Manipulator.removeClass(this._element, "block");
 
         if (this._timeout !== null) {
           clearTimeout(this._timeout);
