@@ -1,15 +1,15 @@
 ---
-title: "Text color"
-date: 2023-03-017T10:00:00+02:00
+title: "Z-index"
+date: 2023-03-07T16:00:58+02:00
 draft: false
-main_title: "Text color"
-subheading: "Tailwind CSS Text color"
-seo_title: "Tailwind CSS Text color - Free Examples & Tutorial"
-description: "Use responsive text color styles with Tailwind elements. See how to easily and simply change the text color."
+main_title: "Z-index"
+subheading: "Tailwind CSS Z-index"
+seo_title: "Tailwind CSS Z-index - Free Examples & Tutorial"
+description: "Use responsive Z-index utilities to control the stack order. A simple way to put elements on top of others."
 image: "img/components-big.jpg"
 video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
-url: "docs/standard/extended/text-color"
-custom_links: "Colors=https://tailwind-elements.com/docs/standard/content-styles/colors/"
+url: "docs/standard/extended/z-index"
+custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/cards/"
 ---
 
 <!--Section: Docs content-->
@@ -35,32 +35,33 @@ custom_links: "Colors=https://tailwind-elements.com/docs/standard/content-styles
 
     <!--Description-->
     <p>
-      Change text
-      <a
-        href="https://tailwind-elements.com/docs/standard/content-styles/colors/"
-        target="_blank"
-        class="text-primary-600"
-        >colors</a
-      >
-      with <code>.text-{color}</code> classes.
+      To place elements on top of others, use the <code>.z-{value}</code> class.
     </p>
 
     <!--Section: Demo-->
     {{< twsnippet/demo id="example1" >}}
-    <div class="p-3 text-center">
-      <div class="grid-rows-8 grid gap-4">
-        <p class="text-primary">Lorem ipsum dolor sit amet</p>
-        <p class="text-secondary">Lorem ipsum dolor sit amet</p>
-        <p class="text-success">Lorem ipsum dolor sit amet</p>
-        <p class="text-danger">Lorem ipsum dolor sit amet</p>
-        <p class="text-warning">Lorem ipsum dolor sit amet</p>
-        <p class="text-info">Lorem ipsum dolor sit amet</p>
-        <p class="bg-neutral-800 text-neutral-50 dark:bg-transparent">
-          Lorem ipsum dolor sit amet
-        </p>
-        <p class="text-neutral-800 dark:bg-neutral-50 dark:text-neutral-900">
-          Lorem ipsum dolor sit amet
-        </p>
+    <div class="p-3">
+      <div class="flex justify-center -space-x-3 pt-2 font-bold text-white">
+        <div
+          class="z-40 flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg ring-2 ring-white dark:ring-slate-900">
+          z-40
+        </div>
+        <div
+          class="z-30 flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg ring-2 ring-white dark:ring-slate-900">
+          z-30
+        </div>
+        <div
+          class="z-20 flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg ring-2 ring-white dark:ring-slate-900">
+          z-20
+        </div>
+        <div
+          class="z-10 flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg ring-2 ring-white dark:ring-slate-900">
+          z-10
+        </div>
+        <div
+          class="z-0 flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg ring-2 ring-white dark:ring-slate-900">
+          z-0
+        </div>
       </div>
     </div>
     {{< /twsnippet/demo >}}
@@ -71,18 +72,28 @@ custom_links: "Colors=https://tailwind-elements.com/docs/standard/content-styles
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-        <p class="text-primary">Lorem ipsum dolor sit amet</p>
-        <p class="text-secondary">Lorem ipsum dolor sit amet</p>
-        <p class="text-success">Lorem ipsum dolor sit amet</p>
-        <p class="text-danger">Lorem ipsum dolor sit amet</p>
-        <p class="text-warning">Lorem ipsum dolor sit amet</p>
-        <p class="text-info">Lorem ipsum dolor sit amet</p>
-        <p class="bg-neutral-800 text-neutral-50 dark:bg-transparent">
-          Lorem ipsum dolor sit amet
-        </p>
-        <p class="text-neutral-800 dark:bg-neutral-50 dark:text-neutral-900">
-          Lorem ipsum dolor sit amet
-        </p>
+        <div class="... z-40">z-40</div>
+        <div class="... z-30">z-30</div>
+        <div class="... z-20">z-20</div>
+        <div class="... z-10">z-10</div>
+        <div class="... z-0">z-0</div>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+
+    <p class="pt-6">
+      To use a negative z-index value, prefix the class name with a dash to
+      convert it to a negative value.
+    </p>
+
+    <!--Section: Code-->
+    <section class="!visible" id="example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+        <div class="... z-40">-z-50</div>
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -102,47 +113,40 @@ custom_links: "Colors=https://tailwind-elements.com/docs/standard/content-styles
       <!--Main-->
 
       <a
-        href="https://tailwind-elements.com/docs/standard/content-styles/typography/"
+        href="https://tailwind-elements.com/docs/standard/components/modal/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Typography</a
+        Modal</a
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/content-styles/colors/"
+        href="https://tailwind-elements.com/docs/standard/components/toast/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Colors</a
-      >
-
-      <a
-        href="https://tailwind-elements.com/docs/standard/content-styles/mask/"
-        class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Masks</a
+        Toasts</a
       >
 
       <!--Extended docs-->
-
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/text-size"
+        href="https://tailwind-elements.com/docs/standard/extended/opacity/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Text size</a
+        Opacity</a
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/text-bold"
+        href="https://tailwind-elements.com/docs/standard/extended/visibility/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Text bold</a
+        Visibility</a
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/center-text"
+        href="https://tailwind-elements.com/docs/standard/extended/background-image/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Center text</a
+        Background image</a
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/letter-spacing"
+        href="https://tailwind-elements.com/docs/standard/extended/display-none/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Letter spacing</a
+        Display none</a
       >
     </div>
 
