@@ -42,9 +42,14 @@
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+          const exampleEl = document.getElementById('example');
+          const popover = new Popover(exampleEl, options);
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const exampleEl = document.getElementById('example');
           const popover = new te.Popover(exampleEl, options);
         {{< /twsnippet/code >}}
@@ -761,9 +766,15 @@
       {{< twsnippet/no-demo id="api-example5" >}}
       <section class="!visible hidden" data-te-collapse-item id="api-example5">
         <div class="pt-4">
-          {{< twsnippet/wrapper "JavaScript" >}}
+          {{< twsnippet/wrapper "javascript,umd" >}}
           <!-- prettier-ignore -->
           {{< twsnippet/code active=true lang="js" >}}
+            const exampleTriggerEl = document.getElementById('example');
+            const popover = new Popover(exampleTriggerEl);
+            popover.show();
+          {{< /twsnippet/code >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code lang="js" >}}
             const exampleTriggerEl = document.getElementById('example');
             const popover = new te.Popover(exampleTriggerEl);
             popover.show();

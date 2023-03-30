@@ -3,6 +3,46 @@
 
 <!-- Section: Docs content-->
 <section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Offcanvas, initTE } from "tw-elements";
+        initTE({ Offcanvas });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
   <!-- Section: Usage-->
   <section id="api-section-usage">
     <!-- Title -->
@@ -228,9 +268,6 @@
         {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-        import { Offcanvas, initTE } from "tw-elements";
-        initTE({ Offcanvas });
-
         const offcanvasElementList = [].slice.call(document.querySelectorAll('[data-te-offcanvas-init]'))
         const offcanvasList = offcanvasElementList.map((offcanvasEl) => {
           return new Offcanvas(offcanvasEl)
@@ -242,35 +279,6 @@
         const offcanvasList = offcanvasElementList.map((offcanvasEl) => {
           return new te.Offcanvas(offcanvasEl)
         });
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-      </div>
-    </section>
-    <!--Section: Code-->
-
-    <h4 class="mb-4 font-bold">Import</h4>
-
-    <p>
-      Importing components depends on how your application works. If you intend
-      to use the Tailwind Elements <code>ES</code> format, you must first import
-      the component and then initialize it with the <code>initTE</code> method.
-      If you are going to use the <code>UMD</code> format, just import the
-      <code>tw-elements</code> package.
-    </p>
-
-    <!--Section: Code-->
-    {{< twsnippet/no-demo id="api-example41" >}}
-    <section class="!visible hidden" data-te-collapse-item id="api-example41">
-      <div class="pt-4">
-        {{< twsnippet/wrapper "javascript,umd" >}}
-        <!-- prettier-ignore -->
-        {{< twsnippet/code active=true lang="js" >}}
-        import { Offcanvas, initTE } from "tw-elements";
-        initTE({ Offcanvas });
-        {{< /twsnippet/code >}}
-        <!-- prettier-ignore -->
-        {{< twsnippet/code lang="js" >}}
-        import "tw-elements";
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -534,9 +542,6 @@
         {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-              import { Select, initTE } from "tw-elements";
-              initTE({ Select });
-
               const myOffcanvasEl = document.getElementById("myOffcanvas");
               const myOffcanvas = new Offcanvas(myOffcanvasEl);
               myOffcanvas.show();              

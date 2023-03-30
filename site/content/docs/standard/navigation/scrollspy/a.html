@@ -5,6 +5,47 @@
 <section>
   <!-- Section: Usage-->
   <section id="api-section-usage">
+    <!--Section: Import-->
+    <section id="api-section-import">
+      <!--Title-->
+      <h2
+        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        id="import"
+        data-te-spy-item>
+        Import
+      </h2>
+
+      <p>
+        Importing components depends on how your application works. If you
+        intend to use the Tailwind Elements <code>ES</code> format, you must
+        first import the component and then initialize it with the
+        <code>initTE</code> method. If you are going to use the
+        <code>UMD</code> format, just import the
+        <code>tw-elements</code> package.
+      </p>
+
+      <!--Section: Code-->
+      {{< twsnippet/no-demo id="api-example41" >}}
+      <section class="!visible hidden" data-te-collapse-item id="api-example41">
+        <div class="pt-4">
+          {{< twsnippet/wrapper "javascript,umd" >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code active=true lang="js" >}}
+        import { ScrollSpy, initTE } from "tw-elements";
+        initTE({ ScrollSpy });
+        {{< /twsnippet/code >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+        </div>
+      </section>
+      <!--Section: Code-->
+    </section>
+    <!--Section: Import-->
+
+    <hr class="mb-5 dark:border-gray-600" />
     <!-- Title -->
     <h2
       class="mt-0 mb-5 text-3xl font-semibold leading-normal"
@@ -63,9 +104,6 @@
         {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
-        import { ScrollSpy, initTE } from "tw-elements";
-        initTE({ ScrollSpy });
-
         const scrollSpy = new ScrollSpy(document.body, {
           target: '#navbar-example'
         });
@@ -80,35 +118,6 @@
       </div>
     </section>
     <!-- Section: Code-->
-
-    <h4 class="mb-4 font-bold">Import</h4>
-
-    <p>
-      Importing components depends on how your application works. If you intend
-      to use the Tailwind Elements <code>ES</code> format, you must first import
-      the component and then initialize it with the <code>initTE</code> method.
-      If you are going to use the <code>UMD</code> format, just import the
-      <code>tw-elements</code> package.
-    </p>
-
-    <!--Section: Code-->
-    {{< twsnippet/no-demo id="api-example41" >}}
-    <section class="!visible hidden" data-te-collapse-item id="api-example41">
-      <div class="pt-4">
-        {{< twsnippet/wrapper "javascript,umd" >}}
-        <!-- prettier-ignore -->
-        {{< twsnippet/code active=true lang="js" >}}
-        import { ScrollSpy, initTE } from "tw-elements";
-        initTE({ ScrollSpy });
-        {{< /twsnippet/code >}}
-        <!-- prettier-ignore -->
-        {{< twsnippet/code lang="js" >}}
-        import "tw-elements";
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-      </div>
-    </section>
-    <!--Section: Code-->
 
     <div
       class="mb-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
@@ -427,9 +436,6 @@
           {{< twsnippet/wrapper "javascript,umd" >}}
           <!-- prettier-ignore -->
           {{< twsnippet/code active=true lang="js" >}}
-            import { ScrollSpy, initTE } from "tw-elements";
-            initTE({ ScrollSpy });
-
             const dataSpyList = [].slice.call(document.querySelectorAll('[data-te-spy="scroll"]'));
             dataSpyList.forEach((dataSpyEl) => {
               ScrollSpy.getInstance(dataSpyEl).refresh();
