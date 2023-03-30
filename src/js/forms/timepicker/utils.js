@@ -28,14 +28,14 @@ const formatToAmPm = (date) => {
     originalHours = hours;
     minutes = date.getMinutes();
     hours %= 12;
-    if (hours === 0) {
+    if (originalHours === 0 && hours === 0) {
       amOrPm = "AM";
     }
 
     hours = hours || 12;
 
     if (amOrPm === undefined) {
-      amOrPm = hours === 12 ? "PM" : "AM";
+      amOrPm = Number(originalHours) >= 12 ? "PM" : "AM";
     }
 
     minutes = minutes < 10 ? `0${minutes}` : minutes;
@@ -44,13 +44,13 @@ const formatToAmPm = (date) => {
     originalHours = hours;
 
     hours %= 12;
-    if (hours === 0) {
+    if (originalHours === 0 && hours === 0) {
       amOrPm = "AM";
     }
     hours = hours || 12;
 
     if (amOrPm === undefined) {
-      amOrPm = originalHours >= 12 ? "PM" : "AM";
+      amOrPm = Number(originalHours) >= 12 ? "PM" : "AM";
     }
   }
 
@@ -249,22 +249,61 @@ const checkValueBeforeAccept = (
   return [hourHeader, minute];
 };
 
-const _verifyMaxTimeHourAndAddDisabledClass = (tips, maxTimeHour, classes) => {
+const _verifyMaxTimeHourAndAddDisabledClass = (
+  tips,
+  maxTimeHour,
+  classes,
+  format12
+) => {
   tips.forEach((tip) => {
-    if (tip.textContent === "00" || Number(tip.textContent) > maxTimeHour) {
+    maxTimeHour = maxTimeHour === "12" && format12 ? "0" : maxTimeHour;
+    if (
+      tip.textContent === "00" ||
+      Number(tip.textContent === "12" && format12 ? "0" : tip.textContent) >
+        maxTimeHour
+    ) {
       Manipulator.addClass(tip, classes.tipsDisabled);
       tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
 };
 
-const _verifyMinTimeHourAndAddDisabledClass = (tips, minTimeHour, classes) => {
+const _verifyMinTimeHourAndAddDisabledClass = (
+  tips,
+  minTimeHour,
+  classes,
+  format12
+) => {
   tips.forEach((tip) => {
-    if (tip.textContent !== "00" && Number(tip.textContent) < minTimeHour) {
+    minTimeHour = minTimeHour === "12" && format12 ? "0" : minTimeHour;
+    if (
+      tip.textContent !== "00" &&
+      Number(tip.textContent === "12" && format12 ? "0" : tip.textContent) <
+        Number(minTimeHour)
+    ) {
       Manipulator.addClass(tip, classes.tipsDisabled);
       tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
     }
   });
+};
+
+const _isHourDisabled = (selectedHour, timeHour, format12, operator) => {
+  if (timeHour === "12" || timeHour === "24") {
+    return;
+  }
+
+  const hourChange = format12 ? 12 : 24;
+
+  if (operator === "max") {
+    return (
+      (Number(selectedHour) === hourChange ? 0 : Number(selectedHour)) >
+      Number(timeHour)
+    );
+  }
+  return (
+    (Number(selectedHour) === hourChange ? 0 : Number(selectedHour)) <
+    Number(timeHour)
+  );
 };
 
 const _verifyMaxTimeMinutesTipsAndAddDisabledClass = (
@@ -272,12 +311,14 @@ const _verifyMaxTimeMinutesTipsAndAddDisabledClass = (
   maxMinutes,
   maxHour,
   currHour,
-  classes
+  classes,
+  format12
 ) => {
   tips.forEach((tip) => {
     if (
-      Number(tip.textContent) > maxMinutes &&
-      Number(currHour) === Number(maxHour)
+      _isHourDisabled(currHour, maxHour, format12, "max") ||
+      (Number(tip.textContent) > maxMinutes &&
+        Number(currHour) === Number(maxHour))
     ) {
       Manipulator.addClass(tip, classes.tipsDisabled);
       tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
@@ -290,12 +331,14 @@ const _verifyMinTimeMinutesTipsAndAddDisabledClass = (
   minMinutes,
   minHour,
   currHour,
-  classes
+  classes,
+  format12
 ) => {
   tips.forEach((tip) => {
     if (
-      Number(tip.textContent) < minMinutes &&
-      Number(currHour) === Number(minHour)
+      _isHourDisabled(currHour, minHour, format12, "min") ||
+      (Number(tip.textContent) < minMinutes &&
+        Number(currHour) === Number(minHour))
     ) {
       Manipulator.addClass(tip, classes.tipsDisabled);
       tip.setAttribute(ATTR_TIMEPICKER_DISABLED, "");
