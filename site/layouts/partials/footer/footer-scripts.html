@@ -312,10 +312,7 @@
   }
 
   //Scrollspy
-
-  (function () {
-    let menuSection = document.querySelectorAll("menu li");
-
+  (() => {
     const scrollspyClasses = [
       "data-[te-spy-active]:border-l-2",
       "data-[te-spy-active]:border-solid",
@@ -325,18 +322,21 @@
       "dark:data-[te-spy-active]:text-primary-400",
     ];
 
-    if (menuSection.length == 0) return;
+    const menuSection = document.querySelectorAll("menu li");
 
-    menuSection.forEach((section) =>
-      section.classList.add(...scrollspyClasses)
-    );
+    if (menuSection.length === 0) return;
 
-    // SmoothScroll
-    function teScrollSpyTo(event) {
+    const addScrollspyClasses = (sections) => {
+      sections.forEach((section) => {
+        section.classList.add(...scrollspyClasses);
+      });
+    };
+
+    const teScrollSpyTo = (event) => {
       event.preventDefault();
       const hash = event.target.getAttribute("href");
       const target = document.getElementById(hash.substring(1));
-      // console.log(target);
+
       window.scroll({
         top: target.offsetTop,
         behavior: "smooth",
@@ -347,38 +347,54 @@
       } else {
         location.hash = hash;
       }
-    }
+    };
 
-    // for clickable event
+    const deactivateAllMenuSections = (sections) => {
+      sections.forEach((section) =>
+        section.removeAttribute("data-te-spy-active")
+      );
+    };
+
+    const activateMenuSection = (section) => {
+      section.setAttribute("data-te-spy-active", "");
+    };
+
+    const onWindowScroll = () => {
+      const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
+      const mainSections = [
+        ...document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM),
+      ].filter((section) => section.getBoundingClientRect().y !== 0);
+      const filteredMenuSections = [
+        ...document.querySelectorAll("menu li"),
+      ].filter((section) => section.getBoundingClientRect().y !== 0);
+
+      mainSections.forEach((header, i) => {
+        let rect = header.getBoundingClientRect().y;
+
+        if (rect <= 100) {
+          deactivateAllMenuSections(filteredMenuSections);
+          if (!filteredMenuSections[i]) {
+            return;
+          }
+          activateMenuSection(filteredMenuSections[i]);
+        }
+      });
+    };
+
+    addScrollspyClasses(menuSection);
+
     menuSection.forEach((menuElement) => {
-      menuElement.addEventListener("click", teScrollSpyTo, false);
-      menuElement.addEventListener("click", () => {
+      const href = menuElement.querySelector("a");
+      href.addEventListener("click", teScrollSpyTo, false);
+      href.addEventListener("click", () => {
         setTimeout(() => {
-          menuSection.forEach((j) => j.removeAttribute("data-te-spy-active"));
-          menuElement.setAttribute("data-te-spy-active", "");
+          deactivateAllMenuSections(menuSection);
+          activateMenuSection(menuElement);
         }, 300);
       });
     });
 
-    // for window scrolldown event
-    window.addEventListener("scroll", () => {
-      const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
-      let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
-
-      mainSection.forEach((header, i) => {
-        let rect = header.getBoundingClientRect().bottom;
-
-        if (rect < 100) {
-          menuSection.forEach((menuElement) =>
-            menuElement.removeAttribute("data-te-spy-active")
-          );
-          if (!menuSection[i]) {
-            return;
-          }
-          menuSection[i].setAttribute("data-te-spy-active", "");
-        }
-      });
-    });
+    window.addEventListener("scroll", onWindowScroll);
   })();
 
   const clip = document.querySelectorAll(".clip");
