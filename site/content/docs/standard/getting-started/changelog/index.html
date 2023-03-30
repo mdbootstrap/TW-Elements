@@ -789,8 +789,9 @@ menu:
     const milestoneData = response.data.hasMin("number");
     const progressPlaceholder = document.querySelector("#progressPlaceholder");
     const progress =
-      (milestoneData.closed_issues / milestoneData.open_issues) * 100;
-
+      (milestoneData.closed_issues /
+        (milestoneData.closed_issues + milestoneData.open_issues)) *
+      100;
     progressPlaceholder.classList.add("hidden");
     upcomingReleaseElement.classList.remove("hidden");
     upcomingReleaseProgressBar.classList.remove("hidden");
