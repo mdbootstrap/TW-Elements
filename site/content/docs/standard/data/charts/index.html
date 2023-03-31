@@ -12,6 +12,7 @@ url: "docs/standard/data/charts/"
 menu:
   data:
     name: "Charts"
+autoinits: "Chart"
 ---
 
 <!-- Section: Bar chart -->
@@ -55,7 +56,7 @@ menu:
   {{< twsnippet/no-demo id="example1" >}}
   <section class="!visible hidden" data-te-collapse-item id="example1">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas
@@ -65,6 +66,16 @@ menu:
           data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
         </canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -79,11 +90,36 @@ menu:
   {{< twsnippet/no-demo id="example2" >}}
   <section class="!visible hidden" data-te-collapse-item id="example2">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="bar-chart"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataBar = {
+        type: 'bar',
+        data: {
+          labels: ['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+            },
+          ],
+        },
+      };
+
+      new Chart(document.getElementById('bar-chart'), dataBar);
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -232,7 +268,7 @@ menu:
   {{< twsnippet/no-demo id="example3" >}}
   <section class="!visible hidden" data-te-collapse-item id="example3">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas
@@ -242,6 +278,16 @@ menu:
           data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
         </canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -256,11 +302,36 @@ menu:
   {{< twsnippet/no-demo id="example4" >}}
   <section class="!visible hidden" data-te-collapse-item id="example4">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="line-chart"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataLine = {
+        type: 'line',
+        data: {
+          labels: ['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+            },
+          ],
+        },
+      };
+      
+      new Chart(document.getElementById('line-chart'), dataLine);
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -315,11 +386,78 @@ menu:
   {{< twsnippet/no-demo id="example5" >}}
   <section class="!visible hidden" data-te-collapse-item id="example5">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="bar-chart-horizontal"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataBarHorizontal = {
+        type: "bar",
+        data: {
+          labels: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+          ],
+          datasets: [
+            {
+              label: "Traffic",
+              data: [30, 15, 62, 65, 61, 65, 40],
+            },
+          ],
+        },
+      };
+    
+      const optionsBarHorizontal = {
+        options: {
+          indexAxis: "y",
+          scales: {
+            x: {
+              stacked: true,
+              grid: {
+                display: true,
+                borderDash: [2],
+                zeroLineColor: "rgba(0,0,0,0)",
+                zeroLineBorderDash: [2],
+                zeroLineBorderDashOffset: [2],
+              },
+              ticks: {
+                color: "rgba(0,0,0, 0.5)",
+              },
+            },
+            y: {
+              stacked: true,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                color: "rgba(0,0,0, 0.5)",
+              },
+            },
+          },
+        },
+      };
+    
+      new Chart(
+        document.getElementById("bar-chart-horizontal"),
+        dataBarHorizontal,
+        optionsBarHorizontal
+      );
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -424,7 +562,7 @@ menu:
   {{< twsnippet/no-demo id="example6" >}}
   <section class="!visible hidden" data-te-collapse-item id="example6">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas
@@ -435,6 +573,16 @@ menu:
           data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
         </canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -449,11 +597,45 @@ menu:
   {{< twsnippet/no-demo id="example7" >}}
   <section class="!visible hidden" data-te-collapse-item id="example7">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="pie-chart"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataPie = {
+        type: 'pie',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+              backgroundColor: [
+                'rgba(63, 81, 181, 0.5)',
+                'rgba(77, 182, 172, 0.5)',
+                'rgba(66, 133, 244, 0.5)',
+                'rgba(156, 39, 176, 0.5)',
+                'rgba(233, 30, 99, 0.5)',
+                'rgba(66, 73, 244, 0.4)',
+                'rgba(66, 133, 244, 0.2)',
+              ],
+            },
+          ],
+        },
+      };
+      
+      new Chart(document.getElementById('pie-chart'), dataPie);
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -525,7 +707,7 @@ menu:
   {{< twsnippet/no-demo id="example8" >}}
   <section class="!visible hidden" data-te-collapse-item id="example8">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas
@@ -536,6 +718,16 @@ menu:
           data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
         </canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -550,11 +742,45 @@ menu:
   {{< twsnippet/no-demo id="example9" >}}
   <section class="!visible hidden" data-te-collapse-item id="example9">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="doughnut-chart"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataDoughnut = {
+        type: 'doughnut',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+              backgroundColor: [
+                'rgba(63, 81, 181, 0.5)',
+                'rgba(77, 182, 172, 0.5)',
+                'rgba(66, 133, 244, 0.5)',
+                'rgba(156, 39, 176, 0.5)',
+                'rgba(233, 30, 99, 0.5)',
+                'rgba(66, 73, 244, 0.4)',
+                'rgba(66, 133, 244, 0.2)',
+              ],
+            },
+          ],
+        },
+      };
+      
+      new Chart(document.getElementById('doughnut-chart'), dataDoughnut);
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -626,7 +852,7 @@ menu:
   {{< twsnippet/no-demo id="example10" >}}
   <section class="!visible hidden" data-te-collapse-item id="example10">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas
@@ -637,6 +863,16 @@ menu:
           data-te-dataset-background-color="['rgba(63, 81, 181, 0.5)', 'rgba(77, 182, 172, 0.5)', 'rgba(66, 133, 244, 0.5)', 'rgba(156, 39, 176, 0.5)', 'rgba(233, 30, 99, 0.5)', 'rgba(66, 73, 244, 0.4)', 'rgba(66, 133, 244, 0.2)']">
         </canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -651,11 +887,45 @@ menu:
   {{< twsnippet/no-demo id="example11" >}}
   <section class="!visible hidden" data-te-collapse-item id="example11">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="polar-area-chart"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataPolar = {
+        type: 'polarArea',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+              backgroundColor: [
+                'rgba(63, 81, 181, 0.5)',
+                'rgba(77, 182, 172, 0.5)',
+                'rgba(66, 133, 244, 0.5)',
+                'rgba(156, 39, 176, 0.5)',
+                'rgba(233, 30, 99, 0.5)',
+                'rgba(66, 73, 244, 0.4)',
+                'rgba(66, 133, 244, 0.2)',
+              ],
+            },
+          ],
+        },
+      };
+      
+      new Chart(document.getElementById('polar-area-chart'), dataPolar);
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -725,7 +995,7 @@ menu:
   {{< twsnippet/no-demo id="example12" >}}
   <section class="!visible hidden" data-te-collapse-item id="example12">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas
@@ -735,6 +1005,16 @@ menu:
           data-te-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]">
         </canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -749,11 +1029,36 @@ menu:
   {{< twsnippet/no-demo id="example13" >}}
   <section class="!visible hidden" data-te-collapse-item id="example13">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="radar-chart"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataRadar = {
+        type: 'radar',
+        data: {
+          labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '],
+          datasets: [
+            {
+              label: 'Traffic',
+              data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+            },
+          ],
+        },
+      };
+      
+      new Chart(document.getElementById('radar-chart'), dataRadar);
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -813,11 +1118,63 @@ menu:
   <!--Section: Code-->
   <section class="!visible hidden" data-te-collapse-item id="example14">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="bubble-chart"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataBubble = {
+        type: "bubble",
+        data: {
+          datasets: [
+            {
+              label: "John",
+              data: [
+                {
+                  x: 3,
+                  y: 7,
+                  r: 10,
+                },
+              ],
+            },
+            {
+              label: "Peter",
+              data: [
+                {
+                  x: 5,
+                  y: 7,
+                  r: 10,
+                },
+              ],
+              backgroundColor: "rgba(66, 133, 244, 0.2)",
+            },
+            {
+              label: "Donald",
+              data: [
+                {
+                  x: 7,
+                  y: 7,
+                  r: 10,
+                },
+              ],
+              backgroundColor: "rgba(66, 133, 244, 0.8)",
+            },
+          ],
+        },
+      };
+    
+      new Chart(document.getElementById("bubble-chart"), dataBubble);
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -903,13 +1260,193 @@ menu:
   <!--Section: Code-->
   <section class="!visible hidden" data-te-collapse-item id="example15">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="scatter-chart"></canvas>
       </div>
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      // Chart
+      const dataScatter = {
+        type: "scatter",
+        data: {
+          datasets: [
+            {
+              borderColor: "#4285F4",
+              backgroundColor: "rgba(66, 133, 244, 0.5)",
+              label: "V(node2)",
+              data: [
+                {
+                  x: 1,
+                  y: -1.711e-2,
+                },
+                {
+                  x: 1.26,
+                  y: -2.708e-2,
+                },
+                {
+                  x: 1.58,
+                  y: -4.285e-2,
+                },
+                {
+                  x: 2.0,
+                  y: -6.772e-2,
+                },
+                {
+                  x: 2.51,
+                  y: -1.068e-1,
+                },
+                {
+                  x: 3.16,
+                  y: -1.681e-1,
+                },
+                {
+                  x: 3.98,
+                  y: -2.635e-1,
+                },
+                {
+                  x: 5.01,
+                  y: -4.106e-1,
+                },
+                {
+                  x: 6.31,
+                  y: -6.339e-1,
+                },
+                {
+                  x: 7.94,
+                  y: -9.659e-1,
+                },
+                {
+                  x: 10.0,
+                  y: -1.445,
+                },
+                {
+                  x: 12.6,
+                  y: -2.11,
+                },
+                {
+                  x: 15.8,
+                  y: -2.992,
+                },
+                {
+                  x: 20.0,
+                  y: -4.102,
+                },
+                {
+                  x: 25.1,
+                  y: -5.429,
+                },
+                {
+                  x: 31.6,
+                  y: -6.944,
+                },
+                {
+                  x: 39.8,
+                  y: -8.607,
+                },
+                {
+                  x: 50.1,
+                  y: -1.038e1,
+                },
+                {
+                  x: 63.1,
+                  y: -1.223e1,
+                },
+                {
+                  x: 79.4,
+                  y: -1.413e1,
+                },
+                {
+                  x: 100.0,
+                  y: -1.607e1,
+                },
+                {
+                  x: 126,
+                  y: -1.803e1,
+                },
+                {
+                  x: 158,
+                  y: -2e1,
+                },
+                {
+                  x: 200,
+                  y: -2.199e1,
+                },
+                {
+                  x: 251,
+                  y: -2.398e1,
+                },
+                {
+                  x: 316,
+                  y: -2.597e1,
+                },
+                {
+                  x: 398,
+                  y: -2.797e1,
+                },
+                {
+                  x: 501,
+                  y: -2.996e1,
+                },
+                {
+                  x: 631,
+                  y: -3.196e1,
+                },
+                {
+                  x: 794,
+                  y: -3.396e1,
+                },
+                {
+                  x: 1000,
+                  y: -3.596e1,
+                },
+              ],
+            },
+          ],
+        },
+      };
+    
+      const optionsScatter = {
+        options: {
+          title: {
+            display: true,
+            text: "Scatter Chart - Logarithmic X-Axis",
+          },
+          scales: {
+            x: {
+              type: "logarithmic",
+              position: "bottom",
+              scaleLabel: {
+                labelString: "Frequency",
+                display: true,
+              },
+            },
+            y: {
+              type: "linear",
+              scaleLabel: {
+                labelString: "Voltage",
+                display: true,
+              },
+            },
+          },
+        },
+      };
+    
+      new Chart(
+        document.getElementById("scatter-chart"),
+        dataScatter,
+        optionsScatter
+      );
+      {{< /twsnippet/code >}}
       {{< twsnippet/code lang="js" >}}
       // Chart
       const dataScatter = {
@@ -1121,11 +1658,81 @@ menu:
   <!--Section: Code-->
   <section class="!visible hidden" data-te-collapse-item id="example16">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="bar-chart-custom-options"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      const dataBarCustomOptions = {
+        type: "bar",
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June"],
+          datasets: [
+            {
+              label: "Traffic",
+              data: [30, 15, 62, 65, 61, 6],
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+              ],
+              borderColor: [
+                "rgba(255,99,132,1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+      };
+    
+      const optionsBarCustomOptions = {
+        options: {
+          plugins: {
+            legend: {
+              position: "top",
+              labels: {
+                color: "green",
+              },
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: "#4285F4",
+              },
+            },
+            y: {
+              ticks: {
+                color: "#f44242",
+              },
+            },
+          },
+        },
+      };
+    
+      new Chart(
+        document.getElementById("bar-chart-custom-options"),
+        dataBarCustomOptions,
+        optionsBarCustomOptions
+      );
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -1223,11 +1830,55 @@ menu:
   <!--Section: Code-->
   <section class="!visible hidden" data-te-collapse-item id="example17">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="bar-chart-custom-tooltip"></canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+
+      const dataBarCustomTooltip = {
+        type: "bar",
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+            {
+              label: "Traffic",
+              data: [30, 15, 62, 65, 61, 65, 40],
+            },
+          ],
+        },
+      };
+    
+      const optionsBarCustomTooltip = {
+        options: {
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.dataset.label || "";
+                  label = `${label}: ${context.formattedValue} users`;
+                  return label;
+                },
+              },
+            },
+          },
+        },
+      };
+    
+      new Chart(
+        document.getElementById("bar-chart-custom-tooltip"),
+        dataBarCustomTooltip,
+        optionsBarCustomTooltip
+      );    
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -1330,7 +1981,7 @@ menu:
   <!--Section: Code-->
   <section class="!visible hidden" data-te-collapse-item id="example17">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas
@@ -1343,6 +1994,16 @@ menu:
           data-te-dark-label-color="#ff00ff">
         </canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -1381,11 +2042,67 @@ menu:
   <!--Section: Code-->
   <section class="!visible hidden" data-te-collapse-item id="example18">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,Javascript" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
       <div class="mx-auto w-3/5 overflow-hidden">
         <canvas id="darkmode-customization"> </canvas>
       </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Chart,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Chart });
+      
+      const dataBarDarkMode = {
+        type: "bar",
+        data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+            {
+              label: "Traffic",
+              data: [30, 15, 62, 65, 61, 65, 40],
+            },
+          ],
+        },
+      };
+    
+      const optionsDarkMode = {
+        options: {
+          scales: {
+            y: {
+              ticks: {
+                color: "rgb(100,50,200)",
+              },
+              grid: {
+                display: false,
+              },
+            },
+            x: {
+              ticks: {
+                color: "yellow",
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: "green",
+              },
+            },
+          },
+        }
+      };
+    
+      new Chart(
+        document.getElementById("darkmode-customization"),
+        dataBarDarkMode,
+        {},
+        optionsDarkMode
+      );
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}

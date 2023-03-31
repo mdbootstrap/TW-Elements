@@ -31,7 +31,7 @@ import Stepper from "./components/stepper";
 import Select from "./forms/select";
 import ChipsInput from "./components/chips";
 import Chip from "./components/chips/chip";
-// import Chart from "./data/charts";
+import Chart from "./data/charts";
 import initTE from "./autoinit/index";
 
 export {
@@ -57,6 +57,6 @@ export {
   Sidenav,
   Stepper,
   Input,
-  // Chart,
+  Chart,
   initTE,
 };

@@ -1,67 +1,7 @@
-import {
-  Chart as Chartjs,
-  ArcElement,
-  LineElement,
-  BarElement,
-  PointElement,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip,
-  SubTitle,
-} from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import {
-  element,
-  getjQuery,
-  onDOMContentLoaded,
-  typeCheckConfig,
-} from "../util/index";
+// import ChartDataLabels from "chartjs-plugin-datalabels";
+import { element, typeCheckConfig } from "../util/index";
 import Data from "../dom/data";
 import Manipulator from "../dom/manipulator";
-import SelectorEngine from "../dom/selector-engine";
-
-Chartjs.register(
-  ArcElement,
-  LineElement,
-  BarElement,
-  PointElement,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip,
-  SubTitle
-);
 
 /**
  * ------------------------------------------------------------------------
@@ -69,7 +9,8 @@ Chartjs.register(
  * ------------------------------------------------------------------------
  */
 
-const merge = require("deepmerge");
+// const merge = require("deepmerge");
+import merge from "deepmerge";
 
 const NAME = "chart";
 const DATA_KEY = "te.chart";
@@ -86,7 +27,7 @@ const DEFAULT_LEGEND_COLOR = {
   },
 };
 
-const DEFAULT_OPTIONS = {
+export const DEFAULT_OPTIONS = {
   line: {
     options: {
       ...DEFAULT_LEGEND_COLOR,
@@ -374,6 +315,75 @@ const DARK_OPTIONS_TYPE = {
 
 class Chart {
   constructor(element, data, options = {}, darkOptions = {}) {
+    this._waitForCharts(element, data, options, darkOptions);
+  }
+
+  async _getChartjs() {
+    const {
+      Chart: Chartjs,
+      ArcElement,
+      LineElement,
+      BarElement,
+      PointElement,
+      BarController,
+      BubbleController,
+      DoughnutController,
+      LineController,
+      PieController,
+      PolarAreaController,
+      RadarController,
+      ScatterController,
+      CategoryScale,
+      LinearScale,
+      LogarithmicScale,
+      RadialLinearScale,
+      TimeScale,
+      TimeSeriesScale,
+      Decimation,
+      Filler,
+      Legend,
+      Title,
+      Tooltip,
+      SubTitle,
+    } = await import("chart.js");
+    Chartjs.register(
+      ArcElement,
+      LineElement,
+      BarElement,
+      PointElement,
+      BarController,
+      BubbleController,
+      DoughnutController,
+      LineController,
+      PieController,
+      PolarAreaController,
+      RadarController,
+      ScatterController,
+      CategoryScale,
+      LinearScale,
+      LogarithmicScale,
+      RadialLinearScale,
+      TimeScale,
+      TimeSeriesScale,
+      Decimation,
+      Filler,
+      Legend,
+      Title,
+      Tooltip,
+      SubTitle
+    );
+
+    return Chartjs;
+  }
+
+  async _getChartDataLabels() {
+    const { ChartDataLabels } = await import("chartjs-plugin-datalabels");
+    return ChartDataLabels;
+  }
+
+  async _waitForCharts(element, data, options = {}, darkOptions = {}) {
+    this._Chartjs = await this._getChartjs();
+    this._ChartDataLabels = await this._getChartDataLabels();
     this._element = element;
     this._data = data;
     this._options = options;
@@ -526,10 +536,10 @@ class Chart {
       const plugins = [];
 
       if (options.dataLabelsPlugin) {
-        plugins.push(ChartDataLabels);
+        plugins.push(this._ChartDataLabels);
       }
 
-      this._chart = new Chartjs(this._canvas, {
+      this._chart = new this._Chartjs(this._canvas, {
         ...this._data,
         ...options,
         plugins,
@@ -613,87 +623,5 @@ class Chart {
     );
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-// eslint-disable-next-line consistent-return
-const IS_COMPLEX = (data) => {
-  return (
-    (data[0] === "{" && data[data.length - 1] === "}") ||
-    (data[0] === "[" && data[data.length - 1] === "]")
-  );
-};
-
-const CONVERT_DATA_TYPE = (data) => {
-  if (typeof data !== "string") return data;
-  if (IS_COMPLEX(data)) {
-    return JSON.parse(data.replace(/'/g, '"'));
-  }
-  return data;
-};
-
-const PARSE_DATA = (data) => {
-  const dataset = {};
-  Object.keys(data).forEach((property) => {
-    if (property.match(/dataset.*/)) {
-      const chartProperty = property
-        .slice(7, 8)
-        .toLowerCase()
-        .concat(property.slice(8));
-      dataset[chartProperty] = CONVERT_DATA_TYPE(data[property]);
-    }
-  });
-  return dataset;
-};
-
-SelectorEngine.find("[data-te-chart]").forEach((el) => {
-  if (
-    Manipulator.getDataAttribute(el, "chart") !== "bubble" &&
-    Manipulator.getDataAttribute(el, "chart") !== "scatter"
-  ) {
-    const dataSet = Manipulator.getDataAttributes(el);
-    const dataAttr = {
-      data: {
-        datasets: [PARSE_DATA(dataSet)],
-      },
-    };
-    if (dataSet.chart) {
-      dataAttr.type = dataSet.chart;
-    }
-    if (dataSet.labels) {
-      dataAttr.data.labels = JSON.parse(dataSet.labels.replace(/'/g, '"'));
-    }
-    return new Chart(el, {
-      ...dataAttr,
-      ...DEFAULT_OPTIONS[dataAttr.type],
-    });
-  }
-  return null;
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .chart to jQuery only if jQuery is present
- */
-
-onDOMContentLoaded(() => {
-  const $ = getjQuery();
-
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Chart.jQueryInterface;
-    $.fn[NAME].Constructor = Chart;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Chart.jQueryInterface;
-    };
-  }
-});
 
 export default Chart;

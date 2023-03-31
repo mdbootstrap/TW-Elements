@@ -10,6 +10,8 @@ import {
   collapseCallback,
 } from "./autoinitCallbacks";
 
+import { chartsCallback } from "./chartsInit";
+
 const defaultInitSelectors = {
   alert: {
     name: "Alert",
@@ -77,6 +79,14 @@ const defaultInitSelectors = {
     isToggler: false,
   },
 
+  // advancedInits
+  chart: {
+    name: "Chart",
+    selector: "[data-te-chart]",
+    isToggler: false,
+    advanced: chartsCallback,
+  },
+
   // togglers
   button: {
     name: "Button",
@@ -127,7 +137,7 @@ const getComponentData = (component) => {
   return defaultInitSelectors[component.NAME] || null;
 };
 
-const initComponent = (component) => {
+const initComponent = async (component) => {
   if (!component || initiatedComponents?.includes(component.NAME)) {
     return;
   }
@@ -138,8 +148,13 @@ const initComponent = (component) => {
 
   jqueryInit(component);
 
+  if (thisComponent?.advanced) {
+    thisComponent?.advanced(component, thisComponent?.selector);
+    return;
+  }
+
   if (isToggler) {
-    thisComponent.callback(component, thisComponent?.selector);
+    thisComponent?.callback(component, thisComponent?.selector);
 
     return;
   }
