@@ -137,7 +137,7 @@ const getComponentData = (component) => {
   return defaultInitSelectors[component.NAME] || null;
 };
 
-const initComponent = async (component) => {
+const initComponent = (component) => {
   if (!component || initiatedComponents?.includes(component.NAME)) {
     return;
   }
