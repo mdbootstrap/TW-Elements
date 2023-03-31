@@ -1,4 +1,3 @@
-// import ChartDataLabels from "chartjs-plugin-datalabels";
 import { element, typeCheckConfig } from "../util/index";
 import Data from "../dom/data";
 import Manipulator from "../dom/manipulator";
@@ -9,7 +8,6 @@ import Manipulator from "../dom/manipulator";
  * ------------------------------------------------------------------------
  */
 
-// const merge = require("deepmerge");
 import merge from "deepmerge";
 
 const NAME = "chart";

@@ -24,7 +24,7 @@ export default defineConfig({
       ),
       formats: process.env.buildFile ? ["umd"] : ["es"],
       name: "te",
-      fileName: (format) => `js/tw-elements.${format}.min.js`,
+      fileName: (format) => `tw-elements.${format}.min.js`,
     },
     rollupOptions: {
       input: process.env.mode === "demo" && {
@@ -40,6 +40,10 @@ export default defineConfig({
               fileURLToPath(new URL(file, import.meta.url)),
             ])
         ),
+      },
+      output: {
+        dir: "dist/js",
+        chunkFileNames: "[name].js",
       },
     },
     sourcemap: true,
