@@ -135,14 +135,14 @@ const DefaultClasses = {
   optionsWrapperScrollbar:
     "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-button]:block [&::-webkit-scrollbar-button]:h-0 [&::-webkit-scrollbar-button]:bg-transparent [&::-webkit-scrollbar-track-piece]:bg-transparent [&::-webkit-scrollbar-track-piece]:rounded-none [&::-webkit-scrollbar-track-piece]: [&::-webkit-scrollbar-track-piece]:rounded-l [&::-webkit-scrollbar-thumb]:h-[50px] [&::-webkit-scrollbar-thumb]:bg-[#999] [&::-webkit-scrollbar-thumb]:rounded",
   selectArrow:
-    "absolute right-2 text-[0.8rem] cursor-pointer peer-focus:text-primary peer-data-[te-input-focused]:text-primary group-data-[te-was-validated]/validation:peer-valid:text-green-600 group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)]",
+    "absolute right-3 text-[0.8rem] cursor-pointer peer-focus:text-primary peer-data-[te-input-focused]:text-primary group-data-[te-was-validated]/validation:peer-valid:text-green-600 group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)] w-5 h-5",
   selectArrowWhite:
     "text-gray-50 peer-focus:!text-white peer-data-[te-input-focused]:!text-white",
   selectArrowDefault: "top-2",
   selectArrowLg: "top-[13px]",
   selectArrowSm: "top-1",
   selectClearBtn:
-    "absolute top-2 right-7 text-black cursor-pointer focus:text-primary outline-none dark:text-gray-200",
+    "absolute top-2 right-9 text-black cursor-pointer focus:text-primary outline-none dark:text-gray-200",
   selectClearBtnWhite: "!text-gray-50",
   selectClearBtnDefault: "top-2 text-base",
   selectClearBtnLg: "top-[11px] text-base",
