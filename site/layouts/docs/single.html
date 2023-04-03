@@ -4,6 +4,7 @@
 {{ $api_file_exists := fileExists (printf "/content/%s/a.html" .File.Dir) }}
 {{ $api_scrollspy_file_exists := fileExists (printf "/content/%s/a-ss.html" .File.Dir) }}
 {{ $hidden_sidenav := .Params.hidden_sidenav }}
+{{ $autoinits := .Params.autoinits }}
 
 
 <!-- Single for all single page under /docs/* -->
@@ -139,6 +140,34 @@
                   {{ .Params.description }}
                 </p>
 
+                {{ if $autoinits }}
+                  <div class="my-4 flex flex-wrap text-sm">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="mr-2 h-5 w-5 text-primary-600">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+
+                    <strong class="mr-2">Required ES init:</strong>
+                    {{ $autoinits }} <code class="ml-1">*</code>
+                    <div class="mt-6 w-full">
+                      <strong><code>*</code> UMD</strong> autoinits are enabled
+                      by default. This means that you don't need to initialize
+                      the component manually. However if you are using Tailwind
+                      Elements <strong>ES</strong> format then you should pass
+                      the required components to the <code>initTE</code> method.
+                    </div>
+                  </div>
+                {{ end }}
+
+
                 <hr class="my-12 dark:border-neutral-600" />
               {{ end }}
 
@@ -227,7 +256,7 @@
     {{ partial "footer/footer-docs.html" . }}
 
     {{ if ne $hidden_sidenav true }}
-      <script>
+      <script type="module">
         const sidenav = document.getElementById("sidenav-main");
         const sidenavInstance = te.Sidenav.getInstance(sidenav);
 
@@ -249,8 +278,6 @@
             sidenavInstance.show();
           }
         };
-
-        setMode();
 
         // Event listeners
         window.addEventListener("resize", setMode);

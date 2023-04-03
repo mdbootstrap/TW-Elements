@@ -1,14 +1,15 @@
 {
   "name": "tw",
   "version": "2.0.0",
+  "type": "module",
   "license": "AGPL",
   "main": "index.js",
   "author": "MDBootstrap <office@mdbootstrap.com>",
   "scripts": {
     "start": "concurrently npm:watch:*",
-    "watch:tailwind": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css --watch",
+    "watch:tailwind": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.min.css --minify --watch",
     "watch:hugo": "hugo server -D",
-    "build:tailwind": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css",
+    "build:tailwind": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.min.css --minify",
     "build": "hugo --minify",
     "build:tst": "hugo -e tst --minify"
   },

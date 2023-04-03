@@ -30,13 +30,16 @@ import Sidenav from "./navigation/sidenav";
 import Stepper from "./components/stepper";
 import Select from "./forms/select";
 import ChipsInput from "./components/chips";
-import Chart from "./data/charts";
+import Chip from "./components/chips/chip";
+import Chart from "./data/chart/charts";
+import initTE from "./autoinit/index";
 
 export {
   Animate,
   Alert,
   Button,
   ChipsInput,
+  Chip,
   Dropdown,
   Carousel,
   Collapse,
@@ -55,4 +58,5 @@ export {
   Stepper,
   Input,
   Chart,
+  initTE,
 };

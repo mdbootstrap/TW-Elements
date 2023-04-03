@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
     <!-- Custom styles -->
@@ -1616,66 +1616,66 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
-    <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript">
+    <script type="module">
+      import * as te from "../../../src/js/index.umd.js";
       // example with mode
+      document.addEventListener("DOMContentLoaded", () => {
+        const instanceMode = te.Sidenav.getInstance(
+          document.getElementById("sidenav-2")
+        );
+        const modes = ["push", "over", "side"];
 
-      const instanceMode = te.Sidenav.getInstance(
-        document.getElementById("sidenav-2")
-      );
-      const modes = ["push", "over", "side"];
-
-      modes.forEach((mode) => {
-        const modeSwitch = document.getElementById(mode);
-        modeSwitch.addEventListener("click", () => {
-          const instance = te.Sidenav.getInstance(
-            document.getElementById("sidenav-2")
-          );
-          instance.changeMode(mode);
-          modes.forEach((el) => {
-            if (el === mode) {
-              ["text-blue-600", "border-blue-600"].forEach((item) =>
-                modeSwitch.classList.remove(item)
-              );
-              modeSwitch.className +=
-                " bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 focus:bg-blue-700 border-transparent";
-            } else {
-              const node = document.getElementById(el);
-              node.className += " text-blue-600 border-blue-600";
-              [
-                "bg-blue-600",
-                "text-white",
-                "hover:bg-blue-700",
-                "active:bg-blue-800",
-                "focus:bg-blue-700",
-                "border-transparent",
-              ].forEach((item) => node.classList.remove(item));
-            }
+        modes.forEach((mode) => {
+          const modeSwitch = document.getElementById(mode);
+          modeSwitch.addEventListener("click", () => {
+            const instance = te.Sidenav.getInstance(
+              document.getElementById("sidenav-2")
+            );
+            instance.changeMode(mode);
+            modes.forEach((el) => {
+              if (el === mode) {
+                ["text-blue-600", "border-blue-600"].forEach((item) =>
+                  modeSwitch.classList.remove(item)
+                );
+                modeSwitch.className +=
+                  " bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 focus:bg-blue-700 border-transparent";
+              } else {
+                const node = document.getElementById(el);
+                node.className += " text-blue-600 border-blue-600";
+                [
+                  "bg-blue-600",
+                  "text-white",
+                  "hover:bg-blue-700",
+                  "active:bg-blue-800",
+                  "focus:bg-blue-700",
+                  "border-transparent",
+                ].forEach((item) => node.classList.remove(item));
+              }
+            });
           });
         });
+
+        // example with mode
+
+        // slim toggle
+
+        document
+          .getElementById("slim-toggler")
+          .addEventListener("click", () => {
+            const instance = te.Sidenav.getInstance(
+              document.getElementById("sidenav-4")
+            );
+            instance.toggleSlim();
+          });
+
+        // slim toggle
       });
-
-      // example with mode
-
-      // slim toggle
-
-      document.getElementById("slim-toggler").addEventListener("click", () => {
-        const instance = te.Sidenav.getInstance(
-          document.getElementById("sidenav-4")
-        );
-        instance.toggleSlim();
-      });
-
-      // slim toggle
     </script>
   </body>
 </html>

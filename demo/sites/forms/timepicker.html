@@ -16,7 +16,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
     <!-- Custom styles -->
@@ -492,139 +492,156 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
-    <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript">
-      const pickerInline = document.querySelector("#timepicker-inline-12");
-      const timepickerMaxMin = new te.Timepicker(pickerInline, {
-        format12: true,
-        inline: true,
-      });
+    <script type="module">
+      import * as te from "../../../src/js/index.umd.js";
 
-      const pickerInline2 = document.querySelector("#timepicker-inline-24");
-      const timepickerMaxMin2 = new te.Timepicker(pickerInline2, {
-        format24: true,
-        inline: true,
-      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const pickerInline = document.querySelector("#timepicker-inline-12");
+        const timepickerMaxMin = new te.Timepicker(pickerInline, {
+          format12: true,
+          inline: true,
+        });
 
-      //Default time string PM
-      const pickerStartedPM = document.querySelector(
-        "#timepicker-default-time-string-pm "
-      );
-      const tmStartedPM = new te.Timepicker(pickerStartedPM, {
-        defaultTime: "02:12 PM",
-      });
+        const pickerInline2 = document.querySelector("#timepicker-inline-24");
+        const timepickerMaxMin2 = new te.Timepicker(pickerInline2, {
+          format24: true,
+          inline: true,
+        });
 
-      //Default time string AM
-      const pickerStartedAM = document.querySelector(
-        "#timepicker-default-time-string-am"
-      );
-      const tmStartedAM = new te.Timepicker(pickerStartedAM, {
-        defaultTime: "05:12 AM",
-      });
+        //Default time string PM
+        const pickerStartedPM = document.querySelector(
+          "#timepicker-default-time-string-pm "
+        );
+        const tmStartedPM = new te.Timepicker(pickerStartedPM, {
+          defaultTime: "02:12 PM",
+        });
 
-      //Default time without PM/AM
-      const pickerStartedWithoutPmAm = document.querySelector(
-        "#timepicker-default-time-string-without-pm-am"
-      );
-      const tmStartedWithoutPmAm = new te.Timepicker(pickerStartedWithoutPmAm, {
-        defaultTime: "05:12",
-      });
+        //Default time string AM
+        const pickerStartedAM = document.querySelector(
+          "#timepicker-default-time-string-am"
+        );
+        const tmStartedAM = new te.Timepicker(pickerStartedAM, {
+          defaultTime: "05:12 AM",
+        });
 
-      //Default time with 24h
-      const pickerStartedWith24h = document.querySelector(
-        "#timepicker-default-time-string-24h"
-      );
-      const tmStartedWith24h = new te.Timepicker(pickerStartedWith24h, {
-        defaultTime: "23:44",
-        format24: true,
-      });
+        //Default time without PM/AM
+        const pickerStartedWithoutPmAm = document.querySelector(
+          "#timepicker-default-time-string-without-pm-am"
+        );
+        const tmStartedWithoutPmAm = new te.Timepicker(
+          pickerStartedWithoutPmAm,
+          {
+            defaultTime: "05:12",
+          }
+        );
 
-      //Default time date 12h
-      const pickerStartedWithDate12h = document.querySelector(
-        "#timepicker-default-time-with-new-date-12h"
-      );
-      const tmStartedWithDate12h = new te.Timepicker(pickerStartedWithDate12h, {
-        defaultTime: new Date(),
-      });
+        //Default time with 24h
+        const pickerStartedWith24h = document.querySelector(
+          "#timepicker-default-time-string-24h"
+        );
+        const tmStartedWith24h = new te.Timepicker(pickerStartedWith24h, {
+          defaultTime: "23:44",
+          format24: true,
+        });
 
-      //Default time date 24h
-      const pickerStartedWithDate24h = document.querySelector(
-        "#timepicker-default-time-with-new-date-24h"
-      );
-      const tmStartedWithDate24h = new te.Timepicker(pickerStartedWithDate24h, {
-        defaultTime: new Date(),
-        format24: true,
-      });
-      const timepickerValue = document.querySelector("#timepicker-value");
-      const tminputValue = new te.Timepicker(timepickerValue);
+        //Default time date 12h
+        const pickerStartedWithDate12h = document.querySelector(
+          "#timepicker-default-time-with-new-date-12h"
+        );
+        const tmStartedWithDate12h = new te.Timepicker(
+          pickerStartedWithDate12h,
+          {
+            defaultTime: new Date(),
+          }
+        );
 
-      timepickerValue.addEventListener("input.te.timepicker", (input) => {
-        const valueDiv = document.querySelector("#span-input-value");
+        //Default time date 24h
+        const pickerStartedWithDate24h = document.querySelector(
+          "#timepicker-default-time-with-new-date-24h"
+        );
+        const tmStartedWithDate24h = new te.Timepicker(
+          pickerStartedWithDate24h,
+          {
+            defaultTime: new Date(),
+            format24: true,
+          }
+        );
+        const timepickerValue = document.querySelector("#timepicker-value");
+        const tminputValue = new te.Timepicker(timepickerValue);
 
-        valueDiv.innerText = input.target.value;
-      });
+        timepickerValue.addEventListener("input.te.timepicker", (input) => {
+          const valueDiv = document.querySelector("#span-input-value");
 
-      const picker = document.querySelector("#timepicker-format");
-      const tpFormat24 = new te.Timepicker(picker, {
-        format24: true,
-      });
+          valueDiv.innerText = input.target.value;
+        });
 
-      const pickerInc = document.querySelector("#timepicker-inc");
-      const timepickerInc = new te.Timepicker(pickerInc, {
-        increment: true,
-      });
+        const picker = document.querySelector("#timepicker-format");
+        const tpFormat24 = new te.Timepicker(picker, {
+          format24: true,
+        });
 
-      const pickerMaxTime = document.querySelector("#timepicker-max-time");
-      const timepickerMaxTime = new te.Timepicker(pickerMaxTime, {
-        maxTime: "6:35",
-      });
+        const pickerInc = document.querySelector("#timepicker-inc");
+        const timepickerInc = new te.Timepicker(pickerInc, {
+          increment: true,
+        });
 
-      const pickerMaxTimePM = document.querySelector("#timepicker-max-time-pm");
-      const tmMaxPm = new te.Timepicker(pickerMaxTimePM, {
-        maxTime: "6:35 PM",
-      });
+        const pickerMaxTime = document.querySelector("#timepicker-max-time");
+        const timepickerMaxTime = new te.Timepicker(pickerMaxTime, {
+          maxTime: "6:35",
+        });
 
-      const pickerMaxTimeAM = document.querySelector("#timepicker-max-time-am");
-      const tmMaxAm = new te.Timepicker(pickerMaxTimeAM, {
-        maxTime: "6:35 AM",
-      });
+        const pickerMaxTimePM = document.querySelector(
+          "#timepicker-max-time-pm"
+        );
+        const tmMaxPm = new te.Timepicker(pickerMaxTimePM, {
+          maxTime: "6:35 PM",
+        });
 
-      const pickerMinTime = document.querySelector("#timepicker-min-time");
-      const timepickerMinTime = new te.Timepicker(pickerMinTime, {
-        minTime: "10:15",
-      });
+        const pickerMaxTimeAM = document.querySelector(
+          "#timepicker-max-time-am"
+        );
+        const tmMaxAm = new te.Timepicker(pickerMaxTimeAM, {
+          maxTime: "6:35 AM",
+        });
 
-      const pickerMinTimePM = document.querySelector("#timepicker-min-time-pm");
-      const tmMinPm = new te.Timepicker(pickerMinTimePM, {
-        minTime: "6:35 PM",
-      });
+        const pickerMinTime = document.querySelector("#timepicker-min-time");
+        const timepickerMinTime = new te.Timepicker(pickerMinTime, {
+          minTime: "10:15",
+        });
 
-      const pickerMinTimeAM = document.querySelector("#timepicker-min-time-am");
-      const tmMinAm = new te.Timepicker(pickerMinTimeAM, {
-        minTime: "6:35 AM",
-      });
+        const pickerMinTimePM = document.querySelector(
+          "#timepicker-min-time-pm"
+        );
+        const tmMinPm = new te.Timepicker(pickerMinTimePM, {
+          minTime: "6:35 PM",
+        });
 
-      const pickerDisablePast = document.querySelector(
-        "#timepicker-disable-past"
-      );
-      const timepickerDisablePast = new te.Timepicker(pickerDisablePast, {
-        disablePast: true,
-      });
+        const pickerMinTimeAM = document.querySelector(
+          "#timepicker-min-time-am"
+        );
+        const tmMinAm = new te.Timepicker(pickerMinTimeAM, {
+          minTime: "6:35 AM",
+        });
 
-      const pickerDisableFuture = document.querySelector(
-        "#timepicker-disable-future"
-      );
-      const timepickerDisableFuture = new te.Timepicker(pickerDisableFuture, {
-        disableFuture: true,
+        const pickerDisablePast = document.querySelector(
+          "#timepicker-disable-past"
+        );
+        const timepickerDisablePast = new te.Timepicker(pickerDisablePast, {
+          disablePast: true,
+        });
+
+        const pickerDisableFuture = document.querySelector(
+          "#timepicker-disable-future"
+        );
+        const timepickerDisableFuture = new te.Timepicker(pickerDisableFuture, {
+          disableFuture: true,
+        });
       });
     </script>
   </body>

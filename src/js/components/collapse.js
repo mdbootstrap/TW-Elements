@@ -10,7 +10,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 */
 
 import {
-  defineJQueryPlugin,
   getElement,
   getSelectorFromElement,
   getElementFromSelector,
@@ -32,7 +31,6 @@ Constants
 const NAME = "collapse";
 const DATA_KEY = "te.collapse";
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = ".data-api";
 
 const Default = {
   toggle: true,
@@ -48,7 +46,6 @@ const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
 const ATTR_SHOW = "data-te-collapse-show";
 const ATTR_COLLAPSED = "data-te-collapse-collapsed";
@@ -294,7 +291,6 @@ class Collapse extends BaseComponent {
   }
 
   // Private
-
   _getConfig(config) {
     config = {
       ...Default,
@@ -381,42 +377,5 @@ class Collapse extends BaseComponent {
     });
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(
-  document,
-  EVENT_CLICK_DATA_API,
-  SELECTOR_DATA_COLLAPSE_INIT,
-  function (event) {
-    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
-    if (
-      event.target.tagName === "A" ||
-      (event.delegateTarget && event.delegateTarget.tagName === "A")
-    ) {
-      event.preventDefault();
-    }
-
-    const selector = getSelectorFromElement(this);
-    const selectorElements = SelectorEngine.find(selector);
-
-    selectorElements.forEach((element) => {
-      Collapse.getOrCreateInstance(element, { toggle: false }).toggle();
-    });
-  }
-);
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Collapse to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Collapse);
 
 export default Collapse;

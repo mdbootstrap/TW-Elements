@@ -9,7 +9,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import { defineJQueryPlugin } from "../util/index";
 import Tooltip from "./tooltip";
 
 /*
@@ -119,14 +118,5 @@ class Popover extends Tooltip {
     });
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Popover to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Popover);
 
 export default Popover;

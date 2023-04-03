@@ -36,6 +36,63 @@ menu:
 
 <hr class="my-10" />
 
+<div class="w-full">
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="formats"
+    data-te-spy-item>
+    Tailwind Elements formats
+  </h2>
+  <p class="mb-6">
+    Tailwind Elements, in order to meet the new, modular approach, allows the
+    use of <code>ES</code> and <code>UMD</code> formats. These formats will
+    differ in the way components are initialized and will be used in different
+    cases.
+  </p>
+
+  <h3 class="mb-3 font-bold">When to use ES or UMD format?</h3>
+  <p>If your application:</p>
+  <ol class="ml-8 mb-2 list-decimal">
+    <li>is based on <code>modules</code></li>
+    <li>uses <code>bundler</code> functionality</li>
+    <li>needs <code>treeshaking</code></li>
+  </ol>
+
+  <p class="mb-6">
+    the <code>ES</code> format will be most suitable for you, otherwise
+    <code>UMD</code> is the way to go.
+  </p>
+
+  <h3 class="mb-3 font-bold">
+    What is the difference between Tailwind Elements ES and UMD formats?
+  </h3>
+
+  <p class="mb-6">
+    In short, the way to initialize components. In order to allow bundlers to
+    perform proper treeshaking, we have moved component initialization to the
+    <code>initTE</code> method. Tailwind Elements in <code>UMD</code> format
+    will work without adding more elements, but will lack treeshaking. Tailwind
+    Elements in <code>ES</code> format, on the other hand, allows components to
+    be used as separate modules, resulting in the much smaller build size.
+  </p>
+
+  <h3 class="mb-3 font-bold">About the <code>initTE</code> method</h3>
+  <p>
+    To use the initTE method, you need to import it from the
+    <code>tw-elements</code>, same as for components. You can add a second
+    parameter of type <code>Boolean</code> that acts as a debugger. By default
+    it's value is set to <code>false</code>, so it will fire only when you want
+    to. How does it work? If it finds a component that should be inited but has
+    not been passed as an argument (for example, it finds a data atribute that
+    would suggest that it should be initialized automatically), it will display
+    a warning in a console. We encourage to use it in the last invocation of
+    <code>initTE</code> method because it shows what inits are lacking at the
+    current moment.
+  </p>
+</div>
+
+<hr class="my-10" />
+
 <div class="flex flex-row">
   <div class="w-full basis-7/12">
     <h2
@@ -97,27 +154,29 @@ menu:
       "./src/**/*.{html,js}",
       "./node_modules/tw-elements/dist/js/**/*.js"
     ],
-    plugins: [require("tw-elements/dist/plugin")]
+    plugins: [require("tw-elements/dist/plugin.cjs")],
+    darkMode: "class"
   };
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <p class="mt-6 mb-2">
-  4. Dynamic components will work after adding the js file:
+  4. Dynamic components will work after importing the package inside
+  <code>index.js</code>:
 </p>
-<div class="pt-2">
-  {{< twsnippet/wrapper "index.html" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
-  <script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
-  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
-</div>
 
-<p class="mt-6 mb-2">
-  Alternatively, you can import it in the following way (bundler version):
-</p>
 <div class="pt-2">
-  {{< twsnippet/wrapper "index.js" "" "mobile" >}}{{< twsnippet/code active=true lang="JavaScript" >}}
-  import * as te from 'tw-elements';
-  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  {{< twsnippet/wrapper "javascript,umd" "" "mobile" >}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/code active=true lang="JavaScript" >}}
+  import { Carousel, initTE } from "tw-elements";
+  initTE({ Carousel });
+  {{< /twsnippet/code >}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/code lang="JavaScript" >}}
+  import 'tw-elements';
+  {{< /twsnippet/code >}}
+  {{< /twsnippet/wrapper >}}
 </div>
 
 <hr class="my-10" />
@@ -191,6 +250,314 @@ menu:
 <hr class="my-10" />
 
 <div class="flex flex-row">
+  <div class="w-full">
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      id="vite"
+      data-te-scrollspy-item>
+      Vite
+    </h2>
+
+    <div
+      class="mb-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:text-gray-600">
+      <strong>Note:</strong> Make sure that you have
+      <code>Node.js version 14+, 16+</code> installed. Please update if your
+      package manager asks for it.
+    </div>
+    <p class="my-3">
+      Vite (French word for "fast", pronounced /vit/) is a build tool that aims
+      to provide a faster and leaner development experience for modern web
+      projects. <b>Tailwind Elements</b> can be imported in Vite applications
+      according to the following procedure:
+    </p>
+  </div>
+</div>
+
+<p class="mb-2">
+  1. Create a new vite project and enter the newly created directory. You can
+  skip this step if you already have it installed.
+</p>
+
+<div class="pt-2">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  npm create vite@latest my-project 
+  cd my-project
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2">
+  2. Install tailwind CSS and its dependencies. After that,
+  <code>init</code> the tailwind with the Tailwind CLI tool to create
+  <code>tailwind.config.cjs</code> file.
+</p>
+
+<div class="pt-2">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  npm install -D tailwindcss postcss autoprefixer 
+  npx tailwindcss init -p
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mt-6 mb-2">
+  3. Go to the <code>tailwind.config.cjs</code> file and add paths wherer you
+  html files are going to be stored. You can change the
+  <code>index.html</code> location but make sure to change to
+  <a
+    href="https://vitejs.dev/guide/#index-html-and-project-root"
+    target="_blank"
+    class="text-primary"
+    >root folder</a
+  >
+  inside the <code>vite.config.js</code> file.
+</p>
+
+<div class="pt-2">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}{{< twsnippet/code active=true lang="JavaScript" >}}
+  /** @type {import('tailwindcss').Config} */
+  module.exports = {
+    content: [
+      "./index.html",
+      "./src/**/*.{js,ts,jsx,tsx}",
+    ],
+    theme: {
+      extend: {},
+    },
+    plugins: [],
+  }
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mt-6 mb-2">
+  4. Add the necessary Tailwind directives to your <code>style.css</code> file
+  to be able to use Tailwind classes on your website. Unless you changed it,
+  <code>style.css</code> should be in the root directory of your app. You can
+  also remove the default content of the <code>style.css</code> file if you
+  want.
+</p>
+<div class="pt-2">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "style.css" "" "mobile" >}}{{< twsnippet/code active=true lang="css" >}}
+  @tailwind base; 
+  @tailwind components; 
+  @tailwind utilities;
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mt-6 mb-2">
+  5. Link the css file inside the <code>index.html</code>.
+</p>
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.html" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+  <head>
+    ...
+    <link rel="stylesheet" href="style.css" />
+    ...
+  </head>
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mt-6 mb-2">
+  6. Tailwind should be connected properly to the vite app. If you type the code
+  bellow, you will see the default vite <code>index.html</code> page (without
+  any styles if you deleted them from <code>style.css</code>).
+</p>
+
+<div class="pt-2">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  npm run dev
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mt-6 mb-2">7. Install the <code>tw-elements</code> package.</p>
+
+<div class="pt-2">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  npm install tw-elements
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mt-6 mb-2">
+  8. Add js files patterns that loads dynamic component classes to the content
+  array inside the <code>tailwind.config.cjs</code>. Extend the default tailwind
+  classes by adding the <code>Tailwind Elements</code> plugin.
+</p>
+
+<div class="pt-2">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
+  /** @type {import('tailwindcss').Config} */
+  module.exports = {
+    content: [
+      "./index.html",
+      "./src/**/*.{html,js}",
+      "./node_modules/tw-elements/dist/js/**/*.js",
+    ],
+    plugins: [require("tw-elements/dist/plugin.cjs")],
+    darkMode: "class"
+  };  
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mt-6 mb-2">
+  9. Now you can start working on your app. Since the package.json created by
+  vite has a type set to <code>module</code>, we are going to use the
+  <code>ES</code>. Lets try to import some code and see if everything is working
+  correctly. Don't forget to call the <code>initTE</code> method. The carousel
+  component should have proper styles, and change the current image after arrow
+  click or after some delay.
+</p>
+
+<div
+  class="my-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:border-white dark:bg-sky-900 ">
+  <strong>Note:</strong> You can init more than one component at once, for
+  example:
+  <code>initTE({ Carousel, Datepicker, Select, Timepicker });</code>
+</div>
+
+<div class="pt-2">
+  {{< twsnippet/wrapper "index.html,main.js" "" "mobile" >}}
+  {{< twsnippet/code active=true lang="html" >}}
+  <div
+    id="carouselExampleCaptions"
+    class="relative"
+    data-te-carousel-init
+    data-te-carousel-slide>
+    <div
+      class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+      data-te-carousel-indicators>
+      <button
+        type="button"
+        data-te-target="#carouselExampleCaptions"
+        data-te-slide-to="0"
+        data-te-carousel-active
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-current="true"
+        aria-label="Slide 1"></button>
+      <button
+        type="button"
+        data-te-target="#carouselExampleCaptions"
+        data-te-slide-to="1"
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 2"></button>
+      <button
+        type="button"
+        data-te-target="#carouselExampleCaptions"
+        data-te-slide-to="2"
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 3"></button>
+    </div>
+    <div
+      class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+      <div
+        class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+        data-te-carousel-active
+        data-te-carousel-item
+        style="backface-visibility: hidden">
+        <img
+          src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(15).jpg"
+          class="block w-full"
+          alt="..." />
+        <div
+          class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+          <h5 class="text-xl">First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div
+        class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+        data-te-carousel-item
+        style="backface-visibility: hidden">
+        <img
+          src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(22).jpg"
+          class="block w-full"
+          alt="..." />
+        <div
+          class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+          <h5 class="text-xl">Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div
+        class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+        data-te-carousel-item
+        style="backface-visibility: hidden">
+        <img
+          src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg"
+          class="block w-full"
+          alt="..." />
+        <div
+          class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+          <h5 class="text-xl">Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="absolute top-0 bottom-0 left-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+      type="button"
+      data-te-target="#carouselExampleCaptions"
+      data-te-slide="prev">
+      <span class="inline-block h-8 w-8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-6 w-6">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+      </span>
+      <span
+        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+        >Previous</span
+      >
+    </button>
+    <button
+      class="absolute top-0 bottom-0 right-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+      type="button"
+      data-te-target="#carouselExampleCaptions"
+      data-te-slide="next">
+      <span class="inline-block h-8 w-8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="h-6 w-6">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </span>
+      <span
+        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+        >Next</span
+      >
+    </button>
+  </div>
+  {{< /twsnippet/code >}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/code lang="js" >}}
+  import { Carousel, initTE } from "tw-elements";
+  initTE({ Carousel }, true ); // set second parameter to true if you want to use a debugger
+  {{< /twsnippet/code >}}
+  {{< /twsnippet/wrapper >}}
+</div>
+
+<hr class="my-10" />
+
+<div class="flex flex-row">
   <div class="basis-7/12">
     <h2
       class="mt-0 mb-5 text-3xl font-semibold leading-normal"
@@ -221,7 +588,7 @@ menu:
     rel="stylesheet" />
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
   <script src="https://cdn.tailwindcss.com/3.2.4"></script>
   <script>
     tailwind.config = {
@@ -242,11 +609,12 @@ menu:
 </div>
 
 <p class="mt-4 mb-2">
-  Require the js bundled file right before the <code>body</code> closing tag:
+  Require the js bundled file right before the <code>body</code> closing tag.
+  Use the <code>UMD</code> file if used without a bundler.
 </p>
 <div class="pt-2">
   {{< twsnippet/wrapper "index.html" >}}{{< twsnippet/code active=true lang="HTML" >}}
-  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 

@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
     <!-- Custom styles -->
@@ -709,62 +709,62 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
-    <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript">
-      // single selection
-      const singleSelect = document.querySelector("#singleSelection");
-      const singleSelectInstance = te.Select.getInstance(singleSelect);
-      singleSelectInstance.setValue("4");
-      // single selection
+    <script type="module">
+      import * as te from "../../../src/js/index.umd.js";
 
-      // multi selection
-      const multiSelect = document.querySelector("#multiSelection");
-      const multiSelectInstance = te.Select.getInstance(multiSelect);
-      multiSelectInstance.setValue(["3", "4", "5"]);
-      // multi selection
+      document.addEventListener("DOMContentLoaded", () => {
+        // single selection
+        const singleSelect = document.querySelector("#singleSelection");
+        const singleSelectInstance = te.Select.getInstance(singleSelect);
+        singleSelectInstance.setValue("4");
+        // single selection
 
-      // select with toggle element
-      const selectEl = document.getElementById("mySelect");
-      const select = te.Select.getInstance(selectEl);
+        // multi selection
+        const multiSelect = document.querySelector("#multiSelection");
+        const multiSelectInstance = te.Select.getInstance(multiSelect);
+        multiSelectInstance.setValue(["3", "4", "5"]);
+        // multi selection
 
-      document.getElementById("toggleMySelect").onclick = function () {
-        select.open();
-      };
-      // select with toggle element
+        // select with toggle element
+        const selectEl = document.getElementById("mySelect");
+        const select = te.Select.getInstance(selectEl);
 
-      // validation
+        document.getElementById("toggleMySelect").onclick = function () {
+          select.open();
+        };
+        // select with toggle element
 
-      (() => {
-        "use strict";
+        // validation
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll(".needs-validation");
+        (() => {
+          "use strict";
 
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms).forEach((form) => {
-          form.addEventListener(
-            "submit",
-            (event) => {
-              event.preventDefault();
-              event.stopPropagation();
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          const forms = document.querySelectorAll(".needs-validation");
 
-              form.setAttribute("data-te-was-validated", "");
-            },
-            false
-          );
-        });
-      })();
+          // Loop over them and prevent submission
+          Array.prototype.slice.call(forms).forEach((form) => {
+            form.addEventListener(
+              "submit",
+              (event) => {
+                event.preventDefault();
+                event.stopPropagation();
 
-      // validation
+                form.setAttribute("data-te-was-validated", "");
+              },
+              false
+            );
+          });
+        })();
+
+        // validation
+      });
     </script>
   </body>
 </html>

@@ -3,6 +3,46 @@
 
 <!-- Section: Docs content-->
 <section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Tab, initTE } from "tw-elements";
+        initTE({ Tab });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
   <!-- Section: Usage-->
   <section id="api-section-usage">
     <!-- Title -->
@@ -43,9 +83,10 @@
     <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
 
     <p>
-      You can activate a tab or pill navigation without writing any JavaScript
-      by simply specifying <code>data-te-toggle="tab"</code> or
-      <code>data-te-toggle="pill"</code> on an element.
+      You can activate a tab or pill navigation by simply specifying
+      <code>data-te-toggle="tab"</code> or <code>data-te-toggle="pill"</code> on
+      an element. If you are going to use the <code>UMD</code> format, just
+      import the <code>tw-elements</code> package.
     </p>
 
     <!-- Section: Code-->
@@ -154,6 +195,14 @@
     <h4 class="mb-4 font-bold">Via JavaScript</h4>
 
     <p>
+      You can access an instance from your Javascript code, by using the
+      <code class="text-red-500 dark:text-red-300">getInstance</code> static
+      method of the Tab class - it allows making use of all the public methods
+      listed in the
+      <a class="text-blue-600" href="#api-section-methods">Methods</a> section.
+    </p>
+
+    <p>
       Enable tabbable pills via JavaScript (each tab needs to be activated
       individually):
     </p>
@@ -162,9 +211,21 @@
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+          const triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+          triggerTabList.forEach((triggerEl) => {
+            const tabTrigger = new Tab(triggerEl);
+
+            triggerEl.addEventListener('click', (e) => {
+              e.preventDefault();
+              tabTrigger.show();
+            });
+          });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
           triggerTabList.forEach((triggerEl) => {
             const tabTrigger = new te.Tab(triggerEl);
@@ -186,9 +247,17 @@
     {{< twsnippet/no-demo id="api-example5" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example5">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+          const triggerEl = document.querySelector('#myTab a[href="#profile"]');
+          Tab.getInstance(triggerEl).show(); // Select tab by name
+
+          const triggerFirstTabEl = document.querySelector('#myTab li:first-child a');
+          te.Tab.getInstance(triggerFirstTabEl).show(); // Select first tab
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const triggerEl = document.querySelector('#myTab a[href="#profile"]');
           te.Tab.getInstance(triggerEl).show(); // Select tab by name
 
@@ -199,7 +268,6 @@
       </div>
     </section>
     <!-- Section: Code-->
-
     <!-- Section: Usage-->
 
     <hr class="mb-5 dark:border-neutral-600" />
@@ -309,9 +377,15 @@
       {{< twsnippet/no-demo id="api-example6" >}}
       <section class="!visible hidden" data-te-collapse-item id="api-example6">
         <div class="pt-4">
-          {{< twsnippet/wrapper "JavaScript" >}}
+          {{< twsnippet/wrapper "javascript,umd" >}}
           <!-- prettier-ignore -->
           {{< twsnippet/code active=true lang="js" >}}
+            const someTabTriggerEl = document.querySelector('#someTabTrigger');
+            const tab = new Tab(someTabTriggerEl);
+            tab.show();
+          {{< /twsnippet/code >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code lang="js" >}}
             const someTabTriggerEl = document.querySelector('#someTabTrigger');
             const tab = new te.Tab(someTabTriggerEl);
             tab.show();

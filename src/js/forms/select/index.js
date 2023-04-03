@@ -14,12 +14,7 @@ import Data from "../../dom/data";
 import EventHandler from "../../dom/event-handler";
 import Manipulator from "../../dom/manipulator";
 import SelectorEngine from "../../dom/selector-engine";
-import {
-  typeCheckConfig,
-  getjQuery,
-  getUID,
-  onDOMContentLoaded,
-} from "../../util/index";
+import { typeCheckConfig, getUID } from "../../util/index";
 import Input from "../input";
 import SelectOption from "./select-option";
 import SelectionModel from "./selection-model";
@@ -61,7 +56,6 @@ const DATA_SELECT_OPTION_GROUP_LABEL = "data-te-select-option-group-label-ref";
 const DATA_OPTION_ALL = "data-te-select-option-all-ref";
 const DATA_SELECTED = "data-te-select-selected";
 
-const SELECTOR_SELECT = `[${DATA_SELECT_INIT}]`;
 const SELECTOR_LABEL = "[data-te-select-label-ref]";
 const SELECTOR_INPUT = "[data-te-select-input-ref]";
 const SELECTOR_FILTER_INPUT = "[data-te-select-input-filter-ref]";
@@ -1689,31 +1683,3 @@ class Select {
 }
 
 export default Select;
-
-const $ = getjQuery();
-
-SelectorEngine.find(SELECTOR_SELECT).forEach((select) => {
-  let instance = Select.getInstance(select);
-  if (!instance) {
-    instance = new Select(select);
-  }
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .timepicker to jQuery only if jQuery is present
- */
-
-onDOMContentLoaded(() => {
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Select.jQueryInterface;
-    $.fn[NAME].Constructor = Select;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Select.jQueryInterface;
-    };
-  }
-});

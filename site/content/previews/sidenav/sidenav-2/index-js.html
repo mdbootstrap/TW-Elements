@@ -1,7 +1,7 @@
 ---
 ---
 
-<script type="text/javascript">
+<script type="module">
   const sidenav = document.getElementById("full-screen-example");
   const sidenavInstance = te.Sidenav.getInstance(sidenav);
 
@@ -24,7 +24,9 @@
     }
   };
 
-  setMode();
+  if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+    setMode();
+  }
 
   // Event listeners
   window.addEventListener("resize", setMode);

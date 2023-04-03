@@ -12,6 +12,7 @@ url: "docs/standard/navigation/sidenav/"
 menu:
   navigation:
     name: "Sidenav"
+autoinits: "Sidenav"
 ---
 
 <!-- Section: Basic example -->
@@ -224,7 +225,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example1">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <section
         class="relative flex h-96 min-h-full items-start justify-center overflow-x-hidden border bg-gray-50 dark:border-zinc-900 dark:bg-zinc-700">
@@ -391,6 +392,16 @@ menu:
         </button>
         <!-- Toggler -->
       </section>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Sidenav,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -707,7 +718,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example2">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <p>Select mode:</p>
       <div class="d-flex my-4">
@@ -904,6 +915,50 @@ menu:
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
+      import {
+        Sidenav,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav });
+
+      const instanceMode = Sidenav.getInstance(
+        document.getElementById("sidenav-2")
+      );
+      const modes = ["push", "over", "side"];
+
+      modes.forEach((mode) => {
+        const modeSwitch = document.getElementById(mode);
+        modeSwitch.addEventListener("click", () => {
+          const instance = Sidenav.getInstance(
+            document.getElementById("sidenav-2")
+          );
+          instance.changeMode(mode);
+          modes.forEach((el) => {
+            if (el === mode) {
+              ["text-blue-600", "border-blue-600"].forEach((item) =>
+                modeSwitch.classList.remove(item)
+              );
+              modeSwitch.className +=
+                " bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 focus:bg-blue-700 border-transparent";
+            } else {
+              const node = document.getElementById(el);
+              node.className += " text-blue-600 border-blue-600";
+              [
+                "bg-blue-600",
+                "text-white",
+                "hover:bg-blue-700",
+                "active:bg-blue-800",
+                "focus:bg-blue-700",
+                "border-transparent",
+              ].forEach((item) => node.classList.remove(item));
+            }
+          });
+        });
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
       const instanceMode = te.Sidenav.getInstance(
         document.getElementById("sidenav-2")
       );
@@ -912,7 +967,6 @@ menu:
       modes.forEach((mode) => {
         const modeSwitch = document.getElementById(mode);
         modeSwitch.addEventListener("click", () => {
-          console.log(mode);
           const instance = te.Sidenav.getInstance(
             document.getElementById("sidenav-2")
           );
@@ -1132,7 +1186,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example3">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <section
         class="relative flex h-screen min-h-full items-start justify-center overflow-x-hidden border bg-gray-50 dark:border-zinc-900 dark:bg-zinc-700">
@@ -1298,6 +1352,16 @@ menu:
         </button>
         <!-- Toggler -->
       </section>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Sidenav,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -1522,7 +1586,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example4">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <section
         class="relative flex h-screen min-h-full items-start justify-center overflow-y-hidden border bg-gray-50 dark:border-zinc-900 dark:bg-zinc-700">
@@ -1711,6 +1775,24 @@ menu:
           </button>
         </div>
       </section>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Sidenav,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav });
+
+      document
+      .getElementById("slim-toggler")
+      .addEventListener("click", () => {
+        const instance = Sidenav.getInstance(
+          document.getElementById("sidenav-4")
+        );
+        instance.toggleSlim();
+      });
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -1915,7 +1997,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example5">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <section
         class="relative flex h-screen min-h-full items-start justify-center overflow-y-hidden border bg-gray-50 dark:border-zinc-900 dark:bg-zinc-700">
@@ -2081,6 +2163,16 @@ menu:
         </button>
         <!-- Toggler -->
       </section>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Sidenav,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -2401,7 +2493,7 @@ menu:
   {{< /twsnippet/demo >}}
   <section class="!visible hidden" data-te-collapse-item id="example6">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <section
         class="relative flex h-[600px] min-h-full items-start justify-center overflow-y-hidden border bg-gray-50 dark:border-zinc-900 dark:bg-zinc-700">
@@ -2699,6 +2791,16 @@ menu:
         <!-- Toggler -->
       </section>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Sidenav,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav });
+      {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
@@ -2898,7 +3000,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example7">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <section
         class="relative flex h-screen min-h-full items-start justify-center overflow-x-hidden overflow-y-hidden border bg-gray-50 dark:border-zinc-900 dark:bg-zinc-700">
@@ -3066,6 +3168,16 @@ menu:
       </section>
 
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Sidenav,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav });
+      {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
@@ -3130,7 +3242,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example8">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <body class="dark:bg-zinc-800 [&>*]:leading-[1.6]">
         <!-- Sidenav -->
@@ -3581,6 +3693,17 @@ menu:
         <!-- Content -->
       </body>
       {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Sidenav,
+        Ripple,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav, Ripple });
+      {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
   </section>
@@ -3648,7 +3771,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example9">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <body class="dark:bg-zinc-800 [&>*]:leading-[1.6]">
         <!-- Sidenav -->
@@ -4113,6 +4236,45 @@ menu:
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
+      import {
+        Sidenav,
+        Ripple,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav, Ripple });
+
+      const sidenav = document.getElementById("full-screen-example");
+      const sidenavInstance = Sidenav.getInstance(sidenav);
+
+      let innerWidth = null;
+
+      const setMode = (e) => {
+        // Check necessary for Android devices
+        if (window.innerWidth === innerWidth) {
+          return;
+        }
+
+        innerWidth = window.innerWidth;
+
+        if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+          sidenavInstance.changeMode("over");
+          sidenavInstance.hide();
+        } else {
+          sidenavInstance.changeMode("side");
+          sidenavInstance.show();
+        }
+      };
+
+      if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+        setMode();
+      }
+
+      // Event listeners
+      window.addEventListener("resize", setMode);
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
       const sidenav = document.getElementById("full-screen-example");
       const sidenavInstance = te.Sidenav.getInstance(sidenav);
 
@@ -4135,7 +4297,9 @@ menu:
         }
       };
 
-      setMode();
+      if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+        setMode();
+      }
 
       // Event listeners
       window.addEventListener("resize", setMode);
@@ -4189,7 +4353,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example10">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <body class="dark:bg-zinc-800">
         <!-- Sidenav -->
@@ -4303,6 +4467,23 @@ menu:
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
+      import {
+        Sidenav,
+        Ripple,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav, Ripple });
+
+      window.addEventListener("load", () => {
+        const sidenav = document.getElementById("full-screen-example");
+        const sidenavInstance = Sidenav.getInstance(sidenav);
+
+        sidenavInstance.show();
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
       window.addEventListener("load", () => {
         const sidenav = document.getElementById("full-screen-example");
         const sidenavInstance = te.Sidenav.getInstance(sidenav);
@@ -4372,7 +4553,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example11">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML,JAVASCRIPT" >}}
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <body class="dark:bg-zinc-800">
         <!--Main Navigation-->
@@ -4883,6 +5064,46 @@ menu:
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
+      import {
+        Sidenav,
+        Dropdown,
+        Ripple,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav, Dropdown, Ripple });
+
+      const sidenav2 = document.getElementById("sidenav-1");
+      const sidenavInstance2 = Sidenav.getInstance(sidenav2);
+
+      let innerWidth2 = null;
+
+      const setMode2 = (e) => {
+        // Check necessary for Android devices
+        if (window.innerWidth === innerWidth2) {
+          return;
+        }
+
+        innerWidth2 = window.innerWidth;
+
+        if (window.innerWidth < sidenavInstance2.getBreakpoint("xl")) {
+          sidenavInstance2.changeMode("over");
+          sidenavInstance2.hide();
+        } else {
+          sidenavInstance2.changeMode("side");
+          sidenavInstance2.show();
+        }
+      };
+
+      if (window.innerWidth < sidenavInstance2.getBreakpoint("sm")) {
+        setMode2();
+      }
+
+      // Event listeners
+      window.addEventListener("resize", setMode2);
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
       const sidenav2 = document.getElementById("sidenav-1");
       const sidenavInstance2 = te.Sidenav.getInstance(sidenav2);
 
@@ -4905,7 +5126,9 @@ menu:
         }
       };
 
-      setMode2();
+      if (window.innerWidth < sidenavInstance2.getBreakpoint("sm")) {
+        setMode2();
+      }
 
       // Event listeners
       window.addEventListener("resize", setMode2);
@@ -5368,7 +5591,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example12">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
       <section
         class="relative flex h-96 min-h-full items-start justify-center overflow-y-hidden border bg-gray-50 dark:border-zinc-900 dark:bg-zinc-700">
@@ -5806,6 +6029,17 @@ menu:
         <!-- Toggler -->
       </section>
 
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Sidenav,
+        Ripple,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Sidenav, Ripple });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>

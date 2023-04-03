@@ -1,9 +1,14 @@
 module.exports = {
-  content: ["./layouts/**/*.html", "./content/**/*.html", "./static/**/*.js"],
+  content: [
+    "./layouts/**/*.html",
+    "./content/**/*.html",
+    "./static/**/*.js",
+    "./static/**/*.cjs",
+  ],
   theme: {
     extend: {},
   },
-  plugins: [require("tailwind-scrollbar"), require("./static/js/plugin")],
+  plugins: [require("tailwind-scrollbar"), require("./static/js/plugin.cjs")],
   darkMode: "class",
   // for dynamic content
   safelist: [

@@ -74,7 +74,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const MODAL_CONTAINER_NAME = "data-te-datepicker-modal-container-ref";
 const DROPDOWN_CONTAINER_NAME = "data-te-datepicker-dropdown-container-ref";
 
-const DATEPICKER_INIT_SELECTOR = "[data-te-datepicker-init]";
 const DATEPICKER_TOGGLE_SELECTOR = "[data-te-datepicker-toggle-ref]";
 const MODAL_CONTAINER_SELECTOR = `[${MODAL_CONTAINER_NAME}]`;
 const DROPDOWN_CONTAINER_SELECTOR = `[${DROPDOWN_CONTAINER_NAME}]`;
@@ -1588,10 +1587,3 @@ class Datepicker {
 }
 
 export default Datepicker;
-
-SelectorEngine.find(DATEPICKER_INIT_SELECTOR).forEach((datepicker) => {
-  let instance = Datepicker.getInstance(datepicker);
-  if (!instance) {
-    instance = new Datepicker(datepicker);
-  }
-});

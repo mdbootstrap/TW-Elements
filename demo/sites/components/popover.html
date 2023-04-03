@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
     <!-- Custom styles -->
@@ -110,22 +110,22 @@
       <br />
     </div>
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
-    <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script>
-      var popoverTriggerList = [].slice.call(
-        document.querySelectorAll('[data-te-toggle="popover"]')
-      );
-      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new te.Popover(popoverTriggerEl);
+    <script type="module">
+      import * as te from "../../../src/js/index.umd.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        var popoverTriggerList = [].slice.call(
+          document.querySelectorAll('[data-te-toggle="popover"]')
+        );
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+          return new te.Popover(popoverTriggerEl);
+        });
       });
     </script>
   </body>
