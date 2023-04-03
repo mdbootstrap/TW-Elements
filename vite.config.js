@@ -43,7 +43,11 @@ export default defineConfig({
       },
       output: {
         dir: "dist/js",
-        chunkFileNames: "[name].[format].js",
+        chunkFileNames: ({ name }) => {
+          const omitPhrase = [".umd", ".es", ".esm"];
+          omitPhrase.forEach((omit) => (name = name.replace(omit, "")));
+          return `${name}.[format].js`;
+        },
       },
     },
     sourcemap: true,

@@ -1,9 +1,8 @@
 import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";
+import { DEFAULT_OPTIONS } from "../data/chart/chartDefaults";
 
-const chartsCallback = async (component, initSelector) => {
-  const { DEFAULT_OPTIONS } = await import("../data/charts");
-
+const chartsCallback = (component, initSelector) => {
   // eslint-disable-next-line consistent-return
   const IS_COMPLEX = (data) => {
     return (
