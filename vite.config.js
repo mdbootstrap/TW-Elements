@@ -43,7 +43,7 @@ export default defineConfig({
       },
       output: {
         dir: "dist/js",
-        chunkFileNames: "[name].js",
+        chunkFileNames: "[name].[format].js",
       },
     },
     sourcemap: true,
