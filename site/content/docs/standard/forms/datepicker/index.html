@@ -15,7 +15,7 @@ menu:
 ---
 
 <!-- Section: Basic example -->
-<section>
+<section id="section-basic">
   <!-- Title -->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal"
@@ -347,8 +347,119 @@ menu:
 </section>
 <!-- Section: Sharing request-->
 
+<!-- Section: Translations -->
+<section id="section-translations">
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="translations"
+    data-te-spy-item>
+    Translations
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    The picker can be customized to add support for internationalization. Modify
+    the component options to add translations.
+  </p>
+
+  {{< twsnippet/demo id="example5" >}}
+  <div class="flex items-center justify-center">
+    <div
+      id="datepicker-translated"
+      class="relative mb-3 xl:w-96"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML, JavaScript" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div class="relative mb-3 xl:w-96" data-te-datepicker-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="JavaScript" >}}
+      const datepickerTranslated = new te.Datepicker(
+        document.querySelector("#datepicker-translated"),
+        {
+          title: "Datum auswählen",
+          monthsFull: [
+            "Januar",
+            "Februar",
+            "März",
+            "April",
+            "Mai",
+            "Juni",
+            "Juli",
+            "August",
+            "September",
+            "Oktober",
+            "November",
+            "Dezember",
+          ],
+          monthsShort: [
+            "Jan",
+            "Feb",
+            "Mär",
+            "Apr",
+            "Mai",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Okt",
+            "Nov",
+            "Dez",
+          ],
+          weekdaysFull: [
+            "Sonntag",
+            "Montag",
+            "Dienstag",
+            "Mittwoch",
+            "Donnerstag",
+            "Freitag",
+            "Samstag",
+          ],
+          weekdaysShort: ["Son", "Mon", "Die", "Mit", "Don", "Fre", "Sam"],
+          weekdaysNarrow: ["S", "M", "D", "M", "D", "F", "S"],
+          okBtnText: "Ok",
+          clearBtnText: "Klar",
+          cancelBtnText: "Schließen",
+        }
+      );
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Translations -->
+
 <!-- Section: Input toggle -->
-<section>
+<section id="section-input-toggle">
   <!-- Title -->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal"
@@ -415,7 +526,7 @@ menu:
 <!-- Section: Input toggle -->
 
 <!-- Section: Custom toggle icon -->
-<section>
+<section id="section-custom-toggle">
   <!-- Title -->
   <h2
     class="mt-0 mb-5 text-3xl font-semibold leading-normal"

@@ -1,0 +1,296 @@
+---
+title: "Nuxt integration"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Elements Nuxt integration"
+subheading: ""
+seo_title: "Tailwind Elements integration with Nuxt - Free Examples & Tutorial"
+description: "This article shows you how to integrate Nuxt application with Tailwind Elements. Free download, AGPL license."
+image: "img/components-big.jpg"
+url: "docs/standard/integrations/nuxt-integration/"
+menu:
+  integrations:
+    name: "Nuxt"
+---
+
+<!-- Section: Basic example -->
+
+<section id="section-prerequisites">
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="prerequisites"
+    data-te-spy-item>
+    Prerequisites
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    Before starting the project make sure to install the following utilities:
+  </p>
+
+  <ul class="ml-4 list-disc">
+    <li>
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://nodejs.org/en/"
+        target="_blank"
+        >Node LTS</a
+      >
+      (14.x.x or higher recommended)
+    </li>
+    <li>
+      Code editor. We recommend
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://code.visualstudio.com/"
+        target="_blank"
+        >VSCode</a
+      >
+    </li>
+  </ul>
+</section>
+
+<hr class="my-5 dark:border-neutral-600" />
+
+<!-- Section: Creating Nuxt app-->
+<section id="section-nuxt-app">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="nuxt-application"
+    data-te-spy-item>
+    Creating a new Nuxt application
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    Let's create a fresh Nuxt application so that we can go through all the
+    steps together.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Create new project</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npx nuxi init my-project
+        cd my-project
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+
+<hr class="mb-5 dark:border-neutral-600" />
+
+<!-- Creating and configuring Tailwind & Tailwind Elements-->
+<section id="section-tailwind">
+  <!-- Section title-->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="tailwind"
+    data-te-spy-item>
+    Installing and configuring Tailwind CSS and Tailwind Elements
+  </h2>
+
+  <!-- Description -->
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Install Tailwind CSS</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npm install -D tailwindcss postcss autoprefixer
+        npx tailwindcss init
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">
+    Add <code>tailwindcss</code> and <code>autoprefixer</code> to the
+    <code>postcss.plugins</code> object in your
+    <code>nuxt.config.js</code> file. And of cours you got to attach
+    <code>css</code> object with localization of main .css file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "nuxt.config.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+          // https://v3.nuxtjs.org/api/configuration/nuxt.config
+          export default defineNuxtConfig({
+            css: ['~/assets/css/main.css'],
+            postcss: {
+              plugins: {
+                tailwindcss: {},
+                autoprefixer: {},
+              },
+            },
+          })
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    Add the paths to all of your template files in your
+    <code>tailwind.config.cjs</code> file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        /** @type {import('tailwindcss').Config} */
+        module.exports = {
+          content: [
+            "./components/**/*.{js,vue,ts}",
+            "./layouts/**/*.vue",
+            "./pages/**/*.vue",
+            "./plugins/**/*.{js,ts}",
+            "./nuxt.config.{js,ts}",
+            "./app.vue",
+            "./node_modules/tw-elements/dist/js/**/*.js"
+        ],
+        theme: {
+            extend: {},
+        },
+        plugins: [require("tw-elements/dist/plugin")]
+        }
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">
+    Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
+    your <code>./assets/css/main.css</code> file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "main.css" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="CSS" >}}
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">Install Tailwind Elements.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npm install tw-elements
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">
+    In <code>_app.js</code> file (located in <code>src/pages/</code> directory)
+    put lifecycle method where are you going to dynamically importing library.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+          useEffect(() => {
+            const importTE = async () => {
+              (await import("tw-elements")).default;
+            };
+            importTE();
+          }, []);
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    Alternatively you can import Tailwind Elements by adding
+    <code>script</code> tag in <code>nuxt.config.js</code> file (located in root
+    directory).
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "nuxt.config.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        app: {
+          head: {
+            script: [
+              {
+                src: "https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js",
+              },
+            ],
+          },
+        },
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Creating and configuring Tailwind & Tailwind Elements-->
+
+<hr class="my-5 dark:border-neutral-600" />
+
+<!-- Initializing via JS-->
+<section id="section-initializing-js">
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="initializing-js"
+    data-te-spy-item>
+    Initializing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have autoinit which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Import library.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import * as te from "tw-elements";
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Initialize component in lifecycle hook.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { onMounted } from "vue";
+
+        onMounted(() => {
+          const options = {
+            format: "dd-mm-yyyy",
+          };
+          const myDatepicker = new te.Datepicker(
+            document.getElementById("myDatepicker"),
+            options
+          );
+        });
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!-- /Initializing via JS-->
