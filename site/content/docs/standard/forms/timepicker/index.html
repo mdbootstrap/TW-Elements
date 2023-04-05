@@ -841,7 +841,7 @@ menu:
       <label
         for="form9"
         class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
-        >With string wighout AM/PM</label
+        >With string without AM/PM</label
       >
     </div>
     <div
@@ -895,6 +895,7 @@ menu:
       {{< twsnippet/wrapper "HTML,JavaScript" >}}
       <!--prettier-ignore-->
       {{< twsnippet/code active=true lang="HTML" >}}
+      <!--With string PM-->
       <div
         class="relative mb-3 xl:w-96"
         id="timepicker-default-time-string-pm"
@@ -909,6 +910,8 @@ menu:
           >With string PM</label
         >
       </div>
+
+      <!--With string AM-->
       <div
         class="relative mb-3 xl:w-96"
         id="timepicker-default-time-string-am"
@@ -923,6 +926,8 @@ menu:
           >With string AM</label
         >
       </div>
+
+      <!--With string without AM/PM-->
       <div
         class="relative mb-3 xl:w-96"
         id="timepicker-default-time-string-without-pm-am"
@@ -934,9 +939,11 @@ menu:
         <label
           for="form9"
           class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
-          >With string wighout AM/PM</label
+          >With string without AM/PM</label
         >
       </div>
+
+      <!--With string 24h-->
       <div
         class="relative mb-3 xl:w-96"
         id="timepicker-default-time-string-24h"
@@ -951,6 +958,8 @@ menu:
           >With string 24h</label
         >
       </div>
+
+      <!--With new Date with 12h-->
       <div
         class="relative mb-3 xl:w-96"
         id="timepicker-default-time-with-new-date-12h"
@@ -965,6 +974,8 @@ menu:
           >With new Date with 12h</label
         >
       </div>
+
+      <!--With new Date with 24h-->
       <div
         class="relative mb-3 xl:w-96"
         id="timepicker-default-time-with-new-date-24h"
@@ -981,28 +992,51 @@ menu:
       </div>
       {{< /twsnippet/code >}}
 
+
+      <!--prettier-ignore-->
       {{< twsnippet/code lang="js" >}}
-      //Default time string PM const pickerStartedPM = document.querySelector(
-      "#timepicker-default-time-string-pm " ); const tmStartedPM = new
-      te.Timepicker(pickerStartedPM, { defaultTime: "02:12 PM", }); //Default
-      time string AM const pickerStartedAM = document.querySelector(
-      "#timepicker-default-time-string-am" ); const tmStartedAM = new
-      te.Timepicker(pickerStartedAM, { defaultTime: "05:12 AM", }); //Default
-      time without PM/AM const pickerStartedWithoutPmAm =
-      document.querySelector( "#timepicker-default-time-string-without-pm-am" );
+      //Default time string PM
+      const pickerStartedPM = document.querySelector(
+        "#timepicker-default-time-string-pm "
+      );
+      const tmStartedPM = new te.Timepicker(pickerStartedPM, {
+        defaultTime: "02:12 PM",
+      }); //Default time string AM
+      const pickerStartedAM = document.querySelector(
+        "#timepicker-default-time-string-am"
+      );
+      const tmStartedAM = new te.Timepicker(pickerStartedAM, {
+        defaultTime: "05:12 AM",
+      }); //Default time without PM/AM
+      const pickerStartedWithoutPmAm = document.querySelector(
+        "#timepicker-default-time-string-without-pm-am"
+      );
       const tmStartedWithoutPmAm = new te.Timepicker(pickerStartedWithoutPmAm, {
-      defaultTime: "05:12", }); //Default time with 24h const
-      pickerStartedWith24h = document.querySelector(
-      "#timepicker-default-time-string-24h" ); const tmStartedWith24h = new
-      te.Timepicker(pickerStartedWith24h, { defaultTime: "23:44", format24:
-      true, }); //Default time date 12h const pickerStartedWithDate12h =
-      document.querySelector( "#timepicker-default-time-with-new-date-12h" );
+        defaultTime: "05:12",
+      });
+      //Default time with 24h
+      const pickerStartedWith24h = document.querySelector(
+        "#timepicker-default-time-string-24h"
+      );
+      const tmStartedWith24h = new te.Timepicker(pickerStartedWith24h, {
+        defaultTime: "23:44",
+        format24: true,
+      });
+      //Default time date 12h
+      const pickerStartedWithDate12h = document.querySelector(
+        "#timepicker-default-time-with-new-date-12h"
+      );
       const tmStartedWithDate12h = new te.Timepicker(pickerStartedWithDate12h, {
-      defaultTime: new Date(), }); //Default time date 24h const
-      pickerStartedWithDate24h = document.querySelector(
-      "#timepicker-default-time-with-new-date-24h" ); const tmStartedWithDate24h
-      = new te.Timepicker(pickerStartedWithDate24h, { defaultTime: new Date(),
-      format24: true, });
+        defaultTime: new Date(),
+      });
+      //Default time date 24h
+      const pickerStartedWithDate24h = document.querySelector(
+        "#timepicker-default-time-with-new-date-24h"
+      );
+      const tmStartedWithDate24h = new te.Timepicker(pickerStartedWithDate24h, {
+        defaultTime: new Date(),
+        format24: true,
+      });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>

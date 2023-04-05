@@ -231,10 +231,12 @@ menu:
       {{< twsnippet/wrapper "HTML" >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code active=true lang="HTML" >}}
+      <!-- Main navigation container -->
       <nav
         class="flex-no-wrap relative flex w-full items-center justify-between bg-neutral-100 py-4 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start"
         data-te-navbar-ref>
         <div class="flex w-full flex-wrap items-center justify-between px-6">
+          <!-- Hamburger button for mobile view -->
           <button
             class="block border-0 bg-transparent py-2 px-2.5 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
             type="button"
@@ -243,6 +245,7 @@ menu:
             aria-controls="navbarSupportedContent1"
             aria-expanded="false"
             aria-label="Toggle navigation">
+            <!-- Hamburger icon -->
             <span class="[&>svg]:w-7">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -256,10 +259,13 @@ menu:
               </svg>
             </span>
           </button>
+
+          <!-- Collapsible navigation container -->
           <div
             class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
             id="navbarSupportedContent1"
             data-te-collapse-item>
+            <!-- Logo -->
             <a
               class="mt-2 mr-2 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mt-0"
               href="#">
@@ -269,10 +275,11 @@ menu:
                 alt=""
                 loading="lazy" />
             </a>
-            <!-- Left links -->
+            <!-- Left navigation links -->
             <ul
               class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row"
               data-te-navbar-nav-ref>
+              <!-- Dashboard link -->
               <li class="lg:pr-2" data-te-nav-item-ref>
                 <a
                   class="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-zinc-400"
@@ -281,6 +288,7 @@ menu:
                   >Dashboard</a
                 >
               </li>
+              <!-- Team link -->
               <li class="lg:pr-2" data-te-nav-item-ref>
                 <a
                   class="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -289,6 +297,7 @@ menu:
                   >Team</a
                 >
               </li>
+              <!-- Projects link -->
               <li class="lg:pr-2" data-te-nav-item-ref>
                 <a
                   class="text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -298,13 +307,11 @@ menu:
                 >
               </li>
             </ul>
-            <!-- Left links -->
           </div>
-          <!-- Collapsible wrapper -->
 
           <!-- Right elements -->
           <div class="relative flex items-center">
-            <!-- Icon -->
+            <!-- Cart Icon -->
             <a
               class="mr-4 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
               href="#">
@@ -319,7 +326,10 @@ menu:
                 </svg>
               </span>
             </a>
+
+            <!-- Container with two dropdown menus -->
             <div class="relative" data-te-dropdown-ref>
+              <!-- First dropdown trigger -->
               <a
                 class="hidden-arrow mr-4 flex items-center text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
                 href="#"
@@ -327,6 +337,7 @@ menu:
                 role="button"
                 data-te-dropdown-toggle-ref
                 aria-expanded="false">
+                <!-- Dropdown trigger icon -->
                 <span class="[&>svg]:w-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -339,15 +350,18 @@ menu:
                       clip-rule="evenodd" />
                   </svg>
                 </span>
+                <!-- Notification counter -->
                 <span
                   class="absolute -mt-2.5 ml-2 rounded-full bg-red-700 py-0 px-1.5 text-xs text-white"
                   >1</span
                 >
               </a>
+              <!-- First dropdown menu -->
               <ul
                 class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton1"
                 data-te-dropdown-menu-ref>
+                <!-- First dropdown menu items -->
                 <li>
                   <a
                     class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
@@ -374,7 +388,10 @@ menu:
                 </li>
               </ul>
             </div>
+
+            <!-- Second dropdown container -->
             <div class="relative" data-te-dropdown-ref>
+              <!-- Second dropdown trigger -->
               <a
                 class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
                 href="#"
@@ -382,6 +399,7 @@ menu:
                 role="button"
                 data-te-dropdown-toggle-ref
                 aria-expanded="false">
+                <!-- User avatar -->
                 <img
                   src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg"
                   class="rounded-full"
@@ -389,10 +407,12 @@ menu:
                   alt=""
                   loading="lazy" />
               </a>
+              <!-- Second dropdown menu -->
               <ul
                 class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton2"
                 data-te-dropdown-menu-ref>
+                <!-- Second dropdown menu items -->
                 <li>
                   <a
                     class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
@@ -420,7 +440,6 @@ menu:
               </ul>
             </div>
           </div>
-          <!-- Right elements -->
         </div>
       </nav>
       {{< /twsnippet/code >}}
@@ -746,6 +765,7 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
+      <!--First navbar-->
       <nav
         class="relative flex w-full flex-wrap items-center justify-between bg-neutral-100 py-3 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600">
         <div class="flex w-full flex-wrap items-center justify-between px-6">
@@ -756,7 +776,8 @@ menu:
           </div>
         </div>
       </nav>
-      <br />
+
+      <!--Second navbar-->
       <nav
         class="relative flex w-full flex-wrap items-center justify-between bg-neutral-100 py-3 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600">
         <div class="flex w-full flex-wrap items-center justify-between px-6">
@@ -836,6 +857,7 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
+      <!--First navbar-->
       <nav
         class="relative flex w-full flex-wrap items-center justify-between bg-neutral-100 py-4 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600">
         <div class="flex w-full flex-wrap items-center justify-between px-6">
@@ -852,7 +874,8 @@ menu:
           </div>
         </div>
       </nav>
-      <br />
+
+      <!--Second navbar-->
       <nav
         class="relative flex w-full flex-wrap items-center justify-between bg-neutral-100 py-4 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600">
         <div class="flex w-full flex-wrap items-center justify-between px-6">
@@ -970,10 +993,12 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
+      <!-- Main navigation container -->
       <nav
         class="relative flex w-full flex-nowrap items-center justify-between bg-neutral-100 py-4 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 lg:flex-wrap lg:justify-start"
         data-te-navbar-ref>
         <div class="flex w-full flex-wrap items-center justify-between px-6">
+          <!-- Hamburger button for mobile view -->
           <button
             class="block border-0 bg-transparent py-2 px-2.5 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
             type="button"
@@ -982,6 +1007,7 @@ menu:
             aria-controls="navbarSupportedContent3"
             aria-expanded="false"
             aria-label="Toggle navigation">
+            <!-- Hamburger icon -->
             <span class="[&>svg]:w-7">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -995,15 +1021,19 @@ menu:
               </svg>
             </span>
           </button>
+
+          <!-- Collapsible navbar container -->
           <div
             class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
             id="navbarSupportedContent3"
             data-te-collapse-item>
+            <!-- Navbar title -->
             <a class="text-xl text-black" href="#">Navbar</a>
             <!-- Left links -->
             <ul
               class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row"
               data-te-navbar-nav-ref>
+              <!-- Home link -->
               <li class="lg:px-2" data-te-nav-item-ref>
                 <a
                   class="active disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -1013,6 +1043,7 @@ menu:
                   >Home</a
                 >
               </li>
+              <!-- Features link -->
               <li class="lg:pr-2" data-te-nav-item-ref>
                 <a
                   class="p-0 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -1021,6 +1052,7 @@ menu:
                   >Features</a
                 >
               </li>
+              <!-- Pricing link -->
               <li class="lg:pr-2" data-te-nav-item-ref>
                 <a
                   class="p-0 text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -1029,6 +1061,7 @@ menu:
                   >Pricing</a
                 >
               </li>
+              <!-- Disabled link -->
               <li class="lg:pr-2" data-te-nav-link-ref>
                 <a
                   class="text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -1036,9 +1069,7 @@ menu:
                 >
               </li>
             </ul>
-            <!-- Left links -->
           </div>
-          <!-- Collapsible wrapper -->
         </div>
       </nav>
       {{< /twsnippet/code >}}
@@ -1256,10 +1287,12 @@ menu:
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML" >}}
       {{< twsnippet/code active=true lang="HTML" >}}
+      <!-- Main navigation container -->
       <nav
         class="relative flex w-full flex-wrap items-center justify-between bg-neutral-900 py-3 text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start"
         data-te-navbar-ref>
         <div class="flex w-full flex-wrap items-center justify-between px-6">
+          <!-- Hamburger button for mobile view -->
           <button
             class="block border-0 bg-transparent py-2 px-2.5 text-neutral-200 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
             type="button"
@@ -1268,6 +1301,7 @@ menu:
             aria-controls="navbarSupportedContent4"
             aria-expanded="false"
             aria-label="Toggle navigation">
+            <!-- Hamburger icon -->
             <span class="[&>svg]:w-7">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -1281,15 +1315,19 @@ menu:
               </svg>
             </span>
           </button>
+
+          <!-- Collapsible navigation container -->
           <div
             class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
             id="navbarSupportedContent4"
             data-te-collapse-item>
+            <!-- Navbar title -->
             <a class="pr-2 text-xl font-semibold text-white" href="#">Navbar</a>
-            <!-- Left links -->
+            <!-- Left navigation links -->
             <ul
               class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row"
               data-te-navbar-nav-ref>
+              <!-- Dashboard link -->
               <li class="p-2" data-te-nav-item-ref>
                 <a
                   class="text-white disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -1298,6 +1336,7 @@ menu:
                   >Dashboard</a
                 >
               </li>
+              <!-- Team link -->
               <li class="p-2" data-te-nav-item-ref>
                 <a
                   class="p-0 text-white opacity-60 hover:opacity-80 focus:opacity-80 disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -1306,6 +1345,7 @@ menu:
                   >Team</a
                 >
               </li>
+              <!-- Projects link -->
               <li class="p-2" data-te-nav-item-ref>
                 <a
                   class="p-0 text-white opacity-60 hover:opacity-80 focus:opacity-80 disabled:text-black/30 lg:px-2 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -1315,13 +1355,11 @@ menu:
                 >
               </li>
             </ul>
-            <!-- Left links -->
           </div>
-          <!-- Collapsible wrapper -->
 
           <!-- Right elements -->
           <div class="relative flex items-center">
-            <!-- Icon -->
+            <!-- Cart Icon -->
             <a
               class="mr-4 text-white opacity-60 hover:opacity-80 focus:opacity-80"
               href="#">
@@ -1336,7 +1374,10 @@ menu:
                 </svg>
               </span>
             </a>
+
+            <!-- Container with two dropdown menus -->
             <div class="relative" data-te-dropdown-ref>
+              <!-- First dropdown trigger -->
               <a
                 class="hidden-arrow mr-4 flex items-center text-white opacity-60 hover:opacity-80 focus:opacity-80"
                 href="#"
@@ -1344,6 +1385,7 @@ menu:
                 role="button"
                 data-te-dropdown-toggle-ref
                 aria-expanded="false">
+                <!-- Dropdown trigger icon -->
                 <span class="[&>svg]:w-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1356,15 +1398,18 @@ menu:
                       clip-rule="evenodd" />
                   </svg>
                 </span>
+                <!-- Notification counter -->
                 <span
                   class="absolute -mt-2.5 ml-2 rounded-full bg-red-700 py-0 px-1.5 text-xs text-white"
                   >1</span
                 >
               </a>
+              <!-- First dropdown menu -->
               <ul
                 class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton1"
                 data-te-dropdown-menu-ref>
+                <!-- First dropdown menu items -->
                 <li>
                   <a
                     class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
@@ -1391,7 +1436,10 @@ menu:
                 </li>
               </ul>
             </div>
+
+            <!-- Second dropdown container -->
             <div class="relative" data-te-dropdown-ref>
+              <!-- Second dropdown trigger -->
               <a
                 class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
                 href="#"
@@ -1399,6 +1447,7 @@ menu:
                 role="button"
                 data-te-dropdown-toggle-ref
                 aria-expanded="false">
+                <!-- User avatar -->
                 <img
                   src="https://tecdn.b-cdn.net/img/new/avatars/2.jpg"
                   class="rounded-full"
@@ -1406,10 +1455,12 @@ menu:
                   alt=""
                   loading="lazy" />
               </a>
+              <!-- Second dropdown menu -->
               <ul
                 class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton2"
                 data-te-dropdown-menu-ref>
+                <!-- Second dropdown menu items -->
                 <li>
                   <a
                     class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
