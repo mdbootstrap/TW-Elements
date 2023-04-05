@@ -51,36 +51,33 @@ export const switcherTemplate = `
         </div>
       </a>
     </li>
+    <li>
+      <a
+        class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 disabled:text-neutral-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-neutral-600 focus:outline-none focus:bg-neutral-200 focus:dark:bg-neutral-600"
+        href="#"
+        data-theme="system"
+        data-te-dropdown-item-ref
+      >
+        <div class="pointer-events-none">
+          <div class="inline-block w-[24px] text-center" data-theme-icon="system">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+              class="inline-block w-4"
+              role="img"
+              viewBox="0 0 640 512"
+            >
+              <path
+                fill="currentColor"
+                d="M128 32C92.7 32 64 60.7 64 96V352h64V96H512V352h64V96c0-35.3-28.7-64-64-64H128zM19.2 384C8.6 384 0 392.6 0 403.2C0 445.6 34.4 480 76.8 480H563.2c42.4 0 76.8-34.4 76.8-76.8c0-10.6-8.6-19.2-19.2-19.2H19.2z"
+              />
+            </svg>
+          </div>
+          <span data-theme-name="system">System</span>
+        </div>
+      </a>
+    </li>
   </ul>
 </div>
 `;
-
-/*
-<li>
-  <a
-    class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 disabled:text-neutral-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-neutral-600 focus:outline-none focus:bg-neutral-200 focus:dark:bg-neutral-600"
-    href="#"
-    data-theme="system"
-    data-te-dropdown-item-ref
-  >
-    <div class="pointer-events-none">
-      <div class="inline-block w-[24px] text-center" data-theme-icon="system">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          focusable="false"
-          class="inline-block w-4"
-          role="img"
-          viewBox="0 0 640 512"
-        >
-          <path
-            fill="currentColor"
-            d="M128 32C92.7 32 64 60.7 64 96V352h64V96H512V352h64V96c0-35.3-28.7-64-64-64H128zM19.2 384C8.6 384 0 392.6 0 403.2C0 445.6 34.4 480 76.8 480H563.2c42.4 0 76.8-34.4 76.8-76.8c0-10.6-8.6-19.2-19.2-19.2H19.2z"
-          />
-        </svg>
-      </div>
-      <span data-theme-name="system">System</span>
-    </div>
-  </a>
-</li>;
-*/

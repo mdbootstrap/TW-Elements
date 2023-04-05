@@ -301,7 +301,7 @@ menu:
 </div>
 
 <p class="mt-6 mb-2">
-  3. Go to the <code>tailwind.config.cjs</code> file and add paths wherer you
+  3. Go to the <code>tailwind.config.cjs</code> file and add paths where your
   html files are going to be stored. You can change the
   <code>index.html</code> location but make sure to change to
   <a
@@ -340,8 +340,19 @@ menu:
 <div class="pt-2">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "style.css" "" "mobile" >}}{{< twsnippet/code active=true lang="css" >}}
-  @tailwind base; 
-  @tailwind components; 
+  @tailwind base;
+
+  @layer base {
+    html {
+      @apply text-neutral-800;
+    }
+    html.dark {
+      @apply text-neutral-50;
+      @apply bg-neutral-800;
+    }
+  }
+
+  @tailwind components;
   @tailwind utilities;
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>

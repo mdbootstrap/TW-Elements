@@ -50,8 +50,7 @@ if (process.env.mode === "demo") {
     `npx tailwindcss -i ./src/scss/tailwind.scss -o ./${distName}/css/tw-elements.min.css --minify`
   );
 
-  // to creat .map file
-
+  // .map file
   shell.exec(
     `sass ./${distName}/css/tw-elements.min.css ./${distName}/css/tw-elements.min.css --style compressed`
   );
@@ -65,11 +64,6 @@ if (process.env.mode === "demo") {
 
   fs.writeFileSync(`./${distName}/css/tw-elements.min.css`, cssWithDisclaimer, {
     encoding: "utf-8",
-  });
-
-  // copy files
-  fs.copy(`./src/img`, `./${distName}/img`, (err) => {
-    if (err) throw err;
   });
 
   // build
