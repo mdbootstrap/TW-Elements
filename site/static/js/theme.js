@@ -12,8 +12,7 @@ class ThemeSwitcher {
 
   init() {
     if (!("theme" in localStorage)) {
-      this.setLightTheme();
-      // this.setSystemTheme();
+      this.setSystemTheme();
     } else if (localStorage.theme === "dark") {
       this.setDarkTheme();
     } else {
@@ -147,7 +146,11 @@ class ThemeSwitcher {
     });
 
     window.addEventListener("keydown", (event) => {
-      if (document.activeElement === document.body && event.key.toLocaleLowerCase() === "d" && event.shiftKey) {
+      if (
+        document.activeElement === document.body &&
+        event.key.toLocaleLowerCase() === "d" &&
+        event.shiftKey
+      ) {
         this.onThemeSwitcherShortCut(event);
       }
     });
