@@ -5,8 +5,9 @@
 <!-- PRISM -->
 <script type="text/javascript" src="/js/new-prism.js"></script>
 <link rel="stylesheet" href="/css/new-prism.css" />
+<script type="module" src="/js/perfect-scrollbar.min.js"></script>
 
-<script>
+<script type="module">
   class Search {
     constructor(input, icon, list, form, dropdown, count, jsonFile) {
       this.input = input;
@@ -55,7 +56,10 @@
         .then((response) => {
           this.data = [...response];
 
-          //new mdb.PerfectScrollbar(this.list);
+          new PerfectScrollbar(this.list, {
+            suppressScrollX: true,
+            handlers: ["click-rail", "drag-thumb", "wheel", "touch"],
+          });
 
           this.bindEvents();
         });
@@ -130,6 +134,10 @@
       const display = value ? "block" : "none";
 
       this.dropdown.style.display = display;
+
+      setTimeout(() => {
+        this.list.dispatchEvent(new Event("scroll"));
+      }, 100);
     }
 
     renderResults(markup) {
