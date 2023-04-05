@@ -1,15 +1,15 @@
 ---
-title: "Text bold"
-date: 2023-03-017T10:00:00+02:00
+title: "Text wrap"
+date: 2023-03-07T16:00:58+02:00
 draft: false
-main_title: "Text bold"
-subheading: "Tailwind CSS Text bold"
-seo_title: "Tailwind CSS Text bold - Free Examples & Tutorial"
-description: "Use responsive text bold styles with Tailwind elements. This a simple example of how quickly you can change the font weight."
+main_title: "Text wrap"
+subheading: "Tailwind CSS Text wrap"
+seo_title: "Tailwind CSS Text wrap - Free Examples & Tutorial"
+description: "Use responsive Text wrap utilities with Tailwind Elements."
 image: "img/components-big.jpg"
 video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
-url: "docs/standard/extended/text-bold"
-custom_links: "typography=https://tailwind-elements.com/docs/standard/content-styles/typography/"
+url: "docs/standard/extended/text-wrap"
+custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/cards/"
 ---
 
 <!--Section: Docs content-->
@@ -28,25 +28,29 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
 
   <hr class="my-10 dark:border-gray-600" />
 
-  <!--Section: Basic example-->
-  <section id="basic-example" class="pb-10">
+  <!--Section: Break words-->
+  <section id="break-words" class="pb-10">
     <!--Subsection title-->
-    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Basic example</h2>
+    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Break words</h2>
 
     <!--Description-->
-    <p>
-      Use one of the <code>.text-{weight}</code> classes to change the weight of
-      the text.
-    </p>
+    <p>To add line breaks mid-word use <code>.break-words</code> class.</p>
 
     <!--Section: Demo-->
     {{< twsnippet/demo id="example1" >}}
-    <div class="p-3">
-      <p class="pb-2 font-light">This is the light text.</p>
-      <p class="pb-2 font-normal">This is the normal text.</p>
-      <p class="pb-2 font-medium">This is the medium text.</p>
-      <p class="pb-2 font-semibold">This is the semibold text.</p>
-      <p class="font-bold">This is the bold text.</p>
+    <div class="pt-4">
+      <div
+        class="mx-auto max-w-sm rounded-lg border border-2 bg-white p-8 leading-6 shadow-lg dark:border-neutral-600 dark:bg-neutral-800">
+        <p class="break-words">
+          The longest word in any of the major English language dictionaries is
+          <span class="font-bold"
+            >pneumonoultramicroscopicsilicovolcanoconiosis</span
+          >
+          a word that refers to a lung disease contracted from the inhalation of
+          very fine silica particles, specifically from a volcano; medically, it
+          is the same as silicosis.
+        </p>
+      </div>
     </div>
     {{< /twsnippet/demo >}}
     <!--Section: Demo-->
@@ -56,11 +60,53 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-        <p class="font-light">This is the font-light text.</p>
-        <p class="font-normal">This is the font-normal text.</p>
-        <p class="font-medium">This is the font-medium text.</p>
-        <p class="font-semibold">This is the font-semibold text.</p>
-        <p class="font-bold">This is the font-bold text.</p>
+        <p class="... break-words">...</p>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Basic example-->
+
+  <hr class="my-10 dark:border-gray-600" />
+
+  <!--Section: Break all-->
+  <section id="break-all" class="pb-10">
+    <!--Subsection title-->
+    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Break all</h2>
+
+    <!--Description-->
+    <p>
+      To add line breaks mid-word but without trying to preserve whole words use
+      <code>.break-all</code> class.
+    </p>
+
+    <!--Section: Demo-->
+    {{< twsnippet/demo id="example2" >}}
+    <div class="pt-4">
+      <div
+        class="mx-auto max-w-sm rounded-lg border border-2 bg-white p-8 leading-6 shadow-lg dark:border-neutral-600 dark:bg-neutral-800">
+        <p class="break-all">
+          The longest word in any of the major English language dictionaries is
+          <span class="font-bold"
+            >pneumonoultramicroscopicsilicovolcanoconiosis</span
+          >
+          a word that refers to a lung disease contracted from the inhalation of
+          very fine silica particles, specifically from a volcano; medically, it
+          is the same as silicosis.
+        </p>
+      </div>
+    </div>
+    {{< /twsnippet/demo >}}
+    <!--Section: Demo-->
+
+    <!--Section: Code-->
+    <section class="!visible hidden" data-te-collapse-item id="example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+        <p class="... break-all">...</p>
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -91,12 +137,6 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
         Textarea</a
       >
 
-      <a
-        href="https://tailwind-elements.com/docs/standard/forms/inputs/"
-        class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Input Fields</a
-      >
-
       <!--Extended docs-->
 
       <a
@@ -118,15 +158,9 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/letter-spacing"
+        href="https://tailwind-elements.com/docs/standard/extended/text-bold"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Letter spacing</a
-      >
-
-      <a
-        href="https://tailwind-elements.com/docs/standard/extended/vertically-align-text/"
-        class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Vertically align text</a
+        Text bold</a
       >
 
       <a
@@ -136,9 +170,15 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/text-wrap"
+        href="https://tailwind-elements.com/docs/standard/extended/letter-spacing"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
-        Text wrap</a
+        Letter spacing</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/vertically-align-text/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 py-2.5 px-5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-xl hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] dark:bg-gray-700 dark:hover:bg-gray-600">
+        Vertically align text</a
       >
 
       <a
