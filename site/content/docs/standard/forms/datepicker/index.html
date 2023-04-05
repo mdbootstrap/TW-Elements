@@ -40,11 +40,11 @@ autoinits: "Datepicker, Input"
       data-te-input-wrapper-init>
       <input
         type="text"
-        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
         placeholder="Select a date" />
       <label
         for="floatingInput"
-        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
         >Select a date</label
       >
     </div>
@@ -63,11 +63,11 @@ autoinits: "Datepicker, Input"
           data-te-input-wrapper-init>
           <input
             type="text"
-            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
             placeholder="Select a date" />
           <label
             for="floatingInput"
-            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
             >Select a date</label
           >
         </div>
@@ -177,6 +177,870 @@ autoinits: "Datepicker, Input"
 </section>
 <!-- Section: Sharing request-->
 
+<!-- Section: Inline version -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-inline"
+    data-te-spy-item>
+    Inline version
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Use the <code>data-te-inline="true"</code> attribute to initialize and set
+    the default date for an inline datepicker inside a block element.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="exampleInline">}}
+  <div class="flex items-center justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      data-te-datepicker-init
+      data-te-inline="true"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="exampleInline">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div
+          class="relative mb-3 xl:w-96"
+          data-te-datepicker-init
+          data-te-inline="true"
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Inline version -->
+
+<!-- Section: Translations -->
+<section id="section-translations">
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="translations"
+    data-te-spy-item>
+    Translations
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    The picker can be customized to add support for internationalization. Modify
+    the component options to add translations.
+  </p>
+
+  {{< twsnippet/demo id="example5" >}}
+  <div class="flex items-center justify-center">
+    <div
+      id="datepicker-translated"
+      class="relative mb-3 xl:w-96"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div class="relative mb-3 xl:w-96" data-te-datepicker-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="JavaScript" >}}
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+
+      const datepickerTranslated = new Datepicker(
+        document.querySelector("#datepicker-translated"),
+        {
+          title: "Datum auswählen",
+          monthsFull: [
+            "Januar",
+            "Februar",
+            "März",
+            "April",
+            "Mai",
+            "Juni",
+            "Juli",
+            "August",
+            "September",
+            "Oktober",
+            "November",
+            "Dezember",
+          ],
+          monthsShort: [
+            "Jan",
+            "Feb",
+            "Mär",
+            "Apr",
+            "Mai",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Okt",
+            "Nov",
+            "Dez",
+          ],
+          weekdaysFull: [
+            "Sonntag",
+            "Montag",
+            "Dienstag",
+            "Mittwoch",
+            "Donnerstag",
+            "Freitag",
+            "Samstag",
+          ],
+          weekdaysShort: ["Son", "Mon", "Die", "Mit", "Don", "Fre", "Sam"],
+          weekdaysNarrow: ["S", "M", "D", "M", "D", "F", "S"],
+          okBtnText: "Ok",
+          clearBtnText: "Klar",
+          cancelBtnText: "Schließen",
+        }
+      );
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="JavaScript" >}}
+      const datepickerTranslated = new te.Datepicker(
+        document.querySelector("#datepicker-translated"),
+        {
+          title: "Datum auswählen",
+          monthsFull: [
+            "Januar",
+            "Februar",
+            "März",
+            "April",
+            "Mai",
+            "Juni",
+            "Juli",
+            "August",
+            "September",
+            "Oktober",
+            "November",
+            "Dezember",
+          ],
+          monthsShort: [
+            "Jan",
+            "Feb",
+            "Mär",
+            "Apr",
+            "Mai",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Okt",
+            "Nov",
+            "Dez",
+          ],
+          weekdaysFull: [
+            "Sonntag",
+            "Montag",
+            "Dienstag",
+            "Mittwoch",
+            "Donnerstag",
+            "Freitag",
+            "Samstag",
+          ],
+          weekdaysShort: ["Son", "Mon", "Die", "Mit", "Don", "Fre", "Sam"],
+          weekdaysNarrow: ["S", "M", "D", "M", "D", "F", "S"],
+          okBtnText: "Ok",
+          clearBtnText: "Klar",
+          cancelBtnText: "Schließen",
+        }
+      );
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Translations -->
+
+<!-- Section: Formats -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-formats"
+    data-te-spy-item>
+    Formats
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Use <code>format</code> option to display date in a human-friendly format.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="exampleFormats">}}
+  <div class="flex items-center justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      data-te-datepicker-init
+      data-te-format="dd, mmm, yyyy"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="exampleFormats">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div
+          class="relative mb-3 xl:w-96"
+          data-te-datepicker-init
+          data-te-format="dd, mmm, yyyy"
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+
+  <h2 class="mt-0 mb-2 text-2xl font-semibold leading-normal">
+    Formatting rules
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">The following rules can be used to format any date:</p>
+
+  <div
+    class="my-4 rounded-md border-l-[6px] border-solid border-gray-400 bg-gray-100 p-2.5 dark:border-gray-400 dark:bg-gray-200/20 ">
+    <strong>Note:</strong> When using <code>ddd</code> and
+    <code>dddd</code> formats, you need to also provide <code>d</code> or
+    <code>dd</code>. For example:
+    <code>data-mdb-format="ddd, dd, mmm, yyyy"</code>
+  </div>
+
+  <table
+    class="mb-4 w-full border border-neutral-200 text-left align-top text-sm dark:bg-neutral-800">
+    <thead>
+      <tr>
+        <th
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Rule
+        </th>
+        <th
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Description
+        </th>
+        <th
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Result
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>d</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Date of the month
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          1 &ndash; 31
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>dd</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Date of the month with a leading zero
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          01 &ndash; 31
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>ddd</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Day of the week in short form
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Sun &ndash; Sat
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>dddd</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Day of the week in full form
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Sunday &ndash; Saturday
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>m</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Month of the year
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          1 &ndash; 12
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>mm</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Month of the year with a leading zero
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          01 &ndash; 12
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>mmm</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Month name in short form
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Jan &ndash; Dec
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>mmmm</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Month name in full form
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          January &ndash; December
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>yy</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Year in short form <b>*</b>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          00 &ndash; 99
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          <code>yyyy</code>
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          Year in full form
+        </td>
+        <td
+          class="border border-neutral-200 py-4 px-[1.4rem] dark:border-neutral-600">
+          2000 &ndash; 2999
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<!-- Section: Formats -->
+
+<!-- Section: Date limits -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-date-limits"
+    data-te-spy-item>
+    Date limits
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Set the minimum and maximum selectable dates with the <code>min</code> and
+    <code>max</code> options.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="exampleDateLimits">}}
+  <div class="flex items-center justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      id="datepicker-with-limits"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="exampleDateLimits">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div
+          class="relative mb-3 xl:w-96"
+          id="datepicker-with-limits"
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+
+      const datepickerWithLimits = document.getElementById('datepicker-with-limits');
+      new Datepicker(datepickerWithLimits, {
+        min: new Date(2020, 5, 10),
+        max: new Date(2023, 5, 20)
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const datepickerWithLimits = document.getElementById('datepicker-with-limits');
+      new te.Datepicker(datepickerWithLimits, {
+        min: new Date(2020, 5, 10),
+        max: new Date(2023, 5, 20)
+      });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Date limits -->
+
+<!-- Section: Disable past -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-disable-past"
+    data-te-spy-item>
+    Disable past
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Use the <code>disablePast</code> option to disallow past date selection.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="exampleDisablePast">}}
+  <div class="flex items-center justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      id="datepicker-disable-past"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section
+    class="!visible hidden"
+    data-te-collapse-item
+    id="exampleDisablePast">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div
+          class="relative mb-3 xl:w-96"
+          id="datepicker-disable-past"
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+
+      const datepickerDisablePast = document.getElementById('datepicker-disable-past');
+      new Datepicker(datepickerDisablePast, {
+        disablePast: true
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const datepickerDisablePast = document.getElementById('datepicker-disable-past');
+      new te.Datepicker(datepickerDisablePast, {
+        disablePast: true
+      });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Disable past -->
+
+<!-- Section: Disable future -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-disable-future"
+    data-te-spy-item>
+    Disable future
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Use the <code>disableFuture</code> option to disallow past date selection.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="exampleDisableFuture">}}
+  <div class="flex items-center justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      id="datepicker-disable-future"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section
+    class="!visible hidden"
+    data-te-collapse-item
+    id="exampleDisableFuture">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div
+          class="relative mb-3 xl:w-96"
+          id="datepicker-disable-future"
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+
+      const datepickerDisableFuture = document.getElementById('datepicker-disable-future');
+      new Datepicker(datepickerDisableFuture, {
+        disableFuture: true
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const datepickerDisableFuture = document.getElementById('datepicker-disable-future');
+      new te.Datepicker(datepickerDisableFuture, {
+        disableFuture: true
+      });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Disable future -->
+
+<!-- Section: Disabled dates -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-disabled-dates"
+    data-te-spy-item>
+    Disabled dates
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    The <code>filter</code> option accept function in which you can specify
+    conditions for date filtering. A result of true indicates that the date
+    should be valid and a result of false indicates that it should be disabled.
+    In the following example all saturdays and sundays will be disabled.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="exampleDisabledDates">}}
+  <div class="flex items-center justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      id="datepicker-disabled-dates"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section
+    class="!visible hidden"
+    data-te-collapse-item
+    id="exampleDisabledDates">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div
+          class="relative mb-3 xl:w-96"
+          id="datepicker-disabled-dates"
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+
+      const datepickerWithFilter = document.getElementById('datepicker-disabled-dates');
+
+      const filterFunction = (date) => {
+        const isSaturday = date.getDay() === 6;
+        const isSunday = date.getDay() === 0;
+    
+        return !isSaturday && !isSunday;
+      }
+    
+      new Datepicker(datepickerWithFilter, { filter: filterFunction });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const datepickerWithFilter = document.getElementById('datepicker-disabled-dates');
+
+      const filterFunction = (date) => {
+        const isSaturday = date.getDay() === 6;
+        const isSunday = date.getDay() === 0;
+    
+        return !isSaturday && !isSunday;
+      }
+    
+      new te.Datepicker(datepickerWithFilter, { filter: filterFunction });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Disabled dates -->
+
 <!-- Section: Input toggle -->
 <section>
   <!-- Title -->
@@ -201,13 +1065,13 @@ autoinits: "Datepicker, Input"
       data-te-input-wrapper-init>
       <input
         type="text"
-        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
         placeholder="Select a date"
         data-te-datepicker-toggle-ref
         data-te-datepicker-toggle-button-ref />
       <label
         for="floatingInput"
-        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
         >Select a date</label
       >
     </div>
@@ -226,13 +1090,13 @@ autoinits: "Datepicker, Input"
           data-te-input-wrapper-init>
           <input
             type="text"
-            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
             placeholder="Select a date"
             data-te-datepicker-toggle-ref
             data-te-datepicker-toggle-button-ref />
           <label
             for="floatingInput"
-            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
             >Select a date</label
           >
         </div>
@@ -278,17 +1142,17 @@ autoinits: "Datepicker, Input"
       data-te-input-wrapper-init>
       <input
         type="text"
-        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
         placeholder="Select a date" />
       <label
         for="floatingInput"
-        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
         >Select a date</label
       >
       <button
         data-te-datepicker-toggle-ref
         data-te-datepicker-toggle-button-ref
-        class="justify-content-center absolute right-2.5 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center border-none bg-transparent outline-none hover:text-primary focus:text-primary dark:text-neutral-200 dark:hover:text-primary-400 dark:focus:text-primary-400 [&>svg]:h-5 [&>svg]:w-5">
+        class="justify-content-center absolute right-0.5 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center border-none bg-transparent outline-none hover:text-primary focus:text-primary dark:text-neutral-200 dark:hover:text-primary-400 dark:focus:text-primary-400 [&>svg]:h-5 [&>svg]:w-5">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -315,17 +1179,17 @@ autoinits: "Datepicker, Input"
           data-te-input-wrapper-init>
           <input
             type="text"
-            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
             placeholder="Select a date" />
           <label
             for="floatingInput"
-            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
             >Select a date</label
           >
           <button
             data-te-datepicker-toggle-ref
             data-te-datepicker-toggle-button-ref
-            class="justify-content-center absolute right-2.5 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center border-none bg-transparent outline-none hover:text-primary focus:text-primary dark:text-neutral-200 dark:hover:text-primary-400 dark:focus:text-primary-400 [&>svg]:h-5 [&>svg]:w-5">
+            class="justify-content-center absolute right-0.5 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center border-none bg-transparent outline-none hover:text-primary focus:text-primary dark:text-neutral-200 dark:hover:text-primary-400 dark:focus:text-primary-400 [&>svg]:h-5 [&>svg]:w-5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -355,6 +1219,218 @@ autoinits: "Datepicker, Input"
   </section>
 </section>
 <!-- Section: Custom toggle icon -->
+
+<!-- Section: Close without confirmation -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-close-without-confirmation"
+    data-te-spy-item>
+    Close without confirmation
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">This option close datepicker when the date is selected.</p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="exampleCloseWithoutConfirmation">}}
+  <div class="flex items-center justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      id="datepicker-close-without-confirmation"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section
+    class="!visible hidden"
+    data-te-collapse-item
+    id="exampleCloseWithoutConfirmation">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div
+          class="relative mb-3 xl:w-96"
+          id="datepicker-close-without-confirmation"
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+
+      const confirmDateOnSelect = document.getElementById('datepicker-close-without-confirmation');
+      new Datepicker(confirmDateOnSelect, {
+        confirmDateOnSelect: true,
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const confirmDateOnSelect = document.getElementById('datepicker-close-without-confirmation');
+      new te.Datepicker(confirmDateOnSelect, {
+        confirmDateOnSelect: true,
+      });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Close without confirmation -->
+
+<!-- Section: Remove Action Buttons -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-remove-action-buttons"
+    data-te-spy-item>
+    Remove Action Buttons
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    You can use options <code>removeOkBtn</code>,
+    <code>removeCancelBtn</code> or <code>removeClearBtn</code> to remove action
+    buttons that you don't need in your datepicker modal.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="exampleRemoveActionButtons">}}
+  <div class="flex items-center justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      id="datepicker-remove-action-buttons"
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section
+    class="!visible hidden"
+    data-te-collapse-item
+    id="exampleRemoveActionButtons">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="flex items-center justify-center">
+        <div
+          class="relative mb-3 xl:w-96"
+          id="datepicker-remove-action-buttons"
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            for="floatingInput"
+            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Select a date</label
+          >
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import {
+        Datepicker,
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Datepicker, Input });
+
+      const datepickerWithoutClearButton = document.getElementById('datepicker-remove-action-buttons');
+      new Datepicker(datepickerWithoutClearButton , {
+        removeClearBtn: true,
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const datepickerWithoutClearButton = document.getElementById('datepicker-remove-action-buttons');
+      new te.Datepicker(datepickerWithoutClearButton , {
+        removeClearBtn: true,
+      });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Remove Action Buttons -->
+
+<!-- Section: Accessibility -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    id="section-accessibility"
+    data-te-spy-item>
+    Accessibility
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    We added proper aria attributes to the datepicker controls to make the
+    component accessible. It's possible to change the values of those attributes
+    by modifying the component options:
+  </p>
+
+  {{< twsnippet/no-demo id="exampleAccessibility" >}}
+  <section
+    class="!visible hidden"
+    data-te-collapse-item
+    id="exampleAccessibility">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "javascript" >}}
+      {{< twsnippet/code active=true lang="javascript" >}}
+      okBtnLabel: 'Confirm selection', clearBtnLabel: 'Clear selection',
+      cancelBtnLabel: 'Cancel selection', nextMonthLabel: 'Next month',
+      prevMonthLabel: 'Previous month', nextYearLabel: 'Next year',
+      prevYearLabel: 'Previous year', nextMultiYearLabel: 'Next 24 years',
+      prevMultiYearLabel: 'Previous 24 years', switchToMultiYearViewLabel:
+      'Choose year and month', switchToMonthViewLabel: 'Choose date',
+      switchToDayViewLabel: 'Choose date',
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Accessibility -->
 
 <hr class="mb-5 dark:border-neutral-600" />
 

@@ -136,10 +136,166 @@ export function getStartYear(yearsInView, minDate, maxDate) {
   return startYear;
 }
 
+export function isDateDisabled(
+  date,
+  minDate,
+  maxDate,
+  filter,
+  disabledPast,
+  disabledFuture
+) {
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
+
+  const isBeforeMin = minDate && compareDates(date, minDate) <= -1;
+  const isAfterMax = maxDate && compareDates(date, maxDate) >= 1;
+
+  const isDisabledPast = disabledPast && compareDates(date, currentDate) <= -1;
+  const isDisabledFuture =
+    disabledFuture && compareDates(date, currentDate) >= 1;
+
+  const isDisabled = filter && filter(date) === false;
+
+  return (
+    isBeforeMin ||
+    isAfterMax ||
+    isDisabled ||
+    isDisabledPast ||
+    isDisabledFuture
+  );
+}
+
+export function isMonthDisabled(
+  month,
+  year,
+  minDate,
+  maxDate,
+  disabledPast,
+  disabledFuture
+) {
+  const currentDate = new Date();
+  const maxYear = maxDate && getYear(maxDate);
+  const maxMonth = maxDate && getMonth(maxDate);
+  const minYear = minDate && getYear(minDate);
+  const minMonth = minDate && getMonth(minDate);
+  const currentYear = getYear(currentDate);
+  const currentMonth = getMonth(currentDate);
+
+  const isMonthAndYearAfterMax =
+    maxMonth &&
+    maxYear &&
+    (year > maxYear || (year === maxYear && month > maxMonth));
+
+  const isMonthAndYearBeforeMin =
+    minMonth &&
+    minYear &&
+    (year < minYear || (year === minYear && month < minMonth));
+
+  const isMonthAndYearDisabledPast =
+    disabledPast &&
+    (year < currentYear || (year === currentYear && month < currentMonth));
+  const isMonthAndYearDisabledFuture =
+    disabledFuture &&
+    (year > currentYear || (year === currentYear && month > currentMonth));
+
+  return (
+    isMonthAndYearAfterMax ||
+    isMonthAndYearBeforeMin ||
+    isMonthAndYearDisabledPast ||
+    isMonthAndYearDisabledFuture
+  );
+}
+
+export function isYearDisabled(
+  year,
+  minDate,
+  maxDate,
+  disabledPast,
+  disabledFuture
+) {
+  const min = minDate && getYear(minDate);
+  const max = maxDate && getYear(maxDate);
+  const currentYear = getYear(new Date());
+
+  const isAfterMax = max && year > max;
+  const isBeforeMin = min && year < min;
+  const isDisabledPast = disabledPast && year < currentYear;
+  const isDisabledFuture = disabledFuture && year > currentYear;
+
+  return isAfterMax || isBeforeMin || isDisabledPast || isDisabledFuture;
+}
+
+export function isNextDateDisabled(
+  disabledFuture,
+  activeDate,
+  view,
+  yearsInView,
+  minDate,
+  maxDate,
+  lastYearInView,
+  firstYearInView
+) {
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
+  if (disabledFuture && maxDate && compareDates(maxDate, currentDate) < 0) {
+    maxDate = currentDate;
+  } else if (disabledFuture) {
+    maxDate = currentDate;
+  }
+  return (
+    maxDate &&
+    areDatesInSameView(
+      activeDate,
+      maxDate,
+      view,
+      yearsInView,
+      minDate,
+      maxDate,
+      lastYearInView,
+      firstYearInView
+    )
+  );
+}
+
+export function isPreviousDateDisabled(
+  disabledPast,
+  activeDate,
+  view,
+  yearsInView,
+  minDate,
+  maxDate,
+  lastYearInView,
+  firstYearInView
+) {
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
+  if (disabledPast && minDate && compareDates(minDate, currentDate) < 0) {
+    minDate = currentDate;
+  } else if (disabledPast) {
+    minDate = currentDate;
+  }
+  return (
+    minDate &&
+    areDatesInSameView(
+      activeDate,
+      minDate,
+      view,
+      yearsInView,
+      minDate,
+      maxDate,
+      lastYearInView,
+      firstYearInView
+    )
+  );
+}
+
 export function areDatesInSameView(
   date1,
   date2,
   view,
+  yearsInView,
+  minDate,
+  maxDate,
   lastYearInView,
   firstYearInView
 ) {

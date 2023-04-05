@@ -1,0 +1,121 @@
+---
+---
+
+<script type="module">
+  //Datepicker translations example
+  const datepickerTranslated = new te.Datepicker(
+    document.querySelector("#datepicker-translated"),
+    {
+      title: "Datum auswählen",
+      monthsFull: [
+        "Januar",
+        "Februar",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "November",
+        "Dezember",
+      ],
+      monthsShort: [
+        "Jan",
+        "Feb",
+        "Mär",
+        "Apr",
+        "Mai",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Dez",
+      ],
+      weekdaysFull: [
+        "Sonntag",
+        "Montag",
+        "Dienstag",
+        "Mittwoch",
+        "Donnerstag",
+        "Freitag",
+        "Samstag",
+      ],
+      weekdaysShort: ["Son", "Mon", "Die", "Mit", "Don", "Fre", "Sam"],
+      weekdaysNarrow: ["S", "M", "D", "M", "D", "F", "S"],
+      okBtnText: "Ok",
+      clearBtnText: "Klar",
+      cancelBtnText: "Schließen",
+    }
+  );
+
+  // datepicker with limits
+  const datepickerWithLimits = document.getElementById(
+    "datepicker-with-limits"
+  );
+  new te.Datepicker(datepickerWithLimits, {
+    min: new Date(2020, 5, 10),
+    max: new Date(2023, 5, 20),
+  });
+
+  // datepicker with limits
+  // datepicker disable past
+
+  const datepickerDisablePast = document.getElementById(
+    "datepicker-disable-past"
+  );
+  new te.Datepicker(datepickerDisablePast, {
+    disablePast: true,
+  });
+
+  // datepicker disable past
+  // datepicker disable future
+
+  const datepickerDisableFuture = document.getElementById(
+    "datepicker-disable-future"
+  );
+  new te.Datepicker(datepickerDisableFuture, {
+    disableFuture: true,
+  });
+
+  // datepicker disable future
+  // datepicker disabled dates
+
+  const datepickerWithFilter = document.getElementById(
+    "datepicker-disabled-dates"
+  );
+
+  const filterFunction = (date) => {
+    const isSaturday = date.getDay() === 6;
+    const isSunday = date.getDay() === 0;
+
+    return !isSaturday && !isSunday;
+  };
+
+  new te.Datepicker(datepickerWithFilter, { filter: filterFunction });
+
+  // datepicker disabled dates
+  // datepicker Close without confirmation
+
+  const confirmDateOnSelect = document.getElementById(
+    "datepicker-close-without-confirmation"
+  );
+  new te.Datepicker(confirmDateOnSelect, {
+    confirmDateOnSelect: true,
+  });
+
+  // datepicker Close without confirmation
+  // datepicker Remove Action Buttons
+
+  const datepickerWithoutClearButton = document.getElementById(
+    "datepicker-remove-action-buttons"
+  );
+  new te.Datepicker(datepickerWithoutClearButton, {
+    removeClearBtn: true,
+  });
+
+  // datepicker Remove Action Buttons
+</script>
