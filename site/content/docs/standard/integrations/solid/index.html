@@ -1,16 +1,16 @@
 ---
-title: "Nuxt integration"
+title: "Solid integration"
 date: 2021-04-29T16:00:58+02:00
 draft: false
-main_title: "Tailwind Elements Nuxt integration"
+main_title: "Tailwind Elements Solid integration"
 subheading: ""
-seo_title: "Tailwind Elements integration with Nuxt - Free Examples & Tutorial"
-description: "This article shows you how to integrate Nuxt application with Tailwind Elements. Free download, AGPL license."
-image: "https://tecdn.b-cdn.net/img/components-big.jpg"
-url: "docs/standard/integrations/nuxt-integration/"
+seo_title: "Tailwind Elements integration with Solid - Free Examples & Tutorial"
+description: "This article shows you how to integrate Solid application with Tailwind Elements. Free download, AGPL license."
+image: "img/components-big.jpg"
+url: "docs/standard/integrations/solid-integration/"
 menu:
   integrations:
-    name: "Nuxt"
+    name: "Solid"
 ---
 
 <!-- Section: Basic example -->
@@ -53,20 +53,28 @@ menu:
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!-- Section: Creating Nuxt app-->
-<section id="section-nuxt-app">
+<!-- Section: Creating Solid app-->
+<section id="section-solid-app">
   <!-- Section title-->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
-    id="nuxt-application"
+    id="solid-application"
     data-te-spy-item>
-    Creating a new Nuxt application
+    Creating a new Solid application
   </h2>
 
   <!-- Description -->
   <p class="mb-5">
-    Let's create a fresh Nuxt application so that we can go through all the
-    steps together.
+    Let's create a fresh Solid application so that we can go through all the
+    steps together. We are going to do this through
+    <a
+      class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+      href="https://vitejs.dev/"
+      target="_blank"
+      rel="nofollow"
+      >Vite</a
+    >
+    - very popular and extremly light module bundler.
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
@@ -76,10 +84,10 @@ menu:
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npx nuxi init my-project
-        cd my-project
+          npx degit solidjs/templates/js my-project
+          cd my-project
         {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+      {{< /twsnippet/wrapper >}}
   </div>
 </section>
 
@@ -103,39 +111,13 @@ menu:
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm install -D tailwindcss postcss autoprefixer
-        npx tailwindcss init
+          npm install -D tailwindcss postcss autoprefixer
+          npx tailwindcss init -p
         {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+      {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">
-    Add <code>tailwindcss</code> and <code>autoprefixer</code> to the
-    <code>postcss.plugins</code> object in your
-    <code>nuxt.config.js</code> file. And of cours you got to attach
-    <code>css</code> object with localization of main .css file.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "nuxt.config.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-          // https://v3.nuxtjs.org/api/configuration/nuxt.config
-          export default defineNuxtConfig({
-            css: ['~/assets/css/main.css'],
-            postcss: {
-              plugins: {
-                tailwindcss: {},
-                autoprefixer: {},
-              },
-            },
-          })
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
     <code>tailwind.config.cjs</code> file.
@@ -147,13 +129,8 @@ menu:
         {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
-          content: [
-            "./components/**/*.{js,vue,ts}",
-            "./layouts/**/*.vue",
-            "./pages/**/*.vue",
-            "./plugins/**/*.{js,ts}",
-            "./nuxt.config.{js,ts}",
-            "./app.vue",
+        content: [
+            "./src/**/*.{js,jsx,ts,tsx}",
             "./node_modules/tw-elements/dist/js/**/*.js"
         ],
         theme: {
@@ -165,84 +142,60 @@ menu:
         {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 4</h2>
+  <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
-    your <code>./assets/css/main.css</code> file.
+    your <code>./src/index.css</code> file.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "main.css" "" "mobile" >}}
+    {{< twsnippet/wrapper "index.css" "" "mobile" >}}
         {{< twsnippet/code active=true lang="CSS" >}}
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
+          @tailwind base;
+          @tailwind components;
+          @tailwind utilities;
         {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+      {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 5</h2>
+  <h2 class="text-lg font-bold">Step 4</h2>
   <p class="mb-5">Install Tailwind Elements.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
         {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm install tw-elements
+          npm install tw-elements
         {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+      {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 6</h2>
+  <h2 class="text-lg font-bold">Step 5</h2>
   <p class="mb-5">
-    In <code>_app.js</code> file (located in <code>src/pages/</code> directory)
-    put lifecycle method where are you going to dynamically importing library.
+    In <code>App.jsx</code> file (located in <code>src/</code> directory) put
+    lifecycle method where are you going to dynamically importing library.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
-          useEffect(() => {
+          import { onMount } from "solid-js";
+
+          onMount(() => {
             const importTE = async () => {
-              (await import("tw-elements")).default;
+              await import("tw-elements");
             };
             importTE();
-          }, []);
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 7</h2>
-  <p class="mb-5">
-    Alternatively you can import Tailwind Elements by adding
-    <code>script</code> tag in <code>nuxt.config.js</code> file (located in root
-    directory).
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "nuxt.config.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-        app: {
-          head: {
-            script: [
-              {
-                src: "https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js",
-              },
-            ],
-          },
-        },
+          });
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
   </div>
 </section>
 <!--/Creating and configuring Tailwind & Tailwind Elements-->
 
-<hr class="my-5 dark:border-neutral-600" />
-
-<!-- Initializing via JS-->
+<!--Initializing via JS-->
 <section id="section-initializing-js">
   <!-- Title -->
   <h2
@@ -264,7 +217,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
+    {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
         import * as te from "tw-elements";
       {{< /twsnippet/code >}}
@@ -276,11 +229,11 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
+    {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { onMounted } from "vue";
+        import { onMount } from "solid-js";
 
-        onMounted(() => {
+        onMount(() => {
           const options = {
             format: "dd-mm-yyyy",
           };
@@ -293,4 +246,4 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!-- /Initializing via JS-->
+<!--/Initializing via JS-->
