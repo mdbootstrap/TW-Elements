@@ -18,7 +18,7 @@ menu:
 <section id="section-prerequisites">
   <!-- Title -->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="prerequisites"
     data-te-spy-item>
     Prerequisites
@@ -57,7 +57,7 @@ menu:
 <section id="section-remix-app">
   <!-- Section title-->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="remix-application"
     data-te-spy-item>
     Creating a new Remix application
@@ -89,7 +89,7 @@ menu:
 <section id="section-tailwind">
   <!-- Section title-->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="tailwind"
     data-te-spy-item>
     Installing and configuring Tailwind CSS and Tailwind Elements
@@ -202,84 +202,30 @@ menu:
 
   <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    In <code>root.jsx</code> file (located in <code>app/</code> directory) put
-    lifecycle method where are you going to dynamically importing library.
+    Create standalone component which will has a name with
+    <code>Component.client.jsx</code>. It shows framework that should not render
+    this component in a server-side mode.
+  </p>
+  <p class="mb-5">
+    Import components which are you intend to use and necessary function
+    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           import { useEffect } from "react";
+          import { Datepicker, Input, initTE } from "tw-elements";
 
           useEffect(() => {
-            const importTE = async () => {
-              await import("tw-elements");
-            };
-            importTE();
+            initTE({ Datepicker, Input });
           }, []);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
   </div>
-</section>
-<!--/Creating and configuring Tailwind & Tailwind Elements-->
 
-<!--Initializing via JS-->
-<section id="section-initializing-js">
-  <!-- Title -->
-  <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
-    id="initializing-js"
-    data-te-spy-item>
-    Initializing via JS
-  </h2>
-
-  <!-- Description -->
-  <p class="mb-5">
-    By default all components have auto init which means they are initialized by
-    data attributes. But if you want to make init by JavaScript - there is also
-    possibility to do that.
-  </p>
-
-  <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">
-    Create standalone component which will has a name with
-    <code>Component.client.jsx</code>. It shows framework that should not render
-    this component in a server-side mode. Then import library.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        import * as te from "tw-elements";
-      {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize component in lifecycle hook.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { useEffect } from "react";
-
-        useEffect(() => {
-          const options = {
-            format: "dd-mm-yyyy",
-          };
-          const myDatepicker = new te.Datepicker(
-            document.getElementById("myDatepicker"),
-            options
-          );
-        }, []);
-      {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 3</h2>
+  <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">Install <code>remix-utils</code>.</p>
 
   <div class="pb-4">
@@ -291,8 +237,8 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 4</h2>
-  <p class="mb-5">Import client-side component.</p>
+  <h2 class="text-lg font-bold">Step 8</h2>
+  <p class="mb-5">Import your client-side component.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
@@ -308,6 +254,60 @@ menu:
     <ClientOnly fallback="{null}">{() => <Component />}</ClientOnly>
     ); }
     {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Creating and configuring Tailwind & Tailwind Elements-->
+
+<!--Initializing via JS-->
+<section id="section-initializing-js">
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="initializing-js"
+    data-te-spy-item>
+    Initializing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have auto init which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Import components which are you intend to use.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { Datepicker, Input } from "tw-elements";
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Initialize component in lifecycle hook.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { useEffect } from "react";
+
+        useEffect(() => {
+          const myInput = new Input(document.getElementById("myDatepicker"));
+          const options = {
+            format: "dd-mm-yyyy",
+          };
+          const myDatepicker = new Datepicker(
+            document.getElementById("myDatepicker"),
+            options
+          );
+        }, []);
+      {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
