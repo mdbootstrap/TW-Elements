@@ -1,14 +1,14 @@
 ---
-title: "Letter spacing"
+title: "Text wrap"
 date: 2023-03-07T16:00:58+02:00
 draft: false
-main_title: "Letter spacing"
-subheading: "Tailwind CSS Letter spacing"
-seo_title: "Tailwind CSS Letter spacing - Free Examples & Tutorial"
-description: "Use responsive letter spacing styles with Tailwind elements. This is a simple example of how quickly you can change the spaces between letters."
+main_title: "Text wrap"
+subheading: "Tailwind CSS Text wrap"
+seo_title: "Tailwind CSS Text wrap - Free Examples & Tutorial"
+description: "Use responsive Text wrap utilities with Tailwind Elements. Learn how to wrap text so they don't overflow their container."
 image: "https://tecdn.b-cdn.net/img/components-big.jpg"
 video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
-url: "docs/standard/extended/letter-spacing"
+url: "docs/standard/extended/text-wrap"
 custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/cards/"
 ---
 
@@ -28,38 +28,29 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
 
   <hr class="my-10 dark:border-gray-600" />
 
-  <!--Section: Basic example-->
-  <section id="basic-example" class="pb-10">
+  <!--Section: Break words-->
+  <section id="break-words" class="pb-10">
     <!--Subsection title-->
-    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Basic example</h2>
+    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Break words</h2>
 
     <!--Description-->
-    <p>
-      To change the space between letters use the
-      <code>.tracking-{spacing}</code> class.
-    </p>
+    <p>To add line breaks mid-word use <code>.break-words</code> class.</p>
 
     <!--Section: Demo-->
     {{< twsnippet/demo id="example1" >}}
-    <div class="p-3">
-      <p class="tracking-tighter">
-        This is the text with <code>.tracking-tighter</code> class.
-      </p>
-      <p class="tracking-tight">
-        This is the text with <code>.tracking-tight</code> class.
-      </p>
-      <p class="tracking-normal">
-        This is the text with <code>.tracking-normal</code> class.
-      </p>
-      <p class="tracking-wide">
-        This is the text with <code>.tracking-wide</code> class.
-      </p>
-      <p class="tracking-wider">
-        This is the text with <code>.tracking-wider</code> class.
-      </p>
-      <p class="tracking-widest">
-        This is the text with <code>.tracking-widest</code> class.
-      </p>
+    <div class="pt-4">
+      <div
+        class="mx-auto max-w-sm rounded-lg border border-2 bg-white p-8 leading-6 shadow-lg dark:border-neutral-600 dark:bg-neutral-800">
+        <p class="break-words">
+          The longest word in any of the major English language dictionaries is
+          <span class="font-bold"
+            >pneumonoultramicroscopicsilicovolcanoconiosis</span
+          >
+          a word that refers to a lung disease contracted from the inhalation of
+          very fine silica particles, specifically from a volcano; medically, it
+          is the same as silicosis.
+        </p>
+      </div>
     </div>
     {{< /twsnippet/demo >}}
     <!--Section: Demo-->
@@ -69,22 +60,53 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-        <p class="tracking-tighter">
-          This is the text with .tracking-tighter class.
+        <p class="... break-words">...</p>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Basic example-->
+
+  <hr class="my-10 dark:border-gray-600" />
+
+  <!--Section: Break all-->
+  <section id="break-all" class="pb-10">
+    <!--Subsection title-->
+    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Break all</h2>
+
+    <!--Description-->
+    <p>
+      To add line breaks mid-word but without trying to preserve whole words use
+      <code>.break-all</code> class.
+    </p>
+
+    <!--Section: Demo-->
+    {{< twsnippet/demo id="example2" >}}
+    <div class="pt-4">
+      <div
+        class="mx-auto max-w-sm rounded-lg border border-2 bg-white p-8 leading-6 shadow-lg dark:border-neutral-600 dark:bg-neutral-800">
+        <p class="break-all">
+          The longest word in any of the major English language dictionaries is
+          <span class="font-bold"
+            >pneumonoultramicroscopicsilicovolcanoconiosis</span
+          >
+          a word that refers to a lung disease contracted from the inhalation of
+          very fine silica particles, specifically from a volcano; medically, it
+          is the same as silicosis.
         </p>
-        <p class="tracking-tight">
-          This is the text with .tracking-tight class.
-        </p>
-        <p class="tracking-normal">
-          This is the text with .tracking-normal class.
-        </p>
-        <p class="tracking-wide">This is the text with .tracking-wide class.</p>
-        <p class="tracking-wider">
-          This is the text with .tracking-wider class.
-        </p>
-        <p class="tracking-widest">
-          This is the text with .tracking-widest class.
-        </p>
+      </div>
+    </div>
+    {{< /twsnippet/demo >}}
+    <!--Section: Demo-->
+
+    <!--Section: Code-->
+    <section class="!visible hidden" data-te-collapse-item id="example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+        <p class="... break-all">...</p>
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -148,15 +170,15 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/vertically-align-text/"
+        href="https://tailwind-elements.com/docs/standard/extended/letter-spacing"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Vertically align text</a
+        Letter spacing</a
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/text-wrap"
+        href="https://tailwind-elements.com/docs/standard/extended/vertically-align-text/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Text wrap</a
+        Vertically align text</a
       >
 
       <a
