@@ -4,34 +4,30 @@
 <nav
   class="{{ if and (ne $hidden_sidenav true) (ne .IsHome true) }}
     xl:pl-60
-  {{ end }} {{ if eq .IsHome true }}
-    fixed top-0 left-0 z-50 w-full bg-white dark:bg-neutral-800
-  {{ end }} shadow">
+  {{ end }} sticky top-0 left-0 z-50 w-full bg-white shadow dark:bg-neutral-800">
   <div class="px-3">
     <div class="relative flex h-[58px] items-center justify-between">
       <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          {{ if ne .IsHome true }}
-            <div
-              id="hamburger"
-              class="{{ if ne $hidden_sidenav true }}
-                xl:hidden
-              {{ end }} mr-4 flex text-neutral-400"
-              data-te-sidenav-toggle-ref
-              data-te-target="#sidenav-main">
-              <a href="#" class="text-neutral-400">
-                <svg
-                  fill="hsl(224, 7.2%, 40%)"
-                  viewBox="0 0 100 80"
-                  width="20"
-                  height="20">
-                  <rect width="80" height="14"></rect>
-                  <rect y="30" width="80" height="14"></rect>
-                  <rect y="60" width="80" height="14"></rect>
-                </svg>
-              </a>
-            </div>
-          {{ end }}
+          <div
+            id="hamburger"
+            class="{{ if and (ne .IsHome true) (ne $hidden_sidenav true) }}
+              xl:hidden
+            {{ end }} mr-4 flex text-neutral-400"
+            data-te-sidenav-toggle-ref
+            data-te-target="#sidenav-main">
+            <a href="#" class="text-neutral-400">
+              <svg
+                fill="hsl(224, 7.2%, 40%)"
+                viewBox="0 0 100 80"
+                width="20"
+                height="20">
+                <rect width="80" height="14"></rect>
+                <rect y="30" width="80" height="14"></rect>
+                <rect y="60" width="80" height="14"></rect>
+              </svg>
+            </a>
+          </div>
           {{ if or (eq .IsHome true) (eq $hidden_sidenav true) }}
             <a
               href="/"
