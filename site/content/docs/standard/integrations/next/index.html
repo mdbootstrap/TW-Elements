@@ -18,7 +18,7 @@ menu:
 <section id="section-prerequisites">
   <!-- Title -->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="prerequisites"
     data-te-spy-item>
     Prerequisites
@@ -57,7 +57,7 @@ menu:
 <section id="section-next-app">
   <!-- Section title-->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="next-application"
     data-te-spy-item>
     Creating a new Next application
@@ -89,7 +89,7 @@ menu:
 <section id="section-tailwind">
   <!-- Section title-->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="tailwind"
     data-te-spy-item>
     Installing and configuring Tailwind CSS and Tailwind Elements
@@ -171,19 +171,20 @@ menu:
 
   <h2 class="text-lg font-bold">Step 5</h2>
   <p class="mb-5">
-    In <code>_app.js</code> file (located in <code>src/pages/</code> directory)
-    put lifecycle method where are you going to dynamically importing library.
+    Create standalone file and import components which are you intend to use and
+    necessary function
+    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "Component.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
+          import { useEffect } from "react";
+          import { Datepicker, Input, initTE } from "tw-elements";
+
           useEffect(() => {
-            const importTE = async () => {
-              (await import("tw-elements")).default;
-            };
-            importTE();
+            initTE({ Datepicker, Input });
           }, []);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -191,16 +192,38 @@ menu:
 
   <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
+    Import client-side component wrapping it into dynamic import with
+    <code>ssr</code> object set to <code>false</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "index.js" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+      import dynamic from "next/dynamic";
+
+      const Component = dynamic(() => import("./component"), {
+        ssr: false,
+      });
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
     Alternatively you can import Tailwind Elements by adding
     <code>script</code> tag in <code>_app.js</code> file (located in
-    <code>src/pages/</code> directory).
+    <code>src/pages/</code> directory) and using <code>Script</code> module from
+    <code>next/script</code>.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+        import Script from "next/script";
+
+    <!--<Script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js" /> -->
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -213,7 +236,7 @@ menu:
 <section id="section-initializing-js">
   <!-- Title -->
   <h2
-    class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="initializing-js"
     data-te-spy-item>
     Initializing via JS
@@ -227,19 +250,19 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Create standalone component. Import library inside.</p>
+  <p class="mb-5">Import components which are you intend to use.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Component.js" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import * as te from "tw-elements";
+        import { Datepicker, Input, initTE } from "tw-elements";
       {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize component in lifecycle hook.</p>
+  <p class="mb-5">Initialize components in lifecycle hook.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
@@ -248,35 +271,16 @@ menu:
         import { useEffect } from "react";
 
         useEffect(() => {
+          const myInput = new Input(document.getElementById("myDatepicker"));
           const options = {
             format: "dd-mm-yyyy",
           };
-          const myDatepicker = new te.Datepicker(
+          const myDatepicker = new Datepicker(
             document.getElementById("myDatepicker"),
             options
           );
         }, []);
       {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 3</h2>
-  <p class="mb-5">
-    Import client-side component wrapping it into dynamic import with
-    <code>ssr</code> object set to <code>false</code>.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-      import dynamic from "next/dynamic";
-
-      ...
-      const Component = dynamic(() => import("./component"), {
-        ssr: false,
-      });
-    {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
