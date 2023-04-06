@@ -87,7 +87,7 @@ const Default = {
   sanitize: true,
   sanitizeFn: null,
   allowList: DefaultAllowlist,
-  popperConfig: null,
+  popperConfig: { hide: true },
 };
 
 const Event = {
