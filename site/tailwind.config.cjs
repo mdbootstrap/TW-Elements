@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("tailwind-scrollbar"), require("./static/js/plugin.cjs")],
+  plugins: [require("./static/js/plugin.cjs")],
   darkMode: "class",
   // for dynamic content
   safelist: [
