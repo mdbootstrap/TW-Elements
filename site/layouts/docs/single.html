@@ -13,13 +13,14 @@
   <head>
     {{ partial "head/head.html" . }}
   </head>
+
   <body class="transition-colors duration-500 dark:bg-neutral-800">
     {{ partial "header/header.html" . }}
 
 
     <nav
       id="sidenav-main"
-      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      class="fixed left-0 top-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
       data-te-sidenav-init
       {{ if ne $hidden_sidenav true }}
         data-te-sidenav-mode-breakpoint-over="0"
@@ -33,8 +34,18 @@
       <a
         href="/"
         class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium outline-none dark:text-neutral-100"
-        aria-current="page"
-        ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
+        aria-current="page">
+        <picture>
+          <source
+            srcset="
+              https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp
+            "
+            type="image/webp" />
+          <img
+            src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.png"
+            class="mr-2 h-[20px]"
+            alt="logo" />
+        </picture>
         Tailwind Elements</a
       >
       {{ partial "sidenav/standard.html" . }}
@@ -59,7 +70,7 @@
               <li>
                 <a
                   id="docs-tab-overview"
-                  class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pt-4 pb-3.5 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
+                  class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pb-3.5 pt-4 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
                   href="#docsTabsOverview"
                   role="tab"
                   data-te-toggle="pill"
@@ -75,7 +86,7 @@
                 <li>
                   <a
                     id="docs-tab-api"
-                    class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pt-4 pb-3.5 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
+                    class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pb-3.5 pt-4 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
                     href="#docsTabsAPI"
                     data-te-toggle="pill"
                     data-te-target="#docsTabsAPI"
@@ -93,7 +104,7 @@
                   {{ $link_data := split $entry "=" }}
                   <li class="nav-item">
                     <a
-                      class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pt-4 pb-3.5 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
+                      class="my-2 mr-2 block min-w-[120px] rounded bg-neutral-100 px-6 pb-3.5 pt-4 text-center text-xs font-medium uppercase leading-tight text-neutral-500 data-[te-nav-active]:!bg-primary-100 data-[te-nav-active]:text-primary-700 dark:bg-neutral-700 dark:text-white dark:data-[te-nav-active]:text-primary-700 md:mr-4"
                       href="{{ index $link_data 1 }}"
                       target="_blank"
                       >{{ index $link_data 0 }}<span
@@ -132,16 +143,22 @@
               {{ end }}
                flex w-full flex-col px-3">
               {{ if not (isset .Params "custom_links") }}
-                <h1
+                <h2
                   class="mt-0 text-3xl font-bold leading-8 sm:text-[33px] md:text-4xl lg:text-[40px]">
                   {{ .Params.main_title }}
+                </h2>
+
+                <h1
+                  class="my-3 text-base font-bold text-neutral-500 dark:text-neutral-300">
+                  {{ .Params.subheading }}
                 </h1>
+
                 <p class="text-neutral-500 dark:text-neutral-300">
                   {{ .Params.description }}
                 </p>
 
                 {{ if $autoinits }}
-                  <div class="my-4 flex flex-wrap text-sm">
+                  <div class="mt-8 flex flex-wrap text-sm">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -157,7 +174,7 @@
 
                     <strong class="mr-2">Required ES init:</strong>
                     {{ $autoinits }} <code class="ml-1">*</code>
-                    <div class="mt-6 w-full">
+                    <div class="mt-2 w-full">
                       <strong><code>*</code> UMD</strong> autoinits are enabled
                       by default. This means that you don't need to initialize
                       the component manually. However if you are using Tailwind

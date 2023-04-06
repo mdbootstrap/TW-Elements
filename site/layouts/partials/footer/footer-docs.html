@@ -4,7 +4,13 @@
 <footer
   class="{{ if or (eq .IsHome true) (eq $hidden_sidenav false) }}
     xl:pl-60
-  {{ end }} mt-16 bg-slate-100 text-center text-neutral-600 transition-colors duration-500 dark:bg-neutral-900 dark:text-neutral-100 lg:text-left">
+  {{ end }}
+    {{ if eq $hidden_sidenav true }}
+    mt-0
+  {{ else }}
+    mt-16
+  {{ end }}
+   bg-slate-100 text-center text-neutral-600 transition-colors duration-500 dark:bg-neutral-900 dark:text-neutral-100 lg:text-left">
   <!-- Section: Design Block -->
   <div class="flex items-center justify-center px-6" mr-12 lg:block>
     <!-- Section: Design Block -->
@@ -19,7 +25,7 @@
       <div class="flex justify-center space-x-2">
         <a
           href="/newsletter"
-          class="flex items-center justify-center rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+          class="flex items-center justify-center rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
           Join our mailing list now
           <svg
             xmlns="http://www.w3.org/2000/svg"
