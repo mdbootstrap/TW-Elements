@@ -1,5 +1,7 @@
 <footer
-  class="mt-16 bg-slate-100 text-center text-neutral-600 transition-colors duration-500 dark:bg-neutral-900 dark:text-neutral-100 lg:text-left">
+  class="{{ if eq .Page.Params.hidden_footer true }}
+    hidden
+  {{ end }} mt-16 bg-slate-100 text-center text-neutral-600 transition-colors duration-500 dark:bg-neutral-900 dark:text-neutral-100 lg:text-left">
   <div
     class="mx-auto py-12 min-[576px]:max-w-[540px] min-[768px]:max-w-[720px] min-[992px]:max-w-[960px] min-[1200px]:max-w-[1140px] min-[1400px]:max-w-[1320px]">
     <div class="flex flex-col items-center justify-center lg:justify-between">
@@ -12,7 +14,7 @@
       <div class="flex justify-center space-x-2">
         <a
           href="/newsletter"
-          class="flex items-center justify-center rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+          class="flex items-center justify-center rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
           Join our mailing list now
           <svg
             xmlns="http://www.w3.org/2000/svg"
