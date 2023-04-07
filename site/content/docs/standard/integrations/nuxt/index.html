@@ -196,25 +196,51 @@ menu:
 
   <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    In <code>_app.js</code> file (located in <code>src/pages/</code> directory)
-    put lifecycle method where are you going to dynamically importing library.
+    Create standalone file and import components which are you intend to use and
+    necessary function
+    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "Component.vue" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
-          useEffect(() => {
-            const importTE = async () => {
-              (await import("tw-elements")).default;
-            };
-            importTE();
-          }, []);
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    <script setup>
+      import { onMounted } from "vue";
+      import { Datepicker, Input, initTE } from "tw-elements";
+
+      onMounted(() => {
+        initTE({ Datepicker, Input });
+      });
+    </script>
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    Import client-side component wrapping it into
+    <code>ClientOnly</code> element.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "app.vue" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+    <script setup>
+      import Component from "./Component.vue";
+    </script>
+
+    <template>
+      <ClientOnly>
+        <Component />
+      </ClientOnly>
+    </template>
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 8</h2>
   <p class="mb-5">
     Alternatively you can import Tailwind Elements by adding
     <code>script</code> tag in <code>nuxt.config.js</code> file (located in root
@@ -229,7 +255,7 @@ menu:
           head: {
             script: [
               {
-                src: "https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js",
+                src: "https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.min.es.js",
               },
             ],
           },
@@ -260,19 +286,19 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Import library.</p>
+  <p class="mb-5">Import components which are you intend to use.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import * as te from "tw-elements";
+        import { Datepicker, Input, initTE } from "tw-elements";
       {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize component in lifecycle hook.</p>
+  <p class="mb-5">Initialize components in lifecycle hook.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
@@ -281,6 +307,7 @@ menu:
         import { onMounted } from "vue";
 
         onMounted(() => {
+          const myInput = new Input(document.getElementById("myDatepicker"));
           const options = {
             format: "dd-mm-yyyy",
           };

@@ -224,19 +224,19 @@ menu:
 
   <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">
-    In <code>+layout.svelte</code> file (located in
-    <code>src/routes/</code> directory) put lifecycle method where are you going
-    to dynamically importing library.
+    Import components which are you intend to use and necessary function
+    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "+layout.svelte" "" "mobile" >}}
+    {{< twsnippet/wrapper "+page.svelte" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           import { onMount } from "svelte";
+          import { Datepicker, Input, initTE } from "tw-elements";
 
-          onMount(async () => {
-            await import("tw-elements");
+          onMount(() => {
+            initTE({ Datepicker, Input });
           });
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -270,13 +270,13 @@ menu:
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "+page.svelte" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import * as te from "tw-elements";
+        import { Datepicker, Input } from "tw-elements";
       {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize component in lifecycle hook.</p>
+  <p class="mb-5">Initialize components in lifecycle hook.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
@@ -285,10 +285,11 @@ menu:
         import { onMount } from "svelte";
 
         onMount(() => {
+          const myInput = new Input(document.getElementById("myDatepicker"));
           const options = {
             format: "dd-mm-yyyy",
           };
-          const myDatepicker = new te.Datepicker(
+          const myDatepicker = new Datepicker(
             document.getElementById("myDatepicker"),
             options
           );

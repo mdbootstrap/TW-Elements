@@ -285,7 +285,7 @@ menu:
     {{< twsnippet/wrapper "home.html" "" "mobile" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
     <script
-      src="{% static 'tw-elements/dist/js/index.min.js' %}"
+      src="{% static 'tw-elements/dist/js/tw-elements.umd.min.js' %}"
       type="text/javascript"></script>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
@@ -350,9 +350,47 @@ menu:
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "home.html" "" "mobile" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
 <!--/Creating and configuring Tailwind & Tailwind Elements-->
+
+<!--Initializing via JS-->
+<section id="section-initializing-js">
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="initializing-js"
+    data-te-spy-item>
+    Initializing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have autoinit which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Initialize components in <code>script</code> section.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "home.html" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+          const myInput = new te.Input(document.getElementById("myDatepicker"));
+          const options = {
+            format: "dd-mm-yyyy",
+          };
+          const myDatepicker = new te.Datepicker(
+            document.getElementById("myDatepicker"),
+            options
+          );
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Initializing via JS-->

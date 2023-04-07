@@ -192,19 +192,19 @@ menu:
 
   <h2 class="text-lg font-bold">Step 5</h2>
   <p class="mb-5">
-    In <code>App.jsx</code> file (located in <code>src/</code> directory) put
-    lifecycle method where are you going to dynamically importing library.
+    Import components which are you intend to use and necessary function
+    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
+          import { useEffect } from "react";
+          import { Datepicker, Input, initTE } from "tw-elements";
+
           useEffect(() => {
-            const importTE = async () => {
-              await import("tw-elements");
-            };
-            importTE();
+            initTE({ Datepicker, Input });
           }, []);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -230,27 +230,28 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Import library.</p>
+  <p class="mb-5">Import components which are you intend to use.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import * as te from "tw-elements";
+        import { Datepicker, Input } from "tw-elements";
       {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize component in lifecycle hook.</p>
+  <p class="mb-5">Initialize components in lifecycle hook.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "App.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import React, { useEffect } from "react";
+        import { useEffect } from "react";
 
         useEffect(() => {
+          const myInput = new Input(document.getElementById("myDatepicker"));
           const options = {
             format: "dd-mm-yyyy",
           };

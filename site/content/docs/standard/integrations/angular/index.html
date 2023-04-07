@@ -200,40 +200,22 @@ menu:
         {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
   </div>
-  <!-- Section: Code-->
 
   <h2 class="text-lg font-bold">Step 5</h2>
   <p class="mb-5">
-    In root directory add <code>typings.d.ts</code> file and put in there
-    Tailwind Elements module's declarataion.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "typings.d.ts" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-        declare module 'tw-elements';
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 6</h2>
-  <p class="mb-5">
-    In <code>app.component.ts</code> file (located in
-    <code>src/app/</code> directory) put lifecycle method where are you going to
-    dynamically importing library.
+    Import components which are you intend to use and necessary function
+    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "app.component.ts" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { Datepicker, Input, initTE } from "tw-elements";
+
         ngOnInit() {
-            const importTE = async () => {
-              await import('tw-elements');
-            };
-            importTE();
-          }
+          initTE({ Datepicker, Input });
+        }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
   </div>
@@ -258,29 +240,30 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Import library.</p>
+  <p class="mb-5">Import components which are you intend to use.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "app.component.ts" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import * as te from "tw-elements";
+        import { Datepicker, Input } from "tw-elements";
       {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize component in lifecycle hook.</p>
+  <p class="mb-5">Initialize components in lifecycle hook.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "app.component.ts" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
         ngOnInit() {
+          const myInput = new Input(document.getElementById("myDatepicker"));
           const options = {
             format: "dd-mm-yyyy",
           };
-          const myDatepicker = new te.Datepicker(
+          const myDatepicker = new Datepicker(
             document.getElementById("myDatepicker"),
             options
           );

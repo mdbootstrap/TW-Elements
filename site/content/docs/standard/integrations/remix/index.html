@@ -19,6 +19,7 @@ menu:
   <!-- Title -->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="prerequisites"
     data-te-spy-item>
     Prerequisites
@@ -202,24 +203,59 @@ menu:
 
   <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    In <code>root.jsx</code> file (located in <code>app/</code> directory) put
-    lifecycle method where are you going to dynamically importing library.
+    Create standalone component which will has a name with
+    <code>Component.client.jsx</code>. It shows framework that should not render
+    this component in a server-side mode.
+  </p>
+  <p class="mb-5">
+    Import components which are you intend to use and necessary function
+    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
           import { useEffect } from "react";
+          import { Datepicker, Input, initTE } from "tw-elements";
 
           useEffect(() => {
-            const importTE = async () => {
-              await import("tw-elements");
-            };
-            importTE();
+            initTE({ Datepicker, Input });
           }, []);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">Install <code>remix-utils</code>.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npm i remix-utils
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 8</h2>
+  <p class="mb-5">Import your client-side component.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+      import { ClientOnly } from "remix-utils";
+      import Component from "./components/Component.client";
+
+      ...
+      export default function App() {
+        return (
+          ...
+    <ClientOnly fallback="{null}">{() => <Component />}</ClientOnly>
+    ); }
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 </section>
 <!--/Creating and configuring Tailwind & Tailwind Elements-->
@@ -242,17 +278,13 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">
-    Create standalone component which will has a name with
-    <code>Component.client.jsx</code>. It shows framework that should not render
-    this component in a server-side mode. Then import library.
-  </p>
+  <p class="mb-5">Import components which are you intend to use.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import * as te from "tw-elements";
+        import { Datepicker, Input } from "tw-elements";
       {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -267,47 +299,16 @@ menu:
         import { useEffect } from "react";
 
         useEffect(() => {
+          const myInput = new Input(document.getElementById("myDatepicker"));
           const options = {
             format: "dd-mm-yyyy",
           };
-          const myDatepicker = new te.Datepicker(
+          const myDatepicker = new Datepicker(
             document.getElementById("myDatepicker"),
             options
           );
         }, []);
       {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 3</h2>
-  <p class="mb-5">Install <code>remix-utils</code>.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm i remix-utils
-      {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 4</h2>
-  <p class="mb-5">Import client-side component.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-      import { ClientOnly } from "remix-utils";
-      import Component from "./components/Component.client";
-
-      ...
-      export default function App() {
-        return (
-          ...
-    <ClientOnly fallback="{null}">{() => <Component />}</ClientOnly>
-    ); }
-    {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
