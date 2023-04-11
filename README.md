@@ -680,13 +680,14 @@ module.exports = {
     "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   plugins: [require("tw-elements/dist/plugin")],
+  darkMode: "class",
 };
 ```
 
 4.  Dynamic components will work after adding the js file:
 
 ```
-<script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+<script src="./TW-ELEMENTS-PATH/dist/js/tw-elements.umd.min.js"></script>
 ```
 
 Alternatively, you can import it in the following way (bundler version):
