@@ -692,7 +692,7 @@ module.exports = {
 Alternatively, you can import it in the following way (bundler version):
 
 ```
-import * as te from 'tw-elements';
+import 'tw-elements';
 ```
 
 ##### MDB GO / CLI
