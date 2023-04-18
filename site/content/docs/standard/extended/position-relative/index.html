@@ -5,7 +5,7 @@ draft: false
 main_title: "Position relative"
 subheading: "Tailwind CSS Position relative"
 seo_title: "Tailwind CSS Position relative - Free Examples & Tutorial"
-description: "Use responsive Position relative utilities with Tailwind Elements. A tutorial on how to position the element according to the normal flow of the document."
+description: "Use responsive position relative utilities with Tailwind Elements. Position the element relative to its normal position, taking into account the offsets."
 image: "https://tecdn.b-cdn.net/img/components-big.jpg"
 video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
 url: "docs/standard/extended/position-relative"
@@ -34,22 +34,32 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
     <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Basic example</h2>
 
     <!--Description-->
+
+    <p class="mb-3">
+      Use <code>.relative</code> class that allows the element to be positioned
+      relative to its normal position in the document flow.
+    </p>
+
     <p>
-      Use the <code>.relative</code> class to position the element according to
-      the normal flow of the document.
+      Any <strong>offsets</strong> are calculated relative to the element’s
+      normal position and the element will act as a position reference for
+      absolutely positioned children.
     </p>
 
     <!--Section: Demo-->
     {{< twsnippet/demo id="example1" >}}
-    <div class="relative overflow-auto rounded-xl px-4 pt-4">
-      <div class="relative text-sm font-medium leading-6">
-        <div class="rounded-lg border border-info-500 bg-info-200 p-4">
+    <div class="-mx-4 -mt-4 -mb-8 rounded-t p-8">
+      <div class="relative overflow-auto">
+        <div class="relative leading-6">
           <div
-            class="relative h-32 rounded-lg border border-info-600 bg-info-400 p-4">
-            <p class="text-info-900">Relative parent</p>
+            class="rounded-lg border border-info bg-info-200 p-4 dark:border-0 dark:bg-primary-900">
             <div
-              class="absolute bottom-0 left-0 rounded-lg bg-info-600 p-4 text-white shadow-lg dark:bg-blue-500">
-              <p>Absolute child</p>
+              class="relative h-32 rounded-lg border border-info bg-info-400 p-4 dark:border-primary-700 dark:bg-primary-800">
+              <p class="text-info-800 dark:text-white">Relative parent</p>
+              <div
+                class="absolute bottom-0 left-0 rounded-lg bg-info p-4 text-white shadow-lg dark:bg-primary">
+                <p>Absolute child</p>
+              </div>
             </div>
           </div>
         </div>
@@ -65,7 +75,7 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
         {{< twsnippet/code active=true lang="HTML" >}}
         <div class="... relative">
           <p>Relative parent</p>
-          <div class="... absolute bottom-0 left-0">
+          <div class="... absolute bottom-0 left-0 ">
             <p>Absolute child</p>
           </div>
         </div>
@@ -86,6 +96,13 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
     <!--Chips with links-->
     <div class="mb-10 mt-5 flex flex-wrap justify-start">
       <!--Extended docs-->
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/position/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Position</a
+      >
+
       <a
         href="https://tailwind-elements.com/docs/standard/extended/position-fixed/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
@@ -96,6 +113,18 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
         href="https://tailwind-elements.com/docs/standard/extended/position-absolute/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
         Position absolute</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/position-static/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Position static</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/position-sticky/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Position sticky</a
       >
 
       <a
@@ -117,27 +146,27 @@ custom_links: "CARDS=https://tailwind-elements.com/docs/standard/components/card
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/display-none"
-        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Display none</a
-      >
-
-      <a
         href="https://tailwind-elements.com/docs/standard/extended/visibility"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
         Visibility</a
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/background-image/"
+        href="https://tailwind-elements.com/docs/standard/extended/background-position/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Background image</a
+        Background position</a
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/vertically-align-text/"
+        href="https://tailwind-elements.com/docs/standard/extended/overflow/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Vertically align text</a
+        Overflow</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/overflow-hidden/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Overflow hidden</a
       >
     </div>
 
