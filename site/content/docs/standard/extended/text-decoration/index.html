@@ -5,7 +5,7 @@ draft: false
 main_title: "Text decoration"
 subheading: "Tailwind CSS Text decoration"
 seo_title: "Tailwind CSS Text decoration - Free Examples & Tutorial"
-description: "Use responsive Text decoration utilities with Tailwind Elements. Add flair to your text with decoration styles like underline, overline, and line-through."
+description: "Use responsive text decoration utilities with Tailwind Elements. Add flair to your text with decoration styles like underline, overline, and line-through."
 image: "https://tecdn.b-cdn.net/img/components-big.jpg"
 video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
 url: "docs/standard/extended/text-decoration/"
@@ -34,29 +34,18 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
     <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>Basic example</h2>
 
     <!--Description-->
+    <p>
+      Use <code>.underline</code>, <code>.no-underline</code>, and
+      <code>.line-through</code> utilities to control how text is decorated.
+    </p>
 
     <!--Section: Demo-->
     {{< twsnippet/demo id="example1" >}}
-    <div class="justify-center px-4 pt-4">
-      <p>You can use the mark tag to <mark>highlight</mark> text.</p>
-      <p>
-        <del>This line of text is meant to be treated as deleted text.</del>
-      </p>
-      <p>
-        <s>This line of text is meant to be treated as no longer accurate.</s>
-      </p>
-      <p>
-        <ins
-          >This line of text is meant to be treated as an addition to the
-          document.</ins
-        >
-      </p>
-      <p><u>This line of text will render as underlined</u></p>
-      <p>
-        <small>This line of text is meant to be treated as fine print.</small>
-      </p>
-      <p><strong>This line rendered as bold text.</strong></p>
-      <p><em>This line rendered as italicized text.</em></p>
+    <div class="-mx-4 -mt-4 -mb-8 space-y-6 rounded-t p-8 text-center">
+      <p class="underline">Paragraph with underline class.</p>
+      <p class="overline">Paragraph with overline class.</p>
+      <p class="line-through">Paragraph with line-through class.</p>
+      <p class="no-underline">Paragraph with no-underline class.</p>
     </div>
     {{< /twsnippet/demo >}}
     <!--Section: Demo-->
@@ -66,32 +55,7 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="HTML" >}}
-        <p>You can use the mark tag to <mark>highlight</mark> text.</p>
-
-        <p>
-          <del>This line of text is meant to be treated as deleted text.</del>
-        </p>
-
-        <p>
-          <s>This line of text is meant to be treated as no longer accurate.</s>
-        </p>
-
-        <p>
-          <ins
-            >This line of text is meant to be treated as an addition to the
-            document.</ins
-          >
-        </p>
-
-        <p><u>This line of text will render as underlined</u></p>
-
-        <p>
-          <small>This line of text is meant to be treated as fine print.</small>
-        </p>
-
-        <p><strong>This line rendered as bold text.</strong></p>
-
-        <p><em>This line rendered as italicized text.</em></p>
+        <p class="underline">This text will be underlined.</p>
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
@@ -99,6 +63,148 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
     <!--Section: Code-->
   </section>
   <!--Section: Basic example-->
+
+  <hr class="my-10 dark:border-gray-600" />
+
+  <!--Section: Color of the underline-->
+  <section id="color" class="pb-10">
+    <!--Subsection title-->
+    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>
+      Color of the underline
+    </h2>
+
+    <!--Description-->
+    <p>
+      By default, the underline will be the same color as the text. But you can
+      customize the color of the underline using the
+      <code>.decoration-{color}</code> utility.
+    </p>
+
+    <!--Section: Demo-->
+    {{< twsnippet/demo id="example2" >}}
+    <div class="-mx-4 -mt-4 -mb-8 space-y-6 rounded-t p-8 text-center">
+      <p class="underline decoration-red-500">
+        This text will be underlined in red.
+      </p>
+      <p class="underline decoration-green-500">
+        This text will be underlined in green.
+      </p>
+    </div>
+    {{< /twsnippet/demo >}}
+    <!--Section: Demo-->
+
+    <!--Section: Code-->
+    <section class="!visible hidden" data-te-collapse-item id="example2">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+        <p class="underline decoration-red-500">
+          This text will be underlined in red.
+        </p>
+        <p class="underline decoration-green-500">
+          This text will be underlined in green.
+        </p>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Color of the underline-->
+
+  <hr class="my-10 dark:border-gray-600" />
+
+  <!--Section: Underline on hover-->
+  <section id="underline-on-hover" class="pb-10">
+    <!--Subsection title-->
+    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>
+      Underline on hover
+    </h2>
+
+    <!--Description-->
+    <p>
+      You can also use the <code>.hover:underline</code> class to apply the
+      underline only when the element is hovered over.
+    </p>
+
+    <!--Section: Demo-->
+    {{< twsnippet/demo id="example3" >}}
+    <div class="-mx-4 -mt-4 -mb-8 rounded-t p-8 text-center">
+      <p class="hover:underline">
+        This text will be underlined only when hovered over.
+      </p>
+    </div>
+    {{< /twsnippet/demo >}}
+    <!--Section: Demo-->
+
+    <!--Section: Code-->
+    <section class="!visible hidden" data-te-collapse-item id="example3">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+        <p class="hover:underline">
+          This text will be underlined only when hovered over.
+        </p>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Underline on hover-->
+
+  <hr class="my-10 dark:border-gray-600" />
+
+  <!--Section: Underline offset-->
+  <section id="underline-offset" class="pb-10">
+    <!--Subsection title-->
+    <h2 class="mb-4 text-[32px] font-medium" data-te-spy-item>
+      Underline offset
+    </h2>
+
+    <!--Description-->
+    <p>
+      For controlling the offset of the underline, you can use the
+      <code>.underline-offset-{number}</code> utility class.
+    </p>
+
+    <!--Section: Demo-->
+    {{< twsnippet/demo id="example4" >}}
+    <div class="-mx-4 -mt-4 -mb-8 space-y-6 rounded-t p-8 text-center">
+      <p class="underline underline-offset-2">
+        This text will have an underline offset of 2px.
+      </p>
+      <p class="underline underline-offset-4">
+        This text will have an underline offset of 4px.
+      </p>
+      <p class="underline underline-offset-8">
+        This text will have an underline offset of 8px.
+      </p>
+    </div>
+    {{< /twsnippet/demo >}}
+    <!--Section: Demo-->
+
+    <!--Section: Code-->
+    <section class="!visible hidden" data-te-collapse-item id="example4">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "HTML" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+        <p class="underline underline-offset-2">
+          This text will have an underline offset of 2px.
+        </p>
+        <p class="underline underline-offset-4">
+          This text will have an underline offset of 4px.
+        </p>
+        <p class="underline underline-offset-8">
+          This text will have an underline offset of 8px.
+        </p>
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Underline offset-->
 
   <hr class="mb-10 dark:border-gray-600" />
 
@@ -131,9 +237,39 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
       <!--Extended docs-->
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/text-size"
+        href="https://tailwind-elements.com/docs/standard/extended/center-text"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Text size</a
+        Center text</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/center-text-vertically-and-horizontally"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Center text vertically and horizontally</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/display-flex"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Display flex</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/lettter-spacing"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Lettter spacing</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/paragraph-spacing"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Paragraph spacing</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/text-bold"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Text bold</a
       >
 
       <a
@@ -143,33 +279,39 @@ custom_links: "typography=https://tailwind-elements.com/docs/standard/content-st
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/center-text"
+        href="https://tailwind-elements.com/docs/standard/extended/text-decoration"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Center text</a
+        Text decoration</a
       >
 
       <a
-        href="https://tailwind-elements.com/docs/standard/extended/letter-spacing"
+        href="https://tailwind-elements.com/docs/standard/extended/text-ellipsis/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Letter spacing</a
+        Text ellipsis</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/text-size/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Text size</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/text-truncate/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Text truncate</a
+      >
+
+      <a
+        href="https://tailwind-elements.com/docs/standard/extended/text-wrap/"
+        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
+        Text wrap</a
       >
 
       <a
         href="https://tailwind-elements.com/docs/standard/extended/vertically-align-text/"
         class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
         Vertically align text</a
-      >
-
-      <a
-        href="https://tailwind-elements.com/docs/standard/extended/text-wrap"
-        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Text wrap</a
-      >
-
-      <a
-        href="https://tailwind-elements.com/docs/standard/extended/text-ellipsis"
-        class="mb-2 mr-2 rounded-2xl bg-gray-200 px-5 py-2.5 text-[12px] font-medium capitalize transition-all hover:bg-white hover:bg-white hover:shadow-[0_2px_5px_0_rgba(0,0,0,0.25)] hover:shadow-xl dark:bg-gray-700 dark:hover:bg-gray-600">
-        Text ellipsis</a
       >
     </div>
 
