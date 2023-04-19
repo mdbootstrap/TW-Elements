@@ -680,19 +680,20 @@ module.exports = {
     "./node_modules/tw-elements/dist/js/**/*.js",
   ],
   plugins: [require("tw-elements/dist/plugin")],
+  darkMode: "class",
 };
 ```
 
 4.  Dynamic components will work after adding the js file:
 
 ```
-<script src="./TW-ELEMENTS-PATH/dist/js/index.min.js"></script>
+<script src="./TW-ELEMENTS-PATH/dist/js/tw-elements.umd.min.js"></script>
 ```
 
 Alternatively, you can import it in the following way (bundler version):
 
 ```
-import * as te from 'tw-elements';
+import 'tw-elements';
 ```
 
 ##### MDB GO / CLI
@@ -743,7 +744,7 @@ Add the stylesheet files below in the _head_ section:
 
 ```
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -765,5 +766,5 @@ Add the stylesheet files below in the _head_ section:
 Require the js bundled file right before the _body_ closing tag:
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 ```
