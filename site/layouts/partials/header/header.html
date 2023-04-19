@@ -4,40 +4,46 @@
 <nav
   class="{{ if and (ne $hidden_sidenav true) (ne .IsHome true) }}
     xl:pl-60
-  {{ end }} {{ if eq .IsHome true }}
-    fixed top-0 left-0 z-50 w-full bg-white dark:bg-neutral-800
-  {{ end }} shadow">
+  {{ end }} sticky left-0 top-0 z-50 w-full bg-white shadow dark:bg-neutral-800">
   <div class="px-3">
     <div class="relative flex h-[58px] items-center justify-between">
       <div class="flex flex-1 items-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center">
-          {{ if ne .IsHome true }}
-            <div
-              id="hamburger"
-              class="{{ if ne $hidden_sidenav true }}
-                xl:hidden
-              {{ end }} mr-4 flex text-neutral-400"
-              data-te-sidenav-toggle-ref
-              data-te-target="#sidenav-main">
-              <a href="#" class="text-neutral-400">
-                <svg
-                  fill="hsl(224, 7.2%, 40%)"
-                  viewBox="0 0 100 80"
-                  width="20"
-                  height="20">
-                  <rect width="80" height="14"></rect>
-                  <rect y="30" width="80" height="14"></rect>
-                  <rect y="60" width="80" height="14"></rect>
-                </svg>
-              </a>
-            </div>
-          {{ end }}
+          <div
+            id="hamburger"
+            class="{{ if and (ne .IsHome true) (ne $hidden_sidenav true) }}
+              xl:hidden
+            {{ end }} mr-4 flex text-neutral-400"
+            data-te-sidenav-toggle-ref
+            data-te-target="#sidenav-main">
+            <a href="#" class="text-neutral-400">
+              <svg
+                fill="hsl(224, 7.2%, 40%)"
+                viewBox="0 0 100 80"
+                width="20"
+                height="20">
+                <rect width="80" height="14"></rect>
+                <rect y="30" width="80" height="14"></rect>
+                <rect y="60" width="80" height="14"></rect>
+              </svg>
+            </a>
+          </div>
           {{ if or (eq .IsHome true) (eq $hidden_sidenav true) }}
             <a
               href="/"
               class="flex items-center justify-center rounded-md pr-6 text-lg font-medium dark:text-neutral-100"
-              aria-current="page"
-              ><img src="/img/logo.png" class="mr-2 h-[30px]" alt="logo" />
+              aria-current="page">
+              <picture>
+                <source
+                  srcset="
+                    https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp
+                  "
+                  type="image/webp" />
+                <img
+                  src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.png"
+                  class="mr-2 h-[20px]"
+                  alt="logo" />
+              </picture>
               Tailwind Elements
             </a>
           {{ end }}
@@ -81,7 +87,7 @@
             class="lpy-2 absolute top-[36px] z-[999999] hidden w-full overflow-hidden rounded bg-white shadow-md dark:bg-neutral-700">
             <ul
               id="te-search-list"
-              class="scrollbar-thin scrollbar-thumb-neutral-400 scrollbar-track-neutral-100 dark:scrollbar-thumb-neutral-500 dark:scrollbar-track-neutral-600 relative max-h-[265px] w-full overflow-y-scroll pt-0"></ul>
+              class="relative max-h-[265px] w-full overflow-y-scroll pt-0 [&::-webkit-scrollbar]:hidden"></ul>
             <hr class="my-0 dark:border-neutral-600" />
             <p
               class="my-4 mr-4 text-end text-xs text-neutral-600 dark:text-neutral-100">
@@ -179,7 +185,7 @@
             <li></li>
             <li>
               <a
-                class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-200 focus:outline-none active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-600 focus:dark:bg-neutral-600"
+                class="block w-full whitespace-nowrap bg-transparent px-3 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-200 focus:outline-none active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-600 focus:dark:bg-neutral-600"
                 href="#"
                 data-theme="light"
                 data-te-dropdown-item-ref>
@@ -202,7 +208,7 @@
             </li>
             <li>
               <a
-                class="block w-full whitespace-nowrap bg-transparent py-2 px-3 text-sm font-normal text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-200 focus:outline-none active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-600 focus:dark:bg-neutral-600"
+                class="block w-full whitespace-nowrap bg-transparent px-3 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-200 focus:outline-none active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-600 focus:dark:bg-neutral-600"
                 href="#"
                 data-theme="dark"
                 data-te-dropdown-item-ref>
@@ -225,24 +231,52 @@
                 </div>
               </a>
             </li>
-            <!-- <li>
-              <a class="text-sm py-2 px-3 font-normal block w-full whitespace-nowrap bg-transparent text-neutral-700 dark:text-neutral-100 hover:bg-neutral-100 disabled:text-neutral-400 disabled:pointer-events-none disabled:bg-transparent active:no-underline active:text-neutral-800 dark:hover:bg-neutral-600 focus:outline-none focus:bg-neutral-200 focus:dark:bg-neutral-600"
-                href="#" data-theme="system" data-te-dropdown-item-ref>
+            <li>
+              <a
+                class="block w-full whitespace-nowrap bg-transparent px-3 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 focus:bg-neutral-200 focus:outline-none active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-100 dark:hover:bg-neutral-600 focus:dark:bg-neutral-600"
+                href="#"
+                data-theme="system"
+                data-te-dropdown-item-ref>
                 <div class="pointer-events-none">
-                  <div class="inline-block w-[24px] text-center" data-theme-icon="system">
-                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="inline-block w-4"
-                      role="img" viewBox="0 0 640 512">
-                      <path fill="currentColor"
+                  <div
+                    class="inline-block w-[24px] text-center"
+                    data-theme-icon="system">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
+                      class="inline-block w-4"
+                      role="img"
+                      viewBox="0 0 640 512">
+                      <path
+                        fill="currentColor"
                         d="M128 32C92.7 32 64 60.7 64 96V352h64V96H512V352h64V96c0-35.3-28.7-64-64-64H128zM19.2 384C8.6 384 0 392.6 0 403.2C0 445.6 34.4 480 76.8 480H563.2c42.4 0 76.8-34.4 76.8-76.8c0-10.6-8.6-19.2-19.2-19.2H19.2z" />
                     </svg>
                   </div>
                   <span data-theme-name="system">System</span>
                 </div>
               </a>
-            </li> -->
+            </li>
           </ul>
         </div>
         <!-- /Theme switcher -->
+
+        <!--Twitter Link-->
+        <a
+          href="https://twitter.com/ElementTailwind/"
+          target="_blank"
+          class="rounded-md px-1.5 py-2 text-sm font-medium text-neutral-500 hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 sm:p-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+          </svg>
+        </a>
+
+        <!--GitHub Link-->
         <a
           href="https://github.com/mdbootstrap/Tailwind-Elements/"
           target="_blank"

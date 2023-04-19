@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -95,7 +113,7 @@
                       href="#"
                       data-te-dropdown-item-ref>
                       <img
-                        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/javascript.webp"
+                        src="https://tecdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/javascript.webp"
                         alt=""
                         class="mr-2 h-5" />
                       <span>Standard (plain JS)</span>
@@ -107,7 +125,7 @@
                       href="#"
                       data-te-dropdown-item-ref>
                       <img
-                        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/angular.webp"
+                        src="https://tecdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/angular.webp"
                         alt=""
                         class="mr-2 h-5" />
                       <span>Angular</span>
@@ -119,7 +137,7 @@
                       href="#"
                       data-te-dropdown-item-ref>
                       <img
-                        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/react.webp"
+                        src="https://tecdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/react.webp"
                         alt=""
                         class="mr-2 h-5" />
                       <span>React</span>
@@ -131,7 +149,7 @@
                       href="#"
                       data-te-dropdown-item-ref>
                       <img
-                        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/vue.webp"
+                        src="https://tecdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/vue.webp"
                         alt=""
                         class="mr-2 h-5" />
                       <span>Vue</span>
@@ -152,7 +170,7 @@
                       href="#"
                       data-te-dropdown-item-ref>
                       <img
-                        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/jquery.webp"
+                        src="https://tecdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/jquery.webp"
                         alt=""
                         class="mr-2 h-5" />
                       <span>Standard (jQuery)</span>
@@ -164,7 +182,7 @@
                       href="#"
                       data-te-dropdown-item-ref>
                       <img
-                        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/angular.webp"
+                        src="https://tecdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/angular.webp"
                         alt=""
                         class="mr-2 h-5" />
                       <span>Angular</span>
@@ -176,7 +194,7 @@
                       href="#"
                       data-te-dropdown-item-ref>
                       <img
-                        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/react.webp"
+                        src="https://tecdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/react.webp"
                         alt=""
                         class="mr-2 h-5" />
                       <span>React</span>
@@ -188,7 +206,7 @@
                       href="#"
                       data-te-dropdown-item-ref>
                       <img
-                        src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/vue.webp"
+                        src="https://tecdn.b-cdn.net/wp-content/themes/mdbootstrap4/content/en/_mdb5/_assets/img/icons/vue.webp"
                         alt=""
                         class="mr-2 h-5" />
                       <span>Vue</span>
@@ -203,15 +221,13 @@
     </section>
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

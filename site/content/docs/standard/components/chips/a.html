@@ -3,6 +3,47 @@
 
 <!--Section: Docs content-->
 <section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Chip, ChipsInput, initTE } from "tw-elements";
+        initTE({ Chip, ChipsInput });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
   <!--Section: Usage-->
   <section id="api-section-usage">
     <!--Title-->
@@ -14,6 +55,14 @@
     </h2>
 
     <h4 class="my-5 text-lg font-bold">Via data attributes</h4>
+
+    <p>
+      Elements with the <code>data-te-chip-init</code> and
+      <code>data-te-chips-init</code>
+      attribute will be automatically initialized - you can set all available
+      options with data attributes. For ES format, you must first import and
+      call the <code>initTE</code> method.
+    </p>
 
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example1" >}}
@@ -51,23 +100,52 @@
 
     <h4 class="font-bold">Via JavaScript</h4>
 
+    <p>
+      You can access an instance from your Javascript code, by using the
+      <code class="text-red-500 dark:text-red-300">getInstance</code> static
+      method of the ChipsInput class - it allows making use of all the public
+      methods listed in the
+      <a class="text-blue-600" href="#api-section-methods">Methods</a> section.
+    </p>
+
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
-        {{< twsnippet/code active=true lang="js" >}}
+        {{< twsnippet/code active=true lang="js" >}}     
+          const chipsInput = new ChipsInput(
+            document.getElementById("chipsInputId"),
+            options,
+            classes
+          );
+
+          const chip = new Chip(
+            document.getElementById("chipId"),
+            options,
+            classes
+          );
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const chipsInput = new te.ChipsInput(
             document.getElementById("chipsInputId"),
             options,
             classes
           );
-            {{< /twsnippet/code >}}
-            {{< /twsnippet/wrapper >}}
+
+          const chip = new te.Chip(
+            document.getElementById("chipId"),
+            options,
+            classes
+          );
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
       </div>
     </section>
     <!--Section: Code-->
+
     <!--Section: Usage-->
 
     <hr class="mb-5 dark:border-gray-600" />
@@ -608,14 +686,20 @@
       {{< twsnippet/no-demo id="api-example5" >}}
       <section class="!visible hidden" data-te-collapse-item id="api-example5">
         <div class="pt-4">
-          {{< twsnippet/wrapper "JavaScript" >}}
+          {{< twsnippet/wrapper "javascript,umd" >}}
           <!-- prettier-ignore -->
           {{< twsnippet/code active=true lang="js" >}}
                 const myChips = document.getElementById('myChipsID')
+                const chips = new ChipsInput(myChips)
+                chips.dispose()
+          {{< /twsnippet/code >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code lang="js" >}}
+                const myChips = document.getElementById('myChipsID')
                 const chips = new te.ChipsInput(myChips)
                 chips.dispose()
-              {{< /twsnippet/code >}}
-              {{< /twsnippet/wrapper >}}
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
         </div>
       </section>
       <!--Section: Code-->

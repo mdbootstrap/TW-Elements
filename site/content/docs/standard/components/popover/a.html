@@ -7,7 +7,7 @@
   <section id="api-section-usage">
     <!-- Title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="basic"
       data-te-spy-item>
       Usage
@@ -42,9 +42,14 @@
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+          const exampleEl = document.getElementById('example');
+          const popover = new Popover(exampleEl, options);
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const exampleEl = document.getElementById('example');
           const popover = new te.Popover(exampleEl, options);
         {{< /twsnippet/code >}}
@@ -104,7 +109,7 @@
     <section id="api-section-options">
       <!-- Section title -->
       <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal"
         data-te-spy-item>
         Options
       </h2>
@@ -116,7 +121,7 @@
       </p>
 
       <div
-        class="my-6 rounded-lg bg-yellow-100 py-5 px-6 text-base text-yellow-700"
+        class="my-6 rounded-lg bg-yellow-100 px-6 py-5 text-base text-yellow-700"
         role="alert">
         <p>
           <strong>Note:</strong> For security reasons the <code>sanitize</code>,
@@ -127,10 +132,10 @@
 
       <div class="flex flex-col">
         <div class="overflow-x-auto">
-          <div class="inline-block min-w-full py-2">
+          <div class="inline-block w-full py-2">
             <div class="overflow-hidden">
               <table
-                class="min-w-full border text-left text-sm font-light text-neutral-900 dark:border-neutral-500 dark:text-neutral-100">
+                class="w-full table-fixed border text-left text-sm font-light text-neutral-900 dark:border-neutral-500 dark:text-neutral-100">
                 <thead
                   class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
                   <tr>
@@ -276,11 +281,24 @@
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code
-                        >'&lt;div class="popover" role="tooltip"&gt;&lt;h3
-                        class="popover-header"&gt;&lt;/h3&gt;&lt;div
-                        class="popover-body"&gt;&lt;/div&gt;&lt;/div&gt;'</code
-                      >
+                      <code>
+                        '&lt;div class="opacity-0 transition-opacity
+                        duration-150 ease-in-out absolute top-0 left-0 z-[1070]
+                        block max-w-[267px] break-words bg-white bg-clip-padding
+                        border border-neutral-100 rounded-lg
+                        shadow-[0_0px_3px_0_rgba(0,0,0,0.07),0_2px_2px_0_rgba(0,0,0,0.04)]
+                        text-sm not-italic font-normal text-left no-underline
+                        underline-offset-auto normal-case leading-6
+                        tracking-normal break-normal whitespace-normal
+                        dark:bg-neutral-700 dark:border-0 dark:text-white
+                        data-[popper-reference-hidden]:hidden"
+                        role="tooltip"&gt;' + '&lt;h3 class="popover-header py-2
+                        px-4 mb-0 border-b-2 border-neutral-100 rounded-t-lg
+                        font-medium empty:hidden
+                        dark:border-neutral-500"&gt;&lt;/h3&gt;' + '&lt;div
+                        class="popover-body p-4 text-[#212529]
+                        dark:text-white">&lt;/div&gt;' + "&lt;/div&gt;",
+                      </code>
                     </td>
                     <td class="px-6 py-4 max-lg:whitespace-nowrap">
                       Base HTML to use when creating the popover. The popover's
@@ -413,7 +431,7 @@
                     </td>
                   </tr>
                   <tr
-                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-600">
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
                     <td
                       class="border-r px-6 py-4 font-medium dark:border-neutral-500">
                       <code>sanitize</code>
@@ -451,7 +469,7 @@
                     </td>
                   </tr>
                   <tr
-                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-600">
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
                     <td
                       class="border-r px-6 py-4 font-medium dark:border-neutral-500">
                       <code>sanitizeFn</code>
@@ -482,7 +500,7 @@
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>null</code>
+                      <code>{ hide: true }</code>
                     </td>
                     <td class="px-6 py-4 max-lg:whitespace-nowrap">
                       To change Bootstrap's default Popper config, see
@@ -525,13 +543,13 @@
     <section id="api-section-methods">
       <!-- Section title -->
       <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal"
         data-te-spy-item>
         Methods
       </h2>
 
       <div
-        class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
+        class="my-6 rounded-lg bg-red-100 px-6 py-5 text-base text-red-700"
         role="alert">
         <p>
           <strong>Asynchronous methods and transitions:</strong>
@@ -761,9 +779,15 @@
       {{< twsnippet/no-demo id="api-example5" >}}
       <section class="!visible hidden" data-te-collapse-item id="api-example5">
         <div class="pt-4">
-          {{< twsnippet/wrapper "JavaScript" >}}
+          {{< twsnippet/wrapper "javascript,umd" >}}
           <!-- prettier-ignore -->
           {{< twsnippet/code active=true lang="js" >}}
+            const exampleTriggerEl = document.getElementById('example');
+            const popover = new Popover(exampleTriggerEl);
+            popover.show();
+          {{< /twsnippet/code >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code lang="js" >}}
             const exampleTriggerEl = document.getElementById('example');
             const popover = new te.Popover(exampleTriggerEl);
             popover.show();
@@ -780,7 +804,7 @@
       <section id="api-section-events">
         <!-- Section title -->
         <h2
-          class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+          class="mb-5 mt-0 text-3xl font-semibold leading-normal"
           data-te-spy-item>
           Events
         </h2>

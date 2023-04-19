@@ -1,7 +1,7 @@
 ---
 ---
 
-<script>
+<script type="module">
   const pickerInline = document.querySelector("#timepicker-inline-12");
   const timepickerMaxMin = new te.Timepicker(pickerInline, {
     format12: true,
@@ -13,6 +13,16 @@
     format24: true,
     inline: true,
   });
+
+  // without icon
+  const pickerWithoutIcon = document.querySelector(
+    "#timepicker-without-icon-2"
+  );
+  const timepickerWithoutIcon = new te.Timepicker(pickerWithoutIcon, {
+    withIcon: false,
+  });
+
+  // without icon
 
   //Default time string PM
   const pickerStartedPM = document.querySelector(

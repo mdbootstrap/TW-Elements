@@ -14,12 +14,7 @@ import Data from "../../dom/data";
 import EventHandler from "../../dom/event-handler";
 import Manipulator from "../../dom/manipulator";
 import SelectorEngine from "../../dom/selector-engine";
-import {
-  typeCheckConfig,
-  getjQuery,
-  getUID,
-  onDOMContentLoaded,
-} from "../../util/index";
+import { typeCheckConfig, getUID } from "../../util/index";
 import Input from "../input";
 import SelectOption from "./select-option";
 import SelectionModel from "./selection-model";
@@ -61,7 +56,6 @@ const DATA_SELECT_OPTION_GROUP_LABEL = "data-te-select-option-group-label-ref";
 const DATA_OPTION_ALL = "data-te-select-option-all-ref";
 const DATA_SELECTED = "data-te-select-selected";
 
-const SELECTOR_SELECT = `[${DATA_SELECT_INIT}]`;
 const SELECTOR_LABEL = "[data-te-select-label-ref]";
 const SELECTOR_INPUT = "[data-te-select-input-ref]";
 const SELECTOR_FILTER_INPUT = "[data-te-select-input-filter-ref]";
@@ -130,7 +124,7 @@ const DefaultClasses = {
   dropdown:
     "relative outline-none min-w-[100px] m-0 scale-[0.8] opacity-0 bg-white shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)] transition duration-200 motion-reduce:transition-none data-[te-select-open]:scale-100 data-[te-select-open]:opacity-100 dark:bg-zinc-700",
   formCheckInput:
-    "relative float-left mt-[0.15rem] mr-[8px] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 dark:border-neutral-600 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary dark:checked:border-primary checked:bg-primary dark:checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:ml-[0.25rem] checked:after:-mt-px checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:ml-[0.25rem] checked:focus:after:-mt-px checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-t-0 checked:focus:after:border-l-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent",
+    "relative float-left mt-[0.15rem] mr-[8px] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 dark:border-neutral-600 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary dark:checked:border-primary checked:bg-primary dark:checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:ml-[0.25rem] checked:after:-mt-px checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:ml-[0.25rem] checked:focus:after:-mt-px checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-t-0 checked:focus:after:border-l-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent",
   formOutline: "relative",
   initialized: "hidden",
   inputGroup:
@@ -141,14 +135,14 @@ const DefaultClasses = {
   optionsWrapperScrollbar:
     "[&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-button]:block [&::-webkit-scrollbar-button]:h-0 [&::-webkit-scrollbar-button]:bg-transparent [&::-webkit-scrollbar-track-piece]:bg-transparent [&::-webkit-scrollbar-track-piece]:rounded-none [&::-webkit-scrollbar-track-piece]: [&::-webkit-scrollbar-track-piece]:rounded-l [&::-webkit-scrollbar-thumb]:h-[50px] [&::-webkit-scrollbar-thumb]:bg-[#999] [&::-webkit-scrollbar-thumb]:rounded",
   selectArrow:
-    "absolute right-2 text-[0.8rem] cursor-pointer peer-focus:text-primary peer-data-[te-input-focused]:text-primary group-data-[te-was-validated]/validation:peer-valid:text-green-600 group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)]",
+    "absolute right-3 text-[0.8rem] cursor-pointer peer-focus:text-primary peer-data-[te-input-focused]:text-primary group-data-[te-was-validated]/validation:peer-valid:text-green-600 group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)] w-5 h-5",
   selectArrowWhite:
     "text-gray-50 peer-focus:!text-white peer-data-[te-input-focused]:!text-white",
   selectArrowDefault: "top-2",
   selectArrowLg: "top-[13px]",
   selectArrowSm: "top-1",
   selectClearBtn:
-    "absolute top-2 right-7 text-black cursor-pointer focus:text-primary outline-none dark:text-gray-200",
+    "absolute top-2 right-9 text-black cursor-pointer focus:text-primary outline-none dark:text-gray-200",
   selectClearBtnWhite: "!text-gray-50",
   selectClearBtnDefault: "top-2 text-base",
   selectClearBtnLg: "top-[11px] text-base",
@@ -164,7 +158,7 @@ const DefaultClasses = {
   selectInputSizeLg: "py-[0.32rem] px-3 leading-[2.15]",
   selectInputSizeSm: "py-[0.33rem] px-3 text-xs leading-[1.5]",
   selectLabel:
-    "pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate text-gray-500 transition-all duration-200 ease-out peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-gray-200 dark:peer-focus:text-gray-200 data-[te-input-state-active]:scale-[0.8]",
+    "pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate text-gray-500 transition-all duration-200 ease-out peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-gray-200 dark:peer-focus:text-gray-200 data-[te-input-state-active]:scale-[0.8] dark:peer-focus:text-primary",
   selectLabelWhite: "!text-gray-50",
   selectLabelSizeDefault:
     "pt-[0.37rem] leading-[1.6] peer-focus:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] data-[te-input-state-active]:-translate-y-[0.9rem]",
@@ -1428,6 +1422,8 @@ class Select {
 
     setTimeout(() => {
       this._input.removeAttribute(DATA_FOCUSED);
+      this._input.blur();
+
       SelectorEngine.findOne(SELECTOR_NOTCH, this._wrapper).removeAttribute(
         DATA_FOCUSED
       );
@@ -1687,31 +1683,3 @@ class Select {
 }
 
 export default Select;
-
-const $ = getjQuery();
-
-SelectorEngine.find(SELECTOR_SELECT).forEach((select) => {
-  let instance = Select.getInstance(select);
-  if (!instance) {
-    instance = new Select(select);
-  }
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .timepicker to jQuery only if jQuery is present
- */
-
-onDOMContentLoaded(() => {
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Select.jQueryInterface;
-    $.fn[NAME].Constructor = Select;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Select.jQueryInterface;
-    };
-  }
-});

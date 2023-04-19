@@ -13,9 +13,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 import {
   array,
   isVisible,
-  getjQuery,
   typeCheckConfig,
-  onDOMContentLoaded,
   isRTL,
   getUID,
 } from "../util/index";
@@ -40,7 +38,6 @@ Constants
 const NAME = "sidenav";
 const DATA_KEY = "te.sidenav";
 const ARROW_DATA = "data-te-sidenav-rotate-icon-ref";
-const SELECTOR_SIDENAV = "[data-te-sidenav-init]";
 const SELECTOR_TOGGLE = "[data-te-sidenav-toggle-ref]";
 
 const SELECTOR_TOGGLE_COLLAPSE = "[data-te-collapse-init]";
@@ -168,6 +165,9 @@ class Sidenav {
     ) {
       EventHandler.on(this._element, "transitionend", this._addBackdropOnInit);
     }
+
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -328,6 +328,19 @@ class Sidenav {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+    EventHandler.on(
+      document,
+      "click",
+      SELECTOR_TOGGLE,
+      Sidenav.toggleSidenav()
+    );
+    this._didInit = true;
+  }
+
   _transformBreakpointValuesToObject() {
     return {
       sm: this.options.sidenavBreakpointSm,
@@ -1178,43 +1191,5 @@ class Sidenav {
     );
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-EventHandler.on(document, "click", SELECTOR_TOGGLE, Sidenav.toggleSidenav());
-
-SelectorEngine.find(SELECTOR_SIDENAV).forEach((sidenav) => {
-  let instance = Sidenav.getInstance(sidenav);
-  if (!instance) {
-    instance = new Sidenav(sidenav);
-  }
-
-  return instance;
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .sidenav to jQuery only if jQuery is present
- */
-
-onDOMContentLoaded(() => {
-  const $ = getjQuery();
-
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Sidenav.jQueryInterface;
-    $.fn[NAME].Constructor = Sidenav;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Sidenav.jQueryInterface;
-    };
-  }
-});
 
 export default Sidenav;

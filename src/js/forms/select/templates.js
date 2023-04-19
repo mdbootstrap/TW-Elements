@@ -31,6 +31,12 @@ const DATA_SELECT_OPTION_GROUP_LABEL = "data-te-select-option-group-label-ref";
 
 const DATA_SELECTED = "data-te-select-selected";
 
+const iconSVGTemplate = `
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+</svg>
+`;
+
 const preventKeydown = (event) => {
   if (event.code === "Tab" || event.code === "Esc") {
     return;
@@ -168,8 +174,7 @@ export function getWrapperTemplate(id, config, label, classes) {
     Manipulator.addClass(arrow, classes.selectArrowWhite);
   }
 
-  const arrowText = document.createTextNode("\u25BC");
-  arrow.appendChild(arrowText);
+  arrow.innerHTML = iconSVGTemplate;
 
   formOutline.appendChild(input);
 

@@ -9,12 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import {
-  element,
-  getjQuery,
-  onDOMContentLoaded,
-  typeCheckConfig,
-} from "../util/index";
+import { element, onDOMContentLoaded, typeCheckConfig } from "../util/index";
 import Data from "../dom/data";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
@@ -146,6 +141,7 @@ class Input {
     this._activate();
     this._getHelper();
     this._getCounter();
+    this._getEvents();
     this._initiated = true;
   }
 
@@ -234,6 +230,154 @@ class Input {
       this._maxLength = this.input.maxLength;
       this._showCounter();
     }
+  }
+
+  _getEvents() {
+    EventHandler.on(
+      document,
+      "focus",
+      SELECTOR_OUTLINE_INPUT,
+      Input.activate(new Input())
+    );
+    EventHandler.on(
+      document,
+      "input",
+      SELECTOR_OUTLINE_INPUT,
+      Input.activate(new Input())
+    );
+    EventHandler.on(
+      document,
+      "blur",
+      SELECTOR_OUTLINE_INPUT,
+      Input.deactivate(new Input())
+    );
+
+    EventHandler.on(
+      document,
+      "focus",
+      SELECTOR_OUTLINE_TEXTAREA,
+      Input.activate(new Input())
+    );
+    EventHandler.on(
+      document,
+      "input",
+      SELECTOR_OUTLINE_TEXTAREA,
+      Input.activate(new Input())
+    );
+    EventHandler.on(
+      document,
+      "blur",
+      SELECTOR_OUTLINE_TEXTAREA,
+      Input.deactivate(new Input())
+    );
+
+    EventHandler.on(window, "shown.te.modal", (e) => {
+      SelectorEngine.find(SELECTOR_OUTLINE_INPUT, e.target).forEach(
+        (element) => {
+          const instance = Input.getInstance(element.parentNode);
+          if (!instance) {
+            return;
+          }
+          instance.update();
+        }
+      );
+      SelectorEngine.find(SELECTOR_OUTLINE_TEXTAREA, e.target).forEach(
+        (element) => {
+          const instance = Input.getInstance(element.parentNode);
+          if (!instance) {
+            return;
+          }
+          instance.update();
+        }
+      );
+    });
+
+    EventHandler.on(window, "shown.te.dropdown", (e) => {
+      const target = e.target.parentNode.querySelector(
+        "[data-te-dropdown-menu-ref]"
+      );
+      if (target) {
+        SelectorEngine.find(SELECTOR_OUTLINE_INPUT, target).forEach(
+          (element) => {
+            const instance = Input.getInstance(element.parentNode);
+            if (!instance) {
+              return;
+            }
+            instance.update();
+          }
+        );
+        SelectorEngine.find(SELECTOR_OUTLINE_TEXTAREA, target).forEach(
+          (element) => {
+            const instance = Input.getInstance(element.parentNode);
+            if (!instance) {
+              return;
+            }
+            instance.update();
+          }
+        );
+      }
+    });
+
+    EventHandler.on(window, "shown.te.tab", (e) => {
+      let targetId;
+
+      if (e.target.href) {
+        targetId = e.target.href.split("#")[1];
+      } else {
+        targetId = Manipulator.getDataAttribute(e.target, "target").split(
+          "#"
+        )[1];
+      }
+
+      const target = SelectorEngine.findOne(`#${targetId}`);
+      SelectorEngine.find(SELECTOR_OUTLINE_INPUT, target).forEach((element) => {
+        const instance = Input.getInstance(element.parentNode);
+        if (!instance) {
+          return;
+        }
+        instance.update();
+      });
+      SelectorEngine.find(SELECTOR_OUTLINE_TEXTAREA, target).forEach(
+        (element) => {
+          const instance = Input.getInstance(element.parentNode);
+          if (!instance) {
+            return;
+          }
+          instance.update();
+        }
+      );
+    });
+
+    // form reset handler
+    EventHandler.on(window, "reset", (e) => {
+      SelectorEngine.find(SELECTOR_OUTLINE_INPUT, e.target).forEach(
+        (element) => {
+          const instance = Input.getInstance(element.parentNode);
+          if (!instance) {
+            return;
+          }
+          instance.forceInactive();
+        }
+      );
+      SelectorEngine.find(SELECTOR_OUTLINE_TEXTAREA, e.target).forEach(
+        (element) => {
+          const instance = Input.getInstance(element.parentNode);
+          if (!instance) {
+            return;
+          }
+          instance.forceInactive();
+        }
+      );
+    });
+
+    // auto-fill
+    EventHandler.on(window, "onautocomplete", (e) => {
+      const instance = Input.getInstance(e.target.parentNode);
+      if (!instance || !e.cancelable) {
+        return;
+      }
+      instance.forceActive();
+    });
   }
 
   _showCounter() {
@@ -468,158 +612,5 @@ class Input {
     );
   }
 }
-
-EventHandler.on(
-  document,
-  "focus",
-  SELECTOR_OUTLINE_INPUT,
-  Input.activate(new Input())
-);
-EventHandler.on(
-  document,
-  "input",
-  SELECTOR_OUTLINE_INPUT,
-  Input.activate(new Input())
-);
-EventHandler.on(
-  document,
-  "blur",
-  SELECTOR_OUTLINE_INPUT,
-  Input.deactivate(new Input())
-);
-
-EventHandler.on(
-  document,
-  "focus",
-  SELECTOR_OUTLINE_TEXTAREA,
-  Input.activate(new Input())
-);
-EventHandler.on(
-  document,
-  "input",
-  SELECTOR_OUTLINE_TEXTAREA,
-  Input.activate(new Input())
-);
-EventHandler.on(
-  document,
-  "blur",
-  SELECTOR_OUTLINE_TEXTAREA,
-  Input.deactivate(new Input())
-);
-
-EventHandler.on(window, "shown.te.modal", (e) => {
-  SelectorEngine.find(SELECTOR_OUTLINE_INPUT, e.target).forEach((element) => {
-    const instance = Input.getInstance(element.parentNode);
-    if (!instance) {
-      return;
-    }
-    instance.update();
-  });
-  SelectorEngine.find(SELECTOR_OUTLINE_TEXTAREA, e.target).forEach(
-    (element) => {
-      const instance = Input.getInstance(element.parentNode);
-      if (!instance) {
-        return;
-      }
-      instance.update();
-    }
-  );
-});
-
-EventHandler.on(window, "shown.te.dropdown", (e) => {
-  const target = e.target.parentNode.querySelector(
-    "[data-te-dropdown-menu-ref]"
-  );
-  if (target) {
-    SelectorEngine.find(SELECTOR_OUTLINE_INPUT, target).forEach((element) => {
-      const instance = Input.getInstance(element.parentNode);
-      if (!instance) {
-        return;
-      }
-      instance.update();
-    });
-    SelectorEngine.find(SELECTOR_OUTLINE_TEXTAREA, target).forEach(
-      (element) => {
-        const instance = Input.getInstance(element.parentNode);
-        if (!instance) {
-          return;
-        }
-        instance.update();
-      }
-    );
-  }
-});
-
-EventHandler.on(window, "shown.te.tab", (e) => {
-  let targetId;
-
-  if (e.target.href) {
-    targetId = e.target.href.split("#")[1];
-  } else {
-    targetId = Manipulator.getDataAttribute(e.target, "target").split("#")[1];
-  }
-
-  const target = SelectorEngine.findOne(`#${targetId}`);
-  SelectorEngine.find(SELECTOR_OUTLINE_INPUT, target).forEach((element) => {
-    const instance = Input.getInstance(element.parentNode);
-    if (!instance) {
-      return;
-    }
-    instance.update();
-  });
-  SelectorEngine.find(SELECTOR_OUTLINE_TEXTAREA, target).forEach((element) => {
-    const instance = Input.getInstance(element.parentNode);
-    if (!instance) {
-      return;
-    }
-    instance.update();
-  });
-});
-
-// auto-init
-SelectorEngine.find(`[${DATA_WRAPPER}]`).map((element) => new Input(element));
-
-// form reset handler
-EventHandler.on(window, "reset", (e) => {
-  SelectorEngine.find(SELECTOR_OUTLINE_INPUT, e.target).forEach((element) => {
-    const instance = Input.getInstance(element.parentNode);
-    if (!instance) {
-      return;
-    }
-    instance.forceInactive();
-  });
-  SelectorEngine.find(SELECTOR_OUTLINE_TEXTAREA, e.target).forEach(
-    (element) => {
-      const instance = Input.getInstance(element.parentNode);
-      if (!instance) {
-        return;
-      }
-      instance.forceInactive();
-    }
-  );
-});
-
-// auto-fill
-EventHandler.on(window, "onautocomplete", (e) => {
-  const instance = Input.getInstance(e.target.parentNode);
-  if (!instance || !e.cancelable) {
-    return;
-  }
-  instance.forceActive();
-});
-
-onDOMContentLoaded(() => {
-  const $ = getjQuery();
-
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Input.jQueryInterface;
-    $.fn[NAME].Constructor = Input;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Input.jQueryInterface;
-    };
-  }
-});
 
 export default Input;

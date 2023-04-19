@@ -7,7 +7,7 @@
   <section id="api-section-usage">
     <!-- Title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="basic"
       data-te-spy-item>
       Usage
@@ -40,9 +40,14 @@
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+          const exampleEl = document.getElementById('example');
+          const tooltip = new Tooltip(exampleEl);
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const exampleEl = document.getElementById('example');
           const tooltip = new te.Tooltip(exampleEl);
         {{< /twsnippet/code >}}
@@ -69,9 +74,16 @@
     {{< twsnippet/no-demo id="api-example5" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example5">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+          const exampleEl = document.getElementById('example');
+          const tooltip = new Tooltip(exampleEl, {
+            boundary: 'window'
+          });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const exampleEl = document.getElementById('example');
           const tooltip = new te.Tooltip(exampleEl, {
             boundary: 'window'
@@ -137,7 +149,7 @@
     <section id="api-section-options">
       <!-- Section title -->
       <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal"
         data-te-spy-item>
         Options
       </h2>
@@ -149,7 +161,7 @@
       </p>
 
       <div
-        class="my-6 rounded-lg bg-yellow-100 py-5 px-6 text-base text-yellow-700"
+        class="my-6 rounded-lg bg-yellow-100 px-6 py-5 text-base text-yellow-700"
         role="alert">
         <p>
           <strong>Note:</strong> For security reasons the <code>sanitize</code>,
@@ -502,7 +514,7 @@
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>null</code>
+                      <code>{ hide: true }</code>
                     </td>
                     <td class="px-6 py-4 max-lg:whitespace-nowrap">
                       To change Bootstrap's default Popper config, see
@@ -545,13 +557,13 @@
     <section id="api-section-methods">
       <!-- Section title -->
       <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal"
         data-te-spy-item>
         Methods
       </h2>
 
       <div
-        class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
+        class="my-6 rounded-lg bg-red-100 px-6 py-5 text-base text-red-700"
         role="alert">
         <p>
           <strong>Asynchronous methods and transitions:</strong>
@@ -778,9 +790,15 @@
       {{< twsnippet/no-demo id="api-example6" >}}
       <section class="!visible hidden" data-te-collapse-item id="api-example6">
         <div class="pt-4">
-          {{< twsnippet/wrapper "JavaScript" >}}
+          {{< twsnippet/wrapper "javascript,umd" >}}
           <!-- prettier-ignore -->
           {{< twsnippet/code active=true lang="js" >}}
+            const tooltipEl = document.getElementById('tooltip');
+            const tooltip = new Tooltip(tooltipEl);
+            tooltip.show();
+          {{< /twsnippet/code >}}
+          <!-- prettier-ignore -->
+          {{< twsnippet/code lang="js" >}}
             const tooltipEl = document.getElementById('tooltip');
             const tooltip = new te.Tooltip(tooltipEl);
             tooltip.show();
@@ -797,7 +815,7 @@
       <section id="api-section-events">
         <!-- Section title -->
         <h2
-          class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+          class="mb-5 mt-0 text-3xl font-semibold leading-normal"
           data-te-spy-item>
           Events
         </h2>

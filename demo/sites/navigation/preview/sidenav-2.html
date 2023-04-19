@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -436,43 +454,44 @@
     <!-- Content -->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../../js/theme.min.js"></script>
-    <!-- MDB -->
-    <script type="text/javascript" src="../../../js/index.min.js"></script>
+    <script type="module" src="../../../../src/js/theme.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript">
-      const sidenav = document.getElementById("full-screen-example");
-      const sidenavInstance = te.Sidenav.getInstance(sidenav);
+    <script type="module">
+      import * as te from "../../../../src/js/index.umd.js";
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidenav = document.getElementById("full-screen-example");
+        const sidenavInstance = te.Sidenav.getInstance(sidenav);
 
-      let innerWidth = null;
+        let innerWidth = null;
 
-      const setMode = (e) => {
-        // Check necessary for Android devices
-        if (window.innerWidth === innerWidth) {
-          return;
-        }
+        const setMode = (e) => {
+          // Check necessary for Android devices
+          if (window.innerWidth === innerWidth) {
+            return;
+          }
 
-        innerWidth = window.innerWidth;
+          innerWidth = window.innerWidth;
+
+          if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
+            sidenavInstance.changeMode("over");
+            sidenavInstance.hide();
+          } else {
+            sidenavInstance.changeMode("side");
+            sidenavInstance.show();
+          }
+        };
 
         if (window.innerWidth < sidenavInstance.getBreakpoint("sm")) {
-          sidenavInstance.changeMode("over");
-          sidenavInstance.hide();
-        } else {
-          sidenavInstance.changeMode("side");
-          sidenavInstance.show();
+          setMode();
         }
-      };
 
-      setMode();
-
-      // Event listeners
-      window.addEventListener("resize", setMode);
+        // Event listeners
+        window.addEventListener("resize", setMode);
+      });
     </script>
   </body>
 </html>

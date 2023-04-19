@@ -3,6 +3,47 @@
 
 <!--Section: Docs content-->
 <section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Ripple, initTE } from "tw-elements";
+        initTE({ Ripple });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
   <!--Section: Usage-->
   <section id="api-section-usage">
     <!--Title-->
@@ -16,7 +57,8 @@
 
     <p>
       Add the <code>data-te-ripple-init</code> attribute to the clickable
-      element to apply the ripple effect.
+      element to apply the ripple effect. For ES format, you must first import
+      and call the <code>initTE</code> method.
     </p>
 
     <!--Section: Code-->
@@ -47,8 +89,15 @@
     <!-- prettier-ignore -->
     <section class="!visible hidden" data-te-collapse-item id="api-example2">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JS" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         {{< twsnippet/code active=true lang="js" >}}
+        document.querySelectorAll('[data-te-ripple-init]').forEach((cardRipple) => {
+          new Ripple(cardRipple, {
+            color: 'light'
+          })
+        });
+        {{< /twsnippet/code >}}
+        {{< twsnippet/code lang="js" >}}
         document.querySelectorAll('[data-te-ripple-init]').forEach((cardRipple) => {
           new te.Ripple(cardRipple, {
             color: 'light'
@@ -387,9 +436,15 @@
     {{< twsnippet/no-demo id="api-example3" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example3">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        const myRippleEl = document.getElementById('myRipple')
+        const myRipple = new Ripple(myRippleEl)
+        myRipple.dispose();
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
         const myRippleEl = document.getElementById('myRipple')
         const myRipple = new te.Ripple(myRippleEl)
         myRipple.dispose();

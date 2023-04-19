@@ -269,7 +269,7 @@ function removeNamespacedHandlers(element, events, typeEvent, namespace) {
 }
 
 function getTypeEvent(event) {
-  // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
+  // allow to get the native events from namespaced events ('click.te.button' --> 'click')
   event = event.replace(stripNameRegex, "");
   return customEvents[event] || event;
 }

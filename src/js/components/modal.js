@@ -9,14 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import {
-  defineJQueryPlugin,
-  getElementFromSelector,
-  isRTL,
-  isVisible,
-  reflow,
-  typeCheckConfig,
-} from "../util/index";
+import { isRTL, reflow, typeCheckConfig } from "../util/index";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";
@@ -35,7 +28,6 @@ Constants
 const NAME = "modal";
 const DATA_KEY = "te.modal";
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = ".data-api";
 const ESCAPE_KEY = "Escape";
 
 const Default = {
@@ -72,13 +64,11 @@ const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`;
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
 const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`;
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`;
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
 const OPEN_SELECTOR_BODY = "data-te-modal-open";
 const OPEN_SELECTOR = "data-te-open";
 const SELECTOR_DIALOG = "[data-te-modal-dialog-ref]";
 const SELECTOR_MODAL_BODY = "[data-te-modal-body-ref]";
-const SELECTOR_DATA_TOGGLE = '[data-te-toggle="modal"]';
 
 /*
 ------------------------------------------------------------------------
@@ -99,6 +89,8 @@ class Modal extends BaseComponent {
     this._ignoreBackdropClick = false;
     this._isTransitioning = false;
     this._scrollBar = new ScrollBarHelper();
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -152,8 +144,8 @@ class Modal extends BaseComponent {
         }
       });
     });
-
-    this._showBackdrop(() => this._showElement(relatedTarget));
+    this._showElement(relatedTarget);
+    this._showBackdrop();
   }
 
   hide() {
@@ -203,6 +195,15 @@ class Modal extends BaseComponent {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+
+    enableDismissTrigger(Modal);
+
+    this._didInit = true;
+  }
 
   _initializeBackDrop() {
     return new Backdrop({
@@ -451,58 +452,5 @@ class Modal extends BaseComponent {
     });
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(
-  document,
-  EVENT_CLICK_DATA_API,
-  SELECTOR_DATA_TOGGLE,
-  function (event) {
-    const target = getElementFromSelector(this);
-
-    if (["A", "AREA"].includes(this.tagName)) {
-      event.preventDefault();
-    }
-
-    EventHandler.one(target, EVENT_SHOW, (showEvent) => {
-      if (showEvent.defaultPrevented) {
-        // only register focus restorer if modal will actually get shown
-        return;
-      }
-
-      EventHandler.one(target, EVENT_HIDDEN, () => {
-        if (isVisible(this)) {
-          this.focus();
-        }
-      });
-    });
-
-    // avoid conflict when clicking moddal toggler while another one is open
-    const allReadyOpen = SelectorEngine.findOne(`[${OPEN_SELECTOR}="true"]`);
-    if (allReadyOpen) {
-      Modal.getInstance(allReadyOpen).hide();
-    }
-
-    const data = Modal.getOrCreateInstance(target);
-
-    data.toggle(this);
-  }
-);
-
-enableDismissTrigger(Modal);
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Modal to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Modal);
 
 export default Modal;

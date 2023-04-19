@@ -36,7 +36,6 @@ const NAME = "stepper";
 const DATA_KEY = "te.stepper";
 const EVENT_KEY = `.${DATA_KEY}`;
 const REF = `data-te-${NAME}`;
-const SELECTOR_EXPAND = `[${REF}-init]`;
 
 const STEPPER_HORIZONTAL = "horizontal";
 const STEPPER_VERTICAL = "vertical";
@@ -734,20 +733,5 @@ class Stepper {
     );
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-SelectorEngine.find(SELECTOR_EXPAND).forEach((el) => {
-  let instance = Stepper.getInstance(el);
-  if (!instance) {
-    instance = new Stepper(el);
-  }
-
-  return instance;
-});
 
 export default Stepper;

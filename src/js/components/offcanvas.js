@@ -9,13 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import {
-  defineJQueryPlugin,
-  getElementFromSelector,
-  isDisabled,
-  isVisible,
-  typeCheckConfig,
-} from "../util/index";
+import { typeCheckConfig } from "../util/index";
 import ScrollBarHelper from "../util/scrollbar";
 import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
@@ -57,10 +51,7 @@ const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
-
-const SELECTOR_DATA_TOGGLE = "[data-te-offcanvas-toggle]";
 
 /*
 ------------------------------------------------------------------------
@@ -77,6 +68,8 @@ class Offcanvas extends BaseComponent {
     this._backdrop = this._initializeBackDrop();
     this._focustrap = this._initializeFocusTrap();
     this._addEventListeners();
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -173,6 +166,20 @@ class Offcanvas extends BaseComponent {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+
+    EventHandler.on(window, EVENT_LOAD_DATA_API, () =>
+      SelectorEngine.find(OPEN_SELECTOR).forEach((el) =>
+        Offcanvas.getOrCreateInstance(el).show()
+      )
+    );
+
+    enableDismissTrigger(Offcanvas);
+    this._didInit = true;
+  }
 
   _getConfig(config) {
     config = {
@@ -230,59 +237,5 @@ class Offcanvas extends BaseComponent {
     });
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(
-  document,
-  EVENT_CLICK_DATA_API,
-  SELECTOR_DATA_TOGGLE,
-  function (event) {
-    const target = getElementFromSelector(this);
-
-    if (["A", "AREA"].includes(this.tagName)) {
-      event.preventDefault();
-    }
-
-    if (isDisabled(this)) {
-      return;
-    }
-
-    EventHandler.one(target, EVENT_HIDDEN, () => {
-      // focus on trigger when it is closed
-      if (isVisible(this)) {
-        this.focus();
-      }
-    });
-
-    // avoid conflict when clicking a toggler of an offcanvas, while another is open
-    const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR);
-    if (allReadyOpen && allReadyOpen !== target) {
-      Offcanvas.getInstance(allReadyOpen).hide();
-    }
-
-    const data = Offcanvas.getOrCreateInstance(target);
-    data.toggle(this);
-  }
-);
-
-EventHandler.on(window, EVENT_LOAD_DATA_API, () =>
-  SelectorEngine.find(OPEN_SELECTOR).forEach((el) =>
-    Offcanvas.getOrCreateInstance(el).show()
-  )
-);
-
-enableDismissTrigger(Offcanvas);
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-defineJQueryPlugin(Offcanvas);
 
 export default Offcanvas;

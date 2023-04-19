@@ -3,6 +3,47 @@
 
 <!--Section: Docs content-->
 <section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Dropdown, initTE } from "tw-elements";
+        initTE({ Dropdown });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
   <!--Section: Usage-->
   <section id="api-section-usage">
     <!--Title-->
@@ -26,7 +67,7 @@
         target="_blank"
         rel="nofollow"
         href="https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html"
-        >quirk in iOS’ event delegation</a
+        >quirk in iOS' event delegation</a
       >, which would otherwise prevent a tap anywhere outside of the dropdown
       from triggering the code that closes the dropdown. Once the dropdown is
       closed, these additional empty <code>mouseover</code> handlers are
@@ -37,7 +78,8 @@
 
     <p>
       Add <code>data-te-dropdown-toggle-ref</code> to a link or button to toggle
-      a dropdown.
+      a dropdown. For ES format, you must first import and call the
+      <code>initTE</code> method.
     </p>
 
     <!--Section: Code-->
@@ -118,8 +160,14 @@
     <!-- prettier-ignore -->
     <section class="!visible hidden" data-te-collapse-item id="api-example2">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JS" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         {{< twsnippet/code active=true lang="js" >}}
+        const dropdownElementList = [].slice.call(document.querySelectorAll('[data-te-dropdown-toggle-ref]'));
+        const dropdownList = dropdownElementList.map((dropdownToggleEl) => {
+          return new Dropdown(dropdownToggleEl);
+        });
+        {{< /twsnippet/code >}}
+        {{< twsnippet/code lang="js" >}}
         const dropdownElementList = [].slice.call(document.querySelectorAll('[data-te-dropdown-toggle-ref]'));
         const dropdownList = dropdownElementList.map((dropdownToggleEl) => {
           return new te.Dropdown(dropdownToggleEl);
@@ -548,9 +596,15 @@
     {{< twsnippet/no-demo id="api-example5" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example5">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        const myDropdown = document.getElementById('myDropdown');
+        const myDropdownInstance = new Dropdown(myDropdown);
+        myDropdownInstance.show();
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
         const myDropdown = document.getElementById('myDropdown');
         const myDropdownInstance = new te.Dropdown(myDropdown);
         myDropdownInstance.show();
@@ -574,7 +628,7 @@
     <p>
       All dropdown events are fired at the toggling element and then bubbled up.
       So you can also add event listeners on the
-      <code>[data-te-dropdown-menu-ref]</code>’s parent element.
+      <code>[data-te-dropdown-menu-ref]</code>'s parent element.
       <code>hide.te.dropdown</code> and <code>hidden.te.dropdown</code> events
       have a <code>clickEvent</code> property (only when the original Event type
       is <code>click</code>) that contains an Event Object for the click event.

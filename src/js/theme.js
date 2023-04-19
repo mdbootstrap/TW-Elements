@@ -24,8 +24,7 @@ class ThemeSwitcher {
     this.themeSwitcherItems = this.element.querySelectorAll("a");
 
     if (!("theme" in localStorage)) {
-      this.setLightTheme();
-      // this.setSystemTheme();
+      this.setSystemTheme();
     } else if (localStorage.theme === "dark") {
       this.setDarkTheme();
     } else {

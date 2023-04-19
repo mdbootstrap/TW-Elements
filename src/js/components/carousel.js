@@ -10,7 +10,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 */
 
 import {
-  defineJQueryPlugin,
   getElementFromSelector,
   isRTL,
   isVisible,
@@ -155,6 +154,8 @@ class Carousel extends BaseComponent {
 
     this._setActiveElementClass();
     this._addEventListeners();
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -249,6 +250,30 @@ class Carousel extends BaseComponent {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+    EventHandler.on(
+      document,
+      EVENT_CLICK_DATA_API,
+      SELECTOR_DATA_SLIDE,
+      Carousel.dataApiClickHandler
+    );
+
+    EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+      const carousels = SelectorEngine.find(SELECTOR_DATA_CAROUSEL_INIT);
+
+      for (let i = 0, len = carousels.length; i < len; i++) {
+        Carousel.carouselInterface(
+          carousels[i],
+          Carousel.getInstance(carousels[i])
+        );
+      }
+    });
+
+    this._didInit = true;
+  }
 
   _getConfig(config) {
     config = {
@@ -718,38 +743,5 @@ class Carousel extends BaseComponent {
     event.preventDefault();
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(
-  document,
-  EVENT_CLICK_DATA_API,
-  SELECTOR_DATA_SLIDE,
-  Carousel.dataApiClickHandler
-);
-
-EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  const carousels = SelectorEngine.find(SELECTOR_DATA_CAROUSEL_INIT);
-
-  for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel.carouselInterface(
-      carousels[i],
-      Carousel.getInstance(carousels[i])
-    );
-  }
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Carousel to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Carousel);
 
 export default Carousel;

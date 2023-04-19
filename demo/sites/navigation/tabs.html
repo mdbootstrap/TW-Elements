@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -94,7 +112,7 @@
       </ul>
       <div>
         <div
-          class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+          class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-home"
           role="tabpanel"
           aria-labelledby="tabs-home-tab"
@@ -178,7 +196,7 @@
       </ul>
       <div>
         <div
-          class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+          class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-homeFill"
           role="tabpanel"
           aria-labelledby="tabs-home-tabFill"
@@ -257,7 +275,7 @@
       </ul>
       <div>
         <div
-          class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+          class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-homeJustify"
           data-te-tab-active
           role="tabpanel"
@@ -337,7 +355,7 @@
         </ul>
         <div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-homeVertical"
             role="tabpanel"
             data-te-tab-active
@@ -417,7 +435,7 @@
       </ul>
       <div>
         <div
-          class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+          class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
           id="tabs-home3"
           role="tabpanel"
           data-te-tab-active
@@ -447,15 +465,13 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

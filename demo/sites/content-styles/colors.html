@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -936,7 +954,7 @@
         </ul>
         <div class="mb-12 pt-6">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-home"
             role="tabpanel"
             aria-labelledby="pills-home-tab"
@@ -944,21 +962,21 @@
             Tab 1 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-profile"
             role="tabpanel"
             aria-labelledby="pills-profile-tab">
             Tab 2 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-contact"
             role="tabpanel"
             aria-labelledby="pills-contact-tab">
             Tab 3 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-disabled"
             role="tabpanel"
             aria-labelledby="pills-disabled-tab">
@@ -1027,7 +1045,7 @@
         </ul>
         <div class="mb-12 pt-6">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-home1"
             role="tabpanel"
             aria-labelledby="pills-home-tab1"
@@ -1035,21 +1053,21 @@
             Tab 1 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-profile1"
             role="tabpanel"
             aria-labelledby="pills-profile-tab1">
             Tab 2 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-contact1"
             role="tabpanel"
             aria-labelledby="pills-contact-tab1">
             Tab 3 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-disabled1"
             role="tabpanel"
             aria-labelledby="pills-disabled-tab1">
@@ -1118,7 +1136,7 @@
         </ul>
         <div class="mb-12 pt-6">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-home2"
             role="tabpanel"
             aria-labelledby="pills-home-tab2"
@@ -1126,21 +1144,21 @@
             Tab 1 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-profile2"
             role="tabpanel"
             aria-labelledby="pills-profile-tab2">
             Tab 2 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-contact2"
             role="tabpanel"
             aria-labelledby="pills-contact-tab2">
             Tab 3 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-disabled2"
             role="tabpanel"
             aria-labelledby="pills-disabled-tab2">
@@ -1209,7 +1227,7 @@
         </ul>
         <div class="mb-12 pt-6">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-home3"
             role="tabpanel"
             aria-labelledby="pills-home-tab3"
@@ -1217,21 +1235,21 @@
             Tab 1 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-profile3"
             role="tabpanel"
             aria-labelledby="pills-profile-tab3">
             Tab 2 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-contact3"
             role="tabpanel"
             aria-labelledby="pills-contact-tab3">
             Tab 3 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-disabled3"
             role="tabpanel"
             aria-labelledby="pills-disabled-tab3">
@@ -1300,7 +1318,7 @@
         </ul>
         <div class="mb-12 pt-6">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-home4"
             role="tabpanel"
             aria-labelledby="pills-home-tab4"
@@ -1308,21 +1326,21 @@
             Tab 1 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-profile4"
             role="tabpanel"
             aria-labelledby="pills-profile-tab4">
             Tab 2 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-contact4"
             role="tabpanel"
             aria-labelledby="pills-contact-tab4">
             Tab 3 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-disabled4"
             role="tabpanel"
             aria-labelledby="pills-disabled-tab4">
@@ -1391,7 +1409,7 @@
         </ul>
         <div class="mb-12 pt-6">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-home5"
             role="tabpanel"
             aria-labelledby="pills-home-tab5"
@@ -1399,21 +1417,21 @@
             Tab 1 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-profile5"
             role="tabpanel"
             aria-labelledby="pills-profile-tab5">
             Tab 2 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-contact5"
             role="tabpanel"
             aria-labelledby="pills-contact-tab5">
             Tab 3 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-disabled5"
             role="tabpanel"
             aria-labelledby="pills-disabled-tab5">
@@ -1482,7 +1500,7 @@
         </ul>
         <div class="mb-12 pt-6">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-home6"
             role="tabpanel"
             aria-labelledby="pills-home-tab6"
@@ -1490,21 +1508,21 @@
             Tab 1 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-profile6"
             role="tabpanel"
             aria-labelledby="pills-profile-tab6">
             Tab 2 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-contact6"
             role="tabpanel"
             aria-labelledby="pills-contact-tab6">
             Tab 3 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-disabled6"
             role="tabpanel"
             aria-labelledby="pills-disabled-tab6">
@@ -1573,7 +1591,7 @@
         </ul>
         <div class="mb-12 pt-6">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-home7"
             role="tabpanel"
             aria-labelledby="pills-home-tab7"
@@ -1581,21 +1599,21 @@
             Tab 1 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-profile7"
             role="tabpanel"
             aria-labelledby="pills-profile-tab7">
             Tab 2 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-contact7"
             role="tabpanel"
             aria-labelledby="pills-contact-tab7">
             Tab 3 content
           </div>
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="pills-disabled7"
             role="tabpanel"
             aria-labelledby="pills-disabled-tab7">
@@ -1662,7 +1680,7 @@
         </ul>
         <div class="mb-12">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-home"
             role="tabpanel"
             aria-labelledby="tabs-home-tab"
@@ -1748,7 +1766,7 @@
         </ul>
         <div class="mb-12">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-home1"
             role="tabpanel"
             aria-labelledby="tabs-home-tab1"
@@ -1834,7 +1852,7 @@
         </ul>
         <div class="mb-12">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-home2"
             role="tabpanel"
             aria-labelledby="tabs-home-tab2"
@@ -1920,7 +1938,7 @@
         </ul>
         <div class="mb-12">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-home3"
             role="tabpanel"
             aria-labelledby="tabs-home-tab3"
@@ -2006,7 +2024,7 @@
         </ul>
         <div class="mb-12">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-home4"
             role="tabpanel"
             aria-labelledby="tabs-home-tab4"
@@ -2092,7 +2110,7 @@
         </ul>
         <div class="mb-12">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-home5"
             role="tabpanel"
             aria-labelledby="tabs-home-tab5"
@@ -2178,7 +2196,7 @@
         </ul>
         <div class="mb-12">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-home6"
             role="tabpanel"
             aria-labelledby="tabs-home-tab6"
@@ -2264,7 +2282,7 @@
         </ul>
         <div class="mb-12">
           <div
-            class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+            class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
             id="tabs-home7"
             role="tabpanel"
             aria-labelledby="tabs-home-tab7"
@@ -2298,15 +2316,13 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>
