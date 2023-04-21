@@ -27,10 +27,25 @@ module.exports = plugin(
         "-webkit-appearance": "none",
         cursor: "pointer",
       },
+      [['.dark input[type="range"]::-webkit-slider-thumb']]: {
+        background: theme("colors.primary.400"),
+      },
       [['input[type="range"]:disabled::-webkit-slider-thumb']]: {
         background: theme("colors.neutral.400"),
       },
+      [['input[type="range"]:disabled:focus::-webkit-slider-thumb']]: {
+        background: theme("colors.neutral.400"),
+      },
+      [['input[type="range"]:disabled:active::-webkit-slider-thumb']]: {
+        background: theme("colors.neutral.400"),
+      },
       [['.dark input[type="range"]:disabled::-webkit-slider-thumb']]: {
+        background: theme("colors.neutral.500"),
+      },
+      [['.dark input[type="range"]:disabled:focus::-webkit-slider-thumb']]: {
+        background: theme("colors.neutral.500"),
+      },
+      [['.dark input[type="range"]:disabled:active::-webkit-slider-thumb']]: {
         background: theme("colors.neutral.500"),
       },
       [['input[type="range"]::-moz-range-thumb']]: {
@@ -44,6 +59,9 @@ module.exports = plugin(
         "-webkit-appearance": "none",
         cursor: "pointer",
       },
+      [['.dark input[type="range"]::-moz-range-thumb']]: {
+        background: theme("colors.primary.400"),
+      },
       [['input[type="range"]:disabled::-moz-range-thumb']]: {
         background: theme("colors.neutral.400"),
       },
@@ -51,16 +69,31 @@ module.exports = plugin(
         background: theme("colors.neutral.500"),
       },
       [['input[type="range"]::-moz-range-progress']]: {
-        background: theme("colors.primary.400"),
+        background: theme("colors.primary.600"),
       },
       [['input[type="range"]::-ms-fill-lower']]: {
-        background: theme("colors.primary.400"),
+        background: theme("colors.primary.600"),
+      },
+      [['.dark input[type="range"]::-moz-range-progress']]: {
+        background: theme("colors.primary.500"),
+      },
+      [['.dark input[type="range"]::-ms-fill-lower']]: {
+        background: theme("colors.primary.500"),
       },
       [['input[type="range"]:focus']]: {
         outline: "none",
       },
       [['input[type="range"]:focus::-webkit-slider-thumb']]: {
-        background: theme("colors.primary.400"),
+        background: theme("colors.primary.600"),
+      },
+      [['input[type="range"]:active::-webkit-slider-thumb']]: {
+        background: theme("colors.primary.700"),
+      },
+      [['.dark input[type="range"]:focus::-webkit-slider-thumb']]: {
+        background: theme("colors.primary.500"),
+      },
+      [['.dark input[type="range"]:active::-webkit-slider-thumb']]: {
+        background: theme("colors.primary.600"),
       },
     });
   },
