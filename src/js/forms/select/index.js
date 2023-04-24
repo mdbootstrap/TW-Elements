@@ -1351,11 +1351,11 @@ class Select {
 
   _listenToFocusChange(add = true) {
     if (add === false) {
-      EventHandler.remove(this._input, "focus", () =>
+      EventHandler.off(this._input, "focus", () =>
         this._notch.setAttribute(DATA_FOCUSED, "")
       );
 
-      EventHandler.remove(this._input, "blur", () =>
+      EventHandler.off(this._input, "blur", () =>
         this._notch.removeAttribute(DATA_FOCUSED)
       );
       return;
@@ -1613,7 +1613,7 @@ class Select {
       label.removeAttribute(DATA_ACTIVE);
     });
     Manipulator.removeClass(this._element, this._classes.initialized);
-    this._element.removeActiveStyles(DATA_SELECT_INIT);
+    this._element.removeAttribute(DATA_SELECT_INIT);
 
     wrapperParent.removeChild(this._wrapper);
   }
