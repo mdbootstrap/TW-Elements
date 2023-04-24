@@ -166,7 +166,8 @@ menu:
         theme: {
             extend: {},
         },
-        plugins: [require("tw-elements/dist/plugin")]
+        darkMode: "class",
+        plugins: [require("tw-elements/dist/plugin.cjs")]
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -190,6 +191,22 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">
+    Attach the <code>Roboto</code> font in <code>index.html</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "index.html" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 4</h2>
   <p>Install Tailwind Elements.</p>
 
   <div class="py-4">
@@ -209,15 +226,39 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.component.ts" "" "mobile" >}}
+    {{< twsnippet/wrapper "app.component.ts, app.component.html" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { Datepicker, Input, initTE } from "tw-elements";
-
-        ngOnInit() {
-          initTE({ Datepicker, Input });
-        }
+        import { Component } from '@angular/core';
+        import { Carousel, Dropdown, initTE } from 'tw-elements';
+        
+        @Component({
+          selector: 'app-root',
+          templateUrl: './app.component.html',
+          styleUrls: ['./app.component.css'],
+        })
+        export class AppComponent {
+          ngOnInit() {
+            initTE({ Carousel, Dropdown });
+          }
+        }        
         {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+        {{< twsnippet/code lang="HTML" >}}
+    <div
+      class="relative mb-3"
+      data-te-datepicker-init
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 </section>
 <!--/Creating and configuring Tailwind & Tailwind Elements-->
@@ -240,35 +281,52 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Import components which are you intend to use.</p>
+  <p class="mb-5">
+    Import components which are you intend to use and initialize components in
+    lifecycle hook.
+  </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.component.ts" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { Datepicker, Input } from "tw-elements";
-      {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize components in lifecycle hook.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.component.ts" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        ngOnInit() {
-          const myInput = new Input(document.getElementById("myDatepicker"));
-          const options = {
-            format: "dd-mm-yyyy",
-          };
-          const myDatepicker = new Datepicker(
-            document.getElementById("myDatepicker"),
-            options
-          );
-        };
-      {{< /twsnippet/code >}}
+    {{< twsnippet/wrapper "app.component.ts, app.component.html" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { Component } from '@angular/core';
+        import { Carousel, Dropdown, initTE } from 'tw-elements';
+        
+        @Component({
+          selector: 'app-root',
+          templateUrl: './app.component.html',
+          styleUrls: ['./app.component.css'],
+        })
+        export class AppComponent {
+          ngOnInit() {
+            const myInput = new Input(document.getElementById("myDatepicker"));
+            const options = {
+              format: "dd-mm-yyyy",
+            };
+            const myDatepicker = new Datepicker(
+              document.getElementById("myDatepicker"),
+              options
+            );
+          }
+        }        
+        {{< /twsnippet/code >}}
+        {{< twsnippet/code lang="HTML" >}}
+    <div
+      class="relative mb-3"
+      data-te-datepicker-init
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        for="floatingInput"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a date</label
+      >
+    </div>
+    {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
