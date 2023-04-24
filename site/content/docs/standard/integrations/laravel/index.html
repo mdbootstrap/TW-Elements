@@ -130,7 +130,8 @@ menu:
           theme: {
               extend: {},
           },
-          plugins: [require("tw-elements/dist/plugin")]
+          darkMode: "class",
+          plugins: [require("tw-elements/dist/plugin.cjs")]
           }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -162,8 +163,8 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    {{< twsnippet/wrapper "welcome.blade.php" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
           @vite('resources/css/app.css')
           @vite('resources/js/app.js')
         {{< /twsnippet/code >}}
@@ -171,6 +172,22 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">
+    Attach the <code>Roboto</code> font in <code>welcome.blade.php</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "welcome.blade.php" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">Install Tailwind Elements.</p>
 
   <div class="pb-4">
@@ -182,7 +199,7 @@ menu:
         {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 6</h2>
+  <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">
     Import components which are you intend to use and necessary function
     <code>initTE</code> in <code>app.js</code> file which is located in
@@ -220,12 +237,14 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Initialize components.</p>
+  <p class="mb-5">Import and initialize components.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "app.js" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
+          import { Datepicker, Input } from "tw-elements";
+
           const myInput = new Input(document.getElementById("myDatepicker"));
           const options = {
             format: "dd-mm-yyyy",
