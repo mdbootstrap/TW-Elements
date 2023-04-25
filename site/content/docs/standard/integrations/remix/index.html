@@ -147,7 +147,8 @@ menu:
         theme: {
             extend: {},
         },
-        plugins: [require("tw-elements/dist/plugin")]
+        darkMode: "class",
+        plugins: [require("tw-elements/dist/plugin.cjs")]
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -175,6 +176,7 @@ menu:
     Import the newly-created <code>./app/tailwind.css</code> file in your
     <code>./app/root.jsx</code> file.
   </p>
+  <p class="mb-5">Also attach the <code>Roboto</code> font.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
@@ -184,6 +186,7 @@ menu:
 
         export const links: LinksFunction = () => [
           { rel: "stylesheet", href: stylesheet },
+          { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" }
         ];
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -203,27 +206,44 @@ menu:
 
   <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    Create standalone component which will has a name with
-    <code>Component.client.jsx</code>. It shows framework that should not render
-    this component in a server-side mode.
-  </p>
-  <p class="mb-5">
-    Import components which are you intend to use and necessary function
-    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
+    Create standalone file with name of your component (for example
+    <code>MyDatepicker.client.jsx</code> (it shows framework that should not
+    render this component in a server-side mode) in
+    <code>app/components</code> directory) and import TE components which are
+    you intend to use. Also include necessary function <code>initTE</code>.
+    Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "MyDatepicker.client.jsx" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
-          import { useEffect } from "react";
-          import { Datepicker, Input, initTE } from "tw-elements";
-
+        import { useEffect } from "react";
+        import { Datepicker, Input, initTE } from "tw-elements";
+        
+        const MyDatepicker = () => {
           useEffect(() => {
             initTE({ Datepicker, Input });
           }, []);
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+        
+          return (
+    <div
+      class="relative mb-3"
+      data-te-datepicker-init
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        htmlFor="floatingInput"
+        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
+        Select a date
+      </label>
+    </div>
+    ); }; export default MyDatepicker;
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 7</h2>
@@ -239,20 +259,23 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 8</h2>
-  <p class="mb-5">Import your client-side component.</p>
+  <p class="mb-5">
+    Import (for example in <code>index.js</code>) newly created component
+    wrapping it into <code>ClientOnly</code> element.
+  </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
       import { ClientOnly } from "remix-utils";
-      import Component from "./components/Component.client";
+      import MyDatepicker from "./components/MyDatepicker.client";
 
       ...
       export default function App() {
         return (
           ...
-    <ClientOnly fallback="{null}">{() => <Component />}</ClientOnly>
+    <ClientOnly fallback="{null}">{() => <MyDatepicker />}</ClientOnly>
     ); }
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
@@ -278,37 +301,44 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Import components which are you intend to use.</p>
+  <p class="mb-5">
+    Import components which are you intend to use and iniitialize them in
+    lifecycle hook.
+  </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { Datepicker, Input } from "tw-elements";
-      {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize component in lifecycle hook.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.client.jsx" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { useEffect } from "react";
-
-        useEffect(() => {
-          const myInput = new Input(document.getElementById("myDatepicker"));
-          const options = {
-            format: "dd-mm-yyyy",
-          };
-          const myDatepicker = new Datepicker(
-            document.getElementById("myDatepicker"),
-            options
-          );
-        }, []);
-      {{< /twsnippet/code >}}
+    {{< twsnippet/wrapper "MyDatepicker.client.jsx" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    import { useEffect } from "react";
+    import { Datepicker, Input } from "tw-elements";
+    
+    const MyDatepicker = () => {
+      useEffect(() => {
+        const myInput = new Input(document.getElementById("myDatepicker"));
+        const options = {
+          format: "dd-mm-yyyy",
+        };
+        const myDatepicker = new Datepicker(
+          document.getElementById("myDatepicker"),
+          options
+        );
+      }, []);
+    
+      return (
+    <div className="relative mb-3" id="myDatepicker">
+      <input
+        type="text"
+        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        htmlFor="floatingInput"
+        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
+        Select a date
+      </label>
+    </div>
+    ); }; export default MyDatepicker;
+    {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
