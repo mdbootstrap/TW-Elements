@@ -125,7 +125,7 @@ class Chart {
   }
 
   async _getChartDataLabels() {
-    const { ChartDataLabels } = await import("chartjs-plugin-datalabels");
+    const ChartDataLabels = await import("chartjs-plugin-datalabels");
     return ChartDataLabels;
   }
 
@@ -284,7 +284,7 @@ class Chart {
       const plugins = [];
 
       if (options.dataLabelsPlugin) {
-        plugins.push(this._ChartDataLabels);
+        plugins.push(this._ChartDataLabels.default);
       }
 
       this._chart = new this._Chartjs(this._canvas, {
