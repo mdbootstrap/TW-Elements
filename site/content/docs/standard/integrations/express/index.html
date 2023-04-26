@@ -176,7 +176,8 @@ menu:
             "./src/**/*.{html,js,css}",
             "./node_modules/tw-elements/dist/js/**/*.js",
           ],
-          plugins: [require("tw-elements/dist/plugin")]
+          darkMode: "class",
+          plugins: [require("tw-elements/dist/plugin.cjs")]
           }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -242,6 +243,22 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    Attach the <code>Roboto</code> font in <code>index.ejs</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "index.html" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 8</h2>
   <p class="mb-5">
     In <code>index.ejs</code> file, at the end of <code>body</code> link script
     for Tailwind Elements JS file.

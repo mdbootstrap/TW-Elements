@@ -216,7 +216,7 @@ menu:
               extend: {},
             },
             darkMode: "class",
-            plugins: [require("tw-elements/dist/plugin")],
+            plugins: [require("tw-elements/dist/plugin.cjs")],
           };
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -293,6 +293,22 @@ menu:
 
   <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">
+    Attach the <code>Roboto</code> font in <code>home.html</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "home.html" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 8</h2>
+  <p class="mb-5">
     Create <code>views.py</code> file in <code>mysite</code> folder and put in
     there render for your first / home page.
   </p>
@@ -309,7 +325,7 @@ menu:
         {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 8</h2>
+  <h2 class="text-lg font-bold">Step 9</h2>
   <p class="mb-5">
     Then in <code>urls.py</code> file (located in <code>mysite</code> folder)
     add import newly created <code>views.py</code> file and attach urls for

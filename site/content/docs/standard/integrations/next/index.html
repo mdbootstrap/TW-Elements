@@ -134,7 +134,8 @@ menu:
         theme: {
             extend: {},
         },
-        plugins: [require("tw-elements/dist/plugin")]
+        darkMode: "class",
+        plugins: [require("tw-elements/dist/plugin.cjs")]
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -158,6 +159,36 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">
+    Attach the <code>Roboto</code> font in <code>_app.js</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        import "@/styles/globals.css";
+        import { Roboto } from "next/font/google";
+        
+        const roboto = Roboto({ weight: "400", subsets: ["latin"] });
+        
+        export default function App({ Component, pageProps }) {
+          return (
+            <>
+              <style jsx global>{`
+                html {
+                  font-family: ${roboto.style.fontFamily};
+                }
+              `}</style>
+              <Component {...pageProps} />
+            </>
+          );
+        }        
+        {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 5</h2>
   <p class="mb-5">Install Tailwind Elements.</p>
 
   <div class="pb-4">
@@ -169,31 +200,66 @@ menu:
         {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 5</h2>
+  <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    Create standalone file and import components which are you intend to use and
-    necessary function
-    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
+    Import globally in <code>_app.js</code> Tailiwind Elements CSS file (you could do it also in specific component which are using TE).
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "_app.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
-          import { useEffect } from "react";
-          import { Datepicker, Input, initTE } from "tw-elements";
+        import "tw-elements/dist/css/tw-elements.min.css";
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
 
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    Create standalone file with name of your component (for example <code>MyDatepicker.js</code> in <code>src/pages</code> directory) and import TE components which are you intend to use. Also include necessary function <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "MyDatepicker.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { Datepicker, Input, initTE } from "tw-elements";
+        import { useEffect } from "react";
+        
+        const MyDatepicker = () => {
           useEffect(() => {
             initTE({ Datepicker, Input });
           }, []);
+        
+          return (
+            <div
+              className="relative mb-3"
+              data-te-datepicker-init
+              data-te-input-wrapper-init
+            >
+              <input
+                type="text"
+                className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                placeholder="Select a date"
+              />
+              <label
+                htmlFor="floatingInput"
+                className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+              >
+                Select a date
+              </label>
+            </div>
+          );
+        };
+        
+        export default MyDatepicker;        
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 6</h2>
+  <h2 class="text-lg font-bold">Step 8</h2>
   <p class="mb-5">
-    Import client-side component wrapping it into dynamic import with
-    <code>ssr</code> object set to <code>false</code>.
+    Import (for example in <code>index.js</code>) newly created component wrapping it into <code>dynamic</code> import with <code>ssr</code> object set to <code>false</code>.
   </p>
 
   <div class="pb-4">
@@ -202,9 +268,17 @@ menu:
       {{< twsnippet/code active=true lang="JavaScript" >}}
       import dynamic from "next/dynamic";
 
-      const Component = dynamic(() => import("./component"), {
-        ssr: false,
-      });
+      const DynamicDatepicker = dynamic(() => import("./MyDatepicker"), { ssr: false });
+      
+      const Home = () => {
+        return (
+          <>
+            <DynamicDatepicker />
+          </>
+        );
+      };
+
+      export default Home;
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -231,26 +305,16 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Import components which are you intend to use.</p>
+  <p class="mb-5">Import components which are you intend to use and initialize components in lifecycle hook.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "MyDatepicker.js" "" "mobile" >}}
       {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { Datepicker, Input, initTE } from "tw-elements";
-      {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize components in lifecycle hook.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.js" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { useEffect } from "react";
-
+      import { Datepicker, Input } from "tw-elements";
+      import { useEffect } from "react";
+      
+      const MyDatepicker = () => {
         useEffect(() => {
           const myInput = new Input(document.getElementById("myDatepicker"));
           const options = {
@@ -261,6 +325,28 @@ menu:
             options
           );
         }, []);
+      
+        return (
+          <div
+            className="relative mb-3"
+            id="myDatepicker"
+          >
+            <input
+              type="text"
+              className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+              placeholder="Select a date"
+            />
+            <label
+              htmlFor="floatingInput"
+              className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >
+              Select a date
+            </label>
+          </div>
+        );
+      };
+      
+      export default MyDatepicker;
       {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
