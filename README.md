@@ -18,7 +18,7 @@ Tailwind Elements is a huge collection of free, interactive components for Tailw
          <li><a href="https://www.youtube.com/@JamesQQuick/streams">See latest livestreams from James</a></li>         
          <li><a href="https://twitter.com/intent/user?screen_name=ElementTailwind">Follow us on Twitter for updates & news</a></li>     
         </ul>
-        <p><b><a href="https://tailwind-elements.com/docs/standard/getting-started/quick-start/">Get started with Tailwind Elements now!</a></b></p>
+        <p><b><a href="[https://tailwind-elements.com/docs/standard/getting-started/quick-start/](https://www.youtube.com/watch?v=ZIDYlp-x8e8&ab_channel=JamesQQuick)">JOIN LIVESTREAM NOW</a></b></p>
       </td>
     </tr>
    </tbody>
