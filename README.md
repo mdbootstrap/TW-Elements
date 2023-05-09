@@ -1,8 +1,31 @@
 # Tailwind Elements [<img src="https://tailwind-elements.com/img/logo.png" width="45" align="right" alt="Tailwind-elements">](https://tailwind-elements.com/)<a href="https://www.npmjs.com/package/tw-elements"><img src="https://img.shields.io/npm/dt/tw-elements.svg" alt="Total Downloads"></a> <a href="https://github.com/mdbootstrap/Tailwind-Elements/releases"><img src="https://img.shields.io/npm/v/tw-elements.svg" alt="Latest Release"></a> <a href="https://twitter.com/intent/tweet/?text=Thanks+@TailwindElement+for+creating+an+amazing+collection+of+open+source+components+for+@tailwindcss%20https://tailwind-elements.com/&hashtags=tailwindCSS,bootstrap,webdesign,javascript,100DaysOfCode,DevCommunity"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
 
 Tailwind Elements is a huge collection of free, interactive components for Tailwind CSS.
+ 
+ <table>
+    <tbody>
+    <tr>
+      <td>
+<a href="https://www.youtube.com/@JamesQQuick/streams">
+  <img src="https://github.com/mdbootstrap/Tailwind-Elements/assets/33746455/4984af80-4ce0-4978-a898-471622d6a683"  width="400" >
+  </a>
+      </td>
+      <td>    
+<strong>Join us for a LIVE coding session with James Q Quick</strong> <br>
+        May 9th, 12:30 PM CST <br><br>
+        <ul>
+          <li><a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA?sub_confirmation=1">Subscribe to our YouTube channel</a></li>
+         <li><a href="https://www.youtube.com/@JamesQQuick/streams">See latest livestreams from James</a></li>         
+         <li><a href="https://twitter.com/intent/user?screen_name=ElementTailwind">Follow us on Twitter for updates & news</a></li>     
+        </ul>
+        <p><b><a href="https://tailwind-elements.com/docs/standard/getting-started/quick-start/">Get started with Tailwind Elements now!</a></b></p>
+      </td>
+    </tr>
+   </tbody>
+  </table>
 
-  <table>
+ 
+ <table>
     <tbody>
     <tr>
       <td>
