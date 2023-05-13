@@ -92,6 +92,11 @@ DOM.queryChildren = function (element, selector) {
   });
 };
 
+DOM.getActiveElement = tryCatch(function(node, tryDoc) {
+    const docAE = tryDoc !== false && tryCatch(() => document.activeElement)();
+    return tryDoc && docAE || node && node.activeElement || docAE || !1;
+});
+
 module.exports = DOM;
 
 },{}],3:[function(require,module,exports){
@@ -523,17 +528,17 @@ function bindKeyboardHandler(element, i) {
       return;
     }
 
-    var activeElement = document.activeElement ? document.activeElement : i.ownerDocument.activeElement;
+    var activeElement = dom.getActiveElement(i.ownerDocument, true);
     if (activeElement) {
       if (activeElement.tagName === 'IFRAME') {
-        activeElement = activeElement.contentDocument.activeElement;
+        activeElement = dom.getActiveElement(activeElement.contentDocument, false);
       } else {
         // go deeper if element is a webcomponent
         while (activeElement.shadowRoot) {
-          activeElement = activeElement.shadowRoot.activeElement;
+          activeElement = dom.getActiveElement(activeElement.shadowRoot, false) || !1;
         }
       }
-      if (_.isEditable(activeElement)) {
+      if (activeElement && _.isEditable(activeElement)) {
         return;
       }
     }
@@ -803,6 +808,7 @@ module.exports = function (element) {
 'use strict';
 
 var _ = require('../../lib/helper');
+var dom = require('../../lib/dom');
 var instances = require('../instances');
 var updateGeometry = require('../update-geometry');
 var updateScroll = require('../update-scroll');
@@ -811,14 +817,16 @@ function bindSelectionHandler(element, i) {
   function getRangeNode() {
     var selection = window.getSelection ? window.getSelection() :
                     document.getSelection ? document.getSelection() : '';
-    if (
-      !selection.toString().length
-      && document.activeElement
-      && document.activeElement.selectionStart < document.activeElement.selectionEnd
-    ) {
-      selection = {
-        anchorNode: document.activeElement,
-      };
+
+    if (!selection.toString().length) {
+        var activeElement = dom.getActiveElement();
+
+        if (activeElement && activeElement.selectionStart < activeElement.selectionEnd) {
+
+            selection = {
+                anchorNode: activeElement,
+            };
+        }
     }
     if (selection.toString().length === 0) {
       return null;
@@ -881,10 +889,10 @@ function bindSelectionHandler(element, i) {
       var mousePosition = {x: e.pageX, y: e.pageY};
       const { top, left } = element.getBoundingClientRect();
       var containerGeometry = {
-        left,
-        right: left + element.offsetWidth,
-        top,
-        bottom: top + element.offsetHeight
+          left,
+          right: left + element.offsetWidth,
+          top,
+          bottom: top + element.offsetHeight
       };
       containerGeometry.bottom = containerGeometry.bottom < 0 ? top + element.offsetHeight : containerGeometry.bottom;
       containerGeometry.top = containerGeometry.top > window.innerHeight ? top : containerGeometry.top;
@@ -930,7 +938,7 @@ module.exports = function (element) {
   bindSelectionHandler(element, i);
 };
 
-},{"../../lib/helper":5,"../instances":17,"../update-geometry":18,"../update-scroll":19}],15:[function(require,module,exports){
+},{"../../lib/dom":2,"../../lib/helper":5,"../instances":17,"../update-geometry":18,"../update-scroll":19}],15:[function(require,module,exports){
 'use strict';
 
 var _ = require('../../lib/helper');
