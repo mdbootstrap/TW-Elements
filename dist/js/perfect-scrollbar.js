@@ -811,6 +811,15 @@ function bindSelectionHandler(element, i) {
   function getRangeNode() {
     var selection = window.getSelection ? window.getSelection() :
                     document.getSelection ? document.getSelection() : '';
+    if (
+      !selection.toString().length
+      && document.activeElement
+      && document.activeElement.selectionStart < document.activeElement.selectionEnd
+    ) {
+      selection = {
+        anchorNode: document.activeElement,
+      };
+    }
     if (selection.toString().length === 0) {
       return null;
     } else {
@@ -870,13 +879,15 @@ function bindSelectionHandler(element, i) {
   i.event.bind(window, 'mousemove', function (e) {
     if (isSelected) {
       var mousePosition = {x: e.pageX, y: e.pageY};
+      const { top, left } = element.getBoundingClientRect();
       var containerGeometry = {
-        left: element.offsetLeft,
-        right: element.offsetLeft + element.offsetWidth,
-        top: element.offsetTop,
-        bottom: element.offsetTop + element.offsetHeight
+        left,
+        right: left + element.offsetWidth,
+        top,
+        bottom: top + element.offsetHeight
       };
-
+      containerGeometry.bottom = containerGeometry.bottom < 0 ? top + element.offsetHeight : containerGeometry.bottom;
+      containerGeometry.top = containerGeometry.top > window.innerHeight ? top : containerGeometry.top;
       if (mousePosition.x < containerGeometry.left + 3) {
         scrollDiff.left = -5;
         _.startScrolling(element, 'x');
