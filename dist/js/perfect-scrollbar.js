@@ -1,4 +1,4 @@
-/* perfect-scrollbar v0.8.1 */
+/* perfect-scrollbar v0.8.2 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
@@ -107,12 +107,14 @@ var EventElement = function (element) {
   this.events = {};
 };
 
+EventElement.eventListenerOptions = Object.assign({ passive: true }, window.evPsOptions);
+
 EventElement.prototype.bind = function (eventName, handler) {
   if (typeof this.events[eventName] === 'undefined') {
     this.events[eventName] = [];
   }
   this.events[eventName].push(handler);
-  this.element.addEventListener(eventName, handler, false);
+  this.element.addEventListener(eventName, handler, EventElement.eventListenerOptions);
 };
 
 EventElement.prototype.unbind = function (eventName, handler) {
@@ -121,7 +123,7 @@ EventElement.prototype.unbind = function (eventName, handler) {
     if (isHandlerProvided && hdlr !== handler) {
       return true;
     }
-    this.element.removeEventListener(eventName, hdlr, false);
+    this.element.removeEventListener(eventName, hdlr, EventElement.eventListenerOptions);
     return false;
   }, this);
 };
@@ -169,6 +171,15 @@ EventManager.prototype.once = function (element, eventName, handler) {
   };
   ee.bind(eventName, onceHandler);
 };
+
+EventManager.prototype.preventDefault = function(ev, stop) {
+    if (stop !== false) {
+      ev.stopPropagation();
+    }
+    if (!EventElement.eventListenerOptions.passive) {
+        ev.preventDefault();
+    }
+}
 
 module.exports = EventManager;
 
@@ -392,8 +403,7 @@ function bindMouseScrollXHandler(element, i) {
   var mouseMoveHandler = function (e) {
     updateScrollLeft(e.pageX - currentPageX);
     updateGeometry(element);
-    e.stopPropagation();
-    e.preventDefault();
+    i.event.preventDefault(e);
   };
 
   var mouseUpHandler = function () {
@@ -411,9 +421,7 @@ function bindMouseScrollXHandler(element, i) {
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
-
-    e.stopPropagation();
-    e.preventDefault();
+    i.event.preventDefault(e);
   });
 }
 
@@ -440,8 +448,7 @@ function bindMouseScrollYHandler(element, i) {
   var mouseMoveHandler = function (e) {
     updateScrollTop(e.pageY - currentPageY);
     updateGeometry(element);
-    e.stopPropagation();
-    e.preventDefault();
+    i.event.preventDefault(e);
   };
 
   var mouseUpHandler = function () {
@@ -459,9 +466,7 @@ function bindMouseScrollYHandler(element, i) {
 
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
-
-    e.stopPropagation();
-    e.preventDefault();
+    i.event.preventDefault(e);
   });
 }
 
@@ -620,7 +625,7 @@ function bindKeyboardHandler(element, i) {
 
     shouldPrevent = shouldPreventDefault(deltaX, deltaY);
     if (shouldPrevent) {
-      e.preventDefault();
+      i.event.preventDefault(e, false);
     }
   });
 }
@@ -725,7 +730,7 @@ function bindMouseWheelHandler(element, i) {
 
     function mousewheelHandler(e) {
         if (element.classList.contains("ps-disabled") ) {
-            e.preventDefault();
+            i.event.preventDefault(e, false);
             return;
         }
     var delta = getDeltaFromEvent(e);
@@ -767,8 +772,7 @@ function bindMouseWheelHandler(element, i) {
 
     shouldPrevent = (shouldPrevent || shouldPreventDefault(deltaX, deltaY));
     if (shouldPrevent) {
-      e.stopPropagation();
-      e.preventDefault();
+      i.event.preventDefault(e);
     }
   }
 
@@ -1062,8 +1066,7 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       }
 
       if (shouldPreventDefault(differenceX, differenceY)) {
-        e.stopPropagation();
-        e.preventDefault();
+        i.event.preventDefault(e);
       }
     }
   }
