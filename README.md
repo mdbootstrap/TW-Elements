@@ -1,7 +1,7 @@
 # Tailwind Elements [<img src="https://tailwind-elements.com/img/logo.png" width="45" align="right" alt="Tailwind-elements">](https://tailwind-elements.com/)<a href="https://www.npmjs.com/package/tw-elements"><img src="https://img.shields.io/npm/dt/tw-elements.svg" alt="Total Downloads"></a> <a href="https://github.com/mdbootstrap/Tailwind-Elements/releases"><img src="https://img.shields.io/npm/v/tw-elements.svg" alt="Latest Release"></a> <a href="https://twitter.com/intent/tweet/?text=Thanks+@TailwindElement+for+creating+an+amazing+collection+of+open+source+components+for+@tailwindcss%20https://tailwind-elements.com/&hashtags=tailwindCSS,bootstrap,webdesign,javascript,100DaysOfCode,DevCommunity"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
 
 Tailwind Elements is a huge collection of free, interactive components for Tailwind CSS.
- 
+
  <table>
     <tbody>
     <tr>
@@ -16,7 +16,7 @@ Tailwind Elements is a huge collection of free, interactive components for Tailw
         <ul>
           <li><a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA?sub_confirmation=1">Subscribe to our YouTube channel</a></li>
          <li><a href="https://www.youtube.com/@JamesQQuick/streams">See latest livestreams from James</a></li>         
-         <li><a href="https://twitter.com/intent/user?screen_name=ElementTailwind">Follow us on Twitter for updates & news</a></li>     
+         <li><a href="https://twitter.com/intent/user?screen_name=TailwindElement">Follow us on Twitter for updates & news</a></li>     
         </ul>
         <p><b><a href="[https://tailwind-elements.com/docs/standard/getting-started/quick-start/](https://www.youtube.com/watch?v=ZIDYlp-x8e8&ab_channel=JamesQQuick)">JOIN LIVESTREAM NOW</a></b></p>
       </td>
@@ -24,7 +24,6 @@ Tailwind Elements is a huge collection of free, interactive components for Tailw
    </tbody>
   </table>
 
- 
  <table>
     <tbody>
     <tr>
