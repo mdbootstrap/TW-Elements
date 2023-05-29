@@ -864,8 +864,9 @@ function bindSelectionHandler(element, i) {
   }
 
   var isSelected = false;
+  var isClicked = false;
     i.event.bind(i.ownerDocument, 'selectionchange', function() {
-        if (element.classList.contains("ps-disabled") ) {
+        if (!isClicked || element.classList.contains("ps-disabled")) {
             return;
         }
     if (element.contains(getRangeNode())) {
@@ -876,10 +877,14 @@ function bindSelectionHandler(element, i) {
     }
   });
   i.event.bind(window, 'mouseup', function () {
+    isClicked = false;
     if (isSelected) {
       isSelected = false;
       stopScrolling();
     }
+  });
+  i.event.bind(window, 'mousedown', function () {
+    isClicked = true;
   });
   i.event.bind(window, 'keyup', function () {
     if (isSelected) {
