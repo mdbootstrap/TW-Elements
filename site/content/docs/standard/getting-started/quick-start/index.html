@@ -161,7 +161,7 @@ menu:
   3. Tailwind Elements is a plugin and should be included inside
   <code>tailwind.config.js</code>. It is also recommended to extend the
   <code>content</code> array with a js files pattern that loads dynamic
-  component classes:
+  component classes. The final version of the config file should look like this:
 </p>
 <div class="pt-2">
   <!-- prettier-ignore -->
@@ -178,23 +178,26 @@ menu:
 </div>
 
 <p class="mb-2 mt-6">
-  4. Dynamic components will work after importing the package inside
-  <code>index.js</code>:
+  4. Include the following JavaScript file before the end of the body element.
+  Keep in mind that the path to the file may be different depending on the file
+  structure of your project.
 </p>
 
 <div class="pt-2">
-  {{< twsnippet/wrapper "javascript,umd" "" "mobile" >}}
+  {{< twsnippet/wrapper "index.html" "" "mobile" >}}
   <!-- prettier-ignore -->
-  {{< twsnippet/code active=true lang="JavaScript" >}}
-  import { Carousel, initTE } from "tw-elements";
-  initTE({ Carousel });
-  {{< /twsnippet/code >}}
-  <!-- prettier-ignore -->
-  {{< twsnippet/code lang="JavaScript" >}}
-  import 'tw-elements';
+  {{< twsnippet/code active=true lang="HTML" >}}
+  <script
+    type="text/javascript"
+    src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
   {{< /twsnippet/code >}}
   {{< /twsnippet/wrapper >}}
 </div>
+
+<p class="mb-2 mt-6">
+  Now, the library is ready to use and available via the global
+  <code>te</code> variable.
+</p>
 
 <hr class="my-10" />
 
@@ -279,8 +282,8 @@ menu:
     <div
       class="mb-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:text-gray-600">
       <strong>Note:</strong> Make sure that you have
-      <code>Node.js version 14+, 16+</code> installed. Please update if your
-      package manager asks for it.
+      <code>Node.js version 16+</code> installed. Please update if your package
+      manager asks for it.
     </div>
     <p class="my-3">
       Vite (French word for "fast", pronounced /vit/) is a build tool that aims
@@ -292,7 +295,8 @@ menu:
 </div>
 
 <p class="mb-2">
-  1. Create a new vite project and enter the newly created directory. You can
+  1. Create a new vite project and enter the newly created directory. Pick
+  <code>Vanilla</code> framework and <code>JavaScript</code> variant. You can
   skip this step if you already have it installed.
 </p>
 
