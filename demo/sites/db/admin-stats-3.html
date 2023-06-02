@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style>
       body {
@@ -27,7 +45,7 @@
     <!-- Start your project here-->
     <div>
       <!-- Container for demo purpose -->
-      <div class="container my-12 mx-auto py-12 px-4 md:px-6 lg:px-12">
+      <div class="container mx-auto my-12 px-4 py-12 md:px-6 lg:px-12">
         <!-- Section: Design Block-->
         <section class="mb-20 text-neutral-800">
           <h5 class="mb-6 text-xl font-bold">Last 30 days</h5>
@@ -46,7 +64,7 @@
                   </p>
                   <p>
                     <span
-                      class="flex items-center whitespace-nowrap rounded-full bg-green-200 py-1 px-2.5 text-center align-baseline text-xs font-semibold leading-none text-green-600">
+                      class="flex items-center whitespace-nowrap rounded-full bg-green-200 px-2.5 py-1 text-center align-baseline text-xs font-semibold leading-none text-green-600">
                       <svg
                         aria-hidden="true"
                         focusable="false"
@@ -77,7 +95,7 @@
                   </p>
                   <p>
                     <span
-                      class="flex items-center whitespace-nowrap rounded-full bg-green-200 py-1 px-2.5 text-center align-baseline text-xs font-semibold leading-none text-green-600">
+                      class="flex items-center whitespace-nowrap rounded-full bg-green-200 px-2.5 py-1 text-center align-baseline text-xs font-semibold leading-none text-green-600">
                       <svg
                         aria-hidden="true"
                         focusable="false"
@@ -108,7 +126,7 @@
                   </p>
                   <p>
                     <span
-                      class="flex items-center whitespace-nowrap rounded-full bg-red-200 py-1 px-2.5 text-center align-baseline text-xs font-semibold leading-none text-red-600">
+                      class="flex items-center whitespace-nowrap rounded-full bg-red-200 px-2.5 py-1 text-center align-baseline text-xs font-semibold leading-none text-red-600">
                       <svg
                         aria-hidden="true"
                         focusable="false"
@@ -136,15 +154,13 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

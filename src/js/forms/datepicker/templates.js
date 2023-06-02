@@ -25,9 +25,13 @@ import {
   isSameDate,
   getToday,
   getYearsOffset,
+  isDateDisabled,
+  isMonthDisabled,
+  isYearDisabled,
 } from "./date-utils";
 
 const MODAL_CONTAINER_REF = "data-te-datepicker-modal-container-ref";
+const DROPDOWN_CONTAINER_REF = "data-te-datepicker-dropdown-container-ref";
 const BACKDROP_REF = "data-te-dropdown-backdrop-ref";
 const DATE_TEXT_REF = "data-te-datepicker-date-text-ref";
 const VIEW_REF = "data-te-datepicker-view-ref";
@@ -55,7 +59,21 @@ export function getDatepickerTemplate(
   const day = getDate(date);
   const dayNumber = getDayNumber(date);
   const template = element("div");
-
+  const inlineContent = `
+        ${createMainContent(
+          date,
+          month,
+          year,
+          selectedDate,
+          selectedYear,
+          selectedMonth,
+          options,
+          monthsInRow,
+          yearsInView,
+          yearsInRow,
+          classes
+        )}
+    `;
   const modalContent = `
       ${createHeader(day, dayNumber, month, options, classes)}
       ${createMainContent(
@@ -73,10 +91,17 @@ export function getDatepickerTemplate(
       )}
     `;
 
-  Manipulator.addClass(template, classes.modalContainer);
-  template.setAttribute(MODAL_CONTAINER_REF, id);
+  if (options.inline) {
+    Manipulator.addClass(template, classes.datepickerDropdownContainer);
+    template.setAttribute(DROPDOWN_CONTAINER_REF, id);
 
-  template.innerHTML = modalContent;
+    template.innerHTML = inlineContent;
+  } else {
+    Manipulator.addClass(template, classes.modalContainer);
+    template.setAttribute(MODAL_CONTAINER_REF, id);
+
+    template.innerHTML = modalContent;
+  }
 
   return template;
 }
@@ -123,7 +148,29 @@ function createMainContent(
   yearsInRow,
   classes
 ) {
-  const mainContentTemplate = `
+  let mainContentTemplate;
+  if (options.inline) {
+    mainContentTemplate = `
+    <div class="${classes.datepickerMain}">
+      ${createControls(month, year, options, classes)}
+      <div class="${classes.datepickerView}" ${VIEW_REF} tabindex="0">
+        ${createViewTemplate(
+          date,
+          year,
+          selectedDate,
+          selectedYear,
+          selectedMonth,
+          options,
+          monthsInRow,
+          yearsInView,
+          yearsInRow,
+          classes
+        )}
+      </div>
+    </div>
+  `;
+  } else {
+    mainContentTemplate = `
     <div class="${classes.datepickerMain}">
       ${createControls(month, year, options, classes)}
       <div class="${classes.datepickerView}" ${VIEW_REF} tabindex="0">
@@ -143,6 +190,7 @@ function createMainContent(
       ${createFooter(options, classes)}
     </div>
   `;
+  }
 
   return mainContentTemplate;
 }
@@ -217,17 +265,22 @@ export function createViewChangeButtonIcon(options, classes) {
 }
 
 function createFooter(options, classes) {
+  const okBtn = `<button class="${classes.datepickerFooterBtn}" aria-label="${options.okBtnLabel}" ${OK_BUTTON_REF}>${options.okBtnText}</button>`;
+  const cancelButton = `<button class="${classes.datepickerFooterBtn}" aria-label="${options.cancelBtnLabel}" ${CANCEL_BUTTON_REF}>${options.cancelBtnText}</button>`;
+  const clearButton = `<button class="${classes.datepickerFooterBtn} ${classes.datepickerClearBtn}" aria-label="${options.clearBtnLabel}" ${CLEAR_BUTTON_REF}>${options.clearBtnText}</button>`;
+
   return `
         <div class="${classes.datepickerFooter}">
-          <button class="${classes.datepickerFooterBtn} ${classes.datepickerClearBtn}" aria-label="${options.clearBtnLabel}" ${CLEAR_BUTTON_REF}>${options.clearBtnText}</button>
-          <button class="${classes.datepickerFooterBtn}" aria-label="${options.cancelBtnLabel}" ${CANCEL_BUTTON_REF}>${options.cancelBtnText}</button>
-          <button class="${classes.datepickerFooterBtn}" aria-label="${options.okBtnLabel}" ${OK_BUTTON_REF}>${options.okBtnText}</button>
+          
+        ${options.removeClearBtn ? "" : clearButton}
+        ${options.removeCancelBtn ? "" : cancelButton}
+        ${options.removeOkBtn ? "" : okBtn}
         </div>
       `;
 }
 
-export function createDayViewTemplate(date, selectedDate, options, classes) {
-  const dates = getDatesArray(date, selectedDate, options);
+export function createDayViewTemplate(date, headerDate, options, classes) {
+  const dates = getDatesArray(date, headerDate, options);
   const dayNames = options.weekdaysNarrow;
 
   const tableHeadContent = `
@@ -293,7 +346,7 @@ export function createDayViewTemplate(date, selectedDate, options, classes) {
     `;
 }
 
-function getDatesArray(activeDate, selectedDate, options) {
+function getDatesArray(activeDate, headerDate, options) {
   const dates = [];
 
   const month = getMonth(activeDate);
@@ -320,7 +373,7 @@ function getDatesArray(activeDate, selectedDate, options) {
         week.push({
           date,
           currentMonth: isCurrentMonth,
-          isSelected: selectedDate && isSameDate(date, selectedDate),
+          isSelected: headerDate && isSameDate(date, headerDate),
           isToday: isSameDate(date, getToday()),
           dayNumber: getDate(date),
         });
@@ -335,9 +388,17 @@ function getDatesArray(activeDate, selectedDate, options) {
         week.push({
           date,
           currentMonth: isCurrentMonth,
-          isSelected: selectedDate && isSameDate(date, selectedDate),
+          isSelected: headerDate && isSameDate(date, headerDate),
           isToday: isSameDate(date, getToday()),
           dayNumber: getDate(date),
+          disabled: isDateDisabled(
+            date,
+            options.min,
+            options.max,
+            options.filter,
+            options.disablePast,
+            options.disableFuture
+          ),
         });
         dayNumber++;
       }
@@ -358,9 +419,17 @@ function getDatesArray(activeDate, selectedDate, options) {
         week.push({
           date,
           currentMonth: isCurrentMonth,
-          isSelected: selectedDate && isSameDate(date, selectedDate),
+          isSelected: headerDate && isSameDate(date, headerDate),
           isToday: isSameDate(date, getToday()),
           dayNumber: getDate(date),
+          disabled: isDateDisabled(
+            date,
+            options.min,
+            options.max,
+            options.filter,
+            options.disablePast,
+            options.disableFuture
+          ),
         });
         dayNumber++;
       }
@@ -381,6 +450,7 @@ export function createMonthViewTemplate(
 ) {
   const months = getMonthsArray(options, monthsInRow);
   const currentMonth = getMonth(getToday());
+  const currentYear = getYear(getToday());
 
   const tableBodyContent = `
       ${months
@@ -393,7 +463,20 @@ export function createMonthViewTemplate(
                 return `
                 <td class="${classes.datepickerCell} ${
                   classes.datepickerCellLarge
-                }" 
+                }"
+                ${
+                  isMonthDisabled(
+                    monthIndex,
+                    year,
+                    options.min,
+                    options.max,
+                    options.disablePast,
+                    options.disableFuture
+                  )
+                    ? "data-te-datepicker-cell-disabled"
+                    : ""
+                }
+                
                 data-te-month="${monthIndex}" data-te-year="${year}" aria-label="${month}, ${year}"
                 ${
                   monthIndex === selectedMonth && year === selectedYear
@@ -401,11 +484,10 @@ export function createMonthViewTemplate(
                     : ""
                 }
                 ${
-                  monthIndex === currentMonth
+                  monthIndex === currentMonth && year === currentYear
                     ? "data-te-datepicker-cell-current"
                     : ""
-                }
-                >
+                }" data-te-month="${monthIndex}" data-te-year="${year}" aria-label="${month}, ${year}">
                   <div class="${classes.datepickerCellContent} ${
                   classes.datepickerCellContentLarge
                 }">${month}</div>
@@ -467,7 +549,18 @@ export function createYearViewTemplate(
               return `
               <td class="${classes.datepickerCell} ${
                 classes.datepickerCellLarge
-              } aria-label="${year}" data-te-year="${year}"
+              }"  aria-label="${year}" data-te-year="${year}"
+              ${
+                isYearDisabled(
+                  year,
+                  options.min,
+                  options.max,
+                  options.disablePast,
+                  options.disableFuture
+                )
+                  ? "data-te-datepicker-cell-disabled"
+                  : ""
+              }
               ${year === selectedYear ? "data-te-datepicker-cell-selected" : ""}
               ${year === currentYear ? "data-te-datepicker-cell-current" : ""}
               >

@@ -16,9 +16,27 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -110,7 +128,7 @@
             <h5 class="mb-6 font-bold text-primary">5000+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Components</h6>
             <hr
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-0.5 self-stretch border-t-0 bg-neutral-100 opacity-100 dark:opacity-50 lg:block" />
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-0.5 self-stretch border-t-0 bg-neutral-100 opacity-100 dark:opacity-50 lg:block" />
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -118,7 +136,7 @@
             <h5 class="mb-6 font-bold text-primary">490+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Design blocks</h6>
             <hr
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-0.5 self-stretch border-t-0 bg-neutral-100 opacity-100 dark:opacity-50 lg:block" />
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-0.5 self-stretch border-t-0 bg-neutral-100 opacity-100 dark:opacity-50 lg:block" />
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -126,7 +144,7 @@
             <h5 class="mb-6 font-bold text-primary">100+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Templates</h6>
             <hr
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-0.5 self-stretch border-t-0 bg-neutral-100 opacity-100 dark:opacity-50 lg:block" />
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-0.5 self-stretch border-t-0 bg-neutral-100 opacity-100 dark:opacity-50 lg:block" />
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -154,7 +172,7 @@
             <h5 class="mb-6 font-bold text-primary">5000+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Components</h6>
             <div
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 lg:block"></div>
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 lg:block"></div>
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -162,7 +180,7 @@
             <h5 class="mb-6 font-bold text-primary">490+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Design blocks</h6>
             <div
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 lg:block"></div>
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 lg:block"></div>
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -170,7 +188,7 @@
             <h5 class="mb-6 font-bold text-primary">100+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Templates</h6>
             <div
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 lg:block"></div>
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-0.5 self-stretch bg-neutral-100 opacity-100 dark:opacity-50 lg:block"></div>
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -198,7 +216,7 @@
             <h5 class="mb-6 font-bold text-primary">5000+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Components</h6>
             <hr
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block" />
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block" />
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -206,7 +224,7 @@
             <h5 class="mb-6 font-bold text-primary">490+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Design blocks</h6>
             <hr
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block" />
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block" />
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -214,7 +232,7 @@
             <h5 class="mb-6 font-bold text-primary">100+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Templates</h6>
             <hr
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block" />
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block" />
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -242,7 +260,7 @@
             <h5 class="mb-6 font-bold text-primary">5000+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Components</h6>
             <div
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block"></div>
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block"></div>
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -250,7 +268,7 @@
             <h5 class="mb-6 font-bold text-primary">490+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Design blocks</h6>
             <div
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block"></div>
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block"></div>
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -258,7 +276,7 @@
             <h5 class="mb-6 font-bold text-primary">100+</h5>
             <h6 class="mb-0 font-normal dark:text-white">Templates</h6>
             <div
-              class="absolute top-0 right-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block"></div>
+              class="absolute right-0 top-0 hidden h-full min-h-[1em] w-px self-stretch border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100 lg:block"></div>
           </div>
 
           <div class="relative mb-12 px-3 lg:mb-0">
@@ -295,15 +313,13 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

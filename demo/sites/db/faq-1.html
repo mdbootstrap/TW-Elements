@@ -12,26 +12,44 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
 
   <body class="dark:bg-neutral-800">
     <!-- Container for demo purpose -->
-    <div class="container my-24 mx-auto md:px-6 xl:px-24">
+    <div class="container mx-auto my-24 md:px-6 xl:px-24">
       <!-- Section: Design Block -->
       <section class="mb-32">
         <h2 class="mb-6 pl-6 text-3xl font-bold">Frequently asked questions</h2>
 
         <div id="accordionFlushExample">
           <div
-            class="rounded-none border border-t-0 border-l-0 border-r-0 border-neutral-200">
+            class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200">
             <h2 class="mb-0" id="flush-headingOne">
               <button
-                class="group relative flex w-full items-center rounded-none border-0 py-4 px-5 text-left text-base font-bold transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
+                class="group relative flex w-full items-center rounded-none border-0 px-5 py-4 text-left text-base font-bold transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
                 type="button"
                 data-te-collapse-init
                 data-te-target="#flush-collapseOne"
@@ -55,7 +73,7 @@
               data-te-collapse-show
               aria-labelledby="flush-headingOne"
               data-te-parent="#accordionFlushExample">
-              <div class="py-4 px-5 text-neutral-500 dark:text-neutral-300">
+              <div class="px-5 py-4 text-neutral-500 dark:text-neutral-300">
                 Anim pariatur cliche reprehenderit, enim eiusmod high life
                 accusamus terry richardson ad squid. 3 wolf moon officia aute,
                 non cupidatat skateboard dolor brunch. Food truck quinoa
@@ -73,7 +91,7 @@
             class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200">
             <h2 class="mb-0" id="flush-headingTwo">
               <button
-                class="group relative flex w-full items-center rounded-none border-0 py-4 px-5 text-left text-base font-bold transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
+                class="group relative flex w-full items-center rounded-none border-0 px-5 py-4 text-left text-base font-bold transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
                 type="button"
                 data-te-collapse-init
                 data-te-collapse-collapsed
@@ -97,7 +115,7 @@
               data-te-collapse-item
               aria-labelledby="flush-headingTwo"
               data-te-parent="#accordionFlushExample">
-              <div class="py-4 px-5 text-neutral-500 dark:text-neutral-300">
+              <div class="px-5 py-4 text-neutral-500 dark:text-neutral-300">
                 Anim pariatur cliche reprehenderit, enim eiusmod high life
                 accusamus terry richardson ad squid. 3 wolf moon officia aute,
                 non cupidatat skateboard dolor brunch. Food truck quinoa
@@ -112,10 +130,10 @@
             </div>
           </div>
           <div
-            class="rounded-none border border-l-0 border-r-0 border-b-0 border-t-0 border-neutral-200">
+            class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200">
             <h2 class="mb-0" id="flush-headingThree">
               <button
-                class="group relative flex w-full items-center rounded-none border-0 py-4 px-5 text-left text-base font-bold transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
+                class="group relative flex w-full items-center rounded-none border-0 px-5 py-4 text-left text-base font-bold transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:text-primary-400"
                 type="button"
                 data-te-collapse-init
                 data-te-collapse-collapsed
@@ -139,7 +157,7 @@
               data-te-collapse-item
               aria-labelledby="flush-headingThree"
               data-te-parent="#accordionFlushExample">
-              <div class="py-4 px-5 text-neutral-500 dark:text-neutral-300">
+              <div class="px-5 py-4 text-neutral-500 dark:text-neutral-300">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
                 optio vitae inventore autem fugiat rerum sed laborum. Natus
                 recusandae laboriosam quos pariatur corrupti id dignissimos
@@ -158,15 +176,13 @@
     <!-- Container for demo purpose -->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

@@ -9,8 +9,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import { defineJQueryPlugin } from "../util/index";
-import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 
 /*
@@ -20,15 +18,8 @@ Constants
 */
 
 const NAME = "button";
-const DATA_KEY = "bs.button";
-const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = ".data-api";
 
 const CLASS_NAME_ACTIVE = "active";
-
-const SELECTOR_DATA_TOGGLE = '[data-te-toggle="button"]';
-
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
 /*
 ------------------------------------------------------------------------
@@ -65,34 +56,5 @@ class Button extends BaseComponent {
     });
   }
 }
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-EventHandler.on(
-  document,
-  EVENT_CLICK_DATA_API,
-  SELECTOR_DATA_TOGGLE,
-  (event) => {
-    event.preventDefault();
-
-    const button = event.target.closest(SELECTOR_DATA_TOGGLE);
-    const data = Button.getOrCreateInstance(button);
-
-    data.toggle();
-  }
-);
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Button to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Button);
 
 export default Button;

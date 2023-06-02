@@ -3,11 +3,52 @@
 
 <!--Section: Docs content-->
 <section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Sidenav, initTE } from "tw-elements";
+        initTE({ Sidenav });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
   <!--Section: Usage-->
   <section id="api-section-usage">
     <!--Title-->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="basic"
       data-te-spy-item>
       Usage
@@ -19,8 +60,9 @@
       Elements with the
       <code class="text-red-500 dark:text-red-300">data-te-sidenav-init</code>
       attribute will be automatically initialized - you can set all available
-      options with data attributes. Toggling the element can also be done
-      without any additional Javascript code - just set
+      options with data attributes. After calling the
+      <code>initTE</code> method, toggling the element can also be done without
+      any additional Javascript code - just set
       <code class="text-red-500 dark:text-red-300"
         >data-te-sidenav-toggle-ref</code
       >
@@ -65,9 +107,16 @@
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+          const sidenavInstance = Sidenav.getInstance(
+            document.getElementById("sidenav")
+          );
+          sidenavInstance.update({ sidenavColor: "warning" });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const sidenavInstance = te.Sidenav.getInstance(
             document.getElementById("sidenav")
           );
@@ -86,7 +135,7 @@
   <section id="api-section-options">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       data-te-spy-item>
       Options
     </h2>
@@ -699,13 +748,13 @@
   <section id="api-section-methods">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       data-te-spy-item>
       Methods
     </h2>
 
     <div
-      class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
+      class="my-6 rounded-lg bg-red-100 px-6 py-5 text-base text-red-700"
       role="alert">
       <p class="mb-2">
         <strong>Asynchronous methods and transitions:</strong>
@@ -933,9 +982,15 @@
     {{< twsnippet/no-demo id="api-example5" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example5">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+          const sidenav = document.getElementById("mySidenav");
+          const sidenavInstance = new Sidenav(sidenav);
+          sidenavInstance.show();
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           const sidenav = document.getElementById("mySidenav");
           const sidenavInstance = new te.Sidenav(sidenav);
           sidenavInstance.show();
@@ -953,7 +1008,7 @@
   <section id="api-section-events">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       data-te-spy-item>
       Events
     </h2>

@@ -3,11 +3,52 @@
 
 <!--Section: Docs content-->
 <section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Select, initTE } from "tw-elements";
+        initTE({ Select });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
   <!--Section: Usage-->
   <section id="api-section-usage">
     <!--Title-->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="usage"
       data-te-spy-item>
       Usage
@@ -19,7 +60,8 @@
       Elements with the
       <code class="text-red-500 dark:text-red-300">data-te-select-init</code>
       attribute will be automatically initialized - you can set all available
-      options with data attributes.
+      options with data attributes. For ES format, you must first import and
+      call the <code>initTE</code> method.
     </p>
 
     <!--Section: Code-->
@@ -55,9 +97,15 @@
     {{< twsnippet/no-demo id="api-example4" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example4">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        const singleSelect = document.querySelector("#singleSelection");
+        const singleSelectInstance = Select.getInstance(singleSelect);
+        singleSelectInstance.setValue("4");
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
         const singleSelect = document.querySelector("#singleSelection");
         const singleSelectInstance = te.Select.getInstance(singleSelect);
         singleSelectInstance.setValue("4");
@@ -75,7 +123,7 @@
   <section id="api-section-options">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="options"
       data-te-spy-item>
       Options
@@ -575,7 +623,7 @@
   <section id="api-section-classes">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="classes"
       data-te-spy-item>
       Classes
@@ -780,11 +828,12 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    absolute right-2 text-[0.8rem] cursor-pointer
+                    absolute right-3 text-[0.8rem] cursor-pointer
                     peer-focus:text-primary
-                    peer-data-[te-input-focused]:text-blue-600
+                    peer-data-[te-input-focused]:text-primary
                     group-data-[te-was-validated]/validation:peer-valid:text-green-600
                     group-data-[te-was-validated]/validation:peer-invalid:text-[rgb(220,76,100)]
+                    w-5 h-5
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Sets styles for select input arrow.
@@ -856,7 +905,7 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    absolute top-2 right-7 text-black cursor-pointer
+                    absolute top-2 right-9 text-black cursor-pointer
                     focus:text-blue-600 outline-none dark:text-gray-200
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
@@ -1285,9 +1334,19 @@
     {{< twsnippet/no-demo id="api-example45" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example45">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        new Select(
+          document.querySelector("#select"),
+          {},
+          {
+            selectOptionIcon: "w-7 h-7 rounded-full",
+          }
+        );
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
           new te.Select(
             document.querySelector("#select"),
             {},
@@ -1309,14 +1368,14 @@
   <section id="api-section-methods">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="methods"
       data-te-spy-item>
       Methods
     </h2>
 
     <div
-      class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
+      class="my-6 rounded-lg bg-red-100 px-6 py-5 text-base text-red-700"
       role="alert">
       <p class="mb-2">
         <strong>Asynchronous methods and transitions:</strong>
@@ -1470,9 +1529,15 @@
     {{< twsnippet/no-demo id="api-example5" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example5">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        const selectEl = document.getElementById('mySelect');
+        const select = new Select(selectEl);
+        select.open();
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
         const selectEl = document.getElementById('mySelect');
         const select = new te.Select(selectEl);
         select.open();
@@ -1490,7 +1555,7 @@
   <section id="api-section-events">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="events"
       data-te-spy-item>
       Events

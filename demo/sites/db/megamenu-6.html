@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -53,7 +71,7 @@
             <ul class="mr-auto flex flex-row" data-te-navbar-nav-ref>
               <li class="static" data-te-nav-item-ref data-te-dropdown-ref>
                 <a
-                  class="flex items-center whitespace-nowrap py-2 px-2 text-neutral-600 transition duration-300 ease-in-out focus:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-100 dark:focus:text-neutral-100"
+                  class="flex items-center whitespace-nowrap px-2 py-2 text-neutral-600 transition duration-300 ease-in-out focus:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-100 dark:focus:text-neutral-100"
                   href="#"
                   data-te-ripple-init
                   data-te-ripple-color="light"
@@ -79,14 +97,14 @@
                   </span>
                 </a>
                 <div
-                  class="absolute left-0 top-full right-0 z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding shadow-lg shadow-black/5 dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                  class="absolute left-0 right-0 top-full z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding shadow-lg shadow-black/5 dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                   aria-labelledby="dropdownMenuButtonX"
                   data-te-dropdown-menu-ref>
                   <div class="grid gap-6 lg:grid-cols-2">
                     <div class="grid gap-6 md:grid-cols-2">
                       <div class="px-6 lg:px-8">
                         <h6
-                          class="mt-2 mb-6 pt-12 font-semibold uppercase text-neutral-500 dark:text-white">
+                          class="mb-6 mt-2 pt-12 font-semibold uppercase text-neutral-500 dark:text-white">
                           Useful links
                         </h6>
                         <ul class="lg:pb-12">
@@ -218,7 +236,7 @@
                       </div>
                       <div class="px-6 lg:px-8">
                         <h6
-                          class="mt-2 mb-6 pt-12 font-semibold uppercase text-neutral-500 dark:text-white">
+                          class="mb-6 mt-2 pt-12 font-semibold uppercase text-neutral-500 dark:text-white">
                           For media
                         </h6>
                         <ul class="lg:pb-12">
@@ -351,7 +369,7 @@
                     </div>
                     <div class="bg-[#f9fafc] px-6 dark:bg-neutral-600 lg:px-12">
                       <h6
-                        class="mt-2 mb-6 pt-12 font-semibold uppercase text-neutral-500 dark:text-white">
+                        class="mb-6 mt-2 pt-12 font-semibold uppercase text-neutral-500 dark:text-white">
                         News
                       </h6>
                       <div class="mb-6 flex items-center">
@@ -398,7 +416,7 @@
                       </div>
                       <div class="pb-12">
                         <a
-                          class="flex w-36 items-center justify-center rounded bg-transparent px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-primary transition duration-150 ease-in-out hover:bg-neutral-200 hover:text-primary-700 focus:bg-neutral-100 focus:outline-none focus:ring-0 active:bg-neutral-200 dark:text-primary-400 dark:hover:bg-neutral-700"
+                          class="flex w-36 items-center justify-center rounded bg-transparent px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary transition duration-150 ease-in-out hover:bg-neutral-200 hover:text-primary-700 focus:bg-neutral-100 focus:outline-none focus:ring-0 active:bg-neutral-200 dark:text-primary-400 dark:hover:bg-neutral-700"
                           href="#"
                           role="button">
                           Read more
@@ -425,15 +443,13 @@
     </section>
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

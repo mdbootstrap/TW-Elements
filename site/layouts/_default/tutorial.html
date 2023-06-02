@@ -12,7 +12,7 @@
 
     <nav
       id="sidenav-main"
-      class="fixed top-0 left-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
+      class="fixed left-0 top-0 z-[1036] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] dark:bg-neutral-800 xl:data-[te-sidenav-hidden='false']:translate-x-0"
       data-te-sidenav-init
       {{ if ne $hidden_sidenav true }}
         data-te-sidenav-mode-breakpoint-over="0"
@@ -26,8 +26,18 @@
       <a
         href="/"
         class="mb-3 flex items-center justify-center rounded-md py-6 pr-3 text-lg font-medium outline-none dark:text-neutral-100"
-        aria-current="page"
-        ><img src="/img/logo.png" class="mr-3" alt="" style="width: 40px" />
+        aria-current="page">
+        <picture>
+          <source
+            srcset="
+              https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp
+            "
+            type="image/webp" />
+          <img
+            src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.png"
+            class="mr-2 h-[20px]"
+            alt="logo" />
+        </picture>
         Tailwind Elements</a
       >
       {{ partial "sidenav/standard.html" . }}
@@ -41,6 +51,41 @@
           <div class="grid grid-cols-12">
             <!-- Column: Sidebar -->
             <div class="col-span-4 mb-5 hidden px-5 lg:block">
+              <a
+                id="newDC-tutorials"
+                class="opacity-100 transition-opacity duration-500 ease-in">
+                <div
+                  class="mb-4 flex h-[190px] items-center justify-center overflow-hidden rounded-[0.5em] rounded-lg border border-[rgb(20,75,163)] px-6 py-5 text-base text-gray-800 dark:text-gray-200"
+                  role="alert">
+                  <div>
+                    <p class="mb-2">
+                      <strong>Free UI/UX design course</strong>
+                    </p>
+                    <p class="mb-5 text-neutral-500">
+                      Learn how to create exceptional designs by reading my new
+                      tutorial.
+                    </p>
+                    <a
+                      href="https://material-minimal.com/"
+                      target="_blank"
+                      type="button"
+                      class="mt-3 flex items-center justify-center rounded-md bg-[#E3EBF7] px-6 pb-2 pt-2.5 text-center
+                                  text-sm font-medium leading-normal text-primary-700 decoration-[#275090] shadow-none transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                      >Start learning
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="ml-1 h-4 w-4">
+                        <path
+                          fill-rule="evenodd"
+                          d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </a>
               <div id="tutorials-menu">
                 {{ partial "tutorial/tutorial-navigation.html" . }}
               </div>
@@ -48,18 +93,19 @@
             <!-- Column: Sidebar -->
 
             <!-- Column: Content -->
-            <div class="col-span-8 mb-5 px-6">
+            <div class="col-span-12 mb-5 px-6 lg:col-span-8">
               {{ .Content }}
 
 
-              <hr class="hr my-12" />
+              <hr
+                class="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
 
               <!-- Section: Nav buttons -->
-              <section class="flex justify-between">
-                <div>
+              <section class="flex justify-center md:justify-between">
+                <div class="hidden md:flex">
                   <a
                     type="button"
-                    class="flex rounded bg-transparent px-6 py-2.5 text-xs font-medium uppercase leading-tight text-primary outline-none transition duration-300 ease-in-out hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-200 active:text-primary-800"
+                    class="flex rounded bg-transparent px-6 py-2.5 text-xs font-medium uppercase leading-tight text-primary outline-none  transition duration-300 ease-in-out hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-200 active:text-primary-800 dark:text-primary-400 dark:hover:text-primary-600"
                     data-te-ripple-init
                     href="https://twitter.com/ascensus_mdb"
                     rel="nofollow"
@@ -85,7 +131,7 @@
                   {{ if and (isset .Params "previous_lesson") (ne .Params.previous_lesson "") }}
                     <a
                       type="button"
-                      class="mr-3 flex items-center rounded bg-primary-100 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-primary-700 shadow-md outline-none transition duration-150 ease-in-out hover:bg-primary-accent-100 hover:shadow-lg focus:bg-primary-accent-100 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-accent-200 active:shadow-lg"
+                      class="mr-3 flex items-center rounded bg-primary-100 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-primary-700 outline-none transition duration-150 ease-in-out hover:bg-primary-accent-100 hover:shadow-lg focus:bg-primary-accent-100 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-accent-200 active:shadow-lg"
                       href="{{ .Params.previous_lesson }}"
                       ><svg
                         aria-hidden="true"
@@ -115,7 +161,7 @@
                         focusable="false"
                         data-prefix="fas"
                         data-icon="caret-right"
-                        class="ml-3 -mr-3 h-4 w-4"
+                        class="-mr-3 ml-3 h-4 w-4"
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 576 512">
@@ -129,7 +175,8 @@
               </section>
               <!-- Section: Nav buttons -->
 
-              <hr class="hr my-12" />
+              <hr
+                class="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
 
               <!-- Section: About author -->
               <section class="">
@@ -145,7 +192,8 @@
                   <div>
                     <div class="mb-2 flex justify-between">
                       <div>
-                        <p class="mb-4 font-bold" style="color: #757575;">
+                        <p
+                          class="mb-4 font-bold text-[#757575] dark:text-neutral-300">
                           About author
                         </p>
                         <h5 class="font-bold">Michal Szymanski</h5>
@@ -155,7 +203,7 @@
                           href="https://twitter.com/ascensus_mdb"
                           target="_blank"
                           rel="nofollow"
-                          class="flex text-primary">
+                          class="flex text-primary dark:text-primary-400">
                           <svg
                             aria-hidden="true"
                             focusable="false"
@@ -176,11 +224,10 @@
                       </div>
                     </div>
                     <p>
-                      Co Founder at MDBootstrap / Listed in Forbes „30 under 30"
-                      / Open-source enthusiast /
+                      Co Founder at Tailwind Elements and MDBootstrap / Listed
+                      in Forbes „30 under 30" / Open-source enthusiast /
                       <a
-                        class="font-bold"
-                        style=" color: #3b71ca;"
+                        class="font-bold text-[#3b71ca;] dark:text-blue-300"
                         href="https://youtu.be/bbKBlGxwgj8"
                         target="_blank"
                         rel="nofollow"

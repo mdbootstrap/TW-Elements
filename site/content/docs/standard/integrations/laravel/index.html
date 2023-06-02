@@ -1,0 +1,260 @@
+---
+title: "Laravel integration"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Elements Laravel integration"
+subheading: ""
+seo_title: "Tailwind Elements integration with Laravel - Free Examples & Tutorial"
+description: "This article shows you how to integrate Laravel application with Tailwind Elements. Free download, open source license."
+image: "https://tecdn.b-cdn.net/img/docs/integrations/laravel.webp"
+url: "docs/standard/integrations/laravel-integration/"
+menu:
+  integrations:
+    name: "Laravel"
+---
+
+<!-- Section: Basic example -->
+
+<section id="section-prerequisites">
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="prerequisites"
+    data-te-spy-item>
+    Prerequisites
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    Before starting the project make sure to install the following utilities:
+  </p>
+
+  <ul class="ml-4 list-disc">
+    <li>
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://nodejs.org/en/"
+        target="_blank"
+        >Node LTS</a
+      >
+      (14.x.x or higher recommended)
+    </li>
+    <li>
+      Code editor. We recommend
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://code.visualstudio.com/"
+        target="_blank"
+        >VSCode</a
+      >
+    </li>
+  </ul>
+</section>
+
+<hr class="my-5 dark:border-neutral-600" />
+
+<!-- Section: Creating Nuxt app-->
+<section id="section-nuxt-app">
+  <!-- Section title-->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="laravel-application"
+    data-te-spy-item>
+    Creating a new Laravel application
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    Let's create a fresh Laravel application so that we can go through all the
+    steps together.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Create new project</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+          composer create-project laravel/laravel my-project
+          cd my-project
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+
+<hr class="mb-5 dark:border-neutral-600" />
+
+<!-- Creating and configuring Tailwind & Tailwind Elements-->
+<section id="section-tailwind">
+  <!-- Section title-->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="tailwind"
+    data-te-spy-item>
+    Installing and configuring Tailwind CSS and Tailwind Elements
+  </h2>
+
+  <!-- Description -->
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Install Tailwind CSS</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+          npm install -D tailwindcss postcss autoprefixer
+          npx tailwindcss init -p
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">
+    Add the paths to all of your template files in your
+    <code>tailwind.config.cjs</code> file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+          /** @type {import('tailwindcss').Config} */
+          module.exports = {
+            content: [
+            "./resources/**/*.blade.php",
+            "./resources/**/*.js",
+            "./resources/**/*.vue",
+            "./node_modules/tw-elements/dist/js/**/*.js"
+          ],
+          theme: {
+              extend: {},
+          },
+          darkMode: "class",
+          plugins: [require("tw-elements/dist/plugin.cjs")]
+          }
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
+    your <code>./resources/css/app.css</code> file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "app.css" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="CSS" >}}
+          @tailwind base;
+          @tailwind components;
+          @tailwind utilities;
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">
+    Make sure your compiled CSS and JS are included in the
+    <code>head</code> in <code>welcome.blade.php</code> file (located in
+    <code>./resources/views</code> directory).
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "welcome.blade.php" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+          @vite('resources/css/app.css')
+          @vite('resources/js/app.js')
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">
+    Attach the <code>Roboto</code> font in <code>welcome.blade.php</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "welcome.blade.php" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="HTML" >}}
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">Install Tailwind Elements.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+          npm install tw-elements
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    Import components which are you intend to use and necessary function
+    <code>initTE</code> in <code>app.js</code> file which is located in
+    <code>./resources/js</code> directory.
+  </p>
+  <p class="mb-5">Initialize <code>initTE</code>.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "app.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+          import { Datepicker, Input, initTE } from "tw-elements";
+          initTE({ Datepicker, Input });
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Creating and configuring Tailwind & Tailwind Elements-->
+
+<!--Initializing via JS-->
+<section id="section-initializing-js">
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="initializing-js"
+    data-te-spy-item>
+    Initializing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have autoinit which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Import and initialize components.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "app.js" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+          import { Datepicker, Input } from "tw-elements";
+
+          const myInput = new Input(document.getElementById("myDatepicker"));
+          const options = {
+            format: "dd-mm-yyyy",
+          };
+          const myDatepicker = new Datepicker(
+            document.getElementById("myDatepicker"),
+            options
+          );
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Initializing via JS-->

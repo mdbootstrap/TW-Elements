@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -27,7 +45,7 @@
       <br />
 
       <p
-        class="mt-0 mb-4 text-base font-light leading-relaxed text-neutral-800">
+        class="mb-4 mt-0 text-base font-light leading-relaxed text-neutral-800">
         I will be the leader of a company that ends up being worth billions of
         dollars, because I got the answers. I understand culture. I am the
         nucleus. I think that’s a responsibility that I have, to push
@@ -39,7 +57,7 @@
       <br />
       <br />
 
-      <p class="mt-6 mb-4 text-xl font-light leading-relaxed text-neutral-800">
+      <p class="mb-4 mt-6 text-xl font-light leading-relaxed text-neutral-800">
         I will be the leader of a company that ends up being worth billions of
         dollars, because I got the answers. I understand culture. I am the
         nucleus. I think that’s a responsibility that I have, to push
@@ -52,7 +70,7 @@
       <br />
 
       <p
-        class="mt-0 mb-0 text-base font-light leading-relaxed text-neutral-800">
+        class="mb-0 mt-0 text-base font-light leading-relaxed text-neutral-800">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
         erat a ante.
       </p>
@@ -64,7 +82,7 @@
       <br />
       <br />
 
-      <small class="mt-0 mb-4 font-normal leading-normal text-neutral-800">
+      <small class="mb-4 mt-0 font-normal leading-normal text-neutral-800">
         I will be the leader of a company that ends up being worth billions of
         dollars, because I got the answers. I understand culture. I am the
         nucleus. I think that’s a responsibility that I have, to push
@@ -103,15 +121,13 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

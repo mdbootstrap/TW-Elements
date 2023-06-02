@@ -12,16 +12,34 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
 
   <body class="dark:bg-neutral-800">
     <!-- Container for demo purpose -->
-    <div class="container my-24 mx-auto md:px-6">
+    <div class="container mx-auto my-24 md:px-6">
       <!-- Section: Design Block -->
       <section class="mb-32">
         <style>
@@ -46,7 +64,7 @@
               class="w-full align-middle transition duration-300 ease-linear" />
             <a href="#!">
               <div
-                class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
                 <div class="flex h-full items-end justify-start">
                   <h5 class="m-6 text-lg font-bold text-white">
                     Hollywood exhibition
@@ -55,7 +73,7 @@
               </div>
               <div>
                 <div
-                  class="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+                  class="mask absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
               </div>
             </a>
           </div>
@@ -69,14 +87,14 @@
               class="w-full align-middle transition duration-300 ease-linear" />
             <a href="#!">
               <div
-                class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
                 <div class="flex h-full items-end justify-start">
                   <h5 class="m-6 text-lg font-bold text-white">Genius Loci</h5>
                 </div>
               </div>
               <div>
                 <div
-                  class="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+                  class="mask absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
               </div>
             </a>
           </div>
@@ -90,14 +108,14 @@
               class="w-full align-middle transition duration-300 ease-linear" />
             <a href="#!">
               <div
-                class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
                 <div class="flex h-full items-end justify-start">
                   <h5 class="m-6 text-lg font-bold text-white">Big Apple</h5>
                 </div>
               </div>
               <div>
                 <div
-                  class="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+                  class="mask absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
               </div>
             </a>
           </div>
@@ -111,14 +129,14 @@
               class="w-full align-middle transition duration-300 ease-linear" />
             <a href="#!">
               <div
-                class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
                 <div class="flex h-full items-end justify-start">
                   <h5 class="m-6 text-lg font-bold text-white">Sun City</h5>
                 </div>
               </div>
               <div>
                 <div
-                  class="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+                  class="mask absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
               </div>
             </a>
           </div>
@@ -132,14 +150,14 @@
               class="w-full align-middle transition duration-300 ease-linear" />
             <a href="#!">
               <div
-                class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
                 <div class="flex h-full items-end justify-start">
                   <h5 class="m-6 text-lg font-bold text-white">Paris flavor</h5>
                 </div>
               </div>
               <div>
                 <div
-                  class="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+                  class="mask absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
               </div>
             </a>
           </div>
@@ -153,7 +171,7 @@
               class="w-full align-middle transition duration-300 ease-linear" />
             <a href="#!">
               <div
-                class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.3)] bg-fixed">
                 <div class="flex h-full items-end justify-start">
                   <h5 class="m-6 text-lg font-bold text-white">
                     Sky is the limit
@@ -162,7 +180,7 @@
               </div>
               <div>
                 <div
-                  class="mask absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+                  class="mask absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,99.2%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
               </div>
             </a>
           </div>
@@ -173,15 +191,13 @@
     <!-- Container for demo purpose -->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

@@ -9,12 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import {
-  element,
-  getjQuery,
-  typeCheckConfig,
-  onDOMContentLoaded,
-} from "../util/index";
+import { element, typeCheckConfig } from "../util/index";
 import Data from "../dom/data";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
@@ -444,41 +439,5 @@ class Ripple {
     );
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-SELECTOR_COMPONENT.forEach((selector) => {
-  EventHandler.one(
-    document,
-    "mousedown",
-    selector,
-    Ripple.autoInitial(new Ripple())
-  );
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .ripple to jQuery only if jQuery is present
- */
-
-onDOMContentLoaded(() => {
-  const $ = getjQuery();
-
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Ripple.jQueryInterface;
-    $.fn[NAME].Constructor = Ripple;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Ripple.jQueryInterface;
-    };
-  }
-});
 
 export default Ripple;

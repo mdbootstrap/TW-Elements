@@ -32,6 +32,10 @@ const enableDismissTrigger = (component, method = "hide") => {
         getElementFromSelector(this) ||
         this.closest(`.${name}`) ||
         this.closest(`[data-te-${name}-init]`);
+
+      if (!target) {
+        return;
+      }
       const instance = component.getOrCreateInstance(target);
 
       // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method

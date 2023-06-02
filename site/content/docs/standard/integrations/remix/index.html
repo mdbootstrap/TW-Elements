@@ -1,0 +1,345 @@
+---
+title: "Remix integration"
+date: 2021-04-29T16:00:58+02:00
+draft: false
+main_title: "Tailwind Elements Remix integration"
+subheading: ""
+seo_title: "Tailwind Elements integration with Remix - Free Examples & Tutorial"
+description: "This article shows you how to integrate Remix application with Tailwind Elements. Free download, open source license."
+image: "https://tecdn.b-cdn.net/img/docs/integrations/remix.webp"
+url: "docs/standard/integrations/remix-integration/"
+menu:
+  integrations:
+    name: "Remix"
+---
+
+<!-- Section: Basic example -->
+
+<section id="section-prerequisites">
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="prerequisites"
+    data-te-spy-item>
+    Prerequisites
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    Before starting the project make sure to install the following utilities:
+  </p>
+
+  <ul class="ml-4 list-disc">
+    <li>
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://nodejs.org/en/"
+        target="_blank"
+        >Node LTS</a
+      >
+      (14.x.x or higher recommended)
+    </li>
+    <li>
+      Code editor. We recommend
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://code.visualstudio.com/"
+        target="_blank"
+        >VSCode</a
+      >
+    </li>
+  </ul>
+</section>
+
+<hr class="my-5 dark:border-neutral-600" />
+
+<!-- Section: Creating Remix app-->
+<section id="section-remix-app">
+  <!-- Section title-->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="remix-application"
+    data-te-spy-item>
+    Creating a new Remix application
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    Let's create a fresh Remix application so that we can go through all the
+    steps together.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Create new project</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npx create-remix@latest my-project
+        cd my-project
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+
+<hr class="mb-5 dark:border-neutral-600" />
+
+<!-- Creating and configuring Tailwind & Tailwind Elements-->
+<section id="section-tailwind">
+  <!-- Section title-->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="tailwind"
+    data-te-spy-item>
+    Installing and configuring Tailwind CSS and Tailwind Elements
+  </h2>
+
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-5">
+    Enable built-in Tailwind CSS support in Remix. Set the
+    <code>unstable_tailwind</code> feature flag in your
+    <code>remix.config.js</code> file. Eventually this will become stable and
+    won't be necessary.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "remix.config.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        future: {
+          unstable_tailwind: true,
+        },
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="mt-5 text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Install Tailwind CSS</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npm install -D tailwindcss postcss autoprefixer
+        npx tailwindcss init -p
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    Add the paths to all of your template files in your
+    <code>tailwind.config.cjs</code> file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        /** @type {import('tailwindcss').Config} */
+        module.exports = {
+        content: [
+            "./app/**/*.{js,jsx,ts,tsx}"
+            "./node_modules/tw-elements/dist/js/**/*.js"
+        ],
+        theme: {
+            extend: {},
+        },
+        darkMode: "class",
+        plugins: [require("tw-elements/dist/plugin.cjs")]
+        }
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    Create a <code>./app/tailwind.css</code> file and add the
+    <code>@tailwind</code> directives for each of Tailwind’s layers.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "tailwind.css" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="CSS" >}}
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 4</h2>
+  <p class="mb-5">
+    Import the newly-created <code>./app/tailwind.css</code> file in your
+    <code>./app/root.jsx</code> file.
+  </p>
+  <p class="mb-5">Also attach the <code>Roboto</code> font.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        import stylesheet from "~/tailwind.css";
+
+        export const links: LinksFunction = () => [
+          { rel: "stylesheet", href: stylesheet },
+          { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" }
+        ];
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">Install Tailwind Elements.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npm install tw-elements
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">
+    Create standalone file with name of your component (for example
+    <code>MyDatepicker.client.jsx</code> (it shows framework that should not
+    render this component in a server-side mode) in
+    <code>app/components</code> directory) and import TE components which are
+    you intend to use. Also include necessary function <code>initTE</code>.
+    Initialize <code>initTE</code> in a lifecycle method.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "MyDatepicker.client.jsx" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+        import { useEffect } from "react";
+        import { Datepicker, Input, initTE } from "tw-elements";
+        
+        const MyDatepicker = () => {
+          useEffect(() => {
+            initTE({ Datepicker, Input });
+          }, []);
+        
+          return (
+    <div
+      class="relative mb-3"
+      data-te-datepicker-init
+      data-te-input-wrapper-init>
+      <input
+        type="text"
+        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        htmlFor="floatingInput"
+        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
+        Select a date
+      </label>
+    </div>
+    ); }; export default MyDatepicker;
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">Install <code>remix-utils</code>.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+        npm i remix-utils
+      {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 8</h2>
+  <p class="mb-5">
+    Import (for example in <code>index.js</code>) newly created component
+    wrapping it into <code>ClientOnly</code> element.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="JavaScript" >}}
+      import { ClientOnly } from "remix-utils";
+      import MyDatepicker from "./components/MyDatepicker.client";
+
+      ...
+      export default function App() {
+        return (
+          ...
+    <ClientOnly fallback="{null}">{() => <MyDatepicker />}</ClientOnly>
+    ); }
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Creating and configuring Tailwind & Tailwind Elements-->
+
+<!--Initializing via JS-->
+<section id="section-initializing-js">
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="initializing-js"
+    data-te-spy-item>
+    Initializing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have auto init which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">
+    Import components which are you intend to use and iniitialize them in
+    lifecycle hook.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "MyDatepicker.client.jsx" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    import { useEffect } from "react";
+    import { Datepicker, Input } from "tw-elements";
+    
+    const MyDatepicker = () => {
+      useEffect(() => {
+        const myInput = new Input(document.getElementById("myDatepicker"));
+        const options = {
+          format: "dd-mm-yyyy",
+        };
+        const myDatepicker = new Datepicker(
+          document.getElementById("myDatepicker"),
+          options
+        );
+      }, []);
+    
+      return (
+    <div className="relative mb-3" id="myDatepicker">
+      <input
+        type="text"
+        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        placeholder="Select a date" />
+      <label
+        htmlFor="floatingInput"
+        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
+        Select a date
+      </label>
+    </div>
+    ); }; export default MyDatepicker;
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!--/Initializing via JS-->

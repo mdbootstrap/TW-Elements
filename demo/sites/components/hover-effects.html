@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -36,8 +54,7 @@
           alt="Louvre" />
         <a href="#!">
           <div
-            class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"
-            style="background-color: rgba(251, 251, 251, 0.2)"></div>
+            class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
         </a>
       </div>
 
@@ -53,7 +70,7 @@
               class="max-w-xs"
               alt="Louvre" />
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-indigo-700 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-50"></div>
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-indigo-700 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-50"></div>
           </div>
         </div>
         <div class="mb-4">
@@ -63,7 +80,7 @@
               class="max-w-xs"
               alt="Louvre" />
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-purple-700 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-20"></div>
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-purple-700 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-20"></div>
           </div>
         </div>
         <div class="mb-4">
@@ -73,7 +90,7 @@
               class="max-w-xs"
               alt="Louvre" />
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-green-700 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-70"></div>
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-green-700 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-70"></div>
           </div>
         </div>
       </div>
@@ -85,7 +102,7 @@
               class="max-w-xs"
               alt="Louvre" />
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-red-700 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-30"></div>
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-red-700 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-30"></div>
           </div>
         </div>
         <div class="mb-4 md:mb-0">
@@ -95,7 +112,7 @@
               class="max-w-xs"
               alt="Louvre" />
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-white bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-40"></div>
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-white bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-40"></div>
           </div>
         </div>
         <div class="mb-4 md:mb-0">
@@ -105,7 +122,7 @@
               class="max-w-xs"
               alt="Louvre" />
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-primary-400 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-60"></div>
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-primary-400 bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-60"></div>
           </div>
         </div>
       </div>
@@ -120,7 +137,7 @@
           class="max-w-xs"
           alt="Louvre" />
         <div
-          class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 transition duration-300 ease-in-out hover:opacity-70"></div>
+          class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-0 transition duration-300 ease-in-out hover:opacity-70"></div>
       </div>
 
       <br />
@@ -150,15 +167,13 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

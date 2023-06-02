@@ -9,12 +9,11 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import { defineJQueryPlugin, reflow, typeCheckConfig } from "../util/index";
+import { reflow, typeCheckConfig } from "../util/index";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import BaseComponent from "../base-component";
 import { enableDismissTrigger } from "../util/component-functions";
-import SelectorEngine from "../dom/selector-engine";
 
 /*
 ------------------------------------------------------------------------
@@ -38,8 +37,6 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const HIDE_DATA_ATTRIBUTE = "data-te-toast-hide";
 const SHOW_DATA_ATTRIBUTE = "data-te-toast-show";
 const SHOWING_DATA_ATTRIBUTE = "data-te-toast-showing";
-
-const SELECTOR_TOAST = "[data-te-toast-init]";
 
 const DefaultType = {
   animation: "boolean",
@@ -81,6 +78,8 @@ class Toast extends BaseComponent {
     this._hasMouseInteraction = false;
     this._hasKeyboardInteraction = false;
     this._setListeners();
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -169,6 +168,14 @@ class Toast extends BaseComponent {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+
+    enableDismissTrigger(Toast);
+    this._didInit = true;
+  }
 
   _getConfig(config) {
     config = {
@@ -273,29 +280,5 @@ class Toast extends BaseComponent {
     });
   }
 }
-
-enableDismissTrigger(Toast);
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-SelectorEngine.find(SELECTOR_TOAST).forEach((el) => {
-  let instance = Toast.getInstance(el);
-  if (!instance) {
-    instance = new Toast(el);
-  }
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Toast to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Toast);
 
 export default Toast;

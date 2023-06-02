@@ -12,7 +12,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 import * as Popper from "@popperjs/core";
 
 import {
-  defineJQueryPlugin,
   findShadowRoot,
   getElement,
   getUID,
@@ -88,7 +87,7 @@ const Default = {
   sanitize: true,
   sanitizeFn: null,
   allowList: DefaultAllowlist,
-  popperConfig: null,
+  popperConfig: { hide: true },
 };
 
 const Event = {
@@ -856,14 +855,5 @@ class Tooltip extends BaseComponent {
     });
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Tooltip to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Tooltip);
 
 export default Tooltip;

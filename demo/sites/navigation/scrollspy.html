@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -29,7 +47,7 @@
           data-te-offset="200"
           class="relative h-48 overflow-auto">
           <section id="example-1">
-            <h3 class="pt-5 pb-3 text-xl font-semibold">Section 1</h3>
+            <h3 class="pb-3 pt-5 text-xl font-semibold">Section 1</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
               earum natus vel minima quod error maxime, molestias ut. Fuga
@@ -50,7 +68,7 @@
             </p>
           </section>
           <section id="example-2">
-            <h3 class="pt-5 pb-3 text-xl font-semibold">Section 2</h3>
+            <h3 class="pb-3 pt-5 text-xl font-semibold">Section 2</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
               earum natus vel minima quod error maxime, molestias ut. Fuga
@@ -65,7 +83,7 @@
             </p>
           </section>
           <section id="example-3">
-            <h3 class="pt-5 pb-3 text-xl font-semibold">Section 3</h3>
+            <h3 class="pb-3 pt-5 text-xl font-semibold">Section 3</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
               earum natus vel minima quod error maxime, molestias ut. Fuga
@@ -79,7 +97,7 @@
               reiciendis quaerat accusamus numquam.
             </p>
             <section id="example-sub-A">
-              <h3 class="pt-5 pb-3 text-xl font-semibold">Subsection A</h3>
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection A</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
                 earum natus vel minima quod error maxime, molestias ut. Fuga
@@ -94,7 +112,7 @@
               </p>
             </section>
             <section id="example-sub-B">
-              <h3 class="pt-5 pb-3 text-xl font-semibold">Subsection B</h3>
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection B</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
                 earum natus vel minima quod error maxime, molestias ut. Fuga
@@ -110,7 +128,7 @@
             </section>
           </section>
           <section id="example-4">
-            <h3 class="pt-5 pb-3 text-xl font-semibold">Section 4</h3>
+            <h3 class="pb-3 pt-5 text-xl font-semibold">Section 4</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
               earum natus vel minima quod error maxime, molestias ut. Fuga
@@ -135,7 +153,7 @@
               <a
                 data-te-nav-link-ref
                 data-te-nav-link-active
-                class="bg-transparent px-[5px] text-[#4b5563] shadow-none dark:text-neutral-200"
+                class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
                 href="#example-1"
                 >Section 1</a
               >
@@ -143,7 +161,7 @@
             <li class="py-1">
               <a
                 data-te-nav-link-ref
-                class="bg-transparent px-[5px] text-[#4b5563] shadow-none dark:text-neutral-200"
+                class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
                 href="#example-2"
                 >Section 2</a
               >
@@ -151,7 +169,7 @@
             <li class="py-1">
               <a
                 data-te-nav-link-ref
-                class="bg-transparent px-[5px] text-[#4b5563] shadow-none dark:text-neutral-200"
+                class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
                 href="#example-3"
                 >Section 3</a
               >
@@ -159,7 +177,7 @@
                 <li class="py-1">
                   <a
                     data-te-nav-link-ref
-                    class="bg-transparent px-[5px] text-[#4b5563] shadow-none dark:text-neutral-200"
+                    class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
                     href="#example-sub-A"
                     >Subsection A</a
                   >
@@ -167,7 +185,7 @@
                 <li>
                   <a
                     data-te-nav-link-ref
-                    class="bg-transparent px-[5px] text-[#4b5563] shadow-none dark:text-neutral-200"
+                    class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
                     href="#example-sub-B"
                     >Subsection B</a
                   >
@@ -177,7 +195,7 @@
             <li class="py-1">
               <a
                 data-te-nav-link-ref
-                class="bg-transparent px-[5px] text-[#4b5563] shadow-none dark:text-neutral-200"
+                class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
                 href="#example-4"
                 >Section 4</a
               >
@@ -190,15 +208,13 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

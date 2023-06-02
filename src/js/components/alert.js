@@ -9,12 +9,11 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import { defineJQueryPlugin, typeCheckConfig, isVisible } from "../util/index";
+import { typeCheckConfig, isVisible } from "../util/index";
 import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 import Manipulator from "../dom/manipulator";
 import { enableDismissTrigger } from "../util/component-functions";
-import SelectorEngine from "../dom/selector-engine";
 
 /*
 ------------------------------------------------------------------------
@@ -30,7 +29,6 @@ const EVENT_CLOSE = `close${EVENT_KEY}`;
 const EVENT_CLOSED = `closed${EVENT_KEY}`;
 
 const SHOW_DATA_ATTRIBUTE = "data-te-alert-show";
-const SELECTOR_ALERT = "[data-te-alert-init]";
 
 const DefaultType = {
   animation: "boolean",
@@ -68,6 +66,8 @@ class Alert extends BaseComponent {
     this._element = element;
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
+    this._didInit = false;
+    this._init();
   }
 
   // Getters
@@ -163,6 +163,14 @@ class Alert extends BaseComponent {
   }
 
   // Private
+  _init() {
+    if (this._didInit) {
+      return;
+    }
+    enableDismissTrigger(Alert, "close");
+    this._didInit = true;
+  }
+
   _getConfig(config) {
     config = {
       ...Default,
@@ -223,36 +231,5 @@ class Alert extends BaseComponent {
     });
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-SelectorEngine.find(SELECTOR_ALERT).forEach((alert) => {
-  let instance = Alert.getInstance(alert);
-  if (!instance) {
-    instance = new Alert(alert);
-  }
-  return instance;
-});
-
-/*
-------------------------------------------------------------------------
-Data Api implementation
-------------------------------------------------------------------------
-*/
-
-enableDismissTrigger(Alert, "close");
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .Alert to jQuery only if jQuery is present
- */
-
-defineJQueryPlugin(Alert);
 
 export default Alert;

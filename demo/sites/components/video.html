@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -31,7 +49,7 @@
         class="embed-responsive embed-responsive-21by9 relative w-full overflow-hidden"
         style="padding-top: 42.857143%">
         <iframe
-          class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 h-full w-full"
+          class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
           src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com"
           allowfullscreen=""
           data-gtm-yt-inspected-2340190_699="true"
@@ -48,7 +66,7 @@
         class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
         style="padding-top: 56.25%">
         <iframe
-          class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 h-full w-full"
+          class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
           src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com"
           allowfullscreen=""
           data-gtm-yt-inspected-2340190_699="true"
@@ -65,7 +83,7 @@
         class="embed-responsive embed-responsive-4by3 relative w-full overflow-hidden"
         style="padding-top: 75%">
         <iframe
-          class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 h-full w-full"
+          class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
           src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com"
           allowfullscreen=""
           data-gtm-yt-inspected-2340190_699="true"
@@ -82,7 +100,7 @@
         class="embed-responsive embed-responsive-1by1 relative w-full overflow-hidden"
         style="padding-top: 100%">
         <iframe
-          class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 h-full w-full"
+          class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
           src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com"
           allowfullscreen=""
           data-gtm-yt-inspected-2340190_699="true"
@@ -98,7 +116,7 @@
           class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
           style="padding-top: 56.25%">
           <iframe
-            class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 h-full w-full"
+            class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
             src="https://www.youtube.com/embed/v64KOxKVLVg"
             allowfullscreen></iframe>
         </div>
@@ -107,7 +125,7 @@
           class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden"
           style="padding-top: 56.25%">
           <iframe
-            class="embed-responsive-item absolute top-0 right-0 bottom-0 left-0 h-full w-full"
+            class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
             src="https://player.vimeo.com/video/137857207"
             allowfullscreen></iframe>
         </div>
@@ -123,7 +141,7 @@
         data-te-carousel-init
         data-te-carousel-slide>
         <div
-          class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+          class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
           data-te-carousel-indicators>
           <button
             type="button"
@@ -159,7 +177,7 @@
                 type="video/mp4" />
             </video>
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
               style="background-color: rgba(50, 123, 233, 0.1)">
               <div
                 class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
@@ -177,7 +195,7 @@
                 type="video/mp4" />
             </video>
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
               style="background-color: rgba(135, 50, 233, 0.1)">
               <div
                 class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
@@ -195,7 +213,7 @@
                 type="video/mp4" />
             </video>
             <div
-              class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"
+              class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
               style="background-color: rgba(50, 233, 90, 0.1)">
               <div
                 class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
@@ -205,7 +223,7 @@
           </div>
         </div>
         <button
-          class="absolute top-0 bottom-0 left-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+          class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
           type="button"
           data-te-target="#carouselExampleCaptions"
           data-te-slide="prev">
@@ -225,7 +243,7 @@
           >
         </button>
         <button
-          class="absolute top-0 bottom-0 right-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+          class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
           type="button"
           data-te-target="#carouselExampleCaptions"
           data-te-slide="next">
@@ -274,15 +292,13 @@
     </div>
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript">
       const clip = document.querySelectorAll(".clip");

@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -40,7 +58,7 @@
 
       <div class="relative" data-te-dropdown-ref>
         <button
-          class="flex items-center whitespace-nowrap rounded bg-purple-600 px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="flex items-center whitespace-nowrap rounded bg-purple-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton2"
           data-te-dropdown-toggle-ref
@@ -67,16 +85,16 @@
           aria-labelledby="dropdownMenuButton2"
           data-te-dropdown-menu-ref>
           <h6
-            class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-semibold text-neutral-400">
+            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-semibold text-neutral-400">
             Dropdown header
           </h6>
           <span
-            class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-300"
+            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-300"
             >Dropdown item text</span
           >
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-300 hover:bg-neutral-700 hover:text-white focus:bg-neutral-700 focus:text-white active:bg-primary disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-300 hover:bg-neutral-700 hover:text-white focus:bg-neutral-700 focus:text-white active:bg-primary disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -84,7 +102,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-300 hover:bg-neutral-700 hover:text-white focus:bg-neutral-700 focus:text-white active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-300 hover:bg-neutral-700 hover:text-white focus:bg-neutral-700 focus:text-white active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -92,7 +110,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-300 hover:bg-neutral-700 hover:text-white focus:bg-neutral-700 focus:text-white active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-300 hover:bg-neutral-700 hover:text-white focus:bg-neutral-700 focus:text-white active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
               href="#"
               data-te-dropdown-item-ref
               >Something else here</a
@@ -104,7 +122,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-300 hover:bg-neutral-700 hover:text-white focus:bg-neutral-700 focus:text-white active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-300 hover:bg-neutral-700 hover:text-white focus:bg-neutral-700 focus:text-white active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400"
               href="#"
               ddata-te-dropdown-item-ref
               >Separated link</a
@@ -123,7 +141,7 @@
 
       <div class="relative" data-te-dropdown-ref>
         <button
-          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton1"
           data-te-dropdown-toggle-ref
@@ -150,7 +168,7 @@
           data-te-dropdown-menu-ref>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -158,7 +176,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -166,7 +184,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Something else here</a
@@ -185,7 +203,7 @@
 
       <div class="relative" data-te-dropdown-position="dropup">
         <button
-          class="mt-1 flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="mt-1 flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton1u"
           data-te-dropdown-toggle-ref
@@ -212,7 +230,7 @@
           data-te-dropdown-menu-ref>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -220,7 +238,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -228,7 +246,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Something else here</a
@@ -247,7 +265,7 @@
 
       <div class="relative" data-te-dropdown-position="dropend">
         <button
-          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton1e"
           data-te-dropdown-toggle-ref
@@ -274,7 +292,7 @@
           data-te-dropdown-menu-ref>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -282,7 +300,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -290,7 +308,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Something else here</a
@@ -309,7 +327,7 @@
 
       <div class="relative" data-te-dropdown-position="dropstart">
         <button
-          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton1s"
           data-te-dropdown-toggle-ref
@@ -336,7 +354,7 @@
           data-te-dropdown-menu-ref>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -344,7 +362,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -352,7 +370,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Something else here</a
@@ -371,7 +389,7 @@
 
       <div class="relative" data-te-dropdown-ref>
         <button
-          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton1d"
           data-te-dropdown-toggle-ref
@@ -398,7 +416,7 @@
           data-te-dropdown-menu-ref>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -406,7 +424,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -414,7 +432,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Something else here</a
@@ -424,7 +442,7 @@
             class="my-2 h-0 border border-t-0 border-solid border-neutral-700 opacity-25 dark:border-neutral-200" />
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Separated link</a
@@ -443,7 +461,7 @@
 
       <div class="relative" data-te-dropdown-ref>
         <button
-          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton1ds"
           data-te-dropdown-toggle-ref
@@ -470,7 +488,7 @@
           data-te-dropdown-menu-ref>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -478,7 +496,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -486,7 +504,7 @@
           </li>
           <li>
             <a
-              class="pointer-events-none block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-400 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-500 dark:hover:bg-white/30"
+              class="pointer-events-none block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-400 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-500 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Something else here</a
@@ -505,7 +523,7 @@
 
       <div class="relative" data-te-dropdown-ref>
         <button
-          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton1h"
           data-te-dropdown-toggle-ref
@@ -531,12 +549,12 @@
           aria-labelledby="dropdownMenuButton1h"
           data-te-dropdown-menu-ref>
           <h6
-            class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-semibold text-neutral-500 dark:text-neutral-200">
+            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-semibold text-neutral-500 dark:text-neutral-200">
             Dropdown header
           </h6>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -544,7 +562,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -563,7 +581,7 @@
 
       <div class="relative" data-te-dropdown-ref>
         <button
-          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+          class="flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
           type="button"
           id="dropdownMenuButton1tx"
           data-te-dropdown-toggle-ref
@@ -589,12 +607,12 @@
           aria-labelledby="dropdownMenuButton1tx"
           data-te-dropdown-menu-ref>
           <span
-            class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 dark:text-neutral-200"
+            class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 dark:text-neutral-200"
             >Dropdown item text</span
           >
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Action</a
@@ -602,7 +620,7 @@
           </li>
           <li>
             <a
-              class="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
+              class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
               href="#"
               data-te-dropdown-item-ref
               >Another action</a
@@ -622,15 +640,13 @@
       src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js"
       charset="utf-8"></script>
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>

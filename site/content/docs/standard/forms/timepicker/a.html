@@ -3,11 +3,52 @@
 
 <!--Section: Docs content-->
 <section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the Tailwind Elements <code>ES</code> format, you must first import
+      the component and then initialize it with the <code>initTE</code> method.
+      If you are going to use the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Timepicker, Input, initTE } from "tw-elements";
+        initTE({ Timepicker, Input });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
   <!--Section: Usage-->
   <section id="api-section-usage">
     <!--Title-->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       id="basic">
       Usage
     </h2>
@@ -15,7 +56,7 @@
     <p class="mb-5">
       <strong>Timepicker</strong> allows to select a time and display it on the
       selected output. It can be initialized automatically by adding
-      <code>data-te-input-wrapper-init</code> attribute, or manually with JS.
+      <code>data-te-timepicker-init</code> attribute, or manually with JS.
     </p>
 
     <hr class="mb-5 dark:border-gray-600" />
@@ -23,10 +64,13 @@
     <h4 class="my-3 text-lg font-bold">Via data attributes</h4>
 
     <p>
-      Add <code>data-te-input-wrapper-init</code> and
-      <code>data-te-input-wrapper-init</code> attributes to selected wrapper
-      with input. It will automatically initialize timepicker using this
-      element.
+      Elements with the
+      <code class="text-red-500 dark:text-red-300"
+        >data-te-input-wrapper-init</code
+      >
+      and <code>data-te-timepicker-init</code> attribute will be automatically
+      initialized - you can set all available options with data attributes. For
+      ES format, you must first import and call the <code>initTE</code> method.
     </p>
 
     <!--Section: Code-->
@@ -41,11 +85,11 @@
           data-te-input-wrapper-init>
           <input
             type="text"
-            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
             id="form1" />
           <label
             for="form1"
-            class="pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[1.15rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-neutral-200"
             >Select a time</label
           >
         </div>
@@ -57,15 +101,26 @@
 
     <h4 class="mb-5 text-lg font-bold">Via JavaScript</h4>
 
-    <p>Call Timepicker manually with:</p>
+    <p>
+      You can access an instance from your Javascript code, by using the
+      <code class="text-red-500 dark:text-red-300">getInstance</code> static
+      method of the Timepicker class - it allows making use of all the public
+      methods listed in the
+      <a class="text-blue-600" href="#api-section-methods">Methods</a> section.
+    </p>
 
     <!--Section: Code-->
     {{< twsnippet/no-demo id="api-example2" >}}
     <!-- prettier-ignore -->
     <section class="!visible hidden" data-te-collapse-item id="api-example2">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JS" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        const myTimepicker = new Timepicker(document.getElementById('wrapper-id'), options);
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
         const myTimepicker = new te.Timepicker(document.getElementById('wrapper-id'), options);
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -80,7 +135,7 @@
   <section id="api-section-options">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
       Options
     </h2>
 
@@ -573,7 +628,7 @@
                   </td>
                 </tr>
                 <tr
-                  class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                  class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
                     <code>iconSVG</code>
@@ -588,10 +643,7 @@
                       &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;
                       fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot;
                       stroke-width=&quot;1.5&quot;
-                      stroke=&quot;currentColor&quot; class=&quot;h-5 w-5
-                      hover:text-[#3b71ca] focus:text-[#3b71ca]
-                      dark:hover:text-[#3b71ca]
-                      dark:focus:text-[#3b71ca]&quot;&gt; &lt;path
+                      stroke=&quot;currentColor&quot;&gt; &lt;path
                       stroke-linecap=&quot;round&quot;
                       stroke-linejoin=&quot;round&quot; d=&quot;M12 6v6h4.5m4.5
                       0a9 9 0 11-18 0 9 9 0 0118 0z&quot; /&gt; &lt;/svg&gt;
@@ -652,7 +704,7 @@
   <section id="api-section-classes">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
       Classes
     </h2>
 
@@ -1404,12 +1456,12 @@
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                     h-4 w-4 ml-auto absolute outline-none border-none
-                    bg-transparent right-2.5 top-1/2 -translate-x-1/2
+                    bg-transparent right-1.5 top-1/2 -translate-x-1/2
                     -translate-y-1/2 transition-all duration-300
                     ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer
-                    hover:text-primary focus:text-primary
-                    dark:hover:text-primary-400 dark:focus:text-primary-400
-                    dark:text-neutral-200
+                    hover:text-[#3b71ca] focus:text-[#3b71ca]
+                    dark:hover:text-[#3b71ca] dark:focus:text-[#3b71ca]
+                    dark:text-white
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Sets styles of Timepicker toggle button.
@@ -1430,7 +1482,7 @@
   <section id="api-section-methods">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
       Methods
     </h2>
 
@@ -1527,9 +1579,15 @@
     {{< twsnippet/no-demo id="api-example3" >}}
     <section class="!visible hidden" data-te-collapse-item id="api-example3">
       <div class="pt-4">
-        {{< twsnippet/wrapper "JavaScript" >}}
+        {{< twsnippet/wrapper "javascript,umd" >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
+        const myTimepickerEl = document.getElementById('myTimepicker');
+        const myTimepicker = new Timepicker(myTimepickerEl);
+        myTimepicker.dispose();
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
         const myTimepickerEl = document.getElementById('myTimepicker');
         const myTimepicker = new te.Timepicker(myTimepickerEl);
         myTimepicker.dispose();
@@ -1547,7 +1605,7 @@
   <section id="api-section-events">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200">
       Events
     </h2>
 

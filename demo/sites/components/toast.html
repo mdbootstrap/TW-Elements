@@ -12,9 +12,27 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
       rel="stylesheet" />
     <!-- Tailwind -->
-    <link rel="stylesheet" href="../../css/tailwind.min.css" />
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
     <!-- PRISM -->
     <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
     <!-- Custom styles -->
     <style></style>
   </head>
@@ -36,7 +54,7 @@
         data-te-toast-init
         data-te-toast-show>
         <div
-          class="flex items-center justify-between rounded-t-lg border-b border-neutral-200 bg-white bg-clip-padding py-2 px-3">
+          class="flex items-center justify-between rounded-t-lg border-b border-neutral-200 bg-white bg-clip-padding px-3 py-2">
           <p class="font-bold text-neutral-500">MDBootstrap</p>
           <div class="flex items-center">
             <p class="text-xs text-neutral-600">11 mins ago</p>
@@ -60,7 +78,7 @@
           </div>
         </div>
         <div
-          class="break-words rounded-b-lg bg-white py-2.5 px-3 text-neutral-700">
+          class="break-words rounded-b-lg bg-white px-3 py-2.5 text-neutral-700">
           Static Example
         </div>
       </div>
@@ -70,7 +88,7 @@
       <br />
 
       <button
-        class="mx-auto mb-5 flex items-center whitespace-nowrap rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
+        class="mx-auto mb-5 flex items-center whitespace-nowrap rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:text-white active:shadow-lg motion-reduce:transition-none"
         id="toast-example-trigger">
         Open toast - 2 sec delay
       </button>
@@ -84,7 +102,7 @@
         data-te-delay="2000"
         data-te-toast-init>
         <div
-          class="flex items-center justify-between rounded-t-lg border-b border-neutral-200 bg-white bg-clip-padding py-2 px-3">
+          class="flex items-center justify-between rounded-t-lg border-b border-neutral-200 bg-white bg-clip-padding px-3 py-2">
           <p class="font-bold text-neutral-500">MDBootstrap</p>
           <div class="flex items-center">
             <p class="text-xs text-neutral-600">11 mins ago</p>
@@ -108,7 +126,7 @@
           </div>
         </div>
         <div
-          class="break-words rounded-b-lg bg-white py-2.5 px-3 text-neutral-700">
+          class="break-words rounded-b-lg bg-white px-3 py-2.5 text-neutral-700">
           Toast Example
         </div>
       </div>
@@ -120,25 +138,25 @@
     <!-- End your project here-->
 
     <!-- Theme switcher -->
-    <script type="text/javascript" src="../../js/theme.min.js"></script>
-    <!-- MDB -->
-    <script type="text/javascript" src="../../js/index.min.js"></script>
+    <script type="module" src="../../../src/js/theme.js"></script>
     <!-- PRISM -->
-    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
-    <script
-      type="text/javascript"
-      src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript">
-      const toastInstance = te.Toast.getInstance(
-        document.getElementById("toast-example")
-      );
-      document
-        .getElementById("toast-example-trigger")
-        .addEventListener("click", () => {
-          toastInstance.show();
-        });
+    <script type="module">
+      import * as te from "../../../src/js/index.umd.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const toastInstance = te.Toast.getInstance(
+          document.getElementById("toast-example")
+        );
+        document
+          .getElementById("toast-example-trigger")
+          .addEventListener("click", () => {
+            toastInstance.show();
+          });
+      });
     </script>
   </body>
 </html>

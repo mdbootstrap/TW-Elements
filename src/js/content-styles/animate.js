@@ -9,7 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import { getjQuery, typeCheckConfig, onDOMContentLoaded } from "../util/index";
+import { typeCheckConfig } from "../util/index";
 import Data from "../dom/data";
 import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";
@@ -23,7 +23,6 @@ Constants
 
 const NAME = "animation";
 const DATA_KEY = "te.animation";
-const SELECTOR_EXPAND = "[data-te-animation-init]";
 
 const DefaultType = {
   animation: "string",
@@ -77,6 +76,7 @@ class Animate {
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
+      this._init();
     }
   }
 
@@ -350,36 +350,5 @@ class Animate {
     );
   }
 }
-
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation - auto initialization
- * ------------------------------------------------------------------------
- */
-
-SelectorEngine.find(SELECTOR_EXPAND).forEach((el) => {
-  Animate.autoInit(new Animate(el));
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .animate to jQuery only if jQuery is present
- */
-
-onDOMContentLoaded(() => {
-  const $ = getjQuery();
-
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = Animate.jQueryInterface;
-    $.fn[NAME].Constructor = Animate;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Animate.jQueryInterface;
-    };
-  }
-});
 
 export default Animate;

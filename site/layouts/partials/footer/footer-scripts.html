@@ -1,12 +1,13 @@
 <!-- TE -->
-<script type="text/javascript" src="/js/index.min.js?v=1.0.0-beta1"></script>
+<script type="module" src="/js/tw-elements.umd.min.js?v=1.0.0-beta2"></script>
 <!-- THEME SWITCHER -->
 <script type="text/javascript" src="/js/theme.js"></script>
 <!-- PRISM -->
 <script type="text/javascript" src="/js/new-prism.js"></script>
 <link rel="stylesheet" href="/css/new-prism.css" />
+<script type="module" src="/js/perfect-scrollbar.min.js"></script>
 
-<script>
+<script type="module">
   class Search {
     constructor(input, icon, list, form, dropdown, count, jsonFile) {
       this.input = input;
@@ -55,7 +56,10 @@
         .then((response) => {
           this.data = [...response];
 
-          //new mdb.PerfectScrollbar(this.list);
+          new PerfectScrollbar(this.list, {
+            suppressScrollX: true,
+            handlers: ["click-rail", "drag-thumb", "wheel", "touch"],
+          });
 
           this.bindEvents();
         });
@@ -74,13 +78,14 @@
 
       this.input.addEventListener("blur", () => {
         this.icon.classList.remove("font-bold");
+        this.removeDataFocus();
       });
 
       this.input.addEventListener("keydown", (e) => {
         if (e.keyCode === this.keycodes.ARROW_DOWN && this.options.length > 0) {
           e.preventDefault();
 
-          this.options[0].focus();
+          this.options[1].focus();
         }
       });
 
@@ -100,6 +105,13 @@
           this.input.focus();
         } else if (e.keyCode === this.keycodes.ESCAPE && this.visibleDropdown) {
           this.toggleDropdown(false);
+        } else if (
+          e.keyCode === this.keycodes.ENTER &&
+          this.visibleDropdown &&
+          this.dropdown.querySelector("[data-te-first-search-focused]")
+        ) {
+          e.preventDefault();
+          window.location.href = this.results[0]?.href;
         }
       });
     }
@@ -130,12 +142,22 @@
       const display = value ? "block" : "none";
 
       this.dropdown.style.display = display;
+
+      setTimeout(() => {
+        this.list.dispatchEvent(new Event("scroll"));
+      }, 100);
     }
 
     renderResults(markup) {
       this.list.innerHTML = markup;
 
       this.count.innerHTML = this.results.length;
+    }
+
+    removeDataFocus() {
+      this.dropdown
+        .querySelector("[data-te-first-search-focused]")
+        ?.removeAttribute("data-te-first-search-focused");
     }
 
     getResultsMarkup() {
@@ -148,9 +170,9 @@
 
           return `
       <li>
-        <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-neutral-100 focus:bg-neutral-100 outline-none dark:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600" href="${
-          result.href
-        }">
+        <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-neutral-100 focus:bg-neutral-100 outline-none dark:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600 data-[te-first-search-focused]:bg-neutral-100 dark:data-[te-first-search-focused]:bg-neutral-600" ${
+          !i ? "data-te-first-search-focused" : ""
+        } href="${result.href}">
           <p class="uppercase mb-0">${this.highlightSearch(
             result.name,
             this.searchValue
@@ -298,10 +320,7 @@
   }
 
   //Scrollspy
-
-  (function () {
-    let menuSection = document.querySelectorAll("menu li");
-
+  (() => {
     const scrollspyClasses = [
       "data-[te-spy-active]:border-l-2",
       "data-[te-spy-active]:border-solid",
@@ -311,40 +330,79 @@
       "dark:data-[te-spy-active]:text-primary-400",
     ];
 
-    if (menuSection.length == 0) return;
+    const menuSection = document.querySelectorAll("menu li");
 
-    menuSection.forEach((section) =>
-      section.classList.add(...scrollspyClasses)
-    );
+    if (menuSection.length === 0) return;
 
-    // for clickable event
-    menuSection.forEach((v) => {
-      v.onclick = () => {
-        setTimeout(() => {
-          menuSection.forEach((j) => j.removeAttribute("data-te-spy-active"));
-          v.setAttribute("data-te-spy-active", "");
-        }, 300);
-      };
-    });
+    const addScrollspyClasses = (sections) => {
+      sections.forEach((section) => {
+        section.classList.add(...scrollspyClasses);
+      });
+    };
 
-    // for window scrolldown event
+    const teScrollSpyTo = (event) => {
+      event.preventDefault();
+      const hash = event.target.getAttribute("href");
+      const target = document.getElementById(hash.substring(1));
 
-    window.onscroll = () => {
+      window.scroll({
+        top: target.offsetTop,
+        behavior: "smooth",
+      });
+
+      if (history.pushState) {
+        history.pushState(null, null, hash);
+      } else {
+        location.hash = hash;
+      }
+    };
+
+    const deactivateAllMenuSections = (sections) => {
+      sections.forEach((section) =>
+        section.removeAttribute("data-te-spy-active")
+      );
+    };
+
+    const activateMenuSection = (section) => {
+      section.setAttribute("data-te-spy-active", "");
+    };
+
+    const onWindowScroll = () => {
       const SELECTOR_SCROLLSPY_ITEM = "[data-te-spy-item]";
-      let mainSection = document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM);
+      const mainSections = [
+        ...document.querySelectorAll(SELECTOR_SCROLLSPY_ITEM),
+      ].filter((section) => section.getBoundingClientRect().y !== 0);
+      const filteredMenuSections = [
+        ...document.querySelectorAll("menu li"),
+      ].filter((section) => section.getBoundingClientRect().y !== 0);
 
-      mainSection.forEach((v, i) => {
-        let rect = v.getBoundingClientRect().y;
+      mainSections.forEach((header, i) => {
+        let rect = header.getBoundingClientRect().y;
 
-        if (rect < window.innerHeight + -940) {
-          menuSection.forEach((v) => v.removeAttribute("data-te-spy-active"));
-          if (!menuSection[i]) {
+        if (rect <= 100) {
+          deactivateAllMenuSections(filteredMenuSections);
+          if (!filteredMenuSections[i]) {
             return;
           }
-          menuSection[i].setAttribute("data-te-spy-active", "");
+          activateMenuSection(filteredMenuSections[i]);
         }
       });
     };
+
+    addScrollspyClasses(menuSection);
+
+    menuSection.forEach((menuElement) => {
+      const href = menuElement.querySelector("a");
+      href.addEventListener("click", teScrollSpyTo, false);
+      href.addEventListener("click", () => {
+        setTimeout(() => {
+          deactivateAllMenuSections(menuSection);
+          activateMenuSection(menuElement);
+        }, 300);
+      });
+    });
+
+    window.addEventListener("scroll", onWindowScroll);
   })();
 
   const clip = document.querySelectorAll(".clip");
@@ -370,7 +428,7 @@
   // Copy to clipboard
 </script>
 
-<script>
+<script type="module">
   // possibility of linking with a hash to a specific pills
   window.addEventListener("load", (event) => {
     const locationHash = window.location.hash;
@@ -438,7 +496,78 @@
   });
 </script>
 
+<!-- umd toggler -->
 <script>
+  const switchInputs = document.querySelectorAll("[data-te-umd-toggler]");
+
+  switchInputs.forEach((item) => {
+    const umdScriptEnabled = item.dataset.script.toLowerCase() === "javascript";
+
+    if (umdScriptEnabled) {
+      item.checked = true;
+    }
+
+    const tabs = [...item.parentNode.parentNode.querySelectorAll("a")];
+
+    // change umd name to javascript
+    const indexOfUmd = tabs.findIndex(
+      (item) => item.textContent.toLowerCase() === "umd"
+    );
+    if (indexOfUmd >= 0) {
+      tabs[indexOfUmd].textContent = "javascript";
+    }
+  });
+
+  switchInputs.forEach((item) =>
+    item.addEventListener("change", toggleScriptTab)
+  );
+
+  function getSortedScriptTabs(e, tabs) {
+    // check if javascript is first or umd - it's needed to reverse array to highlight proper tabs
+    const providedArray = e.target.value
+      .replace("[", "")
+      .replace("]", "")
+      .split(" ");
+    const isScriptFirst =
+      providedArray.indexOf("umd") > providedArray.indexOf("javascript");
+
+    // get script elements and reverse them if needed
+    const scripts = tabs.filter((item) => item.textContent === "javascript");
+    return isScriptFirst ? scripts : scripts.reverse();
+  }
+
+  function toggleScriptTab(e) {
+    const inputParent = e.target.parentNode.parentNode;
+    const tabs = [...inputParent.querySelectorAll("a")];
+
+    const sortedScriptTabs = getSortedScriptTabs(e, tabs);
+
+    // check if script tag is active to change pane that is visible
+    const activeTab = inputParent
+      .querySelector("[data-te-nav-active]")
+      .textContent.toLowerCase();
+    const isScriptCurrentTab =
+      activeTab === "javascript" || activeTab === "umd";
+
+    // change visibility of tabs and its content
+    e.target.checked
+      ? _toggleScriptTabs(...sortedScriptTabs, isScriptCurrentTab)
+      : _toggleScriptTabs(
+          ...sortedScriptTabs.slice().reverse(),
+          isScriptCurrentTab
+        );
+  }
+
+  function _toggleScriptTabs(tab1, tab2, isScriptCurrentTab) {
+    tab1.classList.toggle("hidden");
+    tab2.classList.toggle("hidden");
+
+    isScriptCurrentTab && tab2.click();
+  }
+</script>
+<!-- umd toggler -->
+
+<script type="module">
   const tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-te-toggle="tooltip"]')
   );

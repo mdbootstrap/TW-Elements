@@ -53,7 +53,6 @@ Constants
 
 const NAME = "timepicker";
 const ATTR_NAME = `data-te-${NAME}`;
-const SELECTOR_ATTR_TIMEPICKER_INIT = `[${ATTR_NAME}-init]`;
 const SELECTOR_DATA_TE_TOGGLE = "[data-te-toggle]";
 
 const DATA_KEY = `te.${NAME}`;
@@ -111,7 +110,7 @@ const ATTR_TIMEPICKER_HAND_POINTER = `${ATTR_NAME}-hand-pointer`;
 const ATTR_TIMEPICKER_CIRCLE = `${ATTR_NAME}-circle`;
 const ATTR_TIMEPICKER_MODAL = `${ATTR_NAME}-modal`;
 
-const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hover:text-[#3b71ca] focus:text-[#3b71ca] dark:hover:text-[#3b71ca] dark:focus:text-[#3b71ca]">
+const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>`;
 
@@ -263,7 +262,7 @@ const DefaultClasses = {
   timepickerInlineSubmitButton:
     "hover:bg-[#00000014] focus:bg-[#00000014] focus:outline-none text-[0.8rem] box-border font-medium leading-[40px] tracking-[.1rem] uppercase border-none bg-transparent [transition:background-color_250ms_cubic-bezier(0.4,0,0.2,1)_0ms,box-shadow_250ms_cubic-bezier(0.4,0,0.2,1)_0ms,border_250ms_cubic-bezier(0.4,0,0.2,1)_0ms] outline-none rounded-[100%] h-[48px] min-w-[48px] inline-block ml-[30px] text-white py-1 px-2 mb-0",
   timepickerToggleButton:
-    "h-4 w-4 ml-auto absolute outline-none border-none bg-transparent right-2.5 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer hover:text-primary focus:text-primary dark:hover:text-primary-400 dark:focus:text-primary-400 dark:text-neutral-200",
+    "h-4 w-4 ml-auto absolute outline-none border-none bg-transparent right-1.5 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] cursor-pointer hover:text-[#3b71ca] focus:text-[#3b71ca] dark:hover:text-[#3b71ca] dark:focus:text-[#3b71ca] dark:text-white",
 };
 
 const DefaultClassesType = {
@@ -503,6 +502,7 @@ class Timepicker {
 
     if (this.input.value.length > 0 && this.input.value !== "") {
       this.input.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
+      EventHandler.trigger(this.input, "input");
     }
 
     if (this._options === null && this._element === null) return;
@@ -609,13 +609,16 @@ class Timepicker {
 
     minHour = setMinTime(minHour, disablePast, format12);
     maxHour = setMaxTime(maxHour, disableFuture, format12);
+    typeof maxHour !== "number" && (maxHour = takeValue(maxHour, false)[0]);
 
     const maxHourDegrees = maxHour !== "" ? maxHour * 30 : "";
     const minHourDegrees = minHour !== "" ? minHour * 30 : "";
 
-    if (degrees <= 0) {
+    if (degrees < 0) {
       degrees = 360 + degrees;
     }
+
+    degrees = degrees === 360 ? 0 : degrees;
 
     const _handleKeyboardEvents = () => {
       const tips = document.querySelectorAll(
@@ -698,11 +701,13 @@ class Timepicker {
       (maxHour !== "" && maxFormat === "AM" && _isAmEnabled);
 
     const isMinHourValid = () => {
+      const minDegrees =
+        minHourDegrees === 360 && format12 ? 0 : minHourDegrees;
       if (!minHour) {
         return true;
       } else if (
         (minFormat === "PM" && _isAmEnabled) ||
-        (minFormatAndCurrentFormatEqual && degrees < minHourDegrees)
+        (minFormatAndCurrentFormatEqual && degrees < minDegrees)
       ) {
         return;
       }
@@ -710,11 +715,13 @@ class Timepicker {
     };
 
     const isMaxHourValid = () => {
+      const maxDegrees =
+        maxHourDegrees === 360 && format12 ? 0 : maxHourDegrees;
       if (!maxHour) {
         return true;
       } else if (
         (maxFormat === "AM" && _isPmEnabled) ||
-        (maxFormatAndCurrentFormatEqual && degrees > maxHourDegrees)
+        (maxFormatAndCurrentFormatEqual && degrees > maxDegrees)
       ) {
         return;
       }
@@ -745,6 +752,8 @@ class Timepicker {
 
       minHour = setMinTime(minHour, disablePast, format12);
       maxHour = setMaxTime(maxHour, disableFuture, format12);
+
+      typeof maxHour !== "number" && (maxHour = takeValue(maxHour, false)[0]);
 
       const hoursView =
         SelectorEngine.findOne(`[${ATTR_TIMEPICKER_TIPS_MINUTES}]`) === null;
@@ -1368,7 +1377,7 @@ class Timepicker {
           }
 
           this._removeModal();
-          this._focusTrap.disable();
+          this._focusTrap?.disable();
           this._focusTrap = null;
 
           if (this.elementToggle) {
@@ -1434,20 +1443,25 @@ class Timepicker {
         );
 
         const currentValue = `${this._hour.textContent}:${this._minutes.textContent}`;
-        const selectedHour = Number(this._hour.textContent);
+        const selectedHourContent = Number(this._hour.textContent);
+        const selectedHour =
+          selectedHourContent === 12 && format12 ? 0 : selectedHourContent;
         const selectedMinutes = Number(this._minutes.textContent);
 
         minTime = setMinTime(minTime, disablePast, format12);
         maxTime = setMaxTime(maxTime, disableFuture, format12);
 
-        const [maxTimeHour, maxTimeMinutes, maxTimeFormat] = takeValue(
+        let [maxTimeHour, maxTimeMinutes, maxTimeFormat] = takeValue(
           maxTime,
           false
         );
-        const [minTimeHour, minTimeMinutes, minTimeFormat] = takeValue(
+        let [minTimeHour, minTimeMinutes, minTimeFormat] = takeValue(
           minTime,
           false
         );
+
+        minTimeHour = minTimeHour === "12" && format12 ? "00" : minTimeHour;
+        maxTimeHour = maxTimeHour === "12" && format12 ? "00" : maxTimeHour;
 
         const isHourLessThanMinHour = selectedHour < Number(minTimeHour);
         const isHourGreaterThanMaxHour = selectedHour > Number(maxTimeHour);
@@ -1771,19 +1785,22 @@ class Timepicker {
       _verifyMaxTimeHourAndAddDisabledClass(
         innerHoursTips,
         maxTimeHour,
-        this._classes
+        this._classes,
+        this._options.format12
       );
       _verifyMaxTimeHourAndAddDisabledClass(
         outerHoursTips,
         maxTimeHour,
-        this._classes
+        this._classes,
+        this._options.format12
       );
       _verifyMaxTimeMinutesTipsAndAddDisabledClass(
         allTipsMinutes,
         maxTimeMinutes,
         maxTimeHour,
         this._hour.textContent,
-        this._classes
+        this._classes,
+        this._options.format12
       );
       return;
     }
@@ -1823,19 +1840,22 @@ class Timepicker {
       _verifyMinTimeHourAndAddDisabledClass(
         outerHoursTips,
         minTimeHour,
-        this._classes
+        this._classes,
+        this._options.format12
       );
       _verifyMinTimeHourAndAddDisabledClass(
         innerHoursTips,
         minTimeHour,
-        this._classes
+        this._classes,
+        this._options.format12
       );
       _verifyMinTimeMinutesTipsAndAddDisabledClass(
         allTipsMinutes,
         minTimeMinutes,
         minTimeHour,
         this._hour.textContent,
-        this._classes
+        this._classes,
+        this._options.format12
       );
     } else if (minTimeFormat === "PM" && selectedFormat === "AM") {
       outerHoursTips.forEach((tip) => {
@@ -2051,7 +2071,7 @@ class Timepicker {
               } else if (
                 this._options.format24 &&
                 minTimeHour !== "" &&
-                this._hour.textContent < minTimeHour
+                Number(this._hour.textContent) < minTimeHour
               ) {
                 return;
               }
@@ -2220,8 +2240,12 @@ class Timepicker {
 
     const maxMin = takeValue(maxTime, false)[1];
     const minMin = takeValue(minTime, false)[1];
-    const maxHourTime = takeValue(maxTime, false)[0];
-    const minHourTime = takeValue(minTime, false)[0];
+    const maxHourTimeValue = takeValue(maxTime, false)[0];
+    const minHourTimeValue = takeValue(minTime, false)[0];
+    const minHourTime =
+      minHourTimeValue === "12" && format12 ? "0" : minHourTimeValue;
+    const maxHourTime =
+      maxHourTimeValue === "12" && format12 ? "0" : maxHourTimeValue;
 
     const maxTimeFormat = takeValue(maxTime, false)[2];
     const minTimeFormat = takeValue(minTime, false)[2];
@@ -2229,13 +2253,15 @@ class Timepicker {
     const maxMinDegrees = maxMin !== "" ? maxMin * 6 : "";
     const minMinDegrees = minMin !== "" ? minMin * 6 : "";
 
-    const selectedHour = Number(this._hour.textContent);
+    const selectedHourContent = Number(this._hour.textContent);
+    const selectedHour =
+      selectedHourContent === 12 && format12 ? 0 : selectedHourContent;
 
     if (!maxTimeFormat && !minTimeFormat) {
       if (maxTime !== "" && minTime !== "") {
         if (
-          (maxHourTime === selectedHour && degrees > maxMinDegrees) ||
-          (minHourTime === selectedHour && degrees < minMinDegrees)
+          (Number(maxHourTime) === selectedHour && degrees > maxMinDegrees) ||
+          (Number(minHourTime) === selectedHour && degrees < minMinDegrees)
         ) {
           return degrees;
         }
@@ -2302,7 +2328,7 @@ class Timepicker {
       degrees = Math.round(degrees / 30) * 30;
     }
 
-    if (degrees <= 0) {
+    if (degrees < 0) {
       degrees = 360 + degrees;
     } else if (degrees >= 360) {
       degrees = 0;
@@ -2707,17 +2733,3 @@ class Timepicker {
 }
 
 export default Timepicker;
-
-SelectorEngine.find(SELECTOR_ATTR_TIMEPICKER_INIT).forEach((timepicker) => {
-  let instance = Timepicker.getInstance(timepicker);
-  const { timepickerFormat24 } = timepicker.dataset;
-
-  if (instance) return;
-
-  if (timepickerFormat24 === "true") {
-    instance = new Timepicker(timepicker, { format24: true });
-    return;
-  }
-
-  instance = new Timepicker(timepicker);
-});
