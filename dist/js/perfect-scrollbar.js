@@ -107,7 +107,7 @@ var EventElement = function (element) {
   this.events = {};
 };
 
-EventElement.eventListenerOptions = Object.assign({ passive: true }, window.evPsOptions);
+EventElement.eventListenerOptions = Object.assign({ passive: false }, window.evPsOptions);
 
 EventElement.prototype.bind = function (eventName, handler) {
   if (typeof this.events[eventName] === 'undefined') {
