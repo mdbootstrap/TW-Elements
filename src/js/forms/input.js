@@ -519,7 +519,7 @@ class Input {
         this._element
       );
 
-      if (event && event.type === "focus") {
+      if ((event && event.type === "focus") || input.autofocus) {
         notchWrapper.setAttribute(DATA_FOCUSED, "");
       }
 
