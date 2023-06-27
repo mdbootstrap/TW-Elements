@@ -130,7 +130,6 @@
       plugins: {
         datalabels: {
           formatter: (value, ctx) => {
-            if (typeof value !== "number") return;
             let sum = 0;
             // Assign the data to the variable and format it according to your needs
             let dataArr = dataChartDataLabelsExample.data.datasets[0].data;
@@ -262,7 +261,6 @@
         },
         datalabels: {
           formatter: (value, ctx) => {
-            if (typeof value !== "number") return;
             let sum = 0;
             let dataArr = dataChartFunnelExample.data.datasets[0].data;
             dataArr.map((data) => {
@@ -286,10 +284,33 @@
     },
   };
 
+  const optionsDarkModeChartFunnelExample = {
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+        x: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+      },
+      plugins: {
+        datalabels: {
+          color: "#fff",
+        },
+      },
+    },
+  };
+
   new te.Chart(
     document.getElementById("chart-funnel-example"),
     dataChartFunnelExample,
-    optionsChartFunnelExample
+    optionsChartFunnelExample,
+    optionsDarkModeChartFunnelExample
   );
   // Funnel
 
@@ -427,36 +448,4 @@
     optionsChartBarDoubleDatasetsExample
   );
   // Double datasets in a bar chart
-
-  // Async data
-  const chart = document.getElementById("chart-async-data-example");
-
-  fetch(
-    "https://api.covid19api.com/total/country/poland/status/confirmed?from=2020-10-01T00:00:00Z&to=2020-12-01T00:00:00Z"
-  )
-    .then((data) => data.json())
-    .then((data) => {
-      const dataset = data.map((obj) => obj["Cases"]);
-      const labels = data.map((obj) => obj["Date"].substr(0, 10));
-
-      const dataAsync = {
-        labels,
-        datasets: [
-          {
-            color: "#FFCDD2",
-            data: dataset,
-            label: "Number of cases",
-            pointRadius: 0,
-            borderColor: dataset.color,
-          },
-        ],
-      };
-
-      const chartInstance = new te.Chart(chart, {
-        type: "bar",
-        data: dataAsync,
-      });
-    });
-
-  // Async data
 </script>
