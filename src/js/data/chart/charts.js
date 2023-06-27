@@ -125,7 +125,7 @@ class Chart {
   }
 
   async _getChartDataLabels() {
-    const { ChartDataLabels } = await import("chartjs-plugin-datalabels");
+    const ChartDataLabels = await import("chartjs-plugin-datalabels");
     return ChartDataLabels;
   }
 
@@ -189,10 +189,21 @@ class Chart {
       this._chart.data = this._data;
     }
 
-    this._prevConfig = this._chart.options;
+    const configOptions = Object.prototype.hasOwnProperty.call(
+      config,
+      "options"
+    )
+      ? config
+      : { options: { ...config } };
 
-    this._options = { ...this._options, ...config };
-    this._chart.options = merge(this._chart.options, this._options);
+    this._options = merge(this._options, configOptions);
+
+    this._chart.options = GENERATE_DATA(
+      this._options,
+      this._type,
+      DEFAULT_OPTIONS
+    ).options;
+
     this._chart.update();
   }
 
@@ -284,9 +295,10 @@ class Chart {
       const plugins = [];
 
       if (options.dataLabelsPlugin) {
-        plugins.push(this._ChartDataLabels);
+        plugins.push(this._ChartDataLabels.default);
       }
 
+      this._prevConfig = options;
       this._chart = new this._Chartjs(this._canvas, {
         ...this._data,
         ...options,
