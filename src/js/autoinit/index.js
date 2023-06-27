@@ -12,6 +12,10 @@ import {
 
 import { chartsCallback } from "./chartsInit";
 
+import InitRegister from "./Register";
+
+const register = new InitRegister();
+
 const defaultInitSelectors = {
   alert: {
     name: "Alert",
@@ -138,10 +142,11 @@ const getComponentData = (component) => {
 };
 
 const initComponent = (component) => {
-  if (!component || initiatedComponents?.includes(component.NAME)) {
+  if (!component || register.isInited(component.NAME)) {
     return;
   }
-  initiatedComponents?.push(component.NAME);
+
+  register.add(component.NAME);
 
   const thisComponent = getComponentData(component);
   const isToggler = thisComponent?.isToggler || false;
@@ -178,11 +183,7 @@ const initTE = (components, checkOtherImports = false) => {
     );
     if (requireAutoinit) {
       const component = components[defaultInitSelectors[element].name];
-      if (
-        !component &&
-        !initiatedComponents?.includes(element) &&
-        checkOtherImports
-      ) {
+      if (!component && !register.isInited(element) && checkOtherImports) {
         console.warn(
           `Please import ${defaultInitSelectors[element].name} from "tw-elements" package and add it to a object parameter inside "initTE" function`
         );
