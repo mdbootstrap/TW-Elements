@@ -1,0 +1,60 @@
+---
+---
+
+<script type="module">
+  // JavaScript init
+  const initByJS = document.querySelector("#init-by-js");
+  const psInitbyJS = new te.PerfectScrollbar(initByJS);
+  // JavaScript init
+
+  // Scroll colors
+  const scrollColors = document.querySelector("#scroll-colors");
+  const initScrollColors = new te.PerfectScrollbar(
+    scrollColors,
+    {},
+    {
+      railXColors:
+        "group-[&.ps--active-x]/ps:!bg-[#90ee90] hover:!bg-[#eee] focus:!bg-[#eee] [&.ps--clicking]:!bg-[#eee]",
+      railXThumbColors:
+        "!bg-[#006400] group-hover/x:bg-[#999] group-focus/x:bg-[#999] group-[&.ps--clicking]/x:bg-[#999]",
+      railYColors:
+        "group-[&.ps--active-y]/ps:!bg-[#90ee90] hover:!bg-[#eee] focus:!bg-[#eee] [&.ps--clicking]:!bg-[#eee]",
+      railYThumbColors:
+        "!bg-[#006400] group-hover/y:bg-[#999] group-focus/y:bg-[#999] group-[&.ps--clicking]/y:bg-[#999]",
+    }
+  );
+
+  // Scroll colors
+
+  // Events
+  const btn = document.querySelector('[data-te-toggle="modal"]');
+  const btnID = document.querySelector("#exampleModalLabel");
+  const modalBody = document.querySelector("[data-te-modal-body-ref]");
+
+  const toggleBtn = (text) => {
+    btnID.innerHTML = `Scroll${text} example`;
+    modalBody.innerHTML = `You scrolled with scroll${text} event`;
+    btn.click();
+  };
+
+  const scrollX = document.querySelector("#scroll-x");
+  const initscrollX = new te.PerfectScrollbar(scrollX);
+
+  const select = document.querySelector("#select-events");
+
+  const dispatchEvent = ({ target }) => {
+    const events = target.value.split("scroll").join("");
+    scrollX.addEventListener(`${target.value}.te.ps`, (e) => toggleBtn(events));
+  };
+
+  select.addEventListener("valueChange.te.select", (e) => {
+    dispatchEvent(e);
+  });
+
+  select.addEventListener("open.te.select", (e) => {
+    scrollX.removeEventListener(`${e.target.value}.te.ps`, dispatchEvent);
+    scrollX.removeEventListener(`ps-scroll-y`, dispatchEvent);
+  });
+
+  //Events
+</script>

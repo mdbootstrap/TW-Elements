@@ -1,3 +1,14 @@
+/*
+--------------------------------------------------------------------------
+Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+--------------------------------------------------------------------------
+*/
+
 /* eslint-disable no-restricted-globals */
 import PerfectScrollbar from "perfect-scrollbar";
 
@@ -61,21 +72,32 @@ const DefaultType = {
 const DefaultClasses = {
   ps: "group/ps overflow-hidden [overflow-anchor:none] touch-none",
   railX:
-    "group/x absolute bottom-0 h-[0.9375rem] hidden opacity-0 transition-[background-color,_opacity] duration-200 ease-linear motion-reduce:transition-none z-[1035] group-[&.ps--active-x]/ps:block group-[&.ps--active-x]/ps:bg-transparent group-hover/ps:opacity-60 group-focus/ps:opacity-60 group-[&.ps--scrolling-x]/ps:opacity-60 hover:!opacity-90 hover:!bg-[#eee] focus:!opacity-90 focus:!bg-[#eee] [&.ps--clicking]:!opacity-90 [&.ps--clicking]:!bg-[#eee] outline-none",
+    "group/x absolute bottom-0 h-[0.9375rem] hidden opacity-0 transition-[background-color,_opacity] duration-200 ease-linear motion-reduce:transition-none z-[1035] group-[&.ps--active-x]/ps:block group-hover/ps:opacity-60 group-focus/ps:opacity-60 group-[&.ps--scrolling-x]/ps:opacity-60 hover:!opacity-90 focus:!opacity-90 [&.ps--clicking]:!opacity-90 outline-none",
+  railXColors:
+    "group-[&.ps--active-x]/ps:bg-transparent hover:!bg-[#eee] focus:!bg-[#eee] [&.ps--clicking]:!bg-[#eee] dark:hover:!bg-[#555] dark:focus:!bg-[#555] dark:[&.ps--clicking]:!bg-[#555]",
   railXThumb:
-    "absolute bottom-0.5 rounded-md h-1.5 opacity-0 group-hover/ps:opacity-100 group-focus/ps:opacity-100 group-active/ps:opacity-100 bg-[#aaa] [transition:background-color_.2s_linear,_height_.2s_ease-in-out] group-hover/x:bg-[#999] group-hover/x:h-[11px] group-focus/x:bg-[#999] group-focus/x:h-[0.6875rem] group-[&.ps--clicking]/x:bg-[#999] group-[&.ps--clicking]/x:h-[11px] outline-none",
+    "absolute bottom-0.5 rounded-md h-1.5 group-focus/ps:opacity-100 group-active/ps:opacity-100 [transition:background-color_.2s_linear,_height_.2s_ease-in-out] group-hover/x:h-[11px] group-focus/x:h-[0.6875rem] group-[&.ps--clicking]/x:bg-[#999] group-[&.ps--clicking]/x:h-[11px] outline-none",
+  railXThumbColors: "bg-[#aaa] group-hover/x:bg-[#999] group-focus/x:bg-[#999]",
   railY:
-    "group/y absolute right-0 w-[0.9375rem] hidden opacity-0 transition-[background-color,_opacity] duration-200 ease-linear motion-reduce:transition-none z-[1035] group-[&.ps--active-y]/ps:block group-[&.ps--active-y]/ps:bg-transparent group-hover/ps:opacity-60 group-focus/ps:opacity-60 group-[&.ps--scrolling-y]/ps:opacity-60 hover:!opacity-90 hover:!bg-[#eee] focus:!opacity-90 focus:!bg-[#eee] [&.ps--clicking]:!opacity-90 [&.ps--clicking]:!bg-[#eee] outline-none",
+    "group/y absolute right-0 w-[0.9375rem] hidden opacity-0 transition-[background-color,_opacity] duration-200 ease-linear motion-reduce:transition-none z-[1035] group-[&.ps--active-y]/ps:block group-hover/ps:opacity-60 group-focus/ps:opacity-60 group-[&.ps--scrolling-y]/ps:opacity-60 hover:!opacity-90 focus:!opacity-90 [&.ps--clicking]:!opacity-90 outline-none",
+  railYColors:
+    "group-[&.ps--active-y]/ps:bg-transparent hover:!bg-[#eee] focus:!bg-[#eee] [&.ps--clicking]:!bg-[#eee] dark:hover:!bg-[#555] dark:focus:!bg-[#555] dark:[&.ps--clicking]:!bg-[#555]",
   railYThumb:
-    "absolute right-0.5 rounded-md w-1.5 opacity-0 group-hover/ps:opacity-100 group-focus/ps:opacity-100 group-active/ps:opacity-100 bg-[#aaa] [transition:background-color_.2s_linear,_width_.2s_ease-in-out] group-hover/y:bg-[#999] group-hover/y:w-[11px] group-focus/y:bg-[#999] group-focus/y:w-[0.6875rem] group-[&.ps--clicking]/y:bg-[#999] group-[&.ps--clicking]/y:w-[11px] outline-none",
+    "absolute right-0.5 rounded-md w-1.5 group-focus/ps:opacity-100 group-active/ps:opacity-100 [transition:background-color_.2s_linear,_width_.2s_ease-in-out,_opacity] group-hover/y:w-[11px] group-focus/y:w-[0.6875rem] group-[&.ps--clicking]/y:w-[11px] outline-none",
+  railYThumbColors:
+    "bg-[#aaa] group-hover/y:bg-[#999] group-focus/y:bg-[#999] group-[&.ps--clicking]/y:bg-[#999]",
 };
 
 const DefaultClassesType = {
   ps: "string",
   railX: "string",
+  railXColors: "string",
   railXThumb: "string",
+  railXThumbColors: "string",
   railY: "string",
+  railYColors: "string",
   railYThumb: "string",
+  railYThumbColors: "string",
 };
 
 class PerfectScrollbars {
@@ -161,22 +183,46 @@ class PerfectScrollbars {
 
   _addPerfectScrollbarStyles() {
     const classes = [
-      { ps: "ps__rail-x", te: this._classes.railX },
-      { ps: "ps__rail-y", te: this._classes.railY },
-      { ps: "ps__thumb-x", te: this._classes.railXThumb },
-      { ps: "ps__thumb-y", te: this._classes.railYThumb },
+      {
+        ps: "ps__rail-x",
+        te: this._classes.railX,
+        teColor: this._classes.railXColors,
+      },
+      {
+        ps: "ps__rail-y",
+        te: this._classes.railY,
+        teColor: this._classes.railYColors,
+      },
+      {
+        ps: "ps__thumb-x",
+        te: this._classes.railXThumb,
+        teColor: this._classes.railXThumbColors,
+      },
+      {
+        ps: "ps__thumb-y",
+        te: this._classes.railYThumb,
+        teColor: this._classes.railYThumbColors,
+      },
     ];
 
     classes.forEach((item) => {
       const container = SelectorEngine.findOne(`.${item.ps}`, this._element);
+
+      // check if the perfect scrollbar package styles have been imported
+      const shouldTransform =
+        getComputedStyle(container).getPropertyValue("right") === "auto";
+
       Manipulator.addClass(container, item.te);
-      if (item.ps.includes("rail-x")) {
-        console.log();
+      Manipulator.addClass(container, item.teColor);
+
+      // prettier-ignore
+      if (shouldTransform && classes[0].te.includes("bottom") && item.ps.includes("rail-x")) {
         container.style.transform = `translateY(calc(-100% + ${getComputedStyle(
           this._element
         ).getPropertyValue("height")}))`;
       }
-      if (item.ps.includes("rail-y")) {
+      // prettier-ignore
+      if (shouldTransform && classes[1].te.includes("right") && item.ps.includes("rail-y")) {
         container.style.transform = `translateX(calc(-100% + ${getComputedStyle(
           this._element
         ).getPropertyValue("width")}))`;
