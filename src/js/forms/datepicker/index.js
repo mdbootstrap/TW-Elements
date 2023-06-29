@@ -1113,9 +1113,10 @@ class Datepicker {
 
   _closeDropdown() {
     const datepicker = SelectorEngine.findOne(DROPDOWN_CONTAINER_SELECTOR);
+    const container = this._getContainer();
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       if (datepicker) {
-        document.body.removeChild(datepicker);
+        container.removeChild(datepicker);
       }
 
       if (this._popper) {
@@ -1124,7 +1125,7 @@ class Datepicker {
     }
     datepicker.addEventListener("animationend", () => {
       if (datepicker) {
-        document.body.removeChild(datepicker);
+        container.removeChild(datepicker);
       }
 
       if (this._popper) {
