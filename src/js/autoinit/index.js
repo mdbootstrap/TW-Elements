@@ -12,6 +12,9 @@ import {
 
 import { chartsCallback } from "./chartsInit";
 
+// key => component NAME constant
+// name => component exported by name
+
 const defaultInitSelectors = {
   alert: {
     name: "Alert",
@@ -46,6 +49,11 @@ const defaultInitSelectors = {
   input: {
     name: "Input",
     selector: "[data-te-input-wrapper-init]",
+    isToggler: false,
+  },
+  perfectScrollbar: {
+    name: "PerfectScrollbar",
+    selector: "[data-te-perfect-scrollbar-init]",
     isToggler: false,
   },
   scrollspy: {

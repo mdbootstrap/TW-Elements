@@ -12,7 +12,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 /* eslint-disable no-restricted-globals */
 import PerfectScrollbar from "perfect-scrollbar";
 
-import { getjQuery, typeCheckConfig, onDOMContentLoaded } from "../util/index";
+import { typeCheckConfig } from "../util/index";
 import Data from "../dom/data";
 import Manipulator from "../dom/manipulator";
 import EventHandler from "../dom/event-handler";
@@ -36,8 +36,6 @@ const EVENTS = [
   { te: `scrollXStart.${TE_NAME}.${PS_NAME}`, ps: "ps-x-reach-start" },
   { te: `scrollYStart.${TE_NAME}.${PS_NAME}`, ps: "ps-y-reach-start" },
 ];
-
-const PERFECT_SCROLLBAR_INIT = "data-te-perfect-scrollbar-init";
 
 const Default = {
   handlers: ["click-rail", "drag-thumb", "keyboard", "wheel", "touch"],
@@ -286,34 +284,5 @@ class PerfectScrollbars {
     );
   }
 }
-
-SelectorEngine.find(`[${PERFECT_SCROLLBAR_INIT}]`).forEach((scroll) => {
-  let instance = PerfectScrollbars.getInstance(scroll);
-  if (!instance) {
-    instance = new PerfectScrollbars(scroll);
-  }
-  return instance;
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- * add .perfectScrollbar to jQuery only if jQuery is present
- */
-
-onDOMContentLoaded(() => {
-  const $ = getjQuery();
-
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME];
-    $.fn[NAME] = PerfectScrollbars.jQueryInterface;
-    $.fn[NAME].Constructor = PerfectScrollbars;
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
-      return PerfectScrollbars.jQueryInterface;
-    };
-  }
-});
 
 export default PerfectScrollbars;
