@@ -50,6 +50,7 @@ const Default = {
   suppressScrollY: false,
   scrollXMarginOffset: 0,
   scrollYMarginOffset: 0,
+  positionRight: true,
 };
 
 const DefaultType = {
@@ -65,6 +66,7 @@ const DefaultType = {
   suppressScrollY: "boolean",
   scrollXMarginOffset: "number",
   scrollYMarginOffset: "number",
+  positionRight: "boolean",
 };
 
 const DefaultClasses = {
@@ -104,6 +106,29 @@ class PerfectScrollbars {
     this._options = this._getConfig(options);
     this._classes = this._getClasses(classes);
     this.perfectScrollbar = null;
+    this._observer = null;
+    this._psClasses = [
+      {
+        ps: "ps__rail-x",
+        te: this._classes.railX,
+        teColor: this._classes.railXColors,
+      },
+      {
+        ps: "ps__rail-y",
+        te: this._classes.railY,
+        teColor: this._classes.railYColors,
+      },
+      {
+        ps: "ps__thumb-x",
+        te: this._classes.railXThumb,
+        teColor: this._classes.railXThumbColors,
+      },
+      {
+        ps: "ps__thumb-y",
+        te: this._classes.railYThumb,
+        teColor: this._classes.railYThumbColors,
+      },
+    ];
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
@@ -116,6 +141,14 @@ class PerfectScrollbars {
   // Getters
   static get NAME() {
     return NAME;
+  }
+
+  get railX() {
+    return SelectorEngine.findOne(".ps__rail-x", this._element);
+  }
+
+  get railY() {
+    return SelectorEngine.findOne(".ps__rail-y", this._element);
   }
 
   _getConfig(config) {
@@ -151,6 +184,7 @@ class PerfectScrollbars {
 
   // Public
   dispose() {
+    this._options.positionRight && this._observer.disconnect();
     Data.removeData(this._element, DATA_KEY);
     this._element = null;
     this._dataAttrOptions = null;
@@ -163,8 +197,45 @@ class PerfectScrollbars {
   init() {
     this.perfectScrollbar = new PerfectScrollbar(this._element, this._options);
     this._addPerfectScrollbarStyles();
+    this._updateScrollPosition();
     this.perfectScrollbar.update();
     this._initEvents(EVENTS);
+
+    if (this._options.positionRight) {
+      this._observer = new ResizeObserver(() => {
+        setTimeout(() => {
+          this._updateScrollPosition();
+        }, 100);
+      });
+
+      const observerOptions = {
+        attributes: true,
+        attributeFilter: ["class", "className"],
+      };
+
+      this._observer.observe(this._element, observerOptions);
+    }
+  }
+
+  _updateScrollPosition() {
+    const height = getComputedStyle(this._element).getPropertyValue("height");
+    const width = getComputedStyle(this._element).getPropertyValue("width");
+
+    if (this.railX) {
+      this.railX.style.transform = `translateY(calc(-100% + ${
+        this._canTransform(height) ? height : "0px"
+      }))`;
+    }
+
+    if (this.railY) {
+      this.railY.style.transform = `translateX(calc(-100% + ${
+        this._canTransform(width) ? width : "0px"
+      }))`;
+    }
+  }
+
+  _canTransform(value) {
+    return value && value.includes("px");
   }
 
   update() {
@@ -180,56 +251,11 @@ class PerfectScrollbars {
   }
 
   _addPerfectScrollbarStyles() {
-    const classes = [
-      {
-        ps: "ps__rail-x",
-        te: this._classes.railX,
-        teColor: this._classes.railXColors,
-      },
-      {
-        ps: "ps__rail-y",
-        te: this._classes.railY,
-        teColor: this._classes.railYColors,
-      },
-      {
-        ps: "ps__thumb-x",
-        te: this._classes.railXThumb,
-        teColor: this._classes.railXThumbColors,
-      },
-      {
-        ps: "ps__thumb-y",
-        te: this._classes.railYThumb,
-        teColor: this._classes.railYThumbColors,
-      },
-    ];
-
-    classes.forEach((item) => {
+    this._psClasses.forEach((item) => {
       const container = SelectorEngine.findOne(`.${item.ps}`, this._element);
-
-      // check if the perfect scrollbar package styles have been imported
-      const shouldTransform =
-        getComputedStyle(container).getPropertyValue("right") === "auto";
 
       Manipulator.addClass(container, item.te);
       Manipulator.addClass(container, item.teColor);
-
-      // prettier-ignore
-      if (shouldTransform && classes[0].te.includes("bottom") && item.ps.includes("rail-x")) {
-        container.style.transform = `translateY(calc(-100% + ${getComputedStyle(
-          this._element
-        ).getPropertyValue("height")}))`;
-      }
-      // prettier-ignore
-      if (shouldTransform && classes[1].te.includes("right") && item.ps.includes("rail-y")) {
-        container.style.transform = `translateX(calc(-100% + ${getComputedStyle(
-          this._element
-        ).getPropertyValue("width")}))`;
-      }
-
-      Manipulator.removeClass(
-        SelectorEngine.findOne(`.${item.ps}`, this._element),
-        item.ps
-      );
     });
     Manipulator.addClass(this._element, this._classes.ps);
     Manipulator.removeClass(this._element, "ps");
