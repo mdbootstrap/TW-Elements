@@ -32,6 +32,7 @@ import Select from "./forms/select";
 import ChipsInput from "./components/chips";
 import Chip from "./components/chips/chip";
 import Chart from "./data/chart/charts";
+import PerfectScrollbar from "./methods/perfect-scrollbar";
 import initTE from "./autoinit/index";
 
 export {
@@ -58,5 +59,6 @@ export {
   Stepper,
   Input,
   Chart,
+  PerfectScrollbar,
   initTE,
 };

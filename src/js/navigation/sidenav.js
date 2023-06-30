@@ -9,7 +9,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import PerfectScrollbar from "perfect-scrollbar";
 import {
   array,
   isVisible,
@@ -27,7 +26,7 @@ import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";
 import Ripple from "../methods/ripple";
 import Backdrop from "../util/backdrop";
-import addPerfectScrollbarStyles from "../util/add-perfect-scrollbar-styles";
+import { PerfectScrollbar } from "../index.es";
 
 /*
 ------------------------------------------------------------------------
@@ -757,8 +756,6 @@ class Sidenav {
       suppressScrollX: true,
       handlers: ["click-rail", "drag-thumb", "wheel", "touch"],
     });
-
-    addPerfectScrollbarStyles(container);
   }
 
   _setupSlim() {
