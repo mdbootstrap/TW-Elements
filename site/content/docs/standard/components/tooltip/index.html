@@ -12,6 +12,7 @@ url: "docs/standard/components/tooltip/"
 menu:
   components:
     name: "Tooltip"
+autoinits: "Tooltip"
 ---
 
 <!-- Section: Basic example -->
@@ -65,8 +66,13 @@ menu:
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
-      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-te-toggle="tooltip"]'));
-      tooltipTriggerList.map((tooltipTriggerEl) => new te.Tooltip(tooltipTriggerEl));
+      // Initialization for ES Users
+      import {
+        Tooltip,
+        initTE,
+      } from "tw-elements";
+
+      initTE({ Tooltip });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -453,10 +459,11 @@ menu:
       // Initialization for ES Users
       import {
         Ripple,
+        Tooltip,
         initTE,
       } from "tw-elements";
       
-      initTE({ Ripple });
+      initTE({ Ripple, Tooltip });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -513,10 +520,11 @@ menu:
       // Initialization for ES Users
       import {
         Ripple,
+        Tooltip,
         initTE,
       } from "tw-elements";
       
-      initTE({ Ripple });
+      initTE({ Ripple, Tooltip });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -574,8 +582,13 @@ menu:
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
-      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-te-toggle="tooltip"]'));
-      tooltipTriggerList.map((tooltipTriggerEl) => new te.Tooltip(tooltipTriggerEl));
+      // Initialization for ES Users
+      import {
+        Tooltip,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Tooltip })
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
