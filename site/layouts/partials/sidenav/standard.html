@@ -42,18 +42,16 @@
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
       data-te-sidenav-collapse-ref
-      {{ if in .Page "gettingstarted" }}
+      {{ if in .Page "getting-started" }}
         data-te-collapse-show
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.gettingstarted }}
         <li class="relative">
           <a
-            {{ if in .URL "/learn/te-foundations/basics/introduction/" }}
-              href="https://material-minimal.com/learn/material-minimal/about/"
+            href="{{ .URL }}"
+            {{ if in .URL "material-minimal.com" }}
               target="_blank"
-            {{ else }}
-              href="{{ .URL }}"
             {{ end }}
             class="{{ if $currentNode.IsMenuCurrent "gettingstarted"  . }}
               bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
