@@ -173,7 +173,6 @@ const tooltipsCallback = (component, initSelector) => {
 };
 
 const popoverCallback = (component, initSelector) => {
-  console.log("hello");
   const popoverTriggerList = [].slice.call(
     document.querySelectorAll(initSelector)
   );
