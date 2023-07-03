@@ -8,6 +8,8 @@ import {
   modalCallback,
   rippleCallback,
   collapseCallback,
+  tooltipsCallback,
+  popoverCallback,
 } from "./autoinitCallbacks";
 
 import { chartsCallback } from "./chartsInit";
@@ -89,6 +91,12 @@ const defaultInitSelectors = {
     selector: "[data-te-toast-init]",
     isToggler: false,
   },
+  tooltip: {
+    name: "Tooltip",
+    selector: "[data-te-toggle='tooltip']",
+    isToggler: false,
+    callback: tooltipsCallback,
+  },
 
   // advancedInits
   chart: {
@@ -141,6 +149,12 @@ const defaultInitSelectors = {
       "[data-te-toggle='tab'], [data-te-toggle='pill'], [data-te-toggle='list']",
     isToggler: true,
     callback: tabCallback,
+  },
+  popover: {
+    name: "Popover",
+    selector: "[data-te-toggle='popover']",
+    isToggler: true,
+    callback: popoverCallback,
   },
 };
 

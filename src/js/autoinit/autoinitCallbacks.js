@@ -163,6 +163,24 @@ const collapseCallback = (component, initSelector) => {
   );
 };
 
+const tooltipsCallback = (component, initSelector) => {
+  const tooltipTriggerList = [].slice.call(
+    document.querySelectorAll(initSelector)
+  );
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new component(tooltipTriggerEl);
+  });
+};
+
+const popoverCallback = (component, initSelector) => {
+  const popoverTriggerList = [].slice.call(
+    document.querySelectorAll(initSelector)
+  );
+  popoverTriggerList.map(function (popoverTriggerEl) {
+    return new component(popoverTriggerEl);
+  });
+};
+
 export {
   dropdownCallback,
   tabCallback,
@@ -171,4 +189,6 @@ export {
   modalCallback,
   rippleCallback,
   collapseCallback,
+  tooltipsCallback,
+  popoverCallback,
 };
