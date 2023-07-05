@@ -224,6 +224,10 @@ class Select {
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
 
+    if (this._config.selectPlaceholder && !this._config.multiple) {
+      this._addPlaceholderOption();
+    }
+
     this._optionsToRender = this._getOptionsToRender(element);
 
     // optionsToRender may contain option groups and nested options, in this case
@@ -375,6 +379,14 @@ class Select {
     typeCheckConfig(NAME, classes, DefaultClassesType);
 
     return classes;
+  }
+
+  _addPlaceholderOption() {
+    const placeholderOption = new Option("", "", true, true);
+    placeholderOption.hidden = true;
+    placeholderOption.selected = true;
+
+    this._element.prepend(placeholderOption);
   }
 
   _getOptionsToRender(select) {
@@ -1093,7 +1105,11 @@ class Select {
       return;
     }
 
-    if (this._input.value === "" && this._fakeValue.innerHTML !== "") {
+    if (
+      this._input.value === "" &&
+      this._fakeValue.innerHTML !== "" &&
+      !this._config.selectPlaceholder
+    ) {
       this._isFakeValueActive = true;
       this._fakeValue.setAttribute(DATA_ACTIVE, "");
     } else {
