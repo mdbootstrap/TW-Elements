@@ -2583,7 +2583,7 @@ Prism.languages.scss['atrule'].inside.rest = Prism.languages.scss;
   Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
     var linkCopy = document.createElement('button');
     linkCopy.innerHTML = 'Copy';
-    linkCopy.classList = 'btn-copy-code text-gray-500 text-xs leading-[1.6] !top-[16px] bg-transparent font-bold uppercase text-sm px-4 py-2 outline-none focus:outline-none';
+    linkCopy.classList = 'btn-copy-code text-gray-500 text-xs leading-[1.6] !top-[16px] bg-transparent font-bold uppercase text-sm px-4 py-2 outline-none focus:outline-none dark:text-gray-200';
 
     if (!ClipboardJS) {
       callbacks.push(registerClipboard);
