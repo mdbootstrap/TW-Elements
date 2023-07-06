@@ -38,7 +38,7 @@ const defaultInitSelectors = {
   },
   chips: {
     name: "ChipsInput",
-    selector: "[data-te-chips-init]",
+    selector: "[data-te-chips-input-init]",
     isToggler: false,
   },
   chip: {
