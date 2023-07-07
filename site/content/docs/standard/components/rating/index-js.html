@@ -1,0 +1,38 @@
+---
+---
+
+<script type="module">
+  // Events
+  const icon = document.querySelectorAll(
+    "#events-example [data-te-rating-icon-ref]"
+  );
+
+  icon.forEach((el) => {
+    el.addEventListener("onHover.te.rating", (e) => {
+      console.log("onHover", e);
+    });
+    el.addEventListener("onSelect.te.rating", (e) => {
+      console.log("onSelect", e);
+    });
+  });
+
+  // Popover implementation example
+  const popoverIcon = document.querySelectorAll(
+    "#popover-example [data-te-rating-icon-ref]"
+  );
+
+  popoverIcon.forEach((el) => {
+    return new te.Popover(el, { content: "Example text", placement: "top" });
+  });
+
+  // Get selected value
+  const icons = document.querySelectorAll(
+    "#selected-value-example [data-te-rating-icon-ref]"
+  );
+
+  icons.forEach((el) => {
+    el.addEventListener("onSelect.te.rating", (e) => {
+      console.log(e.value);
+    });
+  });
+</script>

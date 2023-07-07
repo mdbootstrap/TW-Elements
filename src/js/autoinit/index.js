@@ -61,6 +61,11 @@ const defaultInitSelectors = {
     selector: "[data-te-perfect-scrollbar-init]",
     isToggler: false,
   },
+  rating: {
+    name: "Rating",
+    selector: "[data-te-rating-init]",
+    isToggler: false,
+  },
   scrollspy: {
     name: "ScrollSpy",
     selector: "[data-te-spy='scroll']",
@@ -90,12 +95,6 @@ const defaultInitSelectors = {
     name: "Toast",
     selector: "[data-te-toast-init]",
     isToggler: false,
-  },
-  tooltip: {
-    name: "Tooltip",
-    selector: "[data-te-toggle='tooltip']",
-    isToggler: false,
-    callback: tooltipsCallback,
   },
 
   // advancedInits
@@ -149,6 +148,12 @@ const defaultInitSelectors = {
       "[data-te-toggle='tab'], [data-te-toggle='pill'], [data-te-toggle='list']",
     isToggler: true,
     callback: tabCallback,
+  },
+  tooltip: {
+    name: "Tooltip",
+    selector: "[data-te-toggle='tooltip']",
+    isToggler: false,
+    callback: tooltipsCallback,
   },
   popover: {
     name: "Popover",
