@@ -10,6 +10,7 @@ import {
   collapseCallback,
   tooltipsCallback,
   popoverCallback,
+  datatableCallback,
 } from "./autoinitCallbacks";
 
 import { chartsCallback } from "./chartsInit";
@@ -96,6 +97,12 @@ const defaultInitSelectors = {
     selector: "[data-te-toggle='tooltip']",
     isToggler: false,
     callback: tooltipsCallback,
+  },
+  datatable: {
+    name: "Datatable",
+    selector: "[data-te-datatable-init]",
+    isToggler: false,
+    callback: datatableCallback,
   },
 
   // advancedInits

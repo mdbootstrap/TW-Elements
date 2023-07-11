@@ -274,6 +274,10 @@ module.exports = plugin(() => {}, {
             transform: "scale(1)",
           },
         },
+        progress: {
+          "0%": { transform: "translateX(-45%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
       colors: {
         primary: {
