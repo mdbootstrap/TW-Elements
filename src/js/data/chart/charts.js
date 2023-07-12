@@ -168,12 +168,11 @@ class Chart {
   }
 
   get systemColorMode() {
-    return (
-      localStorage.theme ||
-      (this._darkModeClassContainer.classList.contains("dark")
-        ? "dark"
-        : "light")
-    );
+    return localStorage.theme === "dark" ||
+      (this._darkModeClassContainer.classList.contains("dark") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ? "dark"
+      : "light";
   }
 
   // Public
