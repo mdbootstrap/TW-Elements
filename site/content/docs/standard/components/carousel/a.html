@@ -7,7 +7,7 @@
   <section id="api-section-import">
     <!--Title-->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       id="import"
       data-te-spy-item>
       Import
@@ -48,7 +48,7 @@
   <section id="api-section-usage">
     <!--Title-->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       id="basic"
       data-te-spy-item>
       Usage
@@ -68,9 +68,10 @@
 
     <p>
       The <code>data-te-carousel-init</code> and
-      <code>data-te-carousel-slide</code> attributes are used to mark a carousel
-      as animating starting at page load. If you don’t use these attributes to
-      initialize your carousel, you have to initialize it yourself.
+      <code>data-te-ride="carousel"</code> attributes are used to mark a
+      carousel as animating starting at page load. If you don’t use these
+      attributes to initialize your carousel, you have to initialize it
+      yourself.
       <strong>
         It cannot be used in combination with (redundant and unnecessary)
         explicit JavaScript initialization of the same carousel.
@@ -89,7 +90,7 @@
           data-te-carousel-init
           data-te-carousel-slide>
           <div
-            class="absolute right-0 bottom-0 left-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+            class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
             data-te-carousel-indicators>
             <button
               type="button"
@@ -165,7 +166,7 @@
             </div>
           </div>
           <button
-            class="absolute top-0 bottom-0 left-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+            class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
             type="button"
             data-te-target="#carouselExampleCaptions"
             data-te-slide="prev">
@@ -185,7 +186,7 @@
             >
           </button>
           <button
-            class="absolute top-0 bottom-0 right-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+            class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
             type="button"
             data-te-target="#carouselExampleCaptions"
             data-te-slide="next">
@@ -247,7 +248,7 @@
   <section id="api-section-options">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       data-te-spy-item>
       Options
     </h2>
@@ -358,7 +359,7 @@
                   class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>slide</code>
+                    <code>ride</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -369,8 +370,9 @@
                     <code>false</code>
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Autoplays the carousel after the user manually cycles the
-                    first item. If "carousel", autoplays the carousel on load.
+                    If set to <code>true</code>, autoplays the carousel after
+                    the user manually cycles the first item. If set to
+                    <code>"carousel"</code>, autoplays the carousel on load.
                   </td>
                 </tr>
                 <tr
@@ -425,7 +427,7 @@
   <section id="api-section-classes">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       data-te-spy-item>
       Classes
     </h2>
@@ -565,13 +567,13 @@
   <section id="api-section-methods">
     <!-- Section title -->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       data-te-spy-item>
       Methods
     </h2>
 
     <div
-      class="my-6 rounded-lg bg-red-100 py-5 px-6 text-base text-red-700"
+      class="my-6 rounded-lg bg-red-100 px-6 py-5 text-base text-red-700"
       role="alert">
       <p class="mb-2">
         <strong>Asynchronous methods and transitions:</strong>
@@ -801,7 +803,7 @@
     <section id="api-section-events">
       <!-- Section title -->
       <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
         data-te-spy-item>
         Events
       </h2>
@@ -811,7 +813,7 @@
         functionality. Both events have the following additional properties:
       </p>
 
-      <ul class="ml-8 mb-4 list-disc">
+      <ul class="mb-4 ml-8 list-disc">
         <li>
           <code>direction</code>: The direction in which the carousel is sliding
           (either <code>"left"</code> or <code>"right"</code>).
