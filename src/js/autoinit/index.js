@@ -39,7 +39,7 @@ const defaultInitSelectors = {
   },
   chips: {
     name: "ChipsInput",
-    selector: "[data-te-chips-init]",
+    selector: "[data-te-chips-input-init]",
     isToggler: false,
   },
   chip: {
@@ -60,6 +60,11 @@ const defaultInitSelectors = {
   perfectScrollbar: {
     name: "PerfectScrollbar",
     selector: "[data-te-perfect-scrollbar-init]",
+    isToggler: false,
+  },
+  rating: {
+    name: "Rating",
+    selector: "[data-te-rating-init]",
     isToggler: false,
   },
   scrollspy: {
@@ -91,12 +96,6 @@ const defaultInitSelectors = {
     name: "Toast",
     selector: "[data-te-toast-init]",
     isToggler: false,
-  },
-  tooltip: {
-    name: "Tooltip",
-    selector: "[data-te-toggle='tooltip']",
-    isToggler: false,
-    callback: tooltipsCallback,
   },
   datatable: {
     name: "Datatable",
@@ -156,6 +155,12 @@ const defaultInitSelectors = {
       "[data-te-toggle='tab'], [data-te-toggle='pill'], [data-te-toggle='list']",
     isToggler: true,
     callback: tabCallback,
+  },
+  tooltip: {
+    name: "Tooltip",
+    selector: "[data-te-toggle='tooltip']",
+    isToggler: false,
+    callback: tooltipsCallback,
   },
   popover: {
     name: "Popover",
