@@ -1,15 +1,28 @@
 /* eslint-disable indent */
+const ATTR_SELECT = "data-te-datatable-select-ref";
+const ATTR_PAGINATION_NAV = "data-te-datatable-pagination-nav-ref";
+const ATTR_PAGINATION_RIGHT = "data-te-datatable-pagination-right-ref";
+const ATTR_PAGINATION_LEFT = "data-te-datatable-pagination-left-ref";
+const ATTR_PAGINATION_START = "data-te-datatable-pagination-start-ref";
+const ATTR_PAGINATION_END = "data-te-datatable-pagination-end-ref";
+
 const pagination = (
-  { text, entries, entriesOptions, fullPagination, rowsText, allText, classes },
+  {
+    text,
+    entries,
+    entriesOptions,
+    fullPagination,
+    rowsText,
+    allText,
+    paginationStartIconTemplate,
+    paginationLeftIconTemplate,
+    paginationRightIconTemplate,
+    paginationEndIconTemplate,
+    classes,
+  },
   loading,
   bordered
 ) => {
-  const SELECTOR_SELECT = "data-te-datatable-select-ref";
-  const SELECTOR_PAGINATION_NAV = "data-te-datatable-pagination-nav-ref";
-  const SELECTOR_PAGINATION_RIGHT = "data-te-datatable-pagination-right-ref";
-  const SELECTOR_PAGINATION_LEFT = "data-te-datatable-pagination-left-ref";
-  const SELECTOR_PAGINATION_START = "data-te-datatable-pagination-start-ref";
-  const SELECTOR_PAGINATION_END = "data-te-datatable-pagination-end-ref";
   const options = entriesOptions
     .map((option) => {
       if (option === "All") {
@@ -35,44 +48,38 @@ const pagination = (
     loading ? `${classes.loadingPaginationSelectWrapper}` : ""
   }">
       <select name="entries"
-        ${loading ? "disabled" : ""} class="select" ${SELECTOR_SELECT}>
+        ${loading ? "disabled" : ""} class="select" ${ATTR_SELECT}>
         ${options}
       </select>
     </div>
   </div>
   <div class="${classes.paginationNav} ${
     loading ? `${classes.loadingPaginationNav}` : ""
-  }" ${SELECTOR_PAGINATION_NAV}>
+  }" ${ATTR_PAGINATION_NAV}>
   ${text}
   </div>
   <div class="${classes.paginationButtonsWrapper}">
     ${
       fullPagination
-        ? `<button data-te-ripple-color="dark" class="${classes.paginationStartButton}" ${SELECTOR_PAGINATION_START}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
-            </svg>
+        ? `<button data-te-ripple-color="dark" class="${classes.paginationStartButton}" ${ATTR_PAGINATION_START}>
+           ${paginationStartIconTemplate}
           </button>`
         : ""
     }
     <button data-te-ripple-color="dark" class="${
       classes.paginationLeftButton
-    }" ${SELECTOR_PAGINATION_LEFT}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-  </svg>
+    }" ${ATTR_PAGINATION_LEFT}>
+      ${paginationLeftIconTemplate}
   </button>
     <button data-te-ripple-color="dark" class="${
       classes.paginationRightButton
-    }" ${SELECTOR_PAGINATION_RIGHT}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-  </svg>
+    }" ${ATTR_PAGINATION_RIGHT}>
+      ${paginationRightIconTemplate}
   </button>
     ${
       fullPagination
-        ? `<button data-te-ripple-color="dark" class="${classes.paginationEndButton}" ${SELECTOR_PAGINATION_END}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
-            </svg>
+        ? `<button data-te-ripple-color="dark" class="${classes.paginationEndButton}" ${ATTR_PAGINATION_END}>
+           ${paginationEndIconTemplate}
           </button>`
         : ""
     }

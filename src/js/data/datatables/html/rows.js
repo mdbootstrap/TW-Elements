@@ -1,4 +1,8 @@
 /* eslint-disable indent */
+const ATTR_ROW = "data-te-datatable-row-ref";
+const ATTR_ROW_CHECKBOX = "data-te-datatable-row-checkbox-ref";
+const ATTR_CELL = "data-te-datatable-cell-ref";
+
 const rows = ({
   rows,
   columns,
@@ -14,9 +18,6 @@ const rows = ({
   classes,
 }) => {
   const rowsTemplate = rows.map((row) => {
-    const SELECTOR_ROW = "data-te-datatable-row-ref";
-    const SELECTOR_ROW_CHECKBOX = "data-te-datatable-row-checkbox-ref";
-    const SELECTOR_CELL = "data-te-datatable-cell-ref";
     const checkbox = `
       <td data-te-field="checkbox" class="${
         bordered ? `${classes.tableBordered} ${classes.borderColor}` : ""
@@ -27,7 +28,7 @@ const rows = ({
             type="checkbox"
             value=""
             id="checkboxDefault" 
-            data-te-row-index="${row.rowIndex}"  ${SELECTOR_ROW_CHECKBOX}/>
+            data-te-row-index="${row.rowIndex}"  ${ATTR_ROW_CHECKBOX}/>
         </div>
       </td>`;
     const innerRow = columns
@@ -59,7 +60,7 @@ const rows = ({
           bordered ? `${classes.tableBordered}` : ""
         } ${sm ? `${classes.sm}` : ""} ${
           column.fixed ? `${classes.fixedHeader} ${classes.color}` : ""
-        }" ${SELECTOR_CELL} data-te-field="${column.field}" ${
+        }" ${ATTR_CELL} data-te-field="${column.field}" ${
           edit && 'contenteditable="true"'
         }>${row[column.field]}</td>`;
       })
@@ -71,7 +72,7 @@ const rows = ({
       borderless ? `${classes.borderless}` : ""
     } ${hover ? `${classes.hoverRow}` : ""}" data-te-index="${
       row.rowIndex
-    }" ${SELECTOR_ROW}>${selectable ? checkbox : ""}${innerRow}</tr>`;
+    }" ${ATTR_ROW}>${selectable ? checkbox : ""}${innerRow}</tr>`;
   });
 
   return rows.length > 0 || loading

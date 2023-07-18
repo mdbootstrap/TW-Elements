@@ -1,3 +1,14 @@
+/*
+--------------------------------------------------------------------------
+Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+--------------------------------------------------------------------------
+*/
+
 import PerfectScrollbar from "../../methods/perfect-scrollbar";
 import { typeCheckConfig } from "../../util/index";
 import Data from "../../dom/data";
@@ -19,24 +30,40 @@ const ATTR_NAME = `data-te-${NAME}`;
 const DATA_KEY = `te.${NAME}`;
 const EVENT_KEY = `.${DATA_KEY}`;
 
-const SELECTOR_BODY = `[${ATTR_NAME}-inner-ref]`;
-const SELECTOR_CELL = `[${ATTR_NAME}-cell-ref]`;
-const SELECTOR_HEADER = `[${ATTR_NAME}-header-ref]`;
-const SELECTOR_HEADER_CHECKBOX = `[${ATTR_NAME}-header-checkbox-ref]`;
-const SELECTOR_PAGINATION_RIGHT = `[${ATTR_NAME}-pagination-right-ref]`;
-const SELECTOR_PAGINATION_LEFT = `[${ATTR_NAME}-pagination-left-ref]`;
-const SELECTOR_PAGINATION_START = `[${ATTR_NAME}-pagination-start-ref]`;
-const SELECTOR_PAGINATION_END = `[${ATTR_NAME}-pagination-end-ref]`;
-const SELECTOR_PAGINATION_NAV = `[${ATTR_NAME}-pagination-nav-ref]`;
-const SELECTOR_SELECT = `[${ATTR_NAME}-select-ref]`;
-const SELECTOR_SORT_ICON = `[${ATTR_NAME}-sort-icon-ref]`;
-const SELECTOR_ROW = `[${ATTR_NAME}-row-ref]`;
-const SELECTOR_ROW_CHECKBOX = `[${ATTR_NAME}-row-checkbox-ref]`;
+const ATTR_BODY = `[${ATTR_NAME}-inner-ref]`;
+const ATTR_CELL = `[${ATTR_NAME}-cell-ref]`;
+const ATTR_HEADER = `[${ATTR_NAME}-header-ref]`;
+const ATTR_HEADER_CHECKBOX = `[${ATTR_NAME}-header-checkbox-ref]`;
+const ATTR_PAGINATION_RIGHT = `[${ATTR_NAME}-pagination-right-ref]`;
+const ATTR_PAGINATION_LEFT = `[${ATTR_NAME}-pagination-left-ref]`;
+const ATTR_PAGINATION_START = `[${ATTR_NAME}-pagination-start-ref]`;
+const ATTR_PAGINATION_END = `[${ATTR_NAME}-pagination-end-ref]`;
+const ATTR_PAGINATION_NAV = `[${ATTR_NAME}-pagination-nav-ref]`;
+const ATTR_SELECT = `[${ATTR_NAME}-select-ref]`;
+const ATTR_SORT_ICON = `[${ATTR_NAME}-sort-icon-ref]`;
+const ATTR_ROW = `[${ATTR_NAME}-row-ref]`;
+const ATTR_ROW_CHECKBOX = `[${ATTR_NAME}-row-checkbox-ref]`;
 
 const EVENT_SELECT = `selectRows${EVENT_KEY}`;
 const EVENT_RENDER = `render${EVENT_KEY}`;
 const EVENT_ROW_CLICK = `rowClick${EVENT_KEY}`;
 const EVENT_UPDATE = `update${EVENT_KEY}`;
+
+const sortIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+</svg>`;
+const paginationStartIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
+</svg>`;
+const paginationLeftIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+</svg>`;
+const paginationRightIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+</svg>`;
+const paginationEndIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"/>
+</svg>`;
 
 const BORDER_COLOR_CLASSES = "border-neutral-200 dark:border-neutral-500";
 const BORDERLESS_CLASSES = "border-none";
@@ -133,6 +160,11 @@ const TYPE_OPTIONS = {
   ofText: "string",
   allText: "string",
   forceSort: "boolean",
+  sortIconTemplate: "string",
+  paginationStartIconTemplate: "string",
+  paginationEndIconTemplate: "string",
+  paginationLeftIconTemplate: "string",
+  paginationRightIconTemplate: "string",
 };
 
 const DEFAULT_OPTIONS = {
@@ -162,6 +194,11 @@ const DEFAULT_OPTIONS = {
   ofText: "of",
   allText: "All",
   forceSort: false,
+  sortIconTemplate: sortIconTemplate,
+  paginationStartIconTemplate: paginationStartIconTemplate,
+  paginationEndIconTemplate: paginationEndIconTemplate,
+  paginationLeftIconTemplate: paginationLeftIconTemplate,
+  paginationRightIconTemplate: paginationRightIconTemplate,
 };
 
 const TYPE_COLUMN_FIELDS = {
@@ -453,6 +490,7 @@ class Datatable {
       hover: this._options.hover,
       fixedHeader: this._options.fixedHeader,
       sm: this._options.sm,
+      sortIconTemplate: this._options.sortIconTemplate,
       pagination: {
         enable: this._options.pagination,
         text: this.navigationText,
@@ -462,6 +500,10 @@ class Datatable {
         rowsText: this._options.rowsText,
         ofText: this._options.ofText,
         allText: this._options.allText,
+        paginationStartIconTemplate: this._options.paginationStartIconTemplate,
+        paginationLeftIconTemplate: this._options.paginationLeftIconTemplate,
+        paginationRightIconTemplate: this._options.paginationRightIconTemplate,
+        paginationEndIconTemplate: this._options.paginationEndIconTemplate,
         classes: this._classes,
       },
       forceSort: this._options.forceSort,
@@ -646,7 +688,7 @@ class Datatable {
   }
 
   _setActiveRows() {
-    SelectorEngine.find(SELECTOR_ROW, this._element).forEach((row) => {
+    SelectorEngine.find(ATTR_ROW, this._element).forEach((row) => {
       if (this._selected.includes(Manipulator.getDataAttribute(row, "index"))) {
         Manipulator.addClass(row, `active ${this._classes.selectableRow}`);
       } else {
@@ -671,7 +713,7 @@ class Datatable {
   }
 
   _setSelected() {
-    SelectorEngine.find(SELECTOR_ROW_CHECKBOX, this._element).forEach(
+    SelectorEngine.find(ATTR_ROW_CHECKBOX, this._element).forEach(
       (checkbox) => {
         const index = Manipulator.getDataAttribute(checkbox, "rowIndex");
         checkbox.checked = this._selected.includes(index);
@@ -682,7 +724,7 @@ class Datatable {
   }
 
   _setActiveSortIcon(active) {
-    SelectorEngine.find(SELECTOR_SORT_ICON, this._element).forEach((icon) => {
+    SelectorEngine.find(ATTR_SORT_ICON, this._element).forEach((icon) => {
       const angle =
         this._options.sortOrder === "desc" && icon === active ? 180 : 0;
 
@@ -691,10 +733,8 @@ class Datatable {
       });
 
       if (icon === active && this._options.sortOrder) {
-        Manipulator.addClass(icon, "active");
         Manipulator.addClass(icon, `opacity-100`);
       } else {
-        Manipulator.removeClass(icon, "active");
         Manipulator.removeClass(icon, `opacity-100`);
       }
     });
@@ -725,11 +765,11 @@ class Datatable {
   }
 
   _setupClickableRows() {
-    SelectorEngine.find(SELECTOR_ROW, this._element).forEach((row) => {
+    SelectorEngine.find(ATTR_ROW, this._element).forEach((row) => {
       const index = Manipulator.getDataAttribute(row, "index");
       Manipulator.addClass(row, `cursor-pointer`);
       EventHandler.on(row, "click", (e) => {
-        if (!SelectorEngine.matches(e.target, SELECTOR_ROW_CHECKBOX)) {
+        if (!SelectorEngine.matches(e.target, ATTR_ROW_CHECKBOX)) {
           EventHandler.trigger(this._element, EVENT_ROW_CLICK, {
             index,
             row: this.rows[index],
@@ -740,16 +780,16 @@ class Datatable {
   }
 
   _setupEditable() {
-    SelectorEngine.find(SELECTOR_ROW, this._element).forEach((row) => {
+    SelectorEngine.find(ATTR_ROW, this._element).forEach((row) => {
       const index = Manipulator.getDataAttribute(row, "index");
-      SelectorEngine.find(SELECTOR_CELL, row).forEach((cell) => {
+      SelectorEngine.find(ATTR_CELL, row).forEach((cell) => {
         EventHandler.on(cell, "input", (e) => this._updateRow(e, index));
       });
     });
   }
 
   _setupScroll() {
-    const datatableBody = SelectorEngine.findOne(SELECTOR_BODY, this._element);
+    const datatableBody = SelectorEngine.findOne(ATTR_BODY, this._element);
 
     const style = {};
 
@@ -769,7 +809,7 @@ class Datatable {
     Manipulator.addClass(datatableBody, `${this._classes.scroll}`);
 
     if (this._options.fixedHeader) {
-      let headers = SelectorEngine.find(SELECTOR_HEADER, this._element);
+      let headers = SelectorEngine.find(ATTR_HEADER, this._element);
 
       if (this._options.selectable) {
         headers = headers.filter((header, index) => {
@@ -798,7 +838,7 @@ class Datatable {
   }
 
   _setupSort() {
-    SelectorEngine.find(SELECTOR_SORT_ICON, this._element).forEach((icon) => {
+    SelectorEngine.find(ATTR_SORT_ICON, this._element).forEach((icon) => {
       const field = Manipulator.getDataAttribute(icon, "sort");
       const [header] = SelectorEngine.parents(icon, "th");
       if (this.columns.sort) {
@@ -844,13 +884,10 @@ class Datatable {
   }
 
   _setupSelectable() {
-    this._checkboxes = SelectorEngine.find(
-      SELECTOR_ROW_CHECKBOX,
-      this._element
-    );
+    this._checkboxes = SelectorEngine.find(ATTR_ROW_CHECKBOX, this._element);
 
     this._headerCheckbox = SelectorEngine.findOne(
-      SELECTOR_HEADER_CHECKBOX,
+      ATTR_HEADER_CHECKBOX,
       this._element
     );
 
@@ -869,12 +906,12 @@ class Datatable {
 
   _setupPagination() {
     this._paginationRight = SelectorEngine.findOne(
-      SELECTOR_PAGINATION_RIGHT,
+      ATTR_PAGINATION_RIGHT,
       this._element
     );
 
     this._paginationLeft = SelectorEngine.findOne(
-      SELECTOR_PAGINATION_LEFT,
+      ATTR_PAGINATION_LEFT,
       this._element
     );
 
@@ -888,12 +925,12 @@ class Datatable {
 
     if (this._options.fullPagination) {
       this._paginationStart = SelectorEngine.findOne(
-        SELECTOR_PAGINATION_START,
+        ATTR_PAGINATION_START,
         this._element
       );
 
       this._paginationEnd = SelectorEngine.findOne(
-        SELECTOR_PAGINATION_END,
+        ATTR_PAGINATION_END,
         this._element
       );
 
@@ -912,7 +949,7 @@ class Datatable {
   }
 
   _setupPaginationSelect() {
-    this._select = SelectorEngine.findOne(SELECTOR_SELECT, this._element);
+    this._select = SelectorEngine.findOne(ATTR_SELECT, this._element);
 
     this._selectInstance = new Select(this._select);
 
@@ -937,18 +974,18 @@ class Datatable {
     }
 
     if (this._options.edit) {
-      SelectorEngine.find(SELECTOR_CELL, this._element).forEach((cell) => {
+      SelectorEngine.find(ATTR_CELL, this._element).forEach((cell) => {
         EventHandler.off(cell, "input");
       });
     }
 
     if (this._options.clickableRows) {
-      SelectorEngine.find(SELECTOR_ROW, this._element).forEach((row) => {
+      SelectorEngine.find(ATTR_ROW, this._element).forEach((row) => {
         EventHandler.off(row, "click");
       });
     }
 
-    SelectorEngine.find(SELECTOR_SORT_ICON, this._element).forEach((icon) => {
+    SelectorEngine.find(ATTR_SORT_ICON, this._element).forEach((icon) => {
       const [header] = SelectorEngine.parents(icon, "th");
 
       EventHandler.off(header, "click");
@@ -976,7 +1013,7 @@ class Datatable {
 
     if (this._options.pagination) {
       const navigation = SelectorEngine.findOne(
-        SELECTOR_PAGINATION_NAV,
+        ATTR_PAGINATION_NAV,
         this._element
       );
       navigation.innerText = this.navigationText;
@@ -1004,12 +1041,12 @@ class Datatable {
   }
 
   _formatCells() {
-    const rows = SelectorEngine.find(SELECTOR_ROW, this._element);
+    const rows = SelectorEngine.find(ATTR_ROW, this._element);
 
     rows.forEach((row) => {
       const index = Manipulator.getDataAttribute(row, "index");
 
-      const cells = SelectorEngine.find(SELECTOR_CELL, row);
+      const cells = SelectorEngine.find(ATTR_CELL, row);
 
       cells.forEach((cell) => {
         const field = Manipulator.getDataAttribute(cell, "field");

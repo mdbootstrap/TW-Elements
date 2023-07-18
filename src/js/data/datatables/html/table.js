@@ -3,6 +3,9 @@ import paginationTemplate from "./pagination";
 import generateColumns from "./columns";
 import generateRows from "./rows";
 
+const ATTR_BODY = "data-te-datatable-inner-ref";
+const ATTR_HEADER = "data-te-datatable-header-ref";
+
 const tableTemplate = ({
   columns,
   rows,
@@ -19,10 +22,9 @@ const tableTemplate = ({
   hover,
   fixedHeader,
   sm,
+  sortIconTemplate,
   classes,
 }) => {
-  const SELECTOR_BODY = "data-te-datatable-inner-ref";
-  const SELECTOR_HEADER = "data-te-datatable-header-ref";
   const rowsTemplate = generateRows({
     rows,
     columns,
@@ -44,17 +46,18 @@ const tableTemplate = ({
     bordered,
     sm,
     loading,
+    sortIconTemplate,
     classes
   );
 
   const table = `
-<div class="${classes.color}" ${SELECTOR_BODY}>
+<div class="${classes.color}" ${ATTR_BODY}>
   <table class="${classes.table}">
     <thead class="${classes.tableHeader} ${
     bordered ? `${classes.tableBordered}` : ""
   } ${borderless ? `${classes.borderless}` : ""} ${
     classes.borderColor
-  }" ${SELECTOR_HEADER}>
+  }" ${ATTR_HEADER}>
       <tr>
         ${columnsTemplate}
       </tr>

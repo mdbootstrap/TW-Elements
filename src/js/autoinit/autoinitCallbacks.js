@@ -181,17 +181,6 @@ const popoverCallback = (component, initSelector) => {
   });
 };
 
-const datatableCallback = (component, initSelector) => {
-  SelectorEngine.find(initSelector).forEach((datatable) => {
-    let instance = component.getInstance(datatable);
-    if (!instance) {
-      instance = new component(datatable);
-    }
-
-    return instance;
-  });
-};
-
 export {
   dropdownCallback,
   tabCallback,
@@ -202,5 +191,4 @@ export {
   collapseCallback,
   tooltipsCallback,
   popoverCallback,
-  datatableCallback,
 };

@@ -1,4 +1,6 @@
 /* eslint-disable indent */
+const ATTR_SORT_ICON = "data-te-datatable-sort-icon-ref";
+const ATTR_HEADER_CHECKBOX = "data-te-datatable-header-checkbox-ref";
 
 const columns = (
   columns,
@@ -7,10 +9,9 @@ const columns = (
   bordered,
   sm,
   loading,
+  sortIconTemplate,
   classes
 ) => {
-  const SELECTOR_SORT_ICON = "data-te-datatable-sort-icon-ref";
-  const SELECTOR_HEADER_CHECKBOX = "data-te-datatable-header-checkbox-ref";
   const checkboxHeader = multi
     ? `
   <th scope="col">
@@ -19,8 +20,7 @@ const columns = (
         class="${classes.checkboxHeader}"
         type="checkbox"
         value=""
-        id="checkboxDefault" 
-        ${SELECTOR_HEADER_CHECKBOX}
+        ${ATTR_HEADER_CHECKBOX}
         />
     </div>
   </th>
@@ -42,13 +42,11 @@ const columns = (
         : ""
     }" scope="col">${
       column.sort
-        ? `<div class="${classes.sortIconWrapper}"><svg data-te-sort="${
-            column.field
-          }" ${SELECTOR_SORT_ICON} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="${
+        ? `<div class="${classes.sortIconWrapper}"><span class="${
             classes.sortIcon
-          } ${loading ? "invisible" : ""}">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
-             </svg>`
+          } ${loading ? "invisible" : ""}" data-te-sort="${
+            column.field
+          }" ${ATTR_SORT_ICON}>${sortIconTemplate}</span>`
         : ""
     } <span class="${column.sort ? "" : "ml-6"}">${
       column.label
