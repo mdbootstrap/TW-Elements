@@ -547,9 +547,13 @@ class Select {
       SELECTOR_FORM_OUTLINE,
       this._wrapper
     );
-    const outlineInput = new Input(inputWrapper, {
-      inputFormWhite: this._config.selectFormWhite,
-    });
+    const outlineInput = new Input(
+      inputWrapper,
+      {
+        inputFormWhite: this._config.selectFormWhite,
+      },
+      this._classes
+    );
     outlineInput.init();
     this._notch = SelectorEngine.findOne(SELECTOR_NOTCH, this._wrapper);
   }
