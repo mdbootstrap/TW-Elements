@@ -42,7 +42,7 @@ const SWIPE_THRESHOLD = 40;
 const Default = {
   interval: 5000,
   keyboard: true,
-  slide: false,
+  ride: false,
   pause: "hover",
   wrap: true,
   touch: true,
@@ -51,7 +51,7 @@ const Default = {
 const DefaultType = {
   interval: "(number|boolean)",
   keyboard: "boolean",
-  slide: "(boolean|string)",
+  ride: "(boolean|string)",
   pause: "(string|boolean)",
   wrap: "boolean",
   touch: "boolean",
@@ -62,7 +62,7 @@ const DefaultClasses = {
   block: "!block",
   visible: "data-[te-carousel-fade]:opacity-100 data-[te-carousel-fade]:z-[1]",
   invisible:
-    "data-[te-carousel-fade]:z-0 data-[te-carousel-fade]:opacity-0 data-[te-carousel-fade]:duration-0 data-[te-carousel-fade]:delay-600",
+    "data-[te-carousel-fade]:z-0 data-[te-carousel-fade]:opacity-0 data-[te-carousel-fade]:duration-[600ms] data-[te-carousel-fade]:delay-600",
   slideRight: "translate-x-full",
   slideLeft: "-translate-x-full",
 };
@@ -102,7 +102,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
 const ATTR_CAROUSEL = "data-te-carousel-init";
 const ATTR_ACTIVE = "data-te-carousel-active";
-const ATTR_SLIDE = "data-te-carousel-slide";
 const ATTR_END = "data-te-carousel-item-end";
 const ATTR_START = "data-te-carousel-item-start";
 const ATTR_NEXT = "data-te-carousel-item-next";
@@ -156,6 +155,9 @@ class Carousel extends BaseComponent {
     this._addEventListeners();
     this._didInit = false;
     this._init();
+    if (this._config.ride === "carousel") {
+      this.cycle();
+    }
   }
 
   // Getters
@@ -299,6 +301,19 @@ class Carousel extends BaseComponent {
     return classes;
   }
 
+  _enableCycle() {
+    if (!this._config.ride) {
+      return;
+    }
+
+    if (this._isSliding) {
+      EventHandler.one(this._element, EVENT_SLID, () => this.cycle());
+      return;
+    }
+
+    this.cycle();
+  }
+
   _applyInitialClasses() {
     const activeElement = SelectorEngine.findOne(
       SELECTOR_DATA_ACTIVE_ITEM,
@@ -350,7 +365,7 @@ class Carousel extends BaseComponent {
         this.pause(event)
       );
       EventHandler.on(this._element, EVENT_MOUSELEAVE, (event) =>
-        this.cycle(event)
+        this._enableCycle(event)
       );
     }
 
@@ -407,7 +422,7 @@ class Carousel extends BaseComponent {
         }
 
         this.touchTimeout = setTimeout(
-          (event) => this.cycle(event),
+          (event) => this._enableCycle(event),
           TOUCHEVENT_COMPAT_WAIT + this._config.interval
         );
       }
@@ -602,7 +617,7 @@ class Carousel extends BaseComponent {
       });
     };
 
-    if (this._element.hasAttribute(ATTR_SLIDE)) {
+    if (this._element.hasAttribute(ATTR_CAROUSEL)) {
       nextElement.setAttribute(`${orderAttr}`, "");
       nextElement.classList.add(this._classes.block, nextClass);
 
@@ -694,20 +709,20 @@ class Carousel extends BaseComponent {
         ...config,
       };
     }
-
-    const action = typeof config === "string" ? config : _config.slide;
+    const action = typeof config === "string" ? config : config.slide;
 
     if (typeof config === "number") {
       data.to(config);
-    } else if (typeof action === "string") {
+      return;
+    }
+    if (typeof action === "string") {
       if (typeof data[action] === "undefined") {
         throw new TypeError(`No method named "${action}"`);
       }
 
       data[action]();
-    } else if (_config.interval && _config.carouselInit === null) {
+    } else if (_config.interval && _config.ride === true) {
       data.pause();
-      data.cycle();
     }
   }
 
