@@ -136,10 +136,11 @@ class Ripple {
       this._isMinWidthSet = true;
     }
 
+    this._options = this._getConfig();
+    this._classes = this._getClasses();
+
     this._initialClasses = [...this._element.classList];
     Manipulator.addClass(this._element, this._classes.ripple);
-
-    this._options = this._getConfig();
     this._createRipple(event);
   }
 
@@ -268,7 +269,7 @@ class Ripple {
     return config;
   }
 
-  _getClasses(classes) {
+  _getClasses(classes = {}) {
     const dataAttributes = Manipulator.getDataClassAttributes(this._element);
 
     classes = {
