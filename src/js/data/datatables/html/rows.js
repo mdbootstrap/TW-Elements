@@ -27,7 +27,6 @@ const rows = ({
             class="${classes.checkboxRow}"
             type="checkbox"
             value=""
-            id="checkboxDefault" 
             data-te-row-index="${row.rowIndex}"  ${ATTR_ROW_CHECKBOX}/>
         </div>
       </td>`;

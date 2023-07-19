@@ -49,10 +49,10 @@ const EVENT_RENDER = `render${EVENT_KEY}`;
 const EVENT_ROW_CLICK = `rowClick${EVENT_KEY}`;
 const EVENT_UPDATE = `update${EVENT_KEY}`;
 
-const sortIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+const sortIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
 </svg>`;
-const paginationStartIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+const paginationStartIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
 </svg>`;
 const paginationLeftIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -76,7 +76,7 @@ const CHECKBOX_ROW_CLASSES =
 const CHECKBOX_ROW_WRAPPER_CLASSES =
   "mb-[0.125rem] min-h-[1.5rem] pl-[1.5rem] ml-3 flex items-center";
 const COLOR_CLASSES = "bg-white dark:bg-neutral-800";
-const COLUMNS_CLASSES = "py-4 text-clip overflow-hidden";
+const COLUMNS_CLASSES = "py-4 pl-1 text-clip overflow-hidden text-[#212529]";
 const EDIT_CLASSES = "focus:outline-none";
 const FIXED_HEADER_CLASSES = "sticky top-0 z-30";
 const FIXED_HEADER_BODY_CLASSES = "sticky z-10 bg-inherit";
@@ -99,7 +99,7 @@ const NO_FOUND_MESSAGE_CLASSES =
   "pl-2 py-3 font-light text-sm dark:text-neutral-300";
 const NO_FOUND_MESSAGE_WRAPPER_CLASSES = "border-b";
 const PAGINATION_CLASSES =
-  "flex md:flex-row justify-end items-center py-2 space-x-4 text-sm flex-col";
+  "flex md:flex-row justify-end items-center py-2 space-x-4 text-sm flex-col leading-[1.6]";
 const PAGINATION_BORDERED_CLASSES = "border border-t-0";
 const PAGINATION_BUTTONS_WRAPPER_CLASSES =
   "order-1 my-3 md:order-none md:my-0 md:pr-1";
@@ -117,21 +117,21 @@ const ROW_CLASSES = "border-b";
 const ROW_ANIMATION_CLASSES =
   "transition ease-in-out duration-300 motion-reduce:transition-none";
 const ROW_ITEM_CLASSES =
-  "whitespace-nowrap text-clip overflow-hidden px-6 py-4";
+  "whitespace-nowrap text-clip overflow-hidden px-[1.4rem] py-4";
 const SCROLL_CLASSES = "relative";
 const SELECTABLE_ROW_CLASSES = "!bg-neutral-100 dark:!bg-neutral-600";
 const SELECT_ITEMS_WRAPPER_CLASSES =
   "flex items-center space-x-4 order-3 md:order-none";
-const SELECT_WRAPPER_CLASSES = "w-20";
+const SELECT_WRAPPER_CLASSES = "w-[70px]";
 const SM_CLASSES = "!py-2";
 const SORT_ICON_CLASSES =
-  "w-5 h-5 pb-1 mr-1 opacity-0 text-neutral-500 group-hover:opacity-100 transition hover:ease-in-out transform ease-linear duration-300 motion-reduce:transition-none dark:text-neutral-400";
+  "w-[15px] h-[10px] origin-bottom font-black mr-1 opacity-0 text-neutral-500 group-hover:opacity-100 transition hover:ease-in-out transform ease-linear duration-300 motion-reduce:transition-none dark:text-neutral-400";
 const SORT_ICON_WRAPPER_CLASSES = "flex flex-row group";
 const STRIPED_CLASSES =
   "[&:nth-child(odd)]:bg-neutral-50 [&:nth-child(odd)]:dark:bg-neutral-700";
 const TABLE_BORDERED_CLASSES = "border";
-const TABLE_HEADER_CLASSES = "border-b font-medium";
-const TABLE_CLASSES = "text-left text-sm font-light w-full";
+const TABLE_HEADER_CLASSES = "border-b font-normal px-[1.4rem]";
+const TABLE_CLASSES = "text-left text-sm font-light w-full leading-[1.6]";
 
 const TYPE_OPTIONS = {
   bordered: "boolean",

@@ -48,7 +48,7 @@ const columns = (
             column.field
           }" ${ATTR_SORT_ICON}>${sortIconTemplate}</span>`
         : ""
-    } <span class="${column.sort ? "" : "ml-6"}">${
+    } <span class="${column.sort ? "" : "pl-[18px]"}">${
       column.label
     }</span></div></th>`;
   });

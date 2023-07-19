@@ -61,24 +61,24 @@ const pagination = (
   <div class="${classes.paginationButtonsWrapper}">
     ${
       fullPagination
-        ? `<button data-te-ripple-color="dark" class="${classes.paginationStartButton}" ${ATTR_PAGINATION_START}>
+        ? `<button data-te-ripple-init data-te-ripple-color="dark" class="${classes.paginationStartButton}" ${ATTR_PAGINATION_START}>
            ${paginationStartIconTemplate}
           </button>`
         : ""
     }
-    <button data-te-ripple-color="dark" class="${
+    <button data-te-ripple-init data-te-ripple-color="dark" class="${
       classes.paginationLeftButton
     }" ${ATTR_PAGINATION_LEFT}>
       ${paginationLeftIconTemplate}
   </button>
-    <button data-te-ripple-color="dark" class="${
+    <button data-te-ripple-init data-te-ripple-color="dark" class="${
       classes.paginationRightButton
     }" ${ATTR_PAGINATION_RIGHT}>
       ${paginationRightIconTemplate}
   </button>
     ${
       fullPagination
-        ? `<button data-te-ripple-color="dark" class="${classes.paginationEndButton}" ${ATTR_PAGINATION_END}>
+        ? `<button data-te-ripple-init data-te-ripple-color="dark" class="${classes.paginationEndButton}" ${ATTR_PAGINATION_END}>
            ${paginationEndIconTemplate}
           </button>`
         : ""
