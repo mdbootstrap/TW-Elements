@@ -76,7 +76,8 @@ const CHECKBOX_ROW_CLASSES =
 const CHECKBOX_ROW_WRAPPER_CLASSES =
   "mb-[0.125rem] min-h-[1.5rem] pl-[1.5rem] ml-3 flex items-center";
 const COLOR_CLASSES = "bg-white dark:bg-neutral-800";
-const COLUMNS_CLASSES = "py-4 pl-1 text-clip overflow-hidden text-[#212529]";
+const COLUMNS_CLASSES =
+  "py-4 pl-1 text-clip overflow-hidden text-[#212529] dark:text-white";
 const EDIT_CLASSES = "focus:outline-none";
 const FIXED_HEADER_CLASSES = "sticky top-0 z-30";
 const FIXED_HEADER_BODY_CLASSES = "sticky z-10 bg-inherit";
