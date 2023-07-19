@@ -10,13 +10,15 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 */
 
 const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = plugin(() => {}, {
   theme: {
+    screens: {
+      xs: "320px",
+      ...defaultTheme.screens,
+    },
     extend: {
-      screens: {
-        xs: "320px",
-      },
       fontFamily: {
         sans: ["Roboto", "sans-serif"],
         body: ["Roboto", "sans-serif"],
