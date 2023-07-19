@@ -33,6 +33,7 @@ import ChipsInput from "./components/chips";
 import Chip from "./components/chips/chip";
 import Chart from "./data/chart/charts";
 import PerfectScrollbar from "./methods/perfect-scrollbar";
+import Datatable from "./data/datatables/index";
 import Rating from "./components/rating";
 import initTE from "./autoinit/index";
 
@@ -61,6 +62,7 @@ export {
   Input,
   Chart,
   PerfectScrollbar,
+  Datatable,
   Rating,
   initTE,
 };

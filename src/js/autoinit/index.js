@@ -96,6 +96,10 @@ const defaultInitSelectors = {
     selector: "[data-te-toast-init]",
     isToggler: false,
   },
+  datatable: {
+    name: "Datatable",
+    selector: "[data-te-datatable-init]",
+  },
 
   // advancedInits
   chart: {
