@@ -209,7 +209,7 @@ const init = (components) => {
 const initTE = (components, checkOtherImports = false) => {
   const componentList = Object.keys(defaultInitSelectors).map((element) => {
     const requireAutoinit = Boolean(
-      document.body.querySelector(defaultInitSelectors[element].selector)
+      document.querySelector(defaultInitSelectors[element].selector)
     );
     if (requireAutoinit) {
       const component = components[defaultInitSelectors[element].name];
