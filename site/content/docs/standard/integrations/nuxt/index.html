@@ -138,12 +138,12 @@ menu:
   <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
-    <code>tailwind.config.cjs</code> file.
+    <code>tailwind.config.js</code> file.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+    {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
@@ -229,9 +229,11 @@ menu:
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "app.vue" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
-        import "tw-elements/dist/css/tw-elements.min.css";
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    <script setup>
+      import "tw-elements/dist/css/tw-elements.min.css";
+    </script>
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 7</h2>
