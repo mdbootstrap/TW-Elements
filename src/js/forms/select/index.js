@@ -845,6 +845,7 @@ class Select {
       this._selectionModel.clear();
       selected.deselect();
     }
+    this._fakeValue.innerHTML = "";
     this._updateInputValue();
     this._updateFakeLabelPosition();
     this._updateLabelPosition();
