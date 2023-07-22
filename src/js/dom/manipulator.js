@@ -96,8 +96,8 @@ const Manipulator = {
     const rect = element.getBoundingClientRect();
 
     return {
-      top: rect.top + Math.max(document.body.scrollTop, document.documentElement.scrollTop, window.scrollY),
-      left: rect.left + Math.max(document.body.scrollLeft, document.documentElement.scrollLeft, window.scrollX),
+      top: rect.top + document.body.scrollTop,
+      left: rect.left + document.body.scrollLeft,
     };
   },
 
@@ -150,6 +150,27 @@ const Manipulator = {
 
   hasClass(element, className) {
     return element.classList.contains(className);
+  },
+
+  maxOffset(element) {
+    const rect = element.getBoundingClientRect();
+
+    return {
+      top:
+        rect.top +
+        Math.max(
+          document.body.scrollTop,
+          document.documentElement.scrollTop,
+          window.scrollY
+        ),
+      left:
+        rect.left +
+        Math.max(
+          document.body.scrollLeft,
+          document.documentElement.scrollLeft,
+          window.scrollX
+        ),
+    };
   },
 };
 
