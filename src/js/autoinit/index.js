@@ -10,6 +10,7 @@ import {
   collapseCallback,
   tooltipsCallback,
   popoverCallback,
+  lightboxCallback,
 } from "./autoinitCallbacks";
 
 import { chartsCallback } from "./chartsInit";
@@ -164,6 +165,12 @@ const defaultInitSelectors = {
     selector: "[data-te-toggle='popover']",
     isToggler: true,
     callback: popoverCallback,
+  },
+  lightbox: {
+    name: "Lightbox",
+    selector: "[data-te-lightbox-init]",
+    isToggler: true,
+    callback: lightboxCallback,
   },
 };
 
