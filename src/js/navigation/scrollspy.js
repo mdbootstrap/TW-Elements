@@ -67,7 +67,7 @@ const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, ${SE
 const SELECTOR_DROPDOWN = "[data-te-dropdown-ref]";
 const SELECTOR_DROPDOWN_TOGGLE = "[data-te-dropdown-toggle-ref]";
 
-const METHOD_OFFSET = "offset";
+const METHOD_OFFSET = "maxOffset";
 const METHOD_POSITION = "position";
 
 /*
