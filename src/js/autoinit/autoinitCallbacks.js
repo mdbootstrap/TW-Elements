@@ -181,6 +181,18 @@ const popoverCallback = (component, initSelector) => {
   });
 };
 
+const lightboxCallback = (component, initSelector) => {
+  SelectorEngine.find(initSelector).forEach((element) => {
+    new component(element);
+  });
+  EventHandler.on(
+    document,
+    `click.te.${component.NAME}.data-api`,
+    `${initSelector} img:not([data-te-lightbox-disabled])`,
+    component.toggle()
+  );
+};
+
 export {
   dropdownCallback,
   tabCallback,
@@ -191,4 +203,5 @@ export {
   collapseCallback,
   tooltipsCallback,
   popoverCallback,
+  lightboxCallback,
 };
