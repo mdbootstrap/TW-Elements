@@ -13,7 +13,6 @@ import { reflow, typeCheckConfig } from "../util/index";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import BaseComponent from "../base-component";
-import { enableDismissTrigger } from "../util/component-functions";
 
 /*
 ------------------------------------------------------------------------
@@ -78,8 +77,6 @@ class Toast extends BaseComponent {
     this._hasMouseInteraction = false;
     this._hasKeyboardInteraction = false;
     this._setListeners();
-    this._didInit = false;
-    this._init();
   }
 
   // Getters
@@ -168,15 +165,6 @@ class Toast extends BaseComponent {
   }
 
   // Private
-  _init() {
-    if (this._didInit) {
-      return;
-    }
-
-    enableDismissTrigger(Toast);
-    this._didInit = true;
-  }
-
   _getConfig(config) {
     config = {
       ...Default,
