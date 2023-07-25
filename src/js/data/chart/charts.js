@@ -1,3 +1,14 @@
+/*
+--------------------------------------------------------------------------
+Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+--------------------------------------------------------------------------
+*/
+
 import { element, typeCheckConfig } from "../../util/index";
 import Data from "../../dom/data";
 import Manipulator from "../../dom/manipulator";
@@ -125,7 +136,7 @@ class Chart {
   }
 
   async _getChartDataLabels() {
-    const { ChartDataLabels } = await import("chartjs-plugin-datalabels");
+    const ChartDataLabels = await import("chartjs-plugin-datalabels");
     return ChartDataLabels;
   }
 
@@ -189,10 +200,21 @@ class Chart {
       this._chart.data = this._data;
     }
 
-    this._prevConfig = this._chart.options;
+    const configOptions = Object.prototype.hasOwnProperty.call(
+      config,
+      "options"
+    )
+      ? config
+      : { options: { ...config } };
 
-    this._options = { ...this._options, ...config };
-    this._chart.options = merge(this._chart.options, this._options);
+    this._options = merge(this._options, configOptions);
+
+    this._chart.options = GENERATE_DATA(
+      this._options,
+      this._type,
+      DEFAULT_OPTIONS
+    ).options;
+
     this._chart.update();
   }
 
@@ -284,9 +306,10 @@ class Chart {
       const plugins = [];
 
       if (options.dataLabelsPlugin) {
-        plugins.push(this._ChartDataLabels);
+        plugins.push(this._ChartDataLabels.default);
       }
 
+      this._prevConfig = options;
       this._chart = new this._Chartjs(this._canvas, {
         ...this._data,
         ...options,

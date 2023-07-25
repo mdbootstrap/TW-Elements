@@ -2,12 +2,12 @@
 
 Tailwind Elements is a huge collection of free, interactive components for Tailwind CSS.
 
-  <table>
+ <table>
     <tbody>
     <tr>
       <td>
-          <a href="https://tailwind-elements.com/docs/standard/getting-started/quick-start/" alt="Tailwind-elements" rel="dofollow">
-          		<img width="600" src="https://tailwind-elements.com/img/tailwind-video.png">
+          <a href="https://tailwind-elements.com/" alt="Tailwind Elements tutorials" rel="dofollow">
+          		<img width="600" src="https://tecdn.b-cdn.net/img/components-big.jpg">
           </a>
       </td>
       <td>    

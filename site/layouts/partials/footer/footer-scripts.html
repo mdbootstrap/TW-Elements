@@ -5,7 +5,6 @@
 <!-- PRISM -->
 <script type="text/javascript" src="/js/new-prism.js"></script>
 <link rel="stylesheet" href="/css/new-prism.css" />
-<script type="module" src="/js/perfect-scrollbar.min.js"></script>
 
 <script type="module">
   class Search {
@@ -56,7 +55,7 @@
         .then((response) => {
           this.data = [...response];
 
-          new PerfectScrollbar(this.list, {
+          new te.PerfectScrollbar(this.list, {
             suppressScrollX: true,
             handlers: ["click-rail", "drag-thumb", "wheel", "touch"],
           });
@@ -566,13 +565,3 @@
   }
 </script>
 <!-- umd toggler -->
-
-<script type="module">
-  const tooltipTriggerList = [].slice.call(
-    document.querySelectorAll('[data-te-toggle="tooltip"]')
-  );
-
-  const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new te.Tooltip(tooltipTriggerEl);
-  });
-</script>

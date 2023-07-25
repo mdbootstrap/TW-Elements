@@ -12,7 +12,6 @@ export default defineConfig({
   define: {
     // for popper to not crash in docs
     "process.env": {},
-    initiatedComponents: [],
   },
   build: {
     outDir: distName,

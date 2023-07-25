@@ -99,10 +99,11 @@ module.exports = plugin(
   },
   {
     theme: {
+      screens: {
+        xs: "320px",
+        ...defaultTheme.screens,
+      },
       extend: {
-        screens: {
-          xs: "320px",
-        },
         fontFamily: {
           sans: ["Roboto", "sans-serif"],
           body: ["Roboto", "sans-serif"],
@@ -359,6 +360,10 @@ module.exports = plugin(
               opacity: "1",
               transform: "scale(1)",
             },
+          },
+          progress: {
+            "0%": { transform: "translateX(-45%)" },
+            "100%": { transform: "translateX(100%)" },
           },
         },
         colors: {

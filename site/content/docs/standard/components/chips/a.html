@@ -7,7 +7,7 @@
   <section id="api-section-import">
     <!--Title-->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       id="import"
       data-te-spy-item>
       Import
@@ -48,7 +48,7 @@
   <section id="api-section-usage">
     <!--Title-->
     <h2
-      class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
       id="basic"
       data-te-spy-item>
       Usage
@@ -58,7 +58,7 @@
 
     <p>
       Elements with the <code>data-te-chip-init</code> and
-      <code>data-te-chips-init</code>
+      <code>data-te-chips-input-init</code>
       attribute will be automatically initialized - you can set all available
       options with data attributes. For ES format, you must first import and
       call the <code>initTE</code> method.
@@ -74,14 +74,14 @@
         <div
           data-te-chip-init
           data-te-ripple-init
-          class="[word-wrap: break-word] my-[5px] mr-4 flex h-[32px] cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] py-0 px-[12px] text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-gray-200"
+          class="[word-wrap: break-word] my-[5px] mr-4 flex h-[32px] cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] px-[12px] py-0 text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-gray-200"
           data-te-close="true">
           Text
         </div>
 
         <div class="flex w-full flex-wrap justify-center">
           <div
-            data-te-chips-init
+            data-te-chips-input-init
             data-te-chips-placeholder
             class="mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"></div>
         </div>
@@ -154,7 +154,7 @@
     <section id="api-section-options">
       <!-- Section title -->
       <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
         data-te-spy-item>
         Options
       </h2>
@@ -285,6 +285,44 @@
                       Change label
                     </td>
                   </tr>
+                  <tr
+                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>inputClasses</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Object
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>{}</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Allows to pass the custom classes to the Input component.
+                      Used in ChipsInput.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>inputOptions</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Object
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>{}</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Allows to pass the options to the Input component. Used in
+                      ChipsInput.
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -299,7 +337,7 @@
     <section id="api-section-classes">
       <!-- Section title -->
       <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
         data-te-spy-item>
         Classes
       </h2>
@@ -495,96 +533,6 @@
                       Sets styles for chips input label.
                     </td>
                   </tr>
-                  <tr
-                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                    <td
-                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>chipsNotchesWrapper</code>
-                    </td>
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      group flex absolute left-0 top-0 w-full max-w-full h-full
-                      text-left pointer-events-none
-                    </td>
-                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                      Sets position and size for notch wrapper.
-                    </td>
-                  </tr>
-                  <tr
-                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                    <td
-                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>chipsNotchesLeading</code>
-                    </td>
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      pointer-events-none border border-solid box-border
-                      bg-transparent transition-all duration-200 ease-linear
-                      motion-reduce:transition-none left-0 top-0 h-full w-2
-                      border-r-0 rounded-l-[0.25rem]
-                      group-data-[te-input-focused]:border-r-0
-                      group-data-[te-input-state-active]:border-r-0
-                      border-gray-300 dark:border-gray-600
-                      group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca]
-                      group-data-[te-input-focused]:border-blue-600
-                    </td>
-                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                      Sets styles for the leading input notch. Allows the notch
-                      to change it's appearance depending on inputs state.
-                    </td>
-                  </tr>
-                  <tr
-                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                    <td
-                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>chipsNotchesMiddle</code>
-                    </td>
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      pointer-events-none border border-solid box-border
-                      bg-transparent transition-all duration-200 ease-linear
-                      motion-reduce:transition-none grow-0 shrink-0 basis-auto
-                      w-auto max-w-[calc(100%-1rem)] h-full border-r-0
-                      border-l-0 group-data-[te-input-focused]:border-x-0
-                      group-data-[te-input-state-active]:border-x-0
-                      group-data-[te-input-focused]:border-t
-                      group-data-[te-input-state-active]:border-t
-                      group-data-[te-input-focused]:border-solid
-                      group-data-[te-input-state-active]:border-solid
-                      group-data-[te-input-focused]:border-t-transparent
-                      group-data-[te-input-state-active]:border-t-transparent
-                      border-gray-300 dark:border-gray-600
-                      group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca]
-                      group-data-[te-input-focused]:border-blue-600
-                    </td>
-                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                      Sets styles for the middle input notch. Allows the notch
-                      to change it's appearance depending on inputs state.
-                    </td>
-                  </tr>
-                  <tr
-                    class="border-b bg-gray-100 dark:border-neutral-500 dark:bg-neutral-700">
-                    <td
-                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>chipsNotchesTrailing</code>
-                    </td>
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      pointer-events-none border border-solid box-border
-                      bg-transparent transition-all duration-200 ease-linear
-                      motion-reduce:transition-none grow h-full border-l-0
-                      rounded-r-[0.25rem]
-                      group-data-[te-input-focused]:border-l-0
-                      group-data-[te-input-state-active]:border-l-0
-                      border-gray-300 dark:border-gray-600
-                      group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca]
-                      group-data-[te-input-focused]:border-blue-600
-                    </td>
-                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                      Sets styles for the trailing input notch. Allows the notch
-                      to change it's appearance depending on inputs state.
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -600,7 +548,7 @@
     <section id="api-section-methods">
       <!-- Section title -->
       <h2
-        class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
         data-te-spy-item>
         Methods
       </h2>
@@ -711,7 +659,7 @@
       <section id="api-section-events">
         <!-- Section title -->
         <h2
-          class="mt-0 mb-5 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+          class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
           data-te-spy-item>
           Events
         </h2>
