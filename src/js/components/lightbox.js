@@ -85,7 +85,7 @@ const DEFAULT_OPTIONS = {
   zoomInIconTemplate: zoomInIconTemplate,
   zoomOutIconTemplate: zoomOutIconTemplate,
   closeIconTemplate: closeIconTemplate,
-  spinnerContent: "Ładowanie...",
+  spinnerContent: "Loading...",
 };
 
 const DefaultClasses = {
@@ -98,11 +98,11 @@ const DefaultClasses = {
   fullscreenBtn:
     "border-none bg-transparent w-[50px] h-[50px] px-4 text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white focus:text-white motion-reduce:transition-none outline-none",
   gallery:
-    "invisible fixed left-0 top-0 w-full h-full z-[1100] pointer-events-none opacity-0 bg-[#000000e6] transition-all duration-[400ms] ease-out motion-reduce:transition-none",
+    "invisible fixed left-0 top-0 w-full h-full z-[1100] pointer-events-none opacity-0 bg-[#000000e6] transition-all duration-[400ms] motion-reduce:transition-none",
   galleryContent:
     "fixed top-[50px] left-[50px] w-[calc(100%-100px)] h-[calc(100%-100px)]",
   galleryCounter:
-    "flex justify-center items-center px-[10px] mb-0 h-full text-[#b3b3b3] text-[1rem]",
+    "flex justify-center items-center px-[10px] mb-0 h-full text-[#b3b3b3]",
   img: "absolute left-0 top-0 w-full max-h-full h-auto cursor-pointer pointer-events-auto",
   imgWrapper:
     "absolute top-0 left-0 w-full h-full opacity-0 transform scale-[0.25] transition-all duration-[400ms] ease-out pointer-events-none motion-reduce:transition-none motion-reduce:transform-none",
