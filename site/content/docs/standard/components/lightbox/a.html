@@ -233,7 +233,7 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>hideFullscreenIcon</code>
+                    <code>hideFullscreenIconTemplate</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -278,7 +278,7 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>nextIcon</code>
+                    <code>nextIconTemplate</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -304,7 +304,7 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>prevIcon</code>
+                    <code>prevIconTemplate</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -328,7 +328,7 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>showFullscreenIcon</code>
+                    <code>showFullscreenIconTemplate</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -354,7 +354,25 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>zoomIcon</code>
+                    <code>zoomLevel</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number/String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>1</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Defines zoom level while zooming in or out.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code>zoomInIconTemplate</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -372,25 +390,32 @@
                     >
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Defines zoom icon template of the lightbox.
+                    Defines zoom in icon template of the lightbox.
                   </td>
                 </tr>
                 <tr
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                    <code>zoomLevel</code>
+                    <code>zoomOutIconTemplate</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Number/String
+                    String
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>1</code>
+                    <code
+                      >&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"
+                      class="w-4 h-4"> &lt;path stroke-linecap="round"
+                      stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5
+                      0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6"
+                      /> &lt;/svg></code
+                    >
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Defines zoom level while zooming in or out.
+                    Defines zoom out icon template of the lightbox.
                   </td>
                 </tr>
               </tbody>
@@ -482,7 +507,8 @@
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                     border-none bg-transparent w-[50px] h-[50px] px-4
                     text-[#b3b3b3] transition-colors duration-200 ease-in-out
-                    hover:text-white motion-reduce:transition-none outline-none
+                    hover:text-white focus:text-white
+                    motion-reduce:transition-none outline-none
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Defines close button classes of the lightbox.
@@ -498,7 +524,8 @@
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                     border-none bg-transparent w-[50px] h-[50px] px-4
                     text-[#b3b3b3] transition-colors duration-200 ease-in-out
-                    hover:text-white motion-reduce:transition-none outline-none
+                    hover:text-white focus:text-white
+                    motion-reduce:transition-none outline-none
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Defines fullscreen button classes of the lightbox.
@@ -514,7 +541,7 @@
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                     invisible fixed left-0 top-0 w-full h-full z-[1100]
                     pointer-events-none opacity-0 bg-[#000000e6] transition-all
-                    duration-300 ease-out motion-reduce:transition-none
+                    duration-[400ms] ease-out motion-reduce:transition-none
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Defines gallery classes of the lightbox.
@@ -544,7 +571,7 @@
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                     flex justify-center items-center px-[10px] mb-0 h-full
-                    text-[#b3b3b3] text-sm
+                    text-[#b3b3b3] text-[1rem]
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Defines gallery counter classes of the lightbox.
@@ -621,8 +648,9 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    border-none bg-transparent w-[50px] h-[50px] text-[#b3b3b3]
-                    transition-colors duration-200 ease-in-out hover:text-white
+                    border-none bg-transparent w-full h-[50px] flex
+                    justify-center items-center text-[#b3b3b3] transition-colors
+                    duration-200 ease-in-out hover:text-white focus:text-white
                     motion-reduce:transition-none outline-none
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
@@ -637,12 +665,45 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    fixed left-0 top-0 px-4 w-[50px] h-full flex justify-center
-                    items-center transition-opacity duration-400
+                    fixed right-0 top-0 w-[50px] h-full flex justify-center
+                    items-center transition-opacity duration-[400ms]
                     motion-reduce:transition-none
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Defines next button wrapper classes of the lightbox.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>prevBtn</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    border-none bg-transparent w-full h-[50px] flex
+                    justify-center items-center text-[#b3b3b3] transition-colors
+                    duration-200 ease-in-out hover:text-white focus:text-white
+                    motion-reduce:transition-none outline-none
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Defines prev button classes of the lightbox.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>nextBtnWrapper</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    fixed left-0 top-0 w-[50px] h-full flex justify-center
+                    items-center transition-opacity duration-[400ms]
+                    motion-reduce:transition-none
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Defines prev button wrapper classes of the lightbox.
                   </td>
                 </tr>
                 <tr
@@ -701,7 +762,7 @@
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                     absolute top-0 left-0 w-full h-[50px] z-20
-                    transition-opacity duration-400
+                    transition-opacity duration-[400ms]
                     motion-reduce:transition-none
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
@@ -731,11 +792,10 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Defines vertical classes of the lightbox. Vertical class is
-                    added when image height is greater than image
-                    width.border-none bg-transparent w-[50px] h-[50px] px-4
+                    border-none bg-transparent w-[50px] h-[50px] px-4
                     text-[#b3b3b3] transition-colors duration-200 ease-in-out
-                    hover:text-white motion-reduce:transition-none outline-none
+                    hover:text-white focus:text-white
+                    motion-reduce:transition-none outline-none
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Defines zoom button classes of the lightbox.

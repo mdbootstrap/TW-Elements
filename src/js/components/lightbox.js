@@ -31,29 +31,33 @@ const SELECTOR_ATTR_LIGHTBOX = "[data-te-lightbox-init]";
 const SELECTOR_ATTR_TOGGLE = `${SELECTOR_ATTR_LIGHTBOX} img:not([data-te-lightbox-disabled])`;
 const ATTR_LIGHTBOX_CAPTION = `data-te-lightbox-caption`;
 const ATTR_LIGHTBOX_DISABLED = `data-te-lightbox-disabled`;
-const ATTR_STATE_ACTIVE = `data-te-active`;
+const ATTR_STATE_ACTIVE = `data-te-lightbox-active`;
 
-const prevIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+const prevIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
 </svg>
 `;
-const nextIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+const nextIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
 </svg>
 `;
-const showFullscreenIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+const showFullscreenIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
 </svg>
 `;
-const hideFullscreenIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+const hideFullscreenIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25" />
 </svg>
 `;
-const zoomIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+const zoomInIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
 </svg>
 `;
-const closeIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+const zoomOutIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6" />
+</svg>
+`;
+const closeIconTemplate = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 </svg>
 `;
@@ -61,23 +65,27 @@ const closeIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
 const OPTIONS_TYPE = {
   container: "string",
   zoomLevel: "(number|string)",
-  prevIcon: "string",
-  nextIcon: "string",
-  showFullscreenIcon: "string",
-  hideFullscreenIcon: "string",
-  zoomIcon: "string",
-  closeIcon: "string",
+  prevIconTemplate: "string",
+  nextIconTemplate: "string",
+  showFullscreenIconTemplate: "string",
+  hideFullscreenIconTemplate: "string",
+  zoomInIconTemplate: "string",
+  closeIconTemplate: "string",
+  zoomOutIconTemplate: "string",
+  spinnerContent: "string",
 };
 
 const DEFAULT_OPTIONS = {
   container: "body",
   zoomLevel: 1,
-  prevIcon: prevIcon,
-  nextIcon: nextIcon,
-  showFullscreenIcon: showFullscreenIcon,
-  hideFullscreenIcon: hideFullscreenIcon,
-  zoomIcon: zoomIcon,
-  closeIcon: closeIcon,
+  prevIconTemplate: prevIconTemplate,
+  nextIconTemplate: nextIconTemplate,
+  showFullscreenIconTemplate: showFullscreenIconTemplate,
+  hideFullscreenIconTemplate: hideFullscreenIconTemplate,
+  zoomInIconTemplate: zoomInIconTemplate,
+  zoomOutIconTemplate: zoomOutIconTemplate,
+  closeIconTemplate: closeIconTemplate,
+  spinnerContent: "Ładowanie...",
 };
 
 const DefaultClasses = {
@@ -86,15 +94,15 @@ const DefaultClasses = {
   captionWrapper:
     "fixed left-0 bottom-0 w-full h-[50px] flex justify-center items-center",
   closeBtn:
-    "border-none bg-transparent w-[50px] h-[50px] px-4 text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white motion-reduce:transition-none outline-none",
+    "border-none bg-transparent w-[50px] h-[50px] px-4 text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white focus:text-white motion-reduce:transition-none outline-none",
   fullscreenBtn:
-    "border-none bg-transparent w-[50px] h-[50px] px-4 text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white motion-reduce:transition-none outline-none",
+    "border-none bg-transparent w-[50px] h-[50px] px-4 text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white focus:text-white motion-reduce:transition-none outline-none",
   gallery:
-    "invisible fixed left-0 top-0 w-full h-full z-[1100] pointer-events-none opacity-0 bg-[#000000e6] transition-all duration-300 ease-out motion-reduce:transition-none",
+    "invisible fixed left-0 top-0 w-full h-full z-[1100] pointer-events-none opacity-0 bg-[#000000e6] transition-all duration-[400ms] ease-out motion-reduce:transition-none",
   galleryContent:
     "fixed top-[50px] left-[50px] w-[calc(100%-100px)] h-[calc(100%-100px)]",
   galleryCounter:
-    "flex justify-center items-center px-[10px] mb-0 h-full text-[#b3b3b3] text-sm",
+    "flex justify-center items-center px-[10px] mb-0 h-full text-[#b3b3b3] text-[1rem]",
   img: "absolute left-0 top-0 w-full max-h-full h-auto cursor-pointer pointer-events-auto",
   imgWrapper:
     "absolute top-0 left-0 w-full h-full opacity-0 transform scale-[0.25] transition-all duration-[400ms] ease-out pointer-events-none motion-reduce:transition-none motion-reduce:transform-none",
@@ -102,23 +110,23 @@ const DefaultClasses = {
   loader:
     "fixed left-0 top-0 z-[2] w-full h-full text-neutral-50 opacity-1 flex justify-center items-center pointer-events-none transition-opacity duration-100 motion-reduce:transition-none",
   nextBtn:
-    "border-none bg-transparent w-[50px] h-[50px] text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white motion-reduce:transition-none outline-none",
+    "border-none bg-transparent w-full h-[50px] flex justify-center items-center text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white focus:text-white motion-reduce:transition-none outline-none",
   nextBtnWrapper:
-    "fixed right-0 top-0 px-4 w-[50px] h-full flex justify-center items-center transition-opacity duration-400 motion-reduce:transition-none z-auto",
+    "fixed right-0 top-0 w-[50px] h-full flex justify-center items-center transition-opacity duration-[400ms] motion-reduce:transition-none",
   prevBtn:
-    "border-none bg-transparent w-[50px] h-[50px] text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white motion-reduce:transition-none outline-none",
+    "border-none bg-transparent w-full h-[50px] flex justify-center items-center text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white focus:text-white motion-reduce:transition-none outline-none",
   prevBtnWrapper:
-    "fixed left-0 top-0 px-4 w-[50px] h-full flex justify-center items-center transition-opacity duration-400 motion-reduce:transition-none",
+    "fixed left-0 top-0 w-[50px] h-full flex justify-center items-center transition-opacity duration-[400ms] motion-reduce:transition-none",
   rightTools: "float-right",
   spinner:
     "inline-block h-8 w-8 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current align-[-0.125em] motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]",
   spinnerContent:
     "!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]",
   toolbar:
-    "absolute top-0 left-0 w-full h-[50px] z-20 transition-opacity duration-400 motion-reduce:transition-none",
+    "absolute top-0 left-0 w-full h-[50px] z-20 transition-opacity duration-[400ms] motion-reduce:transition-none",
   vertical: "h-full max-h-full w-auto",
   zoomBtn:
-    "border-none bg-transparent w-[50px] h-[50px] px-4 text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white motion-reduce:transition-none outline-none",
+    "border-none bg-transparent w-[50px] h-[50px] px-4 text-[#b3b3b3] transition-colors duration-200 ease-in-out hover:text-white focus:text-white motion-reduce:transition-none outline-none",
 };
 
 const DefaultClassesType = {
@@ -292,7 +300,7 @@ class Lightbox {
   toggleFullscreen() {
     if (this._fullscreen === false) {
       this._fullscreenBtn.setAttribute(ATTR_STATE_ACTIVE, "");
-      this._fullscreenBtn.innerHTML = this.options.hideFullscreenIcon;
+      this._fullscreenBtn.innerHTML = this.options.hideFullscreenIconTemplate;
       if (this._gallery.requestFullscreen) {
         this._gallery.requestFullscreen();
       }
@@ -347,9 +355,9 @@ class Lightbox {
 
   _getImages() {
     const allImages = SelectorEngine.find("img", this._element);
-    const lightboxImages = allImages.filter((image) => {
-      return !image.hasAttribute(ATTR_LIGHTBOX_DISABLED);
-    });
+    const lightboxImages = allImages.filter(
+      (image) => !image.hasAttribute(ATTR_LIGHTBOX_DISABLED)
+    );
     this._images = lightboxImages;
   }
 
@@ -388,15 +396,15 @@ class Lightbox {
     Manipulator.addClass(this._galleryToolbar, `${this._classes.toolbar}`);
     Manipulator.addClass(this._imgCounter, `${this._classes.galleryCounter}`);
     Manipulator.addClass(this._fullscreenBtn, `${this._classes.fullscreenBtn}`);
-    Manipulator.addClass(this._zoomBtn, `${this._classes.zoomBtn}`);
+    Manipulator.addClass(this._zoomBtn, `${this._classes.zoomInBtn}`);
+    Manipulator.addClass(this._zoomBtn, this._classes.zoomBtn);
     Manipulator.addClass(leftTools, `${this._classes.leftTools}`);
     Manipulator.addClass(rightTools, `${this._classes.rightTools}`);
     Manipulator.addClass(closeBtn, `${this._classes.closeBtn}`);
 
-    this._fullscreenBtn.innerHTML = this.options.showFullscreenIcon;
-    this._zoomBtn.innerHTML = this.options.zoomIcon;
-    closeBtn.innerHTML = this.options.closeIcon;
-
+    this._fullscreenBtn.innerHTML = this.options.showFullscreenIconTemplate;
+    closeBtn.innerHTML = this.options.closeIconTemplate;
+    this._zoomBtn.innerHTML = this.options.zoomInIconTemplate;
     this._fullscreenBtn.setAttribute("aria-label", "Toggle fullscreen");
     this._zoomBtn.setAttribute("aria-label", "Zoom in");
     closeBtn.setAttribute("aria-label", "Close");
@@ -438,7 +446,7 @@ class Lightbox {
     Manipulator.addClass(spinnerContent, `${this._classes.spinnerContent}`);
 
     spinner.setAttribute("role", "status");
-    spinnerContent.innerHTML = "Loading...";
+    spinnerContent.innerHTML = this.options.spinnerContent;
 
     spinner.append(spinnerContent);
     this._loader.append(spinner);
@@ -468,8 +476,8 @@ class Lightbox {
     EventHandler.on(this._rightArrow, EVENT_CLICK_DATA_API, () => this.slide());
     this._rightArrowWrapper.append(this._rightArrow);
 
-    this._rightArrow.innerHTML = this.options.nextIcon;
-    leftArrow.innerHTML = this.options.prevIcon;
+    this._rightArrow.innerHTML = this.options.nextIconTemplate;
+    leftArrow.innerHTML = this.options.prevIconTemplate;
 
     this._getImages();
     if (this._images.length <= 1) return;
@@ -608,7 +616,7 @@ class Lightbox {
       document.msFullscreenElement;
     if (isFullscreenEnabled === undefined) {
       this._fullscreen = false;
-      this._fullscreenBtn.innerHTML = this.options.showFullscreenIcon;
+      this._fullscreenBtn.innerHTML = this.options.showFullscreenIconTemplate;
       this._fullscreenBtn.removeAttribute(ATTR_STATE_ACTIVE);
     }
   }
@@ -797,9 +805,11 @@ class Lightbox {
     if (this._zoom > 1) {
       this._zoomBtn.setAttribute(ATTR_STATE_ACTIVE, "");
       this._zoomBtn.setAttribute("aria-label", "Zoom out");
+      this._zoomBtn.innerHTML = this.options.zoomOutIconTemplate;
     } else {
       this._zoomBtn.removeAttribute(ATTR_STATE_ACTIVE);
       this._zoomBtn.setAttribute("aria-label", "Zoom in");
+      this._zoomBtn.innerHTML = this.options.zoomInIconTemplate;
     }
   }
 
