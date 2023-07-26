@@ -128,7 +128,7 @@ class Popconfirm {
       this.close();
     }
     Data.removeData(this._element, DATA_KEY);
-    EventHandler.on(this._element, "click", this._clickHandler);
+    EventHandler.off(this._element, "click", this._clickHandler);
     this._element = null;
   }
 
