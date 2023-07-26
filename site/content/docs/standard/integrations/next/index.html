@@ -168,13 +168,13 @@ menu:
     <code>tailwind.config.cjs</code> file.
   </p>
 
+  <!--prettier-ignore-->
   <div class="pb-4">
-    <!--prettier-ignore-->
     {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
-        content: [
+          content: [
             "./app/**/*.{js,ts,jsx,tsx}",
             "./pages/**/*.{js,ts,jsx,tsx}",
             "./components/**/*.{js,ts,jsx,tsx}",
@@ -183,12 +183,12 @@ menu:
             // Or if using `src` directory:
             "./src/**/*.{js,ts,jsx,tsx}",
             "./node_modules/tw-elements/dist/js/**/*.js"
-        ],
-        theme: {
+          ],
+          theme: {
             extend: {},
-        },
-        darkMode: "class",
-        plugins: [require("tw-elements/dist/plugin.cjs")]
+          },
+          darkMode: "class",
+          plugins: [require("tw-elements/dist/plugin.cjs")]
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
