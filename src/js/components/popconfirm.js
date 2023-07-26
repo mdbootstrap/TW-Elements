@@ -38,7 +38,7 @@ const Default = {
   popconfirmMode: "inline",
   message: "Are you sure?",
   cancelText: "Cancel",
-  okText: "Confirm",
+  okText: "OK",
   popconfirmIconTemplate: ``,
   cancelLabel: "Cancel",
   confirmLabel: "Confirm",
@@ -230,7 +230,7 @@ class Popconfirm {
       <div class="${this._classes.btnsContainer}">
       ${
         this._options.cancelText
-          ? `<button type="button" data-te-ripple-init id="popconfirm-button-cancel" aria-label="${this._options.cancelLabel}"
+          ? `<button type="button" data-te-ripple-init data-te-ripple-color="light" id="popconfirm-button-cancel" aria-label="${this._options.cancelLabel}"
         class="${this._classes.btnCancel}">${this._options.cancelText}</button>`
           : ""
       }
@@ -308,7 +308,7 @@ class Popconfirm {
       container
     );
 
-    Ripple.getOrCreateInstance(this._cancelButton, { rippleColor: "dark" });
+    Ripple.getOrCreateInstance(this._cancelButton, { rippleColor: "light" });
     if (this._cancelButton !== null) {
       EventHandler.on(this._cancelButton, "click", () => {
         this.close();
