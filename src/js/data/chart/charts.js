@@ -52,7 +52,9 @@ const DEFAULT_DARK_OPTIONS = {
   darkLabelColor: "#fff",
   darkGridLinesColor: "#555",
   darkmodeOff: "undefined",
+  darkMode: null,
   darkBgColor: "#262626",
+  darkBgColorLight: "#fff",
   options: null,
 };
 
@@ -61,7 +63,9 @@ const DARK_OPTIONS_TYPE = {
   darkLabelColor: "string",
   darkGridLinesColor: "string",
   darkmodeOff: "(string|null)",
+  darkMode: "(string|null)",
   darkBgColor: "string",
+  darkBgColorLight: "string",
   options: "(object|null)",
 };
 
@@ -164,7 +168,13 @@ class Chart {
 
     if (this._darkOptions.darkmodeOff !== null) {
       // check mode on start
-      this._handleMode(this.systemColorMode);
+      const mode =
+        this._darkOptions.darkMode === "dark"
+          ? "dark"
+          : this._darkOptions.darkMode === "light"
+          ? "light"
+          : this.systemColorMode;
+      this._handleMode(mode);
       // observe darkmode class container change
       this._observer = new MutationObserver(this._observerCallback.bind(this));
       this._observer.observe(this._darkModeClassContainer, {
@@ -216,6 +226,13 @@ class Chart {
     ).options;
 
     this._chart.update();
+  }
+
+  setTheme(theme) {
+    if ((theme !== "dark" && theme !== "light") || !this._data) {
+      return;
+    }
+    this._handleMode(theme);
   }
 
   // Private
@@ -350,7 +367,9 @@ class Chart {
     [...this._data.data.datasets].forEach(
       (set) =>
         ["pie", "doughnut", "polarArea"].includes(this._type) &&
-        (set.borderColor = dark ? this._darkOptions.darkBgColor : "#fff")
+        (set.borderColor = dark
+          ? this._darkOptions.darkBgColor
+          : this._darkOptions.darkBgColorLight)
     );
   }
 
