@@ -13,7 +13,6 @@ import { typeCheckConfig, isVisible } from "../util/index";
 import EventHandler from "../dom/event-handler";
 import BaseComponent from "../base-component";
 import Manipulator from "../dom/manipulator";
-import { enableDismissTrigger } from "../util/component-functions";
 
 /*
 ------------------------------------------------------------------------
@@ -66,8 +65,6 @@ class Alert extends BaseComponent {
     this._element = element;
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
-    this._didInit = false;
-    this._init();
   }
 
   // Getters
@@ -163,14 +160,6 @@ class Alert extends BaseComponent {
   }
 
   // Private
-  _init() {
-    if (this._didInit) {
-      return;
-    }
-    enableDismissTrigger(Alert, "close");
-    this._didInit = true;
-  }
-
   _getConfig(config) {
     config = {
       ...Default,

@@ -1,4 +1,5 @@
 import SelectorEngine from "../dom/selector-engine";
+import { enableDismissTrigger } from "../util/component-functions";
 import jqueryInit from "./jqueryInit";
 import {
   dropdownCallback,
@@ -10,6 +11,7 @@ import {
   collapseCallback,
   tooltipsCallback,
   popoverCallback,
+  lightboxCallback,
 } from "./autoinitCallbacks";
 
 import { chartsCallback } from "./chartsInit";
@@ -25,6 +27,7 @@ const defaultInitSelectors = {
     name: "Alert",
     selector: "[data-te-alert-init]",
     isToggler: false,
+    dismissMethod: "close",
   },
   animation: {
     name: "Animate",
@@ -95,6 +98,7 @@ const defaultInitSelectors = {
     name: "Toast",
     selector: "[data-te-toast-init]",
     isToggler: false,
+    dismissMethod: "hide",
   },
   datatable: {
     name: "Datatable",
@@ -135,6 +139,7 @@ const defaultInitSelectors = {
   modal: {
     name: "Modal",
     selector: "[data-te-toggle='modal']",
+    dismissMethod: "hide",
     isToggler: true,
     callback: modalCallback,
   },
@@ -147,6 +152,7 @@ const defaultInitSelectors = {
   offcanvas: {
     name: "Offcanvas",
     selector: "[data-te-offcanvas-toggle]",
+    dismissMethod: "hide",
     isToggler: true,
     callback: offcanvasCallback,
   },
@@ -169,6 +175,12 @@ const defaultInitSelectors = {
     isToggler: true,
     callback: popoverCallback,
   },
+  lightbox: {
+    name: "Lightbox",
+    selector: "[data-te-lightbox-init]",
+    isToggler: true,
+    callback: lightboxCallback,
+  },
 };
 
 const getComponentData = (component) => {
@@ -186,6 +198,10 @@ const initComponent = (component) => {
   const isToggler = thisComponent?.isToggler || false;
 
   jqueryInit(component);
+
+  if (thisComponent?.dismissMethod) {
+    enableDismissTrigger(component, thisComponent.dismissMethod);
+  }
 
   if (thisComponent?.advanced) {
     thisComponent?.advanced(component, thisComponent?.selector);
