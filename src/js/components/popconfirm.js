@@ -308,7 +308,7 @@ class Popconfirm {
       container
     );
 
-    new Ripple(this._cancelButton, { rippleColor: "dark" });
+    Ripple.getOrCreateInstance(this._cancelButton, { rippleColor: "dark" });
     if (this._cancelButton !== null) {
       EventHandler.on(this._cancelButton, "click", () => {
         this.close();
@@ -323,7 +323,8 @@ class Popconfirm {
       "#popconfirm-button-confirm",
       container
     );
-    new Ripple(this._confirmButton, { rippleColor: "light" });
+
+    Ripple.getOrCreateInstance(this._confirmButton, { rippleColor: "light" });
     EventHandler.on(this._confirmButton, "click", () => {
       this.close();
       EventHandler.trigger(this._element, EVENT_CONFIRM);

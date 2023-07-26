@@ -154,8 +154,8 @@ class Ripple {
     }
 
     const { layerX, layerY } = event;
-    const offsetX = layerX;
-    const offsetY = layerY;
+    const offsetX = event.offsetX || layerX;
+    const offsetY = event.offsetY || layerY;
     const height = this._element.offsetHeight;
     const width = this._element.offsetWidth;
     const duration = this._durationToMsNumber(this._options.rippleDuration);
