@@ -134,21 +134,21 @@ menu:
     <code>tailwind.config.cjs</code> file.
   </p>
 
+  <!--prettier-ignore-->
   <div class="pb-4">
-    <!--prettier-ignore-->
     {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
-        content: [
+          content: [
             "./app/**/*.{js,jsx,ts,tsx}"
             "./node_modules/tw-elements/dist/js/**/*.js"
-        ],
-        theme: {
+          ],
+          theme: {
             extend: {},
-        },
-        darkMode: "class",
-        plugins: [require("tw-elements/dist/plugin.cjs")]
+          },
+          darkMode: "class",
+          plugins: [require("tw-elements/dist/plugin.cjs")]
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -214,34 +214,37 @@ menu:
     Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
+  <!--prettier-ignore-->
   <div class="pb-4">
-    <!--prettier-ignore-->
     {{< twsnippet/wrapper "MyDatepicker.client.jsx" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="jsx" >}}
-        import { useEffect } from "react";
-        import { Datepicker, Input, initTE } from "tw-elements";
+    {{< twsnippet/code active=true lang="jsx" >}}
+    import { useEffect } from "react";
+    import { Datepicker, Input, initTE } from "tw-elements";
         
-        const MyDatepicker = () => {
-          useEffect(() => {
-            initTE({ Datepicker, Input });
-          }, []);
+    const MyDatepicker = () => {
+      useEffect(() => {
+        initTE({ Datepicker, Input });
+      }, []);
         
-          return (
-    <div
-      class="relative mb-3"
-      data-te-datepicker-init
-      data-te-input-wrapper-init>
-      <input
-        type="text"
-        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-        placeholder="Select a date" />
-      <label
-        htmlFor="floatingInput"
-        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
-        Select a date
-      </label>
-    </div>
-    ); }; export default MyDatepicker;
+      return (
+        <div
+          class="relative mb-3"
+          data-te-datepicker-init
+          data-te-input-wrapper-init>
+          <input
+            type="text"
+            className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            htmlFor="floatingInput"
+            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
+            Select a date
+          </label>
+        </div>
+      ); 
+    }; 
+    
+    export default MyDatepicker;
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -264,19 +267,20 @@ menu:
     wrapping it into <code>ClientOnly</code> element.
   </p>
 
+  <!--prettier-ignore-->
   <div class="pb-4">
-    <!--prettier-ignore-->
     {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="jsx" >}}
-      import { ClientOnly } from "remix-utils";
-      import MyDatepicker from "./components/MyDatepicker.client";
+    {{< twsnippet/code active=true lang="jsx" >}}
+    import { ClientOnly } from "remix-utils";
+    import MyDatepicker from "./components/MyDatepicker.client";
 
-      ...
-      export default function App() {
-        return (
-          ...
-    <ClientOnly fallback="{null}">{() => <MyDatepicker />}</ClientOnly>
-    ); }
+    ...
+    export default function App() {
+      return (
+        ...
+        <ClientOnly fallback="{null}">{() => <MyDatepicker />}</ClientOnly>
+      ); 
+    }
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -306,8 +310,8 @@ menu:
     lifecycle hook.
   </p>
 
+  <!--prettier-ignore-->
   <div class="pb-4">
-    <!--prettier-ignore-->
     {{< twsnippet/wrapper "MyDatepicker.client.jsx" "" "mobile" >}}
     {{< twsnippet/code active=true lang="jsx" >}}
     import { useEffect } from "react";
@@ -326,18 +330,21 @@ menu:
       }, []);
     
       return (
-    <div className="relative mb-3" id="myDatepicker">
-      <input
-        type="text"
-        className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-        placeholder="Select a date" />
-      <label
-        htmlFor="floatingInput"
-        className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
-        Select a date
-      </label>
-    </div>
-    ); }; export default MyDatepicker;
+        <div className="relative mb-3" id="myDatepicker">
+          <input
+            type="text"
+            className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            placeholder="Select a date" />
+          <label
+            htmlFor="floatingInput"
+            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
+            Select a date
+          </label>
+        </div>
+      ); 
+    }; 
+    
+    export default MyDatepicker;
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
