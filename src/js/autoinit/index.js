@@ -104,6 +104,10 @@ const defaultInitSelectors = {
     name: "Datatable",
     selector: "[data-te-datatable-init]",
   },
+  popconfirm: {
+    name: "Popconfirm",
+    selector: "[data-te-toggle='popconfirm']",
+  },
 
   // advancedInits
   chart: {

@@ -35,6 +35,7 @@ import Chart from "./data/chart/charts";
 import PerfectScrollbar from "./methods/perfect-scrollbar";
 import Datatable from "./data/datatables/index";
 import Rating from "./components/rating";
+import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
 import initTE from "./autoinit/index";
 
@@ -65,6 +66,7 @@ export {
   PerfectScrollbar,
   Datatable,
   Rating,
+  Popconfirm,
   Lightbox,
   initTE,
 };
