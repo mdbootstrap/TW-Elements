@@ -193,12 +193,13 @@ menu:
   </p>
   <!-- prettier-ignore -->
   <div class="pt-2">
-    {{< twsnippet/wrapper "terminal" "" "mobile" >}}
+    {{< twsnippet/wrapper "macos/linux,windows" "" "mobile" >}}
     {{< twsnippet/code active=true lang="terminal" type="terminal" >}}
     mkdir locales
-    // linux users
     touch i18n.js locales/en.json locales/pl.json locales/ja.json locales/de.json
-    // windows users
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="terminal" type="terminal" >}}
+    mkdir locales
     New-Item -ItemType File i18n.js, locales/en.json, locales/pl.json, locales/ja.json, locales/de.json
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
