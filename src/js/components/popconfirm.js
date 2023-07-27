@@ -73,8 +73,7 @@ const DefaultClasses = {
   message: "flex mb-3",
   messageText: "text-neutral-600 dark:text-white",
   modal: "absolute w-[300px] z-[1080] shadow-sm rounded-[0.5rem]",
-  popover:
-    "w-[300px] border-[1px] border-solid border-[#f5f5f5] rounded-[0.5rem] z-[1080] shadow-sm dark:border-0",
+  popover: "w-[300px] border-0 rounded-[0.5rem] z-[1080] shadow-sm",
 };
 
 /**

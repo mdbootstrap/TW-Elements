@@ -727,6 +727,7 @@
     modalHeader.innerHTML = `
         <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200">${title}</h5> 
         <button
+          id="close-button"
           type="button"
           class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
           data-te-modal-dismiss
@@ -750,6 +751,9 @@
       `;
 
     modalInstance.show();
+    document.getElementById("close-button").addEventListener("click", () => {
+      modalInstance.hide();
+    });
   });
 
   table.addEventListener("render.te.datatable", () => {

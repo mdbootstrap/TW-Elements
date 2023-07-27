@@ -2145,7 +2145,7 @@ autoinits: "Datatable"
             {{< twsnippet/wrapper "HTML,javascript,umd" >}}
             {{< twsnippet/code active=true lang="HTML" >}}
             <div
-              id="datatable"
+              id="datatable-clickable-rows"
               data-te-clickable-rows="true"
               data-te-selectable="true"
               data-te-multi="true"></div>
@@ -2233,10 +2233,11 @@ autoinits: "Datatable"
             import {
               Datatable,
               Modal,
+              Ripple,
               initTE,
             } from "tw-elements";
 
-            initTE({ Datatable, Modal });
+            initTE({ Datatable, Modal, Ripple });
 
             const table = document.getElementById("datatable-clickable-rows");
             const modal = document.getElementById("modal-clickable-rows");
@@ -2249,7 +2250,7 @@ autoinits: "Datatable"
       
             const setupButtons = (action) => {
               document
-                .getElementsByClassName(`${action}-email-button`)
+                .querySelectorAll(`.${action}-email-button`)
                 .forEach((button) => {
                   button.addEventListener("click", (e) => {
                     e.stopPropagation();
@@ -2334,6 +2335,7 @@ autoinits: "Datatable"
               modalHeader.innerHTML = `
               <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200">${title}</h5> 
               <button
+                id="close-button"
                 type="button"
                 class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
                 data-te-modal-dismiss
@@ -2357,6 +2359,11 @@ autoinits: "Datatable"
             `;
       
               modalInstance.show();
+              document
+                .getElementById("close-button")
+                .addEventListener("click", () => {
+                  modalInstance.hide();
+                });
             });
       
             table.addEventListener("render.te.datatable", () => {
@@ -2376,23 +2383,23 @@ autoinits: "Datatable"
             const modalHeader = document.getElementById(
               "modal-header-clickable-rows"
             );
-      
+
             const modalInstance = new te.Modal(modal);
-      
+
             const setupButtons = (action) => {
               document
-                .getElementsByClassName(`${action}-email-button`)
+                .querySelectorAll(`.${action}-email-button`)
                 .forEach((button) => {
                   button.addEventListener("click", (e) => {
                     e.stopPropagation();
-      
+
                     const index = button.getAttribute("data-te-index");
-      
+
                     console.log(`${action} message: ${index}`, messages[index]);
                   });
                 });
             };
-      
+
             const columnsClickable = [
               { label: "Actions", field: "actions", sort: false },
               { label: "From", field: "from" },
@@ -2400,7 +2407,7 @@ autoinits: "Datatable"
               { label: "Message", field: "preview", sort: false },
               { label: "Date", field: "date" },
             ];
-      
+
             const messages = [
               {
                 from: "admin@mdbootstrap.com",
@@ -2431,14 +2438,14 @@ autoinits: "Datatable"
                 date: "08/12/2019",
               },
             ];
-      
+
             const rowsClickable = messages.map((email, i) => {
               const getPreview = (message, length) => {
                 if (message.length <= length) return message;
-      
+
                 return `${message.slice(0, length)}...`;
               };
-      
+
               return {
                 ...email,
                 preview: getPreview(email.message, 20),
@@ -2458,14 +2465,15 @@ autoinits: "Datatable"
               `,
               };
             });
-      
+
             table.addEventListener("rowClick.te.datatable", (e) => {
               const { index } = e;
               const { message, title, from } = messages[index];
-      
+
               modalHeader.innerHTML = `
               <h5 class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200">${title}</h5> 
               <button
+                id="close-button"
                 type="button"
                 class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
                 data-te-modal-dismiss
@@ -2487,15 +2495,20 @@ autoinits: "Datatable"
               <h6 class="mb-4">From: <strong>${from}</strong></h6>
               <p>${message}</p>
             `;
-      
+
               modalInstance.show();
+              document
+                .getElementById("close-button")
+                .addEventListener("click", () => {
+                  modalInstance.hide();
+                });
             });
-      
+
             table.addEventListener("render.te.datatable", () => {
               setupButtons("star");
               setupButtons("delete");
             });
-      
+
             const datatableInstance = new te.Datatable(table, {
               columns: columnsClickable,
               rows: rowsClickable,
