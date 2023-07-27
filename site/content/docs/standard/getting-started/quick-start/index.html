@@ -16,7 +16,8 @@ menu:
 ---
 
 <div class="flex flex-row">
-  <div class="basis-7/12">
+  <!-- <div class="basis-7/12"> -->
+  <div class="w-full">
     <p class="mb-2">
       Tailwind Elements is a plugin that extends the functionality of the
       library with many interactive components.
@@ -28,10 +29,25 @@ menu:
       the necessary code is always included in the example and copied to any
       Tailwind project - it will work.
     </p>
+
+    <div
+      class="mt-5 rounded-md border-l-[6px] border-solid border-gray-400 bg-gray-100 p-4 dark:border-gray-300 dark:bg-gray-300/30 ">
+      <strong>Note:</strong> If you need more comprehensive support, we
+      recommend you our tutorials, which will introduce you step by step to our
+      library, its entire environment and Tailwind CSS itself.
+
+      <div class="mt-3">
+        <a
+          href="/learn/te-foundations/basics/introduction/"
+          class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+          Start learning
+        </a>
+      </div>
+    </div>
   </div>
-  <div class="w-full basis-5/12 p-2">
+  <!-- <div class="w-full basis-5/12 p-2">
     {{< youtube -GmnyjgI4Jc >}}
-  </div>
+  </div> -->
 </div>
 
 <hr class="my-10" />
@@ -83,7 +99,7 @@ menu:
     parameter of type <code>Boolean</code> that acts as a debugger. By default
     it's value is set to <code>false</code>, so it will fire only when you want
     to. How does it work? If it finds a component that should be inited but has
-    not been passed as an argument (for example, it finds a data atribute that
+    not been passed as an argument (for example, it finds a data attribute that
     would suggest that it should be initialized automatically), it will display
     a warning in a console. We encourage to use it in the last invocation of
     <code>initTE</code> method because it shows what inits are lacking at the
@@ -94,14 +110,21 @@ menu:
 <hr class="my-10" />
 
 <div class="flex flex-row">
-  <div class="w-full basis-7/12">
+  <!-- <div class="w-full basis-7/12"> -->
+  <div class="w-full">
+    <a href="https://youtu.be/3rx9VuIry_A">
+      <img
+        src="https://mdbootstrap.com/img/tailwind-elements/quick-start/npm.webp"
+        alt=""
+        class="mb-5 w-[460px] lg:float-right lg:ml-2 lg:w-[380px]"
+    /></a>
     <h2
       class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="npm"
       data-te-spy-item>
       NPM
     </h2>
-    <p class="my-3">
+    <p class="my-3 overflow-hidden">
       NPM is a recommended way to work with <b>Tailwind Elements</b> and others
       libraries.
     </p>
@@ -111,12 +134,12 @@ menu:
       node is installed you should see it's version in a console.
     </p>
   </div>
-  <div class="w-full basis-5/12 p-2">
+  <!-- <div class="w-full basis-5/12 p-2">
     {{< youtube LvWh9o5sJmI >}}
-  </div>
+  </div> -->
 </div>
 
-<p class="mb-2">
+<p class="mb-2" id="download-npm-step-1">
   1. Before starting the project make sure to install
   <a
     href="https://nodejs.org/en/"
@@ -134,7 +157,7 @@ menu:
 </p>
 
 <p class="mb-2">2. Run the following command to install the package via NPM:</p>
-<div class="pt-2">
+<div class="pt-2" id="download-npm-step-2">
   {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   npm install tw-elements
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
@@ -144,9 +167,9 @@ menu:
   3. Tailwind Elements is a plugin and should be included inside
   <code>tailwind.config.js</code>. It is also recommended to extend the
   <code>content</code> array with a js files pattern that loads dynamic
-  component classes:
+  component classes. The final version of the config file should look like this:
 </p>
-<div class="pt-2">
+<div class="pt-2" id="download-npm-step-3">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}{{< twsnippet/code active=true lang="JavaScript" >}}
   module.exports = {
@@ -161,28 +184,38 @@ menu:
 </div>
 
 <p class="mb-2 mt-6">
-  4. Dynamic components will work after importing the package inside
-  <code>index.js</code>:
+  4. Include the following JavaScript file before the end of the body element.
+  Keep in mind that the path to the file may be different depending on the file
+  structure of your project.
 </p>
 
-<div class="pt-2">
-  {{< twsnippet/wrapper "javascript,umd" "" "mobile" >}}
+<div class="pt-2" id="download-npm-step-4">
+  {{< twsnippet/wrapper "index.html" "" "mobile" >}}
   <!-- prettier-ignore -->
-  {{< twsnippet/code active=true lang="JavaScript" >}}
-  import { Carousel, initTE } from "tw-elements";
-  initTE({ Carousel });
-  {{< /twsnippet/code >}}
-  <!-- prettier-ignore -->
-  {{< twsnippet/code lang="JavaScript" >}}
-  import 'tw-elements';
+  {{< twsnippet/code active=true lang="HTML" >}}
+  <script
+    type="text/javascript"
+    src="../node_modules/tw-elements/dist/js/tw-elements.umd.min.js"></script>
   {{< /twsnippet/code >}}
   {{< /twsnippet/wrapper >}}
 </div>
 
+<p class="mb-2 mt-6">
+  Now, the library is ready to use and available via the global
+  <code>te</code> variable.
+</p>
+
 <hr class="my-10" />
 
 <div class="flex flex-row">
-  <div class="w-full basis-7/12">
+  <!-- <div class="w-full basis-7/12"> -->
+  <div class="w-full">
+    <a href="https://youtu.be/ik5pzsA0KOo">
+      <img
+        src="https://mdbootstrap.com/img/tailwind-elements/quick-start/mdb-go.webp"
+        alt=""
+        class="mb-5 w-[460px] lg:float-right lg:w-[380px]"
+    /></a>
     <h2
       class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="go"
@@ -193,22 +226,22 @@ menu:
       Create, deploy and host anything <u>with a single command.</u>
     </p>
   </div>
-  <div class="w-full basis-5/12">
+  <!-- <div class="w-full basis-5/12">
     {{< youtube Ou80DOZCzOg >}}
-  </div>
+  </div> -->
 </div>
 
 <p class="mb-2 mt-4">
   1. To start using MDB GO / CLI install it with one command:
 </p>
-<div class="pt-2">
+<div class="pt-2" id="download-mdbgo-step-1">
   {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   npm install -g mdb-cli
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <p class="mb-2 mt-4">2. Log into the CLI using your MDB account:</p>
-<div class="pt-2">
+<div class="pt-2" id="download-mdbgo-step-2">
   {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   mdb login
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
@@ -218,30 +251,30 @@ menu:
   3. Initialize a project and choose <strong>Tailwind Elements</strong> from the
   list:
 </p>
-<div class="pt-2">
+<div class="pt-2" id="download-mdbgo-step-3">
   {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
-  mdb init tailwind-elements-free
+  mdb init tailwind-elements
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <p class="mb-2 mt-4">
   4. Install the dependencies (inside the project directory):
 </p>
-<div class="pt-2">
+<div class="pt-2" id="download-mdbgo-step-4">
   {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   npm install
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <p class="mb-2 mt-4">5. Run the app:</p>
-<div class="pt-2">
+<div class="pt-2" id="download-mdbgo-step-5">
   {{< twsnippet/wrapper "terminal" "!bg-[#BB2E3E] !text-white dark:!bg-rose-300 dark:!text-rose-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   npm start
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <p class="mb-2 mt-4">6. Publish when you're ready:</p>
-<div class="pt-2">
+<div class="pt-2" id="download-mdbgo-step-6">
   {{< twsnippet/wrapper "terminal" "!bg-[#4A24AA] !text-white dark:!bg-violet-300 dark:!text-violet-900" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   mdb publish
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
@@ -251,6 +284,12 @@ menu:
 
 <div class="flex flex-row">
   <div class="w-full">
+    <a href="https://youtu.be/8pFn__ol6rA">
+      <img
+        src="https://mdbootstrap.com/img/tailwind-elements/quick-start/vite.webp"
+        alt=""
+        class="mb-5 w-[460px] lg:float-right lg:ml-4 lg:w-[380px]"
+    /></a>
     <h2
       class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="vite"
@@ -259,10 +298,12 @@ menu:
     </h2>
 
     <div
-      class="mb-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:text-gray-600">
+      class="mb-4 mr-4 overflow-hidden rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:text-gray-600">
       <strong>Note:</strong> Make sure that you have
-      <code>Node.js version 14+, 16+</code> installed. Please update if your
-      package manager asks for it.
+      <code>Node.js version 16.17.0 + / 18.1.0 +</code> installed. Please update
+      if your package manager asks for it. If you are expecting issues with
+      <code>vite.config.js</code> and you don't want to update the npm, try
+      using the <code>4.3.9</code> version of vite.
     </div>
     <p class="my-3">
       Vite (French word for "fast", pronounced /vit/) is a build tool that aims
@@ -274,11 +315,12 @@ menu:
 </div>
 
 <p class="mb-2">
-  1. Create a new vite project and enter the newly created directory. You can
+  1. Create a new vite project and enter the newly created directory. Pick
+  <code>Vanilla</code> framework and <code>JavaScript</code> variant. You can
   skip this step if you already have it installed.
 </p>
 
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-1">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   npm create vite@latest my-project 
@@ -292,7 +334,7 @@ menu:
   <code>tailwind.config.cjs</code> file.
 </p>
 
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-2">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   npm install -D tailwindcss postcss autoprefixer 
@@ -313,7 +355,7 @@ menu:
   inside the <code>vite.config.js</code> file.
 </p>
 
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-3">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}{{< twsnippet/code active=true lang="JavaScript" >}}
   /** @type {import('tailwindcss').Config} */
@@ -337,7 +379,7 @@ menu:
   also remove the default content of the <code>style.css</code> file if you
   want.
 </p>
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-4">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "style.css" "" "mobile" >}}{{< twsnippet/code active=true lang="css" >}}
   @tailwind base;
@@ -360,7 +402,7 @@ menu:
 <p class="mb-2 mt-6">
   5. Link the css file inside the <code>index.html</code>.
 </p>
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-5">
   {{< twsnippet/wrapper "index.html" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
   <head>
     ...
@@ -376,7 +418,7 @@ menu:
   any styles if you deleted them from <code>style.css</code>).
 </p>
 
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-6">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   npm run dev
@@ -385,7 +427,7 @@ menu:
 
 <p class="mb-2 mt-6">7. Install the <code>tw-elements</code> package.</p>
 
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-7">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
   npm install tw-elements
@@ -398,7 +440,7 @@ menu:
   classes by adding the <code>Tailwind Elements</code> plugin.
 </p>
 
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-8">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
   /** @type {import('tailwindcss').Config} */
@@ -430,133 +472,137 @@ menu:
   <code>initTE({ Carousel, Datepicker, Select, Timepicker });</code>
 </div>
 
-<div class="pt-2">
+<div class="pt-2" id="download-vite-step-9">
   {{< twsnippet/wrapper "index.html,main.js" "" "mobile" >}}
   {{< twsnippet/code active=true lang="html" >}}
-  <div
-    id="carouselExampleCaptions"
-    class="relative"
-    data-te-carousel-init
-    data-te-carousel-slide>
+  <body class="dark:bg-neutral-800">
     <div
-      class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
-      data-te-carousel-indicators>
+      id="carouselExampleCaptions"
+      class="relative"
+      data-te-carousel-init
+      data-te-carousel-slide>
+      <div
+        class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+        data-te-carousel-indicators>
+        <button
+          type="button"
+          data-te-target="#carouselExampleCaptions"
+          data-te-slide-to="0"
+          data-te-carousel-active
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          aria-current="true"
+          aria-label="Slide 1"></button>
+        <button
+          type="button"
+          data-te-target="#carouselExampleCaptions"
+          data-te-slide-to="1"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          aria-label="Slide 2"></button>
+        <button
+          type="button"
+          data-te-target="#carouselExampleCaptions"
+          data-te-slide-to="2"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          aria-label="Slide 3"></button>
+      </div>
+      <div
+        class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+        <div
+          class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-te-carousel-active
+          data-te-carousel-item
+          style="backface-visibility: hidden">
+          <img
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(15).jpg"
+            class="block w-full"
+            alt="..." />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+            <h5 class="text-xl">First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-te-carousel-item
+          style="backface-visibility: hidden">
+          <img
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(22).jpg"
+            class="block w-full"
+            alt="..." />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+            <h5 class="text-xl">Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-te-carousel-item
+          style="backface-visibility: hidden">
+          <img
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg"
+            class="block w-full"
+            alt="..." />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+            <h5 class="text-xl">Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
       <button
+        class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
         type="button"
         data-te-target="#carouselExampleCaptions"
-        data-te-slide-to="0"
-        data-te-carousel-active
-        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-        aria-current="true"
-        aria-label="Slide 1"></button>
+        data-te-slide="prev">
+        <span class="inline-block h-8 w-8">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </span>
+        <span
+          class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Previous</span
+        >
+      </button>
       <button
+        class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
         type="button"
         data-te-target="#carouselExampleCaptions"
-        data-te-slide-to="1"
-        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-        aria-label="Slide 2"></button>
-      <button
-        type="button"
-        data-te-target="#carouselExampleCaptions"
-        data-te-slide-to="2"
-        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-        aria-label="Slide 3"></button>
+        data-te-slide="next">
+        <span class="inline-block h-8 w-8">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </span>
+        <span
+          class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Next</span
+        >
+      </button>
     </div>
-    <div
-      class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-      <div
-        class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-        data-te-carousel-active
-        data-te-carousel-item
-        style="backface-visibility: hidden">
-        <img
-          src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(15).jpg"
-          class="block w-full"
-          alt="..." />
-        <div
-          class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-          <h5 class="text-xl">First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div
-        class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-        data-te-carousel-item
-        style="backface-visibility: hidden">
-        <img
-          src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(22).jpg"
-          class="block w-full"
-          alt="..." />
-        <div
-          class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-          <h5 class="text-xl">Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div
-        class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-        data-te-carousel-item
-        style="backface-visibility: hidden">
-        <img
-          src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg"
-          class="block w-full"
-          alt="..." />
-        <div
-          class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
-          <h5 class="text-xl">Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
-    </div>
-    <button
-      class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-      type="button"
-      data-te-target="#carouselExampleCaptions"
-      data-te-slide="prev">
-      <span class="inline-block h-8 w-8">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="h-6 w-6">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15.75 19.5L8.25 12l7.5-7.5" />
-        </svg>
-      </span>
-      <span
-        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-        >Previous</span
-      >
-    </button>
-    <button
-      class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-      type="button"
-      data-te-target="#carouselExampleCaptions"
-      data-te-slide="next">
-      <span class="inline-block h-8 w-8">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="h-6 w-6">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-        </svg>
-      </span>
-      <span
-        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-        >Next</span
-      >
-    </button>
-  </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
   {{< /twsnippet/code >}}
   <!-- prettier-ignore -->
   {{< twsnippet/code lang="js" >}}
@@ -569,7 +615,14 @@ menu:
 <hr class="my-10" />
 
 <div class="flex flex-row">
-  <div class="basis-7/12">
+  <!-- <div class="w-full basis-7/12"> -->
+  <div class="w-full">
+    <a href="https://youtu.be/8veNiCCvXmg">
+      <img
+        src="https://mdbootstrap.com/img/tailwind-elements/quick-start/cdn.webp"
+        alt=""
+        class="mb-5 w-[460px] lg:float-right lg:w-[380px]"
+    /></a>
     <h2
       class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="cdn"
@@ -586,12 +639,12 @@ menu:
       Add the stylesheet files below in the <code>head</code> section:
     </p>
   </div>
-  <div class="w-full basis-5/12">
+  <!-- <div class="w-full basis-5/12">
     {{< youtube cFIdkbIkW_8 >}}
-  </div>
+  </div> -->
 </div>
 
-<div class="pt-2">
+<div class="pt-2" id="download-cdn-step-1">
   <!-- prettier-ignore -->
   {{< twsnippet/wrapper "index.html" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
   <link
@@ -623,7 +676,7 @@ menu:
   Require the js bundled file right before the <code>body</code> closing tag.
   Use the <code>UMD</code> file if used without a bundler.
 </p>
-<div class="pt-2">
+<div class="pt-2" id="download-cdn-step-2">
   {{< twsnippet/wrapper "index.html" >}}{{< twsnippet/code active=true lang="HTML" >}}
   <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
@@ -632,7 +685,14 @@ menu:
 <hr class="my-10" />
 
 <div class="flex flex-row">
-  <div class="w-full basis-7/12">
+  <!-- <div class="w-full basis-7/12"> -->
+  <div class="w-full">
+    <a href="https://youtu.be/5-ZTB4ke9to">
+      <img
+        src="https://mdbootstrap.com/img/tailwind-elements/quick-start/zip.webp"
+        alt=""
+        class="mb-5 w-[460px] lg:float-right lg:w-[380px]"
+    /></a>
     <h2
       class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="starter"
@@ -645,7 +705,9 @@ menu:
       only a demo for testing.
     </p>
     <div class="mb-10">
-      <a href="https://tailwind-elements.com/te-starter.zip">
+      <a
+        href="https://tailwind-elements.com/te-starter.zip"
+        id="download-zip-step-1">
         <button
           class=" mb-3 mr-1 mt-3 rounded border border-solid border-purple-500 bg-transparent px-6 py-3 text-sm font-bold uppercase text-purple-500 outline-none transition-all duration-150 ease-linear hover:bg-purple-500 hover:text-white focus:outline-none active:bg-purple-600"
           type="button">
@@ -654,7 +716,7 @@ menu:
       </a>
     </div>
   </div>
-  <div class="w-full basis-5/12">
+  <!-- <div class="w-full basis-5/12">
     {{< youtube vKsdxHcQozA >}}
-  </div>
+  </div> -->
 </div>
