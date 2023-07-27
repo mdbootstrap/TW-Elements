@@ -1,4 +1,5 @@
 import SelectorEngine from "../dom/selector-engine";
+import { enableDismissTrigger } from "../util/component-functions";
 import jqueryInit from "./jqueryInit";
 import {
   dropdownCallback,
@@ -8,6 +9,9 @@ import {
   modalCallback,
   rippleCallback,
   collapseCallback,
+  tooltipsCallback,
+  popoverCallback,
+  lightboxCallback,
 } from "./autoinitCallbacks";
 
 import { chartsCallback } from "./chartsInit";
@@ -23,6 +27,7 @@ const defaultInitSelectors = {
     name: "Alert",
     selector: "[data-te-alert-init]",
     isToggler: false,
+    dismissMethod: "close",
   },
   animation: {
     name: "Animate",
@@ -36,7 +41,7 @@ const defaultInitSelectors = {
   },
   chips: {
     name: "ChipsInput",
-    selector: "[data-te-chips-init]",
+    selector: "[data-te-chips-input-init]",
     isToggler: false,
   },
   chip: {
@@ -57,6 +62,11 @@ const defaultInitSelectors = {
   perfectScrollbar: {
     name: "PerfectScrollbar",
     selector: "[data-te-perfect-scrollbar-init]",
+    isToggler: false,
+  },
+  rating: {
+    name: "Rating",
+    selector: "[data-te-rating-init]",
     isToggler: false,
   },
   scrollspy: {
@@ -88,6 +98,15 @@ const defaultInitSelectors = {
     name: "Toast",
     selector: "[data-te-toast-init]",
     isToggler: false,
+    dismissMethod: "hide",
+  },
+  datatable: {
+    name: "Datatable",
+    selector: "[data-te-datatable-init]",
+  },
+  popconfirm: {
+    name: "Popconfirm",
+    selector: "[data-te-toggle='popconfirm']",
   },
 
   // advancedInits
@@ -120,6 +139,7 @@ const defaultInitSelectors = {
   modal: {
     name: "Modal",
     selector: "[data-te-toggle='modal']",
+    dismissMethod: "hide",
     isToggler: true,
     callback: modalCallback,
   },
@@ -132,6 +152,7 @@ const defaultInitSelectors = {
   offcanvas: {
     name: "Offcanvas",
     selector: "[data-te-offcanvas-toggle]",
+    dismissMethod: "hide",
     isToggler: true,
     callback: offcanvasCallback,
   },
@@ -141,6 +162,24 @@ const defaultInitSelectors = {
       "[data-te-toggle='tab'], [data-te-toggle='pill'], [data-te-toggle='list']",
     isToggler: true,
     callback: tabCallback,
+  },
+  tooltip: {
+    name: "Tooltip",
+    selector: "[data-te-toggle='tooltip']",
+    isToggler: false,
+    callback: tooltipsCallback,
+  },
+  popover: {
+    name: "Popover",
+    selector: "[data-te-toggle='popover']",
+    isToggler: true,
+    callback: popoverCallback,
+  },
+  lightbox: {
+    name: "Lightbox",
+    selector: "[data-te-lightbox-init]",
+    isToggler: true,
+    callback: lightboxCallback,
   },
 };
 
@@ -159,6 +198,10 @@ const initComponent = (component) => {
   const isToggler = thisComponent?.isToggler || false;
 
   jqueryInit(component);
+
+  if (thisComponent?.dismissMethod) {
+    enableDismissTrigger(component, thisComponent.dismissMethod);
+  }
 
   if (thisComponent?.advanced) {
     thisComponent?.advanced(component, thisComponent?.selector);
@@ -186,7 +229,7 @@ const init = (components) => {
 const initTE = (components, checkOtherImports = false) => {
   const componentList = Object.keys(defaultInitSelectors).map((element) => {
     const requireAutoinit = Boolean(
-      document.body.querySelector(defaultInitSelectors[element].selector)
+      document.querySelector(defaultInitSelectors[element].selector)
     );
     if (requireAutoinit) {
       const component = components[defaultInitSelectors[element].name];

@@ -39,7 +39,7 @@ menu:
   {{< twsnippet/demo id="example1">}}
   <div class="flex justify-center space-x-2">
     <a
-      href="https://tailwind-elements.com/snippets/tailwind/tailwindelements/3681385?view=side#js-tab-view"
+      href="../../../../previews/scroll-back-to-top-button/preview/"
       target="_blank"
       type="button"
       class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
@@ -60,26 +60,25 @@ menu:
         type="button"
         data-te-ripple-init
         data-te-ripple-color="light"
-        class="fixed bottom-5 right-5 inline-block rounded-full bg-danger p-2 uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)]">
+        class="!fixed bottom-5 right-5 hidden rounded-full bg-red-600 p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg"
+        id="btn-back-to-top">
         <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          class="h-4 w-4"
+          role="img"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          stroke-width="2.5"
-          stroke="currentColor"
-          class="h-4 w-4">
+          viewBox="0 0 448 512">
           <path
-            fill-rule="evenodd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
-            clip-rule="evenodd" />
+            fill="currentColor"
+            d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path>
         </svg>
       </button>
 
       <!-- Explanation -->
       <div
-        class="container mt-4 text-center text-neutral-800 dark:text-neutral-200"
+        class="container mx-auto mt-4 text-center text-neutral-800"
         style="height: 2000px">
         <p class="mb-4">
           Start scrolling the page and a strong
@@ -99,57 +98,53 @@ menu:
       initTE({ Ripple });
 
       // Get the button
-      let mybutton = document.getElementById("btn-back-to-top");
+      const mybutton = document.getElementById("btn-back-to-top");
 
       // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function () {
-        scrollFunction();
-      };
 
-      function scrollFunction() {
+      const scrollFunction = () => {
         if (
           document.body.scrollTop > 20 ||
           document.documentElement.scrollTop > 20
         ) {
-          mybutton.style.display = "block";
+          mybutton.classList.remove("hidden");
         } else {
-          mybutton.style.display = "none";
+          mybutton.classList.add("hidden");
         }
-      }
+      };
+      const backToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+
       // When the user clicks on the button, scroll to the top of the document
       mybutton.addEventListener("click", backToTop);
 
-      function backToTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
+      window.addEventListener("scroll", scrollFunction);
       {{< /twsnippet/code >}}
       {{< twsnippet/code lang="js" >}} 
       // Get the button
-      let mybutton = document.getElementById("btn-back-to-top");
-      
+      const mybutton = document.getElementById("btn-back-to-top");
+
       // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function () {
-        scrollFunction();
-      };
-      
-      function scrollFunction() {
+
+      const scrollFunction = () => {
         if (
           document.body.scrollTop > 20 ||
           document.documentElement.scrollTop > 20
         ) {
-          mybutton.style.display = "block";
+          mybutton.classList.remove("hidden");
         } else {
-          mybutton.style.display = "none";
+          mybutton.classList.add("hidden");
         }
-      }
+      };
+      const backToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+
       // When the user clicks on the button, scroll to the top of the document
       mybutton.addEventListener("click", backToTop);
-      
-      function backToTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
+
+      window.addEventListener("scroll", scrollFunction);
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -223,7 +218,7 @@ menu:
       <a
         data-te-toggle="tooltip"
         title="Share via Twitter"
-        href="https://twitter.com/intent/tweet?text=500%2B%20open-source%20components%20for%20%23TailwindCSS%20%F0%9F%A4%A9%0Ahttps%3A//tailwind-elements.com/%0A%0ACongrats%20%40MDBootstrap%20%40ascensus_mdb%20%40dawidadach%20for%20this%20awesome%20design%20collection!%0A%0AI%20will%20keep%20using%20it%20in%20my%20projects%20for%20sure!%0A%0A%23uiux%20%23webdevelopment%20%23HTML%20%23CSS%20%23design%20%23Webdesign%20%23programming%20"
+        href="https://twitter.com/intent/tweet?text=500%2B%20open-source%20components%20for%20%23TailwindCSS%20%F0%9F%A4%A9%0Ahttps%3A//tailwind-elements.com/%0A%0ACongrats%20%40TailwindElement%20%40ascensus_mdb%20%40dawidadach%20for%20this%20awesome%20design%20collection!%0A%0AI%20will%20keep%20using%20it%20in%20my%20projects%20for%20sure!%0A%0A%23uiux%20%23webdevelopment%20%23HTML%20%23CSS%20%23design%20%23Webdesign%20%23programming%20"
         target="_blank"
         class="mx-2 flex items-center">
         <svg
@@ -425,3 +420,325 @@ menu:
   </div>
 </section>
 <!-- Section: Sharing request-->
+
+<hr class="mb-5 dark:border-neutral-600" />
+
+<!-- Section: Related resources -->
+<section id="section-related-resources">
+  <!-- Title -->
+  <h2 class="mb-5 mt-0 text-3xl font-semibold leading-normal" data-te-spy-item>
+    Related resources
+  </h2>
+
+  <!-- Resources -->
+  <h3 class="text-lg font-medium">Tutorials:</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Tutorials -->
+
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/icons/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      icons
+    </a>
+
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/buttons/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      buttons
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/ripple-effect/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      ripple effect
+    </a>
+
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/rounded-corners/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      rounded corners
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/shadows/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      shadows
+    </a>
+
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/sizing/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      sizing
+    </a>
+
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/footer/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      footer
+    </a>
+  </div>
+  <h3 class="text-lg font-medium">Extended Docs:</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Main -->
+    <!-- content & styles-->
+    <a
+      href="https://tailwind-elements.com/docs/standard/content-styles/colors/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      colors
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/content-styles/hover-effects/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      hover effects
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/content-styles/icons/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      icons
+    </a>
+
+    <!-- navigation-->
+    <a
+      href="https://tailwind-elements.com/docs/standard/navigation/footer/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      footer
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/navigation/pagination/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      pagination
+    </a>
+
+    <!-- components-->
+    <a
+      href="https://tailwind-elements.com/docs/standard/components/buttons/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      buttons
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/components/testimonials/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      testimonials
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/components/timeline/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      timeline
+    </a>
+
+    <!-- forms-->
+
+    <!-- data-->
+
+    <!-- methods -->
+    <a
+      href="https://tailwind-elements.com/docs/standard/methods/ripple/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      ripple
+    </a>
+
+    <!-- extended -->
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/breakpoints/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      breakpoints
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/color-picker/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      color picker
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/colors/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      colors
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/dark-theme/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      dark theme
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/display-flex/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      display flex
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/float-right/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      float right
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/hero-icons/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      hero icons
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/icons/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      icons
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/position/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      position
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/spacing/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      spacing
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/sticky-footer/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      sticky footer
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/visibility-hidden/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      visibility hidden
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/extended/z-index/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      z index
+    </a>
+  </div>
+  <h3 class="text-lg font-medium">Design System (Figma):</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Material minimal -->
+    <!-- foundations -->
+    <a
+      href="https://material-minimal.com/learn/foundations/introduction/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      introduction
+    </a>
+
+    <!-- hierarchy-->
+
+    <a
+      href="https://material-minimal.com/learn/hierarchy/size-matters/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      size matters
+    </a>
+
+    <a
+      href="https://material-minimal.com/learn/hierarchy/low-contrast-vs-low-aesthetics/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      low contrast vs low aesthetics
+    </a>
+
+    <a
+      href="https://material-minimal.com/learn/hierarchy/let-it-breathe/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      let it breathe
+    </a>
+    <!-- design process-->
+
+    <a
+      href="https://material-minimal.com/learn/design-process/do-not-start-with-the-roof/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      do not start with the roof
+    </a>
+
+    <a
+      href="https://material-minimal.com/learn/design-process/design-system/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      design system
+    </a>
+    <a
+      href="https://material-minimal.com/learn/design-process/plan-the-process/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      plan the process
+    </a>
+    <!-- material minimal-->
+
+    <a
+      href="https://material-minimal.com/learn/material-minimal/principles/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      principles
+    </a>
+    <!-- design hacks-->
+    <a
+      href="https://material-minimal.com/learn/design-hacks/tips-and-tricks/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      tips and tricks
+    </a>
+  </div>
+  <!-- Resources -->
+</section>
+<!-- Section: Related resources -->

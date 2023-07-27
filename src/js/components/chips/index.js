@@ -25,6 +25,7 @@ import {
   DOWN_ARROW,
   DELETE,
 } from "../../util/keycodes";
+import Input from "../../forms/input";
 
 /*
 ------------------------------------------------------------------------
@@ -37,7 +38,7 @@ const ATTR_NAME = `data-te-${NAME}`;
 
 const DATA_KEY = `te.${NAME}`;
 
-const ATTR_CHIPS_INIT = `${ATTR_NAME}-init`;
+const ATTR_CHIPS_INIT = `${ATTR_NAME}-input-init`;
 const ATTR_CHIPS_ACTIVE = `${ATTR_NAME}-active`;
 const ATTR_CHIPS_INITIAL = `${ATTR_NAME}-initial`;
 const ATTR_CHIPS_PLACEHOLDER = `${ATTR_NAME}-placeholder`;
@@ -77,6 +78,8 @@ const DefaultType = {
   initialValues: "array",
   editable: "boolean",
   labelText: "string",
+  inputClasses: "object",
+  inputOptions: "object",
 };
 
 const Default = {
@@ -85,6 +88,8 @@ const Default = {
   initialValues: [{ tag: "init1" }, { tag: "init2" }],
   editable: false,
   labelText: "Example label",
+  inputClasses: {},
+  inputOptions: {},
 };
 
 const DefaultClasses = {
@@ -99,14 +104,6 @@ const DefaultClasses = {
     "peer block min-h-[auto] w-[150px] rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-gray-200 dark:placeholder:text-gray-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0",
   chipsLabel:
     "pointer-events-none absolute top-0 left-3 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-gray-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-gray-200 dark:peer-focus:text-gray-200",
-  chipsNotchesWrapper:
-    "group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none",
-  chipsNotchesLeading:
-    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none left-0 top-0 h-full w-2 border-r-0 rounded-l-[0.25rem] group-data-[te-input-focused]:border-r-0 group-data-[te-input-state-active]:border-r-0 border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
-  chipsNotchesMiddle:
-    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow-0 shrink-0 basis-auto w-auto max-w-[calc(100%-1rem)] h-full border-r-0 border-l-0 group-data-[te-input-focused]:border-x-0 group-data-[te-input-state-active]:border-x-0 group-data-[te-input-focused]:border-t group-data-[te-input-state-active]:border-t group-data-[te-input-focused]:border-solid group-data-[te-input-state-active]:border-solid group-data-[te-input-focused]:border-t-transparent group-data-[te-input-state-active]:border-t-transparent border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
-  chipsNotchesTrailing:
-    "pointer-events-none border border-solid box-border bg-transparent transition-all duration-200 ease-linear motion-reduce:transition-none grow h-full border-l-0 rounded-r-[0.25rem] group-data-[te-input-focused]:border-l-0 group-data-[te-input-state-active]:border-l-0 border-gray-300 dark:border-gray-600 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
 };
 
 const DefaultClassesType = {
@@ -117,21 +114,13 @@ const DefaultClassesType = {
   chipsInputWrapper: "string",
   chipsInput: "string",
   chipsLabel: "string",
-  chipsNotchesWrapper: "string",
-  chipsNotchesLeading: "string",
-  chipsNotchesMiddle: "string",
-  chipsNotchesTrailing: "string",
 };
 
 class ChipsInput extends Chip {
   constructor(element, data = {}, classes) {
     super(element, data);
     this._element = element;
-    this._label = null;
-    this._labelWidth = 0;
-    this._labelMarginLeft = 0;
-    this._notchLeading = null;
-    this._notchMiddle = null;
+    this._inputInstance = null;
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
@@ -178,10 +167,9 @@ class ChipsInput extends Chip {
     this._handleEditable();
     this._handleChipsFocus();
     this._handleClicksOnChips();
-    this._getLabelData();
-    this._getLabelWidth();
-    this._getNotchData();
-    this._applyNotch();
+
+    this._inputInstance._getLabelWidth();
+    this._inputInstance._applyNotch();
   }
 
   dispose() {
@@ -200,22 +188,6 @@ class ChipsInput extends Chip {
       SELECTOR_NOTCH_LEADING,
       this._element
     );
-  }
-
-  _getLabelData() {
-    this._label = SelectorEngine.findOne("label", this._element);
-  }
-
-  _getLabelWidth() {
-    this._labelWidth = this._label.clientWidth * 0.8 + 8;
-  }
-
-  _applyNotch() {
-    this._notchMiddle.style.width = `${this._labelWidth}px`;
-    this._notchLeading.style.width = `${this._labelMarginLeft + 9}px`;
-
-    if (this._label === null) return;
-    this._label.style.marginLeft = `${this._labelMarginLeft}px`;
   }
 
   _setChipsClass() {
@@ -568,6 +540,16 @@ class ChipsInput extends Chip {
     const inputField = getInputField(this._options, this._classes);
 
     this._element.insertAdjacentHTML("beforeend", inputField);
+    const inputWrapper = SelectorEngine.findOne(
+      "[data-te-chips-input-wrapper]",
+      this._element
+    );
+
+    this._inputInstance = new Input(
+      inputWrapper,
+      this._options.inputOptions,
+      this._options.inputClasses
+    );
   }
 
   _handleCreateChip(target, value) {

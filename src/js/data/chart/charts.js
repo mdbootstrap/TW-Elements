@@ -1,3 +1,14 @@
+/*
+--------------------------------------------------------------------------
+Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+--------------------------------------------------------------------------
+*/
+
 import { element, typeCheckConfig } from "../../util/index";
 import Data from "../../dom/data";
 import Manipulator from "../../dom/manipulator";
@@ -41,7 +52,9 @@ const DEFAULT_DARK_OPTIONS = {
   darkLabelColor: "#fff",
   darkGridLinesColor: "#555",
   darkmodeOff: "undefined",
+  darkMode: null,
   darkBgColor: "#262626",
+  darkBgColorLight: "#fff",
   options: null,
 };
 
@@ -50,7 +63,9 @@ const DARK_OPTIONS_TYPE = {
   darkLabelColor: "string",
   darkGridLinesColor: "string",
   darkmodeOff: "(string|null)",
+  darkMode: "(string|null)",
   darkBgColor: "string",
+  darkBgColorLight: "string",
   options: "(object|null)",
 };
 
@@ -153,7 +168,13 @@ class Chart {
 
     if (this._darkOptions.darkmodeOff !== null) {
       // check mode on start
-      this._handleMode(this.systemColorMode);
+      const mode =
+        this._darkOptions.darkMode === "dark"
+          ? "dark"
+          : this._darkOptions.darkMode === "light"
+          ? "light"
+          : this.systemColorMode;
+      this._handleMode(mode);
       // observe darkmode class container change
       this._observer = new MutationObserver(this._observerCallback.bind(this));
       this._observer.observe(this._darkModeClassContainer, {
@@ -205,6 +226,13 @@ class Chart {
     ).options;
 
     this._chart.update();
+  }
+
+  setTheme(theme) {
+    if ((theme !== "dark" && theme !== "light") || !this._data) {
+      return;
+    }
+    this._handleMode(theme);
   }
 
   // Private
@@ -339,7 +367,9 @@ class Chart {
     [...this._data.data.datasets].forEach(
       (set) =>
         ["pie", "doughnut", "polarArea"].includes(this._type) &&
-        (set.borderColor = dark ? this._darkOptions.darkBgColor : "#fff")
+        (set.borderColor = dark
+          ? this._darkOptions.darkBgColor
+          : this._darkOptions.darkBgColorLight)
     );
   }
 

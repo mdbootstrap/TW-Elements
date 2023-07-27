@@ -1052,7 +1052,16 @@ class Sidenav {
     }
   }
 
+  _isiPhone() {
+    return /iPhone|iPod/i.test(navigator.userAgent);
+  }
+
   _update(show) {
+    // workaround for iphone issues
+    if (show && this._isiPhone()) {
+      Manipulator.addClass(this._element, "ps--scrolling-y");
+    }
+
     if (this.toggler) {
       this._updateTogglerAria(show);
     }
