@@ -48,6 +48,7 @@ const defaultInitSelectors = {
     name: "Chip",
     selector: "[data-te-chip-init]",
     isToggler: false,
+    onInit: "init",
   },
   datepicker: {
     name: "Datepicker",
@@ -218,6 +219,9 @@ const initComponent = (component) => {
     let instance = component.getInstance(element);
     if (!instance) {
       instance = new component(element);
+      if (thisComponent?.onInit) {
+        instance[thisComponent.onInit]();
+      }
     }
   });
 };
