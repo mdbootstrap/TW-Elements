@@ -1,7 +1,17 @@
-<ul class="relative m-0 list-none px-[0.2rem] pb-80" data-te-sidenav-menu-ref>
+<ul
+  class="relative m-0 mx-2 list-none px-[0.2rem] pb-80"
+  data-te-sidenav-menu-ref>
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "getting-started" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -20,15 +30,15 @@
       </span>
       <span>Getting started</span>
       <span
-        class="{{ if in .Page "gettingstarted" }}
+        class="{{ if in .Page "getting-started" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -42,17 +52,25 @@
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
       data-te-sidenav-collapse-ref
-      {{ if in .Page "gettingstarted" }}
+      {{ if in .Page "getting-started" }}
         data-te-collapse-show
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.gettingstarted }}
-        <li class="relative">
+        <li class="relative mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
+            {{ if in .URL "material-minimal.com" }}
+              target="_blank"
+            {{ end }}
             class="{{ if $currentNode.IsMenuCurrent "gettingstarted"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-200/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}</a
           >
@@ -83,7 +101,15 @@
   </div> -->
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "integrations" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -104,13 +130,13 @@
       <span
         class="{{ if in .Page "integrations" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -128,12 +154,17 @@
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.integrations }}
-        <li>
+        <li class="mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "integrations"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
@@ -144,7 +175,15 @@
   </li>
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "content-styles" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -161,15 +200,15 @@
       </span>
       <span>Content & styles</span>
       <span
-        class="{{ if in .Page "contentstyles" }}
+        class="{{ if in .Page "content-styles" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -182,17 +221,22 @@
     <ul
       class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
       data-te-sidenav-collapse-ref
-      {{ if in .Page "contentstyles" }}
+      {{ if in .Page "content-styles" }}
         data-te-collapse-show
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.contentstyles }}
-        <li>
+        <li class="mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "contentstyles"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
@@ -203,7 +247,15 @@
   </li>
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "navigation" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -224,13 +276,13 @@
       <span
         class="{{ if in .Page "navigation" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -248,12 +300,17 @@
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.navigation }}
-        <li>
+        <li class="mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "navigation"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
@@ -264,7 +321,15 @@
   </li>
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "components" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -281,13 +346,13 @@
       <span
         class="{{ if in .Page "components" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -305,12 +370,17 @@
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.components }}
-        <li class="relative">
+        <li class="relative mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "components"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
@@ -321,7 +391,15 @@
   </li>
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "forms" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -342,13 +420,13 @@
       <span
         class="{{ if in .Page "forms" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -366,12 +444,17 @@
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.forms }}
-        <li>
+        <li class="mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "forms"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
@@ -382,7 +465,15 @@
   </li>
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "data" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -390,7 +481,7 @@
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -403,13 +494,13 @@
       <span
         class="{{ if in .Page "data" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -427,12 +518,17 @@
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.data }}
-        <li>
+        <li class="mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "data"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
@@ -443,7 +539,15 @@
   </li>
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "methods" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -464,13 +568,13 @@
       <span
         class="{{ if in .Page "methods" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -488,12 +592,17 @@
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.methods }}
-        <li>
+        <li class="mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "methods"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
@@ -504,7 +613,15 @@
   </li>
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="{{ if in .Page "designblocks" }}
+        bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+      {{ else }}
+        hover:bg-[rgba(59,113,202,0.05)] dark:hover:bg-white/10
+        hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)]
+        focus:text-inherit focus:outline-none active:[rgba(59,113,202,0.05)]
+        active:text-inherit active:outline-none motion-reduce:transition-none
+        dark:focus:bg-white/10 dark:active:bg-white/10
+      {{ end }} flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none dark:text-gray-300"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -525,13 +642,13 @@
       <span
         class="{{ if in .Page "designblocks" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -549,12 +666,17 @@
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.designblocks }}
-        <li>
+        <li class="mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "designblocks"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
@@ -566,7 +688,7 @@
 
   <li class="relative">
     <a
-      class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+      class="active:[rgba(59,113,202,0.05)] flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-[rgba(59,113,202,0.05)] hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)] focus:text-inherit focus:outline-none active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-[rgba(18,102,241,0.05)] data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10 data-[te-sidenav-state-active]:dark:bg-white/20"
       data-te-sidenav-link-ref>
       <span
         class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
@@ -585,13 +707,13 @@
       <span
         class="{{ if in .Page "comingsoon" }}
           rotate-180
-        {{ end }} absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        {{ end }} absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
         data-te-sidenav-rotate-icon-ref>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
+          stroke-width="2"
           stroke="currentColor"
           class="h-6 w-6">
           <path
@@ -609,18 +731,148 @@
       {{ end }}>
       {{ $currentNode := . }}
       {{ range.Site.Menus.comingsoon }}
-        <li>
+        <li class="mx-1 first:mt-1">
           <a
             href="{{ .URL }}"
             class="{{ if $currentNode.IsMenuCurrent "comingsoon"  . }}
-              bg-blue-50 dark:bg-blue-600/10 dark:hover:bg-blue-600/10
-            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-slate-50 hover:text-inherit hover:outline-none focus:bg-slate-50 focus:text-inherit focus:outline-none active:bg-slate-50 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+              bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+            {{ else }}
+              hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+              hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+              focus:outline-none active:bg-blue-200/20 active:text-inherit
+              active:outline-none
+            {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
             data-te-sidenav-link-ref>
             {{ .Name }}
           </a>
         </li>
       {{ end }}
 
+    </ul>
+  </li>
+
+  <li class="relative">
+    <a
+      class="active:[rgba(59,113,202,0.05)] flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-[rgba(59,113,202,0.05)] hover:text-inherit hover:outline-none focus:bg-[rgba(59,113,202,0.05)] focus:text-inherit focus:outline-none active:text-inherit active:outline-none data-[te-sidenav-state-active]:bg-[rgba(18,102,241,0.05)] data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10 data-[te-sidenav-state-active]:dark:bg-white/20"
+      data-te-sidenav-link-ref>
+      <span
+        class="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="h-6 w-6">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+        </svg>
+      </span>
+
+      <span
+        >Resources<span
+          class="ml-2 inline-block whitespace-nowrap rounded-[0.27rem] bg-primary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700"
+          >New</span
+        ></span
+      >
+      <span
+        class=" absolute -right-1 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+        data-te-sidenav-rotate-icon-ref>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="h-6 w-6">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </span>
+    </a>
+    <ul
+      class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block"
+      data-te-sidenav-collapse-ref>
+      <li>
+        <a
+          href="/snippets/"
+          class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-100/20 hover:text-inherit hover:outline-none focus:bg-blue-200/20 focus:text-inherit focus:outline-none active:bg-blue-200/20 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref=""
+          tabindex="0">
+          Playground
+        </a>
+      </li>
+
+      <li>
+        <a
+          rel="nofollow"
+          target="_blank"
+          href="https://www.youtube.com/c/Mdbootstrap?sub_confirmation=1"
+          class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-100/20 hover:text-inherit hover:outline-none focus:bg-blue-200/20 focus:text-inherit focus:outline-none active:bg-blue-200/20 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref=""
+          tabindex="0">
+          YouTube Channel
+        </a>
+      </li>
+
+      <li>
+        <a
+          rel="nofollow"
+          target="_blank"
+          href="https://www.facebook.com/groups/682245759188413"
+          class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-100/20 hover:text-inherit hover:outline-none focus:bg-blue-200/20 focus:text-inherit focus:outline-none active:bg-blue-200/20 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref=""
+          tabindex="0">
+          Private FB Group
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="/newsletter/"
+          class="{{ if in .Page "newsletter" }}
+            bg-[rgba(18,102,241,0.05)] dark:bg-white/20
+          {{ else }}
+            hover:bg-blue-100/20 dark:hover:bg-white/10 hover:text-inherit
+            hover:outline-none focus:bg-blue-200/20 focus:text-inherit
+            focus:outline-none active:bg-blue-200/20 active:text-inherit
+            active:outline-none
+          {{ end }} flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref=""
+          tabindex="0">
+          Newsletter
+        </a>
+      </li>
+
+      <li>
+        <a
+          target="_blank"
+          href="https://material-minimal.com/"
+          class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-100/20 hover:text-inherit hover:outline-none focus:bg-blue-200/20 focus:text-inherit focus:outline-none active:bg-blue-200/20 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref=""
+          tabindex="0">
+          UI Design course
+          <span
+            class="ml-2 inline-block whitespace-nowrap rounded-[0.27rem] bg-primary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700"
+            >New</span
+          >
+        </a>
+      </li>
+
+      <li>
+        <a
+          target="_blank"
+          href="https://material-minimal.com/learn/design-hacks/tips-and-tricks/"
+          class="flex h-6 cursor-pointer items-center truncate rounded-[5px] py-4 pl-[3.4rem] pr-6 text-[0.78rem] text-gray-600 outline-none transition duration-300 ease-linear hover:bg-blue-200/20 hover:text-inherit hover:outline-none focus:bg-blue-200/20 focus:text-inherit focus:outline-none active:bg-blue-200/20 active:text-inherit active:outline-none data-[te-sidenav-state-active]:text-inherit data-[te-sidenav-state-focus]:outline-none motion-reduce:transition-none dark:text-gray-300 dark:hover:bg-white/10 dark:focus:bg-white/10 dark:active:bg-white/10"
+          data-te-sidenav-link-ref=""
+          tabindex="0">
+          UI / UX tips
+        </a>
+      </li>
     </ul>
   </li>
 </ul>

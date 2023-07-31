@@ -61,7 +61,7 @@
     {{ partial "footer/footer-docs.html" . }}
 
     {{ if ne $hidden_sidenav true }}
-      <script>
+      <script type="module">
         const sidenav = document.getElementById("sidenav-main");
         const sidenavInstance = te.Sidenav.getInstance(sidenav);
 
@@ -83,8 +83,6 @@
             sidenavInstance.show();
           }
         };
-
-        setMode();
 
         // Event listeners
         window.addEventListener("resize", setMode);

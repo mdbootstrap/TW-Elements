@@ -224,6 +224,10 @@ class Select {
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
 
+    if (this._config.selectPlaceholder && !this._config.multiple) {
+      this._addPlaceholderOption();
+    }
+
     this._optionsToRender = this._getOptionsToRender(element);
 
     // optionsToRender may contain option groups and nested options, in this case
@@ -375,6 +379,14 @@ class Select {
     typeCheckConfig(NAME, classes, DefaultClassesType);
 
     return classes;
+  }
+
+  _addPlaceholderOption() {
+    const placeholderOption = new Option("", "", true, true);
+    placeholderOption.hidden = true;
+    placeholderOption.selected = true;
+
+    this._element.prepend(placeholderOption);
   }
 
   _getOptionsToRender(select) {
@@ -535,9 +547,13 @@ class Select {
       SELECTOR_FORM_OUTLINE,
       this._wrapper
     );
-    const outlineInput = new Input(inputWrapper, {
-      inputFormWhite: this._config.selectFormWhite,
-    });
+    const outlineInput = new Input(
+      inputWrapper,
+      {
+        inputFormWhite: this._config.selectFormWhite,
+      },
+      this._classes
+    );
     outlineInput.init();
     this._notch = SelectorEngine.findOne(SELECTOR_NOTCH, this._wrapper);
   }
@@ -829,6 +845,7 @@ class Select {
       this._selectionModel.clear();
       selected.deselect();
     }
+    this._fakeValue.innerHTML = "";
     this._updateInputValue();
     this._updateFakeLabelPosition();
     this._updateLabelPosition();
@@ -1093,7 +1110,11 @@ class Select {
       return;
     }
 
-    if (this._input.value === "" && this._fakeValue.innerHTML !== "") {
+    if (
+      this._input.value === "" &&
+      this._fakeValue.innerHTML !== "" &&
+      !this._config.selectPlaceholder
+    ) {
       this._isFakeValueActive = true;
       this._fakeValue.setAttribute(DATA_ACTIVE, "");
     } else {
@@ -1351,11 +1372,11 @@ class Select {
 
   _listenToFocusChange(add = true) {
     if (add === false) {
-      EventHandler.remove(this._input, "focus", () =>
+      EventHandler.off(this._input, "focus", () =>
         this._notch.setAttribute(DATA_FOCUSED, "")
       );
 
-      EventHandler.remove(this._input, "blur", () =>
+      EventHandler.off(this._input, "blur", () =>
         this._notch.removeAttribute(DATA_FOCUSED)
       );
       return;
@@ -1613,7 +1634,7 @@ class Select {
       label.removeAttribute(DATA_ACTIVE);
     });
     Manipulator.removeClass(this._element, this._classes.initialized);
-    this._element.removeActiveStyles(DATA_SELECT_INIT);
+    this._element.removeAttribute(DATA_SELECT_INIT);
 
     wrapperParent.removeChild(this._wrapper);
   }

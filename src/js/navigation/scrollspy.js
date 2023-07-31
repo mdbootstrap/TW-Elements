@@ -29,7 +29,6 @@ Constants
 const NAME = "scrollspy";
 const DATA_KEY = "te.scrollspy";
 const EVENT_KEY = `.${DATA_KEY}`;
-const DATA_API_KEY = ".data-api";
 
 const Default = {
   offset: 10,
@@ -54,11 +53,9 @@ const DefaultClassesType = {
 
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`;
 const EVENT_SCROLL = `scroll${EVENT_KEY}`;
-const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
 
 const LINK_ACTIVE = "data-te-nav-link-active";
 const SELECTOR_DROPDOWN_ITEM = "[data-te-dropdown-item-ref]";
-const SELECTOR_DATA_SPY = '[data-te-spy="scroll"]';
 const SELECTOR_NAV_LIST_GROUP = "[data-te-nav-list-ref]";
 const SELECTOR_NAV_LINKS = "[data-te-nav-link-ref]";
 const SELECTOR_NAV_ITEMS = "[data-te-nav-item-ref]";
@@ -67,7 +64,7 @@ const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, ${SE
 const SELECTOR_DROPDOWN = "[data-te-dropdown-ref]";
 const SELECTOR_DROPDOWN_TOGGLE = "[data-te-dropdown-toggle-ref]";
 
-const METHOD_OFFSET = "offset";
+const METHOD_OFFSET = "maxOffset";
 const METHOD_POSITION = "position";
 
 /*
@@ -92,8 +89,6 @@ class ScrollSpy extends BaseComponent {
 
     this.refresh();
     this._process();
-    this._didInit = false;
-    this._init();
   }
 
   // Getters
@@ -162,19 +157,6 @@ class ScrollSpy extends BaseComponent {
   }
 
   // Private
-  _init() {
-    if (this._didInit) {
-      return;
-    }
-    EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-      SelectorEngine.find(SELECTOR_DATA_SPY).forEach(
-        (spy) => new ScrollSpy(spy)
-      );
-    });
-
-    this._didInit = true;
-  }
-
   _getConfig(config) {
     config = {
       ...Default,

@@ -58,5 +58,6 @@ module.exports = {
     "animate-[zoom-out_1s_ease-in-out]",
     "animate-[tada_1s_ease-in-out]",
     "animate-[spinner-grow_1s_ease-in-out]",
+    "animate-[progress_3s_ease-in-out_infinite]",
   ],
 };

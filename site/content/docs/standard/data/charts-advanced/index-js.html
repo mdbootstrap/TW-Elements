@@ -1,0 +1,484 @@
+---
+---
+
+<script type="module">
+  // Data
+  const dataChartOptionsExample = {
+    type: "bar",
+    data: {
+      labels: ["January", "February", "March", "April", "May", "June"],
+      datasets: [
+        {
+          label: "Traffic",
+          data: [30, 15, 62, 65, 61, 6],
+          backgroundColor: [
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+          ],
+          borderColor: [
+            "rgba(255,99,132,1)",
+            "rgba(54, 162, 235, 1)",
+            "rgba(255, 206, 86, 1)",
+            "rgba(75, 192, 192, 1)",
+            "rgba(153, 102, 255, 1)",
+            "rgba(255, 159, 64, 1)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    },
+  };
+
+  // Options
+  const optionsChartOptionsExample = {
+    options: {
+      scales: {
+        x: {
+          ticks: {
+            color: "#4285F4",
+          },
+        },
+        y: {
+          ticks: {
+            color: "#f44242",
+          },
+        },
+      },
+    },
+  };
+
+  new te.Chart(
+    document.getElementById("chart-options-example"),
+    dataChartOptionsExample,
+    optionsChartOptionsExample
+  );
+  // Options
+  // Mixed
+  // Data
+  const dataMixedChartExample = {
+    type: "bar",
+    data: {
+      labels: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday ",
+      ],
+      datasets: [
+        // First dataset (bar)
+        {
+          label: "Impressions",
+          data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+          order: 2,
+        },
+        // Second dataset (line)
+        {
+          label: "Impressions (absolute top) %",
+          data: [211, 2543, 2745, 3123, 2765, 1485, 587],
+          type: "line",
+          order: 1,
+          backgroundColor: "rgba(66, 133, 244, 0.0)",
+          borderColor: "#94DFD7",
+          borderWidth: 2,
+          pointBorderColor: "#94DFD7",
+          pointBackgroundColor: "#94DFD7",
+          lineTension: 0.0,
+        },
+      ],
+    },
+  };
+
+  new te.Chart(
+    document.getElementById("chart-mixed-example"),
+    dataMixedChartExample
+  );
+  // Mixed
+
+  // Data labels
+  // Data
+  const dataChartDataLabelsExample = {
+    type: "pie",
+    data: {
+      labels: ["January", "February", "March", "April", "May"],
+      datasets: [
+        {
+          label: "Traffic",
+          data: [30, 45, 62, 65, 61],
+          backgroundColor: [
+            "rgba(63, 81, 181, 0.5)",
+            "rgba(77, 182, 172, 0.5)",
+            "rgba(66, 133, 244, 0.5)",
+            "rgba(156, 39, 176, 0.5)",
+            "rgba(233, 30, 99, 0.5)",
+          ],
+        },
+      ],
+    },
+  };
+
+  // Options
+  const optionsChartDataLabelsExample = {
+    dataLabelsPlugin: true,
+    options: {
+      plugins: {
+        datalabels: {
+          formatter: (value, ctx) => {
+            let sum = 0;
+            // Assign the data to the variable and format it according to your needs
+            let dataArr = dataChartDataLabelsExample.data.datasets[0].data;
+            dataArr.map((data) => {
+              sum += data;
+            });
+            let percentage = ((value * 100) / sum).toFixed(2) + "%";
+            return percentage;
+          },
+          color: "white",
+          labels: {
+            title: {
+              font: {
+                size: "14",
+              },
+            },
+          },
+        },
+      },
+    },
+  };
+
+  new te.Chart(
+    document.getElementById("chart-data-mdb-labels-example"),
+    dataChartDataLabelsExample,
+    optionsChartDataLabelsExample
+  );
+
+  // Data labels
+
+  // Double Y axis
+  // Data
+  const dataChartDobuleYAxisExample = {
+    type: "bar",
+    data: {
+      labels: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday ",
+      ],
+      datasets: [
+        {
+          label: "Impressions",
+          yAxisID: "y",
+          data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+          order: 2,
+        },
+        {
+          label: "Impressions (absolute top) %",
+          yAxisID: "y1",
+          data: [1.5, 2, 0.5, 3, 1.2, 4, 3.4],
+          type: "line",
+          order: 1,
+          backgroundColor: "rgba(66, 133, 244, 0.0)",
+          borderColor: "#94DFD7",
+          borderWidth: 2,
+          pointBorderColor: "#94DFD7",
+          pointBackgroundColor: "#94DFD7",
+          lineTension: 0.0,
+        },
+      ],
+    },
+  };
+
+  // Options
+  const optionsChartDobuleYAxisExample = {
+    options: {
+      scales: {
+        y: {
+          display: true,
+          position: "left",
+        },
+        y1: {
+          display: true,
+          position: "right",
+          grid: {
+            drawOnChartArea: false,
+          },
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      },
+    },
+  };
+
+  const optionsDarkModeChartDobuleYAxisExample = {
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+        y1: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+        x: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+      },
+      plugins: {
+        datalabels: {
+          color: "#fff",
+        },
+        legend: {
+          labels: {
+            color: "#fff",
+          },
+        },
+      },
+    },
+  };
+
+  new te.Chart(
+    document.getElementById("chart-double-y-axis-example"),
+    dataChartDobuleYAxisExample,
+    optionsChartDobuleYAxisExample,
+    optionsDarkModeChartDobuleYAxisExample
+  );
+
+  // Double Y axis
+
+  // Funnel
+  // Data
+  const dataChartFunnelExample = {
+    type: "bar",
+    data: {
+      labels: ["Product views", "Checkout", "Purchases"],
+      datasets: [
+        {
+          data: [2112, 343, 45],
+          barPercentage: 1.24,
+        },
+      ],
+    },
+  };
+
+  // Options
+  const optionsChartFunnelExample = {
+    dataLabelsPlugin: true,
+    options: {
+      indexAxis: "y",
+      scales: {
+        x: {
+          grid: {
+            offsetGridLines: true,
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        datalabels: {
+          formatter: (value, ctx) => {
+            let sum = 0;
+            let dataArr = dataChartFunnelExample.data.datasets[0].data;
+            dataArr.map((data) => {
+              sum += data;
+            });
+            let percentage = ((value * 100) / sum).toFixed(2) + "%";
+            return percentage;
+          },
+          color: "#4f4f4f",
+          labels: {
+            title: {
+              font: {
+                size: "13",
+              },
+              anchor: "end",
+              align: "right",
+            },
+          },
+        },
+      },
+    },
+  };
+
+  const optionsDarkModeChartFunnelExample = {
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+        x: {
+          ticks: {
+            color: "#fff",
+          },
+        },
+      },
+      plugins: {
+        datalabels: {
+          color: "#fff",
+        },
+      },
+    },
+  };
+
+  new te.Chart(
+    document.getElementById("chart-funnel-example"),
+    dataChartFunnelExample,
+    optionsChartFunnelExample,
+    optionsDarkModeChartFunnelExample
+  );
+  // Funnel
+
+  // Formatting values on the Y axes
+  // Data
+  const dataChartValuesFormattingExample = {
+    type: "bar",
+    data: {
+      labels: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday ",
+      ],
+      datasets: [
+        {
+          label: "Sales",
+          data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+        },
+      ],
+    },
+  };
+
+  // Options
+  const optionsChartValuesFormattingExample = {
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            callback: function (value, index, values) {
+              return "$" + value;
+            },
+          },
+        },
+      },
+    },
+  };
+
+  new te.Chart(
+    document.getElementById("chart-values-formatting-example"),
+    dataChartValuesFormattingExample,
+    optionsChartValuesFormattingExample
+  );
+  // Formatting values on the Y axes
+
+  // Formatting values in the tooltips
+  // Data
+  const dataChartTooltipsFormattingExample = {
+    type: "line",
+    data: {
+      labels: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday ",
+      ],
+      datasets: [
+        {
+          label: "Sales",
+          data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+        },
+      ],
+    },
+  };
+
+  // Options
+  const optionsChartTooltipsFormattingExample = {
+    options: {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              return " $" + context.formattedValue;
+            },
+          },
+        },
+      },
+    },
+  };
+
+  new te.Chart(
+    document.getElementById("chart-tooltips-formatting-example"),
+    dataChartTooltipsFormattingExample,
+    optionsChartTooltipsFormattingExample
+  );
+  // Formatting values in the tooltips
+
+  // Double datasets in a bar chart
+  // Data
+  const dataChartBarDoubleDatasetsExample = {
+    type: "bar",
+    data: {
+      labels: ["Desktop", "Mobile", "Tablet"],
+      datasets: [
+        {
+          label: "Users",
+          data: [510, 653, 255],
+        },
+        {
+          label: "Page views",
+          data: [1251, 1553, 1355],
+          backgroundColor: "#94DFD7",
+          borderColor: "#94DFD7",
+        },
+      ],
+    },
+  };
+
+  // Options
+  const optionsChartBarDoubleDatasetsExample = {
+    options: {
+      scales: {
+        y: {
+          stacked: false,
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+        x: {
+          stacked: false,
+        },
+      },
+    },
+  };
+
+  new te.Chart(
+    document.getElementById("chart-bar-double-datasets-example"),
+    dataChartBarDoubleDatasetsExample,
+    optionsChartBarDoubleDatasetsExample
+  );
+  // Double datasets in a bar chart
+</script>

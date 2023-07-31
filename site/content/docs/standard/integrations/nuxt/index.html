@@ -5,8 +5,8 @@ draft: false
 main_title: "Tailwind Elements Nuxt integration"
 subheading: ""
 seo_title: "Tailwind Elements integration with Nuxt - Free Examples & Tutorial"
-description: "This article shows you how to integrate Nuxt application with Tailwind Elements. Free download, AGPL license."
-image: "https://tecdn.b-cdn.net/img/components-big.jpg"
+description: "This article shows you how to integrate Nuxt application with Tailwind Elements. Free download, open source license."
+image: "https://tecdn.b-cdn.net/img/docs/integrations/nuxt.webp"
 url: "docs/standard/integrations/nuxt-integration/"
 menu:
   integrations:
@@ -138,12 +138,12 @@ menu:
   <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
-    <code>tailwind.config.cjs</code> file.
+    <code>tailwind.config.js</code> file.
   </p>
 
+  <!--prettier-ignore-->
   <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
+    {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
@@ -155,11 +155,12 @@ menu:
             "./nuxt.config.{js,ts}",
             "./app.vue",
             "./node_modules/tw-elements/dist/js/**/*.js"
-        ],
-        theme: {
+          ],
+          theme: {
             extend: {},
-        },
-        plugins: [require("tw-elements/dist/plugin")]
+          },
+          darkMode: "class",
+          plugins: [require("tw-elements/dist/plugin.cjs")]
         }
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
@@ -183,6 +184,30 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">
+    Attach the Roboto font in <code>nuxt.config.js/ts</code> by creating an
+    <code>app</code> object.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "nuxt.config.js" "" "mobile" >}}
+        {{< twsnippet/code active=true lang="JavaScript" >}}
+          app: {
+            head: {
+              link: [
+                {
+                  rel: "stylesheet",
+                  href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap",
+                },
+              ],
+            },
+          },
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 5</h2>
   <p class="mb-5">Install Tailwind Elements.</p>
 
   <div class="pb-4">
@@ -196,15 +221,52 @@ menu:
 
   <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    Create standalone file and import components which are you intend to use and
-    necessary function
-    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
+    Import globally in <code>app.vue</code> Tailiwind Elements CSS file (you
+    could do it also in specific component which are using TE).
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Component.vue" "" "mobile" >}}
+    {{< twsnippet/wrapper "app.vue" "" "mobile" >}}
         {{< twsnippet/code active=true lang="JavaScript" >}}
+    <script setup>
+      import "tw-elements/dist/css/tw-elements.min.css";
+    </script>
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    Create standalone file with name of your component (for example
+    <code>Datepicker.vue</code> in <code>src/components</code> directory) and
+    import TE components which are you intend to use. Also include necessary
+    function <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle
+    method.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "template, script" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <template>
+      <div
+        class="relative mb-3"
+        data-te-datepicker-init
+        data-te-input-wrapper-init>
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          placeholder="Select a date" />
+        <label
+          for="floatingInput"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Select a date</label
+        >
+      </div>
+    </template>
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="HTML" >}}
     <script setup>
       import { onMounted } from "vue";
       import { Datepicker, Input, initTE } from "tw-elements";
@@ -217,51 +279,28 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 7</h2>
+  <h2 class="text-lg font-bold">Step 8</h2>
   <p class="mb-5">
-    Import client-side component wrapping it into
-    <code>ClientOnly</code> element.
+    Import (for example in <code>app.vue</code>) newly created component
+    wrapping it into <code>ClientOnly</code> element.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.vue" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-    <script setup>
-      import Component from "./Component.vue";
-    </script>
-
+    {{< twsnippet/wrapper "template, script" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
     <template>
       <ClientOnly>
-        <Component />
+        <Datepicker />
       </ClientOnly>
     </template>
     {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="HTML" >}}
+    <script setup>
+      import Datepicker from "./components/Datepicker.vue";
+    </script>
+    {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 8</h2>
-  <p class="mb-5">
-    Alternatively you can import Tailwind Elements by adding
-    <code>script</code> tag in <code>nuxt.config.js</code> file (located in root
-    directory).
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "nuxt.config.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-        app: {
-          head: {
-            script: [
-              {
-                src: "https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.min.es.js",
-              },
-            ],
-          },
-        },
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
   </div>
 </section>
 <!--/Creating and configuring Tailwind & Tailwind Elements-->
@@ -286,38 +325,273 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Import components which are you intend to use.</p>
+  <p class="mb-5">
+    Import components which are you intend to use and initialize them in
+    lifecycle method.
+  </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { Datepicker, Input, initTE } from "tw-elements";
-      {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
+    {{< twsnippet/wrapper "template, script" "" "mobile" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+    <template>
+      <div class="relative mb-3" id="myDatepicker">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          placeholder="Select a date" />
+        <label
+          for="floatingInput"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Select a date</label
+        >
+      </div>
+    </template>
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="HTML" >}}
+    <script setup>
+      import { onMounted } from "vue";
+      import { Datepicker, Input } from "tw-elements";
 
-  <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Initialize components in lifecycle hook.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-        import { onMounted } from "vue";
-
-        onMounted(() => {
-          const myInput = new Input(document.getElementById("myDatepicker"));
-          const options = {
-            format: "dd-mm-yyyy",
-          };
-          const myDatepicker = new te.Datepicker(
-            document.getElementById("myDatepicker"),
-            options
-          );
-        });
-      {{< /twsnippet/code >}}
+      onMounted(() => {
+        const myInput = new Input(document.getElementById("myDatepicker"));
+        const options = {
+          format: "dd-mm-yyyy",
+        };
+        const myDatepicker = new Datepicker(
+          document.getElementById("myDatepicker"),
+          options
+        );
+      });
+    </script>
+    {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
 <!-- /Initializing via JS-->
+
+<hr class="mb-5 dark:border-neutral-600" />
+
+<!-- Section: Related resources -->
+<section id="section-related-resources">
+  <!-- Title -->
+  <h2 class="mb-5 mt-0 text-3xl font-semibold leading-normal" data-te-spy-item>
+    Related resources
+  </h2>
+
+  <!-- Resources -->
+  <h3 class="text-lg font-medium">Tutorials:</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Tutorials -->
+    <!-- basics-->
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/basics/introduction/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      introduction
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/basics/key-concepts/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      key concepts
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/basics/quick-start/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      quick start
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/basics/vite/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      vite
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/basics/mdb-go-and-deploy/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      mdb go and deploy
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/basics/create-website/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      create website
+    </a>
+    <!-- tailwind css-->
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/about/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      about
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/versions/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      versions
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/installation/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      installation
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/setup-overview/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      setup overview
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/create-landing-page/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      create landing page
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/javascript/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      javascript
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/tailwind-css-intellisense/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      tailwind css intellisense
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/deploy/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      deploy
+    </a>
+    <a
+      href="https://tailwind-elements.com/learn/te-foundations/tailwind-css/repository/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      repository
+    </a>
+  </div>
+  <h3 class="text-lg font-medium">Integrations :</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Main -->
+    <!-- integrations-->
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/angular-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      angular
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/django-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      django
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/express-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      express
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/laravel-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      laravel
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/next-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      next
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/react-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      react
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/remix-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      remix
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/solid-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      solid
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/svelte-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      svelte
+    </a>
+    <a
+      href="https://tailwind-elements.com/docs/standard/integrations/vue-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      vue
+    </a>
+    <!-- content & styles-->
+
+    <!-- navigation-->
+
+    <!-- components-->
+
+    <!-- forms-->
+
+    <!-- data-->
+
+    <!-- methods -->
+
+    <!-- extended -->
+  </div>
+  <h3 class="hidden text-lg font-medium">Design System (Figma):</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Material minimal -->
+    <!-- foundations -->
+
+    <!-- hierarchy-->
+
+    <!-- design process-->
+
+    <!-- material minimal-->
+
+    <!-- design hacks-->
+  </div>
+  <!-- Resources -->
+</section>
+<!-- Section: Related resources -->

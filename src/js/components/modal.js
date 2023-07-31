@@ -17,7 +17,6 @@ import ScrollBarHelper from "../util/scrollbar";
 import BaseComponent from "../base-component";
 import Backdrop from "../util/backdrop";
 import FocusTrap from "../util/focusTrap";
-import { enableDismissTrigger } from "../util/component-functions";
 
 /*
 ------------------------------------------------------------------------
@@ -89,8 +88,6 @@ class Modal extends BaseComponent {
     this._ignoreBackdropClick = false;
     this._isTransitioning = false;
     this._scrollBar = new ScrollBarHelper();
-    this._didInit = false;
-    this._init();
   }
 
   // Getters
@@ -195,16 +192,6 @@ class Modal extends BaseComponent {
   }
 
   // Private
-  _init() {
-    if (this._didInit) {
-      return;
-    }
-
-    enableDismissTrigger(Modal);
-
-    this._didInit = true;
-  }
-
   _initializeBackDrop() {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
