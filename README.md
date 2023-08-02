@@ -1,4 +1,4 @@
-# Tailwind Elements [<img src="https://tailwind-elements.com/img/logo.png" width="45" align="right" alt="Tailwind-elements">](https://tailwind-elements.com/)<a href="https://www.npmjs.com/package/tw-elements"><img src="https://img.shields.io/npm/dt/tw-elements.svg" alt="Total Downloads"></a> <a href="https://github.com/mdbootstrap/Tailwind-Elements/releases"><img src="https://img.shields.io/npm/v/tw-elements.svg" alt="Latest Release"></a> <a href="https://twitter.com/intent/tweet/?text=Thanks+@TailwindElement+for+creating+an+amazing+collection+of+open+source+components+for+@tailwindcss%20https://tailwind-elements.com/&hashtags=tailwindCSS,bootstrap,webdesign,javascript,100DaysOfCode,DevCommunity"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
+# Tailwind Elements [<img src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp" width="45" align="right" alt="Tailwind-elements">](https://tailwind-elements.com/)<a href="https://www.npmjs.com/package/tw-elements"><img src="https://img.shields.io/npm/dt/tw-elements.svg" alt="Total Downloads"></a> <a href="https://github.com/mdbootstrap/Tailwind-Elements/releases"><img src="https://img.shields.io/npm/v/tw-elements.svg" alt="Latest Release"></a> <a href="https://twitter.com/intent/tweet/?text=Thanks+@TailwindElement+for+creating+an+amazing+collection+of+open+source+components+for+@tailwindcss%20https://tailwind-elements.com/&hashtags=tailwindCSS,bootstrap,webdesign,javascript,100DaysOfCode,DevCommunity"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
 
 Tailwind Elements is a huge collection of free, interactive components for Tailwind CSS.
 
@@ -511,6 +511,54 @@ A collection of stunning components made with attention to the smallest details.
     <td align="center"><b>Masks</b></td>
     <td align="center"><b>Shadows</b></td>
   </tr>
+  <!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/data/datatables/">
+            <img alt="Tailwind Component" src="https://mdbcdn.b-cdn.net/docs/standard/pro/demo/assets/images/datatable.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/lightbox/">
+            <img alt="Tailwind Component" src="https://mdbcdn.b-cdn.net/docs/standard/pro/demo/assets/images/lightbox.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/rating/">
+            <img alt="Tailwind Component" src="https://mdbcdn.b-cdn.net/docs/standard/pro/demo/assets/images/rating.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Datatables</b></td>
+    <td align="center"><b>Lightbox</b></td>
+    <td align="center"><b>Rating</b></td>
+  </tr>
+<!--New row-->
+  <tr>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/methods/scrollbar/">
+            <img alt="Tailwind Component" src="https://mdbcdn.b-cdn.net/docs/standard/pro/demo/assets/images/scrollbar.webp">
+        </a>
+    </td>
+    <td>
+        <a href="https://tailwind-elements.com/docs/standard/components/popconfirm/">
+            <img alt="Tailwind Component" src="https://mdbcdn.b-cdn.net/docs/standard/pro/demo/assets/images/popconfirm.webp">
+        </a>
+    </td>
+     <td>
+        <a href="https://tailwind-elements.com/">
+            <img alt="Logo Clouds" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Scrollbar</b></td>
+    <td align="center"><b>Popconfirm</b></td>
+    <td align="center"><b>More coming soon</b></td>
+  </tr>
+
+
   
 </table>
 
@@ -614,17 +662,17 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
   <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/designblocks/headers/">
-            <img alt="Headers" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+            <img alt="Headers" src="https://mdbootstrap.com/img/tw-demo/headers.webp">
         </a>
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/designblocks/faq/">
-            <img alt="FAQ" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+            <img alt="FAQ" src="https://mdbootstrap.com/img/tw-demo/faq.webp">
         </a>
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/designblocks/logo-clouds/">
-            <img alt="Logo Clouds" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+            <img alt="Logo Clouds" src="https://mdbootstrap.com/img/tw-demo/logo-clouds.webp">
         </a>
     </td>
   </tr>
@@ -636,12 +684,12 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
     <tr>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/designblocks/banners/">
-            <img alt="Headers" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+            <img alt="Headers" src="https://mdbootstrap.com/img/tw-demo/banners.webp">
         </a>
     </td>
     <td>
         <a href="https://tailwind-elements.com/docs/standard/designblocks/mega-menu/">
-            <img alt="FAQ" src="https://mdbootstrap.com/img/tw-demo/design-blocks.webp">
+            <img alt="FAQ" src="https://mdbootstrap.com/img/tw-demo/mega-menu.webp">
         </a>
     </td>
     <td>
