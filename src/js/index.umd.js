@@ -37,6 +37,7 @@ import Datatable from "./data/datatables/index";
 import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
+import SmoothScroll from "./methods/smooth-scroll";
 import initTE from "./autoinit/index";
 
 const te = {
@@ -67,6 +68,7 @@ const te = {
   Chart,
   Datatable,
   Popconfirm,
+  SmoothScroll,
   Lightbox,
 };
 
@@ -101,5 +103,6 @@ export {
   Rating,
   Popconfirm,
   Lightbox,
+  SmoothScroll,
   initTE,
 };
