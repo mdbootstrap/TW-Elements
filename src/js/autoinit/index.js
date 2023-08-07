@@ -109,6 +109,10 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  lazyLoad: {
+    name: "LazyLoad",
+    selector: "[data-te-lazy-load-init]",
+  },
 
   // advancedInits
   chart: {
