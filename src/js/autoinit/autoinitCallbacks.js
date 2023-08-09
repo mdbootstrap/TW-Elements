@@ -193,6 +193,10 @@ const lightboxCallback = (component, initSelector) => {
   );
 };
 
+const touchCallback = () => {
+  console.log("touchCallback");
+};
+
 export {
   dropdownCallback,
   tabCallback,
@@ -204,4 +208,5 @@ export {
   tooltipsCallback,
   popoverCallback,
   lightboxCallback,
+  touchCallback,
 };
