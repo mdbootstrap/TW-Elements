@@ -1,3 +1,13 @@
+/*
+--------------------------------------------------------------------------
+Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+--------------------------------------------------------------------------
+*/
+
 import Data from "../../dom/data";
 import EventHandler from "../../dom/event-handler";
 import Press from "./press";
@@ -6,7 +16,6 @@ import Pan from "./pan";
 import Pinch from "./pinch";
 import Tap from "./tap";
 import Rotate from "./rotate";
-// import SelectorEngine from "../../dom/selector-engine";
 import { typeCheckConfig } from "../../util";
 import Manipulator from "../../dom/manipulator";
 
@@ -42,9 +51,23 @@ class Touch {
     this._touchMoveHandler = (e) => this._handleTouchMove(e);
     this._touchEndHandler = (e) => this._handleTouchEnd(e);
 
+    // istanbul ignore next
+    EventHandler.on(this._element, "touchstart", this._touchStartHandler);
+
+    // istanbul ignore next
+    EventHandler.on(this._element, "touchmove", this._touchMoveHandler);
+
+    // istanbul ignore next
+    EventHandler.on(this._element, "touchend", this._touchEndHandler);
+
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
     }
+  }
+
+  // Getters
+  static get NAME() {
+    return NAME;
   }
 
   dispose() {
@@ -58,17 +81,6 @@ class Touch {
     this.pinch = null;
     this.tap = null;
     this.rotate = null;
-  }
-
-  init() {
-    // istanbul ignore next
-    EventHandler.on(this._element, "touchstart", this._touchStartHandler);
-
-    // istanbul ignore next
-    EventHandler.on(this._element, "touchmove", this._touchMoveHandler);
-
-    // istanbul ignore next
-    EventHandler.on(this._element, "touchend", this._touchEndHandler);
   }
 
   _getConfig(options) {
@@ -132,10 +144,5 @@ class Touch {
     );
   }
 }
-
-// SelectorEngine.find(`[data-te-touch-init]`).forEach((el) => {
-//   let instance = new Touch(el);
-//   instance.init();
-// });
 
 export default Touch;

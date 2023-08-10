@@ -33,12 +33,12 @@ import ChipsInput from "./components/chips";
 import Chip from "./components/chips/chip";
 import Chart from "./data/chart/charts";
 import PerfectScrollbar from "./methods/perfect-scrollbar";
-import Datatable from "./data/datatables/index";
+import Datatable from "./data/datatables";
 import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
-import Touch from "./methods/touch/index";
-import initTE from "./autoinit/index";
+import Touch from "./methods/touch";
+import initTE from "./autoinit";
 
 export {
   Animate,

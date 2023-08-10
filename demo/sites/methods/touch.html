@@ -137,7 +137,7 @@
         id="btn-tap"
         type="button"
         class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
-        Tap & hold to show image
+        Tap to change color
       </button>
       <br />
       <br />
@@ -378,6 +378,8 @@
       // tap
 
       const btnTap = document.querySelector("#btn-tap");
+      const bgTap = document.querySelector("#bg-tap");
+
       const colorGen = () => {
         const randomNum = () => {
           return Math.floor(Math.random() * 255) + 1;
@@ -385,7 +387,6 @@
         return `rgba(${randomNum()},${randomNum()},${randomNum()},.4)`;
       };
 
-      const bgTap = document.querySelector("#bg-tap");
       btnTap.addEventListener("tap", (e) => {
         bgTap.style.backgroundColor = colorGen();
       });
@@ -444,7 +445,7 @@
         imgPanRight.style.transform = `translate(${moveElementRight.x}px, 0px)`;
       });
 
-      // pab up down
+      // pan up down
 
       const panUpDown = document.querySelector("#pan-up-down");
       const imgPanUpDown = document.querySelector("#img-pan-up-down");
@@ -456,8 +457,6 @@
         event: "pan",
         direction: "up",
       });
-      touchUp.init();
-      touchDown.init();
 
       let moveElementUpDown = {
         y: null,
