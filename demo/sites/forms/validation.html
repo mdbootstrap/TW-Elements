@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Tailwind Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Roboto font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
+    <!-- Custom styles -->
+    <style>
+      .form-control:focus {
+        box-shadow: 0 0 0 1px rgb(37, 99, 235);
+      }
+    </style>
+  </head>
+
+  <body class="dark:bg-neutral-800">
+    <!-- Start your project here-->
+    <div class="mx-6 md:mx-16 lg:mx-44 xl:mx-96">
+      <br />
+      <br />
+      <br />
+
+      <h1
+        class="my-0 text-5xl font-medium leading-tight text-neutral-800 dark:text-white">
+        Validation
+      </h1>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Basic example
+      </h3>
+
+      <form id="form-1" data-te-validation-init>
+        <div
+          class="relative mb-3 xl:w-96"
+          id="input-1"
+          data-te-input-wrapper-init
+          data-te-validate="input">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="exampleFormControlInput1"
+            placeholder="Example label" />
+          <label
+            for="exampleFormControlInput1"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+        <button
+          type="button"
+          id="validaiton-1"
+          class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+          Validate
+        </button>
+        <p class="my-2">Result: <span id="result-1"></span></p>
+      </form>
+
+      <br />
+      <br />
+      <br />
+    </div>
+    <!-- End your project here-->
+
+    <!-- Theme switcher -->
+    <script type="module" src="../../../src/js/theme.js"></script>
+    <!-- MDB -->
+    <script type="module" src="../../../src/js/index.umd.js"></script>
+    <!-- PRISM -->
+    <script type="module" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="module">
+      const validation1 = document.getElementById("validaiton-1");
+      const form1 = document.getElementById("form-1");
+      const input1 = document.getElementById("input-1");
+      let valid = true;
+      validation1.addEventListener("click", (e) => {
+        e.preventDefault();
+        input1.setAttribute(
+          "data-te-validation-state",
+          valid ? "valid" : "invalid"
+        );
+        form1.setAttribute("data-te-validated", true);
+        document.getElementById("result-1").innerHTML = valid
+          ? "valid"
+          : "invalid";
+        valid = !valid;
+      });
+    </script>
+  </body>
+</html>

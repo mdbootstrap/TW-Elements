@@ -37,6 +37,7 @@ import Datatable from "./data/datatables/index";
 import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
+import Validation from "./forms/validation";
 import initTE from "./autoinit/index";
 
 const te = {
@@ -68,6 +69,7 @@ const te = {
   Datatable,
   Popconfirm,
   Lightbox,
+  Validation,
 };
 
 initTE(te);

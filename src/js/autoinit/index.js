@@ -109,6 +109,10 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  validation: {
+    name: "Validation",
+    selector: "[data-te-validation-init]",
+  },
 
   // advancedInits
   chart: {
