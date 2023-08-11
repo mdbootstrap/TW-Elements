@@ -2,6 +2,7 @@
 --------------------------------------------------------------------------
 Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
+
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
@@ -31,18 +32,18 @@ const EVENT_ERROR = "onError.te.lazy";
 const SELECTOR_ELEMENTS = ["img", "video"];
 
 const DefaultType = {
-  lazySrc: "(string || null)",
+  lazySrc: "(string|null)",
   lazyDelay: "number",
   lazyAnimation: "string",
   lazyOffset: "number",
-  lazyPlaceholder: "(string || undefined)",
-  lazyError: "(string || undefined)",
+  lazyPlaceholder: "(string|undefined)",
+  lazyError: "(string|undefined)",
 };
 
 const Default = {
   lazySrc: null,
   lazyDelay: 500,
-  lazyAnimation: "fade-in",
+  lazyAnimation: "[fade-in_1s_ease-in-out]",
   lazyOffset: 0,
 };
 
@@ -139,14 +140,14 @@ class LazyLoad {
   }
 
   _setupElement() {
-    EventHandler.on(this._element, "error", this.errorHandler);
+    EventHandler.one(this._element, "error", this.errorHandler);
 
     if (this._options.lazyPlaceholder) {
       this._setPlaceholder();
     }
 
     this._animation = new Animate(this._element, {
-      animation: `[${this._options.lazyAnimation}_1s_ease-in-out]`,
+      animation: `${this._options.lazyAnimation}`,
       animationStart: "onLoad",
     });
 
