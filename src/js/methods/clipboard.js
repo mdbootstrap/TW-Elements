@@ -126,7 +126,6 @@ class Clipboard {
     const newInput = element(tag);
     newInput.value = this.copyText;
     Manipulator.addClass(newInput, `-left-[9999px] absolute`);
-    console.log(newInput);
     return newInput;
   }
 
