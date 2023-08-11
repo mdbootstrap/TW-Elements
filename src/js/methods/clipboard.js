@@ -125,8 +125,8 @@ class Clipboard {
       this.clipboardTarget.tagName === "TEXTAREA" ? "textarea" : "input";
     const newInput = element(tag);
     newInput.value = this.copyText;
-    Manipulator.style(newInput, { left: "-9999px", position: "absolute" });
-
+    Manipulator.addClass(newInput, `-left-[9999px] absolute`);
+    console.log(newInput);
     return newInput;
   }
 
