@@ -118,8 +118,17 @@ const DefaultClassesType = {
   notchLeadingInvalid: "string",
   notchMiddleInvalid: "string",
   notchTrailingInvalid: "string",
+  basicInputValid: "string",
+  basicInputInvalid: "string",
+  checkboxValid: "string",
+  checkboxInvalid: "string",
+  radioValid: "string",
+  radioInvalid: "string",
   labelValid: "string",
   labelInvalid: "string",
+  validFeedback: "string",
+  invalidFeedback: "string",
+  elementValidated: "string",
 };
 
 /*
@@ -211,16 +220,13 @@ class Validation extends BaseComponent {
       this._element
     );
     return elements.map((element, id) => {
-      const type = element.getAttribute(ATTR_VALIDATION_ELEMENTS);
-      const input =
-        SelectorEngine.findOne("input", element) ||
-        SelectorEngine.findOne("textarea", element);
-
       return {
         id: `validation${id}`,
         element,
-        type,
-        input,
+        type: element.getAttribute(ATTR_VALIDATION_ELEMENTS),
+        input:
+          SelectorEngine.findOne("input", element) ||
+          SelectorEngine.findOne("textarea", element),
         validFeedback: element.getAttribute(ATTR_VALID_FEEDBACK),
         invalidFeedback: element.getAttribute(ATTR_INVALID_FEEDBACK),
         classes: element.className,
