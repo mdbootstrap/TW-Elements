@@ -58,16 +58,69 @@
       <br />
 
       <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Inputs Full Validation
+      </h3>
+
+      <form id="form-0" data-te-validation-init>
+        <div
+          class="relative mb-3 xl:w-96"
+          data-te-input-wrapper-init
+          data-te-validate="input"
+          data-te-validation-ruleset="required|isNumber|longerThan(2)">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="exampleFormControlInput1"
+            placeholder="Example label" />
+          <label
+            for="exampleFormControlInput1"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+        <div
+          class="relative mb-3 xl:w-96"
+          data-te-input-wrapper-init
+          data-te-validate="input"
+          data-te-validation-ruleset="required|email">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+            id="exampleFormControlInput1"
+            placeholder="Example label" />
+          <label
+            for="exampleFormControlInput1"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+        <button
+          type="button"
+          class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+          data-te-submit-btn-ref>
+          Validate
+        </button>
+        <button
+          class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-danger hover:text-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:text-danger-700"
+          id="dispose">
+          Dispose validation
+        </button>
+      </form>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
         Inputs
       </h3>
 
-      <form id="form-1" data-te-validation-init data-te-validation-full="true">
+      <form id="form-1" data-te-validation-init>
         <div
           class="relative mb-3 xl:w-96"
           id="input-1"
           data-te-input-wrapper-init
-          data-te-validate="input"
-          data-te-validation-ruleset="required|isNumber|longerThan(2)">
+          data-te-validate="input">
           <input
             type="text"
             class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
@@ -96,17 +149,20 @@
       </h3>
 
       <form id="form-2" data-te-validation-init>
-        <select data-te-select-init data-te-validate="select" id="select-1">
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-          <option value="4">Four</option>
-          <option value="5">Five</option>
-          <option value="6">Six</option>
-          <option value="7">Seven</option>
-          <option value="8">Eight</option>
-        </select>
-        <label data-te-select-label-ref>Example label</label>
+        <!-- wrapper -->
+        <div data-te-validate="input" id="select-1">
+          <select data-te-select-init>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+            <option value="7">Seven</option>
+            <option value="8">Eight</option>
+          </select>
+          <label data-te-select-label-ref>Example label</label>
+        </div>
         <button
           type="button"
           id="validation-2"
@@ -385,42 +441,36 @@
       <br />
       <br />
       <br />
-
-      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
-        Chips Input
-      </h3>
-
-      <form id="form-11" data-te-validation-init>
-        <div
-          data-te-chips-input-init
-          data-te-chips-placeholder
-          data-te-validate="chips"
-          id="input-11"
-          class="relative mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"></div>
-        <button
-          type="button"
-          id="validation-11"
-          class="mt-2 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
-          Validate
-        </button>
-      </form>
-
-      <br />
-      <br />
-      <br />
     </div>
     <!-- End your project here-->
 
     <!-- Theme switcher -->
     <script type="module" src="../../../src/js/theme.js"></script>
-    <!-- MDB -->
-    <script type="module" src="../../../src/js/index.umd.js"></script>
     <!-- PRISM -->
     <script type="module" src="../../dev/js/new-prism.js"></script>
     <!-- MDB SNIPPET -->
     <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
     <!-- Custom scripts -->
     <script type="module">
+      import * as te from "../../../src/js/index.umd.js";
+
+      // dispose validation
+      const disposeValidationBtn = document.getElementById("dispose");
+      const form0 = document.getElementById("form-0");
+      const validationDispose = te.Validation.getOrCreateInstance(form0);
+
+      disposeValidationBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        validationDispose.dispose();
+      });
+
+      form0.addEventListener("invalid.te.validation", (e) => {
+        console.log(e.value);
+      });
+      form0.addEventListener("valid.te.validation", (e) => {
+        alert("all good");
+      });
+
       // inputs
 
       const validation1 = document.getElementById("validation-1");
@@ -429,10 +479,10 @@
       let valid = true;
       validation1.addEventListener("click", (e) => {
         e.preventDefault();
-        // input1.setAttribute(
-        //   "data-te-validation-state",
-        //   valid ? "valid" : "invalid"
-        // );
+        input1.setAttribute(
+          "data-te-validation-state",
+          valid ? "valid" : "invalid"
+        );
         form1.setAttribute("data-te-validated", true);
         valid = !valid;
       });
@@ -589,24 +639,6 @@
         );
         form10.setAttribute("data-te-validated", true);
         valid10 = !valid10;
-      });
-
-      // Chips Input
-
-      const validation11 = document.getElementById("validation-11");
-      const form11 = document.getElementById("form-11");
-      const input10 = document.getElementById("input-11");
-
-      let valid11 = true;
-
-      validation11.addEventListener("click", (e) => {
-        e.preventDefault();
-        input10.setAttribute(
-          "data-te-validation-state",
-          valid11 ? "valid" : "invalid"
-        );
-        form11.setAttribute("data-te-validated", true);
-        valid11 = !valid11;
       });
     </script>
   </body>

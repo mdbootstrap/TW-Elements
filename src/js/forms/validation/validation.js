@@ -36,8 +36,11 @@ const ATTR_VALID_FEEDBACK = "data-te-valid-feedback";
 const ATTR_INVALID_FEEDBACK = "data-te-invalid-feedback";
 const ATTR_VALIDATION_RULESET = "data-te-validation-ruleset";
 
+const ATTR_SUBMIT_BTN = "data-te-submit-btn-ref";
+
 const SELECTOR_VALIDATION_ELEMENTS = `[${ATTR_VALIDATION_ELEMENTS}]`;
 const SELECTOR_INPUT_NOTCHES = "[data-te-input-notch-ref] div";
+const SELECTOR_SUBMIT_BTN = `[${ATTR_SUBMIT_BTN}]`;
 
 const EVENT_VALIDATED = `validated${EVENT_KEY}`;
 const EVENT_VALIDATION_VALID = `valid${EVENT_KEY}`;
@@ -47,18 +50,18 @@ const DefaultType = {
   validFeedback: "string",
   invalidFeedback: "string",
   disableFeedback: "boolean",
-  validationFull: "boolean",
-  validationDefaultRules: "string",
   customRules: "object",
+  activeValidation: "boolean",
+  submitCallback: "(function|null)",
 };
 
 const Default = {
   validFeedback: "Looks good!",
   invalidFeedback: "Something is wrong!",
   disableFeedback: false,
-  validationFull: false,
-  validationDefaultRules: "required",
   customRules: {},
+  activeValidation: true,
+  submitCallback: null,
 };
 
 const DefaultClasses = {
@@ -129,11 +132,17 @@ class Validation extends BaseComponent {
     this._element = element;
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
+    this._isInvalid = false;
 
     this._validationElements = this._getValidationElements();
 
     this._validationObserver = this._watchForValidationChanges();
     this._validationObserver.observe(this._element, { attributes: true });
+
+    this._submitButton = null;
+    this._handleSubmitButton();
+
+    this._validationResult = [];
   }
 
   // Getters
@@ -154,32 +163,74 @@ class Validation extends BaseComponent {
     this._validationObserver.disconnect();
     this._validationObserver = null;
     this._element.removeAttribute(ATTR_VALIDATED);
+
+    this._removeValidationTraces();
+    this._validationResult = [];
+
+    if (this._submitButton) {
+      EventHandler.off(this._submitButton, "click");
+    }
   }
 
   // Private
+  _removeValidationTraces() {
+    this._removeFeedbackWrapper();
+
+    this._validationElements.forEach(({ element, classes, initialHTML }) => {
+      element.className = classes;
+      element.innerHTML = initialHTML;
+
+      element.removeAttribute(ATTR_VALIDATION_STATE);
+      element.removeAttribute(ATTR_INVALID_FEEDBACK);
+      element.removeAttribute(ATTR_VALID_FEEDBACK);
+    });
+
+    this._validationElements = [];
+  }
+
   _getValidationElements() {
     const elements = SelectorEngine.find(
       SELECTOR_VALIDATION_ELEMENTS,
       this._element
     );
-    return elements.map((element) => {
+    return elements.map((element, id) => {
+      const type = element.getAttribute(ATTR_VALIDATION_ELEMENTS);
+      const input =
+        SelectorEngine.findOne("input", element) ||
+        SelectorEngine.findOne("textarea", element);
+
       return {
-        type: element.getAttribute(ATTR_VALIDATION_ELEMENTS),
+        id: `validation${id}`,
+        element,
+        type,
+        input,
         validFeedback: element.getAttribute(ATTR_VALID_FEEDBACK),
         invalidFeedback: element.getAttribute(ATTR_INVALID_FEEDBACK),
-        element,
+        classes: element.className,
+        initialHTML: element.innerHTML,
       };
     });
   }
 
-  _createFeedbackWrapper(element) {
+  _createFeedbackWrapper(element, input) {
     if (element.querySelectorAll(`[${ATTR_VALIDATION_FEEDBACK}]`).length > 0) {
       return;
     }
 
     const span = document.createElement("span");
     span.setAttribute(ATTR_VALIDATION_FEEDBACK, "");
-    element.appendChild(span);
+    input.parentNode.appendChild(span);
+  }
+
+  _removeFeedbackWrapper() {
+    const feedbackWrappers = SelectorEngine.find(
+      `[${ATTR_VALIDATION_FEEDBACK}]`,
+      this._element
+    );
+
+    feedbackWrappers.forEach((wrapper) => {
+      wrapper.remove();
+    });
   }
 
   _watchForValidationChanges() {
@@ -198,13 +249,14 @@ class Validation extends BaseComponent {
     if (!this._element.getAttribute(ATTR_VALIDATED)) {
       return;
     }
-
-    let isInvalid = false;
+    this._validationResult = [];
+    this._isInvalid = false;
 
     this._validationElements.forEach((validationElement) => {
-      const { element, type } = validationElement;
+      const { element, type, input } = validationElement;
+      const ruleset = element.getAttribute(ATTR_VALIDATION_RULESET);
 
-      if (this._config.validationFull) {
+      if (ruleset) {
         this._validateByRuleset(validationElement);
       }
 
@@ -219,65 +271,61 @@ class Validation extends BaseComponent {
         validationResult.charAt(0).toUpperCase()
       );
 
-      const wrapper =
-        type === "select"
-          ? element.parentNode.querySelector(
-              "[data-te-select-form-outline-ref]"
-            )
-          : element;
-
-      if (type === "input" || type === "select" || type === "chips") {
-        this._restyleNotches(wrapper, capitalizedValidationResult);
+      if (type === "input") {
+        this._restyleNotches(element, capitalizedValidationResult);
       }
 
       if (type === "basic") {
-        this._restyleBasicInputs(element, capitalizedValidationResult);
+        this._restyleBasicInputs(input, capitalizedValidationResult);
       }
 
       if (type === "checkbox" || type === "radio") {
-        this._restyleCheckboxes(element, capitalizedValidationResult, type);
+        this._restyleCheckboxes(input, capitalizedValidationResult, type);
       }
 
-      this._restyleLabels(wrapper, capitalizedValidationResult);
+      this._restyleLabels(element, capitalizedValidationResult);
 
       if (validationResult === "invalid") {
-        isInvalid = true;
+        this._isInvalid = true;
       }
 
       if (!this._config.disableFeedback) {
-        this._applyFeedback(wrapper, validationResult);
+        this._applyFeedback(element, input, validationResult);
       }
     });
 
-    this._emitEvents(isInvalid);
+    this._emitEvents(this._isInvalid);
   }
 
-  _validateByRuleset({ element, type, invalidFeedback }) {
-    if (type === "chips") {
-      return;
-    }
-
+  _validateByRuleset({ element, type, invalidFeedback, input, id }) {
     const ruleset = this._getRuleset(element);
 
-    const input =
-      type === "select"
-        ? element.parentNode.querySelector("[data-te-select-input-ref] ")
-        : SelectorEngine.findOne("input", element) ||
-          SelectorEngine.findOne("textarea", element);
+    if (!ruleset.length) {
+      return;
+    }
 
     const result =
       type === "checkbox" || type === "radio" ? input.checked : input.value;
 
-    let testResult = null;
+    let invalidMessage = "";
+    let validation = [];
 
     for (const rule of ruleset) {
-      testResult = rule.callback(result, rule.parameter);
-      if (typeof testResult === "string") {
-        break;
+      const testResult = rule.callback(result, rule.parameter);
+      validation.push({
+        result: testResult === true,
+        name: rule.name,
+        fullName: rule.fullName,
+      });
+
+      if (typeof testResult === "string" && !invalidMessage) {
+        invalidMessage = testResult;
       }
     }
 
-    if (testResult === true) {
+    this._validationResult[id] = { element, validation };
+
+    if (!invalidMessage) {
       element.setAttribute(ATTR_VALIDATION_STATE, `valid`);
       return;
     }
@@ -285,14 +333,13 @@ class Validation extends BaseComponent {
     element.setAttribute(ATTR_VALIDATION_STATE, `invalid`);
 
     if (!invalidFeedback) {
-      element.setAttribute(ATTR_INVALID_FEEDBACK, testResult);
+      element.setAttribute(ATTR_INVALID_FEEDBACK, invalidMessage);
     }
   }
 
   _getRuleset(element) {
-    const ruleset =
-      element.getAttribute(ATTR_VALIDATION_RULESET) ||
-      this._config.validationDefaultRules;
+    const ruleset = element.getAttribute(ATTR_VALIDATION_RULESET);
+
     const ruleArray = ruleset.split("|");
 
     let rulesToApply = [];
@@ -319,11 +366,13 @@ class Validation extends BaseComponent {
     return {
       callback: rulesList[split[0]],
       parameter: split[1] ? split[1].split(")")[0] : null,
+      name: split[0],
+      fullName: rule,
     };
   }
 
-  _applyFeedback(element, result) {
-    this._createFeedbackWrapper(element);
+  _applyFeedback(element, input, result) {
+    this._createFeedbackWrapper(element, input);
 
     const feedback = SelectorEngine.findOne(
       `[${ATTR_VALIDATION_FEEDBACK}]`,
@@ -344,16 +393,14 @@ class Validation extends BaseComponent {
       this._classes[result === "valid" ? "validFeedback" : "invalidFeedback"];
   }
 
-  _restyleCheckboxes(element, result, type) {
-    const checkbox = SelectorEngine.findOne("input", element);
+  _restyleCheckboxes(checkbox, result, type) {
     Manipulator.removeClass(checkbox, this._classes.checkboxValid);
     Manipulator.removeClass(checkbox, this._classes.checkboxInvalid);
 
     Manipulator.addClass(checkbox, this._classes[`${type}${result}`]);
   }
 
-  _restyleBasicInputs(element, result) {
-    const input = SelectorEngine.findOne("input", element);
+  _restyleBasicInputs(input, result) {
     Manipulator.removeClass(input, this._classes.basicInputValid);
     Manipulator.removeClass(input, this._classes.basicInputInvalid);
 
@@ -393,11 +440,39 @@ class Validation extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_VALIDATED);
 
     if (isInvalid) {
-      EventHandler.trigger(this._element, EVENT_VALIDATION_INVALID);
+      EventHandler.trigger(this._element, EVENT_VALIDATION_INVALID, {
+        value: this._validationResult,
+      });
       return;
     }
 
-    EventHandler.trigger(this._element, EVENT_VALIDATION_VALID);
+    EventHandler.trigger(this._element, EVENT_VALIDATION_VALID, {
+      value: this._validationResult,
+    });
+  }
+
+  _handleSubmitButton() {
+    this._submitButton = SelectorEngine.findOne(
+      SELECTOR_SUBMIT_BTN,
+      this._element
+    );
+
+    if (!this._submitButton) {
+      return;
+    }
+
+    EventHandler.on(this._submitButton, "click", (e) =>
+      this._handleSubmitButtonClick(e)
+    );
+  }
+
+  _handleSubmitButtonClick(e) {
+    this._element.setAttribute(ATTR_VALIDATED, true);
+
+    if (this._config.submitCallback) {
+      this._config.submitCallback(e);
+      return;
+    }
   }
 
   _getConfig(config) {

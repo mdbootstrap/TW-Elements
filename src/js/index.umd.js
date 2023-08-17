@@ -103,5 +103,6 @@ export {
   Rating,
   Popconfirm,
   Lightbox,
+  Validation,
   initTE,
 };
