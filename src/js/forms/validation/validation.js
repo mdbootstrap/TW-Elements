@@ -15,7 +15,7 @@ import BaseComponent from "../../base-component";
 import Manipulator from "../../dom/manipulator";
 import SelectorEngine from "../../dom/selector-engine";
 import { DefaultClasses as InputClasses } from "../../forms/input";
-import rules from "./rules";
+import { teRules as rules, teDefaultMessages } from "./rules";
 
 /*
 ------------------------------------------------------------------------
@@ -51,6 +51,7 @@ const DefaultType = {
   invalidFeedback: "string",
   disableFeedback: "boolean",
   customRules: "object",
+  customErrorMessages: "object",
   activeValidation: "boolean",
   submitCallback: "(function|null)",
 };
@@ -60,7 +61,8 @@ const Default = {
   invalidFeedback: "Something is wrong!",
   disableFeedback: false,
   customRules: {},
-  activeValidation: true,
+  customErrorMessages: {},
+  activeValidation: false,
   submitCallback: null,
 };
 
@@ -133,6 +135,12 @@ class Validation extends BaseComponent {
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
     this._isInvalid = false;
+    this._shouldApplyInputEvents = true;
+
+    this._errorMessages = {
+      ...teDefaultMessages,
+      ...this._config.customErrorMessages,
+    };
 
     this._validationElements = this._getValidationElements();
 
@@ -160,7 +168,7 @@ class Validation extends BaseComponent {
 
   // Public
   dispose() {
-    this._validationObserver.disconnect();
+    this._validationObserver?.disconnect();
     this._validationObserver = null;
     this._element.removeAttribute(ATTR_VALIDATED);
 
@@ -169,6 +177,15 @@ class Validation extends BaseComponent {
 
     if (this._submitButton) {
       EventHandler.off(this._submitButton, "click");
+    }
+
+    if (this._config.activeValidation) {
+      this._validationElements.forEach((singleElement) => {
+        const { input } = singleElement;
+        EventHandler.off(input, "input");
+      });
+
+      this._shouldApplyInputEvents = true;
     }
   }
 
@@ -239,6 +256,10 @@ class Validation extends BaseComponent {
         const { attributeName } = mutation;
         if (attributeName === ATTR_VALIDATED) {
           this._handleValidation();
+
+          if (this._config.activeValidation && this._shouldApplyInputEvents) {
+            this._applyInputEvents();
+          }
         }
       });
     });
@@ -252,49 +273,53 @@ class Validation extends BaseComponent {
     this._validationResult = [];
     this._isInvalid = false;
 
-    this._validationElements.forEach((validationElement) => {
-      const { element, type, input } = validationElement;
-      const ruleset = element.getAttribute(ATTR_VALIDATION_RULESET);
-
-      if (ruleset) {
-        this._validateByRuleset(validationElement);
-      }
-
-      const validationResult = element.getAttribute(ATTR_VALIDATION_STATE);
-
-      if (validationResult !== "valid" && validationResult !== "invalid") {
-        return;
-      }
-
-      const capitalizedValidationResult = validationResult.replace(
-        validationResult.charAt(0),
-        validationResult.charAt(0).toUpperCase()
-      );
-
-      if (type === "input") {
-        this._restyleNotches(element, capitalizedValidationResult);
-      }
-
-      if (type === "basic") {
-        this._restyleBasicInputs(input, capitalizedValidationResult);
-      }
-
-      if (type === "checkbox" || type === "radio") {
-        this._restyleCheckboxes(input, capitalizedValidationResult, type);
-      }
-
-      this._restyleLabels(element, capitalizedValidationResult);
-
-      if (validationResult === "invalid") {
-        this._isInvalid = true;
-      }
-
-      if (!this._config.disableFeedback) {
-        this._applyFeedback(element, input, validationResult);
-      }
-    });
+    this._validationElements.forEach((validationElement) =>
+      this._validateSingleElement(validationElement)
+    );
 
     this._emitEvents(this._isInvalid);
+  }
+
+  _validateSingleElement(validationElement) {
+    const { element, type, input } = validationElement;
+    const ruleset = element.getAttribute(ATTR_VALIDATION_RULESET);
+
+    if (ruleset) {
+      this._validateByRuleset(validationElement);
+    }
+
+    const validationResult = element.getAttribute(ATTR_VALIDATION_STATE);
+
+    if (validationResult !== "valid" && validationResult !== "invalid") {
+      return;
+    }
+
+    const capitalizedValidationResult = validationResult.replace(
+      validationResult.charAt(0),
+      validationResult.charAt(0).toUpperCase()
+    );
+
+    if (type === "input") {
+      this._restyleNotches(element, capitalizedValidationResult);
+    }
+
+    if (type === "basic") {
+      this._restyleBasicInputs(input, capitalizedValidationResult);
+    }
+
+    if (type === "checkbox" || type === "radio") {
+      this._restyleCheckboxes(input, capitalizedValidationResult, type);
+    }
+
+    this._restyleLabels(element, capitalizedValidationResult);
+
+    if (validationResult === "invalid") {
+      this._isInvalid = true;
+    }
+
+    if (!this._config.disableFeedback) {
+      this._applyFeedback(element, input, validationResult);
+    }
   }
 
   _validateByRuleset({ element, type, invalidFeedback, input, id }) {
@@ -311,7 +336,11 @@ class Validation extends BaseComponent {
     let validation = [];
 
     for (const rule of ruleset) {
-      const testResult = rule.callback(result, rule.parameter);
+      const testResult = rule.callback(
+        result,
+        this._errorMessages[rule.name] || this._config.invalidFeedback,
+        rule.parameter
+      );
       validation.push({
         result: testResult === true,
         name: rule.name,
@@ -335,6 +364,10 @@ class Validation extends BaseComponent {
     if (!invalidFeedback) {
       element.setAttribute(ATTR_INVALID_FEEDBACK, invalidMessage);
     }
+  }
+
+  _handleInputChange(element) {
+    this._validateSingleElement(element);
   }
 
   _getRuleset(element) {
@@ -449,6 +482,17 @@ class Validation extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_VALIDATION_VALID, {
       value: this._validationResult,
     });
+  }
+
+  _applyInputEvents() {
+    this._validationElements.forEach((singleElement) => {
+      const { input } = singleElement;
+      EventHandler.on(input, "input", () =>
+        this._handleInputChange(singleElement)
+      );
+    });
+
+    this._shouldApplyInputEvents = false;
   }
 
   _handleSubmitButton() {

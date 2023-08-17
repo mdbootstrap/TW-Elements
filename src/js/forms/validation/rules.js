@@ -1,38 +1,53 @@
-const teRules = {
-  required: (value) => {
+export const teDefaultMessages = {
+  required: "This is required",
+  email: "Please enter a valid email address",
+  longerThan: "This field must be longer than {length} characters",
+  shorterThan: "This field must be shorter than {length} characters",
+  isChecked: "This is required",
+  isPhone: "Please enter a valid phone number",
+  isNumber: "Expected value with type Number",
+  isString: "Expected value with type String",
+  isBoolean: "Expected value with type Boolean",
+  isDate: "Please enter a valid date",
+  is12hFormat: "Please enter a valid time in 12h format",
+  is24hFormat: "Please enter a valid time in 24h format",
+};
+
+export const teRules = {
+  required: (value, message) => {
     const test = value?.trim();
 
     if (test) {
       return true;
     }
-    return "This field is required";
+    return message;
   },
-  email: (value) => {
+  email: (value, message) => {
     const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const test = pattern.test(value);
 
     if (test) {
       return true;
     }
-    return "Please enter a valid email address";
+    return message;
   },
-  longerThan: (value, length) => {
+  longerThan: (value, message, length) => {
     const test = value.length > length;
 
     if (test) {
       return true;
     }
 
-    return `This field must be longer than ${length} characters`;
+    return message.replace("{length}", length);
   },
-  shorterThan: (value, length) => {
+  shorterThan: (value, message, length) => {
     const test = value.length < length;
 
     if (test) {
       return true;
     }
 
-    return `This field must be shorter than ${length} characters`;
+    return message.replace("{length}", length);
   },
   isChecked: (value) => {
     if (value) {
@@ -41,33 +56,61 @@ const teRules = {
 
     return "This is required";
   },
-  isPhone: (value) => {
+  isPhone: (value, message) => {
     if (value.length === 9) {
       return true;
     }
-    return "Please enter a valid phone number";
+    return message;
   },
-  isNumber: (value) => {
+  isNumber: (value, message) => {
     if (value && !isNaN(Number(value))) {
       return true;
     }
 
-    return "Expected value with type Number";
+    return message;
   },
-  isString: (value) => {
+  isString: (value, message) => {
     if (typeof value === "string") {
       return true;
     }
 
-    return "Expected value with type String";
+    return message;
   },
-  isBoolean: (value) => {
+  isBoolean: (value, message) => {
     if (typeof value === "boolean") {
       return true;
     }
 
-    return "Expected value with type Boolean";
+    return message;
+  },
+  isDate: (value, message) => {
+    const pattern = /^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$/;
+    const test = value.match(pattern);
+
+    if (test) {
+      return true;
+    }
+
+    return message;
+  },
+  is12hFormat: (value, message) => {
+    const pattern = /^(0?[1-9]|1[0-2]):[0-5][0-9] [APap][mM]$/;
+    const test = value.match(pattern);
+
+    if (test) {
+      return true;
+    }
+
+    return message;
+  },
+  is24hFormat: (value, message) => {
+    const pattern = /^(?:[01]\d|2[0-3]):[0-5][0-9]$/;
+    const test = value.match(pattern);
+
+    if (test) {
+      return true;
+    }
+
+    return message;
   },
 };
-
-export default teRules;
