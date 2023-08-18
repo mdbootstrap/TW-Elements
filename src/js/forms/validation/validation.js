@@ -294,7 +294,7 @@ class Validation extends BaseComponent {
   }
 
   _validateSingleElement(validationElement) {
-    const { element, type, input, ruleset } = validationElement;
+    const { element, type, input, ruleset, id } = validationElement;
 
     if (ruleset) {
       this._validateByRuleset(validationElement);
@@ -332,6 +332,14 @@ class Validation extends BaseComponent {
     if (!this._config.disableFeedback) {
       this._applyFeedback(element, validationResult);
     }
+
+    EventHandler.trigger(this._element, `changed${EVENT_KEY}`, {
+      value: {
+        name: id,
+        result: validationResult,
+        validation: this._validationResult[id].validation,
+      },
+    });
   }
 
   _validateByRuleset({ element, type, invalidFeedback, input, id }) {
