@@ -38,6 +38,8 @@ import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
 import SmoothScroll from "./methods/smooth-scroll";
+import LazyLoad from "./methods/lazy-load";
+import Clipboard from "./methods/clipboard";
 import initTE from "./autoinit/index";
 
 const te = {
@@ -70,6 +72,8 @@ const te = {
   Popconfirm,
   SmoothScroll,
   Lightbox,
+  LazyLoad,
+  Clipboard,
 };
 
 initTE(te);
@@ -104,5 +108,7 @@ export {
   Popconfirm,
   Lightbox,
   SmoothScroll,
+  LazyLoad,
+  Clipboard,
   initTE,
 };
