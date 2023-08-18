@@ -415,6 +415,7 @@ class Timepicker {
     this._focusTrap = null;
     this._popper = null;
     this._interval = null;
+    this._timeoutInterval = null;
 
     this._inputValue =
       this._options.defaultTime !== ""
@@ -1234,27 +1235,34 @@ class Timepicker {
     };
 
     const addHours = () => {
-      selectedHour += 1;
+      selectedHour = countHours(selectedHour) + 1;
       incrementHours(selectedHour);
     };
     const addMinutes = () => {
-      minuteNumber += 1;
+      minuteNumber = countMinutes(minuteNumber) + 1;
       incrementMinutes(minuteNumber);
     };
 
     const subHours = () => {
-      selectedHour -= 1;
+      selectedHour = countHours(selectedHour) - 1;
       incrementHours(selectedHour);
     };
 
     const subMinutes = () => {
-      minuteNumber -= 1;
+      minuteNumber = countMinutes(minuteNumber) - 1;
       incrementMinutes(minuteNumber);
     };
 
-    const _clearAndSetThisInterval = (addHoursOrAddMinutes) => {
+    const _clearAsyncs = () => {
       clearInterval(this._interval);
-      this._interval = setInterval(addHoursOrAddMinutes, 100);
+      clearTimeout(this._timeoutInterval);
+    };
+
+    const _clearAndSetThisInterval = (addHoursOrAddMinutes) => {
+      _clearAsyncs();
+      this._timeoutInterval = setTimeout(() => {
+        this._interval = setInterval(addHoursOrAddMinutes, 100);
+      }, 500);
     };
     EventHandlerMulti.on(
       this._modal,
@@ -1280,7 +1288,7 @@ class Timepicker {
               type === "touchend" ||
               type === "contextmenu"
             ) {
-              clearInterval(this._interval);
+              _clearAsyncs();
             } else {
               addHours();
             }
@@ -1293,7 +1301,7 @@ class Timepicker {
               type === "touchend" ||
               type === "contextmenu"
             ) {
-              clearInterval(this._interval);
+              _clearAsyncs();
             } else {
               addMinutes();
             }
@@ -1307,7 +1315,7 @@ class Timepicker {
             if (isEventTypeMousedownOrTouchstart) {
               _clearAndSetThisInterval(subHours);
             } else if (type === "mouseup" || type === "touchend") {
-              clearInterval(this._interval);
+              _clearAsyncs();
             } else {
               subHours();
             }
@@ -1316,7 +1324,7 @@ class Timepicker {
             if (isEventTypeMousedownOrTouchstart) {
               _clearAndSetThisInterval(subMinutes);
             } else if (type === "mouseup" || type === "touchend") {
-              clearInterval(this._interval);
+              _clearAsyncs();
             } else {
               subMinutes();
             }
