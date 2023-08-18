@@ -37,6 +37,7 @@ import Datatable from "./data/datatables/index";
 import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
+import LazyLoad from "./methods/lazy-load";
 import Clipboard from "./methods/clipboard";
 import initTE from "./autoinit/index";
 
@@ -69,6 +70,7 @@ export {
   Rating,
   Popconfirm,
   Lightbox,
+  LazyLoad,
   Clipboard,
   initTE,
 };

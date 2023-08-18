@@ -109,6 +109,10 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  lazyLoad: {
+    name: "LazyLoad",
+    selector: "[data-te-lazy-load-init]",
+  },
   clipboard: {
     name: "Clipboard",
     selector: "[data-te-clipboard-init]",
