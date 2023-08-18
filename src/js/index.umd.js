@@ -37,6 +37,7 @@ import Datatable from "./data/datatables/index";
 import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
+import Clipboard from "./methods/clipboard";
 import initTE from "./autoinit/index";
 
 const te = {
@@ -68,6 +69,7 @@ const te = {
   Datatable,
   Popconfirm,
   Lightbox,
+  Clipboard,
 };
 
 initTE(te);
@@ -101,5 +103,6 @@ export {
   Rating,
   Popconfirm,
   Lightbox,
+  Clipboard,
   initTE,
 };

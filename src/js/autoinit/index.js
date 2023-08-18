@@ -109,6 +109,10 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  clipboard: {
+    name: "Clipboard",
+    selector: "[data-te-clipboard-init]",
+  },
 
   // advancedInits
   chart: {
