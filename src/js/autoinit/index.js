@@ -194,6 +194,10 @@ const defaultInitSelectors = {
     isToggler: true,
     callback: lightboxCallback,
   },
+  touch: {
+    name: "Touch",
+    selector: "[data-te-touch-init]",
+  },
 };
 
 const getComponentData = (component) => {
