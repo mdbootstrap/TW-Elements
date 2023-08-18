@@ -38,7 +38,10 @@ import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
 import Touch from "./methods/touch";
-import initTE from "./autoinit";
+import SmoothScroll from "./methods/smooth-scroll";
+import LazyLoad from "./methods/lazy-load";
+import Clipboard from "./methods/clipboard";
+import initTE from "./autoinit/index";
 
 export {
   Animate,
@@ -70,5 +73,8 @@ export {
   Popconfirm,
   Lightbox,
   Touch,
+  SmoothScroll,
+  LazyLoad,
+  Clipboard,
   initTE,
 };

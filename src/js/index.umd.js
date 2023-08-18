@@ -38,7 +38,10 @@ import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
 import Touch from "./methods/touch";
-import initTE from "./autoinit";
+import SmoothScroll from "./methods/smooth-scroll";
+import LazyLoad from "./methods/lazy-load";
+import Clipboard from "./methods/clipboard";
+import initTE from "./autoinit/index";
 
 const te = {
   Animate,
@@ -68,8 +71,11 @@ const te = {
   Chart,
   Datatable,
   Popconfirm,
+  SmoothScroll,
   Lightbox,
   Touch,
+  LazyLoad,
+  Clipboard,
 };
 
 initTE(te);
@@ -104,5 +110,8 @@ export {
   Popconfirm,
   Lightbox,
   Touch,
+  SmoothScroll,
+  LazyLoad,
+  Clipboard,
   initTE,
 };

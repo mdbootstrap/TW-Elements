@@ -109,6 +109,18 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  smoothScroll: {
+    name: "SmoothScroll",
+    selector: "a[data-te-smooth-scroll-init]",
+  },
+  lazyLoad: {
+    name: "LazyLoad",
+    selector: "[data-te-lazy-load-init]",
+  },
+  clipboard: {
+    name: "Clipboard",
+    selector: "[data-te-clipboard-init]",
+  },
 
   // advancedInits
   chart: {
