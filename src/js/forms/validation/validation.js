@@ -9,7 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 --------------------------------------------------------------------------
 */
 
-import { typeCheckConfig } from "../../util/index";
+import { typeCheckConfig, getUID } from "../../util/index";
 import EventHandler from "../../dom/event-handler";
 import BaseComponent from "../../base-component";
 import Manipulator from "../../dom/manipulator";
@@ -143,7 +143,7 @@ class Validation extends BaseComponent {
     this._element = element;
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
-    this._isInvalid = false;
+    this._isValid = true;
     this._shouldApplyInputEvents = true;
 
     this._errorMessages = {
@@ -152,6 +152,10 @@ class Validation extends BaseComponent {
     };
 
     this._validationElements = this._getValidationElements();
+
+    this._validationElements.forEach(({ element, input }) => {
+      this._createFeedbackWrapper(element, input);
+    });
 
     this._validationObserver = this._watchForValidationChanges();
     this._validationObserver.observe(this._element, { attributes: true });
@@ -219,18 +223,21 @@ class Validation extends BaseComponent {
       SELECTOR_VALIDATION_ELEMENTS,
       this._element
     );
-    return elements.map((element, id) => {
+    return elements.map((element) => {
+      const input =
+        SelectorEngine.findOne("input", element) ||
+        SelectorEngine.findOne("textarea", element);
+
       return {
-        id: `validation${id}`,
+        id: input.name || input.id || getUID("validation-"),
         element,
         type: element.getAttribute(ATTR_VALIDATION_ELEMENTS),
-        input:
-          SelectorEngine.findOne("input", element) ||
-          SelectorEngine.findOne("textarea", element),
+        input,
         validFeedback: element.getAttribute(ATTR_VALID_FEEDBACK),
         invalidFeedback: element.getAttribute(ATTR_INVALID_FEEDBACK),
         classes: element.className,
         initialHTML: element.innerHTML,
+        ruleset: element.getAttribute(ATTR_VALIDATION_RULESET),
       };
     });
   }
@@ -277,18 +284,17 @@ class Validation extends BaseComponent {
       return;
     }
     this._validationResult = [];
-    this._isInvalid = false;
+    this._isValid = true;
 
     this._validationElements.forEach((validationElement) =>
       this._validateSingleElement(validationElement)
     );
 
-    this._emitEvents(this._isInvalid);
+    this._emitEvents(this._isValid);
   }
 
   _validateSingleElement(validationElement) {
-    const { element, type, input } = validationElement;
-    const ruleset = element.getAttribute(ATTR_VALIDATION_RULESET);
+    const { element, type, input, ruleset } = validationElement;
 
     if (ruleset) {
       this._validateByRuleset(validationElement);
@@ -320,11 +326,11 @@ class Validation extends BaseComponent {
     this._restyleLabels(element, capitalizedValidationResult);
 
     if (validationResult === "invalid") {
-      this._isInvalid = true;
+      this._isValid = false;
     }
 
     if (!this._config.disableFeedback) {
-      this._applyFeedback(element, input, validationResult);
+      this._applyFeedback(element, validationResult);
     }
   }
 
@@ -410,9 +416,7 @@ class Validation extends BaseComponent {
     };
   }
 
-  _applyFeedback(element, input, result) {
-    this._createFeedbackWrapper(element, input);
-
+  _applyFeedback(element, result) {
     const feedback = SelectorEngine.findOne(
       `[${ATTR_VALIDATION_FEEDBACK}]`,
       element
@@ -475,17 +479,16 @@ class Validation extends BaseComponent {
     });
   }
 
-  _emitEvents(isInvalid) {
+  _emitEvents(isValid) {
     EventHandler.trigger(this._element, EVENT_VALIDATED);
 
-    if (isInvalid) {
-      EventHandler.trigger(this._element, EVENT_VALIDATION_INVALID, {
+    if (isValid) {
+      EventHandler.trigger(this._element, EVENT_VALIDATION_VALID, {
         value: this._validationResult,
       });
       return;
     }
-
-    EventHandler.trigger(this._element, EVENT_VALIDATION_VALID, {
+    EventHandler.trigger(this._element, EVENT_VALIDATION_INVALID, {
       value: this._validationResult,
     });
   }
