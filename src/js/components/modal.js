@@ -33,12 +33,14 @@ const Default = {
   backdrop: true,
   keyboard: true,
   focus: true,
+  modalNonInvasive: false,
 };
 
 const DefaultType = {
   backdrop: "(boolean|string)",
   keyboard: "boolean",
   focus: "boolean",
+  modalNonInvasive: "boolean",
 };
 
 const DefaultClasses = {
@@ -82,7 +84,9 @@ class Modal extends BaseComponent {
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
     this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
-    this._backdrop = this._initializeBackDrop();
+    this._backdrop = this._config.modalNonInvasive
+      ? null
+      : this._initializeBackDrop();
     this._focustrap = this._initializeFocusTrap();
     this._isShown = false;
     this._ignoreBackdropClick = false;
@@ -125,7 +129,7 @@ class Modal extends BaseComponent {
       this._isTransitioning = true;
     }
 
-    this._scrollBar.hide();
+    !this._config.modalNonInvasive && this._scrollBar.hide();
 
     document.body.setAttribute(OPEN_SELECTOR_BODY, "true");
 
@@ -142,7 +146,7 @@ class Modal extends BaseComponent {
       });
     });
     this._showElement(relatedTarget);
-    this._showBackdrop();
+    !this._config.modalNonInvasive && this._showBackdrop();
   }
 
   hide() {
@@ -182,7 +186,7 @@ class Modal extends BaseComponent {
       EventHandler.off(htmlElement, EVENT_KEY)
     );
 
-    this._backdrop.dispose();
+    this._backdrop && this._backdrop.dispose();
     this._focustrap.disable();
     super.dispose();
   }
@@ -315,12 +319,13 @@ class Modal extends BaseComponent {
     this._element.removeAttribute("aria-modal");
     this._element.removeAttribute("role");
     this._isTransitioning = false;
-    this._backdrop.hide(() => {
-      document.body.removeAttribute(OPEN_SELECTOR_BODY);
-      this._resetAdjustments();
-      this._scrollBar.reset();
-      EventHandler.trigger(this._element, EVENT_HIDDEN);
-    });
+    this._backdrop &&
+      this._backdrop.hide(() => {
+        document.body.removeAttribute(OPEN_SELECTOR_BODY);
+        this._resetAdjustments();
+        !this._config.modalNonInvasive && this._scrollBar.reset();
+        EventHandler.trigger(this._element, EVENT_HIDDEN);
+      });
   }
 
   _showBackdrop(callback) {
@@ -341,7 +346,7 @@ class Modal extends BaseComponent {
       }
     });
 
-    this._backdrop.show(callback);
+    this._backdrop && this._backdrop.show(callback);
   }
 
   _isAnimated() {
