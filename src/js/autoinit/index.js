@@ -113,6 +113,10 @@ const defaultInitSelectors = {
     name: "LazyLoad",
     selector: "[data-te-lazy-load-init]",
   },
+  clipboard: {
+    name: "Clipboard",
+    selector: "[data-te-clipboard-init]",
+  },
 
   // advancedInits
   chart: {
