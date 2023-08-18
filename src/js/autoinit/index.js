@@ -109,6 +109,10 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  smoothScroll: {
+    name: "SmoothScroll",
+    selector: "a[data-te-smooth-scroll-init]",
+  },
   lazyLoad: {
     name: "LazyLoad",
     selector: "[data-te-lazy-load-init]",
