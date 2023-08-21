@@ -16,6 +16,7 @@ import Manipulator from "../../dom/manipulator";
 import SelectorEngine from "../../dom/selector-engine";
 import { DefaultClasses as InputClasses } from "../../forms/input";
 import { teRules as rules, teDefaultMessages } from "./rules";
+import Data from "../../dom/data";
 
 /*
 ------------------------------------------------------------------------
@@ -45,6 +46,7 @@ const SELECTOR_SUBMIT_BTN = `[${ATTR_SUBMIT_BTN}]`;
 const EVENT_VALIDATED = `validated${EVENT_KEY}`;
 const EVENT_VALIDATION_VALID = `valid${EVENT_KEY}`;
 const EVENT_VALIDATION_INVALID = `invalid${EVENT_KEY}`;
+const EVENT_VALIDATION_CHANGED = `changed${EVENT_KEY}`;
 
 const DefaultType = {
   validFeedback: "string",
@@ -141,10 +143,16 @@ class Validation extends BaseComponent {
   constructor(element, config, classes) {
     super(element);
     this._element = element;
+
+    if (this._element) {
+      Data.setData(element, DATA_KEY, this);
+    }
+
     this._config = this._getConfig(config);
     this._classes = this._getClasses(classes);
     this._isValid = true;
     this._shouldApplyInputEvents = true;
+    this._submitCallback = null;
 
     this._errorMessages = {
       ...teDefaultMessages,
@@ -183,6 +191,7 @@ class Validation extends BaseComponent {
   dispose() {
     this._validationObserver?.disconnect();
     this._validationObserver = null;
+    this._submitCallback = null;
     this._element.removeAttribute(ATTR_VALIDATED);
 
     this._removeValidationTraces();
@@ -291,6 +300,10 @@ class Validation extends BaseComponent {
     );
 
     this._emitEvents(this._isValid);
+
+    if (this._submitCallback) {
+      this._submitCallback(this._isValid);
+    }
   }
 
   _validateSingleElement(validationElement) {
@@ -333,11 +346,11 @@ class Validation extends BaseComponent {
       this._applyFeedback(element, validationResult);
     }
 
-    EventHandler.trigger(this._element, `changed${EVENT_KEY}`, {
+    EventHandler.trigger(this._element, EVENT_VALIDATION_CHANGED, {
       value: {
         name: id,
         result: validationResult,
-        validation: this._validationResult[id].validation,
+        validation: this._validationResult[id]?.validation,
       },
     });
   }
@@ -531,7 +544,7 @@ class Validation extends BaseComponent {
     this._element.setAttribute(ATTR_VALIDATED, true);
 
     if (this._config.submitCallback) {
-      this._config.submitCallback(e);
+      this._submitCallback = (valid) => this._config.submitCallback(e, valid);
       return;
     }
   }
@@ -563,6 +576,16 @@ class Validation extends BaseComponent {
   }
 
   // Static
+  static getInstance(element) {
+    return Data.getData(element, DATA_KEY);
+  }
+
+  static getOrCreateInstance(element, config = {}) {
+    return (
+      this.getInstance(element) ||
+      new this(element, typeof config === "object" ? config : null)
+    );
+  }
 
   static jQueryInterface(config) {
     return this.each(function () {

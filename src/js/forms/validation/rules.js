@@ -1,8 +1,8 @@
 export const teDefaultMessages = {
-  required: "This is required",
-  email: "Please enter a valid email address",
-  longerThan: "This field must be longer than {length} characters",
-  shorterThan: "This field must be shorter than {length} characters",
+  isRequired: "This is required",
+  isEmail: "Please enter a valid email address",
+  isLongerThan: "This field must be longer than {length} characters",
+  isShorterThan: "This field must be shorter than {length} characters",
   isChecked: "This is required",
   isPhone: "Please enter a valid phone number",
   isNumber: "Expected value with type Number",
@@ -14,7 +14,7 @@ export const teDefaultMessages = {
 };
 
 export const teRules = {
-  required: (value, message) => {
+  isRequired: (value, message) => {
     const test = value?.trim();
 
     if (test) {
@@ -22,7 +22,7 @@ export const teRules = {
     }
     return message;
   },
-  email: (value, message) => {
+  isEmail: (value, message) => {
     const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const test = pattern.test(value);
 
@@ -31,7 +31,7 @@ export const teRules = {
     }
     return message;
   },
-  longerThan: (value, message, length) => {
+  isLongerThan: (value, message, length) => {
     const test = value.length > length;
 
     if (test) {
@@ -40,7 +40,7 @@ export const teRules = {
 
     return message.replace("{length}", length);
   },
-  shorterThan: (value, message, length) => {
+  isShorterThan: (value, message, length) => {
     const test = value.length < length;
 
     if (test) {
