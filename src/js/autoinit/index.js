@@ -109,6 +109,18 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  smoothScroll: {
+    name: "SmoothScroll",
+    selector: "a[data-te-smooth-scroll-init]",
+  },
+  lazyLoad: {
+    name: "LazyLoad",
+    selector: "[data-te-lazy-load-init]",
+  },
+  clipboard: {
+    name: "Clipboard",
+    selector: "[data-te-clipboard-init]",
+  },
   infiniteScroll: {
     name: "InfiniteScroll",
     selector: "[data-te-infinite-scroll-init]",
@@ -185,6 +197,10 @@ const defaultInitSelectors = {
     selector: "[data-te-lightbox-init]",
     isToggler: true,
     callback: lightboxCallback,
+  },
+  touch: {
+    name: "Touch",
+    selector: "[data-te-touch-init]",
   },
 };
 

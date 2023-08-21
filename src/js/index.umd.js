@@ -33,10 +33,14 @@ import ChipsInput from "./components/chips";
 import Chip from "./components/chips/chip";
 import Chart from "./data/chart/charts";
 import PerfectScrollbar from "./methods/perfect-scrollbar";
-import Datatable from "./data/datatables/index";
+import Datatable from "./data/datatables";
 import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
+import Touch from "./methods/touch";
+import SmoothScroll from "./methods/smooth-scroll";
+import LazyLoad from "./methods/lazy-load";
+import Clipboard from "./methods/clipboard";
 import InfiniteScroll from "./methods/infinite-scroll";
 import initTE from "./autoinit/index";
 
@@ -68,7 +72,11 @@ const te = {
   Chart,
   Datatable,
   Popconfirm,
+  SmoothScroll,
   Lightbox,
+  Touch,
+  LazyLoad,
+  Clipboard,
   InfiniteScroll,
 };
 
@@ -103,6 +111,10 @@ export {
   Rating,
   Popconfirm,
   Lightbox,
+  Touch,
+  SmoothScroll,
+  LazyLoad,
+  Clipboard,
   InfiniteScroll,
   initTE,
 };

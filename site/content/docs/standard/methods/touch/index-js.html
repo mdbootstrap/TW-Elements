@@ -1,0 +1,169 @@
+---
+---
+
+<!-- Custom scripts -->
+<script type="module">
+  const colorGen = () => {
+    const randomNum = () => {
+      return Math.floor(Math.random() * 255) + 1;
+    };
+    return `rgba(${randomNum()},${randomNum()},${randomNum()},.4)`;
+  };
+
+  // press
+
+  const btnPress = document.querySelector("#btn-press");
+  const removeBg = document.querySelector("#remove-bg");
+  const pressText = document.querySelector("#press-text");
+
+  btnPress.addEventListener("press", (e) => {
+    removeBg.style.backgroundColor = "rgba(0,0,0,0)";
+    pressText.innerText = "";
+  });
+
+  // pres duration
+
+  const btnPressDuration = document.querySelector("#btn-press-duration");
+  const bgPressDuration = document.querySelector("#bg-press-duration");
+  const pressDurationText = document.querySelector("#press-duration-text");
+
+  btnPressDuration.addEventListener("press", () => {
+    bgPressDuration.style.backgroundColor = "rgba(0,0,0,0)";
+    pressDurationText.innerText = "";
+  });
+
+  // tap
+
+  const btnTap = document.querySelector("#btn-tap");
+  const bgTap = document.querySelector("#bg-tap");
+
+  btnTap.addEventListener("tap", (e) => {
+    bgTap.style.backgroundColor = colorGen();
+  });
+
+  // double tap
+
+  const btnDoubleTap = document.querySelector("#btn-double-tap");
+  const doubleTapBg = document.querySelector("#bg-double-tap");
+  btnDoubleTap.addEventListener("tap", (e) => {
+    doubleTapBg.style.backgroundColor = colorGen();
+  });
+
+  // pan
+
+  const panEl = document.querySelector("#pan-example");
+  const imgPan = document.querySelector("#img-pan");
+  let moveElement = {
+    x: null,
+    y: null,
+  };
+
+  panEl.addEventListener("pan", (e) => {
+    moveElement = {
+      x: moveElement.x + e.x,
+      y: moveElement.y + e.y,
+    };
+
+    imgPan.style.transform = `translate(${moveElement.x}px, ${moveElement.y}px)`;
+  });
+
+  // pan left
+
+  const panLeftEl = document.querySelector("#pan-left-example");
+  const imgPanLeft = document.querySelector("#img-pan-left");
+  let moveElementLeft = {
+    x: null,
+  };
+
+  panLeftEl.addEventListener("panleft", (e) => {
+    moveElementLeft = {
+      x: moveElementLeft.x + e.x,
+    };
+    imgPanLeft.style.transform = `translate(${moveElementLeft.x}px, 0px)`;
+  });
+
+  // pan right
+
+  const panRightEl = document.querySelector("#pan-right-example");
+  const imgPanRight = document.querySelector("#img-pan-right");
+  let moveElementRight = {
+    x: null,
+  };
+
+  panRightEl.addEventListener("panright", (e) => {
+    moveElementRight = {
+      x: moveElementRight.x + e.x,
+    };
+    imgPanRight.style.transform = `translate(${moveElementRight.x}px, 0px)`;
+  });
+
+  // pan up down
+
+  const panUpDown = document.querySelector("#pan-up-down-example");
+  const imgPanUpDown = document.querySelector("#img-pan-up-down");
+  const touchDown = new te.Touch(panUpDown, {
+    event: "pan",
+    direction: "down",
+  });
+  const touchUp = new te.Touch(panUpDown, {
+    event: "pan",
+    direction: "up",
+  });
+
+  let moveElementUpDown = {
+    y: null,
+  };
+
+  panUpDown.addEventListener("panup", (e) => {
+    moveElementUpDown = {
+      y: moveElementUpDown.y + e.y,
+    };
+    imgPanUpDown.style.transform = `translate(0px, ${moveElementUpDown.y}px)`;
+  });
+
+  panUpDown.addEventListener("pandown", (e) => {
+    moveElementUpDown = {
+      y: moveElementUpDown.y + e.y,
+    };
+    imgPanUpDown.style.transform = `translate(0px, ${moveElementUpDown.y}px)`;
+  });
+
+  // pinch
+
+  const pinchEl = document.querySelector("#img-pinch");
+
+  pinchEl.addEventListener("pinch", (e) => {
+    e.target.style.transform = `scale(${e.ratio})`;
+    e.target.style.transformOrigin = `translate(${e.origin.x}px, ${e.origin.y}px,)`;
+  });
+
+  // swipe left right
+
+  const swipeLeftRight = document.querySelector("#swipe-left-right-example");
+
+  swipeLeftRight.addEventListener("swipeleft", (e) => {
+    e.target.style.backgroundColor = colorGen();
+  });
+  swipeLeftRight.addEventListener("swiperight", (e) => {
+    e.target.style.backgroundColor = colorGen();
+  });
+
+  // swipe up down
+
+  const swipeUpDown = document.querySelector("#swipe-up-down-example");
+
+  swipeUpDown.addEventListener("swipeup", (e) => {
+    e.target.style.backgroundColor = colorGen();
+  });
+  swipeUpDown.addEventListener("swipedown", (e) => {
+    e.target.style.backgroundColor = colorGen();
+  });
+
+  // rotate
+
+  const rotate = document.querySelector("#img-rotate");
+
+  rotate.addEventListener("rotate", (e) => {
+    rotate.style.transform = `rotate(${e.currentAngle}turn)`;
+  });
+</script>
