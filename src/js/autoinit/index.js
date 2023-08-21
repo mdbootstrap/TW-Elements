@@ -109,6 +109,10 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  infiniteScroll: {
+    name: "InfiniteScroll",
+    selector: "[data-te-infinite-scroll-init]",
+  },
 
   // advancedInits
   chart: {
