@@ -1855,6 +1855,7 @@ autoinits: "Validation"
   {{< /twsnippet/demo >}}
 
 
+  <!-- prettier-ignore -->
   <section class="!visible hidden" data-te-collapse-item id="example14">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML,javascript,umd" >}}
@@ -1999,31 +2000,56 @@ autoinits: "Validation"
       ];
     
       const generateMessage = (result, message) =>
-        `
-      <p class="${result ? 'text-[#14a44d]' : 'text-[#dc4c64]'}">${message}</p>
-      `; tooltipsInfo.forEach((tooltip) => { const title =
-      Object.entries(tooltip.message) .map(([key, value]) =>
-      generateMessage(false, value)) .join(""); tooltip.instance = new
-      Tooltip(tooltip.element, { html: true, template: `
-      <div>
-        <div
-          class="tooltip-inner ml-4 rounded border bg-white p-4 text-xs dark:border-neutral-400 dark:bg-neutral-800"></div>
-      </div>
-      `, placement: "right", title, }); }); const tooltipsValidation = new
-      Validation(tooltipsForm);
-      tooltipsForm.addEventListener("changed.te.validation", (e) => { const
-      element = tooltipsInfo.find((tooltip) => tooltip.name === e.value.name);
-      element.instance.dispose(); const title = Object.entries(element.message)
-      .map(([key, value]) => { const result = e.value.validation.find((res) =>
-      key === res.name).result; return generateMessage(result, value); })
-      .join(""); const borderColor = e.value.result === "valid" ?
-      "border-[#14a44d]" : "border-[#dc4c64]"; element.instance = new
-      Tooltip(element.element, { html: true, template: `
-      <div>
-        <div
-          class="tooltip-inner ${borderColor} ml-4 rounded border bg-white p-4 text-xs dark:bg-neutral-800"></div>
-      </div>
-      `, placement: "right", title: title, }); });
+        `<p class="${result ? 'text-[#14a44d]' : 'text-[#dc4c64]'}">${message}</p>`;
+    
+      tooltipsInfo.forEach((tooltip) => {
+        const title = Object.entries(tooltip.message)
+          .map(([key, value]) => generateMessage(false, value))
+          .join("");
+    
+        tooltip.instance = new Tooltip(tooltip.element, {
+          html: true,
+          template: `
+            <div>
+              <div class="tooltip-inner bg-white text-xs p-4 ml-4 rounded border dark:bg-neutral-800 dark:border-neutral-400"></div>
+            </div>
+          `,
+          placement: "right",
+          title,
+        });
+      });
+    
+      const tooltipsValidation = new Validation(tooltipsForm);
+    
+      tooltipsForm.addEventListener("changed.te.validation", (e) => {
+        const element = tooltipsInfo.find(
+          (tooltip) => tooltip.name === e.value.name
+        );
+        element.instance.dispose();
+    
+        const title = Object.entries(element.message)
+          .map(([key, value]) => {
+            const result = e.value.validation.find(
+              (res) => key === res.name
+            ).result;
+            return generateMessage(result, value);
+          })
+          .join("");
+    
+        const borderColor =
+          e.value.result === "valid" ? "border-[#14a44d]" : "border-[#dc4c64]";
+    
+        element.instance = new Tooltip(element.element, {
+          html: true,
+          template: `
+            <div>
+              <div class="tooltip-inner bg-white text-xs p-4 ml-4 rounded border ${borderColor} dark:bg-neutral-800"></div>
+            </div>
+          `,
+          placement: "right",
+          title: title,
+        });
+      });
       {{< /twsnippet/code >}}
       <!-- prettier-ignore -->
       {{< twsnippet/code lang="js" >}}
@@ -2057,31 +2083,56 @@ autoinits: "Validation"
       ];
     
       const generateMessage = (result, message) =>
-        `
-      <p class="${result ? 'text-[#14a44d]' : 'text-[#dc4c64]'}">${message}</p>
-      `; tooltipsInfo.forEach((tooltip) => { const title =
-      Object.entries(tooltip.message) .map(([key, value]) =>
-      generateMessage(false, value)) .join(""); tooltip.instance = new
-      te.Tooltip(tooltip.element, { html: true, template: `
-      <div>
-        <div
-          class="tooltip-inner ml-4 rounded border bg-white p-4 text-xs dark:border-neutral-400 dark:bg-neutral-800"></div>
-      </div>
-      `, placement: "right", title, }); }); const tooltipsValidation = new
-      te.Validation(tooltipsForm);
-      tooltipsForm.addEventListener("changed.te.validation", (e) => { const
-      element = tooltipsInfo.find((tooltip) => tooltip.name === e.value.name);
-      element.instance.dispose(); const title = Object.entries(element.message)
-      .map(([key, value]) => { const result = e.value.validation.find((res) =>
-      key === res.name).result; return generateMessage(result, value); })
-      .join(""); const borderColor = e.value.result === "valid" ?
-      "border-[#14a44d]" : "border-[#dc4c64]"; element.instance = new
-      te.Tooltip(element.element, { html: true, template: `
-      <div>
-        <div
-          class="tooltip-inner ${borderColor} ml-4 rounded border bg-white p-4 text-xs dark:bg-neutral-800"></div>
-      </div>
-      `, placement: "right", title: title, }); });
+        `<p class="${result ? 'text-[#14a44d]' : 'text-[#dc4c64]'}">${message}</p>`;
+    
+      tooltipsInfo.forEach((tooltip) => {
+        const title = Object.entries(tooltip.message)
+          .map(([key, value]) => generateMessage(false, value))
+          .join("");
+    
+        tooltip.instance = new te.Tooltip(tooltip.element, {
+          html: true,
+          template: `
+            <div>
+              <div class="tooltip-inner bg-white text-xs p-4 ml-4 rounded border dark:bg-neutral-800 dark:border-neutral-400"></div>
+            </div>
+          `,
+          placement: "right",
+          title,
+        });
+      });
+    
+      const tooltipsValidation = new te.Validation(tooltipsForm);
+    
+      tooltipsForm.addEventListener("changed.te.validation", (e) => {
+        const element = tooltipsInfo.find(
+          (tooltip) => tooltip.name === e.value.name
+        );
+        element.instance.dispose();
+    
+        const title = Object.entries(element.message)
+          .map(([key, value]) => {
+            const result = e.value.validation.find(
+              (res) => key === res.name
+            ).result;
+            return generateMessage(result, value);
+          })
+          .join("");
+    
+        const borderColor =
+          e.value.result === "valid" ? "border-[#14a44d]" : "border-[#dc4c64]";
+    
+        element.instance = new te.Tooltip(element.element, {
+          html: true,
+          template: `
+            <div>
+              <div class="tooltip-inner bg-white text-xs p-4 ml-4 rounded border ${borderColor} dark:bg-neutral-800"></div>
+            </div>
+          `,
+          placement: "right",
+          title: title,
+        });
+      });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
