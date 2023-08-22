@@ -93,7 +93,9 @@ class InfiniteScroll {
   _getConfig(options) {
     const config = {
       ...Default,
-      ...Manipulator.getDataAttributes(this._element),
+      ...(this._element !== window
+        ? Manipulator.getDataAttributes(this._element)
+        : {}),
       ...options,
     };
     typeCheckConfig(NAME, config, DefaultType);
