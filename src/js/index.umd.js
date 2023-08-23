@@ -41,6 +41,7 @@ import Touch from "./methods/touch";
 import SmoothScroll from "./methods/smooth-scroll";
 import LazyLoad from "./methods/lazy-load";
 import Clipboard from "./methods/clipboard";
+import Datetimepicker from "./forms/dateTimepicker";
 import initTE from "./autoinit/index";
 
 const te = {
@@ -75,6 +76,7 @@ const te = {
   Lightbox,
   Touch,
   LazyLoad,
+  Datetimepicker,
   Clipboard,
 };
 
@@ -113,5 +115,6 @@ export {
   SmoothScroll,
   LazyLoad,
   Clipboard,
+  Datetimepicker,
   initTE,
 };
