@@ -121,6 +121,10 @@ const defaultInitSelectors = {
     name: "Clipboard",
     selector: "[data-te-clipboard-init]",
   },
+  loadingManagement: {
+    name: "LoadingManagement",
+    selector: "[data-te-loading-management-init]",
+  },
 
   // advancedInits
   chart: {
