@@ -365,6 +365,252 @@ module.exports = plugin(
             "0%": { transform: "translateX(-45%)" },
             "100%": { transform: "translateX(100%)" },
           },
+          "drop-in": {
+            "0%": {
+              opacity: "0",
+              transform: "scale(0)",
+              animationTimingFunction: "cubic-bezier(0.34, 1.61, 0.7, 1)",
+            },
+            "100%": {
+              opacity: "1",
+              transform: "scale(1)",
+            },
+          },
+          "drop-out": {
+            "0%": {
+              opacity: "1",
+              transform: "scale(1)",
+              animationTimingFunction: "cubic-bezier(0.34, 1.61, 0.7, 1)",
+            },
+            "100%": { opacity: "0", transform: "scale(0)" },
+          },
+          "fly-in": {
+            "0%": {
+              opacity: "0",
+              transform: "scale3d(0.3, 0.3, 0.3)",
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "20%": { transform: "scale3d(1.1, 1.1, 1.1)" },
+            "40%": { transform: "scale3d(0.9, 0.9, 0.9)" },
+            "60%": { opacity: "1", transform: "scale3d(1.03, 1.03, 1.03)" },
+            "80%": { transform: "scale3d(0.97, 0.97, 0.97)" },
+            "100%": { opacity: "1", transform: "scale3d(1, 1, 1)" },
+          },
+          "fly-in-up": {
+            "0%": {
+              opacity: "0",
+              transform: "translate3d(0, 1500px, 0)",
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "60%": { opacity: "1", transform: "translate3d(0, -20px, 0)" },
+            "75%": { transform: "translate3d(0, 10px, 0)" },
+            "90%": { transform: "translate3d(0, -5px, 0)" },
+            "100%": { transform: "translate3d(0, 0, 0)" },
+          },
+          "fly-in-down": {
+            "0%": {
+              opacity: "0",
+              transform: "translate3d(0, -1500px, 0)",
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "60%": { opacity: "1", transform: "translate3d(0, 25px, 0)" },
+            "75%": { transform: "translate3d(0, -10px, 0)" },
+            "90%": { transform: "translate3d(0, 5px, 0)" },
+            "100%": { transform: "none" },
+          },
+          "fly-in-left": {
+            "0%": {
+              opacity: "0",
+              transform: "translate3d(1500px, 0, 0)",
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "60%": { opacity: "1", transform: "translate3d(-25px, 0, 0)" },
+            "75%": { transform: "translate3d(10px, 0, 0)" },
+            "90%": { transform: "translate3d(-5px, 0, 0)" },
+            "100%": { transform: "none" },
+          },
+          "fly-in-right": {
+            "0%": {
+              opacity: "0",
+              transform: "translate3d(-1500px, 0, 0)",
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "60%": { opacity: "1", transform: "translate3d(25px, 0, 0)" },
+            "75%": { transform: "translate3d(-10px, 0, 0)" },
+            "90%": { transform: "translate3d(5px, 0, 0)" },
+            "100%": { transform: "none" },
+          },
+          "fly-out": {
+            "0%": {
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "20%": {
+              transform: "scale3d(0.9, 0.9, 0.9)",
+            },
+            "50%, 55%": {
+              opacity: "1",
+              transform: "scale3d(1.1, 1.1, 1.1)",
+            },
+            "100%": {
+              opacity: "0",
+              transform: "scale3d(0.3, 0.3, 0.3)",
+            },
+          },
+          "fly-out-up": {
+            "0%": {
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "20%": {
+              transform: "translate3d(0, 10px, 0)",
+            },
+            "40%, 45%": {
+              opacity: "1",
+              transform: "translate3d(0, -20px, 0)",
+            },
+            "100%": {
+              opacity: "0",
+              transform: "translate3d(0, 2000px, 0)",
+            },
+          },
+          "fly-out-down": {
+            "0%": {
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "20%": {
+              transform: "translate3d(0, -10px, 0)",
+            },
+            "40%, 45%": {
+              opacity: "1",
+              transform: "translate3d(0, 20px, 0)",
+            },
+            "100%": {
+              opacity: "0",
+              transform: "translate3d(0, -2000px, 0)",
+            },
+          },
+          "fly-out-left": {
+            "0%": {
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "20%": {
+              opacity: "1",
+              transform: "translate3d(-20px, 0, 0)",
+            },
+            "100%": {
+              opacity: "0",
+              transform: "translate3d(2000px, 0, 0)",
+            },
+          },
+          "fly-out-right": {
+            "0%": {
+              transitionTimingFunction: "cubic-bezier(0.215, 0.61, 0.355, 1)",
+            },
+            "20%": {
+              opacity: "1",
+              transform: "translate3d(20px, 0, 0)",
+            },
+            "100%": {
+              opacity: "0",
+              transform: "translate3d(-2000px, 0, 0)",
+            },
+          },
+          "browse-in": {
+            "0%": { transform: "scale(0.8) translateZ(0px)", zIndex: "-1" },
+            "10%": {
+              transform: "scale(0.8) translateZ(0px)",
+              zIndex: "-1",
+              opacity: "0.7",
+            },
+            "80%": {
+              transform: "scale(1.05) translateZ(0px)",
+              zIndex: "999",
+              opacity: "1",
+            },
+            "100%": { transform: "scale(1) translateZ(0px)", zIndex: "999" },
+          },
+          "browse-out": {
+            "0%": {
+              transform: "translateX(0%) rotateY(0deg) rotateX(0deg)",
+              zIndex: "999",
+            },
+            "50%": {
+              transform:
+                "translateX(-105%) rotateY(35deg) rotateX(10deg) translateZ(-10px)",
+              zIndex: "-1",
+            },
+            "80%": { opacity: "1" },
+            "100%": {
+              zIndex: "-1",
+              opacity: "0",
+              transform:
+                "translateX(0%) rotateY(0deg) rotateX(0deg) translateZ(-10px)",
+            },
+          },
+          "browse-out-left": {
+            "0%": {
+              transform: "translateX(0%) rotateY(0deg) rotateX(0deg)",
+              zIndex: "999",
+            },
+            "50%": {
+              transform:
+                "translateX(-105%) rotateY(35deg) rotateX(10deg) translateZ(-10px)",
+              zIndex: "-1",
+            },
+            "80%": { opacity: "1" },
+            "100%": {
+              zIndex: "-1",
+              opacity: "0",
+              transform:
+                "translateX(0%) rotateY(0deg) rotateX(0deg) translateZ(-10px)",
+            },
+          },
+          "browse-out-right": {
+            "0%": {
+              transform: "translateX(0%) rotateY(0deg) rotateX(0deg)",
+              zIndex: "999",
+            },
+            "50%": {
+              transform:
+                "translateX(105%) rotateY(35deg) rotateX(10deg) translateZ(-10px)",
+              zIndex: "1",
+            },
+            "80%": { opacity: "1" },
+            "100%": {
+              zIndex: "1",
+              opacity: "0",
+              transform:
+                "translateX(0%) rotateY(0deg) rotateX(0deg) translateZ(-10px)",
+            },
+          },
+          jiggle: {
+            "0%": { transform: "scale3d(1, 1, 1)" },
+            "30%": { transform: "scale3d(1.25, 0.75, 1)" },
+            "40%": { transform: "scale3d(0.75, 1.25, 1)" },
+            "50%": { transform: "scale3d(1.15, 0.85, 1)" },
+            "65%": { transform: "scale3d(0.95, 1.05, 1)" },
+            "75%": { transform: "scale3d(1.05, 0.95, 1)" },
+            "100%": { transform: "scale3d(1, 1, 1)" },
+          },
+          flash: {
+            "0%, 50%, 100%": { opacity: "1" },
+            "25%, 75%": { opacity: "0" },
+          },
+          shake: {
+            "0%, 100%": {
+              transform: "translateX(0)",
+            },
+            "10%, 30%, 50%, 70%, 90%": {
+              transform: "translateX(-10px)",
+            },
+            "20%, 40%, 60%, 80%": {
+              transform: "translateX(10px)",
+            },
+          },
+          glow: {
+            "0%": { backgroundColor: "#fcfcfd" },
+            "30%": { backgroundColor: "#fff6cd" },
+            "100%": { backgroundColor: "#fcfcfd" },
+          },
         },
         colors: {
           primary: {
