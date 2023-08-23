@@ -612,9 +612,6 @@ module.exports = plugin(
             "100%": { backgroundColor: "#fcfcfd" },
           },
         },
-        transitionTimingFunction: {
-          cubic: "cubic-bezier(0.215, 0.61, 0.355, 1)",
-        },
         colors: {
           primary: {
             DEFAULT: "#3B71CA",
