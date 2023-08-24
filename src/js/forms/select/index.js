@@ -535,7 +535,8 @@ class Select {
       this._wrapperId,
       this._config,
       this._label,
-      this._classes
+      this._classes,
+      this._element.name
     );
     this._element.parentNode.insertBefore(template, this._element);
     Manipulator.addClass(this._element, this._classes.initialized);

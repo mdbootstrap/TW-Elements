@@ -30,7 +30,9 @@ export const getTimepickerTemplate = (
     classes.timepickerWrapper
   }' data-te-timepicker-wrapper>
       <div class="${classes.timepickerContainer}">
-        <div class="${classes.timepickerElements}">
+        <div class="${
+          classes.timepickerElements
+        }" data-te-timepicker-elements-wrapper>
         <div id='${headID}' class='${
     classes.timepickerHead
   }' style='padding-right:${format24 ? 50 : 10}px'>
@@ -110,7 +112,9 @@ export const getTimepickerTemplate = (
     classes.timepickerInlineWrapper
   }' data-te-timepicker-wrapper>
         <div class="${classes.timepickerInlineContainer}">
-          <div class="${classes.timepickerInlineElements}">
+          <div class="${
+            classes.timepickerInlineElements
+          }" data-te-timepicker-elements-wrapper>
           <div id='${headID}' class='${classes.timepickerInlineHead}'
           style='padding-right:10px'>
           <div class='${classes.timepickerInlineHeadContent}'>
