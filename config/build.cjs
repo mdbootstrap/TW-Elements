@@ -50,11 +50,6 @@ if (process.env.mode === "demo") {
     `npx tailwindcss -i ./src/scss/tailwind.scss -o ./${distName}/css/tw-elements.min.css --minify`
   );
 
-  // .map file
-  shell.exec(
-    `sass ./${distName}/css/tw-elements.min.css ./${distName}/css/tw-elements.min.css --style compressed`
-  );
-
   // add disclaimer to css file
   const cssWithDisclaimer =
     intro(version) +
