@@ -388,9 +388,7 @@ class Dropdown extends BaseComponent {
     }
 
     // We need to trim the value because custom properties can also include spaces
-    const isEnd =
-      getComputedStyle(this._menu).getPropertyValue("--te-position").trim() ===
-      "end";
+    const isEnd = parentDropdown.dataset.teDropdownAlignment === "end";
 
     if (parentDropdown.dataset.teDropdownPosition === CLASS_NAME_DROPUP) {
       return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;

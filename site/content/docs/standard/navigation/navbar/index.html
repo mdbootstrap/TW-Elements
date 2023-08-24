@@ -30,8 +30,7 @@ menu:
   <section class="bg-[#eee] rounded-lg dark:bg-transparent">
     {{< twsnippet/demo id="example1" >}}
     <nav
-      class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
-      data-te-navbar-ref>
+      class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
       <div class="flex w-full flex-wrap items-center justify-between px-3">
         <button
           class="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
@@ -117,7 +116,7 @@ menu:
               </svg>
             </span>
           </a>
-          <div class="relative" data-te-dropdown-ref>
+          <div class="relative" data-te-dropdown-ref data-te-dropdown-alignment="end">
             <a
               class="hidden-arrow mr-4 flex items-center text-neutral-600 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
               href="#"
@@ -143,7 +142,7 @@ menu:
               >
             </a>
             <ul
-              class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+              class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
               aria-labelledby="dropdownMenuButton1"
               data-te-dropdown-menu-ref>
               <li>
@@ -172,7 +171,7 @@ menu:
               </li>
             </ul>
           </div>
-          <div class="relative" data-te-dropdown-ref>
+          <div class="relative" data-te-dropdown-ref data-te-dropdown-alignment="end">
             <a
               class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
               href="#"
@@ -188,7 +187,7 @@ menu:
                 loading="lazy" />
             </a>
             <ul
-              class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+              class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
               aria-labelledby="dropdownMenuButton2"
               data-te-dropdown-menu-ref>
               <li>
@@ -231,8 +230,7 @@ menu:
       {{< twsnippet/code active=true lang="HTML" >}}
       <!-- Main navigation container -->
       <nav
-        class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
-        data-te-navbar-ref>
+        class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
         <div class="flex w-full flex-wrap items-center justify-between px-3">
           <!-- Hamburger button for mobile view -->
           <button
@@ -326,7 +324,10 @@ menu:
             </a>
 
             <!-- Container with two dropdown menus -->
-            <div class="relative" data-te-dropdown-ref>
+            <div
+              class="relative"
+              data-te-dropdown-ref
+              data-te-dropdown-alignment="end">
               <!-- First dropdown trigger -->
               <a
                 class="hidden-arrow mr-4 flex items-center text-neutral-600 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
@@ -356,7 +357,7 @@ menu:
               </a>
               <!-- First dropdown menu -->
               <ul
-                class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton1"
                 data-te-dropdown-menu-ref>
                 <!-- First dropdown menu items -->
@@ -388,7 +389,10 @@ menu:
             </div>
 
             <!-- Second dropdown container -->
-            <div class="relative" data-te-dropdown-ref>
+            <div
+              class="relative"
+              data-te-dropdown-ref
+              data-te-dropdown-alignment="end">
               <!-- Second dropdown trigger -->
               <a
                 class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
@@ -407,7 +411,7 @@ menu:
               </a>
               <!-- Second dropdown menu -->
               <ul
-                class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton2"
                 data-te-dropdown-menu-ref>
                 <!-- Second dropdown menu items -->
@@ -2699,7 +2703,7 @@ menu:
             </a>
             <!-- First dropdown menu -->
             <ul
-              class="absolute left-0 right-auto z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+              class="absolute left-0 right-auto z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
               aria-labelledby="dropdownMenuButton1"
               data-te-dropdown-menu-ref>
               <!-- First dropdown menu items -->
@@ -2773,7 +2777,7 @@ menu:
               </a>
               <!-- First dropdown menu -->
               <ul
-                class="absolute left-0 right-auto z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                class="absolute left-0 right-auto z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton1"
                 data-te-dropdown-menu-ref>
                 <!-- First dropdown menu items -->
@@ -2870,7 +2874,7 @@ menu:
               </span>
             </a>
             <ul
-              class="absolute left-0 right-auto z-[1000] float-left m-0 mt-1 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+              class="absolute left-0 right-auto z-[1000] float-left m-0 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
               aria-labelledby="navbarDropdown"
               data-te-dropdown-menu-ref>
               <li>
@@ -3042,7 +3046,7 @@ menu:
                 </span>
               </a>
               <ul
-                class="absolute left-0 right-auto z-[1000] float-left m-0 mt-1 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                class="absolute left-0 right-auto z-[1000] float-left m-0 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="navbarDropdown"
                 data-te-dropdown-menu-ref>
                 <li>
@@ -3244,7 +3248,7 @@ menu:
               </span>
             </a>
             <ul
-              class="absolute left-0 right-auto z-[1000] float-left m-0 mt-1 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+              class="absolute left-0 right-auto z-[1000] float-left m-0 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
               aria-labelledby="dropdownMenuButton2"
               data-te-dropdown-menu-ref>
               <li>
@@ -3315,7 +3319,7 @@ menu:
                 </span>
               </a>
               <ul
-                class="absolute left-0 right-auto z-[1000] float-left m-0 mt-1 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
+                class="absolute left-0 right-auto z-[1000] float-left m-0 hidden min-w-[10rem] list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-zinc-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton2"
                 data-te-dropdown-menu-ref>
                 <li>
@@ -4873,8 +4877,7 @@ menu:
       {{< twsnippet/demo id="example23" >}}
       <!-- Main navigation container -->
       <nav
-        class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
-        data-te-navbar-ref>
+        class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
         <div class="flex w-full flex-wrap items-center justify-between px-3">
           <!-- Hamburger button for mobile view -->
           <button
@@ -4968,7 +4971,7 @@ menu:
             </a>
 
             <!-- Container with two dropdown menus -->
-            <div class="relative" data-te-dropdown-ref>
+            <div class="relative" data-te-dropdown-ref data-te-dropdown-alignment="end">
               <!-- First dropdown trigger -->
               <a
                 class="hidden-arrow mr-4 flex items-center text-secondary-500 transition duration-200 hover:text-secondary-400 hover:ease-in-out focus:text-secondary-400 disabled:text-black/30 motion-reduce:transition-none"
@@ -4998,7 +5001,7 @@ menu:
               </a>
               <!-- First dropdown menu -->
               <ul
-                class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton1"
                 data-te-dropdown-menu-ref>
                 <!-- First dropdown menu items -->
@@ -5030,7 +5033,7 @@ menu:
             </div>
 
             <!-- Second dropdown container -->
-            <div class="relative" data-te-dropdown-ref>
+            <div class="relative" data-te-dropdown-ref data-te-dropdown-alignment="end">
               <!-- Second dropdown trigger -->
               <a
                 class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
@@ -5049,7 +5052,7 @@ menu:
               </a>
               <!-- Second dropdown menu -->
               <ul
-                class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton2"
                 data-te-dropdown-menu-ref>
                 <!-- Second dropdown menu items -->
@@ -5091,8 +5094,7 @@ menu:
         {{< twsnippet/code active=true lang="HTML" >}}
         <!-- Main navigation container -->
         <nav
-          class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4"
-          data-te-navbar-ref>
+          class="flex-no-wrap relative flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
           <div class="flex w-full flex-wrap items-center justify-between px-3">
             <!-- Hamburger button for mobile view -->
             <button
@@ -5186,7 +5188,10 @@ menu:
               </a>
 
               <!-- Container with two dropdown menus -->
-              <div class="relative" data-te-dropdown-ref>
+              <div
+                class="relative"
+                data-te-dropdown-ref
+                data-te-dropdown-alignment="end">
                 <!-- First dropdown trigger -->
                 <a
                   class="hidden-arrow mr-4 flex items-center text-secondary-500 transition duration-200 hover:text-secondary-400 hover:ease-in-out focus:text-secondary-400 disabled:text-black/30 motion-reduce:transition-none"
@@ -5216,7 +5221,7 @@ menu:
                 </a>
                 <!-- First dropdown menu -->
                 <ul
-                  class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                  class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                   aria-labelledby="dropdownMenuButton1"
                   data-te-dropdown-menu-ref>
                   <!-- First dropdown menu items -->
@@ -5248,7 +5253,10 @@ menu:
               </div>
 
               <!-- Second dropdown container -->
-              <div class="relative" data-te-dropdown-ref>
+              <div
+                class="relative"
+                data-te-dropdown-ref
+                data-te-dropdown-alignment="end">
                 <!-- Second dropdown trigger -->
                 <a
                   class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
@@ -5267,7 +5275,7 @@ menu:
                 </a>
                 <!-- Second dropdown menu -->
                 <ul
-                  class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                  class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                   aria-labelledby="dropdownMenuButton2"
                   data-te-dropdown-menu-ref>
                   <!-- Second dropdown menu items -->
@@ -6728,7 +6736,7 @@ menu:
               </a>
               <!-- Dropdown menu -->
               <ul
-                class="absolute left-auto right-0 z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                class="absolute z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton1"
                 data-te-dropdown-menu-ref
               >
@@ -6760,7 +6768,7 @@ menu:
               </ul>
             </li>
 
-            <li class="relative px-2" data-te-dropdown-ref>
+            <li class="relative px-2" data-te-dropdown-ref data-te-dropdown-alignment="end">
               <!-- Second dropdown trigger -->
               <a
                 class="hidden-arrow mr flex items-center text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 motion-reduce:transition-none"
@@ -6791,7 +6799,7 @@ menu:
               </a>
               <!-- Dropdown menu -->
               <ul
-                class="absolute left-auto right-0 z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                class="absolute z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton1"
                 data-te-dropdown-menu-ref
               >
@@ -6823,7 +6831,7 @@ menu:
               </ul>
             </li>
 
-            <li class="relative px-2" data-te-dropdown-ref>
+            <li class="relative px-2" data-te-dropdown-ref data-te-dropdown-alignment="end">
               <!-- Third dropdown trigger -->
               <a
                 class="hidden-arrow mr flex items-center text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 motion-reduce:transition-none"
@@ -6849,7 +6857,7 @@ menu:
               </a>
               <!-- Dropdown menu -->
               <ul
-                class="absolute left-auto right-0 z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                class="absolute z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                 aria-labelledby="dropdownMenuButton1"
                 data-te-dropdown-menu-ref
               >
@@ -7119,7 +7127,7 @@ menu:
                 </a>
                 <!-- Dropdown menu -->
                 <ul
-                  class="absolute left-auto right-0 z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                  class="absolute z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                   aria-labelledby="dropdownMenuButton1"
                   data-te-dropdown-menu-ref
                 >
@@ -7151,7 +7159,7 @@ menu:
                 </ul>
               </li>
 
-              <li class="relative px-2" data-te-dropdown-ref>
+              <li class="relative px-2" data-te-dropdown-ref data-te-dropdown-alignment="end">
                 <!-- Second dropdown trigger -->
                 <a
                   class="hidden-arrow mr flex items-center text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 motion-reduce:transition-none"
@@ -7182,7 +7190,7 @@ menu:
                 </a>
                 <!-- Dropdown menu -->
                 <ul
-                  class="absolute left-auto right-0 z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                  class="absolute z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                   aria-labelledby="dropdownMenuButton1"
                   data-te-dropdown-menu-ref
                 >
@@ -7214,7 +7222,7 @@ menu:
                 </ul>
               </li>
 
-              <li class="relative px-2" data-te-dropdown-ref>
+              <li class="relative px-2" data-te-dropdown-ref data-te-dropdown-alignment="end">
                 <!-- Third dropdown trigger -->
                 <a
                   class="hidden-arrow mr flex items-center text-neutral-500 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400 motion-reduce:transition-none"
@@ -7240,7 +7248,7 @@ menu:
                 </a>
                 <!-- Dropdown menu -->
                 <ul
-                  class="absolute left-auto right-0 z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
+                  class="absolute z-[1000] float-left hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
                   aria-labelledby="dropdownMenuButton1"
                   data-te-dropdown-menu-ref
                 >
