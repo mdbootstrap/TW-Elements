@@ -37,6 +37,7 @@ import Datatable from "./data/datatables";
 import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
+import Validation from "./forms/validation/validation";
 import Touch from "./methods/touch";
 import SmoothScroll from "./methods/smooth-scroll";
 import LazyLoad from "./methods/lazy-load";
@@ -74,6 +75,7 @@ const te = {
   Popconfirm,
   SmoothScroll,
   Lightbox,
+  Validation,
   Touch,
   LazyLoad,
   Clipboard,
@@ -111,6 +113,7 @@ export {
   Rating,
   Popconfirm,
   Lightbox,
+  Validation,
   Touch,
   SmoothScroll,
   LazyLoad,
