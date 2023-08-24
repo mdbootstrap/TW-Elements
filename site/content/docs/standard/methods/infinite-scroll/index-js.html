@@ -1,0 +1,279 @@
+---
+---
+
+<!-- Custom scripts -->
+<script type="module">
+  // BASIC EXAMPLE
+
+  // An array of icon names
+  const icons = [
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+    User`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+          clip-rule="evenodd" />
+      </svg>
+    </span>
+    User circle`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          fill-rule="evenodd"
+          d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z"
+          clip-rule="evenodd" />
+        <path
+          d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
+      </svg>
+    </span>
+    User group`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          d="M10.375 2.25a4.125 4.125 0 100 8.25 4.125 4.125 0 000-8.25zM10.375 12a7.125 7.125 0 00-7.124 7.247.75.75 0 00.363.63 13.067 13.067 0 006.761 1.873c2.472 0 4.786-.684 6.76-1.873a.75.75 0 00.364-.63l.001-.12v-.002A7.125 7.125 0 0010.375 12zM16 9.75a.75.75 0 000 1.5h6a.75.75 0 000-1.5h-6z" />
+      </svg>
+    </span>
+    User minus`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+      </svg>
+    </span>
+    User plus`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor">
+        <path
+          d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+      </svg>
+    </span>
+    Users`,
+  ];
+
+  // Get a scrollable container using an id attribute
+  const basicElement = document.getElementById("basic-example");
+
+  // An index of elements added after scrolling to the end of the container
+  let itemIndex = 0;
+
+  // items - an array of the created elements using the loop through icons array
+  const items = icons.map((icon) => {
+    // Create a list item element
+    const element = document.createElement("li");
+
+    // Change HTML code inside created list element using icon we are currently working on
+    element.innerHTML = `
+  <li class="mr-2 flex items-center border-x border-b">
+    ${icon}
+  </li>
+`;
+
+    // Return ready element
+    return element;
+  });
+
+  // Add an event listener to the scrollable container. The event below is triggered when a user scrolls to the end of the container
+  basicElement.addEventListener("complete.te.infiniteScroll", () => {
+    // Return nothing when user appended all of the generated items
+    if (itemIndex === icons.length - 1) return;
+
+    console.log("Appended new items");
+
+    // Append next element to the scrollable container
+    basicElement.appendChild(items[itemIndex]);
+
+    // Increment amount of items that are appended
+    itemIndex++;
+  });
+
+  // DIRECTION EXAMPLE
+
+  // Get a scrollable container using an id attribute
+  const directionElement = document.getElementById("direction-example");
+
+  // An index of elements added after scrolling to the end of the container
+  let itemIndex2 = 0;
+
+  // An array of icon names
+  const icons2 = [
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+          <span class="flex items-end">User</span>`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+          <span class="flex items-end">User circle</span>`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z"
+                clip-rule="evenodd" />
+              <path
+                d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
+            </svg>
+          </span>
+          <span class="flex items-end">User group</span>`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M10.375 2.25a4.125 4.125 0 100 8.25 4.125 4.125 0 000-8.25zM10.375 12a7.125 7.125 0 00-7.124 7.247.75.75 0 00.363.63 13.067 13.067 0 006.761 1.873c2.472 0 4.786-.684 6.76-1.873a.75.75 0 00.364-.63l.001-.12v-.002A7.125 7.125 0 0010.375 12zM16 9.75a.75.75 0 000 1.5h6a.75.75 0 000-1.5h-6z" />
+            </svg>
+          </span>
+          <span class="flex items-end">User minus</span>`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+            </svg>
+          </span>
+          <span class="flex items-end">User plus</span>`,
+    `<span class="mx-4 py-1 [&>svg]:w-14">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z" />
+            </svg>
+          </span>
+          <span class="flex items-end">Users</span>`,
+  ];
+
+  // items - an array of the created elements using the loop through icons array
+  const items2 = icons2.map((icon) => {
+    // Create a span element
+    const element = document.createElement("span");
+
+    // Change HTML code inside created span element using icon we are currently working on
+    element.innerHTML = `
+        <span class="mx-5 flex py-4">
+          ${icon}
+        </span>
+        `;
+
+    // Return ready element
+    return element;
+  });
+
+  // Add an event listener to the scrollable container. The event below is triggered when a user scrolls to the end of the container
+  directionElement.addEventListener("complete.te.infiniteScroll", () => {
+    // Return nothing when user appended all of the generated items
+    if (itemIndex2 === items2.length - 1) return;
+
+    // Append next element to the scrollable container
+    directionElement.appendChild(items2[itemIndex2]);
+
+    // Increment amount of items that are appended
+    itemIndex2++;
+  });
+
+  // SPINNERS AND ASYNC DATA
+
+  // Get a spinner, container with images and scrollable container using an id attribute
+  const spinner = document.getElementById("spinner");
+  const images = document.getElementById("images");
+  const spinnersElement = document.getElementById("spinners-and-async-example");
+
+  const imgSrc = [
+    "https://tecdn.b-cdn.net/img/Photos/Slides/img%20(102).jpg",
+    "https://tecdn.b-cdn.net/img/Photos/Slides/img%20(103).jpg",
+    "https://tecdn.b-cdn.net/img/Photos/Slides/img%20(104).jpg",
+    "https://tecdn.b-cdn.net/img/Photos/Slides/img%20(107).jpg",
+    "https://tecdn.b-cdn.net/img/Photos/Slides/img%20(108).jpg",
+    "https://tecdn.b-cdn.net/img/Photos/Slides/img%20(109).jpg",
+    "https://tecdn.b-cdn.net/img/Photos/Slides/img%20(110).jpg",
+  ];
+
+  const items3 = imgSrc.map((url) => {
+    const el = document.createElement("img");
+
+    let classes = ["mb-3", "h-auto", "w-full"];
+    classes.forEach((className) => el.classList.add(className));
+
+    el.setAttribute("src", url);
+    return el;
+  });
+
+  let renderedItems = 0;
+
+  const renderItems = (index) => {
+    setTimeout(() => {
+      spinner.classList.replace("inline-block", "hidden");
+
+      images.appendChild(items3[index]);
+    }, 1000);
+  };
+
+  const loadItems = () => {
+    if (renderedItems < items3.length) {
+      spinner.classList.replace("hidden", "inline-block");
+
+      renderItems(renderedItems);
+
+      renderedItems++;
+
+      if (renderedItems === items3.length) {
+        spinnersElement.removeEventListener(
+          "complete.te.infiniteScroll",
+          loadItems
+        );
+      }
+    }
+  };
+
+  spinnersElement.addEventListener("complete.te.infiniteScroll", loadItems);
+</script>

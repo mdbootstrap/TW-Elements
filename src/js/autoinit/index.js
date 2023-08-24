@@ -130,6 +130,10 @@ const defaultInitSelectors = {
     name: "Clipboard",
     selector: "[data-te-clipboard-init]",
   },
+  infiniteScroll: {
+    name: "InfiniteScroll",
+    selector: "[data-te-infinite-scroll-init]",
+  },
   loadingManagement: {
     name: "LoadingManagement",
     selector: "[data-te-loading-management-init]",

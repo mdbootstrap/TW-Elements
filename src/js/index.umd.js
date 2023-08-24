@@ -42,6 +42,7 @@ import Touch from "./methods/touch";
 import SmoothScroll from "./methods/smooth-scroll";
 import LazyLoad from "./methods/lazy-load";
 import Clipboard from "./methods/clipboard";
+import InfiniteScroll from "./methods/infinite-scroll";
 import LoadingManagement from "./methods/loading-management";
 import Datetimepicker from "./forms/dateTimepicker";
 import Sticky from "./methods/sticky";
@@ -82,6 +83,7 @@ const te = {
   LazyLoad,
   Datetimepicker,
   Clipboard,
+  InfiniteScroll,
   LoadingManagement,
   Sticky,
 };
@@ -122,6 +124,7 @@ export {
   SmoothScroll,
   LazyLoad,
   Clipboard,
+  InfiniteScroll,
   LoadingManagement,
   Datetimepicker,
   Sticky,
