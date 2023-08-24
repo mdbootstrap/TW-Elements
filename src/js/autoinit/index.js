@@ -121,6 +121,10 @@ const defaultInitSelectors = {
     name: "Clipboard",
     selector: "[data-te-clipboard-init]",
   },
+  sticky: {
+    name: "Sticky",
+    selector: "[data-te-sticky-init]",
+  },
 
   // advancedInits
   chart: {
