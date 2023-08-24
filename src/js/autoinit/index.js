@@ -55,6 +55,11 @@ const defaultInitSelectors = {
     selector: "[data-te-datepicker-init]",
     isToggler: false,
   },
+  datetimepicker: {
+    name: "Datetimepicker",
+    selector: "[data-te-date-timepicker-init]",
+    isToggler: false,
+  },
   input: {
     name: "Input",
     selector: "[data-te-input-wrapper-init]",
@@ -109,6 +114,10 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  validation: {
+    name: "Validation",
+    selector: "[data-te-validation-init]",
+  },
   smoothScroll: {
     name: "SmoothScroll",
     selector: "a[data-te-smooth-scroll-init]",
@@ -124,6 +133,10 @@ const defaultInitSelectors = {
   loadingManagement: {
     name: "LoadingManagement",
     selector: "[data-te-loading-management-init]",
+  },
+  sticky: {
+    name: "Sticky",
+    selector: "[data-te-sticky-init]",
   },
 
   // advancedInits
