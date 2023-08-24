@@ -101,14 +101,20 @@
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="js" >}}
           const element = document.getElementById('example');
-          const animate = new Animate(element, { animation: 'tada', });
-          animate.init();
+          new Animate(element, {
+            animation: "[fade-in_1s_ease-in-out]",
+            animationReset: true,
+            animationStart: "onHover",
+          });
         {{< /twsnippet/code >}}
         <!-- prettier-ignore -->
         {{< twsnippet/code lang="js" >}}
-          const element = document.getElementById('example');
-          const animate = new te.Animate(element, { animation: 'tada', });
-          animate.init();
+        const element = document.getElementById('example');
+        new te.Animate(element, {
+          animation: "[fade-in_1s_ease-in-out]",
+          animationReset: true,
+          animationStart: "onHover",
+        });
         {{< /twsnippet/code >}}
         {{< /twsnippet/wrapper >}}
       </div>
