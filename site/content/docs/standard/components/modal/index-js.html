@@ -1,0 +1,23 @@
+---
+---
+
+<script type="module">
+  const exampleModal = document.getElementById("exampleModalVarying");
+  exampleModal.addEventListener("show.te.modal", (e) => {
+    // Button that triggered the modal
+    const button = e.relatedTarget;
+    // Extract info from data-te-* attributes
+    const recipient = button.getAttribute("data-te-whatever");
+    // If necessary, you could initiate an AJAX request here
+    // and then do the updating in a callback.
+    //
+    // Update the modal's content.
+    const modalTitle = exampleModal.querySelector("#exampleModalVaryingLabel");
+    const modalBodyInput = exampleModal.querySelector(
+      "[data-te-modal-body-ref] input"
+    );
+
+    modalTitle.textContent = `New message to ${recipient}`;
+    modalBodyInput.value = recipient;
+  });
+</script>

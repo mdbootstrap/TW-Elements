@@ -113,6 +113,18 @@ const defaultInitSelectors = {
     name: "Validation",
     selector: "[data-te-validation-init]",
   },
+  smoothScroll: {
+    name: "SmoothScroll",
+    selector: "a[data-te-smooth-scroll-init]",
+  },
+  lazyLoad: {
+    name: "LazyLoad",
+    selector: "[data-te-lazy-load-init]",
+  },
+  clipboard: {
+    name: "Clipboard",
+    selector: "[data-te-clipboard-init]",
+  },
 
   // advancedInits
   chart: {
@@ -185,6 +197,10 @@ const defaultInitSelectors = {
     selector: "[data-te-lightbox-init]",
     isToggler: true,
     callback: lightboxCallback,
+  },
+  touch: {
+    name: "Touch",
+    selector: "[data-te-touch-init]",
   },
 };
 
