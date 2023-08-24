@@ -42,6 +42,7 @@ import Touch from "./methods/touch";
 import SmoothScroll from "./methods/smooth-scroll";
 import LazyLoad from "./methods/lazy-load";
 import Clipboard from "./methods/clipboard";
+import Sticky from "./methods/sticky";
 import initTE from "./autoinit/index";
 
 const te = {
@@ -78,6 +79,7 @@ const te = {
   Touch,
   LazyLoad,
   Clipboard,
+  Sticky,
 };
 
 initTE(te);
@@ -116,5 +118,6 @@ export {
   SmoothScroll,
   LazyLoad,
   Clipboard,
+  Sticky,
   initTE,
 };
