@@ -48,10 +48,10 @@
         Basic example
       </h2>
 
-      <div id="loading-test" class="h-[300px] w-full">
+      <div id="loading-basic-example" class="h-[300px] w-full">
         <div
           data-te-loading-management-init
-          data-te-parent-selector="#loading-test">
+          data-te-parent-selector="#loading-basic-example">
           <div
             data-te-loading-icon-ref
             class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]"
@@ -68,7 +68,7 @@
         JavaScript init
       </h2>
 
-      <div id="loading-test-1" class="h-[300px] w-full">
+      <div id="loading-js" class="h-[300px] w-full">
         <div id="loadingTE">
           <div
             data-te-loading-icon-ref
@@ -86,12 +86,12 @@
         Colors
       </h2>
 
-      <div id="loading-test-2" class="h-[300px] w-full">
+      <div id="loading-colors" class="h-[300px] w-full">
         <div
           data-te-loading-management-init
-          data-te-parent-selector="#loading-test-2"
-          data-te-class-loading-spinner="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] flex flex-col justify-center items-center text-success dark:text-success-400 z-[1056]"
-          data-te-class-backdrop="w-full h-full fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,255,0.2)]">
+          data-te-parent-selector="#loading-colors"
+          data-te-class-spinner-color="text-success dark:text-success-400"
+          data-te-class-backdrop-color="bg-[rgba(0,0,255,0.2)]">
           <div
             data-te-loading-icon-ref
             class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]"
@@ -112,10 +112,10 @@
         TE Growing spinner
       </h2>
 
-      <div id="loading-test-3" class="h-[300px] w-full">
+      <div id="loading-growing-spinner" class="h-[300px] w-full">
         <div
           data-te-loading-management-init
-          data-te-parent-selector="#loading-test-3">
+          data-te-parent-selector="#loading-growing-spinner">
           <div
             data-te-loading-icon-ref
             class="inline-block h-8 w-8 animate-[spinner-grow_0.75s_linear_infinite] rounded-full bg-current opacity-0 motion-reduce:animate-[spinner-grow_1.5s_linear_infinite]"
@@ -132,26 +132,27 @@
         Custom icon
       </h2>
 
-      <div id="loading-test-4" class="h-[300px] w-full">
+      <div id="loading-custom-icon" class="h-[300px] w-full">
         <div
           data-te-loading-management-init
-          data-te-parent-selector="#loading-test-4">
+          data-te-parent-selector="#loading-custom-icon">
           <div
             data-te-loading-icon-ref
             class="inline-block h-8 w-8 animate-spin border-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]"
             role="status">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-8 w-8">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-            </svg>
+            <span class="[&>svg]:w-8">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+            </span>
           </div>
           <span data-te-loading-text-ref>Loading...</span>
         </div>
@@ -165,7 +166,7 @@
         Delay
       </h2>
 
-      <div id="test">
+      <div id="delay-example">
         <input
           class="mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-neutral-300 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-transparent before:content-[''] after:absolute after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-neutral-100 after:shadow-[0_0px_3px_0_rgb(0_0_0_/_7%),_0_2px_2px_0_rgb(0_0_0_/_4%)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-primary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-primary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-primary checked:focus:bg-primary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
           type="checkbox"
@@ -176,7 +177,7 @@
           for="flexSwitchCheckDefault"
           >Switch Delay</label
         >
-        <div id="test-counter"></div>
+        <div id="counter"></div>
       </div>
 
       <br />
@@ -187,7 +188,7 @@
         Full screen
       </h2>
 
-      <div id="test-full">
+      <div id="full-screen-example">
         <button
           id="btn-full-screen"
           type="button"
@@ -218,13 +219,13 @@
 
       const loadingTE = document.getElementById("loadingTE");
       new te.LoadingManagement(loadingTE, {
-        parentSelector: "#loading-test-1",
+        parentSelector: "#loading-js",
       });
 
       // DELAY EXAMPLE
 
       const loaderDelay = `
-        <div id="loading-test-6">
+        <div id="loading-wrapper">
          <div id="loading-delay">
           <div
             data-te-loading-icon-ref
@@ -240,12 +241,12 @@
       let timeleft = 4;
 
       switches.addEventListener("change", (e) => {
-        const test = document.getElementById("test");
+        const test = document.getElementById("delay-example");
 
         if (e.target.checked) {
           test.insertAdjacentHTML("beforeend", loaderDelay);
           const loadingDelay = document.getElementById("loading-delay");
-          const counter = document.getElementById("test-counter");
+          const counter = document.getElementById("counter");
 
           const downloadTimer = setInterval(function () {
             counter.classList.add(
@@ -277,11 +278,11 @@
             document.body.classList.remove("overflow-hidden");
           }, 8000);
         } else {
-          const loadingDelay = document.getElementById("loading-test-6");
+          const loadingDelay = document.getElementById("loading-wrapper");
 
           loadingDelay.remove();
 
-          document.getElementById("test-counter").innerHTML = "";
+          document.getElementById("counter").innerHTML = "";
         }
       });
 
@@ -300,7 +301,7 @@
       const btnfull = document.getElementById("btn-full-screen");
 
       btnfull.addEventListener("click", () => {
-        const test2 = document.getElementById("test-full");
+        const test2 = document.getElementById("full-screen-example");
         test2.insertAdjacentHTML("beforeend", loaderFull);
 
         const loadingFull = document.getElementById("loading-full");

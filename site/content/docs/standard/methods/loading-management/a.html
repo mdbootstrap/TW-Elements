@@ -69,10 +69,10 @@
       <div class="pt-4">
         {{< twsnippet/wrapper "HTML" >}}
         {{< twsnippet/code active=true lang="html" >}}
-        <div id="loading-test" class="h-[300px] w-full">
+        <div id="loading-example" class="h-[300px] w-full">
           <div
             data-te-loading-management-init
-            data-te-parent-selector="#loading-test">
+            data-te-parent-selector="#loading-example">
             ...
           </div>
         </div>
@@ -118,7 +118,7 @@
     <p>
       Options can be passed via data attributes or JavaScript. For data
       attributes, append the option name to <code>data-te-</code>, as in
-      <code>data-te-clipboard-target=""</code>.
+      <code>data-te-backdrop=""</code>.
     </p>
 
     <div class="flex flex-col">
@@ -197,7 +197,7 @@
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>null</code>
+                    <code>0</code>
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Set delay to show loader.
@@ -319,9 +319,7 @@
       attributes, append the class name to
       <code>data-te-class</code>, as in
       <code
-        >data-te-class-loading-spinner="absolute top-[50%] left-[50%]
-        -translate-x-[50%] -translate-y-[50%] flex flex-col justify-center
-        items-center text-success dark:text-success-400 z-10"</code
+        >data-te-class-spinner-color="text-success dark:text-success-400"</code
       >.
     </p>
 
@@ -352,13 +350,41 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>backdrop</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    w-full h-full fixed top-0 left-0 bottom-0 right-0 z-30
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Set backdrop classes.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>backdropColor</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    bg-[rgba(0,0,0,0.4)]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Set backdrop color classes.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
                     <code>loadingSpinner</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                     absolute top-[50%] left-[50%] -translate-x-[50%]
                     -translate-y-[50%] flex flex-col justify-center items-center
-                    text-primary dark:text-primary-400 z-10
+                    text-primary dark:text-primary-400 z-40
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     Set loading spinner classes.
@@ -368,15 +394,14 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>backdrop</code>
+                    <code>spinnerColor</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    w-full h-full fixed top-0 left-0 bottom-0 right-0
-                    bg-[rgba(0,0,0,0.4)]
+                    text-primary dark:text-primary-400
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    Set backdrop classes.
+                    Set spinner color classes.
                   </td>
                 </tr>
               </tbody>
@@ -426,25 +451,11 @@
                   class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    <code>toggle</code>
-                  </td>
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Manually toggles a Loading Management component.
-                  </td>
-                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                    <code>myLoadingManagement.toggle()</code>
-                  </td>
-                </tr>
-                <tr
-                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
-                  <td
-                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                     <code>dispose</code>
                   </td>
                   <td
                     class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                    Manually deletes an instance of clipboard.
+                    Manually deletes an instance of Loading Management.
                   </td>
                   <td class="px-6 py-4 max-lg:whitespace-nowrap">
                     <code>myLoadingManagement.dispose()</code>

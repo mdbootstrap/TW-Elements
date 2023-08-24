@@ -22,7 +22,7 @@ const DATA_KEY = `te.${NAME}`;
 const ATTR_SELECTOR_LOADING_ICON = "[data-te-loading-icon-ref]";
 const ATTR_SELECTOR_LOADING_TEXT = "[data-te-loading-text-ref]";
 
-const SHOW_EVENT = "show.te.loading";
+const SHOW_EVENT = `show.te.${NAME}`;
 
 const DefaultType = {
   backdrop: "(null|boolean)",
@@ -48,14 +48,17 @@ const Default = {
 
 const DefaultClasses = {
   loadingSpinner:
-    "absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] flex flex-col justify-center items-center text-primary dark:text-primary-400 z-50",
-  backdrop:
-    "w-full h-full fixed top-0 left-0 bottom-0 right-0 bg-[rgba(0,0,0,0.4)] z-40",
+    "absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] flex flex-col justify-center items-center z-40",
+  spinnerColor: "text-primary dark:text-primary-400",
+  backdrop: "w-full h-full fixed top-0 left-0 bottom-0 right-0 z-30",
+  backdropColor: "bg-[rgba(0,0,0,0.4)]",
 };
 
 const DefaultClassesType = {
   loadingSpinner: "string",
+  spinnerColor: "string",
   backdrop: "string",
+  backdropColor: "string",
 };
 
 class Loading {
@@ -97,7 +100,10 @@ class Loading {
     this._removeElementsOnStart();
 
     setTimeout(() => {
-      Manipulator.addClass(this._element, this._classes.loadingSpinner);
+      Manipulator.addClass(
+        this._element,
+        `${this._classes.loadingSpinner} ${this._classes.spinnerColor}`
+      );
 
       this._setBackdrop();
       this._setLoadingIcon(spinnerCloned);
@@ -110,7 +116,10 @@ class Loading {
 
   dispose() {
     Data.removeData(this._element, DATA_KEY);
-    Manipulator.removeClass(this._element, this._classes.loadingSpinner);
+    Manipulator.removeClass(
+      this._element,
+      `${this._classes.loadingSpinner} ${this._classes.spinnerColor}`
+    );
 
     const delay = this._options.delay;
 

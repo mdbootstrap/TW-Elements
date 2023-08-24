@@ -15,7 +15,10 @@ import { element } from "../../util/index";
 export function getBackdropTemplate({ backdropID }, classes) {
   const backdrop = element("div");
 
-  Manipulator.addClass(backdrop, classes.backdrop);
+  Manipulator.addClass(
+    backdrop,
+    `${classes.backdrop} ${classes.backdropColor}`
+  );
   backdrop.id = backdropID;
 
   return backdrop;

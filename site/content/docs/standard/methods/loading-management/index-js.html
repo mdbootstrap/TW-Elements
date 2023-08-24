@@ -7,13 +7,13 @@
 
   const loadingTE = document.getElementById("loadingTE");
   new te.LoadingManagement(loadingTE, {
-    parentSelector: "#loading-test-1",
+    parentSelector: "#loading-js",
   });
 
   // DELAY EXAMPLE
 
   const loaderDelay = `
-        <div id="loading-test-6">
+        <div id="loading-wrapper">
          <div id="loading-delay">
           <div
             data-te-loading-icon-ref
@@ -29,12 +29,12 @@
   let timeleft = 4;
 
   switches.addEventListener("change", (e) => {
-    const test = document.getElementById("test");
+    const test = document.getElementById("delay-example");
 
     if (e.target.checked) {
       test.insertAdjacentHTML("beforeend", loaderDelay);
       const loadingDelay = document.getElementById("loading-delay");
-      const counter = document.getElementById("test-counter");
+      const counter = document.getElementById("counter");
 
       const downloadTimer = setInterval(function () {
         counter.classList.add(
@@ -66,11 +66,11 @@
         document.body.classList.remove("overflow-hidden");
       }, 8000);
     } else {
-      const loadingDelay = document.getElementById("loading-test-6");
+      const loadingDelay = document.getElementById("loading-wrapper");
 
       loadingDelay.remove();
 
-      document.getElementById("test-counter").innerHTML = "";
+      document.getElementById("counter").innerHTML = "";
     }
   });
 
@@ -89,7 +89,7 @@
   const btnfull = document.getElementById("btn-full-screen");
 
   btnfull.addEventListener("click", () => {
-    const test2 = document.getElementById("test-full");
+    const test2 = document.getElementById("full-screen-example");
     test2.insertAdjacentHTML("beforeend", loaderFull);
 
     const loadingFull = document.getElementById("loading-full");
