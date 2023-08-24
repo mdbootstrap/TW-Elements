@@ -55,6 +55,11 @@ const defaultInitSelectors = {
     selector: "[data-te-datepicker-init]",
     isToggler: false,
   },
+  datetimepicker: {
+    name: "Datetimepicker",
+    selector: "[data-te-date-timepicker-init]",
+    isToggler: false,
+  },
   input: {
     name: "Input",
     selector: "[data-te-input-wrapper-init]",

@@ -520,12 +520,12 @@ class Input {
       );
 
       if (event && event.type === "focus") {
-        notchWrapper.setAttribute(DATA_FOCUSED, "");
+        notchWrapper && notchWrapper.setAttribute(DATA_FOCUSED, "");
       }
 
       if (input.value !== "") {
         input.setAttribute(DATA_ACTIVE, "");
-        notchWrapper.setAttribute(DATA_ACTIVE, "");
+        notchWrapper && notchWrapper.setAttribute(DATA_ACTIVE, "");
       }
       this._toggleDefaultDatePlaceholder(input);
     });
