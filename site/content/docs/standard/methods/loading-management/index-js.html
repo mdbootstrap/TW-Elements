@@ -1,0 +1,107 @@
+---
+---
+
+<!-- Custom scripts -->
+<script type="module">
+  // INIT VIA JS EXAMPLE
+
+  const loadingTE = document.getElementById("loadingTE");
+  new te.LoadingManagement(loadingTE, {
+    parentSelector: "#loading-js",
+  });
+
+  // DELAY EXAMPLE
+
+  const loaderDelay = `
+        <div id="loading-wrapper">
+         <div id="loading-delay">
+          <div
+            data-te-loading-icon-ref
+            class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"></div>
+          <span data-te-loading-text-ref>Loading...</span>
+         </div>
+        </div>
+      `;
+
+  const switches = document.getElementById("flexSwitchCheckDefault");
+
+  let timeleft = 4;
+
+  switches.addEventListener("change", (e) => {
+    const test = document.getElementById("delay-example");
+
+    if (e.target.checked) {
+      test.insertAdjacentHTML("beforeend", loaderDelay);
+      const loadingDelay = document.getElementById("loading-delay");
+      const counter = document.getElementById("counter");
+
+      const downloadTimer = setInterval(function () {
+        counter.classList.add(
+          "text-3xl",
+          "font-semibold",
+          "flex",
+          "justify-center",
+          "items-center"
+        );
+        if (timeleft <= 0) {
+          clearInterval(downloadTimer);
+          timeleft = 4;
+        }
+        counter.innerHTML = timeleft;
+
+        timeleft -= 1;
+      }, 1000);
+
+      new te.LoadingManagement(loadingDelay, {
+        delay: 5000,
+        backdropID: "delay-backdrop",
+      });
+
+      setTimeout(() => {
+        const backdrop = document.getElementById("delay-backdrop");
+
+        backdrop.remove();
+        loadingDelay.remove();
+        document.body.classList.remove("overflow-hidden");
+      }, 8000);
+    } else {
+      const loadingDelay = document.getElementById("loading-wrapper");
+
+      loadingDelay.remove();
+
+      document.getElementById("counter").innerHTML = "";
+    }
+  });
+
+  // FULL SCREEN EXAMPLE
+
+  const loaderFull = `
+        <div id="loading-full">
+          <div
+            data-te-loading-icon-ref
+            class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"></div>
+          <span data-te-loading-text-ref>Loading...</span>
+        </div>
+        `;
+
+  const btnfull = document.getElementById("btn-full-screen");
+
+  btnfull.addEventListener("click", () => {
+    const test2 = document.getElementById("full-screen-example");
+    test2.insertAdjacentHTML("beforeend", loaderFull);
+
+    const loadingFull = document.getElementById("loading-full");
+
+    const loading = new te.LoadingManagement(loadingFull, {
+      scroll: false,
+      backdropID: "full-backdrop",
+    });
+
+    setTimeout(() => {
+      loading.dispose();
+      document.body.classList.remove("overflow-hidden");
+    }, 5000);
+  });
+</script>

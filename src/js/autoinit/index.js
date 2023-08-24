@@ -130,6 +130,10 @@ const defaultInitSelectors = {
     name: "Clipboard",
     selector: "[data-te-clipboard-init]",
   },
+  loadingManagement: {
+    name: "LoadingManagement",
+    selector: "[data-te-loading-management-init]",
+  },
   sticky: {
     name: "Sticky",
     selector: "[data-te-sticky-init]",
