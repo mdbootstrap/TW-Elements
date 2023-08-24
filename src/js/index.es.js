@@ -37,11 +37,13 @@ import Datatable from "./data/datatables";
 import Rating from "./components/rating";
 import Popconfirm from "./components/popconfirm";
 import Lightbox from "./components/lightbox";
+import Validation from "./forms/validation/validation";
 import Touch from "./methods/touch";
 import SmoothScroll from "./methods/smooth-scroll";
 import LazyLoad from "./methods/lazy-load";
 import Clipboard from "./methods/clipboard";
 import Datetimepicker from "./forms/dateTimepicker";
+import Sticky from "./methods/sticky";
 import initTE from "./autoinit/index";
 
 export {
@@ -73,10 +75,12 @@ export {
   Rating,
   Popconfirm,
   Lightbox,
+  Validation,
   Touch,
   SmoothScroll,
   LazyLoad,
   Clipboard,
   Datetimepicker,
+  Sticky,
   initTE,
 };

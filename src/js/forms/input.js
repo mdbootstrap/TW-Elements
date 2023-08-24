@@ -51,7 +51,7 @@ const DefaultType = {
   inputFormWhite: "(boolean)",
 };
 
-const DefaultClasses = {
+export const DefaultClasses = {
   notch:
     "group flex absolute left-0 top-0 w-full max-w-full h-full text-left pointer-events-none",
   notchLeading:

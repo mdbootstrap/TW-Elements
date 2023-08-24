@@ -114,6 +114,10 @@ const defaultInitSelectors = {
     name: "Popconfirm",
     selector: "[data-te-toggle='popconfirm']",
   },
+  validation: {
+    name: "Validation",
+    selector: "[data-te-validation-init]",
+  },
   smoothScroll: {
     name: "SmoothScroll",
     selector: "a[data-te-smooth-scroll-init]",
@@ -125,6 +129,10 @@ const defaultInitSelectors = {
   clipboard: {
     name: "Clipboard",
     selector: "[data-te-clipboard-init]",
+  },
+  sticky: {
+    name: "Sticky",
+    selector: "[data-te-sticky-init]",
   },
 
   // advancedInits

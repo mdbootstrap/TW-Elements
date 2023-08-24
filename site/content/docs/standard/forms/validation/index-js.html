@@ -1,0 +1,161 @@
+---
+---
+
+<script type="module">
+  // inputs
+
+  const validation1 = document.getElementById("validation-1");
+  const form1 = document.getElementById("form-1");
+  const input1 = document.getElementById("input-1");
+  let valid = true;
+  validation1.addEventListener("click", (e) => {
+    e.preventDefault();
+    input1.setAttribute(
+      "data-te-validation-state",
+      valid ? "valid" : "invalid"
+    );
+    form1.setAttribute("data-te-validated", true);
+    valid = !valid;
+  });
+
+  // custom validation
+  const fullValidationDisposeBtn = document.getElementById("dispose");
+  const fullValidationForm = document.getElementById("form-0");
+
+  const fullValidation = new te.Validation(fullValidationForm, {
+    customErrorMessages: {
+      contains: "The field must contain the '{contains}' word",
+    },
+    customRules: {
+      contains: (value, message, string) => {
+        return value.includes(string)
+          ? true
+          : message.replace("{contains}", string);
+      },
+    },
+    submitCallback: (e, valid) => {
+      console.log("Do something ...", "Validation passed: ", valid);
+    },
+  });
+
+  fullValidationDisposeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    fullValidation.dispose();
+  });
+
+  fullValidationForm.addEventListener("invalid.te.validation", (e) => {
+    console.log("Something went wrong!");
+  });
+  fullValidationForm.addEventListener("valid.te.validation", (e) => {
+    console.log("All good!");
+  });
+
+  // tooltips
+
+  const tooltipsForm = document.getElementById("tooltips");
+
+  const tooltipsInfo = [
+    {
+      element: document.getElementById("fullNameInfo"),
+      name: "name",
+      message: {
+        isRequired: "This value is required",
+        isLongerThan: "Must be longer than 4 characters",
+      },
+    },
+    {
+      element: document.getElementById("emailInfo"),
+      name: "email",
+      message: {
+        isRequired: "This value is required",
+        isEmail: "Must be a valid email address",
+      },
+    },
+    {
+      element: document.getElementById("issueInfo"),
+      name: "issue",
+      message: {
+        isRequired: "This value is required",
+        isLongerThan: "Must be longer than 10 characters",
+      },
+    },
+  ];
+
+  const generateMessage = (result, message) =>
+    `<p class="${result ? "text-[#14a44d]" : "text-[#dc4c64]"}">${message}</p>`;
+
+  tooltipsInfo.forEach((tooltip) => {
+    const title = Object.entries(tooltip.message)
+      .map(([key, value]) => generateMessage(false, value))
+      .join("");
+
+    tooltip.instance = new te.Tooltip(tooltip.element, {
+      html: true,
+      template: `
+        <div>
+          <div class="tooltip-inner bg-white text-xs p-4 ml-4 rounded border dark:bg-neutral-800 dark:border-neutral-400"></div>
+        </div>
+      `,
+      placement: "right",
+      title,
+    });
+  });
+
+  const tooltipsValidation = new te.Validation(tooltipsForm);
+
+  tooltipsForm.addEventListener("changed.te.validation", (e) => {
+    const element = tooltipsInfo.find(
+      (tooltip) => tooltip.name === e.value.name
+    );
+    element.instance.dispose();
+
+    const title = Object.entries(element.message)
+      .map(([key, value]) => {
+        const result = e.value.validation.find(
+          (res) => key === res.name
+        ).result;
+        return generateMessage(result, value);
+      })
+      .join("");
+
+    const borderColor =
+      e.value.result === "valid" ? "border-[#14a44d]" : "border-[#dc4c64]";
+
+    element.instance = new te.Tooltip(element.element, {
+      html: true,
+      template: `
+        <div>
+          <div class="tooltip-inner bg-white text-xs p-4 ml-4 rounded border ${borderColor} dark:bg-neutral-800"></div>
+        </div>
+      `,
+      placement: "right",
+      title: title,
+    });
+  });
+
+  // submit results
+  const resultContainer = document.getElementById("result-container");
+  const alertInstance = te.Alert.getInstance(resultContainer);
+
+  const resultsForm = document.getElementById("form-results");
+
+  const resultValidation = new te.Validation(resultsForm);
+
+  resultsForm.addEventListener("valid.te.validation", (e) => {
+    const results = [];
+    resultsForm.querySelectorAll("input").forEach((input) => {
+      results.push({ [input.name]: input.value });
+    });
+
+    resultContainer.innerHTML = `
+    <div>
+      <h3 class="mb-3">Validation passed! Here is the result:</h3>
+      <div>
+      ${JSON.stringify(results, null, 2)}
+      </div>
+    </div>
+    `;
+
+    alertInstance.show();
+  });
+</script>
