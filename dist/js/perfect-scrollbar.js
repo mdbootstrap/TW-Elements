@@ -1341,6 +1341,9 @@ function updateCss(element, i) {
 
 module.exports = function (element) {
   var i = instances.get(element);
+  if(!i) {
+    return;
+  }
 
   i.containerWidth = element.clientWidth;
   i.containerHeight = element.clientHeight;
@@ -1449,6 +1452,9 @@ module.exports = function (element, axis, value) {
   }
 
   var i = instances.get(element);
+  if (!i) {
+    return;
+  }
 
   if (axis === 'top' && value >= i.contentHeight - i.containerHeight) {
     // don't allow scroll past container
