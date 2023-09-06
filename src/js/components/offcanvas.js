@@ -17,6 +17,7 @@ import SelectorEngine from "../dom/selector-engine";
 import Manipulator from "../dom/manipulator";
 import Backdrop from "../util/backdrop";
 import FocusTrap from "../util/focusTrap";
+import { enableDismissTrigger } from "../util/component-functions";
 
 /*
 ------------------------------------------------------------------------
@@ -177,6 +178,7 @@ class Offcanvas extends BaseComponent {
     );
 
     this._didInit = true;
+    enableDismissTrigger(Offcanvas);
   }
 
   _getConfig(config) {
