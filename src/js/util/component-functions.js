@@ -11,10 +11,18 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 import EventHandler from "../dom/event-handler";
 import { getElementFromSelector, isDisabled } from "./index";
+let addedEventsList = [];
 
 const enableDismissTrigger = (component, method = "hide") => {
   const clickEvent = `click.dismiss${component.EVENT_KEY}`;
   const name = component.NAME;
+
+  if (addedEventsList.includes(name)) {
+    return;
+  }
+
+  addedEventsList.push(name);
+
   EventHandler.on(
     document,
     clickEvent,
