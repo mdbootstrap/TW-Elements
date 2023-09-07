@@ -95,16 +95,47 @@ menu:
   <h3 class="mb-3 font-bold">About the <code>initTE</code> method</h3>
   <p>
     To use the initTE method, you need to import it from the
-    <code>tw-elements</code>, same as for components. You can add a second
-    parameter of type <code>Boolean</code> that acts as a debugger. By default
-    it's value is set to <code>false</code>, so it will fire only when you want
-    to. How does it work? If it finds a component that should be inited but has
-    not been passed as an argument (for example, it finds a data attribute that
-    would suggest that it should be initialized automatically), it will display
-    a warning in a console. We encourage to use it in the last invocation of
-    <code>initTE</code> method because it shows what inits are lacking at the
-    current moment.
+    <code>tw-elements</code>, same as for components. You can provide a second
+    argument that will be an object with options that you want to pass to the
+    init method. The options object can contain the following properties:
   </p>
+
+  <ul class="mb-6 mt-3 list-disc">
+    <li class="ml-6">
+      <code>allowReinits</code> - by default it's value is set to
+      <code>false</code>. By changing the value to <code>true</code>, the
+      <code>initTE</code> method won't check if components were already
+      initialized. It can be helpful for example when using the
+      <code>Tailwind Elements</code> package with frameworks that use routing
+      (for example Vue SPA)
+    </li>
+    <li class="ml-6">
+      <code>checkOtherImports</code> - by default the value is also set to
+      <code>false</code>. How does it work? If <code>initTE</code> finds a
+      component that should be inited but has not been passed as an argument
+      (for example, it finds a data attribute that would suggest that it should
+      be initialized automatically), it will display a warning in a console. We
+      encourage to use it in the last invocation of <code>initTE</code> method
+      because it shows what inits are lacking at the current moment.
+    </li>
+  </ul>
+
+  <h3 class="mb-3 font-bold">How to use the <code>initTE</code> method?</h3>
+
+  <p class="my-3">
+    Import the method from the <code>tw-elements</code> package inside your
+    project <code>js</code> file and call it with the components you want to
+    initialize.
+  </p>
+
+  {{< twsnippet/wrapper "your-js-file.js" "" "mobile" >}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/code active=true lang="js" >}}
+    import { Datepicker, Input, initTE } from "tw-elements";
+    initTE({ Datepicker, Input }, { allowReinits: true });
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+
 </div>
 
 <hr class="my-10" />
