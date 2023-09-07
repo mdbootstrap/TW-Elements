@@ -220,8 +220,11 @@ const getComponentData = (component) => {
   return defaultInitSelectors[component.NAME] || null;
 };
 
-const initComponent = (component) => {
-  if (!component || register.isInited(component.NAME)) {
+const initComponent = (component, options) => {
+  if (
+    !component ||
+    (!options.allowReinits && register.isInited(component.NAME))
+  ) {
     return;
   }
 
@@ -254,18 +257,29 @@ const initComponent = (component) => {
   });
 };
 
-const init = (components) => {
-  components.forEach((component) => initComponent(component));
+const init = (components, options) => {
+  components.forEach((component) => initComponent(component, options));
 };
 
-const initTE = (components, checkOtherImports = false) => {
+const defaultOptions = {
+  allowReinits: false,
+  checkOtherImports: false,
+};
+
+const initTE = (components, options = {}) => {
+  options = { ...defaultOptions, ...options };
+
   const componentList = Object.keys(defaultInitSelectors).map((element) => {
     const requireAutoinit = Boolean(
       document.querySelector(defaultInitSelectors[element].selector)
     );
     if (requireAutoinit) {
       const component = components[defaultInitSelectors[element].name];
-      if (!component && !register.isInited(element) && checkOtherImports) {
+      if (
+        !component &&
+        !register.isInited(element) &&
+        options.checkOtherImports
+      ) {
         console.warn(
           `Please import ${defaultInitSelectors[element].name} from "tw-elements" package and add it to a object parameter inside "initTE" function`
         );
@@ -274,7 +288,7 @@ const initTE = (components, checkOtherImports = false) => {
     }
   });
 
-  init(componentList);
+  init(componentList, options);
 };
 
 export default initTE;

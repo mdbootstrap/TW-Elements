@@ -12,7 +12,9 @@ class InitRegister {
   }
 
   add(componentName) {
-    this.inits.push(componentName);
+    if (!this.isInited(componentName)) {
+      this.inits.push(componentName);
+    }
   }
 }
 
