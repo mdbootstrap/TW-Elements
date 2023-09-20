@@ -214,6 +214,19 @@ menu:
   {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
+<div
+  class="mb-4 mr-4 overflow-hidden rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:text-gray-600">
+  <strong>Note:</strong> In case you are using tw-elements in a monorepo, 
+  you might experience tw-elements not working correctly.
+  This might be because your package manager might hoist some or all dependencies
+  to the monorepo's root folder. In that case the above mentioned configuration 
+  <code>"./node_modules/tw-elements/dist/js/**/*.js"</code> will have to be adjusted,
+  in order to load the modules from the monorepo root node_modules instead.
+  (For example, tw-elements will not appear in an app's node_modules with Bun 1.0.2)
+  So, a possible adjustment for an app being in <code>apps/site</code> would look like:
+  <code>"../../node_modules/tw-elements/dist/js/**/*.js"</code>.
+</div>
+    
 <p class="mb-2 mt-6">
   4. Include the following JavaScript file before the end of the body element.
   Keep in mind that the path to the file may be different depending on the file
