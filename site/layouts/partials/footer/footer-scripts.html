@@ -110,7 +110,15 @@
           this.dropdown.querySelector("[data-te-first-search-focused]")
         ) {
           e.preventDefault();
-          window.location.href = this.results[0]?.href;
+          const firstResult = this.results[0];
+
+          if (!firstResult) {
+            return;
+          }
+
+          this.isLinkOutside(firstResult.href)
+            ? window.open(firstResult.href, "_blank")
+            : (window.location.href = firstResult.href);
         }
       });
     }
@@ -159,6 +167,11 @@
         ?.removeAttribute("data-te-first-search-focused");
     }
 
+    isLinkOutside(link) {
+      const linkPattern = /^(?:https?:\/\/|www\.)/;
+      return linkPattern.test(link);
+    }
+
     getResultsMarkup() {
       return this.results
         .map((result, i) => {
@@ -171,7 +184,9 @@
       <li>
         <a class="block pt-2 px-2 text-neutral-600 text-[0.8rem] transition motion-reduce:transition-none hover:bg-neutral-100 focus:bg-neutral-100 outline-none dark:text-neutral-200 dark:hover:bg-neutral-600 dark:focus:bg-neutral-600 data-[te-first-search-focused]:bg-neutral-100 dark:data-[te-first-search-focused]:bg-neutral-600" ${
           !i ? "data-te-first-search-focused" : ""
-        } href="${result.href}">
+        } href="${result.href}" ${
+            this.isLinkOutside(result.href) ? "target='_blank'" : ""
+          }>
           <p class="uppercase mb-0">${this.highlightSearch(
             result.name,
             this.searchValue
