@@ -12,7 +12,7 @@ video: ""
 layout: tutorial
 hidden_sidenav: true
 previous_lesson: "/learn/te-foundations/te-ui-kit/logo/"
-next_lesson: "/learn/coming-soon/"
+next_lesson: "/learn/te-foundations/te-ui-kit/improving-icons-visibility/"
 ---
 
 <!-- Section: Text -->
@@ -125,8 +125,11 @@ next_lesson: "/learn/coming-soon/"
     
     // We add class .bg-red-500 to the navbar when the user scrolls down, and remove it when the navbar is at the top of the page
     window.addEventListener('scroll', function () {
+      // If windows.scrollY > 0 (that means the user has scrolled down) we add class .bg-red-500 to the navbar
       if (window.scrollY > 0) {
         animatedNavbar.classList.add('bg-red-500');
+
+      // If windows.scrollY = 0 (that means the navbar is at the top of the page) we remove class .bg-red-500 from the navbar
       } else {
         animatedNavbar.classList.remove('bg-red-500');
       }
@@ -221,7 +224,7 @@ next_lesson: "/learn/coming-soon/"
 
   <p class="mb-3">
     Now to add smooth animation when the navbar changes the color add this line
-    of CSS code brtween the <code>&lt;style&gt;</code> tags inside of
+    of CSS code between the <code>&lt;style&gt;</code> tags inside of
     <code>&lt;head&gt;</code> element:
   </p>
 
@@ -232,7 +235,7 @@ next_lesson: "/learn/coming-soon/"
 
     <style>
       #animated-navbar {
-        transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+        transition: background 0.5s ease-in-out;
       }
     </style>
 
