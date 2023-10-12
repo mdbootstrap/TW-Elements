@@ -763,7 +763,7 @@ mdb login
 3. Initialize a project and choose **Tailwind Elements** from the list:
 
 ```
-mdb init tw-elements-free
+mdb init tailwind-elements-free
 ```
 
 4. Install the dependencies (inside the project directory):
