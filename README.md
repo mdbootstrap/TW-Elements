@@ -45,7 +45,7 @@ We invite you to **track our [live progress 👁️](https://github.com/orgs/mdb
 
 In the meantime you can also:
 
-- Motivate us with some [words of encouragament ❤️](https://github.com/mdbootstrap/TW-Elements/discussions/categories/kind-words-general-feedback)
+- Motivate us with some [words of encouragement ❤️](https://github.com/mdbootstrap/TW-Elements/discussions/categories/kind-words-general-feedback)
 - Share your [ideas & feature requests 💡](https://github.com/mdbootstrap/TW-Elements/discussions/categories/share-ideas-request-features)
 - Aks for help & help others in our [community support 🙏](https://github.com/mdbootstrap/TW-Elements/discussions/categories/support-from-community)
 - **Engage, discuss & have fun in our [open-source community 💬](https://github.com/mdbootstrap/TW-Elements/discussions)**
