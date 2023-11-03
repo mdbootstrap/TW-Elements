@@ -194,6 +194,8 @@ class Validation extends BaseComponent {
     this._submitCallback = null;
     this._element.removeAttribute(ATTR_VALIDATED);
 
+    this._removeInputEvents();
+
     this._removeValidationTraces();
     this._validationResult = [];
 
@@ -516,13 +518,44 @@ class Validation extends BaseComponent {
 
   _applyInputEvents() {
     this._validationElements.forEach((singleElement) => {
-      const { input } = singleElement;
+      const { input, element } = singleElement;
+
       EventHandler.on(input, "input", () =>
         this._handleInputChange(singleElement)
+      );
+
+      EventHandler.on(element, "valueChange.te.select", () =>
+        this._delayedInputChange(singleElement)
+      );
+      EventHandler.on(element, "itemSelect.te.autocomplete", () =>
+        this._delayedInputChange(singleElement)
       );
     });
 
     this._shouldApplyInputEvents = false;
+  }
+
+  _removeInputEvents() {
+    this._validationElements.forEach((singleElement) => {
+      const { input, element } = singleElement;
+
+      EventHandler.off(input, "input", () =>
+        this._handleInputChange(singleElement)
+      );
+
+      EventHandler.off(element, "valueChange.te.select", () =>
+        this._delayedInputChange(singleElement)
+      );
+      EventHandler.off(element, "itemSelect.te.autocomplete", () =>
+        this._delayedInputChange(singleElement)
+      );
+    });
+  }
+
+  _delayedInputChange(element) {
+    setTimeout(() => {
+      this._handleInputChange(element);
+    }, 10);
   }
 
   _handleSubmitButton() {
