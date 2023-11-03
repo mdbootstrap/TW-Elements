@@ -1,0 +1,86 @@
+---
+---
+
+<script src="https://www.google.com/recaptcha/api.js?render={{< recaptcha-public-key >}}"></script>
+<script type="module">
+  const contactForm = document.querySelector("#contactFormLicense");
+  const copyMessageCheckbox = document.querySelector("#copyMessage");
+
+  const successAlert = document.querySelector("#successAlert");
+  const successAlertInstance = te.Alert.getInstance(successAlert);
+
+  const isTst =
+    window.location.origin.includes("tst") ||
+    window.location.origin.includes("localhost");
+
+  const recaptchaKey = isTst
+    ? "6LcpeIgkAAAAALdS4oKmgSPscp8ZYFLjavMstifN"
+    : "6Ld6dIgkAAAAAIpY7wJD8aZnFAWF-S1O5HOtdItU";
+
+  const handleContactFormSubmit = (event) => {
+    event.preventDefault();
+
+    grecaptcha.ready(function () {
+      grecaptcha
+        .execute(recaptchaKey, {
+          action: "contact",
+        })
+        .then(function (token) {
+          const recaptchaResponse =
+            document.getElementById("recaptchaResponse");
+          recaptchaResponse.value = token;
+
+          const xhr = new XMLHttpRequest();
+          xhr.open(
+            "POST",
+            `${window.location.origin}/api/docs/dpl/contact-form/enterprise/`,
+            true
+          );
+          xhr.setRequestHeader("content-type", "application/json");
+          xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              successAlertInstance.show();
+            }
+          };
+
+          const date = new Date().toISOString().slice(0, 19).replace("T", " ");
+
+          const contactFormData = new FormData(contactForm);
+          const formData = {
+            userName: contactFormData.get("userName"),
+            userMail: contactFormData.get("userMail"),
+            teamNumber: contactFormData.get("teamNumber"),
+            companyName: contactFormData.get("companyName"),
+            userMail: contactFormData.get("userMail"),
+            projectBudget: contactFormData.get("projectBudget"),
+            userMessage: contactFormData.get("userMessage"),
+            copyMessage: copyMessageCheckbox.checked,
+            mailToSend: "tailwind@mdbootstrap.com",
+            mailSubject: "MDB License Contact Form",
+            mailSource: "Tailwind License Page",
+          };
+
+          xhr.send(
+            JSON.stringify({
+              mail: formData.mailToSend,
+              name: formData.userName,
+              fromEmail: formData.userMail,
+              subject: formData.mailSubject,
+              source: formData.mailSource,
+              phone: "",
+              projectBudget: formData.projectBudget,
+              companyName: formData.companyName,
+              teamNumber: formData.teamNumber,
+              contactMethod: "",
+              body: formData.userMessage,
+              copy: formData.copyMessage,
+              date: date,
+              recaptchaResponse: recaptchaResponse.value,
+            })
+          );
+        });
+    });
+  };
+
+  contactForm.addEventListener("submit", handleContactFormSubmit);
+</script>
