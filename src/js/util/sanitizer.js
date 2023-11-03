@@ -21,6 +21,7 @@ const uriAttributes = new Set([
 ]);
 
 const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
+const DATA_TE_ATTRIBUTE_PATTERN = /^data-te-[\w-]*$/i;
 
 /**
  * A pattern that recognizes a commonly useful subset of URLs that are safe.
@@ -64,6 +65,48 @@ const allowedAttribute = (attribute, allowedAttributeList) => {
   }
 
   return false;
+};
+
+export const DefaultWhitelist = {
+  // Global attributes allowed on any supplied element below.
+  "*": [
+    "class",
+    "dir",
+    "id",
+    "lang",
+    "role",
+    ARIA_ATTRIBUTE_PATTERN,
+    DATA_TE_ATTRIBUTE_PATTERN,
+  ],
+  a: ["target", "href", "title", "rel"],
+  area: [],
+  b: [],
+  br: [],
+  col: [],
+  code: [],
+  div: [],
+  em: [],
+  hr: [],
+  h1: [],
+  h2: [],
+  h3: [],
+  h4: [],
+  h5: [],
+  h6: [],
+  i: [],
+  img: ["src", "srcset", "alt", "title", "width", "height"],
+  li: [],
+  ol: [],
+  p: [],
+  pre: [],
+  s: [],
+  small: [],
+  span: [],
+  sub: [],
+  sup: [],
+  strong: [],
+  u: [],
+  ul: [],
 };
 
 export const DefaultAllowlist = {

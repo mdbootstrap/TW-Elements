@@ -1,0 +1,139 @@
+---
+---
+
+<script type="module">
+  const data = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"];
+
+  const customData = [
+    { title: "One", subtitle: "Secondary text" },
+    { title: "Two", subtitle: "Secondary text" },
+    { title: "Three", subtitle: "Secondary text" },
+    { title: "Four", subtitle: "Secondary text" },
+    { title: "Five", subtitle: "Secondary text" },
+    { title: "Six", subtitle: "Secondary text" },
+  ];
+
+  const dataFilter = (value) => {
+    return data.filter((item) => {
+      return item.toLowerCase().startsWith(value.toLowerCase());
+    });
+  };
+
+  // Basic example
+  const basicAutocomplete = document.querySelector("#basic");
+
+  new te.Autocomplete(basicAutocomplete, {
+    filter: dataFilter,
+  });
+
+  // Basic example
+
+  // Display value
+
+  const displayValueAutocomplete = document.querySelector("#displayValue");
+
+  const customFilter = (value) => {
+    return customData.filter((item) => {
+      return item.title.toLowerCase().startsWith(value.toLowerCase());
+    });
+  };
+
+  new te.Autocomplete(displayValueAutocomplete, {
+    filter: customFilter,
+    displayValue: (value) => value.title,
+  });
+
+  // Display value
+
+  // Asynchronous search
+
+  const asyncAutocomplete = document.querySelector("#async");
+  const asyncFilter = async (query) => {
+    const url = `https://swapi.py4e.com/api/people/?search=${encodeURI(query)}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.results;
+  };
+
+  new te.Autocomplete(asyncAutocomplete, {
+    filter: asyncFilter,
+    displayValue: (value) => value.name,
+  });
+
+  // Asynchronous search
+
+  // Threshold
+
+  const thresholdAutocomplete = document.querySelector("#threshold");
+
+  new te.Autocomplete(thresholdAutocomplete, {
+    filter: dataFilter,
+    threshold: 2,
+  });
+
+  // Threshold
+
+  // Custom item template
+
+  const customItem = document.querySelector("#customItem");
+
+  new te.Autocomplete(customItem, {
+    filter: customFilter,
+    displayValue: (value) => value.title,
+    itemContent: (result) => {
+      return `
+      <div class="flex flex-col">
+        <div class="font-medium">${result.title}</div>
+        <div class="text-[0.9rem]">${result.subtitle}</div>
+      </div>
+    `;
+    },
+  });
+
+  // Custom item template
+
+  // Custom content
+
+  const customContent = document.querySelector("#customContent");
+
+  new te.Autocomplete(customContent, {
+    filter: dataFilter,
+    customContent: `
+    <div data-te-autocomplete-custom-content-ref class="px-4 py-1.5"></div>
+  `,
+  });
+
+  customContent.addEventListener("update.te.autocomplete", (event) => {
+    const resultsLength = event.results.length;
+
+    setTimeout(() => {
+      const customContentContainer = document.querySelector(
+        "[data-te-autocomplete-custom-content-ref]"
+      );
+      customContentContainer.innerHTML = `Search results: ${resultsLength}`;
+    }, 0);
+  });
+
+  // Custom content
+
+  // Validation
+
+  const validationAutocomplete = document.querySelector("#validation");
+
+  new te.Autocomplete(validationAutocomplete, {
+    filter: dataFilter,
+  });
+
+  // Validation
+
+  // Auto select
+
+  const autoSelectAutocomplete = document.querySelector("#auto-select");
+
+  new te.Autocomplete(autoSelectAutocomplete, {
+    filter: dataFilter,
+    autoSelect: true,
+  });
+
+  // Auto select
+</script>
