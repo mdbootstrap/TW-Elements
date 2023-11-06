@@ -111,6 +111,20 @@ module.exports = plugin(
         },
         boxShadow: {
           "te-primary": "0 0 0 1px rgb(59, 113, 202)",
+          1: "0 0 2px 0 rgba(0,0,0,.07),0 1px 1px 0 rgba(0,0,0,.04)",
+          "1-strong": "0 0 2px 0 rgba(0,0,0,.16),0 1px 1px 0 rgba(0,0,0,.1)",
+          2: "0 0 3px 0 rgba(0,0,0,.07),0 2px 2px 0 rgba(0,0,0,.04)",
+          "2-strong": "0 0 3px 0 rgba(0,0,0,.16),0 2px 2px 0 rgba(0,0,0,.1)",
+          3: "0 2px 6px -1px rgba(0,0,0,.07),0 6px 18px -1px rgba(0,0,0,.04)",
+          "3-strong":
+            "0 2px 6px -1px rgba(0,0,0,.16),0 6px 18px -1px rgba(0,0,0,.1)",
+          4: "0 2px 15px -3px rgba(0,0,0,.07),0 10px 20px -2px rgba(0,0,0,.04)",
+          "4-strong":
+            "0 2px 15px -3px rgba(0,0,0,.16),0 10px 20px -2px rgba(0,0,0,.1)",
+          5: "0 2px 25px -5px rgba(0,0,0,.07),0 25px 21px -5px rgba(0,0,0,.04)",
+          "5-strong":
+            " 0 2px 25px -5px rgba(0,0,0,.16),0 25px 21px -5px rgba(0,0,0,.1)",
+          "twe-inner": "inset 0 2px 4px 0 #0000000d",
         },
         keyframes: {
           "fade-in": {
