@@ -1,0 +1,272 @@
+---
+title: "Tailwind CSS animated navbar"
+url: "/learn/te-foundations/te-ui-kit/animated-navbar/"
+accordion_section: "headingTailwindElements"
+date: 2023-08-20T16:00:58+02:00
+draft: false
+
+seo_title: "Tailwind CSS animated navbar"
+description: "Learn how to create a navbar animated on scroll with Tailwind CSS"
+image: "https://tw-elements.com/learn/te-foundations/basics/introduction/assets/tailwind-elements.png"
+video: ""
+layout: tutorial
+hidden_sidenav: true
+previous_lesson: "/learn/te-foundations/te-ui-kit/logo/"
+next_lesson: "/learn/te-foundations/te-ui-kit/improving-icons-visibility/"
+---
+
+<!-- Section: Text -->
+<section class="">
+  <h1 class="mb-2 mt-0 text-3xl font-semibold leading-tight">
+    Animated navbar
+  </h1>
+
+  <hr
+    class="my-7 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <p class="mb-3">
+    Our navbar already looks good, but we can still improve it.
+  </p>
+
+  <p class="mb-3">
+    Currently, the color of our navbar is fixed. However, we, using a bit of
+    custom CSS and JS, will create an animated navbar, which will be transparent
+    at the start, and when the user starts scrolling, the navbar will change
+    color.
+  </p>
+
+  <p class="mb-3">Here's what we want to achieve:</p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/navbar-1.gif"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">Step 1 - prepare the navbar</h2>
+
+  <p class="mb-3">We need to add some small modifications to our navbar:</p>
+
+  <ul class="list-disc pl-4">
+    <li class="mb-2">
+      Add <code>id="animated-navbar</code> so we can use later in our JavaScript
+      code
+    </li>
+    <li class="mb-2">
+      Remove <code>.bg-[#FBFBFB]</code> class so the navbar can be transparent
+    </li>
+    <li class="mb-2">
+      Remove shadow classes <code>.shadow-md</code> and
+      <code>.shadow-black/5</code>
+    </li>
+  </ul>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Navbar -->
+    <nav
+      id="animated-navbar"
+      class="flex-no-wrap fixed top-0 z-10 flex w-full items-center justify-between py-2 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
+      [...]
+    </nav>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    We need also to add <code>id="navbar-icons"</code> to the div containing the
+    icons on the right side of the navbar:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Right elements -->
+    <div id="navbar-icons" class="relative flex items-center">[...]</div>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 2 - add small piece of JavaScript code
+  </h2>
+
+  <p class="mb-3">
+    We need to add a small piece of JavaScript code that will grab our navbar
+    and add a new class to it when the user starts scrolling the page.
+  </p>
+
+  <p class="mb-3">
+    Open the <code>src/js/index.js</code> file and below component
+    initialization, add the following code:
+  </p>
+
+  <!-- TE code javascript -->
+  <div class="mb-8">
+    <!-- prettier-ignore -->
+    {{< twsnippet/wrapper "src/js/index.js" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
+  
+    // Initialization for ES Users
+    import { Carousel, initTE } from 'tw-elements';
+    
+    initTE({ Carousel });
+    
+    // Animated navbar
+    
+    // We store the navbar element in a variable using the getElementById method and the id of the navbar
+    const animatedNavbar = document.getElementById('animated-navbar');
+    
+    // We add class .bg-red-500 to the navbar when the user scrolls down, and remove it when the navbar is at the top of the page
+    window.addEventListener('scroll', function () {
+      // If windows.scrollY > 0 (that means the user has scrolled down) we add class .bg-red-500 to the navbar
+      if (window.scrollY > 0) {
+        animatedNavbar.classList.add('bg-red-500');
+
+      // If windows.scrollY = 0 (that means the navbar is at the top of the page) we remove class .bg-red-500 from the navbar
+      } else {
+        animatedNavbar.classList.remove('bg-red-500');
+      }
+    });
+    
+    
+  
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-5">What we do here:</p>
+
+  <ol class="list-decimal pl-4">
+    <li class="mb-2">
+      We store the navbar element in a variable using the
+      <code>getElementById</code> method and the <code>id</code> of the navbar
+      (<code>animated-navbar</code>)
+    </li>
+    <li class="mb-2">
+      We add class <code>.bg-red-500</code> to the navbar when the user scrolls
+      down, and remove it when the navbar is at the top of the page
+    </li>
+  </ol>
+
+  <p class="mb-6">
+    For testing purpose we added <code>.bg-red-500</code> class so it could be
+    clearly visible when the navbar changes color. Save the file and check if it
+    works.
+  </p>
+
+  <p class="mb-3">
+    Now when you start scrolling the page the navbar will turn red. However,
+    when you return to the starting point, it will become transparent again.
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/navbar-2.gif"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <p class="mb-3">
+    If you open the developer console, you'll see that when you start scrolling,
+    the <code>.bg-red-500</code> class is added to the navbar When the scroll
+    returns to the starting point, both class and color are removed.
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/navbar-3.gif"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 3 - add proper color and smooth animation
+  </h2>
+
+  <p class="mb-3">
+    We have used <code>.bg-red-500</code> class only for testing purpose. Now
+    let's change it to <code>.bg-white</code>, because this will be our target
+    color.
+  </p>
+
+  <p class="mb-3">
+    Replace <code>.bg-red-500</code> with <code>.bg-white</code> in
+    <code>src/js/index.js</code>:
+  </p>
+
+  <!-- TE code javascript -->
+  <div class="mb-8">
+    <!-- prettier-ignore -->
+    {{< twsnippet/wrapper "src/js/index.js" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
+  
+    // Animated navbar
+
+    // We store the navbar element in a variable using the getElementById method and the id of the navbar
+    const animatedNavbar = document.getElementById('animated-navbar');
+    
+    // We add class .bg-red-500 to the navbar when the user scrolls down, and remove it when the navbar is at the top of the page
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 0) {
+        animatedNavbar.classList.add('bg-white');
+      } else {
+        animatedNavbar.classList.remove('bg-white');
+      }
+    });
+    
+  
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    Now to add smooth animation when the navbar changes the color add this line
+    of CSS code between the <code>&lt;style&gt;</code> tags inside of
+    <code>&lt;head&gt;</code> element:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <style>
+      #animated-navbar {
+        transition: background 0.5s ease-in-out;
+      }
+    </style>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    Now, when you start scrolling the page, you will notice that the navbar
+    color does not change abruptly, but smoothly.
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/navbar-4.gif"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <!-- TE demo & source code -->
+  <hr
+    class="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <div class="text-center">
+    <a
+      href="https://tw-elements.com/snippets/tailwind/ascensus/5674524"
+      target="_blank"
+      role="button"
+      data-te-ripple-init
+      data-te-ripple-color="primary"
+      class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+      Demo and source code for this lesson
+    </a>
+  </div>
+</section>
+<!-- Section: Text -->

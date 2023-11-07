@@ -1,0 +1,172 @@
+---
+title: "Tailwind CSS -responsive images tutorial and examples"
+url: "/learn/te-foundations/te-ui-kit/responsive-images/"
+accordion_section: "headingTailwindElements"
+date: 2023-08-20T16:00:58+02:00
+draft: false
+
+seo_title: "Tailwind CSS -responsive images tutorial and examples"
+description: "Learn how to make images responsive in Tailwind CSS. Easily adjust your graphics to mobile, desktop and
+tablets."
+image: "https://tw-elements.com/learn/te-foundations/basics/introduction/assets/tailwind-elements.png"
+video: ""
+layout: tutorial
+hidden_sidenav: true
+previous_lesson: "/learn/te-foundations/te-ui-kit/cascading-cards/"
+next_lesson: "/learn/coming-soon/"
+---
+
+<!-- Section: Text -->
+<section class="">
+  <h1 class="mb-2 mt-0 text-3xl font-semibold leading-tight">
+    Responsive images
+  </h1>
+
+  <hr
+    class="my-7 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <p class="mb-3">
+    Adding responsiveness to images in Tailwind CSS is very easy, but there is a
+    trick here that we need to discuss.
+  </p>
+
+  <p class="mb-3">
+    By default, the image will not exceed the width of its parent - thanks to
+    this, graphics in cards do not extend beyond the card, even though they are
+    larger than it.
+  </p>
+
+  <!-- TE demo box -->
+  <div class="mb-8 flex justify-center rounded-lg border bg-gray-100 p-8">
+    <!-- Card -->
+    <div
+      class="inline-block w-[400px] rounded-xl bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      <div
+        class="relative mx-4 -mt-4 overflow-hidden bg-cover bg-no-repeat shadow-lg"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        <img
+          class="rounded-xl"
+          src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+          alt="" />
+
+        <a href="#!">
+          <div
+            class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+        </a>
+      </div>
+      <div class="p-6">
+        <h5
+          class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          AI engine
+        </h5>
+        <p class="mb-4 text-gray-500 dark:text-neutral-400">
+          <small
+            >Finished <u>13.09.2023</u> for
+            <a href="" class="text-dark">Techify</a></small
+          >
+        </p>
+        <p class="mb-5 text-base text-neutral-500 dark:text-neutral-200">
+          Ut pretium ultricies dignissim. Sed sit amet mi eget urna placerat
+          vulputate. Ut vulputate est non quam dignissim elementum. Donec a
+          ullamcorper diam.
+        </p>
+        <button
+          type="button"
+          data-te-ripple-init
+          data-te-ripple-color="primary"
+          class="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+          Read more
+        </button>
+      </div>
+    </div>
+    <!-- Card -->
+  </div>
+
+  <p class="mb-3">
+    However, a problem will arise when the image is smaller than its parent.
+  </p>
+
+  <p class="mb-3">
+    For example, on certain screen widths (about the size of a tablet in
+    vertical mode), our cards are arranged one below the other and occupy 100%
+    of the width. You can then see that the image is too small to cover the
+    entire space:
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/image-1.jpg"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">How to fix it?</h2>
+
+  <p class="mb-3">
+    Fortunately, this is easy to fix. Simply add <code>.w-full</code> class to
+    the image, which will force the image to always occupy 100% of the available
+    width (even if the image is smaller than the parent size).
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <img
+      class="w-full rounded-xl"
+      src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+      alt="" />
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    Thanks to this, the image will never exceed the size of the parent (because
+    it will always be 100% of its width, not more), but it will also not be able
+    to be smaller, because the <code>w-100</code> class will force it to stretch
+    to its full width.
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/image-2.jpg"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <p class="mb-3">
+    However, there is a <strong>drawback of this solution</strong> - if the
+    image is much smaller than the size of the parent, then forcing it to
+    stretch can spoil the quality.
+  </p>
+
+  <p class="mb-3">
+    But in the case of small differences in sizes, such as in the images in our
+    cascading cards, this will not be visible so it's safe to use.
+  </p>
+
+  <p class="mb-3">
+    Nevertheless, keep this in mind when designing. Using the
+    <code>w-full</code> class is safer because it prevents the bug with too
+    small images. However, if you don't take care of the quality of the images,
+    your users may see ugly pixelation. Choose wisely!
+  </p>
+
+  <!-- TE demo & source code -->
+  <hr
+    class="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <div class="text-center">
+    <a
+      href="https://tw-elements.com/snippets/tailwind/ascensus/5678099"
+      target="_blank"
+      role="button"
+      data-te-ripple-init
+      data-te-ripple-color="primary"
+      class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+      Demo and source code for this lesson
+    </a>
+  </div>
+</section>
+<!-- Section: Text -->

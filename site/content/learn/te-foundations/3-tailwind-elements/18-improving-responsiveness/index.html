@@ -1,0 +1,294 @@
+---
+title: "Improving responsiveness - Tailwind CSS tutorial"
+url: "/learn/te-foundations/te-ui-kit/improving-responsiveness/"
+accordion_section: "headingTailwindElements"
+date: 2023-08-20T16:00:58+02:00
+draft: false
+
+seo_title: "Improving responsiveness - Tailwind CSS tutorial"
+description: "Learn how to improve responsiveness of the Navbar with Tailwind CSS"
+image: "https://tw-elements.com/learn/te-foundations/basics/introduction/assets/tailwind-elements.png"
+video: ""
+layout: tutorial
+hidden_sidenav: true
+previous_lesson: "/learn/te-foundations/te-ui-kit/improving-icons-visibility/"
+next_lesson: "/learn/te-foundations/te-ui-kit/cascading-cards/"
+---
+
+<!-- Section: Text -->
+<section class="">
+  <h1 class="mb-2 mt-0 text-3xl font-semibold leading-tight">
+    Improving responsiveness
+  </h1>
+
+  <hr
+    class="my-7 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <p class="mb-3">
+    Our navbar and its animation look really good on large screens. However,
+    they require improvements in mobile view.
+  </p>
+
+  <!--  TE image -->
+  <img src="./assets/response-1.gif" class="mb-8 rounded-lg border" alt="" />
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 1 - initialize <code>Collapse</code>
+  </h2>
+
+  <p class="mb-3">
+    First we need to add <code>Collapse</code> to the JavaScript initialization
+    so that in the mobile view our navbar can be expanded.
+  </p>
+
+  <p class="mb-3">
+    It's simple - just add <code>Collapse</code> to the initialization in the
+    <code>src/js.index.js</code> file:
+  </p>
+
+  <!-- TE code javascript -->
+  <div class="mb-8">
+    <!-- prettier-ignore -->
+    {{< twsnippet/wrapper "src/js.index.js" "" "mobile">}}{{< twsnippet/code active=true lang="js">}}
+
+        // Initialization for ES Users
+        import { Carousel, Collapse, initTE } from 'tw-elements';
+
+        initTE({ Carousel, Collapse });
+
+        {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    Now when you reduce the screen width and click on the hamburger icon, you
+    will be able to expand the navbar in mobile form.
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/response-2.gif"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 2 - create new <code>.mobile-only</code> class
+  </h2>
+
+  <p class="mb-3">
+    To make our navbar work perfectly on both large and small screens, we will
+    need to create a custom Tailwind class.
+  </p>
+
+  <p class="mb-3">
+    By default, breakpoints in Tailwind are set from the minimum width - e.g.
+    breakpoint <code>md</code> means <code>min-width: 768px</code> . This would
+    be hard to use in our situation, so we need a class that will work for
+    screens <strong>smaller</strong> than about <code>992px</code>.
+  </p>
+
+  <p class="mb-3">
+    So open the <code>tailwind.config.cjs</code> file (you will find it in the
+    root folder of your project) and update it as below, adding the
+    <code>.mobile-only</code> class to the configuration:
+  </p>
+
+  <!-- TE code javascript -->
+  <div class="mb-8">
+    <!-- prettier-ignore -->
+    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile">}}{{< twsnippet/code active=true lang="js">}}
+
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: ['./index.html', './src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
+      plugins: [require('tw-elements/dist/plugin.cjs')],
+      darkMode: 'class',
+      theme: {
+        extend: {
+          screens: {
+            'mobile-only': { 'max': '991.98px' }, 
+          },
+        },
+      },
+    };
+    
+
+        {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 3 - add <code>.mobile-only</code> to the navbar
+  </h2>
+
+  <p class="mb-3">
+    Now let's add white background to the navbar by default but only on mobile
+    (so when our navbar is collapsed).
+  </p>
+
+  <p class="mb-3">
+    To do this, we need to add the <code>.mobile-only:bg-white</code> class to
+    the <code>navbar</code> element:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Navbar -->
+    <nav
+      id="animated-navbar"
+      class="mobile-only:bg-white flex-no-wrap fixed top-0 z-10 flex w-full items-center justify-between py-2 dark:bg-neutral-600 dark:shadow-black/10 lg:flex-wrap lg:justify-start lg:py-4">
+      [...]
+    </nav>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    Now when you reduce the screen width below <code>992px</code> you will see
+    that it becomes white.
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/response-3.gif"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <p class="mb-3">
+    But we have a new problem - icons disappear. This is because they are white
+    by default, so they are completely invisible on a white background.
+  </p>
+
+  <p class="mb-3">Let's fix this in the next step.</p>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">Step 4 - update icons</h2>
+
+  <p class="mb-3">
+    We also need to change the color of the icons only in the mobile view. So
+    let's add a class <code>.mobile-only:text-neutral-500</code> to each
+    <code>&lt;a&gt;</code> element inside
+    <code>&lt;div id=&quot;navbar-icons&quot;&gt;</code>:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Right elements -->
+    <div id="navbar-icons" class="relative flex items-center">
+      <!-- YouTube Icon -->
+      <a
+        class="mobile-only:text-neutral-500 mr-4 text-white transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"
+        href="#">
+        [...]
+      </a>
+
+      [...]
+    </div>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    Now when you reduce the screen width you will see that the icons are visible
+    again.
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/response-4.gif"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <p class="mb-3">
+    Let's take this opportunity and add additional padding in the mobile view to
+    the div containing the icons. This will make them look better:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Right elements -->
+    <div id="navbar-icons" class=" mobile-only:py-2 relative flex items-center">
+      [...]
+    </div>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 5 - update Animated Navbar script
+  </h2>
+
+  <p class="mb-3">
+    We need to make sure that our script adding and removing classes in the
+    navbar will only work on wide screens. We don't want to risk unexpected bugs
+    in the mobile view, so let's add a condition that the script should be
+    executed on screens larger than <code>992px</code>:
+  </p>
+
+  <!-- TE code javascript -->
+  <div class="mb-8">
+    <!-- prettier-ignore -->
+    {{< twsnippet/wrapper "src/js/index.js" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
+
+  // Initialization for ES Users
+  import { Carousel, Collapse, initTE } from 'tw-elements';
+  
+  initTE({ Carousel, Collapse });
+  
+  // Animated navbar
+  const animatedNavbar = document.getElementById('animated-navbar');
+  const navbarIcons = document.getElementById('navbar-icons');
+  const navIconLinks = navbarIcons.querySelectorAll('a');
+  
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 0 && window.innerWidth >= 992) {
+      animatedNavbar.classList.add('bg-white');
+      animatedNavbar.classList.remove('lg:py-4');
+      animatedNavbar.classList.add('lg:py-5');
+      navIconLinks.forEach((link) => {
+        link.classList.remove('text-white');
+        link.classList.add('text-neutral-500');
+      });
+    } else if (window.innerWidth >= 992) {
+      animatedNavbar.classList.remove('bg-white');
+      animatedNavbar.classList.remove('lg:py-5');
+      animatedNavbar.classList.add('lg:py-4');
+      navIconLinks.forEach((link) => {
+        link.classList.add('text-white');
+        link.classList.remove('text-neutral-500');
+      });
+    }
+  });
+  
+
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE demo & source code -->
+  <hr
+    class="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <div class="text-center">
+    <a
+      href="https://tw-elements.com/snippets/tailwind/ascensus/5675341"
+      target="_blank"
+      role="button"
+      data-te-ripple-init
+      data-te-ripple-color="primary"
+      class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+      Demo and source code for this lesson
+    </a>
+  </div>
+</section>
+<!-- Section: Text -->

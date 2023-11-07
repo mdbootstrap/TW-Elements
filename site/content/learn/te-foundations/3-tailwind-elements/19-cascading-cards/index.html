@@ -1,0 +1,891 @@
+---
+title: "Tailwind CSS - Cascading cards"
+url: "/learn/te-foundations/te-ui-kit/cascading-cards/"
+accordion_section: "headingTailwindElements"
+date: 2023-08-20T16:00:58+02:00
+draft: false
+
+seo_title: "Tailwind CSS - Cascading cards"
+description: "Learn how to create beautiful cascading cards with realistic overlapping layers in the Tailwind CSS"
+image: "https://tw-elements.com/learn/te-foundations/basics/introduction/assets/tailwind-elements.png"
+video: ""
+layout: tutorial
+hidden_sidenav: true
+previous_lesson: "/learn/te-foundations/te-ui-kit/improving-responsiveness/"
+next_lesson: "/learn/te-foundations/te-ui-kit/responsive-images/"
+---
+
+<!-- Section: Text -->
+<section class="">
+  <h1 class="mb-2 mt-0 text-3xl font-semibold leading-tight">
+    Cascading cards
+  </h1>
+
+  <hr
+    class="my-7 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <p class="mb-3">
+    Our Split screen intro section and navigation are ready and we can move on
+    to the next step. This time we will create the
+    <strong>"My projects"</strong> section and add special,
+    <strong>cascading cards</strong> to it.
+  </p>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 1 - add an empty "My projects" section
+  </h2>
+
+  <p class="mb-3">
+    Inside the <code>&lt;main&gt;</code> section add a
+    <code>.container</code> class with auto margins and padding. Then inside the
+    <code>.container</code> add an empty "My projects" section with a heading.
+    Also remove the hard-set <code>.h-[500px]</code> height in
+    <code>&lt;main&gt;</code>, as we only used it for testing:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!--Main layout-->
+    <main>
+      <div class="container mx-auto lg:px-32">
+        <!-- Section: My projects -->
+        <section class="mb-28 text-center">
+          <h2 class="mb-12 text-center text-3xl font-bold">My projects</h2>
+        </section>
+        <!-- Section: My projects -->
+      </div>
+    </main>
+    <!--Main layout-->
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    By the way, you will notice that the heading of the
+    <strong>"My projects"</strong> section is too close to our intro above.
+    Let's add a large bottom margin to the <code>&lt;header&gt;</code> section
+    to make some space between them.
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <header class="mb-28">[...]</header>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 2 - add grid with 3 columns
+  </h2>
+
+  <p class="mb-3">
+    Add a grid with 3 columns (for large screens) inside. Nothing new to
+    explain, we've done this
+    <a
+      href="learn/te-foundations/tailwind-css/grid-system/"
+      target="_blank"
+      class="font-bold text-blue-500"
+      >many times before</a
+    >:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Section: My projects -->
+    <section class="mb-28 text-center">
+      <h2 class="mb-12 text-center text-3xl font-bold">My projects</h2>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 xl:gap-12">
+        <!-- First column -->
+        <div></div>
+        <!-- First column -->
+
+        <!-- Second column -->
+        <div></div>
+        <!-- Second column -->
+
+        <!-- Third column -->
+        <div></div>
+        <!-- Third column -->
+      </div>
+      <!-- Grid -->
+    </section>
+    <!-- Section: My projects -->
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 3 - add a card to each column
+  </h2>
+
+  <p class="mb-3">
+    From the
+    <a href="/docs/standard/components/cards/" class="text-blue-500"
+      >cards documentation page</a
+    >, copy the
+    <a
+      href="/docs/standard/components/cards/#image-with-ripple"
+      class="text-blue-500"
+      >Image with ripple</a
+    >
+    sample code and insert it into each column.
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 xl:gap-12">
+      <!-- First column -->
+      <div>
+        <!-- Card -->
+        <div
+          class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <div
+            class="relative overflow-hidden bg-cover bg-no-repeat"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            <img
+              class="rounded-t-lg"
+              src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+              alt="" />
+            <a href="#!">
+              <div
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+            </a>
+          </div>
+          <div class="p-6">
+            <h5
+              class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              Card title
+            </h5>
+            <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <button
+              type="button"
+              class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+              data-te-ripple-init
+              data-te-ripple-color="light">
+              Button
+            </button>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- First column -->
+
+      <!-- Second column -->
+      <div>
+        <!-- Card -->
+        <div
+          class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <div
+            class="relative overflow-hidden bg-cover bg-no-repeat"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            <img
+              class="rounded-t-lg"
+              src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+              alt="" />
+            <a href="#!">
+              <div
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+            </a>
+          </div>
+          <div class="p-6">
+            <h5
+              class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              Card title
+            </h5>
+            <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <button
+              type="button"
+              class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+              data-te-ripple-init
+              data-te-ripple-color="light">
+              Button
+            </button>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Second column -->
+
+      <!-- Third column -->
+      <div>
+        <!-- Card -->
+        <div
+          class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <div
+            class="relative overflow-hidden bg-cover bg-no-repeat"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            <img
+              class="rounded-t-lg"
+              src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+              alt="" />
+            <a href="#!">
+              <div
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+            </a>
+          </div>
+          <div class="p-6">
+            <h5
+              class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              Card title
+            </h5>
+            <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <button
+              type="button"
+              class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+              data-te-ripple-init
+              data-te-ripple-color="light">
+              Button
+            </button>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Third column -->
+    </div>
+    <!-- Grid -->
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    Don't forget to add <code>Ripple</code> to your JavaScript initialization in
+    your <code>src/js/index.js</code> file:
+  </p>
+
+  <!-- TE code javascript -->
+  <div class="mb-8">
+    <!-- prettier-ignore -->
+    {{< twsnippet/wrapper "src/js/index.js" "" "mobile">}}{{< twsnippet/code active=true lang="js">}}
+
+        // Initialization for ES Users
+        import { Carousel, Collapse, Ripple, initTE } from 'tw-elements';
+
+        initTE({ Carousel, Collapse, Ripple });
+
+        {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 4 - customize the content of the cards
+  </h2>
+
+  <p class="mb-3">
+    Add texts and graphics to cards according to your preferences. I added the
+    following:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 xl:gap-12">
+      <!-- First column -->
+      <div>
+        <!-- Card -->
+        <div
+          class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <div
+            class="relative overflow-hidden bg-cover bg-no-repeat"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            <img
+              class="w-full rounded-t-lg"
+              src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+              alt="" />
+            <a href="#!">
+              <div
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+            </a>
+          </div>
+          <div class="p-6">
+            <h5
+              class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              AI engine
+            </h5>
+            <p class="mb-4 text-gray-500 dark:text-neutral-400">
+              <small
+                >Finished <u>13.09.2023</u> for
+                <a href="" class="text-dark">Techify</a></small
+              >
+            </p>
+            <p class="mb-5 text-base text-neutral-500 dark:text-neutral-200">
+              Ut pretium ultricies dignissim. Sed sit amet mi eget urna placerat
+              vulputate. Ut vulputate est non quam dignissim elementum. Donec a
+              ullamcorper diam.
+            </p>
+            <button
+              type="button"
+              data-te-ripple-init
+              data-te-ripple-color="primary"
+              class="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              Read more
+            </button>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- First column -->
+
+      <!-- Second column -->
+      <div>
+        <!-- Card -->
+        <div
+          class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <div
+            class="relative overflow-hidden bg-cover bg-no-repeat"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            <img
+              class="w-full rounded-t-lg"
+              src="https://mdbootstrap.com/img/new/textures/small/38.jpg"
+              alt="" />
+            <a href="#!">
+              <div
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+            </a>
+          </div>
+          <div class="p-6">
+            <h5
+              class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              Balanced design
+            </h5>
+            <p class="mb-4 text-gray-500 dark:text-neutral-400">
+              <small
+                >Finished <u>12.07.2023</u> for
+                <a href="" class="text-dark">Rubicon</a></small
+              >
+            </p>
+            <p class="mb-5 text-base text-neutral-500 dark:text-neutral-200">
+              Suspendisse in volutpat massa. Nulla facilisi. Sed aliquet diam
+              orci, nec ornare metus semper sed. Integer volutpat ornare erat
+              sit amet rutrum. Ut vulputate est non quam. Suspendisse in
+              volutpat massa. Nulla facilisi.
+            </p>
+
+            <button
+              type="button"
+              data-te-ripple-init
+              data-te-ripple-color="primary"
+              class="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              Read more
+            </button>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Second column -->
+
+      <!-- Third column -->
+      <div>
+        <!-- Card -->
+        <div
+          class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <div
+            class="relative overflow-hidden bg-cover bg-no-repeat"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            <img
+              class="w-full rounded-t-lg"
+              src="https://mdbootstrap.com/img/new/textures/small/55.jpg"
+              alt="" />
+            <a href="#!">
+              <div
+                class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+            </a>
+          </div>
+          <div class="p-6">
+            <h5
+              class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              Metaverse 2.0
+            </h5>
+            <p class="mb-4 text-gray-500 dark:text-neutral-400">
+              <small
+                >Finished <u>17.05.2023</u> for
+                <a href="" class="text-dark">Venom Tech</a></small
+              >
+            </p>
+            <p class="mb-5 text-base text-neutral-500 dark:text-neutral-200">
+              Curabitur tristique, mi a mollis sagittis, metus felis mattis
+              arcu, non vehicula nisl dui quis diam. Mauris ut risus eget massa
+              volutpat feugiat. Donec.
+            </p>
+
+            <button
+              type="button"
+              data-te-ripple-init
+              data-te-ripple-color="primary"
+              class="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              Read more
+            </button>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Third column -->
+    </div>
+    <!-- Grid -->
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!--  TE image -->
+  <img
+    src="./assets/cards-1.jpg"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 5 - add a margin to the image
+  </h2>
+
+  <p class="mb-3">
+    To create the impression of cascade, we must first add some margins to the
+    image wrapper.
+  </p>
+
+  <p class="mb-3">
+    Let's add the <code>.mx-4</code> class to the
+    <code>&lt;div&gt;</code> wrapping the image, to add some margin on the
+    sides.
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <div
+      class="relative mx-4 overflow-hidden bg-cover bg-no-repeat"
+      data-te-ripple-init
+      data-te-ripple-color="light">
+      <img
+        class="rounded-t-lg"
+        src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+        alt="" />
+      [...]
+    </div>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE demo box -->
+  <div class="mb-8 flex justify-center rounded-lg border bg-gray-100 p-8">
+    <!-- Card -->
+    <div
+      class="block w-[400px] rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      <div
+        class="relative mx-4 overflow-hidden bg-cover bg-no-repeat"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        <img
+          class="rounded-t-lg"
+          src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+          alt="" />
+        <a href="#!">
+          <div
+            class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+        </a>
+      </div>
+      <div class="p-6">
+        <h5
+          class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          AI engine
+        </h5>
+        <p class="mb-4 text-gray-500 dark:text-neutral-400">
+          <small
+            >Finished <u>13.09.2023</u> for
+            <a href="" class="text-dark">Techify</a></small
+          >
+        </p>
+        <p class="mb-5 text-base text-neutral-500 dark:text-neutral-200">
+          Ut pretium ultricies dignissim. Sed sit amet mi eget urna placerat
+          vulputate. Ut vulputate est non quam dignissim elementum. Donec a
+          ullamcorper diam.
+        </p>
+        <button
+          type="button"
+          data-te-ripple-init
+          data-te-ripple-color="primary"
+          class="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+          Read more
+        </button>
+      </div>
+    </div>
+    <!-- Card -->
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 6 - add shadows and roundings
+  </h2>
+
+  <p class="mb-3">
+    To give the impression of an independent, cascading layer, the image should
+    have its own shadow and roundings. We can achieve this by changing
+    <code>.rounded-t-lg</code> class to <code>rounded-lg</code> class in the
+    <code>&lt;img&gt;</code> element and adding <code>.shadow-lg</code> class to
+    the wrapper of the image:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <div
+      class="relative mx-4 overflow-hidden bg-cover bg-no-repeat shadow-lg"
+      data-te-ripple-init
+      data-te-ripple-color="light">
+      <img
+        class="rounded-lg"
+        src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+        alt="" />
+
+      [...]
+    </div>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE demo box -->
+  <div class="mb-8 flex justify-center rounded-lg border bg-gray-100 p-8">
+    <!-- Card -->
+    <div
+      class="block w-[400px] rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      <div
+        class="relative mx-4 overflow-hidden bg-cover bg-no-repeat shadow-lg"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        <img
+          class="rounded-lg"
+          src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+          alt="" />
+        <a href="#!">
+          <div
+            class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+        </a>
+      </div>
+      <div class="p-6">
+        <h5
+          class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          AI engine
+        </h5>
+        <p class="mb-4 text-gray-500 dark:text-neutral-400">
+          <small
+            >Finished <u>13.09.2023</u> for
+            <a href="" class="text-dark">Techify</a></small
+          >
+        </p>
+        <p class="mb-5 text-base text-neutral-500 dark:text-neutral-200">
+          Ut pretium ultricies dignissim. Sed sit amet mi eget urna placerat
+          vulputate. Ut vulputate est non quam dignissim elementum. Donec a
+          ullamcorper diam.
+        </p>
+        <button
+          type="button"
+          data-te-ripple-init
+          data-te-ripple-color="primary"
+          class="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+          Read more
+        </button>
+      </div>
+    </div>
+    <!-- Card -->
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 7 - add a negative top margin
+  </h2>
+
+  <p class="mb-3">
+    And now the most important detail - let's add a negative top margin to the
+    image wrapper, to make it overlap the card.
+  </p>
+
+  <p class="mb-3">
+    To add a negative margin, we use
+    <a href="/learn/te-foundations/tailwind-css/spacing/" class="text-blue-500"
+      >normal spacing classes</a
+    >
+    such as <code>.mr-4</code> or <code>.mt-5</code>, but add
+    <code>-</code> before them.
+  </p>
+
+  <p class="mb-3">
+    Now let's add <code>.-mt-4</code> class to the image wrapper:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <div
+      class="relative mx-4 -mt-4 overflow-hidden bg-cover bg-no-repeat shadow-lg"
+      data-te-ripple-init
+      data-te-ripple-color="light">
+      <img
+        class="rounded-lg"
+        src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+        alt="" />
+
+      [...]
+    </div>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">
+    If you save the file, you will see that the entire class has moved up,
+    instead of just the image. This is because we need also change the
+    <code>display</code> property in our card from <code>..block</code> to
+    <code>.inline-block</code>
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Card -->
+    <div
+      class="inline-block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      [...]
+    </div>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">And now it works 🚀</p>
+
+  <!-- TE demo box -->
+  <div class="mb-8 flex justify-center rounded-lg border bg-gray-100 p-8">
+    <!-- Card -->
+    <div
+      class="inline-block w-[400px] rounded-lg bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      <div
+        class="relative mx-4 -mt-4 overflow-hidden bg-cover bg-no-repeat shadow-lg"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        <img
+          class="rounded-lg"
+          src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+          alt="" />
+
+        <a href="#!">
+          <div
+            class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+        </a>
+      </div>
+      <div class="p-6">
+        <h5
+          class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          AI engine
+        </h5>
+        <p class="mb-4 text-gray-500 dark:text-neutral-400">
+          <small
+            >Finished <u>13.09.2023</u> for
+            <a href="" class="text-dark">Techify</a></small
+          >
+        </p>
+        <p class="mb-5 text-base text-neutral-500 dark:text-neutral-200">
+          Ut pretium ultricies dignissim. Sed sit amet mi eget urna placerat
+          vulputate. Ut vulputate est non quam dignissim elementum. Donec a
+          ullamcorper diam.
+        </p>
+        <button
+          type="button"
+          data-te-ripple-init
+          data-te-ripple-color="primary"
+          class="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+          Read more
+        </button>
+      </div>
+    </div>
+    <!-- Card -->
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">
+    Step 8 - adjust the height of the cards
+  </h2>
+
+  <p class="mb-3">
+    As you can see, the middle card has a bit more text, making it taller.
+  </p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/cards-1.jpg"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <p class="mb-3">
+    It would definitely look better if, regardless of the amount of content, all
+    cards kept the same height.
+  </p>
+
+  <p class="mb-3">
+    To achieve this we need to add the <code>..h-full</code> class to each card.
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Card -->
+    <div
+      class="inline-block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      [...]
+    </div>
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <p class="mb-3">And now they are equal:</p>
+
+  <!--  TE image -->
+  <img
+    src="./assets/cards-2.jpg"
+    class="mb-8 w-full rounded-lg border"
+    alt="" />
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold">Step 9 - adjust roundings</h2>
+
+  <p class="mb-3">
+    In this project, we use strong rounding of the corners. For the sake of
+    consistency, let's replace the
+    <code>.rounded-lg</code> classes with <code>.rounded-xl</code> to increase
+    rounding in cards and images:
+  </p>
+
+  <!-- TE code html -->
+  <div class="mb-8">
+    {{< twsnippet/wrapper "HTML" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+
+
+    <!-- Card -->
+    <div
+      class="inline-block h-full rounded-xl bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      <div
+        class="relative mx-4 -mt-4 overflow-hidden bg-cover bg-no-repeat shadow-lg"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        <img
+          class="rounded-xl"
+          src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+          alt="" />
+
+        [...]
+      </div>
+
+      [...]
+    </div>
+    <!-- Card -->
+
+    {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+  </div>
+
+  <!-- TE demo box -->
+  <div class="mb-8 flex justify-center rounded-lg border bg-gray-100 p-8">
+    <!-- Card -->
+    <div
+      class="inline-block w-[400px] rounded-xl bg-white text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+      <div
+        class="relative mx-4 -mt-4 overflow-hidden bg-cover bg-no-repeat shadow-lg"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        <img
+          class="rounded-xl"
+          src="https://mdbootstrap.com/img/new/textures/small/148.jpg"
+          alt="" />
+
+        <a href="#!">
+          <div
+            class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+        </a>
+      </div>
+      <div class="p-6">
+        <h5
+          class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          AI engine
+        </h5>
+        <p class="mb-4 text-gray-500 dark:text-neutral-400">
+          <small
+            >Finished <u>13.09.2023</u> for
+            <a href="" class="text-dark">Techify</a></small
+          >
+        </p>
+        <p class="mb-5 text-base text-neutral-500 dark:text-neutral-200">
+          Ut pretium ultricies dignissim. Sed sit amet mi eget urna placerat
+          vulputate. Ut vulputate est non quam dignissim elementum. Donec a
+          ullamcorper diam.
+        </p>
+        <button
+          type="button"
+          data-te-ripple-init
+          data-te-ripple-color="primary"
+          class="inline-block rounded-full bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+          Read more
+        </button>
+      </div>
+    </div>
+    <!-- Card -->
+  </div>
+
+  <p class="mb-3">And that's it. Our cascading cards are ready!</p>
+
+  <!-- TE demo & source code -->
+  <hr
+    class="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <div class="text-center">
+    <a
+      href="https://tw-elements.com/snippets/tailwind/ascensus/5677970"
+      target="_blank"
+      role="button"
+      data-te-ripple-init
+      data-te-ripple-color="primary"
+      class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+      Demo and source code for this lesson
+    </a>
+  </div>
+</section>
+<!-- Section: Text -->

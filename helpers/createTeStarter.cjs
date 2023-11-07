@@ -2,7 +2,7 @@ var zip = require("bestzip");
 
 zip({
   source: `*`,
-  destination: "../site/te-starter.zip",
+  destination: "../site/twe-starter.zip",
   cwd: "dist/",
 })
   .then(() => {

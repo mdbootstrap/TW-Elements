@@ -1,0 +1,203 @@
+---
+title: "Tailwind CSS - Position Properties tutorial"
+url: "/learn/te-foundations/te-ui-kit/position/"
+accordion_section: "headingTailwindElements"
+date: 2023-08-20T16:00:58+02:00
+draft: false
+
+seo_title: "Tailwind CSS - Position Properties tutorial"
+description: "Understanding how to use the position property is essential for creating complex and responsive layouts.
+In this tutorial, we'll explore the position property and its possible values."
+image: "https://tw-elements.com/learn/te-foundations/basics/introduction/assets/tailwind-elements.png"
+video: ""
+layout: tutorial
+hidden_sidenav: true
+previous_lesson: "/learn/te-foundations/te-ui-kit/sticky-navbar/"
+next_lesson: "/learn/te-foundations/te-ui-kit/logo/"
+---
+
+<!-- Section: Text -->
+<section class="">
+  <h1 class="mb-2 mt-0 text-3xl font-semibold leading-tight">Position</h1>
+
+  <hr
+    class="my-7 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <p class="mb-3">
+    In the previous lesson, we used the <code>.fixed</code> class which
+    manipulated the CSS property <code>position</code> and allowed us to attach
+    a Navbar to the top of the screen.
+  </p>
+
+  <p class="mb-3">
+    Let's look at this topic a little closer because it often causes confusion.
+  </p>
+
+  <!-- TE divider -->
+  <hr
+    class="my-7 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+
+  <p class="mb-3">
+    The <code>position</code> property has four possible values, each of which
+    affects how an element is positioned within its containing element or the
+    viewport.
+  </p>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold"><code>static</code></h2>
+
+  <p class="mb-3">
+    This is the default value, and elements with
+    <code>position: static</code> are positioned according to the normal flow of
+    the document. This means they are not affected by the top, right, bottom, or
+    left properties.
+  </p>
+
+  <p class="mb-3">
+    However, remember that the default setting is the top left corner.
+  </p>
+
+  <div class="relative mb-5 h-[300px] rounded-lg bg-blue-200 p-4">
+    <div class="static w-20 rounded-lg bg-blue-600 p-4">
+      <p class="text-center text-white">Static</p>
+    </div>
+  </div>
+
+  <p class="mb-3">
+    In Tailwind CSS we use the <code>.static</code> class to set the
+    <code>position</code> property to <code>static</code>.
+  </p>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold"><code>fixed</code></h2>
+
+  <p class="mb-3">
+    This is the property that we used in the previous lesson to attach the
+    Navbar to the top of the screen.
+  </p>
+
+  <p class="mb-3">
+    Elements with <code>position: fixed</code> are positioned relative to the
+    viewport (that is browser window). They stay in the same position even when
+    the page is scrolled.
+  </p>
+  <div
+    class="relative mx-auto mb-5 h-80 max-w-md overflow-hidden rounded-lg bg-white shadow-lg dark:bg-neutral-800">
+    <div
+      class="absolute left-0 right-0 top-0 flex items-center bg-neutral-50/90 px-4 py-3 text-sm font-semibold text-neutral-900 dark:bg-neutral-700/90 dark:text-neutral-200">
+      Fixed
+    </div>
+    <div class="flex h-80 flex-col overflow-auto p-4">
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+      <p class="my-4">Scroll down</p>
+    </div>
+  </div>
+
+  <p class="mb-3">
+    In Tailwind CSS we use the <code>.fixed</code> class to set the
+    <code>position</code> property to <code>static</code>.
+  </p>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold"><code>absolute</code></h2>
+
+  <p class="mb-3">
+    Elements with <code>position: absolute</code> are positioned relative to
+    their closest positioned ancestor (an ancestor with a position value other
+    than static). If there's no such ancestor, they are positioned relative to
+    the initial containing block, usually the viewport.
+  </p>
+
+  <p class="mb-3">
+    In Tailwind CSS to control a placement of absolute elements we are using
+    classes <code>top-*</code> , <code>bottom-*</code>, <code>left-*</code> and
+    <code>right-*</code> together with <code>absolute</code> class.
+  </p>
+
+  <div class="relative mb-5 h-[300px] rounded-lg bg-blue-200 p-4">
+    <div class="absolute bottom-8  right-0 rounded-lg bg-blue-600 p-4">
+      <p class="text-center text-white">
+        bottom-8 <span class="mx-3">|</span> right-0
+      </p>
+    </div>
+
+    <div class="absolute bottom-0  left-12 rounded-lg bg-blue-600 p-4">
+      <p class="text-center text-white">
+        bottom-0 <span class="mx-3">|</span> left-12
+      </p>
+    </div>
+
+    <div class="absolute right-5 top-7 rounded-lg bg-blue-600 p-4">
+      <p class="text-center text-white">
+        top-7 <span class="mx-3">|</span> right-5
+      </p>
+    </div>
+
+    <div class="absolute left-0 top-0 rounded-lg bg-blue-600 p-4">
+      <p class="text-center text-white">
+        top-0 <span class="mx-3">|</span> left-0
+      </p>
+    </div>
+  </div>
+
+  <!-- TE tutorial step-->
+  <h2 class="mb-6 mt-12 text-xl font-semibold"><code>relative</code></h2>
+
+  <p class="mb-3">
+    Elements with <code>position: relative</code> are positioned relative to
+    their normal position in the document flow. You can use the top, right,
+    bottom, and left properties to adjust their position relative to where they
+    would be in the normal flow.
+  </p>
+
+  <p class="mb-3">
+    In most of cases we are using relative position for a containers that holds
+    absolute positioned elements.
+  </p>
+
+  <p class="mb-3">
+    As you can see in the example below, static container is ignored by absolute
+    positioned element.
+  </p>
+
+  <div class="relative mb-8 h-[300px]  rounded-lg bg-blue-200 p-8">
+    <div class="static h-full w-full rounded-lg bg-blue-400 p-4">
+      <p class="text-white">Static container</p>
+
+      <div class="absolute bottom-0  left-0 rounded-lg bg-blue-600 p-4">
+        <p class="text-center text-white">Absolute element</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="mb-3">
+    However, if we change the position of the container to relative, the
+    absolute element will not ignore it anymore.
+  </p>
+
+  <div class="relative mb-5 h-[300px]  rounded-lg bg-blue-200 p-8">
+    <div class="relative h-full w-full rounded-lg bg-blue-400 p-4">
+      <p class="text-white">Relative container</p>
+
+      <div class="absolute bottom-0  left-0 rounded-lg bg-blue-600 p-4">
+        <p class="text-center text-white">Absolute element</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="mb-3">
+    In Tailwind CSS we use the <code>.relative</code> class to set the
+    <code>position</code> property to <code>relative</code>.
+  </p>
+</section>
+<!-- Section: Text -->
