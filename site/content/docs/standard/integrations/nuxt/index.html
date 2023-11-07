@@ -2,10 +2,10 @@
 title: "Nuxt integration"
 date: 2021-04-29T16:00:58+02:00
 draft: false
-main_title: "TW elements Nuxt integration"
+main_title: "TW Elements Nuxt integration"
 subheading: ""
-seo_title: "TW elements integration with Nuxt - Free Examples & Tutorial"
-description: "This article shows you how to integrate Nuxt application with TW elements. Free download, open source license."
+seo_title: "TW Elements integration with Nuxt - Free Examples & Tutorial"
+description: "This article shows you how to integrate Nuxt application with TW Elements. Free download, open source license."
 image: "https://tecdn.b-cdn.net/img/docs/integrations/nuxt.webp"
 url: "docs/standard/integrations/nuxt-integration/"
 menu:
@@ -13,8 +13,7 @@ menu:
     name: "Nuxt"
 ---
 
-<!-- Section: Basic example -->
-
+<!-- Section: Prerequisites -->
 <section id="section-prerequisites">
   <!-- Title -->
   <h2
@@ -50,6 +49,7 @@ menu:
     </li>
   </ul>
 </section>
+<!-- Section: Prerequisites -->
 
 <hr class="my-5 dark:border-neutral-600" />
 
@@ -70,29 +70,42 @@ menu:
   </p>
 
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Create new project</p>
+  <p class="mb-5">Create new project.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npx nuxi init my-project
-        cd my-project
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npx nuxi init my-project
+    cd my-project
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Run the development server.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm run dev
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 </section>
+<!-- Section: Creating Nuxt app-->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
-<!-- Creating and configuring Tailwind & TW elements-->
+<!-- Creating and configuring Tailwind & TW Elements -->
 <section id="section-tailwind">
   <!-- Section title-->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="tailwind"
     data-te-spy-item>
-    Installing and configuring Tailwind CSS and TW elements
+    Installing and configuring Tailwind CSS and TW Elements
   </h2>
 
   <!-- Description -->
@@ -102,37 +115,68 @@ menu:
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm install -D tailwindcss postcss autoprefixer
-        npx tailwindcss init
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 2</h2>
+  <h2 class="mt-5 text-lg font-bold">File structure</h2>
   <p class="mb-5">
-    Add <code>tailwindcss</code> and <code>autoprefixer</code> to the
-    <code>postcss.plugins</code> object in your
-    <code>nuxt.config.js</code> file. And of cours you got to attach
-    <code>css</code> object with localization of main .css file.
+    If you have followed all instructions mentioned earlier, your file structure
+    should look like this:
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "nuxt.config.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-          // https://v3.nuxtjs.org/api/configuration/nuxt.config
-          export default defineNuxtConfig({
-            css: ['~/assets/css/main.css'],
-            postcss: {
-              plugins: {
-                tailwindcss: {},
-                autoprefixer: {},
-              },
-            },
-          })
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/wrapper "File structure" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    my-project/
+    ├── .nuxt/
+    ├── assets/ - needs to be created
+    │   └── css/
+    │       └── main.css
+    ├── node_modules/       
+    ├── public/  
+    ├── ...
+    ├── app.vue
+    ├── nuxt.config.ts
+    ├── package-lock.json
+    ├── package.json
+    ├── README.md
+    ├── tailwind.config.js
+    └── tsconfig.json
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">
+    Include <code>tailwindcss</code> and <code>autoprefixer</code> in the
+    <code>postcss.plugins</code> object within your
+    <code>nuxt.config.ts</code> file. Additionally, make sure to attach the
+    <code>css</code> object, specifying the localization of the main
+    <code>.css</code> file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "nuxt.config.ts" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    // https://nuxt.com/docs/api/configuration/nuxt-config
+    export default defineNuxtConfig({
+      devtools: { enabled: true },
+      css: ["~/assets/css/main.css"],
+      postcss: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      },
+    });
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 3</h2>
@@ -144,26 +188,26 @@ menu:
   <!--prettier-ignore-->
   <div class="pb-4">
     {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-        /** @type {import('tailwindcss').Config} */
-        module.exports = {
-          content: [
-            "./components/**/*.{js,vue,ts}",
-            "./layouts/**/*.vue",
-            "./pages/**/*.vue",
-            "./plugins/**/*.{js,ts}",
-            "./nuxt.config.{js,ts}",
-            "./app.vue",
-            "./node_modules/tw-elements/dist/js/**/*.js"
-          ],
-          theme: {
-            extend: {},
-          },
-          darkMode: "class",
-          plugins: [require("tw-elements/dist/plugin.cjs")]
-        }
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: [
+        "./components/**/*.{js,vue,ts}",
+        "./layouts/**/*.vue",
+        "./pages/**/*.vue",
+        "./plugins/**/*.{js,ts}",
+        "./nuxt.config.{js,ts}",
+        "./app.vue",
+        "./node_modules/tw-elements/dist/js/**/*.js",
+      ],
+      theme: {
+        extend: {},
+      },
+      darkMode: "class",
+      plugins: [require("tw-elements/dist/plugin.cjs")],
+    };         
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
@@ -175,62 +219,73 @@ menu:
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "main.css" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="CSS" >}}
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="CSS" >}}
+    @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+    @tailwind base;
+    
+    @layer base {
+      html {
+        @apply text-neutral-800;
+      }
+      html.dark {
+        @apply text-neutral-50;
+        @apply bg-neutral-800;
+      }
+    }
+    
+    @tailwind components;
+    @tailwind utilities;   
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 5</h2>
-  <p class="mb-5">
-    Attach the Roboto font in <code>nuxt.config.js/ts</code> by creating an
-    <code>app</code> object.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "nuxt.config.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-          app: {
-            head: {
-              link: [
-                {
-                  rel: "stylesheet",
-                  href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap",
-                },
-              ],
-            },
-          },
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 5</h2>
-  <p class="mb-5">Install TW elements.</p>
+  <p class="mb-5">Install TW Elements.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm install tw-elements
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install tw-elements
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    Import globally in <code>app.vue</code> Tailiwind Elements CSS file (you
-    could do it also in specific component which are using TE).
+    In the root directory of your project, create a
+    <code>components</code> folder. Inside this folder, create a new file named
+    <code>Tooltip.vue</code>. Import the TWE components you intend to use and
+    include the necessary function <code>initTE</code>. Initialize
+    <code>initTE</code> within a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.vue" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
+    {{< twsnippet/wrapper "tooltip.vue" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <template>
+      <div className="mt-16 flex justify-center">
+        <p className="text-lg">
+          Hover the link to see the
+          <a
+            href="#"
+            className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+            data-te-toggle="tooltip"
+            title="Hi! I'm tooltip">
+            tooltip
+          </a>
+        </p>
+      </div>
+    </template>
+
     <script setup>
-      import "tw-elements/dist/css/tw-elements.min.css";
+      import { onMounted } from "vue";
+      import { Tooltip, initTE } from "tw-elements";
+
+      onMounted(() => {
+        initTE({ Tooltip });
+      });
     </script>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
@@ -238,42 +293,22 @@ menu:
 
   <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">
-    Create standalone file with name of your component (for example
-    <code>Datepicker.vue</code> in <code>src/components</code> directory) and
-    import TE components which are you intend to use. Also include necessary
-    function <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle
-    method.
+    Import the newly created component, for instance in <code>app.vue</code>,
+    and wrap it within a <code>ClientOnly</code> element.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "template, script" "" "mobile" >}}
+    {{< twsnippet/wrapper "app.vue" "" "mobile" >}}
     {{< twsnippet/code active=true lang="HTML" >}}
     <template>
-      <div
-        class="relative mb-3"
-        data-te-datepicker-init
-        data-te-input-wrapper-init>
-        <input
-          type="text"
-          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-          placeholder="Select a date" />
-        <label
-          for="floatingInput"
-          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >Select a date</label
-        >
-      </div>
+      <ClientOnly>
+        <Tooltip />
+      </ClientOnly>
     </template>
-    {{< /twsnippet/code >}}
-    {{< twsnippet/code lang="HTML" >}}
-    <script setup>
-      import { onMounted } from "vue";
-      import { Datepicker, Input, initTE } from "tw-elements";
 
-      onMounted(() => {
-        initTE({ Datepicker, Input });
-      });
+    <script setup>
+      import Tooltip from "./components/Tooltip.vue";
     </script>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
@@ -281,33 +316,24 @@ menu:
 
   <h2 class="text-lg font-bold">Step 8</h2>
   <p class="mb-5">
-    Import (for example in <code>app.vue</code>) newly created component
-    wrapping it into <code>ClientOnly</code> element.
+    Start the app and see if everything's fine. Awesome! You're all set to dive
+    into using TW Elements for your Nuxt project. Have fun!
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "template, script" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
-    <template>
-      <ClientOnly>
-        <Datepicker />
-      </ClientOnly>
-    </template>
-    {{< /twsnippet/code >}}
-    {{< twsnippet/code lang="HTML" >}}
-    <script setup>
-      import Datepicker from "./components/Datepicker.vue";
-    </script>
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm run dev
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!--/Creating and configuring Tailwind & TW elements-->
+<!-- Creating and configuring Tailwind & TW Elements -->
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!-- Initializing via JS-->
+<!-- Initializing via JS -->
 <section id="section-initializing-js">
   <!-- Title -->
   <h2
@@ -332,43 +358,36 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "template, script" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
+    {{< twsnippet/wrapper "tooltip.vue" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
     <template>
-      <div class="relative mb-3" id="myDatepicker">
-        <input
-          type="text"
-          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-          placeholder="Select a date" />
-        <label
-          for="floatingInput"
-          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >Select a date</label
-        >
+      <div className="mt-16 flex justify-center">
+        <p className="text-lg">
+          Hover the link to see the
+          <a
+            id="my-tooltip"
+            href="#"
+            className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+            title="Hi! I'm tooltip">
+            tooltip
+          </a>
+        </p>
       </div>
     </template>
-    {{< /twsnippet/code >}}
-    {{< twsnippet/code lang="HTML" >}}
+
     <script setup>
       import { onMounted } from "vue";
-      import { Datepicker, Input } from "tw-elements";
+      import { Tooltip } from "tw-elements";
 
       onMounted(() => {
-        const myInput = new Input(document.getElementById("myDatepicker"));
-        const options = {
-          format: "dd-mm-yyyy",
-        };
-        const myDatepicker = new Datepicker(
-          document.getElementById("myDatepicker"),
-          options
-        );
+        const myTooltip = new Tooltip(document.getElementById("my-tooltip"));
       });
     </script>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!-- /Initializing via JS-->
+<!-- Initializing via JS -->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
