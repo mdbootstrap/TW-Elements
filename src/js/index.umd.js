@@ -46,6 +46,7 @@ import InfiniteScroll from "./methods/infinite-scroll";
 import LoadingManagement from "./methods/loading-management";
 import Datetimepicker from "./forms/dateTimepicker";
 import Sticky from "./methods/sticky";
+import Autocomplete from "./forms/autocomplete";
 import initTE from "./autoinit/index";
 
 const te = {
@@ -85,6 +86,7 @@ const te = {
   Clipboard,
   InfiniteScroll,
   LoadingManagement,
+  Autocomplete,
   Sticky,
 };
 
@@ -128,5 +130,6 @@ export {
   LoadingManagement,
   Datetimepicker,
   Sticky,
+  Autocomplete,
   initTE,
 };

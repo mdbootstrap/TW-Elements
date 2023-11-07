@@ -1,0 +1,1523 @@
+---
+title: "Autocomplete"
+date: 2023-03-07T16:00:58+02:00
+draft: false
+main_title: "Autocomplete"
+subheading: "Tailwind CSS Autocomplete"
+seo_title: "Tailwind CSS Autocomplete - Free Examples & Tutorial"
+description: "Autocomplete component predicts the words being typed based on the first few letters given by the user. You can search the list using basic scroll and the keyboard arrows."
+image: "https://tecdn.b-cdn.net/img/docs/forms/select.webp"
+video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
+url: "docs/standard/forms/autocomplete/"
+menu:
+  forms:
+    name: "Autocomplete"
+---
+
+<!-- Section: Basic example -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-neutral-800 dark:text-neutral-200"
+    id="basic-example"
+    data-te-spy-item>
+    Basic example
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    The <code>filter</code> option is required in order for component to work
+    properly. The option accepts a function that is expected to return an array
+    of results or a <code>Promise</code> that resolves to an array of results.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example1">}}
+  <div class="mx-auto mb-3 xl:w-96">
+    <div class="relative" data-te-input-wrapper-init id="basic">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+        id="exampleFormControlInput1"
+        data-te-autocomplete-input-ref />
+      <label
+        for="exampleFormControlInput1"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        data-te-autocomplete-label-ref
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="relative" data-te-input-wrapper-init id="basic">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+          id="exampleFormControlInput1" />
+        <label
+          for="exampleFormControlInput1"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import { Autocomplete, Input, initTE } from "tw-elements";
+      initTE({ Input });
+      
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const basicAutocomplete = document.querySelector('#basic');
+
+      new Autocomplete(basicAutocomplete, {
+        filter: dataFilter,
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const basicAutocomplete = document.querySelector('#basic');
+
+      new te.Autocomplete(basicAutocomplete, {
+        filter: dataFilter,
+      });
+
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic example -->
+
+<!-- Section: Sharing request-->
+<section class="mb-12 pt-14">
+  <div
+    class="mb-12 rounded-lg border-2 border-primary-500 p-6 text-base dark:border-primary-100 dark:bg-neutral-800 dark:text-white "
+    role="alert">
+    <p class="">
+      <strong>Hey there 👋</strong> we want to make TW elements a
+      community-driven project. It's <strong> open source and free</strong>, and
+      we would like it to stay that way. If you enjoy it,
+      <strong>help the project grow by sharing it</strong> with your peers.
+      <strong>Every share counts</strong>, thank you!
+    </p>
+
+    <p
+      class="mt-5 grid grid-cols-4 justify-center gap-4 px-5 text-primary-700 dark:text-primary-400 sm:grid-cols-6 md:grid-cols-12">
+      <!--Share on DEV-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Dev.to"
+        href="https://dev.to/new?prefill=---%0Atitle%3A%20500+ open-source components for TailwindCSS %0Apublished%3A%20true%0Atags%3Atailwindcss%0A---%0A%0A
+        
+        [![TW components](https://tw-elements.com/img/components-big.jpg)](https://tw-elements.com/)
+        \n        
+        
+        I'd like to share my latest discovery with you. \n
+
+        [TW Elements](https://tw-elements.com/) is currently, the most popular 3rd party UI kit for TailwindCSS with over 10k Github stars.
+        [![GitHub Repo stars](https://img.shields.io/github/stars/mdbootstrap/tailwind-elements?style=social)](https://github.com/mdbootstrap/TW-Elements/)
+        It's a **huge collection of stunning components** made with attention to the smallest detail. 
+        Forms, cards, buttons, and hundreds of others. 
+        All components have **dark mode** and very intuitive **theming options**.
+        The project is supported by an [engaged community on GitHub](https://github.com/mdbootstrap/TW-Elements/discussions), I recommend you check it out and join one of the many discussions.
+        \n
+
+        You will find installation instructions [here](https://tw-elements.com/docs/getting-started/installation), and you can track the progress of the project live 
+        [here](https://tw-elements.com/docs/standard/getting-started/changelog/).
+        \n
+
+        The project was kickstarted by @MDBootstrap, a group of open-source developers behind [MDB UI Kit](https://github.com/mdbootstrap/mdb-ui-kit) - a high-quality UI kit for Bootstrap, and also behind [MDB GO](https://mdbgo.com/) - hosting and deployment platform.
+        \n
+
+        I highly recommend you to check it out!
+        \n
+
+        %7B%25 link mdbootstrap/tw-elements-breakthrough-version-is-here-59hh %25%7D
+        \n
+
+        
+        "
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512">
+          <title>Share via Dev.to</title>
+          <path
+            d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.03v104.47h17.45c3.88 0 7.77-1.45 11.65-4.35 3.88-2.9 5.82-7.25 5.82-13.06v-69.65c-.01-5.8-1.96-10.16-5.83-13.06zM404.1 32H43.9C19.7 32 .06 51.59 0 75.8v360.4C.06 460.41 19.7 480 43.9 480h360.2c24.21 0 43.84-19.59 43.9-43.8V75.8c-.06-24.21-19.7-43.8-43.9-43.8zM154.2 291.19c0 18.81-11.61 47.31-48.36 47.25h-46.4V172.98h47.38c35.44 0 47.36 28.46 47.37 47.28l.01 70.93zm100.68-88.66H201.6v38.42h32.57v29.57H201.6v38.41h53.29v29.57h-62.18c-11.16.29-20.44-8.53-20.72-19.69V193.7c-.27-11.15 8.56-20.41 19.71-20.69h63.19l-.01 29.52zm103.64 115.29c-13.2 30.75-36.85 24.63-47.44 0l-38.53-144.8h32.57l29.71 113.72 29.57-113.72h32.58l-38.46 144.8z" />
+        </svg>
+      </a>
+
+      <!--Share on Twitter-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Twitter"
+        href="https://twitter.com/intent/tweet?text=500%2B%20open-source%20components%20for%20%23TailwindCSS%20%F0%9F%A4%A9%0Ahttps%3A//tw-elements.com/%0A%0ACongrats%20%40TWElements%20%40ascensus_mdb%20%40dawidadach%20for%20this%20awesome%20design%20collection!%0A%0AI%20will%20keep%20using%20it%20in%20my%20projects%20for%20sure!%0A%0A%23uiux%20%23webdevelopment%20%23HTML%20%23CSS%20%23design%20%23Webdesign%20%23programming%20"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <title>Share via Twitter</title>
+          <path
+            d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+        </svg>
+      </a>
+
+      <!--Share on Facebook-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Facebook"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3A//tw-elements.com/docs/standard/forms/select/"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <title>Share via Facebook</title>
+          <path
+            d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+        </svg>
+      </a>
+
+      <!--Share on LinkedIn-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via LinkedIn"
+        href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2Ftw-elements.com%2F&title=500%2B%20open-source%20components%20for%20TailwindCSS"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+        </svg>
+      </a>
+
+      <!--Share on Pinterest-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Pinterest"
+        href="https://www.pinterest.com/pin/create/button?url=https://tw-elements.com/&media=https://tailwind-elements.com/img/components-big.jpg&description=TWElements"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <title>Share via Pinterest</title>
+          <path
+            d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
+            fill-rule="evenodd"
+            clip-rule="evenodd" />
+        </svg>
+      </a>
+
+      <!--Share on Reddit-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Reddit"
+        href="https://reddit.com/submit?url=https://tw-elements.com/&title=500+%20open-source%20components%20for%20TailwindCSS"
+        target="_blank"
+        class="mx-2 flex items-center"
+        style="font-size: 2rem;">
+        <title>Share via Reddit</title>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            d="M14.238 15.348c.085.084.085.221 0 .306-.465.462-1.194.687-2.231.687l-.008-.002-.008.002c-1.036 0-1.766-.225-2.231-.688-.085-.084-.085-.221 0-.305.084-.084.222-.084.307 0 .379.377 1.008.561 1.924.561l.008.002.008-.002c.915 0 1.544-.184 1.924-.561.085-.084.223-.084.307 0zm-3.44-2.418c0-.507-.414-.919-.922-.919-.509 0-.923.412-.923.919 0 .506.414.918.923.918.508.001.922-.411.922-.918zm13.202-.93c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-5-.129c0-.851-.695-1.543-1.55-1.543-.417 0-.795.167-1.074.435-1.056-.695-2.485-1.137-4.066-1.194l.865-2.724 2.343.549-.003.034c0 .696.569 1.262 1.268 1.262.699 0 1.267-.566 1.267-1.262s-.568-1.262-1.267-1.262c-.537 0-.994.335-1.179.804l-2.525-.592c-.11-.027-.223.037-.257.145l-.965 3.038c-1.656.02-3.155.466-4.258 1.181-.277-.255-.644-.415-1.05-.415-.854.001-1.549.693-1.549 1.544 0 .566.311 1.056.768 1.325-.03.164-.05.331-.05.5 0 2.281 2.805 4.137 6.253 4.137s6.253-1.856 6.253-4.137c0-.16-.017-.317-.044-.472.486-.261.82-.766.82-1.353zm-4.872.141c-.509 0-.922.412-.922.919 0 .506.414.918.922.918s.922-.412.922-.918c0-.507-.413-.919-.922-.919z" />
+        </svg>
+      </a>
+
+      <!--Share on StumbleUpon-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Stumbleupon"
+        href="https://www.stumbleupon.com/submit?url=https://tw-elements.com/&title=500+%20open-source%20components%20for%20TailwindCSS"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <title>Share via StumbleUpon</title>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            d="M13.271 9.231l1.581.88 2.502-.846v-1.696c0-2.925-2.445-5.202-5.354-5.202-2.897 0-5.354 2.129-5.354 5.17v7.749c0 .702-.568 1.27-1.27 1.27s-1.271-.568-1.271-1.27v-3.284h-4.105v3.328c0 2.963 2.402 5.365 5.365 5.365 2.937 0 5.323-2.361 5.364-5.288v-7.653c0-.702.569-1.27 1.271-1.27s1.271.568 1.271 1.27v1.477zm6.624 2.772v3.437c0 .702-.569 1.27-1.271 1.27s-1.271-.568-1.271-1.27v-3.372l-2.502.847-1.581-.881v3.344c.025 2.941 2.418 5.317 5.364 5.317 2.963 0 5.365-2.402 5.365-5.365v-3.328h-4.104z" />
+        </svg>
+      </a>
+
+      <!--Share on Vkontakte-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Vkontakte"
+        href="https://vk.com/share.php?url=https://tw-elements.com/"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <title>Share via Vkontakte</title>
+          <path
+            class="st0"
+            d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.808 0 1.126-.26 1.126-.668 0-.863-1.421-2.386-2.625-3.504-1.686-1.565-1.765-1.602-.313-3.486 1.801-2.339 4.157-5.336 2.073-5.336h-3.981c-.772 0-.828.435-1.103 1.083-.995 2.347-2.886 5.387-3.604 4.922-.751-.485-.407-2.406-.35-5.261.015-.754.011-1.271-1.141-1.539-.629-.145-1.241-.205-1.809-.205-2.273 0-3.841.953-2.95 1.119 1.571.293 1.42 3.692 1.054 5.16-.638 2.556-3.036-2.024-4.035-4.305-.241-.548-.315-.974-1.175-.974h-3.255c-.492 0-.787.16-.787.516 0 .602 2.96 6.72 5.786 9.77 2.756 2.975 5.48 2.708 7.376 2.708z" />
+        </svg>
+      </a>
+
+      <!--Share on Weibo-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Weibo"
+        href="https://service.weibo.com/share/share.php?url=https://tw-elements.com/&title=500+%20open-source%20components%20for%20TailwindCSS"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <title>Share via Weibo</title>
+          <path
+            d="M407 177.6c7.6-24-13.4-46.8-37.4-41.7-22 4.8-28.8-28.1-7.1-32.8 50.1-10.9 92.3 37.1 76.5 84.8-6.8 21.2-38.8 10.8-32-10.3zM214.8 446.7C108.5 446.7 0 395.3 0 310.4c0-44.3 28-95.4 76.3-143.7C176 67 279.5 65.8 249.9 161c-4 13.1 12.3 5.7 12.3 6 79.5-33.6 140.5-16.8 114 51.4-3.7 9.4 1.1 10.9 8.3 13.1 135.7 42.3 34.8 215.2-169.7 215.2zm143.7-146.3c-5.4-55.7-78.5-94-163.4-85.7-84.8 8.6-148.8 60.3-143.4 116s78.5 94 163.4 85.7c84.8-8.6 148.8-60.3 143.4-116zM347.9 35.1c-25.9 5.6-16.8 43.7 8.3 38.3 72.3-15.2 134.8 52.8 111.7 124-7.4 24.2 29.1 37 37.4 12 31.9-99.8-55.1-195.9-157.4-174.3zm-78.5 311c-17.1 38.8-66.8 60-109.1 46.3-40.8-13.1-58-53.4-40.3-89.7 17.7-35.4 63.1-55.4 103.4-45.1 42 10.8 63.1 50.2 46 88.5zm-86.3-30c-12.9-5.4-30 .3-38 12.9-8.3 12.9-4.3 28 8.6 34 13.1 6 30.8.3 39.1-12.9 8-13.1 3.7-28.3-9.7-34zm32.6-13.4c-5.1-1.7-11.4.6-14.3 5.4-2.9 5.1-1.4 10.6 3.7 12.9 5.1 2 11.7-.3 14.6-5.4 2.8-5.2 1.1-10.9-4-12.9z" />
+        </svg>
+      </a>
+
+      <!--Share on HackerNews-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Hackernews"
+        href="https://news.ycombinator.com/submitlink?u=https://tw-elements.com/&t=500+%20open-source%20components%20for%20TailwindCSS"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <title>Share via HackerNews</title>
+          <path
+            d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM21.2 229.2H21c.1-.1.2-.3.3-.4 0 .1 0 .3-.1.4zm218 53.9V384h-31.4V281.3L128 128h37.3c52.5 98.3 49.2 101.2 59.3 125.6 12.3-27 5.8-24.4 60.6-125.6H320l-80.8 155.1z" />
+        </svg>
+      </a>
+
+      <!--Share on Gmail-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Gmail"
+        href="https://mail.google.com/mail/?view=cm&to=%7Bemail_address%7D&su=Check%20out%20this%20project&body=Hello,%0AI'm reaching out to recommend my latest discovery.%0A%0AIt's%20over%20500+%20open-source%20components%20for%20TailwindCSS%20with%20excellent%20support%20and%20an%20awesome%20community:%0Ahttps://tw-elements.com/%0A%0AI hope you will find it useful.%0ABest regards,&bcc=%7Bemail_address%7D&cc=%7Bemail_address%7D"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <title>Share via Gmail</title>
+          <path
+            d="M22.288 21h-20.576c-.945 0-1.712-.767-1.712-1.712v-13.576c0-.945.767-1.712 1.712-1.712h20.576c.945 0 1.712.767 1.712 1.712v13.576c0 .945-.767 1.712-1.712 1.712zm-10.288-6.086l-9.342-6.483-.02 11.569h18.684v-11.569l-9.322 6.483zm8.869-9.914h-17.789l8.92 6.229s6.252-4.406 8.869-6.229z" />
+        </svg>
+      </a>
+
+      <!--Share on Emial (other)-->
+      <a
+        data-te-toggle="tooltip"
+        title="Share via Email"
+        href="mailto:?subject=Check%20out%20this%20project&body=Hello%2C%0AI'm%20reaching%20out%20to%20recommend%20my%20latest%20discovery.%0A%0AIt's%20over%20500%20%20open-source%20components%20for%20Tailwind%20CSS%20with%20excellent%20support%20and%20an%20awesome%20community%3A%0Ahttps%3A%2F%2Ftw-elements.com%2F%0A%0AI%20hope%20you%20will%20find%20it%20useful.%0ABest%20regards%2C"
+        target="_blank"
+        class="mx-2 flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pointer-events-none h-7 w-7"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <title>Share via Email</title>
+          <path
+            d="M12.042 23.648c-7.813 0-12.042-4.876-12.042-11.171 0-6.727 4.762-12.125 13.276-12.125 6.214 0 10.724 4.038 10.724 9.601 0 8.712-10.33 11.012-9.812 6.042-.71 1.108-1.854 2.354-4.053 2.354-2.516 0-4.08-1.842-4.08-4.807 0-4.444 2.921-8.199 6.379-8.199 1.659 0 2.8.876 3.277 2.221l.464-1.632h2.338c-.244.832-2.321 8.527-2.321 8.527-.648 2.666 1.35 2.713 3.122 1.297 3.329-2.58 3.501-9.327-.998-12.141-4.821-2.891-15.795-1.102-15.795 8.693 0 5.611 3.95 9.381 9.829 9.381 3.436 0 5.542-.93 7.295-1.948l1.177 1.698c-1.711.966-4.461 2.209-8.78 2.209zm-2.344-14.305c-.715 1.34-1.177 3.076-1.177 4.424 0 3.61 3.522 3.633 5.252.239.712-1.394 1.171-3.171 1.171-4.529 0-2.917-3.495-3.434-5.246-.134z" />
+        </svg>
+      </a>
+    </p>
+  </div>
+</section>
+<!-- Section: Sharing request-->
+
+<!-- Section: Display value -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-neutral-800 dark:text-neutral-200"
+    id="display-value"
+    data-te-spy-item>
+    Display value
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    The <code>displayValue</code> option allow to separate oryginal result value
+    from the value that will be displayed in the result list or input (after
+    selection). Its useful when the data returned by the
+    <code>filter</code> function is an array of objects. You can specify which
+    parameter of the object should be displayed.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div class="mx-auto mb-3 xl:w-96">
+    <div class="relative" data-te-input-wrapper-init id="displayValue">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+        id="exampleFormControlInput2" />
+      <label
+        for="exampleFormControlInput2"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="relative" data-te-input-wrapper-init id="displayValue">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+          id="exampleFormControlInput2" />
+        <label
+          for="exampleFormControlInput2"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import { Autocomplete, Input, initTE } from "tw-elements";
+      initTE({ Input });
+
+      const customData = [
+        { title: 'One', subtitle: 'Secondary text' },
+        { title: 'Two', subtitle: 'Secondary text' },
+        { title: 'Three', subtitle: 'Secondary text' },
+        { title: 'Four', subtitle: 'Secondary text' },
+        { title: 'Five', subtitle: 'Secondary text' },
+        { title: 'Six', subtitle: 'Secondary text' },
+      ];
+
+      const customFilter = (value) => {
+        return customData.filter((item) => {
+          return item.title.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const displayValueAutocomplete = document.querySelector('#displayValue');
+
+      new Autocomplete(displayValueAutocomplete, {
+        filter: customFilter,
+        displayValue: (value) => value.title,
+      });
+
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const customData = [
+        { title: 'One', subtitle: 'Secondary text' },
+        { title: 'Two', subtitle: 'Secondary text' },
+        { title: 'Three', subtitle: 'Secondary text' },
+        { title: 'Four', subtitle: 'Secondary text' },
+        { title: 'Five', subtitle: 'Secondary text' },
+        { title: 'Six', subtitle: 'Secondary text' },
+      ];
+
+      const customFilter = (value) => {
+        return customData.filter((item) => {
+          return item.title.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const displayValueAutocomplete = document.querySelector('#displayValue');
+
+      new te.Autocomplete(displayValueAutocomplete, {
+        filter: customFilter,
+        displayValue: (value) => value.title,
+      });
+
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Display value -->
+
+<!-- Section: Asynchronous search -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-neutral-800 dark:text-neutral-200"
+    id="asynchronous-search"
+    data-te-spy-item>
+    Asynchronous search
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    The function passed to the <code>filter</code> option can return a
+    <code>Promise</code> that resolves to an array of results. By default the
+    component expects to receive data as an array of strings. If you want to
+    return an array of objects instead, you can use
+    <code>displayValue</code> option to specify which parameter should be used
+    as a display value of the specific result.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div class="mx-auto mb-3 xl:w-96">
+    <div class="relative" data-te-input-wrapper-init id="async">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+        id="exampleFormControlInput3" />
+      <label
+        for="exampleFormControlInput3"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="relative" data-te-input-wrapper-init id="async">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+          id="exampleFormControlInput3" />
+        <label
+          for="exampleFormControlInput3"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import { Autocomplete, Input, initTE } from "tw-elements";
+      initTE({ Input });
+
+      const asyncAutocomplete = document.querySelector('#async');
+      const asyncFilter = async (query) => {
+      const url = `https://swapi.py4e.com/api/people/?search=${encodeURI(query)}`;
+      const response = await fetch(url);
+
+      const data = await response.json();
+        return data.results;
+      };
+
+      new Autocomplete(asyncAutocomplete, {
+        filter: asyncFilter,
+        displayValue: (value) => value.name
+      });
+
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const asyncAutocomplete = document.querySelector('#async');
+      const asyncFilter = async (query) => {
+      const url = `https://swapi.py4e.com/api/people/?search=${encodeURI(query)}`;
+      const response = await fetch(url);
+      
+      const data = await response.json();
+        return data.results;
+      };
+
+      new te.Autocomplete(asyncAutocomplete, {
+        filter: asyncFilter,
+        displayValue: (value) => value.name
+      });
+
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Basic -->
+
+<!-- Section: Threshold -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-neutral-800 dark:text-neutral-200"
+    id="threshold-example"
+    data-te-spy-item>
+    Threshold
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Use <code>threshold</code> option to specify a minimum number of the
+    characters in the input field needed to perform a search operation.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example4">}}
+  <div class="mx-auto mb-3 xl:w-96">
+    <div class="relative" data-te-input-wrapper-init id="threshold">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+        id="exampleFormControlInput4"
+        placeholder="Type 2 characters to search" />
+      <label
+        for="exampleFormControlInput4"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example4">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="relative" data-te-input-wrapper-init id="threshold">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+          id="exampleFormControlInput4"
+          placeholder="Type 2 characters to search" />
+        <label
+          for="exampleFormControlInput4"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import { Autocomplete, Input, initTE } from "tw-elements";
+      initTE({ Input });
+
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const thresholdAutocomplete = document.querySelector('#threshold');
+
+      new Autocomplete(thresholdAutocomplete, {
+        filter: dataFilter,
+        threshold: 2
+      });
+
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const thresholdAutocomplete = document.querySelector('#threshold');
+
+      new te.Autocomplete(thresholdAutocomplete, {
+        filter: dataFilter,
+        threshold: 2
+      });
+
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Threshold -->
+
+<!-- Section: Custom item template -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-neutral-800 dark:text-neutral-200"
+    id="custom-item-template"
+    data-te-spy-item>
+    Custom item template
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    The <code>itemContent</code> option allow to display custom HTML in the
+    result list. You can use the <code>listHeight</code> option to modify the
+    result list height when you want to display more content in the component
+    dropdown.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example5">}}
+  <div class="mx-auto mb-3 xl:w-96">
+    <div
+      class="relative"
+      data-te-input-wrapper-init
+      id="customItem"
+      data-te-list-height="295">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+        id="exampleFormControlInput5" />
+      <label
+        for="exampleFormControlInput5"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <!-- prettier-ignore -->
+  <section class="!visible hidden" data-te-collapse-item id="example5">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div
+        class="relative"
+        data-te-input-wrapper-init
+        id="customItem"
+        data-te-list-height="295">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+          id="exampleFormControlInput5" />
+        <label
+          for="exampleFormControlInput5"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import { Autocomplete, Input, initTE } from "tw-elements";
+      initTE({ Input });
+
+      const customData = [
+        { title: 'One', subtitle: 'Secondary text' },
+        { title: 'Two', subtitle: 'Secondary text' },
+        { title: 'Three', subtitle: 'Secondary text' },
+        { title: 'Four', subtitle: 'Secondary text' },
+        { title: 'Five', subtitle: 'Secondary text' },
+        { title: 'Six', subtitle: 'Secondary text' },
+      ];
+
+      const customFilter = (value) => {
+        return customData.filter((item) => {
+          return item.title.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const customItem = document.querySelector('#customItem');
+
+      new Autocomplete(customItem, {
+        filter: customFilter,
+        displayValue: (value) => value.title,
+        itemContent: (result) => {
+          return `
+          <div class="flex flex-col">
+            <div class="font-medium">${result.title}</div>
+            <div class="text-[0.9rem]">${result.subtitle}</div>
+          </div>
+        `;
+        },
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const customData = [
+        { title: 'One', subtitle: 'Secondary text' },
+        { title: 'Two', subtitle: 'Secondary text' },
+        { title: 'Three', subtitle: 'Secondary text' },
+        { title: 'Four', subtitle: 'Secondary text' },
+        { title: 'Five', subtitle: 'Secondary text' },
+        { title: 'Six', subtitle: 'Secondary text' },
+      ];
+
+      const customFilter = (value) => {
+        return customData.filter((item) => {
+          return item.title.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const customItem = document.querySelector('#customItem');
+
+      new te.Autocomplete(customItem, {
+        filter: customFilter,
+        displayValue: (value) => value.title,
+        itemContent: (result) => {
+          return `
+          <div class="flex flex-col">
+            <div class="font-medium">${result.title}</div>
+            <div class="text-[0.9rem]">${result.subtitle}</div>
+          </div>
+        `;
+        },
+      });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Custom item template -->
+
+<!-- Section: Custom content -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-neutral-800 dark:text-neutral-200"
+    id="custom-content"
+    data-te-spy-item>
+    Custom content
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    A custom content container with a
+    <code>data-te-autocomplete-custom-content-ref</code> attribute will be
+    displayed at the end of the autocomplete dropdown. You can use it to display
+    a number of search results.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example6">}}
+  <div class="mx-auto mb-3 xl:w-96">
+    <div class="relative" data-te-input-wrapper-init id="customContent">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+        id="exampleFormControlInput6" />
+      <label
+        for="exampleFormControlInput6"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <!-- prettier-ignore -->
+  <section class="!visible hidden" data-te-collapse-item id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="relative" data-te-input-wrapper-init id="customContent">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+          id="exampleFormControlInput6" />
+        <label
+          for="exampleFormControlInput6"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import { Autocomplete, Input, initTE } from "tw-elements";
+      initTE({ Input });
+
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const customContent = document.querySelector('#customContent');
+
+      new Autocomplete(customContent, {
+        filter: dataFilter,
+        customContent: `
+        <div data-te-autocomplete-custom-content-ref class="px-4 py-1.5"></div>
+      `,
+      });
+    
+      customContent.addEventListener("update.te.autocomplete", (event) => {
+        const resultsLength = event.results.length;
+    
+        setTimeout(() => {
+          const customContentContainer = document.querySelector(
+            "[data-te-autocomplete-custom-content-ref]"
+          );
+          customContentContainer.innerHTML = `Search results: ${resultsLength}`;
+        }, 0);
+      });
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const customContent = document.querySelector('#customContent');
+
+      new te.Autocomplete(customContent, {
+        filter: dataFilter,
+        customContent: `
+        <div data-te-autocomplete-custom-content-ref class="px-4 py-1.5"></div>
+      `,
+      });
+    
+      customContent.addEventListener("update.te.autocomplete", (event) => {
+        const resultsLength = event.results.length;
+    
+        setTimeout(() => {
+          const customContentContainer = document.querySelector(
+            "[data-te-autocomplete-custom-content-ref]"
+          );
+          customContentContainer.innerHTML = `Search results: ${resultsLength}`;
+        }, 0);
+      });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Custom content -->
+
+<!-- Section: Validation -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-neutral-800 dark:text-neutral-200"
+    id="validation-example"
+    data-te-spy-item>
+    Validation
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    You can use the validation component together with autocomplete.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example7">}}
+  <div class="mx-auto mb-3 xl:w-96">
+    <form
+      data-te-validation-init
+      data-te-active-validation="true"
+      autocomplete="off">
+      <div
+        class="relative"
+        id="validation"
+        data-te-input-wrapper-init
+        data-te-validate="input"
+        data-te-validation-ruleset="isRequired">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+          id="exampleFormControlInput7" />
+        <label
+          for="exampleFormControlInput7"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      <button
+        type="button"
+        class="mt-5 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+        data-te-submit-btn-ref>
+        Submit
+      </button>
+    </form>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example7">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <form
+        data-te-validation-init
+        data-te-active-validation="true"
+        autocomplete="off">
+        <div
+          class="relative"
+          id="validation"
+          data-te-input-wrapper-init
+          data-te-validate="input"
+          data-te-validation-ruleset="isRequired">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+            id="exampleFormControlInput7" />
+          <label
+            for="exampleFormControlInput7"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+        <button
+          type="button"
+          class="mt-5 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+          data-te-submit-btn-ref>
+          Submit
+        </button>
+      </form>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import { Autocomplete, Input, Validation, initTE } from "tw-elements";
+
+      initTE({ Input, Validation })
+
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const validationAutocomplete = document.querySelector('#validation');
+
+      new Autocomplete(validationAutocomplete, {
+        filter: dataFilter
+      });
+
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const validationAutocomplete = document.querySelector('#validation');
+
+      new te.Autocomplete(validationAutocomplete, {
+        filter: dataFilter
+      });
+
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Validation -->
+
+<!-- Section: Auto select -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-neutral-800 dark:text-neutral-200"
+    id="auto-select-example"
+    data-te-spy-item>
+    Auto select
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Set <code>autoSelect</code> option to <code>true</code> to enable selecting
+    on Tab press.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example8">}}
+  <div class="mx-auto mb-3 xl:w-96">
+    <div class="relative" id="auto-select" data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+        id="exampleFormControlInput8" />
+      <label
+        for="exampleFormControlInput8"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example8">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript,umd" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="relative" id="auto-select" data-te-input-wrapper-init>
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+          id="exampleFormControlInput8" />
+        <label
+          for="exampleFormControlInput8"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      import { Autocomplete, Input, initTE } from "tw-elements";
+      initTE({ Input });
+
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const autoSelectAutocomplete = document.querySelector('#auto-select');
+
+      new Autocomplete(autoSelectAutocomplete, {
+        filter: dataFilter,
+        autoSelect: true
+      });
+
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      const data = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight'];
+
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      const autoSelectAutocomplete = document.querySelector('#auto-select');
+
+      new te.Autocomplete(autoSelectAutocomplete, {
+        filter: dataFilter,
+        autoSelect: true
+      });
+
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Auto select -->
+
+<hr class="mb-5 dark:border-neutral-600" />
+
+<!-- Section: Related resources -->
+<section id="section-related-resources">
+  <!-- Title -->
+  <h2 class="mb-5 mt-0 text-3xl font-semibold leading-normal" data-te-spy-item>
+    Related resources
+  </h2>
+
+  <!-- Resources -->
+  <h3 class="text-lg font-medium">Tutorials:</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Tutorials -->
+
+    <a
+      href="/learn/te-foundations/tailwind-css/spacing/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      spacing
+    </a>
+
+    <a
+      href="/learn/te-foundations/tailwind-css/utility-first/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      utility first
+    </a>
+
+    <a
+      href="/learn/te-foundations/tailwind-css/rounded-corners/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      rounded corners
+    </a>
+    <a
+      href="/learn/te-foundations/tailwind-css/lists/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      lists
+    </a>
+
+    <a
+      href="/learn/te-foundations/tailwind-css/sizing/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      sizing
+    </a>
+    <a
+      href="/learn/te-foundations/tailwind-css/inputs/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      inputs
+    </a>
+    <a
+      href="/learn/te-foundations/tailwind-css/forms/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      forms
+    </a>
+  </div>
+  <h3 class="text-lg font-medium">Extended Docs:</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Main -->
+    <!-- content & styles-->
+    <a
+      href="/docs/standard/content-styles/hover-effects/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      hover effects
+    </a>
+    <a
+      href="/docs/standard/content-styles/icons/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      icons
+    </a>
+
+    <!-- navigation-->
+    <a
+      href="/docs/standard/navigation/mega-menu/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      mega menu
+    </a>
+    <a
+      href="/docs/standard/navigation/navbar/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      navbar
+    </a>
+    <a
+      href="/docs/standard/navigation/offcanvas/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      offcanvas
+    </a>
+    <a
+      href="/docs/standard/navigation/scrollspy/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      scrollspy
+    </a>
+
+    <!-- components-->
+    <a
+      href="/docs/standard/components/buttons/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      buttons
+    </a>
+    <a
+      href="/docs/standard/components/cards/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      cards
+    </a>
+    <a
+      href="/docs/standard/components/dropdown/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      dropdown
+    </a>
+    <a
+      href="/docs/standard/components/listgroup/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      listgroup
+    </a>
+    <a
+      href="/docs/standard/components/modal/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      modal
+    </a>
+
+    <!-- forms-->
+    <a
+      href="/docs/standard/forms/datepicker/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      datepicker
+    </a>
+    <a
+      href="/docs/standard/forms/file-input/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      file input
+    </a>
+    <a
+      href="/docs/standard/forms/form-templates/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      form templates
+    </a>
+    <a
+      href="/docs/standard/forms/inputs/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      inputs
+    </a>
+    <a
+      href="/docs/standard/forms/login-form/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      login form
+    </a>
+    <a
+      href="/docs/standard/forms/registration-form/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      registration form
+    </a>
+    <a
+      href="/docs/standard/forms/search/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      search
+    </a>
+    <a
+      href="/docs/standard/forms/timepicker/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      timepicker
+    </a>
+
+    <!-- data-->
+
+    <!-- methods -->
+
+    <!-- extended -->
+    <a
+      href="/docs/standard/extended/borders/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      borders
+    </a>
+    <a
+      href="/docs/standard/extended/center-grid-items/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      center grid items
+    </a>
+    <a
+      href="/docs/standard/extended/dark-theme/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      dark theme
+    </a>
+    <a
+      href="/docs/standard/extended/display-flex/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      display flex
+    </a>
+    <a
+      href="/docs/standard/extended/position/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      position
+    </a>
+    <a
+      href="/docs/standard/extended/spacing/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      spacing
+    </a>
+  </div>
+  <h3 class="text-lg font-medium">Design System (Figma):</h3>
+  <div class="justify-content-start w-100 mb-4 text-start">
+    <!-- Material minimal -->
+    <!-- foundations -->
+    <a
+      href="https://material-minimal.com/learn/foundations/introduction/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      introduction
+    </a>
+
+    <!-- hierarchy-->
+
+    <a
+      href="https://material-minimal.com/learn/hierarchy/art-of-prioritization/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      art of prioritization
+    </a>
+    <a
+      href="https://material-minimal.com/learn/hierarchy/de-emphasize-with-no-mercy/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      de emphasize with no mercy
+    </a>
+
+    <a
+      href="https://material-minimal.com/learn/hierarchy/lowering-contrast/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      lowering contrast
+    </a>
+
+    <a
+      href="https://material-minimal.com/learn/hierarchy/beyond-borders/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      beyond borders
+    </a>
+    <a
+      href="https://material-minimal.com/learn/hierarchy/let-it-breathe/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      let it breathe
+    </a>
+    <!-- design process-->
+    <a
+      href="https://material-minimal.com/learn/design-process/user-experience/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      user experience
+    </a>
+    <a
+      href="https://material-minimal.com/learn/design-process/do-not-start-with-the-roof/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      do not start with the roof
+    </a>
+
+    <a
+      href="https://material-minimal.com/learn/design-process/secondary-questions/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      secondary questions
+    </a>
+    <a
+      href="https://material-minimal.com/learn/design-process/project-personality/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      project personality
+    </a>
+    <a
+      href="https://material-minimal.com/learn/design-process/design-system/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      design system
+    </a>
+
+    <!-- material minimal-->
+
+    <a
+      href="https://material-minimal.com/learn/material-minimal/principles/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      principles
+    </a>
+    <!-- design hacks-->
+    <a
+      href="https://material-minimal.com/learn/design-hacks/tips-and-tricks/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      tips and tricks
+    </a>
+  </div>
+  <!-- Resources -->
+</section>
+<!-- Section: Related resources -->
