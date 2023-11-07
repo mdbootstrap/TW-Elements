@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { getFixture } from "./mocks.js";
+import { getFixture } from "../mocks.js";
 
 describe("Button", () => {
   let fixtureEl;

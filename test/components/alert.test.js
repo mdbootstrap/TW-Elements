@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import { clearFixture, getFixture } from "./mocks";
-import initTE from "../src/js/autoinit/index.js";
+import { clearFixture, getFixture } from "../mocks";
+import initTE from "../../src/js/autoinit/index.js";
 
 describe("Alert", () => {
   let fixtureEl;
@@ -18,7 +18,7 @@ describe("Alert", () => {
     fixtureEl.setAttribute("data-te-dismiss", "alert");
     jest.resetModules();
 
-    const Alert = require("../src/js/components/alert").default; // eslint-disable-line global-require
+    const Alert = require("../../src/js/components/alert").default; // eslint-disable-line global-require
     initTE({ Alert });
 
     let instance = Alert.getInstance(fixtureEl);
