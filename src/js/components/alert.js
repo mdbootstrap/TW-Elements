@@ -33,12 +33,14 @@ const SHOW_DATA_ATTRIBUTE = "data-te-alert-show";
 const DefaultType = {
   animation: "boolean",
   autohide: "boolean",
+  autoclose: "boolean",
   delay: "number",
 };
 
 const Default = {
   animation: true,
   autohide: true,
+  autoclose: false,
   delay: 1000,
 };
 
@@ -116,6 +118,11 @@ class Alert extends BaseComponent {
     if (this._config.autohide) {
       this._setupAutohide();
     }
+
+    if (this._config.autoclose) {
+      this._setupAutoclose();
+    }
+
     if (!this._element.hasAttribute(SHOW_DATA_ATTRIBUTE)) {
       Manipulator.removeClass(this._element, "hidden");
       Manipulator.addClass(this._element, "block");
@@ -200,6 +207,12 @@ class Alert extends BaseComponent {
   _setupAutohide() {
     this._timeout = setTimeout(() => {
       this.hide();
+    }, this._config.delay);
+  }
+
+  _setupAutoclose() {
+    this._timeout = setTimeout(() => {
+      this.close();
     }, this._config.delay);
   }
 
