@@ -2,10 +2,10 @@
 title: "Remix integration"
 date: 2021-04-29T16:00:58+02:00
 draft: false
-main_title: "TW elements Remix integration"
+main_title: "TW Elements Remix integration"
 subheading: ""
-seo_title: "TW elements integration with Remix - Free Examples & Tutorial"
-description: "This article shows you how to integrate Remix application with TW elements. Free download, open source license."
+seo_title: "TW Elements integration with Remix - Free Examples & Tutorial"
+description: "This article shows you how to integrate Remix application with TW Elements. Free download, open source license."
 image: "https://tecdn.b-cdn.net/img/docs/integrations/remix.webp"
 url: "docs/standard/integrations/remix-integration/"
 menu:
@@ -13,8 +13,7 @@ menu:
     name: "Remix"
 ---
 
-<!-- Section: Basic example -->
-
+<!-- Section: Prerequisites -->
 <section id="section-prerequisites">
   <!-- Title -->
   <h2
@@ -51,6 +50,7 @@ menu:
     </li>
   </ul>
 </section>
+<!-- Section: Prerequisites -->
 
 <hr class="my-5 dark:border-neutral-600" />
 
@@ -76,124 +76,163 @@ menu:
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npx create-remix@latest my-project
-        cd my-project
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npx create-remix@latest my-project
+    cd my-project
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Run the development server.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm run dev
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 </section>
 
 <hr class="mb-5 dark:border-neutral-600" />
 
-<!-- Creating and configuring Tailwind & TW elements-->
+<!-- Creating and configuring Tailwind & TW Elements -->
 <section id="section-tailwind">
   <!-- Section title-->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="tailwind"
     data-te-spy-item>
-    Installing and configuring Tailwind CSS and TW elements
+    Installing and configuring Tailwind CSS and TW Elements
   </h2>
 
   <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-  <p class="mb-5">
-    Enable built-in Tailwind CSS support in Remix. Set the
-    <code>unstable_tailwind</code> feature flag in your
-    <code>remix.config.js</code> file. Eventually this will become stable and
-    won't be necessary.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "remix.config.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-        future: {
-          unstable_tailwind: true,
-        },
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="mt-5 text-lg font-bold">Step 2</h2>
-  <p class="mb-5">Install Tailwind CSS</p>
+  <p class="mb-5">Install Tailwind CSS.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm install -D tailwindcss postcss autoprefixer
-        npx tailwindcss init -p
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 3</h2>
+  <h2 class="text-lg font-bold">File structure</h2>
+  <p class="mb-5">
+    If you have followed all instructions mentioned earlier, your file structure
+    should look like this:
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "File structure" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    my-project/
+    ├── app/
+    │   ├── routes/
+    │   │   └── _index.tsx
+    │   ├── entry.client.tsx
+    │   ├── entry.server.tsx
+    │   └── root.tsx
+    ├── build/
+    ├── node_modules/  
+    ├── public/
+    ├── ...
+    ├── package-lock.json
+    ├── package.json
+    ├── postcss.config.js
+    ├── README.md
+    ├── remix.config.js
+    ├── ...
+    ├── tailwind.config.js
+    └── tsconfig.json
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
-    <code>tailwind.config.cjs</code> file.
+    <code>tailwind.config.js</code> file.
   </p>
 
   <!--prettier-ignore-->
   <div class="pb-4">
-    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-        /** @type {import('tailwindcss').Config} */
-        module.exports = {
-          content: [
-            "./app/**/*.{js,jsx,ts,tsx}"
-            "./node_modules/tw-elements/dist/js/**/*.js"
-          ],
-          theme: {
-            extend: {},
-          },
-          darkMode: "class",
-          plugins: [require("tw-elements/dist/plugin.cjs")]
-        }
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: [
+        "./app/**/*.{js,jsx,ts,tsx}",
+        "./node_modules/tw-elements/dist/js/**/*.js",
+      ],
+      theme: {
+        extend: {},
+      },
+      darkMode: "class",
+      plugins: [require("tw-elements/dist/plugin.cjs")],
+    };    
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
-    Create a <code>./app/tailwind.css</code> file and add the
-    <code>@tailwind</code> directives for each of Tailwind’s layers.
+    Create a <code>styles.css</code> file in your app folder, and make sure to
+    include the necessary <code>@tailwind</code> directives for each of
+    Tailwind's layers.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "tailwind.css" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="CSS" >}}
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="CSS" >}}
+    @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+    @tailwind base;
+    
+    @layer base {
+      html {
+        @apply text-neutral-800;
+      }
+      html.dark {
+        @apply text-neutral-50;
+        @apply bg-neutral-800;
+      }
+    }
+    
+    @tailwind components;
+    @tailwind utilities;       
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
   <p class="mb-5">
-    Import the newly-created <code>./app/tailwind.css</code> file in your
-    <code>./app/root.jsx</code> file.
+    Import created <code>styles.css</code> file in your
+    <code>root.tsx</code> file.
   </p>
-  <p class="mb-5">Also attach the <code>Roboto</code> font.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-        import stylesheet from "~/tailwind.css";
+    {{< twsnippet/wrapper "root.tsx" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    ...
+    import stylesheet from "~/styles.css";
 
-        export const links: LinksFunction = () => [
-          { rel: "stylesheet", href: stylesheet },
-          { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" }
-        ];
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    export const links: LinksFunction = () => [
+      { rel: "stylesheet", href: stylesheet },
+    ];
+    ...
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 5</h2>
-  <p class="mb-5">Install TW elements.</p>
+  <p class="mb-5">Install TW Elements.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
@@ -206,45 +245,44 @@ menu:
 
   <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    Create standalone file with name of your component (for example
-    <code>MyDatepicker.client.jsx</code> (it shows framework that should not
-    render this component in a server-side mode) in
-    <code>app/components</code> directory) and import TE components which are
-    you intend to use. Also include necessary function <code>initTE</code>.
-    Initialize <code>initTE</code> in a lifecycle method.
+    Create <code>MyTooltip.client.tsx</code> file (it shows framework that
+    should not render this component in a server-side mode) in the
+    <code>app/components</code> directory. Then, import the TWE components you
+    intend to use and include the necessary function <code>initTE</code>.
+    Initialize <code>initTE</code>
+    within a lifecycle method.
   </p>
 
   <!--prettier-ignore-->
   <div class="pb-4">
-    {{< twsnippet/wrapper "MyDatepicker.client.jsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "MyTooltip.client.tsx" "" "mobile" >}}
     {{< twsnippet/code active=true lang="jsx" >}}
     import { useEffect } from "react";
-    import { Datepicker, Input, initTE } from "tw-elements";
-        
-    const MyDatepicker = () => {
-      useEffect(() => {
-        initTE({ Datepicker, Input });
-      }, []);
-        
-      return (
-        <div
-          class="relative mb-3"
-          data-te-datepicker-init
-          data-te-input-wrapper-init>
-          <input
-            type="text"
-            className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-            placeholder="Select a date" />
-          <label
-            htmlFor="floatingInput"
-            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
-            Select a date
-          </label>
-        </div>
-      ); 
-    }; 
+    import { Tooltip, initTE } from "tw-elements";
     
-    export default MyDatepicker;
+    const MyTooltip = () => {
+      useEffect(() => {
+        initTE({ Tooltip });
+      }, []);
+    
+      return (
+        <div className="mt-16 flex justify-center">
+          <p className="text-lg">
+            Hover the link to see the
+            <a
+              href="#"
+              className="text-primary pl-1 transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+              data-te-toggle="tooltip"
+              title="Hi! I'm tooltip"
+            >
+              tooltip
+            </a>
+          </p>
+        </div>
+      );
+    };
+    
+    export default MyTooltip;    
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -255,37 +293,56 @@ menu:
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm i remix-utils
-      {{< /twsnippet/code >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm i remix-utils
+    {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 8</h2>
   <p class="mb-5">
-    Import (for example in <code>index.js</code>) newly created component
-    wrapping it into <code>ClientOnly</code> element.
+    Import in <code>_index.tsx</code> your component and wrap it into
+    <code>ClientOnly</code> element.
   </p>
 
   <!--prettier-ignore-->
   <div class="pb-4">
-    {{< twsnippet/wrapper "root.jsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "_index.tsx" "" "mobile" >}}
     {{< twsnippet/code active=true lang="jsx" >}}
-    import { ClientOnly } from "remix-utils";
-    import MyDatepicker from "./components/MyDatepicker.client";
+    import type { MetaFunction } from "@remix-run/node";
+    import { ClientOnly } from "remix-utils/client-only";
+    import MyTooltip from "../components/MyTooltip.client";
+    
+    export const meta: MetaFunction = () => {
+      return [
+        { title: "TW Elements Remix integration" },
+        { name: "description", content: "Welcome to TWE!" },
+      ];
+    };
+    
+    export default function Index() {
+      return <ClientOnly fallback="{null}">{() => <MyTooltip />}</ClientOnly>;
+    }    
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
 
-    ...
-    export default function App() {
-      return (
-        ...
-        <ClientOnly fallback="{null}">{() => <MyDatepicker />}</ClientOnly>
-      ); 
-    }
+  <h2 class="text-lg font-bold">Step 9</h2>
+  <p class="mb-5">
+    Start the app and see if everything's fine. Awesome! You're all set to dive
+    into using TW Elements for your Remix project. Have fun!
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm run dev
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!--/Creating and configuring Tailwind & TW elements-->
+<!-- Creating and configuring Tailwind & TW Elements -->
 
 <!--Initializing via JS-->
 <section id="section-initializing-js">
@@ -312,44 +369,39 @@ menu:
 
   <!--prettier-ignore-->
   <div class="pb-4">
-    {{< twsnippet/wrapper "MyDatepicker.client.jsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "MyTooltip.client.tsx" "" "mobile" >}}
     {{< twsnippet/code active=true lang="jsx" >}}
     import { useEffect } from "react";
-    import { Datepicker, Input } from "tw-elements";
+    import { Tooltip } from "tw-elements";
     
-    const MyDatepicker = () => {
+    const MyTooltip = () => {
       useEffect(() => {
-        const myInput = new Input(document.getElementById("myDatepicker"));
-        const options = {
-          format: "dd-mm-yyyy",
-        };
-        const myDatepicker = new Datepicker(
-          document.getElementById("myDatepicker"),
-          options
-        );
+        new Tooltip(document.getElementById("my-tooltip"));
       }, []);
     
       return (
-        <div className="relative mb-3" id="myDatepicker">
-          <input
-            type="text"
-            className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-            placeholder="Select a date" />
-          <label
-            htmlFor="floatingInput"
-            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">
-            Select a date
-          </label>
+        <div className="mt-16 flex justify-center">
+          <p className="text-lg">
+            Hover the link to see the
+            <a
+              id="my-tooltip"
+              href="#"
+              className="text-primary pl-1 transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+              title="Hi! I'm tooltip"
+            >
+              tooltip
+            </a>
+          </p>
         </div>
-      ); 
-    }; 
+      );
+    };
     
-    export default MyDatepicker;
+    export default MyTooltip;    
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!--/Initializing via JS-->
+<!-- Initializing via JS -->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
