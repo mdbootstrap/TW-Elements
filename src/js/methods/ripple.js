@@ -14,6 +14,7 @@ import Data from "../dom/data";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";
+import { getStyle } from "../util/getStyle";
 
 /*
 ------------------------------------------------------------------------
@@ -30,15 +31,40 @@ const GRADIENT =
 const SELECTOR_COMPONENT = ["[data-te-ripple-init]"];
 const DEFAULT_RIPPLE_COLOR = [0, 0, 0];
 
+// prettier-ignore
 const BOOTSTRAP_COLORS = [
-  { name: "primary", gradientColor: "#3B71CA" },
-  { name: "secondary", gradientColor: "#9FA6B2" },
-  { name: "success", gradientColor: "#14A44D" },
-  { name: "danger", gradientColor: "#DC4C64" },
-  { name: "warning", gradientColor: "#E4A11B" },
-  { name: "info", gradientColor: "#54B4D3" },
-  { name: "light", gradientColor: "#fbfbfb" },
-  { name: "dark", gradientColor: "#262626" },
+  {
+    name: "primary",
+    gradientColor: getStyle("text-primary", { defaultValue: "#3B71CA", inherit: false }),
+  },
+  {
+    name: "secondary",
+    gradientColor: getStyle("text-secondary", { defaultValue: "#9FA6B2", inherit: false }),
+  },
+  {
+    name: "success",
+    gradientColor: getStyle("text-success", { defaultValue: "#14A44D", inherit: false }),
+  },
+  {
+    name: "danger",
+    gradientColor: getStyle("text-danger", { defaultValue: "#DC4C64", inherit: false }),
+  },
+  {
+    name: "warning",
+    gradientColor: getStyle("text-warning", { defaultValue: "#E4A11B", inherit: false }),
+  },
+  {
+    name: "info",
+    gradientColor: getStyle("text-info", { defaultValue: "#54B4D3", inherit: false }),
+  },
+  {
+    name: "light",
+    gradientColor: "#fbfbfb",
+  },
+  {
+    name: "dark",
+    gradientColor: "#262626",
+  },
 ];
 
 // Sets value when run opacity transition
