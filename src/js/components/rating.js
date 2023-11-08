@@ -107,7 +107,7 @@ class Rating {
         el.dispose();
       });
 
-      this._icons.removeAttribute("tabIndex");
+      this._icons.forEach((el) => el.removeAttribute("tabIndex"));
     }
 
     this._element = null;
