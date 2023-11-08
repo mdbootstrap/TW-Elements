@@ -119,7 +119,10 @@ class Alert extends BaseComponent {
       this._setupAutohide();
     }
 
-    if (this._config.autoclose) {
+    if (
+      this._config.autoclose ||
+      (this._config.autoclose && this._config.autohide)
+    ) {
       this._setupAutoclose();
     }
 
