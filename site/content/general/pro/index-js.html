@@ -84,3 +84,26 @@
 
   contactForm.addEventListener("submit", handleContactFormSubmit);
 </script>
+
+<!--Counter-->
+<script>
+  const endTime = new Date(Date.UTC(2023, 10, 14, 12, 00, 00));
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const timeLeft = endTime - now;
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const mins = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    document.getElementById(
+      "bf-countdown"
+    ).innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
+  }
+
+  setInterval(updateCountdown, 1000);
+</script>

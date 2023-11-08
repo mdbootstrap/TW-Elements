@@ -19,29 +19,32 @@ hidden_sidenav: true
   <section id="pricing" class="mb-16 w-full sm:mb-32">
     <style>
       .background-radial-gradient {
-        background-color: hsl(218, 41%, 15%);
-        background-image: radial-gradient(
-            650px circle at 0% 0%,
-            hsl(218, 41%, 35%) 15%,
-            hsl(218, 41%, 30%) 35%,
-            hsl(218, 41%, 20%) 75%,
-            hsl(218, 41%, 19%) 80%,
-            transparent 100%
-          ),
-          radial-gradient(
-            1250px circle at 100% 100%,
-            hsl(218, 41%, 45%) 15%,
-            hsl(218, 41%, 30%) 35%,
-            hsl(218, 41%, 20%) 75%,
-            hsl(218, 41%, 19%) 80%,
-            transparent 100%
-          );
+        /* fallback for old browsers */
+        background: #000000;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(
+          to right,
+          rgba(0, 0, 0, 1),
+          rgba(133, 0, 0, 1)
+        );
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 1),
+          rgba(133, 0, 0, 1)
+        );
       }
     </style>
 
     <div
       class="background-radial-gradient h-[300px] pt-[55px] text-center text-white lg:h-[400px] lg:pt-[80px]">
-      <h2 class="mb-12 text-center text-3xl font-bold">Commercial Licenses</h2>
+      <p>Hurry up & claim up to $500 discount:</p>
+      <h2
+        class="mb-12 text-center text-6xl font-bold "
+        style="min-height: 3.75rem;"
+        id="bf-countdown"></h2>
 
       <div class="container mx-auto">
         <div class="grid grid-cols-12">
@@ -85,7 +88,7 @@ hidden_sidenav: true
                   d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
               </svg>
 
-              <p class="text-sm">Lifetime usage after purchase</p>
+              <p class="text-sm font-bold">Lifetime usage after purchase</p>
             </div>
           </div>
 
@@ -120,30 +123,47 @@ hidden_sidenav: true
         <div
           class="p-0 md:order-2 md:col-span-1 lg:order-1 lg:col-span-1 lg:py-3">
           <div
-            class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 lg:rounded-br-none lg:rounded-tr-none">
+            class="box block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 lg:rounded-br-none lg:rounded-tr-none">
             <div
               class="border-b-2 border-neutral-100 border-opacity-100 p-5 text-center dark:border-opacity-10 xl:p-6">
-              <p class="mb-4 text-sm uppercase">
+              <p class="mb-2 text-sm uppercase">
                 <strong>Basic</strong>
               </p>
+              <p class="my-3 text-5xl text-danger line-through">$99</p>
               <h3 class="mb-6 text-3xl">
-                <strong>$99</strong>
+                <strong>$89</strong>
+
                 <small class="text-base text-neutral-700 dark:text-neutral-300"
-                  >/year</small
+                  >/first year</small
                 >
               </h3>
 
               <a
-                href="https://mdbootstrap.com/?add-to-cart=146124"
+                href="https://mdbootstrap.com/?add-to-cart=146124&coupon_code=HKA7C4G4"
                 type="button"
-                class="inline-block w-full rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 inline-block w-full rounded bg-red-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light">
-                Buy now
+                Buy now - save $10
               </a>
             </div>
             <div class="p-5 xl:p-6">
               <ol class="list-inside">
+                <li class="mb-4 flex font-bold">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  Lifetime usage
+                </li>
                 <li class="mb-4 flex">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +171,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -170,7 +190,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -186,7 +206,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -201,22 +221,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                  Lifetime usage
-                </li>
-                <li class="mb-4 flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -231,7 +236,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -246,7 +251,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -261,27 +266,28 @@ hidden_sidenav: true
 
         <div class="md:order-1 md:col-span-2 lg:order-2 lg:col-span-1">
           <div
-            class="tailwind@-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] block h-full rounded-lg border-2 border-primary-600 bg-white dark:bg-neutral-700"
+            class="tailwind@-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] block h-full rounded-lg border-2 border-red-600 bg-white dark:bg-neutral-700"
             style="z-index: 1">
             <div
               class="border-b-2 border-neutral-100 border-opacity-100 p-5 text-center dark:border-opacity-10 xl:p-6">
-              <p class="mb-4 text-sm uppercase">
+              <p class="mb-2 text-sm uppercase">
                 <strong>EXTENDED</strong>
               </p>
+              <p class="my-3 text-5xl text-danger line-through">$179</p>
               <h3 class="mb-6 text-3xl">
-                <strong>$179</strong>
+                <strong>$129</strong>
                 <small class="text-base text-neutral-700 dark:text-neutral-300"
-                  >/year</small
+                  >/first year</small
                 >
               </h3>
 
               <a
-                href="https://mdbootstrap.com/?add-to-cart=146125"
+                href="https://mdbootstrap.com/?add-to-cart=146125&coupon_code=453ZFS7B"
                 type="button"
-                class="inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                class="block rounded bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]"
                 data-te-ripple-init
                 data-te-ripple-color="light">
-                Buy now
+                Buy now - save $50
               </a>
             </div>
             <div class="p-5 xl:p-6">
@@ -293,7 +299,22 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  Lifetime usage
+                </li>
+                <li class="mb-4 flex font-bold">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -312,7 +333,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -328,7 +349,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -343,22 +364,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                  Lifetime usage
-                </li>
-                <li class="mb-4 flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -373,7 +379,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -388,7 +394,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -406,27 +412,43 @@ hidden_sidenav: true
             class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 lg:rounded-bl-none lg:rounded-tl-none">
             <div
               class="border-b-2 border-neutral-100 border-opacity-100 p-5 text-center dark:border-opacity-10 xl:p-6">
-              <p class="mb-4 text-sm uppercase">
+              <p class="mb-2 text-sm uppercase">
                 <strong>UNLIMITED</strong>
               </p>
+              <p class="my-3 text-5xl text-danger line-through">$999</p>
               <h3 class="mb-6 text-3xl">
-                <strong>$999</strong>
+                <strong>$499</strong>
                 <small class="text-base text-neutral-700 dark:text-neutral-300"
-                  >/year</small
+                  >/first year</small
                 >
               </h3>
 
               <a
-                href="https://mdbootstrap.com/?add-to-cart=146126"
+                href="https://mdbootstrap.com/?add-to-cart=146126&coupon_code=RB4D6RYN"
                 type="button"
-                class="inline-block w-full rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 inline-block w-full rounded bg-red-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light">
-                Buy now
+                Buy now - save $500
               </a>
             </div>
             <div class="p-5 xl:p-6">
               <ol class="list-inside">
+                <li class="mb-4 flex font-bold">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  Lifetime usage
+                </li>
                 <li class="mb-4 flex">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -434,7 +456,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -453,7 +475,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -469,7 +491,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -484,22 +506,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                  Lifetime usage
-                </li>
-                <li class="mb-4 flex">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -514,7 +521,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -529,7 +536,7 @@ hidden_sidenav: true
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="mr-3 h-5 w-5 text-primary dark:text-primary-400">
+                    class="text-red mr-3 h-5 w-5 dark:text-red-400">
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
@@ -551,7 +558,7 @@ hidden_sidenav: true
     <div class="items-center justify-center sm:px-6 lg:px-12 xl:flex xl:px-32">
       <div class="mb-8 xl:mb-0 xl:mr-10">
         <h2
-          class="text-5xl font-bold leading-tight text-primary-400 dark:text-primary-400">
+          class="text-5xl font-bold leading-tight text-red-400 dark:text-red-400">
           Do you need a
           <br />
           <span class="text-secondary-900 dark:text-white">TEAM license?</span>
@@ -559,7 +566,7 @@ hidden_sidenav: true
       </div>
 
       <div
-        class="mb-6 shrink-0 justify-center rounded-lg bg-primary-100 p-4 text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-black lg:mb-0">
+        class="mb-6 shrink-0 justify-center rounded-lg bg-red-100 p-4 text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-black lg:mb-0">
         <p class="text-secondary-900 dark:text-white">
           If you need a TW Elements commercial license for
           <strong>more than one developer</strong>, contact us at:
@@ -573,7 +580,7 @@ hidden_sidenav: true
           data-te-ripple-init
           data-te-ripple-color="light"
           data-te-clipboard-text="tailwind@mdbootstrap.com"
-          class="inline-block rounded pb-2 pt-2.5 text-xl font-medium leading-normal text-primary-800 transition duration-150 ease-in-out dark:text-primary-400 sm:px-6 
+          class="inline-block rounded pb-2 pt-2.5 text-xl font-medium leading-normal text-red-800 transition duration-150 ease-in-out dark:text-red-400 sm:px-6 
                 sm:text-2xl ">
           <span class="flex items-center">
             tailwind@mdbootstrap.com
@@ -632,19 +639,19 @@ hidden_sidenav: true
               Certainly! We recommend you try out TWE, you can download it for
               free
               <a
-                class="font-bold text-primary-600 underline underline-offset-2 dark:text-primary-400"
+                class="font-bold text-red-600 underline underline-offset-2 dark:text-red-400"
                 href="/docs/standard/getting-started/quick-start/"
                 >here</a
               >. The free version includes all components. The main difference
               is the free version is licensed under
               <a
-                class="font-bold text-primary-600 underline underline-offset-2 dark:text-primary-400"
+                class="font-bold text-red-600 underline underline-offset-2 dark:text-red-400"
                 href="/license/"
                 >AGPL</a
               >. In order to use TWE in your commercial projects without AGPL
               limitations, you need to purchase a
               <a
-                class="font-bold text-primary-600 underline underline-offset-2 dark:text-primary-400"
+                class="font-bold text-red-600 underline underline-offset-2 dark:text-red-400"
                 href="#commercial-license"
                 >commercial license</a
               >.
@@ -656,7 +663,7 @@ hidden_sidenav: true
             <p class="text-neutral-700 dark:text-neutral-300">
               Yes, after you purchase a
               <a
-                class="font-bold text-primary-600 underline underline-offset-2 dark:text-primary-400"
+                class="font-bold text-red-600 underline underline-offset-2 dark:text-red-400"
                 href="#commercial-license"
                 >commercial license</a
               >, you can use TWE in your commercial projects without AGPL
@@ -673,7 +680,7 @@ hidden_sidenav: true
               refund within the first 60 days of purchase. We highly encourage
               you to try out TWE before purchase, you can download it for free
               <a
-                class="font-bold text-primary-600 underline underline-offset-2 dark:text-primary-400"
+                class="font-bold text-red-600 underline underline-offset-2 dark:text-red-400"
                 href="/docs/standard/getting-started/quick-start/"
                 >here</a
               >.
@@ -737,7 +744,7 @@ hidden_sidenav: true
             <p class="text-neutral-700 dark:text-neutral-300">
               No, in accordance with the
               <a
-                class="font-bold text-primary-600 underline underline-offset-2 dark:text-primary-400"
+                class="font-bold text-red-600 underline underline-offset-2 dark:text-red-400"
                 href="#commercial-license"
                 >commercial license</a
               >
@@ -781,7 +788,7 @@ hidden_sidenav: true
             data-te-sticky-delay="75"
             data-te-sticky-z-index="auto">
             <h2
-              class="flex items-center text-2xl font-bold text-primary dark:text-primary-400">
+              class="text-red flex items-center text-2xl font-bold dark:text-red-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -804,9 +811,9 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="inline-block rounded bg-primary-100 
-        px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal 
-        text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 
+        inline-block rounded bg-red-100 px-4 pb-[5px] pt-[6px] text-xs 
+        font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0">
               <span class="flex items-center">
                 BUY ALL NOW
                 <svg
@@ -1743,7 +1750,7 @@ hidden_sidenav: true
             data-te-sticky-delay="75"
             data-te-sticky-z-index="auto">
             <h2
-              class="flex items-center text-2xl font-bold text-primary dark:text-primary-400">
+              class="text-red flex items-center text-2xl font-bold dark:text-red-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -1767,9 +1774,9 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="inline-block rounded bg-primary-100 
-    px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal 
-    text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 
+    inline-block rounded bg-red-100 px-4 pb-[5px] pt-[6px] text-xs 
+    font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0">
               <span class="flex items-center">
                 BUY ALL NOW
                 <svg
@@ -2218,7 +2225,7 @@ hidden_sidenav: true
             data-te-sticky-delay="75"
             data-te-sticky-z-index="auto">
             <h2
-              class="flex items-center text-2xl font-bold text-primary dark:text-primary-400">
+              class="text-red flex items-center text-2xl font-bold dark:text-red-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -2242,9 +2249,9 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="inline-block rounded bg-primary-100 
-    px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal 
-    text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 
+    inline-block rounded bg-red-100 px-4 pb-[5px] pt-[6px] text-xs 
+    font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0">
               <span class="flex items-center">
                 BUY ALL NOW
                 <svg
@@ -2378,7 +2385,7 @@ hidden_sidenav: true
             data-te-sticky-delay="75"
             data-te-sticky-z-index="auto">
             <h2
-              class="flex items-center text-2xl font-bold text-primary dark:text-primary-400">
+              class="text-red flex items-center text-2xl font-bold dark:text-red-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -2403,9 +2410,9 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="inline-block rounded bg-primary-100 
-    px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal 
-    text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 
+    inline-block rounded bg-red-100 px-4 pb-[5px] pt-[6px] text-xs 
+    font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0">
               <span class="flex items-center">
                 BUY ALL NOW
                 <svg
@@ -2659,7 +2666,7 @@ hidden_sidenav: true
             data-te-sticky-delay="75"
             data-te-sticky-z-index="auto">
             <h2
-              class="flex items-center text-2xl font-bold text-primary dark:text-primary-400">
+              class="text-red flex items-center text-2xl font-bold dark:text-red-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -2683,9 +2690,9 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="inline-block rounded bg-primary-100 
-    px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal 
-    text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 
+    inline-block rounded bg-red-100 px-4 pb-[5px] pt-[6px] text-xs 
+    font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0">
               <span class="flex items-center">
                 BUY ALL NOW
                 <svg
@@ -2988,7 +2995,7 @@ hidden_sidenav: true
             data-te-sticky-delay="75"
             data-te-sticky-z-index="auto">
             <h2
-              class="flex items-center text-2xl font-bold text-primary dark:text-primary-400">
+              class="text-red flex items-center text-2xl font-bold dark:text-red-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -3012,9 +3019,9 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="inline-block rounded bg-primary-100 
-    px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal 
-    text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 
+    inline-block rounded bg-red-100 px-4 pb-[5px] pt-[6px] text-xs 
+    font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0">
               <span class="flex items-center">
                 BUY ALL NOW
                 <svg
@@ -3473,7 +3480,7 @@ hidden_sidenav: true
             data-te-sticky-delay="75"
             data-te-sticky-z-index="auto">
             <h2
-              class="flex items-center text-2xl font-bold text-primary dark:text-primary-400">
+              class="text-red flex items-center text-2xl font-bold dark:text-red-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -3497,9 +3504,9 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="inline-block rounded bg-primary-100 
-    px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal 
-    text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 
+    inline-block rounded bg-red-100 px-4 pb-[5px] pt-[6px] text-xs 
+    font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0">
               <span class="flex items-center">
                 BUY ALL NOW
                 <svg
@@ -3804,7 +3811,7 @@ hidden_sidenav: true
             data-te-sticky-delay="75"
             data-te-sticky-z-index="auto">
             <h2
-              class="flex items-center text-2xl font-bold text-primary dark:text-primary-400">
+              class="text-red flex items-center text-2xl font-bold dark:text-red-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -3828,9 +3835,9 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="inline-block rounded bg-primary-100 
-    px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal 
-    text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200">
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 
+    inline-block rounded bg-red-100 px-4 pb-[5px] pt-[6px] text-xs 
+    font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0">
               <span class="flex items-center">
                 BUY ALL NOW
                 <svg
@@ -4029,7 +4036,7 @@ hidden_sidenav: true
                   stroke-linejoin="round"
                   d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
               </svg>
-              <p class="text-lg text-primary dark:text-primary-400 md:text-xl">
+              <p class="text-red text-lg dark:text-red-400 md:text-xl">
                 You can use TW Elements for any commercial project
               </p>
             </div>
@@ -4047,7 +4054,7 @@ hidden_sidenav: true
                   stroke-linejoin="round"
                   d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
               </svg>
-              <p class="text-lg text-primary dark:text-primary-400 md:text-xl">
+              <p class="text-red text-lg dark:text-red-400 md:text-xl">
                 You don’t have to publish your source code anywhere
               </p>
             </div>
@@ -4065,7 +4072,7 @@ hidden_sidenav: true
                   stroke-linejoin="round"
                   d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
               </svg>
-              <p class="text-lg text-primary dark:text-primary-400 md:text-xl">
+              <p class="text-red text-lg dark:text-red-400 md:text-xl">
                 You are no longer bound by the AGPL license
               </p>
             </div>
@@ -4074,7 +4081,7 @@ hidden_sidenav: true
             <a
               href="#pricing"
               type="button"
-              class="mx-1 my-1 inline-block rounded bg-primary px-8 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+              class="mx-1 my-1 inline-block rounded bg-danger px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]"
               data-te-ripple-init
               data-te-ripple-color="light">
               purchase now
@@ -4083,7 +4090,7 @@ hidden_sidenav: true
             <!-- Button trigger modal -->
             <button
               type="button"
-              class="mx-1 my-1 inline-block rounded bg-primary-100 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+              class="hover:bg-red-accent-100 focus:bg-red-accent-100 active:bg-red-accent-200 mx-1 my-1 inline-block rounded bg-red-100 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-red-700 transition duration-150 ease-in-out focus:outline-none focus:ring-0"
               data-te-toggle="modal"
               data-te-target="#licenseModal"
               data-te-ripple-init
@@ -4156,7 +4163,7 @@ hidden_sidenav: true
         </p>
 
         <h5
-          class="mt-5 text-xl font-medium leading-tight text-primary dark:text-primary-400">
+          class="text-red mt-5 text-xl font-medium leading-tight dark:text-red-400">
           Dual Licensing
         </h5>
         <p>
@@ -4173,7 +4180,7 @@ hidden_sidenav: true
         </p>
 
         <h5
-          class="mt-5 text-xl font-medium leading-tight text-primary dark:text-primary-400">
+          class="text-red mt-5 text-xl font-medium leading-tight dark:text-red-400">
           License Validity
         </h5>
         <p>
@@ -4187,7 +4194,7 @@ hidden_sidenav: true
         </p>
 
         <h5
-          class="mt-5 text-xl font-medium leading-tight text-primary dark:text-primary-400">
+          class="text-red mt-5 text-xl font-medium leading-tight dark:text-red-400">
           License
         </h5>
         <p>
@@ -4197,7 +4204,7 @@ hidden_sidenav: true
         </p>
 
         <h5
-          class="mt-5 text-xl font-medium leading-tight text-primary dark:text-primary-400">
+          class="text-red mt-5 text-xl font-medium leading-tight dark:text-red-400">
           Rights
         </h5>
         <p><strong>No attribution required</strong></p>
@@ -4235,12 +4242,12 @@ hidden_sidenav: true
           <strong>*Note: </strong>This is just an example license for the
           UNLIMITED tier. The number of End Products (projects) that can be
           created with the Product depends on the tier you choose. It's one
-          projects for BASIC tier, five projects for EXTENDED tier and unlimited
+          project for BASIC tier, five projects for EXTENDED tier and unlimited
           projects for UNLIMITED tier.
         </div>
 
         <h5
-          class="mt-5 text-xl font-medium leading-tight text-primary dark:text-primary-400">
+          class="text-red mt-5 text-xl font-medium leading-tight dark:text-red-400">
           Restrictions
         </h5>
         <p><strong>Unauthorized redistribution</strong></p>
@@ -4300,7 +4307,7 @@ hidden_sidenav: true
         </p>
 
         <h5
-          class="mt-5 text-xl font-medium leading-tight text-primary dark:text-primary-400">
+          class="text-red mt-5 text-xl font-medium leading-tight dark:text-red-400">
           Term and Renewal
         </h5>
         <p>
@@ -4316,7 +4323,7 @@ hidden_sidenav: true
         </p>
 
         <h5
-          class="mt-5 text-xl font-medium leading-tight text-primary dark:text-primary-400">
+          class="text-red mt-5 text-xl font-medium leading-tight dark:text-red-400">
           Governing Law
         </h5>
         <p>
@@ -4329,7 +4336,7 @@ hidden_sidenav: true
         </p>
 
         <h5
-          class="mt-5 text-xl font-medium leading-tight text-primary dark:text-primary-400">
+          class="text-red mt-5 text-xl font-medium leading-tight dark:text-red-400">
           Entire Agreement
         </h5>
         <p>
