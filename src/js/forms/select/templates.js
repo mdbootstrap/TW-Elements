@@ -59,7 +59,14 @@ function _setSizeClasses(element, config, defaultSize, smSize, lgSize) {
   }
 }
 
-export function getWrapperTemplate(id, config, label, classes, selectName) {
+export function getWrapperTemplate(
+  id,
+  config,
+  label,
+  classes,
+  selectName,
+  customArrow
+) {
   const wrapper = document.createElement("div");
   wrapper.setAttribute("id", id);
   wrapper.setAttribute(DATA_SELECT_WRAPPER, "");
@@ -175,7 +182,7 @@ export function getWrapperTemplate(id, config, label, classes, selectName) {
     Manipulator.addClass(arrow, classes.selectArrowWhite);
   }
 
-  arrow.innerHTML = iconSVGTemplate;
+  arrow.innerHTML = customArrow ? customArrow : iconSVGTemplate;
 
   formOutline.appendChild(input);
 
