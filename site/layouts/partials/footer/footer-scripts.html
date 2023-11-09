@@ -478,6 +478,22 @@
         templateTabsInstance.show();
         scrollTop();
       }
+    } else {
+      const el = document.querySelector(locationHash);
+      const width = el && getComputedStyle(el).width;
+
+      if (el && width && width === "auto") {
+        const apiTab = document.querySelector(
+          '#docs-nav-pills a[href="#docsTabsAPI"]'
+        );
+
+        const apiTabsInstance = new te.Tab(apiTab);
+        apiTabsInstance.show();
+
+        setTimeout(() => {
+          window.scrollTo({ top: el.offsetTop - 75, behavior: "smooth" });
+        }, 200);
+      }
     }
 
     const navPills = document.querySelectorAll(
