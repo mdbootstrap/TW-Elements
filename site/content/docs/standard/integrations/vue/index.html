@@ -2,10 +2,10 @@
 title: "Vue integration"
 date: 2021-04-29T16:00:58+02:00
 draft: false
-main_title: "TW elements Vue integration"
+main_title: "TW Elements Vue integration"
 subheading: ""
-seo_title: "TW elements integration with Vue - Free Examples & Tutorial"
-description: "This article shows you how to integrate Vue application with TW elements. Free download, open source license."
+seo_title: "TW Elements integration with Vue - Free Examples & Tutorial"
+description: "This article shows you how to integrate Vue application with TW Elements. Free download, open source license."
 image: "https://tecdn.b-cdn.net/img/docs/integrations/vue.webp"
 url: "docs/standard/integrations/vue-integration/"
 menu:
@@ -14,7 +14,6 @@ menu:
 ---
 
 <!--Prerequisites-->
-
 <section id="section-prerequisites">
   <!-- Title -->
   <h2
@@ -54,7 +53,7 @@ menu:
     class="my-6 rounded-lg bg-primary-100 p-6 text-base text-info-800"
     role="alert">
     <p>
-      <strong>Vue TW elements:</strong>
+      <strong>Vue TW Elements:</strong>
       <br />
       Currently we are working on a standalone Vue version of TW elements. If
       you want to know when it is going to be released, sign in in our
@@ -67,11 +66,11 @@ menu:
     </p>
   </div>
 </section>
-<!--/Prerequisites-->
+<!-- Prerequisites -->
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!--Creating Vue app-->
+<!-- Creating Vue app -->
 <section id="section-vue-app">
   <!-- Section title-->
   <h2
@@ -101,51 +100,95 @@ menu:
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm create vite@latest my-project -- --template vue
-        cd my-project
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm create vite@latest my-project -- --template vue
+    cd my-project
+    npm install
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Run the development server.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm run dev
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!--/Creating Vue app-->
+<!-- Creating Vue app -->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
-<!--Creating and configuring Tailwind & TW elements-->
+<!-- Creating and configuring Tailwind & TW Elements -->
 <section id="section-tailwind">
   <!-- Section title-->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="tailwind"
     data-te-spy-item>
-    Installing and configuring Tailwind CSS and TW elements
+    Installing and configuring Tailwind CSS and TW Elements
   </h2>
 
   <!-- Description -->
   <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Install Tailwind CSS</p>
+  <p class="mb-5">Install Tailwind CSS.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm install -D tailwindcss postcss autoprefixer
-        npx tailwindcss init -p
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">File structure</h2>
+  <p class="mb-2">
+    If you have followed all instructions mentioned earlier, your file structure
+    should look like this:
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "File structure" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" >}}
+    my-project/
+    ├── node_modules/
+    ├── public/
+    ├── src/        
+    │   ├── assets/
+    │   ├── components/
+    │   ├── App.vue
+    │   ├── main.js
+    │   └── style.css
+    ├── .gitignore
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── postcss.config.js
+    ├── README.md
+    ├── tailwind.config.js
+    └── vite.config.js
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
-    <code>tailwind.config.cjs</code> file.
+    <code>tailwind.config.js</code> file.
   </p>
 
   <!--prettier-ignore-->
   <div class="pb-4">
-    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
+    {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
         /** @type {import('tailwindcss').Config} */
         module.exports = {
           content: [
@@ -159,56 +202,52 @@ menu:
           darkMode: "class",
           plugins: [require("tw-elements/dist/plugin.cjs")]
         }
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
-    Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
-    your <code>./src/style.css</code> file.
+    Add the <code>@tailwind</code> directives to your
+    <code>style.css</code> file.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "style.css" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="CSS" >}}
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="CSS" >}}
+    @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+    @tailwind base;
+
+    @layer base {
+      html {
+        @apply text-neutral-800;
+      }
+      html.dark {
+        @apply text-neutral-50;
+        @apply bg-neutral-800;
+      }
+    }
+
+    @tailwind components;
+    @tailwind utilities;
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
-  <p class="mb-5">
-    Attach the <code>Roboto</code> font in <code>index.html</code>.
-  </p>
+  <p class="mb-5">Install TW Elements.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "index.html" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="HTML" >}}
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
-      rel="stylesheet" />
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install tw-elements
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 5</h2>
-  <p class="mb-5">Install TW elements.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        npm install tw-elements
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
     Import components which are you intend to use and necessary function
     <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
@@ -216,43 +255,55 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "script,template" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="HTML" >}}
-    <script>
+    {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <script setup>
       import { onMounted } from "vue";
-      import { Datepicker, Input, initTE } from "tw-elements";
+      import { Tooltip, initTE } from "tw-elements";
 
       onMounted(() => {
-        initTE({ Datepicker, Input });
+        initTE({ Tooltip });
       });
     </script>
-    {{< /twsnippet/code >}}
-    {{< twsnippet/code lang="HTML" >}}
+
     <template>
-      <div
-        class="relative mb-3"
-        data-te-datepicker-init
-        data-te-input-wrapper-init>
-        <input
-          type="text"
-          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-          placeholder="Select a date" />
-        <label
-          for="floatingInput"
-          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >Select a date</label
-        >
+      <div class="mt-16 flex justify-center">
+        <p class="text-lg">
+          Hover the link to see the
+          <a
+            href="#"
+            class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+            data-te-toggle="tooltip"
+            title="Hi! I'm tooltip"
+            >tooltip</a
+          >
+        </p>
       </div>
     </template>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">
+    Start the app and see if everything's fine. Awesome! You're all set to dive
+    into using TW Elements for your Vue project. Have fun!
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm run dev
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
 </section>
-<!--/Creating and configuring Tailwind & TW elements-->
+<!-- Creating and configuring Tailwind & TW Elements -->
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!-- Initializing via JS-->
+<!-- Initializing via JS -->
 <section id="section-initializing-js">
   <!-- Title -->
   <h2
@@ -277,42 +328,36 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "script,template" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="HTML" >}}
-    <script>
+    {{< twsnippet/wrapper "App.vue" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <script setup>
       import { onMounted } from "vue";
+      import { Tooltip } from "tw-elements";
 
       onMounted(() => {
-        const myInput = new Input(document.getElementById("myDatepicker"));
-        const options = {
-          format: "dd-mm-yyyy",
-        };
-        const myDatepicker = new Datepicker(
-          document.getElementById("myDatepicker"),
-          options
-        );
+        const myTooltip = new Tooltip(document.getElementById("my-tooltip"));
       });
     </script>
-    {{< /twsnippet/code >}}
-    {{< twsnippet/code lang="HTML" >}}
+
     <template>
-      <div class="relative mb-3">
-        <input
-          type="text"
-          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-          placeholder="Select a date" />
-        <label
-          for="floatingInput"
-          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >Select a date</label
-        >
+      <div class="mt-16 flex justify-center">
+        <p class="text-lg">
+          Hover the link to see the
+          <a
+            id="my-tooltip"
+            href="#"
+            class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+            title="Hi! I'm tooltip">
+            tooltip
+          </a>
+        </p>
       </div>
     </template>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!-- /Initializing via JS-->
+<!-- Initializing via JS -->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
@@ -508,6 +553,13 @@ menu:
       data-te-ripple-init
       class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
       svelte
+    </a>
+    <a
+      href="/docs/standard/integrations/sveltekit-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      sveltekit
     </a>
     <!-- content & styles-->
 
