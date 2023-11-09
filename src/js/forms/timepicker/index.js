@@ -1614,10 +1614,34 @@ class Timepicker {
           pointerEvents: "auto",
         });
         this._removeModal();
+        this._closeDropdown();
 
         if (!this._animations) return;
 
         this._toggleBackdropAnimation(true);
+      }
+    });
+  }
+
+  _closeDropdown() {
+    const timepicker = SelectorEngine.findOne("[data-popper-placement]");
+    const container = this._getContainer();
+
+    if (timepicker) {
+      container.removeChild(timepicker);
+    }
+
+    if (this._popper) {
+      this._popper.destroy();
+    }
+
+    timepicker.addEventListener("animationend", () => {
+      if (timepicker) {
+        container.removeChild(timepicker);
+      }
+
+      if (this._popper) {
+        this._popper.destroy();
       }
     });
   }
