@@ -118,7 +118,7 @@ const ROW_CLASSES = "border-b";
 const ROW_ANIMATION_CLASSES =
   "transition ease-in-out duration-300 motion-reduce:transition-none";
 const ROW_ITEM_CLASSES =
-  "whitespace-nowrap text-clip overflow-hidden px-[1.4rem] py-4";
+  "whitespace-nowrap text-clip overflow-auto px-[1.4rem] py-4";
 const SCROLL_CLASSES = "relative";
 const SELECTABLE_ROW_CLASSES = "!bg-neutral-100 dark:!bg-neutral-600";
 const SELECT_ITEMS_WRAPPER_CLASSES =
