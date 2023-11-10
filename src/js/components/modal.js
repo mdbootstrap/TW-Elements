@@ -186,7 +186,7 @@ class Modal extends BaseComponent {
   }
 
   dispose() {
-    [window, this._dialog].forEach((htmlElement) =>
+    [window, document, this._dialog].forEach((htmlElement) =>
       EventHandler.off(htmlElement, EVENT_KEY)
     );
 
