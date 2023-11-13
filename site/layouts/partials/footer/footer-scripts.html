@@ -478,11 +478,11 @@
         templateTabsInstance.show();
         scrollTop();
       }
-    } else {
+    } else if (locationHash) {
       const el = document.querySelector(locationHash);
       const width = el && getComputedStyle(el).width;
 
-      if (el && width && width === "auto") {
+      if (el && width === "auto") {
         const apiTab = document.querySelector(
           '#docs-nav-pills a[href="#docsTabsAPI"]'
         );
