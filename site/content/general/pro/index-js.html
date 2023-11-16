@@ -107,3 +107,23 @@
 
   setInterval(updateCountdown, 1000);
 </script>
+
+<!--Hiver chat-->
+<script>
+  (function (d, t) {
+    var BASE_URL = "http://chatwoot-rails-api-service:80";
+    var CDN_URL = "https://chat-widget.hiverhq.com/chat-widget";
+    var g = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    g.src = CDN_URL + "/js/sdk.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g, s);
+    g.onload = function () {
+      window.chatwootSDK.run({
+        websiteToken: "Lo9DF7g9MY92qKWmRqdueKPL",
+        baseUrl: BASE_URL,
+      });
+    };
+  })(document, "script");
+</script>
