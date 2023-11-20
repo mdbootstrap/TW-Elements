@@ -558,8 +558,6 @@ A collection of stunning components made with attention to the smallest details.
     <td align="center"><b>More coming soon</b></td>
   </tr>
 
-
-  
 </table>
 
 ---
@@ -719,7 +717,7 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
 npm install tw-elements
 ```
 
-3. Tailwind Elements is a plugin and should be included inside the **tailwind.config.js** file. It is also recommended to extend the content array with a js file that loads dynamic component classes:
+3. TW Elements is a plugin and should be included inside the **tailwind.config.js** file. It is also recommended to extend the content array with a js file that loads dynamic component classes:
 
 ```javascript
 module.exports = {
