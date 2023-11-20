@@ -59,14 +59,7 @@ function _setSizeClasses(element, config, defaultSize, smSize, lgSize) {
   }
 }
 
-export function getWrapperTemplate(
-  id,
-  config,
-  label,
-  classes,
-  selectName,
-  customArrow
-) {
+export function getWrapperTemplate(id, config, label, classes, customArrow) {
   const wrapper = document.createElement("div");
   wrapper.setAttribute("id", id);
   wrapper.setAttribute(DATA_SELECT_WRAPPER, "");
@@ -100,7 +93,6 @@ export function getWrapperTemplate(
   input.setAttribute("aria-disabled", disabled);
   input.setAttribute("aria-haspopup", "true");
   input.setAttribute("aria-expanded", false);
-  input.name = selectName;
 
   if (config.tabIndex) {
     input.setAttribute("tabIndex", config.tabIndex);
