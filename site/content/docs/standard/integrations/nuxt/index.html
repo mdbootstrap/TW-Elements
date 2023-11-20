@@ -391,6 +391,169 @@ menu:
 
 <hr class="mb-5 dark:border-neutral-600" />
 
+<!-- Troubleshooting -->
+<section id="section-troubleshooting">
+  <!-- Section title-->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="title-troubleshooting"
+    data-te-spy-item>
+    Troubleshooting
+  </h2>
+
+  <div id="accordionExample">
+    <div
+      class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+      <h2 class="mb-0" id="headingTwo5">
+        <button
+          class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-lg text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+          type="button"
+          data-te-collapse-init
+          data-te-collapse-collapsed
+          data-te-target="#collapseOne5"
+          aria-expanded="false"
+          aria-controls="collapseOne5">
+          Component Initialization with
+          <span class="px-1"><code>initTE()</code></span> Method
+
+          <span
+            class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-6 w-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </span>
+        </button>
+      </h2>
+      <div
+        id="collapseOne5"
+        class="!visible hidden"
+        data-te-collapse-item
+        aria-labelledby="headingOne5">
+        <div class="px-5 py-4">
+          <h2 class="mb-2 font-bold">Problem overview:</h2>
+          <p>
+            Users might face difficulties with improper functioning of
+            components in non-dedicated frameworks for TW Elements. This is due
+            to the fact that some of them aren't initializing properly.
+          </p>
+
+          <h2 class="mb-2 mt-5 font-bold">Suggested solution:</h2>
+          <p class="mb-5">
+            Consider importing <code>tw-elements</code> package dynamically. By
+            doing it, you can enhance the initialization process, potentially
+            resolving any issues related to component functionality.
+            Additionally, ensure that the <code>initTE()</code> method is called
+            in the correct sequence and with the appropriate parameters,
+            facilitating a smoother experience with TWE components.
+          </p>
+
+          <div
+            class="mb-4 rounded-lg bg-primary-100 px-6 py-5 text-base text-primary-600"
+            role="alert">
+            <strong>Note:</strong>
+            It should also solve errors like
+            <code>document is not defined</code> or
+            <code
+              >(Name of TWE Component) is not imported from "tw-elements"</code
+            >. For the second issue, attempting to import components in ES
+            format could be an alternative solution.
+          </div>
+
+          <!--prettier-ignore-->
+          {{< twsnippet/wrapper "Code" "" "mobile" >}}
+          {{< twsnippet/code active=true lang="JavaScript" >}}
+          onMounted(async () => {
+            const { Tooltip, initTE } = await import("tw-elements");
+            initTE({ Tooltip });
+          });
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+
+
+          <h1 class="text-neutral-400">Source TW Elements Team</h1>
+        </div>
+      </div>
+    </div>
+    <div
+      class="rounded-b-lg border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+      <h2 class="mb-0" id="headingThree5">
+        <button
+          class="group relative flex w-full items-center border-0 bg-white px-5 py-4 text-left text-lg text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)] [&[data-te-collapse-collapsed]]:rounded-b-[15px] [&[data-te-collapse-collapsed]]:transition-none"
+          type="button"
+          data-te-collapse-init
+          data-te-collapse-collapsed
+          data-te-target="#collapseThree5"
+          aria-expanded="false"
+          aria-controls="collapseThree5">
+          Routing and <span class="px-1"><code>initTE()</code></span> Method
+          <span
+            class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-6 w-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </span>
+        </button>
+      </h2>
+      <div
+        id="collapseThree5"
+        class="!visible hidden"
+        data-te-collapse-item
+        aria-labelledby="headingThree5">
+        <div class="px-5 py-4">
+          <h2 class="mb-2 font-bold">Problem overview:</h2>
+          <p>
+            Users may encounter initialization issues with TWE components when
+            navigating through applications with routing mechanisms. The default
+            behavior of the <code>initTE</code> method includes checking if
+            components are already initialized, which can lead to complications
+            when components are unmounted and then remounted during routing.
+          </p>
+
+          <h2 class="mb-2 mt-5 font-bold">Suggested solution:</h2>
+          <p class="mb-5">
+            Consider using using <code>autoReinits</code> option in
+            <code>initTE</code> method. By default it's value is set to
+            <code>false</code>. By changing the value to <code>true</code>, the
+            <code>initTE</code> method won't check if components were already
+            initialized.
+          </p>
+
+          <!--prettier-ignore-->
+          {{< twsnippet/wrapper "Code" "" "mobile" >}}
+          {{< twsnippet/code active=true lang="JavaScript" >}}
+            initTE({ Tooltip }, { allowReinits: true });
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+
+
+          <h1 class="text-neutral-400">Source TW Elements Team</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Troubleshooting -->
+
+<hr class="my-5 dark:border-neutral-600" />
+
 <!-- Section: Related resources -->
 <section id="section-related-resources">
   <!-- Title -->
