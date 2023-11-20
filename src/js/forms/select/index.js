@@ -1657,6 +1657,7 @@ class Select {
     }
 
     this._updateSelections();
+    this._emitValueChangeEvent(this.value);
   }
 
   _selectByValue(value) {
