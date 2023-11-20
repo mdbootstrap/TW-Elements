@@ -40,6 +40,9 @@ const REF = `data-te-${NAME}`;
 const STEPPER_HORIZONTAL = "horizontal";
 const STEPPER_VERTICAL = "vertical";
 
+const EVENT_CHANGE_STEP = `onChangeStep${EVENT_KEY}`;
+const EVENT_CHANGED_STEP = `onChangedStep${EVENT_KEY}`;
+
 const DefaultType = {
   stepperType: "string",
   stepperLinear: "boolean",
@@ -274,6 +277,21 @@ class Stepper {
       this._toggleDisabled();
     }
 
+    const activeStepIndex = this._activeStepIndex;
+
+    const changeStepEvent = EventHandler.trigger(
+      this.activeStep,
+      EVENT_CHANGE_STEP,
+      {
+        currentStep: this._activeStepIndex,
+        nextStep: index,
+      }
+    );
+
+    if (index > this._activeStepIndex && changeStepEvent.defaultPrevented) {
+      return;
+    }
+
     this._showElement(
       SelectorEngine.findOne(`${CONTENT_REF}`, this._steps[index])
     );
@@ -302,6 +320,11 @@ class Stepper {
       if (step[this._activeStepIndex] !== index) {
         step.removeAttribute("data-te");
       }
+    });
+
+    EventHandler.trigger(this.activeStep, EVENT_CHANGED_STEP, {
+      currentStep: this._activeStepIndex,
+      prevStep: activeStepIndex,
     });
   }
 
