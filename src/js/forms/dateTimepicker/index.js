@@ -246,7 +246,7 @@ class Datetimepicker {
     };
 
     if (this._options.inline || this._options.datepicker.inline) {
-      datepickerOptions = { ...datepickerOptions, ...{ inline: true } };
+      datepickerOptions = { ...datepickerOptions, inline: true };
     }
     this._datepicker = new Datepicker(DATEPICKER_WRAPPER, datepickerOptions, {
       ...this._classes.datepicker,
@@ -281,7 +281,7 @@ class Datetimepicker {
     };
 
     if (this._options.inline || this._options.timepicker.inline) {
-      timepickerOptions = { timepickerOptions, ...{ inline: true } };
+      timepickerOptions = { ...timepickerOptions, inline: true };
     }
 
     this._timepicker = new Timepicker(TIMEPICKER_WRAPPER, timepickerOptions, {
