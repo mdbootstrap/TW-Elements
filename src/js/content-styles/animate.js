@@ -267,7 +267,7 @@ class Animate {
   }
 
   _setAnimationInterval() {
-    EventHandler.on(this._animateElement, "click", () => {
+    EventHandler.on(this._animateElement, "animationend", () => {
       this._clearAnimationClass();
       setTimeout(() => {
         this._addAnimatedClass();
