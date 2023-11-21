@@ -14,7 +14,11 @@ import Data from "../../dom/data";
 import EventHandler from "../../dom/event-handler";
 import Manipulator from "../../dom/manipulator";
 import SelectorEngine from "../../dom/selector-engine";
-import { typeCheckConfig, getUID } from "../../util/index";
+import {
+  typeCheckConfig,
+  getUID,
+  getTransitionDurationFromElement,
+} from "../../util/index";
 import Input from "../input";
 import SelectOption from "./select-option";
 import SelectionModel from "./selection-model";
@@ -1424,10 +1428,9 @@ class Select {
 
   close() {
     const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
-    const { transitionDuration } = getComputedStyle(
+    const transitionTime = getTransitionDurationFromElement(
       this._dropdownContainer.children[0]
     );
-    const transitionTime = Number(transitionDuration.replace("s", "")) * 1000;
 
     if (!this._isOpen || closeEvent.defaultPrevented) {
       return;
