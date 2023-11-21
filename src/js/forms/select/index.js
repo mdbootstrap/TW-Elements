@@ -70,8 +70,6 @@ const SELECTOR_FORM_OUTLINE = "[data-te-select-form-outline-ref]";
 const SELECTOR_TOGGLE = "[data-te-select-toggle]";
 const SELECTOR_NOTCH = "[data-te-input-notch-ref]";
 
-const ANIMATION_TRANSITION_TIME = 200;
-
 const Default = {
   selectAutoSelect: false,
   selectContainer: "body",
@@ -1426,6 +1424,10 @@ class Select {
 
   close() {
     const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
+    const { transitionDuration } = getComputedStyle(
+      this._dropdownContainer.children[0]
+    );
+    const transitionTime = Number(transitionDuration.replace("s", "")) * 1000;
 
     if (!this._isOpen || closeEvent.defaultPrevented) {
       return;
@@ -1470,7 +1472,7 @@ class Select {
       this._popper.destroy();
       this._isOpen = false;
       EventHandler.off(this.dropdown, "transitionend");
-    }, ANIMATION_TRANSITION_TIME);
+    }, transitionTime);
   }
 
   _resetFilterState() {
