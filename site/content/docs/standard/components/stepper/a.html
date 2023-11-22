@@ -396,7 +396,7 @@
                   </thead>
                   <tbody>
                     <tr
-                      class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                      class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                       <td
                         class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                         <code>onChangeStep.te.stepper</code>
@@ -406,23 +406,13 @@
                       </td>
                     </tr>
                     <tr
-                      class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                      class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                       <td
                         class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                        <code>onValid.te.stepper</code>
+                        <code>onChangedStep.te.stepper</code>
                       </td>
                       <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                        Event emitted after successful step validation.
-                      </td>
-                    </tr>
-                    <tr
-                      class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
-                      <td
-                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                        <code>onInvalid.te.stepper</code>
-                      </td>
-                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                        Event emitted after unsuccessful step validation.
+                        Event emitted after the step change.
                       </td>
                     </tr>
                   </tbody>
@@ -443,7 +433,7 @@
             <!-- prettier-ignore -->
             {{< twsnippet/code active=true lang="js" >}}
                   const stepOne = document.querySelectorAll('[data-te-stepper-step-ref]')[0];
-                  stepOne.addEventListener('onChangeStep.mdb.stepper', () => {
+                  stepOne.addEventListener('onChangeStep.te.stepper', () => {
                     // do something...
                   }); 
                 {{< /twsnippet/code >}}
