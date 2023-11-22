@@ -493,9 +493,12 @@
 
       const optionsScatter = {
         options: {
-          title: {
-            display: true,
-            text: "Scatter Chart - Logarithmic X-Axis",
+          plugins: {
+            title: {
+              display: true,
+              text: "Scatter Chart - Logarithmic X-Axis",
+              color: "rgb(102,102,102)",
+            },
           },
           scales: {
             x: {
@@ -517,10 +520,44 @@
         },
       };
 
+      const optionsScatterDark = {
+        options: {
+          plugins: {
+            title: {
+              color: "#fff",
+            },
+            legend: {
+              labels: {
+                color: "#fff",
+              },
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: "#fff",
+              },
+              grid: {
+                color: "#555",
+              },
+            },
+            y: {
+              ticks: {
+                color: "#fff",
+              },
+              grid: {
+                color: "#555",
+              },
+            },
+          },
+        },
+      };
+
       new te.Chart(
         document.getElementById("scatter-chart"),
         dataScatter,
-        optionsScatter
+        optionsScatter,
+        optionsScatterDark
       );
       // Scatter chart
       // Bar chart with custom options

@@ -35,7 +35,7 @@ menu:
   <p class="mb-6">
     Tailwind is optimized to create as little CSS as possible, so there is no
     need to do anything else other than configure
-    <code>tailwind.config.cjs</code> file.
+    <code>tailwind.config.js</code> file.
   </p>
 
   <p class="mb-6">
@@ -53,7 +53,7 @@ menu:
   <p class="mb-6">
     If you are using <code>PostCSS</code> plugin, another possibility to further
     optimize your app is to add <code>cssnano</code> at the end of the
-    <code>postcss.config.cjs</code>
+    <code>postcss.config.js</code>
   </p>
 
   <div class="pt-2">
@@ -65,7 +65,7 @@ menu:
 
   <div class="pt-2">
     <!-- prettier-ignore -->
-    {{< twsnippet/wrapper "postcss.config.cjs" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
+    {{< twsnippet/wrapper "postcss.config.js" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
     module.exports = {
       plugins: {
         tailwindcss: {},
@@ -191,9 +191,20 @@ menu:
       <!-- prettier-ignore -->
       {{< twsnippet/wrapper "src/index.js" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
       import { Select, initTE } from "tw-elements";
-      initTE({ Select }, true); // set second parameter to true if you want to use a debugger
+      initTE({ Select }, options);
       {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
     </div>
+
+    <p class="mb-4">
+      The <code>options</code> are documented in the
+      <a
+        class="text-primary"
+        href="../quick-start/index.html#formats"
+        target="_blank"
+        >TW Elements</a
+      >
+      formats.
+    </p>
 
     <p class="mb-3 font-bold">Step 5</p>
     <p>Run the application</p>
@@ -234,10 +245,10 @@ menu:
 
   <p class="mb-6">
     TW elements is registered as a plugin inside
-    <code>tailwind.config.cjs</code>. That allows for our custom css classes to
+    <code>tailwind.config.js</code>. That allows for our custom css classes to
     be picked up by the Tailwind CSS IntelliSense. If the IntelliSense is not
     showing our classes check whether the <code>content</code> inside
-    <code>tailwind.config.cjs</code> is defined properly. We encourage to use it
+    <code>tailwind.config.js</code> is defined properly. We encourage to use it
     as it makes the live of a developer much easier.
   </p>
 </div>
