@@ -51,6 +51,11 @@ const DefaultType = {
   stepperVerticalBreakpoint: "number",
   stepperMobileBreakpoint: "number",
   stepperMobileBarBreakpoint: "number",
+  stepperAnimationDuration: "number",
+  slideInLeftAnimation: "string",
+  slideOutLeftAnimation: "string",
+  slideInRightAnimation: "string",
+  slideOutRightAnimation: "string",
 };
 
 const Default = {
@@ -64,6 +69,11 @@ const Default = {
   stepperVerticalBreakpoint: 0,
   stepperMobileBreakpoint: 0,
   stepperMobileBarBreakpoint: 4,
+  stepperAnimationDuration: 500,
+  slideInLeftAnimation: "animate-[slide-in-left_0.5s_both]",
+  slideOutLeftAnimation: "animate-[slide-out-left_0.5s_both]",
+  slideInRightAnimation: "animate-[slide-in-right_0.5s_both]",
+  slideOutRightAnimation: "animate-[slide-out-right_0.5s_both]",
 };
 
 const EVENT_MOUSEDOWN = `mousedown${EVENT_KEY}`;
@@ -86,6 +96,7 @@ class Stepper {
     this._currentView = "";
     this._activeStepIndex = 0;
     this._verticalStepperStyles = [];
+    this._timeout = 0;
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
@@ -614,7 +625,9 @@ class Stepper {
   _hideInactiveSteps() {
     this._steps.forEach((el) => {
       if (!el.getAttribute("data-te")) {
-        this._hideElement(SelectorEngine.findOne(`${CONTENT_REF}`, el));
+        const content = SelectorEngine.findOne(`${CONTENT_REF}`, el);
+        content.classList.remove("translate-x-[150%]");
+        this._hideElement(content);
       }
     });
   }
@@ -646,7 +659,7 @@ class Stepper {
 
     // prevent hiding during a quick step change
     if (!isActive && this._currentView !== STEPPER_VERTICAL) {
-      // stepContent.style.display = 'none';
+      stepContent.style.display = "none";
     } else {
       stepContent.classList.add("!my-0");
       stepContent.classList.add("!py-0");
@@ -665,6 +678,9 @@ class Stepper {
   }
 
   _animateHorizontalStep(index) {
+    clearTimeout(this._timeout);
+    this._clearStepsAnimation();
+
     const isForward = index > this._activeStepIndex;
     const nextStepContent = SelectorEngine.findOne(
       `${CONTENT_REF}`,
@@ -686,26 +702,35 @@ class Stepper {
       }
     });
 
-    const CLASS_NAME_SLIDE_RIGHT = "translate-x-[150%]";
-    const CLASS_NAME_SLIDE_LEFT = "-translate-x-[150%]";
-    const CLASS_NAME_SLIDE_IN = "translate-0";
-
     if (isForward) {
-      activeStepAnimation = CLASS_NAME_SLIDE_LEFT;
-      nextStepAnimation = CLASS_NAME_SLIDE_IN;
-      nextStepContent.classList.remove("translate-x-[150%]");
-      nextStepContent.classList.remove("-translate-x-[150%]");
+      activeStepAnimation = this._options.slideOutLeftAnimation;
+      nextStepAnimation = this._options.slideInRightAnimation;
     } else {
-      activeStepAnimation = CLASS_NAME_SLIDE_RIGHT;
-      nextStepAnimation = CLASS_NAME_SLIDE_IN;
-      nextStepContent.classList.remove("-translate-x-[150%]");
-      nextStepContent.classList.remove("translate-x-[150%]");
+      activeStepAnimation = this._options.slideOutRightAnimation;
+      nextStepAnimation = this._options.slideInLeftAnimation;
     }
 
     activeStepContent.classList.add(activeStepAnimation);
     nextStepContent.classList.add(nextStepAnimation);
 
     this._setHeight(this._steps[index]);
+
+    this._timeout = setTimeout(() => {
+      this._hideElement(activeStepContent);
+      this._clearStepsAnimation();
+    }, this._options.stepperAnimationDuration);
+  }
+
+  _clearStepsAnimation() {
+    this._steps.forEach((el) => {
+      const step = SelectorEngine.findOne(`${CONTENT_REF}`, el);
+      step.classList.remove(
+        this._options.slideInLeftAnimation,
+        this._options.slideOutLeftAnimation,
+        this._options.slideInRightAnimation,
+        this._options.slideOutRightAnimation
+      );
+    });
   }
 
   _animateVerticalStep(index) {
