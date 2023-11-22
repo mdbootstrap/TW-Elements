@@ -19,6 +19,7 @@ import Backdrop from "../util/backdrop";
 import FocusTrap from "../util/focusTrap";
 
 import { enableDismissTrigger } from "../util/component-functions";
+import { getTransitionDurationFromElement } from "../util/index";
 
 /*
 ------------------------------------------------------------------------
@@ -325,10 +326,11 @@ class Modal extends BaseComponent {
     modalDialog.classList.remove(this._classes.show);
     modalDialog.classList.remove("opacity-100");
     modalDialog.classList.add("opacity-0");
+    const transitionTime = getTransitionDurationFromElement(modalDialog);
 
     setTimeout(() => {
       this._element.style.display = "none";
-    }, 300);
+    }, transitionTime);
 
     this._element.setAttribute("aria-hidden", true);
     this._element.removeAttribute("aria-modal");
@@ -394,12 +396,14 @@ class Modal extends BaseComponent {
     classList.add(...this._classes.static.split(" "));
     classList.add(...this._classes.staticProperties.split(" "));
 
+    const transisitionTime = getTransitionDurationFromElement(this._element);
+
     this._queueCallback(() => {
       classList.remove(this._classes.static);
 
       setTimeout(() => {
         classList.remove(...this._classes.staticProperties.split(" "));
-      }, 300);
+      }, transisitionTime);
 
       if (!isModalOverflowing) {
         this._queueCallback(() => {
