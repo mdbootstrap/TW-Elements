@@ -512,7 +512,7 @@ function createOptionGroupTemplate(optionGroup, config, classes) {
 
 export function getFakeValueTemplate(value, classes) {
   const fakeValue = element("div");
-  fakeValue.innerHTML = value;
+  fakeValue.textContent = value;
   Manipulator.addClass(fakeValue, classes.selectLabel);
 
   Manipulator.addClass(fakeValue, classes.selectFakeValue);
