@@ -967,10 +967,10 @@ class Timepicker {
 
     if (!this._options.format24) {
       [...rest].filter((e) => {
-        if (e === "PM") {
+        if (e.toLowerCase() === "pm") {
           Manipulator.addClass(this._PM, this._classes.opacity);
           this._PM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
-        } else if (e === "AM") {
+        } else if (e.toLowerCase() === "am") {
           Manipulator.addClass(this._AM, this._classes.opacity);
           this._AM.setAttribute(ATTR_TIMEPICKER_ACTIVE, "");
         } else {
