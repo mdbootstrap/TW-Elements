@@ -14,7 +14,11 @@ import Data from "../../dom/data";
 import EventHandler from "../../dom/event-handler";
 import Manipulator from "../../dom/manipulator";
 import SelectorEngine from "../../dom/selector-engine";
-import { typeCheckConfig, getUID } from "../../util/index";
+import {
+  typeCheckConfig,
+  getUID,
+  getTransitionDurationFromElement,
+} from "../../util/index";
 import Input from "../input";
 import SelectOption from "./select-option";
 import SelectionModel from "./selection-model";
@@ -69,8 +73,6 @@ const SELECTOR_NO_RESULTS = `[${DATA_NO_RESULT}]`;
 const SELECTOR_FORM_OUTLINE = "[data-te-select-form-outline-ref]";
 const SELECTOR_TOGGLE = "[data-te-select-toggle]";
 const SELECTOR_NOTCH = "[data-te-input-notch-ref]";
-
-const ANIMATION_TRANSITION_TIME = 200;
 
 const Default = {
   selectAutoSelect: false,
@@ -1426,6 +1428,9 @@ class Select {
 
   close() {
     const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
+    const transitionTime = getTransitionDurationFromElement(
+      this._dropdownContainer.children[0]
+    );
 
     if (!this._isOpen || closeEvent.defaultPrevented) {
       return;
@@ -1470,7 +1475,7 @@ class Select {
       this._popper.destroy();
       this._isOpen = false;
       EventHandler.off(this.dropdown, "transitionend");
-    }, ANIMATION_TRANSITION_TIME);
+    }, transitionTime);
   }
 
   _resetFilterState() {
