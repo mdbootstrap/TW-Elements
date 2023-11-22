@@ -1599,9 +1599,12 @@ autoinits: "Chart"
     
       const optionsScatter = {
         options: {
-          title: {
-            display: true,
-            text: "Scatter Chart - Logarithmic X-Axis",
+          plugins: {
+            title: {
+              display: true,
+              text: "Scatter Chart - Logarithmic X-Axis",
+              color: "rgb(102,102,102)",
+            },
           },
           scales: {
             x: {
@@ -1622,11 +1625,45 @@ autoinits: "Chart"
           },
         },
       };
+
+      const optionsScatterDark = {
+        options: {
+          plugins: {
+            title: {
+              color: "#fff",
+            },
+            legend: {
+              labels: {
+                color: "#fff",
+              },
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: "#fff",
+              },
+              grid: {
+                color: "#555",
+              },
+            },
+            y: {
+              ticks: {
+                color: "#fff",
+              },
+              grid: {
+                color: "#555",
+              },
+            },
+          },
+        },
+      };
     
       new Chart(
         document.getElementById("scatter-chart"),
         dataScatter,
-        optionsScatter
+        optionsScatter,
+        optionsScatterDark
       );
       {{< /twsnippet/code >}}
       {{< twsnippet/code lang="js" >}}
@@ -1772,9 +1809,12 @@ autoinits: "Chart"
     
       const optionsScatter = {
         options: {
-          title: {
-            display: true,
-            text: "Scatter Chart - Logarithmic X-Axis",
+          plugins: {
+            title: {
+              display: true,
+              text: "Scatter Chart - Logarithmic X-Axis",
+              color: "rgb(102,102,102)",
+            },
           },
           scales: {
             x: {
@@ -1795,11 +1835,45 @@ autoinits: "Chart"
           },
         },
       };
+
+      const optionsScatterDark = {
+        options: {
+          plugins: {
+            title: {
+              color: "#fff",
+            },
+            legend: {
+              labels: {
+                color: "#fff",
+              },
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: "#fff",
+              },
+              grid: {
+                color: "#555",
+              },
+            },
+            y: {
+              ticks: {
+                color: "#fff",
+              },
+              grid: {
+                color: "#555",
+              },
+            },
+          },
+        },
+      };
     
       new te.Chart(
         document.getElementById("scatter-chart"),
         dataScatter,
-        optionsScatter
+        optionsScatter,
+        optionsScatterDark
       );
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
@@ -2149,7 +2223,7 @@ autoinits: "Chart"
   </ul>
 
   <!--Section: Demo-->
-  {{< twsnippet/demo id="example17" >}}
+  {{< twsnippet/demo id="example18" >}}
   <div class="mx-auto w-11/12 overflow-hidden md:w-3/5">
     <canvas
       data-te-chart="bar"
@@ -2164,7 +2238,7 @@ autoinits: "Chart"
   {{< /twsnippet/demo >}}
   <!--Section: Demo-->
   <!--Section: Code-->
-  <section class="!visible hidden" data-te-collapse-item id="example17">
+  <section class="!visible hidden" data-te-collapse-item id="example18">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML,javascript" >}}
       {{< twsnippet/code active=true lang="html" >}}
@@ -2218,14 +2292,14 @@ autoinits: "Chart"
   </div>
 
   <!--Section: Demo-->
-  {{< twsnippet/demo id="example18" >}}
+  {{< twsnippet/demo id="example19" >}}
   <div class="mx-auto w-11/12 overflow-hidden md:w-3/5">
     <canvas id="darkmode-customization"> </canvas>
   </div>
   {{< /twsnippet/demo >}}
   <!--Section: Demo-->
   <!--Section: Code-->
-  <section class="!visible hidden" data-te-collapse-item id="example18">
+  <section class="!visible hidden" data-te-collapse-item id="example19">
     <div class="pt-4">
       {{< twsnippet/wrapper "HTML,javascript,umd" >}}
       {{< twsnippet/code active=true lang="html" >}}
