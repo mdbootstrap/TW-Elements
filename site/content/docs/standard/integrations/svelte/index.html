@@ -36,7 +36,7 @@ menu:
         target="_blank"
         >Node LTS</a
       >
-      (14.x.x or higher recommended)
+      (18.x.x or higher recommended)
     </li>
     <li>
       Code editor. We recommend
@@ -66,7 +66,15 @@ menu:
   <!-- Description -->
   <p>
     Let's create a fresh Svelte application so that we can go through all the
-    steps together.
+    steps together. We are going to do this through
+    <a
+      class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+      href="https://vitejs.dev/"
+      target="_blank"
+      rel="nofollow"
+      >Vite</a
+    >
+    - very popular and extremly light module bundler.
   </p>
 
   <h2 class="mt-5 text-lg font-bold">Step 1</h2>
@@ -76,7 +84,7 @@ menu:
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
     {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-    npx degit sveltejs/template my-project
+    npm create vite@latest my-project -- --template svelte
     cd my-project
     npm install
     {{< /twsnippet/code >}}
@@ -130,28 +138,29 @@ menu:
   </p>
 
   <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "File structure" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="plaintext" >}}
-    my-project/
-    ├── node_modules/
-    ├── public/
-    │   ├── build/
-    │   ├── favicon.png
-    │   ├── global.css
-    │   └── index.html
-    ├── scripts/
-    ├── src/        
-    │   ├── App.svelte
-    │   └── main.js
-    ├── .gitignore
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.js
-    ├── ...
-    └── tailwind.config.js
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
+    <pre class="rounded-lg text-[14px]">
+      <code class="language-markdown type-markdown">
+        my-project/
+        ├── node_modules/
+        ├── public/
+        ├── src/
+        │   ├── assets/   
+        │   ├── lib/
+        │   ├── app.css
+        │   ├── App.svelte
+        │   ├── main.js
+        │   └── vite-env.d.ts
+        ├── .gitignore
+        ├── index.html
+        ├── jsconfig.json
+        ├── package-lock.json
+        ├── package.json
+        ├── postcss.config.js
+        ├── README.md
+        ├── svelte.config.js
+        └── tailwind.config.js
+      </code>
+    </pre>
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
@@ -182,17 +191,12 @@ menu:
 
   <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
-    Add the <code>@tailwind</code> directives to <code>global.css</code> file.
-    Additionally In the <code>head</code> section of the
-    <code>index.html</code> file, substitute the <code>href</code> attribute
-    from <code>global.css</code> to the Tailwind CSS file named
-    <code>output.css</code>, which will be generated during the Tailwind CLI
-    build process.
+    Add the <code>@tailwind</code> directives to <code>app.css</code> file.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "global.css, index.html" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/app.css" "" "mobile" >}}
     {{< twsnippet/code active=true lang="CSS" >}}
     @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
     @tailwind base;
@@ -209,11 +213,6 @@ menu:
     
     @tailwind components;
     @tailwind utilities;       
-    {{< /twsnippet/code >}}
-    {{< twsnippet/code lang="HTML" >}}
-    ...
-    <link rel="stylesheet" href="/output.css" />
-    ...
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -238,7 +237,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "App.svelte" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/App.svelte" "" "mobile" >}}
     {{< twsnippet/code active=true lang="html" >}}
     <script>
       import { onMount } from "svelte";
@@ -266,23 +265,10 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 6</h2>
-  <p class="mb-5">
-    Start the Tailwind CLI build process. Run the CLI tool to scan your template
-    files for classes and build your CSS.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-    npx tailwindcss -i ./public/global.css -o ./public/output.css --watch
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
 
   <p class="mb-5">
-    And run the local server. Awesome! You're all set to dive into using TW
-    Elements for your Svelte project. Have fun!
+    Start the app and see if everything's fine. Awesome! You're all set to dive
+    into using TW Elements for your Svelte project. Have fun!
   </p>
 
   <div class="pb-4">
@@ -322,7 +308,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "App.svelte" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/App.svelte" "" "mobile" >}}
     {{< twsnippet/code active=true lang="html" >}}
     <script>
       import { onMount } from "svelte";
@@ -403,8 +389,8 @@ menu:
           <h2 class="mb-2 font-bold">Problem overview:</h2>
           <p>
             Users might face difficulties with improper functioning of
-            components in non-dedicated frameworks for TW Elements. This is due
-            to the fact that some of them aren't initializing properly.
+            components in some frameworks for TW Elements. This is due to the
+            fact that some of them aren't initializing properly.
           </p>
 
           <h2 class="mb-2 mt-5 font-bold">Suggested solution:</h2>
@@ -428,7 +414,7 @@ menu:
           {{< /twsnippet/wrapper >}}
 
 
-          <h1 class="text-neutral-400">Source TW Elements Team</h1>
+          <h1 class="text-sm text-neutral-400">Source TW Elements Team</h1>
         </div>
       </div>
     </div>

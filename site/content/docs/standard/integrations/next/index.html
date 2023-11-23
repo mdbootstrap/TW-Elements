@@ -74,10 +74,18 @@ menu:
 
   <div
     class="mb-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:border-white dark:bg-gray-500 ">
-    <strong>Note:</strong> Options used while creating the app: Typescript -
-    <code>Yes</code>, ESLint - <code>Yes</code>, `src/` directory -
-    <code>Yes</code>, App Router - <strong>both</strong> examples included in
-    this tutorial
+    <p class="mb-3">
+      <strong>Note:</strong> Options used while creating the app: Typescript -
+      <code>Yes</code>, ESLint - <code>Yes</code>, `src/` directory -
+      <code>Yes</code>, App Router - <strong>both</strong> examples included in
+      this tutorial.
+    </p>
+    <p>
+      If you encounter the <code>Request is not defined</code> error, consider
+      updating your <code>Node.js</code> version to at least <code>v18.0.0</code> or higher.
+      Alternatively, you can use <code>Next.js v13.0.0 </code> or a more recent version to
+      address this issue.
+    </p>
   </div>
 
   <div class="pb-4">
@@ -135,51 +143,51 @@ menu:
   </p>
 
   <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "with App Router,without App Router" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="plaintext" >}}
-    my-project/
-    ├── node_modules/
-    ├── public/
-    ├── src/        
-    │   ├── pages/ - needs to be created
-    │   ├── app/
-    │   │   ├── favicon.ico
-    │   │   ├── globals.css
-    │   │   ├── layout.tsx
-    │   │   └── page.tsx
-    │   ├── index.css
-    │   ├── ...
-    │   └── index.js
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.js
-    ├── next.config.js
-    ├── tsconfig.config.js
-    ├── ...
-    └── tailwind.config.js
-    {{< /twsnippet/code >}}
-    {{< twsnippet/code lang="plaintext" >}}
-    my-project/
-    ├── node_modules/
-    ├── public/
-    ├── src/        
-    │   ├── pages/
-    │   ├──── app/
-    │   │     ├── _app.tsx
-    │   │     ├── _document.tsx
-    │   │     └── index.tsx
-    │   └── styles/
-    │         └── globals.css
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.js
-    ├── next.config.js
-    ├── tsconfig.config.js
-    ├── ...
-    └── tailwind.config.js
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
+    <pre class="rounded-lg text-[14px]">
+      <code class="language-markdown type-markdown">
+        // with App Router
+        my-project/
+        ├── node_modules/
+        ├── public/
+        ├── src/        
+        │   ├── pages/ - needs to be created
+        │   ├── app/
+        │   │   ├── favicon.ico
+        │   │   ├── globals.css
+        │   │   ├── layout.tsx
+        │   │   └── page.tsx
+        │   ├── index.css
+        │   ├── ...
+        │   └── index.js
+        ├── package-lock.json
+        ├── package.json
+        ├── postcss.config.js
+        ├── next.config.js
+        ├── tsconfig.config.js
+        ├── ...
+        └── tailwind.config.js
+
+        // without App Router
+        my-project/
+        ├── node_modules/
+        ├── public/
+        ├── src/        
+        │   ├── pages/
+        │   ├──── app/
+        │   │     ├── _app.tsx
+        │   │     ├── _document.tsx
+        │   │     └── index.tsx
+        │   └── styles/
+        │         └── globals.css
+        ├── package-lock.json
+        ├── package.json
+        ├── postcss.config.js
+        ├── next.config.js
+        ├── tsconfig.config.js
+        ├── ...
+        └── tailwind.config.js
+      </code>
+    </pre>
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
@@ -217,12 +225,12 @@ menu:
   <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the <code>@tailwind</code> directives for each of Tailwind's layers to
-    your <code>globals.css</code>.
+    your <code>globals.css</code>. Additionally, delete the default font styles in <code>layout.tsx</code> file.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "globals.css" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/app/globals.css ./src/styles/globals.css" "" "mobile" >}}
     {{< twsnippet/code active=true lang="CSS" >}}
     @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
     @tailwind base;
@@ -314,7 +322,7 @@ menu:
 
   <!--prettier-ignore-->
   <div class="pb-4">
-    {{< twsnippet/wrapper "tsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/app/page.tsx ./src/pages/index.tsx" "" "mobile" >}}
     {{< twsnippet/code active=true lang="jsx" >}}
     import dynamic from "next/dynamic";
 
@@ -337,7 +345,7 @@ menu:
 
   <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">
-    Start the app and see if everything's fine. Awesome! You're all set to dive
+    This step enables the reloading of Tailwind CSS styles. Start the app and see if everything's fine. Awesome! You're all set to dive
     into using TW Elements for your Next project. Have fun!
   </p>
 
@@ -379,7 +387,7 @@ menu:
 
   <!--prettier-ignore-->
   <div class="pb-4">
-    {{< twsnippet/wrapper "MyComponent.tsx" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/pages/MyComponent.tsx" "" "mobile" >}}
     {{< twsnippet/code active=true lang="jsx" >}}
     "use client";
     import { useEffect } from "react";
@@ -435,7 +443,7 @@ menu:
       class="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
       <h2 class="mb-0" id="headingTwo5">
         <button
-          class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-lg text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+          class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
           type="button"
           data-te-collapse-init
           data-te-collapse-collapsed
@@ -471,7 +479,7 @@ menu:
           <h2 class="mb-2 font-bold">Problem overview:</h2>
           <p>
             Users might face difficulties with improper functioning of
-            components in non-dedicated frameworks for TW Elements. This is due
+            components in some frameworks for TW Elements. This is due
             to the fact that some of them aren't initializing properly.
           </p>
 
@@ -497,6 +505,40 @@ menu:
             format could be an alternative solution.
           </div>
 
+          <h2 class="mb-2 font-bold">ES import:</h2>
+          <!--prettier-ignore-->
+          {{< twsnippet/wrapper "with next.config.js configuration, without next.config.js configuration" "" "mobile" >}}
+          {{< twsnippet/code active=true lang="JavaScript" >}}
+          // next.config.js
+          module.exports = {
+            webpack: (config, { isServer }) => {
+              // For packages that provide different entry points, specify the one you want to use.
+              config.resolve.alias = {
+                ...config.resolve.alias,
+                "tw-elements":
+                  "tw-elements/dist/js/tw-elements.es.min.js",
+              };
+              return config;
+            },
+          };
+
+          // component.tsx
+          useEffect(() => {
+            import { Tooltip, initTE } from "tw-elements";
+            
+            initTE({ Tooltip };)
+          }, []);
+          {{< /twsnippet/code >}}
+          {{< twsnippet/code lang="JavaScript" >}}
+          useEffect(() => {
+            import { Tooltip, initTE } from "tw-elements/dist/js/tw-elements.es.min.js";
+            
+            initTE({ Tooltip };)
+          }, []);
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+
+          <h2 class="mb-2 font-bold">ES Dynamic import:</h2>
           <!--prettier-ignore-->
           {{< twsnippet/wrapper "Code" "" "mobile" >}}
           {{< twsnippet/code active=true lang="JavaScript" >}}
@@ -511,7 +553,7 @@ menu:
           {{< /twsnippet/wrapper >}}
 
 
-          <h1 class="text-neutral-400">Source TW Elements Team</h1>
+          <h1 class="text-neutral-400 text-sm">Source TW Elements Team</h1>
         </div>
       </div>
     </div>
@@ -519,7 +561,7 @@ menu:
       class="rounded-b-lg border border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
       <h2 class="mb-0" id="headingThree5">
         <button
-          class="group relative flex w-full items-center border-0 bg-white px-5 py-4 text-left text-lg text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)] [&[data-te-collapse-collapsed]]:rounded-b-[15px] [&[data-te-collapse-collapsed]]:transition-none"
+          class="group relative flex w-full items-center border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)] [&[data-te-collapse-collapsed]]:rounded-b-[15px] [&[data-te-collapse-collapsed]]:transition-none"
           type="button"
           data-te-collapse-init
           data-te-collapse-collapsed
@@ -576,7 +618,7 @@ menu:
           {{< /twsnippet/wrapper >}}
 
 
-          <h1 class="text-neutral-400">Source TW Elements Team</h1>
+          <h1 class="text-neutral-400 text-sm">Source TW Elements Team</h1>
         </div>
       </div>
     </div>

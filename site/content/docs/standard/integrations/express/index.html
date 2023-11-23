@@ -38,7 +38,7 @@ menu:
         target="_blank"
         >Node LTS</a
       >
-      (14.x.x or higher recommended)
+      (18.x.x or higher recommended)
     </li>
     <li>
       Code editor. We recommend
@@ -79,7 +79,7 @@ menu:
     {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
     mkdir my-project
     cd my-project
-    npm init
+    npm init -y
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -112,9 +112,11 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
-  <p class="mb-5">
+  <p class="mb-3">
     Create a folder named <code>views</code> in the <code>root</code> directory
     and add an <code>index.ejs</code> file inside with a classic HTML structure.
+  </p>
+  <p class="mb-5">
     Additionally, create a <code>public</code> folder, then within it, create a
     <code>css</code> folder and add an <code>input.css</code> file - add your
     own css styles there. Attach a link to this file in the
@@ -123,7 +125,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "index.ejs" "" "mobile" >}}
+    {{< twsnippet/wrapper "./views/index.ejs" "" "mobile" >}}
     {{< twsnippet/code active=true lang="html" >}}
     <!DOCTYPE html>
     <html lang="en">
@@ -151,7 +153,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "index.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "app.js" "" "mobile" >}}
     {{< twsnippet/code active=true lang="JavaScript" >}}
     const express = require("express");
     const app = express();
@@ -221,23 +223,22 @@ menu:
   </p>
 
   <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "File structure" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="plaintext" >}}
-    my-project/
-    ├── node_modules/
-    ├── public/        
-    │   └── css/ 
-    |   |   └── input.css
-    ├── views/   
-    │   └── index.ejs
-    ├── app.js 
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.js
-    └── tailwind.config.js
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
+    <pre class="rounded-lg text-[14px]">
+      <code class="language-markdown type-markdown">
+        my-project/
+        ├── node_modules/
+        ├── public/        
+        │   └── css/ 
+        |   |   └── input.css
+        ├── views/   
+        │   └── index.ejs
+        ├── app.js 
+        ├── package-lock.json
+        ├── package.json
+        ├── postcss.config.js
+        └── tailwind.config.js
+      </code>
+    </pre>
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
@@ -272,7 +273,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "input.css" "" "mobile" >}}
+    {{< twsnippet/wrapper "./public/css/input.css" "" "mobile" >}}
     {{< twsnippet/code active=true lang="CSS" >}}
     @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
     @tailwind base;
@@ -313,7 +314,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "index.js" "" "mobile" >}}
+    {{< twsnippet/wrapper "app.js" "" "mobile" >}}
     {{< twsnippet/code active=true lang="JavaScript" >}}
     ...
     app.use(express.static("public"));
@@ -334,7 +335,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "index.ejs" "" "mobile" >}}
+    {{< twsnippet/wrapper "./views/index.ejs" "" "mobile" >}}
     {{< twsnippet/code active=true lang="HTML" >}}
     ...
     <head>
@@ -354,13 +355,11 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 7</h2>
-  <p class="mb-5">
-    Add TWE components which are you intend to use in your project.
-  </p>
+  <p class="mb-5">Add the TWE components you intend to use in your project.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "home.html" "" "mobile" >}}
+    {{< twsnippet/wrapper "./views/index.ejs" "" "mobile" >}}
     {{< twsnippet/code active=true lang="html" >}}
     ...
     <main>

@@ -36,7 +36,7 @@ menu:
         target="_blank"
         >Node LTS</a
       >
-      (14.x.x or higher recommended)
+      (18.x.x or higher recommended)
     </li>
     <li>
       <a
@@ -156,15 +156,19 @@ menu:
   <p class="mb-5">
     Create a folder called <code>static</code> in the
     <code>src</code> directory. You can place your own CSS files there. Let's
-    create there a file named <code>input.css</code> and leave it empty for now.
-    Next, navigate to the <code>settings.py</code> in the
-    <code>mysite</code> folder and update the section with paths for static
-    files.
+    create there a file named <code>input.css</code>. There you can put your own
+    CSS styles.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">
+    Navigate to the <code>settings.py</code> in the <code>mysite</code> folder
+    and update the section with paths for static files.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "settings.py" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/mysite/settings.py" "" "mobile" >}}
     {{< twsnippet/code active=true lang="python" >}}    
     STATIC_URL = 'static/'
     STATICFILES_DIRS = [
@@ -175,7 +179,7 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 6</h2>
+  <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">
     Create a folder named <code>templates</code> in the
     <code>src</code> directory. Then, open the <code>settings.py</code> file in
@@ -185,7 +189,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "settings.py" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/mysite/settings.py" "" "mobile" >}}
     {{< twsnippet/code active=true lang="python" >}}    
     TEMPLATES = [
         {
@@ -198,19 +202,18 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 7</h2>
+  <h2 class="text-lg font-bold">Step 8</h2>
   <p class="mb-5">
     Create a file named <code>base.html</code> in the
-    <code>templates</code> folder. This file will be a base for all other pages.
-    Additionally, within the <code>templates</code> folder, create a new folder
-    named <code>pages</code>, and inside this folder, create a file named
-    <code>home.html</code>. Furthermore, put your own CSS styles into the
-    <code>input.css</code> file created in step 5.
+    <code>templates</code> directory. This file will be a base for all other
+    pages. Additionally, within this folder, create new named
+    <code>pages</code>, and inside it, create a file named
+    <code>home.html</code>.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "base.html, home.html" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/templates/base.html, ./src/templates/pages/home.html" "" "mobile" >}}
     {{< twsnippet/code active=true lang="html" >}}    
     {% load static %}
     <!DOCTYPE html>
@@ -236,7 +239,7 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 8</h2>
+  <h2 class="text-lg font-bold">Step 9</h2>
   <p class="mb-5">
     Create <code>views.py</code> file in <code>mysite</code> folder and put in
     there render for your home page.
@@ -244,7 +247,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "views.py" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/mysite/views.py" "" "mobile" >}}
     {{< twsnippet/code active=true lang="python" >}}
     from django.shortcuts import render
 
@@ -254,7 +257,7 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 9</h2>
+  <h2 class="text-lg font-bold">Step 10</h2>
   <p class="mb-5">
     Then in <code>urls.py</code> file (also located in
     <code>mysite</code> folder) add import newly created
@@ -263,7 +266,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "urls.py" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/mysite/urls.py" "" "mobile" >}}
     {{< twsnippet/code active=true lang="python" >}}
     from django.contrib import admin
     from django.urls import path
@@ -282,7 +285,7 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 10</h2>
+  <h2 class="text-lg font-bold">Step 11</h2>
   <p class="mb-5">To see if everything works, run the server:</p>
 
   <div class="pb-4">
@@ -313,14 +316,14 @@ menu:
   <p class="mb-5">
     To initialize an npm project, run the following command in the
     <code>root</code>
-    directory and follow the instructions that appear:
+    directory:
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
     {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-    npm init
+    npm init -y
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -345,32 +348,31 @@ menu:
   </p>
 
   <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "File structure" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="plaintext" >}}
-    my-project/
-    ├── node_modules/
-    ├── src/        
-    │   ├── mysite/
-    │   │   ├── ...
-    │   │   ├── settings.py
-    │   │   ├── urls.py
-    │   │   ├── views.py
-    │   │   └── ...
-    │   ├── static/
-    │   |   └── input.css
-    │   ├── templates/
-    │   |   ├── pages/
-    │   |   |   └── home.html
-    │   |   └── base.html
-    │   └── manage.py
-    ├── venv/
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.js
-    └── tailwind.config.js
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
+    <pre class="rounded-lg text-[14px]">
+      <code class="language-markdown type-markdown">
+          my-project/
+          ├── node_modules/
+          ├── src/        
+          │   ├── mysite/
+          │   │   ├── ...
+          │   │   ├── settings.py
+          │   │   ├── urls.py
+          │   │   ├── views.py
+          │   │   └── ...
+          │   ├── static/
+          │   |   └── input.css
+          │   ├── templates/
+          │   |   ├── pages/
+          │   |   |   └── home.html
+          │   |   └── base.html
+          │   └── manage.py
+          ├── venv/
+          ├── package-lock.json
+          ├── package.json
+          ├── postcss.config.js
+          └── tailwind.config.js
+      </code>
+    </pre>
   </div>
 
   <h2 class="text-lg font-bold">Step 3</h2>
@@ -407,7 +409,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "input.css" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/static/input.css" "" "mobile" >}}
     {{< twsnippet/code active=true lang="CSS" >}}
     @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
     @tailwind base;
@@ -448,11 +450,11 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "settings.py" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/mysite/settings.py" "" "mobile" >}}
     {{< twsnippet/code active=true lang="python" >}}    
     ...
     STATICFILES_DIRS = [
-      BASE_DIR / "static"
+      BASE_DIR / "static",
       BASE_DIR.parent / "node_modules",
     ] 
     ...
@@ -472,7 +474,7 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "base.html" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/templates/base.html" "" "mobile" >}}
     {{< twsnippet/code active=true lang="HTML" >}}
     ...
     <head>
@@ -492,13 +494,11 @@ menu:
   </div>
 
   <h2 class="text-lg font-bold">Step 8</h2>
-  <p class="mb-5">
-    Add TWE components which are you intend to use in your project.
-  </p>
+  <p class="mb-5">Add the TWE components you intend to use in your project.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "home.html" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/templates/pages/home.html" "" "mobile" >}}
     {{< twsnippet/code active=true lang="html" >}}    
     {% extends "base.html" %} {% block content %}
     <div class="mt-16 flex justify-center">
