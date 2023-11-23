@@ -493,14 +493,22 @@ class Datetimepicker {
         return;
       }
 
+      let openingTimepicker = false;
+
       EventHandler.on(this._datepicker.container, "click", (e) => {
         if (
-          !this._datepicker._selectedDate &&
-          e.target.hasAttribute(ATTR_DATEPICKER_OK_BTN_REF)
+          (!this._datepicker._selectedDate &&
+            e.target.hasAttribute(ATTR_DATEPICKER_OK_BTN_REF)) ||
+          openingTimepicker
         ) {
           return;
         }
         this._openTimePicker();
+        openingTimepicker = true;
+
+        setTimeout(() => {
+          openingTimepicker = false;
+        }, 500);
       });
       setTimeout(() => {
         const timepicker = SelectorEngine.findOne(
