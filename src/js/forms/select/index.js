@@ -536,6 +536,7 @@ class Select {
       this._config,
       this._label,
       this._classes,
+      this._element.id,
       this._config.customArrow
     );
     this._element.parentNode.insertBefore(template, this._element);
