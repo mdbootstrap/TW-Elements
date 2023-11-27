@@ -328,7 +328,7 @@ menu:
     <h2
       class="mb-5 mt-0 text-3xl font-semibold leading-normal"
       id="vite"
-      data-te-scrollspy-item>
+      data-te-spy-item>
       Vite
     </h2>
 
@@ -646,6 +646,332 @@ menu:
   initTE({ Carousel }, true ); // set second parameter to true if you want to use a debugger
   {{< /twsnippet/code >}}
   {{< /twsnippet/wrapper >}}
+</div>
+
+<hr class="my-10" />
+
+<div class="flex flex-row">
+  <div class="w-full">
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+      id="vite-with-bun"
+      data-te-spy-item>
+      Vite with Bun
+    </h2>
+
+    <p class="my-3">
+      Bun is a tool that is designed to replace Node.js in the development of
+      web applications. The main goal of Bun is to reduce the startup times and
+      memory usage of created apps. Vite works with a Bun out of the box.
+      <b>TW Elements</b> can be imported in Vite applications according to the
+      following procedure:
+    </p>
+  </div>
+</div>
+
+<p class="mb-2">
+  1. Make sure to have the
+  <a href="https://bun.sh/docs/installation" target="_blank">Bun</a> installed.
+  You can run the following command to check whether Bun is working properly:
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-1">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  bun --version
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="my-2">
+  If the console is showing the version of Bun it means that the installation
+  was successful and you can proceed to the next step.
+</p>
+
+<p class="mb-2">
+  2. Create a new vite project and enter the newly created directory. Pick
+  <code>Vanilla</code> framework and <code>JavaScript</code> variant.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-2">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  bun create vite my-project
+  cd my-project
+  bun install
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2">
+  3. Install tailwind CSS and its dependencies. After that,
+  <code>init</code> the tailwind with the Tailwind CLI tool to create
+  <code>tailwind.config.js</code> file.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-3">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  bun install -D tailwindcss postcss autoprefixer 
+  npx tailwindcss init -p
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2 mt-6">
+  4. Add the Tailwind directives to your <code>style.css</code> file to be able
+  to use Tailwind classes on your website.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-4">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "style.css" "" "mobile" >}}{{< twsnippet/code active=true lang="css" >}}
+  @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+  @tailwind base;
+
+  @layer base {
+    html {
+      @apply text-neutral-800;
+    }
+    html.dark {
+      @apply text-neutral-50;
+      @apply bg-neutral-800;
+    }
+  }
+
+  @tailwind components;
+  @tailwind utilities;
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2 mt-6">
+  5. Link the css file inside the <code>output.html</code>. We are linking the
+  <code>output.html</code> file instead of the <code>style.css</code> because
+  thats where the tailwindcss CLI is going to add the styling classes.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-5">
+  {{< twsnippet/wrapper "index.html" "" "mobile" >}}{{< twsnippet/code active=true lang="HTML" >}}
+  <head>
+    ...
+    <link rel="stylesheet" href="output.css" />
+    ...
+  </head>
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2 mt-6">6. Install the <code>tw-elements</code> package.</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-6">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  bun install tw-elements
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2 mt-6">
+  7. Add js files patterns that loads dynamic component classes to the content
+  array inside the <code>tailwind.config.js</code>. Extend the default tailwind
+  classes by adding the <code>TW elements</code> plugin.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-7">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}{{< twsnippet/code active=true lang="js" >}}
+  /** @type {import('tailwindcss').Config} */
+  module.exports = {
+    content: [
+      "./index.html",
+      "./src/**/*.{html,js}",
+      "./node_modules/tw-elements/dist/js/**/*.js",
+    ],
+    plugins: [require("tw-elements/dist/plugin.cjs")],
+    darkMode: "class"
+  };  
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2 mt-6">
+  8. Build the <code>output.css</code> file with use of the tailwindcss CLI. You
+  can also add this command to the <code>package.json</code> file to make it
+  easier to use.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-8">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+  npx tailwindcss -i ./style.css -o ./output.css --watch
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2 mt-6">
+  9. Now you can start working on your app. Copy the code bellow to add a
+  carousel component to your app. Don't forget to call the
+  <code>initTE</code> method.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-9">
+  {{< twsnippet/wrapper "index.html,main.js" "" "mobile" >}}
+  {{< twsnippet/code active=true lang="html" >}}
+  <body class="dark:bg-neutral-800">
+    <div
+      id="carouselExampleCaptions"
+      class="relative"
+      data-te-carousel-init
+      data-te-carousel-slide>
+      <div
+        class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+        data-te-carousel-indicators>
+        <button
+          type="button"
+          data-te-target="#carouselExampleCaptions"
+          data-te-slide-to="0"
+          data-te-carousel-active
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          aria-current="true"
+          aria-label="Slide 1"></button>
+        <button
+          type="button"
+          data-te-target="#carouselExampleCaptions"
+          data-te-slide-to="1"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          aria-label="Slide 2"></button>
+        <button
+          type="button"
+          data-te-target="#carouselExampleCaptions"
+          data-te-slide-to="2"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          aria-label="Slide 3"></button>
+      </div>
+      <div
+        class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+        <div
+          class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-te-carousel-active
+          data-te-carousel-item
+          style="backface-visibility: hidden">
+          <img
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(15).jpg"
+            class="block w-full"
+            alt="..." />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+            <h5 class="text-xl">First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-te-carousel-item
+          style="backface-visibility: hidden">
+          <img
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(22).jpg"
+            class="block w-full"
+            alt="..." />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+            <h5 class="text-xl">Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-te-carousel-item
+          style="backface-visibility: hidden">
+          <img
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg"
+            class="block w-full"
+            alt="..." />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+            <h5 class="text-xl">Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+        type="button"
+        data-te-target="#carouselExampleCaptions"
+        data-te-slide="prev">
+        <span class="inline-block h-8 w-8">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </span>
+        <span
+          class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Previous</span
+        >
+      </button>
+      <button
+        class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+        type="button"
+        data-te-target="#carouselExampleCaptions"
+        data-te-slide="next">
+        <span class="inline-block h-8 w-8">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </span>
+        <span
+          class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Next</span
+        >
+      </button>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+  {{< /twsnippet/code >}}
+  <!-- prettier-ignore -->
+  {{< twsnippet/code lang="js" >}}
+  import { Carousel, initTE } from "tw-elements";
+  initTE({ Carousel }, true ); // set second parameter to true if you want to use a debugger
+  {{< /twsnippet/code >}}
+  {{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2 mt-6">
+  10. Update the scripts inside the <code>package.json</code> file so that the
+  development server can be started using <code>bunx</code> instead of
+  <code>node</code>. You can do the same with the <code>build</code> script.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-10">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "package.json" "" "mobile" >}}{{< twsnippet/code active=true lang="json" >}}
+  "scripts": {
+    "dev": "bunx --bun vite",
+    "build": "bunx --bun vite build",
+  },
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
+</div>
+
+<p class="mb-2 mt-6">
+  11. Tailwind should be connected properly to the vite app with Bun.
+</p>
+
+<div class="pt-2" id="download-vite-with-bun-step-11">
+  <!-- prettier-ignore -->
+  {{< twsnippet/wrapper "terminal" "" "mobile" >}}{{< twsnippet/code active=true lang="Plaintext" type="terminal" >}}
+  bun run dev
+  {{< /twsnippet/code >}}{{< /twsnippet/wrapper >}}
 </div>
 
 <hr class="my-10" />
