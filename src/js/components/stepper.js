@@ -69,11 +69,11 @@ const Default = {
   stepperVerticalBreakpoint: 0,
   stepperMobileBreakpoint: 0,
   stepperMobileBarBreakpoint: 4,
-  stepperAnimationDuration: 500,
-  slideInLeftAnimation: "animate-[slide-in-left_0.5s_both]",
-  slideOutLeftAnimation: "animate-[slide-out-left_0.5s_both]",
-  slideInRightAnimation: "animate-[slide-in-right_0.5s_both]",
-  slideOutRightAnimation: "animate-[slide-out-right_0.5s_both]",
+  stepperAnimationDuration: 800,
+  slideInLeftAnimation: "animate-[slide-in-left_0.8s_both]",
+  slideOutLeftAnimation: "animate-[slide-out-left_0.8s_both]",
+  slideInRightAnimation: "animate-[slide-in-right_0.8s_both]",
+  slideOutRightAnimation: "animate-[slide-out-right_0.8s_both]",
 };
 
 const EVENT_MOUSEDOWN = `mousedown${EVENT_KEY}`;
