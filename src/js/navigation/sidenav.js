@@ -208,8 +208,17 @@ class Sidenav {
 
     const { x } = this._element.getBoundingClientRect();
 
-    if (this.options.sidenavRight) {
-      return Math.abs(x - containerEnd) > 10;
+    if (
+      (this.options.sidenavRight && !isRTL) ||
+      (!this.options.sidenavRight && isRTL)
+    ) {
+      let scrollBarWidth = 0;
+      // check if there is scrollbar and account for it width if there is one
+      if (this.container.scrollHeight >= this.container.clientHeight) {
+        scrollBarWidth =
+          this.container.offsetWidth - this.container.clientWidth;
+      }
+      return Math.abs(x + scrollBarWidth - containerEnd) > 10;
     }
 
     return Math.abs(x - containerStart) < 10;
