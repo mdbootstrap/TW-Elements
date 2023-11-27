@@ -625,8 +625,14 @@ class Stepper {
       `${HEAD_ICON_REF}`,
       this._element
     );
-    stepperHeadIcon[index].classList.add("!bg-success-100");
-    stepperHeadIcon[index].classList.add("!text-success-700");
+
+    if (!this._options.stepperNoEditable) {
+      stepperHeadIcon[index].classList.add("!bg-success-100");
+      stepperHeadIcon[index].classList.add("!text-success-700");
+    } else {
+      this._steps[index].classList.add("pointer-events-none");
+    }
+
     stepperHeadIcon[index].classList.remove("!bg-danger-100");
     stepperHeadIcon[index].classList.remove("!text-danger-700");
 
