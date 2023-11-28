@@ -238,9 +238,10 @@ class Validation extends BaseComponent {
       const input =
         SelectorEngine.findOne("input", element) ||
         SelectorEngine.findOne("textarea", element);
+      const select = SelectorEngine.findOne("select", element);
 
       return {
-        id: input.name || input.id || getUID("validation-"),
+        id: input.name || input.id || select?.name || getUID("validation-"),
         element,
         type: element.getAttribute(ATTR_VALIDATION_ELEMENTS),
         input,
