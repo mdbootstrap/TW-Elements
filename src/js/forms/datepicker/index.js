@@ -1745,13 +1745,25 @@ class Datepicker {
 
     for (let i = 0; i < formatParts.length; i++) {
       if (formatParts[i].indexOf("yy") !== -1) {
-        datesArray[0] = { value: dateParts[i], format: formatParts[i] };
+        datesArray[0] = {
+          value: dateParts[i],
+          format: formatParts[i],
+          component: "year",
+        };
       }
       if (formatParts[i].indexOf("m") !== -1) {
-        datesArray[1] = { value: dateParts[i], format: formatParts[i] };
+        datesArray[1] = {
+          value: dateParts[i],
+          format: formatParts[i],
+          component: "month",
+        };
       }
       if (formatParts[i].indexOf("d") !== -1 && formatParts[i].length <= 2) {
-        datesArray[2] = { value: dateParts[i], format: formatParts[i] };
+        datesArray[2] = {
+          value: dateParts[i],
+          format: formatParts[i],
+          component: "day",
+        };
       }
     }
 
@@ -1763,11 +1775,26 @@ class Datepicker {
       monthsNames = this._options.monthsShort;
     }
 
-    const year = Number(datesArray[0].value);
-    const month = isMonthString
-      ? this.getMonthNumberByMonthName(datesArray[1].value, monthsNames)
-      : Number(datesArray[1].value) - 1;
-    const day = Number(datesArray[2].value);
+    const year =
+      Number(datesArray.find((date) => date.component === "year")?.value) ??
+      this._selectedYear ??
+      new Date().getFullYear();
+
+    const month =
+      (isMonthString
+        ? this.getMonthNumberByMonthName(
+            datesArray.find((date) => date.component === "month")?.value,
+            monthsNames
+          )
+        : Number(datesArray.find((date) => date.component === "month")?.value) -
+          1) ??
+      this._selectedMonth ??
+      1;
+
+    const day =
+      Number(datesArray.find((date) => date.component === "day")?.value) ??
+      this._selectedDate.getDate() ??
+      1;
 
     const parsedDate = createDate(year, month, day);
     return parsedDate;
