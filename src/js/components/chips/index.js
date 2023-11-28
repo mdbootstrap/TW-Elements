@@ -397,7 +397,7 @@ class ChipsInput extends Chip {
 
   _handleChipsFocus() {
     EventHandler.on(this._element, "click", ({ target: { attributes } }) => {
-      const attrList = [...attributes];
+      const attrList = [...attributes].map((attr) => attr.name);
       if (
         attrList.includes(ATTR_CHIP_INIT) ||
         attrList.includes(ATTR_CHIP_CLOSE) ||
