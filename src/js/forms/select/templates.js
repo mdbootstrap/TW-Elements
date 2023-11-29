@@ -355,7 +355,10 @@ function createSelectAllNode(option, options, config, classes) {
   const isSelected = allOptionsSelected(options);
   const optionNode = element("div");
   optionNode.setAttribute(DATA_OPTION, "");
-  Manipulator.addClass(optionNode, classes.selectOption);
+
+  const classList = classes.selectAllOption || classes.selectOption;
+
+  Manipulator.addClass(optionNode, classList);
   optionNode.setAttribute(DATA_OPTION_ALL, "");
   Manipulator.addStyle(optionNode, {
     height: `${config.selectOptionHeight}px`,
