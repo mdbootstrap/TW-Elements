@@ -79,7 +79,6 @@ const ANIMATION_FADE_IN = [{ opacity: "0" }, { opacity: "1" }];
 const ANIMATION_FADE_OUT = [{ opacity: "1" }, { opacity: "0" }];
 
 const ANIMATION_TIMING = {
-  duration: 550,
   iterations: 1,
   easing: "ease",
   fill: "both",
@@ -93,6 +92,7 @@ const Default = {
   popperConfig: null,
   autoClose: true,
   dropdownAnimation: "on",
+  animationDuration: 550,
 };
 
 const DefaultType = {
@@ -103,6 +103,7 @@ const DefaultType = {
   popperConfig: "(null|object|function)",
   autoClose: "(boolean|string)",
   dropdownAnimation: "string",
+  animationDuration: "number",
 };
 
 /*
@@ -197,14 +198,17 @@ class Dropdown extends BaseComponent {
 
     this._menu.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, "");
     this._animationCanPlay &&
-      this._menu.animate(ANIMATION_FADE_IN, ANIMATION_TIMING);
+      this._menu.animate(ANIMATION_FADE_IN, {
+        ...ANIMATION_TIMING,
+        duration: this._config.animationDuration,
+      });
     this._element.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, "");
 
     setTimeout(
       () => {
         EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
       },
-      this._animationCanPlay ? ANIMATION_TIMING.duration : 0
+      this._animationCanPlay ? this._config.animationDuration : 0
     );
   }
 
@@ -282,10 +286,10 @@ class Dropdown extends BaseComponent {
     }
 
     if (this._animationCanPlay) {
-      this._fadeOutAnimate = this._menu.animate(
-        ANIMATION_FADE_OUT,
-        ANIMATION_TIMING
-      );
+      this._fadeOutAnimate = this._menu.animate(ANIMATION_FADE_OUT, {
+        ...ANIMATION_TIMING,
+        duration: this._config.animationDuration,
+      });
     }
 
     setTimeout(
@@ -301,7 +305,7 @@ class Dropdown extends BaseComponent {
         Manipulator.removeDataAttribute(this._menu, "popper");
         EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
       },
-      this._animationCanPlay ? ANIMATION_TIMING.duration : 0
+      this._animationCanPlay ? this._config.animationDuration : 0
     );
   }
 
