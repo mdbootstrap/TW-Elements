@@ -139,6 +139,10 @@ const defaultInitSelectors = {
     name: "Sticky",
     selector: "[data-te-sticky-init]",
   },
+  multiRangeSlider: {
+    name: "MultiRangeSlider",
+    selector: "[data-te-multi-range-slider-init]",
+  },
 
   // advancedInits
   chart: {

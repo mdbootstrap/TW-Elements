@@ -47,6 +47,7 @@ import LoadingManagement from "./methods/loading-management";
 import Datetimepicker from "./forms/dateTimepicker";
 import Sticky from "./methods/sticky";
 import Autocomplete from "./forms/autocomplete";
+import MultiRangeSlider from "./forms/multi-range";
 import initTE from "./autoinit/index";
 
 export {
@@ -88,5 +89,6 @@ export {
   Datetimepicker,
   Sticky,
   Autocomplete,
+  MultiRangeSlider,
   initTE,
 };
