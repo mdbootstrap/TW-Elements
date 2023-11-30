@@ -50,12 +50,15 @@ const DefaultClasses = {
   show: "transform-none",
   static: "scale-[1.02]",
   staticProperties: "transition-scale duration-300 ease-in-out",
+  backdrop:
+    "opacity-50 transition-all duration-300 ease-in-out fixed top-0 left-0 z-[1040] bg-black w-screen h-screen",
 };
 
 const DefaultClassesType = {
   show: "string",
   static: "string",
   staticProperties: "string",
+  backdrop: "string",
 };
 
 const EVENT_HIDE = `hide${EVENT_KEY}`;
@@ -216,6 +219,7 @@ class Modal extends BaseComponent {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
       isAnimated: this._isAnimated(),
+      backdropClasses: this._classes.backdrop,
     });
   }
 

@@ -32,7 +32,7 @@ const DefaultType = {
   isAnimated: "boolean",
   rootElement: "(element|string)",
   clickCallback: "(function|null)",
-  backdropClasses: "(array|null)",
+  backdropClasses: "(array|string|null)",
 };
 const NAME = "backdrop";
 const EVENT_MOUSEDOWN = `mousedown.te.${NAME}`;
