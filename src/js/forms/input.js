@@ -233,14 +233,39 @@ class Input {
   }
 
   _getEvents() {
-    EventHandler.on(document, "focus", "input", Input.activate(new Input()));
-    EventHandler.on(document, "input", "input", Input.activate(new Input()));
-    EventHandler.on(document, "blur", "input", Input.deactivate(new Input()));
-
-    EventHandler.on(document, "focus", "textarea", Input.activate(new Input()));
-    EventHandler.on(document, "input", "textarea", Input.activate(new Input()));
     EventHandler.on(
-      document,
+      this._element,
+      "focus",
+      "input",
+      Input.activate(new Input())
+    );
+    EventHandler.on(
+      this._element,
+      "input",
+      "input",
+      Input.activate(new Input())
+    );
+    EventHandler.on(
+      this._element,
+      "blur",
+      "input",
+      Input.deactivate(new Input())
+    );
+
+    EventHandler.on(
+      this._element,
+      "focus",
+      "textarea",
+      Input.activate(new Input())
+    );
+    EventHandler.on(
+      this._element,
+      "input",
+      "textarea",
+      Input.activate(new Input())
+    );
+    EventHandler.on(
+      this._element,
       "blur",
       "textarea",
       Input.deactivate(new Input())
@@ -493,7 +518,6 @@ class Input {
         SELECTOR_NOTCH,
         this._element
       );
-
       if (event && event.type === "focus") {
         notchWrapper && notchWrapper.setAttribute(DATA_FOCUSED, "");
       }
