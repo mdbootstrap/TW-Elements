@@ -2,10 +2,10 @@
 title: "Django integration"
 date: 2021-04-29T16:00:58+02:00
 draft: false
-main_title: "TW elements Django integration"
+main_title: "TW Elements Django integration"
 subheading: ""
-seo_title: "TW elements integration with Django - Free Examples & Tutorial"
-description: "This article shows you how to integrate Django application with TW elements. Free download, open source license."
+seo_title: "TW Elements integration with Django - Free Examples & Tutorial"
+description: "This article shows you how to integrate Django application with TW Elements. Free download, open source license."
 image: "https://tecdn.b-cdn.net/img/docs/integrations/django.webp"
 url: "docs/standard/integrations/django-integration/"
 menu:
@@ -13,7 +13,7 @@ menu:
     name: "Django"
 ---
 
-<!--Prerequisites-->
+<!-- Prerequisites -->
 <section id="section-prerequisites">
   <!-- Title -->
   <h2
@@ -36,7 +36,7 @@ menu:
         target="_blank"
         >Node LTS</a
       >
-      (14.x.x or higher recommended)
+      (18.x.x or higher recommended)
     </li>
     <li>
       <a
@@ -66,11 +66,11 @@ menu:
     </li>
   </ul>
 </section>
-<!--/Prerequisites-->
+<!-- Prerequisites -->
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!--Creating Django app-->
+<!-- Creating Django app -->
 <section id="section-django-app">
   <!-- Section title-->
   <h2
@@ -92,37 +92,35 @@ menu:
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal - Windows, Terminal - MacOS/Linux" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        mkdir my-project
-        cd my-project
-        py -3 -m venv venv
-        {{< /twsnippet/code >}}
-        {{< twsnippet/code lang="plaintext" type="terminal" >}}
-        mkdir my-project
-        cd my-project
-        python -3 -m venv venv
-        {{< /twsnippet/code >}}
-      {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    mkdir my-project
+    cd my-project
+    py -3 -m venv venv
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="plaintext" type="terminal" >}}
+    mkdir my-project
+    cd my-project
+    python -3 -m venv venv
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
   <p class="mb-5">
-    Now activate created environment. In case that you are working on Windows
-    and command is not working, try this:
-    <code>source ./venv/Scripts/activate</code>. After this you should see venv
-    catalogue and in your terminal will be visible <code>(venv)</code> badge.
+    Now activate created environment. After this you should see venv catalogue
+    and in your terminal will be visible <code>(venv)</code> badge.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal - Windows, Terminal - MacOS/Linux" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        venv/Scripts/activate
-        {{< /twsnippet/code >}}
-        {{< twsnippet/code lang="plaintext" type="terminal" >}}
-        . venv/bin/activate
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    venv/Scripts/activate
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="plaintext" type="terminal" >}}
+    source venv/bin/activate
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 3</h2>
@@ -131,72 +129,253 @@ menu:
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        pip install django
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    pip install django
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
-  <p class="mb-5">Create a project.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-        django-admin startproject mysite
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 5</h2>
   <p class="mb-5">
-    Go to <code>settings.py</code> file in <code>mysite</code> folder and modify
-    section with paths for static files.
+    Create <code>src</code> folder in the root directory and there initialize
+    Django project.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "settings.py" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="python" >}}
-          TE_URL = 'node_modules/'
-          STATICFILES_DIRS = [
-            BASE_DIR / "static",
-            BASE_DIR.parent / "node_modules",
-          ]
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    mkdir src
+    cd src
+    django-admin startproject mysite .
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">
+    Create a folder called <code>static</code> in the
+    <code>src</code> directory. You can place your own CSS files there. Let's
+    create there a file named <code>input.css</code>. There you can put your own
+    CSS styles.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">
+    Navigate to the <code>settings.py</code> in the <code>mysite</code> folder
+    and update the section with paths for static files.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/mysite/settings.py" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="python" >}}    
+    STATIC_URL = 'static/'
+    STATICFILES_DIRS = [
+      BASE_DIR / "static"
+    ]
+    STATIC_ROOT = BASE_DIR.parent / "static"    
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">
+    Create a folder named <code>templates</code> in the
+    <code>src</code> directory. Then, open the <code>settings.py</code> file in
+    the <code>mysite</code> folder and update the section with the template
+    paths.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/mysite/settings.py" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="python" >}}    
+    TEMPLATES = [
+        {
+            ...
+            'DIRS': [BASE_DIR / 'templates'],
+            ...
+        },
+    ]  
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 8</h2>
+  <p class="mb-5">
+    Create a file named <code>base.html</code> in the
+    <code>templates</code> directory. This file will be a base for all other
+    pages. Additionally, within this folder, create new named
+    <code>pages</code>, and inside it, create a file named
+    <code>home.html</code>.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/templates/base.html, ./src/templates/pages/home.html" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="html" >}}    
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="{% static 'input.css' %}" rel="stylesheet" />
+        <title>
+          {% block head_title %}TWE Django Integration Tutorial{% endblock %}
+        </title>
+      </head>
+      <body>
+        <div>{% block content %} {% endblock %}</div>
+      </body>
+    </html>
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="html" >}}
+    {% extends "base.html" %} {% block content %}
+    <h1>Django application</h1>
+    {% endblock %}
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 9</h2>
+  <p class="mb-5">
+    Create <code>views.py</code> file in <code>mysite</code> folder and put in
+    there render for your home page.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/mysite/views.py" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="python" >}}
+    from django.shortcuts import render
+
+    def home_view(request):
+      return render(request, "pages/home.html", {})
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 10</h2>
+  <p class="mb-5">
+    Then in <code>urls.py</code> file (also located in
+    <code>mysite</code> folder) add import newly created
+    <code>views.py</code> file and attach urls for paths with static files.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/mysite/urls.py" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="python" >}}
+    from django.contrib import admin
+    from django.urls import path
+    from django.conf import settings
+    from . import views
+    
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', views.home_view, name='home')
+    ]
+    
+    if settings.DEBUG:
+        from django.conf.urls.static import static
+        urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 11</h2>
+  <p class="mb-5">To see if everything works, run the server:</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}    
+    python manage.py runserver
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!--/Creating Django app-->
+<!-- Creating Django app -->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
-<!--Creating and configuring Tailwind & TW elements-->
+<!--Creating and configuring Tailwind & TW Elements-->
 <section id="section-tailwind">
   <!-- Section title-->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="tailwind"
     data-te-spy-item>
-    Installing and configuring Tailwind CSS and TW elements
+    Installing and configuring Tailwind CSS and TW Elements
   </h2>
 
   <!-- Description -->
   <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Install Tailwind CSS</p>
+  <p class="mb-5">
+    To initialize an npm project, run the following command in the
+    <code>root</code>
+    directory:
+  </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-          npm install -D tailwindcss postcss autoprefixer
-          npx tailwindcss init -p
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm init -y
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 2</h2>
+  <h2 class="mt-5 text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Install Tailwind CSS.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">File structure</h2>
+  <p class="mb-5">
+    If you have followed all instructions mentioned earlier, your file structure
+    should look like this:
+  </p>
+
+  <div class="pb-4">
+    <pre class="rounded-lg text-[14px]">
+      <code class="language-markdown type-markdown">
+          my-project/
+          ├── node_modules/
+          ├── src/        
+          │   ├── mysite/
+          │   │   ├── ...
+          │   │   ├── settings.py
+          │   │   ├── urls.py
+          │   │   ├── views.py
+          │   │   └── ...
+          │   ├── static/
+          │   |   └── input.css
+          │   ├── templates/
+          │   |   ├── pages/
+          │   |   |   └── home.html
+          │   |   └── base.html
+          │   └── manage.py
+          ├── venv/
+          ├── package-lock.json
+          ├── package.json
+          ├── postcss.config.js
+          └── tailwind.config.js
+      </code>
+    </pre>
+  </div>
+
+  <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
     <code>tailwind.config.js</code> file.
@@ -205,42 +384,141 @@ menu:
   <!--prettier-ignore-->
   <div class="pb-4">
     {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-          /** @type {import('tailwindcss').Config} */
-          module.exports = {
-            content: [
-              "./src/**/*.{html,js}",
-              "./node_modules/tw-elements/dist/js/**/*.js",
-            ],
-            theme: {
-              extend: {},
-            },
-            darkMode: "class",
-            plugins: [require("tw-elements/dist/plugin.cjs")],
-          };
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: [
+        "./src/**/*.{html,js}",
+        "./node_modules/tw-elements/dist/js/**/*.js",
+      ],
+      theme: {
+        extend: {},
+      },
+      darkMode: "class",
+      plugins: [require("tw-elements/dist/plugin.cjs")],
+    };    
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 3</h2>
+  <h2 class="text-lg font-bold">Step 4</h2>
   <p class="mb-5">
-    Create an <code>static</code> folder in root directory and
-    <code>input.css</code> file. Then add the <code>@tailwind</code> directives
-    for each of Tailwind’s layers.
+    Replace your own styles in <code>input.css</code> file with Tailwind
+    directives.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "input.css" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="CSS" >}}
-          @tailwind base;
-          @tailwind components;
-          @tailwind utilities;
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/wrapper "./src/static/input.css" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="CSS" >}}
+    @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+    @tailwind base;
+
+    @layer base {
+      html {
+        @apply text-neutral-800;
+      }
+      html.dark {
+        @apply text-neutral-50;
+        @apply bg-neutral-800;
+      }
+    }
+
+    @tailwind components;
+    @tailwind utilities;  
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 4</h2>
+  <h2 class="text-lg font-bold">Step 5</h2>
+  <p class="mb-5">Install TW Elements.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install tw-elements
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">
+    Go to <code>settings.py</code> file and update section with paths for static
+    files.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/mysite/settings.py" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="python" >}}    
+    ...
+    STATICFILES_DIRS = [
+      BASE_DIR / "static",
+      BASE_DIR.parent / "node_modules",
+    ] 
+    ...
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+
+  <p class="mb-5">
+    In the <code>head</code> section of the <code>base.html</code> file,
+    substitute the <code>href</code> attribute from <code>input.css</code> to
+    the Tailwind CSS file named <code>output.css</code>, which will be generated
+    during the Tailwind CLI build process. Furthermore, add a link to the TW
+    Elements JS at the end of the <code>body</code> tag.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/templates/base.html" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    ...
+    <head>
+      ...
+      <link href="{% static 'output.css' %}" rel="stylesheet" />
+      ...
+    </head>
+    <body>
+      ...
+      <script
+        src="{% static 'tw-elements/dist/js/tw-elements.umd.min.js' %}"
+        type="text/javascript"></script>
+    </body>
+    ...
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 8</h2>
+  <p class="mb-5">Add the TWE components you intend to use in your project.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/templates/pages/home.html" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="html" >}}    
+    {% extends "base.html" %} {% block content %}
+    <div class="mt-16 flex justify-center">
+      <p class="text-lg">
+        Hover the link to see the
+        <a
+          href="#"
+          class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+          data-te-toggle="tooltip"
+          title="Hi! I'm tooltip"
+          >tooltip</a
+        >
+      </p>
+    </div>
+    {% endblock %}
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 9</h2>
   <p class="mb-5">
     Start the Tailwind CLI build process. Run the CLI tool to scan your template
     files for classes and build your CSS.
@@ -249,149 +527,28 @@ menu:
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-          npx tailwindcss -i input.css -o static/output.css --watch
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 5</h2>
-  <p class="mb-5">
-    In root directory create a <code>pages</code> folder and place in there
-    <code>home.html</code> file. At the top (first line) should be found
-    <code>{% load static %}</code> phrase which allows to contains static files.
-  </p>
-  <p class="mb-5">
-    At the end of <code>head</code> section place link for Tailwind CSS file.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "home.html" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="HTML" >}}
-    <link href="{% static 'output.css' %}" rel="stylesheet" />
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npx tailwindcss -i src/static/input.css -o src/static/output.css --watch
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 6</h2>
   <p class="mb-5">
-    In <code>home.html</code> file, at the end of <code>body</code> link script
-    for TW elements JS file.
+    And run the local server. If changes doesn't apply, try hard reload.
+    Awesome! You're all set to dive into using TW Elements for your Django
+    project. Have fun!
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "home.html" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="HTML" >}}
-    <script
-      src="{% static 'tw-elements/dist/js/tw-elements.umd.min.js' %}"
-      type="text/javascript"></script>
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    python manage.py runserver
     {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 7</h2>
-  <p class="mb-5">
-    Attach the <code>Roboto</code> font in <code>home.html</code>.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "home.html" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="HTML" >}}
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
-      rel="stylesheet" />
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 8</h2>
-  <p class="mb-5">
-    Create <code>views.py</code> file in <code>mysite</code> folder and put in
-    there render for your first / home page.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "views.py" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="python" >}}
-        from django.shortcuts import render
-
-        def home_view(request):
-          return render(request, "pages/home.html", {})
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 9</h2>
-  <p class="mb-5">
-    Then in <code>urls.py</code> file (located in <code>mysite</code> folder)
-    add import newly created <code>views.py</code> file and attach urls for
-    paths with static files.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "settings.py" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="python" >}}
-        from django.conf import settings
-        ...
-        from . import views
-
-        urlpatterns = [
-          path("", views.home_view),
-          path('admin/', admin.site.urls),
-        ]
-
-        if settings.DEBUG:
-          from django.conf.urls.static import static
-          urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-          urlpatterns += static(settings.TE_URL, document_root=settings.STATIC_ROOT)
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
-  </div>
-</section>
-<!--/Creating and configuring Tailwind & TW elements-->
-
-<!--Initializing via JS-->
-<section id="section-initializing-js">
-  <!-- Title -->
-  <h2
-    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
-    id="initializing-js"
-    data-te-spy-item>
-    Initializing via JS
-  </h2>
-
-  <!-- Description -->
-  <p class="mb-5">
-    By default all components have autoinit which means they are initialized by
-    data attributes. But if you want to make init by JavaScript - there is also
-    possibility to do that.
-  </p>
-
-  <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Initialize components in <code>script</code> section.</p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "home.html" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-          const myInput = new te.Input(document.getElementById("myDatepicker"));
-          const options = {
-            format: "dd-mm-yyyy",
-          };
-          const myDatepicker = new te.Datepicker(
-            document.getElementById("myDatepicker"),
-            options
-          );
-      {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!--/Initializing via JS-->
+<!-- Creating and configuring Tailwind & TW Elements -->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
@@ -580,6 +737,13 @@ menu:
       data-te-ripple-init
       class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
       svelte
+    </a>
+    <a
+      href="/docs/standard/integrations/sveltekit-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      sveltekit
     </a>
     <a
       href="/docs/standard/integrations/vue-integration/"
