@@ -2,10 +2,10 @@
 title: "Laravel integration"
 date: 2021-04-29T16:00:58+02:00
 draft: false
-main_title: "TW elements Laravel integration"
+main_title: "TW Elements Laravel integration"
 subheading: ""
-seo_title: "TW elements integration with Laravel - Free Examples & Tutorial"
-description: "This article shows you how to integrate Laravel application with TW elements. Free download, open source license."
+seo_title: "TW Elements integration with Laravel - Free Examples & Tutorial"
+description: "This article shows you how to integrate Laravel application with TW Elements. Free download, open source license."
 image: "https://tecdn.b-cdn.net/img/docs/integrations/laravel.webp"
 url: "docs/standard/integrations/laravel-integration/"
 menu:
@@ -37,7 +37,23 @@ menu:
         target="_blank"
         >Node LTS</a
       >
-      (14.x.x or higher recommended)
+      (18.x.x or higher recommended)
+    </li>
+    <li>
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://www.php.net/downloads.php"
+        target="_blank"
+        >PHP</a
+      >
+    </li>
+    <li>
+      <a
+        class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+        href="https://www.php.net/downloads.php"
+        target="_blank"
+        >Composer</a
+      >
     </li>
     <li>
       Code editor. We recommend
@@ -53,8 +69,8 @@ menu:
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!-- Section: Creating Nuxt app-->
-<section id="section-nuxt-app">
+<!-- Section: Creating Laravel app-->
+<section id="section-laravel-app">
   <!-- Section title-->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
@@ -69,155 +85,250 @@ menu:
     steps together.
   </p>
 
+  <div
+    class="mb-4 rounded-lg bg-primary-100 px-6 py-5 text-base text-primary-600"
+    role="alert">
+    <strong>Note:</strong>
+    If you have trouble with installing composer and you got an error bound
+    installation - try
+    <code>composer install --ignore-platform-req=ext-fileinfo</code> or
+    <code>composer update --ignore-platform-reqs</code>.
+  </div>
+
   <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Create new project</p>
+  <p class="mb-5">Create new project.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-          composer create-project laravel/laravel my-project
-          cd my-project
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    composer create-project laravel/laravel my-project
+    cd my-project
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 2</h2>
+  <p class="mb-5">Run the development server.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    php artisan serve
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 </section>
+<!-- Section: Creating Laravel app-->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
-<!-- Creating and configuring Tailwind & TW elements-->
+<!-- Creating and configuring Tailwind & TW Elements-->
 <section id="section-tailwind">
   <!-- Section title-->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
     id="tailwind"
     data-te-spy-item>
-    Installing and configuring Tailwind CSS and TW elements
+    Installing and configuring Tailwind CSS and TW Elements
   </h2>
 
   <!-- Description -->
   <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Install Tailwind CSS</p>
+  <p class="mb-5">Install Tailwind CSS.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-          npm install -D tailwindcss postcss autoprefixer
-          npx tailwindcss init -p
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install -D tailwindcss postcss autoprefixer
+    npx tailwindcss init -p
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">File structure</h2>
+  <p class="mb-5">
+    If you have followed all instructions mentioned earlier, your file structure
+    should look like this:
+  </p>
+
+  <div class="pb-4">
+    <pre class="rounded-lg text-[14px]">
+      <code class="language-markdown type-markdown">
+        my-project/
+        ├── ...
+        ├── node_modules/       
+        ├── public/  
+        ├── resources/
+        │   ├── css/
+        │   │   └── app.css
+        │   ├── js/
+        │   │   ├── app.js
+        │   │   └── ...
+        │   └── views/
+        │       └── welcome.blade.php
+        ├── ...
+        ├── package-lock.json
+        ├── package.json
+        ├── ...
+        ├── postcss.config.js
+        ├── README.md
+        ├── tailwind.config.js
+        └── vite.config.js
+      </code>
+    </pre>
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
-    <code>tailwind.config.cjs</code> file.
+    <code>tailwind.config.js</code> file.
   </p>
 
   <!--prettier-ignore-->
   <div class="pb-4">
-    {{< twsnippet/wrapper "tailwind.config.cjs" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-          /** @type {import('tailwindcss').Config} */
-          module.exports = {
-            content: [
-            "./resources/**/*.blade.php",
-            "./resources/**/*.js",
-            "./resources/**/*.vue",
-            "./node_modules/tw-elements/dist/js/**/*.js"
-            ],
-            theme: {
-              extend: {},
-            },
-            darkMode: "class",
-            plugins: [require("tw-elements/dist/plugin.cjs")]
-          }
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/wrapper "tailwind.config.js" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+      content: [
+        "./resources/**/*.blade.php",
+         "./resources/**/*.js",
+        "./resources/**/*.vue",
+        "./node_modules/tw-elements/dist/js/**/*.js"
+      ],
+      theme: {
+        extend: {},
+      },
+      darkMode: "class",
+      plugins: [require("tw-elements/dist/plugin.cjs")]
+    }
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
-    your <code>./resources/css/app.css</code> file.
+    your <code>app.css</code> file.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.css" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="CSS" >}}
-          @tailwind base;
-          @tailwind components;
-          @tailwind utilities;
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/wrapper "./resources/css/app.css" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="CSS" >}}
+    @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+    @tailwind base;
+    
+    @layer base {
+      html {
+        @apply text-neutral-800;
+      }
+      html.dark {
+        @apply text-neutral-50;
+        @apply bg-neutral-800;
+      }
+    }
+    
+    @tailwind components;
+    @tailwind utilities;
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
   <p class="mb-5">
     Make sure your compiled CSS and JS are included in the
-    <code>head</code> in <code>welcome.blade.php</code> file (located in
-    <code>./resources/views</code> directory).
+    <code>head</code> in <code>welcome.blade.php</code> file.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "welcome.blade.php" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="HTML" >}}
-          @vite('resources/css/app.css')
-          @vite('resources/js/app.js')
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/wrapper "./resources/views/welcome.blade.php" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 5</h2>
-  <p class="mb-5">
-    Attach the <code>Roboto</code> font in <code>welcome.blade.php</code>.
-  </p>
+  <p class="mb-5">Install TW Elements.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "welcome.blade.php" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="HTML" >}}
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
-      rel="stylesheet" />
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm install tw-elements
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 6</h2>
-  <p class="mb-5">Install TW elements.</p>
+  <p class="mb-5">
+    Import and initialize with <code>initTE</code> function components which are
+    you intend to use and necessary function <code>initTE</code> in
+    <code>app.js</code>. Additionally add HTML markup for components in the
+    <code>welcome.blade.php</code> file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./resources/js/app.js, ./resources/views/welcome.blade.php" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    import { Tooltip, initTE } from "tw-elements";
+    initTE({ Tooltip });
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="html" >}}
+    ...
+    <main>
+      <div class="mt-16 flex justify-center">
+        <p class="text-lg">
+          Hover the link to see the
+          <a
+            href="#"
+            class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+            data-te-toggle="tooltip"
+            title="Hi! I'm tooltip"
+            >tooltip</a
+          >
+        </p>
+      </div>
+    </main>
+    ...
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 7</h2>
+  <p class="mb-5">Start build process.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-          npm install tw-elements
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    npm run dev
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">
-    Import components which are you intend to use and necessary function
-    <code>initTE</code> in <code>app.js</code> file which is located in
-    <code>./resources/js</code> directory.
+    And run the development server. Awesome! You're all set to dive into using
+    TW Elements for your Laravel project. Have fun!
   </p>
-  <p class="mb-5">Initialize <code>initTE</code>.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.js" "" "mobile" >}}
-        {{< twsnippet/code active=true lang="JavaScript" >}}
-          import { Datepicker, Input, initTE } from "tw-elements";
-          initTE({ Datepicker, Input });
-        {{< /twsnippet/code >}}
-        {{< /twsnippet/wrapper >}}
+    {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
+    php artisan serve
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!--/Creating and configuring Tailwind & TW elements-->
+<!-- Creating and configuring Tailwind & TW Elements -->
 
 <!--Initializing via JS-->
 <section id="section-initializing-js">
@@ -241,25 +352,130 @@ menu:
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.js" "" "mobile" >}}
-      {{< twsnippet/code active=true lang="JavaScript" >}}
-          import { Datepicker, Input } from "tw-elements";
+    {{< twsnippet/wrapper "./resources/js/app.js, ./resources/views/welcome.blade.php" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    import { Tooltip } from 'tw-elements';
 
-          const myInput = new Input(document.getElementById("myDatepicker"));
-          const options = {
-            format: "dd-mm-yyyy",
-          };
-          const myDatepicker = new Datepicker(
-            document.getElementById("myDatepicker"),
-            options
-          );
-      {{< /twsnippet/code >}}
+    const myTooltip = new Tooltip(document.getElementById('my-tooltip'));
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="html" >}}
+    ...
+    <main>
+      <div class="mt-16 flex justify-center">
+        <p class="text-lg">
+          Hover the link to see the
+          <a
+            id="my-tooltip"
+            href="#"
+            class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+            title="Hi! I'm tooltip"
+            >tooltip</a
+          >
+        </p>
+      </div>
+    </main>
+    ...
+    {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!--/Initializing via JS-->
+
+<!-- Initializing via JS -->
 
 <hr class="mb-5 dark:border-neutral-600" />
+
+<!-- Troubleshooting -->
+<section id="section-troubleshooting">
+  <!-- Section title-->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="title-troubleshooting"
+    data-te-spy-item>
+    Troubleshooting
+  </h2>
+
+  <div id="accordionExample5">
+    <div
+      class="rounded-b-lg rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+      <h2 class="mb-0" id="headingOne5">
+        <button
+          class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)] [&[data-te-collapse-collapsed]]:rounded-b-[15px] [&[data-te-collapse-collapsed]]:transition-none"
+          type="button"
+          data-te-collapse-init
+          data-te-collapse-collapsed
+          data-te-target="#collapseOne5"
+          aria-expanded="false"
+          aria-controls="collapseOne5">
+          TWE Components initialization
+          <span
+            class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-6 w-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </span>
+        </button>
+      </h2>
+      <div
+        id="collapseOne5"
+        class="!visible hidden"
+        data-te-collapse-item
+        aria-labelledby="headingOne5">
+        <div class="px-5 py-4">
+          <h2 class="mb-2 font-bold">Problem overview:</h2>
+          <p>
+            After initializing TWE components as described in the documentation
+            you can got erros like
+            <code>(TWE Components name) is not defined</code> or
+            <code>te is not defined</code>.
+          </p>
+
+          <h2 class="mb-2 mt-5 font-bold">Suggested solution:</h2>
+          <p class="mb-5">Set variables or constants to the window scope.</p>
+
+          <!--prettier-ignore-->
+          {{< twsnippet/wrapper "Code" "" "mobile" >}}
+          {{< twsnippet/code active=true lang="JavaScript" >}}
+          const { Tooltip, initTE } = await import("tw-elements");
+
+          window.iniTE = initTE;
+          window.Tooltip = Tooltip;
+
+          initTE({ Tooltip });
+          {{< /twsnippet/code >}}
+          {{< /twsnippet/wrapper >}}
+
+
+          <h1 class="text-sm text-neutral-400">
+            Source GitHub Discussion<a
+              class="text-primary-400 transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+              href="https://github.com/mdbootstrap/TW-Elements/issues/1839"
+              target="_blank">
+              #1839</a
+            >
+            <a
+              class="text-primary-400 transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+              href="https://github.com/mdbootstrap/TW-Elements/issues/1737"
+              target="_blank">
+              #1737</a
+            >
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Troubleshooting -->
+
+<hr class="my-5 dark:border-neutral-600" />
 
 <!-- Section: Related resources -->
 <section id="section-related-resources">
@@ -446,6 +662,13 @@ menu:
       data-te-ripple-init
       class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
       svelte
+    </a>
+    <a
+      href="/docs/standard/integrations/sveltekit-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      sveltekit
     </a>
     <a
       href="/docs/standard/integrations/vue-integration/"

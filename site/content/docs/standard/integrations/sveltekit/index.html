@@ -1,19 +1,19 @@
 ---
-title: "Nuxt integration"
+title: "Svelte integration"
 date: 2021-04-29T16:00:58+02:00
 draft: false
-main_title: "TW Elements Nuxt integration"
+main_title: "TW Elements SvelteKit integration"
 subheading: ""
-seo_title: "TW Elements integration with Nuxt - Free Examples & Tutorial"
-description: "This article shows you how to integrate Nuxt application with TW Elements. Free download, open source license."
-image: "https://tecdn.b-cdn.net/img/docs/integrations/nuxt.webp"
-url: "docs/standard/integrations/nuxt-integration/"
+seo_title: "TW Elements integration with SvelteKit - Free Examples & Tutorial"
+description: "This article shows you how to integrate SvelteKit application with TW Elements. Free download, open source license."
+image: "https://tecdn.b-cdn.net/img/docs/integrations/svelte.webp"
+url: "docs/standard/integrations/sveltekit-integration/"
 menu:
   integrations:
-    name: "Nuxt"
+    name: "SvelteKit"
 ---
 
-<!-- Section: Prerequisites -->
+<!-- Prerequisites -->
 <section id="section-prerequisites">
   <!-- Title -->
   <h2
@@ -49,35 +49,44 @@ menu:
     </li>
   </ul>
 </section>
-<!-- Section: Prerequisites -->
+<!-- Prerequisites -->
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!-- Section: Creating Nuxt app-->
-<section id="section-nuxt-app">
-  <!-- Section title-->
+<!-- Creating SvelteKit app -->
+<section id="section-sveltekit-app">
+  <!-- Section title -->
   <h2
     class="mb-5 mt-0 text-3xl font-semibold leading-normal"
-    id="nuxt-application"
+    id="svelte-application"
     data-te-spy-item>
-    Creating a new Nuxt application
+    Creating a new SvelteKit application
   </h2>
 
   <!-- Description -->
-  <p class="mb-5">
-    Let's create a fresh Nuxt application so that we can go through all the
+  <p>
+    Let's create a fresh SvelteKit application so that we can go through all the
     steps together.
   </p>
 
-  <h2 class="text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Create new project.</p>
+  <h2 class="mt-5 text-lg font-bold">Step 1</h2>
+  <p class="mb-2">Create new project.</p>
+
+  <div
+    class="mb-4 rounded-md border-l-[6px] border-solid border-blue-600 bg-blue-100 p-2.5 dark:border-white dark:bg-gray-500 ">
+    <strong>Note:</strong> Options used while creating the
+    <code>SvelteKit</code> app: App template - <code>Skeleton project</code>,
+    Type checking - <code>JS with JSDocs comments</code>, Additional options -
+    <code>ESLint</code>.
+  </div>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
     {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
-    npx nuxi init my-project
+    npm create svelte@latest my-project
     cd my-project
+    npm install
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -94,11 +103,11 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 </section>
-<!-- Section: Creating Nuxt app-->
+<!-- Creating SvelteKit app-->
 
 <hr class="mb-5 dark:border-neutral-600" />
 
-<!-- Creating and configuring Tailwind & TW Elements -->
+<!-- Creating and configuring Tailwind & TW Elements-->
 <section id="section-tailwind">
   <!-- Section title-->
   <h2
@@ -110,20 +119,20 @@ menu:
 
   <!-- Description -->
   <h2 class="mt-5 text-lg font-bold">Step 1</h2>
-  <p class="mb-5">Install Tailwind CSS</p>
+  <p class="mb-5">Install Tailwind CSS.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
     {{< twsnippet/wrapper "Terminal" "" "mobile" >}}
     {{< twsnippet/code active=true lang="plaintext" type="terminal" >}}
     npm install -D tailwindcss postcss autoprefixer
-    npx tailwindcss init
+    npx tailwindcss init -p
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="mt-5 text-lg font-bold">File structure</h2>
-  <p class="mb-5">
+  <h2 class="text-lg font-bold">File structure</h2>
+  <p class="mb-2">
     If you have followed all instructions mentioned earlier, your file structure
     should look like this:
   </p>
@@ -132,53 +141,28 @@ menu:
     <pre class="rounded-lg text-[14px]">
       <code class="language-markdown type-markdown">
         my-project/
-        ├── .nuxt/
-        ├── assets/ - needs to be created
-        │   └── css/
-        │       └── main.css
-        ├── node_modules/       
-        ├── public/  
+        ├── .svelte-kit/
+        ├── node_modules/
+        ├── src/        
+        │   ├── lib/
+        │   ├── routes/
+        │   │   └── +page.svelte
+        │   ├── app.d.ts
+        │   └── app.html
+        ├── static/
         ├── ...
-        ├── app.vue
-        ├── nuxt.config.ts
         ├── package-lock.json
         ├── package.json
-        ├── README.md
+        ├── postcss.config.js
+        ├── ...
+        ├── svelte.config.js
         ├── tailwind.config.js
-        └── tsconfig.json
+        └── vite.config.js
       </code>
     </pre>
   </div>
 
   <h2 class="text-lg font-bold">Step 2</h2>
-  <p class="mb-5">
-    Include <code>tailwindcss</code> and <code>autoprefixer</code> in the
-    <code>postcss.plugins</code> object within your
-    <code>nuxt.config.ts</code> file. Additionally, make sure to attach the
-    <code>css</code> object, specifying the localization of the main
-    <code>.css</code> file.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "nuxt.config.ts" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="JavaScript" >}}
-    // https://nuxt.com/docs/api/configuration/nuxt-config
-    export default defineNuxtConfig({
-      devtools: { enabled: true },
-      css: ["~/assets/css/main.css"],
-      postcss: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
-    });
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
-
-  <h2 class="text-lg font-bold">Step 3</h2>
   <p class="mb-5">
     Add the paths to all of your template files in your
     <code>tailwind.config.js</code> file.
@@ -191,12 +175,7 @@ menu:
     /** @type {import('tailwindcss').Config} */
     module.exports = {
       content: [
-        "./components/**/*.{js,vue,ts}",
-        "./layouts/**/*.vue",
-        "./pages/**/*.vue",
-        "./plugins/**/*.{js,ts}",
-        "./nuxt.config.{js,ts}",
-        "./app.vue",
+        "./src/**/*.{html,js,svelte,ts}",
         "./node_modules/tw-elements/dist/js/**/*.js",
       ],
       theme: {
@@ -204,20 +183,47 @@ menu:
       },
       darkMode: "class",
       plugins: [require("tw-elements/dist/plugin.cjs")],
-    };         
+    };      
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 3</h2>
+  <p class="mb-5">
+    In the <code>svelte.config.js</code> file, include
+    <code>vitePreprocess</code> to enable the handling of
+    <code>style</code> blocks as PostCSS.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "svelte.config.js" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="JavaScript" >}}
+    import adapter from '@sveltejs/adapter-auto';
+    import { vitePreprocess } from '@sveltejs/kit/vite';
+
+    /** @type {import('@sveltejs/kit').Config} */
+    const config = {
+      kit: {
+        adapter: adapter()
+      },
+      preprocess: vitePreprocess()
+      };
+
+    export default config;
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 4</h2>
   <p class="mb-5">
-    Add the <code>@tailwind</code> directives for each of Tailwind’s layers to
-    your <code>./assets/css/main.css</code> file.
+    Create <code>app.css</code> file in <code>src</code> directory and add the
+    <code>@tailwind</code> directives.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "./assets/css/main.css" "" "mobile" >}}
+    {{< twsnippet/wrapper "./src/app.css" "" "mobile" >}}
     {{< twsnippet/code active=true lang="CSS" >}}
     @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
     @tailwind base;
@@ -233,13 +239,34 @@ menu:
     }
     
     @tailwind components;
-    @tailwind utilities;   
+    @tailwind utilities;       
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
 
   <h2 class="text-lg font-bold">Step 5</h2>
-  <p class="mb-5">Install TW Elements.</p>
+  <p class="mb-5">
+    Create a new file named <code>+layout.svelte</code> in the
+    <code>./src/routes</code> directory and import the recently created
+    <code>app.css</code>
+    file.
+  </p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/routes/+layout.svelte" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <script>
+      import "../app.css";
+    </script>
+
+    <slot></slot>
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="text-lg font-bold">Step 6</h2>
+  <p class="mb-5">Install TW elements.</p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
@@ -250,65 +277,37 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 6</h2>
+  <h2 class="text-lg font-bold">Step 7</h2>
   <p class="mb-5">
-    In the root directory of your project, create a
-    <code>components</code> folder. Inside this folder, create a new file named
-    <code>Tooltip.vue</code>. Import the TWE components you intend to use and
-    include the necessary function <code>initTE</code>. Initialize
-    <code>initTE</code> within a lifecycle method.
+    Import components which are you intend to use and necessary function
+    <code>initTE</code>. Initialize <code>initTE</code> in a lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "./components/tooltip.vue" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="HTML" >}}
-    <template>
-      <div className="mt-16 flex justify-center">
-        <p className="text-lg">
-          Hover the link to see the
-          <a
-            href="#"
-            className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-            data-te-toggle="tooltip"
-            title="Hi! I'm tooltip">
-            tooltip
-          </a>
-        </p>
-      </div>
-    </template>
+    {{< twsnippet/wrapper "./src/routes/+page.svelte" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="html" >}}
+    <script>
+      import { onMount } from "svelte";
 
-    <script setup>
-      import { onMounted } from "vue";
-      import { Tooltip, initTE } from "tw-elements";
-
-      onMounted(() => {
+      onMount(async () => {
+        const { Tooltip, initTE } = await import("tw-elements");
         initTE({ Tooltip });
       });
     </script>
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
 
-  <h2 class="text-lg font-bold">Step 7</h2>
-  <p class="mb-5">
-    Import the newly created component, for instance in <code>app.vue</code>,
-    and wrap it within a <code>ClientOnly</code> element.
-  </p>
-
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "app.vue" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="HTML" >}}
-    <template>
-      <ClientOnly>
-        <Tooltip />
-      </ClientOnly>
-    </template>
-
-    <script setup>
-      import Tooltip from "./components/Tooltip.vue";
-    </script>
+    <div class="mt-16 flex justify-center">
+      <p class="text-lg">
+        Hover the link to see the
+        <a
+          href="#"
+          class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+          data-te-toggle="tooltip"
+          title="Hi! I'm tooltip"
+          >tooltip</a
+        >
+      </p>
+    </div>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -316,7 +315,7 @@ menu:
   <h2 class="text-lg font-bold">Step 8</h2>
   <p class="mb-5">
     Start the app and see if everything's fine. Awesome! You're all set to dive
-    into using TW Elements for your Nuxt project. Have fun!
+    into using TW Elements for your SvelteKit project. Have fun!
   </p>
 
   <div class="pb-4">
@@ -332,7 +331,7 @@ menu:
 
 <hr class="my-5 dark:border-neutral-600" />
 
-<!-- Initializing via JS -->
+<!-- Initializing via JS-->
 <section id="section-initializing-js">
   <!-- Title -->
   <h2
@@ -351,37 +350,36 @@ menu:
 
   <h2 class="text-lg font-bold">Step 1</h2>
   <p class="mb-5">
-    Import components which are you intend to use and initialize them in
-    lifecycle method.
+    Import library and initialize components in lifecycle method.
   </p>
 
   <div class="pb-4">
     <!--prettier-ignore-->
-    {{< twsnippet/wrapper "./components/tooltip.vue" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="HTML" >}}
-    <template>
-      <div className="mt-16 flex justify-center">
-        <p className="text-lg">
-          Hover the link to see the
-          <a
-            id="my-tooltip"
-            href="#"
-            className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-            title="Hi! I'm tooltip">
-            tooltip
-          </a>
-        </p>
-      </div>
-    </template>
-
-    <script setup>
-      import { onMounted } from "vue";
+    {{< twsnippet/wrapper "./src/routes/+page.svelte" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="html" >}}
+    <script>
+      import { onMount } from "svelte";
       import { Tooltip } from "tw-elements";
 
-      onMounted(() => {
+      onMount(async () => {
+        const { Tooltip } = await import("tw-elements");
+
         const myTooltip = new Tooltip(document.getElementById("my-tooltip"));
       });
     </script>
+
+    <div class="mt-16 flex justify-center">
+      <p class="text-lg">
+        Hover the link to see the
+        <a
+          id="my-tooltip"
+          href="#"
+          class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+          title="Hi! I'm tooltip">
+          tooltip
+        </a>
+      </p>
+    </div>
     {{< /twsnippet/code >}}
     {{< /twsnippet/wrapper >}}
   </div>
@@ -463,15 +461,16 @@ menu:
             <code>document is not defined</code> or
             <code
               >(Name of TWE Component) is not imported from "tw-elements"</code
-            >. For the second issue, attempting to import components in ES
+            >. For the second issue, attempting to import components in
+            <code>ES</code>
             format could be an alternative solution.
           </div>
 
           <!--prettier-ignore-->
           {{< twsnippet/wrapper "Code" "" "mobile" >}}
           {{< twsnippet/code active=true lang="JavaScript" >}}
-          onMounted(async () => {
-            const { Tooltip, initTE } = await import("tw-elements");
+          onMount(async () => {
+            const { Tooltip, initTE } = await import("tw-elements");;
             initTE({ Tooltip });
           });
           {{< /twsnippet/code >}}
@@ -712,6 +711,13 @@ menu:
       next
     </a>
     <a
+      href="/docs/standard/integrations/nuxt-integration/"
+      type="button"
+      data-te-ripple-init
+      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
+      nuxt
+    </a>
+    <a
       href="/docs/standard/integrations/react-integration/"
       type="button"
       data-te-ripple-init
@@ -738,13 +744,6 @@ menu:
       data-te-ripple-init
       class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
       svelte
-    </a>
-    <a
-      href="/docs/standard/integrations/sveltekit-integration/"
-      type="button"
-      data-te-ripple-init
-      class="my-2 inline-block rounded-full bg-neutral-200 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-700 shadow-md transition duration-150 ease-in-out hover:bg-neutral-300 hover:shadow-lg focus:bg-neutral-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-neutral-400 active:shadow-lg dark:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-500 dark:focus:bg-neutral-500 dark:active:bg-neutral-400">
-      sveltekit
     </a>
     <a
       href="/docs/standard/integrations/vue-integration/"
