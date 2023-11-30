@@ -531,7 +531,7 @@ class Timepicker {
     }, 350);
 
     EventHandler.off(
-      this._document,
+      this._element,
       "click",
       `[data-te-toggle='${this.toggleElement}']`
     );
