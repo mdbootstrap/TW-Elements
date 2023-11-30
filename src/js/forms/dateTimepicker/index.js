@@ -675,7 +675,8 @@ class Datetimepicker {
 
       const changeEvent = EventHandler.trigger(
         this._element,
-        EVENT_DATETIME_CHANGE
+        EVENT_DATETIME_CHANGE,
+        { value: this._input.value }
       );
 
       if (changeEvent.defaultPrevented) {
