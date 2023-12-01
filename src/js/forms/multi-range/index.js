@@ -88,6 +88,8 @@ class MultiRangeSlider extends BaseComponent {
     this._classes = this._getClasses(classes);
     this._maxTranslation = null;
     this._minTranslation = null;
+    this._currentStepValue = null;
+    this._canChangeStep = false;
 
     this.init();
   }
@@ -139,7 +141,23 @@ class MultiRangeSlider extends BaseComponent {
   }
 
   dispose() {
-    super.dispose();
+    Data.removeData(this._element, DATA_KEY);
+
+    this._options = null;
+    this._mousemove = null;
+    this._maxTranslation = null;
+    this._minTranslation = null;
+    this._currentStepValue = null;
+    this._canChangeStep = null;
+
+    this.hands.forEach((hand) => {
+      EventHandlerMulti.off(hand, "mousedown touchstart");
+      EventHandlerMulti.off(hand, "mouseup touchend");
+    });
+
+    EventHandlerMulti.off(document, "mousemove touchmove");
+    EventHandlerMulti.off(document, "mouseup touchend");
+    EventHandlerMulti.off(this.connect, "mousedown touchstart");
   }
 
   // Private
@@ -214,7 +232,6 @@ class MultiRangeSlider extends BaseComponent {
     this._updateHand(hand, this._maxTranslation);
 
     if (this._options.tooltip) {
-      hand.children[1].setAttribute(ATTR_STATE_ACTIVE, "");
       this.activeTooltipValue.innerText = max;
     }
   }
@@ -223,7 +240,6 @@ class MultiRangeSlider extends BaseComponent {
     this._updateHand(hand, this._minTranslation);
 
     if (this._options.tooltip) {
-      hand.children[1].setAttribute(ATTR_STATE_ACTIVE, "");
       this.activeTooltipValue.innerText = min;
     }
   }
@@ -232,17 +248,30 @@ class MultiRangeSlider extends BaseComponent {
     this._updateHand(hand, translation);
 
     if (this._options.tooltip) {
-      hand.children[1].setAttribute(ATTR_STATE_ACTIVE, "");
       this.activeTooltipValue.innerText = Math.round(value);
     }
   }
 
   _handleClickEventOnHand() {
-    const { max, min } = this._options;
+    const { max, min, step } = this._options;
 
     this.hands.forEach((hand) => {
       EventHandlerMulti.on(hand, "mousedown touchstart", (ev) => {
         this._mousemove = true;
+
+        hand.setAttribute(ATTR_STATE_ACTIVE, "");
+
+        if (this._options.tooltip) {
+          hand.children[1].setAttribute(ATTR_STATE_ACTIVE, "");
+        }
+
+        this._handleMoveEvent(hand);
+        this._handleEndMoveEvent(hand, ev);
+
+        if (!this._canChangeStep && step !== null) {
+          return;
+        }
+
         const translation =
           getEventTypeClientX(ev) - this.leftConnectRect - hand.offsetWidth / 2;
 
@@ -258,9 +287,6 @@ class MultiRangeSlider extends BaseComponent {
         } else {
           this._handleNormalMove(hand, translation, value);
         }
-
-        this._handleMoveEvent(hand);
-        this._handleEndMoveEvent(hand, ev);
       });
     });
   }
@@ -337,6 +363,17 @@ class MultiRangeSlider extends BaseComponent {
             (max - min)) +
           min;
 
+        if (
+          (this._currentStepValue === Math.round(value) ||
+            Math.round(value) % step !== 0) &&
+          step !== null
+        ) {
+          this._canChangeStep = false;
+          return;
+        }
+
+        this._canChangeStep = true;
+
         let translation =
           getEventTypeClientX(ev) - this.leftConnectRect - hand.offsetWidth / 2;
 
@@ -362,6 +399,8 @@ class MultiRangeSlider extends BaseComponent {
 
         if (numberOfRanges < 2) {
           if (Math.round(value) % step === 0 && step !== null) {
+            this._currentStepValue = Math.round(value);
+
             Manipulator.addStyle(hand, {
               transform: `translate(${translation}px,-25%)`,
             });
@@ -416,6 +455,8 @@ class MultiRangeSlider extends BaseComponent {
           }
 
           if (Math.round(value) % step === 0 && step !== null) {
+            this._currentStepValue = Math.round(value);
+
             Manipulator.addStyle(hand, {
               transform: `translate(${newPosition}px,-25%)`,
             });
@@ -446,7 +487,7 @@ class MultiRangeSlider extends BaseComponent {
           );
         }
 
-        this._handleEventChangeValuesOnRange();
+        this._canChangeStep && this._handleEventChangeValuesOnRange();
       }
     });
   }
@@ -510,6 +551,8 @@ class MultiRangeSlider extends BaseComponent {
           this._resetHandState(hand, "mousemove");
         });
 
+        EventHandlerMulti.off(document, "mousemove touchmove");
+
         this._mousemove = false;
       }
     });
@@ -519,11 +562,17 @@ class MultiRangeSlider extends BaseComponent {
     EventHandlerMulti.on(hand, "mouseup touchend", () => {
       this._resetHandState(hand, "mousemove");
 
+      EventHandlerMulti.off(document, "mousemove touchmove");
+
       this._mousemove = false;
     });
   }
 
   _handleClickOnRange() {
+    if (this._options.step !== null) {
+      return;
+    }
+
     EventHandlerMulti.on(this.connect, "mousedown touchstart", (ev) => {
       const arr = [];
       let index = 0;
@@ -567,7 +616,6 @@ class MultiRangeSlider extends BaseComponent {
   }
 
   _updateHand(hand, translation) {
-    hand.setAttribute(ATTR_STATE_ACTIVE, "");
     Manipulator.addStyle(hand, {
       transform: `translate(${translation}px,-25%)`,
     });
