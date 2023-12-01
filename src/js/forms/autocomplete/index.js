@@ -720,6 +720,7 @@ class Autocomplete {
 
       this._isOpen = false;
       EventHandler.off(this.dropdown, "transitionend");
+      this._canOpenOnFocus = true;
     }
   }
 
