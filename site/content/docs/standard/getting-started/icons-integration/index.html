@@ -1,0 +1,341 @@
+---
+title: "Icons Integration"
+date: 2023-03-07T16:00:58+02:00
+draft: false
+main_title: "Icons Integration"
+subheading: "TWE Icons Integration Tutorial"
+seo_title: "TWE Icons Integration Tutorial"
+description: "This article will teach you how to customize icons in TWE components."
+image: "https://tecdn.b-cdn.net/img/components-big.jpg"
+video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
+url: "docs/standard/getting-started/icons-integration/"
+menu:
+  gettingstarted:
+    name: "Icons Integration"
+    weight: 7
+---
+
+<!-- Introfuction -->
+<section class="w-full">
+  <h2
+    class="mb-5 mt-0 text-2xl font-semibold leading-normal"
+    id="introduction"
+    data-te-spy-item>
+    Introduction
+  </h2>
+  <p class="mb-2">
+    Icons play a crucial role in enhancing user interfaces and creating visually
+    appealing designs. We have integrated most popular icon libraries into our
+    components and made it easy to customize them. Let's take a look at how to
+    use them.
+  </p>
+</section>
+<!-- Introduction -->
+
+<hr class="my-10" />
+
+<!-- Top-layer customization -->
+<section class="w-full">
+  <h2
+    class="mb-5 mt-0 text-2xl font-semibold leading-normal"
+    id="top-layer"
+    data-te-spy-item>
+    Top-layer customization
+  </h2>
+  <p class="mb-2">
+    It is required to place icons inside <code>span</code> tags to provide
+    better and easier customization. You can use any icon library you want, but
+    we recommend using
+    <a href="https://heroicons.com/" class="text-primary dark:text-primary-400"
+      >Heroicons</a
+    >
+    as they are the most popular Tailwind ones.
+  </p>
+
+  <div
+    class="mb-5 rounded-lg bg-info-100 px-6 py-5 text-base text-info-600"
+    role="alert">
+    <strong>Important:</strong>
+    Take note of our approach to styling icons. We exclusively apply Tailwind
+    classes to <code>span</code> tags, maintaining the icons in their original
+    state. These are our primary guidelines for customization.
+  </div>
+
+  <h2 class="mb-5 mt-0 text-xl font-semibold leading-normal">Button</h2>
+
+  <div class="pb-4">
+    {{< twsnippet/wrapper "html,javascript" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <button
+      type="button"
+      data-te-ripple-init
+      data-te-ripple-color="light"
+      class="mb-2 flex rounded bg-[#1da1f2] px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg">
+      <span class="mr-2 [&>svg]:h-3.5 [&>svg]:w-3.5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24">
+          <path
+            d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+        </svg>
+      </span>
+      Twitter
+    </button>
+    {{< /twsnippet/code >}}
+    <!-- prettier-ignore -->
+    {{< twsnippet/code lang="js" >}}
+     // Initialization for ES Users
+     import {
+       Ripple,
+       initTE,
+     } from "tw-elements";
+     
+     initTE({ Ripple });
+     {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="mb-5 mt-0 text-xl font-semibold leading-normal">Rating</h2>
+
+  <div class="pb-4">
+    {{< twsnippet/wrapper "html, javascript" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <ul class="my-1 flex list-none gap-1 p-0" data-te-rating-init>
+      <li>
+        <span
+          class="text-primary [&>svg]:h-5 [&>svg]:w-5"
+          title="Bad"
+          data-te-rating-icon-ref>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+          </svg>
+        </span>
+      </li>
+      <li>
+        <span
+          class="text-primary [&>svg]:h-5 [&>svg]:w-5"
+          title="Poor"
+          data-te-rating-icon-ref>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+          </svg>
+        </span>
+      </li>
+      <li>
+        <span
+          class="text-primary [&>svg]:h-5 [&>svg]:w-5"
+          title="OK"
+          data-te-rating-icon-ref>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+          </svg>
+        </span>
+      </li>
+      <li>
+        <span
+          class="text-primary [&>svg]:h-5 [&>svg]:w-5"
+          title="Good"
+          data-te-rating-icon-ref>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+          </svg>
+        </span>
+      </li>
+      <li>
+        <span
+          class="text-primary [&>svg]:h-5 [&>svg]:w-5"
+          title="Excellent"
+          data-te-rating-icon-ref>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+          </svg>
+        </span>
+      </li>
+    </ul>
+    {{< /twsnippet/code >}}
+    <!-- prettier-ignore -->
+    {{< twsnippet/code lang="js" >}}
+    // Initialization for ES Users
+    import {
+      Rating,
+      initTE,
+    } from "tw-elements";
+    
+    initTE({ Rating });
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <div
+    class="mb-5 rounded-lg bg-info-100 px-6 py-5 text-base text-info-600"
+    role="alert">
+    <strong>Note:</strong>
+    In Timepicker and Datepicker components we have provided the possibility of
+    customization via options and data attributes, but in the documentation
+    examples we showed also top-layer customization. Check out
+    <a
+      href="https://tw-elements.com/docs/standard/forms/timepicker/#section-with-custom-icon"
+      class="text-primary"
+      >Timepicker Custom Icon</a
+    >
+    and
+    <a
+      href="https://tw-elements.com/docs/standard/forms/datepicker/#section-custom-toggle"
+      class="text-primary"
+      >Datepicker Custom Toggle Icon</a
+    >.
+  </div>
+</section>
+<!-- Top-layer customization -->
+
+<hr class="my-10" />
+
+<!-- Customization via options and data attributes -->
+<section class="w-full">
+  <h2
+    class="mb-5 mt-0 text-2xl font-semibold leading-normal"
+    id="options-data-attributes"
+    data-te-spy-item>
+    Customization via options and data attributes
+  </h2>
+  <p class="mb-2">
+    In our components, which have icons in their structure, we have provided the
+    possibility of customization via options and data attributes.
+  </p>
+
+  <h2 class="mb-2 mt-0 text-xl font-semibold leading-normal">Datetimepicker</h2>
+
+  <h2 class="mb-5 mt-0 text-lg font-semibold leading-normal">
+    Via data attributes
+  </h2>
+
+  <!--prettier-ignore-->
+  <div class="pb-4">
+    {{< twsnippet/wrapper "html,javascript" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <div
+      class="relative mb-3"
+      data-te-date-timepicker-init
+      data-te-input-wrapper-init
+      data-te-date-timepicker-toggle-icon-template='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+        </svg>'
+      >
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        id="form1" />
+      <label
+        for="form1"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a time</label
+      >
+    </div>
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="js" >}}
+    // Initialization for ES Users
+    import {
+      Datetimepicker,
+      Input,
+      initTE,
+    } from "tw-elements";
+    
+    initTE({ Datetimepicker, Input });
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="mb-5 mt-0 text-lg font-semibold leading-normal">Via options</h2>
+
+  <!--prettier-ignore-->
+  <div class="pb-4">
+    {{< twsnippet/wrapper "html,javascript,umd" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="HTML" >}}
+    <div
+      id="datetimepicker-customization"
+      data-te-input-wrapper-init
+      class="relative mb-3">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        id="form1" />
+      <label
+        for="form1"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Select a time</label
+      >
+    </div>
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="js" >}}
+    import {
+      Datetimepicker,
+      Input,
+      initTE,
+    } from "tw-elements";
+    
+    initTE({ Input });
+    
+    const datetimepickerCustomization = document.querySelector(
+      "#datetimepicker-customization"
+    );
+    new Datetimepicker(datetimepickerCustomization, {
+      dateTimepickerToggleIconTemplate: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+        </svg>`,
+    });
+    {{< /twsnippet/code >}}
+    {{< twsnippet/code lang="js" >}}
+    const datetimepickerCustomization = document.querySelector(
+      "#datetimepicker-customization"
+    );
+    new te.Datetimepicker(datetimepickerCustomization, {
+      dateTimepickerToggleIconTemplate: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+        </svg>`,
+    });
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+<!-- Customization via options and data attributes -->
