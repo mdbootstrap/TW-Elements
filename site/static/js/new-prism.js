@@ -2585,6 +2585,17 @@ Prism.languages.scss['atrule'].inside.rest = Prism.languages.scss;
     linkCopy.innerHTML = 'Copy';
     linkCopy.classList = 'btn-copy-code text-gray-500 text-xs leading-[1.6] !top-[16px] bg-transparent font-bold uppercase text-sm px-4 py-2 outline-none focus:outline-none dark:text-gray-200';
 
+    var message = "TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com";
+
+    var commentTemplate = {
+      js: "// [message] \n",
+      javascript: "// [message] \n",
+      css: "/* [message] */ \n",
+      html: "<!-- [message] --> \n",
+      jsx: "// [message] \n",
+      python: "# [message] \n",
+    }
+
     if (!ClipboardJS) {
       callbacks.push(registerClipboard);
     } else {
@@ -2594,9 +2605,11 @@ Prism.languages.scss['atrule'].inside.rest = Prism.languages.scss;
     return linkCopy;
 
     function registerClipboard() {
+      const text = `${commentTemplate[env.language] ? commentTemplate[env.language].replace('[message]', message) : ''}${env.code}`;
+ 
       var clip = new ClipboardJS(linkCopy, {
         text: function () {
-          return env.code;
+          return text;
         },
       });
 
