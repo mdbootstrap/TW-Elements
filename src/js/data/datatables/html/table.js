@@ -18,6 +18,8 @@ import generateRows from "./rows";
 
 const ATTR_BODY = "data-te-datatable-inner-ref";
 const ATTR_HEADER = "data-te-datatable-header-ref";
+const ATTR_LOADING_MESSAGE = "data-te-datatable-message-ref";
+const ATTR_LOADER = "data-te-datatable-loader-ref";
 
 const tableTemplate = ({
   columns,
@@ -83,12 +85,12 @@ const tableTemplate = ({
 ${
   loading
     ? `
-  <div class="${classes.loadingItemsWrapper}">
+  <div ${ATTR_LOADER} class="${classes.loadingItemsWrapper}">
     <div class="${classes.loadingProgressBarWrapper}">
       <div class="${classes.loadingProgressBar}"></div>
     </div>
   </div>
-<p class="${classes.loadingMessage}">${loadingMessage}</p>
+<p ${ATTR_LOADING_MESSAGE} class="${classes.loadingMessage}">${loadingMessage}</p>
 `
     : ""
 }
