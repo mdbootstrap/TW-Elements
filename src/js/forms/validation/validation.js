@@ -38,6 +38,8 @@ const ATTR_VALIDATION_FEEDBACK = "data-te-validation-feedback";
 const ATTR_VALID_FEEDBACK = "data-te-valid-feedback";
 const ATTR_INVALID_FEEDBACK = "data-te-invalid-feedback";
 const ATTR_VALIDATION_RULESET = "data-te-validation-ruleset";
+const ATTR_VALIDATION_STYLING = "data-te-validation-styling";
+const ATTR_VALIDATION_OPTIONAL = "data-te-validation-optional";
 
 const ATTR_SUBMIT_BTN = "data-te-submit-btn-ref";
 
@@ -164,7 +166,7 @@ class Validation extends BaseComponent {
     this._validationElements = this._getValidationElements();
 
     this._validationElements.forEach(({ element, input }) => {
-      this._createFeedbackWrapper(element, input);
+      this._createFeedbackWrapper(element, input.parentNode);
     });
 
     this._validationObserver = this._watchForValidationChanges();
@@ -256,14 +258,15 @@ class Validation extends BaseComponent {
     });
   }
 
-  _createFeedbackWrapper(element, input) {
+  _createFeedbackWrapper(element, parentNode) {
     if (element.querySelectorAll(`[${ATTR_VALIDATION_FEEDBACK}]`).length > 0) {
       return;
     }
 
     const span = document.createElement("span");
     span.setAttribute(ATTR_VALIDATION_FEEDBACK, "");
-    input.parentNode.appendChild(span);
+
+    parentNode.appendChild(span);
   }
 
   _removeFeedbackWrapper() {
@@ -314,13 +317,23 @@ class Validation extends BaseComponent {
   _validateSingleElement(validationElement) {
     const { element, type, input, ruleset, id } = validationElement;
 
-    if (ruleset) {
-      this._validateByRuleset(validationElement);
+    let validationResult;
+
+    if (element.hasAttribute(ATTR_VALIDATION_OPTIONAL)) {
+      element.setAttribute(ATTR_VALIDATION_STATE, `valid`);
+
+      validationResult = "valid";
+    } else {
+      if (ruleset) {
+        this._validateByRuleset(validationElement);
+      }
+      validationResult = element.getAttribute(ATTR_VALIDATION_STATE);
     }
 
-    const validationResult = element.getAttribute(ATTR_VALIDATION_STATE);
-
-    if (validationResult !== "valid" && validationResult !== "invalid") {
+    if (
+      (validationResult !== "valid" && validationResult !== "invalid") ||
+      element.getAttribute(ATTR_VALIDATION_STYLING) === "false"
+    ) {
       return;
     }
 
