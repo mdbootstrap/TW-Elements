@@ -71,10 +71,11 @@ const AttachmentMap = {
 
 const Default = {
   animation: true,
-  template:
-    '<div class="opacity-0 transition-opacity duration-300 ease-in-out absolute z-[1080] block m-0 text-sm not-italic font-normal text-left no-underline underline-offset-auto normal-case leading-6 tracking-normal break-normal whitespace-normal" role="tooltip">' +
-    '<div data-te-tooltip-inner-ref class="tooltip-inner max-w-[200px] text-sm py-1.5 px-4 text-white text-center bg-[#6d6d6d] rounded"></div>' +
-    "</div>",
+  template: `
+    <div class="opacity-0 transition-opacity duration-300 ease-in-out absolute z-[1080] block m-0 text-sm not-italic font-normal text-left no-underline underline-offset-auto normal-case leading-6 tracking-normal break-normal whitespace-normal" role="tooltip">
+      <div data-te-tooltip-inner-ref class="max-w-[200px] text-sm py-1.5 px-4 text-white text-center bg-[#6d6d6d] rounded"></div>
+    </div>
+    `,
   trigger: "hover focus",
   title: "",
   delay: 0,
@@ -112,7 +113,7 @@ const CLASS_NAME_SHOW = "show";
 const HOVER_STATE_SHOW = "show";
 const HOVER_STATE_OUT = "out";
 
-const SELECTOR_TOOLTIP_INNER = ".tooltip-inner";
+const SELECTOR_TOOLTIP_INNER = "[data-te-tooltip-inner-ref]";
 const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
 
 const EVENT_MODAL_HIDE = "hide.te.modal";
