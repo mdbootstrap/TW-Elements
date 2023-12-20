@@ -35,3 +35,13 @@ export const clearFixture = () => {
 
   fixtureEl.innerHTML = "";
 };
+
+export const jQueryMock = {
+  elements: undefined,
+  fn: {},
+  each(fn) {
+    this.elements.forEach((el) => {
+      fn.call(el);
+    });
+  },
+};
