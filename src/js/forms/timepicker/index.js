@@ -2726,6 +2726,29 @@ class Timepicker {
       new this(element, typeof config === "object" ? config : null)
     );
   }
+
+  static jQueryInterface(config, options) {
+    return this.each(function () {
+      let data = Data.getData(this, DATA_KEY);
+      const _config = typeof config === "object" && config;
+
+      if (!data && /dispose/.test(config)) {
+        return;
+      }
+
+      if (!data) {
+        data = new Timepicker(this, _config);
+      }
+
+      if (typeof config === "string") {
+        if (typeof data[config] === "undefined") {
+          throw new TypeError(`No method named "${config}"`);
+        }
+
+        data[config](options);
+      }
+    });
+  }
 }
 
 export default Timepicker;
