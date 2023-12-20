@@ -6,7 +6,16 @@ import Manipulator from "../../src/js/dom/manipulator";
 import EventHandler from "../../src/js/dom/event-handler";
 import initTE from "../../src/js/autoinit/index.js";
 
-global.ResizeObserver = require("resize-observer-polyfill");
+const ResizeObserverMock = jest.fn(function (callback) {
+  this.observe = jest.fn();
+  this.unobserve = jest.fn();
+  this.disconnect = jest.fn();
+  this.trigger = (entry) => {
+    callback([entry], this);
+  };
+});
+
+global.ResizeObserver = ResizeObserverMock;
 jest.mock("../../src/js/forms/select/index.js");
 
 let Datatable = require("../../src/js/data/datatables").default;
@@ -14,7 +23,6 @@ let Datatable = require("../../src/js/data/datatables").default;
 const NAME = "datatable";
 const DATA_KEY = `te.${NAME}`;
 
-const CLASSNAME_FIXED_CELL = "fixed-cell";
 const SELECTOR_SORT_ICON = "[data-te-datatable-sort-icon-ref]";
 const SELECTOR_LOADING_TEXT = "[data-te-datatable-message-ref]";
 const SELECTOR_PAGINATION = "[data-te-datatable-pagination-ref]";
@@ -156,8 +164,8 @@ describe("Datatable", () => {
       jest.resetModules();
 
       const Datatable = require("../../src/js/data/datatables").default; // eslint-disable-line global-require
-      const initMDB = require("../../src/js/autoinit/index.js").default; // eslint-disable-line global-require
-      initMDB({ Datatable });
+      const initTE = require("../../src/js/autoinit/index.js").default; // eslint-disable-line global-require
+      initTE({ Datatable });
 
       const instance = Datatable.getInstance(table);
 
@@ -1999,12 +2007,12 @@ describe("Datatable", () => {
         ],
       });
 
-      SelectorEngine.find('[data-mdb-field="test"]').forEach((cell) => {
+      SelectorEngine.find('[data-te-field="test"]').forEach((cell) => {
         expect(cell.classList.contains("fixed-cell"));
         expect(cell.style.maxWidth).toEqual("150px");
       });
 
-      SelectorEngine.find('[data-mdb-field="test-2"]').forEach((cell) => {
+      SelectorEngine.find('[data-te-field="test-2"]').forEach((cell) => {
         expect(cell.classList.contains("fixed-cell"));
         expect(cell.style.maxWidth).toEqual("10px");
         expect(cell.style.left).toEqual("150px");
@@ -2085,8 +2093,8 @@ describe("Datatable", () => {
       window.jQuery = mock;
 
       const Datatable = require("../../src/js/data/datatables").default; // eslint-disable-line global-require
-      const initMDB = require("../../src/js/autoinit/index.js").default; // eslint-disable-line global-require
-      initMDB({ Datatable });
+      const initTE = require("../../src/js/autoinit/index.js").default; // eslint-disable-line global-require
+      initTE({ Datatable });
 
       expect(mock.fn.datatable).toBeTruthy();
 
