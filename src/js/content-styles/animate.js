@@ -88,10 +88,6 @@ class Animate {
   }
 
   // Public
-  init() {
-    this._init();
-  }
-
   startAnimation() {
     this._startAnimation();
   }
@@ -332,13 +328,8 @@ class Animate {
   }
 
   // Static
-  static autoInit(instance) {
-    instance._init();
-  }
-
   static jQueryInterface(options) {
-    const animate = new Animate(this[0], options);
-    animate.init();
+    Animate.getOrCreateInstance(this[0], options);
   }
 
   static getInstance(element) {
