@@ -1779,6 +1779,29 @@ class Datepicker {
     return monthLabels.findIndex((monthLabel) => monthLabel === monthValue);
   }
 
+  static jQueryInterface(config, options) {
+    return this.each(function () {
+      let data = Data.getData(this, DATA_KEY);
+      const _config = typeof config === "object" && config;
+
+      if (!data && /dispose/.test(config)) {
+        return;
+      }
+
+      if (!data) {
+        data = new Datepicker(this, _config);
+      }
+
+      if (typeof config === "string") {
+        if (typeof data[config] === "undefined") {
+          throw new TypeError(`No method named "${config}"`);
+        }
+
+        data[config](options);
+      }
+    });
+  }
+
   static getInstance(element) {
     return Data.getData(element, DATA_KEY);
   }
