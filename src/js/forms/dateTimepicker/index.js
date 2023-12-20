@@ -180,7 +180,10 @@ class Datetimepicker {
 
     this._removeTimePicker();
     this._removeDatepicker();
-    this.toggleButton.remove();
+    const toggleButton = this.toggleButton;
+    if (toggleButton) {
+      this.toggleButton.remove();
+    }
 
     this._options = Default;
     this._timepicker = null;
