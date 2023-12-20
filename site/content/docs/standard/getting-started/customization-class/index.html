@@ -76,12 +76,12 @@ menu:
   <ul class="mb-3 ms-5" style="list-style-type: disc;">
     <li>
       <code>data-te-class-notch-leading-normal</code> (or
-      <code>notchLeadingNormal</code> as a option),
+      <code>notchLeadingNormal</code> as an option),
       <code>data-te-class-notch-middle-normal</code> (or
-      <code>notchMiddleNormal</code> as a option) and
+      <code>notchMiddleNormal</code> as an option) and
       <code>data-te-class-notch-trailing-normal</code> (or
-      <code>notchTrailingNormal</code> as a option) - these are the names of the
-      attributes that we want to change.
+      <code>notchTrailingNormal</code> as an option) - these are the names of
+      the attributes that we want to change.
     </li>
     <li>
       <code>border-neutral-300</code> - this is the class that we want to
@@ -134,7 +134,7 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example1">
     <div class="pt-4">
-      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/wrapper "HTML,javascript" >}}
       <!--prettier-ignore-->
       {{< twsnippet/code active=true lang="HTML" >}}
       <div
@@ -154,6 +154,16 @@ menu:
           >Example label
         </label>
       </div>
+      {{< /twsnippet/code >}}
+      <!--prettier-ignore-->
+      {{< twsnippet/code lang="javascript" >}}
+      // Initialization for ES Users
+      import {
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Input });
       {{< /twsnippet/code >}}
       {{< /twsnippet/wrapper >}}
     </div>
@@ -203,9 +213,24 @@ menu:
 
   <section class="!visible hidden" data-te-collapse-item id="example2">
     <div class="pt-4">
-      {{< twsnippet/wrapper "javascript,umd" >}}
+      {{< twsnippet/wrapper "html,javascript,umd" >}}
       <!--prettier-ignore-->
-      {{< twsnippet/code active=true lang="js" >}}
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="relative mb-3">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          id="exampleFormControlInput1"
+          placeholder="Example label" />
+        <label
+          for="exampleFormControlInput1"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!--prettier-ignore-->
+      {{< twsnippet/code lang="js" >}}
       const myInput = new Input(
         document.getElementById("myInput"),
         {},
