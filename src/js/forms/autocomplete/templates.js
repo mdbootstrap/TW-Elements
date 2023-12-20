@@ -19,6 +19,7 @@ const AUTOCOMPLETE_DROPDOWN_REF = "data-te-autocomplete-dropdown-ref";
 const AUTOCOMPLETE_ITEMS_LIST_REF = "data-te-autocomplete-items-list-ref";
 const AUTOCOMPLETE_ITEM_REF = "data-te-autocomplete-item-ref";
 const AUTOCOMPLETE_LOADER_REF = "data-te-autocomplete-loader-ref";
+const AUTOCOMPLETE_MESSAGE_REF = "data-te-autocomplete-message-ref";
 
 export function getDropdownTemplate(settings, classes) {
   const { id, items, width, options } = settings;
@@ -86,5 +87,5 @@ export function getLoaderTemplate(classes) {
 }
 
 export function getNoResultsTemplate(message, classes) {
-  return `<li class="${classes.autocompleteItem}">${message}</li>`;
+  return `<li ${AUTOCOMPLETE_MESSAGE_REF} class="${classes.autocompleteItem}">${message}</li>`;
 }
