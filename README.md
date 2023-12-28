@@ -705,6 +705,25 @@ Responsive Landing page blocks built with Tailwind CSS. Plenty of design blocks 
 
 ---
 
+## Integrations
+
+TW Elements integrations with popular technologies.
+
+- [Django Integration](https://tw-elements.com/docs/standard/integrations/django-integration/)
+- [Angular Integration](https://tw-elements.com/docs/standard/integrations/angular-integration/)
+- [Express Integration](https://tw-elements.com/docs/standard/integrations/express-integration/)
+- [Laravel Integration](https://tw-elements.com/docs/standard/integrations/laravel-integration/)
+- [Next Integration](https://tw-elements.com/docs/standard/integrations/next-integration/)
+- [Nuxt Integration](https://tw-elements.com/docs/standard/integrations/nuxt-integration/)
+- [Django Integration](https://tw-elements.com/docs/standard/integrations/react-integration/)
+- [Remix Integration](https://tw-elements.com/docs/standard/integrations/remix-integration/)
+- [Solid Integration](https://tw-elements.com/docs/standard/integrations/solid-integration/)
+- [Svelte Integration](https://tw-elements.com/docs/standard/integrations/svelte-integration/)
+- [Sveltekit Integration](https://tw-elements.com/docs/standard/integrations/sveltekit-integration/)
+- [Vue Integration](https://tw-elements.com/docs/standard/integrations/vue-integration/)
+
+---
+
 ## Installation
 
 ##### NPM
