@@ -57,6 +57,7 @@ const EVENT_ACTIVATE = `activate${EVENT_KEY}`;
 const EVENT_SCROLL = `scroll${EVENT_KEY}`;
 
 const LINK_ACTIVE = "data-te-nav-link-active";
+const LINK_COLLAPSIBLE = "data-te-collapsible-scrollspy-ref";
 const SELECTOR_DROPDOWN_ITEM = "[data-te-dropdown-item-ref]";
 const SELECTOR_NAV_LIST_GROUP = "[data-te-nav-list-ref]";
 const SELECTOR_NAV_LINKS = "[data-te-nav-link-ref]";
@@ -65,6 +66,9 @@ const SELECTOR_LIST_ITEMS = "[data-te-list-group-item-ref]";
 const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, ${SELECTOR_DROPDOWN_ITEM}`;
 const SELECTOR_DROPDOWN = "[data-te-dropdown-ref]";
 const SELECTOR_DROPDOWN_TOGGLE = "[data-te-dropdown-toggle-ref]";
+const SELECTOR_COLLAPSIBLE_SCROLLSPY = `[${LINK_COLLAPSIBLE}]`;
+const SELECTOR_ACTIVE = `[${LINK_ACTIVE}]`;
+const SELECTOR_LIST = "ul";
 
 const METHOD_OFFSET = "maxOffset";
 const METHOD_POSITION = "position";
@@ -84,6 +88,8 @@ class ScrollSpy extends BaseComponent {
     this._classes = this._getClasses(classes);
     this._offsets = [];
     this._targets = [];
+    this._collapsibles = [];
+
     this._activeTarget = null;
     this._scrollHeight = 0;
 
@@ -91,6 +97,16 @@ class ScrollSpy extends BaseComponent {
 
     this.refresh();
     this._process();
+
+    this._bindActivateEvent();
+    this._getCollapsibles();
+
+    if (this._collapsibles.length === 0) {
+      return;
+    }
+
+    this._showSubsection();
+    this._hideSubsection();
   }
 
   // Getters
@@ -155,6 +171,8 @@ class ScrollSpy extends BaseComponent {
 
   dispose() {
     EventHandler.off(this._scrollElement, EVENT_KEY);
+    EventHandler.off(this._scrollElement, EVENT_ACTIVATE);
+
     super.dispose();
   }
 
@@ -311,6 +329,75 @@ class ScrollSpy extends BaseComponent {
         node.classList.remove(...this._classes.active.split(" "));
         node.removeAttribute(LINK_ACTIVE);
       });
+  }
+
+  _hide(target) {
+    const itemsToHide = SelectorEngine.findOne(
+      SELECTOR_LIST,
+      target.parentNode
+    );
+    itemsToHide.style.overflow = "hidden";
+    itemsToHide.style.height = `${0}px`;
+  }
+
+  _show(target, destinedHeight) {
+    target.style.height = destinedHeight;
+  }
+
+  _getCollapsibles() {
+    const collapsibleElements = SelectorEngine.find(
+      SELECTOR_COLLAPSIBLE_SCROLLSPY
+    );
+
+    if (!collapsibleElements) {
+      return;
+    }
+
+    collapsibleElements.forEach((collapsibleElement) => {
+      const listParent = collapsibleElement.parentNode;
+      const list = SelectorEngine.findOne(SELECTOR_LIST, listParent);
+      const listHeight = list.offsetHeight || list.scrollHeight;
+
+      this._collapsibles.push({
+        element: list,
+        relatedTarget: collapsibleElement.getAttribute("href"),
+        height: `${listHeight}px`,
+      });
+    });
+  }
+
+  _showSubsection() {
+    const activeElements = SelectorEngine.find(SELECTOR_ACTIVE);
+    const actives = activeElements.filter((active) => {
+      return active.hasAttribute(LINK_COLLAPSIBLE);
+    });
+
+    actives.forEach((active) => {
+      const list = SelectorEngine.findOne(SELECTOR_LIST, active.parentNode);
+      const height = this._collapsibles.find((collapsible) => {
+        return (collapsible.relatedTarget = active.getAttribute("href"));
+      }).height;
+
+      this._show(list, height);
+    });
+  }
+
+  _hideSubsection() {
+    const unactives = SelectorEngine.find(
+      SELECTOR_COLLAPSIBLE_SCROLLSPY
+    ).filter((collapsible) => {
+      return collapsible.hasAttribute(LINK_ACTIVE) === false;
+    });
+    unactives.forEach((unactive) => {
+      this._hide(unactive);
+    });
+  }
+
+  _bindActivateEvent() {
+    EventHandler.on(this._element, EVENT_ACTIVATE, () => {
+      this._showSubsection();
+      this._hideSubsection();
+    });
   }
 
   // Static

@@ -663,6 +663,760 @@ autoinits: "Scrollspy"
 
 <hr class="my-5 dark:border-neutral-600" />
 
+<!-- Section: Collapsible -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="collapsible"
+    data-te-spy-item>
+    Collapsible
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Hides all subsections of unactive section. To use it, simply add
+    <code>data-te-collapsible-scrollspy-ref</code> attribute to the
+    <code>&lt;a></code> element of section you want to set to be collapsible. If
+    you want the collapse to be animated, add
+    <code>transition-all duration-300</code> classes to the
+    <code>&lt;ul></code> element.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example2">}}
+  <div class="grid grid-cols-3">
+    <div class="col-span-2">
+      <div
+        data-te-spy="scroll"
+        data-te-target="#scrollspy-collapsible"
+        data-te-offset="200"
+        class="relative h-48 overflow-auto">
+        <section id="example-1-collapsible">
+          <h3 class="pb-3 pt-5 text-xl font-semibold">Section 1</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+        <section id="example-2-collapsible">
+          <h3 class="pb-3 pt-5 text-xl font-semibold">Section 2</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+        <section id="example-3-collapsible">
+          <h3 class="pb-3 pt-5 text-xl font-semibold">Section 3</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <section id="example-sub-A-collapsible">
+            <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection A</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+              earum natus vel minima quod error maxime, molestias ut. Fuga
+              dignissimos nisi nemo necessitatibus quisquam obcaecati et
+              reiciendis quaerat accusamus numquam.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+              earum natus vel minima quod error maxime, molestias ut. Fuga
+              dignissimos nisi nemo necessitatibus quisquam obcaecati et
+              reiciendis quaerat accusamus numquam.
+            </p>
+          </section>
+          <section id="example-sub-B-collapsible">
+            <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection B</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+              earum natus vel minima quod error maxime, molestias ut. Fuga
+              dignissimos nisi nemo necessitatibus quisquam obcaecati et
+              reiciendis quaerat accusamus numquam.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+              earum natus vel minima quod error maxime, molestias ut. Fuga
+              dignissimos nisi nemo necessitatibus quisquam obcaecati et
+              reiciendis quaerat accusamus numquam.
+            </p>
+          </section>
+        </section>
+        <section id="example-4-collapsible">
+          <h3 class="pb-3 pt-5 text-xl font-semibold">Section 4</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+      </div>
+    </div>
+    <div>
+      <!-- Scrollspy -->
+      <div id="scrollspy-collapsible" class="sticky-top pl-3 text-sm">
+        <ul data-te-nav-list-ref>
+          <li class="py-1">
+            <a
+              data-te-nav-link-ref
+              data-te-nav-link-active
+              class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+              href="#example-1-collapsible"
+              >Section 1</a
+            >
+          </li>
+          <li class="py-1">
+            <a
+              data-te-nav-link-ref
+              class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+              href="#example-2-collapsible"
+              >Section 2</a
+            >
+          </li>
+          <li class="py-1">
+            <a
+              data-te-nav-link-ref
+              data-te-collapsible-scrollspy-ref
+              class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+              href="#example-3-collapsible"
+              >Section 3</a
+            >
+            <ul data-te-nav-list-ref class="pl-3 transition-all duration-300">
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-sub-A-collapsible"
+                  >Subsection A</a
+                >
+              </li>
+              <li>
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-sub-B-collapsible"
+                  >Subsection B</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="py-1">
+            <a
+              data-te-nav-link-ref
+              class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+              href="#example-4-collapsible"
+              >Section 4</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Scrollspy -->
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="grid grid-cols-3">
+        <div class="col-span-2">
+          <div
+            data-te-spy="scroll"
+            data-te-target="#scrollspy-collapsible"
+            data-te-offset="200"
+            class="relative h-48 overflow-auto">
+            <section id="example-1-collapsible">
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Section 1</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+            <section id="example-2-collapsible">
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Section 2</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+            <section id="example-3-collapsible">
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Section 3</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <section id="example-sub-A-collapsible">
+                <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection A</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Labore earum natus vel minima quod error maxime, molestias ut.
+                  Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+                  et reiciendis quaerat accusamus numquam.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Labore earum natus vel minima quod error maxime, molestias ut.
+                  Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+                  et reiciendis quaerat accusamus numquam.
+                </p>
+              </section>
+              <section id="example-sub-B-collapsible">
+                <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection B</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Labore earum natus vel minima quod error maxime, molestias ut.
+                  Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+                  et reiciendis quaerat accusamus numquam.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Labore earum natus vel minima quod error maxime, molestias ut.
+                  Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+                  et reiciendis quaerat accusamus numquam.
+                </p>
+              </section>
+            </section>
+            <section id="example-4-collapsible">
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Section 4</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+          </div>
+        </div>
+        <div>
+          <!-- Scrollspy -->
+          <div id="scrollspy-collapsible" class="sticky-top pl-3 text-sm">
+            <ul data-te-nav-list-ref>
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  data-te-nav-link-active
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-1-collapsible"
+                  >Section 1</a
+                >
+              </li>
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-2-collapsible"
+                  >Section 2</a
+                >
+              </li>
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  data-te-collapsible-scrollspy-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-3-collapsible"
+                  >Section 3</a
+                >
+                <ul
+                  data-te-nav-list-ref
+                  class="pl-3 transition-all duration-300">
+                  <li class="py-1">
+                    <a
+                      data-te-nav-link-ref
+                      class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                      href="#example-sub-A-collapsible"
+                      >Subsection A</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      data-te-nav-link-ref
+                      class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                      href="#example-sub-B-collapsible"
+                      >Subsection B</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-4-collapsible"
+                  >Section 4</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Scrollspy -->
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        ScrollSpy,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ ScrollSpy });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Collapsible -->
+
+<hr class="my-5 dark:border-neutral-600" />
+
+<!-- Section: Smooth scroll -->
+<section>
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="smooth-scroll"
+    data-te-spy-item>
+    Smooth scroll
+  </h2>
+  <!-- Description -->
+  <p class="mb-3">
+    Add <code>scroll-smooth</code> class to the wrapper to make the scroll
+    animation smooth.
+  </p>
+
+  <!-- prettier-ignore -->
+  {{< twsnippet/demo id="example3">}}
+  <div class="grid grid-cols-3">
+    <div class="col-span-2">
+      <div
+        data-te-spy="scroll"
+        data-te-target="#scrollspy-smooth"
+        data-te-offset="200"
+        class="relative h-48 overflow-auto scroll-smooth">
+        <section id="example-1-smooth">
+          <h3 class="pb-3 pt-5 text-xl font-semibold">Section 1</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+        <section id="example-2-smooth">
+          <h3 class="pb-3 pt-5 text-xl font-semibold">Section 2</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+        <section id="example-3-smooth">
+          <h3 class="pb-3 pt-5 text-xl font-semibold">Section 3</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <section id="example-sub-A-smooth">
+            <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection A</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+              earum natus vel minima quod error maxime, molestias ut. Fuga
+              dignissimos nisi nemo necessitatibus quisquam obcaecati et
+              reiciendis quaerat accusamus numquam.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+              earum natus vel minima quod error maxime, molestias ut. Fuga
+              dignissimos nisi nemo necessitatibus quisquam obcaecati et
+              reiciendis quaerat accusamus numquam.
+            </p>
+          </section>
+          <section id="example-sub-B-smooth">
+            <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection B</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+              earum natus vel minima quod error maxime, molestias ut. Fuga
+              dignissimos nisi nemo necessitatibus quisquam obcaecati et
+              reiciendis quaerat accusamus numquam.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+              earum natus vel minima quod error maxime, molestias ut. Fuga
+              dignissimos nisi nemo necessitatibus quisquam obcaecati et
+              reiciendis quaerat accusamus numquam.
+            </p>
+          </section>
+        </section>
+        <section id="example-4-smooth">
+          <h3 class="pb-3 pt-5 text-xl font-semibold">Section 4</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+            earum natus vel minima quod error maxime, molestias ut. Fuga
+            dignissimos nisi nemo necessitatibus quisquam obcaecati et
+            reiciendis quaerat accusamus numquam.
+          </p>
+        </section>
+      </div>
+    </div>
+    <div>
+      <!-- Scrollspy -->
+      <div id="scrollspy-smooth" class="sticky-top pl-3 text-sm">
+        <ul data-te-nav-list-ref>
+          <li class="py-1">
+            <a
+              data-te-nav-link-ref
+              data-te-nav-link-active
+              class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+              href="#example-1-smooth"
+              >Section 1</a
+            >
+          </li>
+          <li class="py-1">
+            <a
+              data-te-nav-link-ref
+              class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+              href="#example-2-smooth"
+              >Section 2</a
+            >
+          </li>
+          <li class="py-1">
+            <a
+              data-te-nav-link-ref
+              class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+              href="#example-3-smooth"
+              >Section 3</a
+            >
+            <ul data-te-nav-list-ref class="pl-3">
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-sub-A-smooth"
+                  >Subsection A</a
+                >
+              </li>
+              <li>
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-sub-B-smooth"
+                  >Subsection B</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="py-1">
+            <a
+              data-te-nav-link-ref
+              class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+              href="#example-4-smooth"
+              >Section 4</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Scrollspy -->
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example3">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div class="grid grid-cols-3">
+        <div class="col-span-2">
+          <div
+            data-te-spy="scroll"
+            data-te-target="#scrollspy-smooth"
+            data-te-offset="200"
+            class="relative h-48 overflow-auto scroll-smooth">
+            <section id="example-1-smooth">
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Section 1</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+            <section id="example-2-smooth">
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Section 2</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+            <section id="example-3-smooth">
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Section 3</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <section id="example-sub-A-smooth">
+                <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection A</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Labore earum natus vel minima quod error maxime, molestias ut.
+                  Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+                  et reiciendis quaerat accusamus numquam.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Labore earum natus vel minima quod error maxime, molestias ut.
+                  Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+                  et reiciendis quaerat accusamus numquam.
+                </p>
+              </section>
+              <section id="example-sub-B-smooth">
+                <h3 class="pb-3 pt-5 text-xl font-semibold">Subsection B</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Labore earum natus vel minima quod error maxime, molestias ut.
+                  Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+                  et reiciendis quaerat accusamus numquam.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Labore earum natus vel minima quod error maxime, molestias ut.
+                  Fuga dignissimos nisi nemo necessitatibus quisquam obcaecati
+                  et reiciendis quaerat accusamus numquam.
+                </p>
+              </section>
+            </section>
+            <section id="example-4-smooth">
+              <h3 class="pb-3 pt-5 text-xl font-semibold">Section 4</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore
+                earum natus vel minima quod error maxime, molestias ut. Fuga
+                dignissimos nisi nemo necessitatibus quisquam obcaecati et
+                reiciendis quaerat accusamus numquam.
+              </p>
+            </section>
+          </div>
+        </div>
+        <div>
+          <!-- Scrollspy -->
+          <div id="scrollspy-smooth" class="sticky-top pl-3 text-sm">
+            <ul data-te-nav-list-ref>
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  data-te-nav-link-active
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-1-smooth"
+                  >Section 1</a
+                >
+              </li>
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-2-smooth"
+                  >Section 2</a
+                >
+              </li>
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-3-smooth"
+                  >Section 3</a
+                >
+                <ul data-te-nav-list-ref class="pl-3">
+                  <li class="py-1">
+                    <a
+                      data-te-nav-link-ref
+                      class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                      href="#example-sub-A-smooth"
+                      >Subsection A</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      data-te-nav-link-ref
+                      class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                      href="#example-sub-B-smooth"
+                      >Subsection B</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="py-1">
+                <a
+                  data-te-nav-link-ref
+                  class="bg-transparent px-[5px] text-[#4b5563] shadow-none transition-all dark:text-neutral-200"
+                  href="#example-4-smooth"
+                  >Section 4</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Scrollspy -->
+        </div>
+      </div>
+      {{< /twsnippet/code >}}
+      <!-- prettier-ignore -->
+      {{< twsnippet/code lang="js" >}}
+      // Initialization for ES Users
+      import {
+        ScrollSpy,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ ScrollSpy });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+</section>
+<!-- Section: Smooth scroll -->
+
+<hr class="my-5 dark:border-neutral-600" />
+
 <section id="how-it-works">
   <!-- Section title-->
   <h2 class="mb-5 mt-0 text-3xl font-semibold leading-normal" data-te-spy-item>
@@ -673,10 +1427,10 @@ autoinits: "Scrollspy"
   <p>Scrollspy has a few requirements to function properly:</p>
 
   <ul class="list-disc py-4 pl-4">
-    <li>
+    <!-- <li>
       It must be used on a Bootstrap <strong>nav</strong> component or
       <strong>list group</strong>.
-    </li>
+    </li> -->
     <li>
       Scrollspy requires <code>position: relative;</code> on the element you’re
       spying on, usually the <code>&lt;body&gt;</code>.
@@ -696,12 +1450,12 @@ autoinits: "Scrollspy"
   <p>
     When successfully implemented, your nav or list group will update
     accordingly, moving the
-    <code>.active</code> class from one item to the next based on their
-    associated targets.
+    <code>data-te-nav-link-active</code> attribute from one item to the next
+    based on their associated targets.
   </p>
 </section>
 
-<hr class="mb-5 dark:border-neutral-600" />
+<hr class="my-5 dark:border-neutral-600" />
 
 <!-- Section: Related resources -->
 <section id="section-related-resources">
