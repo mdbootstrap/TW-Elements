@@ -1,0 +1,261 @@
+---
+title: "Customization classes"
+date: 2023-03-07T16:00:58+02:00
+draft: false
+main_title: "Class customization"
+seo_title: "Complete class customization guide for TW elements: Step-by-step instructions"
+description: "Complete class customization guide for TW elements: Step-by-step instructions."
+image: "https://tecdn.b-cdn.net/img/components-big.jpg"
+video: "https://www.youtube.com/watch?v=-GmnyjgI4Jc&ab_channel=Keepcoding"
+url: "docs/standard/getting-started/class-customization/"
+menu:
+  gettingstarted:
+    name: "Class customization"
+    weight: 8
+---
+
+<!-- Section: Introduction -->
+<section>
+  <!--Title-->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="customization-introduction"
+    data-te-spy-item>
+    Introduction
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    You can effortlessly enhance the aesthetics of the components by applying
+    your own classes to the HTML elements either through attributes or by
+    utilizing JavaScript during initialization.
+  </p>
+  <p class="mb-3">
+    Detailed information regarding which classes can be customized and how to
+    achieve this for specific components can be found in the documentation of
+    each component, under the <code>Classes</code> section within the API tab.
+  </p>
+  <p class="mb-3">
+    This section provides comprehensive guidance on customizing components using
+    classes.
+  </p>
+</section>
+<!-- /Section: Introduction -->
+
+<hr class="my-5 dark:border-gray-600" />
+
+<!-- Section: Customizable classes in Input -->
+<section>
+  <!--Title-->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+    id="customization-input"
+    data-te-spy-item>
+    Customizable classes in Input
+  </h2>
+  <!--Description-->
+  <p class="mb-3">
+    The table with all classes included in Input component is available in the
+    <a
+      class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+      href="/docs/standard/forms/inputs/#api-section-classes"
+      >API tab</a
+    >.
+  </p>
+
+  <div
+    class="mt-5 rounded-md border-l-[6px] border-solid border-gray-400 bg-gray-100 p-4 dark:border-gray-300 dark:bg-gray-300/30 ">
+    <strong>Note:</strong> Whether you overwrite a class or add your own, you
+    must always add the original one.
+  </div>
+
+  <p class="my-3">
+    Looking at the example below, we only changed the frame color. But this rule
+    applies to each of the implemented classes. Let's take a look:
+  </p>
+
+  <ul class="mb-3 ms-5" style="list-style-type: disc;">
+    <li>
+      <code>data-te-class-notch-leading-normal</code> (or
+      <code>notchLeadingNormal</code> as an option),
+      <code>data-te-class-notch-middle-normal</code> (or
+      <code>notchMiddleNormal</code> as an option) and
+      <code>data-te-class-notch-trailing-normal</code> (or
+      <code>notchTrailingNormal</code> as an option) - these are the names of
+      the attributes that we want to change.
+    </li>
+    <li>
+      <code>border-neutral-300</code> - this is the class that we want to
+      replace with <code>border-red-500</code>.
+    </li>
+    <li>
+      <code>dark:border-neutral-600</code> - this is the class that we also want
+      replace with <code>border-red-500</code>. It is for dark mode.
+    </li>
+  </ul>
+
+  <!-- Section: Customization via data attribute -->
+  <h2 class="my-5 text-lg font-bold" id="customization-data" data-te-spy-item>
+    Customization via data attributes
+  </h2>
+
+  <p class="mb-3">
+    If you want add anything new (like new color, size or something else) or
+    edit class which is already inside, copy all of them and then add an
+    attribute started with <code>data-te-class-</code> - after that goes
+    <code>name</code> from the table. For example:
+    <code>data-te-class-notch-leading-normal</code>.
+    <strong>Important:</strong> Every data attribute has to be written in
+    kebab-case method!
+  </p>
+
+  <!-- Demo -->
+  {{< twsnippet/demo id="example1" >}}
+  <div class="flex justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      data-te-input-wrapper-init
+      data-te-class-notch-leading-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary"
+      data-te-class-notch-middle-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary"
+      data-te-class-notch-trailing-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        id="exampleFormControlInput1"
+        placeholder="Example label" />
+      <label
+        for="exampleFormControlInput1"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+  <!--Section: Demo-->
+
+  <section class="!visible hidden" data-te-collapse-item id="example1">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML,javascript" >}}
+      <!--prettier-ignore-->
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <div
+        class="relative mb-3 xl:w-96"
+        data-te-input-wrapper-init
+        data-te-class-notch-leading-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary"
+        data-te-class-notch-middle-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary"
+        data-te-class-notch-trailing-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          id="exampleFormControlInput1"
+          placeholder="Example label" />
+        <label
+          for="exampleFormControlInput1"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!--prettier-ignore-->
+      {{< twsnippet/code lang="javascript" >}}
+      // Initialization for ES Users
+      import {
+        Input,
+        initTE,
+      } from "tw-elements";
+      
+      initTE({ Input });
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!-- /Section: Customization via data attribute -->
+
+  <!-- Section: Customization via JavaScript -->
+  <h2 class="mb-5 text-lg font-bold" id="customization-js" data-te-spy-item>
+    Customization via JavaScript
+  </h2>
+
+  <div
+    class="my-5 rounded-md border-l-[6px] border-solid border-gray-400 bg-gray-100 p-4 dark:border-gray-300 dark:bg-gray-300/30 ">
+    <strong>Note:</strong> Sometimes a component also allows you to modify the
+    available options. If so, and you don't want to pass any other modifiers
+    there, just pass an empty object as an argument.
+  </div>
+
+  <p class="mb-3">
+    In case you initialize your component using JS, you need to approach the
+    topic a bit differently: adding classes as an argument.
+  </p>
+
+  <!-- Demo -->
+  {{< twsnippet/demo id="example2" >}}
+  <div class="flex justify-center">
+    <div
+      class="relative mb-3 xl:w-96"
+      data-te-input-wrapper-init
+      data-te-class-notch-leading-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary"
+      data-te-class-notch-middle-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary"
+      data-te-class-notch-trailing-normal="border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary">
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        id="exampleFormControlInput1"
+        placeholder="Example label" />
+      <label
+        for="exampleFormControlInput1"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+  <!--Section: Demo-->
+
+  <section class="!visible hidden" data-te-collapse-item id="example2">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "html,javascript,umd" >}}
+      <!--prettier-ignore-->
+      {{< twsnippet/code active=true lang="html" >}}
+      <div class="relative mb-3">
+        <input
+          type="text"
+          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+          id="exampleFormControlInput1"
+          placeholder="Example label" />
+        <label
+          for="exampleFormControlInput1"
+          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+          >Example label
+        </label>
+      </div>
+      {{< /twsnippet/code >}}
+      <!--prettier-ignore-->
+      {{< twsnippet/code lang="js" >}}
+      const myInput = new Input(
+        document.getElementById("myInput"),
+        {},
+        {
+          notchLeadingNormal: "border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
+          notchMiddleNormal: "border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
+          notchTrailingNormal: "border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary"
+        },
+      );
+      {{< /twsnippet/code >}}
+      <!--prettier-ignore-->
+      {{< twsnippet/code lang="js" >}}
+      const myInput = new te.Input(
+        document.getElementById("myInput"),
+        {},
+        {
+          notchLeadingNormal: "border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
+          notchMiddleNormal: "border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary",
+          notchTrailingNormal: "border-red-500 dark:border-red-500 group-data-[te-input-focused]:shadow-[1px_0_0_#3b71ca,_0_-1px_0_0_#3b71ca,_0_1px_0_0_#3b71ca] group-data-[te-input-focused]:border-primary"
+        },
+      );
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+  <!-- /Section: Customization via JavaScript -->
+</section>
+<!-- /Section: Customizable classes in Input -->
