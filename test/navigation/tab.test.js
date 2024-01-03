@@ -205,7 +205,7 @@ describe("Tab", () => {
 
   describe("class customization", () => {
     const SHOW_CLASSLIST = "opacity-100";
-    const hide_CLASSLIST = "opacity-0";
+    const HIDE_CLASSLIST = "opacity-0";
 
     it("should apply default active classes", () => {
       jest.useFakeTimers();
@@ -216,7 +216,7 @@ describe("Tab", () => {
       const firstTabContent = SelectorEngine.findOne("#tabs-1", fixtureEl);
 
       expect(firstTabContent.className.includes(SHOW_CLASSLIST)).toBe(true);
-      expect(firstTabContent.className.includes(hide_CLASSLIST)).toBe(false);
+      expect(firstTabContent.className.includes(HIDE_CLASSLIST)).toBe(false);
 
       instance2.show();
 
@@ -225,7 +225,7 @@ describe("Tab", () => {
       expect(instance._element.hasAttribute("data-te-nav-active")).toBe(false);
 
       expect(firstTabContent.className.includes(SHOW_CLASSLIST)).toBe(false);
-      expect(firstTabContent.className.includes(hide_CLASSLIST)).toBe(true);
+      expect(firstTabContent.className.includes(HIDE_CLASSLIST)).toBe(true);
     });
 
     it("should change active styles", () => {
