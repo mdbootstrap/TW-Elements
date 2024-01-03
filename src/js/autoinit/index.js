@@ -14,13 +14,13 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 import SelectorEngine from "../dom/selector-engine";
 import jqueryInit from "./jqueryInit";
 import {
-  dropdownCallback,
+  // dropdownCallback,
   offcanvasCallback,
   tabCallback,
   buttonCallback,
-  modalCallback,
+  // modalCallback,
   rippleCallback,
-  collapseCallback,
+  // collapseCallback,
   tooltipsCallback,
   popoverCallback,
   lightboxCallback,
@@ -175,20 +175,20 @@ const defaultInitSelectors = {
   collapse: {
     name: "Collapse",
     selector: "[data-te-collapse-init]",
-    isToggler: true,
-    callback: collapseCallback,
+    // isToggler: true,
+    // callback: collapseCallback,
   },
   dropdown: {
     name: "Dropdown",
     selector: "[data-te-dropdown-toggle-ref]",
-    isToggler: true,
-    callback: dropdownCallback,
+    // isToggler: true,
+    // callback: dropdownCallback,
   },
   modal: {
     name: "Modal",
     selector: "[data-te-toggle='modal']",
-    isToggler: true,
-    callback: modalCallback,
+    // isToggler: true,
+    // callback: modalCallback,
   },
   ripple: {
     name: "Ripple",
@@ -269,6 +269,10 @@ const initComponent = (component, options) => {
       instance = new component(element);
       if (thisComponent?.onInit) {
         instance[thisComponent.onInit]();
+      }
+
+      if (instance?.runCallbacks) {
+        instance.runCallbacks();
       }
     }
   });

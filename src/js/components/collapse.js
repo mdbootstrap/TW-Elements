@@ -33,6 +33,7 @@ Constants
 const NAME = "collapse";
 const DATA_KEY = "te.collapse";
 const EVENT_KEY = `.${DATA_KEY}`;
+const DATA_API_KEY = ".data-api";
 
 const Default = {
   toggle: true,
@@ -48,6 +49,7 @@ const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
 const ATTR_SHOW = "data-te-collapse-show";
 const ATTR_COLLAPSED = "data-te-collapse-collapsed";
@@ -134,6 +136,12 @@ class Collapse extends BaseComponent {
   }
 
   // Public
+
+  dispose() {
+    super.dispose();
+
+    EventHandler.off(this._element, EVENT_CLICK_DATA_API);
+  }
 
   toggle() {
     if (this._isShown()) {
@@ -286,6 +294,32 @@ class Collapse extends BaseComponent {
     this._element.style[dimension] = "";
 
     this._queueCallback(complete, this._element, true);
+  }
+
+  runCallbacks() {
+    if (this._element.hasAttribute(`data-te-${NAME}-initialized`)) {
+      return;
+    }
+
+    EventHandler.on(this._element, EVENT_CLICK_DATA_API, function (event) {
+      // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+      if (
+        event.target.tagName === "A" ||
+        (event.delegateTarget && event.delegateTarget.tagName === "A")
+      ) {
+        event.preventDefault();
+      }
+
+      const selector = getSelectorFromElement(this);
+      console.log(selector);
+      const selectorElements = SelectorEngine.find(selector);
+
+      selectorElements.forEach((element) => {
+        Collapse.getOrCreateInstance(element, { toggle: false }).toggle();
+      });
+    });
+
+    this._element.setAttribute(`data-te-${NAME}-initialized`, true);
   }
 
   _isShown(element = this._element) {

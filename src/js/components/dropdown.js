@@ -131,9 +131,6 @@ class Dropdown extends BaseComponent {
     ).matches;
     this._animationCanPlay =
       this._config.dropdownAnimation === "on" && !isPrefersReducedMotionSet;
-
-    this._didInit = false;
-    this._init();
   }
 
   // Getters
@@ -242,9 +239,8 @@ class Dropdown extends BaseComponent {
     }
   }
 
-  // Private
-  _init() {
-    if (this._didInit) {
+  runCallbacks() {
+    if (this._element.hasAttribute(`data-te-${NAME}-initialized`)) {
       return;
     }
 
@@ -263,8 +259,15 @@ class Dropdown extends BaseComponent {
     EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus);
     EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
 
-    this._didInit = true;
+    EventHandler.on(this._element, EVENT_CLICK_DATA_API, function (event) {
+      event.preventDefault();
+      Dropdown.getOrCreateInstance(this).toggle();
+    });
+
+    this._element.setAttribute(`data-te-${NAME}-initialized`, true);
   }
+
+  // Private
 
   _completeHide(relatedTarget) {
     if (this._fadeOutAnimate && this._fadeOutAnimate.playState === "running") {

@@ -11,7 +11,13 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 --------------------------------------------------------------------------
 */
 
-import { isRTL, reflow, typeCheckConfig } from "../util/index";
+import {
+  getElementFromSelector,
+  isRTL,
+  isVisible,
+  reflow,
+  typeCheckConfig,
+} from "../util/index";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";
@@ -33,6 +39,7 @@ const NAME = "modal";
 const DATA_KEY = "te.modal";
 const EVENT_KEY = `.${DATA_KEY}`;
 const ESCAPE_KEY = "Escape";
+const DATA_API_KEY = ".data-api";
 
 const Default = {
   backdrop: true,
@@ -73,11 +80,13 @@ const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`;
 const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
 const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`;
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`;
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
 
 const OPEN_SELECTOR_BODY = "data-te-modal-open";
 const OPEN_SELECTOR = "data-te-open";
 const SELECTOR_DIALOG = "[data-te-modal-dialog-ref]";
 const SELECTOR_MODAL_BODY = "[data-te-modal-body-ref]";
+// const SELECTOR_DATA_TOGGLE = '[data-te-toggle="modal"]';
 
 /*
 ------------------------------------------------------------------------
@@ -100,8 +109,6 @@ class Modal extends BaseComponent {
     this._ignoreBackdropClick = false;
     this._isTransitioning = false;
     this._scrollBar = new ScrollBarHelper();
-    this._didInit = false;
-    this._init();
   }
 
   // Getters
@@ -205,18 +212,48 @@ class Modal extends BaseComponent {
     this._adjustDialog();
   }
 
-  // Private
-
-  _init() {
-    if (this._didInit) {
+  runCallbacks() {
+    if (this._element.hasAttribute(`data-te-${NAME}-initialized`)) {
       return;
     }
 
+    EventHandler.on(this._element, EVENT_CLICK_DATA_API, function (event) {
+      const target = getElementFromSelector(this);
+
+      if (["A", "AREA"].includes(this.tagName)) {
+        event.preventDefault();
+      }
+
+      EventHandler.one(target, EVENT_SHOW, (showEvent) => {
+        if (showEvent.defaultPrevented) {
+          // only register focus restorer if modal will actually get shown
+          return;
+        }
+
+        EventHandler.one(target, EVENT_HIDDEN, () => {
+          if (isVisible(this)) {
+            this.focus();
+          }
+        });
+      });
+
+      // avoid conflict when clicking moddal toggler while another one is open
+      const allReadyOpen = SelectorEngine.findOne(`[${OPEN_SELECTOR}="true"]`);
+      if (allReadyOpen) {
+        Modal.getInstance(allReadyOpen).hide();
+      }
+
+      const data = Modal.getOrCreateInstance(target);
+
+      data.toggle(this);
+    });
+
     enableDismissTrigger(Modal);
 
-    this._didInit = true;
+    this._element.setAttribute(`data-te-${NAME}-initialized`, true);
   }
 
+  // Private
   _initializeBackDrop() {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
