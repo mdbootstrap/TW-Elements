@@ -13,6 +13,7 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 
 /* eslint-disable indent */
 const ATTR_SELECT = "data-te-datatable-select-ref";
+const ATTR_PAGINATION = "data-te-datatable-pagination-ref";
 const ATTR_PAGINATION_NAV = "data-te-datatable-pagination-nav-ref";
 const ATTR_PAGINATION_RIGHT = "data-te-datatable-pagination-right-ref";
 const ATTR_PAGINATION_LEFT = "data-te-datatable-pagination-left-ref";
@@ -50,7 +51,7 @@ const pagination = (
     .join("\n");
 
   return `
-<div class="${classes.pagination} ${
+<div ${ATTR_PAGINATION} class="${classes.pagination} ${
     bordered ? `${classes.paginationBordered}` : ""
   } ${classes.borderColor} ${classes.color}">
   <div class="${classes.selectItemsWrapper}">  

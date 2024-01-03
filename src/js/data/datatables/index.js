@@ -542,7 +542,7 @@ class Datatable {
 
     this._removeEventListeners();
 
-    this._perfectScrollbar.destroy();
+    this._perfectScrollbar.dispose();
 
     this._element = null;
   }
@@ -561,7 +561,7 @@ class Datatable {
     this._renderRows();
 
     if (this._options.maxHeight) {
-      this._perfectScrollbar.element.scrollTop = 0;
+      this._perfectScrollbar._element.scrollTop = 0;
 
       this._perfectScrollbar.update();
     }
