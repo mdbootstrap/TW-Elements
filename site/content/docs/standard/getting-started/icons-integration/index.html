@@ -325,7 +325,7 @@ menu:
   <div
     class="my-5 rounded-md border-l-[6px] border-solid border-primary-400 bg-primary-100 p-4 dark:border-primary-300 dark:bg-primary-300/30 ">
     <strong>Note:</strong>
-    In Timepicker and Datepicker components, you can aslo use top-layer
+    In Timepicker and Datepicker components, you can also use top-layer
     customization to customize icons. Check out
     <a
       href="https://tw-elements.com/docs/standard/forms/timepicker/#section-with-custom-icon"
@@ -358,16 +358,14 @@ menu:
     possibility of customization via options and data attributes.
   </p>
 
-  <p class="mb-2">
-    Let's take a look at how to customize icons in our components via options or
-    data attributes.
-  </p>
-
   <h2 class="mb-2 mt-0 text-xl font-semibold leading-normal">Datetimepicker</h2>
 
-  <h2 class="mb-5 mt-0 text-lg font-semibold leading-normal">
-    Via data attributes
-  </h2>
+  <p class="mb-5">
+    Let's take a look at how to customize icons in our Datetimepicker component
+    via options or data attributes.
+  </p>
+
+  <h2 class="mb-5 mt-0 font-semibold leading-normal">Via data attributes</h2>
 
   {{< twsnippet/demo id="example3" >}}
   <div
@@ -428,7 +426,7 @@ menu:
     </div>
   </section>
 
-  <h2 class="mb-5 mt-0 text-lg font-semibold leading-normal">Via options</h2>
+  <h2 class="mb-5 mt-0 font-semibold leading-normal">Via options</h2>
 
   {{< twsnippet/demo id="example4" >}}
   <div
@@ -521,6 +519,15 @@ menu:
     Font Awesome
   </h2>
 
+  <p class="mb-5">
+    There are two ways to integrate Font Awesome into TWE. You can use the SVG
+    code or FA package.
+  </p>
+
+  <h2 class="mb-2 mt-0 text-lg font-semibold leading-normal">
+    Using SVG icons
+  </h2>
+
   <p class="mb-2">
     Choose the icon you want from the
     <a
@@ -584,6 +591,91 @@ menu:
     </div>
   </section>
 
+  <h2 class="mb-2 mt-0 text-lg font-semibold leading-normal">
+    Using FA package
+  </h2>
+
+  <p class="mb-2">
+    You can setup Font Awesome in your project using a package manager or CDN.
+    In this example, we will use the CDN. If you want to use the package manager
+    method, you can check out the
+    <a
+      href="https://fontawesome.com/docs/web/setup/packages"
+      class="text-primary dark:text-primary-400"
+      >Font Awesome documentation</a
+    >.
+  </p>
+
+  <h2 class="font-bold">Step 1</h2>
+  <p class="mb-2">Add import rule to your CSS file.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "css" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="CSS" >}}
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css");
+
+    @tailwind base;
+    ...
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+
+  <h2 class="font-bold">Step 2</h2>
+  <p class="mb-2">
+    Choose the icon you want from the
+    <a
+      href="https://fontawesome.com/icons"
+      class="text-primary dark:text-primary-400"
+      >Font Awesome</a
+    >
+    website and copy the HTML code. Then paste it into the component's template.
+  </p>
+
+  {{< twsnippet/demo id="example6" >}}
+  <div class="flex justify-center space-x-2">
+    <button
+      type="button"
+      data-te-ripple-init
+      data-te-ripple-color="light"
+      class="flex rounded bg-[#1da1f2] px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg">
+      <span class="mr-2 [&>svg]:h-3.5 [&>svg]:w-3.5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="16"
+          width="16"
+          viewBox="0 0 512 512"
+          fill="currentColor">
+          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M459.4 151.7c.3 4.5 .3 9.1 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53 51.7 63.7 129.3 105.3 216.4 109.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3z" />
+        </svg>
+      </span>
+      Twitter
+    </button>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example6">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
+      <button
+        type="button"
+        data-te-ripple-init
+        data-te-ripple-color="light"
+        class="mb-2 flex items-center justify-center rounded bg-[#1da1f2] px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg">
+        <span class="pr-1">
+          <i class="fa-brands fa-twitter fa-lg"></i>
+        </span>
+        Twitter
+      </button>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
+    </div>
+  </section>
+
   <h2
     id="google-icons"
     data-te-spy-item
@@ -591,7 +683,7 @@ menu:
     Google icons
   </h2>
 
-  <h2 class="text-lg font-bold">Step 1</h2>
+  <h2 class="font-bold">Step 1</h2>
   <p class="mb-5">
     Go to the
     <a
@@ -616,16 +708,51 @@ menu:
     {{< /twsnippet/wrapper >}}
   </div>
 
-  <h2 class="text-lg font-bold">Step 2</h2>
+  <h2 class="font-bold">Step 2</h2>
   <p class="mb-5">
     Now you can use the google icons you want in the TWE components.
   </p>
 
-  <div class="pb-4">
-    <!--prettier-ignore-->
-    {{< twsnippet/wrapper "html" "" "mobile" >}}
-    {{< twsnippet/code active=true lang="html" >}}
-    <div class="mb-3">
+  {{< twsnippet/demo id="example7" >}}
+  <div class="flex justify-center space-x-2">
+    <div class="xl:w-96">
+      <div class="relative mb-4 flex w-full flex-wrap items-stretch">
+        <input
+          type="search"
+          class="relative m-0 -mr-0.5 block min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="button-addon1" />
+
+        <!--Search button-->
+        <button
+          class="relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+          type="button"
+          id="button-addon1"
+          data-te-ripple-init
+          data-te-ripple-color="light">
+          <span class="[&>svg]:w-[20px]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 -960 960 960"
+              width="24"
+              fill="currentColor">
+              <path
+                d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  {{< /twsnippet/demo >}}
+
+
+  <section class="!visible hidden" data-te-collapse-item id="example7">
+    <div class="pt-4">
+      {{< twsnippet/wrapper "HTML" >}}
+      {{< twsnippet/code active=true lang="HTML" >}}
       <div class="relative mb-4 flex w-full flex-wrap items-stretch">
         <input
           type="search"
@@ -644,9 +771,9 @@ menu:
           <span class="material-symbols-outlined text-[20px]">search</span>
         </button>
       </div>
+      {{< /twsnippet/code >}}
+      {{< /twsnippet/wrapper >}}
     </div>
-    {{< /twsnippet/code >}}
-    {{< /twsnippet/wrapper >}}
-  </div>
+  </section>
 </section>
 <!-- Other icon libriaries -->
