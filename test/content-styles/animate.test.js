@@ -389,6 +389,28 @@ describe("Animate", () => {
     instance.dispose();
   });
 
+  it("should set animation interval", () => {
+    jest.useFakeTimers();
+
+    const instance = new Animate(fixtureEl, {
+      animation: "[slide-right_0.1s_ease-in-out]",
+      animationStart: "manually",
+      animationInterval: 100,
+    });
+
+    const _addAnimatedClass = jest.spyOn(instance, "_addAnimatedClass");
+
+    instance._setAnimationInterval();
+
+    fixtureEl.dispatchEvent(new Event("animationend"));
+
+    jest.advanceTimersByTime(instance._options.animationInterval);
+
+    expect(_addAnimatedClass).toHaveBeenCalled();
+
+    jest.useRealTimers();
+  });
+
   it("should be able to init via jq", () => {
     const _init = jest.spyOn(Animate.prototype, "_init");
 
