@@ -552,6 +552,57 @@ menu:
 
 <hr class="mb-5 dark:border-neutral-600" />
 
+<!--Initializing via JS-->
+<section id="section-initializing-js">
+  <!-- Title -->
+  <h2
+    class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+    id="initializing-js"
+    data-te-spy-item>
+    Initializing via JS
+  </h2>
+
+  <!-- Description -->
+  <p class="mb-5">
+    By default all components have autoinit which means they are initialized by
+    data attributes. But if you want to make init by JavaScript - there is also
+    possibility to do that.
+  </p>
+
+  <h2 class="text-lg font-bold">Step 1</h2>
+  <p class="mb-5">Initialize components which are you intend to use.</p>
+
+  <div class="pb-4">
+    <!--prettier-ignore-->
+    {{< twsnippet/wrapper "./src/templates/pages/home.html" "" "mobile" >}}
+    {{< twsnippet/code active=true lang="html" >}}
+    {% extends "base.html" %} {% block content %}
+    <div class="mt-16 flex justify-center">
+      <p class="text-lg">
+        Hover the link to see the
+        <a
+          id="tooltip"
+          href="#"
+          class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+          title="Hi! I'm tooltip"
+          >tooltip</a
+        >
+      </p>
+    </div>
+
+    <script type="module">
+      const myTooltip = new te.Tooltip(document.getElementById("tooltip"));
+    </script>
+    {% endblock %}
+    {{< /twsnippet/code >}}
+    {{< /twsnippet/wrapper >}}
+  </div>
+</section>
+
+<!-- Initializing via JS -->
+
+<hr class="mb-5 dark:border-neutral-600" />
+
 <!-- Section: Related resources -->
 <section id="section-related-resources">
   <!-- Title -->
