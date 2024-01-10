@@ -127,6 +127,58 @@ module.exports = plugin(
           "5-strong":
             " 0 2px 25px -5px rgba(0,0,0,.16),0 25px 21px -5px rgba(0,0,0,.1)",
           "twe-inner": "inset 0 2px 4px 0 #0000000d",
+          "primary-1":
+            "0 8px 9px -4px rgba(59,113,202,0.2),0 4px 18px 0 rgba(59,113,202,0.1)",
+          "primary-2":
+            "0 8px 9px -4px rgba(59,113,202,0.3),0 4px 18px 0 rgba(59,113,202,0.2)",
+          "primary-3": "0 4px 9px -4px #3b71ca",
+          "success-1":
+            "0 8px 9px -4px rgba(20,164,77,0.2),0 4px 18px 0 rgba(20,164,77,0.1)",
+          "success-2":
+            "0 8px 9px -4px rgba(20,164,77,0.3),0 4px 18px 0 rgba(20,164,77,0.2)",
+          "success-3": "0 4px 9px -4px #14a44d",
+          "danger-1":
+            "0 8px 9px -4px rgba(220,76,100,0.1),0 4px 18px 0 rgba(220,76,100,0.2)",
+          "danger-2":
+            "0 8px 9px -4px rgba(220,76,100,0.2),0 4px 18px 0 rgba(220,76,100,0.3)",
+          "danger-3": "0 4px 9px -4px #dc4c64",
+          "warning-1":
+            "0 8px 9px -4px rgba(228,161,27,0.1),0 4px 18px 0 rgba(228,161,27,0.2)",
+          "warning-2":
+            "0 8px 9px -4px rgba(228,161,27,0.2),0 4px 18px 0 rgba(228,161,27,0.3)",
+          "warning-3": "0 4px 9px -4px #e4a11b",
+          "info-1":
+            "0 8px 9px -4px rgba(84,180,211,0.1),0 4px 18px 0 rgba(84,180,211,0.2)",
+          "info-2":
+            "0 8px 9px -4px rgba(84,180,211,0.2),0 4px 18px 0 rgba(84,180,211,0.3)",
+          "info-3": "0 4px 9px -4px #54b4d3",
+          "light-1":
+            "0 8px 9px -4px rgba(251,251,251,0.05),0 4px 18px 0 rgba(251,251,251,0.1)",
+          "light-2":
+            "0 8px 9px -4px rgba(203,203,203,0.2),0 4px 18px 0 rgba(203,203,203,0.3)",
+          "light-3": "0 4px 9px -4px #cbcbcb",
+          "dark-1":
+            "0 8px 9px -4px rgba(3,2,2,0.2),0 4px 18px 0 rgba(3,2,2,0.3)",
+          "dark-2":
+            "0 8px 9px -4px rgba(51,45,45,0.1),0 4px 18px 0 rgba(51,45,45,0.2)",
+          "dark-3": "0 4px 9px -4px rgba(51,45,45,0.7)",
+          "secondary-1":
+            "0 2px 15px -3px rgba(0,0,0,0.04),0 10px 20px -2px rgba(0,0,0,0.07)",
+          "secondary-2":
+            "0 8px 9px -4px rgba(227,235,247,0.2),0 4px 18px 0 rgba(227,235,247,0.3)",
+          "secondary-3": "0 4px 9px -4px #e3ebf7",
+          "primary-5": "0 4px 9px -4px rgba(59,113,202,0.5)",
+          checkbox: "0 0 0 13px #3b71ca",
+          inset: "inset 0 0 0 1px rgb(59,113,202)",
+          select: "0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)",
+          "switch-1":
+            "0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12)",
+          "switch-2":
+            "0 0px 3px 0 rgb(0,0,0 / 7%), 0 2px 2px 0 rgb(0,0,0 / 4%)",
+          "switch-3": "3px -1px 0px 13px #3b71ca",
+          "notch-1": "-1px 0 0 #3b71ca, 0 1px 0 0 #3b71ca, 0 -1px 0 0 #3b71ca",
+          "notch-2": "0 1px 0 0 #3b71ca",
+          "notch-3": "1px 0 0 #3b71ca, 0 -1px 0 0 #3b71ca, 0 1px 0 0 #3b71ca",
         },
         keyframes: {
           "fade-in": {
