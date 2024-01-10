@@ -1,10 +1,23 @@
+<!--
+--------------------------------------------------------------------------
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
+--------------------------------------------------------------------------
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <meta name="author" content="Tailwind Elements" />
+    <meta name="author" content="TW Elements" />
     <title>Charts - tailwind</title>
 
     <!-- Roboto font -->
@@ -493,9 +506,12 @@
 
       const optionsScatter = {
         options: {
-          title: {
-            display: true,
-            text: "Scatter Chart - Logarithmic X-Axis",
+          plugins: {
+            title: {
+              display: true,
+              text: "Scatter Chart - Logarithmic X-Axis",
+              color: "rgb(102,102,102)",
+            },
           },
           scales: {
             x: {
@@ -517,10 +533,44 @@
         },
       };
 
+      const optionsScatterDark = {
+        options: {
+          plugins: {
+            title: {
+              color: "#fff",
+            },
+            legend: {
+              labels: {
+                color: "#fff",
+              },
+            },
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: "#fff",
+              },
+              grid: {
+                color: "#555",
+              },
+            },
+            y: {
+              ticks: {
+                color: "#fff",
+              },
+              grid: {
+                color: "#555",
+              },
+            },
+          },
+        },
+      };
+
       new te.Chart(
         document.getElementById("scatter-chart"),
         dataScatter,
-        optionsScatter
+        optionsScatter,
+        optionsScatterDark
       );
       // Scatter chart
       // Bar chart with custom options

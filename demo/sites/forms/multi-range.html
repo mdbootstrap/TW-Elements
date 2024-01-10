@@ -1,0 +1,191 @@
+<!--
+--------------------------------------------------------------------------
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
+--------------------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="TW Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Roboto font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
+    <!-- Custom styles -->
+  </head>
+
+  <body class="dark:bg-neutral-800">
+    <!-- Start your project here-->
+    <div class="mx-6 md:mx-16 lg:mx-44 xl:mx-96">
+      <br />
+      <br />
+      <br />
+
+      <h1
+        class="my-0 text-5xl font-medium leading-tight text-neutral-800 dark:text-white">
+        Multi range slider
+      </h1>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Basic example
+      </h3>
+
+      <div data-te-multi-range-slider-init></div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Basic example with values
+      </h3>
+
+      <div id="multi-range-basic" data-te-multi-range-slider-init></div>
+      <div id="multi-range-basic-value" class="mt-3">
+        Value:
+        <span class="flex flex-col">
+          <div>First:</div>
+          <div>Second:</div>
+        </span>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        One range
+      </h3>
+
+      <div data-te-multi-range-slider-init data-te-number-of-ranges="1"></div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Start values
+      </h3>
+
+      <div
+        id="multi-range-start-values"
+        data-te-multi-range-slider-init
+        data-te-start-values="[40, 80]"></div>
+      <div id="multi-range-start-values-show" class="mt-3">Value:</div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Tooltips
+      </h3>
+
+      <div data-te-multi-range-slider-init data-te-tooltip="true"></div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Step example
+      </h3>
+
+      <div data-te-multi-range-slider-init data-te-step="5"></div>
+
+      <br />
+      <br />
+      <br />
+    </div>
+    <!-- End your project here-->
+
+    <!-- Theme switcher -->
+    <script type="module" src="../../../src/js/theme.js"></script>
+    <!-- PRISM -->
+    <script type="module" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB -->
+    <script type="module" src="../../../src/js/index.umd.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="module">
+      // basic example with values
+
+      const basicExample = document.querySelector("#multi-range-basic");
+      const oneRangeValueBasic = document.querySelector(
+        "#multi-range-basic-value"
+      );
+
+      basicExample.addEventListener("valueChanged.te.multiRangeSlider", (e) => {
+        const [first, second] = e.values.rounded;
+        oneRangeValueBasic.innerHTML = `
+            Value:
+            <div class="flex flex-col">
+              <div>First: ${first}</div>
+              <div>Second: ${second}</div>
+            </div>
+          `;
+      });
+
+      basicExample.addEventListener("start.te.multiRangeSlider", (e) => {
+        console.log("start");
+      });
+
+      // start values
+
+      const startValue = document.querySelector("#multi-range-start-values");
+      const startValueValues = document.querySelector(
+        "#multi-range-start-values-show"
+      );
+
+      startValue.addEventListener("valueChanged.te.multiRangeSlider", (e) => {
+        startValueValues.innerHTML = `
+          Value:
+          <span class="flex flex-col">
+            <div>First: ${e.values.rounded[0]}</div>
+            <div>Second  ${e.values.rounded[1]}</div>
+          </span>
+        `;
+      });
+    </script>
+  </body>
+</html>

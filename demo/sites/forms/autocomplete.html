@@ -1,0 +1,437 @@
+<!--
+--------------------------------------------------------------------------
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
+Copyright © 2023 MDBootstrap.com
+
+Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
+--------------------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="TW Elements" />
+    <title>Album example · Bootstrap v5.1</title>
+
+    <!-- Roboto font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+      rel="stylesheet" />
+    <!-- Tailwind -->
+    <link rel="stylesheet" href="../../../src/scss/tailwind.scss" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#f8fafc" />
+    <script>
+      try {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#0B1120");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      } catch (_) {}
+    </script>
+    <!-- Custom styles -->
+  </head>
+
+  <body class="dark:bg-neutral-800">
+    <!-- Start your project here-->
+    <div class="mx-6 md:mx-16 lg:mx-44 xl:mx-96">
+      <br />
+      <br />
+      <br />
+
+      <h1
+        class="my-0 text-5xl font-medium leading-tight text-neutral-800 dark:text-white">
+        Autocomplete
+      </h1>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Basic example
+      </h3>
+
+      <div class="mb-3 xl:w-96">
+        <div class="relative" data-te-input-wrapper-init id="basic">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+            id="exampleFormControlInput1" />
+          <label
+            for="exampleFormControlInput1"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Display value
+      </h3>
+
+      <div class="mb-3 xl:w-96">
+        <div class="relative" data-te-input-wrapper-init id="displayValue">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+            id="exampleFormControlInput2" />
+          <label
+            for="exampleFormControlInput2"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Asynchronous search
+      </h3>
+
+      <div class="mb-3 xl:w-96">
+        <div class="relative" data-te-input-wrapper-init id="async">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+            id="exampleFormControlInput3" />
+          <label
+            for="exampleFormControlInput3"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Threshold
+      </h3>
+
+      <div class="mb-3 xl:w-96">
+        <div class="relative" data-te-input-wrapper-init id="threshold">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+            id="exampleFormControlInput4"
+            placeholder="Type 2 characters to search" />
+          <label
+            for="exampleFormControlInput4"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Custom item template
+      </h3>
+
+      <div class="mb-3 xl:w-96">
+        <div
+          class="relative"
+          data-te-input-wrapper-init
+          id="customItem"
+          data-te-list-height="295">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+            id="exampleFormControlInput5" />
+          <label
+            for="exampleFormControlInput5"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Custom content
+      </h3>
+
+      <div class="mb-3 xl:w-96">
+        <div class="relative" data-te-input-wrapper-init id="customContent">
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+            id="exampleFormControlInput6" />
+          <label
+            for="exampleFormControlInput6"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Validation
+      </h3>
+
+      <div class="mb-3 xl:w-96">
+        <form
+          data-te-validation-init
+          data-te-active-validation="true"
+          autocomplete="off">
+          <div
+            class="relative"
+            id="validation"
+            data-te-input-wrapper-init
+            data-te-validate="input"
+            data-te-validation-ruleset="isRequired">
+            <input
+              type="text"
+              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+              id="exampleFormControlInput7" />
+            <label
+              for="exampleFormControlInput7"
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+              >Example label
+            </label>
+          </div>
+          <button
+            type="button"
+            class="mt-5 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+            data-te-submit-btn-ref>
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <h3 class="mb-4 text-3xl font-medium leading-tight text-red-600">
+        Auto select
+      </h3>
+
+      <div class="mb-3 xl:w-96">
+        <div class="relative" id="auto-select" data-te-input-wrapper-init>
+          <input
+            type="text"
+            class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear placeholder:opacity-0 focus:placeholder:opacity-100 peer-focus:text-primary motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary"
+            id="exampleFormControlInput8" />
+          <label
+            for="exampleFormControlInput8"
+            class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[80%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-focused]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-focused]:scale-[0.8] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+            >Example label
+          </label>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <br />
+      <br />
+      <br />
+
+      <br />
+      <br />
+      <br />
+    </div>
+    <!-- End your project here-->
+
+    <!-- Theme switcher -->
+    <script type="module" src="../../../src/js/theme.js"></script>
+    <!-- PRISM -->
+    <script type="module" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="module" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="module">
+      import * as te from "../../../src/js/index.umd.js";
+
+      const data = [
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+      ];
+      const customData = [
+        { title: "One", subtitle: "Secondary text" },
+        { title: "Two", subtitle: "Secondary text" },
+        { title: "Three", subtitle: "Secondary text" },
+        { title: "Four", subtitle: "Secondary text" },
+        { title: "Five", subtitle: "Secondary text" },
+        { title: "Six", subtitle: "Secondary text" },
+      ];
+
+      const basicFilter = (query) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(query.toLowerCase());
+        });
+      };
+
+      // Basic example
+
+      const basicAutocomplete = document.querySelector("#basic");
+      const dataFilter = (value) => {
+        return data.filter((item) => {
+          return item.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      new te.Autocomplete(basicAutocomplete, {
+        filter: dataFilter,
+      });
+
+      // Basic example
+
+      // Display value
+
+      const displayValueAutocomplete = document.querySelector("#displayValue");
+
+      const customFilter = (value) => {
+        return customData.filter((item) => {
+          return item.title.toLowerCase().startsWith(value.toLowerCase());
+        });
+      };
+
+      new te.Autocomplete(displayValueAutocomplete, {
+        filter: customFilter,
+        displayValue: (value) => value.title,
+      });
+
+      // Display value
+
+      // Asynchronous search
+
+      const asyncAutocomplete = document.querySelector("#async");
+      const asyncFilter = async (query) => {
+        const url = `https://swapi.py4e.com/api/people/?search=${encodeURI(
+          query
+        )}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        return data.results;
+      };
+
+      new te.Autocomplete(asyncAutocomplete, {
+        filter: asyncFilter,
+        displayValue: (value) => value.name,
+      });
+
+      // Asynchronous search
+
+      // Threshold
+
+      const thresholdAutocomplete = document.querySelector("#threshold");
+
+      new te.Autocomplete(thresholdAutocomplete, {
+        filter: dataFilter,
+        threshold: 2,
+      });
+
+      // Threshold
+
+      // Custom item template
+
+      const customItem = document.querySelector("#customItem");
+
+      new te.Autocomplete(customItem, {
+        filter: customFilter,
+        displayValue: (value) => value.title,
+        itemContent: (result) => {
+          return `
+          <div class="flex flex-col">
+            <div class="font-medium">${result.title}</div>
+            <div class="text-[0.9rem]">${result.subtitle}</div>
+          </div>
+        `;
+        },
+      });
+
+      // Custom item template
+
+      // Custom content
+
+      const customContent = document.querySelector("#customContent");
+
+      new te.Autocomplete(customContent, {
+        filter: dataFilter,
+        customContent: `
+        <div data-te-autocomplete-custom-content-ref class="px-4 py-1.5"></div>
+      `,
+      });
+
+      customContent.addEventListener("update.te.autocomplete", (event) => {
+        const resultsLength = event.results.length;
+
+        setTimeout(() => {
+          const customContentContainer = document.querySelector(
+            "[data-te-autocomplete-custom-content-ref]"
+          );
+          customContentContainer.innerHTML = `Search results: ${resultsLength}`;
+        }, 0);
+      });
+
+      // Custom content
+
+      // Validation
+
+      const validationAutocomplete = document.querySelector("#validation");
+
+      new te.Autocomplete(validationAutocomplete, {
+        filter: dataFilter,
+      });
+
+      // Validation
+
+      // Auto select
+
+      const autoSelectAutocomplete = document.querySelector("#auto-select");
+
+      new te.Autocomplete(autoSelectAutocomplete, {
+        filter: dataFilter,
+        autoSelect: true,
+      });
+
+      // Auto select
+    </script>
+  </body>
+</html>

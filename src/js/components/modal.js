@@ -1,11 +1,13 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
@@ -19,6 +21,7 @@ import Backdrop from "../util/backdrop";
 import FocusTrap from "../util/focusTrap";
 
 import { enableDismissTrigger } from "../util/component-functions";
+import { getTransitionDurationFromElement } from "../util/index";
 
 /*
 ------------------------------------------------------------------------
@@ -49,12 +52,15 @@ const DefaultClasses = {
   show: "transform-none",
   static: "scale-[1.02]",
   staticProperties: "transition-scale duration-300 ease-in-out",
+  backdrop:
+    "opacity-50 transition-all duration-300 ease-in-out fixed top-0 left-0 z-[1040] bg-black w-screen h-screen",
 };
 
 const DefaultClassesType = {
   show: "string",
   static: "string",
   staticProperties: "string",
+  backdrop: "string",
 };
 
 const EVENT_HIDE = `hide${EVENT_KEY}`;
@@ -186,7 +192,7 @@ class Modal extends BaseComponent {
   }
 
   dispose() {
-    [window, this._dialog].forEach((htmlElement) =>
+    [window, document, this._dialog].forEach((htmlElement) =>
       EventHandler.off(htmlElement, EVENT_KEY)
     );
 
@@ -215,6 +221,7 @@ class Modal extends BaseComponent {
     return new Backdrop({
       isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value
       isAnimated: this._isAnimated(),
+      backdropClasses: this._classes.backdrop,
     });
   }
 
@@ -325,10 +332,11 @@ class Modal extends BaseComponent {
     modalDialog.classList.remove(this._classes.show);
     modalDialog.classList.remove("opacity-100");
     modalDialog.classList.add("opacity-0");
+    const transitionTime = getTransitionDurationFromElement(modalDialog);
 
     setTimeout(() => {
       this._element.style.display = "none";
-    }, 300);
+    }, transitionTime);
 
     this._element.setAttribute("aria-hidden", true);
     this._element.removeAttribute("aria-modal");
@@ -394,12 +402,14 @@ class Modal extends BaseComponent {
     classList.add(...this._classes.static.split(" "));
     classList.add(...this._classes.staticProperties.split(" "));
 
+    const transisitionTime = getTransitionDurationFromElement(this._element);
+
     this._queueCallback(() => {
       classList.remove(this._classes.static);
 
       setTimeout(() => {
         classList.remove(...this._classes.staticProperties.split(" "));
-      }, 300);
+      }, transisitionTime);
 
       if (!isModalOverflowing) {
         this._queueCallback(() => {

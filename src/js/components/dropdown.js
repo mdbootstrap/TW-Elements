@@ -1,13 +1,16 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
+
 import * as Popper from "@popperjs/core";
 
 import {
@@ -79,7 +82,6 @@ const ANIMATION_FADE_IN = [{ opacity: "0" }, { opacity: "1" }];
 const ANIMATION_FADE_OUT = [{ opacity: "1" }, { opacity: "0" }];
 
 const ANIMATION_TIMING = {
-  duration: 550,
   iterations: 1,
   easing: "ease",
   fill: "both",
@@ -93,6 +95,7 @@ const Default = {
   popperConfig: null,
   autoClose: true,
   dropdownAnimation: "on",
+  animationDuration: 550,
 };
 
 const DefaultType = {
@@ -103,6 +106,7 @@ const DefaultType = {
   popperConfig: "(null|object|function)",
   autoClose: "(boolean|string)",
   dropdownAnimation: "string",
+  animationDuration: "number",
 };
 
 /*
@@ -197,14 +201,17 @@ class Dropdown extends BaseComponent {
 
     this._menu.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, "");
     this._animationCanPlay &&
-      this._menu.animate(ANIMATION_FADE_IN, ANIMATION_TIMING);
+      this._menu.animate(ANIMATION_FADE_IN, {
+        ...ANIMATION_TIMING,
+        duration: this._config.animationDuration,
+      });
     this._element.setAttribute(`data-te-dropdown-${CLASS_NAME_SHOW}`, "");
 
     setTimeout(
       () => {
         EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget);
       },
-      this._animationCanPlay ? ANIMATION_TIMING.duration : 0
+      this._animationCanPlay ? this._config.animationDuration : 0
     );
   }
 
@@ -282,10 +289,10 @@ class Dropdown extends BaseComponent {
     }
 
     if (this._animationCanPlay) {
-      this._fadeOutAnimate = this._menu.animate(
-        ANIMATION_FADE_OUT,
-        ANIMATION_TIMING
-      );
+      this._fadeOutAnimate = this._menu.animate(ANIMATION_FADE_OUT, {
+        ...ANIMATION_TIMING,
+        duration: this._config.animationDuration,
+      });
     }
 
     setTimeout(
@@ -301,7 +308,7 @@ class Dropdown extends BaseComponent {
         Manipulator.removeDataAttribute(this._menu, "popper");
         EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
       },
-      this._animationCanPlay ? ANIMATION_TIMING.duration : 0
+      this._animationCanPlay ? this._config.animationDuration : 0
     );
   }
 

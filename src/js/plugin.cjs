@@ -1,11 +1,13 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
@@ -111,6 +113,20 @@ module.exports = plugin(
         },
         boxShadow: {
           "te-primary": "0 0 0 1px rgb(59, 113, 202)",
+          1: "0 0 2px 0 rgba(0,0,0,.07),0 1px 1px 0 rgba(0,0,0,.04)",
+          "1-strong": "0 0 2px 0 rgba(0,0,0,.16),0 1px 1px 0 rgba(0,0,0,.1)",
+          2: "0 0 3px 0 rgba(0,0,0,.07),0 2px 2px 0 rgba(0,0,0,.04)",
+          "2-strong": "0 0 3px 0 rgba(0,0,0,.16),0 2px 2px 0 rgba(0,0,0,.1)",
+          3: "0 2px 6px -1px rgba(0,0,0,.07),0 6px 18px -1px rgba(0,0,0,.04)",
+          "3-strong":
+            "0 2px 6px -1px rgba(0,0,0,.16),0 6px 18px -1px rgba(0,0,0,.1)",
+          4: "0 2px 15px -3px rgba(0,0,0,.07),0 10px 20px -2px rgba(0,0,0,.04)",
+          "4-strong":
+            "0 2px 15px -3px rgba(0,0,0,.16),0 10px 20px -2px rgba(0,0,0,.1)",
+          5: "0 2px 25px -5px rgba(0,0,0,.07),0 25px 21px -5px rgba(0,0,0,.04)",
+          "5-strong":
+            " 0 2px 25px -5px rgba(0,0,0,.16),0 25px 21px -5px rgba(0,0,0,.1)",
+          "twe-inner": "inset 0 2px 4px 0 #0000000d",
         },
         keyframes: {
           "fade-in": {

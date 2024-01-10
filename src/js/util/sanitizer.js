@@ -1,11 +1,13 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
@@ -21,6 +23,7 @@ const uriAttributes = new Set([
 ]);
 
 const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
+const DATA_TE_ATTRIBUTE_PATTERN = /^data-te-[\w-]*$/i;
 
 /**
  * A pattern that recognizes a commonly useful subset of URLs that are safe.
@@ -64,6 +67,48 @@ const allowedAttribute = (attribute, allowedAttributeList) => {
   }
 
   return false;
+};
+
+export const DefaultWhitelist = {
+  // Global attributes allowed on any supplied element below.
+  "*": [
+    "class",
+    "dir",
+    "id",
+    "lang",
+    "role",
+    ARIA_ATTRIBUTE_PATTERN,
+    DATA_TE_ATTRIBUTE_PATTERN,
+  ],
+  a: ["target", "href", "title", "rel"],
+  area: [],
+  b: [],
+  br: [],
+  col: [],
+  code: [],
+  div: [],
+  em: [],
+  hr: [],
+  h1: [],
+  h2: [],
+  h3: [],
+  h4: [],
+  h5: [],
+  h6: [],
+  i: [],
+  img: ["src", "srcset", "alt", "title", "width", "height"],
+  li: [],
+  ol: [],
+  p: [],
+  pre: [],
+  s: [],
+  small: [],
+  span: [],
+  sub: [],
+  sup: [],
+  strong: [],
+  u: [],
+  ul: [],
 };
 
 export const DefaultAllowlist = {

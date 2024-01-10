@@ -1,11 +1,13 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
@@ -14,7 +16,11 @@ import Data from "../../dom/data";
 import EventHandler from "../../dom/event-handler";
 import Manipulator from "../../dom/manipulator";
 import SelectorEngine from "../../dom/selector-engine";
-import { typeCheckConfig, getUID } from "../../util/index";
+import {
+  typeCheckConfig,
+  getUID,
+  getTransitionDurationFromElement,
+} from "../../util/index";
 import Input from "../input";
 import SelectOption from "./select-option";
 import SelectionModel from "./selection-model";
@@ -70,8 +76,6 @@ const SELECTOR_FORM_OUTLINE = "[data-te-select-form-outline-ref]";
 const SELECTOR_TOGGLE = "[data-te-select-toggle]";
 const SELECTOR_NOTCH = "[data-te-input-notch-ref]";
 
-const ANIMATION_TRANSITION_TIME = 200;
-
 const Default = {
   selectAutoSelect: false,
   selectContainer: "body",
@@ -122,7 +126,7 @@ const DefaultType = {
 
 const DefaultClasses = {
   dropdown:
-    "relative outline-none min-w-[100px] m-0 scale-[0.8] opacity-0 bg-white shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)] transition duration-200 motion-reduce:transition-none data-[te-select-open]:scale-100 data-[te-select-open]:opacity-100 dark:bg-zinc-700",
+    "relative outline-none min-w-[100px] m-0 scale-y-[0.8] opacity-0 bg-white shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)] transition duration-200 motion-reduce:transition-none data-[te-select-open]:scale-100 data-[te-select-open]:opacity-100 dark:bg-zinc-700",
   formCheckInput:
     "relative float-left mt-[0.15rem] mr-[8px] h-[1.125rem] w-[1.125rem] appearance-none rounded-[0.25rem] border-[0.125rem] border-solid border-neutral-300 dark:border-neutral-600 outline-none before:pointer-events-none before:absolute before:h-[0.875rem] before:w-[0.875rem] before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] checked:border-primary dark:checked:border-primary checked:bg-primary dark:checked:bg-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:ml-[0.25rem] checked:after:-mt-px checked:after:block checked:after:h-[0.8125rem] checked:after:w-[0.375rem] checked:after:rotate-45 checked:after:border-[0.125rem] checked:after:border-t-0 checked:after:border-l-0 checked:after:border-solid checked:after:border-white checked:after:bg-transparent checked:after:content-[''] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:transition-[border-color_0.2s] focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-[0.875rem] focus:after:w-[0.875rem] focus:after:rounded-[0.125rem] focus:after:content-[''] checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:after:ml-[0.25rem] checked:focus:after:-mt-px checked:focus:after:h-[0.8125rem] checked:focus:after:w-[0.375rem] checked:focus:after:rotate-45 checked:focus:after:rounded-none checked:focus:after:border-[0.125rem] checked:focus:after:border-t-0 checked:focus:after:border-l-0 checked:focus:after:border-solid checked:focus:after:border-white checked:focus:after:bg-transparent",
   formOutline: "relative",
@@ -168,6 +172,7 @@ const DefaultClasses = {
     "pt-[0.37rem] text-xs leading-[1.5] peer-focus:-translate-y-[0.75rem] peer-data-[te-input-state-active]:-translate-y-[0.75rem] data-[te-input-state-active]:-translate-y-[0.75rem]",
   selectOption:
     "flex flex-row items-center justify-between w-full px-4 truncate text-gray-700 bg-transparent select-none cursor-pointer data-[te-input-multiple-active]:bg-black/5 hover:[&:not([data-te-select-option-disabled])]:bg-black/5 data-[te-input-state-active]:bg-black/5 data-[te-select-option-selected]:data-[te-input-state-active]:bg-black/5 data-[te-select-selected]:data-[te-select-option-disabled]:cursor-default data-[te-select-selected]:data-[te-select-option-disabled]:text-gray-400 data-[te-select-selected]:data-[te-select-option-disabled]:bg-transparent data-[te-select-option-selected]:bg-black/[0.02] data-[te-select-option-disabled]:text-gray-400 data-[te-select-option-disabled]:cursor-default group-data-[te-select-option-group-ref]/opt:pl-7 dark:text-gray-200 dark:hover:[&:not([data-te-select-option-disabled])]:bg-white/30 dark:data-[te-input-state-active]:bg-white/30 dark:data-[te-select-option-selected]:data-[te-input-state-active]:bg-white/30 dark:data-[te-select-option-disabled]:text-gray-400 dark:data-[te-input-multiple-active]:bg-white/30",
+  selectAllOption: "",
   selectOptionGroup: "group/opt",
   selectOptionGroupLabel:
     "flex flex-row items-center w-full px-4 truncate bg-transparent text-black/50 select-none dark:text-gray-300",
@@ -211,6 +216,7 @@ const DefaultClassesType = {
   selectLabelSizeLg: "string",
   selectLabelSizeSm: "string",
   selectOption: "string",
+  selectAllOption: "string",
   selectOptionGroup: "string",
   selectOptionGroupLabel: "string",
   selectOptionIcon: "string",
@@ -536,7 +542,7 @@ class Select {
       this._config,
       this._label,
       this._classes,
-      this._element.name
+      this._config.customArrow
     );
     this._element.parentNode.insertBefore(template, this._element);
     Manipulator.addClass(this._element, this._classes.initialized);
@@ -846,7 +852,7 @@ class Select {
       this._selectionModel.clear();
       selected.deselect();
     }
-    this._fakeValue.innerHTML = "";
+    this._fakeValue.textContent = "";
     this._updateInputValue();
     this._updateFakeLabelPosition();
     this._updateLabelPosition();
@@ -1425,6 +1431,9 @@ class Select {
 
   close() {
     const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
+    const transitionTime = getTransitionDurationFromElement(
+      this._dropdownContainer.children[0]
+    );
 
     if (!this._isOpen || closeEvent.defaultPrevented) {
       return;
@@ -1469,7 +1478,7 @@ class Select {
       this._popper.destroy();
       this._isOpen = false;
       EventHandler.off(this.dropdown, "transitionend");
-    }, ANIMATION_TRANSITION_TIME);
+    }, transitionTime);
   }
 
   _resetFilterState() {
@@ -1656,6 +1665,7 @@ class Select {
     }
 
     this._updateSelections();
+    this._emitValueChangeEvent(this.value);
   }
 
   _selectByValue(value) {

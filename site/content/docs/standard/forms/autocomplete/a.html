@@ -1,0 +1,879 @@
+---
+---
+
+<!--Section: Docs content-->
+<section>
+  <!--Section: Import-->
+  <section id="api-section-import">
+    <!--Title-->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+      id="import"
+      data-te-spy-item>
+      Import
+    </h2>
+
+    <p>
+      Importing components depends on how your application works. If you intend
+      to use the TW elements <code>ES</code> format, you can import the
+      component and then create a new instance with it. If you are going to use
+      the <code>UMD</code> format, just import the
+      <code>tw-elements</code> package.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example41" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example41">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        import { Autocomplete } from "tw-elements";
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        import "tw-elements";
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+  </section>
+  <!--Section: Import-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Usage-->
+  <section id="api-section-usage">
+    <!--Title-->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+      id="usage"
+      data-te-spy-item>
+      Usage
+    </h2>
+
+    <h4 class="mb-4 font-bold">Via JavaScript</h4>
+
+    <p>
+      You can access an instance from your Javascript code, by using the
+      <code class="text-red-500 dark:text-red-300">getInstance</code> static
+      method of the Autocomplete class - it allows making use of all the public
+      methods listed in the
+      <a class="text-blue-600" href="#api-section-methods">Methods</a> section.
+    </p>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example4" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example4">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const basicAutocomplete = document.querySelector('#basic');
+        
+        new Autocomplete(basicAutocomplete, {
+          filter: dataFilter,
+        });
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        const basicAutocomplete = document.querySelector('#basic');
+        
+        new te.Autocomplete(basicAutocomplete, {
+          filter: dataFilter,
+        });
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+    <!--Section: Usage-->
+  </section>
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Options-->
+  <section id="api-section-options">
+    <!-- Section title -->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+      id="options"
+      data-te-spy-item>
+      Options
+    </h2>
+
+    <p class="mb-4">
+      Options can be passed via data attributes or JavaScript. For data
+      attributes, append the option name to
+      <code class="text-red-500 dark:text-red-300">data-te-</code>, as in
+      <code class="text-red-500 dark:text-red-300"
+        >data-te-no-results="No results ..."</code
+      >.
+    </p>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Type
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >autoSelect</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Boolean
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">false</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Enables auto selecting on Tab press.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >container</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">'body'</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Allows to set the parent element for the autocomplete.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >customContent</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">''</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Custom HTML template that will be displayed at the end of
+                    the component dropdown.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300">debounce</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">300</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Delay between search queries in milliseconds, improves the
+                    component performance.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >displayValue</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Function
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >(value) => value</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Function executed for complex search results, to get value
+                    to display in the results list.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300">filter</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Function
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">-</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Function that returns filtered data to the component.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >itemContent</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Function
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">-</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Function that returns custom template for result item.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >listHeight</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">190</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Height of the result list.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >loaderCloseDelay</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">300</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Delay in closing loader.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >noResults</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    String
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >'No results found'</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Message that will be displayed in the component dropdown if
+                    no result is found.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                    <code class="text-red-500 dark:text-red-300"
+                      >threshold</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Number
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">0</code>
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Minimum input length to start search query.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Options-->
+
+  <hr class="my-5 dark:border-gray-600" />
+
+  <!--Section: Classes-->
+  <section id="api-section-classes">
+    <!-- Section title -->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+      id="classes"
+      data-te-spy-item>
+      Classes
+    </h2>
+
+    <p>
+      Custom classes can be passed via data attributes or JavaScript. For data
+      attributes, append the class name to
+      <code>data-te-class</code>, as in
+      <code
+        >data-te-class-autocomplete-list="list-none m-0 p-0
+        overflow-y-auto"</code
+      >
+    </p>
+    <div
+      class="my-5 rounded-md border-l-[6px] border-solid border-primary-400 bg-primary-100 p-4 dark:border-primary-300 dark:bg-primary-300/30 ">
+      <strong>Note:</strong> To apply styling to an input element, you can
+      utilize the identical classes as those available in the
+      <a
+        href="/docs/standard/forms/inputs/#docsTabsAPI"
+        target="_blank"
+        class="text-primary-700 dark:text-primary-400"
+        >Inputs API</a
+      >.
+    </div>
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Default
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>autocompleteItem</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    flex flex-row items-center justify-between w-full px-4
+                    py-[0.4375rem] truncate text-gray-700 bg-transparent
+                    select-none cursor-pointer
+                    hover:[&:not([data-te-autocomplete-option-disabled])]:bg-black/5
+                    data-[te-autocomplete-item-active]:bg-black/5
+                    data-[data-te-autocomplete-option-disabled]:text-gray-400
+                    data-[data-te-autocomplete-option-disabled]:cursor-default
+                    dark:text-gray-200
+                    dark:hover:[&:not([data-te-autocomplete-option-disabled])]:bg-white/30
+                    dark:data-[te-autocomplete-item-active]:bg-white/30
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Classes applied to each result item in the dropdown list.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>autocompleteList</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    list-none m-0 p-0 overflow-y-auto
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Classes applied to the dropdown list.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>autocompleteLoader</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    absolute right-1 top-2 w-[1.4rem] h-[1.4rem] border-[0.15em]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Classes applied to the loader element (async).
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>dropdown</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    relative outline-none min-w-[100px] m-0 scale-y-[0.8]
+                    opacity-0 bg-white
+                    shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)]
+                    transition duration-200 motion-reduce:transition-none
+                    data-[te-autocomplete-state-open]:scale-y-100
+                    data-[te-autocomplete-state-open]:opacity-100
+                    dark:bg-zinc-700
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Classes applied to the dropdown element.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>dropdownContainer</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    z-[1070]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Classes applied to the dropdown container.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>scrollbar</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar]:h-1
+                    [&::-webkit-scrollbar-button]:block
+                    [&::-webkit-scrollbar-button]:h-0
+                    [&::-webkit-scrollbar-button]:bg-transparent
+                    [&::-webkit-scrollbar-track-piece]:bg-transparent
+                    [&::-webkit-scrollbar-track-piece]:rounded-none
+                    [&::-webkit-scrollbar-track-piece]:
+                    [&::-webkit-scrollbar-track-piece]:rounded-l
+                    [&::-webkit-scrollbar-thumb]:h-[50px]
+                    [&::-webkit-scrollbar-thumb]:bg-[#999]
+                    [&::-webkit-scrollbar-thumb]:rounded
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Classes applied to the dropdown container. Contains styling
+                    for the scrollbar element.
+                  </td>
+                </tr>
+
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code>spinnerIcon</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    inline-block h-8 w-8 animate-spin rounded-full border-4
+                    border-solid border-current border-r-transparent
+                    align-[-0.125em]
+                    motion-reduce:animate-[spin_1.5s_linear_infinite]
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    Sets styles for the spinner icon. Contains the animation and
+                    the main appearance of the spinner.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Section: Classes-->
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Methods-->
+  <section id="api-section-methods">
+    <!-- Section title -->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+      id="methods"
+      data-te-spy-item>
+      Methods
+    </h2>
+
+    <div
+      class="my-6 rounded-lg bg-red-100 px-6 py-5 text-base text-red-700"
+      role="alert">
+      <p class="mb-2">
+        <strong>Asynchronous methods and transitions:</strong>
+        <br />
+        All API methods are <strong>asynchronous</strong> and start a
+        <strong>transition</strong>. They return to the caller as soon as the
+        transition is started but <strong>before it ends</strong>. In addition,
+        a method call on a
+        <strong>transitioning component will be ignored</strong>.
+      </p>
+    </div>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Method
+                  </th>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Description
+                  </th>
+                  <th scope="col" class="px-6 py-4">Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">open</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Manually opens a component dropdown
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >myAutocomplete.open()</code
+                    >
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">close</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Manually closes a component dropdown
+                  </td>
+                  <td class="px-6 py-4">
+                    <code class="text-red-500 dark:text-red-300"
+                      >myAutocomplete.close()</code
+                    >
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300">dispose</code>
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Disposes an autocomplete instance
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >myAutocomplete.dispose()</code
+                    >
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >getInstance</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which allows you to get the autocomplete
+                    instance associated to a DOM element.
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >Autocomplete.getInstance(myAutocomplete)</code
+                    >
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >getOrCreateInstance</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Static method which returns the autocomplete instance
+                    associated to a DOM element or create a new one in case it
+                    wasn't initialized.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >Autocomplete.getOrCreateInstance(myAutocomplete)</code
+                    >
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >initSearch(value)</code
+                    >
+                  </td>
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    Initialize search results for a specific value.
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >myAutocomplete.initSearch('')</code
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example5" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example5">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "javascript,umd" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const myAutocomplete = document.getElementById('myAutocomplete')
+        const autocomplete = new Autocomplete(myAutocomplete)
+        autocomplete.open()
+        {{< /twsnippet/code >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code lang="js" >}}
+        const myAutocomplete = document.getElementById('myAutocomplete')
+        const autocomplete = new te.Autocomplete(myAutocomplete)
+        autocomplete.open()
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+    <!--Section: Methods-->
+  </section>
+
+  <hr class="mb-5 dark:border-gray-600" />
+
+  <!--Section: Events-->
+  <section id="api-section-events">
+    <!-- Section title -->
+    <h2
+      class="mb-5 mt-0 text-3xl font-semibold leading-normal"
+      id="events"
+      data-te-spy-item>
+      Events
+    </h2>
+
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="inline-block min-w-full py-2">
+          <div class="overflow-hidden">
+            <table
+              class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+              <thead
+                class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                <tr>
+                  <th
+                    scope="col"
+                    class="border-r px-6 py-4 dark:border-neutral-500">
+                    Event type
+                  </th>
+                  <th scope="col" class="px-6 py-4">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >open.te.autocomplete</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event fires immediately when the autocomplete dropdown
+                    is opened.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >close.te.autocomplete</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event fires immediately when the autocomplete dropdown
+                    is closed.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >itemSelect.te.autocomplete</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event fires immediately when the autocomplete item is
+                    selected.
+                  </td>
+                </tr>
+                <tr
+                  class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                  <td
+                    class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                    <code class="text-red-500 dark:text-red-300"
+                      >update.te.autocomplete</code
+                    >
+                  </td>
+                  <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                    This event fires immediately when the autocomplete results
+                    list is updated.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Section: Code-->
+    {{< twsnippet/no-demo id="api-example6" >}}
+    <section class="!visible hidden" data-te-collapse-item id="api-example6">
+      <div class="pt-4">
+        {{< twsnippet/wrapper "JavaScript" >}}
+        <!-- prettier-ignore -->
+        {{< twsnippet/code active=true lang="js" >}}
+        const myAutocomplete = document.getElementById('myAutocomplete')
+        myAutocomplete.addEventListener('open.te.autocomplete', (e) => {
+          // do something...
+        })
+        {{< /twsnippet/code >}}
+        {{< /twsnippet/wrapper >}}
+      </div>
+    </section>
+    <!--Section: Code-->
+    <!--Section: Events-->
+  </section>
+  <!--Section: Docs content-->
+</section>

@@ -1,11 +1,13 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
@@ -59,7 +61,7 @@ function _setSizeClasses(element, config, defaultSize, smSize, lgSize) {
   }
 }
 
-export function getWrapperTemplate(id, config, label, classes, selectName) {
+export function getWrapperTemplate(id, config, label, classes, customArrow) {
   const wrapper = document.createElement("div");
   wrapper.setAttribute("id", id);
   wrapper.setAttribute(DATA_SELECT_WRAPPER, "");
@@ -93,7 +95,6 @@ export function getWrapperTemplate(id, config, label, classes, selectName) {
   input.setAttribute("aria-disabled", disabled);
   input.setAttribute("aria-haspopup", "true");
   input.setAttribute("aria-expanded", false);
-  input.name = selectName;
 
   if (config.tabIndex) {
     input.setAttribute("tabIndex", config.tabIndex);
@@ -175,7 +176,7 @@ export function getWrapperTemplate(id, config, label, classes, selectName) {
     Manipulator.addClass(arrow, classes.selectArrowWhite);
   }
 
-  arrow.innerHTML = iconSVGTemplate;
+  arrow.innerHTML = customArrow ? customArrow : iconSVGTemplate;
 
   formOutline.appendChild(input);
 
@@ -356,7 +357,10 @@ function createSelectAllNode(option, options, config, classes) {
   const isSelected = allOptionsSelected(options);
   const optionNode = element("div");
   optionNode.setAttribute(DATA_OPTION, "");
-  Manipulator.addClass(optionNode, classes.selectOption);
+
+  const classList = classes.selectAllOption || classes.selectOption;
+
+  Manipulator.addClass(optionNode, classList);
   optionNode.setAttribute(DATA_OPTION_ALL, "");
   Manipulator.addStyle(optionNode, {
     height: `${config.selectOptionHeight}px`,
@@ -505,7 +509,7 @@ function createOptionGroupTemplate(optionGroup, config, classes) {
 
 export function getFakeValueTemplate(value, classes) {
   const fakeValue = element("div");
-  fakeValue.innerHTML = value;
+  fakeValue.textContent = value;
   Manipulator.addClass(fakeValue, classes.selectLabel);
 
   Manipulator.addClass(fakeValue, classes.selectFakeValue);

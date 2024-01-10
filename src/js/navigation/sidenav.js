@@ -1,11 +1,13 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
@@ -208,8 +210,23 @@ class Sidenav {
 
     const { x } = this._element.getBoundingClientRect();
 
-    if (this.options.sidenavRight) {
-      return Math.abs(x - containerEnd) > 10;
+    if (
+      (this.options.sidenavRight && !isRTL()) ||
+      (!this.options.sidenavRight && isRTL())
+    ) {
+      let scrollBarWidth = 0;
+      // check if there is scrollbar and account for it width if there is one
+      if (this.container.scrollHeight > this.container.clientHeight) {
+        scrollBarWidth =
+          this.container.offsetWidth - this.container.clientWidth;
+      }
+
+      if (this.container.tagName === "BODY") {
+        const documentWidth = document.documentElement.clientWidth;
+        scrollBarWidth = Math.abs(window.innerWidth - documentWidth);
+      }
+
+      return Math.abs(x + scrollBarWidth - containerEnd) > 10;
     }
 
     return Math.abs(x - containerStart) < 10;

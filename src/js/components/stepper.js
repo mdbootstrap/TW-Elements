@@ -1,11 +1,13 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
@@ -40,6 +42,9 @@ const REF = `data-te-${NAME}`;
 const STEPPER_HORIZONTAL = "horizontal";
 const STEPPER_VERTICAL = "vertical";
 
+const EVENT_CHANGE_STEP = `onChangeStep${EVENT_KEY}`;
+const EVENT_CHANGED_STEP = `onChangedStep${EVENT_KEY}`;
+
 const DefaultType = {
   stepperType: "string",
   stepperLinear: "boolean",
@@ -51,6 +56,11 @@ const DefaultType = {
   stepperVerticalBreakpoint: "number",
   stepperMobileBreakpoint: "number",
   stepperMobileBarBreakpoint: "number",
+  stepperAnimationDuration: "number",
+  slideInLeftAnimation: "string",
+  slideOutLeftAnimation: "string",
+  slideInRightAnimation: "string",
+  slideOutRightAnimation: "string",
 };
 
 const Default = {
@@ -64,6 +74,11 @@ const Default = {
   stepperVerticalBreakpoint: 0,
   stepperMobileBreakpoint: 0,
   stepperMobileBarBreakpoint: 4,
+  stepperAnimationDuration: 800,
+  slideInLeftAnimation: "animate-[slide-in-left_0.8s_both]",
+  slideOutLeftAnimation: "animate-[slide-out-left_0.8s_both]",
+  slideInRightAnimation: "animate-[slide-in-right_0.8s_both]",
+  slideOutRightAnimation: "animate-[slide-out-right_0.8s_both]",
 };
 
 const EVENT_MOUSEDOWN = `mousedown${EVENT_KEY}`;
@@ -86,6 +101,7 @@ class Stepper {
     this._currentView = "";
     this._activeStepIndex = 0;
     this._verticalStepperStyles = [];
+    this._timeout = 0;
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
@@ -274,6 +290,21 @@ class Stepper {
       this._toggleDisabled();
     }
 
+    const activeStepIndex = this._activeStepIndex;
+
+    const changeStepEvent = EventHandler.trigger(
+      this.activeStep,
+      EVENT_CHANGE_STEP,
+      {
+        currentStep: this._activeStepIndex,
+        nextStep: index,
+      }
+    );
+
+    if (index > this._activeStepIndex && changeStepEvent.defaultPrevented) {
+      return;
+    }
+
     this._showElement(
       SelectorEngine.findOne(`${CONTENT_REF}`, this._steps[index])
     );
@@ -302,6 +333,11 @@ class Stepper {
       if (step[this._activeStepIndex] !== index) {
         step.removeAttribute("data-te");
       }
+    });
+
+    EventHandler.trigger(this.activeStep, EVENT_CHANGED_STEP, {
+      currentStep: this._activeStepIndex,
+      prevStep: activeStepIndex,
     });
   }
 
@@ -602,8 +638,14 @@ class Stepper {
       `${HEAD_ICON_REF}`,
       this._element
     );
-    stepperHeadIcon[index].classList.add("!bg-success-100");
-    stepperHeadIcon[index].classList.add("!text-success-700");
+
+    if (!this._options.stepperNoEditable) {
+      stepperHeadIcon[index].classList.add("!bg-success-100");
+      stepperHeadIcon[index].classList.add("!text-success-700");
+    } else {
+      this._steps[index].classList.add("pointer-events-none");
+    }
+
     stepperHeadIcon[index].classList.remove("!bg-danger-100");
     stepperHeadIcon[index].classList.remove("!text-danger-700");
 
@@ -614,7 +656,9 @@ class Stepper {
   _hideInactiveSteps() {
     this._steps.forEach((el) => {
       if (!el.getAttribute("data-te")) {
-        this._hideElement(SelectorEngine.findOne(`${CONTENT_REF}`, el));
+        const content = SelectorEngine.findOne(`${CONTENT_REF}`, el);
+        content.classList.remove("translate-x-[150%]");
+        this._hideElement(content);
       }
     });
   }
@@ -646,7 +690,7 @@ class Stepper {
 
     // prevent hiding during a quick step change
     if (!isActive && this._currentView !== STEPPER_VERTICAL) {
-      // stepContent.style.display = 'none';
+      stepContent.style.display = "none";
     } else {
       stepContent.classList.add("!my-0");
       stepContent.classList.add("!py-0");
@@ -665,6 +709,9 @@ class Stepper {
   }
 
   _animateHorizontalStep(index) {
+    clearTimeout(this._timeout);
+    this._clearStepsAnimation();
+
     const isForward = index > this._activeStepIndex;
     const nextStepContent = SelectorEngine.findOne(
       `${CONTENT_REF}`,
@@ -686,26 +733,35 @@ class Stepper {
       }
     });
 
-    const CLASS_NAME_SLIDE_RIGHT = "translate-x-[150%]";
-    const CLASS_NAME_SLIDE_LEFT = "-translate-x-[150%]";
-    const CLASS_NAME_SLIDE_IN = "translate-0";
-
     if (isForward) {
-      activeStepAnimation = CLASS_NAME_SLIDE_LEFT;
-      nextStepAnimation = CLASS_NAME_SLIDE_IN;
-      nextStepContent.classList.remove("translate-x-[150%]");
-      nextStepContent.classList.remove("-translate-x-[150%]");
+      activeStepAnimation = this._options.slideOutLeftAnimation;
+      nextStepAnimation = this._options.slideInRightAnimation;
     } else {
-      activeStepAnimation = CLASS_NAME_SLIDE_RIGHT;
-      nextStepAnimation = CLASS_NAME_SLIDE_IN;
-      nextStepContent.classList.remove("-translate-x-[150%]");
-      nextStepContent.classList.remove("translate-x-[150%]");
+      activeStepAnimation = this._options.slideOutRightAnimation;
+      nextStepAnimation = this._options.slideInLeftAnimation;
     }
 
     activeStepContent.classList.add(activeStepAnimation);
     nextStepContent.classList.add(nextStepAnimation);
 
     this._setHeight(this._steps[index]);
+
+    this._timeout = setTimeout(() => {
+      this._hideElement(activeStepContent);
+      this._clearStepsAnimation();
+    }, this._options.stepperAnimationDuration);
+  }
+
+  _clearStepsAnimation() {
+    this._steps.forEach((el) => {
+      const step = SelectorEngine.findOne(`${CONTENT_REF}`, el);
+      step.classList.remove(
+        this._options.slideInLeftAnimation,
+        this._options.slideOutLeftAnimation,
+        this._options.slideInRightAnimation,
+        this._options.slideOutRightAnimation
+      );
+    });
   }
 
   _animateVerticalStep(index) {

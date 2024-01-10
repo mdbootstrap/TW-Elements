@@ -1,11 +1,13 @@
 /*
 --------------------------------------------------------------------------
-Tailwind Elements is an open-source UI kit of advanced components for TailwindCSS.
+TW Elements is an open-source UI kit of advanced components for TailwindCSS.
 Copyright © 2023 MDBootstrap.com
 
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
@@ -14,6 +16,7 @@ import Data from "../dom/data";
 import EventHandler from "../dom/event-handler";
 import Manipulator from "../dom/manipulator";
 import SelectorEngine from "../dom/selector-engine";
+import { getStyle } from "../util/getStyle";
 
 /*
 ------------------------------------------------------------------------
@@ -30,15 +33,40 @@ const GRADIENT =
 const SELECTOR_COMPONENT = ["[data-te-ripple-init]"];
 const DEFAULT_RIPPLE_COLOR = [0, 0, 0];
 
+// prettier-ignore
 const BOOTSTRAP_COLORS = [
-  { name: "primary", gradientColor: "#3B71CA" },
-  { name: "secondary", gradientColor: "#9FA6B2" },
-  { name: "success", gradientColor: "#14A44D" },
-  { name: "danger", gradientColor: "#DC4C64" },
-  { name: "warning", gradientColor: "#E4A11B" },
-  { name: "info", gradientColor: "#54B4D3" },
-  { name: "light", gradientColor: "#fbfbfb" },
-  { name: "dark", gradientColor: "#262626" },
+  {
+    name: "primary",
+    gradientColor: getStyle("text-primary", { defaultValue: "#3B71CA", inherit: false }),
+  },
+  {
+    name: "secondary",
+    gradientColor: getStyle("text-secondary", { defaultValue: "#9FA6B2", inherit: false }),
+  },
+  {
+    name: "success",
+    gradientColor: getStyle("text-success", { defaultValue: "#14A44D", inherit: false }),
+  },
+  {
+    name: "danger",
+    gradientColor: getStyle("text-danger", { defaultValue: "#DC4C64", inherit: false }),
+  },
+  {
+    name: "warning",
+    gradientColor: getStyle("text-warning", { defaultValue: "#E4A11B", inherit: false }),
+  },
+  {
+    name: "info",
+    gradientColor: getStyle("text-info", { defaultValue: "#54B4D3", inherit: false }),
+  },
+  {
+    name: "light",
+    gradientColor: "#fbfbfb",
+  },
+  {
+    name: "dark",
+    gradientColor: "#262626",
+  },
 ];
 
 // Sets value when run opacity transition

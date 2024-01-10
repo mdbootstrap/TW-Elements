@@ -1,6 +1,6 @@
 {
   "name": "tw-elements",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "license": "AGPL",
   "homepage": "https://tailwind-elements.com/",
@@ -29,7 +29,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged"
+      "pre-commit": "lint-staged && pretty-quick --staged && jest test/ --collectCoverageFrom=src/js/**/*.js"
     }
   },
   "lint-staged": {
@@ -46,6 +46,7 @@
     "material design"
   ],
   "devDependencies": {
+    "@babel/preset-env": "^7.23.2",
     "autoprefixer": "^10.4.13",
     "babel-eslint": "^10.1.0",
     "bestzip": "^2.2.0",
