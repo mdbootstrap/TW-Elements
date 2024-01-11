@@ -761,6 +761,14 @@ module.exports = plugin(
             800: "#236D86",
             900: "#1A5265",
           },
+          surface: {
+            DEFAULT: "#4f4f4f",
+            dark: "#424242",
+          },
+          body: {
+            DEFAULT: "#fff",
+            dark: "#303030",
+          },
         },
       },
     },
