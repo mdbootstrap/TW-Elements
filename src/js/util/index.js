@@ -174,7 +174,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
 };
 
 const isVisible = (element) => {
-  if (!element || element.getClientRects().length === 0) {
+  if (!element) {
     return false;
   }
 
@@ -183,10 +183,9 @@ const isVisible = (element) => {
     const parentNodeStyle = getComputedStyle(element.parentNode);
 
     return (
-      getComputedStyle(element).getPropertyValue("visibility") === "visible" ||
-      (elementStyle.display !== "none" &&
-        parentNodeStyle.display !== "none" &&
-        elementStyle.visibility !== "hidden")
+      elementStyle.display !== "none" &&
+      parentNodeStyle.display !== "none" &&
+      elementStyle.visibility !== "hidden"
     );
   }
 
