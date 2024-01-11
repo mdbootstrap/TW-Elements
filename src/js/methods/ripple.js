@@ -115,6 +115,7 @@ class Ripple {
     this._element = element;
     this._options = this._getConfig(options);
     this._classes = this._getClasses(classes);
+    this._currentColor = this._options.rippleColor;
 
     if (this._element) {
       Data.setData(element, DATA_KEY, this);
@@ -142,7 +143,7 @@ class Ripple {
 
   dispose() {
     Data.removeData(this._element, DATA_KEY);
-    EventHandler.off(this._element, "click", this._clickHandler);
+    EventHandler.off(this._element, "mousedown", this._clickHandler);
     this._element = null;
     this._options = null;
   }

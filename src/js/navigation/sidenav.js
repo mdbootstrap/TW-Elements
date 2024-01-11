@@ -800,7 +800,7 @@ class Sidenav {
       let wave = Ripple.getInstance(link);
       let color = this.options.sidenavColor;
 
-      if (wave && wave._options.sidenavColor !== this.options.sidenavColor) {
+      if (wave && wave._currentColor !== this.options.sidenavColor) {
         wave.dispose();
       } else if (wave) {
         return;
