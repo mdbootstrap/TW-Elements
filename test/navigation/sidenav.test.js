@@ -6,21 +6,19 @@ Copyright © 2023 MDBootstrap.com
 Unless a custom, individually assigned license has been granted, this program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 In addition, a custom license may be available upon request, subject to the terms and conditions of that license. Please contact tailwind@mdbootstrap.com for more information on obtaining a custom license.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
 If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please check out our pricing: https://tw-elements.com/pro/
 --------------------------------------------------------------------------
 */
 
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import { clearFixture, getFixture, jQueryMock } from "../mocks";
 import { ENTER, TAB, ESCAPE } from "../../src/js/util/keycodes";
-
-// eslint-disable-next-line no-unused-vars
 import initTE from "../../src/js/autoinit/index";
-
 import Sidenav from "../../src/js/navigation/sidenav";
 import Collapse from "../../src/js/components/collapse";
-
-/* eslint-disable no-undef */
 
 jest.mock("../../src/js/util/touch/index");
 
@@ -369,16 +367,14 @@ describe("Sidenav", () => {
     });
 
     it("should check if all items are collapsed", () => {
+      collapse.style.display = "none";
       const instance = new Sidenav(fixtureEl);
       instance.show();
 
       expect(instance._isAllCollapsed()).toBe(true);
 
-      collapse.getClientRects = jest.fn(() => [
-        {
-          width: 100,
-        },
-      ]);
+      collapse.style.display = "block";
+
       expect(instance._isAllCollapsed()).toBe(false);
     });
   });
