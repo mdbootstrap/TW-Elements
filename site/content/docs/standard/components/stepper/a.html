@@ -72,9 +72,9 @@
         <!-- prettier-ignore -->
         {{< twsnippet/code active=true lang="html" >}}
         <ul
-          data-te-stepper-init
           id="stepper"
-          class="relative m-0 flex w-3/4 list-none justify-between overflow-hidden p-0 transition-[height] duration-200 ease-in-out">
+          data-te-stepper-init
+          class="relative m-0 flex w-full list-none justify-between overflow-hidden p-0 transition-[height] duration-200 ease-in-out">
           ...
         </ul>
         {{< /twsnippet/code >}}
@@ -180,18 +180,19 @@
                     class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                     <td
                       class="border-r px-6 py-4 font-medium dark:border-neutral-500">
-                      <code>stepperType</code>
+                      <code>stepperHeadClick</code>
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      string
+                      Boolean
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>'horizontal'</code>
+                      <code>false</code>
                     </td>
                     <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                      Set stepper view.
+                      Set to <code>true</code> to block the possibility of
+                      changing a step by clicking on another step.
                     </td>
                   </tr>
                   <tr
@@ -215,12 +216,172 @@
                   <tr
                     class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                     <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperMobileBackBtn</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      String
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>"BACK"</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets custom text for the BACK button.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperMobileBackBtnIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      String
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>
+                        `&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor"> &lt;path stroke-linecap="round"
+                        stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"
+                        /> &lt;/svg>`
+                      </code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets custom icon for the BACK button.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperMobileBarBreakpoint</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Number
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code> 4 </code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets the step limit after which the progress bar will
+                      appear in the mobile view instead of the dots.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperMobileBreakpoint</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Number
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code> 0 </code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets the resolution below which the stepper will switch to
+                      mobile.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperMobileNextBtn</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      String
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code> "NEXT" </code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets custom text for the NEXT button.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperMobileNextBtnIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      String
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>
+                        `&lt;svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor"> &lt;path stroke-linecap="round"
+                        stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        &lt;/svg>`
+                      </code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets custom text for the NEXT button.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperMobileOfTxt</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      String
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code> "of" </code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets custom <code>of</code> value in the mobile stepper
+                      head.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepperMobileStepTxt</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      String
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code> "step" </code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets custom <code>step</code> value in the mobile stepper
+                      head.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
                       class="border-r px-6 py-4 font-medium dark:border-neutral-500">
                       <code>stepperNoEditable</code>
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      boolean
+                      Boolean
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -235,11 +396,48 @@
                     class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                     <td
                       class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>stepperType</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      String
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>'horizontal'</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Set stepper view.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
+                      <code>stepperVerticalBreakpoint</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Number
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>0</code>
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets the resolution below which the stepper will switch to
+                      vertical.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500">
                       <code>slideInLeftAnimation</code>
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      string
+                      String
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -257,7 +455,7 @@
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      string
+                      String
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -275,7 +473,7 @@
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      string
+                      String
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -293,7 +491,7 @@
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      string
+                      String
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -314,11 +512,428 @@
     <!-- Section: Options-->
 
     <hr class="my-5 dark:border-neutral-600" />
-    <!-- Section: Classes-->
 
     <!-- Section: Classes-->
+    <section id="api-section-classes">
+      <!-- Section title -->
+      <h2
+        class="mb-5 mt-0 text-3xl font-semibold leading-normal text-gray-800 dark:text-gray-200"
+        data-te-spy-item>
+        Classes
+      </h2>
 
-    <!-- <hr class="my-5 dark:border-neutral-600" /> -->
+      <p>
+        Custom classes can be passed via data attributes or JavaScript. For data
+        attributes, append the class name to
+        <code>data-te-class</code>, as in
+        <code>data-te-class-mobile-footer=""</code>.
+      </p>
+
+      <div class="flex flex-col">
+        <div class="overflow-x-auto">
+          <div class="inline-block min-w-full py-2">
+            <div class="overflow-hidden">
+              <table
+                class="min-w-full border text-left text-sm font-light text-gray-900 dark:border-neutral-500 dark:text-gray-100">
+                <thead
+                  class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      class="border-r px-6 py-4 dark:border-neutral-500">
+                      Default
+                    </th>
+                    <th scope="col" class="px-6 py-4">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>activeStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      !bg-primary-100 !text-primary-700 dark:!bg-[#0c1728]
+                      dark:!text-[#628dd5]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets active styles for the step head icon. Color classes
+                      should be marked as important to properly being applied.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>activeStepHeadText</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      !font-medium !text-black/[.55] dark:!text-white/[.55]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets active styles for the step head text. Color classes
+                      should be marked as important to properly being applied.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>completedStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      bg-success-100 text-success-700 dark:bg-[#04210f]
+                      dark:text-[#72c894]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets completed styles for the step head icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>completedStepHeadText</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      -
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets completed styles for the step head text.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>defaultStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      bg-neutral-500 text-white
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets default styles for the step head icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>defaultStepHeadText</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      text-black/[.55] dark:text-white/[.55]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets default styles for the step head text.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>disabledStepHead</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      !cursor-default
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets disabled styles for the step head.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>disabledStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      bg-neutral-500 text-neutral-300 dark:text-white/50
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets disabled styles for the step head icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>disabledStepHeadText</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      text-black/[.3] dark:text-white/[.3]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets disabled styles for the step head text.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>invalidStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      bg-danger-100 text-danger-700 dark:bg-[#2c0f14]
+                      dark:text-[#e37083]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets invalid styles for the step head icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>invalidStepHeadText</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      -
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets invalid styles for the step head text.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileActiveStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      !bg-primary
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets active styles for the mobile step head icon. Color
+                      classes should be marked as important to properly being
+                      applied.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileBtnBack</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      flex h-[40px] items-center justify-center rounded pl-4
+                      pr-5 text-xs font-medium uppercase leading-normal
+                      text-neutral-600 transition duration-150 ease-in-out
+                      focus:text-primary-600 hover:bg-neutral-100
+                      focus:outline-none focus:ring-0 dark:text-white
+                      dark:focus:text-neutral-300 dark:hover:bg-zinc-600
+                      dark:hover:bg-opacity-70
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile back button.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileBtnBackIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      pr-2 [&>svg]:h-[18px] [&>svg]:w-[18px]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile back button icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileBtnNext</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      flex h-[40px] items-center justify-center rounded pl-5
+                      pr-4 text-xs font-medium uppercase leading-normal
+                      text-neutral-600 transition duration-150 ease-in-out
+                      focus:text-primary-600 hover:bg-neutral-100
+                      focus:outline-none focus:ring-0 dark:text-white
+                      dark:focus:text-neutral-300 dark:hover:bg-zinc-600
+                      dark:hover:bg-opacity-70
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile next button.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileBtnNextIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      pl-2 [&>svg]:h-[18px] [&>svg]:w-[18px]
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile next button icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileCompletedStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      bg-success
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets completed styles for the mobile step head icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileDefaultStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      bg-neutral-500
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets default styles for the mobile step head icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileDisabledStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      bg-neutral-500
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets disabled styles for the mobile step head icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileFooter</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      absolute flex h-[40px] w-full items-center justify-between
+                      bg-[#fbfbfb] dark:bg-neutral-700
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile stepper footer. The footer
+                      contains the back and next buttons.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileHeader</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      absolute top-0 h-fit w-full bg-[#fbfbfb] px-4 py-2
+                      dark:bg-neutral-700
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile stepper header.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileHeaderText</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      text-base text-neutral-600 dark:text-white
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile stepper header text.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileInvalidStepHeadIcon</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      bg-danger
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets invalid styles for the mobile step head icon.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileProgressBar</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      h-1 bg-primary-600
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile progress bar.
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 font-medium dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>mobileProgressBarWrapper</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      h-1 w-full bg-zinc-100 dark:bg-neutral-600
+                    </td>
+                    <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                      Sets styles for the mobile progress bar wrapper.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Classes-->
+
+    <hr class="my-5 dark:border-neutral-600" />
 
     <!-- Section: Methods-->
     <section id="api-section-methods">
@@ -353,7 +968,7 @@
                 </thead>
                 <tbody>
                   <tr
-                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                       <code>changeStep</code>
@@ -367,39 +982,7 @@
                     </td>
                   </tr>
                   <tr
-                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>getInstance</code>
-                    </td>
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      Static method which allows you to get the stepper instance
-                      associated to a DOM element.
-                    </td>
-                    <td class="px-6 py-4">
-                      <code>Stepper.getInstance(myStepperEl)</code>
-                    </td>
-                  </tr>
-                  <tr
-                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>getOrCreateInstance</code>
-                    </td>
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      Static method which returns the stepper instance
-                      associated to a DOM element or create a new one in case it
-                      wasn't initialized.
-                    </td>
-                    <td
-                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>Stepper.getOrCreateInstance(myStepperEl)</code>
-                    </td>
-                  </tr>
-                  <tr
-                    class="border-b bg-white dark:border-neutral-500 dark:bg-neutral-600">
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                       <code>nextStep</code>
@@ -414,10 +997,10 @@
                     </td>
                   </tr>
                   <tr
-                    class="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                      <code>previousStep</code>
+                      <code>prevStep</code>
                     </td>
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
@@ -426,6 +1009,53 @@
                     <td
                       class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
                       <code>stepper.previousStep()</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>resizeStepper</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Reset the height and view of the stepper.
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>stepper.resizeStepper()</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>getInstance</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Static method which allows you to get the stepper instance
+                      associated to a DOM element.
+                    </td>
+                    <td class="px-6 py-4">
+                      <code>Stepper.getInstance(myStepperEl)</code>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>getOrCreateInstance</code>
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      Static method which returns the stepper instance
+                      associated to a DOM element or create a new one in case it
+                      wasn't initialized.
+                    </td>
+                    <td
+                      class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                      <code>Stepper.getOrCreateInstance(myStepperEl)</code>
                     </td>
                   </tr>
                 </tbody>
@@ -458,12 +1088,12 @@
       <!-- Section: Code-->
       <!-- Section: Methods-->
 
-      <!-- <hr class="mb-5 dark:border-neutral-600" /> -->
+      <hr class="mb-5 dark:border-neutral-600" />
 
       <!-- Section: Events-->
-      <!-- <section id="api-section-events"> -->
-      <!-- Section title -->
-      <!-- <h2
+      <section id="api-section-events">
+        <!-- Section title -->
+        <h2
           class="mb-5 mt-0 text-3xl font-semibold leading-normal"
           data-te-spy-item>
           Events
@@ -491,20 +1121,57 @@
                       class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                       <td
                         class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                        <code>onChangeStep.te.stepper</code>
+                        <code>stepChange.te.stepper </code>
                       </td>
                       <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                        Event emitted before the step change.
+                        This event is emitted before the step change takes
+                        place. By using <code>e.preventDefault()</code> you can
+                        implement custom validation. Information about the
+                        current and next steps can be accessed through the
+                        following properties of the emitted event:
+                        <code>e.currentStep</code> and <code>e.nextStep</code>.
                       </td>
                     </tr>
                     <tr
                       class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
                       <td
                         class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
-                        <code>onChangedStep.te.stepper</code>
+                        <code>stepChanged.te.stepper</code>
                       </td>
                       <td class="px-6 py-4 max-lg:whitespace-nowrap">
-                        Event emitted after the step change.
+                        This event is emitted after the step change takes place.
+                        Information about the current and previous steps can be
+                        accessed through the following properties of the emitted
+                        event: <code>e.currentStep</code> and
+                        <code>e.prevStep</code>.
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>stepValid.te.stepper</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        This event is emitted after successful step validation.
+                        Information about the current and next steps can be
+                        accessed through the following properties of the emitted
+                        event: <code>e.currentStep</code> and
+                        <code>e.nextStep</code>.
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b dark:border-neutral-500 [&:nth-child(even)]:bg-white dark:[&:nth-child(even)]:bg-neutral-600 [&:nth-child(odd)]:bg-gray-100 dark:[&:nth-child(odd)]:bg-neutral-700">
+                      <td
+                        class="border-r px-6 py-4 dark:border-neutral-500 max-lg:whitespace-nowrap">
+                        <code>stepInvalid.te.stepper</code>
+                      </td>
+                      <td class="px-6 py-4 max-lg:whitespace-nowrap">
+                        This event is emitted after unsuccessful step
+                        validation. Information about the current and next steps
+                        can be accessed through the following properties of the
+                        emitted event: <code>e.currentStep</code> and
+                        <code>e.nextStep</code>.
                       </td>
                     </tr>
                   </tbody>
@@ -512,30 +1179,31 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
-      <!-- Section: Code-->
-      <!-- {{< twsnippet/no-demo id="api-example6" >}}
+        <!-- Section: Code-->
+        {{< twsnippet/no-demo id="api-example6" >}}
         <section
           class="!visible hidden"
           data-te-collapse-item
           id="api-example6">
           <div class="pt-4">
-            {{< twsnippet/wrapper "JavaScript" >}} -->
-      <!-- prettier-ignore -->
-      <!-- {{< twsnippet/code active=true lang="js" >}}
-                  const stepOne = document.querySelectorAll('[data-te-stepper-step-ref]')[0];
-                  stepOne.addEventListener('onChangeStep.te.stepper', () => {
-                    // do something...
-                  }); 
-                {{< /twsnippet/code >}}
-                {{< /twsnippet/wrapper >}}
+            <!-- prettier-ignore -->
+            {{< twsnippet/wrapper "JavaScript" >}}
+            {{< twsnippet/code active=true lang="js" >}}
+            const stepperEvents = document.getElementById("stepper-events");
+
+            stepperEvents.addEventListener("stepValid.te.stepper", (e) => {
+              console.log("stepValid", e);
+            });
+            {{< /twsnippet/code >}}
+            {{< /twsnippet/wrapper >}}
           </div>
-        </section> -->
-      <!-- Section: Code-->
-      <!-- Section: Events-->
-      <!-- </section> -->
-      <!-- Section: Docs content-->
+        </section>
+        <!-- Section: Code-->
+        <!-- Section: Events-->
+      </section>
+      <!-- Section: Docs content -->
     </section>
   </section>
 </section>

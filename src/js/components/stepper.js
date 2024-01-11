@@ -28,6 +28,7 @@ import {
   TAB,
 } from "../util/keycodes";
 import Validation from "../forms/validation/validation";
+import BaseComponent from "../base-component";
 
 /*
 ------------------------------------------------------------------------
@@ -46,8 +47,8 @@ const EVENT_KEYUP = `keyup${EVENT_KEY}`;
 const EVENT_RESIZE = `resize${EVENT_KEY}`;
 const EVENT_CLICK = `click${EVENT_KEY}`;
 const EVENT_SUBMIT = `submit${EVENT_KEY}`;
-const EVENT_CHANGE_STEP = `onChangeStep${EVENT_KEY}`;
-const EVENT_CHANGED_STEP = `onChangedStep${EVENT_KEY}`;
+const EVENT_STEP_CHANGE = `stepChange${EVENT_KEY}`;
+const EVENT_STEP_CHANGED = `stepChanged${EVENT_KEY}`;
 const EVENT_INVALID = `stepInvalid${EVENT_KEY}`;
 const EVENT_VALID = `stepValid${EVENT_KEY}`;
 
@@ -78,24 +79,11 @@ const STEPPER_HORIZONTAL = "horizontal";
 const STEPPER_VERTICAL = "vertical";
 const STEPPER_MOBILE = "mobile";
 
-const DefaultType = {
-  stepperType: "string",
-  stepperLinear: "boolean",
-  stepperNoEditable: "boolean",
-  stepperVerticalBreakpoint: "number",
-  stepperMobileBreakpoint: "number",
-  stepperMobileBarBreakpoint: "number",
-  stepperAnimationDuration: "number",
-  slideInLeftAnimation: "string",
-  slideOutLeftAnimation: "string",
-  slideInRightAnimation: "string",
-  slideOutRightAnimation: "string",
-};
-
 const Default = {
   stepperType: STEPPER_HORIZONTAL,
   stepperLinear: false,
   stepperNoEditable: false,
+  stepperHeadClick: true,
   stepperVerticalBreakpoint: 0,
   stepperMobileBreakpoint: 0,
   stepperMobileBarBreakpoint: 4,
@@ -104,17 +92,66 @@ const Default = {
   slideOutLeftAnimation: "animate-[slide-out-left_0.8s_both]",
   slideInRightAnimation: "animate-[slide-in-right_0.8s_both]",
   slideOutRightAnimation: "animate-[slide-out-right_0.8s_both]",
+  stepperMobileStepTxt: "step",
+  stepperMobileOfTxt: "of",
+  stepperMobileNextBtn: "NEXT",
+  stepperMobileBackBtn: "BACK",
+  stepperMobileNextBtnIcon: ` 
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+    </svg>`,
+  stepperMobileBackBtnIcon: `
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M15.75 19.5L8.25 12l7.5-7.5" />
+    </svg>`,
+};
+
+const DefaultType = {
+  stepperType: "string",
+  stepperLinear: "boolean",
+  stepperNoEditable: "boolean",
+  stepperHeadClick: "boolean",
+  stepperVerticalBreakpoint: "number",
+  stepperMobileBreakpoint: "number",
+  stepperMobileBarBreakpoint: "number",
+  stepperAnimationDuration: "number",
+  slideInLeftAnimation: "string",
+  slideOutLeftAnimation: "string",
+  slideInRightAnimation: "string",
+  slideOutRightAnimation: "string",
+  stepperMobileStepTxt: "string",
+  stepperMobileOfTxt: "string",
+  stepperMobileNextBtn: "string",
+  stepperMobileBackBtn: "string",
+  stepperMobileNextBtnIcon: "string",
+  stepperMobileBackBtnIcon: "string",
 };
 
 const DefaultClasses = {
   activeStepHeadIcon:
     "!bg-primary-100 !text-primary-700 dark:!bg-[#0c1728] dark:!text-[#628dd5]",
-  activeStepHeadText: "font-medium dark:text-white/[.55]",
+  activeStepHeadText: "font-medium !text-black/[.55] dark:!text-white/[.55]",
   defaultStepHeadIcon: "bg-neutral-500 text-white",
-  defaultStepHeadText: "text-black/[.55] dark:!text-white/[.55]",
-  disabledStepHead: "text-[#858585] !cursor-default",
-  disabledStepHeadText: "",
-  disabledStepHeadIcon: "!text-neutral-300 dark:!text-white/50",
+  defaultStepHeadText: "text-black/[.55] dark:text-white/[.55]",
+  disabledStepHead: "!cursor-default",
+  disabledStepHeadText: "text-black/[.3] dark:text-white/[.3]",
+  disabledStepHeadIcon: "bg-neutral-500 text-neutral-300 dark:text-white/50",
   invalidStepHeadIcon:
     "bg-danger-100 text-danger-700 dark:bg-[#2c0f14] dark:text-[#e37083]",
   invalidStepHeadText: "",
@@ -124,8 +161,21 @@ const DefaultClasses = {
   mobileActiveStepHeadIcon: "!bg-primary",
   mobileDefaultStepHeadIcon: "bg-neutral-500",
   mobileCompletedStepHeadIcon: "bg-success",
-  mobileDisabledStepHeadIcon: "!bg-neutral-500",
+  mobileDisabledStepHeadIcon: "bg-neutral-500",
   mobileInvalidStepHeadIcon: "bg-danger",
+  mobileHeader:
+    "absolute top-0 h-fit w-full bg-[#fbfbfb] px-4 py-2 dark:bg-neutral-700",
+  mobileHeaderText: "text-base text-neutral-600 dark:text-white",
+  mobileFooter:
+    "absolute flex h-[40px] w-full items-center justify-between bg-[#fbfbfb] dark:bg-neutral-700",
+  mobileBtnBack:
+    "flex h-[40px] items-center justify-center rounded pl-4 pr-5 text-xs font-medium uppercase leading-normal text-neutral-600 transition duration-150 ease-in-out focus:text-primary-600 hover:bg-neutral-100 focus:outline-none focus:ring-0 dark:text-white dark:focus:text-neutral-300 dark:hover:bg-zinc-600 dark:hover:bg-opacity-70",
+  mobileBtnNext:
+    "flex h-[40px] items-center justify-center rounded pl-5 pr-4 text-xs font-medium uppercase leading-normal text-neutral-600 transition duration-150 ease-in-out focus:text-primary-600 hover:bg-neutral-100 focus:outline-none focus:ring-0 dark:text-white dark:focus:text-neutral-300 dark:hover:bg-zinc-600 dark:hover:bg-opacity-70",
+  mobileBtnBackIcon: "pr-2 [&>svg]:h-[18px] [&>svg]:w-[18px]",
+  mobileBtnNextIcon: "pl-2 [&>svg]:h-[18px] [&>svg]:w-[18px]",
+  mobileProgressBarWrapper: "h-1 w-full bg-zinc-100 dark:bg-neutral-600",
+  mobileProgressBar: "h-1 bg-primary-600",
 };
 
 const DefaultClassesType = {
@@ -144,10 +194,22 @@ const DefaultClassesType = {
   mobileDefaultStepHeadIcon: "string",
   mobileCompletedStepHeadIcon: "string",
   mobileDisabledStepHeadIcon: "string",
+  mobileInvalidStepHeadIcon: "string",
+  mobileHeader: "string",
+  mobileHeaderText: "string",
+  mobileFooter: "string",
+  mobileBtnBack: "string",
+  mobileBtnNext: "string",
+  mobileBtnBackIcon: "string",
+  mobileBtnNextIcon: "string",
+  mobileProgressBarWrapper: "string",
+  mobileProgressBar: "string",
 };
 
-class Stepper {
+class Stepper extends BaseComponent {
   constructor(element, options, classes) {
+    super(element);
+
     this._element = element;
     this._options = this._getConfig(options);
     this._classes = this._getClasses(classes);
@@ -264,8 +326,9 @@ class Stepper {
 
     EventHandler.off(window, EVENT_RESIZE);
 
-    Data.removeData(this._element, DATA_KEY);
-    this._element = null;
+    this._unbindMouseDown();
+
+    super.dispose();
   }
 
   changeStep(index) {
@@ -337,7 +400,12 @@ class Stepper {
       );
     });
 
-    this._bindMouseDown();
+    this._setOptional();
+
+    if (this._options.stepperHeadClick) {
+      this._bindMouseDown();
+    }
+
     this._bindKeysNavigation();
 
     switch (this._options.stepperType) {
@@ -409,6 +477,14 @@ class Stepper {
     });
   }
 
+  _unbindMouseDown() {
+    this._steps.forEach((el) => {
+      const stepHead = SelectorEngine.findOne(`${ATTR_HEAD_REF}`, el);
+
+      EventHandler.off(stepHead, EVENT_MOUSEDOWN);
+    });
+  }
+
   _bindResize() {
     EventHandler.on(window, EVENT_RESIZE, () => {
       this.resizeStepper();
@@ -456,101 +532,90 @@ class Stepper {
   _toggleClassesAtBreakpoints(mobile) {
     const { stepperHeadIcon, stepperHeadText } = this.stepElements;
 
+    const toggleHeadIconClasses = (index, removeClass, addClass) => {
+      this._toggleClasses(stepperHeadIcon[index], "removeClass", removeClass);
+      this._toggleClasses(stepperHeadIcon[index], "addClass", addClass);
+    };
+
     this._steps.forEach((el, index) => {
       if (el.hasAttribute(ATTR_ACTIVE_STEP)) {
-        this._toggleClasses(
-          stepperHeadIcon[index],
-          "removeClass",
+        toggleHeadIconClasses(
+          index,
           mobile
             ? this._classes.activeStepHeadIcon
-            : this._classes.mobileActiveStepHeadIcon
-        );
-        this._toggleClasses(
-          stepperHeadIcon[index],
-          "addClass",
+            : this._classes.mobileActiveStepHeadIcon,
           mobile
             ? this._classes.mobileActiveStepHeadIcon
             : this._classes.activeStepHeadIcon
         );
 
         this._toggleClasses(
-          stepperHeadText[index],
+          stepperHeadIcon[index],
           "removeClass",
           mobile
-            ? this._classes.activeStepHeadText
-            : this._classes.mobileActiveStepHeadText
-        );
-        this._toggleClasses(
-          stepperHeadText[index],
-          "addClass",
-          mobile
-            ? this._classes.mobileActiveStepHeadText
-            : this._classes.activeStepHeadText
+            ? this._classes.mobileDefaultStepHeadIcon
+            : this._classes.defaultStepHeadIcon
         );
       }
 
-      if (el.hasAttribute(ATTR_STEP_COMPLETED)) {
-        this._toggleClasses(
-          stepperHeadIcon[index],
-          "removeClass",
+      if (
+        el.hasAttribute(ATTR_STEP_COMPLETED) &&
+        !this._options.stepperNoEditable
+      ) {
+        toggleHeadIconClasses(
+          index,
           mobile
             ? this._classes.completedStepHeadIcon
-            : this._classes.mobileCompletedStepHeadIcon
-        );
-        this._toggleClasses(
-          stepperHeadIcon[index],
-          "addClass",
+            : this._classes.mobileCompletedStepHeadIcon,
           mobile
             ? this._classes.mobileCompletedStepHeadIcon
             : this._classes.completedStepHeadIcon
         );
 
         this._toggleClasses(
-          stepperHeadText[index],
+          stepperHeadIcon[index],
           "removeClass",
           mobile
-            ? this._classes.completedStepHeadText
-            : this._classes.mobileCompletedStepHeadText
+            ? this._classes.mobileDefaultStepHeadIcon
+            : this._classes.defaultStepHeadIcon
         );
-        this._toggleClasses(
-          stepperHeadText[index],
-          "addClass",
-          mobile
-            ? this._classes.mobileCompletedStepHeadText
-            : this._classes.completedStepHeadText
-        );
+
+        this._classes.completedStepHeadText &&
+          this._toggleClasses(
+            stepperHeadText[index],
+            "removeClass",
+            this._classes.defaultStepHeadText
+          );
       }
 
-      if (el.hasAttribute(ATTR_STEP_INVALID)) {
-        this._toggleClasses(
-          stepperHeadIcon[index],
-          "removeClass",
+      if (
+        el.hasAttribute(ATTR_STEP_INVALID) &&
+        !this._options.stepperNoEditable
+      ) {
+        toggleHeadIconClasses(
+          index,
           mobile
             ? this._classes.invalidStepHeadIcon
-            : this._classes.mobileInvalidStepHeadIcon
-        );
-        this._toggleClasses(
-          stepperHeadIcon[index],
-          "addClass",
+            : this._classes.mobileInvalidStepHeadIcon,
           mobile
             ? this._classes.mobileInvalidStepHeadIcon
             : this._classes.invalidStepHeadIcon
         );
 
         this._toggleClasses(
-          stepperHeadText[index],
+          stepperHeadIcon[index],
           "removeClass",
           mobile
-            ? this._classes.invalidStepHeadText
-            : this._classes.mobileInvalidStepHeadText
+            ? this._classes.mobileDefaultStepHeadIcon
+            : this._classes.defaultStepHeadIcon
         );
-        this._toggleClasses(
-          stepperHeadText[index],
-          "addClass",
-          mobile
-            ? this._classes.mobileInvalidStepHeadText
-            : this._classes.invalidStepHeadText
-        );
+
+        this._classes.invalidStepHeadText &&
+          this._toggleClasses(
+            stepperHeadText[index],
+            "removeClass",
+            this._classes.defaultStepHeadText
+          );
       }
     });
   }
@@ -560,7 +625,7 @@ class Stepper {
       setTimeout(() => {
         resolve(Validation.getInstance(element));
       }, 10);
-    }).then((validationInstance) => validationInstance);
+    });
   }
 
   async _setValidation() {
@@ -580,6 +645,12 @@ class Stepper {
               return el.getAttribute(ATTR_VALIDATION_STATE) === "valid";
             })
           );
+
+          wrappersToValidate.forEach((arrOfEl) => {
+            arrOfEl.forEach((el) => {
+              el.removeAttribute(ATTR_VALIDATION_STYLING);
+            });
+          });
 
           if (!isFormValid) {
             event.preventDefault();
@@ -609,12 +680,21 @@ class Stepper {
           event.preventDefault();
           event.stopPropagation();
         }
+
+        this._steps.forEach(async (_, i) => {
+          const isValid = await this._validateStep(i);
+
+          if (!isValid) {
+            this._toggleInvalid(i);
+            EventHandler.trigger(this.activeStep, EVENT_INVALID);
+          }
+        });
       },
       false
     );
   }
 
-  _validateActiveStepRequiredElements() {
+  async _validateActiveStepRequiredElements() {
     let elementsToValidate;
 
     if (!this._isValidationInstance) {
@@ -632,7 +712,7 @@ class Stepper {
       this.activeStep
     );
 
-    return new Promise((resolve) => {
+    return await new Promise((resolve) => {
       setTimeout(() => {
         resolve(
           elementsToValidate.every(
@@ -640,7 +720,7 @@ class Stepper {
           )
         );
       }, 10);
-    }).then((validationResult) => validationResult);
+    });
   }
 
   async _getValidationResult() {
@@ -674,6 +754,15 @@ class Stepper {
       result = false;
     }
 
+    const changeStepEvent = EventHandler.trigger(
+      this.activeStep,
+      EVENT_STEP_CHANGE,
+      {
+        currentStep: this._activeStepIndex,
+        nextStep: index,
+      }
+    );
+
     if (this._options.stepperLinear) {
       const stepsToCheck = index - this.activeStepIndex - 1;
 
@@ -689,7 +778,16 @@ class Stepper {
           this._toggleInvalid(this._activeStepIndex);
 
           result = false;
+        } else if (index === numberOfSteps - 1) {
+          this._toggleCompleted(index);
         }
+
+        const setHeightFunction =
+          this._currentView !== STEPPER_VERTICAL
+            ? () => this._setHeight(this.activeStep)
+            : () => this._setSingleStepHeight(this.activeStep);
+
+        setTimeout(setHeightFunction, 10);
       }
 
       if (index > this._activeStepIndex + 1) {
@@ -717,13 +815,10 @@ class Stepper {
           }
         }
       }
+    }
 
-      const setHeightFunction =
-        this._currentView !== STEPPER_VERTICAL
-          ? () => this._setHeight(this.activeStep)
-          : () => this._setSingleStepHeight(this.activeStep);
-
-      setTimeout(setHeightFunction, 100);
+    if (index > this._activeStepIndex && changeStepEvent.defaultPrevented) {
+      result = false;
     }
 
     return result;
@@ -737,19 +832,6 @@ class Stepper {
     }
 
     const activeStepIndex = this._activeStepIndex;
-
-    const changeStepEvent = EventHandler.trigger(
-      this.activeStep,
-      EVENT_CHANGE_STEP,
-      {
-        currentStep: this._activeStepIndex,
-        nextStep: index,
-      }
-    );
-
-    if (index > this._activeStepIndex && changeStepEvent.defaultPrevented) {
-      return;
-    }
 
     this._showElement(
       SelectorEngine.findOne(`${ATTR_CONTENT_REF}`, this._steps[index])
@@ -767,7 +849,7 @@ class Stepper {
     }
 
     if (this._options.stepperNoEditable) {
-      this._toggleDisabled(index);
+      this._toggleDisabled();
     }
 
     this._toggleActive(index);
@@ -808,7 +890,7 @@ class Stepper {
       }
     }
 
-    EventHandler.trigger(this.activeStep, EVENT_CHANGED_STEP, {
+    EventHandler.trigger(this.activeStep, EVENT_STEP_CHANGED, {
       currentStep: this._activeStepIndex,
       prevStep: activeStepIndex,
     });
@@ -867,9 +949,21 @@ class Stepper {
       this._deleteMobileElements();
       this._unbindMobileButtons();
     }
+    this._removeVerticalContentHideClasses();
 
     this._currentView = STEPPER_HORIZONTAL;
 
+    this._setHeight(this.activeStep);
+    this._hideInactiveSteps();
+  }
+
+  _toggleMobile() {
+    this._removeVerticalContentHideClasses();
+
+    this._currentView = STEPPER_MOBILE;
+
+    this._createMobileElements();
+    this._bindMobileButtons();
     this._setHeight(this.activeStep);
     this._hideInactiveSteps();
   }
@@ -912,29 +1006,13 @@ class Stepper {
     });
   }
 
-  _updateProgressBar() {
-    const numberOfSteps = this._steps.length;
-    const progressBar = SelectorEngine.findOne(
-      `[${ATTR_MOBILE_PROGRESS_BAR_REF}]`,
-      this._element
-    );
-
-    if (!progressBar) {
-      return;
-    }
-
-    Manipulator.addStyle(progressBar, {
-      width: `${((this._activeStepIndex + 1) / numberOfSteps) * 100}%`,
-    });
-  }
-
   _createMobileElements() {
     const mobileHeader = `
       <div
         ${ATTR_MOBILE_HEADER_REF}
-        class="absolute top-0 h-fit w-full bg-[#fbfbfb] px-4 py-2 dark:bg-[#3b3b3b]">
-        <p class="text-base text-neutral-600 dark:text-white">
-          step <span ${ATTR_MOBILE_ACTIVE_STEP_REF}></span> of
+        class="${this._classes.mobileHeader}">
+        <p class="${this._classes.mobileHeaderText}">
+          ${this._options.stepperMobileStepTxt} <span ${ATTR_MOBILE_ACTIVE_STEP_REF}></span> ${this._options.stepperMobileOfTxt}
           <span ${ATTR_MOBILE_ALL_STEPS_REF}></span>
         </p>
       </div>
@@ -943,61 +1021,39 @@ class Stepper {
     const mobileFooter = `
       <div
         ${ATTR_MOBILE_FOOTER_REF}
-        class="absolute flex h-[40px] w-full items-center justify-between bg-[#fbfbfb] dark:bg-[#3b3b3b]">      
+        class="${this._classes.mobileFooter}">      
       </div>    
     `;
 
     const mobileBtnBack = `
       <button
         type="button"
-        class="flex h-[40px] items-center justify-center rounded pl-4 pr-5 text-xs font-medium uppercase leading-normal text-neutral-600 transition duration-150 ease-in-out hover:bg-neutral-500 hover:bg-opacity-10 focus:outline-none focus:ring-0 dark:text-white dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-        data-te-ripple-init
+        class="${this._classes.mobileBtnBack}"
         ${ATTR_MOBILE_BTN_BACK_REF}>
-        <span class="pr-2 [&>svg]:h-[18px] [&>svg]:w-[18px]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
+        <span class="${this._classes.mobileBtnBackIcon}">
+          ${this._options.stepperMobileBackBtnIcon}
         </span>
-        Back
+        ${this._options.stepperMobileBackBtn}
       </button>
     `;
 
     const mobileBtnNext = `
       <button
         type="button"
-        class="flex h-[40px] items-center justify-center rounded pl-5 pr-4 text-xs font-medium uppercase leading-normal text-neutral-600 transition duration-150 ease-in-out hover:bg-neutral-500 hover:bg-opacity-10 focus:outline-none focus:ring-0 dark:text-white dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-        data-te-ripple-init
+        class="${this._classes.mobileBtnNext}"
         ${ATTR_MOBILE_BTN_NEXT_REF}>
-        Next
-        <span class="pl-2 [&>svg]:h-[18px] [&>svg]:w-[18px]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
+        ${this._options.stepperMobileNextBtn}
+        <span class="${this._classes.mobileBtnNextIcon}">
+         ${this._options.stepperMobileNextBtnIcon}
         </span>
       </button>
     `;
 
     const mobileProgressBar = `
-      <div class="h-1 w-full bg-neutral-200 dark:bg-neutral-600">
+      <div class="${this._classes.mobileProgressBarWrapper}">
         <div
           ${ATTR_MOBILE_PROGRESS_BAR_REF}
-          class="h-1 bg-primary"></div>
+          class="${this._classes.mobileProgressBar}"></div>
       </div> 
     `;
 
@@ -1052,22 +1108,24 @@ class Stepper {
     head.remove();
   }
 
-  _toggleMobile() {
-    this._currentView = STEPPER_MOBILE;
-
-    this._createMobileElements();
-    this._bindMobileButtons();
-    this._setHeight(this.activeStep);
-    this._hideInactiveSteps();
-  }
-
-  _toggleStepperClass() {
-    const vertical = SelectorEngine.findOne(
-      "[data-te-stepper-type]",
+  _updateProgressBar() {
+    const numberOfSteps = this._steps.length;
+    const progressBar = SelectorEngine.findOne(
+      `[${ATTR_MOBILE_PROGRESS_BAR_REF}]`,
       this._element
     );
 
-    if (vertical !== null) {
+    if (!progressBar) {
+      return;
+    }
+
+    Manipulator.addStyle(progressBar, {
+      width: `${((this._activeStepIndex + 1) / numberOfSteps) * 100}%`,
+    });
+  }
+
+  _removeVerticalContentHideClasses() {
+    if (this._currentView === "vertical") {
       this._steps.forEach((el) => {
         SelectorEngine.findOne(`${ATTR_CONTENT_REF}`, el).classList.remove(
           "!my-0"
@@ -1084,7 +1142,7 @@ class Stepper {
 
   _toggleClasses(element, action, classes) {
     // condition to prevent errors if the user has not set any custom classes like active, disabled etc.
-    if (classes) {
+    if (element && classes) {
       Manipulator[action](element, classes);
     }
   }
@@ -1304,12 +1362,10 @@ class Stepper {
     );
     const form = SelectorEngine.findOne("form", this._element);
 
-    if (
-      inputWrappers.forEach((el) => {
-        el.hasAttribute(ATTR_VALIDATION_STYLING) &&
-          el.removeAttribute(ATTR_VALIDATION_STYLING);
-      })
-    );
+    inputWrappers.forEach((el) => {
+      el.hasAttribute(ATTR_VALIDATION_STYLING) &&
+        el.removeAttribute(ATTR_VALIDATION_STYLING);
+    });
 
     form.setAttribute(ATTR_VALIDATION_VALIDATED, true);
   }
@@ -1328,11 +1384,7 @@ class Stepper {
 
     const isInvalid = this._steps[index].hasAttribute(ATTR_STEP_INVALID);
 
-    if (
-      !this._options.stepperLinear &&
-      !this._options.stepperNoEditable &&
-      index === this._steps.length - 1
-    ) {
+    if (!this._options.stepperLinear && index === this._steps.length - 1) {
       Manipulator.removeClass(
         stepperHeadIcon[index],
         defaultStepHeadIconClasses
@@ -1340,17 +1392,16 @@ class Stepper {
     }
 
     !isInvalid &&
-      this._toggleClasses(
+      (this._toggleClasses(
         stepperHeadIcon[index],
         "addClass",
         activeStepHeadIconClasses
-      );
-
-    this._toggleClasses(
-      stepperHeadText[index],
-      "addClass",
-      this._classes.activeStepHeadText
-    );
+      ),
+      this._toggleClasses(
+        stepperHeadText[index],
+        "addClass",
+        this._classes.activeStepHeadText
+      ));
 
     this._toggleClasses(
       stepperHeadIcon[this._activeStepIndex],
@@ -1411,13 +1462,20 @@ class Stepper {
         "addClass",
         this._classes.completedStepHeadText
       );
-
-      this._toggleClasses(
-        stepperHeadIcon[this._activeStepIndex],
-        "removeClass",
-        defaultStepHeadIconClasses
-      );
     }
+
+    this._toggleClasses(
+      stepperHeadIcon[this._activeStepIndex],
+      "removeClass",
+      defaultStepHeadIconClasses
+    );
+
+    this._options.stepperNoEditable &&
+      this._toggleClasses(
+        stepperHeadText[this._activeStepIndex],
+        "removeClass",
+        this._classes.defaultStepHeadText
+      );
 
     this._toggleClasses(
       stepperHeadIcon[this._activeStepIndex],
@@ -1468,6 +1526,12 @@ class Stepper {
     );
 
     this._toggleClasses(
+      stepperHeadText[index],
+      "removeClass",
+      this._classes.activeStepHeadText
+    );
+
+    this._toggleClasses(
       stepperHeadIcon[index],
       "removeClass",
       completedStepHeadIconClasses
@@ -1484,6 +1548,24 @@ class Stepper {
       "removeClass",
       defaultStepHeadIconClasses
     );
+  }
+
+  _setOptional() {
+    this._steps.forEach((el) => {
+      const isOptional = Manipulator.getDataAttribute(el, "stepper-optional");
+
+      if (isOptional) {
+        const stepHeadText = SelectorEngine.findOne(
+          `${ATTR_HEAD_TEXT_REF}`,
+          el
+        );
+        stepHeadText.setAttribute("data-te-content", "Optional");
+        Manipulator.addClass(
+          stepHeadText,
+          "after:content-[attr(data-te-content)]"
+        );
+      }
+    });
   }
 
   _hideInactiveSteps() {
@@ -1633,17 +1715,6 @@ class Stepper {
 
     this._hideElement(activeStepContent);
     this._showElement(nextStepContent);
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY);
-  }
-
-  static getOrCreateInstance(element, config = {}) {
-    return (
-      this.getInstance(element) ||
-      new this(element, typeof config === "object" ? config : null)
-    );
   }
 }
 

@@ -1,0 +1,120 @@
+---
+---
+
+<script type="module">
+  // Change steps using external elements
+
+  const stepperButtons = document.getElementById("stepper-buttons");
+  const stepperButtonsInstance = te.Stepper.getInstance(stepperButtons);
+
+  document.getElementById("next-step").addEventListener("click", () => {
+    stepperButtonsInstance.nextStep();
+  });
+
+  document.getElementById("prev-step").addEventListener("click", () => {
+    stepperButtonsInstance.prevStep();
+  });
+
+  document.getElementById("step-1").addEventListener("click", () => {
+    stepperButtonsInstance.changeStep(0);
+  });
+
+  document.getElementById("step-2").addEventListener("click", () => {
+    stepperButtonsInstance.changeStep(1);
+  });
+
+  document.getElementById("step-3").addEventListener("click", () => {
+    stepperButtonsInstance.changeStep(2);
+  });
+
+  // default HTML validation
+
+  const defaultValidationStepper =
+    document.getElementById("default-validation");
+
+  const steps = defaultValidationStepper.querySelectorAll(
+    "[data-te-stepper-step-ref]"
+  );
+
+  const validClasses =
+    "!border-[#14a44d] focus:!border-[#14a44d] focus:!shadow-[inset_0_0_0_1px_#14a44d]";
+  const invalidClasses =
+    "!border-[#dc4c64] focus:!border-[#dc4c64] focus:!shadow-[inset_0_0_0_1px_#dc4c64]";
+
+  steps.forEach((step, index) => {
+    const inputs = step.querySelectorAll("[required]");
+
+    step.addEventListener("stepValid.te.stepper", (e) => {
+      inputs.forEach((input) => {
+        validClasses.split(" ").forEach((validClass) => {
+          input.classList.add(validClass);
+        });
+        invalidClasses.split(" ").forEach((invalidClass) => {
+          input.classList.remove(invalidClass);
+        });
+      });
+    });
+
+    step.addEventListener("stepInvalid.te.stepper", (e) => {
+      inputs.forEach((input) => {
+        validClasses.split(" ").forEach((validClass) => {
+          input.classList.remove(validClass);
+        });
+        invalidClasses.split(" ").forEach((invalidClass) => {
+          input.classList.add(invalidClass);
+        });
+      });
+    });
+  });
+
+  // stepper with gesture support
+
+  const stepperGesture = document.getElementById("stepper-gesture");
+  const stepperGestureInstance = te.Stepper.getInstance(stepperGesture);
+  const touchSwipeLeftRight = new te.Touch(stepperGesture, "swipe", {
+    threshold: 100,
+  });
+
+  stepperGesture.addEventListener("swipeleft", () => {
+    stepperGestureInstance.nextStep();
+  });
+  stepperGesture.addEventListener("swiperight", () => {
+    stepperGestureInstance.prevStep();
+  });
+
+  // form wizard
+
+  const stepperForm = document.getElementById("stepper-form");
+  const stepperFormInstance = te.Stepper.getInstance(stepperForm);
+
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+
+  prevBtn.addEventListener("click", () => {
+    stepperFormInstance.prevStep();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    stepperFormInstance.nextStep();
+  });
+
+  // events
+
+  const stepperEvents = document.getElementById("stepper-events");
+
+  stepperEvents.addEventListener("stepValid.te.stepper", (e) => {
+    console.log("stepValid", e);
+  });
+
+  stepperEvents.addEventListener("stepInvalid.te.stepper", (e) => {
+    console.log("stepInvalid", e);
+  });
+
+  stepperEvents.addEventListener("stepChange.te.stepper", (e) => {
+    console.log("stepChange", e);
+  });
+
+  stepperEvents.addEventListener("stepChanged.te.stepper", (e) => {
+    console.log("stepChanged", e);
+  });
+</script>
