@@ -833,10 +833,10 @@ class Sidenav {
 
   _setActive(link, reference) {
     // Link
-    link.setAttribute("data-te-sidebar-state-active", "");
+    link.setAttribute("data-te-sidenav-state-active", "");
 
     if (this._activeNode) {
-      link.removeAttribute("data-te-sidebar-state-active");
+      this._activeNode.removeAttribute("data-te-sidenav-state-active");
     }
     this._activeNode = link;
 
