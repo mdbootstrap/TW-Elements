@@ -53,7 +53,7 @@ describe("ScrollSpy", () => {
         <li class="py-1">
           <a
             data-te-nav-link-ref
-            class="bg-transparent inline-block px-[5px] w-[10px] text-neutral-600 shadow-none dark:text-neutral-200"
+            class="bg-transparent inline-block px-[5px] w-[10px] text-neutral-600 shadow-none dark:text-neutral-200 uncollapsed-column"
             href="#one" style="display:inline-block;width: 10px;"
             >One</a
           >
@@ -63,9 +63,10 @@ describe("ScrollSpy", () => {
             data-te-nav-link-ref
             class="bg-transparent px-[5px] text-neutral-600 shadow-none dark:text-neutral-200"
             href="#two"
+            data-te-collapsible-scrollspy-ref
             >Two</a
           >
-          <ul data-te-nav-list-ref class="pl-3">
+          <ul data-te-nav-list-ref class="pl-3 collapsed-column">
             <li class="py-1">
               <a
                 data-te-nav-link-ref
@@ -82,9 +83,10 @@ describe("ScrollSpy", () => {
             data-te-nav-link-ref
             class="bg-transparent px-[5px] text-neutral-600 shadow-none dark:text-neutral-200"
             href="#four"
+            data-te-collapsible-scrollspy-ref
             >Four</a
           >
-          <ul class="nav flex-column ps-3 uncollapsed-column">
+          <ul class="nav flex-column ps-3">
             <li class="py-1">
               <a
                 data-te-nav-link-ref
@@ -139,6 +141,31 @@ describe("ScrollSpy", () => {
     );
 
     expect(activeLink).not.toBe(null);
+  });
+
+  it("should have height equal to 0 for collapsed list", () => {
+    const scrollspy = new ScrollSpy(fixtureEl);
+    const instance = ScrollSpy.getInstance(fixtureEl);
+    const collapsedColumn = SelectorEngine.findOne(
+      ".collapsed-column",
+      fixtureEl
+    );
+    jest.runAllTimers();
+    expect(collapsedColumn.style.height).toBe("0px");
+    instance.dispose();
+  });
+
+  it("should not have 0px height for uncollapsed list", () => {
+    const scrollspy = new ScrollSpy(fixtureEl);
+    const instance = ScrollSpy.getInstance(fixtureEl);
+    const uncollapsedColumn = SelectorEngine.findOne(
+      ".uncollapsed-column",
+      fixtureEl
+    );
+    jest.runAllTimers();
+
+    expect(uncollapsedColumn.style.height).not.toBe("0px");
+    instance.dispose();
   });
 
   describe("class customization", () => {
