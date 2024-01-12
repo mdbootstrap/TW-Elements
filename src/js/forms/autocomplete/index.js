@@ -15,7 +15,7 @@ import { createPopper } from "@popperjs/core";
 import Data from "../../dom/data";
 import Manipulator from "../../dom/manipulator";
 import SelectorEngine from "../../dom/selector-engine";
-import { typeCheckConfig, getUID, defineJQueryPlugin } from "../../util/index";
+import { typeCheckConfig, getUID } from "../../util/index";
 import EventHandler from "../../dom/event-handler";
 import {
   getDropdownTemplate,
@@ -777,7 +777,5 @@ class Autocomplete {
     );
   }
 }
-
-defineJQueryPlugin(Autocomplete);
 
 export default Autocomplete;

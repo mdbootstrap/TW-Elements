@@ -13,6 +13,7 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 /* eslint-disable no-unused-vars */
 import { clearFixture, getFixture, jQueryMock } from "../mocks";
 import Datepicker from "../../src/js/forms/datepicker";
+import Input from "../../src/js/forms/input";
 import SelectorEngine from "../../src/js/dom/selector-engine";
 import {
   addDays,
@@ -611,63 +612,6 @@ describe("Datepicker", () => {
 
       instance.dispose();
     });
-
-    // it("should not select future date", () => {
-    //   const tomorrowDate = new Date();
-    //   const currentDate = new Date();
-    //   let currentDay = currentDate.getDate();
-    //   let currentMonth = currentDate.getMonth();
-    //   let currentMonthMMFormat = currentMonth + 1;
-    //   let currentYear = currentDate.getFullYear();
-
-    //   tomorrowDate.setDate(tomorrowDate.getDate() + 1);
-    //   let tomorrowDay = tomorrowDate.getDate();
-
-    //   if (String(currentDay).length === 1) {
-    //     currentDay = `0${currentDay}`;
-    //   }
-    //   if (String(tomorrowDay).length === 1) {
-    //     tomorrowDay = `0${tomorrowDay}`;
-    //   }
-    //   if (String(currentMonth).length === 1) {
-    //     currentMonthMMFormat = `0${currentMonthMMFormat}`;
-    //   }
-
-    //   const instance = new Datepicker(fixtureEl, {
-    //     disableFuture: true,
-    //   });
-    //   const input = fixtureEl.querySelector("input");
-
-    //   instance.open();
-    //   const nextBtn = SelectorEngine.findOne(
-    //     "[data-te-datepicker-next-button-ref]"
-    //   );
-    //   const okBtn = SelectorEngine.findOne(
-    //     "[data-te-datepicker-ok-button-ref]"
-    //   );
-    //   const tomorrowDateBtn = document.querySelector(
-    //     `[data-te-date="${currentYear}-${currentMonth}-${tomorrowDay}"]`
-    //   );
-
-    //   expect(instance._options.disableFuture).toEqual(true);
-    //   expect(nextBtn.disabled).toEqual(true);
-
-    //   // don't run next part of the test if 'today' is last day of the month
-    //   if (currentDate.getMonth() != tomorrowDate.getMonth()) {
-    //     return;
-    //   }
-    //   expect(
-    //     tomorrowDateBtn.getAttribute("[data-te-datepicker-cell-disabled]")
-    //   ).toBe(true);
-
-    //   tomorrowDateBtn.click();
-
-    //   okBtn.dispatchEvent(new MouseEvent("click"));
-
-    //   expect(input.value).toEqual("");
-
-    //   instance.dispose();
-    // });
 
     it("should not select past date", () => {
       const yesterdayDate = new Date();
@@ -1579,6 +1523,20 @@ describe("Datepicker", () => {
       );
       expect(backdrop.classList.contains("text-green-100")).toBe(true);
       instance.dispose();
+    });
+  });
+
+  describe("initTE", () => {
+    it("should auto-init", () => {
+      const datepicker = document.createElement("div");
+      datepicker.setAttribute("data-te-datepicker-init", "");
+      datepicker.setAttribute("data-te-input-wrapper-init", "");
+      datepicker.appendChild(fixtureEl);
+      document.body.appendChild(datepicker);
+      initTE({ Datepicker, Input }, { allowReinits: true });
+
+      const instance = Datepicker.getInstance(datepicker);
+      expect(instance).toBeTruthy();
     });
   });
 

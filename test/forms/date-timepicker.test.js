@@ -13,11 +13,10 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 /* eslint-disable no-unused-vars */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
-import Manipulator from "../../src/js/dom/manipulator";
 import { clearFixture, getFixture, jQueryMock } from "../mocks";
 import initTE from "../../src/js/autoinit/index.js";
-
-const Datetimepicker = require("../../src/js/forms/dateTimepicker").default;
+import Datetimepicker from "../../src/js/forms/dateTimepicker";
+import Input from "../../src/js/forms/input";
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -241,6 +240,19 @@ describe("Datetimepicker", () => {
 
       expect(toggleButton.classList.contains("text-green-100")).toBe(true);
       instance.dispose();
+    });
+  });
+
+  describe("initTE", () => {
+    it("should auto-init", () => {
+      const datetimepicker = document.createElement("div");
+      datetimepicker.setAttribute("data-te-date-timepicker-init", "");
+      datetimepicker.setAttribute("data-te-input-wrapper-init", "");
+      document.body.appendChild(datetimepicker);
+      initTE({ Datetimepicker, Input }, { allowReinits: true });
+
+      const instance = Datetimepicker.getInstance(datetimepicker);
+      expect(instance).toBeTruthy();
     });
   });
 

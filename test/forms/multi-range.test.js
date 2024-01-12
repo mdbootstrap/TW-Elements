@@ -18,10 +18,8 @@ import {
   getTooltipTemplate,
 } from "../../src/js/forms/multi-range/template";
 import { getEventTypeClientX } from "../../src/js/forms/multi-range/utils";
+import MultiRangeSlider from "../../src/js/forms/multi-range/index";
 import initTE from "../../src/js/autoinit/index";
-
-const MultiRangeSlider =
-  require("../../src/js/forms/multi-range/index").default;
 
 describe("MultiRangeSlider", () => {
   let fixtureEl;
@@ -306,6 +304,22 @@ describe("MultiRangeSlider", () => {
       expect(connect.children[0].classList.contains("text-green-100")).toBe(
         true
       );
+      instance.dispose();
+    });
+  });
+
+  describe("initTE", () => {
+    it("should auto-init", () => {
+      const multiRange = document.createElement("div");
+      multiRange.setAttribute("data-te-multi-range-slider-init", "");
+      document.body.appendChild(multiRange);
+
+      initTE({ MultiRangeSlider });
+
+      const instance = MultiRangeSlider.getInstance(multiRange);
+
+      expect(instance).toBeTruthy();
+
       instance.dispose();
     });
   });

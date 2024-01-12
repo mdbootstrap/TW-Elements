@@ -13,11 +13,11 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 /* eslint-disable no-unused-vars */
 import { getFixture, jQueryMock } from "../mocks";
 import EventHandler from "../../src/js/dom/event-handler";
+import Timepicker from "../../src/js/forms/timepicker";
+import Input from "../../src/js/forms/input";
 import initTE from "../../src/js/autoinit/index.js";
 
 const SELECTOR_TOGGLE_BUTTON = "[data-te-timepicker-toggle-button]";
-
-const Timepicker = require("../../src/js/forms/timepicker").default;
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,
@@ -78,15 +78,6 @@ describe("Timepicker", () => {
         >
       </div>`;
   });
-
-  // afterEach(() => {
-  //   setTimeout(() => {
-  //     expect(
-  //       document.querySelectorAll("[data-te-timepicker-modal]").length
-  //     ).toEqual(0);
-  //   }, 1555);
-  //   jest.runOnlyPendingTimers();
-  // });
 
   it('should return the component"s name', () => {
     const name = Timepicker.NAME;
@@ -535,6 +526,20 @@ describe("Timepicker", () => {
       expect(button.classList.contains("text-green-100")).toBe(true);
       instance.dispose();
       jest.runAllTimers();
+    });
+  });
+
+  describe("initTE", () => {
+    it("should auto-init", () => {
+      const timepicker = document.createElement("div");
+      timepicker.setAttribute("data-te-timepicker-init", "");
+      timepicker.setAttribute("data-te-input-wrapper-init", "");
+      timepicker.appendChild(fixtureEl);
+      document.body.appendChild(timepicker);
+      initTE({ Timepicker, Input }, { allowReinits: true });
+
+      const instance = Timepicker.getInstance(timepicker);
+      expect(instance).toBeTruthy();
     });
   });
 

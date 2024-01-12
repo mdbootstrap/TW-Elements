@@ -13,12 +13,11 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 /* eslint-disable no-unused-vars */
 import SelectorEngine from "../../src/js/dom/selector-engine";
 import { clearFixture, getFixture, jQueryMock } from "../mocks";
+import Input from "../../src/js/forms/input";
+import Modal from "../../src/js/components/modal";
+import Dropdown from "../../src/js/components/dropdown";
+import Tab from "../../src/js/navigation/tab";
 import initTE from "../../src/js/autoinit/index.js";
-
-const Input = require("../../src/js/forms/input").default;
-const Modal = require("../../src/js/components/modal").default;
-const Dropdown = require("../../src/js/components/dropdown").default;
-const Tab = require("../../src/js/navigation/tab").default;
 
 const SELECTOR_COUNTER = "[data-te-input-form-counter]";
 
@@ -39,8 +38,21 @@ Object.defineProperty(window, "matchMedia", {
 describe("Input", () => {
   let fixtureEl;
 
-  beforeAll(() => {
+  beforeEach(() => {
     fixtureEl = getFixture();
+    fixtureEl.innerHTML = `
+    <div class="relative mb-3" data-te-input-wrapper-init>
+      <input
+        type="text"
+        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        id="exampleFormControlInput1"
+        placeholder="Example label" />
+      <label
+        for="exampleFormControlInput1"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+        >Example label
+      </label>
+    </div>`;
   });
 
   afterEach(() => {
@@ -48,19 +60,6 @@ describe("Input", () => {
   });
 
   it("should create a data instance and remove it on dispose", () => {
-    fixtureEl.innerHTML = `
-      <div class="relative mb-3" data-te-input-wrapper-init>
-        <input
-          type="text"
-          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-          id="exampleFormControlInput1"
-          placeholder="Example label" />
-        <label
-          for="exampleFormControlInput1"
-          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >Example label
-        </label>
-      </div>`;
     let instance = new Input(fixtureEl);
 
     expect(instance).not.toEqual(null);
@@ -72,17 +71,6 @@ describe("Input", () => {
   });
 
   it("should return correct name", () => {
-    fixtureEl.innerHTML = `<input
-      type="text"
-      class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-      id="exampleFormControlInput1"
-      placeholder="Example label" />
-    <label
-      for="exampleFormControlInput1"
-      class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-      >Example label
-    </label>`;
-
     const instance = new Input(fixtureEl);
 
     const name = Input.NAME;
@@ -190,19 +178,6 @@ describe("Input", () => {
   });
 
   it("should not initiate twice", () => {
-    fixtureEl.setAttribute("data-te-input-wrapper-init", "");
-    fixtureEl.innerHTML = `
-      <input
-        type="text"
-        class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-        id="exampleFormControlInput1"
-        placeholder="Example label" />
-      <label
-        for="exampleFormControlInput1"
-        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-        >Example label
-      </label>`;
-
     let instance = new Input(fixtureEl);
 
     expect(instance).not.toEqual(null);
@@ -627,23 +602,6 @@ describe("Input", () => {
     tabInstance.dispose();
   });
 
-  it("should auto-init", () => {
-    fixtureEl.setAttribute("data-te-input-wrapper-init", "");
-    fixtureEl.innerHTML =
-      '<input type="text" id="form1" class="form-control" /><label for="form1">Example label</label>';
-
-    jest.resetModules();
-    const Input = require("../../src/js/forms/input").default;
-    const initTE = require("../../src/js/autoinit/index.js").default;
-    initTE({ Input });
-
-    const instance = Input.getInstance(fixtureEl);
-
-    expect(instance).not.toBe(null);
-
-    instance.dispose();
-  });
-
   it("should activate on auto-fill", () => {
     fixtureEl.innerHTML =
       '<input type="email" id="form1" class="form-control" autocomplete="email" required />';
@@ -727,20 +685,6 @@ describe("Input", () => {
 
   describe("class customization", () => {
     it("should sets custom classes via JavaScript", () => {
-      fixtureEl.innerHTML = `
-      <div class="relative mb-3" data-te-input-wrapper-init>
-        <input
-          type="text"
-          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-          id="exampleFormControlInput1"
-          placeholder="Example label" />
-        <label
-          for="exampleFormControlInput1"
-          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >Example label
-        </label>
-      </div>`;
-
       const instance = new Input(
         fixtureEl,
         {},
@@ -785,20 +729,20 @@ describe("Input", () => {
     });
   });
 
+  describe("initTE", () => {
+    it("should auto-init", () => {
+      initTE({ Input });
+
+      const instance = Input.getInstance(fixtureEl);
+
+      expect(instance).toBeTruthy();
+
+      instance.dispose();
+    });
+  });
+
   describe("jQueryInterface", () => {
     it("should init using jQuery", () => {
-      fixtureEl.innerHTML = `
-        <input
-          type="text"
-          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-          id="exampleFormControlInput1"
-          placeholder="Example label" />
-        <label
-          for="exampleFormControlInput1"
-          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >Example label
-        </label>`;
-
       jQueryMock.fn.input = Input.jQueryInterface;
       jQueryMock.elements = [fixtureEl];
 
@@ -812,18 +756,6 @@ describe("Input", () => {
     });
 
     it("should call public methods", () => {
-      fixtureEl.innerHTML = `
-        <input
-          type="text"
-          class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-          id="exampleFormControlInput1"
-          placeholder="Example label" />
-        <label
-          for="exampleFormControlInput1"
-          class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-          >Example label
-        </label>`;
-
       jQueryMock.fn.init = Input.jQueryInterface;
       jQueryMock.elements = [fixtureEl];
 

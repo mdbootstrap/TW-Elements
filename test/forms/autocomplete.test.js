@@ -12,7 +12,6 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import { clearFixture, getFixture, jQueryMock } from "../mocks";
-import Manipulator from "../../src/js/dom/manipulator";
 import SelectorEngine from "../../src/js/dom/selector-engine";
 import {
   DOWN_ARROW,
@@ -24,8 +23,8 @@ import {
   TAB,
 } from "../../src/js/util/keycodes";
 import initTE from "../../src/js/autoinit/index.js";
-
-const Autocomplete = require("../../src/js/forms/autocomplete").default;
+import Autocomplete from "../../src/js/forms/autocomplete";
+import Input from "../../src/js/forms/input";
 
 const SELECTOR_DROPDOWN_CONTAINER = "[data-te-autocomplete-dropdown-ref]";
 const SELECTOR_ITEM = "[data-te-autocomplete-item-ref]";
@@ -671,59 +670,16 @@ describe("Autocomplete", () => {
     });
   });
 
-  describe("jQuery interface", () => {
-    it("should register jQuery methods", () => {
-      const mock = { ...jQueryMock };
-      window.jQuery = mock;
-      jest.resetModules();
+  describe("initTE", () => {
+    it("should auto-init", () => {
+      initTE({ Input }, { allowReinits: true });
 
-      const Autocomplete = require("../../src/js/forms/autocomplete").default;
-      initTE({ Autocomplete });
+      new Autocomplete(fixtureEl, {
+        filter: basicFilter,
+      });
 
-      expect(mock.fn.autocomplete).toBeTruthy();
-      expect(typeof mock.fn.autocomplete.noConflict()).toBe("function");
+      const instance = Autocomplete.getInstance(fixtureEl);
+      expect(instance).toBeTruthy();
     });
-
-    // it("should initialize a component with options", () => {
-    //   jQueryMock.fn.autocomplete = Autocomplete.jQueryInterface;
-    //   jQueryMock.elements = [fixtureEl];
-
-    //   jQueryMock.fn.autocomplete.call(jQueryMock, {
-    //     debounce: 300,
-    //   });
-
-    //   const instance = Autocomplete.getInstance(fixtureEl);
-
-    //   expect(instance._options.debounce).toBe(300);
-
-    //   instance.dispose();
-    // });
-
-    // it("should call public methods", () => {
-    //   jQueryMock.fn.autocomplete = Autocomplete.jQueryInterface;
-    //   jQueryMock.elements = [fixtureEl];
-
-    //   jQueryMock.fn.autocomplete.call(jQueryMock);
-
-    //   const instance = Autocomplete.getInstance(fixtureEl);
-
-    //   instance.open = jest.fn();
-
-    //   jQueryMock.fn.autocomplete.call(jQueryMock, "open");
-
-    //   expect(instance.open).toHaveBeenCalled();
-
-    //   expect(() =>
-    //     jQueryMock.fn.autocomplete.call(jQueryMock, "test")
-    //   ).toThrow();
-
-    //   jQueryMock.fn.autocomplete.call(jQueryMock, "dispose");
-
-    //   expect(Autocomplete.getInstance(fixtureEl)).toBe(null);
-
-    //   expect(() =>
-    //     jQueryMock.fn.autocomplete.call(jQueryMock, "dispose")
-    //   ).not.toThrow();
-    // });
   });
 });
