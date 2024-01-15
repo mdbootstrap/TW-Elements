@@ -158,10 +158,11 @@ module.exports = plugin(
             "0 8px 9px -4px rgba(203,203,203,0.2),0 4px 18px 0 rgba(203,203,203,0.3)",
           "light-3": "0 4px 9px -4px #cbcbcb",
           "dark-1":
-            "0 8px 9px -4px rgba(3,2,2,0.2),0 4px 18px 0 rgba(3,2,2,0.3)",
+            "0 8px 9px -4px rgba( 0, 0, 0 , 0.15), 0 4px 18px 0 rgba( 0, 0, 0 , 0.1)",
           "dark-2":
             "0 8px 9px -4px rgba(51,45,45,0.1),0 4px 18px 0 rgba(51,45,45,0.2)",
           "dark-3": "0 4px 9px -4px rgba(51,45,45,0.7)",
+          "dark-strong": "0 4px 18px -2px rgba(0,0,0,.7)",
           "secondary-1":
             "0 2px 15px -3px rgba(0,0,0,0.04),0 10px 20px -2px rgba(0,0,0,0.07)",
           "secondary-2":
@@ -695,6 +696,7 @@ module.exports = plugin(
             900: "#183058",
             "accent-100": "#d9e4f3",
             "accent-200": "#cedbee",
+            "accent-300": "#386bc0",
           },
           secondary: {
             DEFAULT: "#9FA6B2",
@@ -708,6 +710,7 @@ module.exports = plugin(
             700: "#6B7585",
             800: "#565D6B",
             900: "#404650",
+            "accent-300": "#979ea9",
           },
           success: {
             DEFAULT: "#14A44D",
@@ -721,6 +724,7 @@ module.exports = plugin(
             700: "#0E7537",
             800: "#0C5D2C",
             900: "#094621",
+            "accent-300": "#139c49",
           },
           danger: {
             DEFAULT: "#DC4C64",
@@ -734,6 +738,7 @@ module.exports = plugin(
             700: "#B0233A",
             800: "#8D1C2F",
             900: "#6A1523",
+            "accent-300": "#d1485f",
           },
           warning: {
             DEFAULT: "#E4A11B",
@@ -747,6 +752,7 @@ module.exports = plugin(
             700: "#A37313",
             800: "#825C0F",
             900: "#62450B",
+            "accent-300": "#d9991a",
           },
           info: {
             DEFAULT: "#54B4D3",
@@ -760,6 +766,7 @@ module.exports = plugin(
             700: "#2B89A8",
             800: "#236D86",
             900: "#1A5265",
+            "accent-300": "#50abc8",
           },
           surface: {
             DEFAULT: "#4f4f4f",
