@@ -123,7 +123,7 @@ describe("PerfectScrollbar", () => {
       expect(instance).not.toBeTruthy();
     });
 
-    it("should add class perfest-scrollbar with data-mdb-attr init", () => {
+    it("should add class perfest-scrollbar with data-te-attr init", () => {
       const instance = new PerfectScrollbar(fixtureEl, { type: "test" });
       expect(fixtureEl.classList.contains("perfect-scrollbar")).toBe(true);
       instance.dispose();

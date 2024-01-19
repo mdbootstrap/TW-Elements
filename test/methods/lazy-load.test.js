@@ -55,7 +55,7 @@ describe("Lazy Loading", () => {
 
       jest.resetModules();
 
-      const initMDB = require("../../src/js/autoinit/index.js").default;
+      const initTE = require("../../src/js/autoinit/index.js").default;
       LazyLoad = require("../../src/js/methods/lazy-load").default;
 
       let instance = LazyLoad.getOrCreateInstance(img);
