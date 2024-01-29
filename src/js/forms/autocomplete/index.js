@@ -614,8 +614,11 @@ class Autocomplete {
 
   _handleItemsClick(event) {
     const target = SelectorEngine.closest(event.target, SELECTOR_ITEM);
+    if (!target) return;
     const targetIndex = Manipulator.getDataAttribute(target, "index");
+    if (targetIndex === null) return;
     const item = this._filteredResults[targetIndex];
+    if (!item) return;
 
     this._handleSelection(item);
   }
