@@ -89,6 +89,8 @@ const Manipulator = {
   },
 
   getDataAttribute(element, key) {
+    if (!element) return null;
+
     return normalizeData(
       element.getAttribute(`data-te-${normalizeDataKey(key)}`)
     );

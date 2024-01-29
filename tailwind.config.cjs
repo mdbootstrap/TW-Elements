@@ -13,7 +13,12 @@ If you would like to purchase a COMMERCIAL, non-AGPL license for TWE, please che
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./demo/**/*.{html,js}", "./src/**/*.{html,js}"],
+  content: [
+    "./index.html",
+    "./demo/**/*.{html,js}",
+    "./src/**/*.{html,js}",
+    "./node_modules/tw-elements/dist/js/**/*.js",
+  ],
   theme: {
     extend: {},
   },
