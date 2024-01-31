@@ -6,6 +6,16 @@
 <script type="text/javascript" src="/js/new-prism.js"></script>
 <link rel="stylesheet" href="/css/new-prism.css" />
 
+<script>
+  const CONFIG = {
+    docsApiUrl: {{.Site.Params.apiUrl}}
+  };
+</script>
+<script
+  type="module"
+  src="{{ .Site.Params.assetsDir }}/js/load-user-data.js"></script>
+<script type="module" src="{{ .Site.Params.assetsDir }}/js/auth.js"></script>
+
 <script type="module">
   class Search {
     constructor(input, icon, list, form, dropdown, count, jsonFile) {

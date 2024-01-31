@@ -237,5 +237,74 @@
     >
   </div>
 </footer>
-
+<div id="dpl-auth-modal"></div>
+<div
+  data-te-modal-init
+  class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+  id="apiRestrictedModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalFirstLabel"
+  aria-hidden="true">
+  <div
+    data-te-modal-dialog-ref
+    class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+    <div
+      class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-4 outline-none dark:bg-neutral-600">
+      <div
+        class="flex flex-shrink-0 items-center justify-between rounded-t-md p-4 text-center">
+        <span class="w-full">
+          <h4
+            class="text-surface border border-primary px-5 py-3 text-center text-2xl font-semibold leading-normal dark:text-white"
+            id="exampleModalFirstLabel">
+            Access restricted
+          </h4>
+        </span>
+      </div>
+      <div
+        class="text-surface relative flex-auto px-4 pb-4 text-center dark:text-white"
+        data-te-modal-body-ref>
+        <h5 class="text-xl font-semibold leading-normal">
+          To view this section you must have an active PRO account
+        </h5>
+        <p class="my-3 text-base">
+          <strong>Log in</strong> to your account or
+          <strong>purchase an Data Den subscription</strong> if you don't have
+          one.
+        </p>
+        <div class="space-x-1">
+          <span data-te-modal-dismiss>
+            <button
+              type="button"
+              class="shadow-primary-3 hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 active:shadow-primary-2 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out focus:outline-none focus:ring-0 active:bg-primary-600 dark:shadow-black/30"
+              data-te-ripple-init
+              data-te-ripple-color="light"
+              data-te-toggle="modal"
+              data-te-target="#navbarLogin">
+              Login
+            </button>
+          </span>
+          <a
+            type="button"
+            href="/pro"
+            class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-200 focus:bg-primary-accent-200 focus:outline-none focus:ring-0 active:bg-primary-accent-200 dark:bg-primary-300 dark:hover:bg-primary-400 dark:focus:bg-primary-400 dark:active:bg-primary-400"
+            data-te-ripple-init
+            data-te-ripple-color="light">
+            Buy Data Den PRO
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 p-4 dark:border-white/10">
+        <button
+          type="button"
+          class="shadow-primary-3 hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 active:shadow-primary-2 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out focus:outline-none focus:ring-0 active:bg-primary-600 dark:shadow-black/30"
+          data-te-ripple-init
+          data-te-ripple-color="light"
+          data-te-modal-dismiss>
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 {{ partial "footer/footer-scripts.html" . }}
