@@ -40,15 +40,10 @@ TW Elements is a huge collection of free, interactive components for Tailwind CS
 
 ## Community
 
-TW Elements is a **community-driven** project.
-We invite you to **track our [live progress 👁️](https://github.com/orgs/mdbootstrap/projects/1)** on the upcoming release.
-
-In the meantime you can also:
-
 - Motivate us with some [words of encouragament ❤️](https://github.com/mdbootstrap/TW-Elements/discussions/categories/kind-words-general-feedback)
 - Share your [ideas & feature requests 💡](https://github.com/mdbootstrap/TW-Elements/discussions/categories/share-ideas-request-features)
 - Aks for help & help others in our [community support 🙏](https://github.com/mdbootstrap/TW-Elements/discussions/categories/support-from-community)
-- **Engage, discuss & have fun in our [open-source community 💬](https://github.com/mdbootstrap/TW-Elements/discussions)**
+- **Engage, discuss & have fun in our [community 💬](https://github.com/mdbootstrap/TW-Elements/discussions)**
 
 **If you want to help the project grow, start by simply sharing it with your peers!**
 
@@ -740,11 +735,8 @@ npm install tw-elements
 
 ```javascript
 module.exports = {
-  content: [
-    "./src/**/*.{html,js}",
-    "./node_modules/tw-elements/dist/js/**/*.js",
-  ],
-  plugins: [require("tw-elements/dist/plugin")],
+  content: ["./src/**/*.{html,js}", "./node_modules/tw-elements/js/**/*.js"],
+  plugins: [require("tw-elements/plugin.cjs")],
   darkMode: "class",
 };
 ```
@@ -752,7 +744,7 @@ module.exports = {
 4.  Dynamic components will work after adding the js file:
 
 ```
-<script src="./TW-ELEMENTS-PATH/dist/js/tw-elements.umd.min.js"></script>
+<script src="./TW-ELEMENTS-PATH/js/tw-elements.umd.min.js"></script>
 ```
 
 Alternatively, you can import it in the following way (bundler version):
@@ -809,7 +801,7 @@ Add the stylesheet files below in the _head_ section:
 
 ```
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/css/tw-elements.min.css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -831,5 +823,5 @@ Add the stylesheet files below in the _head_ section:
 Require the js bundled file right before the _body_ closing tag:
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/js/tw-elements.umd.min.js"></script>
 ```

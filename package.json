@@ -1,83 +1,14 @@
 {
   "name": "tw-elements",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "type": "module",
-  "license": "AGPL",
-  "homepage": "https://tailwind-elements.com/",
-  "author": "MDBootstrap <office@mdbootstrap.com>",
-  "style": "./dist/css/index.min.css",
-  "sass": "./src/scss/tailwind.scss",
-  "main": "./dist/js/tw-elements.umd.min.js",
-  "module": "./dist/js/tw-elements.es.min.js",
-  "types": "./types/tw-elements.d.ts",
-  "scripts": {
-    "start": "vite --open",
-    "dev": "vite",
-    "build": "vite build && cross-env --env.buildFile=umd vite build && node config/build.cjs && npm run create:te-starter && npm run copy:te-files && cd ./site && npm run build:tailwind",
-    "build:demo": "cross-env --env.mode=demo --env.buildFile=umd vite build && cross-env --env.mode=demo node config/build.cjs",
-    "copy:te-files": "node helpers/copyTeFiles.cjs",
-    "create:te-starter": "node helpers/createTeStarter.cjs",
-    "deploy": "npm run build:demo && cd dist-demo/ && mdb publish --override",
-    "docs:install": "npm install && cd ./site && npm install && cd ../ && npm run build",
-    "docs:start": "cd ./site && npm start",
-    "test": "jest",
-    "lint": "lint-staged && pretty-quick"
-  },
-  "files": [
-    "dist/**/*",
-    "types/**/*"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && pretty-quick --staged && jest test/ --collectCoverageFrom=src/js/**/*.js"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.js": [
-      "eslint --fix"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mdbootstrap/Tailwind-Elements"
-  },
-  "keywords": [
-    "tailwind",
-    "material design"
-  ],
-  "devDependencies": {
-    "@babel/preset-env": "^7.23.2",
-    "autoprefixer": "^10.4.13",
-    "babel-eslint": "^10.1.0",
-    "bestzip": "^2.2.0",
-    "cross-env": "^7.0.2",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-loader": "^3.0.3",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-prettier": "^3.1.3",
-    "fs-extra": "^9.1.0",
-    "husky": "^4.2.5",
-    "jest": "^26.0.1",
-    "lint-staged": "^10.2.4",
-    "prettier": "^2.8.1",
-    "prettier-plugin-go-template": "^0.0.13",
-    "prettier-plugin-tailwindcss": "^0.2.1",
-    "pretty-quick": "^2.0.1",
-    "sass": "^1.30.0",
-    "sass-loader": "^8.0.2",
-    "shelljs": "^0.8.5",
-    "postcss": "^8.4.21",
-    "vite": "^4.1.0"
-  },
-  "dependencies": {
-    "@popperjs/core": "^2.6.0",
-    "chart.js": "^3.7.1",
-    "chartjs-plugin-datalabels": "^2.0.0",
-    "deepmerge": "^4.2.2",
-    "detect-autofill": "^1.1.3",
-    "perfect-scrollbar": "^1.5.5",
-    "tailwindcss": "3.3.0"
-  }
+  "homepage": "https://tw-elements.com/",
+  "repository": "https://github.com/mdbootstrap/TW-Elements",
+  "author": "MDBootstrap",
+  "license": "SEE LICENSE IN <License.txt>",
+  "style": "./css/tw-elements.min.css",
+  "sass": "./src/css/tailwind.scss",
+  "main": "./js/tw-elements.umd.min.js",
+  "module": "./js/tw-elements.es.min.js",
+  "types": "./types/tw-elements.d.ts"
 }
