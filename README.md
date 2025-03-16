@@ -778,7 +778,7 @@ mdb init tailwind-elements-free
 4. Install the dependencies (inside the project directory):
 
 ```
-npm install
+npm install or npm i
 ```
 
 5. Run the app:
