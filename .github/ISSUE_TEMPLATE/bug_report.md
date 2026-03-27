@@ -24,7 +24,7 @@ A clear and concise description of what you expected to happen.
 A clear and concise description of what is happening instead.
 
 **Show your code**
-It will be easier for us to help you if you [create a snippet using TE playground](https://tailwind-elements.com/snippets/) and include a link to it in your issue.
+It will be easier for us to help you if you [create a snippet using TE playground](https://tw-elements.com/snippets/) and include a link to it in your issue.
 
 **Desktop (please complete the following information):**
 
